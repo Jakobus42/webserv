@@ -1,0 +1,23 @@
+repos:
+  - repo: local
+    hooks:
+      - id: commit-message-prefix
+        name: Commit Message Prefix Check
+        entry: bash .github/hooks/commitMsg.sh
+        language: system
+        stages: [commit-msg]
+
+      - id: branch-name-prefix
+        name: Branch Name Prefix Check
+        entry: bash .github/hooks/branchName.sh
+        language: system
+        stages: [pre-commit]
+        always_run: true
+      
+      - id: formatting
+        name: Code Formatting
+        entry: bash -c "make format && git add -u"
+        language: system
+        stages: [pre-commit]
+        always_run: true
+      

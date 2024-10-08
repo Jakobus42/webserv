@@ -1,0 +1,31 @@
+PROJECT_NAME           = "Template"
+OUTPUT_DIRECTORY       = docs
+OUTPUT_LANGUAGE        = English
+
+INPUT                  = src include
+RECURSIVE              = YES
+FILE_PATTERNS          = *.cpp *.h *.hpp *.tpp
+EXCLUDE                = external/ docs/
+
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
+
+WARN_IF_UNDOCUMENTED   = YES
+
+SHOW_FILES             = YES
+SHOW_NAMESPACES        = YES
+SHOW_INCLUDE_FILES     = YES
+
+GENERATE_TREEVIEW      = YES
+
+HAVE_DOT               = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+DOT_PATH               = /usr/bin/dot

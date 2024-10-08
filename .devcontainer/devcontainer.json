@@ -1,0 +1,15 @@
+{
+  "name": "My Container",
+  "image": "template",
+  "runArgs": [
+    "-v", "${env:HOME}/.ssh:/root/.ssh",
+    "-v", "${env:HOME}/.zshrc:/root/.zshrc"
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      }
+    }
+  }
+}

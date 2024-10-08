@@ -1,0 +1,127 @@
+#!/usr/bin/env bash
+
+header_template='#pragma once
+
+namespace %NAMESPACE% {
+
+/**
+ * @class %CLASS_NAME%
+ * @brief ...
+ */
+class %CLASS_NAME% {
+    public:
+        %CLASS_NAME%();
+        ~%CLASS_NAME%();
+        %CLASS_NAME%(const %CLASS_NAME% &other);
+        %CLASS_NAME%& operator=(const %CLASS_NAME% &other);
+
+    private:
+
+};
+
+} /* namespace %NAMESPACE% */
+
+'
+
+source_template='#include "../../include/%SUB_FOLDER%/%CLASS_NAME%.hpp"
+
+namespace %NAMESPACE% {
+
+/**
+ * @brief Constructs a new %CLASS_NAME% object.
+ */
+%CLASS_NAME%::%CLASS_NAME%() {
+
+}
+
+/**
+ * @brief Destroys the %CLASS_NAME% object.
+ */
+%CLASS_NAME%::~%CLASS_NAME%() {
+
+}
+
+/**
+ * @brief Copy constructor.
+ * @param other The other %CLASS_NAME% object to copy.
+ */
+%CLASS_NAME%::%CLASS_NAME%(const %CLASS_NAME% &) {
+
+}
+
+/**
+ * @brief Copy assignment operator.
+ * @param other The other %CLASS_NAME% object to assign from.
+ * @return A reference to the assigned %CLASS_NAME% object.
+ */
+%CLASS_NAME%& %CLASS_NAME%::operator=(const %CLASS_NAME% &) {
+    return *this;
+}
+
+} /* namespace %NAMESPACE% */
+
+'
+
+help_text="
+Usage: $0 <subfolder> <class_name>
+This script creates a C++ class with header and source files in canonical form.
+
+Arguments:
+  subfolder   - The subdirectory under 'include' and 'src' where the class files will be placed.
+  className  - The name of the class to create.
+
+Canonical form:
+  The generated class will have:
+  - A default constructor.
+  - A destructor.
+  - A copy constructor.
+  - A copy assignment operator.
+
+Generated Files:
+  - Header file (.hpp) placed in 'include/<subfolder>/'
+  - Source file (.cpp) placed in 'src/<subfolder>/'
+
+Each class will be generated with proper Doxygen documentation.
+
+Examples:
+  $0 logger LoggerManager
+    Creates a C++ class named LoggerManager in the 'logger' subdirectory.
+"
+
+create_class() {
+	local subfolder="$1"
+	local namespace="$1"
+	local class_name="$2"
+	local header_path="include/${subfolder}/${class_name}.hpp"
+	local source_path="src/${subfolder}/${class_name}.cpp"
+
+	local processed_header=$(echo "${header_template}" | sed -e "s/%CLASS_NAME%/${class_name}/g" -e "s/%NAMESPACE%/${namespace}/g")
+	local processed_source=$(echo "${source_template}" | sed -e "s/%CLASS_NAME%/${class_name}/g" -e "s/%SUB_FOLDER%/${subfolder}/g" -e "s/%NAMESPACE%/${namespace}/g")
+
+	mkdir -p "include/${subfolder}" "src/${subfolder}" || {
+		echo "Failed to create directories"
+		exit 1
+	}
+	echo "Creating class files at ${header_path} and ${source_path}"
+	echo "${processed_header}" >"${header_path}"
+	echo "${processed_source}" >"${source_path}"
+}
+
+check_arguments() {
+	if [ "$1" = "--help" ]; then
+		echo "$help_text"
+		exit 0
+	fi
+
+	if [ $# -ne 2 ]; then
+		echo "Error: Expected 2 arguments, but got $#. For help, use: $0 --help"
+		exit 1
+	fi
+}
+
+main() {
+	check_arguments "$@"
+	create_class "$1" "$2"
+}
+
+main "$@"
