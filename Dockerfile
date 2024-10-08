@@ -40,4 +40,5 @@ COPY . /workspace
 
 RUN pip install pre-commit && pre-commit install
 
+
 CMD [ "zsh" ]
