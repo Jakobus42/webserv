@@ -47,11 +47,11 @@ class ALogger {
  protected:
   LogLevel m_currentLogLevel;
 
-  std::string getLogPrefix(LogLevel level) const;
+  static std::string getLogPrefix(LogLevel level);
 
  private:
   static std::string getLogLevelAsString(LogLevel level);
-  std::string getTimeStamp() const;
+  static std::string getTimeStamp();
 };
 
 } /* namespace logger */

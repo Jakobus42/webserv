@@ -98,7 +98,7 @@ std::string ALogger::getLogLevelAsString(LogLevel level) {
  * @return std::string A string representing the current timestamp.
  * @throws std::runtime_error If the conversion of the time to local time fails.
  */
-std::string ALogger::getTimeStamp() const {
+std::string ALogger::getTimeStamp() {
   char buffer[20];
   time_t now = time(0);
   tm* now_tm = localtime(&now);
@@ -119,7 +119,7 @@ std::string ALogger::getTimeStamp() const {
  * @return std::string representing the prefix for the log msg.
  * @throws std::runtime_error If the conversion of the time to local time fails.
  */
-std::string ALogger::getLogPrefix(LogLevel level) const {
+std::string ALogger::getLogPrefix(LogLevel level) {
   return getLogLevelAsString(level) + getTimeStamp();
 }
 
