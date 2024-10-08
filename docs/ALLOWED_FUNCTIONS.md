@@ -1,106 +1,173 @@
 # ALLOWED_FUNCTIONS.md
 
-## Introduction
-This document lists all the allowed functions for your project and provides a brief overview of their usage along with links to their official documentation for further reading. The goal is to help understand the basics of each function's behavior and how they can be used effectively.
+1. **execve**
+   - **Usage**: Executes a program, replacing the current process.
+   - **Link**: [execve documentation](https://man7.org/linux/man-pages/man2/execve.2.html)
 
----
+2. **dup**
+   - **Usage**: Duplicates an existing file descriptor.
+   - **Link**: [dup documentation](https://man7.org/linux/man-pages/man2/dup.2.html)
 
-### 1. `execve`
-- **Usage**: Executes a program, replacing the current process image with a new one.
-- **Link**: [execve - Linux man page](https://man7.org/linux/man-pages/man2/execve.2.html)
+3. **dup2**
+   - **Usage**: Duplicates a file descriptor to a given descriptor number.
+   - **Link**: [dup2 documentation](https://man7.org/linux/man-pages/man2/dup.2.html)
 
-### 2. `dup` & `dup2`
-- **Usage**: `dup` duplicates an existing file descriptor. `dup2` duplicates it to a specified file descriptor.
-- **Link**: [dup, dup2 - Linux man page](https://man7.org/linux/man-pages/man2/dup.2.html)
+4. **pipe**
+   - **Usage**: Creates a unidirectional data channel that can be used for inter-process communication.
+   - **Link**: [pipe documentation](https://man7.org/linux/man-pages/man2/pipe.2.html)
 
-### 3. `pipe`
-- **Usage**: Creates a unidirectional data channel (a pipe) for inter-process communication.
-- **Link**: [pipe - Linux man page](https://man7.org/linux/man-pages/man2/pipe.2.html)
+5. **strerror**
+   - **Usage**: Returns a string that describes the error code passed.
+   - **Link**: [strerror documentation](https://man7.org/linux/man-pages/man3/strerror.3.html)
 
-### 4. `strerror` & `gai_strerror`
-- **Usage**: `strerror` returns a string describing an error code. `gai_strerror` returns an error description for `getaddrinfo` errors.
-- **Link**: [strerror - Linux man page](https://man7.org/linux/man-pages/man3/strerror.3.html)
+6. **gai_strerror**
+   - **Usage**: Returns a string describing the error code returned by `getaddrinfo()`.
+   - **Link**: [gai_strerror documentation](https://man7.org/linux/man-pages/man3/gai_strerror.3.html)
 
-### 5. `errno`
-- **Usage**: Global variable indicating the error code from the last system call.
-- **Link**: [errno - Linux man page](https://man7.org/linux/man-pages/man3/errno.3.html)
+7. **errno**
+   - **Usage**: Global variable that indicates the error number for the last system call.
+   - **Link**: [errno documentation](https://man7.org/linux/man-pages/man3/errno.3.html)
 
-### 6. `fork`
-- **Usage**: Creates a new process by duplicating the calling process.
-- **Link**: [fork - Linux man page](https://man7.org/linux/man-pages/man2/fork.2.html)
+8. **fork**
+   - **Usage**: Creates a new process by duplicating the current process.
+   - **Link**: [fork documentation](https://man7.org/linux/man-pages/man2/fork.2.html)
 
-### 7. `socketpair`
-- **Usage**: Creates a pair of connected sockets for inter-process communication.
-- **Link**: [socketpair - Linux man page](https://man7.org/linux/man-pages/man2/socketpair.2.html)
+9. **socketpair**
+   - **Usage**: Creates a pair of connected sockets.
+   - **Link**: [socketpair documentation](https://man7.org/linux/man-pages/man2/socketpair.2.html)
 
-### 8. `htons`, `htonl`, `ntohs`, `ntohl`
-- **Usage**: Functions to convert values between host and network byte order.
-- **Link**: [byteorder - Linux man page](https://man7.org/linux/man-pages/man3/htons.3.html)
+10. **htons**
+    - **Usage**: Converts a short integer from host to network byte order.
+    - **Link**: [htons documentation](https://man7.org/linux/man-pages/man3/htons.3p.html)
 
-### 9. `select`
-- **Usage**: Monitors multiple file descriptors to see if I/O is possible.
-- **Link**: [select - Linux man page](https://man7.org/linux/man-pages/man2/select.2.html)
+11. **htonl**
+    - **Usage**: Converts a long integer from host to network byte order.
+    - **Link**: [htonl documentation](https://man7.org/linux/man-pages/man3/htonl.3p.html)
 
-### 10. `poll`
-- **Usage**: Monitors multiple file descriptors for I/O readiness.
-- **Link**: [poll - Linux man page](https://man7.org/linux/man-pages/man2/poll.2.html)
+12. **ntohs**
+    - **Usage**: Converts a short integer from network to host byte order.
+    - **Link**: [ntohs documentation](https://man7.org/linux/man-pages/man3/ntohs.3p.html)
 
-### 11. `epoll` (`epoll_create`, `epoll_ctl`, `epoll_wait`)
-- **Usage**: A more scalable I/O event notification facility compared to `select` or `poll`.
-- **Link**: [epoll - Linux man page](https://man7.org/linux/man-pages/man7/epoll.7.html)
+13. **ntohl**
+    - **Usage**: Converts a long integer from network to host byte order.
+    - **Link**: [ntohl documentation](https://man7.org/linux/man-pages/man3/ntohl.3p.html)
 
-### 12. `kqueue` (`kqueue`, `kevent`)
-- **Usage**: Provides a method for scalable I/O event notification (primarily BSD systems).
-- **Link**: [kqueue - FreeBSD man page](https://man.freebsd.org/cgi/man.cgi?query=kqueue&sektion=2)
+14. **select**
+    - **Usage**: Monitors multiple file descriptors for readiness to perform I/O.
+    - **Link**: [select documentation](https://man7.org/linux/man-pages/man2/select.2.html)
 
-### 13. `socket`, `accept`, `listen`, `send`, `recv`
-- **Usage**: Network communication functions. `socket` creates a socket, `accept` handles incoming connections, `listen` listens for connections, `send` and `recv` handle data transfer.
-- **Link**: [socket - Linux man page](https://man7.org/linux/man-pages/man2/socket.2.html)
+15. **poll**
+    - **Usage**: Waits for some event on a set of file descriptors.
+    - **Link**: [poll documentation](https://man7.org/linux/man-pages/man2/poll.2.html)
 
-### 14. `chdir`
-- **Usage**: Changes the current working directory.
-- **Link**: [chdir - Linux man page](https://man7.org/linux/man-pages/man2/chdir.2.html)
+16. **epoll (epoll_create, epoll_ctl, epoll_wait)**
+    - **Usage**: Provides scalable I/O event notification mechanisms.
+    - **Link**: [epoll documentation](https://man7.org/linux/man-pages/man7/epoll.7.html)
 
-### 15. `bind`, `connect`
-- **Usage**: `bind` associates a socket with an address, `connect` connects to a remote host.
-- **Link**: [bind, connect - Linux man page](https://man7.org/linux/man-pages/man2/bind.2.html)
+17. **kqueue (kqueue, kevent)**
+    - **Usage**: Provides a mechanism for event notification on BSD systems.
+    - **Link**: [kqueue documentation](https://man.freebsd.org/kqueue.2)
 
-### 16. `getaddrinfo`, `freeaddrinfo`
-- **Usage**: Resolves hostnames and service names into socket addresses. `freeaddrinfo` deallocates the result.
-- **Link**: [getaddrinfo - Linux man page](https://man7.org/linux/man-pages/man3/getaddrinfo.3.html)
+18. **socket**
+    - **Usage**: Creates an endpoint for communication.
+    - **Link**: [socket documentation](https://man7.org/linux/man-pages/man2/socket.2.html)
 
-### 17. `setsockopt`, `getsockname`
-- **Usage**: `setsockopt` sets options on a socket, `getsockname` gets the current address of a socket.
-- **Link**: [setsockopt - Linux man page](https://man7.org/linux/man-pages/man2/setsockopt.2.html)
+19. **accept**
+    - **Usage**: Accepts a connection on a socket.
+    - **Link**: [accept documentation](https://man7.org/linux/man-pages/man2/accept.2.html)
 
-### 18. `getprotobyname`
-- **Usage**: Retrieves protocol information by its name.
-- **Link**: [getprotobyname - Linux man page](https://man7.org/linux/man-pages/man3/getprotoent.3.html)
+20. **listen**
+    - **Usage**: Marks a socket as passive, indicating it will accept incoming connection requests.
+    - **Link**: [listen documentation](https://man7.org/linux/man-pages/man2/listen.2.html)
 
-### 19. `fcntl`
-- **Usage**: Performs operations on file descriptors.
-- **Link**: [fcntl - Linux man page](https://man7.org/linux/man-pages/man2/fcntl.2.html)
+21. **send**
+    - **Usage**: Sends data to a connected socket.
+    - **Link**: [send documentation](https://man7.org/linux/man-pages/man2/send.2.html)
 
-### 20. `close`, `read`, `write`
-- **Usage**: File descriptor operations. `close` closes a file descriptor, `read` reads data, and `write` writes data.
-- **Link**: [close, read, write - Linux man page](https://man7.org/linux/man-pages/man2/read.2.html)
+22. **recv**
+    - **Usage**: Receives data from a connected socket.
+    - **Link**: [recv documentation](https://man7.org/linux/man-pages/man2/recv.2.html)
 
-### 21. `waitpid`, `kill`, `signal`
-- **Usage**: Process control functions. `waitpid` waits for a process, `kill` sends signals, and `signal` handles signals.
-- **Link**: [waitpid, kill, signal - Linux man page](https://man7.org/linux/man-pages/man2/waitpid.2.html)
+23. **chdir**
+    - **Usage**: Changes the current working directory of the calling process.
+    - **Link**: [chdir documentation](https://man7.org/linux/man-pages/man2/chdir.2.html)
 
-### 22. `access`, `stat`
-- **Usage**: `access` checks file permissions, `stat` retrieves file status.
-- **Link**: [access, stat - Linux man page](https://man7.org/linux/man-pages/man2/stat.2.html)
+24. **bind**
+    - **Usage**: Associates a socket with an address.
+    - **Link**: [bind documentation](https://man7.org/linux/man-pages/man2/bind.2.html)
 
-### 23. `open`, `opendir`, `readdir`, `closedir`
-- **Usage**: File and directory operations. `open` opens a file, `opendir` opens a directory, `readdir` reads directory contents, and `closedir` closes a directory.
-- **Link**: [open, opendir, readdir, closedir - Linux man page](https://man7.org/linux/man-pages/man2/open.2.html)
+25. **connect**
+    - **Usage**: Initiates a connection on a socket.
+    - **Link**: [connect documentation](https://man7.org/linux/man-pages/man2/connect.2.html)
 
----
+26. **getaddrinfo**
+    - **Usage**: Translates a human-readable hostname into a socket address.
+    - **Link**: [getaddrinfo documentation](https://man7.org/linux/man-pages/man3/getaddrinfo.3.html)
 
-## Notes
-This document aims to provide a quick overview of the allowed functions and should be supplemented with thorough reading of the official documentation before usage in code. Make sure to handle error codes and edge cases appropriately for production-ready code.
+27. **freeaddrinfo**
+    - **Usage**: Frees memory allocated by `getaddrinfo()`.
+    - **Link**: [freeaddrinfo documentation](https://man7.org/linux/man-pages/man3/freeaddrinfo.3.html)
 
-For more in-depth details, please refer to the linked official manual pages.
+28. **setsockopt**
+    - **Usage**: Sets options on a socket.
+    - **Link**: [setsockopt documentation](https://man7.org/linux/man-pages/man2/setsockopt.2.html)
 
+29. **getsockname**
+    - **Usage**: Gets the current address to which the socket is bound.
+    - **Link**: [getsockname documentation](https://man7.org/linux/man-pages/man2/getsockname.2.html)
+
+30. **getprotobyname**
+    - **Usage**: Gets protocol information based on a protocol name.
+    - **Link**: [getprotobyname documentation](https://man7.org/linux/man-pages/man3/getprotoent.3.html)
+
+31. **fcntl**
+    - **Usage**: Performs various operations on a file descriptor.
+    - **Link**: [fcntl documentation](https://man7.org/linux/man-pages/man2/fcntl.2.html)
+
+32. **close**
+    - **Usage**: Closes a file descriptor.
+    - **Link**: [close documentation](https://man7.org/linux/man-pages/man2/close.2.html)
+
+33. **read**
+    - **Usage**: Reads data from a file descriptor.
+    - **Link**: [read documentation](https://man7.org/linux/man-pages/man2/read.2.html)
+
+34. **write**
+    - **Usage**: Writes data to a file descriptor.
+    - **Link**: [write documentation](https://man7.org/linux/man-pages/man2/write.2.html)
+
+35. **waitpid**
+    - **Usage**: Waits for a process to change state.
+    - **Link**: [waitpid documentation](https://man7.org/linux/man-pages/man2/waitpid.2.html)
+
+36. **kill**
+    - **Usage**: Sends a signal to a process.
+    - **Link**: [kill documentation](https://man7.org/linux/man-pages/man2/kill.2.html)
+
+37. **signal**
+    - **Usage**: Sets a function to handle a specific signal.
+    - **Link**: [signal documentation](https://man7.org/linux/man-pages/man2/signal.2.html)
+
+38. **access**
+    - **Usage**: Checks the accessibility of a file.
+    - **Link**: [access documentation](https://man7.org/linux/man-pages/man2/access.2.html)
+
+39. **stat**
+    - **Usage**: Retrieves file status information.
+    - **Link**: [stat documentation](https://man7.org/linux/man-pages/man2/stat.2.html)
+
+40. **open**
+    - **Usage**: Opens a file and returns a file descriptor.
+    - **Link**: [open documentation](https://man7.org/linux/man-pages/man2/open.2.html)
+
+41. **opendir**
+    - **Usage**: Opens a directory stream.
+    - **Link**: [opendir documentation](https://man7.org/linux/man-pages/man3/opendir.3.html)
+
+42. **readdir**
+    - **Usage**: Reads a directory entry from the directory stream.
+    - **Link**: [readdir documentation](https://man7.org/linux/man-pages/man3/readdir.3.html)
+
+43. **closedir**
+    - **Usage**: Closes a directory stream.
+    - **Link**: [closedir documentation](https://man7.org/linux/man-pages/man3/closedir.3.html)
