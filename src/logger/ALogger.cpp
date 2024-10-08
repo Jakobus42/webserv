@@ -71,18 +71,18 @@ LogLevel ALogger::getLevel() const { return m_currentLogLevel; }
  * @param level The log level to convert.
  * @return A string representing the provided log level.
  */
-std::string ALogger::getLogLevelAsString(LogLevel level) const {
+std::string ALogger::getLogLevelAsString(LogLevel level) {
   switch (level) {
     case logger::DEBUG:
-      return DEBUG_COLOR + "[DEBUG]  " + RESET;
+      return std::string(DEBUG_COLOR) + "[DEBUG]  " + RESET;
     case logger::INFO:
-      return INFO_COLOR + "[INFO]   " + RESET;
+      return std::string(INFO_COLOR) + "[INFO]   " + RESET;
     case logger::WARNING:
-      return WARNING_COLOR + "[WARNING]" + RESET;
+      return std::string(WARNING_COLOR) + "[WARNING]" + RESET;
     case logger::ERROR:
-      return ERROR_COLOR + "[ERROR]  " + RESET;
+      return std::string(ERROR_COLOR) + "[ERROR]  " + RESET;
     case logger::FATAL:
-      return FATAL_COLOR + "[FATAL]  " + RESET;
+      return std::string(FATAL_COLOR) + "[FATAL]  " + RESET;
   }
   throw std::invalid_argument("invalid log level");
 }

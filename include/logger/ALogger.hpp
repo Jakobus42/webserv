@@ -50,7 +50,7 @@ class ALogger {
   std::string getLogPrefix(LogLevel level) const;
 
  private:
-  std::string getLogLevelAsString(LogLevel level) const;
+  static std::string getLogLevelAsString(LogLevel level);
   std::string getTimeStamp() const;
 };
 
