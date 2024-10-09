@@ -118,8 +118,6 @@ std::string ALogger::getTimeStamp() {
  * @return std::string representing the prefix for the log msg.
  * @throws std::runtime_error If the conversion of the time to local time fails.
  */
-std::string ALogger::getLogPrefix(LogLevel level) {
-  return getLogLevelAsString(level) + getTimeStamp();
-}
+std::string ALogger::getLogPrefix(LogLevel level) { return getLogLevelAsString(level) + getTimeStamp(); }
 
 } /* namespace logger */
