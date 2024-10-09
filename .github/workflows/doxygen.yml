@@ -32,5 +32,5 @@ jobs:
           git rm -rf .
           cp -r ./docs_output/html/* .  # Copy generated HTML files to root
           git add --all
-          git commit -m "Deploy updated Doxygen documentation"
+          git commit -m "Deploy updated Doxygen documentation" --no-verify
           git push -f https://$PERSONAL_ACCESS_TOKEN@github.com/Jakobus42/webserv.git docs
