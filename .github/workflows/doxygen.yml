@@ -26,8 +26,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
-          git config --global user.name 'YourGitHubUsername'
-          git config --global user.email 'youremail@example.com'
+          git config --global user.name 'Jakobus42'
+          git config --global user.email 'Jakob.sadjina@icloud.com'
           git checkout --orphan docs
           git rm -rf .
           cp -r ./docs_output/html/* .
