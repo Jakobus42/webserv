@@ -30,7 +30,7 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git checkout --orphan docs
           git rm -rf .
-          cp -r ./docs_output/html/* .  # Copy generated HTML files to root
+          cp -r ./docs_output/html/* .
           git add --all
           git commit -m "Deploy updated Doxygen documentation" --no-verify
-          git push -f https://$PERSONAL_ACCESS_TOKEN@github.com/Jakobus42/webserv.git docs
+          git push -f https://$PERSONAL_ACCESS_TOKEN@github.com/Jakobus42/webserv.git docsa
