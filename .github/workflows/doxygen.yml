@@ -12,9 +12,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install Doxygen
         run: sudo apt-get install -y doxygen graphviz
@@ -24,14 +27,13 @@ jobs:
 
       - name: Deploy to Docs Branch
         env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name 'Jakobus42'
           git config --global user.email 'Jakob.sadjina@icloud.com'
           git checkout --orphan docs
           git rm -rf .
           cp -r ./docs_output/html/* .
-          git add --all
+          git add .
           git commit -m "Deploy updated Doxygen documentation" --no-verify
           git push -f https://x-access-token:$GITHUB_TOKEN@github.com/Jakobus42/webserv.git docs
-          
