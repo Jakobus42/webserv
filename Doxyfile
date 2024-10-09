@@ -1,8 +1,39 @@
-PROJECT_NAME           = "Webserv"
-INPUT                  = ./src ./docs 
-FILE_PATTERNS          = *.cpp *.h *.md *.hpp
-RECURSIVE              = YES
-GENERATE_HTML          = YES
-EXTRACT_ALL            = YES
-OUTPUT_DIRECTORY       = ./docs_output
-GENERATE_LATEX         = NO
+PROJECT_NAME            = "Webserv"
+INPUT                   = ./src ./docs
+FILE_PATTERNS           = *.cpp *.h *.hpp *.md
+RECURSIVE               = YES
+OUTPUT_DIRECTORY        = ./docs_output
+
+# HTML customization
+GENERATE_HTML           = YES
+HTML_EXTRA_STYLESHEET   = doxygen-awesome.css
+GENERATE_TREEVIEW       = YES
+SEARCHENGINE            = YES
+
+# Diagram generation
+HAVE_DOT                = YES
+CALL_GRAPH              = YES
+CALLER_GRAPH            = YES
+DOT_IMAGE_FORMAT        = svg
+DOT_CLEANUP             = YES
+
+# C++ specific options
+EXTRACT_ALL             = YES
+EXTRACT_PRIVATE         = YES
+EXTRACT_STATIC          = YES
+EXTRACT_LOCAL_METHODS   = YES
+SOURCE_BROWSER          = YES
+INLINE_SOURCES          = YES
+VERBATIM_HEADERS        = YES
+
+# Preprocessing
+ENABLE_PREPROCESSING    = YES
+MACRO_EXPANSION         = YES
+
+# Grouping & Main Page
+USE_MDFILE_AS_MAINPAGE  = README.md
+GENERATE_XML            = YES
+
+# Misc options
+MAX_INITIALIZER_LINES   = 20
+GENERATE_LATEX          = NO
