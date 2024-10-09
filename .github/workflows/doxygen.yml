@@ -34,3 +34,4 @@ jobs:
           git add --all
           git commit -m "Deploy updated Doxygen documentation" --no-verify
           git push -f https://x-access-token:$GITHUB_TOKEN@github.com/Jakobus42/webserv.git docs
+          
