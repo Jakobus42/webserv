@@ -14,10 +14,10 @@ repos:
         stages: [pre-commit]
         always_run: true
       
-      # - id: formatting
-      #   name: Code Formatting
-      #   entry: bash -c "make format && git add -u"
-      #   language: system
-      #   stages: [pre-commit]
-      #   always_run: true
+      - id: formatting
+        name: Code Formatting
+        entry: bash -c "make format && git add -u"
+        language: system
+        stages: [pre-commit]
+        always_run: true
       
