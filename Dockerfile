@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -29,16 +29,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     wget \
     pip \
-    bison \
-    flex
-
-RUN git clone https://github.com/doxygen/doxygen.git && \
-    cd doxygen && \
-    mkdir build && cd build && \
-    cmake -G "Unix Makefiles" .. && \
-    make && \
-    make install && \
-    cd ../.. && rm -rf doxygen
+    doxygen 
 
 RUN mkdir -p /root/.ssh && chmod 700 /root/.ssh && \
     curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | zsh && \
