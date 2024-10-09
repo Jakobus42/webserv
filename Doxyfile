@@ -6,8 +6,8 @@ OUTPUT_DIRECTORY        = ./docs_output
 
 # HTML customization
 GENERATE_HTML           = YES
-HTML_EXTRA_STYLESHEET  = doxygen-awesome-css/doxygen-awesome.css \
-                        doxygen-awesome-css/doxygen-awesome-sidebar-only.css
+HTML_EXTRA_STYLESHEET  = doxygen-awesome.css \
+                        doxygen-awesome-sidebar-only.css
 HTML_COLORSTYLE        = LIGHT
 GENERATE_TREEVIEW       = YES
 SEARCHENGINE            = YES
