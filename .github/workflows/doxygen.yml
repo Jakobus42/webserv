@@ -23,10 +23,14 @@ jobs:
         run: doxygen Doxyfile
 
       - name: Deploy to Docs Branch
+        env:
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git checkout --orphan docs
-          git --work-tree ./docs_output/html add --all
+          git rm -rf .
+          cp -r ./docs_output/html/* .  # Copy generated HTML files to root
+          git add --all
           git commit -m "Deploy updated Doxygen documentation"
-          git push -f origin docs
+          git push -f https://$PERSONAL_ACCESS_TOKEN@github.com/Jakobus42/webserv.git docs
