@@ -1,4 +1,4 @@
-# ALLOWED_FUNCTIONS.md
+# Allowed Functions
 
 1. **execve**
    - **Usage**: Executes a program, replacing the current process.
