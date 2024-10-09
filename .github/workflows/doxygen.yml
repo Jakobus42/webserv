@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - chore/docs
   pull_request:
     branches:
       - main
