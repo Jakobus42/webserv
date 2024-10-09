@@ -76,7 +76,6 @@ format:
 clean:
 	@echo "$(RED)Cleaning up...$(NC)"
 	rm -rf $(BINDIR)
-	rm -rf $(DOCDIR)
 
 fclean: clean
 	@echo "$(RED)Removing $(NAME)...$(NC)"

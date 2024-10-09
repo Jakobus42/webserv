@@ -1,0 +1,143 @@
+\hypertarget{namespacelogger}{}\doxysection{logger Namespace Reference}
+\label{namespacelogger}\index{logger@{logger}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}}
+\begin{DoxyCompactList}\small\item\em Abstract base class for logging functionality. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}}
+\begin{DoxyCompactList}\small\item\em Logs messages to the console. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classlogger_1_1FileLogger}{File\+Logger}}
+\begin{DoxyCompactList}\small\item\em Logs messages to a specified file. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classlogger_1_1LoggerManager}{Logger\+Manager}}
+\begin{DoxyCompactList}\small\item\em Manages multiple loggers and handles global logging operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}{Log\+Level}} \{ \newline
+\mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c}{D\+E\+B\+UG}}, 
+\mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2aee60ac495f4eb6180461caa975e30732}{I\+N\+FO}}, 
+\mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2af962c30f6356d10c93ed16a802e7adf7}{W\+A\+R\+N\+I\+NG}}, 
+\mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601}{E\+R\+R\+OR}}, 
+\newline
+\mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2a6526ebf74c120c19c814fb5b34ad2dd4}{F\+A\+T\+AL}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::string \mbox{\hyperlink{namespacelogger_a78195500ea706df91bdd58cf8020f1ea}{R\+E\+S\+ET}} = \char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}
+\item 
+const std\+::string \mbox{\hyperlink{namespacelogger_a4bdf4a007480caa09a13bc5ed26eb58a}{D\+E\+B\+U\+G\+\_\+\+C\+O\+L\+OR}} = \char`\"{}\textbackslash{}033\mbox{[}90m\char`\"{}
+\item 
+const std\+::string \mbox{\hyperlink{namespacelogger_ab62ed0a1ac8927bd416d1dc7eba37001}{I\+N\+F\+O\+\_\+\+C\+O\+L\+OR}} = \char`\"{}\textbackslash{}033\mbox{[}34m\char`\"{}
+\item 
+const std\+::string \mbox{\hyperlink{namespacelogger_a3114cb96ac58326da2e4bb97f7cdf792}{W\+A\+R\+N\+I\+N\+G\+\_\+\+C\+O\+L\+OR}} = \char`\"{}\textbackslash{}033\mbox{[}33m\char`\"{}
+\item 
+const std\+::string \mbox{\hyperlink{namespacelogger_a4065c149e6d1faaed9469c3138c54ebb}{E\+R\+R\+O\+R\+\_\+\+C\+O\+L\+OR}} = \char`\"{}\textbackslash{}033\mbox{[}31m\char`\"{}
+\item 
+const std\+::string \mbox{\hyperlink{namespacelogger_ac01e6f4a115fd8f03b975f063c39637b}{F\+A\+T\+A\+L\+\_\+\+C\+O\+L\+OR}} = \char`\"{}\textbackslash{}033\mbox{[}35m\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}\label{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}} 
+\index{logger@{logger}!LogLevel@{LogLevel}}
+\index{LogLevel@{LogLevel}!logger@{logger}}
+\doxysubsubsection{\texorpdfstring{LogLevel}{LogLevel}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}{logger\+::\+Log\+Level}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEBUG@{DEBUG}!logger@{logger}}\index{logger@{logger}!DEBUG@{DEBUG}}}\mbox{\Hypertarget{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c}\label{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c}} 
+D\+E\+B\+UG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INFO@{INFO}!logger@{logger}}\index{logger@{logger}!INFO@{INFO}}}\mbox{\Hypertarget{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2aee60ac495f4eb6180461caa975e30732}\label{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2aee60ac495f4eb6180461caa975e30732}} 
+I\+N\+FO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WARNING@{WARNING}!logger@{logger}}\index{logger@{logger}!WARNING@{WARNING}}}\mbox{\Hypertarget{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2af962c30f6356d10c93ed16a802e7adf7}\label{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2af962c30f6356d10c93ed16a802e7adf7}} 
+W\+A\+R\+N\+I\+NG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERROR@{ERROR}!logger@{logger}}\index{logger@{logger}!ERROR@{ERROR}}}\mbox{\Hypertarget{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601}\label{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601}} 
+E\+R\+R\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FATAL@{FATAL}!logger@{logger}}\index{logger@{logger}!FATAL@{FATAL}}}\mbox{\Hypertarget{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2a6526ebf74c120c19c814fb5b34ad2dd4}\label{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2a6526ebf74c120c19c814fb5b34ad2dd4}} 
+F\+A\+T\+AL&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 17 of file A\+Logger.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{17 \{ \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c}{DEBUG}}, \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2aee60ac495f4eb6180461caa975e30732}{INFO}}, \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2af962c30f6356d10c93ed16a802e7adf7}{WARNING}}, \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601}{ERROR}}, \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2a6526ebf74c120c19c814fb5b34ad2dd4}{FATAL}} \};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacelogger_a4bdf4a007480caa09a13bc5ed26eb58a}\label{namespacelogger_a4bdf4a007480caa09a13bc5ed26eb58a}} 
+\index{logger@{logger}!DEBUG\_COLOR@{DEBUG\_COLOR}}
+\index{DEBUG\_COLOR@{DEBUG\_COLOR}!logger@{logger}}
+\doxysubsubsection{\texorpdfstring{DEBUG\_COLOR}{DEBUG\_COLOR}}
+{\footnotesize\ttfamily const std\+::string logger\+::\+D\+E\+B\+U\+G\+\_\+\+C\+O\+L\+OR = \char`\"{}\textbackslash{}033\mbox{[}90m\char`\"{}}
+
+
+
+Definition at line 11 of file A\+Logger.\+hpp.
+
+\mbox{\Hypertarget{namespacelogger_a4065c149e6d1faaed9469c3138c54ebb}\label{namespacelogger_a4065c149e6d1faaed9469c3138c54ebb}} 
+\index{logger@{logger}!ERROR\_COLOR@{ERROR\_COLOR}}
+\index{ERROR\_COLOR@{ERROR\_COLOR}!logger@{logger}}
+\doxysubsubsection{\texorpdfstring{ERROR\_COLOR}{ERROR\_COLOR}}
+{\footnotesize\ttfamily const std\+::string logger\+::\+E\+R\+R\+O\+R\+\_\+\+C\+O\+L\+OR = \char`\"{}\textbackslash{}033\mbox{[}31m\char`\"{}}
+
+
+
+Definition at line 14 of file A\+Logger.\+hpp.
+
+\mbox{\Hypertarget{namespacelogger_ac01e6f4a115fd8f03b975f063c39637b}\label{namespacelogger_ac01e6f4a115fd8f03b975f063c39637b}} 
+\index{logger@{logger}!FATAL\_COLOR@{FATAL\_COLOR}}
+\index{FATAL\_COLOR@{FATAL\_COLOR}!logger@{logger}}
+\doxysubsubsection{\texorpdfstring{FATAL\_COLOR}{FATAL\_COLOR}}
+{\footnotesize\ttfamily const std\+::string logger\+::\+F\+A\+T\+A\+L\+\_\+\+C\+O\+L\+OR = \char`\"{}\textbackslash{}033\mbox{[}35m\char`\"{}}
+
+
+
+Definition at line 15 of file A\+Logger.\+hpp.
+
+\mbox{\Hypertarget{namespacelogger_ab62ed0a1ac8927bd416d1dc7eba37001}\label{namespacelogger_ab62ed0a1ac8927bd416d1dc7eba37001}} 
+\index{logger@{logger}!INFO\_COLOR@{INFO\_COLOR}}
+\index{INFO\_COLOR@{INFO\_COLOR}!logger@{logger}}
+\doxysubsubsection{\texorpdfstring{INFO\_COLOR}{INFO\_COLOR}}
+{\footnotesize\ttfamily const std\+::string logger\+::\+I\+N\+F\+O\+\_\+\+C\+O\+L\+OR = \char`\"{}\textbackslash{}033\mbox{[}34m\char`\"{}}
+
+
+
+Definition at line 12 of file A\+Logger.\+hpp.
+
+\mbox{\Hypertarget{namespacelogger_a78195500ea706df91bdd58cf8020f1ea}\label{namespacelogger_a78195500ea706df91bdd58cf8020f1ea}} 
+\index{logger@{logger}!RESET@{RESET}}
+\index{RESET@{RESET}!logger@{logger}}
+\doxysubsubsection{\texorpdfstring{RESET}{RESET}}
+{\footnotesize\ttfamily const std\+::string logger\+::\+R\+E\+S\+ET = \char`\"{}\textbackslash{}033\mbox{[}0m\char`\"{}}
+
+
+
+Definition at line 10 of file A\+Logger.\+hpp.
+
+\mbox{\Hypertarget{namespacelogger_a3114cb96ac58326da2e4bb97f7cdf792}\label{namespacelogger_a3114cb96ac58326da2e4bb97f7cdf792}} 
+\index{logger@{logger}!WARNING\_COLOR@{WARNING\_COLOR}}
+\index{WARNING\_COLOR@{WARNING\_COLOR}!logger@{logger}}
+\doxysubsubsection{\texorpdfstring{WARNING\_COLOR}{WARNING\_COLOR}}
+{\footnotesize\ttfamily const std\+::string logger\+::\+W\+A\+R\+N\+I\+N\+G\+\_\+\+C\+O\+L\+OR = \char`\"{}\textbackslash{}033\mbox{[}33m\char`\"{}}
+
+
+
+Definition at line 13 of file A\+Logger.\+hpp.
+

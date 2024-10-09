@@ -1,11 +1,12 @@
 PROJECT_NAME           = "Template"
-OUTPUT_DIRECTORY       = docs
+OUTPUT_DIRECTORY       = docs/doxygen
 OUTPUT_LANGUAGE        = English
 
 INPUT                  = src include
 RECURSIVE              = YES
-FILE_PATTERNS          = *.cpp *.h *.hpp *.tpp
-EXCLUDE                = external/ docs/
+FILE_PATTERNS          = *.cpp *.h *.hpp *.tpp *.md
+EXCLUDE                = external/
+ENABLED_SECTIONS       = yes
 
 GENERATE_HTML          = YES
 HTML_OUTPUT            = html

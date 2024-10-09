@@ -1,0 +1,74 @@
+\hypertarget{LoggerManager_8hpp}{}\doxysection{include/logger/\+Logger\+Manager.hpp File Reference}
+\label{LoggerManager_8hpp}\index{include/logger/LoggerManager.hpp@{include/logger/LoggerManager.hpp}}
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include \char`\"{}../../include/logger/\+A\+Logger.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../include/logger/\+Console\+Logger.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../include/logger/\+File\+Logger.\+hpp\char`\"{}}\newline
+Include dependency graph for Logger\+Manager.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{LoggerManager_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{LoggerManager_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classlogger_1_1LoggerManager}{logger\+::\+Logger\+Manager}}
+\begin{DoxyCompactList}\small\item\em Manages multiple loggers and handles global logging operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacelogger}{logger}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{LoggerManager_8hpp_a35a9ed336fa2523662640093badacab1}{L\+OG}}(message,  level)
+\begin{DoxyCompactList}\small\item\em Logs a message using the Logger\+Manager. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{LoggerManager_8hpp_a35a9ed336fa2523662640093badacab1}\label{LoggerManager_8hpp_a35a9ed336fa2523662640093badacab1}} 
+\index{LoggerManager.hpp@{LoggerManager.hpp}!LOG@{LOG}}
+\index{LOG@{LOG}!LoggerManager.hpp@{LoggerManager.hpp}}
+\doxysubsubsection{\texorpdfstring{LOG}{LOG}}
+{\footnotesize\ttfamily \#define L\+OG(\begin{DoxyParamCaption}\item[{}]{message,  }\item[{}]{level }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{  std::ostringstream oss;                                           \(\backslash\)}
+\DoxyCodeLine{  oss << \_\_FILE\_\_ << \textcolor{stringliteral}{":"} << \_\_LINE\_\_ << \textcolor{stringliteral}{" "} << \_\_FUNCTION\_\_ << \textcolor{stringliteral}{": "} \(\backslash\)}
+\DoxyCodeLine{      << message;                                                   \mbox{\hyperlink{classlogger_1_1LoggerManager_ad140bde7c3a4c9241fb147f2c864d018}{\(\backslash\)}}}
+\DoxyCodeLine{\mbox{\hyperlink{classlogger_1_1LoggerManager_ad140bde7c3a4c9241fb147f2c864d018}{  logger::LoggerManager::getInstance}}().\mbox{\hyperlink{classlogger_1_1LoggerManager_a539f10100bd82dadfa0fffe8f77b9547}{log}}(oss.str(), level);}
+
+\end{DoxyCode}
+
+
+Logs a message using the Logger\+Manager. 
+
+This macro logs a message to the logger with the current file, line number, and function name. It provides a detailed log entry including the source location and the message itself.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message to log. \\
+\hline
+{\em level} & The log level for the message (e.\+g., D\+E\+B\+UG, I\+N\+FO, W\+A\+R\+N\+I\+NG, E\+R\+R\+OR, F\+A\+T\+AL).\\
+\hline
+\end{DoxyParams}
+Usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{LoggerManager_8hpp_a35a9ed336fa2523662640093badacab1}{LOG}}(\textcolor{stringliteral}{"This is a test message"}, \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2aee60ac495f4eb6180461caa975e30732}{logger::INFO}});}
+\end{DoxyCode}
+ 
+
+Definition at line 63 of file Logger\+Manager.\+hpp.
+

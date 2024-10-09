@@ -1,0 +1,55 @@
+\hypertarget{main_8cpp}{}\doxysection{src/main.cpp File Reference}
+\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}../include/logger/\+Logger\+Manager.\+hpp\char`\"{}}\newline
+Include dependency graph for main.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 5 of file main.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{5                \{}
+\DoxyCodeLine{6   \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{7     \mbox{\hyperlink{classlogger_1_1LoggerManager}{logger::LoggerManager}}\& loggerManager = \mbox{\hyperlink{classlogger_1_1LoggerManager_ad140bde7c3a4c9241fb147f2c864d018}{logger::LoggerManager::getInstance}}();}
+\DoxyCodeLine{8     loggerManager.\mbox{\hyperlink{classlogger_1_1LoggerManager_ae26ebcbad9c6e4f85769438abac46db5}{registerLogger}}(\textcolor{stringliteral}{"Console"}, \textcolor{keyword}{new} \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{logger::ConsoleLogger}}());}
+\DoxyCodeLine{9     loggerManager.\mbox{\hyperlink{classlogger_1_1LoggerManager_a45d840b2a9bd9fbfccb34689ddc79527}{setLoggerLevel}}(\textcolor{stringliteral}{"Console"}, \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601}{logger::ERROR}});}
+\DoxyCodeLine{10     loggerManager.\mbox{\hyperlink{classlogger_1_1LoggerManager_ae26ebcbad9c6e4f85769438abac46db5}{registerLogger}}(\textcolor{stringliteral}{"File"}, \textcolor{keyword}{new} \mbox{\hyperlink{classlogger_1_1FileLogger}{logger::FileLogger}}());}
+\DoxyCodeLine{11     loggerManager.\mbox{\hyperlink{classlogger_1_1LoggerManager_a45d840b2a9bd9fbfccb34689ddc79527}{setLoggerLevel}}(\textcolor{stringliteral}{"File"}, \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c}{logger::DEBUG}});}
+\DoxyCodeLine{12     loggerManager.\mbox{\hyperlink{classlogger_1_1LoggerManager_a7237ff5a6cead3d670328feb6ea60cbd}{setGlobalLogLevel}}(\mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c}{logger::DEBUG}});}
+\DoxyCodeLine{13     loggerManager.\mbox{\hyperlink{classlogger_1_1LoggerManager_adf2a8a1ad83a5404d6249518fa460971}{unregisterLogger}}(\textcolor{stringliteral}{"File"});}
+\DoxyCodeLine{14     loggerManager.\mbox{\hyperlink{classlogger_1_1LoggerManager_adf2a8a1ad83a5404d6249518fa460971}{unregisterLogger}}(\textcolor{stringliteral}{"Console"});}
+\DoxyCodeLine{15     \mbox{\hyperlink{LoggerManager_8hpp_a35a9ed336fa2523662640093badacab1}{LOG}}(\textcolor{stringliteral}{"test log..."}, \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2a6526ebf74c120c19c814fb5b34ad2dd4}{logger::FATAL}});}
+\DoxyCodeLine{16   \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& e) \{}
+\DoxyCodeLine{17     std::cerr << e.what() << std::endl;}
+\DoxyCodeLine{18   \}}
+\DoxyCodeLine{19 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{main_8cpp_a840291bc02cba5474a4cb46a9b9566fe_cgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,216 @@
+\hypertarget{classlogger_1_1ConsoleLogger}{}\doxysection{logger\+::Console\+Logger Class Reference}
+\label{classlogger_1_1ConsoleLogger}\index{logger::ConsoleLogger@{logger::ConsoleLogger}}
+
+
+Logs messages to the console.  
+
+
+
+
+{\ttfamily \#include $<$Console\+Logger.\+hpp$>$}
+
+
+
+Inheritance diagram for logger\+::Console\+Logger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{classlogger_1_1ConsoleLogger__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for logger\+::Console\+Logger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{classlogger_1_1ConsoleLogger__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlogger_1_1ConsoleLogger_a588a404c42db033fc4f2802a70824fbb}{Console\+Logger}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}} object. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classlogger_1_1ConsoleLogger_a8aafc0f021452bedec7ea480fd3581b5}{$\sim$\+Console\+Logger}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classlogger_1_1ConsoleLogger_a26e888e51cb02be4a60b6981510fff54}{Console\+Logger}} (const \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}} \& \mbox{\hyperlink{classlogger_1_1ConsoleLogger_ab398d355ce729292792e3f79c7a3a4c4}{operator=}} (const \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlogger_1_1ConsoleLogger_ac85920c5cdc2b6560a52e32d6757936c}{log}} (const std\+::string \&message, \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}{Log\+Level}} level)
+\begin{DoxyCompactList}\small\item\em Logs a message to the console. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Logs messages to the console. 
+
+The {\ttfamily \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}}} class is a concrete implementation of the {\ttfamily \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}}} abstract class, designed to output log messages to the standard output (console). It supports different log levels and formats log messages accordingly.
+
+This logger is suitable for scenarios where you want to see log messages in the console for debugging or monitoring purposes. It inherits from {\ttfamily \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}}}, which provides the foundational logging functionality. 
+
+Definition at line 20 of file Console\+Logger.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlogger_1_1ConsoleLogger_a588a404c42db033fc4f2802a70824fbb}\label{classlogger_1_1ConsoleLogger_a588a404c42db033fc4f2802a70824fbb}} 
+\index{logger::ConsoleLogger@{logger::ConsoleLogger}!ConsoleLogger@{ConsoleLogger}}
+\index{ConsoleLogger@{ConsoleLogger}!logger::ConsoleLogger@{logger::ConsoleLogger}}
+\doxysubsubsection{\texorpdfstring{ConsoleLogger()}{ConsoleLogger()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily logger\+::\+Console\+Logger\+::\+Console\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a new \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}} object. 
+
+Initializes a {\ttfamily \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}}} object. This constructor calls the base class constructor to initialize the logging level. 
+
+Definition at line 11 of file Console\+Logger.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{11 : \mbox{\hyperlink{classlogger_1_1ALogger_a40ab0d997f116c8b520476d56d944a98}{ALogger}}() \{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classlogger_1_1ConsoleLogger_a8aafc0f021452bedec7ea480fd3581b5}\label{classlogger_1_1ConsoleLogger_a8aafc0f021452bedec7ea480fd3581b5}} 
+\index{logger::ConsoleLogger@{logger::ConsoleLogger}!````~ConsoleLogger@{$\sim$ConsoleLogger}}
+\index{````~ConsoleLogger@{$\sim$ConsoleLogger}!logger::ConsoleLogger@{logger::ConsoleLogger}}
+\doxysubsubsection{\texorpdfstring{$\sim$ConsoleLogger()}{~ConsoleLogger()}}
+{\footnotesize\ttfamily logger\+::\+Console\+Logger\+::$\sim$\+Console\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destroys the \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}} object. 
+
+Cleans up resources used by the {\ttfamily \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}}} object. This destructor is empty because {\ttfamily \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}}} does not own any dynamically allocated resources. 
+
+Definition at line 20 of file Console\+Logger.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{20 \{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classlogger_1_1ConsoleLogger_a26e888e51cb02be4a60b6981510fff54}\label{classlogger_1_1ConsoleLogger_a26e888e51cb02be4a60b6981510fff54}} 
+\index{logger::ConsoleLogger@{logger::ConsoleLogger}!ConsoleLogger@{ConsoleLogger}}
+\index{ConsoleLogger@{ConsoleLogger}!logger::ConsoleLogger@{logger::ConsoleLogger}}
+\doxysubsubsection{\texorpdfstring{ConsoleLogger()}{ConsoleLogger()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily logger\+::\+Console\+Logger\+::\+Console\+Logger (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+Creates a new {\ttfamily \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}}} object as a copy of an existing one. This copy constructor initializes the new object by calling the base class constructor.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The {\ttfamily \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}}} object to copy from. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 30 of file Console\+Logger.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{30 : \mbox{\hyperlink{classlogger_1_1ALogger_a40ab0d997f116c8b520476d56d944a98}{ALogger}}() \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlogger_1_1ConsoleLogger_ac85920c5cdc2b6560a52e32d6757936c}\label{classlogger_1_1ConsoleLogger_ac85920c5cdc2b6560a52e32d6757936c}} 
+\index{logger::ConsoleLogger@{logger::ConsoleLogger}!log@{log}}
+\index{log@{log}!logger::ConsoleLogger@{logger::ConsoleLogger}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily void logger\+::\+Console\+Logger\+::log (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message,  }\item[{\mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}{Log\+Level}}}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Logs a message to the console. 
+
+Outputs a log message to the console if the current log level allows it. The message is prefixed with the log level converted to a string representation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message to log. \\
+\hline
+{\em level} & The log level of the message. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classlogger_1_1ALogger_a432d93d4ad4a568c178492e9912e145a}{logger\+::\+A\+Logger}}.
+
+
+
+Definition at line 58 of file Console\+Logger.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{58                                                                 \{}
+\DoxyCodeLine{59   \textcolor{keywordflow}{if} (\mbox{\hyperlink{classlogger_1_1ALogger_a9122ceab60ec3ff5d240d37fcf125344}{m\_currentLogLevel}} <= level) \{}
+\DoxyCodeLine{60     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{61       std::cout << \mbox{\hyperlink{classlogger_1_1ALogger_a993700fc347b0dc071283b42df5c8ad4}{getLogPrefix}}(level) << \textcolor{charliteral}{' '} << message << std::endl;}
+\DoxyCodeLine{62     \} \textcolor{keywordflow}{catch} (std::exception\& e) \{}
+\DoxyCodeLine{63       std::cerr << e.what() << std::endl;}
+\DoxyCodeLine{64     \}}
+\DoxyCodeLine{65   \}}
+\DoxyCodeLine{66 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classlogger_1_1ConsoleLogger_ac85920c5cdc2b6560a52e32d6757936c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classlogger_1_1ConsoleLogger_ab398d355ce729292792e3f79c7a3a4c4}\label{classlogger_1_1ConsoleLogger_ab398d355ce729292792e3f79c7a3a4c4}} 
+\index{logger::ConsoleLogger@{logger::ConsoleLogger}!operator=@{operator=}}
+\index{operator=@{operator=}!logger::ConsoleLogger@{logger::ConsoleLogger}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}} \& logger\+::\+Console\+Logger\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+Assigns the state of another {\ttfamily \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}}} object to this one. This operator allows copying of {\ttfamily \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}}} objects, but as {\ttfamily \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}}} does not have additional data members beyond those inherited from {\ttfamily \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}}}, the assignment is trivial.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The {\ttfamily \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}}} object to assign from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to this {\ttfamily \mbox{\hyperlink{classlogger_1_1ConsoleLogger}{Console\+Logger}}} object. 
+\end{DoxyReturn}
+
+
+Definition at line 43 of file Console\+Logger.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{43                                                                   \{}
+\DoxyCodeLine{44   \mbox{\hyperlink{classlogger_1_1ALogger_a79c10bd36140f92374bb98ee3adb33ef}{ALogger::operator=}}(other);}
+\DoxyCodeLine{45   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{46 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classlogger_1_1ConsoleLogger_ab398d355ce729292792e3f79c7a3a4c4_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/logger/\mbox{\hyperlink{ConsoleLogger_8hpp}{Console\+Logger.\+hpp}}\item 
+src/logger/\mbox{\hyperlink{ConsoleLogger_8cpp}{Console\+Logger.\+cpp}}\end{DoxyCompactItemize}

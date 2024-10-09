@@ -1,0 +1,405 @@
+\hypertarget{classlogger_1_1ALogger}{}\doxysection{logger\+::A\+Logger Class Reference}
+\label{classlogger_1_1ALogger}\index{logger::ALogger@{logger::ALogger}}
+
+
+Abstract base class for logging functionality.  
+
+
+
+
+{\ttfamily \#include $<$A\+Logger.\+hpp$>$}
+
+
+
+Inheritance diagram for logger\+::A\+Logger\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{classlogger_1_1ALogger__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlogger_1_1ALogger_a40ab0d997f116c8b520476d56d944a98}{A\+Logger}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}} object with the default log level set to I\+N\+FO. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classlogger_1_1ALogger_ae489d5ee98076eaf1614e1b196aaefe9}{$\sim$\+A\+Logger}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classlogger_1_1ALogger_aab9395b0c65d7c6ad484f75ee8443dbe}{A\+Logger}} (const \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}} \& \mbox{\hyperlink{classlogger_1_1ALogger_a79c10bd36140f92374bb98ee3adb33ef}{operator=}} (const \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}} \&other)
+\begin{DoxyCompactList}\small\item\em Copy assignment operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlogger_1_1ALogger_a601ae64c4455599cb8be6e03edd3f469}{set\+Level}} (\mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}{Log\+Level}} level)
+\begin{DoxyCompactList}\small\item\em Sets the current log level. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}{Log\+Level}} \mbox{\hyperlink{classlogger_1_1ALogger_a0ff4e250a3f838c5f766901aac53e645}{get\+Level}} () const
+\begin{DoxyCompactList}\small\item\em Returns the current log level. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classlogger_1_1ALogger_a432d93d4ad4a568c178492e9912e145a}{log}} (const std\+::string \&message, \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}{Log\+Level}} level)=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classlogger_1_1ALogger_a993700fc347b0dc071283b42df5c8ad4}{get\+Log\+Prefix}} (\mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}{Log\+Level}} level)
+\begin{DoxyCompactList}\small\item\em Creates Prefix for Logs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}{Log\+Level}} \mbox{\hyperlink{classlogger_1_1ALogger_a9122ceab60ec3ff5d240d37fcf125344}{m\+\_\+current\+Log\+Level}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classlogger_1_1ALogger_aeec7dc86db5a5df42d02b494e24802cf}{get\+Log\+Level\+As\+String}} (\mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}{Log\+Level}} level)
+\begin{DoxyCompactList}\small\item\em Converts a log level to its string representation. \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classlogger_1_1ALogger_a0b5d4d94c2eac993058f212848cab04a}{get\+Time\+Stamp}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the current timestamp in a formatted string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for logging functionality. 
+
+{\ttfamily \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}}} provides a framework for logging systems, managing log levels (D\+E\+B\+UG, I\+N\+FO, W\+A\+R\+N\+I\+NG, E\+R\+R\+OR, F\+A\+T\+AL) and formatting log messages with color-\/coding. It defines\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \mbox{\hyperlink{classlogger_1_1ALogger_a601ae64c4455599cb8be6e03edd3f469}{set\+Level()}}} and {\ttfamily \mbox{\hyperlink{classlogger_1_1ALogger_a0ff4e250a3f838c5f766901aac53e645}{get\+Level()}}}\+: To manage log levels.
+\item {\ttfamily \mbox{\hyperlink{classlogger_1_1ALogger_a432d93d4ad4a568c178492e9912e145a}{log()}}}\+: To log messages (to be implemented by derived classes).
+\item {\ttfamily \mbox{\hyperlink{classlogger_1_1ALogger_aeec7dc86db5a5df42d02b494e24802cf}{get\+Log\+Level\+As\+String()}}}\+: Returns a string representation of the log level, with colors.
+\end{DoxyItemize}
+
+Derived classes must implement the logging logic. 
+
+Definition at line 35 of file A\+Logger.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlogger_1_1ALogger_a40ab0d997f116c8b520476d56d944a98}\label{classlogger_1_1ALogger_a40ab0d997f116c8b520476d56d944a98}} 
+\index{logger::ALogger@{logger::ALogger}!ALogger@{ALogger}}
+\index{ALogger@{ALogger}!logger::ALogger@{logger::ALogger}}
+\doxysubsubsection{\texorpdfstring{ALogger()}{ALogger()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily logger\+::\+A\+Logger\+::\+A\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a new \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}} object with the default log level set to I\+N\+FO. 
+
+Initializes the {\ttfamily \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}}} object with a default log level of D\+E\+B\+UG. 
+
+Definition at line 11 of file A\+Logger.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{11 : \mbox{\hyperlink{classlogger_1_1ALogger_a9122ceab60ec3ff5d240d37fcf125344}{m\_currentLogLevel}}(\mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c}{logger::DEBUG}}) \{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classlogger_1_1ALogger_ae489d5ee98076eaf1614e1b196aaefe9}\label{classlogger_1_1ALogger_ae489d5ee98076eaf1614e1b196aaefe9}} 
+\index{logger::ALogger@{logger::ALogger}!````~ALogger@{$\sim$ALogger}}
+\index{````~ALogger@{$\sim$ALogger}!logger::ALogger@{logger::ALogger}}
+\doxysubsubsection{\texorpdfstring{$\sim$ALogger()}{~ALogger()}}
+{\footnotesize\ttfamily logger\+::\+A\+Logger\+::$\sim$\+A\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destroys the \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}} object. 
+
+Cleans up resources used by the {\ttfamily \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}}} object. This is a virtual destructor to ensure proper cleanup in derived classes. 
+
+Definition at line 19 of file A\+Logger.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{19 \{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classlogger_1_1ALogger_aab9395b0c65d7c6ad484f75ee8443dbe}\label{classlogger_1_1ALogger_aab9395b0c65d7c6ad484f75ee8443dbe}} 
+\index{logger::ALogger@{logger::ALogger}!ALogger@{ALogger}}
+\index{ALogger@{ALogger}!logger::ALogger@{logger::ALogger}}
+\doxysubsubsection{\texorpdfstring{ALogger()}{ALogger()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily logger\+::\+A\+Logger\+::\+A\+Logger (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+Creates a new {\ttfamily \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}}} object as a copy of an existing one.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The {\ttfamily \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}}} object to copy from. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 28 of file A\+Logger.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29     : \mbox{\hyperlink{classlogger_1_1ALogger_a9122ceab60ec3ff5d240d37fcf125344}{m\_currentLogLevel}}(other.m\_currentLogLevel) \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlogger_1_1ALogger_a0ff4e250a3f838c5f766901aac53e645}\label{classlogger_1_1ALogger_a0ff4e250a3f838c5f766901aac53e645}} 
+\index{logger::ALogger@{logger::ALogger}!getLevel@{getLevel}}
+\index{getLevel@{getLevel}!logger::ALogger@{logger::ALogger}}
+\doxysubsubsection{\texorpdfstring{getLevel()}{getLevel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}{Log\+Level}} logger\+::\+A\+Logger\+::get\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the current log level. 
+
+Retrieves the current log level of the logger.
+
+\begin{DoxyReturn}{Returns}
+The current log level. 
+\end{DoxyReturn}
+
+
+Definition at line 63 of file A\+Logger.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{63 \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classlogger_1_1ALogger_a9122ceab60ec3ff5d240d37fcf125344}{m\_currentLogLevel}}; \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classlogger_1_1ALogger_aeec7dc86db5a5df42d02b494e24802cf}\label{classlogger_1_1ALogger_aeec7dc86db5a5df42d02b494e24802cf}} 
+\index{logger::ALogger@{logger::ALogger}!getLogLevelAsString@{getLogLevelAsString}}
+\index{getLogLevelAsString@{getLogLevelAsString}!logger::ALogger@{logger::ALogger}}
+\doxysubsubsection{\texorpdfstring{getLogLevelAsString()}{getLogLevelAsString()}}
+{\footnotesize\ttfamily std\+::string logger\+::\+A\+Logger\+::get\+Log\+Level\+As\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}{Log\+Level}}}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Converts a log level to its string representation. 
+
+Converts the specified log level to a readable string, such as \char`\"{}\mbox{[}\+I\+N\+F\+O\mbox{]}\char`\"{} or \char`\"{}\mbox{[}\+E\+R\+R\+O\+R\mbox{]}\char`\"{}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & The log level to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string representing the provided log level. 
+\end{DoxyReturn}
+
+
+Definition at line 74 of file A\+Logger.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{74                                                      \{}
+\DoxyCodeLine{75   \textcolor{keywordflow}{switch} (level) \{}
+\DoxyCodeLine{76     \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c}{logger::DEBUG}}:}
+\DoxyCodeLine{77       \textcolor{keywordflow}{return} std::string(\mbox{\hyperlink{namespacelogger_a4bdf4a007480caa09a13bc5ed26eb58a}{DEBUG\_COLOR}}) + \textcolor{stringliteral}{"[DEBUG]  "} + \mbox{\hyperlink{namespacelogger_a78195500ea706df91bdd58cf8020f1ea}{RESET}};}
+\DoxyCodeLine{78     \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2aee60ac495f4eb6180461caa975e30732}{logger::INFO}}:}
+\DoxyCodeLine{79       \textcolor{keywordflow}{return} std::string(\mbox{\hyperlink{namespacelogger_ab62ed0a1ac8927bd416d1dc7eba37001}{INFO\_COLOR}}) + \textcolor{stringliteral}{"[INFO]   "} + \mbox{\hyperlink{namespacelogger_a78195500ea706df91bdd58cf8020f1ea}{RESET}};}
+\DoxyCodeLine{80     \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2af962c30f6356d10c93ed16a802e7adf7}{logger::WARNING}}:}
+\DoxyCodeLine{81       \textcolor{keywordflow}{return} std::string(\mbox{\hyperlink{namespacelogger_a3114cb96ac58326da2e4bb97f7cdf792}{WARNING\_COLOR}}) + \textcolor{stringliteral}{"[WARNING]"} + \mbox{\hyperlink{namespacelogger_a78195500ea706df91bdd58cf8020f1ea}{RESET}};}
+\DoxyCodeLine{82     \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601}{logger::ERROR}}:}
+\DoxyCodeLine{83       \textcolor{keywordflow}{return} std::string(\mbox{\hyperlink{namespacelogger_a4065c149e6d1faaed9469c3138c54ebb}{ERROR\_COLOR}}) + \textcolor{stringliteral}{"[ERROR]  "} + \mbox{\hyperlink{namespacelogger_a78195500ea706df91bdd58cf8020f1ea}{RESET}};}
+\DoxyCodeLine{84     \textcolor{keywordflow}{case} \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2a6526ebf74c120c19c814fb5b34ad2dd4}{logger::FATAL}}:}
+\DoxyCodeLine{85       \textcolor{keywordflow}{return} std::string(\mbox{\hyperlink{namespacelogger_ac01e6f4a115fd8f03b975f063c39637b}{FATAL\_COLOR}}) + \textcolor{stringliteral}{"[FATAL]  "} + \mbox{\hyperlink{namespacelogger_a78195500ea706df91bdd58cf8020f1ea}{RESET}};}
+\DoxyCodeLine{86   \}}
+\DoxyCodeLine{87   \textcolor{keywordflow}{throw} std::invalid\_argument(\textcolor{stringliteral}{"invalid log level"});}
+\DoxyCodeLine{88 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classlogger_1_1ALogger_aeec7dc86db5a5df42d02b494e24802cf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classlogger_1_1ALogger_a993700fc347b0dc071283b42df5c8ad4}\label{classlogger_1_1ALogger_a993700fc347b0dc071283b42df5c8ad4}} 
+\index{logger::ALogger@{logger::ALogger}!getLogPrefix@{getLogPrefix}}
+\index{getLogPrefix@{getLogPrefix}!logger::ALogger@{logger::ALogger}}
+\doxysubsubsection{\texorpdfstring{getLogPrefix()}{getLogPrefix()}}
+{\footnotesize\ttfamily std\+::string logger\+::\+A\+Logger\+::get\+Log\+Prefix (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}{Log\+Level}}}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Creates Prefix for Logs. 
+
+This method calls get\+Log\+Level\+As\+String and get\+Time\+Stamp to create the log msg Prefix. Example output\+: \char`\"{}\mbox{[}\+D\+E\+B\+U\+G\mbox{]}   \mbox{[}2024-\/09-\/11 14\+:30\+:45\mbox{]}\char`\"{}
+
+\begin{DoxyReturn}{Returns}
+std\+::string representing the prefix for the log msg. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & If the conversion of the time to local time fails. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 122 of file A\+Logger.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{122                                               \{}
+\DoxyCodeLine{123   \textcolor{keywordflow}{return} \mbox{\hyperlink{classlogger_1_1ALogger_aeec7dc86db5a5df42d02b494e24802cf}{getLogLevelAsString}}(level) + \mbox{\hyperlink{classlogger_1_1ALogger_a0b5d4d94c2eac993058f212848cab04a}{getTimeStamp}}();}
+\DoxyCodeLine{124 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classlogger_1_1ALogger_a993700fc347b0dc071283b42df5c8ad4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classlogger_1_1ALogger_a993700fc347b0dc071283b42df5c8ad4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classlogger_1_1ALogger_a0b5d4d94c2eac993058f212848cab04a}\label{classlogger_1_1ALogger_a0b5d4d94c2eac993058f212848cab04a}} 
+\index{logger::ALogger@{logger::ALogger}!getTimeStamp@{getTimeStamp}}
+\index{getTimeStamp@{getTimeStamp}!logger::ALogger@{logger::ALogger}}
+\doxysubsubsection{\texorpdfstring{getTimeStamp()}{getTimeStamp()}}
+{\footnotesize\ttfamily std\+::string logger\+::\+A\+Logger\+::get\+Time\+Stamp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Retrieves the current timestamp in a formatted string. 
+
+This method obtains the current local time and formats it as a string in the format \char`\"{}\+Y\+Y\+Y\+Y-\/\+M\+M-\/\+D\+D H\+H\+:\+M\+M\+:\+S\+S\char`\"{}. The timestamp is enclosed in square brackets.
+
+Example output\+: \char`\"{}\mbox{[}2024-\/09-\/11 14\+:30\+:45\mbox{]}\char`\"{}
+
+\begin{DoxyReturn}{Returns}
+std\+::string A string representing the current timestamp. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & If the conversion of the time to local time fails. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 101 of file A\+Logger.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{101                                 \{}
+\DoxyCodeLine{102   \textcolor{keywordtype}{char} buffer[20];}
+\DoxyCodeLine{103   time\_t now = time(0);}
+\DoxyCodeLine{104   tm* now\_tm = localtime(\&now);}
+\DoxyCodeLine{105   \textcolor{keywordflow}{if} (!now\_tm) \{}
+\DoxyCodeLine{106     \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"[ERROR] failed to convert time to local time."});}
+\DoxyCodeLine{107   \}}
+\DoxyCodeLine{108 }
+\DoxyCodeLine{109   strftime(buffer, 20, \textcolor{stringliteral}{"\%Y-\/\%m-\/\%d \%H:\%M:\%S"}, now\_tm);}
+\DoxyCodeLine{110   \textcolor{keywordflow}{return} \textcolor{charliteral}{'['} + std::string(buffer) + \textcolor{charliteral}{']'};}
+\DoxyCodeLine{111 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classlogger_1_1ALogger_a0b5d4d94c2eac993058f212848cab04a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classlogger_1_1ALogger_a432d93d4ad4a568c178492e9912e145a}\label{classlogger_1_1ALogger_a432d93d4ad4a568c178492e9912e145a}} 
+\index{logger::ALogger@{logger::ALogger}!log@{log}}
+\index{log@{log}!logger::ALogger@{logger::ALogger}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily virtual void logger\+::\+A\+Logger\+::log (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message,  }\item[{\mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}{Log\+Level}}}]{level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classlogger_1_1ConsoleLogger_ac85920c5cdc2b6560a52e32d6757936c}{logger\+::\+Console\+Logger}}, and \mbox{\hyperlink{classlogger_1_1FileLogger_a1e96849853bcbdde388872138751606b}{logger\+::\+File\+Logger}}.
+
+\mbox{\Hypertarget{classlogger_1_1ALogger_a79c10bd36140f92374bb98ee3adb33ef}\label{classlogger_1_1ALogger_a79c10bd36140f92374bb98ee3adb33ef}} 
+\index{logger::ALogger@{logger::ALogger}!operator=@{operator=}}
+\index{operator=@{operator=}!logger::ALogger@{logger::ALogger}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}} \& logger\+::\+A\+Logger\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Copy assignment operator. 
+
+Assigns the state of another {\ttfamily \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}}} object to this one.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The {\ttfamily \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}}} object to assign from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to this {\ttfamily \mbox{\hyperlink{classlogger_1_1ALogger}{A\+Logger}}} object. 
+\end{DoxyReturn}
+
+
+Definition at line 39 of file A\+Logger.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{39                                                 \{}
+\DoxyCodeLine{40   \textcolor{keywordflow}{if} (\textcolor{keyword}{this} != \&other) \{}
+\DoxyCodeLine{41     \mbox{\hyperlink{classlogger_1_1ALogger_a9122ceab60ec3ff5d240d37fcf125344}{m\_currentLogLevel}} = other.m\_currentLogLevel;}
+\DoxyCodeLine{42   \}}
+\DoxyCodeLine{43   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{44 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classlogger_1_1ALogger_a79c10bd36140f92374bb98ee3adb33ef_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classlogger_1_1ALogger_a601ae64c4455599cb8be6e03edd3f469}\label{classlogger_1_1ALogger_a601ae64c4455599cb8be6e03edd3f469}} 
+\index{logger::ALogger@{logger::ALogger}!setLevel@{setLevel}}
+\index{setLevel@{setLevel}!logger::ALogger@{logger::ALogger}}
+\doxysubsubsection{\texorpdfstring{setLevel()}{setLevel()}}
+{\footnotesize\ttfamily void logger\+::\+A\+Logger\+::set\+Level (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}{Log\+Level}}}]{level }\end{DoxyParamCaption})}
+
+
+
+Sets the current log level. 
+
+Updates the log level of the logger. Only messages with a level less than or equal to this new level will be logged.
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & The new log level to set. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 54 of file A\+Logger.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{54 \{ \mbox{\hyperlink{classlogger_1_1ALogger_a9122ceab60ec3ff5d240d37fcf125344}{m\_currentLogLevel}} = level; \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classlogger_1_1ALogger_a9122ceab60ec3ff5d240d37fcf125344}\label{classlogger_1_1ALogger_a9122ceab60ec3ff5d240d37fcf125344}} 
+\index{logger::ALogger@{logger::ALogger}!m\_currentLogLevel@{m\_currentLogLevel}}
+\index{m\_currentLogLevel@{m\_currentLogLevel}!logger::ALogger@{logger::ALogger}}
+\doxysubsubsection{\texorpdfstring{m\_currentLogLevel}{m\_currentLogLevel}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacelogger_a08ef41fb8da9e671d65fcbd87b6574a2}{Log\+Level}} logger\+::\+A\+Logger\+::m\+\_\+current\+Log\+Level\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 48 of file A\+Logger.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/logger/\mbox{\hyperlink{ALogger_8hpp}{A\+Logger.\+hpp}}\item 
+src/logger/\mbox{\hyperlink{ALogger_8cpp}{A\+Logger.\+cpp}}\end{DoxyCompactItemize}
