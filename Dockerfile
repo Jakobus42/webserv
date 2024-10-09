@@ -28,7 +28,9 @@ RUN apt-get update && apt-get install -y \
     unzip \
     curl \
     wget \
-    pip
+    pip \
+    bison \
+    flex
 
 RUN git clone https://github.com/doxygen/doxygen.git && \
     cd doxygen && \
