@@ -6,13 +6,14 @@ OUTPUT_DIRECTORY        = ./docs_output
 
 # HTML customization
 GENERATE_HTML           = YES
-HTML_EXTRA_STYLESHEET   = doxygen-awesome.css
+HTML_EXTRA_FILES        = doxygen-awesome.css \
+                          doxygen-awesome-darkmode-toggle.js
+HTML_HEADER             = custom_header.html
 GENERATE_TREEVIEW       = YES
 SEARCHENGINE            = YES
 
-DISABLE_INDEX = NO
-FULL_SIDEBAR = NO
-HTML_COLORSTYLE        = LIGHT
+DISABLE_INDEX           = NO
+FULL_SIDEBAR            = YES
 
 # Diagram generation
 HAVE_DOT                = YES
@@ -33,11 +34,30 @@ VERBATIM_HEADERS        = YES
 # Preprocessing
 ENABLE_PREPROCESSING    = YES
 MACRO_EXPANSION         = YES
+EXPAND_ONLY_PREDEF      = NO
+PREDEFINED              = DOXYGEN_SHOULD_SKIP_THIS
 
 # Grouping & Main Page
 USE_MDFILE_AS_MAINPAGE  = README.md
 GENERATE_XML            = YES
 
 # Misc options
-MAX_INITIALIZER_LINES   = 20
+MAX_INITIALIZER_LINES   = 30
 GENERATE_LATEX          = NO
+EXTRACT_PACKAGE         = NO
+SHOW_INCLUDE_FILES      = YES
+
+# Optimized Layout for Awesome Theme
+PROJECT_BRIEF           = "A lightweight HTTP server for C++ with Awesome Doxygen."
+HTML_DYNAMIC_MENUS      = YES
+HTML_COLORSTYLE         = LIGHT
+
+# Sorting and Index Customization
+SORT_MEMBER_DOCS        = YES
+SORT_BRIEF_DOCS         = YES
+ALPHABETICAL_INDEX      = YES
+GENERATE_INDEX          = YES
+
+# Documentation Filtering
+FILTER_PATTERNS         = *~
+EXCLUDE_PATTERNS        = */test/*
