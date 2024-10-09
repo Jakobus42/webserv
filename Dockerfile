@@ -30,10 +30,13 @@ RUN apt-get update && apt-get install -y \
     wget \
     pip
 
-RUN wget https://github.com/doxygen/doxygen/releases/download/Release_1_9_3/doxygen-1.9.3.linux.bin.tar.gz && \
-    tar -xzf doxygen-1.9.3.linux.bin.tar.gz && \
-    mv doxygen-1.9.3/bin/doxygen /usr/local/bin/doxygen && \
-    rm -rf doxygen-1.9.3* 
+RUN git clone https://github.com/doxygen/doxygen.git && \
+    cd doxygen && \
+    mkdir build && cd build && \
+    cmake -G "Unix Makefiles" .. && \
+    make && \
+    make install && \
+    cd ../.. && rm -rf doxygen
 
 RUN mkdir -p /root/.ssh && chmod 700 /root/.ssh && \
     curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | zsh && \
