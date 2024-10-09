@@ -12,7 +12,6 @@ NAME = template
 SRCDIR = src
 INCDIR = include
 BINDIR = bin
-DOCDIR = docs
 OBJDIR = $(BINDIR)/obj
 DEPDIR = $(BINDIR)/dep
 
@@ -65,10 +64,6 @@ cppcheck:
 strict: all cppcheck leak
 	@echo "$(GREEN)Strict build completed.$(NC)"
 
-docs: all
-	@echo "Generating documentation with Doxygen..."
-	doxygen Doxyfile
-
 format:
 	@echo "Formatting code with clang-format..."
 	clang-format -i $(SOURCES) $(HEADERS)
@@ -83,4 +78,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re run debug cppcheck docs strict leak format
+.PHONY: all clean fclean re run debug cppcheck strict leak format
