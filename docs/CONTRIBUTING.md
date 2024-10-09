@@ -1,4 +1,4 @@
-# Contribution Guide: Quick Start
+# Quick Start
 
 ## Table of Contents
 1. [Getting Started](#getting-started)
