@@ -76,7 +76,8 @@ format:
 clean:
 	@echo "$(RED)Cleaning up...$(NC)"
 	rm -rf $(BINDIR)
-	rm -rf $(DOCDIR)
+	rm -rf $(DOCDIR)/html
+	rm -rf $(DOCDIR)/latex
 
 fclean: clean
 	@echo "$(RED)Removing $(NAME)...$(NC)"
