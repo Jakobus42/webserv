@@ -25,8 +25,7 @@ ALogger::~ALogger() {}
  *
  * @param other The `ALogger` object to copy from.
  */
-ALogger::ALogger(const ALogger& other)
-    : m_currentLogLevel(other.m_currentLogLevel) {}
+ALogger::ALogger(const ALogger& other) : m_currentLogLevel(other.m_currentLogLevel) {}
 
 /**
  * @brief Copy assignment operator.

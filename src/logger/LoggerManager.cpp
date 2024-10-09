@@ -51,8 +51,7 @@ LoggerManager& LoggerManager::getInstance() {
  * @param loggerName The name to associate with the logger.
  * @param logger A shared pointer to the `ALogger` object to register.
  */
-void LoggerManager::registerLogger(const std::string& loggerName,
-                                   ALogger* logger) {
+void LoggerManager::registerLogger(const std::string& loggerName, ALogger* logger) {
   m_loggers.insert(std::make_pair(loggerName, logger));
 }
 
@@ -102,8 +101,7 @@ void LoggerManager::log(const std::string& message, LogLevel level) {
  * @param level The new log level for the specified logger.
  * @throws std::out_of_range If the logger with the specified name is not found.
  */
-void LoggerManager::setLoggerLevel(const std::string& loggerName,
-                                   LogLevel level) {
+void LoggerManager::setLoggerLevel(const std::string& loggerName, LogLevel level) {
   LogMap::iterator it = m_loggers.find(loggerName);
   if (it != m_loggers.end()) {
     it->second->setLevel(level);
@@ -118,9 +116,7 @@ void LoggerManager::setLoggerLevel(const std::string& loggerName,
  *
  * @param level The new global log level.
  */
-void LoggerManager::setGlobalLogLevel(LogLevel level) {
-  m_globalLogLevel = level;
-}
+void LoggerManager::setGlobalLogLevel(LogLevel level) { m_globalLogLevel = level; }
 
 /**
  * @brief Gets the current global log level.
