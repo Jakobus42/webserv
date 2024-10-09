@@ -53,7 +53,3 @@ HTML_DYNAMIC_MENUS      = YES
 SORT_MEMBER_DOCS        = YES
 SORT_BRIEF_DOCS         = YES
 ALPHABETICAL_INDEX      = YES
-
-# Documentation Filtering
-FILTER_PATTERNS         = *~=
-EXCLUDE_PATTERNS        = */test/*
