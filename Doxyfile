@@ -1,5 +1,5 @@
 PROJECT_NAME            = "Webserv"
-INPUT                   = ./src ./docs
+INPUT                   = ./src ./docs ./include
 FILE_PATTERNS           = *.cpp *.h *.hpp *.md
 RECURSIVE               = YES
 OUTPUT_DIRECTORY        = ./docs_output
