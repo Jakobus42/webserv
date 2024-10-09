@@ -111,20 +111,6 @@ make strict
 ```
 This runs both static analysis and memory checks.
 
-## Documentation
-
-### Updating Documentation
-```
-make docs
-```
-This generates the latest project documentation.
-
-### Viewing Documentation
-```
-open docs/html/index.html
-```
-This opens your default browser with the docs.
-
 ## Pull Requests
 1. Ensure all tests pass, code is properly formatted and documented
 2. Open a Pull Request (PR) when your work is ready for review
@@ -157,6 +143,5 @@ docker run -it --rm -v ~/.ssh:/root/.ssh -v ~/.zshrc:/root/.zshrc template
 | `make cppcheck` | Run static analysis |
 | `make leak` | Perform memory checks |
 | `make strict` | Run full check (static analysis + memory checks) |
-| `make docs` | Generate project documentation |
 
 Happy coding!
