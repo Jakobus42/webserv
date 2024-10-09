@@ -1,0 +1,401 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classlogger_1_1LoggerManager" kind="class" language="C++" prot="public">
+    <compoundname>logger::LoggerManager</compoundname>
+    <includes refid="LoggerManager_8hpp" local="no">LoggerManager.hpp</includes>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classlogger_1_1LoggerManager_1a33f56430823423778127c3dbf34393b1" prot="private" static="no">
+        <type>std::map&lt; std::string, <ref refid="classlogger_1_1ALogger" kindref="compound">ALogger</ref> * &gt;</type>
+        <definition>typedef std::map&lt;std::string, ALogger*&gt; logger::LoggerManager::LogMap</definition>
+        <argsstring></argsstring>
+        <name>LogMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/LoggerManager.hpp" line="35" column="20" bodyfile="include/logger/LoggerManager.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classlogger_1_1LoggerManager_1a2dfcb8ecb7a5c803dc4aaee1e92ad17b" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacelogger_1a08ef41fb8da9e671d65fcbd87b6574a2" kindref="member">LogLevel</ref></type>
+        <definition>LogLevel logger::LoggerManager::m_globalLogLevel</definition>
+        <argsstring></argsstring>
+        <name>m_globalLogLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/LoggerManager.hpp" line="43" column="12" bodyfile="include/logger/LoggerManager.hpp" bodystart="43" bodyend="-1"/>
+        <referencedby refid="classlogger_1_1LoggerManager_1a9b189b4a2165b561d16ccc31021ee4b0" compoundref="LoggerManager_8cpp" startline="133" endline="133">getGlobalLogLevel</referencedby>
+        <referencedby refid="classlogger_1_1LoggerManager_1a539f10100bd82dadfa0fffe8f77b9547" compoundref="LoggerManager_8cpp" startline="86" endline="92">log</referencedby>
+        <referencedby refid="classlogger_1_1LoggerManager_1a119535f84d9f16eec5bf332f96e0f9c9" compoundref="LoggerManager_8cpp" startline="24" endline="29">operator=</referencedby>
+        <referencedby refid="classlogger_1_1LoggerManager_1a7237ff5a6cead3d670328feb6ea60cbd" compoundref="LoggerManager_8cpp" startline="121" endline="123">setGlobalLogLevel</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classlogger_1_1LoggerManager_1af2885846001affd86a455cf297797fce" prot="private" static="no" mutable="no">
+        <type><ref refid="classlogger_1_1LoggerManager_1a33f56430823423778127c3dbf34393b1" kindref="member">LogMap</ref></type>
+        <definition>LogMap logger::LoggerManager::m_loggers</definition>
+        <argsstring></argsstring>
+        <name>m_loggers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/LoggerManager.hpp" line="42" column="10" bodyfile="include/logger/LoggerManager.hpp" bodystart="42" bodyend="-1"/>
+        <referencedby refid="classlogger_1_1LoggerManager_1a539f10100bd82dadfa0fffe8f77b9547" compoundref="LoggerManager_8cpp" startline="86" endline="92">log</referencedby>
+        <referencedby refid="classlogger_1_1LoggerManager_1ae26ebcbad9c6e4f85769438abac46db5" compoundref="LoggerManager_8cpp" startline="54" endline="57">registerLogger</referencedby>
+        <referencedby refid="classlogger_1_1LoggerManager_1a45d840b2a9bd9fbfccb34689ddc79527" compoundref="LoggerManager_8cpp" startline="105" endline="111">setLoggerLevel</referencedby>
+        <referencedby refid="classlogger_1_1LoggerManager_1adf2a8a1ad83a5404d6249518fa460971" compoundref="LoggerManager_8cpp" startline="68" endline="74">unregisterLogger</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classlogger_1_1LoggerManager_1ad140bde7c3a4c9241fb147f2c864d018" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classlogger_1_1LoggerManager" kindref="compound">LoggerManager</ref> &amp;</type>
+        <definition>LoggerManager &amp; logger::LoggerManager::getInstance</definition>
+        <argsstring>()</argsstring>
+        <name>getInstance</name>
+        <briefdescription>
+<para>Provides access to the singleton instance of <ref refid="classlogger_1_1LoggerManager" kindref="compound">LoggerManager</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method ensures that only one instance of <computeroutput><ref refid="classlogger_1_1LoggerManager" kindref="compound">LoggerManager</ref></computeroutput> exists and provides access to it. The instance is created on first use and is returned for all subsequent calls.</para>
+<para><simplesect kind="return"><para>A reference to the singleton <computeroutput><ref refid="classlogger_1_1LoggerManager" kindref="compound">LoggerManager</ref></computeroutput> instance. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/LoggerManager.hpp" line="24" column="24" bodyfile="src/logger/LoggerManager.cpp" bodystart="40" bodyend="43"/>
+        <referencedby refid="main_8cpp_1a840291bc02cba5474a4cb46a9b9566fe" compoundref="main_8cpp" startline="5" endline="19">main</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classlogger_1_1LoggerManager_1a9b189b4a2165b561d16ccc31021ee4b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacelogger_1a08ef41fb8da9e671d65fcbd87b6574a2" kindref="member">LogLevel</ref></type>
+        <definition>LogLevel logger::LoggerManager::getGlobalLogLevel</definition>
+        <argsstring>() const</argsstring>
+        <name>getGlobalLogLevel</name>
+        <briefdescription>
+<para>Gets the current global log level. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Retrieves the global log level, which determines the minimum level of messages that will be processed by the manager.</para>
+<para><simplesect kind="return"><para>The current global log level. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/LoggerManager.hpp" line="32" column="12" bodyfile="src/logger/LoggerManager.cpp" bodystart="133" bodyend="133"/>
+        <references refid="classlogger_1_1LoggerManager_1a2dfcb8ecb7a5c803dc4aaee1e92ad17b" compoundref="LoggerManager_8hpp" startline="43">m_globalLogLevel</references>
+      </memberdef>
+      <memberdef kind="function" id="classlogger_1_1LoggerManager_1a539f10100bd82dadfa0fffe8f77b9547" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void logger::LoggerManager::log</definition>
+        <argsstring>(const std::string &amp;message, LogLevel level)</argsstring>
+        <name>log</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacelogger_1a08ef41fb8da9e671d65fcbd87b6574a2" kindref="member">LogLevel</ref></type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>Logs a message to all registered loggers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Sends a log message to all loggers that have been registered with the manager, provided that the global log level allows for the message to be logged.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message to log. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The log level of the message. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/LoggerManager.hpp" line="28" column="8" bodyfile="src/logger/LoggerManager.cpp" bodystart="86" bodyend="92"/>
+        <references refid="classlogger_1_1LoggerManager_1a2dfcb8ecb7a5c803dc4aaee1e92ad17b" compoundref="LoggerManager_8hpp" startline="43">m_globalLogLevel</references>
+        <references refid="classlogger_1_1LoggerManager_1af2885846001affd86a455cf297797fce" compoundref="LoggerManager_8hpp" startline="42">m_loggers</references>
+      </memberdef>
+      <memberdef kind="function" id="classlogger_1_1LoggerManager_1ae26ebcbad9c6e4f85769438abac46db5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void logger::LoggerManager::registerLogger</definition>
+        <argsstring>(const std::string &amp;loggerName, ALogger *logger)</argsstring>
+        <name>registerLogger</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>loggerName</declname>
+        </param>
+        <param>
+          <type><ref refid="classlogger_1_1ALogger" kindref="compound">ALogger</ref> *</type>
+          <declname>logger</declname>
+        </param>
+        <briefdescription>
+<para>Registers a new logger with the manager. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds a logger to the manager&apos;s collection, associating it with a specified name. If a logger with the same name already exists, it will be replaced.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>loggerName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name to associate with the logger. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>logger</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A shared pointer to the <computeroutput><ref refid="classlogger_1_1ALogger" kindref="compound">ALogger</ref></computeroutput> object to register. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/LoggerManager.hpp" line="26" column="8" bodyfile="src/logger/LoggerManager.cpp" bodystart="54" bodyend="57"/>
+        <references refid="classlogger_1_1LoggerManager_1af2885846001affd86a455cf297797fce" compoundref="LoggerManager_8hpp" startline="42">m_loggers</references>
+        <referencedby refid="main_8cpp_1a840291bc02cba5474a4cb46a9b9566fe" compoundref="main_8cpp" startline="5" endline="19">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlogger_1_1LoggerManager_1a7237ff5a6cead3d670328feb6ea60cbd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void logger::LoggerManager::setGlobalLogLevel</definition>
+        <argsstring>(LogLevel level)</argsstring>
+        <name>setGlobalLogLevel</name>
+        <param>
+          <type><ref refid="namespacelogger_1a08ef41fb8da9e671d65fcbd87b6574a2" kindref="member">LogLevel</ref></type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>Sets the global log level. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Changes the global log level. Only messages with a log level equal to or higher than the new global level will be processed by the manager.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new global log level. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/LoggerManager.hpp" line="31" column="8" bodyfile="src/logger/LoggerManager.cpp" bodystart="121" bodyend="123"/>
+        <references refid="classlogger_1_1LoggerManager_1a2dfcb8ecb7a5c803dc4aaee1e92ad17b" compoundref="LoggerManager_8hpp" startline="43">m_globalLogLevel</references>
+        <referencedby refid="main_8cpp_1a840291bc02cba5474a4cb46a9b9566fe" compoundref="main_8cpp" startline="5" endline="19">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlogger_1_1LoggerManager_1a45d840b2a9bd9fbfccb34689ddc79527" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void logger::LoggerManager::setLoggerLevel</definition>
+        <argsstring>(const std::string &amp;loggerName, LogLevel level)</argsstring>
+        <name>setLoggerLevel</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>loggerName</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacelogger_1a08ef41fb8da9e671d65fcbd87b6574a2" kindref="member">LogLevel</ref></type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>Sets the log level for a specific logger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Changes the logging level of a specific logger by its name. Only messages with a log level equal to or higher than the new level will be logged by that logger.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>loggerName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the logger whose level to set. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new log level for the specified logger. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::out_of_range</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If the logger with the specified name is not found. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/LoggerManager.hpp" line="30" column="8" bodyfile="src/logger/LoggerManager.cpp" bodystart="105" bodyend="111"/>
+        <references refid="classlogger_1_1LoggerManager_1af2885846001affd86a455cf297797fce" compoundref="LoggerManager_8hpp" startline="42">m_loggers</references>
+        <referencedby refid="main_8cpp_1a840291bc02cba5474a4cb46a9b9566fe" compoundref="main_8cpp" startline="5" endline="19">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classlogger_1_1LoggerManager_1adf2a8a1ad83a5404d6249518fa460971" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void logger::LoggerManager::unregisterLogger</definition>
+        <argsstring>(const std::string &amp;loggerName)</argsstring>
+        <name>unregisterLogger</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>loggerName</declname>
+        </param>
+        <briefdescription>
+<para>Unregisters a logger from the manager. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Removes the logger associated with the given name from the manager&apos;s collection. If no logger with the specified name exists, this operation has no effect.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>loggerName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the logger to unregister. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/LoggerManager.hpp" line="27" column="8" bodyfile="src/logger/LoggerManager.cpp" bodystart="68" bodyend="74"/>
+        <references refid="classlogger_1_1LoggerManager_1af2885846001affd86a455cf297797fce" compoundref="LoggerManager_8hpp" startline="42">m_loggers</references>
+        <referencedby refid="main_8cpp_1a840291bc02cba5474a4cb46a9b9566fe" compoundref="main_8cpp" startline="5" endline="19">main</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classlogger_1_1LoggerManager_1adb629fe3dad321a3083c877904089bd2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>logger::LoggerManager::LoggerManager</definition>
+        <argsstring>()</argsstring>
+        <name>LoggerManager</name>
+        <briefdescription>
+<para>Constructs a new <ref refid="classlogger_1_1LoggerManager" kindref="compound">LoggerManager</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes the <computeroutput><ref refid="classlogger_1_1LoggerManager" kindref="compound">LoggerManager</ref></computeroutput> object with a default global log level of <computeroutput>INFO</computeroutput>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/LoggerManager.hpp" line="37" column="3" bodyfile="src/logger/LoggerManager.cpp" bodystart="11" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classlogger_1_1LoggerManager_1a9c6eb535e43bb9c159774f21cc74be34" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>logger::LoggerManager::LoggerManager</definition>
+        <argsstring>(const LoggerManager &amp;)</argsstring>
+        <name>LoggerManager</name>
+        <param>
+          <type>const <ref refid="classlogger_1_1LoggerManager" kindref="compound">LoggerManager</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/LoggerManager.hpp" line="39" column="3" bodyfile="include/logger/LoggerManager.hpp" bodystart="39" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classlogger_1_1LoggerManager_1a119535f84d9f16eec5bf332f96e0f9c9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classlogger_1_1LoggerManager" kindref="compound">LoggerManager</ref> &amp;</type>
+        <definition>LoggerManager &amp; logger::LoggerManager::operator=</definition>
+        <argsstring>(const LoggerManager &amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classlogger_1_1LoggerManager" kindref="compound">LoggerManager</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Assigns the state of another <computeroutput><ref refid="classlogger_1_1LoggerManager" kindref="compound">LoggerManager</ref></computeroutput> object to this one. This operator allows copying of <computeroutput><ref refid="classlogger_1_1LoggerManager" kindref="compound">LoggerManager</ref></computeroutput> objects, but as <computeroutput><ref refid="classlogger_1_1LoggerManager" kindref="compound">LoggerManager</ref></computeroutput> does not have additional data members beyond those inherited from <computeroutput><ref refid="classlogger_1_1ALogger" kindref="compound">ALogger</ref></computeroutput>, the assignment is trivial.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <computeroutput><ref refid="classlogger_1_1LoggerManager" kindref="compound">LoggerManager</ref></computeroutput> object to assign from. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to this <computeroutput><ref refid="classlogger_1_1LoggerManager" kindref="compound">LoggerManager</ref></computeroutput> object. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/LoggerManager.hpp" line="40" column="17" bodyfile="src/logger/LoggerManager.cpp" bodystart="24" bodyend="29"/>
+        <references refid="classlogger_1_1LoggerManager_1a2dfcb8ecb7a5c803dc4aaee1e92ad17b" compoundref="LoggerManager_8hpp" startline="43">m_globalLogLevel</references>
+      </memberdef>
+      <memberdef kind="function" id="classlogger_1_1LoggerManager_1a86b864cb04bea5915c4f7cb4df2f2e8d" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>logger::LoggerManager::~LoggerManager</definition>
+        <argsstring>()</argsstring>
+        <name>~LoggerManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/LoggerManager.hpp" line="38" column="3" bodyfile="include/logger/LoggerManager.hpp" bodystart="38" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Manages multiple loggers and handles global logging operations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <computeroutput><ref refid="classlogger_1_1LoggerManager" kindref="compound">LoggerManager</ref></computeroutput> class is a singleton that manages a collection of loggers, each identified by a unique name. It provides functionality to register and unregister loggers, set log levels, and log messages to all registered loggers. It also supports setting and retrieving a global log level that controls the logging behavior across all loggers. </para>
+    </detaileddescription>
+    <location file="include/logger/LoggerManager.hpp" line="22" column="1" bodyfile="include/logger/LoggerManager.hpp" bodystart="22" bodyend="44"/>
+    <listofallmembers>
+      <member refid="classlogger_1_1LoggerManager_1a9b189b4a2165b561d16ccc31021ee4b0" prot="public" virt="non-virtual"><scope>logger::LoggerManager</scope><name>getGlobalLogLevel</name></member>
+      <member refid="classlogger_1_1LoggerManager_1ad140bde7c3a4c9241fb147f2c864d018" prot="public" virt="non-virtual"><scope>logger::LoggerManager</scope><name>getInstance</name></member>
+      <member refid="classlogger_1_1LoggerManager_1a539f10100bd82dadfa0fffe8f77b9547" prot="public" virt="non-virtual"><scope>logger::LoggerManager</scope><name>log</name></member>
+      <member refid="classlogger_1_1LoggerManager_1adb629fe3dad321a3083c877904089bd2" prot="private" virt="non-virtual"><scope>logger::LoggerManager</scope><name>LoggerManager</name></member>
+      <member refid="classlogger_1_1LoggerManager_1a9c6eb535e43bb9c159774f21cc74be34" prot="private" virt="non-virtual"><scope>logger::LoggerManager</scope><name>LoggerManager</name></member>
+      <member refid="classlogger_1_1LoggerManager_1a33f56430823423778127c3dbf34393b1" prot="private" virt="non-virtual"><scope>logger::LoggerManager</scope><name>LogMap</name></member>
+      <member refid="classlogger_1_1LoggerManager_1a2dfcb8ecb7a5c803dc4aaee1e92ad17b" prot="private" virt="non-virtual"><scope>logger::LoggerManager</scope><name>m_globalLogLevel</name></member>
+      <member refid="classlogger_1_1LoggerManager_1af2885846001affd86a455cf297797fce" prot="private" virt="non-virtual"><scope>logger::LoggerManager</scope><name>m_loggers</name></member>
+      <member refid="classlogger_1_1LoggerManager_1a119535f84d9f16eec5bf332f96e0f9c9" prot="private" virt="non-virtual"><scope>logger::LoggerManager</scope><name>operator=</name></member>
+      <member refid="classlogger_1_1LoggerManager_1ae26ebcbad9c6e4f85769438abac46db5" prot="public" virt="non-virtual"><scope>logger::LoggerManager</scope><name>registerLogger</name></member>
+      <member refid="classlogger_1_1LoggerManager_1a7237ff5a6cead3d670328feb6ea60cbd" prot="public" virt="non-virtual"><scope>logger::LoggerManager</scope><name>setGlobalLogLevel</name></member>
+      <member refid="classlogger_1_1LoggerManager_1a45d840b2a9bd9fbfccb34689ddc79527" prot="public" virt="non-virtual"><scope>logger::LoggerManager</scope><name>setLoggerLevel</name></member>
+      <member refid="classlogger_1_1LoggerManager_1adf2a8a1ad83a5404d6249518fa460971" prot="public" virt="non-virtual"><scope>logger::LoggerManager</scope><name>unregisterLogger</name></member>
+      <member refid="classlogger_1_1LoggerManager_1a86b864cb04bea5915c4f7cb4df2f2e8d" prot="private" virt="non-virtual"><scope>logger::LoggerManager</scope><name>~LoggerManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

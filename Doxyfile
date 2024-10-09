@@ -6,13 +6,12 @@ OUTPUT_DIRECTORY        = ./docs_output
 
 # HTML customization
 GENERATE_HTML           = YES
-HTML_EXTRA_FILES        = doxygen-.css \
+HTML_EXTRA_FILES        = doxygen-awesome.css \
                           doxygen-awesome-darkmode-toggle.js
 GENERATE_TREEVIEW       = YES
 SEARCHENGINE            = YES
 
 DISABLE_INDEX           = NO
-FULL_SIDEBAR            = YES
 
 # Diagram generation
 HAVE_DOT                = YES
@@ -49,14 +48,12 @@ SHOW_INCLUDE_FILES      = YES
 # Optimized Layout for Awesome Theme
 PROJECT_BRIEF           = "A lightweight HTTP server for C++"
 HTML_DYNAMIC_MENUS      = YES
-HTML_COLORSTYLE         = LIGHT
 
 # Sorting and Index Customization
 SORT_MEMBER_DOCS        = YES
 SORT_BRIEF_DOCS         = YES
 ALPHABETICAL_INDEX      = YES
-GENERATE_INDEX          = YES
 
 # Documentation Filtering
-FILTER_PATTERNS         = *~
+FILTER_PATTERNS         = *~=
 EXCLUDE_PATTERNS        = */test/*

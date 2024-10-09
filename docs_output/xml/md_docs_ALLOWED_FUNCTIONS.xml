@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="md_docs_ALLOWED_FUNCTIONS" kind="page">
+    <compoundname>md_docs_ALLOWED_FUNCTIONS</compoundname>
+    <title>ALLOWED_FUNCTIONS.md</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><orderedlist>
+<listitem><para><bold>execve</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Executes a program, replacing the current process.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/execve.2.html">execve documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>dup</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Duplicates an existing file descriptor.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/dup.2.html">dup documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>dup2</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Duplicates a file descriptor to a given descriptor number.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/dup.2.html">dup2 documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>pipe</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Creates a unidirectional data channel that can be used for inter-process communication.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/pipe.2.html">pipe documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>strerror</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Returns a string that describes the error code passed.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man3/strerror.3.html">strerror documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>gai_strerror</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Returns a string describing the error code returned by <computeroutput>getaddrinfo()</computeroutput>.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man3/gai_strerror.3.html">gai_strerror documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>errno</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Global variable that indicates the error number for the last system call.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man3/errno.3.html">errno documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>fork</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Creates a new process by duplicating the current process.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/fork.2.html">fork documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>socketpair</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Creates a pair of connected sockets.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/socketpair.2.html">socketpair documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>htons</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Converts a short integer from host to network byte order.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man3/htons.3p.html">htons documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>htonl</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Converts a long integer from host to network byte order.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man3/htonl.3p.html">htonl documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>ntohs</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Converts a short integer from network to host byte order.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man3/ntohs.3p.html">ntohs documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>ntohl</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Converts a long integer from network to host byte order.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man3/ntohl.3p.html">ntohl documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>select</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Monitors multiple file descriptors for readiness to perform I/O.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/select.2.html">select documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>poll</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Waits for some event on a set of file descriptors.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/poll.2.html">poll documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>epoll (epoll_create, epoll_ctl, epoll_wait)</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Provides scalable I/O event notification mechanisms.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man7/epoll.7.html">epoll documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>kqueue (kqueue, kevent)</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Provides a mechanism for event notification on BSD systems.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man.freebsd.org/kqueue.2">kqueue documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>socket</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Creates an endpoint for communication.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/socket.2.html">socket documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>accept</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Accepts a connection on a socket.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/accept.2.html">accept documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>listen</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Marks a socket as passive, indicating it will accept incoming connection requests.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/listen.2.html">listen documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>send</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Sends data to a connected socket.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/send.2.html">send documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>recv</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Receives data from a connected socket.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/recv.2.html">recv documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>chdir</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Changes the current working directory of the calling process.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/chdir.2.html">chdir documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>bind</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Associates a socket with an address.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/bind.2.html">bind documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>connect</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Initiates a connection on a socket.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/connect.2.html">connect documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>getaddrinfo</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Translates a human-readable hostname into a socket address.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man3/getaddrinfo.3.html">getaddrinfo documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>freeaddrinfo</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Frees memory allocated by <computeroutput>getaddrinfo()</computeroutput>.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man3/freeaddrinfo.3.html">freeaddrinfo documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>setsockopt</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Sets options on a socket.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/setsockopt.2.html">setsockopt documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>getsockname</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Gets the current address to which the socket is bound.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/getsockname.2.html">getsockname documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>getprotobyname</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Gets protocol information based on a protocol name.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man3/getprotoent.3.html">getprotobyname documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>fcntl</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Performs various operations on a file descriptor.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/fcntl.2.html">fcntl documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>close</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Closes a file descriptor.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/close.2.html">close documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>read</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Reads data from a file descriptor.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/read.2.html">read documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>write</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Writes data to a file descriptor.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/write.2.html">write documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>waitpid</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Waits for a process to change state.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/waitpid.2.html">waitpid documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>kill</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Sends a signal to a process.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/kill.2.html">kill documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>signal</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Sets a function to handle a specific signal.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/signal.2.html">signal documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>access</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Checks the accessibility of a file.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/access.2.html">access documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>stat</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Retrieves file status information.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/stat.2.html">stat documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>open</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Opens a file and returns a file descriptor.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man2/open.2.html">open documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>opendir</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Opens a directory stream.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man3/opendir.3.html">opendir documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>readdir</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Reads a directory entry from the directory stream.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man3/readdir.3.html">readdir documentation</ulink></para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para><bold>closedir</bold><itemizedlist>
+<listitem><para><bold>Usage</bold>: Closes a directory stream.</para>
+</listitem><listitem><para><bold>Link</bold>: <ulink url="https://man7.org/linux/man-pages/man3/closedir.3.html">closedir documentation</ulink> </para>
+</listitem></itemizedlist>
+</para>
+</listitem></orderedlist>
+</para>
+    </detaileddescription>
+    <location file="docs/ALLOWED_FUNCTIONS.md"/>
+  </compounddef>
+</doxygen>

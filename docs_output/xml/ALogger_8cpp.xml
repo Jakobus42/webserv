@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="ALogger_8cpp" kind="file" language="C++">
+    <compoundname>ALogger.cpp</compoundname>
+    <includes refid="ALogger_8hpp" local="yes">../../include/logger/ALogger.hpp</includes>
+    <incdepgraph>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="1">
+        <label>src/logger/ALogger.cpp</label>
+        <link refid="ALogger_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>ctime</label>
+      </node>
+      <node id="5">
+        <label>sstream</label>
+      </node>
+      <node id="4">
+        <label>iostream</label>
+      </node>
+      <node id="2">
+        <label>../../include/logger/ALogger.hpp</label>
+        <link refid="ALogger_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacelogger">logger</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;../../include/logger/ALogger.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="namespacelogger" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacelogger" kindref="compound">logger</ref><sp/>{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="classlogger_1_1ALogger_1a40ab0d997f116c8b520476d56d944a98" refkind="member"><highlight class="normal"><ref refid="classlogger_1_1ALogger_1a40ab0d997f116c8b520476d56d944a98" kindref="member">ALogger::ALogger</ref>()<sp/>:<sp/>m_currentLogLevel(<ref refid="namespacelogger" kindref="compound">logger</ref>::<ref refid="namespacelogger_1a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c" kindref="member">DEBUG</ref>)<sp/>{}</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classlogger_1_1ALogger_1ae489d5ee98076eaf1614e1b196aaefe9" refkind="member"><highlight class="normal"><ref refid="classlogger_1_1ALogger_1ae489d5ee98076eaf1614e1b196aaefe9" kindref="member">ALogger::~ALogger</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classlogger_1_1ALogger_1aab9395b0c65d7c6ad484f75ee8443dbe" refkind="member"><highlight class="normal"><ref refid="classlogger_1_1ALogger_1a40ab0d997f116c8b520476d56d944a98" kindref="member">ALogger::ALogger</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlogger_1_1ALogger" kindref="compound">ALogger</ref>&amp;<sp/>other)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>m_currentLogLevel(other.m_currentLogLevel)<sp/>{}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classlogger_1_1ALogger_1a79c10bd36140f92374bb98ee3adb33ef" refkind="member"><highlight class="normal"><ref refid="classlogger_1_1ALogger" kindref="compound">ALogger</ref>&amp;<sp/><ref refid="classlogger_1_1ALogger_1a79c10bd36140f92374bb98ee3adb33ef" kindref="member">ALogger::operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classlogger_1_1ALogger" kindref="compound">ALogger</ref>&amp;<sp/>other)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>!=<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlogger_1_1ALogger_1a9122ceab60ec3ff5d240d37fcf125344" kindref="member">m_currentLogLevel</ref><sp/>=<sp/>other.<ref refid="classlogger_1_1ALogger_1a9122ceab60ec3ff5d240d37fcf125344" kindref="member">m_currentLogLevel</ref>;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="classlogger_1_1ALogger_1a601ae64c4455599cb8be6e03edd3f469" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classlogger_1_1ALogger_1a601ae64c4455599cb8be6e03edd3f469" kindref="member">ALogger::setLevel</ref>(<ref refid="namespacelogger_1a08ef41fb8da9e671d65fcbd87b6574a2" kindref="member">LogLevel</ref><sp/>level)<sp/>{<sp/><ref refid="classlogger_1_1ALogger_1a9122ceab60ec3ff5d240d37fcf125344" kindref="member">m_currentLogLevel</ref><sp/>=<sp/>level;<sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classlogger_1_1ALogger_1a0ff4e250a3f838c5f766901aac53e645" refkind="member"><highlight class="normal"><ref refid="namespacelogger_1a08ef41fb8da9e671d65fcbd87b6574a2" kindref="member">LogLevel</ref><sp/><ref refid="classlogger_1_1ALogger_1a0ff4e250a3f838c5f766901aac53e645" kindref="member">ALogger::getLevel</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlogger_1_1ALogger_1a9122ceab60ec3ff5d240d37fcf125344" kindref="member">m_currentLogLevel</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classlogger_1_1ALogger_1aeec7dc86db5a5df42d02b494e24802cf" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classlogger_1_1ALogger_1aeec7dc86db5a5df42d02b494e24802cf" kindref="member">ALogger::getLogLevelAsString</ref>(<ref refid="namespacelogger_1a08ef41fb8da9e671d65fcbd87b6574a2" kindref="member">LogLevel</ref><sp/>level)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(level)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacelogger_1a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c" kindref="member">logger::DEBUG</ref>:</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string(<ref refid="namespacelogger_1a4bdf4a007480caa09a13bc5ed26eb58a" kindref="member">DEBUG_COLOR</ref>)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;[DEBUG]<sp/><sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespacelogger_1a78195500ea706df91bdd58cf8020f1ea" kindref="member">RESET</ref>;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacelogger_1a08ef41fb8da9e671d65fcbd87b6574a2aee60ac495f4eb6180461caa975e30732" kindref="member">logger::INFO</ref>:</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string(<ref refid="namespacelogger_1ab62ed0a1ac8927bd416d1dc7eba37001" kindref="member">INFO_COLOR</ref>)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;[INFO]<sp/><sp/><sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespacelogger_1a78195500ea706df91bdd58cf8020f1ea" kindref="member">RESET</ref>;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacelogger_1a08ef41fb8da9e671d65fcbd87b6574a2af962c30f6356d10c93ed16a802e7adf7" kindref="member">logger::WARNING</ref>:</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string(<ref refid="namespacelogger_1a3114cb96ac58326da2e4bb97f7cdf792" kindref="member">WARNING_COLOR</ref>)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;[WARNING]&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespacelogger_1a78195500ea706df91bdd58cf8020f1ea" kindref="member">RESET</ref>;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacelogger_1a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601" kindref="member">logger::ERROR</ref>:</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string(<ref refid="namespacelogger_1a4065c149e6d1faaed9469c3138c54ebb" kindref="member">ERROR_COLOR</ref>)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;[ERROR]<sp/><sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespacelogger_1a78195500ea706df91bdd58cf8020f1ea" kindref="member">RESET</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespacelogger_1a08ef41fb8da9e671d65fcbd87b6574a2a6526ebf74c120c19c814fb5b34ad2dd4" kindref="member">logger::FATAL</ref>:</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string(<ref refid="namespacelogger_1ac01e6f4a115fd8f03b975f063c39637b" kindref="member">FATAL_COLOR</ref>)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;[FATAL]<sp/><sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="namespacelogger_1a78195500ea706df91bdd58cf8020f1ea" kindref="member">RESET</ref>;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::invalid_argument(</highlight><highlight class="stringliteral">&quot;invalid<sp/>log<sp/>level&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="classlogger_1_1ALogger_1a0b5d4d94c2eac993058f212848cab04a" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classlogger_1_1ALogger_1a0b5d4d94c2eac993058f212848cab04a" kindref="member">ALogger::getTimeStamp</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buffer[20];</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>time_t<sp/>now<sp/>=<sp/>time(0);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>tm*<sp/>now_tm<sp/>=<sp/>localtime(&amp;now);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!now_tm)<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>std::runtime_error(</highlight><highlight class="stringliteral">&quot;[ERROR]<sp/>failed<sp/>to<sp/>convert<sp/>time<sp/>to<sp/>local<sp/>time.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>strftime(buffer,<sp/>20,<sp/></highlight><highlight class="stringliteral">&quot;%Y-%m-%d<sp/>%H:%M:%S&quot;</highlight><highlight class="normal">,<sp/>now_tm);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="charliteral">&apos;[&apos;</highlight><highlight class="normal"><sp/>+<sp/>std::string(buffer)<sp/>+<sp/></highlight><highlight class="charliteral">&apos;]&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="classlogger_1_1ALogger_1a993700fc347b0dc071283b42df5c8ad4" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classlogger_1_1ALogger_1a993700fc347b0dc071283b42df5c8ad4" kindref="member">ALogger::getLogPrefix</ref>(<ref refid="namespacelogger_1a08ef41fb8da9e671d65fcbd87b6574a2" kindref="member">LogLevel</ref><sp/>level)<sp/>{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlogger_1_1ALogger_1aeec7dc86db5a5df42d02b494e24802cf" kindref="member">getLogLevelAsString</ref>(level)<sp/>+<sp/><ref refid="classlogger_1_1ALogger_1a0b5d4d94c2eac993058f212848cab04a" kindref="member">getTimeStamp</ref>();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}<sp/></highlight><highlight class="comment">/*<sp/>namespace<sp/>logger<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/logger/ALogger.cpp"/>
+  </compounddef>
+</doxygen>

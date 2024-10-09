@@ -1,0 +1,200 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="md_docs_CONTRIBUTING" kind="page">
+    <compoundname>md_docs_CONTRIBUTING</compoundname>
+    <title>Contribution Guide: Quick Start</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md_docs_CONTRIBUTING_1autotoc_md2">
+<title>Table of Contents</title>
+<para><orderedlist>
+<listitem><para><ulink url="#getting-started">Getting Started</ulink></para>
+</listitem><listitem><para><ulink url="#development-workflow">Development Workflow</ulink></para>
+</listitem><listitem><para><ulink url="#coding-standards">Coding Standards</ulink></para>
+</listitem><listitem><para><ulink url="#building-and-testing">Building and Testing</ulink></para>
+</listitem><listitem><para><ulink url="#documentation">Documentation</ulink></para>
+</listitem><listitem><para><ulink url="#pull-requests">Pull Requests</ulink></para>
+</listitem><listitem><para><ulink url="#docker-and-vs-code-integration">Docker and VS Code Integration</ulink></para>
+</listitem><listitem><para><ulink url="#quick-command-reference">Quick Command Reference</ulink></para>
+</listitem></orderedlist>
+</para>
+</sect1>
+<sect1 id="md_docs_CONTRIBUTING_1autotoc_md3">
+<title>Getting Started</title>
+<sect2 id="md_docs_CONTRIBUTING_1autotoc_md4">
+<title>Branch Naming Convention</title>
+<para>Create a new branch for your work using one of the following prefixes:<itemizedlist>
+<listitem><para><computeroutput>feat/</computeroutput>: For new features</para>
+</listitem><listitem><para><computeroutput>bugfix/</computeroutput>: For bug fixes</para>
+</listitem><listitem><para><computeroutput>hotfix/</computeroutput>: For critical bug fixes that need immediate attention</para>
+</listitem><listitem><para><computeroutput>chore/</computeroutput>: For maintenance tasks</para>
+</listitem><listitem><para><computeroutput>sandbox/</computeroutput>: For experimental work or testing</para>
+</listitem></itemizedlist>
+</para>
+<para>Example: <computeroutput>feat/add-user-authentication</computeroutput></para>
+<para>Avoid working directly on the <computeroutput>main</computeroutput> branch.</para>
+</sect2>
+<sect2 id="md_docs_CONTRIBUTING_1autotoc_md5">
+<title>Commit Message Convention</title>
+<para>Use clear, descriptive commit messages following this format: <programlisting><codeline><highlight class="normal">&lt;type&gt;:<sp/>&lt;description&gt;</highlight></codeline>
+<codeline><highlight class="normal">[optional<sp/>body]</highlight></codeline>
+<codeline><highlight class="normal">[optional<sp/>footer]</highlight></codeline>
+</programlisting></para>
+<para>Allowed types:<itemizedlist>
+<listitem><para><computeroutput>feat</computeroutput>: A new feature</para>
+</listitem><listitem><para><computeroutput>fix</computeroutput>: A bug fix</para>
+</listitem><listitem><para><computeroutput>chore</computeroutput>: Routine tasks, maintenance, or refactors</para>
+</listitem><listitem><para><computeroutput>docs</computeroutput>: Documentation changes</para>
+</listitem><listitem><para><computeroutput>test</computeroutput>: Adding or modifying tests</para>
+</listitem><listitem><para><computeroutput>refactor</computeroutput>: Code changes that neither fix a bug nor add a feature</para>
+</listitem><listitem><para><computeroutput>style</computeroutput>: Changes that do not affect the meaning of the code (white-space, formatting, etc.)</para>
+</listitem><listitem><para><computeroutput>ci</computeroutput>: Changes to CI configuration files and scripts</para>
+</listitem><listitem><para><computeroutput>build</computeroutput>: Changes that affect the build system or external dependencies</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+</sect1>
+<sect1 id="md_docs_CONTRIBUTING_1autotoc_md6">
+<title>Development Workflow</title>
+<sect2 id="md_docs_CONTRIBUTING_1autotoc_md7">
+<title>Pre-Commit Hooks</title>
+<para><itemizedlist>
+<listitem><para>Automatic checks run on each commit:<itemizedlist>
+<listitem><para>Code formatting</para>
+</listitem><listitem><para>Commit message validation</para>
+</listitem></itemizedlist>
+</para>
+</listitem><listitem><para>To manually format code: <programlisting><codeline><highlight class="normal">make<sp/>format</highlight></codeline>
+</programlisting> This applies Google style formatting to your code.</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="md_docs_CONTRIBUTING_1autotoc_md8">
+<title>New Class Creation</title>
+<para>Use the provided script to create new classes:</para>
+<para><programlisting><codeline><highlight class="normal">./createClass.sh<sp/>&lt;subfolder&gt;<sp/>&lt;className&gt;</highlight></codeline>
+</programlisting></para>
+<para>Example: <programlisting><codeline><highlight class="normal">./createClass.sh<sp/>logger<sp/>LoggerManager</highlight></codeline>
+</programlisting></para>
+<para>This will:<itemizedlist>
+<listitem><para>Create a <computeroutput>.hpp</computeroutput> file in <computeroutput>include/&lt;subfolder&gt;/</computeroutput></para>
+</listitem><listitem><para>Create a <computeroutput>.cpp</computeroutput> file in <computeroutput>src/&lt;subfolder&gt;/</computeroutput></para>
+</listitem><listitem><para>Generate a class with default constructor, destructor, copy constructor, copy assignment operator, and Doxygen documentation</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+</sect1>
+<sect1 id="md_docs_CONTRIBUTING_1autotoc_md9">
+<title>Coding Standards</title>
+<sect2 id="md_docs_CONTRIBUTING_1autotoc_md10">
+<title>Naming Conventions</title>
+<para><itemizedlist>
+<listitem><para>Class Names: PascalCase (e.g., <computeroutput>UserManager</computeroutput>)</para>
+</listitem><listitem><para>Function Names: camelCase, start with a verb (e.g., <computeroutput>getUserById()</computeroutput>)</para>
+</listitem><listitem><para>Variable Names: camelCase (e.g., <computeroutput>userCount</computeroutput>)</para>
+</listitem><listitem><para>Constants: ALL_CAPS with underscores (e.g., <computeroutput>MAX_USERS</computeroutput>)</para>
+</listitem><listitem><para>Private Member Variables: Prefix with <computeroutput>m_</computeroutput> followed by camelCase (e.g., <computeroutput>m_userCount</computeroutput>)</para>
+</listitem><listitem><para>Enum Names: PascalCase for enum name, ALL_CAPS for values</para>
+</listitem><listitem><para>Namespace Names: lowercase (e.g., <computeroutput>namespace utils {}</computeroutput>)</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+</sect1>
+<sect1 id="md_docs_CONTRIBUTING_1autotoc_md11">
+<title>Building and Testing</title>
+<sect2 id="md_docs_CONTRIBUTING_1autotoc_md12">
+<title>Compilation</title>
+<para><programlisting><codeline><highlight class="normal">make<sp/>all</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_docs_CONTRIBUTING_1autotoc_md13">
+<title>Running the Project</title>
+<para><programlisting><codeline><highlight class="normal">make<sp/>run</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_docs_CONTRIBUTING_1autotoc_md14">
+<title>Static Analysis</title>
+<para><programlisting><codeline><highlight class="normal">make<sp/>cppcheck</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_docs_CONTRIBUTING_1autotoc_md15">
+<title>Memory Checks</title>
+<para><programlisting><codeline><highlight class="normal">make<sp/>leak</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_docs_CONTRIBUTING_1autotoc_md16">
+<title>Comprehensive Check</title>
+<para><programlisting><codeline><highlight class="normal">make<sp/>strict</highlight></codeline>
+</programlisting> This runs both static analysis and memory checks.</para>
+</sect2>
+</sect1>
+<sect1 id="md_docs_CONTRIBUTING_1autotoc_md17">
+<title>Pull Requests</title>
+<para><orderedlist>
+<listitem><para>Ensure all tests pass, code is properly formatted and documented</para>
+</listitem><listitem><para>Open a Pull Request (PR) when your work is ready for review</para>
+</listitem><listitem><para>Provide a clear description of the changes in your PR</para>
+</listitem></orderedlist>
+</para>
+</sect1>
+<sect1 id="md_docs_CONTRIBUTING_1autotoc_md18">
+<title>Docker and VS Code Integration</title>
+<sect2 id="md_docs_CONTRIBUTING_1autotoc_md19">
+<title>Building Docker Image</title>
+<para><programlisting><codeline><highlight class="normal">docker<sp/>build<sp/>-t<sp/>template<sp/>.</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_docs_CONTRIBUTING_1autotoc_md20">
+<title>Running Container</title>
+<para><programlisting><codeline><highlight class="normal">docker<sp/>run<sp/>-it<sp/>--rm<sp/>-v<sp/>~/.ssh:/root/.ssh<sp/>-v<sp/>~/.zshrc:/root/.zshrc<sp/>template</highlight></codeline>
+</programlisting></para>
+</sect2>
+<sect2 id="md_docs_CONTRIBUTING_1autotoc_md21">
+<title>VS Code Setup</title>
+<para><orderedlist>
+<listitem><para>Press <computeroutput>Cmd + P</computeroutput> (or <computeroutput>Ctrl + P</computeroutput> on Windows/Linux)</para>
+</listitem><listitem><para>Type <computeroutput>&gt; Reopen in Container</computeroutput></para>
+</listitem><listitem><para>Select the appropriate container configuration</para>
+</listitem></orderedlist>
+</para>
+</sect2>
+</sect1>
+<sect1 id="md_docs_CONTRIBUTING_1autotoc_md22">
+<title>Quick Command Reference</title>
+<para><table rows="7" cols="2"><row>
+<entry thead="yes"><para>Command   </para>
+</entry><entry thead="yes"><para>Description    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>make all</computeroutput>   </para>
+</entry><entry thead="no"><para>Compile the project    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>make run</computeroutput>   </para>
+</entry><entry thead="no"><para>Run the project    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>make format</computeroutput>   </para>
+</entry><entry thead="no"><para>Format the code    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>make cppcheck</computeroutput>   </para>
+</entry><entry thead="no"><para>Run static analysis    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>make leak</computeroutput>   </para>
+</entry><entry thead="no"><para>Perform memory checks    </para>
+</entry></row>
+<row>
+<entry thead="no"><para><computeroutput>make strict</computeroutput>   </para>
+</entry><entry thead="no"><para>Run full check (static analysis + memory checks)   </para>
+</entry></row>
+</table>
+</para>
+<para>Happy coding! </para>
+</sect1>
+    </detaileddescription>
+    <location file="docs/CONTRIBUTING.md"/>
+  </compounddef>
+</doxygen>

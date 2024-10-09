@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classlogger_1_1ConsoleLogger" kind="class" language="C++" prot="public">
+    <compoundname>logger::ConsoleLogger</compoundname>
+    <basecompoundref refid="classlogger_1_1ALogger" prot="public" virt="non-virtual">logger::ALogger</basecompoundref>
+    <includes refid="ConsoleLogger_8hpp" local="no">ConsoleLogger.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classlogger_1_1ConsoleLogger_1a588a404c42db033fc4f2802a70824fbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>logger::ConsoleLogger::ConsoleLogger</definition>
+        <argsstring>()</argsstring>
+        <name>ConsoleLogger</name>
+        <briefdescription>
+<para>Constructs a new <ref refid="classlogger_1_1ConsoleLogger" kindref="compound">ConsoleLogger</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes a <computeroutput><ref refid="classlogger_1_1ConsoleLogger" kindref="compound">ConsoleLogger</ref></computeroutput> object. This constructor calls the base class constructor to initialize the logging level. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/ConsoleLogger.hpp" line="22" column="3" bodyfile="src/logger/ConsoleLogger.cpp" bodystart="11" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classlogger_1_1ConsoleLogger_1a26e888e51cb02be4a60b6981510fff54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>logger::ConsoleLogger::ConsoleLogger</definition>
+        <argsstring>(const ConsoleLogger &amp;other)</argsstring>
+        <name>ConsoleLogger</name>
+        <param>
+          <type>const <ref refid="classlogger_1_1ConsoleLogger" kindref="compound">ConsoleLogger</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Creates a new <computeroutput><ref refid="classlogger_1_1ConsoleLogger" kindref="compound">ConsoleLogger</ref></computeroutput> object as a copy of an existing one. This copy constructor initializes the new object by calling the base class constructor.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <computeroutput><ref refid="classlogger_1_1ConsoleLogger" kindref="compound">ConsoleLogger</ref></computeroutput> object to copy from. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/ConsoleLogger.hpp" line="24" column="3" bodyfile="src/logger/ConsoleLogger.cpp" bodystart="30" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classlogger_1_1ConsoleLogger_1ac85920c5cdc2b6560a52e32d6757936c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void logger::ConsoleLogger::log</definition>
+        <argsstring>(const std::string &amp;message, LogLevel level)</argsstring>
+        <name>log</name>
+        <reimplements refid="classlogger_1_1ALogger_1a432d93d4ad4a568c178492e9912e145a">log</reimplements>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacelogger_1a08ef41fb8da9e671d65fcbd87b6574a2" kindref="member">LogLevel</ref></type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>Logs a message to the console. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Outputs a log message to the console if the current log level allows it. The message is prefixed with the log level converted to a string representation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The message to log. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The log level of the message. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/ConsoleLogger.hpp" line="27" column="8" bodyfile="src/logger/ConsoleLogger.cpp" bodystart="58" bodyend="66"/>
+        <references refid="classlogger_1_1ALogger_1a993700fc347b0dc071283b42df5c8ad4" compoundref="ALogger_8cpp" startline="122" endline="124">logger::ALogger::getLogPrefix</references>
+        <references refid="classlogger_1_1ALogger_1a9122ceab60ec3ff5d240d37fcf125344" compoundref="ALogger_8hpp" startline="48">logger::ALogger::m_currentLogLevel</references>
+      </memberdef>
+      <memberdef kind="function" id="classlogger_1_1ConsoleLogger_1ab398d355ce729292792e3f79c7a3a4c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classlogger_1_1ConsoleLogger" kindref="compound">ConsoleLogger</ref> &amp;</type>
+        <definition>ConsoleLogger &amp; logger::ConsoleLogger::operator=</definition>
+        <argsstring>(const ConsoleLogger &amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classlogger_1_1ConsoleLogger" kindref="compound">ConsoleLogger</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Assigns the state of another <computeroutput><ref refid="classlogger_1_1ConsoleLogger" kindref="compound">ConsoleLogger</ref></computeroutput> object to this one. This operator allows copying of <computeroutput><ref refid="classlogger_1_1ConsoleLogger" kindref="compound">ConsoleLogger</ref></computeroutput> objects, but as <computeroutput><ref refid="classlogger_1_1ConsoleLogger" kindref="compound">ConsoleLogger</ref></computeroutput> does not have additional data members beyond those inherited from <computeroutput><ref refid="classlogger_1_1ALogger" kindref="compound">ALogger</ref></computeroutput>, the assignment is trivial.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <computeroutput><ref refid="classlogger_1_1ConsoleLogger" kindref="compound">ConsoleLogger</ref></computeroutput> object to assign from. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to this <computeroutput><ref refid="classlogger_1_1ConsoleLogger" kindref="compound">ConsoleLogger</ref></computeroutput> object. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/ConsoleLogger.hpp" line="25" column="17" bodyfile="src/logger/ConsoleLogger.cpp" bodystart="43" bodyend="46"/>
+        <references refid="classlogger_1_1ALogger_1a79c10bd36140f92374bb98ee3adb33ef" compoundref="ALogger_8cpp" startline="39" endline="44">logger::ALogger::operator=</references>
+      </memberdef>
+      <memberdef kind="function" id="classlogger_1_1ConsoleLogger_1a8aafc0f021452bedec7ea480fd3581b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>logger::ConsoleLogger::~ConsoleLogger</definition>
+        <argsstring>()</argsstring>
+        <name>~ConsoleLogger</name>
+        <briefdescription>
+<para>Destroys the <ref refid="classlogger_1_1ConsoleLogger" kindref="compound">ConsoleLogger</ref> object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Cleans up resources used by the <computeroutput><ref refid="classlogger_1_1ConsoleLogger" kindref="compound">ConsoleLogger</ref></computeroutput> object. This destructor is empty because <computeroutput><ref refid="classlogger_1_1ConsoleLogger" kindref="compound">ConsoleLogger</ref></computeroutput> does not own any dynamically allocated resources. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/logger/ConsoleLogger.hpp" line="23" column="11" bodyfile="src/logger/ConsoleLogger.cpp" bodystart="20" bodyend="20"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Logs messages to the console. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <computeroutput><ref refid="classlogger_1_1ConsoleLogger" kindref="compound">ConsoleLogger</ref></computeroutput> class is a concrete implementation of the <computeroutput><ref refid="classlogger_1_1ALogger" kindref="compound">ALogger</ref></computeroutput> abstract class, designed to output log messages to the standard output (console). It supports different log levels and formats log messages accordingly.</para>
+<para>This logger is suitable for scenarios where you want to see log messages in the console for debugging or monitoring purposes. It inherits from <computeroutput><ref refid="classlogger_1_1ALogger" kindref="compound">ALogger</ref></computeroutput>, which provides the foundational logging functionality. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>logger::ALogger</label>
+        <link refid="classlogger_1_1ALogger"/>
+      </node>
+      <node id="1">
+        <label>logger::ConsoleLogger</label>
+        <link refid="classlogger_1_1ConsoleLogger"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>logger::ALogger</label>
+        <link refid="classlogger_1_1ALogger"/>
+      </node>
+      <node id="1">
+        <label>logger::ConsoleLogger</label>
+        <link refid="classlogger_1_1ConsoleLogger"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/logger/ConsoleLogger.hpp" line="20" column="1" bodyfile="include/logger/ConsoleLogger.hpp" bodystart="20" bodyend="28"/>
+    <listofallmembers>
+      <member refid="classlogger_1_1ALogger_1a40ab0d997f116c8b520476d56d944a98" prot="public" virt="non-virtual"><scope>logger::ConsoleLogger</scope><name>ALogger</name></member>
+      <member refid="classlogger_1_1ALogger_1aab9395b0c65d7c6ad484f75ee8443dbe" prot="public" virt="non-virtual"><scope>logger::ConsoleLogger</scope><name>ALogger</name></member>
+      <member refid="classlogger_1_1ConsoleLogger_1a588a404c42db033fc4f2802a70824fbb" prot="public" virt="non-virtual"><scope>logger::ConsoleLogger</scope><name>ConsoleLogger</name></member>
+      <member refid="classlogger_1_1ConsoleLogger_1a26e888e51cb02be4a60b6981510fff54" prot="public" virt="non-virtual"><scope>logger::ConsoleLogger</scope><name>ConsoleLogger</name></member>
+      <member refid="classlogger_1_1ALogger_1a0ff4e250a3f838c5f766901aac53e645" prot="public" virt="non-virtual"><scope>logger::ConsoleLogger</scope><name>getLevel</name></member>
+      <member refid="classlogger_1_1ALogger_1aeec7dc86db5a5df42d02b494e24802cf" prot="private" virt="non-virtual"><scope>logger::ConsoleLogger</scope><name>getLogLevelAsString</name></member>
+      <member refid="classlogger_1_1ALogger_1a993700fc347b0dc071283b42df5c8ad4" prot="protected" virt="non-virtual"><scope>logger::ConsoleLogger</scope><name>getLogPrefix</name></member>
+      <member refid="classlogger_1_1ALogger_1a0b5d4d94c2eac993058f212848cab04a" prot="private" virt="non-virtual"><scope>logger::ConsoleLogger</scope><name>getTimeStamp</name></member>
+      <member refid="classlogger_1_1ConsoleLogger_1ac85920c5cdc2b6560a52e32d6757936c" prot="public" virt="virtual"><scope>logger::ConsoleLogger</scope><name>log</name></member>
+      <member refid="classlogger_1_1ALogger_1a9122ceab60ec3ff5d240d37fcf125344" prot="protected" virt="non-virtual"><scope>logger::ConsoleLogger</scope><name>m_currentLogLevel</name></member>
+      <member refid="classlogger_1_1ConsoleLogger_1ab398d355ce729292792e3f79c7a3a4c4" prot="public" virt="non-virtual"><scope>logger::ConsoleLogger</scope><name>operator=</name></member>
+      <member refid="classlogger_1_1ALogger_1a79c10bd36140f92374bb98ee3adb33ef" prot="public" virt="non-virtual" ambiguityscope="logger::ALogger::"><scope>logger::ConsoleLogger</scope><name>operator=</name></member>
+      <member refid="classlogger_1_1ALogger_1a601ae64c4455599cb8be6e03edd3f469" prot="public" virt="non-virtual"><scope>logger::ConsoleLogger</scope><name>setLevel</name></member>
+      <member refid="classlogger_1_1ALogger_1ae489d5ee98076eaf1614e1b196aaefe9" prot="public" virt="virtual"><scope>logger::ConsoleLogger</scope><name>~ALogger</name></member>
+      <member refid="classlogger_1_1ConsoleLogger_1a8aafc0f021452bedec7ea480fd3581b5" prot="public" virt="virtual"><scope>logger::ConsoleLogger</scope><name>~ConsoleLogger</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
