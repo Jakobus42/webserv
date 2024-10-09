@@ -23,7 +23,9 @@ jobs:
         run: sudo apt-get install -y doxygen graphviz
 
       - name: Download Doxygen Awesome CSS
-        run: curl -o doxygen-awesome.css https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome.css
+        run: | 
+          curl -o doxygen-awesome.css https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome.css
+          curl -o doxygen-awesome-darkmode-toggle.js https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome-darkmode-toggle.js
 
       - name: Generate Doxygen documentation
         run: doxygen Doxyfile
