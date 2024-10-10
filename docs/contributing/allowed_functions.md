@@ -1,7 +1,3 @@
-Here is your content formatted neatly:
-
----
-
 # Allowed Functions
 
 - **execve**
