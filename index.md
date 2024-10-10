@@ -4,7 +4,7 @@ Welcome to the **Webserv** project documentation. This site provides an in-depth
 
 ## Table of Contents
 
-### 1. [Code Documentation](doxygen_output/html/index.html)
+### 1. [Code Documentation](html/index.html)
 
 ### 2. [Getting Started](contributing/getting_started.md)
 
