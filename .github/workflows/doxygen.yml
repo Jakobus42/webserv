@@ -19,27 +19,30 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          submodules: recursive
 
       - name: Install Doxygen
-        run: sudo apt-get install -y doxygen graphviz
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen
 
-      - name: Download Doxygen Awesome CSS
-        run: | 
-          curl -o doxygen-awesome.css https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome.css
-          curl -o doxygen-awesome-darkmode-toggle.js https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/main/doxygen-awesome-darkmode-toggle.js
+      - name: Install Graphviz
+        run: |
+          sudo apt-get install -y graphviz
+
+      - name: Download awesome-doxygen
+        run: |
+          git clone https://github.com/jothepro/doxygen-awesome-css.git
+          cp doxygen-awesome-css/doxygen-awesome.css docs/
 
       - name: Generate Doxygen documentation
-        run: doxygen Doxyfile
-
-      - name: Deploy to Docs Branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config --global user.name 'Jakobus42'
-          git config --global user.email 'Jakob.sadjina@icloud.com'
-          git checkout --orphan docs
-          git rm -rf .
-          cp -r ./docs_output/html/* .
-          git add .
-          git commit -m "Deploy updated Doxygen documentation" --no-verify
-          git push -f https://x-access-token:$GITHUB_TOKEN@github.com/Jakobus42/webserv.git docs
+          cd docs && doxygen Doxyfile
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/html
+          destination_dir: .

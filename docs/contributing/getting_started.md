@@ -1,16 +1,53 @@
-# Quick Start
+# Getting Started
 
 ## Table of Contents
-1. [Getting Started](#getting-started)
-2. [Development Workflow](#development-workflow)
-3. [Coding Standards](#coding-standards)
-4. [Building and Testing](#building-and-testing)
-5. [Documentation](#documentation)
-6. [Pull Requests](#pull-requests)
-7. [Docker and VS Code Integration](#docker-and-vs-code-integration)
-8. [Quick Command Reference](#quick-command-reference)
+1. [Development Workflow](#development-workflow)
+2. [Conventions](#getting-started)
+3. [Building and Testing](#building-and-testing)
+4. [Documentation](#documentation)
+5. [Pull Requests](#pull-requests)
+6. [Docker and VS Code Integration](#docker-and-vs-code-integration)
+7. [Quick Command Reference](#quick-command-reference)
 
-## Getting Started
+## Development Workflow
+
+### Pre-Commit Hooks
+- Automatic checks run on each commit:
+  - Code formatting
+  - Commit message validation
+- To manually format code:
+  ```
+  make format
+  ```
+  This applies Google style formatting to your code.
+
+### New Class Creation
+Use the provided script to create new classes:
+
+```
+./createClass.sh <subfolder> <className>
+```
+
+Example:
+```
+./createClass.sh logger LoggerManager
+```
+
+This will:
+- Create a `.hpp` file in `include/<subfolder>/`
+- Create a `.cpp` file in `src/<subfolder>/`
+- Generate a class with default constructor, destructor, copy constructor, copy assignment operator, and Doxygen documentation
+
+## Conventions
+
+### Naming Conventions
+- Class Names: PascalCase (e.g., `UserManager`)
+- Function Names: camelCase, start with a verb (e.g., `getUserById()`)
+- Variable Names: camelCase (e.g., `userCount`)
+- Constants: ALL_CAPS with underscores (e.g., `MAX_USERS`)
+- Private Member Variables: Prefix with `m_` followed by camelCase (e.g., `m_userCount`)
+- Enum Names: PascalCase for enum name, ALL_CAPS for values
+- Namespace Names: lowercase (e.g., `namespace utils {}`)
 
 ### Branch Naming Convention
 Create a new branch for your work using one of the following prefixes:
@@ -43,46 +80,6 @@ Allowed types:
 - `ci`: Changes to CI configuration files and scripts
 - `build`: Changes that affect the build system or external dependencies
 
-## Development Workflow
-
-### Pre-Commit Hooks
-- Automatic checks run on each commit:
-  - Code formatting
-  - Commit message validation
-- To manually format code:
-  ```
-  make format
-  ```
-  This applies Google style formatting to your code.
-
-### New Class Creation
-Use the provided script to create new classes:
-
-```
-./createClass.sh <subfolder> <className>
-```
-
-Example:
-```
-./createClass.sh logger LoggerManager
-```
-
-This will:
-- Create a `.hpp` file in `include/<subfolder>/`
-- Create a `.cpp` file in `src/<subfolder>/`
-- Generate a class with default constructor, destructor, copy constructor, copy assignment operator, and Doxygen documentation
-
-## Coding Standards
-
-### Naming Conventions
-- Class Names: PascalCase (e.g., `UserManager`)
-- Function Names: camelCase, start with a verb (e.g., `getUserById()`)
-- Variable Names: camelCase (e.g., `userCount`)
-- Constants: ALL_CAPS with underscores (e.g., `MAX_USERS`)
-- Private Member Variables: Prefix with `m_` followed by camelCase (e.g., `m_userCount`)
-- Enum Names: PascalCase for enum name, ALL_CAPS for values
-- Namespace Names: lowercase (e.g., `namespace utils {}`)
-
 ## Building and Testing
 
 ### Compilation
@@ -113,7 +110,7 @@ This runs both static analysis and memory checks.
 
 ## Pull Requests
 1. Ensure all tests pass, code is properly formatted and documented
-2. Open a Pull Request (PR) when your work is ready for review
+2. Open a Pull Request when your work is ready for review
 3. Provide a clear description of the changes in your PR
 
 ## Docker and VS Code Integration
