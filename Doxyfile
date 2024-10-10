@@ -1,5 +1,0 @@
-PROJECT_NAME            = "Webserv"
-INPUT                   = ../src ../include .
-FILE_PATTERNS           = *.cpp *.h *.hpp
-RECURSIVE               = YES
-GENERATE_HTML           = YES
