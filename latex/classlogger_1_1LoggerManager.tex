@@ -1,0 +1,171 @@
+\hypertarget{classlogger_1_1LoggerManager}{}\doxysection{logger\+::Logger\+Manager Class Reference}
+\label{classlogger_1_1LoggerManager}\index{logger::LoggerManager@{logger::LoggerManager}}
+
+
+Manages multiple loggers and handles global logging operations.  
+
+
+
+
+{\ttfamily \#include $<$Logger\+Manager.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classlogger_1_1LoggerManager_ae26ebcbad9c6e4f85769438abac46db5}{register\+Logger}} (const std\+::string \&logger\+Name, \mbox{\hyperlink{classlogger_1_1ALogger}{ALogger}} $\ast$logger)
+\begin{DoxyCompactList}\small\item\em Registers a new logger with the manager. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlogger_1_1LoggerManager_adf2a8a1ad83a5404d6249518fa460971}{unregister\+Logger}} (const std\+::string \&logger\+Name)
+\begin{DoxyCompactList}\small\item\em Unregisters a logger from the manager. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlogger_1_1LoggerManager_a539f10100bd82dadfa0fffe8f77b9547}{log}} (const std\+::string \&message, Log\+Level level)
+\begin{DoxyCompactList}\small\item\em Logs a message to all registered loggers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlogger_1_1LoggerManager_a45d840b2a9bd9fbfccb34689ddc79527}{set\+Logger\+Level}} (const std\+::string \&logger\+Name, Log\+Level level)
+\begin{DoxyCompactList}\small\item\em Sets the log level for a specific logger. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlogger_1_1LoggerManager_a7237ff5a6cead3d670328feb6ea60cbd}{set\+Global\+Log\+Level}} (Log\+Level level)
+\begin{DoxyCompactList}\small\item\em Sets the global log level. \end{DoxyCompactList}\item 
+Log\+Level \mbox{\hyperlink{classlogger_1_1LoggerManager_a9b189b4a2165b561d16ccc31021ee4b0}{get\+Global\+Log\+Level}} () const
+\begin{DoxyCompactList}\small\item\em Gets the current global log level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classlogger_1_1LoggerManager}{Logger\+Manager}} \& \mbox{\hyperlink{classlogger_1_1LoggerManager_ad140bde7c3a4c9241fb147f2c864d018}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Provides access to the singleton instance of \mbox{\hyperlink{classlogger_1_1LoggerManager}{Logger\+Manager}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages multiple loggers and handles global logging operations. 
+
+The {\ttfamily \mbox{\hyperlink{classlogger_1_1LoggerManager}{Logger\+Manager}}} class is a singleton that manages a collection of loggers, each identified by a unique name. It provides functionality to register and unregister loggers, set log levels, and log messages to all registered loggers. It also supports setting and retrieving a global log level that controls the logging behavior across all loggers. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlogger_1_1LoggerManager_a9b189b4a2165b561d16ccc31021ee4b0}\label{classlogger_1_1LoggerManager_a9b189b4a2165b561d16ccc31021ee4b0}} 
+\index{logger::LoggerManager@{logger::LoggerManager}!getGlobalLogLevel@{getGlobalLogLevel}}
+\index{getGlobalLogLevel@{getGlobalLogLevel}!logger::LoggerManager@{logger::LoggerManager}}
+\doxysubsubsection{\texorpdfstring{getGlobalLogLevel()}{getGlobalLogLevel()}}
+{\footnotesize\ttfamily Log\+Level logger\+::\+Logger\+Manager\+::get\+Global\+Log\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the current global log level. 
+
+Retrieves the global log level, which determines the minimum level of messages that will be processed by the manager.
+
+\begin{DoxyReturn}{Returns}
+The current global log level. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlogger_1_1LoggerManager_ad140bde7c3a4c9241fb147f2c864d018}\label{classlogger_1_1LoggerManager_ad140bde7c3a4c9241fb147f2c864d018}} 
+\index{logger::LoggerManager@{logger::LoggerManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!logger::LoggerManager@{logger::LoggerManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlogger_1_1LoggerManager}{Logger\+Manager}} \& logger\+::\+Logger\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Provides access to the singleton instance of \mbox{\hyperlink{classlogger_1_1LoggerManager}{Logger\+Manager}}. 
+
+This method ensures that only one instance of {\ttfamily \mbox{\hyperlink{classlogger_1_1LoggerManager}{Logger\+Manager}}} exists and provides access to it. The instance is created on first use and is returned for all subsequent calls.
+
+\begin{DoxyReturn}{Returns}
+A reference to the singleton {\ttfamily \mbox{\hyperlink{classlogger_1_1LoggerManager}{Logger\+Manager}}} instance. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlogger_1_1LoggerManager_a539f10100bd82dadfa0fffe8f77b9547}\label{classlogger_1_1LoggerManager_a539f10100bd82dadfa0fffe8f77b9547}} 
+\index{logger::LoggerManager@{logger::LoggerManager}!log@{log}}
+\index{log@{log}!logger::LoggerManager@{logger::LoggerManager}}
+\doxysubsubsection{\texorpdfstring{log()}{log()}}
+{\footnotesize\ttfamily void logger\+::\+Logger\+Manager\+::log (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message,  }\item[{Log\+Level}]{level }\end{DoxyParamCaption})}
+
+
+
+Logs a message to all registered loggers. 
+
+Sends a log message to all loggers that have been registered with the manager, provided that the global log level allows for the message to be logged.
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message to log. \\
+\hline
+{\em level} & The log level of the message. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlogger_1_1LoggerManager_ae26ebcbad9c6e4f85769438abac46db5}\label{classlogger_1_1LoggerManager_ae26ebcbad9c6e4f85769438abac46db5}} 
+\index{logger::LoggerManager@{logger::LoggerManager}!registerLogger@{registerLogger}}
+\index{registerLogger@{registerLogger}!logger::LoggerManager@{logger::LoggerManager}}
+\doxysubsubsection{\texorpdfstring{registerLogger()}{registerLogger()}}
+{\footnotesize\ttfamily void logger\+::\+Logger\+Manager\+::register\+Logger (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{logger\+Name,  }\item[{\mbox{\hyperlink{classlogger_1_1ALogger}{ALogger}} $\ast$}]{logger }\end{DoxyParamCaption})}
+
+
+
+Registers a new logger with the manager. 
+
+Adds a logger to the manager\textquotesingle{}s collection, associating it with a specified name. If a logger with the same name already exists, it will be replaced.
+
+
+\begin{DoxyParams}{Parameters}
+{\em logger\+Name} & The name to associate with the logger. \\
+\hline
+{\em logger} & A shared pointer to the {\ttfamily \mbox{\hyperlink{classlogger_1_1ALogger}{ALogger}}} object to register. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlogger_1_1LoggerManager_a7237ff5a6cead3d670328feb6ea60cbd}\label{classlogger_1_1LoggerManager_a7237ff5a6cead3d670328feb6ea60cbd}} 
+\index{logger::LoggerManager@{logger::LoggerManager}!setGlobalLogLevel@{setGlobalLogLevel}}
+\index{setGlobalLogLevel@{setGlobalLogLevel}!logger::LoggerManager@{logger::LoggerManager}}
+\doxysubsubsection{\texorpdfstring{setGlobalLogLevel()}{setGlobalLogLevel()}}
+{\footnotesize\ttfamily void logger\+::\+Logger\+Manager\+::set\+Global\+Log\+Level (\begin{DoxyParamCaption}\item[{Log\+Level}]{level }\end{DoxyParamCaption})}
+
+
+
+Sets the global log level. 
+
+Changes the global log level. Only messages with a log level equal to or higher than the new global level will be processed by the manager.
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & The new global log level. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlogger_1_1LoggerManager_a45d840b2a9bd9fbfccb34689ddc79527}\label{classlogger_1_1LoggerManager_a45d840b2a9bd9fbfccb34689ddc79527}} 
+\index{logger::LoggerManager@{logger::LoggerManager}!setLoggerLevel@{setLoggerLevel}}
+\index{setLoggerLevel@{setLoggerLevel}!logger::LoggerManager@{logger::LoggerManager}}
+\doxysubsubsection{\texorpdfstring{setLoggerLevel()}{setLoggerLevel()}}
+{\footnotesize\ttfamily void logger\+::\+Logger\+Manager\+::set\+Logger\+Level (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{logger\+Name,  }\item[{Log\+Level}]{level }\end{DoxyParamCaption})}
+
+
+
+Sets the log level for a specific logger. 
+
+Changes the logging level of a specific logger by its name. Only messages with a log level equal to or higher than the new level will be logged by that logger.
+
+
+\begin{DoxyParams}{Parameters}
+{\em logger\+Name} & The name of the logger whose level to set. \\
+\hline
+{\em level} & The new log level for the specified logger. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & If the logger with the specified name is not found. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classlogger_1_1LoggerManager_adf2a8a1ad83a5404d6249518fa460971}\label{classlogger_1_1LoggerManager_adf2a8a1ad83a5404d6249518fa460971}} 
+\index{logger::LoggerManager@{logger::LoggerManager}!unregisterLogger@{unregisterLogger}}
+\index{unregisterLogger@{unregisterLogger}!logger::LoggerManager@{logger::LoggerManager}}
+\doxysubsubsection{\texorpdfstring{unregisterLogger()}{unregisterLogger()}}
+{\footnotesize\ttfamily void logger\+::\+Logger\+Manager\+::unregister\+Logger (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{logger\+Name }\end{DoxyParamCaption})}
+
+
+
+Unregisters a logger from the manager. 
+
+Removes the logger associated with the given name from the manager\textquotesingle{}s collection. If no logger with the specified name exists, this operation has no effect.
+
+
+\begin{DoxyParams}{Parameters}
+{\em logger\+Name} & The name of the logger to unregister. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/runner/work/webserv/webserv/include/logger/Logger\+Manager.\+hpp\item 
+/home/runner/work/webserv/webserv/src/logger/Logger\+Manager.\+cpp\end{DoxyCompactItemize}
