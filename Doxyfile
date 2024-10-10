@@ -1,9 +1,0 @@
-PROJECT_NAME            = "Webserv"
-INPUT                   = ../src ../include .
-FILE_PATTERNS           = *.cpp *.h *.hpp *.md 
-RECURSIVE               = YES
-GENERATE_HTML           = YES
-GENERATE_LATEX         = NO
-
-EXTENSION_MAPPING      = md=markdown
-USE_MDFILE_AS_MAINPAGE = index.md
