@@ -11,7 +11,6 @@
 
 ## Development Workflow
 
-
 ### Pre-Commit Hooks
 - Automatic checks run on each commit:
   - Code formatting
