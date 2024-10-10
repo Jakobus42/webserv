@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['webserv_20documentation_17',['Webserv Documentation',['../index.html',1,'']]]
+  ['_7ealogger_17',['~ALogger',['../classlogger_1_1ALogger.html#ae489d5ee98076eaf1614e1b196aaefe9',1,'logger::ALogger']]],
+  ['_7econsolelogger_18',['~ConsoleLogger',['../classlogger_1_1ConsoleLogger.html#a8aafc0f021452bedec7ea480fd3581b5',1,'logger::ConsoleLogger']]],
+  ['_7efilelogger_19',['~FileLogger',['../classlogger_1_1FileLogger.html#a8c70b89657187c8334a38a903c8c7329',1,'logger::FileLogger']]]
 ];
