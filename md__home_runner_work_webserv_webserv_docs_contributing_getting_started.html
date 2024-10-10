@@ -63,7 +63,7 @@ $(document).ready(function(){initNavTree('md__home_runner_work_webserv_webserv_d
 <div class="title">Getting Started </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md3"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md2"></a>
 Table of Contents</h1>
 <ol type="1">
 <li><a href="#development-workflow">Development Workflow</a></li>
@@ -74,9 +74,9 @@ Table of Contents</h1>
 <li><a href="#docker-and-vs-code-integration">Docker and VS Code Integration</a></li>
 <li><a href="#quick-command-reference">Quick Command Reference</a></li>
 </ol>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md3"></a>
 Development Workflow</h1>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 Pre-Commit Hooks</h2>
 <ul>
 <li>Automatic checks run on each commit:<ul>
@@ -87,7 +87,7 @@ Pre-Commit Hooks</h2>
 <li>To manually format code: <div class="fragment"><div class="line">make format</div>
 </div><!-- fragment --> This applies Google style formatting to your code.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 New Class Creation</h2>
 <p>Use the provided script to create new classes:</p>
 <div class="fragment"><div class="line">./createClass.sh &lt;subfolder&gt; &lt;className&gt;</div>
@@ -97,9 +97,9 @@ New Class Creation</h2>
 <li>Create a <code>.cpp</code> file in <code>src/&lt;subfolder&gt;/</code></li>
 <li>Generate a class with default constructor, destructor, copy constructor, copy assignment operator, and Doxygen documentation</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md6"></a>
 Conventions</h1>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Naming Conventions</h2>
 <ul>
 <li>Class Names: PascalCase (e.g., <code>UserManager</code>)</li>
@@ -110,7 +110,7 @@ Naming Conventions</h2>
 <li>Enum Names: PascalCase for enum name, ALL_CAPS for values</li>
 <li>Namespace Names: lowercase (e.g., <code>namespace utils {}</code>)</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 Branch Naming Convention</h2>
 <p>Create a new branch for your work using one of the following prefixes:</p><ul>
 <li><code>feat/</code>: For new features</li>
@@ -121,7 +121,7 @@ Branch Naming Convention</h2>
 </ul>
 <p>Example: <code>feat/add-user-authentication</code></p>
 <p>Avoid working directly on the <code>main</code> branch.</p>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Commit Message Convention</h2>
 <p>Use clear, descriptive commit messages following this format: </p><div class="fragment"><div class="line">&lt;type&gt;: &lt;description&gt;</div>
 <div class="line">[optional body]</div>
@@ -137,47 +137,47 @@ Commit Message Convention</h2>
 <li><code>ci</code>: Changes to CI configuration files and scripts</li>
 <li><code>build</code>: Changes that affect the build system or external dependencies</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md11"></a>
+<h1><a class="anchor" id="autotoc_md10"></a>
 Building and Testing</h1>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Compilation</h2>
 <div class="fragment"><div class="line">make all</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md12"></a>
 Running the Project</h2>
 <div class="fragment"><div class="line">make run</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
 Static Analysis</h2>
 <div class="fragment"><div class="line">make cppcheck</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
 Memory Checks</h2>
 <div class="fragment"><div class="line">make leak</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
 Comprehensive Check</h2>
 <div class="fragment"><div class="line">make strict</div>
 </div><!-- fragment --><p> This runs both static analysis and memory checks.</p>
-<h1><a class="anchor" id="autotoc_md17"></a>
+<h1><a class="anchor" id="autotoc_md16"></a>
 Pull Requests</h1>
 <ol type="1">
 <li>Ensure all tests pass, code is properly formatted and documented</li>
 <li>Open a Pull Request when your work is ready for review</li>
 <li>Provide a clear description of the changes in your PR</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md18"></a>
+<h1><a class="anchor" id="autotoc_md17"></a>
 Docker and VS Code Integration</h1>
-<h2><a class="anchor" id="autotoc_md19"></a>
+<h2><a class="anchor" id="autotoc_md18"></a>
 Building Docker Image</h2>
 <div class="fragment"><div class="line">docker build -t template .</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md20"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md19"></a>
 Running Container</h2>
 <div class="fragment"><div class="line">docker run -it --rm -v ~/.ssh:/root/.ssh -v ~/.zshrc:/root/.zshrc template</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md21"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md20"></a>
 VS Code Setup</h2>
 <ol type="1">
 <li>Press <code>Cmd + P</code> (or <code>Ctrl + P</code> on Windows/Linux)</li>
 <li>Type <code>&gt; Reopen in Container</code></li>
 <li>Select the appropriate container configuration</li>
 </ol>
-<h1><a class="anchor" id="autotoc_md22"></a>
+<h1><a class="anchor" id="autotoc_md21"></a>
 Quick Command Reference</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
