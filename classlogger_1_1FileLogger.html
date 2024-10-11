@@ -206,11 +206,11 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="FileLogger_8cpp_source.html#l00024">24</a> of file <a class="el" href="FileLogger_8cpp_source.html">FileLogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    : <a class="code" href="classlogger_1_1ALogger.html#a40ab0d997f116c8b520476d56d944a98">ALogger</a>(), <a class="code" href="classlogger_1_1FileLogger.html#ad798ac8c8d7da29489e6a72ff495e773">m_logFile</a>(filename.c_str(), std::ofstream::out) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="classlogger_1_1FileLogger.html#ad798ac8c8d7da29489e6a72ff495e773">m_logFile</a>.is_open()) {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Failed to open log file: &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                                                : <a class="code" href="classlogger_1_1ALogger.html#a40ab0d997f116c8b520476d56d944a98">ALogger</a>(), <a class="code" href="classlogger_1_1FileLogger.html#ad798ac8c8d7da29489e6a72ff495e773">m_logFile</a>(filename.c_str(), std::ofstream::out) {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="classlogger_1_1FileLogger.html#ad798ac8c8d7da29489e6a72ff495e773">m_logFile</a>.is_open()) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Failed to open log file: &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -240,12 +240,12 @@ Additional Inherited Members</h2></td></tr>
 <p>Destroys the <a class="el" href="classlogger_1_1FileLogger.html" title="Logs messages to a specified file.">FileLogger</a> object. </p>
 <p>Closes the log file if it is open. </p>
 
-<p class="definition">Definition at line <a class="el" href="FileLogger_8cpp_source.html#l00036">36</a> of file <a class="el" href="FileLogger_8cpp_source.html">FileLogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                        {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classlogger_1_1FileLogger.html#ad798ac8c8d7da29489e6a72ff495e773">m_logFile</a>.is_open()) {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classlogger_1_1FileLogger.html#ad798ac8c8d7da29489e6a72ff495e773">m_logFile</a>.close();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="FileLogger_8cpp_source.html#l00035">35</a> of file <a class="el" href="FileLogger_8cpp_source.html">FileLogger.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                        {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classlogger_1_1FileLogger.html#ad798ac8c8d7da29489e6a72ff495e773">m_logFile</a>.is_open()) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="classlogger_1_1FileLogger.html#ad798ac8c8d7da29489e6a72ff495e773">m_logFile</a>.close();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -274,8 +274,8 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="FileLogger_8cpp_source.html#l00049">49</a> of file <a class="el" href="FileLogger_8cpp_source.html">FileLogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;: <a class="code" href="classlogger_1_1ALogger.html#a40ab0d997f116c8b520476d56d944a98">ALogger</a>(other) {}</div>
+<p class="definition">Definition at line <a class="el" href="FileLogger_8cpp_source.html#l00048">48</a> of file <a class="el" href="FileLogger_8cpp_source.html">FileLogger.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;: <a class="code" href="classlogger_1_1ALogger.html#a40ab0d997f116c8b520476d56d944a98">ALogger</a>(other) {}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -325,22 +325,22 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classlogger_1_1ALogger.html#a432d93d4ad4a568c178492e9912e145a">logger::ALogger</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="FileLogger_8cpp_source.html#l00072">72</a> of file <a class="el" href="FileLogger_8cpp_source.html">FileLogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                                             {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="classlogger_1_1FileLogger.html#ad798ac8c8d7da29489e6a72ff495e773">m_logFile</a>.is_open()) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Log file is not open.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classlogger_1_1ALogger.html#a9122ceab60ec3ff5d240d37fcf125344">m_currentLogLevel</a> &lt;= level) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <a class="code" href="classlogger_1_1FileLogger.html#ad798ac8c8d7da29489e6a72ff495e773">m_logFile</a> &lt;&lt; <a class="code" href="classlogger_1_1ALogger.html#a993700fc347b0dc071283b42df5c8ad4">getLogPrefix</a>(level) &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; message &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      std::cerr &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="FileLogger_8cpp_source.html#l00071">71</a> of file <a class="el" href="FileLogger_8cpp_source.html">FileLogger.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                                             {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordflow">if</span> (!<a class="code" href="classlogger_1_1FileLogger.html#ad798ac8c8d7da29489e6a72ff495e773">m_logFile</a>.is_open()) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Log file is not open.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classlogger_1_1ALogger.html#a9122ceab60ec3ff5d240d37fcf125344">m_currentLogLevel</a> &lt;= level) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <a class="code" href="classlogger_1_1FileLogger.html#ad798ac8c8d7da29489e6a72ff495e773">m_logFile</a> &lt;&lt; <a class="code" href="classlogger_1_1ALogger.html#a993700fc347b0dc071283b42df5c8ad4">getLogPrefix</a>(level) &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; message &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      std::cerr &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
 <div class="ttc" id="aclasslogger_1_1ALogger_html_a9122ceab60ec3ff5d240d37fcf125344"><div class="ttname"><a href="classlogger_1_1ALogger.html#a9122ceab60ec3ff5d240d37fcf125344">logger::ALogger::m_currentLogLevel</a></div><div class="ttdeci">LogLevel m_currentLogLevel</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8hpp_source.html#l00048">ALogger.hpp:48</a></div></div>
-<div class="ttc" id="aclasslogger_1_1ALogger_html_a993700fc347b0dc071283b42df5c8ad4"><div class="ttname"><a href="classlogger_1_1ALogger.html#a993700fc347b0dc071283b42df5c8ad4">logger::ALogger::getLogPrefix</a></div><div class="ttdeci">static std::string getLogPrefix(LogLevel level)</div><div class="ttdoc">Creates Prefix for Logs.</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8cpp_source.html#l00122">ALogger.cpp:122</a></div></div>
+<div class="ttc" id="aclasslogger_1_1ALogger_html_a993700fc347b0dc071283b42df5c8ad4"><div class="ttname"><a href="classlogger_1_1ALogger.html#a993700fc347b0dc071283b42df5c8ad4">logger::ALogger::getLogPrefix</a></div><div class="ttdeci">static std::string getLogPrefix(LogLevel level)</div><div class="ttdoc">Creates Prefix for Logs.</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8cpp_source.html#l00121">ALogger.cpp:121</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -381,14 +381,14 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to this <code><a class="el" href="classlogger_1_1FileLogger.html" title="Logs messages to a specified file.">FileLogger</a></code> object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="FileLogger_8cpp_source.html#l00059">59</a> of file <a class="el" href="FileLogger_8cpp_source.html">FileLogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                                         {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordflow">if</span> (<span class="keyword">this</span> != &amp;other) {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="classlogger_1_1ALogger.html#a79c10bd36140f92374bb98ee3adb33ef">ALogger::operator=</a>(other);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
-<div class="ttc" id="aclasslogger_1_1ALogger_html_a79c10bd36140f92374bb98ee3adb33ef"><div class="ttname"><a href="classlogger_1_1ALogger.html#a79c10bd36140f92374bb98ee3adb33ef">logger::ALogger::operator=</a></div><div class="ttdeci">ALogger &amp; operator=(const ALogger &amp;other)</div><div class="ttdoc">Copy assignment operator.</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8cpp_source.html#l00039">ALogger.cpp:39</a></div></div>
+<p class="definition">Definition at line <a class="el" href="FileLogger_8cpp_source.html#l00058">58</a> of file <a class="el" href="FileLogger_8cpp_source.html">FileLogger.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                                                         {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">if</span> (<span class="keyword">this</span> != &amp;other) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="classlogger_1_1ALogger.html#a79c10bd36140f92374bb98ee3adb33ef">ALogger::operator=</a>(other);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="ttc" id="aclasslogger_1_1ALogger_html_a79c10bd36140f92374bb98ee3adb33ef"><div class="ttname"><a href="classlogger_1_1ALogger.html#a79c10bd36140f92374bb98ee3adb33ef">logger::ALogger::operator=</a></div><div class="ttdeci">ALogger &amp; operator=(const ALogger &amp;other)</div><div class="ttdoc">Copy assignment operator.</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8cpp_source.html#l00038">ALogger.cpp:38</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

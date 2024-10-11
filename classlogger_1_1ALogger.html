@@ -230,7 +230,7 @@ Static Private Member Functions</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="ALogger_8cpp_source.html#l00028">28</a> of file <a class="el" href="ALogger_8cpp_source.html">ALogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    : <a class="code" href="classlogger_1_1ALogger.html#a9122ceab60ec3ff5d240d37fcf125344">m_currentLogLevel</a>(other.m_currentLogLevel) {}</div>
+<div class="fragment"><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;: <a class="code" href="classlogger_1_1ALogger.html#a9122ceab60ec3ff5d240d37fcf125344">m_currentLogLevel</a>(other.m_currentLogLevel) {}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -254,8 +254,8 @@ Static Private Member Functions</h2></td></tr>
 <p>Retrieves the current log level of the logger.</p>
 <dl class="section return"><dt>Returns</dt><dd>The current log level. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ALogger_8cpp_source.html#l00063">63</a> of file <a class="el" href="ALogger_8cpp_source.html">ALogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classlogger_1_1ALogger.html#a9122ceab60ec3ff5d240d37fcf125344">m_currentLogLevel</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="ALogger_8cpp_source.html#l00062">62</a> of file <a class="el" href="ALogger_8cpp_source.html">ALogger.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classlogger_1_1ALogger.html#a9122ceab60ec3ff5d240d37fcf125344">m_currentLogLevel</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -293,22 +293,22 @@ Static Private Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string representing the provided log level. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ALogger_8cpp_source.html#l00074">74</a> of file <a class="el" href="ALogger_8cpp_source.html">ALogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                                     {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordflow">switch</span> (level) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c">logger::DEBUG</a>:</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <span class="keywordflow">return</span> std::string(<a class="code" href="namespacelogger.html#a4bdf4a007480caa09a13bc5ed26eb58a">DEBUG_COLOR</a>) + <span class="stringliteral">&quot;[DEBUG]  &quot;</span> + <a class="code" href="namespacelogger.html#a78195500ea706df91bdd58cf8020f1ea">RESET</a>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2aee60ac495f4eb6180461caa975e30732">logger::INFO</a>:</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <span class="keywordflow">return</span> std::string(<a class="code" href="namespacelogger.html#ab62ed0a1ac8927bd416d1dc7eba37001">INFO_COLOR</a>) + <span class="stringliteral">&quot;[INFO]   &quot;</span> + <a class="code" href="namespacelogger.html#a78195500ea706df91bdd58cf8020f1ea">RESET</a>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2af962c30f6356d10c93ed16a802e7adf7">logger::WARNING</a>:</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <span class="keywordflow">return</span> std::string(<a class="code" href="namespacelogger.html#a3114cb96ac58326da2e4bb97f7cdf792">WARNING_COLOR</a>) + <span class="stringliteral">&quot;[WARNING]&quot;</span> + <a class="code" href="namespacelogger.html#a78195500ea706df91bdd58cf8020f1ea">RESET</a>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601">logger::ERROR</a>:</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="keywordflow">return</span> std::string(<a class="code" href="namespacelogger.html#a4065c149e6d1faaed9469c3138c54ebb">ERROR_COLOR</a>) + <span class="stringliteral">&quot;[ERROR]  &quot;</span> + <a class="code" href="namespacelogger.html#a78195500ea706df91bdd58cf8020f1ea">RESET</a>;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2a6526ebf74c120c19c814fb5b34ad2dd4">logger::FATAL</a>:</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="keywordflow">return</span> std::string(<a class="code" href="namespacelogger.html#ac01e6f4a115fd8f03b975f063c39637b">FATAL_COLOR</a>) + <span class="stringliteral">&quot;[FATAL]  &quot;</span> + <a class="code" href="namespacelogger.html#a78195500ea706df91bdd58cf8020f1ea">RESET</a>;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;invalid log level&quot;</span>);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="ALogger_8cpp_source.html#l00073">73</a> of file <a class="el" href="ALogger_8cpp_source.html">ALogger.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                                     {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordflow">switch</span> (level) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c">logger::DEBUG</a>:</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="keywordflow">return</span> std::string(<a class="code" href="namespacelogger.html#a4bdf4a007480caa09a13bc5ed26eb58a">DEBUG_COLOR</a>) + <span class="stringliteral">&quot;[DEBUG]  &quot;</span> + <a class="code" href="namespacelogger.html#a78195500ea706df91bdd58cf8020f1ea">RESET</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2aee60ac495f4eb6180461caa975e30732">logger::INFO</a>:</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <span class="keywordflow">return</span> std::string(<a class="code" href="namespacelogger.html#ab62ed0a1ac8927bd416d1dc7eba37001">INFO_COLOR</a>) + <span class="stringliteral">&quot;[INFO]   &quot;</span> + <a class="code" href="namespacelogger.html#a78195500ea706df91bdd58cf8020f1ea">RESET</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2af962c30f6356d10c93ed16a802e7adf7">logger::WARNING</a>:</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="keywordflow">return</span> std::string(<a class="code" href="namespacelogger.html#a3114cb96ac58326da2e4bb97f7cdf792">WARNING_COLOR</a>) + <span class="stringliteral">&quot;[WARNING]&quot;</span> + <a class="code" href="namespacelogger.html#a78195500ea706df91bdd58cf8020f1ea">RESET</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601">logger::ERROR</a>:</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="keywordflow">return</span> std::string(<a class="code" href="namespacelogger.html#a4065c149e6d1faaed9469c3138c54ebb">ERROR_COLOR</a>) + <span class="stringliteral">&quot;[ERROR]  &quot;</span> + <a class="code" href="namespacelogger.html#a78195500ea706df91bdd58cf8020f1ea">RESET</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2a6526ebf74c120c19c814fb5b34ad2dd4">logger::FATAL</a>:</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="keywordflow">return</span> std::string(<a class="code" href="namespacelogger.html#ac01e6f4a115fd8f03b975f063c39637b">FATAL_COLOR</a>) + <span class="stringliteral">&quot;[FATAL]  &quot;</span> + <a class="code" href="namespacelogger.html#a78195500ea706df91bdd58cf8020f1ea">RESET</a>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordflow">throw</span> std::invalid_argument(<span class="stringliteral">&quot;invalid log level&quot;</span>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
 <div class="ttc" id="anamespacelogger_html_a08ef41fb8da9e671d65fcbd87b6574a2a6526ebf74c120c19c814fb5b34ad2dd4"><div class="ttname"><a href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2a6526ebf74c120c19c814fb5b34ad2dd4">logger::FATAL</a></div><div class="ttdeci">@ FATAL</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8hpp_source.html#l00017">ALogger.hpp:17</a></div></div>
 <div class="ttc" id="anamespacelogger_html_a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601"><div class="ttname"><a href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601">logger::ERROR</a></div><div class="ttdeci">@ ERROR</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8hpp_source.html#l00017">ALogger.hpp:17</a></div></div>
 <div class="ttc" id="anamespacelogger_html_a08ef41fb8da9e671d65fcbd87b6574a2aee60ac495f4eb6180461caa975e30732"><div class="ttname"><a href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2aee60ac495f4eb6180461caa975e30732">logger::INFO</a></div><div class="ttdeci">@ INFO</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8hpp_source.html#l00017">ALogger.hpp:17</a></div></div>
@@ -367,12 +367,10 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ALogger_8cpp_source.html#l00122">122</a> of file <a class="el" href="ALogger_8cpp_source.html">ALogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                                              {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classlogger_1_1ALogger.html#aeec7dc86db5a5df42d02b494e24802cf">getLogLevelAsString</a>(level) + <a class="code" href="classlogger_1_1ALogger.html#a0b5d4d94c2eac993058f212848cab04a">getTimeStamp</a>();</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div>
-<div class="ttc" id="aclasslogger_1_1ALogger_html_a0b5d4d94c2eac993058f212848cab04a"><div class="ttname"><a href="classlogger_1_1ALogger.html#a0b5d4d94c2eac993058f212848cab04a">logger::ALogger::getTimeStamp</a></div><div class="ttdeci">static std::string getTimeStamp()</div><div class="ttdoc">Retrieves the current timestamp in a formatted string.</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8cpp_source.html#l00101">ALogger.cpp:101</a></div></div>
-<div class="ttc" id="aclasslogger_1_1ALogger_html_aeec7dc86db5a5df42d02b494e24802cf"><div class="ttname"><a href="classlogger_1_1ALogger.html#aeec7dc86db5a5df42d02b494e24802cf">logger::ALogger::getLogLevelAsString</a></div><div class="ttdeci">static std::string getLogLevelAsString(LogLevel level)</div><div class="ttdoc">Converts a log level to its string representation.</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8cpp_source.html#l00074">ALogger.cpp:74</a></div></div>
+<p class="definition">Definition at line <a class="el" href="ALogger_8cpp_source.html#l00121">121</a> of file <a class="el" href="ALogger_8cpp_source.html">ALogger.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classlogger_1_1ALogger.html#aeec7dc86db5a5df42d02b494e24802cf">getLogLevelAsString</a>(level) + <a class="code" href="classlogger_1_1ALogger.html#a0b5d4d94c2eac993058f212848cab04a">getTimeStamp</a>(); }</div>
+<div class="ttc" id="aclasslogger_1_1ALogger_html_a0b5d4d94c2eac993058f212848cab04a"><div class="ttname"><a href="classlogger_1_1ALogger.html#a0b5d4d94c2eac993058f212848cab04a">logger::ALogger::getTimeStamp</a></div><div class="ttdeci">static std::string getTimeStamp()</div><div class="ttdoc">Retrieves the current timestamp in a formatted string.</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8cpp_source.html#l00100">ALogger.cpp:100</a></div></div>
+<div class="ttc" id="aclasslogger_1_1ALogger_html_aeec7dc86db5a5df42d02b494e24802cf"><div class="ttname"><a href="classlogger_1_1ALogger.html#aeec7dc86db5a5df42d02b494e24802cf">logger::ALogger::getLogLevelAsString</a></div><div class="ttdeci">static std::string getLogLevelAsString(LogLevel level)</div><div class="ttdoc">Converts a log level to its string representation.</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8cpp_source.html#l00073">ALogger.cpp:73</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -430,18 +428,18 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ALogger_8cpp_source.html#l00101">101</a> of file <a class="el" href="ALogger_8cpp_source.html">ALogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordtype">char</span> buffer[20];</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  time_t now = time(0);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  tm* now_tm = localtime(&amp;now);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordflow">if</span> (!now_tm) {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;[ERROR] failed to convert time to local time.&quot;</span>);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  }</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  strftime(buffer, 20, <span class="stringliteral">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, now_tm);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keywordflow">return</span> <span class="charliteral">&#39;[&#39;</span> + std::string(buffer) + <span class="charliteral">&#39;]&#39;</span>;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="ALogger_8cpp_source.html#l00100">100</a> of file <a class="el" href="ALogger_8cpp_source.html">ALogger.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordtype">char</span> buffer[20];</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  time_t now = time(0);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  tm* now_tm = localtime(&amp;now);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordflow">if</span> (!now_tm) {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;[ERROR] failed to convert time to local time.&quot;</span>);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  strftime(buffer, 20, <span class="stringliteral">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, now_tm);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordflow">return</span> <span class="charliteral">&#39;[&#39;</span> + std::string(buffer) + <span class="charliteral">&#39;]&#39;</span>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -520,13 +518,13 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to this <code><a class="el" href="classlogger_1_1ALogger.html" title="Abstract base class for logging functionality.">ALogger</a></code> object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ALogger_8cpp_source.html#l00039">39</a> of file <a class="el" href="ALogger_8cpp_source.html">ALogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                                                {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordflow">if</span> (<span class="keyword">this</span> != &amp;other) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classlogger_1_1ALogger.html#a9122ceab60ec3ff5d240d37fcf125344">m_currentLogLevel</a> = other.m_currentLogLevel;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="ALogger_8cpp_source.html#l00038">38</a> of file <a class="el" href="ALogger_8cpp_source.html">ALogger.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                                {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">if</span> (<span class="keyword">this</span> != &amp;other) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classlogger_1_1ALogger.html#a9122ceab60ec3ff5d240d37fcf125344">m_currentLogLevel</a> = other.m_currentLogLevel;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -565,8 +563,8 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ALogger_8cpp_source.html#l00054">54</a> of file <a class="el" href="ALogger_8cpp_source.html">ALogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{ <a class="code" href="classlogger_1_1ALogger.html#a9122ceab60ec3ff5d240d37fcf125344">m_currentLogLevel</a> = level; }</div>
+<p class="definition">Definition at line <a class="el" href="ALogger_8cpp_source.html#l00053">53</a> of file <a class="el" href="ALogger_8cpp_source.html">ALogger.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{ <a class="code" href="classlogger_1_1ALogger.html#a9122ceab60ec3ff5d240d37fcf125344">m_currentLogLevel</a> = level; }</div>
 </div><!-- fragment -->
 </div>
 </div>
