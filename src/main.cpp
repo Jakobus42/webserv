@@ -1,6 +1,8 @@
+#include <algorithm>
 #include <iostream>
 
 #include "../include/logger/LoggerManager.hpp"
+#include "../include/utils/StringUtils.hpp"
 
 int main(void) {
   try {
@@ -14,6 +16,6 @@ int main(void) {
     loggerManager.unregisterLogger("Console");
     LOG("test log...", logger::FATAL);
   } catch (const std::exception& e) {
-    std::cerr << e.what() << std::endl;
+    LOG("ERROR: " << e.what(), logger::ERROR)
   }
 }

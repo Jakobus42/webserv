@@ -21,8 +21,7 @@ FileLogger::FileLogger() : ALogger(), m_logFile("log", std::ofstream::out) {
  * Initializes the `FileLogger` object with the specified file name.
  * If the file cannot be opened, an error message is printed.
  */
-FileLogger::FileLogger(const std::string& filename)
-    : ALogger(), m_logFile(filename.c_str(), std::ofstream::out) {
+FileLogger::FileLogger(const std::string& filename) : ALogger(), m_logFile(filename.c_str(), std::ofstream::out) {
   if (!m_logFile.is_open()) {
     std::cerr << "Failed to open log file: " << filename << std::endl;
   }

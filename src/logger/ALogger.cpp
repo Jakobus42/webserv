@@ -25,8 +25,7 @@ ALogger::~ALogger() {}
  *
  * @param other The `ALogger` object to copy from.
  */
-ALogger::ALogger(const ALogger& other)
-    : m_currentLogLevel(other.m_currentLogLevel) {}
+ALogger::ALogger(const ALogger& other) : m_currentLogLevel(other.m_currentLogLevel) {}
 
 /**
  * @brief Copy assignment operator.
@@ -119,8 +118,6 @@ std::string ALogger::getTimeStamp() {
  * @return std::string representing the prefix for the log msg.
  * @throws std::runtime_error If the conversion of the time to local time fails.
  */
-std::string ALogger::getLogPrefix(LogLevel level) {
-  return getLogLevelAsString(level) + getTimeStamp();
-}
+std::string ALogger::getLogPrefix(LogLevel level) { return getLogLevelAsString(level) + getTimeStamp(); }
 
 } /* namespace logger */

@@ -35,7 +35,7 @@ class LoggerManager {
   typedef std::map<std::string, ALogger*> LogMap;
 
   LoggerManager();
-  ~LoggerManager(){};
+  ~LoggerManager();
   LoggerManager(const LoggerManager&) : m_globalLogLevel(DEBUG){};
   LoggerManager& operator=(const LoggerManager& other);
 
@@ -60,9 +60,8 @@ class LoggerManager {
  * LOG("This is a test message", logger::INFO);
  * @endcode
  */
-#define LOG(message, level)                                         \
-  std::ostringstream oss;                                           \
-  oss << __FILE__ << ":" << __LINE__ << " " << __FUNCTION__ << ": " \
-      << message;                                                   \
+#define LOG(message, level)                                                     \
+  std::ostringstream oss;                                                       \
+  oss << __FILE__ << ":" << __LINE__ << " " << __FUNCTION__ << ": " << message; \
   logger::LoggerManager::getInstance().log(oss.str(), level);
 } /* namespace logger */
