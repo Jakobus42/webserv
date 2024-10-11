@@ -4,17 +4,27 @@
 #include "../include/logger/LoggerManager.hpp"
 #include "../include/utils/StringUtils.hpp"
 
-struct PrintElement {
-  void operator()(std::string& value) const { std::cout << '"' << value << '"' << std::endl; }
-};
-
 int main(void) {
   try {
-    std::vector<std::string> result;
-    utils::string::split("Hello World!   ", result);
-    std::for_each(result.begin(), result.end(), PrintElement());
+    logger::LoggerManager& loggerManager = logger::LoggerManager::getInstance();
+    loggerManager.registerLogger("Console", new logger::ConsoleLogger());
+
+    std::ifstream config("config/nginxSample0.conf");
+    std::string content;
+
+    if (!config.is_open()) throw std::runtime_error("cant find config");
+    config.seekg(0, std::ios::end);
+    content.resize(config.tellg());
+    config.seekg(0, std::ios::beg);
+    config.read(&content[0], content.size());
+
+    std::vector<std::string> splittedContent;
+    utils::string::split(content, splittedContent, "\n");
+    for (std::vector<std::string>::iterator it = splittedContent.begin(); it != splittedContent.end(); ++it) {
+      std::cout << "'" << *it << "'" << std::endl;
+    }
 
   } catch (const std::exception& e) {
-    std::cerr << e.what() << std::endl;
+    LOG("ERROR: " << e.what(), logger::ERROR)
   }
 }

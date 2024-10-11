@@ -4,11 +4,6 @@ namespace utils {
 
 namespace string {
 
-int stoi(const std::string&, size_t*, int) {
-  // TODO: refer to https://en.cppreference.com/w/cpp/string/basic_string/stol
-  return 0;
-}
-
 /**
  * @brief Splits the given string into tokens based on the specified delimiters.
  *
@@ -23,6 +18,7 @@ int stoi(const std::string&, size_t*, int) {
 void split(const std::string& str, std::vector<std::string>& result, const std::string& delimiters) {
   std::size_t start = str.find_first_not_of(delimiters);
 
+  std::cout << "'" << delimiters << "'" << std::endl;
   while (start != std::string::npos) {
     std::size_t end = str.find_first_of(delimiters, start);
     result.push_back(str.substr(start, end - start));
@@ -30,7 +26,26 @@ void split(const std::string& str, std::vector<std::string>& result, const std::
   }
 }
 
-void trim(std::string&, const std::string&) {}
+/**
+ * @brief Trims leading and trailing characters from the input string.
+ *
+ * This function removes any characters at the beginning and end of the string `str`
+ * that are found in the `delimiters` string.
+ *
+ * @param str The string to be trimmed. The string is modified in place.
+ * @param delimiters A string containing the characters to remove from the start and end of `str`.
+ *
+ * @note If the string only contains characters from `delimiters`, it will be cleared.
+ */
+void trim(std::string& str, const std::string& delimiters) {
+  std::size_t start = str.find_first_not_of(delimiters);
+  std::size_t end = str.find_last_not_of(delimiters);
+  if (start != std::string::npos && end != std::string::npos) {
+    str = str.substr(start, end - start + 1);
+  } else {
+    str.clear();
+  }
+}
 
 }  // namespace string
 

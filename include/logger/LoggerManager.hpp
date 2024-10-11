@@ -35,7 +35,7 @@ class LoggerManager {
   typedef std::map<std::string, ALogger*> LogMap;
 
   LoggerManager();
-  ~LoggerManager(){};
+  ~LoggerManager();
   LoggerManager(const LoggerManager&) : m_globalLogLevel(DEBUG){};
   LoggerManager& operator=(const LoggerManager& other);
 
