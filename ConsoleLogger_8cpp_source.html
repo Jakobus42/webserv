@@ -81,14 +81,18 @@ $(document).ready(function(){initNavTree('ConsoleLogger_8cpp_source.html',''); i
 <div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classlogger_1_1ConsoleLogger.html#ac85920c5cdc2b6560a52e32d6757936c">   58</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classlogger_1_1ConsoleLogger.html#ac85920c5cdc2b6560a52e32d6757936c">ConsoleLogger::log</a>(<span class="keyword">const</span> std::string&amp; message, <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2">LogLevel</a> level) {</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classlogger_1_1ALogger.html#a9122ceab60ec3ff5d240d37fcf125344">m_currentLogLevel</a> &lt;= level) {</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      std::cout &lt;&lt; <a class="code" href="classlogger_1_1ALogger.html#a993700fc347b0dc071283b42df5c8ad4">getLogPrefix</a>(level) &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; message &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      std::cerr &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;} <span class="comment">/* namespace logger */</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <span class="keywordflow">if</span> (level &lt; <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2af962c30f6356d10c93ed16a802e7adf7">LogLevel::WARNING</a>) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        std::cout &lt;&lt; <a class="code" href="classlogger_1_1ALogger.html#a993700fc347b0dc071283b42df5c8ad4">getLogPrefix</a>(level) &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; message &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        std::cerr &lt;&lt; <a class="code" href="classlogger_1_1ALogger.html#a993700fc347b0dc071283b42df5c8ad4">getLogPrefix</a>(level) &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; message &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      std::cerr &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;} <span class="comment">/* namespace logger */</span></div>
 <div class="ttc" id="aclasslogger_1_1ALogger_html"><div class="ttname"><a href="classlogger_1_1ALogger.html">logger::ALogger</a></div><div class="ttdoc">Abstract base class for logging functionality.</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8hpp_source.html#l00035">ALogger.hpp:35</a></div></div>
 <div class="ttc" id="aclasslogger_1_1ALogger_html_a79c10bd36140f92374bb98ee3adb33ef"><div class="ttname"><a href="classlogger_1_1ALogger.html#a79c10bd36140f92374bb98ee3adb33ef">logger::ALogger::operator=</a></div><div class="ttdeci">ALogger &amp; operator=(const ALogger &amp;other)</div><div class="ttdoc">Copy assignment operator.</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8cpp_source.html#l00038">ALogger.cpp:38</a></div></div>
 <div class="ttc" id="aclasslogger_1_1ALogger_html_a9122ceab60ec3ff5d240d37fcf125344"><div class="ttname"><a href="classlogger_1_1ALogger.html#a9122ceab60ec3ff5d240d37fcf125344">logger::ALogger::m_currentLogLevel</a></div><div class="ttdeci">LogLevel m_currentLogLevel</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8hpp_source.html#l00048">ALogger.hpp:48</a></div></div>
@@ -100,6 +104,7 @@ $(document).ready(function(){initNavTree('ConsoleLogger_8cpp_source.html',''); i
 <div class="ttc" id="aclasslogger_1_1ConsoleLogger_html_ac85920c5cdc2b6560a52e32d6757936c"><div class="ttname"><a href="classlogger_1_1ConsoleLogger.html#ac85920c5cdc2b6560a52e32d6757936c">logger::ConsoleLogger::log</a></div><div class="ttdeci">void log(const std::string &amp;message, LogLevel level)</div><div class="ttdoc">Logs a message to the console.</div><div class="ttdef"><b>Definition:</b> <a href="ConsoleLogger_8cpp_source.html#l00058">ConsoleLogger.cpp:58</a></div></div>
 <div class="ttc" id="anamespacelogger_html"><div class="ttname"><a href="namespacelogger.html">logger</a></div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8cpp_source.html#l00003">ALogger.cpp:3</a></div></div>
 <div class="ttc" id="anamespacelogger_html_a08ef41fb8da9e671d65fcbd87b6574a2"><div class="ttname"><a href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2">logger::LogLevel</a></div><div class="ttdeci">LogLevel</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8hpp_source.html#l00017">ALogger.hpp:17</a></div></div>
+<div class="ttc" id="anamespacelogger_html_a08ef41fb8da9e671d65fcbd87b6574a2af962c30f6356d10c93ed16a802e7adf7"><div class="ttname"><a href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2af962c30f6356d10c93ed16a802e7adf7">logger::WARNING</a></div><div class="ttdeci">@ WARNING</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8hpp_source.html#l00017">ALogger.hpp:17</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
