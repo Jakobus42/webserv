@@ -58,7 +58,7 @@ ConsoleLogger& ConsoleLogger::operator=(const ConsoleLogger& other) {
 void ConsoleLogger::log(const std::string& message, LogLevel level) {
   if (m_currentLogLevel <= level) {
     try {
-      if (level < LogLevel::WARNING) {
+      if (level < WARNING) {
         std::cout << getLogPrefix(level) << ' ' << message << std::endl;
       } else {
         std::cerr << getLogPrefix(level) << ' ' << message << std::endl;
