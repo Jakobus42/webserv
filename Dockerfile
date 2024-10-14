@@ -38,6 +38,6 @@ RUN mkdir -p /root/.ssh && chmod 700 /root/.ssh && \
 WORKDIR /workspace
 COPY . /workspace
 
-RUN pip install pre-commit && pre-commit install
+RUN pip install pre-commit && pre-commit install && pre-commit install --hook-type commit-msg
 
 CMD ["zsh"]
