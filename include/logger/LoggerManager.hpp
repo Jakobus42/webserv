@@ -32,7 +32,7 @@ class LoggerManager {
   LogLevel getGlobalLogLevel() const;
 
  private:
-  typedef std::map<std::string, ALogger*> LogMap;
+  typedef std::map<std::string, ALogger*> LogMap; //TODO: does a logger really need a name?
 
   LoggerManager();
   ~LoggerManager();
