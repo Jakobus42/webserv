@@ -17,8 +17,6 @@ namespace string {
  */
 void split(const std::string& str, std::vector<std::string>& result, const std::string& delimiters) {
   std::size_t start = str.find_first_not_of(delimiters);
-
-  std::cout << "'" << delimiters << "'" << std::endl;
   while (start != std::string::npos) {
     std::size_t end = str.find_first_of(delimiters, start);
     result.push_back(str.substr(start, end - start));

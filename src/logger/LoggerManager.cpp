@@ -111,7 +111,6 @@ void LoggerManager::log(const std::string& message, LogLevel level) {
  *
  * @param loggerName The name of the logger whose level to set.
  * @param level The new log level for the specified logger.
- * @throws std::out_of_range If the logger with the specified name is not found.
  */
 void LoggerManager::setLoggerLevel(const std::string& loggerName, LogLevel level) {
   LogMap::iterator it = m_loggers.find(loggerName);

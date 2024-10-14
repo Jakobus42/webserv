@@ -47,11 +47,11 @@ class ALogger {
  protected:
   LogLevel m_currentLogLevel;
 
-  static std::string getLogPrefix(LogLevel level);
+  static std::string getLogPrefix(LogLevel level) throw(std::runtime_error);
 
  private:
-  static std::string getLogLevelAsString(LogLevel level);
-  static std::string getTimeStamp();
+  static std::string getLogLevelAsString(LogLevel level) throw(std::invalid_argument);
+  static std::string getTimeStamp() throw(std::runtime_error);
 };
 
 } /* namespace logger */
