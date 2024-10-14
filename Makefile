@@ -6,7 +6,7 @@ CFLAGS = -Wextra -Wall -Werror -std=c++98
 DEBUG_FLAGS = -g
 
 ###PROGRAM###
-NAME = template
+NAME = webserv
 
 ###DIRECTORIES###
 SRCDIR = src

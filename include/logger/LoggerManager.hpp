@@ -36,7 +36,7 @@ class LoggerManager {
 
   LoggerManager();
   ~LoggerManager();
-  LoggerManager(const LoggerManager&) : m_globalLogLevel(DEBUG) {};
+  LoggerManager(const LoggerManager&) : m_globalLogLevel(DEBUG){};
   LoggerManager& operator=(const LoggerManager& other);
 
   LogMap m_loggers;

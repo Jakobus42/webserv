@@ -1,6 +1,6 @@
 {
   "name": "My Container",
-  "image": "template",
+  "image": "webserv",
   "runArgs": [
     "-v", "${env:HOME}/.ssh:/root/.ssh",
     "-v", "${env:HOME}/.zshrc:/root/.zshrc"

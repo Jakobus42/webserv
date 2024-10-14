@@ -117,12 +117,12 @@ This runs both static analysis and memory checks.
 
 ### Building Docker Image
 ```
-docker build -t template .
+docker build -t webserv .
 ```
 
 ### Running Container
 ```
-docker run -it --rm -v ~/.ssh:/root/.ssh -v ~/.zshrc:/root/.zshrc template
+docker run -it --rm -v ~/.ssh:/root/.ssh -v ~/.zshrc:/root/.zshrc webserv
 ```
 
 ### VS Code Setup
