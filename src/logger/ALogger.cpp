@@ -70,7 +70,7 @@ LogLevel ALogger::getLevel() const { return m_currentLogLevel; }
  * @param level The log level to convert.
  * @return A string representing the provided log level.
  */
-std::string ALogger::getLogLevelAsString(LogLevel level) throw(std::invalid_argument) {
+std::string ALogger::getLogLevelAsString(LogLevel level) {
   switch (level) {
     case logger::DEBUG:
       return std::string(DEBUG_COLOR) + "[DEBUG]  " + RESET;
@@ -97,7 +97,7 @@ std::string ALogger::getLogLevelAsString(LogLevel level) throw(std::invalid_argu
  * @return std::string A string representing the current timestamp.
  * @throws std::runtime_error If the conversion of the time to local time fails.
  */
-std::string ALogger::getTimeStamp() throw(std::runtime_error) {
+std::string ALogger::getTimeStamp() {
   char buffer[20];
   time_t now = time(0);
   tm* now_tm = localtime(&now);
@@ -118,8 +118,6 @@ std::string ALogger::getTimeStamp() throw(std::runtime_error) {
  * @return std::string representing the prefix for the log msg.
  * @throws std::runtime_error If the conversion of the time to local time fails.
  */
-std::string ALogger::getLogPrefix(LogLevel level) throw(std::runtime_error) {
-  return getLogLevelAsString(level) + getTimeStamp();
-}
+std::string ALogger::getLogPrefix(LogLevel level) { return getLogLevelAsString(level) + getTimeStamp(); }
 
 } /* namespace logger */
