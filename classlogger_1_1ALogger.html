@@ -118,7 +118,7 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
 Static Protected Member Functions</h2></td></tr>
-<tr class="memitem:a993700fc347b0dc071283b42df5c8ad4"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogger_1_1ALogger.html#a993700fc347b0dc071283b42df5c8ad4">getLogPrefix</a> (<a class="el" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2">LogLevel</a> level)  throw (std::runtime_error)</td></tr>
+<tr class="memitem:a993700fc347b0dc071283b42df5c8ad4"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogger_1_1ALogger.html#a993700fc347b0dc071283b42df5c8ad4">getLogPrefix</a> (<a class="el" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2">LogLevel</a> level)</td></tr>
 <tr class="memdesc:a993700fc347b0dc071283b42df5c8ad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates Prefix for Logs.  <a href="classlogger_1_1ALogger.html#a993700fc347b0dc071283b42df5c8ad4">More...</a><br /></td></tr>
 <tr class="separator:a993700fc347b0dc071283b42df5c8ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -129,10 +129,10 @@ Protected Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
-<tr class="memitem:aeec7dc86db5a5df42d02b494e24802cf"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogger_1_1ALogger.html#aeec7dc86db5a5df42d02b494e24802cf">getLogLevelAsString</a> (<a class="el" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2">LogLevel</a> level)  throw (std::invalid_argument)</td></tr>
+<tr class="memitem:aeec7dc86db5a5df42d02b494e24802cf"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogger_1_1ALogger.html#aeec7dc86db5a5df42d02b494e24802cf">getLogLevelAsString</a> (<a class="el" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2">LogLevel</a> level)</td></tr>
 <tr class="memdesc:aeec7dc86db5a5df42d02b494e24802cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a log level to its string representation.  <a href="classlogger_1_1ALogger.html#aeec7dc86db5a5df42d02b494e24802cf">More...</a><br /></td></tr>
 <tr class="separator:aeec7dc86db5a5df42d02b494e24802cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b5d4d94c2eac993058f212848cab04a"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogger_1_1ALogger.html#a0b5d4d94c2eac993058f212848cab04a">getTimeStamp</a> ()  throw (std::runtime_error)</td></tr>
+<tr class="memitem:a0b5d4d94c2eac993058f212848cab04a"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlogger_1_1ALogger.html#a0b5d4d94c2eac993058f212848cab04a">getTimeStamp</a> ()</td></tr>
 <tr class="memdesc:a0b5d4d94c2eac993058f212848cab04a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the current timestamp in a formatted string.  <a href="classlogger_1_1ALogger.html#a0b5d4d94c2eac993058f212848cab04a">More...</a><br /></td></tr>
 <tr class="separator:a0b5d4d94c2eac993058f212848cab04a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -275,12 +275,6 @@ Static Private Member Functions</h2></td></tr>
           <td class="paramname"><em>level</em></td><td>)</td>
           <td></td>
         </tr>
-        <tr>
-          <td align="right">throw </td><td>(</td><td colspan="2">std::invalid_argument</td>
-        </tr>
-        <tr>
-          <td align="right"></td><td>)</td><td></td><td></td>
-        </tr>
       </table>
   </td>
   <td class="mlabels-right">
@@ -300,7 +294,7 @@ Static Private Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>A string representing the provided log level. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="ALogger_8cpp_source.html#l00073">73</a> of file <a class="el" href="ALogger_8cpp_source.html">ALogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                                                                {</div>
+<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                                     {</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordflow">switch</span> (level) {</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c">logger::DEBUG</a>:</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="keywordflow">return</span> std::string(<a class="code" href="namespacelogger.html#a4bdf4a007480caa09a13bc5ed26eb58a">DEBUG_COLOR</a>) + <span class="stringliteral">&quot;[DEBUG]  &quot;</span> + <a class="code" href="namespacelogger.html#a78195500ea706df91bdd58cf8020f1ea">RESET</a>;</div>
@@ -325,7 +319,18 @@ Static Private Member Functions</h2></td></tr>
 <div class="ttc" id="anamespacelogger_html_a78195500ea706df91bdd58cf8020f1ea"><div class="ttname"><a href="namespacelogger.html#a78195500ea706df91bdd58cf8020f1ea">logger::RESET</a></div><div class="ttdeci">const std::string RESET</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8hpp_source.html#l00010">ALogger.hpp:10</a></div></div>
 <div class="ttc" id="anamespacelogger_html_ab62ed0a1ac8927bd416d1dc7eba37001"><div class="ttname"><a href="namespacelogger.html#ab62ed0a1ac8927bd416d1dc7eba37001">logger::INFO_COLOR</a></div><div class="ttdeci">const std::string INFO_COLOR</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8hpp_source.html#l00012">ALogger.hpp:12</a></div></div>
 <div class="ttc" id="anamespacelogger_html_ac01e6f4a115fd8f03b975f063c39637b"><div class="ttname"><a href="namespacelogger.html#ac01e6f4a115fd8f03b975f063c39637b">logger::FATAL_COLOR</a></div><div class="ttdeci">const std::string FATAL_COLOR</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8hpp_source.html#l00015">ALogger.hpp:15</a></div></div>
-</div><!-- fragment -->
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classlogger_1_1ALogger_aeec7dc86db5a5df42d02b494e24802cf_icgraph.png" border="0" usemap="#aclasslogger_1_1ALogger_aeec7dc86db5a5df42d02b494e24802cf_icgraph" alt=""/></div>
+<map name="aclasslogger_1_1ALogger_aeec7dc86db5a5df42d02b494e24802cf_icgraph" id="aclasslogger_1_1ALogger_aeec7dc86db5a5df42d02b494e24802cf_icgraph">
+<area shape="rect" title="Converts a log level to its string representation." alt="" coords="509,23,720,65"/>
+<area shape="rect" href="classlogger_1_1ALogger.html#a993700fc347b0dc071283b42df5c8ad4" title="Creates Prefix for Logs." alt="" coords="248,31,461,57"/>
+<area shape="rect" href="classlogger_1_1ConsoleLogger.html#ac85920c5cdc2b6560a52e32d6757936c" title="Logs a message to the console." alt="" coords="5,5,200,32"/>
+<area shape="rect" href="classlogger_1_1FileLogger.html#a1e96849853bcbdde388872138751606b" title="Logs a message to the file." alt="" coords="19,56,186,83"/>
+</map>
+</div>
+
 </div>
 </div>
 <a id="a993700fc347b0dc071283b42df5c8ad4"></a>
@@ -343,12 +348,6 @@ Static Private Member Functions</h2></td></tr>
           <td class="paramtype"><a class="el" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2">LogLevel</a>&#160;</td>
           <td class="paramname"><em>level</em></td><td>)</td>
           <td></td>
-        </tr>
-        <tr>
-          <td align="right">throw </td><td>(</td><td colspan="2">std::runtime_error</td>
-        </tr>
-        <tr>
-          <td align="right"></td><td>)</td><td></td><td></td>
         </tr>
       </table>
   </td>
@@ -369,12 +368,20 @@ Static Private Member Functions</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="ALogger_8cpp_source.html#l00121">121</a> of file <a class="el" href="ALogger_8cpp_source.html">ALogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                                                      {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classlogger_1_1ALogger.html#aeec7dc86db5a5df42d02b494e24802cf">getLogLevelAsString</a>(level) + <a class="code" href="classlogger_1_1ALogger.html#a0b5d4d94c2eac993058f212848cab04a">getTimeStamp</a>();</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classlogger_1_1ALogger.html#aeec7dc86db5a5df42d02b494e24802cf">getLogLevelAsString</a>(level) + <a class="code" href="classlogger_1_1ALogger.html#a0b5d4d94c2eac993058f212848cab04a">getTimeStamp</a>(); }</div>
 <div class="ttc" id="aclasslogger_1_1ALogger_html_a0b5d4d94c2eac993058f212848cab04a"><div class="ttname"><a href="classlogger_1_1ALogger.html#a0b5d4d94c2eac993058f212848cab04a">logger::ALogger::getTimeStamp</a></div><div class="ttdeci">static std::string getTimeStamp()</div><div class="ttdoc">Retrieves the current timestamp in a formatted string.</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8cpp_source.html#l00100">ALogger.cpp:100</a></div></div>
 <div class="ttc" id="aclasslogger_1_1ALogger_html_aeec7dc86db5a5df42d02b494e24802cf"><div class="ttname"><a href="classlogger_1_1ALogger.html#aeec7dc86db5a5df42d02b494e24802cf">logger::ALogger::getLogLevelAsString</a></div><div class="ttdeci">static std::string getLogLevelAsString(LogLevel level)</div><div class="ttdoc">Converts a log level to its string representation.</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8cpp_source.html#l00073">ALogger.cpp:73</a></div></div>
 </div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classlogger_1_1ALogger_a993700fc347b0dc071283b42df5c8ad4_cgraph.png" border="0" usemap="#aclasslogger_1_1ALogger_a993700fc347b0dc071283b42df5c8ad4_cgraph" alt=""/></div>
+<map name="aclasslogger_1_1ALogger_a993700fc347b0dc071283b42df5c8ad4_cgraph" id="aclasslogger_1_1ALogger_a993700fc347b0dc071283b42df5c8ad4_cgraph">
+<area shape="rect" title="Creates Prefix for Logs." alt="" coords="5,46,219,73"/>
+<area shape="rect" href="classlogger_1_1ALogger.html#aeec7dc86db5a5df42d02b494e24802cf" title="Converts a log level to its string representation." alt="" coords="267,5,477,47"/>
+<area shape="rect" href="classlogger_1_1ALogger.html#a0b5d4d94c2eac993058f212848cab04a" title="Retrieves the current timestamp in a formatted string." alt="" coords="279,71,465,112"/>
+</map>
+</div>
+<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classlogger_1_1ALogger_a993700fc347b0dc071283b42df5c8ad4_icgraph.png" border="0" usemap="#aclasslogger_1_1ALogger_a993700fc347b0dc071283b42df5c8ad4_icgraph" alt=""/></div>
@@ -402,12 +409,6 @@ Here is the caller graph for this function:</div>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
-        <tr>
-          <td align="right">throw </td><td>(</td><td colspan="2">std::runtime_error</td>
-        </tr>
-        <tr>
-          <td align="right"></td><td>)</td><td></td><td></td>
-        </tr>
       </table>
   </td>
   <td class="mlabels-right">
@@ -428,7 +429,7 @@ Here is the caller graph for this function:</div>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="ALogger_8cpp_source.html#l00100">100</a> of file <a class="el" href="ALogger_8cpp_source.html">ALogger.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                                        {</div>
+<div class="fragment"><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                {</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordtype">char</span> buffer[20];</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  time_t now = time(0);</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  tm* now_tm = localtime(&amp;now);</div>
@@ -439,7 +440,18 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  strftime(buffer, 20, <span class="stringliteral">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, now_tm);</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordflow">return</span> <span class="charliteral">&#39;[&#39;</span> + std::string(buffer) + <span class="charliteral">&#39;]&#39;</span>;</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
-</div><!-- fragment -->
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classlogger_1_1ALogger_a0b5d4d94c2eac993058f212848cab04a_icgraph.png" border="0" usemap="#aclasslogger_1_1ALogger_a0b5d4d94c2eac993058f212848cab04a_icgraph" alt=""/></div>
+<map name="aclasslogger_1_1ALogger_a0b5d4d94c2eac993058f212848cab04a_icgraph" id="aclasslogger_1_1ALogger_a0b5d4d94c2eac993058f212848cab04a_icgraph">
+<area shape="rect" title="Retrieves the current timestamp in a formatted string." alt="" coords="509,23,696,65"/>
+<area shape="rect" href="classlogger_1_1ALogger.html#a993700fc347b0dc071283b42df5c8ad4" title="Creates Prefix for Logs." alt="" coords="248,31,461,57"/>
+<area shape="rect" href="classlogger_1_1ConsoleLogger.html#ac85920c5cdc2b6560a52e32d6757936c" title="Logs a message to the console." alt="" coords="5,5,200,32"/>
+<area shape="rect" href="classlogger_1_1FileLogger.html#a1e96849853bcbdde388872138751606b" title="Logs a message to the file." alt="" coords="19,56,186,83"/>
+</map>
+</div>
+
 </div>
 </div>
 <a id="a432d93d4ad4a568c178492e9912e145a"></a>
