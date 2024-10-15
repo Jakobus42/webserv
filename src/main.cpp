@@ -1,7 +1,10 @@
+#include <bits/stdc++.h>
+
 #include <algorithm>
 #include <iostream>
 
 #include "../include/logger/LoggerManager.hpp"
+#include "../include/testing/MinimalWebserver.hpp"
 #include "../include/utils/StringUtils.hpp"
 
 int main(void) {
@@ -18,4 +21,6 @@ int main(void) {
   } catch (const std::exception& e) {
     LOG("ERROR: " << e.what(), logger::ERROR)
   }
+  { testing::MinimalWebserver webserver("127.0.0.1", 8080); }
+  return 0;
 }
