@@ -6,7 +6,7 @@
 
 int PORT = 9090;
 
-int createSocket() {
+static int createSocket() {
   int serverSock = socket(AF_INET, SOCK_STREAM, 0); // AF_INET for IPv4 ; SOCK_STREAM for TCP
   if (serverSock == -1) {
     throw std::runtime_error("Socket creation failed");
@@ -14,7 +14,7 @@ int createSocket() {
   return serverSock;
 }
 
-void bindSocket(int serverSock) {
+static void bindSocket(int serverSock) {
   sockaddr_in serverAddr{};
 
   serverAddr.sin_family = AF_INET;
@@ -27,13 +27,13 @@ void bindSocket(int serverSock) {
   }
 }
 
-void startListening(int serverSock) {
+static void startListening(int serverSock) {
   if (listen(serverSock, 3) < 0) {
     throw std::runtime_error("Listen failed");
   }
 }
 
-int acceptClient(int serverSock) {
+static int acceptClient(int serverSock) {
   sockaddr_in clientAddr{};
   socklen_t addrLen = sizeof(clientAddr);
   int clientSock =
@@ -44,7 +44,7 @@ int acceptClient(int serverSock) {
   return clientSock;
 }
 
-std::string readRequest(int clientSock) {
+static std::string readRequest(int clientSock) {
   char buffer[1024] = {0};
   ssize_t bytesRead = recv(clientSock, buffer, sizeof(buffer), 0);
   if (bytesRead < 0)
@@ -52,7 +52,7 @@ std::string readRequest(int clientSock) {
   return std::string(buffer, bytesRead);
 }
 
-void sendResponse(int clientSock, const std::string &content) {
+static void sendResponse(int clientSock, const std::string &content) {
   std::string response = "HTTP/1.1 200 OK\r\n"
                          "Content-Type: text/plain\r\n"
                          "Content-Length: " +
@@ -66,14 +66,10 @@ void sendResponse(int clientSock, const std::string &content) {
   }
 }
 
-void handleClient(int clientSock) {
-  try {
-    std::string request = readRequest(clientSock);
-    std::cout << "Received request:\n" << request << std::endl;
-    sendResponse(clientSock, "Hello, world!");
-  } catch (const std::exception &e) {
-    std::cerr << "Client handling error: " << e.what() << std::endl;
-  }
+static void handleClient(int clientSock) {
+  std::string request = readRequest(clientSock);
+  std::cout << "Received request:\n" << request << std::endl;
+  sendResponse(clientSock, "Hello, world!");
   close(clientSock);
 }
 
@@ -85,8 +81,12 @@ int main() {
     std::cout << "Server is listening on port " << PORT << std::endl;
 
     while (true) {
-      int clientSock = acceptClient(serverSock);
-      handleClient(clientSock);
+      try {
+        int clientSock = acceptClient(serverSock);
+        handleClient(clientSock);
+      } catch (const std::exception &e) {
+        std::cerr << "Client error: " << e.what() << std::endl;
+      }
     }
     close(serverSock);
   } catch (const std::exception &e) {
