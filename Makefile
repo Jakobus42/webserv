@@ -12,6 +12,7 @@ NAME = webserv
 SRCDIR = src
 INCDIR = include
 BINDIR = bin
+TESTBUILDDIR = build
 OBJDIR = $(BINDIR)/obj
 DEPDIR = $(BINDIR)/dep
 
@@ -64,13 +65,25 @@ cppcheck:
 strict: all cppcheck leak
 	@echo "$(GREEN)Strict build completed.$(NC)"
 
+build_tests:
+	@echo "$(GREEN)Building tests...$(NC)"
+	mkdir -p $(TESTBUILDDIR)
+	cd $(TESTBUILDDIR) && cmake .. && cmake --build .
+
+test: build_tests
+	@echo "$(GREEN)Testing code...$(NC)"
+	cd build && ctest 
+	
+
 format:
 	@echo "Formatting code with clang-format..."
 	clang-format -i $(SOURCES) $(HEADERS)
 
 clean:
 	@echo "$(RED)Cleaning up...$(NC)"
+	rm -rf Testing
 	rm -rf $(BINDIR)
+	rm -rf $(TESTBUILDDIR)
 
 fclean: clean
 	@echo "$(RED)Removing $(NAME)...$(NC)"
