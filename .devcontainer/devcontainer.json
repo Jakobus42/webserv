@@ -20,7 +20,11 @@
         "wayou.vscode-todo-highlight"
       ],
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "zsh"
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "C_Cpp.default.includePath": [
+          "${workspaceFolder}/**",
+          "${workspaceFolder}/build/_deps/googletest-src/googletest/include"
+        ]
       }
     }
   }
