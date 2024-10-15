@@ -1,0 +1,25 @@
+name: Pre-merge Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  code-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: |
+          docker build -t template .
+
+      - name: Run strict compilation tests in Docker
+        run: |
+          docker run --rm template make strict
+      - name: Run Google Test
+        run: |
+          docker run --rm template make test
