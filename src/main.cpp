@@ -3,6 +3,7 @@
 
 #include "../include/logger/LoggerManager.hpp"
 #include "../include/utils/StringUtils.hpp"
+#include "../include/configfile/ConfigFileParser.hpp"
 
 int main(void) {
   try {
@@ -18,4 +19,6 @@ int main(void) {
   } catch (const std::exception& e) {
     LOG("ERROR: " << e.what(), logger::ERROR)
   }
+	std::string configfile = "config_files/configfile_example";
+	configfile::ConfigFileParser configFileParser(configfile);
 }
