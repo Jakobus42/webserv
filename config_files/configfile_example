@@ -1,65 +1,68 @@
-listen 8080;  # Choose the port
-server_name example.com;  # Setup server names
-
-# Default error pages
-error_page 404 /404.html;
-error_page 500 502 503 504 /50x.html;
-
-# Limit client body size
-client_max_body_size 10M;
-
-# Default server for unspecified routes
-location / 
+server
 {
-	root /tmp/www;  # Default document root
-	index index.html index.htm;  # Default file for directories
-	try_files $uri $uri/ =404;  # Try to serve file or directory
-}
+	listen 8080;  # Choose the port
+	server_name example.com;  # Setup server names
 
-    # Example of a route with multiple rules
-location /kapouet
-{
-        # Accepted HTTP methods
-    limit_except GET POST 
+	# Default error pages
+	error_page 404 /404.html;
+	error_page 500 502 503 504 /50x.html;
+
+	# Limit client body size
+	client_max_body_size 10M;
+
+	# Default server for unspecified routes
+	location / 
 	{
-        deny all;  # Deny other methods
-    }
-    # Directory configuration
-    root /tmp/www;  # Base directory
-    autoindex on;  # Enable directory listing
-    index default.html;  # Default file in directory   
-    # Executing CGI scripts for .php files
-    location ~ \.php$ 
+		root /tmp/www;  # Default document root
+		index index.html index.htm;  # Default file for directories
+		#try_files $uri $uri/ =404;  # Try to serve file or directory
+	}
+
+	    # Example of a route with multiple rules
+	location /kapouet
 	{
-        include fastcgi_params;
-        fastcgi_pass 127.0.0.1:9000;  # Assuming PHP-FPM is running
-        fastcgi_index index.php;
-		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-    }
-    # Handle file uploads
-    location /upload 
+	    # Accepted HTTP methods
+	    limit_except GET POST;
+	    # Directory configuration
+	    root /tmp/www;  # Base directory
+	    autoindex on;  # Enable directory listing
+	    index default.html;  # Default file in directory   
+	    # Executing CGI scripts for .php files
+	    location dwad
+		{
+	        #include fastcgi_params;
+	        #fastcgi_pass 127.0.0.1:9000;  # Assuming PHP-FPM is running
+	        #fastcgi_index index.php;
+			#fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+			location /upload
+			{
+			}
+	    }
+	    # Handle file uploads
+	    location /upload 
+		{
+	        #client_max_body_size 20M;  # Allow larger uploads
+	        #try_files $uri =404;  # Check if the directory exists
+	        root /tmp/uploads;  # Where to save uploads
+			location /upload
+			{
+			}
+	    }
+	}
+	# HTTP redirection example
+	location /old-route
 	{
-        client_max_body_size 20M;  # Allow larger uploads
-        try_files $uri =404;  # Check if the directory exists
-        root /tmp/uploads;  # Where to save uploads
-    }
-}
-# HTTP redirection example
-location /old-route 
-{
-    return 301 /new-route;  # Redirect to a new route
-}
-# Catch-all for other requests
-location /other 
-{
-    # Additional configurations for /other route
-    # Accepts both POST and GET
-    limit_except GET POST 
+	    return 301 /new-route;  # Redirect to a new route
+	}
+	# Catch-all for other requests
+	location /other
 	{
-        deny all;  # Deny other methods
-    }
-    
-    # Define the directory
-    root /tmp/other_content;
-    autoindex off;  # Turn off directory listing
+	    # Additional configurations for /other route
+	    # Accepts both POST and GET
+	    limit_except GET POST;
+	
+	    # Define the directory
+	    root /tmp/other_content;
+	    autoindex off;  # Turn off directory listing
+	}
 }

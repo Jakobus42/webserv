@@ -1,4 +1,4 @@
-#include "../../include/configfile/ConfigFileParser.hpp"
+#include "../../include/configfile/Parser.hpp"
 
 namespace configfile {
 
@@ -83,10 +83,170 @@ ConfigFileParser& ConfigFileParser::operator=(const ConfigFileParser &) {
 }
 
 /**
+ * @brief Identifies the command in the configuration file. and returns the id of the command.
+ * @param key The key to identify.
+ * @return The id of the command.
+ * @return 1 if listen, 2 if server_name, 3 if error_page, 4 if client_max_body_size, 5 if location, 6 if limit_exept, 7 if return, 8 if root, 9 if autoindex, 10 if index, 404 if not found.
+ */
+int ConfigFileParser::id_command(std::string &key)
+{
+	if (key == "server")
+		return 0;
+	else if (key == "listen")
+		return 1;
+	else if (key == "server_name")
+		return 2;
+	else if (key == "error_page")
+		return 3;
+	else if (key == "client_max_body_size")
+		return 4;
+	else if (key == "location")
+		return 5;
+	else if (key == "limit_except")
+		return 6;
+	else if (key == "return")
+		return 7;
+	else if (key == "root")
+		return 8;
+	else if (key == "autoindex")
+		return 9;
+	else if (key == "index")
+		return 10;
+	else
+		return 404;
+}
+
+/**
+ * @brief Saves the configuration data.
+ * @param args The arguments to save.
+ * @param layer The layer of the configuration file.
+ * @param qoute_flag The flag to check if quotes are found. 0 if found, 1 if not found.
+ */
+int ConfigFileParser::SaveConfigData(std::vector<std::string> &args, int layer, int qoute_flag, int &line_count)
+{
+	if (layer == 0) //global
+	{
+		if (qoute_flag == 0)
+		{
+			error_message(line_count, "Unexpected command found");
+			return 1;
+		}
+		else
+		{
+			switch (id_command(args[0]))
+			{
+				case 0:
+					if (server(args, line_count, layer) == 1)
+						return 1;
+					break;
+				case 404:
+					error_message(line_count, "Unknown command found");
+					return 1;
+				default:
+					error_message(line_count, "Unexpected command found");
+					return 1;
+			}
+		}
+	}
+	else if (layer == 1) //server
+	{
+		if (qoute_flag == 0)
+		{
+			switch (id_command(args[0]))
+			{
+				case 1:
+					if (listen(args, line_count, layer) == 1)
+						return 1;
+					break;
+				case 2:
+					//server_name
+					break;
+				case 3:
+					//error_page
+					break;
+				case 4:
+					//client_max_body_size
+					break;
+				case 404:
+					error_message(line_count, "Unknown command found");
+					return 1;
+				default:
+					error_message(line_count, "Unexpected command found");
+					return 1;
+			}
+		}
+		else
+		{
+			switch (id_command(args[0]))
+			{
+				case 5:
+					if (location(args, line_count, layer) == 1)
+						return 1;
+					break;
+				case 404:
+					error_message(line_count, "Unknown command found");
+					return 1;
+				default:
+					error_message(line_count, "Unexpected command found");
+					return 1;
+			}
+		}
+	}
+	else if (layer > 1)// location
+	{
+		if (qoute_flag == 0)
+		{
+			switch (id_command(args[0]))
+			{
+				
+				case 6:
+					//limit_exept
+					break;
+				case 7:
+					//return
+					break;
+				case 8:
+					//root
+					break;
+				case 9:
+					//autoindex
+					break;
+				case 10:
+					//index
+					break;
+				case 404:
+					error_message(line_count, "Unknown command found");
+					return 1;
+				default:
+					error_message(line_count, "Unexpected command found");
+					return 1;
+			}
+		}
+		else
+		{
+			switch (id_command(args[0]))
+			{
+				case 5:
+					if (location(args, line_count, layer) == 1)
+						return 1;
+					break;
+				case 404:
+					error_message(line_count, "Unknown command found");
+					return 1;
+				default:
+					error_message(line_count, "Unexpected command found");
+					return 1;
+			}
+		}
+	}
+	return 0;
+}
+
+/**
  * @brief parses a line in the configuration file.
  * @param 
  */
-int ConfigFileParser::handle_prompt(std::string &line, int layer)
+int ConfigFileParser::handle_prompt(std::string &line, int layer, int & line_count)
 {
 	//return 0 if successful and semicolon is found, 1 if semicolon is not found, 2 if error
 	//cut off trailing and starting spaces
@@ -99,14 +259,14 @@ int ConfigFileParser::handle_prompt(std::string &line, int layer)
 	{
 		line.erase(0, 1);
 	}
-	if (line[line.size() - 1]== ';')
+	if (line[line.size() - 1] == ';')
 	{
 		qoute_flag = 0;
 		line.erase(line.size() - 1);
 	}
 	if (line.find(';') != std::string::npos)
 	{
-		std::cerr << "Error: Configuration file: missplaced semicolon (;) found" << std::endl;
+		error_message(line_count, "Missplaced semicolon (;) found");
 		return 2;
 	}
 	std::vector<std::string> args;
@@ -117,8 +277,11 @@ int ConfigFileParser::handle_prompt(std::string &line, int layer)
 		args.push_back(key);
 	}
 	//TO-DO: Parse the arguments
-	(void)layer;
-	if (args.size() > 0)
+	if (SaveConfigData(args, layer, qoute_flag, line_count) == 1)
+	{
+		return 2;
+	}
+/* 	if (args.size() > 0)
 	{
 		std::cout << "cmd: " << args[0] << " args: ";
 	}
@@ -129,7 +292,7 @@ int ConfigFileParser::handle_prompt(std::string &line, int layer)
 			std::cout << args[i];
 		}
 	}
-	std::cout << std::endl;
+	std::cout << std::endl; */
 	return qoute_flag;
 }
 
@@ -139,9 +302,10 @@ int ConfigFileParser::handle_prompt(std::string &line, int layer)
  * @brief Parses the configuration file.
  * @param str The configuration file as a string.
  * @param layer The layer of the configuration file in our current pos.
+ * @param i The current position in the configuration file.
  * @return 0 if successful, 1 if error.
  */
-int ConfigFileParser::parseConfigFile(std::string &str, int layer, unsigned long &i)
+int ConfigFileParser::parseConfigFile(std::string &str, int layer, unsigned long &i, int &line_count)
 {
 	std::string line;
 	int find_quotes_flag = 0;
@@ -154,15 +318,13 @@ int ConfigFileParser::parseConfigFile(std::string &str, int layer, unsigned long
 				str[b] = ' ';
 		}
 	}
-	for (;i < str.size(); i++)
+	for (; i < str.size(); i++)
 	{
-		
-		if (str[i] == '\n' || i == str.size() - 1)
+		if (str[i] == '\n' || i == str.size())
 		{
-			std::cout << "hi from layer: " << layer << " i: " << i << std::endl;
+			line_count++;
 			if (line.empty() || line.find_first_not_of(' ') == std::string::npos)
 			{
-				//std::cout << "empty line" << std::endl;
 				line.clear();
 				continue;
 			}
@@ -171,19 +333,18 @@ int ConfigFileParser::parseConfigFile(std::string &str, int layer, unsigned long
 				//check if the line contains anything else than brackets or whitespace			
 				if (line.find_first_not_of(" }") != std::string::npos)
 				{
-					std::cerr << "Error: Configuration file: Quotes must be in an otherwise empty line" << std::endl;
+					error_message(line_count, "Quotes must be in an otherwise empty line");
 					return 1;
 				}
 				//check if there are multiple brackets on the same line
 				if (line.find('}') != line.find_last_of('}'))
 				{
-					std::cerr << "Error: Configuration file: Multiple brackets on the same line" << std::endl;
+					error_message(line_count, "Multiple brackets on the same line");
 					return 1;
 				}
-				std::cout << "found closing bracket on layer: " << layer << std::endl;
 				if (layer == 0)
 				{
-					std::cerr << "Error: Configuration file: Unexpected closing bracket found" << std::endl;
+					error_message(line_count, "Unexpected closing bracket found");
 					return 1;
 				}
 				else
@@ -196,40 +357,39 @@ int ConfigFileParser::parseConfigFile(std::string &str, int layer, unsigned long
 				//find if the line contains anything else than brackets or whitespace
 				if (line.find_first_not_of(" {") != std::string::npos)
 				{
-					std::cerr << "Error: Configuration file: Quotes must be in an otherwise empty line" << std::endl;
+					error_message(line_count, "Quotes must be in an otherwise empty line");
 					return 1;
 				}
 				//check if there are multiple brackets on the same line
 				if (line.find('{') != line.find_last_of('{'))
 				{
-					std::cerr << "Error: Configuration file: Multiple brackets on the same line" << std::endl;
+					error_message(line_count, "Multiple brackets on the same line");
 					return 1;
 				}
 				//find if quotes are expected here
 				if (find_quotes_flag == 0)
 				{
-					std::cerr << "Error: Configuration file: Quotes not expected at this point in file" << std::endl;
+					error_message(line_count, "Quotes not expected at this point in file");
 					return 1;
 				}
 				else
 				{
 					find_quotes_flag = 0;
 				}
-				if (parseConfigFile(str, layer + 1, i) == 1)
+				i++;
+				if (parseConfigFile(str, layer + 1, i, line_count) == 1)
 				{
 					return 1;
 				}
 			}
 			else
 			{
-				//std::cout << "found line: " << line << std::endl;
 				if (find_quotes_flag == 1)
 				{
-					std::cerr << "Error: Configuration file: Missing semicolon at the end of line"<< std::endl;
+					error_message(line_count, "Missing semicolon at the end of line");
 					return 1;
 				}
-				int ret = handle_prompt(line, layer);
-				//std::cout << "ret: " << ret << std::endl;
+				int ret = handle_prompt(line, layer, line_count);
 				if (ret == 2)
 				{
 					return 1;
@@ -259,13 +419,17 @@ int ConfigFileParser::loadConfigFile(std::string &configFileName)
 		return 1;
 	}
 	unsigned long i = 0;
-	if (parseConfigFile(file, 0, i) == 1)
+	int line_count = 0;
+	if (parseConfigFile(file, 0, i, line_count) == 1)
 	{
 		return 1;
 	}
 	return 0;
 }
 
-
+void ConfigFileParser::error_message(int & line_count, std::string message)
+{
+	std::cerr << "Error: Configuration file: line: " << line_count << " " << message << std::endl;
+}
 
 } /* namespace configfile */

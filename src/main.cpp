@@ -3,7 +3,7 @@
 
 #include "../include/logger/LoggerManager.hpp"
 #include "../include/utils/StringUtils.hpp"
-#include "../include/configfile/ConfigFileParser.hpp"
+#include "../include/configfile/Parser.hpp"
 
 int main(void) {
   try {
@@ -21,4 +21,5 @@ int main(void) {
   }
 	std::string configfile = "config_files/configfile_example";
 	configfile::ConfigFileParser configFileParser(configfile);
+	configFileParser.print_config_data(0);
 }
