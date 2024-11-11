@@ -28,10 +28,10 @@ ConfigFileParser::ConfigFileParser(const ConfigFileParser &) {
  * @brief Constructs a new ConfigFileParser object.
  * @param configFileName The name of the configuration file.
  */
-ConfigFileParser::ConfigFileParser(std::string &configFileName) 
+/* ConfigFileParser::ConfigFileParser(std::string &configFileName) 
 {
 	loadConfigFile(configFileName);
-}
+} */
 
 /**
  * @brief Copy assignment operator.
@@ -159,13 +159,16 @@ int ConfigFileParser::SaveConfigData(std::vector<std::string> &args, int layer, 
 						return 1;
 					break;
 				case 2:
-					//server_name
+					if (server_name(args, line_count, layer) == 1)
+						return 1;
 					break;
 				case 3:
-					//error_page
+					if (error_page(args, line_count, layer) == 1)
+						return 1;
 					break;
 				case 4:
-					//client_max_body_size
+					if (client_max_body_size(args, line_count, layer) == 1)
+						return 1;
 					break;
 				case 404:
 					error_message(line_count, "Unknown command found");
@@ -200,16 +203,19 @@ int ConfigFileParser::SaveConfigData(std::vector<std::string> &args, int layer, 
 			{
 				
 				case 6:
-					//limit_exept
+					if (limit_except(args, line_count, layer) == 1)
+						return 1;
 					break;
 				case 7:
 					//return
 					break;
 				case 8:
-					//root
+					if (root(args, line_count, layer) == 1)
+						return 1;
 					break;
 				case 9:
-					//autoindex
+					if (autoindex(args, line_count, layer) == 1)
+						return 1;
 					break;
 				case 10:
 					//index
@@ -276,23 +282,10 @@ int ConfigFileParser::handle_prompt(std::string &line, int layer, int & line_cou
 	{
 		args.push_back(key);
 	}
-	//TO-DO: Parse the arguments
 	if (SaveConfigData(args, layer, qoute_flag, line_count) == 1)
 	{
 		return 2;
 	}
-/* 	if (args.size() > 0)
-	{
-		std::cout << "cmd: " << args[0] << " args: ";
-	}
-	if (args.size() > 1)
-	{
-	for (unsigned long i = 1; i < args.size(); i++)
-		{
-			std::cout << args[i];
-		}
-	}
-	std::cout << std::endl; */
 	return qoute_flag;
 }
 
@@ -422,6 +415,7 @@ int ConfigFileParser::loadConfigFile(std::string &configFileName)
 	int line_count = 0;
 	if (parseConfigFile(file, 0, i, line_count) == 1)
 	{
+		m_configData.servers.clear();
 		return 1;
 	}
 	return 0;

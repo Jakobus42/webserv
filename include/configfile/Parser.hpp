@@ -6,7 +6,6 @@
 #include <vector>
 #include <sstream>
 
-
 struct location 
 {
 	//location name
@@ -24,7 +23,7 @@ struct server
 {
 	//configurations
 	int port;
-	std::string host;
+	std::vector<int> ip_address;
 	std::vector<std::string> server_names;
 	std::map<int, std::string> errorPages;
 	unsigned long max_body_size;
@@ -51,7 +50,7 @@ class ConfigFileParser {
         ~ConfigFileParser();
         ConfigFileParser(const ConfigFileParser &other);
         ConfigFileParser& operator=(const ConfigFileParser &other);
-		ConfigFileParser(std::string &configFileName);
+		//ConfigFileParser(std::string &configFileName);
 		int loadConfigFile(std::string &configFileName);
 		void print_config_data(int detailed);
 
@@ -72,18 +71,18 @@ class ConfigFileParser {
 		int location(std::vector<std::string> &args, int & line_count, int layer);
 
 		int listen(std::vector<std::string> &args, int & line_count, int layer);
-/* 		int server_name(std::vector<std::string> &args, int & line_count, int layer);
+ 		int server_name(std::vector<std::string> &args, int & line_count, int layer);
 		int error_page(std::vector<std::string> &args, int & line_count, int layer);
 		int client_max_body_size(std::vector<std::string> &args, int & line_count, int layer);
-		int limit_except(std::vector<std::string> &args, int & line_count, int layer);
+ 		int limit_except(std::vector<std::string> &args, int & line_count, int layer);
+		int return_(std::vector<std::string> &args, int & line_count, int layer);
 		int root(std::vector<std::string> &args, int & line_count, int layer);
 		int autoindex(std::vector<std::string> &args, int & line_count, int layer);
-		int index(std::vector<std::string> &args, int & line_count, int layer); */
+		int index(std::vector<std::string> &args, int & line_count, int layer);
 
 		void error_message(int & line_count, std::string message);
-
 		void print_locations(std::vector<struct location> &locations, int layer, int detailed);
-
+		struct location *get_location(int layer);
 		
 };
 

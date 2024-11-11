@@ -11,11 +11,11 @@ in a "server" block:
 - location (block)
 
 in a "location" block:
+- limit_exept
 - return
 - root
 - autoindex
 - index
-- limit_exept
 - location (block)
 (cgi_commands, not sure which ones are needed)
 

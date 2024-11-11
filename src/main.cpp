@@ -20,6 +20,10 @@ int main(void) {
     LOG("ERROR: " << e.what(), logger::ERROR)
   }
 	std::string configfile = "config_files/configfile_example";
-	configfile::ConfigFileParser configFileParser(configfile);
-	configFileParser.print_config_data(0);
+	configfile::ConfigFileParser configFileParser;
+	if (configFileParser.loadConfigFile(configfile) == 1)
+	{
+		return 1;
+	}
+	configFileParser.print_config_data(1);
 }

@@ -1,6 +1,6 @@
 server
 {
-	listen 8080;  # Choose the port
+	listen 122;  # Choose the port
 	server_name example.com;  # Setup server names
 
 	# Default error pages
@@ -8,7 +8,7 @@ server
 	error_page 500 502 503 504 /50x.html;
 
 	# Limit client body size
-	client_max_body_size 10M;
+	client_max_body_size 10000000;
 
 	# Default server for unspecified routes
 	location / 
@@ -22,7 +22,7 @@ server
 	location /kapouet
 	{
 	    # Accepted HTTP methods
-	    limit_except GET POST;
+	    limit_except GET POST PUT HEAD DELETE;
 	    # Directory configuration
 	    root /tmp/www;  # Base directory
 	    autoindex on;  # Enable directory listing
