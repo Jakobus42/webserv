@@ -1,7 +1,11 @@
 #include "../../include/configfile/Parser.hpp"
 
 namespace configfile {
-
+/**
+ * @brief Checks if a string is a number.
+ * @param str The string to check.
+ * @return true if the string is a number, false otherwise.
+ */
 bool is_number(const std::string& str)
 {
 	std::string::const_iterator it = str.begin();
@@ -12,6 +16,12 @@ bool is_number(const std::string& str)
 	return false;
 }
 
+/**
+ * @brief finds the current location in the configuration file.
+ * 
+ * @param layer the current layer of the configuration file.
+ * @return struct location* the current location.
+ */
 struct location * ConfigFileParser::get_location(int layer)
 {
 	struct location* temp = &m_configData.servers.back().locations.back();
@@ -22,6 +32,12 @@ struct location * ConfigFileParser::get_location(int layer)
 	return temp;
 }
 
+
+/**
+ * @brief Converts a string to a positive integer.
+ * @param str The string to convert.
+ * @return int The integer value of the string. or -1 if the string is not a number. 
+ */
 int ft_stoi(std::string str)
 {
 	long res = 0;
@@ -42,6 +58,14 @@ int ft_stoi(std::string str)
 	return res;
 }
 
+
+/**
+ * @brief Creates a new server struct, initializes it and adds it to the config data.
+ * @param args all prompts in the current line of the configuration file.
+ * @param line_count the current line number, so we are able to print error messages.
+ * @param layer the current layer of the configuration file.
+ * @return int 0 if successful, 1 if not.
+ */
 int ConfigFileParser::server(std::vector<std::string> &args, int & line_count, int layer)
 {
 	(void)layer;
@@ -57,9 +81,17 @@ int ConfigFileParser::server(std::vector<std::string> &args, int & line_count, i
 		new_server.ip_address.push_back(0);
 	new_server.max_body_size = 1000000;
 	m_configData.servers.push_back(new_server);
+	//TODO: Load default Error pages if none are provided
 	return 0;
 }
 
+/**
+ * @brief Creates a new location struct, initializes it and adds it to the config data.
+ * @param args all prompts in the current line of the configuration file.
+ * @param line_count the current line number, so we are able to print error messages.
+ * @param layer the current layer of the configuration file.
+ * @return int 0 if successful, 1 if not.
+ */
 int ConfigFileParser::location (std::vector<std::string> &args, int & line_count, int layer)
 {
 	if (args.size() != 2)
@@ -72,6 +104,9 @@ int ConfigFileParser::location (std::vector<std::string> &args, int & line_count
 	new_location.autoindex = false;
 	new_location.root = "";
 	new_location.name = args[1];
+	new_location.return_code = 0;
+	new_location.return_url = "";
+	new_location.index.push_back("index.html");
 	if (layer == 1)
 	{
 		m_configData.servers.back().locations.push_back(new_location);
@@ -86,6 +121,13 @@ int ConfigFileParser::location (std::vector<std::string> &args, int & line_count
 	return 0;
 }
 
+/**
+ * @brief Sets the port and ip address of the server.
+ * @param args all prompts in the current line of the configuration file.
+ * @param line_count the current line number, so we are able to print error messages.
+ * @param layer the current layer of the configuration file.
+ * @return int 0 if successful, 1 if not.
+ */
 int ConfigFileParser::listen (std::vector<std::string> &args, int & line_count, int layer)
 {	
 	(void)layer;
@@ -156,9 +198,21 @@ int ConfigFileParser::listen (std::vector<std::string> &args, int & line_count, 
 	return 0;
 }
 
+/**
+ * @brief Sets the server name(s) of the server.
+ * @param args all prompts in the current line of the configuration file.
+ * @param line_count the current line number, so we are able to print error messages.
+ * @param layer the current layer of the configuration file.
+ * @return int 0 if successful, 1 if not.
+ */
 int ConfigFileParser::server_name(std::vector<std::string> &args, int & line_count, int layer)
 {
 	(void)layer;
+	if (args.size() < 2)
+	{
+		error_message(line_count, "Invalid number of arguments for server_name");
+		return 1;
+	}
 	for (unsigned long i = 1; i < args.size(); i++)
 	{
 		m_configData.servers.back().server_names.push_back(args[i]);
@@ -171,9 +225,21 @@ int ConfigFileParser::server_name(std::vector<std::string> &args, int & line_cou
 	return 0;
 }
 
+/**
+ * @brief sets the error pages for the server.
+ * @param args all prompts in the current line of the configuration file.
+ * @param line_count the current line number, so we are able to print error messages.
+ * @param layer the current layer of the configuration file.
+ * @return int 0 if successful, 1 if not.
+ */
 int ConfigFileParser::error_page(std::vector<std::string> &args, int & line_count, int layer)
 {
 	(void)layer;
+	if (args.size() < 3 || args.size() > 1001)
+	{
+		error_message(line_count, "Invalid number of arguments for error_page");
+		return 1;
+	}
 	std::string last = args.back();
 	//TODO: check if last is a valid path?
 	args.pop_back();
@@ -190,6 +256,13 @@ int ConfigFileParser::error_page(std::vector<std::string> &args, int & line_coun
 	return 0;
 }
 
+/**
+ * @brief sets the max body size for the server.
+ * @param args all prompts in the current line of the configuration file.
+ * @param line_count the current line number, so we are able to print error messages.
+ * @param layer the current layer of the configuration file.
+ * @return int 0 if successful, 1 if not.
+ */
 int ConfigFileParser::client_max_body_size(std::vector<std::string> &args, int & line_count, int layer)
 {
 	(void)layer;
@@ -208,9 +281,21 @@ int ConfigFileParser::client_max_body_size(std::vector<std::string> &args, int &
 	return 0;
 }
 
+/**
+ * @brief sets the methods allowed for the location.
+ * @param args all prompts in the current line of the configuration file.
+ * @param line_count the current line number, so we are able to print error messages.
+ * @param layer the current layer of the configuration file.
+ * @return int 0 if successful, 1 if not.
+ */
 int ConfigFileParser::limit_except(std::vector<std::string> &args, int & line_count, int layer)
 {
 	(void)layer;
+	if (args.size() < 2 || args.size() > 15)
+	{
+		error_message(line_count, "Invalid number of arguments for limit_except");
+		return 1;
+	}
 	std::vector<std::string> methods;
 	methods.push_back("GET");
 	methods.push_back("HEAD");
@@ -261,16 +346,43 @@ int ConfigFileParser::limit_except(std::vector<std::string> &args, int & line_co
 	}
 	struct location* current = get_location(layer);
 	current->methods = allowed_methods;
-	std::cout << "location: " << current->name << std::endl;
 	return 0;
 }
 
-/* int ConfigFileParser::return_(std::vector<std::string> &args, int & line_count, int layer)
+/**
+ * @brief redirects the user to a different url with a specific return code.
+ * @param args all prompts in the current line of the configuration file.
+ * @param line_count the current line number, so we are able to print error messages.
+ * @param layer the current layer of the configuration file.
+ * @return int 0 if successful, 1 if not.
+ */
+int ConfigFileParser::return_(std::vector<std::string> &args, int & line_count, int layer)
 {
-	(void)layer;
+	if (args.size() != 3)
+	{
+		error_message(line_count, "Invalid number of arguments for root");
+		return 1;
+	}
+	int i = ft_stoi(args[1]);
+	if (i < 300 || i > 399)
+	{
+		error_message(line_count, "Invalid first argument for return, expected number between 300 and 399");
+		return 1;
+	}
+	//TODO: check if valid url?
+	struct location* current = get_location(layer);
+	current->return_code = i;
+	current->return_url = args[2];
 	return 0;
-} */
+}
 
+/**
+ * @brief sets the root directory for the location.
+ * @param args all prompts in the current line of the configuration file.
+ * @param line_count the current line number, so we are able to print error messages.
+ * @param layer the current layer of the configuration file.
+ * @return int 0 if successful, 1 if not.
+ */
 int ConfigFileParser::root(std::vector<std::string> &args, int & line_count, int layer)
 {
 	(void)layer;
@@ -285,6 +397,13 @@ int ConfigFileParser::root(std::vector<std::string> &args, int & line_count, int
 	return 0;
 }
 
+/**
+ * @brief turns the autoindex on or off for the location. (off by default)
+ * @param args all prompts in the current line of the configuration file.
+ * @param line_count the current line number, so we are able to print error messages.
+ * @param layer the current layer of the configuration file.
+ * @return int 0 if successful, 1 if not.
+ */
 int ConfigFileParser::autoindex(std::vector<std::string> &args, int & line_count, int layer)
 {
 	(void)layer;
@@ -310,30 +429,56 @@ int ConfigFileParser::autoindex(std::vector<std::string> &args, int & line_count
 	return 0;
 }
 
-/* int ConfigFileParser::index(std::vector<std::string> &args, int & line_count, int layer)
+/**
+ * @brief sets the index files for the location. (index.html by default)
+ * @param args all prompts in the current line of the configuration file.
+ * @param line_count the current line number, so we are able to print error messages.
+ * @param layer the current layer of the configuration file.
+ * @return int 0 if successful, 1 if not.
+ */
+int ConfigFileParser::index(std::vector<std::string> &args, int & line_count, int layer)
 {
 	(void)layer;
+	
+	if (args.size() < 2 || args.size() > 1001)
+	{
+		error_message(line_count, "Invalid number of arguments for index");
+		return 1;
+	}
 	struct location* current = get_location(layer);
+	current->index.clear();
 	for (unsigned long i = 1; i < args.size(); i++)
 	{
 		current->index.push_back(args[i]);
 	}
 	return 0;
-} */
+}
 
+/**
+ * @brief prints the configuration data.
+ * @param detailed toggles between detailed and simple output. (0 for simple, 1 for detailed)
+ */
 void ConfigFileParser::print_config_data(int detailed)
 {
+	if (is_loaded == 0)
+	{
+		std::cout << "No configuration file loaded" << std::endl;
+		return;
+	}
 	for (unsigned long i = 0; i < m_configData.servers.size(); i++)
 	{
 		std::cout << "--------------------------" << std::endl;
-		std::cout << "Server: " << i << std::endl;
+		std::cout << "Server: " << i + 1 << std::endl;
 		if (detailed)
 		{
 			std::cout << "Port: " << m_configData.servers[i].port << std::endl;
 			std::cout << "IP address: ";
 			for (unsigned long j = 0; j < m_configData.servers[i].ip_address.size(); j++)
 			{
-				std::cout << m_configData.servers[i].ip_address[j] << ".";
+				std::cout << m_configData.servers[i].ip_address[j];
+				if (j != m_configData.servers[i].ip_address.size() - 1)
+					std::cout << ".";
+				
 			}
 			std::cout << std::endl;
 			std::cout << "Server names: ";
@@ -351,37 +496,74 @@ void ConfigFileParser::print_config_data(int detailed)
 			std::cout << "Max body size: " << m_configData.servers[i].max_body_size << std::endl;
 			std::cout << "Locations: " << std::endl;
 		}
-		print_locations(m_configData.servers[i].locations, 1, detailed);
+		std::vector<int> layer_num;
+		print_locations(m_configData.servers[i].locations, 1, detailed, layer_num);
 	}
 }
 
-void ConfigFileParser::print_locations(std::vector<struct location> &locations, int layer, int detailed)
+/**
+ * @brief prints the locations of the server.
+ * @param locations the locations to print.
+ * @param layer the current layer of the configuration file.
+ * @param detailed toggles between detailed and simple output. (0 for simple, 1 for detailed)
+ * @param layer_num the current layer number.
+ */
+void ConfigFileParser::print_locations(std::vector<struct location> &locations, int layer, int detailed, std::vector<int> layer_num)
 {
 	std::string c = "";
 	for (int i = 0; i < layer; i++)
 	{
-		c += "  ";
+		c += "   ";
 		c += "|";
 	}
+	layer_num.push_back(1);
 	for (unsigned long j = 0; j < locations.size(); j++)
 	{
 		std::cout << "--------------------------" << std::endl;
-		std::cout << c << "Location: " << j << " name: " << locations[j].name << std::endl;
+		std::cout << c << "Location: "; 
+		for (unsigned long k = 0; k < layer_num.size(); k++)
+		{
+			std::cout << layer_num[k];
+			if (k != layer_num.size() - 1)
+				std::cout << ".";
+		}
+		std::cout << " name: " << locations[j].name << std::endl;
 		if (detailed)
 		{
-			std::cout << c<< "Root: " << locations[j].root << std::endl;
-			std::cout << c << "Autoindex: " << locations[j].autoindex << std::endl;
-			std::cout << c << "Methods: "; 
-			for (unsigned long k = 0; k < locations[j].methods.size(); k++)
+			if (locations[j].root != "")
+				std::cout << c << "Root: " << locations[j].root << std::endl;
+			if (locations[j].autoindex)
+				std::cout << c << "Autoindex: on" << std::endl;
+			else
+				std::cout << c << "Autoindex: off" << std::endl;
+			if (locations[j].methods.size() > 0)
 			{
-				std::cout << locations[j].methods[k] << " ";
+				std::cout << c << "Methods: "; 
+				for (unsigned long k = 0; k < locations[j].methods.size(); k++)
+				{
+					std::cout << locations[j].methods[k] << " ";
+				}
+				std::cout << std::endl;
 			}
-			std::cout << std::endl;
-			std::cout << c << "Locations: " << std::endl;
+			if (locations[j].return_code != 0)
+				std::cout << c << "Redirect: " << locations[j].return_code << " " << locations[j].return_url << std::endl;
+			if (locations[j].index.size() > 0)
+			{
+				std::cout << c << "Index: ";
+				for (unsigned long k = 0; k < locations[j].index.size(); k++)
+				{
+					std::cout << locations[j].index[k] << " ";
+				}
+				std::cout << std::endl;
+			}
 		}
 		//go one step deeper
 		if (locations[j].locations.size() > 0)
-			print_locations(locations[j].locations, layer + 1, detailed);
+		{
+			//layer_num.push_back(1);
+			print_locations(locations[j].locations, layer + 1, detailed, layer_num);
+		}
+		layer_num.back()++;
 	}
 }
 

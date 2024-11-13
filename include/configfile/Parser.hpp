@@ -10,6 +10,9 @@ struct location
 {
 	//location name
 	std::string name;
+	//return
+	std::string return_url;
+	int return_code;
 	//configurations
 	std::vector<std::string> methods;
 	bool autoindex;
@@ -58,6 +61,7 @@ class ConfigFileParser {
 /* 		int m_port;
 		std::string m_serverName; */
 		Config_data m_configData;
+		int is_loaded;
 		
 		std::string readConfigFile(std::string &configFileName);
 		int parseConfigFile(std::string &configFileName, int layer, unsigned long &i, int &line_count);
@@ -81,7 +85,7 @@ class ConfigFileParser {
 		int index(std::vector<std::string> &args, int & line_count, int layer);
 
 		void error_message(int & line_count, std::string message);
-		void print_locations(std::vector<struct location> &locations, int layer, int detailed);
+		void print_locations(std::vector<struct location> &locations, int layer, int detailed, std::vector<int> layer_num);
 		struct location *get_location(int layer);
 		
 };

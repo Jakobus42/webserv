@@ -6,7 +6,7 @@ namespace configfile {
  * @brief Constructs a new ConfigFileParser object.
  */
 ConfigFileParser::ConfigFileParser() {
-
+	is_loaded = 0;
 }
 
 /**
@@ -21,10 +21,10 @@ ConfigFileParser::~ConfigFileParser() {
  * @param other The other ConfigFileParser object to copy.
  */
 ConfigFileParser::ConfigFileParser(const ConfigFileParser &) {
-
+		is_loaded = 0;
 }
 
-/**
+/* *
  * @brief Constructs a new ConfigFileParser object.
  * @param configFileName The name of the configuration file.
  */
@@ -85,8 +85,7 @@ ConfigFileParser& ConfigFileParser::operator=(const ConfigFileParser &) {
 /**
  * @brief Identifies the command in the configuration file. and returns the id of the command.
  * @param key The key to identify.
- * @return The id of the command.
- * @return 1 if listen, 2 if server_name, 3 if error_page, 4 if client_max_body_size, 5 if location, 6 if limit_exept, 7 if return, 8 if root, 9 if autoindex, 10 if index, 404 if not found.
+ * @return The id of the command. (1 if listen, 2 if server_name, 3 if error_page, 4 if client_max_body_size, 5 if location, 6 if limit_exept, 7 if return, 8 if root, 9 if autoindex, 10 if index, 404 if not found.)
  */
 int ConfigFileParser::id_command(std::string &key)
 {
@@ -121,6 +120,8 @@ int ConfigFileParser::id_command(std::string &key)
  * @param args The arguments to save.
  * @param layer The layer of the configuration file.
  * @param qoute_flag The flag to check if quotes are found. 0 if found, 1 if not found.
+ * @param line_count The current line number.
+ * @return 0 if successful, 1 if error.
  */
 int ConfigFileParser::SaveConfigData(std::vector<std::string> &args, int layer, int qoute_flag, int &line_count)
 {
@@ -207,7 +208,8 @@ int ConfigFileParser::SaveConfigData(std::vector<std::string> &args, int layer, 
 						return 1;
 					break;
 				case 7:
-					//return
+					if (return_(args, line_count, layer) == 1)
+						return 1;
 					break;
 				case 8:
 					if (root(args, line_count, layer) == 1)
@@ -218,7 +220,8 @@ int ConfigFileParser::SaveConfigData(std::vector<std::string> &args, int layer, 
 						return 1;
 					break;
 				case 10:
-					//index
+					if (index(args, line_count, layer) == 1)
+						return 1;
 					break;
 				case 404:
 					error_message(line_count, "Unknown command found");
@@ -250,7 +253,10 @@ int ConfigFileParser::SaveConfigData(std::vector<std::string> &args, int layer, 
 
 /**
  * @brief parses a line in the configuration file.
- * @param 
+ * @param line the line to parse.
+ * @param layer the current layer of the configuration file.
+ * @param line_count the current line number.
+ * @return int 0 if successful, 1 if not.
  */
 int ConfigFileParser::handle_prompt(std::string &line, int layer, int & line_count)
 {
@@ -296,6 +302,7 @@ int ConfigFileParser::handle_prompt(std::string &line, int layer, int & line_cou
  * @param str The configuration file as a string.
  * @param layer The layer of the configuration file in our current pos.
  * @param i The current position in the configuration file.
+ * @param line_count The current line number.
  * @return 0 if successful, 1 if error.
  */
 int ConfigFileParser::parseConfigFile(std::string &str, int layer, unsigned long &i, int &line_count)
@@ -307,7 +314,7 @@ int ConfigFileParser::parseConfigFile(std::string &str, int layer, unsigned long
 	{
 		for (unsigned long b = 0; b < str.size(); b++)
 		{
-			if (str[b] == '	')
+			if (str[b] == '\t' || str[b] == '\r' || str[b] == '\v' || str[b] == '\f')
 				str[b] = ' ';
 		}
 	}
@@ -401,8 +408,9 @@ int ConfigFileParser::parseConfigFile(std::string &str, int layer, unsigned long
 }
 
 /**
- * @brief Loads the configuration file, saving all the information. Also called by the constructor if string is given.
+ * @brief Loads the configuration file, saving all the information.
  * @param configFileName The name of the configuration file.
+ * @return 0 if successful, 1 if error.
  */
 int ConfigFileParser::loadConfigFile(std::string &configFileName) 
 {
@@ -418,9 +426,22 @@ int ConfigFileParser::loadConfigFile(std::string &configFileName)
 		m_configData.servers.clear();
 		return 1;
 	}
+	if (m_configData.servers.size() == 0)
+	{
+		error_message(line_count, "No servers found in configuration file");
+		return 1;
+	}
+	is_loaded = 1;
 	return 0;
+	
 }
 
+/**
+ * @brief Prints an error message, including the line number.
+ * 
+ * @param line_count current line number.
+ * @param message message to print.
+ */
 void ConfigFileParser::error_message(int & line_count, std::string message)
 {
 	std::cerr << "Error: Configuration file: line: " << line_count << " " << message << std::endl;

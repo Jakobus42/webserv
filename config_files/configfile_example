@@ -1,6 +1,6 @@
 server
 {
-	listen 122;  # Choose the port
+	listen 1.1.1.1:122;  # Choose the port
 	server_name example.com;  # Setup server names
 
 	# Default error pages
@@ -15,7 +15,6 @@ server
 	{
 		root /tmp/www;  # Default document root
 		index index.html index.htm;  # Default file for directories
-		#try_files $uri $uri/ =404;  # Try to serve file or directory
 	}
 
 	    # Example of a route with multiple rules
@@ -28,7 +27,7 @@ server
 	    autoindex on;  # Enable directory listing
 	    index default.html;  # Default file in directory   
 	    # Executing CGI scripts for .php files
-	    location dwad
+	    location hi.php
 		{
 	        #include fastcgi_params;
 	        #fastcgi_pass 127.0.0.1:9000;  # Assuming PHP-FPM is running

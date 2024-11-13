@@ -1,6 +1,6 @@
 
 #include <gtest/gtest.h>
-#include "../../include/configfile/ConfigFileParser.hpp"
+#include "../../include/configfile/Parser.hpp"
 
 namespace configfile {
 
