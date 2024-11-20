@@ -99,12 +99,12 @@ Include dependency graph for main.cpp:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
-<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a172241e088a9da9dabf2cf839a73c865"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865">main</a> (int argc, char **const argv)</td></tr>
+<tr class="separator:a172241e088a9da9dabf2cf839a73c865"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a0ddf1224851353fc92bfbff6f499fa97"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&nbsp;</a></span>main()</h2>
+<a id="a172241e088a9da9dabf2cf839a73c865"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a172241e088a9da9dabf2cf839a73c865">&#9670;&nbsp;</a></span>main()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -118,8 +118,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>argv</em>[]&#160;</td>
+          <td class="paramtype">char **const&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -130,7 +130,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00008">8</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;                                 {</div>
+<div class="fragment"><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;                                      {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <span class="keywordflow">try</span> {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classlogger_1_1LoggerManager.html">logger::LoggerManager</a>&amp; loggerManager = <a class="code" href="classlogger_1_1LoggerManager.html#ad140bde7c3a4c9241fb147f2c864d018">logger::LoggerManager::getInstance</a>();</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    loggerManager.<a class="code" href="classlogger_1_1LoggerManager.html#ae26ebcbad9c6e4f85769438abac46db5">registerLogger</a>(<span class="stringliteral">&quot;Console&quot;</span>, <span class="keyword">new</span> <a class="code" href="classlogger_1_1ConsoleLogger.html">logger::ConsoleLogger</a>());</div>
@@ -156,7 +156,7 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
 <div class="ttc" id="aLoggerManager_8hpp_html_a35a9ed336fa2523662640093badacab1"><div class="ttname"><a href="LoggerManager_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a></div><div class="ttdeci">#define LOG(message, level)</div><div class="ttdoc">Logs a message using the LoggerManager.</div><div class="ttdef"><b>Definition:</b> <a href="LoggerManager_8hpp_source.html#l00063">LoggerManager.hpp:63</a></div></div>
 <div class="ttc" id="aclassconfigfile_1_1ConfigFileParser_html"><div class="ttname"><a href="classconfigfile_1_1ConfigFileParser.html">configfile::ConfigFileParser</a></div><div class="ttdoc">This class is responsible for parsing the configuration file.</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00062">Parser.hpp:62</a></div></div>
-<div class="ttc" id="aclassconfigfile_1_1ConfigFileParser_html_a50af4e49462d1d98e1323db4966b8066"><div class="ttname"><a href="classconfigfile_1_1ConfigFileParser.html#a50af4e49462d1d98e1323db4966b8066">configfile::ConfigFileParser::loadConfigFile</a></div><div class="ttdeci">int loadConfigFile(std::string &amp;configFileName)</div><div class="ttdoc">Loads the configuration file, saving all the information.</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8cpp_source.html#l00334">Parser.cpp:334</a></div></div>
+<div class="ttc" id="aclassconfigfile_1_1ConfigFileParser_html_a50af4e49462d1d98e1323db4966b8066"><div class="ttname"><a href="classconfigfile_1_1ConfigFileParser.html#a50af4e49462d1d98e1323db4966b8066">configfile::ConfigFileParser::loadConfigFile</a></div><div class="ttdeci">int loadConfigFile(std::string &amp;configFileName)</div><div class="ttdoc">Loads the configuration file, saving all the information.</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8cpp_source.html#l00337">Parser.cpp:337</a></div></div>
 <div class="ttc" id="aclasslogger_1_1ConsoleLogger_html"><div class="ttname"><a href="classlogger_1_1ConsoleLogger.html">logger::ConsoleLogger</a></div><div class="ttdoc">Logs messages to the console.</div><div class="ttdef"><b>Definition:</b> <a href="ConsoleLogger_8hpp_source.html#l00020">ConsoleLogger.hpp:20</a></div></div>
 <div class="ttc" id="aclasslogger_1_1FileLogger_html"><div class="ttname"><a href="classlogger_1_1FileLogger.html">logger::FileLogger</a></div><div class="ttdoc">Logs messages to a specified file.</div><div class="ttdef"><b>Definition:</b> <a href="FileLogger_8hpp_source.html#l00019">FileLogger.hpp:19</a></div></div>
 <div class="ttc" id="aclasslogger_1_1LoggerManager_html"><div class="ttname"><a href="classlogger_1_1LoggerManager.html">logger::LoggerManager</a></div><div class="ttdoc">Manages multiple loggers and handles global logging operations.</div><div class="ttdef"><b>Definition:</b> <a href="LoggerManager_8hpp_source.html#l00022">LoggerManager.hpp:22</a></div></div>
@@ -172,8 +172,8 @@ Functions</h2></td></tr>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="main_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph.png" border="0" usemap="#amain_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph" alt=""/></div>
-<map name="amain_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph" id="amain_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph">
+<div class="center"><img src="main_8cpp_a172241e088a9da9dabf2cf839a73c865_cgraph.png" border="0" usemap="#amain_8cpp_a172241e088a9da9dabf2cf839a73c865_cgraph" alt=""/></div>
+<map name="amain_8cpp_a172241e088a9da9dabf2cf839a73c865_cgraph" id="amain_8cpp_a172241e088a9da9dabf2cf839a73c865_cgraph">
 <area shape="rect" title=" " alt="" coords="5,503,60,530"/>
 <area shape="rect" href="classlogger_1_1LoggerManager.html#ad140bde7c3a4c9241fb147f2c864d018" title="Provides access to the singleton instance of LoggerManager." alt="" coords="119,332,291,373"/>
 <area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a50af4e49462d1d98e1323db4966b8066" title="Loads the configuration file, saving all the information." alt="" coords="108,397,301,439"/>
@@ -188,12 +188,12 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a1c2574be4dc66b370036f5ea82c847c1" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="1073,5,1267,47"/>
 <area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a186e2141754df53c3cffa56d1e32bcbf" title="sets the max body size for the server." alt="" coords="1073,332,1267,373"/>
 <area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#ae10f2185f5038945ec887b34eab75f3e" title="sets the error pages for the server." alt="" coords="1073,397,1267,439"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a7b4910251f3e8336a84fc402d48dee2f" title="Identifies the command in the configuration file. and returns the id of the command." alt="" coords="1073,528,1267,569"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a843a249f1cf599677c7ff478c19681a7" title="Identifies the command in the configuration file. and returns the id of the command." alt="" coords="1073,528,1267,569"/>
 <area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#ae199a4d372458fa238bf51c4332adc8a" title="sets the index files for the location. (index.html by default)" alt="" coords="1073,71,1267,112"/>
 <area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a764f712b07cad97063f02c6176a17989" title="sets the methods allowed for the location." alt="" coords="1073,136,1267,177"/>
 <area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a9fafa85093703e1ac7689bf1b48d4d15" title="Sets the port and ip address of the server." alt="" coords="1073,463,1267,504"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a418d1433fcf55e317c7ca0373bbae011" title="Creates a new location struct, initializes it and adds it to the config data." alt="" coords="1073,593,1267,635"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a5aebf684fe5cdda1e3ce307df5fb3063" title="redirects the user to a different url with a specific return code." alt="" coords="1073,267,1267,308"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#afd0d4dc774a41e4c58b98ba8358ca2d3" title="Creates a new location struct, initializes it and adds it to the config data." alt="" coords="1073,593,1267,635"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#aec4c0f5afcdbe8fee319c18f6d3ee04f" title="redirects the user to a different url with a specific return code." alt="" coords="1073,267,1267,308"/>
 <area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a0729965c5f3408e5dcf09b6beb2575a1" title="sets the root directory for the location." alt="" coords="1073,201,1267,243"/>
 <area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a2437fe1bb47129c5e71fb88d46346099" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="1073,659,1267,700"/>
 <area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#ad443e54321da8ee07aa64f0e8ace975c" title="Sets the server name(s) of the server." alt="" coords="1073,724,1267,765"/>
