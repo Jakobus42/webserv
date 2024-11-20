@@ -5,7 +5,7 @@
 #include "../include/logger/LoggerManager.hpp"
 #include "../include/utils/StringUtils.hpp"
 
-int main(int argc, char* argv[]) {
+int main(int argc, char** const argv) {
   try {
     logger::LoggerManager& loggerManager = logger::LoggerManager::getInstance();
     loggerManager.registerLogger("Console", new logger::ConsoleLogger());

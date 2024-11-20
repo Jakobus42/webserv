@@ -31,7 +31,10 @@ ConfigFileParser::ConfigFileParser(const ConfigFileParser&) { m_isLoaded = 0; }
  * @param other The other ConfigFileParser object to assign from.
  * @return A reference to the assigned ConfigFileParser object.
  */
-ConfigFileParser& ConfigFileParser::operator=(const ConfigFileParser&) { return *this; }
+ConfigFileParser& ConfigFileParser::operator=(const ConfigFileParser&) {
+  m_isLoaded = 0;
+  return *this;
+}
 
 /**
  * @brief Reads the configuration file.
@@ -39,7 +42,7 @@ ConfigFileParser& ConfigFileParser::operator=(const ConfigFileParser&) { return 
  */
 std::string ConfigFileParser::readConfigFile(std::string& configFileName) {
   if (configFileName.empty()) {
-	LOG("Error: Configuration file name is empty." << std::endl, logger::ERROR)
+    LOG("Error: Configuration file name is empty." << std::endl, logger::ERROR)
     return std::string();
   }
   std::string line;
@@ -47,7 +50,7 @@ std::string ConfigFileParser::readConfigFile(std::string& configFileName) {
   infile.open(configFileName.c_str());
   char c;
   if (!infile.is_open()) {
-	LOG("Error: Could not open configuration file." << std::endl, logger::ERROR)
+    LOG("Error: Could not open configuration file." << std::endl, logger::ERROR)
     return std::string();
   }
   while (!infile.eof() && infile >> std::noskipws >> c) {
@@ -62,11 +65,11 @@ std::string ConfigFileParser::readConfigFile(std::string& configFileName) {
   }
   infile.close();
   if (infile.is_open()) {
-	LOG("Error: Could not close Configuration file" << std::endl, logger::ERROR)
-	return std::string();
+    LOG("Error: Could not close Configuration file" << std::endl, logger::ERROR)
+    return std::string();
   }
   if (line.empty()) {
-	LOG("Error: Configuration file is empty." << std::endl, logger::ERROR)
+    LOG("Error: Configuration file is empty." << std::endl, logger::ERROR)
     return std::string();
   }
   return line;
@@ -78,7 +81,7 @@ std::string ConfigFileParser::readConfigFile(std::string& configFileName) {
  * @return The id of the command. (1 if listen, 2 if server_name, 3 if error_page, 4 if client_max_body_size, 5 if
  * location, 6 if limit_exept, 7 if return, 8 if root, 9 if autoindex, 10 if index, 404 if not found.)
  */
-int ConfigFileParser::idCommand(std::string& key) {
+int ConfigFileParser::idCommand(std::string const& key) {
   if (key == "server")
     return 0;
   else if (key == "listen")

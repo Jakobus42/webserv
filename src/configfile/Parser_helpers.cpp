@@ -6,8 +6,7 @@ namespace configfile {
  * @param str The string to check.
  * @return true if the string is a number, false otherwise.
  */
-bool is_number(const std::string& str) 
-{
+bool is_number(const std::string& str) {
   std::string::const_iterator it = str.begin();
   while (it != str.end() && std::isdigit(*it)) ++it;
   if (it == str.end()) return true;
@@ -80,7 +79,7 @@ int ConfigFileParser::server(std::vector<std::string>& args, int& line_count, in
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
-int ConfigFileParser::location(std::vector<std::string>& args, int& line_count, int layer) {
+int ConfigFileParser::location(std::vector<std::string>& args, int const& line_count, int layer) {
   if (args.size() != 2) {
     LOG("Configuration file (line " << line_count << "): "
                                     << "Invalid number of arguments for location" << std::endl,
@@ -143,8 +142,8 @@ int ConfigFileParser::listen(std::vector<std::string>& args, int& line_count, in
       if (i == 3) {
         iter = args[1].find(':');
         if (iter != std::string::npos) {
-          int i = ft_stoi(args[1].substr(iter + 1));
-          if (i < 0 || i > 65535) {
+          int j = ft_stoi(args[1].substr(iter + 1));
+          if (j < 0 || j > 65535) {
             LOG("Configuration file (line " << line_count << "): "
                                             << "Invalid number for listen" << std::endl,
                 logger::ERROR);
@@ -353,7 +352,7 @@ int ConfigFileParser::limitExcept(std::vector<std::string>& args, int& line_coun
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
-int ConfigFileParser::returnKeyword(std::vector<std::string>& args, int& line_count, int layer) {
+int ConfigFileParser::returnKeyword(std::vector<std::string>& args, int const& line_count, int layer) {
   if (args.size() != 3) {
     LOG("Configuration file (line " << line_count << "): "
                                     << "Invalid number of arguments for return" << std::endl,
@@ -494,7 +493,7 @@ void ConfigFileParser::printConfigData(int detailed) {
       std::cout << std::endl;
       std::cout << "Error pages: ";
       for (std::map<int, std::string>::iterator it = m_configData.servers[i].errorPages.begin();
-           it != m_configData.servers[i].errorPages.end(); it++) {
+           it != m_configData.servers[i].errorPages.end(); ++it) {
         std::cout << it->first << " " << it->second << " ";
       }
       std::cout << std::endl;
@@ -561,7 +560,7 @@ void ConfigFileParser::printLocations(std::vector<struct location>& locations, i
   }
 }
 
-int ConfigFileParser::testFunction(std::string key, std::vector<std::string>& args, int& line_count) {
+int ConfigFileParser::testFunction(std::string const& key, std::vector<std::string>& args, int& line_count) {
   int i;
   if (key == "server")
     i = server(args, line_count, 0);

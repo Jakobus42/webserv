@@ -70,7 +70,7 @@ class ConfigFileParser {
   Config_data getConfigData() const;
 
   void printConfigData(int detailed);
-  int testFunction(std::string name, std::vector<std::string>& args, int& line_count);
+  int testFunction(std::string const& key, std::vector<std::string>& args, int& line_count);
 
  private:
   ConfigFileParser(const ConfigFileParser& other);
@@ -84,17 +84,17 @@ class ConfigFileParser {
   int handleServer(std::string& line, unsigned long* i);
   int handlePrompt(std::string& line, int layer, int& line_count);
   int SaveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, int& line_count);
-  int idCommand(std::string& command);
+  int idCommand(std::string const& command);
 
   int server(std::vector<std::string>& args, int& line_count, int layer);
-  int location(std::vector<std::string>& args, int& line_count, int layer);
+  int location(std::vector<std::string>& args, int const& line_count, int layer);
 
   int listen(std::vector<std::string>& args, int& line_count, int layer);
   int serverName(std::vector<std::string>& args, int& line_count, int layer);
   int errorPage(std::vector<std::string>& args, int& line_count, int layer);
   int clientMaxBodySize(std::vector<std::string>& args, int& line_count, int layer);
   int limitExcept(std::vector<std::string>& args, int& line_count, int layer);
-  int returnKeyword(std::vector<std::string>& args, int& line_count, int layer);
+  int returnKeyword(std::vector<std::string>& args, int const& line_count, int layer);
   int root(std::vector<std::string>& args, int& line_count, int layer);
   int autoindex(std::vector<std::string>& args, int& line_count, int layer);
   int index(std::vector<std::string>& args, int& line_count, int layer);
