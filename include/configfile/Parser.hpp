@@ -1,44 +1,56 @@
 #pragma once
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <map>
-#include <vector>
 #include <sstream>
+#include <vector>
 
-struct location 
-{
-	//location name
-	std::string name;
-	//return
-	std::string return_url;
-	int return_code;
-	//configurations
-	std::vector<std::string> methods;
-	bool autoindex;
-	std::string root;
-	std::vector<std::string> index;
-	//locations
-	std::vector<location> locations;
+#include "../../include/configfile/Parser.hpp"
+#include "../../include/logger/LoggerManager.hpp"
+struct location {
+  // location name
+  std::string name;
+  // return
+  std::string return_url;
+  int return_code;
+  // configurations
+  std::vector<std::string> methods;
+  bool autoindex;
+  std::string root;
+  std::vector<std::string> index;
+  // locations
+  std::vector<location> locations;
 };
 
-struct server 
-{
-	//configurations
-	int port;
-	std::vector<int> ip_address;
-	std::vector<std::string> server_names;
-	std::map<int, std::string> errorPages;
-	unsigned long max_body_size;
-	//locations
-	std::vector<location> locations;
+enum cmd_id {
+  server_id = 0,
+  listen_id = 1,
+  server_name_id = 2,
+  error_page_id = 3,
+  client_max_body_size_id = 4,
+  location_id = 5,
+  limit_except_id = 6,
+  return_id = 7,
+  root_id = 8,
+  autoindex_id = 9,
+  index_id = 10
 };
 
+struct server {
+  // configurations
+  int port;
+  std::vector<int> ip_address;
+  std::vector<std::string> server_names;
+  std::map<int, std::string> errorPages;
+  unsigned long max_body_size;
+  // locations
+  std::vector<location> locations;
+};
 
-struct Config_data 
-{
-	//servers
-	std::vector<server> servers;
+struct Config_data {
+  // servers
+  std::vector<server> servers;
 };
 
 namespace configfile {
@@ -48,46 +60,47 @@ namespace configfile {
  * @brief This class is responsible for parsing the configuration file
  */
 class ConfigFileParser {
-    public:
-        ConfigFileParser();
-        ~ConfigFileParser();
-        ConfigFileParser(const ConfigFileParser &other);
-        ConfigFileParser& operator=(const ConfigFileParser &other);
-		//ConfigFileParser(std::string &configFileName);
-		int loadConfigFile(std::string &configFileName);
-		void print_config_data(int detailed);
+ public:
+  ConfigFileParser();
+  ~ConfigFileParser();
 
-    private:
-/* 		int m_port;
-		std::string m_serverName; */
-		Config_data m_configData;
-		int is_loaded;
-		
-		std::string readConfigFile(std::string &configFileName);
-		int parseConfigFile(std::string &configFileName, int layer, unsigned long &i, int &line_count);
-		
-		int handle_server(std::string &line, unsigned long *i);
-		int handle_prompt(std::string &line, int layer, int &line_count);
-		int SaveConfigData(std::vector<std::string> &args, int layer, int qoute_flag, int &line_count);
-		int id_command(std::string &command);
+  int loadConfigFile(std::string& configFileName);
 
-		int server(std::vector<std::string> &args, int & line_count, int layer);
-		int location(std::vector<std::string> &args, int & line_count, int layer);
+  int getIsLoaded() const;
+  Config_data getConfigData() const;
 
-		int listen(std::vector<std::string> &args, int & line_count, int layer);
- 		int server_name(std::vector<std::string> &args, int & line_count, int layer);
-		int error_page(std::vector<std::string> &args, int & line_count, int layer);
-		int client_max_body_size(std::vector<std::string> &args, int & line_count, int layer);
- 		int limit_except(std::vector<std::string> &args, int & line_count, int layer);
-		int return_(std::vector<std::string> &args, int & line_count, int layer);
-		int root(std::vector<std::string> &args, int & line_count, int layer);
-		int autoindex(std::vector<std::string> &args, int & line_count, int layer);
-		int index(std::vector<std::string> &args, int & line_count, int layer);
+  void printConfigData(int detailed);
+  int testFunction(std::string name, std::vector<std::string>& args, int& line_count);
 
-		void error_message(int & line_count, std::string message);
-		void print_locations(std::vector<struct location> &locations, int layer, int detailed, std::vector<int> layer_num);
-		struct location *get_location(int layer);
-		
+ private:
+  ConfigFileParser(const ConfigFileParser& other);
+  ConfigFileParser& operator=(const ConfigFileParser& other);
+  Config_data m_configData;
+  int m_isLoaded;
+
+  std::string readConfigFile(std::string& configFileName);
+  int parseConfigFile(std::string& configFileName, int layer, unsigned long& i, int& line_count);
+
+  int handleServer(std::string& line, unsigned long* i);
+  int handlePrompt(std::string& line, int layer, int& line_count);
+  int SaveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, int& line_count);
+  int idCommand(std::string& command);
+
+  int server(std::vector<std::string>& args, int& line_count, int layer);
+  int location(std::vector<std::string>& args, int& line_count, int layer);
+
+  int listen(std::vector<std::string>& args, int& line_count, int layer);
+  int serverName(std::vector<std::string>& args, int& line_count, int layer);
+  int errorPage(std::vector<std::string>& args, int& line_count, int layer);
+  int clientMaxBodySize(std::vector<std::string>& args, int& line_count, int layer);
+  int limitExcept(std::vector<std::string>& args, int& line_count, int layer);
+  int returnKeyword(std::vector<std::string>& args, int& line_count, int layer);
+  int root(std::vector<std::string>& args, int& line_count, int layer);
+  int autoindex(std::vector<std::string>& args, int& line_count, int layer);
+  int index(std::vector<std::string>& args, int& line_count, int layer);
+
+  void printLocations(std::vector<struct location>& locations, int layer, int detailed, std::vector<int> layer_num);
+  struct location* getLocation(int layer);
 };
 
 } /* namespace configfile */

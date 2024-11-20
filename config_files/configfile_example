@@ -18,7 +18,7 @@ server
 	}
 
 	    # Example of a route with multiple rules
-	location /kapouet
+	location /kapouet 
 	{
 	    # Accepted HTTP methods
 	    limit_except GET POST PUT HEAD DELETE;
