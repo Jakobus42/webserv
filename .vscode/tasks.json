@@ -1,0 +1,28 @@
+{
+    "tasks": [
+        {
+            "label": "Create a class",
+            "type": "shell",
+            "command": "${workspaceFolder}/scripts/createClass.sh",
+            "args": [
+                "${input:classDir}",
+                "${input:className}"
+            ],
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "classDir",
+            "type": "promptString",
+            "description": "Enter the target directory",
+            "default": ""
+        },
+        {
+            "id": "className",
+            "type": "promptString",
+            "description": "Enter the class's name",
+            "default": "BaseClass"
+        }
+    ]
+}
