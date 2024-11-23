@@ -26,44 +26,31 @@ var NAVTREE =
 [
   [ "Webserv", "index.html", [
     [ "Allowed Functions", "md__home_runner_work_webserv_webserv_docs_contributing_allowed_functions.html", null ],
-    [ "Config File Basic Syntax", "md__home_runner_work_webserv_webserv_docs_contributing_config_file_basics.html", [
-      [ "Table of Contents", "md__home_runner_work_webserv_webserv_docs_contributing_config_file_basics.html#autotoc_md2", null ],
-      [ "Special Characters", "md__home_runner_work_webserv_webserv_docs_contributing_config_file_basics.html#autotoc_md3", null ],
-      [ "Allowed Keywords", "md__home_runner_work_webserv_webserv_docs_contributing_config_file_basics.html#autotoc_md4", [
-        [ "base", "md__home_runner_work_webserv_webserv_docs_contributing_config_file_basics.html#autotoc_md5", null ],
-        [ "in a \"server\" block:", "md__home_runner_work_webserv_webserv_docs_contributing_config_file_basics.html#autotoc_md6", null ],
-        [ "in a \"location\" block:", "md__home_runner_work_webserv_webserv_docs_contributing_config_file_basics.html#autotoc_md7", null ]
-      ] ],
-      [ "Keyword Summary", "md__home_runner_work_webserv_webserv_docs_contributing_config_file_basics.html#autotoc_md8", [
-        [ "Blocks:", "md__home_runner_work_webserv_webserv_docs_contributing_config_file_basics.html#autotoc_md9", null ],
-        [ "Keywords:", "md__home_runner_work_webserv_webserv_docs_contributing_config_file_basics.html#autotoc_md10", null ]
-      ] ]
-    ] ],
     [ "Getting Started", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html", [
-      [ "Table of Contents", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md12", null ],
-      [ "Development Workflow", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md13", [
-        [ "Pre-Commit Hooks", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md14", null ],
-        [ "New Class Creation", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md15", null ]
+      [ "Table of Contents", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md2", null ],
+      [ "Development Workflow", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md3", [
+        [ "Pre-Commit Hooks", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md4", null ],
+        [ "New Class Creation", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md5", null ]
       ] ],
-      [ "Conventions", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md16", [
-        [ "Naming Conventions", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md17", null ],
-        [ "Branch Naming Convention", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md18", null ],
-        [ "Commit Message Convention", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md19", null ]
+      [ "Conventions", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md6", [
+        [ "Naming Conventions", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md7", null ],
+        [ "Branch Naming Convention", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md8", null ],
+        [ "Commit Message Convention", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md9", null ]
       ] ],
-      [ "Building and Testing", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md20", [
-        [ "Compilation", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md21", null ],
-        [ "Running the Project", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md22", null ],
-        [ "Static Analysis", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md23", null ],
-        [ "Memory Checks", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md24", null ],
-        [ "Comprehensive Check", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md25", null ]
+      [ "Building and Testing", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md10", [
+        [ "Compilation", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md11", null ],
+        [ "Running the Project", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md12", null ],
+        [ "Static Analysis", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md13", null ],
+        [ "Memory Checks", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md14", null ],
+        [ "Comprehensive Check", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md15", null ]
       ] ],
-      [ "Pull Requests", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md26", null ],
-      [ "Docker and VS Code Integration", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md27", [
-        [ "Building Docker Image", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md28", null ],
-        [ "Running Container", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md29", null ],
-        [ "VS Code Setup", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md30", null ]
+      [ "Pull Requests", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md16", null ],
+      [ "Docker and VS Code Integration", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md17", [
+        [ "Building Docker Image", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md18", null ],
+        [ "Running Container", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md19", null ],
+        [ "VS Code Setup", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md20", null ]
       ] ],
-      [ "Quick Command Reference", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md31", null ]
+      [ "Quick Command Reference", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md21", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -91,8 +78,6 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
