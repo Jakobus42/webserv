@@ -38,6 +38,11 @@ This will:
 - Create a `.cpp` file in `src/<subfolder>/`
 - Generate a class with default constructor, destructor, copy constructor, copy assignment operator, and Doxygen documentation
 
+#### Quickly run this script from within VS Code:
+1. Press `Cmd + P` (or `Ctrl + P` on Windows/Linux)
+2. Select `Tasks: Run Task`
+3. Run `Create a class`
+
 ## Conventions
 
 ### Naming Conventions
