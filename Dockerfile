@@ -42,4 +42,4 @@ COPY . /workspace
 
 RUN pre-commit install && pre-commit install --hook-type commit-msg
 
-ENTRYPOINT [ "zsh" ]
+CMD [ "zsh" ]
