@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get upgrade && apt-get install -y \
     zsh \
     g++ \
     make \
@@ -40,4 +40,6 @@ RUN pip install pre-commit
 WORKDIR /workspace
 COPY . /workspace
 
-CMD pre-commit install && pre-commit install --hook-type commit-msg && zsh
+RUN pre-commit install && pre-commit install --hook-type commit-msg
+
+CMD [ "zsh" ]
