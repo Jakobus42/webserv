@@ -1,5 +1,11 @@
 var annotated_dup =
 [
+    [ "configfile", "namespaceconfigfile.html", [
+      [ "s_location", "structconfigfile_1_1s__location.html", "structconfigfile_1_1s__location" ],
+      [ "s_server", "structconfigfile_1_1s__server.html", "structconfigfile_1_1s__server" ],
+      [ "s_config_data", "structconfigfile_1_1s__config__data.html", "structconfigfile_1_1s__config__data" ],
+      [ "ConfigFileParser", "classconfigfile_1_1ConfigFileParser.html", "classconfigfile_1_1ConfigFileParser" ]
+    ] ],
     [ "logger", "namespacelogger.html", [
       [ "ALogger", "classlogger_1_1ALogger.html", "classlogger_1_1ALogger" ],
       [ "ConsoleLogger", "classlogger_1_1ConsoleLogger.html", "classlogger_1_1ConsoleLogger" ],
