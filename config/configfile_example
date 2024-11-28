@@ -1,6 +1,6 @@
 server
 {
-	listen 1.1.1.1:122;  # Choose the port
+	#listen 1.1.1.1:122;  # Choose the port
 	server_name example.com;  # Setup server names
 
 	# Default error pages
@@ -21,7 +21,7 @@ server
 	location /kapouet 
 	{
 	    # Accepted HTTP methods
-	    limit_except GET POST PUT HEAD DELETE;
+	    limit_except GET POST PUT DELETE;
 	    # Directory configuration
 	    root /tmp/www;  # Base directory
 	    autoindex on;  # Enable directory listing
@@ -51,7 +51,7 @@ server
 	# HTTP redirection example
 	location /old-route
 	{
-	    return 301 /new-route;  # Redirect to a new route
+	    return /new-route;  # Redirect to a new route
 	}
 	# Catch-all for other requests
 	location /other

@@ -18,11 +18,11 @@ int main(int argc, char** const argv) {
     if (argc > 1) {
       configfile = argv[1];
     } else {
-      configfile = "config_files/configfile_example";
+      configfile = "config/configfile_example";
     }
     configfile::ConfigFileParser configFileParser;
     if (configFileParser.loadConfigFile(configfile) == 1) return 1;
-    // configFileParser.printConfigData(1);
+    configFileParser.printConfigData(1);
     loggerManager.unregisterLogger("File");
     loggerManager.unregisterLogger("Console");
   } catch (const std::exception& e) {

@@ -33,70 +33,70 @@ TEST_F(ConfigFileParserTest, Configfile_Empty)
 
 TEST_F(ConfigFileParserTest, Configfile_double_brackets) 
 {
-	std::string configFileName = "../config_files/wrong/configfile_double_brackets";
+	std::string configFileName = "../config/wrong/configfile_double_brackets";
 	ASSERT_EQ(instance.loadConfigFile(configFileName), 1);
 	ASSERT_EQ(instance.getIsLoaded(), 0);
 }
 
 TEST_F(ConfigFileParserTest, Configfile_Empty_file) 
 {
-	std::string configFileName = "../config_files/wrong/configfile_empty";
+	std::string configFileName = "../config/wrong/configfile_empty";
 	ASSERT_EQ(instance.loadConfigFile(configFileName), 1);
 	ASSERT_EQ(instance.getIsLoaded(), 0);
 }
 
 TEST_F(ConfigFileParserTest, Configfile_misplaced_semicolon) 
 {
-	std::string configFileName = "../config_files/wrong/configfile_misplaced_semicolon";
+	std::string configFileName = "../config/wrong/configfile_misplaced_semicolon";
 	ASSERT_EQ(instance.loadConfigFile(configFileName), 1);
 	ASSERT_EQ(instance.getIsLoaded(), 0);
 }
 
 TEST_F(ConfigFileParserTest, Configfile_missing_semicolon) 
 {
-	std::string configFileName = "../config_files/wrong/configfile_missing_semicolon";
+	std::string configFileName = "../config/wrong/configfile_missing_semicolon";
 	ASSERT_EQ(instance.loadConfigFile(configFileName), 1);
 	ASSERT_EQ(instance.getIsLoaded(), 0);
 }
 
 TEST_F(ConfigFileParserTest, Configfile_only_qoutes) 
 {
-	std::string configFileName = "../config_files/wrong/configfile_only_qoutes";
+	std::string configFileName = "../config/wrong/configfile_only_qoutes";
 	ASSERT_EQ(instance.loadConfigFile(configFileName), 1);
 	ASSERT_EQ(instance.getIsLoaded(), 0);
 }
 
 TEST_F(ConfigFileParserTest, Configfile_to_many_closing_brackets) 
 {
-	std::string configFileName = "../config_files/wrong/configfile_to_many_closing_brackets";
+	std::string configFileName = "../config/wrong/configfile_to_many_closing_brackets";
 	ASSERT_EQ(instance.loadConfigFile(configFileName), 1);
 	ASSERT_EQ(instance.getIsLoaded(), 0);
 }
 
 TEST_F(ConfigFileParserTest, Configfile_unclosed_bracket) 
 {
-	std::string configFileName = "../config_files/wrong/configfile_unclosed_bracket";
+	std::string configFileName = "../config/wrong/configfile_unclosed_bracket";
 	ASSERT_EQ(instance.loadConfigFile(configFileName), 1);
 	ASSERT_EQ(instance.getIsLoaded(), 0);
 }
 
 TEST_F(ConfigFileParserTest, Configfile_wrong_brackets) 
 {
-	std::string configFileName = "../config_files/wrong/configfile_wrong_brackets";
+	std::string configFileName = "../config/wrong/configfile_wrong_brackets";
 	ASSERT_EQ(instance.loadConfigFile(configFileName), 1);
 	ASSERT_EQ(instance.getIsLoaded(), 0);
 }
 
 TEST_F(ConfigFileParserTest, Configfile_wrong_command) 
 {
-	std::string configFileName = "../config_files/wrong/configfile_wrong_command";
+	std::string configFileName = "../config/wrong/configfile_wrong_command";
 	ASSERT_EQ(instance.loadConfigFile(configFileName), 1);
 	ASSERT_EQ(instance.getIsLoaded(), 0);
 }
 
 TEST_F(ConfigFileParserTest, Configfile_example) 
 {
-	std::string configFileName = "../config_files/configfile_example";
+	std::string configFileName = "../config/configfile_example";
 	ASSERT_EQ(instance.loadConfigFile(configFileName), 0);
 	//ASSERT_EQ(instance.getIsLoaded(), 1);
 }
@@ -321,8 +321,7 @@ TEST_F(ConfigFileParserTest, limitExcept)
 		std::vector<std::string> args = {"limit_except", "GET", "POST"};
 		int ret = instance.testFunction("limit_except", args, line_count);
 		ASSERT_EQ(instance.getConfigData().servers.back().locations.back().methods[0], "GET");
-		ASSERT_EQ(instance.getConfigData().servers.back().locations.back().methods[1], "HEAD");
-		ASSERT_EQ(instance.getConfigData().servers.back().locations.back().methods[2], "POST");
+		ASSERT_EQ(instance.getConfigData().servers.back().locations.back().methods[1], "POST");
 		ASSERT_EQ(ret, 0);
 	}
 	//incorrect usage
@@ -332,6 +331,10 @@ TEST_F(ConfigFileParserTest, limitExcept)
 	}
 	{
 		std::vector<std::string> args = {"limit_except", "GET", "POST", "GET"};
+		ASSERT_EQ(instance.testFunction("limit_except", args, line_count), 1);
+	}
+	{
+		std::vector<std::string> args = {"limit_except", "Wrong"};
 		ASSERT_EQ(instance.testFunction("limit_except", args, line_count), 1);
 	}
 	{
@@ -350,9 +353,8 @@ TEST_F(ConfigFileParserTest, Return)
 	instance.testFunction("location", setup, line_count);
 	//correct usage
 	{
-		std::vector<std::string> args = {"return", "301", "/test"};
+		std::vector<std::string> args = {"return", "/test"};
 		int ret = instance.testFunction("return", args, line_count);
-		ASSERT_EQ(instance.getConfigData().servers.back().locations.back().return_code, 301);
 		ASSERT_EQ(instance.getConfigData().servers.back().locations.back().return_url, "/test");
 		ASSERT_EQ(ret, 0);
 	}
@@ -362,15 +364,11 @@ TEST_F(ConfigFileParserTest, Return)
 		ASSERT_EQ(instance.testFunction("return", args, line_count), 1);
 	}
 	{
-		std::vector<std::string> args = {"return", "301"};
+		std::vector<std::string> args = {"return", "test", "test"};
 		ASSERT_EQ(instance.testFunction("return", args, line_count), 1);
 	}
 	{
-		std::vector<std::string> args = {"return", "301", ""};
-		ASSERT_EQ(instance.testFunction("return", args, line_count), 1);
-	}
-	{
-		std::vector<std::string> args = {"return", "301", "test", "test"};
+		std::vector<std::string> args = {"return", ""};
 		ASSERT_EQ(instance.testFunction("return", args, line_count), 1);
 	}
 }
