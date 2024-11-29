@@ -23,6 +23,9 @@ YELLOW = \033[0;33m
 RED = \033[0;31m
 NC = \033[0m
 
+CLANG_STYLE = --style=file:./.clang-format-default
+CLANG_FORMAT = clang-format
+
 SOURCES = $(shell find $(SRCDIR) -name '*.cpp')
 HEADERS = $(shell find $(INCDIR) -name '*.hpp')
 OBJECTS = $(SOURCES:%.cpp=$(OBJDIR)/%.o)
@@ -77,7 +80,7 @@ test: build_tests
 
 format:
 	@echo "Formatting code with clang-format..."
-	clang-format -i $(SOURCES) $(HEADERS)
+	$(CLANG_FORMAT) $(CLANG_STYLE) -i $(SOURCES) $(HEADERS)
 
 clean:
 	@echo "$(RED)Cleaning up...$(NC)"
