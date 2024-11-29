@@ -1,10 +1,11 @@
 #include <algorithm>
 #include <iostream>
 
+#include "../include/configfile/Parser.hpp"
 #include "../include/logger/LoggerManager.hpp"
 #include "../include/utils/StringUtils.hpp"
 
-int main(void) {
+int main(int argc, char** const argv) {
   try {
     logger::LoggerManager& loggerManager = logger::LoggerManager::getInstance();
     loggerManager.registerLogger("Console", new logger::ConsoleLogger());
@@ -12,9 +13,18 @@ int main(void) {
     loggerManager.registerLogger("File", new logger::FileLogger());
     loggerManager.setLoggerLevel("File", logger::DEBUG);
     loggerManager.setGlobalLogLevel(logger::DEBUG);
+    LOG("test log...", logger::FATAL);
+    std::string configfile;
+    if (argc > 1) {
+      configfile = argv[1];
+    } else {
+      configfile = "config/configfile_example";
+    }
+    configfile::ConfigFileParser configFileParser;
+    if (configFileParser.loadConfigFile(configfile) == 1) return 1;
+    // configFileParser.printConfigData(1);
     loggerManager.unregisterLogger("File");
     loggerManager.unregisterLogger("Console");
-    LOG("test log...", logger::FATAL);
   } catch (const std::exception& e) {
     LOG("ERROR: " << e.what(), logger::ERROR)
   }
