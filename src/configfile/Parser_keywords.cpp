@@ -36,14 +36,14 @@ bool is_number(const std::string& str) {
 /**
  * @brief Creates a new server struct, initializes it and adds it to the config data.
  * @param args all prompts in the current line of the configuration file.
- * @param line_count the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
-int ConfigFileParser::server(std::vector<std::string>& args, int& line_count, int layer) {
+int ConfigFileParser::server(std::vector<std::string>& args, int& lineCount, int layer) {
   (void)layer;
   if (args.size() != 1) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for server" << std::endl,
         logger::ERROR);
     return 1;
@@ -61,19 +61,19 @@ int ConfigFileParser::server(std::vector<std::string>& args, int& line_count, in
 /**
  * @brief Creates a new location struct, initializes it and adds it to the config data.
  * @param args all prompts in the current line of the configuration file.
- * @param line_count the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
-int ConfigFileParser::location(std::vector<std::string>& args, int const& line_count, int layer) {
+int ConfigFileParser::location(std::vector<std::string>& args, int const& lineCount, int layer) {
   if (args.size() != 2) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for location" << std::endl,
         logger::ERROR);
     return 1;
   }
   if (args[1].length() > 1000 || args[1].length() == 0) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "Location name length invalid" << std::endl,
         logger::ERROR);
     return 1;
@@ -100,14 +100,14 @@ int ConfigFileParser::location(std::vector<std::string>& args, int const& line_c
 /**
  * @brief Sets the port and ip address of the server.
  * @param args all prompts in the current line of the configuration file.
- * @param line_count the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
-int ConfigFileParser::listen(std::vector<std::string>& args, int& line_count, int layer) {
+int ConfigFileParser::listen(std::vector<std::string>& args, int& lineCount, int layer) {
   (void)layer;
   if (args.size() != 2) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for listen" << std::endl,
         logger::ERROR);
     return 1;
@@ -115,7 +115,7 @@ int ConfigFileParser::listen(std::vector<std::string>& args, int& line_count, in
   if (is_number(args[1])) {
     int i = ft_stoi(args[1]);
     if (i < 0 || i > 65535) {
-      LOG("Configuration file (line " << line_count << "): "
+      LOG("Configuration file (line " << lineCount << "): "
                                       << "Invalid number for listen" << std::endl,
           logger::ERROR);
       return 1;
@@ -129,7 +129,7 @@ int ConfigFileParser::listen(std::vector<std::string>& args, int& line_count, in
         if (iter != std::string::npos) {
           int j = ft_stoi(args[1].substr(iter + 1));
           if (j < 0 || j > 65535) {
-            LOG("Configuration file (line " << line_count << "): "
+            LOG("Configuration file (line " << lineCount << "): "
                                             << "Invalid number for listen" << std::endl,
                 logger::ERROR);
             return 1;
@@ -139,7 +139,7 @@ int ConfigFileParser::listen(std::vector<std::string>& args, int& line_count, in
       } else {
         iter = args[1].find('.');
         if (iter == std::string::npos) {
-          LOG("Configuration file (line " << line_count << "): "
+          LOG("Configuration file (line " << lineCount << "): "
                                           << "Invalid number for listen" << std::endl,
               logger::ERROR);
           return 1;
@@ -148,7 +148,7 @@ int ConfigFileParser::listen(std::vector<std::string>& args, int& line_count, in
       std::string temp = args[1].substr(0, iter);
       int j = ft_stoi(temp);
       if (j < 0 || j > 255) {
-        LOG("Configuration file (line " << line_count << "): "
+        LOG("Configuration file (line " << lineCount << "): "
                                         << "Invalid number for listen" << std::endl,
             logger::ERROR);
         return 1;
@@ -159,7 +159,7 @@ int ConfigFileParser::listen(std::vector<std::string>& args, int& line_count, in
     if (args[1].size() != 0) {
       int i = ft_stoi(args[1]);
       if (i < 0 || i > 65535) {
-        LOG("Configuration file (line " << line_count << "): "
+        LOG("Configuration file (line " << lineCount << "): "
                                         << "Invalid number for listen" << std::endl,
             logger::ERROR);
         return 1;
@@ -173,28 +173,28 @@ int ConfigFileParser::listen(std::vector<std::string>& args, int& line_count, in
 /**
  * @brief Sets the server name(s) of the server.
  * @param args all prompts in the current line of the configuration file.
- * @param line_count the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
-int ConfigFileParser::serverName(std::vector<std::string>& args, int& line_count, int layer) {
+int ConfigFileParser::serverName(std::vector<std::string>& args, int& lineCount, int layer) {
   (void)layer;
   if (args.size() < 2) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for server_name" << std::endl,
         logger::ERROR);
     return 1;
   }
   for (unsigned long i = 1; i < args.size(); i++) {
     if (args[i].length() > 1000 || args[i].length() == 0) {
-      LOG("Configuration file (line " << line_count << "): "
+      LOG("Configuration file (line " << lineCount << "): "
                                       << "Server name length invalid" << std::endl,
           logger::ERROR);
       return 1;
     }
     m_configData.servers.back().server_names.push_back(args[i]);
     if (i > 1000) {
-      LOG("Configuration file (line " << line_count << "): "
+      LOG("Configuration file (line " << lineCount << "): "
                                       << "Too many server names" << std::endl,
           logger::ERROR);
       return 1;
@@ -206,21 +206,21 @@ int ConfigFileParser::serverName(std::vector<std::string>& args, int& line_count
 /**
  * @brief sets the error pages for the server.
  * @param args all prompts in the current line of the configuration file.
- * @param line_count the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
-int ConfigFileParser::errorPage(std::vector<std::string>& args, int& line_count, int layer) {
+int ConfigFileParser::errorPage(std::vector<std::string>& args, int& lineCount, int layer) {
   (void)layer;
   if (args.size() < 3 || args.size() > 1001) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for error_page" << std::endl,
         logger::ERROR);
     return 1;
   }
   std::string last = args.back();
   if (last.length() > 1000 || last.length() == 0) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "Error page length invalid" << std::endl,
         logger::ERROR);
     return 1;
@@ -230,7 +230,7 @@ int ConfigFileParser::errorPage(std::vector<std::string>& args, int& line_count,
   for (unsigned long i = 1; i < args.size(); i++) {
     int j = ft_stoi(args[i]);
     if (j < 100 || j > 599) {
-      LOG("Configuration file (line " << line_count << "): "
+      LOG("Configuration file (line " << lineCount << "): "
                                       << "Invalid number for error_page" << std::endl,
           logger::ERROR);
       return 1;
@@ -243,21 +243,21 @@ int ConfigFileParser::errorPage(std::vector<std::string>& args, int& line_count,
 /**
  * @brief sets the max body size for the server.
  * @param args all prompts in the current line of the configuration file.
- * @param line_count the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
-int ConfigFileParser::clientMaxBodySize(std::vector<std::string>& args, int& line_count, int layer) {
+int ConfigFileParser::clientMaxBodySize(std::vector<std::string>& args, int& lineCount, int layer) {
   (void)layer;
   if (args.size() != 2) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for client_max_body_size" << std::endl,
         logger::ERROR);
     return 1;
   }
   int i = ft_stoi(args[1]);
   if (i < 0) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number for client_max_body_size" << std::endl,
         logger::ERROR);
     return 1;
@@ -269,14 +269,14 @@ int ConfigFileParser::clientMaxBodySize(std::vector<std::string>& args, int& lin
 /**
  * @brief sets the methods allowed for the location.
  * @param args all prompts in the current line of the configuration file.
- * @param line_count the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
-int ConfigFileParser::limitExcept(std::vector<std::string>& args, int& line_count, int layer) {
+int ConfigFileParser::limitExcept(std::vector<std::string>& args, int& lineCount, int layer) {
   (void)layer;
   if (args.size() < 2 || args.size() > 15) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for limit_except" << std::endl,
         logger::ERROR);
     return 1;
@@ -295,7 +295,7 @@ int ConfigFileParser::limitExcept(std::vector<std::string>& args, int& line_coun
         break;
       }
       if (j == methods.size() - 1) {
-        LOG("Configuration file (line " << line_count << "): "
+        LOG("Configuration file (line " << lineCount << "): "
                                         << "Invalid method for limit_except" << std::endl,
             logger::ERROR);
         return 1;
@@ -303,7 +303,7 @@ int ConfigFileParser::limitExcept(std::vector<std::string>& args, int& line_coun
     }
   }
   if (allowed_methods.size() == 0) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "No methods found for limit_except" << std::endl,
         logger::ERROR);
     return 1;
@@ -316,19 +316,19 @@ int ConfigFileParser::limitExcept(std::vector<std::string>& args, int& line_coun
 /**
  * @brief redirects the user to a different url with a specific return code.
  * @param args all prompts in the current line of the configuration file.
- * @param line_count the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
-int ConfigFileParser::returnKeyword(std::vector<std::string>& args, int const& line_count, int layer) {
+int ConfigFileParser::returnKeyword(std::vector<std::string>& args, int const& lineCount, int layer) {
   if (args.size() != 2) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for return" << std::endl,
         logger::ERROR);
     return 1;
   }
   if (args[1].length() > 1000 || args[1].length() == 0) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "Return url length invalid" << std::endl,
         logger::ERROR);
     return 1;
@@ -342,20 +342,20 @@ int ConfigFileParser::returnKeyword(std::vector<std::string>& args, int const& l
 /**
  * @brief sets the root directory for the location.
  * @param args all prompts in the current line of the configuration file.
- * @param line_count the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
-int ConfigFileParser::root(std::vector<std::string>& args, int& line_count, int layer) {
+int ConfigFileParser::root(std::vector<std::string>& args, int& lineCount, int layer) {
   (void)layer;
   if (args.size() != 2) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for root" << std::endl,
         logger::ERROR);
     return 1;
   }
   if (args[1].length() > 1000 || args[1].length() == 0) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "Root length invalid" << std::endl,
         logger::ERROR);
     return 1;
@@ -369,14 +369,14 @@ int ConfigFileParser::root(std::vector<std::string>& args, int& line_count, int 
 /**
  * @brief turns the autoindex on or off for the location. (off by default)
  * @param args all prompts in the current line of the configuration file.
- * @param line_count the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
-int ConfigFileParser::autoindex(std::vector<std::string>& args, int& line_count, int layer) {
+int ConfigFileParser::autoindex(std::vector<std::string>& args, int& lineCount, int layer) {
   (void)layer;
   if (args.size() != 2) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for autoindex" << std::endl,
         logger::ERROR);
     return 1;
@@ -387,7 +387,7 @@ int ConfigFileParser::autoindex(std::vector<std::string>& args, int& line_count,
   } else if (args[1] == "off") {
     current->autoindex = false;
   } else {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid argument for autoindex" << std::endl,
         logger::ERROR);
     return 1;
@@ -398,15 +398,15 @@ int ConfigFileParser::autoindex(std::vector<std::string>& args, int& line_count,
 /**
  * @brief sets the index files for the location. (index.html by default)
  * @param args all prompts in the current line of the configuration file.
- * @param line_count the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
-int ConfigFileParser::index(std::vector<std::string>& args, int& line_count, int layer) {
+int ConfigFileParser::index(std::vector<std::string>& args, int& lineCount, int layer) {
   (void)layer;
 
   if (args.size() < 2 || args.size() > 1001) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for index" << std::endl,
         logger::ERROR);
     return 1;
@@ -415,7 +415,7 @@ int ConfigFileParser::index(std::vector<std::string>& args, int& line_count, int
   current->index.clear();
   for (unsigned long i = 1; i < args.size(); i++) {
     if (args[i].length() > 1000 || args[i].length() == 0) {
-      LOG("Configuration file (line " << line_count << "): "
+      LOG("Configuration file (line " << lineCount << "): "
                                       << "Index file length invalid" << std::endl,
           logger::ERROR);
       return 1;

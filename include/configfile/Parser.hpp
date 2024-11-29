@@ -27,19 +27,19 @@ typedef struct s_location {
   std::vector<t_location> locations;
 } t_location;
 
-enum cmd_id {
-  server_id = 0,
-  listen_id = 1,
-  server_name_id = 2,
-  error_page_id = 3,
-  client_max_body_size_id = 4,
-  location_id = 5,
-  limit_except_id = 6,
-  return_id = 7,
-  root_id = 8,
-  autoindex_id = 9,
-  index_id = 10,
-  unknown_id = 404
+enum CmdId {
+  SERVER_ID = 0,
+  LISTEN_ID = 1,
+  SERVER_NAME_ID = 2,
+  ERROR_PAGE_ID = 3,
+  CLIENT_MAX_BODY_SIZE_ID = 4,
+  LOCATION_ID = 5,
+  LIMIT_EXCEPT_ID = 6,
+  RETURN_ID = 7,
+  ROOT_ID = 8,
+  AUTOINDEX_ID = 9,
+  INDEX_ID = 10,
+  UNKNOWN_ID = 404
 };
 
 typedef struct s_server {
@@ -80,7 +80,7 @@ class ConfigFileParser {
   t_server* getServer(int index);
 
   void printConfigData(int detailed);
-  int testFunction(std::string const& key, std::vector<std::string>& args, int& line_count);
+  int testFunction(std::string const& key, std::vector<std::string>& args, int& lineCount);
 
  private:
   ConfigFileParser(const ConfigFileParser& other);
@@ -89,25 +89,25 @@ class ConfigFileParser {
   int m_isLoaded;
 
   int readConfigFile(std::string& configFileName, std::string& file);
-  int parseConfigFile(std::string& configFileName, int layer, unsigned long& i, int& line_count);
+  int parseConfigFile(std::string& configFileName, int layer, unsigned long& i, int& lineCount);
 
   int handleServer(std::string& line, unsigned long* i);
-  int handlePrompt(std::string& line, int layer, int& line_count);
-  int SaveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, int& line_count);
-  enum cmd_id idCommand(std::string const& command);
+  int handlePrompt(std::string& line, int layer, int& lineCount);
+  int SaveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, int& lineCount);
+  enum CmdId idCommand(std::string const& command);
 
-  int server(std::vector<std::string>& args, int& line_count, int layer);
-  int location(std::vector<std::string>& args, int const& line_count, int layer);
+  int server(std::vector<std::string>& args, int& lineCount, int layer);
+  int location(std::vector<std::string>& args, int const& lineCount, int layer);
 
-  int listen(std::vector<std::string>& args, int& line_count, int layer);
-  int serverName(std::vector<std::string>& args, int& line_count, int layer);
-  int errorPage(std::vector<std::string>& args, int& line_count, int layer);
-  int clientMaxBodySize(std::vector<std::string>& args, int& line_count, int layer);
-  int limitExcept(std::vector<std::string>& args, int& line_count, int layer);
-  int returnKeyword(std::vector<std::string>& args, int const& line_count, int layer);
-  int root(std::vector<std::string>& args, int& line_count, int layer);
-  int autoindex(std::vector<std::string>& args, int& line_count, int layer);
-  int index(std::vector<std::string>& args, int& line_count, int layer);
+  int listen(std::vector<std::string>& args, int& lineCount, int layer);
+  int serverName(std::vector<std::string>& args, int& lineCount, int layer);
+  int errorPage(std::vector<std::string>& args, int& lineCount, int layer);
+  int clientMaxBodySize(std::vector<std::string>& args, int& lineCount, int layer);
+  int limitExcept(std::vector<std::string>& args, int& lineCount, int layer);
+  int returnKeyword(std::vector<std::string>& args, int const& lineCount, int layer);
+  int root(std::vector<std::string>& args, int& lineCount, int layer);
+  int autoindex(std::vector<std::string>& args, int& lineCount, int layer);
+  int index(std::vector<std::string>& args, int& lineCount, int layer);
 
   void printLocations(const std::vector<configfile::t_location>& locations, int layer, int detailed,
                       std::vector<int> layer_num);

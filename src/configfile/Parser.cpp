@@ -75,33 +75,33 @@ int ConfigFileParser::readConfigFile(std::string& configFileName, std::string& l
  * @param str The configuration file as a string.
  * @param layer The layer of the configuration file in our current pos.
  * @param i The current position in the configuration file.
- * @param line_count The current line number.
+ * @param lineCount The current line number.
  * @return 0 if successful, 1 if error.
  */
-int ConfigFileParser::parseConfigFile(std::string& str, int layer, unsigned long& i, int& line_count) {
+int ConfigFileParser::parseConfigFile(std::string& str, int layer, unsigned long& i, int& lineCount) {
   std::string line;
-  int find_quotes_flag = 0;
+  int findQuotesFlag = 0;
   for (; i < str.size(); i++) {
     if (str[i] == '\n') {
-      line_count++;
+      lineCount++;
       if (line.empty() || line.find_first_not_of(' ') == std::string::npos) {  // empty line
         line.clear();
         continue;
       } else if (line.find('}') != std::string::npos) {  // closing bracket
         if (line.find_first_not_of(" }") != std::string::npos) {
-          LOG("Configuration file (line " << line_count << "): "
+          LOG("Configuration file (line " << lineCount << "): "
                                           << "Quotes must be in an otherwise empty line" << std::endl,
               logger::ERROR)
           return 1;
         }
         if (line.find('}') != line.find_last_of('}')) {
-          LOG("Configuration file (line " << line_count << "): "
+          LOG("Configuration file (line " << lineCount << "): "
                                           << "Multiple brackets on the same line" << std::endl,
               logger::ERROR)
           return 1;
         }
         if (layer == 0) {
-          LOG("Configuration file (line " << line_count << "): "
+          LOG("Configuration file (line " << lineCount << "): "
                                           << "Unexpected closing bracket found" << std::endl,
               logger::ERROR)
           return 1;
@@ -110,41 +110,41 @@ int ConfigFileParser::parseConfigFile(std::string& str, int layer, unsigned long
         }
       } else if (line.find('{') != std::string::npos) {  // opening bracket
         if (line.find_first_not_of(" {") != std::string::npos) {
-          LOG("Configuration file (line " << line_count << "): "
+          LOG("Configuration file (line " << lineCount << "): "
                                           << "Quotes must be in an otherwise empty line" << std::endl,
               logger::ERROR)
           return 1;
         }
         if (line.find('{') != line.find_last_of('{')) {
-          LOG("Configuration file (line " << line_count << "): "
+          LOG("Configuration file (line " << lineCount << "): "
                                           << "Multiple brackets on the same line" << std::endl,
               logger::ERROR)
           return 1;
         }
-        if (find_quotes_flag == 0) {
-          LOG("Configuration file (line " << line_count << "): "
+        if (findQuotesFlag == 0) {
+          LOG("Configuration file (line " << lineCount << "): "
                                           << "Quotes not expected at this point in file" << std::endl,
               logger::ERROR)
           return 1;
         } else {
-          find_quotes_flag = 0;
+          findQuotesFlag = 0;
         }
         i++;
-        if (parseConfigFile(str, layer + 1, i, line_count) == 1) {
+        if (parseConfigFile(str, layer + 1, i, lineCount) == 1) {
           return 1;
         }
       } else {  // prompt
-        if (find_quotes_flag == 1) {
-          LOG("Configuration file (line " << line_count << "): "
+        if (findQuotesFlag == 1) {
+          LOG("Configuration file (line " << lineCount << "): "
                                           << "Missing semicolon at the end of line" << std::endl,
               logger::ERROR)
           return 1;
         }
-        int ret = handlePrompt(line, layer, line_count);
+        int ret = handlePrompt(line, layer, lineCount);
         if (ret == 2) {
           return 1;
         }
-        find_quotes_flag = ret;
+        findQuotesFlag = ret;
       }
       line.clear();
     } else {
@@ -166,13 +166,13 @@ int ConfigFileParser::loadConfigFile(std::string& configFileName) {
     return 1;
   }
   unsigned long i = 0;
-  int line_count = 0;
-  if (parseConfigFile(file, 0, i, line_count) == 1) {
+  int lineCount = 0;
+  if (parseConfigFile(file, 0, i, lineCount) == 1) {
     m_configData.servers.clear();
     return 1;
   }
   if (m_configData.servers.size() == 0) {
-    LOG("Configuration file (line " << line_count << "): "
+    LOG("Configuration file (line " << lineCount << "): "
                                     << "No servers found in configuration file" << std::endl,
         logger::ERROR)
     return 1;

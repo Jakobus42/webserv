@@ -104,19 +104,19 @@ TEST_F(ConfigFileParserTest, Configfile_example)
 TEST_F(ConfigFileParserTest, Listen) 
 {
 	//setup
-	int line_count = 1;
+	int lineCount = 1;
 	std::vector<std::string> setup = {"server"};
-	instance.testFunction("server", setup, line_count);
+	instance.testFunction("server", setup, lineCount);
 	//correct usage
 	{
 		std::vector<std::string> args = {"listen", "80"};
- 		int ret = instance.testFunction("listen", args, line_count);
+ 		int ret = instance.testFunction("listen", args, lineCount);
 		ASSERT_EQ(instance.getConfigData().servers.back().port, 80);
 		ASSERT_EQ(ret, 0);
 	}
 	{
 		std::vector<std::string> args = {"listen", "1.2.3.4:80"};
-		int ret = instance.testFunction("listen", args, line_count);
+		int ret = instance.testFunction("listen", args, lineCount);
 		ASSERT_EQ(instance.getConfigData().servers.back().port, 80);
 		ASSERT_EQ(instance.getConfigData().servers.back().ip_address[0], 1);
 		ASSERT_EQ(instance.getConfigData().servers.back().ip_address[1], 2);
@@ -127,48 +127,48 @@ TEST_F(ConfigFileParserTest, Listen)
 	//incorrect usage
 	{
 		std::vector<std::string> args = {"listen", "65536"};
-		ASSERT_EQ(instance.testFunction("listen", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("listen", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"listen", "-1"};
-		ASSERT_EQ(instance.testFunction("listen", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("listen", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"listen", ""};
-		ASSERT_EQ(instance.testFunction("listen", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("listen", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"listen", "65", "535"};
-		ASSERT_EQ(instance.testFunction("listen", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("listen", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"listen", "1.1.1:22"};
-		ASSERT_EQ(instance.testFunction("listen", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("listen", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"listen", "1.1.1.1.1:22"};
-		ASSERT_EQ(instance.testFunction("listen", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("listen", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"listen", "256.1.1.1:22"};
-		ASSERT_EQ(instance.testFunction("listen", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("listen", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"listen", "1.1.1.256:22"};
-		ASSERT_EQ(instance.testFunction("listen", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("listen", args, lineCount), 1);
 	}
 }
 
 TEST_F(ConfigFileParserTest, ServerName) 
 {
 	//setup
-	int line_count = 1;
+	int lineCount = 1;
 	std::vector<std::string> setup = {"server"};
-	instance.testFunction("server", setup, line_count);
+	instance.testFunction("server", setup, lineCount);
 	//correct usage
 	{
 		std::vector<std::string> args = {"server_name", "localhost", "localhost2", "localhost3"};
-		int ret = instance.testFunction("server_name", args, line_count);
+		int ret = instance.testFunction("server_name", args, lineCount);
 		ASSERT_EQ(instance.getConfigData().servers.back().server_names[0], "localhost");
 		ASSERT_EQ(instance.getConfigData().servers.back().server_names[1], "localhost2");
 		ASSERT_EQ(instance.getConfigData().servers.back().server_names[2], "localhost3");
@@ -177,7 +177,7 @@ TEST_F(ConfigFileParserTest, ServerName)
 	//incorrect usage
 	{
 		std::vector<std::string> args = {"server_name"};
-		ASSERT_EQ(instance.testFunction("server_name", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("server_name", args, lineCount), 1);
 	}
 	//too many server names
 	{
@@ -186,105 +186,105 @@ TEST_F(ConfigFileParserTest, ServerName)
 		{
 			args.push_back("localhost");
 		}
-		ASSERT_EQ(instance.testFunction("server_name", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("server_name", args, lineCount), 1);
 	}
 		{
 		std::vector<std::string> args = {"server_name", ""};
-		ASSERT_EQ(instance.testFunction("server_name", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("server_name", args, lineCount), 1);
 	}
 }
 
 TEST_F(ConfigFileParserTest, ErrorPage) 
 {
 	//setup
-	int line_count = 1;
+	int lineCount = 1;
 	std::vector<std::string> setup = {"server"};
-	instance.testFunction("server", setup, line_count);
+	instance.testFunction("server", setup, lineCount);
 	//correct usage
 	{
 		std::vector<std::string> args = {"error_page", "404", "/404.html"};
-		int ret = instance.testFunction("error_page", args, line_count);
+		int ret = instance.testFunction("error_page", args, lineCount);
 		ASSERT_EQ(instance.getConfigData().servers.back().errorPages[404], "/404.html");
 		ASSERT_EQ(ret, 0);
 	}
 	//incorrect usage
 	{
 		std::vector<std::string> args = {"error_page"};
-		ASSERT_EQ(instance.testFunction("error_page", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("error_page", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"error_page", "404"};
-		ASSERT_EQ(instance.testFunction("error_page", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("error_page", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"error_page", "404", ""};
-		ASSERT_EQ(instance.testFunction("error_page", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("error_page", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"error_page", "404", "404.html", "404.html"};
-		ASSERT_EQ(instance.testFunction("error_page", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("error_page", args, lineCount), 1);
 	}
 }
 
 TEST_F(ConfigFileParserTest, ClientMaxBodySize)
 {
 	//setup
-	int line_count = 1;
+	int lineCount = 1;
 	std::vector<std::string> setup = {"server"};
-	instance.testFunction("server", setup, line_count);
+	instance.testFunction("server", setup, lineCount);
 	//correct usage
 	{
 		std::vector<std::string> args = {"client_max_body_size", "100"};
-		int ret = instance.testFunction("client_max_body_size", args, line_count);
+		int ret = instance.testFunction("client_max_body_size", args, lineCount);
 		ASSERT_EQ(instance.getConfigData().servers.back().max_body_size, 100);
 		ASSERT_EQ(ret, 0);
 	}
 	//incorrect usage
 	{
 		std::vector<std::string> args = {"client_max_body_size"};
-		ASSERT_EQ(instance.testFunction("client_max_body_size", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("client_max_body_size", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"client_max_body_size", "100", "100"};
-		ASSERT_EQ(instance.testFunction("client_max_body_size", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("client_max_body_size", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"client_max_body_size", ""};
-		ASSERT_EQ(instance.testFunction("client_max_body_size", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("client_max_body_size", args, lineCount), 1);
 	}
 		{
 		std::vector<std::string> args = {"client_max_body_size", "2222222222222222222222222"};
-		ASSERT_EQ(instance.testFunction("client_max_body_size", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("client_max_body_size", args, lineCount), 1);
 	}
 }
 
 TEST_F(ConfigFileParserTest, Server) 
 {
-	int line_count = 1;
+	int lineCount = 1;
 	//correct usage
 	{
 		std::vector<std::string> args = {"server"};
-		int ret = instance.testFunction("server", args, line_count);
+		int ret = instance.testFunction("server", args, lineCount);
 		ASSERT_EQ(instance.getConfigData().servers.size(), 1);
 		ASSERT_EQ(ret, 0);
 	}
 	//incorrect usage
 	{
 		std::vector<std::string> args = {"server", "localhost"};
-		ASSERT_EQ(instance.testFunction("server", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("server", args, lineCount), 1);
 	}
 }
 
 TEST_F(ConfigFileParserTest, Location) 
 {
 	//setup
-	int line_count = 1;
+	int lineCount = 1;
 	std::vector<std::string> setup = {"server"};
-	instance.testFunction("server", setup, line_count);
+	instance.testFunction("server", setup, lineCount);
 	//correct usage
 	{
 		std::vector<std::string> args = {"location", "/"};
-		int ret = instance.testFunction("location", args, line_count);
+		int ret = instance.testFunction("location", args, lineCount);
 		ASSERT_EQ(instance.getConfigData().servers.back().locations.size(), 1);
 		ASSERT_EQ(instance.getConfigData().servers.back().locations.back().name, "/");
 		ASSERT_EQ(ret, 0);
@@ -292,34 +292,34 @@ TEST_F(ConfigFileParserTest, Location)
 	//incorrect usage
 	{
 		std::vector<std::string> args = {"location"};
-		ASSERT_EQ(instance.testFunction("location", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("location", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"location", "/test", "test"};
-		ASSERT_EQ(instance.testFunction("location", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("location", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"location", "/test", "test"};
-		ASSERT_EQ(instance.testFunction("location", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("location", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"location", ""};
-		ASSERT_EQ(instance.testFunction("location", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("location", args, lineCount), 1);
 	}
 }
 
 TEST_F(ConfigFileParserTest, limitExcept)
 {
 	//setup
-	int line_count = 1;
+	int lineCount = 1;
 	std::vector<std::string> setup = {"server"};
-	instance.testFunction("server", setup, line_count);
+	instance.testFunction("server", setup, lineCount);
 	setup = {"location", "/"};
-	instance.testFunction("location", setup, line_count);
+	instance.testFunction("location", setup, lineCount);
 	//correct usage
 	{
 		std::vector<std::string> args = {"limit_except", "GET", "POST"};
-		int ret = instance.testFunction("limit_except", args, line_count);
+		int ret = instance.testFunction("limit_except", args, lineCount);
 		ASSERT_EQ(instance.getConfigData().servers.back().locations.back().methods[0], "GET");
 		ASSERT_EQ(instance.getConfigData().servers.back().locations.back().methods[1], "POST");
 		ASSERT_EQ(ret, 0);
@@ -327,134 +327,134 @@ TEST_F(ConfigFileParserTest, limitExcept)
 	//incorrect usage
 	{
 		std::vector<std::string> args = {"limit_except"};
-		ASSERT_EQ(instance.testFunction("limit_except", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("limit_except", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"limit_except", "GET", "POST", "GET"};
-		ASSERT_EQ(instance.testFunction("limit_except", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("limit_except", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"limit_except", "Wrong"};
-		ASSERT_EQ(instance.testFunction("limit_except", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("limit_except", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"limit_except", ""};
-		ASSERT_EQ(instance.testFunction("limit_except", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("limit_except", args, lineCount), 1);
 	}
 }
 
 TEST_F(ConfigFileParserTest, Return)
 {
 	//setup
-	int line_count = 1;
+	int lineCount = 1;
 	std::vector<std::string> setup = {"server"};
-	instance.testFunction("server", setup, line_count);
+	instance.testFunction("server", setup, lineCount);
 	setup = {"location", "/"};
-	instance.testFunction("location", setup, line_count);
+	instance.testFunction("location", setup, lineCount);
 	//correct usage
 	{
 		std::vector<std::string> args = {"return", "/test"};
-		int ret = instance.testFunction("return", args, line_count);
+		int ret = instance.testFunction("return", args, lineCount);
 		ASSERT_EQ(instance.getConfigData().servers.back().locations.back().return_url, "/test");
 		ASSERT_EQ(ret, 0);
 	}
 	//incorrect usage
 	{
 		std::vector<std::string> args = {"return"};
-		ASSERT_EQ(instance.testFunction("return", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("return", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"return", "test", "test"};
-		ASSERT_EQ(instance.testFunction("return", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("return", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"return", ""};
-		ASSERT_EQ(instance.testFunction("return", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("return", args, lineCount), 1);
 	}
 }
 
 TEST_F(ConfigFileParserTest, root)
 {
 	//setup
-	int line_count = 1;
+	int lineCount = 1;
 	std::vector<std::string> setup = {"server"};
-	instance.testFunction("server", setup, line_count);
+	instance.testFunction("server", setup, lineCount);
 	setup = {"location", "/"};
-	instance.testFunction("location", setup, line_count);
+	instance.testFunction("location", setup, lineCount);
 	//correct usage
 	{
 		std::vector<std::string> args = {"root", "/test"};
-		int ret = instance.testFunction("root", args, line_count);
+		int ret = instance.testFunction("root", args, lineCount);
 		ASSERT_EQ(instance.getConfigData().servers.back().locations.back().root, "/test");
 		ASSERT_EQ(ret, 0);
 	}
 	//incorrect usage
 	{
 		std::vector<std::string> args = {"root"};
-		ASSERT_EQ(instance.testFunction("root", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("root", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"root", "test", "test"};
-		ASSERT_EQ(instance.testFunction("root", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("root", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"root", ""};
-		ASSERT_EQ(instance.testFunction("root", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("root", args, lineCount), 1);
 	}
 }
 
 TEST_F(ConfigFileParserTest, Autoindex)
 {
 	//setup
-	int line_count = 1;
+	int lineCount = 1;
 	std::vector<std::string> setup = {"server"};
-	instance.testFunction("server", setup, line_count);
+	instance.testFunction("server", setup, lineCount);
 	setup = {"location", "/"};
-	instance.testFunction("location", setup, line_count);
+	instance.testFunction("location", setup, lineCount);
 	//correct usage
 	{
 		std::vector<std::string> args = {"autoindex", "on"};
-		int ret = instance.testFunction("autoindex", args, line_count);
+		int ret = instance.testFunction("autoindex", args, lineCount);
 		ASSERT_EQ(instance.getConfigData().servers.back().locations.back().autoindex, true);
 		ASSERT_EQ(ret, 0);
 	}
 	{
 		std::vector<std::string> args = {"autoindex", "off"};
-		int ret = instance.testFunction("autoindex", args, line_count);
+		int ret = instance.testFunction("autoindex", args, lineCount);
 		ASSERT_EQ(instance.getConfigData().servers.back().locations.back().autoindex, false);
 		ASSERT_EQ(ret, 0);
 	}
 	//incorrect usage
 	{
 		std::vector<std::string> args = {"autoindex"};
-		ASSERT_EQ(instance.testFunction("autoindex", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("autoindex", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"autoindex", "on", "on"};
-		ASSERT_EQ(instance.testFunction("autoindex", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("autoindex", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"autoindex", ""};
-		ASSERT_EQ(instance.testFunction("autoindex", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("autoindex", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"autoindex", "awdwa"};
-		ASSERT_EQ(instance.testFunction("autoindex", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("autoindex", args, lineCount), 1);
 	}
 }
 
 TEST_F(ConfigFileParserTest, Index) 
 {
 	//setup
-	int line_count = 1;
+	int lineCount = 1;
 	std::vector<std::string> setup = {"server"};
-	instance.testFunction("server", setup, line_count);
+	instance.testFunction("server", setup, lineCount);
 	setup = {"location", "/"};
-	instance.testFunction("location", setup, line_count);
+	instance.testFunction("location", setup, lineCount);
 	//correct usage
 	{
 		std::vector<std::string> args = {"index", "index.html", "index2.html"};
-		int ret = instance.testFunction("index", args, line_count);
+		int ret = instance.testFunction("index", args, lineCount);
 		ASSERT_EQ(instance.getConfigData().servers.back().locations.back().index[0], "index.html");
 		ASSERT_EQ(instance.getConfigData().servers.back().locations.back().index[1], "index2.html");
 		ASSERT_EQ(ret, 0);
@@ -462,11 +462,11 @@ TEST_F(ConfigFileParserTest, Index)
 	//incorrect usage
 	{
 		std::vector<std::string> args = {"index"};
-		ASSERT_EQ(instance.testFunction("index", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("index", args, lineCount), 1);
 	}
 	{
 		std::vector<std::string> args = {"index", ""};
-		ASSERT_EQ(instance.testFunction("index", args, line_count), 1);
+		ASSERT_EQ(instance.testFunction("index", args, lineCount), 1);
 	}
 }
 

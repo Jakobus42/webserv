@@ -22,7 +22,7 @@ int main(int argc, char** const argv) {
     }
     configfile::ConfigFileParser configFileParser;
     if (configFileParser.loadConfigFile(configfile) == 1) return 1;
-    configFileParser.printConfigData(1);
+    // configFileParser.printConfigData(1);
     loggerManager.unregisterLogger("File");
     loggerManager.unregisterLogger("Console");
   } catch (const std::exception& e) {
