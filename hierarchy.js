@@ -4,6 +4,7 @@ var hierarchy =
       [ "logger::ConsoleLogger", "classlogger_1_1ConsoleLogger.html", null ],
       [ "logger::FileLogger", "classlogger_1_1FileLogger.html", null ]
     ] ],
+    [ "www::Client", "classwww_1_1Client.html", null ],
     [ "configfile::ConfigFileParser", "classconfigfile_1_1ConfigFileParser.html", null ],
     [ "logger::LoggerManager", "classlogger_1_1LoggerManager.html", null ],
     [ "configfile::s_config_data", "structconfigfile_1_1s__config__data.html", null ],

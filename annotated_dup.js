@@ -13,6 +13,7 @@ var annotated_dup =
       [ "LoggerManager", "classlogger_1_1LoggerManager.html", "classlogger_1_1LoggerManager" ]
     ] ],
     [ "www", "namespacewww.html", [
+      [ "Client", "classwww_1_1Client.html", "classwww_1_1Client" ],
       [ "Socket", "classwww_1_1Socket.html", "classwww_1_1Socket" ]
     ] ]
 ];

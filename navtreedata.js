@@ -105,7 +105,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "ALogger_8cpp.html",
-"namespacelogger.html"
+"namespaceconfigfile.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
