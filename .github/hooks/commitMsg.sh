@@ -7,7 +7,7 @@ commit_message=$(cat "$1")
 valid_prefix=false
 
 for prefix in "${prefixes[@]}"; do
-  if [[ $commit_message == "$prefix:"* ]]; then
+  if [[ $commit_message == "$prefix:"* ]] || [[ $commit_message == "$prefix("*"):"* ]]; then
     valid_prefix=true
     break
   fi

@@ -1,9 +1,16 @@
+#include <fcntl.h>
+#include <netinet/in.h>
+#include <strings.h>
+#include <sys/socket.h>
+#include <unistd.h>
+
 #include <algorithm>
 #include <iostream>
 
 #include "../include/configfile/Parser.hpp"
 #include "../include/logger/LoggerManager.hpp"
 #include "../include/utils/StringUtils.hpp"
+#include "../include/www/send.hpp"
 
 int main(int argc, char** const argv) {
   try {
@@ -28,4 +35,7 @@ int main(int argc, char** const argv) {
   } catch (const std::exception& e) {
     LOG("ERROR: " << e.what(), logger::ERROR)
   }
+  const int port = 8080;
+  int returnValue = doKoolShit(port);
+  return returnValue;
 }
