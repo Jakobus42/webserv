@@ -8,5 +8,6 @@ var hierarchy =
     [ "logger::LoggerManager", "classlogger_1_1LoggerManager.html", null ],
     [ "configfile::s_config_data", "structconfigfile_1_1s__config__data.html", null ],
     [ "configfile::s_location", "structconfigfile_1_1s__location.html", null ],
-    [ "configfile::s_server", "structconfigfile_1_1s__server.html", null ]
+    [ "configfile::s_server", "structconfigfile_1_1s__server.html", null ],
+    [ "www::Socket", "classwww_1_1Socket.html", null ]
 ];
