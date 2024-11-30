@@ -10,6 +10,7 @@
 #include <sstream>
 #include <vector>
 
+#include "../../include/www/Client.hpp"
 #include "../../include/www/Socket.hpp"
 
 #define DEFAULT_CHUNK_SIZE 64
@@ -130,10 +131,11 @@ t_fields parseHeaders(std::string& receivedBytes) {
 }
 
 int doKoolShit(const int port) {
+  std::vector<www::Socket> sockets(0);
+  std::vector<www::Client> clients(0);
   t_fields currentHeaders;  // okay, strictly it's called field
   // there's header fields and apparently trailer fields as well
   // fields sounds better than header_list methinks and it's not a list xd
-  std::vector<www::Socket> sockets(0);
 
   try {
     // www::Socket testSocket(port);
@@ -148,18 +150,22 @@ int doKoolShit(const int port) {
   std::cout << "Got socket: " << sockets.at(0).getFd() << std::endl;
 
   // socket_fd = createSocket(port);
-  int clientSocketFd;
-  struct sockaddr someOtherSockaddr;
-  unsigned int clientSocketLength = 0;
+  //   int clientSocketFd;
+  //   struct sockaddr someOtherSockaddr;
+  //   unsigned int clientSocketLength = 0;
 
-  bzero(&someOtherSockaddr, sizeof(struct sockaddr));
+  //   bzero(&someOtherSockaddr, sizeof(struct sockaddr));
 
-  int coolFd = sockets.at(0).getFd();
+  //   int coolFd = sockets.at(0).getFd();
 
-  std::cout << "doing with " << coolFd << std::endl;
-  clientSocketFd = accept(coolFd, &someOtherSockaddr, &clientSocketLength);
-  if (clientSocketFd == -1) {
-    std::cout << "Fuck! " << errno << std::endl;
+  //   std::cout << "doing with " << coolFd << std::endl;
+  try {
+    clients.push_back(www::Client());
+    if (clients.at(0).accept(sockets.at(0).getFd()) == false) throw new std::exception();
+  } catch (std::exception& e) {
+    std::cout << "Oh darnit, socket didn't listen" << std::endl;
+    sockets.at(0).close();
+    return 1;
   }
 
   char buffer[DEFAULT_CHUNK_SIZE];
@@ -175,7 +181,7 @@ int doKoolShit(const int port) {
     // bcda bcd in this case if Content-Length is 8, we should only read 7
     // more bytes since the previous read already contains one of the eight
     // body bytes
-    bytes_read = recv(clientSocketFd, &buffer, DEFAULT_CHUNK_SIZE, 0);
+    bytes_read = recv(clients.at(0).getFd(), &buffer, DEFAULT_CHUNK_SIZE, 0);
     std::cout << "Received " << bytes_read << std::endl;
     if (bytes_read == -1) {
       std::cout << "Ah fuck" << std::endl;
@@ -215,7 +221,7 @@ int doKoolShit(const int port) {
   for (std::vector<www::Socket>::iterator it = sockets.begin(); it != sockets.end(); it++) {
     it->close();
   }
-  sendGarbage(clientSocketFd);
-  close(clientSocketFd);
+  sendGarbage(clients.at(0).getFd());
+  close(clients.at(0).getFd());
   return 0;
 }
