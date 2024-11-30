@@ -20,15 +20,26 @@ class Socket {
   Socket(const Socket& other);
   Socket& operator=(const Socket& other);
 
-  bool bind();
   bool init();
+  bool create();
+  bool bind();
+  bool listen();
   void close();
+
+  void setBroken();
+
   int getFd() const;
   int getPort() const;
+  bool isOpen() const;
+  bool isBound() const;
+  bool isListening() const;
 
  private:
   int m_fd;
   int m_port;
+  bool m_open;
+  bool m_bound;
+  bool m_listening;
 };
 
 } /* namespace www */

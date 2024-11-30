@@ -137,7 +137,9 @@ int doKoolShit(const int port) {
 
   try {
     // www::Socket testSocket(port);
-    sockets.push_back(www::Socket(port));
+    sockets.push_back(www::Socket(port));  // unnecessarily inits stuff and leaks a FD because vector copies it smh
+    if (sockets.at(0).init() == false)     // doesn't actually currently throw
+      throw std::exception();
   } catch (...) {
     std::cout << "crap, socket broke during creation" << std::endl;
     return 1;
