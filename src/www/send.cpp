@@ -46,8 +46,9 @@ typedef std::vector<char> t_bytes;
 
 bool hasTwoConsecutiveLineBreaks(std::string& received) {
   const char END_SEQUENCE[4] = {'\r', '\n', '\r', '\n'};
-  if (std::search(received.begin(), received.end(), END_SEQUENCE, END_SEQUENCE + 4) != received.end()) return true;
-  // if (received.find())
+  if (std::search(received.begin(), received.end(), END_SEQUENCE, END_SEQUENCE + 4) != received.end()) {
+    return true;
+  }
   return false;
   // if doesnt contain \r\n\r\n, continue on (return false)
   // if contains /r/n/r/n, make sure to cut that off and possibly save for the
@@ -55,7 +56,7 @@ bool hasTwoConsecutiveLineBreaks(std::string& received) {
 }
 
 bool has_transmission_end(t_bytes& data) {
-  if (data.size() < DEFAULT_CHUNK_SIZE) {
+  if (data.size() < sizeof(SEQUENCE)) {
     return false;
   }
   t_bytes::iterator it = data.begin();
@@ -130,50 +131,40 @@ t_fields parseHeaders(std::string& receivedBytes) {
   return newHeaders;
 }
 
+std::pair<www::Socket, www::Client> getClientSocketPair(int port) {
+  www::Socket socket(port);
+  www::Client client;
+
+  if (socket.init() == false) throw std::exception();
+  if (client.accept(socket.getFd()) == false) {
+    socket.close();
+    throw std::exception();
+  }
+  return std::make_pair(socket, client);
+}
+
 int doKoolShit(const int port) {
   std::vector<www::Socket> sockets(0);
   std::vector<www::Client> clients(0);
-  t_fields currentHeaders;  // okay, strictly it's called field
+  t_fields currentHeaders;
+  // okay, strictly it's called field
   // there's header fields and apparently trailer fields as well
   // fields sounds better than header_list methinks and it's not a list xd
 
   try {
-    // www::Socket testSocket(port);
-    sockets.push_back(www::Socket(port));  // unnecessarily inits stuff and leaks a FD because vector copies it smh
-    if (sockets.at(0).init() == false)     // doesn't actually currently throw
-      throw std::exception();
-  } catch (...) {
-    std::cout << "crap, socket broke during creation" << std::endl;
-    return 1;
-  }
-
-  std::cout << "Got socket: " << sockets.at(0).getFd() << std::endl;
-
-  // socket_fd = createSocket(port);
-  //   int clientSocketFd;
-  //   struct sockaddr someOtherSockaddr;
-  //   unsigned int clientSocketLength = 0;
-
-  //   bzero(&someOtherSockaddr, sizeof(struct sockaddr));
-
-  //   int coolFd = sockets.at(0).getFd();
-
-  //   std::cout << "doing with " << coolFd << std::endl;
-  try {
-    clients.push_back(www::Client());
-    if (clients.at(0).accept(sockets.at(0).getFd()) == false) throw new std::exception();
+    std::pair<www::Socket, www::Client> pair = getClientSocketPair(port);
+    sockets.push_back(pair.first);
+    clients.push_back(pair.second);
   } catch (std::exception& e) {
-    std::cout << "Oh darnit, socket didn't listen" << std::endl;
-    sockets.at(0).close();
+    std::cout << "Oh crap!" << std::endl;
     return 1;
   }
 
   char buffer[DEFAULT_CHUNK_SIZE];
   std::string received;
-  int bytes_read = 0;
-  bool receiving = true;
 
-  while (receiving) {
+  while (true) {
+    int bytes_read = 0;
     bzero(&buffer, sizeof(buffer));
     // if receiving Content-Length and it's nonzero, first keep reading
     // until \r\n\r\n then keep reading exactly until content_length is
@@ -205,7 +196,7 @@ int doKoolShit(const int port) {
     // blocks forever if total length % 4 == 0
   }
   std::cout << "Headers received:" << std::endl;
-  for (t_fields::iterator it = currentHeaders.begin(); it != currentHeaders.end(); it++) {
+  for (t_fields::iterator it = currentHeaders.begin(); it != currentHeaders.end(); ++it) {
     std::cout << "- " << it->first << ": " << it->second << std::endl;
   }
   std::cout << std::endl;
@@ -218,7 +209,7 @@ int doKoolShit(const int port) {
 
   std::cout << "length received: " << received.size() << std::endl;
 
-  for (std::vector<www::Socket>::iterator it = sockets.begin(); it != sockets.end(); it++) {
+  for (std::vector<www::Socket>::iterator it = sockets.begin(); it != sockets.end(); ++it) {
     it->close();
   }
   sendGarbage(clients.at(0).getFd());
