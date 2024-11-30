@@ -4,6 +4,7 @@ var send_8cpp =
     [ "t_bytes", "send_8cpp.html#ad095229380867264997730d6da5b8a19", null ],
     [ "t_fields", "send_8cpp.html#a6f76c6123d98e5b97ac96ea1d37388c8", null ],
     [ "doKoolShit", "send_8cpp.html#a5f774fb47043744f5b4b3d912653a770", null ],
+    [ "getClientSocketPair", "send_8cpp.html#aece9a7e7984e3cd2e1a1a03532790e25", null ],
     [ "getCurrentTokenEnd", "send_8cpp.html#a12ecbd2cdd26944abb5e2d1a1b59a637", null ],
     [ "has_transmission_end", "send_8cpp.html#a5c0ef0afda7b6b95317348aa0538ed7e", null ],
     [ "hasTwoConsecutiveLineBreaks", "send_8cpp.html#acda23270dbbd9a74befea4badfc4ae7e", null ],
