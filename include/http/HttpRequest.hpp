@@ -5,10 +5,10 @@
 #include <map>
 #include <string>
 
+namespace http {
+
 typedef std::pair<std::string, std::string> t_field;
 typedef std::map<t_field::first_type, t_field::second_type> t_fields;
-
-namespace www {
 
 /**
  * @class HttpRequest
@@ -40,4 +40,4 @@ class HttpRequest {
   // delimiter
 };
 
-} /* namespace www */
+}  // namespace http

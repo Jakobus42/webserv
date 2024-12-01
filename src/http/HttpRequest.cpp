@@ -1,8 +1,8 @@
-#include "../../include/www/HttpRequest.hpp"
+#include "../../include/http/HttpRequest.hpp"
 
 #include <limits>
 
-namespace www {
+namespace http {
 
 /**
  * @brief Constructs a new HttpRequest object.
@@ -51,4 +51,4 @@ t_fields& HttpRequest::getHeaderFields(void) { return m_header_fields; }
 
 void HttpRequest::setHeaderFields(t_fields& fields) { m_header_fields = fields; };
 
-} /* namespace www */
+}  // namespace http
