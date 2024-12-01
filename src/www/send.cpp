@@ -112,7 +112,6 @@ std::pair<www::ServerSocket, www::Client> getClientServerSocketPair(int port) {
 int doKoolShit(const int port) {
   std::vector<www::ServerSocket> sockets(0);
   std::vector<www::Client> clients(0);
-  t_fields currentHeaders;
   // okay, strictly it's called field
   // there's header fields and apparently trailer fields as well
   // fields sounds better than header_list methinks and it's not a list xd
@@ -128,6 +127,8 @@ int doKoolShit(const int port) {
 
   char buffer[DEFAULT_CHUNK_SIZE];
   std::string received;
+  www::HttpRequest request;
+  t_fields currentHeaders = request.getHeaderFields();
 
   while (true) {
     int bytes_read = 0;

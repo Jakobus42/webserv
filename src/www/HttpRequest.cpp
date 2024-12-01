@@ -47,4 +47,8 @@ uint64_t HttpRequest::getContentLength(void) const { return m_content_length; }
 
 const t_fields& HttpRequest::getHeaderFields(void) const { return m_header_fields; }
 
+t_fields& HttpRequest::getHeaderFields(void) { return m_header_fields; }
+
+void HttpRequest::setHeaderFields(t_fields& fields) { m_header_fields = fields; };
+
 } /* namespace www */

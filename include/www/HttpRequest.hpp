@@ -25,6 +25,9 @@ class HttpRequest {
   const std::string& getBody(void) const;
   uint64_t getContentLength(void) const;
   const t_fields& getHeaderFields(void) const;
+  t_fields& getHeaderFields(void);
+
+  void setHeaderFields(t_fields&);
 
  private:
   std::string m_head;
