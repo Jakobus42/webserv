@@ -5,6 +5,8 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
+typedef struct sockaddr t_sockaddr;
+
 namespace www {
 
 /**
@@ -28,7 +30,7 @@ class Client {
 
  private:
   int m_fd;
-  struct sockaddr m_socketAddress;
+  t_sockaddr m_socketAddress;
   uint32_t m_socketLength;
   bool m_alive;
 };

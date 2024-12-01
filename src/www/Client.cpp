@@ -36,16 +36,14 @@ Client& Client::operator=(const Client& rhs) {
 
 int Client::getFd(void) const { return m_fd; }
 
-struct sockaddr Client::getSocketAddress(void) const {
-  return m_socketAddress;
-}
+t_sockaddr Client::getSocketAddress(void) const { return m_socketAddress; }
 
 uint32_t Client::getSocketLength(void) const { return m_socketLength; }
 
 bool Client::isAlive(void) const { return m_alive; }
 
 bool Client::accept(int recipientFd) {
-  bzero(&m_socketAddress, sizeof(struct sockaddr));
+  bzero(&m_socketAddress, sizeof(t_sockaddr));
   m_fd = ::accept(recipientFd, &m_socketAddress, &m_socketLength);
   if (m_fd < 0) return false;
   m_alive = true;

@@ -5,20 +5,22 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
+typedef struct sockaddr_in t_sockaddr_in;
+
 namespace www {
 
 /**
- * @class Socket
+ * @class ServerSocket
  * @brief ...
  */
-class Socket {
+class ServerSocket {
  public:
   // just make the constructoor throw, then wrap its creation
-  Socket();
-  Socket(int port);
-  ~Socket();
-  Socket(const Socket& other);
-  Socket& operator=(const Socket& other);
+  ServerSocket();
+  ServerSocket(int port);
+  ~ServerSocket();
+  ServerSocket(const ServerSocket& other);
+  ServerSocket& operator=(const ServerSocket& other);
 
   bool init();
   bool create();
@@ -30,12 +32,14 @@ class Socket {
 
   int getFd() const;
   int getPort() const;
+  t_sockaddr_in getSocketAddress() const;
   bool isOpen() const;
   bool isBound() const;
   bool isListening() const;
 
  private:
   int m_fd;
+  t_sockaddr_in m_socketAddress;
   int m_port;
   bool m_open;
   bool m_bound;

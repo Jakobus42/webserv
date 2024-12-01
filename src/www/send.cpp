@@ -11,7 +11,7 @@
 #include <vector>
 
 #include "../../include/www/Client.hpp"
-#include "../../include/www/Socket.hpp"
+#include "../../include/www/ServerSocket.hpp"
 
 #define DEFAULT_CHUNK_SIZE 64
 const char* SEQUENCE = "\r\n\r\n";
@@ -19,54 +19,18 @@ const char* SEQUENCE = "\r\n\r\n";
 typedef std::map<std::string, std::string> t_fields;
 typedef std::vector<char> t_bytes;
 
-// int createSocket(int port) {
-// 	struct sockaddr_in sin;
-// 	int fd;
-// 	int opt = 1;
-
-// 	fd = socket(AF_INET, SOCK_STREAM, 0);
-
-// 	if (fd == -1) {
-// 		return -1;
-// 	}
-// 	if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) < 0) {
-// 		close(fd);
-// 		return -1;
-// 	}
-// 	sin.sin_family = AF_INET;
-// 	sin.sin_addr.s_addr = htonl(0x7F000001);  // 127.0.0.1
-// 	sin.sin_port = htons(port);
-// 	if (bind(fd, (struct sockaddr *)&sin, sizeof(sin)) < 0 ||
-// 		listen(fd, 10) < 0) {
-// 		close(fd);
-// 		return -1;	// might wanna return proper exit codes (negative) instead
-// 	}
-// 	return fd;
-// }
-
+// if doesnt contain \r\n\r\n, continue on (return false)
+// if contains /r/n/r/n, make sure to cut that off and possibly save for the
+// next request find out and set headers as you read
 bool hasTwoConsecutiveLineBreaks(std::string& received) {
   const char END_SEQUENCE[4] = {'\r', '\n', '\r', '\n'};
   if (std::search(received.begin(), received.end(), END_SEQUENCE, END_SEQUENCE + 4) != received.end()) {
     return true;
   }
   return false;
-  // if doesnt contain \r\n\r\n, continue on (return false)
-  // if contains /r/n/r/n, make sure to cut that off and possibly save for the
-  // next request find out and set headers as you read
 }
 
-bool has_transmission_end(t_bytes& data) {
-  if (data.size() < sizeof(SEQUENCE)) {
-    return false;
-  }
-  t_bytes::iterator it = data.begin();
-  for (int i = 0; i < 4; i++) {
-    if (it[i] != SEQUENCE[i]) return false;
-  }
-  return true;
-}
-
-void sendGarbage(int clientSocketFd) {
+void sendGarbage(int clientServerSocketFd) {
   char sendBuffer[2048] =
       "HTTP/1.1 300 CockAndBalls\r\n"
       "Date: Sun, 18 Oct 2012 10:36:20 GMT\r\n"
@@ -80,12 +44,12 @@ void sendGarbage(int clientSocketFd) {
       "HTML page.</p></body></html>\r\n";
 
   std::cout << "now sending" << std::endl;
-  send(clientSocketFd, sendBuffer, sizeof(sendBuffer) - 1, 0);
+  send(clientServerSocketFd, sendBuffer, sizeof(sendBuffer) - 1, 0);
   std::cout << "sent" << std::endl;
   bzero(&sendBuffer, sizeof(sendBuffer));
 }
 
-t_bytes::iterator getCurrentTokenEnd(t_bytes::iterator begin, t_bytes::iterator end) {
+t_bytes::iterator endOfToken(t_bytes::iterator begin, t_bytes::iterator end) {
   const char sequence[2] = {'\r', '\n'};
   t_bytes::iterator foo = std::search(begin, end, sequence, sequence + 2);
   if (foo == end) return end;
@@ -131,8 +95,8 @@ t_fields parseHeaders(std::string& receivedBytes) {
   return newHeaders;
 }
 
-std::pair<www::Socket, www::Client> getClientSocketPair(int port) {
-  www::Socket socket(port);
+std::pair<www::ServerSocket, www::Client> getClientServerSocketPair(int port) {
+  www::ServerSocket socket(port);
   www::Client client;
 
   if (socket.init() == false) throw std::exception();
@@ -144,7 +108,7 @@ std::pair<www::Socket, www::Client> getClientSocketPair(int port) {
 }
 
 int doKoolShit(const int port) {
-  std::vector<www::Socket> sockets(0);
+  std::vector<www::ServerSocket> sockets(0);
   std::vector<www::Client> clients(0);
   t_fields currentHeaders;
   // okay, strictly it's called field
@@ -152,11 +116,11 @@ int doKoolShit(const int port) {
   // fields sounds better than header_list methinks and it's not a list xd
 
   try {
-    std::pair<www::Socket, www::Client> pair = getClientSocketPair(port);
+    std::pair<www::ServerSocket, www::Client> pair = getClientServerSocketPair(port);
     sockets.push_back(pair.first);
     clients.push_back(pair.second);
   } catch (std::exception& e) {
-    std::cout << "Oh crap!" << std::endl;
+    std::cout << "ServerSocket pair creation failed!" << std::endl;
     return 1;
   }
 
@@ -209,7 +173,7 @@ int doKoolShit(const int port) {
 
   std::cout << "length received: " << received.size() << std::endl;
 
-  for (std::vector<www::Socket>::iterator it = sockets.begin(); it != sockets.end(); ++it) {
+  for (std::vector<www::ServerSocket>::iterator it = sockets.begin(); it != sockets.end(); ++it) {
     it->close();
   }
   sendGarbage(clients.at(0).getFd());
