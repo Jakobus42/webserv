@@ -78,26 +78,30 @@ $(document).ready(function(){initNavTree('send_8cpp.html',''); initResizable(); 
 <code>#include &lt;map&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="Request_8hpp_source.html">../../include/http/Request.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Client_8hpp_source.html">../../include/www/Client.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="Socket_8hpp_source.html">../../include/www/Socket.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ServerSocket_8hpp_source.html">../../include/www/ServerSocket.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for send.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="send_8cpp__incl.png" border="0" usemap="#awww_2send_8cpp" alt=""/></div>
 <map name="awww_2send_8cpp" id="awww_2send_8cpp">
-<area shape="rect" title=" " alt="" coords="536,5,653,32"/>
-<area shape="rect" title=" " alt="" coords="5,155,101,181"/>
-<area shape="rect" title=" " alt="" coords="126,155,205,181"/>
-<area shape="rect" title=" " alt="" coords="285,155,387,181"/>
-<area shape="rect" title=" " alt="" coords="412,155,487,181"/>
-<area shape="rect" title=" " alt="" coords="592,80,677,107"/>
-<area shape="rect" title=" " alt="" coords="702,80,765,107"/>
-<area shape="rect" title=" " alt="" coords="789,80,869,107"/>
-<area shape="rect" title=" " alt="" coords="893,80,944,107"/>
-<area shape="rect" title=" " alt="" coords="968,80,1043,107"/>
-<area shape="rect" title=" " alt="" coords="1067,80,1130,107"/>
-<area shape="rect" href="Client_8hpp.html" title=" " alt="" coords="37,80,237,107"/>
-<area shape="rect" href="Socket_8hpp.html" title=" " alt="" coords="261,80,467,107"/>
+<area shape="rect" title=" " alt="" coords="553,5,670,32"/>
+<area shape="rect" title=" " alt="" coords="109,169,205,196"/>
+<area shape="rect" title=" " alt="" coords="5,169,84,196"/>
+<area shape="rect" title=" " alt="" coords="355,169,457,196"/>
+<area shape="rect" title=" " alt="" coords="255,169,330,196"/>
+<area shape="rect" title=" " alt="" coords="569,87,654,114"/>
+<area shape="rect" title=" " alt="" coords="679,87,741,114"/>
+<area shape="rect" title=" " alt="" coords="766,87,846,114"/>
+<area shape="rect" title=" " alt="" coords="863,169,914,196"/>
+<area shape="rect" title=" " alt="" coords="1067,87,1142,114"/>
+<area shape="rect" title=" " alt="" coords="1167,87,1229,114"/>
+<area shape="rect" href="Request_8hpp.html" title=" " alt="" coords="921,80,1043,121"/>
+<area shape="rect" href="Client_8hpp.html" title=" " alt="" coords="243,87,443,114"/>
+<area shape="rect" href="ServerSocket_8hpp.html" title=" " alt="" coords="43,80,219,121"/>
+<area shape="rect" title=" " alt="" coords="1031,169,1101,196"/>
+<area shape="rect" title=" " alt="" coords="947,169,1006,196"/>
 </map>
 </div>
 </div>
@@ -110,8 +114,6 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a6f76c6123d98e5b97ac96ea1d37388c8"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="send_8cpp.html#a6f76c6123d98e5b97ac96ea1d37388c8">t_fields</a></td></tr>
-<tr class="separator:a6f76c6123d98e5b97ac96ea1d37388c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad095229380867264997730d6da5b8a19"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; char &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="send_8cpp.html#ad095229380867264997730d6da5b8a19">t_bytes</a></td></tr>
 <tr class="separator:ad095229380867264997730d6da5b8a19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -119,16 +121,14 @@ Typedefs</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:acda23270dbbd9a74befea4badfc4ae7e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="send_8cpp.html#acda23270dbbd9a74befea4badfc4ae7e">hasTwoConsecutiveLineBreaks</a> (std::string &amp;received)</td></tr>
 <tr class="separator:acda23270dbbd9a74befea4badfc4ae7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c0ef0afda7b6b95317348aa0538ed7e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="send_8cpp.html#a5c0ef0afda7b6b95317348aa0538ed7e">has_transmission_end</a> (<a class="el" href="send_8cpp.html#ad095229380867264997730d6da5b8a19">t_bytes</a> &amp;data)</td></tr>
-<tr class="separator:a5c0ef0afda7b6b95317348aa0538ed7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65411eff93d927c6b3b0dc9fbb3bf193"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="send_8cpp.html#a65411eff93d927c6b3b0dc9fbb3bf193">sendGarbage</a> (int clientSocketFd)</td></tr>
-<tr class="separator:a65411eff93d927c6b3b0dc9fbb3bf193"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12ecbd2cdd26944abb5e2d1a1b59a637"><td class="memItemLeft" align="right" valign="top">t_bytes::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="send_8cpp.html#a12ecbd2cdd26944abb5e2d1a1b59a637">getCurrentTokenEnd</a> (t_bytes::iterator begin, t_bytes::iterator end)</td></tr>
-<tr class="separator:a12ecbd2cdd26944abb5e2d1a1b59a637"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6697d8cb7672d015acd10aedfeeda157"><td class="memItemLeft" align="right" valign="top"><a class="el" href="send_8cpp.html#a6f76c6123d98e5b97ac96ea1d37388c8">t_fields</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="send_8cpp.html#a6697d8cb7672d015acd10aedfeeda157">parseHeaders</a> (std::string &amp;receivedBytes)</td></tr>
-<tr class="separator:a6697d8cb7672d015acd10aedfeeda157"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aece9a7e7984e3cd2e1a1a03532790e25"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="classwww_1_1Socket.html">www::Socket</a>, <a class="el" href="classwww_1_1Client.html">www::Client</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="send_8cpp.html#aece9a7e7984e3cd2e1a1a03532790e25">getClientSocketPair</a> (int port)</td></tr>
-<tr class="separator:aece9a7e7984e3cd2e1a1a03532790e25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a414234892c1f02ca08d40c9818aafec0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="send_8cpp.html#a414234892c1f02ca08d40c9818aafec0">sendGarbage</a> (int clientServerSocketFd)</td></tr>
+<tr class="separator:a414234892c1f02ca08d40c9818aafec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad41504f0086b5c43c42abee2fc96aabf"><td class="memItemLeft" align="right" valign="top">t_bytes::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="send_8cpp.html#ad41504f0086b5c43c42abee2fc96aabf">endOfToken</a> (t_bytes::iterator begin, t_bytes::iterator end)</td></tr>
+<tr class="separator:ad41504f0086b5c43c42abee2fc96aabf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45ea4274ae4d3df4a1d36b1125c490f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacehttp.html#aeb67387e056c4ddb463ed26481480efc">http::fields</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="send_8cpp.html#a45ea4274ae4d3df4a1d36b1125c490f3">parseHeaders</a> (std::string &amp;receivedBytes)</td></tr>
+<tr class="separator:a45ea4274ae4d3df4a1d36b1125c490f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a023ed74feeb87fcb4aa1fb3e3f09e277"><td class="memItemLeft" align="right" valign="top">std::pair&lt; <a class="el" href="classwww_1_1ServerSocket.html">www::ServerSocket</a>, <a class="el" href="classwww_1_1Client.html">www::Client</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="send_8cpp.html#a023ed74feeb87fcb4aa1fb3e3f09e277">getClientServerSocketPair</a> (int port)</td></tr>
+<tr class="separator:a023ed74feeb87fcb4aa1fb3e3f09e277"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f774fb47043744f5b4b3d912653a770"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="send_8cpp.html#a5f774fb47043744f5b4b3d912653a770">doKoolShit</a> (const int port)</td></tr>
 <tr class="separator:a5f774fb47043744f5b4b3d912653a770"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -150,7 +150,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00016">16</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00017">17</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
 
 </div>
 </div>
@@ -171,22 +171,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a6f76c6123d98e5b97ac96ea1d37388c8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f76c6123d98e5b97ac96ea1d37388c8">&#9670;&nbsp;</a></span>t_fields</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::map&lt;std::string, std::string&gt; <a class="el" href="send_8cpp.html#a6f76c6123d98e5b97ac96ea1d37388c8">t_fields</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00019">19</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a5f774fb47043744f5b4b3d912653a770"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5f774fb47043744f5b4b3d912653a770">&#9670;&nbsp;</a></span>doKoolShit()</h2>
@@ -204,104 +188,108 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00146">146</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                               {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  std::vector&lt;www::Socket&gt; sockets(0);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  std::vector&lt;www::Client&gt; clients(0);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <a class="code" href="send_8cpp.html#a6f76c6123d98e5b97ac96ea1d37388c8">t_fields</a> currentHeaders;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="comment">// okay, strictly it&#39;s called field</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <span class="comment">// there&#39;s header fields and apparently trailer fields as well</span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="comment">// fields sounds better than header_list methinks and it&#39;s not a list xd</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    std::pair&lt;www::Socket, www::Client&gt; pair = <a class="code" href="send_8cpp.html#aece9a7e7984e3cd2e1a1a03532790e25">getClientSocketPair</a>(port);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    sockets.push_back(pair.first);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    clients.push_back(pair.second);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Oh crap!&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  }</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keywordtype">char</span> buffer[<a class="code" href="send_8cpp.html#a86261d934fc0037fd4222a4bbe607fdc">DEFAULT_CHUNK_SIZE</a>];</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  std::string received;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordtype">int</span> bytes_read = 0;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    bzero(&amp;buffer, <span class="keyword">sizeof</span>(buffer));</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="comment">// if receiving Content-Length and it&#39;s nonzero, first keep reading</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="comment">// until \r\n\r\n then keep reading exactly until content_length is</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="comment">// extracted keep in mind we might receive d abcd abcd abc\r \n\r\na</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="comment">// bcda bcd in this case if Content-Length is 8, we should only read 7</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="comment">// more bytes since the previous read already contains one of the eight</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="comment">// body bytes</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    bytes_read = recv(clients.at(0).getFd(), &amp;buffer, <a class="code" href="send_8cpp.html#a86261d934fc0037fd4222a4bbe607fdc">DEFAULT_CHUNK_SIZE</a>, 0);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Received &quot;</span> &lt;&lt; bytes_read &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">if</span> (bytes_read == -1) {</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;Ah fuck&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;      <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    }</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">if</span> (bytes_read == 0) {</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;Huh, received 0&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    }</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    received.reserve(received.size() + <a class="code" href="send_8cpp.html#a86261d934fc0037fd4222a4bbe607fdc">DEFAULT_CHUNK_SIZE</a>);</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    received.insert(received.end(), buffer, buffer + <a class="code" href="send_8cpp.html#a86261d934fc0037fd4222a4bbe607fdc">DEFAULT_CHUNK_SIZE</a>);</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="comment">// parse protocol version</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="comment">// parse path</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="comment">// parse method</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="comment">// then come the headers</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="comment">// parse it and set variables</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="comment">// at the same time figure out if there&#39;s</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="comment">// two consecutive newlines</span></div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    currentHeaders = <a class="code" href="send_8cpp.html#a6697d8cb7672d015acd10aedfeeda157">parseHeaders</a>(received);</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="send_8cpp.html#acda23270dbbd9a74befea4badfc4ae7e">hasTwoConsecutiveLineBreaks</a>(received)) <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="comment">// blocks forever if total length % 4 == 0</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  }</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Headers received:&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keywordflow">for</span> (t_fields::iterator it = currentHeaders.begin(); it != currentHeaders.end(); ++it) {</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;- &quot;</span> &lt;&lt; it-&gt;first &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; it-&gt;second &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  }</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  std::cout &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Full received request:&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; received.size(); i++) {</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    std::cout &lt;&lt; received[i];</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  }</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  std::cout &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;length received: &quot;</span> &lt;&lt; received.size() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  <span class="keywordflow">for</span> (std::vector&lt;www::Socket&gt;::iterator it = sockets.begin(); it != sockets.end(); ++it) {</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    it-&gt;close();</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  }</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  <a class="code" href="send_8cpp.html#a65411eff93d927c6b3b0dc9fbb3bf193">sendGarbage</a>(clients.at(0).getFd());</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  close(clients.at(0).getFd());</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;}</div>
-<div class="ttc" id="asend_8cpp_html_a65411eff93d927c6b3b0dc9fbb3bf193"><div class="ttname"><a href="send_8cpp.html#a65411eff93d927c6b3b0dc9fbb3bf193">sendGarbage</a></div><div class="ttdeci">void sendGarbage(int clientSocketFd)</div><div class="ttdef"><b>Definition:</b> <a href="send_8cpp_source.html#l00069">send.cpp:69</a></div></div>
-<div class="ttc" id="asend_8cpp_html_a6697d8cb7672d015acd10aedfeeda157"><div class="ttname"><a href="send_8cpp.html#a6697d8cb7672d015acd10aedfeeda157">parseHeaders</a></div><div class="ttdeci">t_fields parseHeaders(std::string &amp;receivedBytes)</div><div class="ttdef"><b>Definition:</b> <a href="send_8cpp_source.html#l00095">send.cpp:95</a></div></div>
-<div class="ttc" id="asend_8cpp_html_a6f76c6123d98e5b97ac96ea1d37388c8"><div class="ttname"><a href="send_8cpp.html#a6f76c6123d98e5b97ac96ea1d37388c8">t_fields</a></div><div class="ttdeci">std::map&lt; std::string, std::string &gt; t_fields</div><div class="ttdef"><b>Definition:</b> <a href="send_8cpp_source.html#l00019">send.cpp:19</a></div></div>
-<div class="ttc" id="asend_8cpp_html_a86261d934fc0037fd4222a4bbe607fdc"><div class="ttname"><a href="send_8cpp.html#a86261d934fc0037fd4222a4bbe607fdc">DEFAULT_CHUNK_SIZE</a></div><div class="ttdeci">#define DEFAULT_CHUNK_SIZE</div><div class="ttdef"><b>Definition:</b> <a href="send_8cpp_source.html#l00016">send.cpp:16</a></div></div>
-<div class="ttc" id="asend_8cpp_html_acda23270dbbd9a74befea4badfc4ae7e"><div class="ttname"><a href="send_8cpp.html#acda23270dbbd9a74befea4badfc4ae7e">hasTwoConsecutiveLineBreaks</a></div><div class="ttdeci">bool hasTwoConsecutiveLineBreaks(std::string &amp;received)</div><div class="ttdef"><b>Definition:</b> <a href="send_8cpp_source.html#l00047">send.cpp:47</a></div></div>
-<div class="ttc" id="asend_8cpp_html_aece9a7e7984e3cd2e1a1a03532790e25"><div class="ttname"><a href="send_8cpp.html#aece9a7e7984e3cd2e1a1a03532790e25">getClientSocketPair</a></div><div class="ttdeci">std::pair&lt; www::Socket, www::Client &gt; getClientSocketPair(int port)</div><div class="ttdef"><b>Definition:</b> <a href="send_8cpp_source.html#l00134">send.cpp:134</a></div></div>
+<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00110">110</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                               {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  std::vector&lt;www::ServerSocket&gt; sockets(0);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  std::vector&lt;www::Client&gt; clients(0);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <span class="comment">// okay, strictly it&#39;s called field</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="comment">// there&#39;s header fields and apparently trailer fields as well</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="comment">// fields sounds better than header_list methinks and it&#39;s not a list xd</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    std::pair&lt;www::ServerSocket, www::Client&gt; pair = <a class="code" href="send_8cpp.html#a023ed74feeb87fcb4aa1fb3e3f09e277">getClientServerSocketPair</a>(port);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    sockets.push_back(pair.first);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    clients.push_back(pair.second);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;ServerSocket pair creation failed!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordtype">char</span> buffer[<a class="code" href="send_8cpp.html#a86261d934fc0037fd4222a4bbe607fdc">DEFAULT_CHUNK_SIZE</a>];</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  std::string received;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <a class="code" href="classhttp_1_1Request.html">http::Request</a> request;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <a class="code" href="namespacehttp.html#aeb67387e056c4ddb463ed26481480efc">http::fields</a> currentHeaders = request.<a class="code" href="classhttp_1_1Request.html#ad81b3e43c5079cb6a43b9c72ac9c5c8c">getHeaderFields</a>();</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordtype">int</span> bytes_read = 0;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    bzero(&amp;buffer, <span class="keyword">sizeof</span>(buffer));</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="comment">// if receiving Content-Length and it&#39;s nonzero, first keep reading</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="comment">// until \r\n\r\n then keep reading exactly until content_length is</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="comment">// extracted keep in mind we might receive d abcd abcd abc\r \n\r\na</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="comment">// bcda bcd in this case if Content-Length is 8, we should only read 7</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="comment">// more bytes since the previous read already contains one of the eight</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="comment">// body bytes</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    bytes_read = recv(clients.at(0).getFd(), &amp;buffer, <a class="code" href="send_8cpp.html#a86261d934fc0037fd4222a4bbe607fdc">DEFAULT_CHUNK_SIZE</a>, 0);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Received &quot;</span> &lt;&lt; bytes_read &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordflow">if</span> (bytes_read == -1) {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;Ah fuck&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">if</span> (bytes_read == 0) {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;Huh, received 0&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    received.reserve(received.size() + <a class="code" href="send_8cpp.html#a86261d934fc0037fd4222a4bbe607fdc">DEFAULT_CHUNK_SIZE</a>);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    received.insert(received.end(), buffer, buffer + <a class="code" href="send_8cpp.html#a86261d934fc0037fd4222a4bbe607fdc">DEFAULT_CHUNK_SIZE</a>);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="comment">// parse protocol version</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="comment">// parse path</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="comment">// parse method</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="comment">// then come the headers</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="comment">// parse it and set variables</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="comment">// at the same time figure out if there&#39;s</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">// two consecutive newlines</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    currentHeaders = <a class="code" href="send_8cpp.html#a45ea4274ae4d3df4a1d36b1125c490f3">parseHeaders</a>(received);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="send_8cpp.html#acda23270dbbd9a74befea4badfc4ae7e">hasTwoConsecutiveLineBreaks</a>(received)) <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="comment">// blocks forever if total length % 4 == 0</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Headers received:&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="keywordflow">for</span> (http::fields::iterator it = currentHeaders.begin(); it != currentHeaders.end(); ++it) {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;- &quot;</span> &lt;&lt; it-&gt;first &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; it-&gt;second &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  std::cout &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Full received request:&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; received.size(); i++) {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    std::cout &lt;&lt; received[i];</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  std::cout &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;length received: &quot;</span> &lt;&lt; received.size() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  <span class="keywordflow">for</span> (std::vector&lt;www::ServerSocket&gt;::iterator it = sockets.begin(); it != sockets.end(); ++it) {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    it-&gt;close();</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  <a class="code" href="send_8cpp.html#a414234892c1f02ca08d40c9818aafec0">sendGarbage</a>(clients.at(0).getFd());</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  close(clients.at(0).getFd());</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;}</div>
+<div class="ttc" id="aclasshttp_1_1Request_html"><div class="ttname"><a href="classhttp_1_1Request.html">http::Request</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00017">Request.hpp:17</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_ad81b3e43c5079cb6a43b9c72ac9c5c8c"><div class="ttname"><a href="classhttp_1_1Request.html#ad81b3e43c5079cb6a43b9c72ac9c5c8c">http::Request::getHeaderFields</a></div><div class="ttdeci">const fields &amp; getHeaderFields(void) const</div><div class="ttdef"><b>Definition:</b> <a href="Request_8cpp_source.html#l00049">Request.cpp:49</a></div></div>
+<div class="ttc" id="anamespacehttp_html_aeb67387e056c4ddb463ed26481480efc"><div class="ttname"><a href="namespacehttp.html#aeb67387e056c4ddb463ed26481480efc">http::fields</a></div><div class="ttdeci">std::map&lt; field::first_type, field::second_type &gt; fields</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00011">Request.hpp:11</a></div></div>
+<div class="ttc" id="asend_8cpp_html_a023ed74feeb87fcb4aa1fb3e3f09e277"><div class="ttname"><a href="send_8cpp.html#a023ed74feeb87fcb4aa1fb3e3f09e277">getClientServerSocketPair</a></div><div class="ttdeci">std::pair&lt; www::ServerSocket, www::Client &gt; getClientServerSocketPair(int port)</div><div class="ttdef"><b>Definition:</b> <a href="send_8cpp_source.html#l00098">send.cpp:98</a></div></div>
+<div class="ttc" id="asend_8cpp_html_a414234892c1f02ca08d40c9818aafec0"><div class="ttname"><a href="send_8cpp.html#a414234892c1f02ca08d40c9818aafec0">sendGarbage</a></div><div class="ttdeci">void sendGarbage(int clientServerSocketFd)</div><div class="ttdef"><b>Definition:</b> <a href="send_8cpp_source.html#l00033">send.cpp:33</a></div></div>
+<div class="ttc" id="asend_8cpp_html_a45ea4274ae4d3df4a1d36b1125c490f3"><div class="ttname"><a href="send_8cpp.html#a45ea4274ae4d3df4a1d36b1125c490f3">parseHeaders</a></div><div class="ttdeci">http::fields parseHeaders(std::string &amp;receivedBytes)</div><div class="ttdef"><b>Definition:</b> <a href="send_8cpp_source.html#l00075">send.cpp:75</a></div></div>
+<div class="ttc" id="asend_8cpp_html_a86261d934fc0037fd4222a4bbe607fdc"><div class="ttname"><a href="send_8cpp.html#a86261d934fc0037fd4222a4bbe607fdc">DEFAULT_CHUNK_SIZE</a></div><div class="ttdeci">#define DEFAULT_CHUNK_SIZE</div><div class="ttdef"><b>Definition:</b> <a href="send_8cpp_source.html#l00017">send.cpp:17</a></div></div>
+<div class="ttc" id="asend_8cpp_html_acda23270dbbd9a74befea4badfc4ae7e"><div class="ttname"><a href="send_8cpp.html#acda23270dbbd9a74befea4badfc4ae7e">hasTwoConsecutiveLineBreaks</a></div><div class="ttdeci">bool hasTwoConsecutiveLineBreaks(std::string &amp;received)</div><div class="ttdef"><b>Definition:</b> <a href="send_8cpp_source.html#l00025">send.cpp:25</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="send_8cpp_a5f774fb47043744f5b4b3d912653a770_cgraph.png" border="0" usemap="#asend_8cpp_a5f774fb47043744f5b4b3d912653a770_cgraph" alt=""/></div>
 <map name="asend_8cpp_a5f774fb47043744f5b4b3d912653a770_cgraph" id="asend_8cpp_a5f774fb47043744f5b4b3d912653a770_cgraph">
-<area shape="rect" title=" " alt="" coords="5,157,96,184"/>
-<area shape="rect" href="send_8cpp.html#aece9a7e7984e3cd2e1a1a03532790e25" title=" " alt="" coords="181,81,329,108"/>
-<area shape="rect" href="send_8cpp.html#acda23270dbbd9a74befea4badfc4ae7e" title=" " alt="" coords="144,132,367,159"/>
-<area shape="rect" href="send_8cpp.html#a6697d8cb7672d015acd10aedfeeda157" title=" " alt="" coords="199,183,311,209"/>
-<area shape="rect" href="send_8cpp.html#a65411eff93d927c6b3b0dc9fbb3bf193" title=" " alt="" coords="201,233,309,260"/>
-<area shape="rect" href="classwww_1_1Client.html#a2da0b10369781cbd49e26feeb573ccb3" title=" " alt="" coords="415,5,565,32"/>
-<area shape="rect" href="classwww_1_1Socket.html#a5e7b46f07b2854c19a0055a5ad21b691" title=" " alt="" coords="816,132,963,159"/>
-<area shape="rect" href="classwww_1_1Socket.html#a5385fa4ffcabf83d8c724661b66cae7f" title=" " alt="" coords="415,107,565,133"/>
-<area shape="rect" href="classwww_1_1Socket.html#a7015b969bb24b06fb33df601444c0f18" title=" " alt="" coords="423,157,557,184"/>
-<area shape="rect" href="classwww_1_1Socket.html#a584da3e7b3ab074c2b47baef1086769d" title=" " alt="" coords="1011,132,1189,159"/>
-<area shape="rect" href="classwww_1_1Socket.html#a07b959cd60d38447f3a17778c8aa472a" title=" " alt="" coords="620,107,761,133"/>
-<area shape="rect" href="classwww_1_1Socket.html#a4ad3a2e3500383756f996e725a35abaa" title=" " alt="" coords="613,157,768,184"/>
-<area shape="rect" href="classwww_1_1Socket.html#a2e5725aac01286659b534aeb7d7f433a" title=" " alt="" coords="616,208,765,235"/>
+<area shape="rect" title=" " alt="" coords="5,203,96,229"/>
+<area shape="rect" href="send_8cpp.html#a023ed74feeb87fcb4aa1fb3e3f09e277" title=" " alt="" coords="160,85,351,112"/>
+<area shape="rect" href="classhttp_1_1Request.html#ad81b3e43c5079cb6a43b9c72ac9c5c8c" title=" " alt="" coords="163,137,348,178"/>
+<area shape="rect" href="send_8cpp.html#acda23270dbbd9a74befea4badfc4ae7e" title=" " alt="" coords="144,203,367,229"/>
+<area shape="rect" href="send_8cpp.html#a45ea4274ae4d3df4a1d36b1125c490f3" title=" " alt="" coords="199,253,311,280"/>
+<area shape="rect" href="send_8cpp.html#a414234892c1f02ca08d40c9818aafec0" title=" " alt="" coords="201,304,309,331"/>
+<area shape="rect" href="classwww_1_1Client.html#a2da0b10369781cbd49e26feeb573ccb3" title=" " alt="" coords="427,5,578,32"/>
+<area shape="rect" href="classwww_1_1ServerSocket.html#aa928555681110b1611ee61610267b20c" title=" " alt="" coords="869,133,1024,174"/>
+<area shape="rect" href="classwww_1_1ServerSocket.html#a14e5ddb50e630ee23670e80837f5c4ec" title=" " alt="" coords="425,107,580,149"/>
+<area shape="rect" href="classwww_1_1ServerSocket.html#a9d48668c0a236d6056f2cf5d31bc1908" title=" " alt="" coords="415,173,591,200"/>
+<area shape="rect" href="classwww_1_1ServerSocket.html#a5672ece2600601edffb55f2abd002be3" title=" " alt="" coords="1072,133,1227,174"/>
+<area shape="rect" href="classwww_1_1ServerSocket.html#abd85e324fc679a6b4c875b0f861e67e7" title=" " alt="" coords="639,111,821,137"/>
+<area shape="rect" href="classwww_1_1ServerSocket.html#ac66a59f0752f64f39ffab991133e1a03" title=" " alt="" coords="653,162,807,203"/>
+<area shape="rect" href="classwww_1_1ServerSocket.html#a998c6a1482ffdb0c6536cd70441b09b3" title=" " alt="" coords="653,227,807,269"/>
 </map>
 </div>
 <div class="dynheader">
@@ -316,74 +304,14 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="aece9a7e7984e3cd2e1a1a03532790e25"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aece9a7e7984e3cd2e1a1a03532790e25">&#9670;&nbsp;</a></span>getClientSocketPair()</h2>
+<a id="ad41504f0086b5c43c42abee2fc96aabf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad41504f0086b5c43c42abee2fc96aabf">&#9670;&nbsp;</a></span>endOfToken()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::pair&lt;<a class="el" href="classwww_1_1Socket.html">www::Socket</a>, <a class="el" href="classwww_1_1Client.html">www::Client</a>&gt; getClientSocketPair </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>port</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00134">134</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                                                            {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <a class="code" href="classwww_1_1Socket.html">www::Socket</a> socket(port);</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <a class="code" href="classwww_1_1Client.html">www::Client</a> client;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordflow">if</span> (socket.init() == <span class="keyword">false</span>) <span class="keywordflow">throw</span> std::exception();</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <span class="keywordflow">if</span> (client.<a class="code" href="classwww_1_1Client.html#a2da0b10369781cbd49e26feeb573ccb3">accept</a>(socket.getFd()) == <span class="keyword">false</span>) {</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    socket.close();</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">throw</span> std::exception();</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  }</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="keywordflow">return</span> std::make_pair(socket, client);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
-<div class="ttc" id="aclasswww_1_1Client_html"><div class="ttname"><a href="classwww_1_1Client.html">www::Client</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition:</b> <a href="Client_8hpp_source.html#l00014">Client.hpp:14</a></div></div>
-<div class="ttc" id="aclasswww_1_1Client_html_a2da0b10369781cbd49e26feeb573ccb3"><div class="ttname"><a href="classwww_1_1Client.html#a2da0b10369781cbd49e26feeb573ccb3">www::Client::accept</a></div><div class="ttdeci">bool accept(int recipientFd)</div><div class="ttdef"><b>Definition:</b> <a href="Client_8cpp_source.html#l00047">Client.cpp:47</a></div></div>
-<div class="ttc" id="aclasswww_1_1Socket_html"><div class="ttname"><a href="classwww_1_1Socket.html">www::Socket</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition:</b> <a href="Socket_8hpp_source.html#l00014">Socket.hpp:14</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="send_8cpp_aece9a7e7984e3cd2e1a1a03532790e25_cgraph.png" border="0" usemap="#asend_8cpp_aece9a7e7984e3cd2e1a1a03532790e25_cgraph" alt=""/></div>
-<map name="asend_8cpp_aece9a7e7984e3cd2e1a1a03532790e25_cgraph" id="asend_8cpp_aece9a7e7984e3cd2e1a1a03532790e25_cgraph">
-<area shape="rect" title=" " alt="" coords="5,81,153,108"/>
-<area shape="rect" href="classwww_1_1Client.html#a2da0b10369781cbd49e26feeb573ccb3" title=" " alt="" coords="201,5,352,32"/>
-<area shape="rect" href="classwww_1_1Socket.html#a5e7b46f07b2854c19a0055a5ad21b691" title=" " alt="" coords="603,132,749,159"/>
-<area shape="rect" href="classwww_1_1Socket.html#a5385fa4ffcabf83d8c724661b66cae7f" title=" " alt="" coords="201,107,352,133"/>
-<area shape="rect" href="classwww_1_1Socket.html#a7015b969bb24b06fb33df601444c0f18" title=" " alt="" coords="209,157,344,184"/>
-<area shape="rect" href="classwww_1_1Socket.html#a584da3e7b3ab074c2b47baef1086769d" title=" " alt="" coords="797,132,976,159"/>
-<area shape="rect" href="classwww_1_1Socket.html#a07b959cd60d38447f3a17778c8aa472a" title=" " alt="" coords="407,107,548,133"/>
-<area shape="rect" href="classwww_1_1Socket.html#a4ad3a2e3500383756f996e725a35abaa" title=" " alt="" coords="400,157,555,184"/>
-<area shape="rect" href="classwww_1_1Socket.html#a2e5725aac01286659b534aeb7d7f433a" title=" " alt="" coords="403,208,552,235"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="send_8cpp_aece9a7e7984e3cd2e1a1a03532790e25_icgraph.png" border="0" usemap="#asend_8cpp_aece9a7e7984e3cd2e1a1a03532790e25_icgraph" alt=""/></div>
-<map name="asend_8cpp_aece9a7e7984e3cd2e1a1a03532790e25_icgraph" id="asend_8cpp_aece9a7e7984e3cd2e1a1a03532790e25_icgraph">
-<area shape="rect" title=" " alt="" coords="247,5,395,32"/>
-<area shape="rect" href="send_8cpp.html#a5f774fb47043744f5b4b3d912653a770" title=" " alt="" coords="108,5,199,32"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,32"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a12ecbd2cdd26944abb5e2d1a1b59a637"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12ecbd2cdd26944abb5e2d1a1b59a637">&#9670;&nbsp;</a></span>getCurrentTokenEnd()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">t_bytes::iterator getCurrentTokenEnd </td>
+          <td class="memname">t_bytes::iterator endOfToken </td>
           <td>(</td>
           <td class="paramtype">t_bytes::iterator&#160;</td>
           <td class="paramname"><em>begin</em>, </td>
@@ -402,45 +330,74 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00088">88</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                                                               {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> sequence[2] = {<span class="charliteral">&#39;\r&#39;</span>, <span class="charliteral">&#39;\n&#39;</span>};</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  t_bytes::iterator foo = std::search(begin, end, sequence, sequence + 2);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordflow">if</span> (foo == end) <span class="keywordflow">return</span> end;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordflow">return</span> foo;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00052">52</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                                                       {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> sequence[2] = {<span class="charliteral">&#39;\r&#39;</span>, <span class="charliteral">&#39;\n&#39;</span>};</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  t_bytes::iterator foo = std::search(begin, end, sequence, sequence + 2);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">if</span> (foo == end) <span class="keywordflow">return</span> end;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordflow">return</span> foo;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a5c0ef0afda7b6b95317348aa0538ed7e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c0ef0afda7b6b95317348aa0538ed7e">&#9670;&nbsp;</a></span>has_transmission_end()</h2>
+<a id="a023ed74feeb87fcb4aa1fb3e3f09e277"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a023ed74feeb87fcb4aa1fb3e3f09e277">&#9670;&nbsp;</a></span>getClientServerSocketPair()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool has_transmission_end </td>
+          <td class="memname">std::pair&lt;<a class="el" href="classwww_1_1ServerSocket.html">www::ServerSocket</a>, <a class="el" href="classwww_1_1Client.html">www::Client</a>&gt; getClientServerSocketPair </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="send_8cpp.html#ad095229380867264997730d6da5b8a19">t_bytes</a> &amp;&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00058">58</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                                         {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">if</span> (data.size() &lt; <span class="keyword">sizeof</span>(<a class="code" href="send_8cpp.html#a6752b9cfb05a2fa75ba90159e05efeb1">SEQUENCE</a>)) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  t_bytes::iterator it = data.begin();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 4; i++) {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">if</span> (it[i] != <a class="code" href="send_8cpp.html#a6752b9cfb05a2fa75ba90159e05efeb1">SEQUENCE</a>[i]) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
-<div class="ttc" id="asend_8cpp_html_a6752b9cfb05a2fa75ba90159e05efeb1"><div class="ttname"><a href="send_8cpp.html#a6752b9cfb05a2fa75ba90159e05efeb1">SEQUENCE</a></div><div class="ttdeci">const char * SEQUENCE</div><div class="ttdef"><b>Definition:</b> <a href="send_8cpp_source.html#l00017">send.cpp:17</a></div></div>
-</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00098">98</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                                                                        {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <a class="code" href="classwww_1_1ServerSocket.html">www::ServerSocket</a> socket(port);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <a class="code" href="classwww_1_1Client.html">www::Client</a> client;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordflow">if</span> (socket.init() == <span class="keyword">false</span>) <span class="keywordflow">throw</span> std::exception();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordflow">if</span> (client.<a class="code" href="classwww_1_1Client.html#a2da0b10369781cbd49e26feeb573ccb3">accept</a>(socket.getFd()) == <span class="keyword">false</span>) {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    socket.close();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">throw</span> std::exception();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordflow">return</span> std::make_pair(socket, client);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
+<div class="ttc" id="aclasswww_1_1Client_html"><div class="ttname"><a href="classwww_1_1Client.html">www::Client</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition:</b> <a href="Client_8hpp_source.html#l00016">Client.hpp:16</a></div></div>
+<div class="ttc" id="aclasswww_1_1Client_html_a2da0b10369781cbd49e26feeb573ccb3"><div class="ttname"><a href="classwww_1_1Client.html#a2da0b10369781cbd49e26feeb573ccb3">www::Client::accept</a></div><div class="ttdeci">bool accept(int recipientFd)</div><div class="ttdef"><b>Definition:</b> <a href="Client_8cpp_source.html#l00045">Client.cpp:45</a></div></div>
+<div class="ttc" id="aclasswww_1_1ServerSocket_html"><div class="ttname"><a href="classwww_1_1ServerSocket.html">www::ServerSocket</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition:</b> <a href="ServerSocket_8hpp_source.html#l00016">ServerSocket.hpp:16</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="send_8cpp_a023ed74feeb87fcb4aa1fb3e3f09e277_cgraph.png" border="0" usemap="#asend_8cpp_a023ed74feeb87fcb4aa1fb3e3f09e277_cgraph" alt=""/></div>
+<map name="asend_8cpp_a023ed74feeb87fcb4aa1fb3e3f09e277_cgraph" id="asend_8cpp_a023ed74feeb87fcb4aa1fb3e3f09e277_cgraph">
+<area shape="rect" title=" " alt="" coords="5,85,196,112"/>
+<area shape="rect" href="classwww_1_1Client.html#a2da0b10369781cbd49e26feeb573ccb3" title=" " alt="" coords="257,5,407,32"/>
+<area shape="rect" href="classwww_1_1ServerSocket.html#aa928555681110b1611ee61610267b20c" title=" " alt="" coords="699,133,853,174"/>
+<area shape="rect" href="classwww_1_1ServerSocket.html#a14e5ddb50e630ee23670e80837f5c4ec" title=" " alt="" coords="255,107,409,149"/>
+<area shape="rect" href="classwww_1_1ServerSocket.html#a9d48668c0a236d6056f2cf5d31bc1908" title=" " alt="" coords="244,173,420,200"/>
+<area shape="rect" href="classwww_1_1ServerSocket.html#a5672ece2600601edffb55f2abd002be3" title=" " alt="" coords="901,133,1056,174"/>
+<area shape="rect" href="classwww_1_1ServerSocket.html#abd85e324fc679a6b4c875b0f861e67e7" title=" " alt="" coords="468,111,651,137"/>
+<area shape="rect" href="classwww_1_1ServerSocket.html#ac66a59f0752f64f39ffab991133e1a03" title=" " alt="" coords="482,162,637,203"/>
+<area shape="rect" href="classwww_1_1ServerSocket.html#a998c6a1482ffdb0c6536cd70441b09b3" title=" " alt="" coords="482,227,637,269"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="send_8cpp_a023ed74feeb87fcb4aa1fb3e3f09e277_icgraph.png" border="0" usemap="#asend_8cpp_a023ed74feeb87fcb4aa1fb3e3f09e277_icgraph" alt=""/></div>
+<map name="asend_8cpp_a023ed74feeb87fcb4aa1fb3e3f09e277_icgraph" id="asend_8cpp_a023ed74feeb87fcb4aa1fb3e3f09e277_icgraph">
+<area shape="rect" title=" " alt="" coords="247,5,437,32"/>
+<area shape="rect" href="send_8cpp.html#a5f774fb47043744f5b4b3d912653a770" title=" " alt="" coords="108,5,199,32"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,32"/>
+</map>
+</div>
+
 </div>
 </div>
 <a id="acda23270dbbd9a74befea4badfc4ae7e"></a>
@@ -459,17 +416,14 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00047">47</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                                      {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> END_SEQUENCE[4] = {<span class="charliteral">&#39;\r&#39;</span>, <span class="charliteral">&#39;\n&#39;</span>, <span class="charliteral">&#39;\r&#39;</span>, <span class="charliteral">&#39;\n&#39;</span>};</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keywordflow">if</span> (std::search(received.begin(), received.end(), END_SEQUENCE, END_SEQUENCE + 4) != received.end()) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="comment">// if doesnt contain \r\n\r\n, continue on (return false)</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="comment">// if contains /r/n/r/n, make sure to cut that off and possibly save for the</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="comment">// next request find out and set headers as you read</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00025">25</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                                                      {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> END_SEQUENCE[4] = {<span class="charliteral">&#39;\r&#39;</span>, <span class="charliteral">&#39;\n&#39;</span>, <span class="charliteral">&#39;\r&#39;</span>, <span class="charliteral">&#39;\n&#39;</span>};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordflow">if</span> (std::search(received.begin(), received.end(), END_SEQUENCE, END_SEQUENCE + 4) != received.end()) {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -483,14 +437,14 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a6697d8cb7672d015acd10aedfeeda157"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6697d8cb7672d015acd10aedfeeda157">&#9670;&nbsp;</a></span>parseHeaders()</h2>
+<a id="a45ea4274ae4d3df4a1d36b1125c490f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45ea4274ae4d3df4a1d36b1125c490f3">&#9670;&nbsp;</a></span>parseHeaders()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="send_8cpp.html#a6f76c6123d98e5b97ac96ea1d37388c8">t_fields</a> parseHeaders </td>
+          <td class="memname"><a class="el" href="namespacehttp.html#aeb67387e056c4ddb463ed26481480efc">http::fields</a> parseHeaders </td>
           <td>(</td>
           <td class="paramtype">std::string &amp;&#160;</td>
           <td class="paramname"><em>receivedBytes</em></td><td>)</td>
@@ -499,50 +453,35 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00095">95</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                                                {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <a class="code" href="send_8cpp.html#a6f76c6123d98e5b97ac96ea1d37388c8">t_fields</a> newHeaders;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordtype">size_t</span> seqEndIndex = receivedBytes.find(<a class="code" href="send_8cpp.html#a6752b9cfb05a2fa75ba90159e05efeb1">SEQUENCE</a>, 0UL, <span class="keyword">sizeof</span>(<a class="code" href="send_8cpp.html#a6752b9cfb05a2fa75ba90159e05efeb1">SEQUENCE</a>));</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordflow">if</span> (seqEndIndex == std::string::npos) {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">return</span> newHeaders;  <span class="comment">// don&#39;t yet have end of transmission</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  }</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="comment">// find start of token</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="comment">// should be right there</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="comment">// read until &quot;\r\n&quot;</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="comment">// expect chunk to have header format</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="comment">// if encountering &quot;\r\n&quot; at the start of a line, stop parsing head -&gt;</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="comment">// return expect body only if certain conditions are met</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="comment">// if expecting body, write body into second thingy</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <span class="comment">// starting right after double newline</span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  std::istringstream stream(receivedBytes);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  std::string line;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="comment">// Read each line until we find an empty line (which indicates the end of</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="comment">// headers)</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordflow">while</span> (std::getline(stream, line) &amp;&amp; line != <span class="stringliteral">&quot;\r&quot;</span>) {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">size_t</span> delimiterPos = line.find(<span class="stringliteral">&quot;: &quot;</span>);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">if</span> (delimiterPos != std::string::npos) {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      std::string headerName = line.substr(0, delimiterPos);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      std::string headerValue = line.substr(delimiterPos + 2);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      newHeaders[headerName] = headerValue;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <span class="comment">// if a header key already exists, concatenate as a list</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      <span class="comment">// with some exceptions (I think e.g. content-size can&#39;t be duplicate)</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <span class="comment">// also, parse out some numbers where relevant</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  }</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordflow">return</span> newHeaders;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00075">75</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                                  {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="namespacehttp.html#aeb67387e056c4ddb463ed26481480efc">http::fields</a> newHeaders;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordtype">size_t</span> seqEndIndex = receivedBytes.find(<a class="code" href="send_8cpp.html#a6752b9cfb05a2fa75ba90159e05efeb1">SEQUENCE</a>, 0UL, <span class="keyword">sizeof</span>(<a class="code" href="send_8cpp.html#a6752b9cfb05a2fa75ba90159e05efeb1">SEQUENCE</a>));</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordflow">if</span> (seqEndIndex == std::string::npos) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span> newHeaders;  <span class="comment">// don&#39;t yet have end of transmission</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  std::istringstream stream(receivedBytes);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  std::string line;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordflow">while</span> (std::getline(stream, line) &amp;&amp; line != <span class="stringliteral">&quot;\r&quot;</span>) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">size_t</span> delimiterPos = line.find(<span class="stringliteral">&quot;: &quot;</span>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">if</span> (delimiterPos != std::string::npos) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      std::string headerName = line.substr(0, delimiterPos);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      std::string headerValue = line.substr(delimiterPos + 2);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      newHeaders[headerName] = headerValue;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      <span class="comment">// if a header key already exists, concatenate as a list</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      <span class="comment">// with some exceptions (I think e.g. content-size can&#39;t be duplicate)</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      <span class="comment">// also, parse out some numbers where relevant</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordflow">return</span> newHeaders;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
+<div class="ttc" id="asend_8cpp_html_a6752b9cfb05a2fa75ba90159e05efeb1"><div class="ttname"><a href="send_8cpp.html#a6752b9cfb05a2fa75ba90159e05efeb1">SEQUENCE</a></div><div class="ttdeci">const char * SEQUENCE</div><div class="ttdef"><b>Definition:</b> <a href="send_8cpp_source.html#l00018">send.cpp:18</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="send_8cpp_a6697d8cb7672d015acd10aedfeeda157_icgraph.png" border="0" usemap="#asend_8cpp_a6697d8cb7672d015acd10aedfeeda157_icgraph" alt=""/></div>
-<map name="asend_8cpp_a6697d8cb7672d015acd10aedfeeda157_icgraph" id="asend_8cpp_a6697d8cb7672d015acd10aedfeeda157_icgraph">
+<div class="center"><img src="send_8cpp_a45ea4274ae4d3df4a1d36b1125c490f3_icgraph.png" border="0" usemap="#asend_8cpp_a45ea4274ae4d3df4a1d36b1125c490f3_icgraph" alt=""/></div>
+<map name="asend_8cpp_a45ea4274ae4d3df4a1d36b1125c490f3_icgraph" id="asend_8cpp_a45ea4274ae4d3df4a1d36b1125c490f3_icgraph">
 <area shape="rect" title=" " alt="" coords="247,5,359,32"/>
 <area shape="rect" href="send_8cpp.html#a5f774fb47043744f5b4b3d912653a770" title=" " alt="" coords="108,5,199,32"/>
 <area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,32"/>
@@ -551,8 +490,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a65411eff93d927c6b3b0dc9fbb3bf193"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a65411eff93d927c6b3b0dc9fbb3bf193">&#9670;&nbsp;</a></span>sendGarbage()</h2>
+<a id="a414234892c1f02ca08d40c9818aafec0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a414234892c1f02ca08d40c9818aafec0">&#9670;&nbsp;</a></span>sendGarbage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -561,36 +500,36 @@ Here is the caller graph for this function:</div>
           <td class="memname">void sendGarbage </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>clientSocketFd</em></td><td>)</td>
+          <td class="paramname"><em>clientServerSocketFd</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00069">69</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                     {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">char</span> sendBuffer[2048] =</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <span class="stringliteral">&quot;HTTP/1.1 300 CockAndBalls\r\n&quot;</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="stringliteral">&quot;Date: Sun, 18 Oct 2012 10:36:20 GMT\r\n&quot;</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="stringliteral">&quot;Server: Apache/2.2.14 (Win32)\r\n&quot;</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <span class="stringliteral">&quot;Content-Length: 137\r\n&quot;</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      <span class="stringliteral">&quot;Connection: Closed\r\n&quot;</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <span class="stringliteral">&quot;Content-Type: text/html; charset=UTF-8;\r\n&quot;</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      <span class="stringliteral">&quot;\r\n&quot;</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <span class="stringliteral">&quot;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Basic &quot;</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <span class="stringliteral">&quot;Page&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Hello, World!&lt;/h1&gt;&lt;p&gt;This is a simple &quot;</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="stringliteral">&quot;HTML page.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;\r\n&quot;</span>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;now sending&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  send(clientSocketFd, sendBuffer, <span class="keyword">sizeof</span>(sendBuffer) - 1, 0);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;sent&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  bzero(&amp;sendBuffer, <span class="keyword">sizeof</span>(sendBuffer));</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00033">33</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                           {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordtype">char</span> sendBuffer[2048] =</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;      <span class="stringliteral">&quot;HTTP/1.1 300 CockAndBalls\r\n&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      <span class="stringliteral">&quot;Date: Sun, 18 Oct 2012 10:36:20 GMT\r\n&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      <span class="stringliteral">&quot;Server: Apache/2.2.14 (Win32)\r\n&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      <span class="stringliteral">&quot;Content-Length: 137\r\n&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      <span class="stringliteral">&quot;Connection: Closed\r\n&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      <span class="stringliteral">&quot;Content-Type: text/html; charset=UTF-8;\r\n&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <span class="stringliteral">&quot;\r\n&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <span class="stringliteral">&quot;&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Basic &quot;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      <span class="stringliteral">&quot;Page&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Hello, World!&lt;/h1&gt;&lt;p&gt;This is a simple &quot;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      <span class="stringliteral">&quot;HTML page.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;\r\n&quot;</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;now sending&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  send(clientServerSocketFd, sendBuffer, <span class="keyword">sizeof</span>(sendBuffer) - 1, 0);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;sent&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  bzero(&amp;sendBuffer, <span class="keyword">sizeof</span>(sendBuffer));</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="send_8cpp_a65411eff93d927c6b3b0dc9fbb3bf193_icgraph.png" border="0" usemap="#asend_8cpp_a65411eff93d927c6b3b0dc9fbb3bf193_icgraph" alt=""/></div>
-<map name="asend_8cpp_a65411eff93d927c6b3b0dc9fbb3bf193_icgraph" id="asend_8cpp_a65411eff93d927c6b3b0dc9fbb3bf193_icgraph">
+<div class="center"><img src="send_8cpp_a414234892c1f02ca08d40c9818aafec0_icgraph.png" border="0" usemap="#asend_8cpp_a414234892c1f02ca08d40c9818aafec0_icgraph" alt=""/></div>
+<map name="asend_8cpp_a414234892c1f02ca08d40c9818aafec0_icgraph" id="asend_8cpp_a414234892c1f02ca08d40c9818aafec0_icgraph">
 <area shape="rect" title=" " alt="" coords="247,5,355,32"/>
 <area shape="rect" href="send_8cpp.html#a5f774fb47043744f5b4b3d912653a770" title=" " alt="" coords="108,5,199,32"/>
 <area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,32"/>
@@ -612,7 +551,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00017">17</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="send_8cpp_source.html#l00018">18</a> of file <a class="el" href="send_8cpp_source.html">send.cpp</a>.</p>
 
 </div>
 </div>
