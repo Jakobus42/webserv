@@ -11,12 +11,14 @@
 #include <vector>
 
 #include "../../include/www/Client.hpp"
+#include "../../include/www/HttpRequest.hpp"
 #include "../../include/www/ServerSocket.hpp"
 
 #define DEFAULT_CHUNK_SIZE 64
 const char* SEQUENCE = "\r\n\r\n";
 
-typedef std::map<std::string, std::string> t_fields;
+typedef std::pair<std::string, std::string> t_field;
+typedef std::map<t_field::first_type, t_field::second_type> t_fields;
 typedef std::vector<char> t_bytes;
 
 // if doesnt contain \r\n\r\n, continue on (return false)
@@ -56,30 +58,30 @@ t_bytes::iterator endOfToken(t_bytes::iterator begin, t_bytes::iterator end) {
   return foo;
 }
 
+// find start of token
+// should be right there
+
+// read until "\r\n"
+
+// expect chunk to have header format
+
+// if encountering "\r\n" at the start of a line, stop parsing head ->
+// return expect body only if certain conditions are met
+
+// if expecting body, write body into second thingy
+// starting right after double newline
+
+// Read each line until we find an empty line (which indicates the end of
+// headers)
+
 t_fields parseHeaders(std::string& receivedBytes) {
   t_fields newHeaders;
   size_t seqEndIndex = receivedBytes.find(SEQUENCE, 0UL, sizeof(SEQUENCE));
   if (seqEndIndex == std::string::npos) {
     return newHeaders;  // don't yet have end of transmission
   }
-
-  // find start of token
-  // should be right there
-
-  // read until "\r\n"
-
-  // expect chunk to have header format
-
-  // if encountering "\r\n" at the start of a line, stop parsing head ->
-  // return expect body only if certain conditions are met
-
-  // if expecting body, write body into second thingy
-  // starting right after double newline
   std::istringstream stream(receivedBytes);
   std::string line;
-
-  // Read each line until we find an empty line (which indicates the end of
-  // headers)
   while (std::getline(stream, line) && line != "\r") {
     size_t delimiterPos = line.find(": ");
     if (delimiterPos != std::string::npos) {
