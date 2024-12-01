@@ -10,7 +10,7 @@
 #include <sstream>
 #include <vector>
 
-#include "../../include/http/HttpRequest.hpp"
+#include "../../include/http/Request.hpp"
 #include "../../include/www/Client.hpp"
 #include "../../include/www/ServerSocket.hpp"
 
@@ -72,8 +72,8 @@ t_bytes::iterator endOfToken(t_bytes::iterator begin, t_bytes::iterator end) {
 // Read each line until we find an empty line (which indicates the end of
 // headers)
 
-http::t_fields parseHeaders(std::string& receivedBytes) {
-  http::t_fields newHeaders;
+http::fields parseHeaders(std::string& receivedBytes) {
+  http::fields newHeaders;
   size_t seqEndIndex = receivedBytes.find(SEQUENCE, 0UL, sizeof(SEQUENCE));
   if (seqEndIndex == std::string::npos) {
     return newHeaders;  // don't yet have end of transmission
@@ -125,8 +125,8 @@ int doKoolShit(const int port) {
 
   char buffer[DEFAULT_CHUNK_SIZE];
   std::string received;
-  http::HttpRequest request;
-  http::t_fields currentHeaders = request.getHeaderFields();
+  http::Request request;
+  http::fields currentHeaders = request.getHeaderFields();
 
   while (true) {
     int bytes_read = 0;
@@ -161,7 +161,7 @@ int doKoolShit(const int port) {
     // blocks forever if total length % 4 == 0
   }
   std::cout << "Headers received:" << std::endl;
-  for (http::t_fields::iterator it = currentHeaders.begin(); it != currentHeaders.end(); ++it) {
+  for (http::fields::iterator it = currentHeaders.begin(); it != currentHeaders.end(); ++it) {
     std::cout << "- " << it->first << ": " << it->second << std::endl;
   }
   std::cout << std::endl;
