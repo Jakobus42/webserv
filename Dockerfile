@@ -44,7 +44,7 @@ RUN pip install pre-commit
 WORKDIR /workspace
 COPY . /workspace
 
-RUN apt-get install -y bear -- make re
+RUN apt-get install -y bear && bear -- make re
 
 RUN pre-commit install && pre-commit install --hook-type commit-msg
 
