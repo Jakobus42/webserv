@@ -16,7 +16,7 @@ repos:
       
       - id: formatting
         name: Code Formatting
-        entry: bash -c "make format && git add -u"
+        entry: bash -c "TEMP_FILE=$(mktemp); git diff --cached --name-only > \"$TEMP_FILE\"; make format; cat \"$TEMP_FILE\" | xargs git add; rm \"$TEMP_FILE\""
         language: system
         stages: [pre-commit]
         always_run: true

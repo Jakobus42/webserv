@@ -2,8 +2,12 @@
   "name": "My Container",
   "image": "webserv",
   "runArgs": [
-    "-v", "${env:HOME}/.ssh:/root/.ssh",
-    "-v", "${env:HOME}/.zshrc:/root/.zshrc"
+    "-v",
+    "${env:HOME}/.ssh:/root/.ssh",
+    "-v",
+    "${env:HOME}/.zshrc:/root/.zshrc",
+    "-v",
+    "${env:HOME}/.clang-format:/workspaces/webserv/.clang-format"
   ],
   "customizations": {
     "vscode": {
@@ -24,8 +28,16 @@
         "terminal.integrated.defaultProfile.linux": "zsh",
         "C_Cpp.default.includePath": [
           "${workspaceFolder}/**",
-          "${workspaceFolder}/build/_deps/googletest-src/googletest/include"
-        ]
+          "${workspaceFolder}/build/_deps/googletest-src/googletest/include",
+          "/usr/include",
+          "/usr/local/include"
+        ],
+        "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google DerivePointerAlignment: false PointerAlignment: Left ColumnLimit: 120 }",
+        "C_Cpp.clang_format_path": "/usr/bin/clang-format",
+        "C_Cpp.clang_format_sortIncludes": true,
+        "C_Cpp.intelliSenseEngine": "default",
+        "C_Cpp.intelliSenseEngineFallback": "Enabled",
+        "C_Cpp.default.compilerPath": "/usr/bin/c++"
       }
     }
   }
