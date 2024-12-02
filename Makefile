@@ -44,6 +44,9 @@ $(OBJDIR)/%.o: %.cpp
 
 -include $(DEPS)
 
+NUM_PROCS = $(shell nproc)
+MAKEFLAGS = -j$(NUM_PROCS)
+
 #############################################################################################
 
 all: $(NAME)
@@ -54,7 +57,7 @@ run: all
 
 leak: all
 	@echo "$(GREEN)Running $(NAME) with valgrind...$(NC)"
-	valgrind --leak-check=full --error-exitcode=1 ./$(NAME)
+	valgrind --leak-check=full --track-fds=yes --error-exitcode=1 ./$(NAME)
 
 debug: CFLAGS += $(DEBUG_FLAGS)
 debug: all
@@ -92,6 +95,7 @@ fclean: clean
 	@echo "$(RED)Removing $(NAME)...$(NC)"
 	rm -f $(NAME)
 
-re: fclean all
+re: fclean
+	$(MAKE) all
 
 .PHONY: all clean fclean re run debug cppcheck strict leak format
