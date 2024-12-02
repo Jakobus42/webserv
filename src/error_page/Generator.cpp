@@ -5,11 +5,9 @@
 namespace error_page {
 
 /**
- * @brief Generates an error page.
- * @param code The error code.
- * @return std::string The error page.
+ * @brief Allocates the error page message data.
+ * @return std::map<int, std::string> The error page data.
  */
-// variadic function
 std::map<int, std::string> allocateErrorPageData() {
   std::map<int, std::string> errorPages;
   errorPages[400] = "Bad Request";
@@ -27,6 +25,7 @@ std::map<int, std::string> allocateErrorPageData() {
   errorPages[415] = "Unsupported Media Type";
   errorPages[416] = "Range Not Satisfiable";
   errorPages[417] = "Expectation Failed";
+  errorPages[418] = "I'm a teapot";
   errorPages[421] = "Misdirected Request";
   errorPages[426] = "Upgrade Required";
   errorPages[500] = "Internal Server Error";
@@ -38,12 +37,17 @@ std::map<int, std::string> allocateErrorPageData() {
   return errorPages;
 }
 
+/**
+ * @brief Generates an error page.
+ * @param code The error code.
+ * @return std::string The error page as an HTML string.
+ */
 std::string generateErrorPage(int code) {
   std::map<int, std::string> errorPages;
   // TODO: Define the error page once at the beginning of the program
   errorPages = allocateErrorPageData();
   if (errorPages.find(code) == errorPages.end()) {
-    return NULL;
+    return "";
   }
   std::ostringstream oss;
   oss << code;
@@ -60,9 +64,3 @@ std::string generateErrorPage(int code) {
 }
 
 } /* namespace error_page */
-
-/*<!DOCTYPE html>\n<html lang="en">\n<head>\n<title>\n404 Page Not Found\n</title>\n<style>\nbody\n{\nbackground-color:
- * #2b3042;\njustify-content: center;\ntext-align: center;\ncolor: #d3dbeb;\n\n}\nh1\n{\nfont-size:
- * 5rem;\n}\np\n{\nfont-size: 1.5rem;\npadding-bottom: 10px;\n}\na\n{\ntext-decoration: none;\ncolor: #d3dbeb;\npadding:
- * 10px;\nborder: 3px solid #d3dbeb;\nfont-weight: bold;\n}\n</style>\n</head>\n<body>\n<h1> 404 </h1>\n<p>\nOops! The
- * page you're\nlooking for is not here.\n</p>\n<a href="/home_directory>">\nGo Back to Home\n</a>\n</body>\n</html>*/
