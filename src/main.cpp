@@ -4,8 +4,18 @@
 #include "../include/configfile/Parser.hpp"
 #include "../include/logger/LoggerManager.hpp"
 #include "../include/utils/StringUtils.hpp"
+#include "../include/www/CoreServer.hpp"
 
 int main(int argc, char** const argv) {
+  www::CoreServer server;
+
+  try {
+    server.init();
+  } catch (std::exception& e) {
+    std::cout << "Server broke!" << std::endl;
+    return 1;
+  }
+
   try {
     logger::LoggerManager& loggerManager = logger::LoggerManager::getInstance();
     loggerManager.registerLogger("Console", new logger::ConsoleLogger());
