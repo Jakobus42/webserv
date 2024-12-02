@@ -21,6 +21,7 @@ class VirtualServer {
 
   const std::string& getName(void) const;
   uint64_t getMaxBodySize(void) const;
+  const ServerSocket& getSocket(void) const;
 
  private:
   VirtualServer(const VirtualServer& other);

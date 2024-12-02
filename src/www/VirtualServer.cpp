@@ -36,4 +36,6 @@ const std::string& VirtualServer::getName(void) const { return m_name; }
 
 uint64_t VirtualServer::getMaxBodySize(void) const { return m_client_max_body_size; }
 
+const ServerSocket& VirtualServer::getSocket(void) const { return m_listen_socket; }
+
 } /* namespace www */
