@@ -1,8 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md13":[2,1],
-"md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md14":[2,1,0],
-"md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md15":[2,1,1],
 "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md16":[2,1,1,0],
 "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md17":[2,2],
 "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md18":[2,2,0],
