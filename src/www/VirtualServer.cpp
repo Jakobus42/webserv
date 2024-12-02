@@ -5,7 +5,7 @@ namespace www {
 /**
  * @brief Constructs a new VirtualServer object.
  */
-VirtualServer::VirtualServer() : m_name(""), m_client_max_body_size(ONE_MEGABYTE) {}
+VirtualServer::VirtualServer() : m_name(""), m_client_max_body_size(ONE_MEGABYTE), m_listen_socket() {}
 
 /**
  * @brief Destroys the VirtualServer object.

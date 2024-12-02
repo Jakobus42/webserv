@@ -4,6 +4,8 @@
 
 #include <string>
 
+#include "ServerSocket.hpp"
+
 #define ONE_MEGABYTE 1048576UL
 
 namespace www {
@@ -27,7 +29,7 @@ class VirtualServer {
   std::string m_name;
   uint64_t m_client_max_body_size;
   // Locations with metadata
-  // ServerSocket m_listen_socket;
+  ServerSocket m_listen_socket;
   // Connections
 };
 
