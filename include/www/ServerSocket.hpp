@@ -7,6 +7,7 @@
 #include <unistd.h>
 
 #define DEFAULT_MAX_EVENTS 10
+#define MAX_EVENTS 10
 
 namespace www {
 
@@ -31,29 +32,24 @@ class ServerSocket {
   bool create();
   bool bind();
   bool listen();
-  bool createEpollThingy();
   void close();
 
   void setBroken();
 
   int getFd() const;
-  int getEpollFd() const;
   int getPort() const;
   t_sockaddr_in getSocketAddress() const;
   bool isOpen() const;
   bool isBound() const;
   bool isListening() const;
-  bool isEpollAlive() const;
 
  private:
   int m_fd;
-  int m_epoll_fd;
   t_sockaddr_in m_socketAddress;
   int m_port;
   bool m_open;
   bool m_bound;
   bool m_listening;
-  bool m_epoll_alive;
 };
 
 } /* namespace www */

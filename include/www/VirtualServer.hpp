@@ -7,6 +7,7 @@
 #include "ServerSocket.hpp"
 
 #define ONE_MEGABYTE 1048576UL
+#define MAX_CONNECTIONS 500
 
 namespace www {
 
