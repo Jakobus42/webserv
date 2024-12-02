@@ -11,5 +11,10 @@ var annotated_dup =
       [ "ConsoleLogger", "classlogger_1_1ConsoleLogger.html", "classlogger_1_1ConsoleLogger" ],
       [ "FileLogger", "classlogger_1_1FileLogger.html", "classlogger_1_1FileLogger" ],
       [ "LoggerManager", "classlogger_1_1LoggerManager.html", "classlogger_1_1LoggerManager" ]
+    ] ],
+    [ "www", "namespacewww.html", [
+      [ "CoreServer", "classwww_1_1CoreServer.html", "classwww_1_1CoreServer" ],
+      [ "ServerSocket", "classwww_1_1ServerSocket.html", "classwww_1_1ServerSocket" ],
+      [ "VirtualServer", "classwww_1_1VirtualServer.html", "classwww_1_1VirtualServer" ]
     ] ]
 ];
