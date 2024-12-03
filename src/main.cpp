@@ -9,10 +9,19 @@ int main(int argc, char** const argv) {
 
   try {
     server.init();
+    server.addVirtualServer("Server1", 8080, ONE_MEGABYTE);
   } catch (std::exception& e) {
-    std::cout << "Server broke!" << std::endl;
+    std::cerr << "Exception caught in main: " << e.what() << std::endl;
     return 1;
   }
+
+  std::cout << "Added server: ";
+  std::cout << server.getVirtualServers().at(0).getName() << std::endl;
+
+  // if (server.getVirtualServers().at(0).addConnection() == false) {
+  //   std::cout << "Oh darnit, adding connection to VServer failed" <<
+  //   std::endl;
+  // }
 
   try {
     logger::LoggerManager& loggerManager = logger::LoggerManager::getInstance();
