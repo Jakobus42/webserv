@@ -1,4 +1,4 @@
-#include "../../include/logger/ConsoleLogger.hpp"
+#include "logger/ConsoleLogger.hpp"
 
 namespace logger {
 

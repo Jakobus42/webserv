@@ -1,10 +1,8 @@
-#include <algorithm>
 #include <iostream>
 
-#include "../include/configfile/Parser.hpp"
-#include "../include/logger/LoggerManager.hpp"
-#include "../include/utils/StringUtils.hpp"
-#include "../include/www/CoreServer.hpp"
+#include "configfile/Parser.hpp"
+#include "logger/LoggerManager.hpp"
+#include "www/CoreServer.hpp"
 
 int main(int argc, char** const argv) {
   www::CoreServer server;

@@ -1,4 +1,4 @@
-#include "../../include/www/VirtualServer.hpp"
+#include "www/VirtualServer.hpp"
 
 namespace www {
 

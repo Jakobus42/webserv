@@ -1,11 +1,12 @@
-#include "../../include/configfile/Parser.hpp"
+#include "configfile/Parser.hpp"
 
 namespace configfile {
 
 /**
  * @brief Converts a string to a positive integer.
  * @param str The string to convert.
- * @return int The integer value of the string. or -1 if the string is not a number.
+ * @return int The integer value of the string. or -1 if the string is not a
+ * number.
  */
 int ft_stoi(std::string str) {
   long res = 0;
@@ -34,9 +35,11 @@ bool is_number(const std::string& str) {
 }
 
 /**
- * @brief Creates a new server struct, initializes it and adds it to the config data.
+ * @brief Creates a new server struct, initializes it and adds it to the config
+ * data.
  * @param args all prompts in the current line of the configuration file.
- * @param lineCount the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error
+ * messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
@@ -59,9 +62,11 @@ int ConfigFileParser::server(std::vector<std::string>& args, int& lineCount, int
 }
 
 /**
- * @brief Creates a new location struct, initializes it and adds it to the config data.
+ * @brief Creates a new location struct, initializes it and adds it to the
+ * config data.
  * @param args all prompts in the current line of the configuration file.
- * @param lineCount the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error
+ * messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
@@ -100,7 +105,8 @@ int ConfigFileParser::location(std::vector<std::string>& args, int const& lineCo
 /**
  * @brief Sets the port and ip address of the server.
  * @param args all prompts in the current line of the configuration file.
- * @param lineCount the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error
+ * messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
@@ -173,7 +179,8 @@ int ConfigFileParser::listen(std::vector<std::string>& args, int& lineCount, int
 /**
  * @brief Sets the server name(s) of the server.
  * @param args all prompts in the current line of the configuration file.
- * @param lineCount the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error
+ * messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
@@ -206,7 +213,8 @@ int ConfigFileParser::serverName(std::vector<std::string>& args, int& lineCount,
 /**
  * @brief sets the error pages for the server.
  * @param args all prompts in the current line of the configuration file.
- * @param lineCount the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error
+ * messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
@@ -243,7 +251,8 @@ int ConfigFileParser::errorPage(std::vector<std::string>& args, int& lineCount, 
 /**
  * @brief sets the max body size for the server.
  * @param args all prompts in the current line of the configuration file.
- * @param lineCount the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error
+ * messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
@@ -269,7 +278,8 @@ int ConfigFileParser::clientMaxBodySize(std::vector<std::string>& args, int& lin
 /**
  * @brief sets the methods allowed for the location.
  * @param args all prompts in the current line of the configuration file.
- * @param lineCount the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error
+ * messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
@@ -316,7 +326,8 @@ int ConfigFileParser::limitExcept(std::vector<std::string>& args, int& lineCount
 /**
  * @brief redirects the user to a different url with a specific return code.
  * @param args all prompts in the current line of the configuration file.
- * @param lineCount the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error
+ * messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
@@ -342,7 +353,8 @@ int ConfigFileParser::returnKeyword(std::vector<std::string>& args, int const& l
 /**
  * @brief sets the root directory for the location.
  * @param args all prompts in the current line of the configuration file.
- * @param lineCount the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error
+ * messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
@@ -369,7 +381,8 @@ int ConfigFileParser::root(std::vector<std::string>& args, int& lineCount, int l
 /**
  * @brief turns the autoindex on or off for the location. (off by default)
  * @param args all prompts in the current line of the configuration file.
- * @param lineCount the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error
+ * messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */
@@ -398,7 +411,8 @@ int ConfigFileParser::autoindex(std::vector<std::string>& args, int& lineCount, 
 /**
  * @brief sets the index files for the location. (index.html by default)
  * @param args all prompts in the current line of the configuration file.
- * @param lineCount the current line number, so we are able to print error messages.
+ * @param lineCount the current line number, so we are able to print error
+ * messages.
  * @param layer the current layer of the configuration file.
  * @return int 0 if successful, 1 if not.
  */

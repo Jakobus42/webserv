@@ -1,4 +1,4 @@
-#include "../../include/www/ServerSocket.hpp"
+#include "www/ServerSocket.hpp"
 
 #include <iostream>
 #include <vector>

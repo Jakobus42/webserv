@@ -1,4 +1,4 @@
-#include "../../include/www/CoreServer.hpp"
+#include "www/CoreServer.hpp"
 
 #include <sys/epoll.h>
 #include <unistd.h>

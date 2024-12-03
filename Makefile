@@ -2,7 +2,7 @@
 CC = c++
 
 ###FLAGS###
-CFLAGS = -Wextra -Wall -Werror -std=c++98
+CFLAGS = -Wextra -Wall -Werror -std=c++98 -I$(INCDIR)
 DEBUG_FLAGS = -g
 
 ###PROGRAM###
@@ -78,8 +78,8 @@ build_tests:
 
 test: build_tests
 	@echo "$(GREEN)Testing code...$(NC)"
-	cd build && ctest 
-	
+	cd build && ctest
+
 
 format:
 	@echo "Formatting code with clang-format..."
