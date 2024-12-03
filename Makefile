@@ -3,6 +3,7 @@ CC = c++
 
 ###FLAGS###
 CFLAGS = -Wextra -Wall -Werror -std=c++98 -I$(INCDIR)
+CPPCHECKFLAGS = -I$(INCDIR)
 DEBUG_FLAGS = -g
 
 ###PROGRAM###
@@ -66,7 +67,7 @@ debug: all
 
 cppcheck:
 	@echo "Running cppcheck..."
-	cppcheck $(CFLAGS) --enable=all --error-exitcode=1 --suppress=missingIncludeSystem --suppress=missingOverride --suppress=noExplicitConstructor --suppress=unusedFunction $(SRCDIR)/ $(INCDIR)/
+	cppcheck $(CPPCHECKFLAGS) --enable=all --error-exitcode=1 --suppress=missingIncludeSystem --suppress=missingOverride --suppress=noExplicitConstructor --suppress=unusedFunction $(SRCDIR)/ $(INCDIR)/
 
 strict: all cppcheck leak
 	@echo "$(GREEN)Strict build completed.$(NC)"
