@@ -9,13 +9,13 @@ namespace www {
  * @brief Constructs a new VirtualServer object.
  */
 VirtualServer::VirtualServer()
-    : m_name("Default Server"), m_client_max_body_size(ONE_MEGABYTE), m_listen_socket(), m_connections() {}
+    : m_name("Default Server"), m_client_max_body_size(ONE_MEGABYTE), m_listen_socket(80), m_connections() {}
 
 /**
  * @brief Constructs a new VirtualServer object.
  */
-VirtualServer::VirtualServer(const std::string& name, uint64_t maxBodySize)
-    : m_name(name), m_client_max_body_size(maxBodySize), m_listen_socket(), m_connections() {}
+VirtualServer::VirtualServer(const std::string& name, int port, uint64_t maxBodySize)
+    : m_name(name), m_client_max_body_size(maxBodySize), m_listen_socket(port), m_connections() {}
 
 /**
  * @brief Destroys the VirtualServer object.
@@ -53,12 +53,15 @@ uint64_t VirtualServer::getMaxBodySize(void) const { return m_client_max_body_si
 
 const ServerSocket& VirtualServer::getSocket(void) const { return m_listen_socket; }
 
+ServerSocket& VirtualServer::getSocket(void) { return m_listen_socket; }
+
 const t_connections& VirtualServer::getConnections(void) const { return m_connections; }
 
 bool VirtualServer::addConnection(void) {
   try {
     Connection newConnection(m_listen_socket.getFd());
     m_connections.push_back(newConnection);
+    std::cout << "Added a connection!" << std::endl;
   } catch (std::exception& e) {
     std::cerr << "Exception caught in VServer: " << e.what() << std::endl;
     return false;
@@ -75,5 +78,7 @@ bool VirtualServer::removeConnection(Connection& connection) {
   m_connections.erase(toRemove);
   return true;
 }
+
+void VirtualServer::listen(void) {}
 
 } /* namespace www */

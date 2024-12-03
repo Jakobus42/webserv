@@ -27,14 +27,14 @@ class ClientSocket {
   int getFd(void) const;
   int getFd(void);
   t_sockaddr getSocketAddress(void) const;
-  uint32_t getSocketSize(void) const;
+  unsigned int getSocketSize(void) const;
   bool isAlive(void) const;
   void close(void);
 
  private:
   int m_fd;
   t_sockaddr m_socketAddress;
-  uint32_t m_socketSize;
+  unsigned int m_socketSize;
   int m_alive;
 };
 

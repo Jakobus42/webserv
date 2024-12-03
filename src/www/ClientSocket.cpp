@@ -1,5 +1,6 @@
 #include "../../include/www/ClientSocket.hpp"
 
+#include <errno.h>
 #include <string.h>
 #include <unistd.h>
 
@@ -71,9 +72,10 @@ void ClientSocket::close(void) {
 
 void ClientSocket::accept(int listen_socket) throw(std::exception) {
   bzero(&m_socketAddress, sizeof(t_sockaddr));
+  m_socketSize = 0;
   m_fd = ::accept(listen_socket, &m_socketAddress, &m_socketSize);
   if (m_fd < 0) {
-    std::cout << "Shit, accept didn't work" << std::endl;
+    std::cout << "Shit, accept didn't work" << errno << std::endl;
     throw std::exception();
   }
   m_alive = true;

@@ -18,6 +18,7 @@ class CoreServer {
   void init(void) throw(std::exception);
   int getEpollFd() const;
   const std::vector<VirtualServer>& getVirtualServers() const;
+  std::vector<VirtualServer>& getVirtualServers();
 
   bool addVirtualServer();
   bool removeVirtualServer();

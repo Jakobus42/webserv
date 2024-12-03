@@ -46,8 +46,10 @@ void CoreServer::init(void) throw(std::exception) {
 
 const std::vector<VirtualServer>& CoreServer::getVirtualServers(void) const { return m_virtual_servers; }
 
+std::vector<VirtualServer>& CoreServer::getVirtualServers(void) { return m_virtual_servers; }
+
 bool CoreServer::addVirtualServer() {
-  VirtualServer server;
+  VirtualServer server("Peter", 8080);
   m_virtual_servers.push_back(server);
   return true;
 }

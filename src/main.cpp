@@ -16,9 +16,16 @@ int main(int argc, char** const argv) {
     return 1;
   }
 
-  server.addVirtualServer();
-  std::cout << "Added" << std::endl;
-  std::cout << server.getVirtualServers().at(0).getName() << std::endl;
+  // server.addVirtualServer();
+  // std::cout << "Added server: ";
+  // std::cout << server.getVirtualServers().at(0).getName() << std::endl;
+  // if (server.getVirtualServers().at(0).getSocket().init() == false) {
+  //   std::cout << "Whoopsie" << std::endl;
+  // }
+  // std::cout << "Initialized..." << std::endl;
+  // if (server.getVirtualServers().at(0).addConnection() == false) {
+  //   std::cout << "Oh darnit" << std::endl;
+  // }
 
   try {
     logger::LoggerManager& loggerManager = logger::LoggerManager::getInstance();

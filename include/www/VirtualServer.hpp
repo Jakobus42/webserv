@@ -23,7 +23,7 @@ typedef std::vector<Connection> t_connections;
 class VirtualServer {
  public:
   VirtualServer();
-  VirtualServer(const std::string& name, uint64_t maxBodySize = ONE_MEGABYTE);
+  VirtualServer(const std::string& name, int port = 80, uint64_t maxBodySize = ONE_MEGABYTE);
   ~VirtualServer();
   VirtualServer(const VirtualServer& other);
   VirtualServer& operator=(const VirtualServer& other);
@@ -31,10 +31,13 @@ class VirtualServer {
   const std::string& getName(void) const;
   uint64_t getMaxBodySize(void) const;
   const ServerSocket& getSocket(void) const;
+  ServerSocket& getSocket(void);
   const t_connections& getConnections(void) const;
 
   bool addConnection(void);
   bool removeConnection(Connection& connection);
+
+  void listen(void);
 
  private:
   std::string m_name;

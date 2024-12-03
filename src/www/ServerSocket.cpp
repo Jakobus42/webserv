@@ -1,5 +1,7 @@
 #include "../../include/www/ServerSocket.hpp"
 
+#include <errno.h>
+
 #include <iostream>
 #include <vector>
 
@@ -67,11 +69,14 @@ bool ServerSocket::create(void) {
   int opt = 1;
 
   m_fd = socket(AF_INET, SOCK_STREAM, 0);
+  std::cout << "ServerSocket Made" << std::endl;
   if (m_fd == -1) return false;
   if (setsockopt(m_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) < 0) {
+    std::cout << "ServerSocket options fucked" << std::endl;
     this->close();
     return false;
   }
+  std::cout << "ServerSocket should be good to go" << std::endl;
   return true;
 }
 
@@ -89,6 +94,7 @@ bool ServerSocket::bind(void) {
 
 bool ServerSocket::listen(void) {
   if (::listen(m_fd, MAX_EVENTS) < 0) {
+    std::cout << "E1" << errno << std::endl;
     this->close();
     return false;
   }
