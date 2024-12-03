@@ -4,7 +4,7 @@ var Parser_8hpp =
     [ "s_server", "structconfigfile_1_1s__server.html", "structconfigfile_1_1s__server" ],
     [ "s_config_data", "structconfigfile_1_1s__config__data.html", "structconfigfile_1_1s__config__data" ],
     [ "ConfigFileParser", "classconfigfile_1_1ConfigFileParser.html", "classconfigfile_1_1ConfigFileParser" ],
-    [ "t_config_data", "Parser_8hpp.html#a7ddcd10f1358d304988e5b683d5ddfb3", null ],
+    [ "t_Config_data", "Parser_8hpp.html#a520a94aa797db764619253725c74b2d8", null ],
     [ "t_location", "Parser_8hpp.html#a518063eadf2a848d0f652b0f79bc3128", null ],
     [ "t_server", "Parser_8hpp.html#aa80825aa8468926c8586f8d6f17a9643", null ],
     [ "CmdId", "Parser_8hpp.html#a31714c3083685cd75a4fb5991a6e8cf1", [

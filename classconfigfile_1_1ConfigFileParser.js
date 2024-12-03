@@ -6,13 +6,13 @@ var classconfigfile_1_1ConfigFileParser =
     [ "autoindex", "classconfigfile_1_1ConfigFileParser.html#af3f279ca9388592cca6cfd3a2ea92e2e", null ],
     [ "clientMaxBodySize", "classconfigfile_1_1ConfigFileParser.html#a9ea431676031c75d2c43ed50f1a5686c", null ],
     [ "errorPage", "classconfigfile_1_1ConfigFileParser.html#a0ee3094c6d18fb7878cddac3e33c31d4", null ],
-    [ "getConfigData", "classconfigfile_1_1ConfigFileParser.html#afddcd2b12ad9a5d82544feaca228187a", null ],
+    [ "getConfigData", "classconfigfile_1_1ConfigFileParser.html#ae4763f147e79ef285b9744e7ae722916", null ],
     [ "getErrorPages", "classconfigfile_1_1ConfigFileParser.html#a1a5b61814d437333167e0ca645e7da59", null ],
     [ "getIsLoaded", "classconfigfile_1_1ConfigFileParser.html#a1b586a2a18726ab1eb5bda4db61bb391", null ],
     [ "getLocation", "classconfigfile_1_1ConfigFileParser.html#a91faa997adaf9945ec4e7b3016fc3a4d", null ],
     [ "getMaxBodySize", "classconfigfile_1_1ConfigFileParser.html#ac59ceb4ac32d2b7dd97a94912db4918e", null ],
     [ "getServer", "classconfigfile_1_1ConfigFileParser.html#a45c5138e6ce2a9e7bc8fe43d91a8b5d6", null ],
-    [ "getServerIp", "classconfigfile_1_1ConfigFileParser.html#a0153686ebf4920999a9647376c81069c", null ],
+    [ "getServerIp", "classconfigfile_1_1ConfigFileParser.html#a1bb30f2a06521572b234bffa5da88900", null ],
     [ "getServerNames", "classconfigfile_1_1ConfigFileParser.html#a334b2a2968d74a771a4f3e3353207383", null ],
     [ "getServerPort", "classconfigfile_1_1ConfigFileParser.html#a554377e0f32b6523898ae118a70f7a18", null ],
     [ "getServerSize", "classconfigfile_1_1ConfigFileParser.html#a6de4c24b7f1b6d4509eda8ebecd3e8b1", null ],
@@ -35,6 +35,6 @@ var classconfigfile_1_1ConfigFileParser =
     [ "server", "classconfigfile_1_1ConfigFileParser.html#a80b3f6b4e30809628b7848d3c29e5575", null ],
     [ "serverName", "classconfigfile_1_1ConfigFileParser.html#ad183b45a0c20d5fda540cfc235488d06", null ],
     [ "testFunction", "classconfigfile_1_1ConfigFileParser.html#a6ffeb111c26232dc03ea1819bcae5045", null ],
-    [ "m_configData", "classconfigfile_1_1ConfigFileParser.html#ab0371ee05b8d871cfb054e2a6628cd60", null ],
+    [ "m_configData", "classconfigfile_1_1ConfigFileParser.html#a9670bab1f0792fbc9d96bf6a26f3dcf8", null ],
     [ "m_isLoaded", "classconfigfile_1_1ConfigFileParser.html#ab6bba3b38d6509a1a8bc5beead262a5b", null ]
 ];
