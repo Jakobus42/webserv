@@ -13,7 +13,7 @@ class %CLASS_NAME% {
         %CLASS_NAME%();
         ~%CLASS_NAME%();
         %CLASS_NAME%(const %CLASS_NAME% &other);
-        %CLASS_NAME%& operator=(const %CLASS_NAME% &other);
+        %CLASS_NAME%& operator=(const %CLASS_NAME% &rhs);
 
     private:
 
@@ -45,7 +45,7 @@ namespace %NAMESPACE% {
  * @brief Copy constructor.
  * @param other The other %CLASS_NAME% object to copy.
  */
-%CLASS_NAME%::%CLASS_NAME%(const %CLASS_NAME% &) {
+%CLASS_NAME%::%CLASS_NAME%(const %CLASS_NAME% &other) {
 
 }
 
@@ -54,7 +54,7 @@ namespace %NAMESPACE% {
  * @param other The other %CLASS_NAME% object to assign from.
  * @return A reference to the assigned %CLASS_NAME% object.
  */
-%CLASS_NAME%& %CLASS_NAME%::operator=(const %CLASS_NAME% &) {
+%CLASS_NAME%& %CLASS_NAME%::operator=(const %CLASS_NAME% &rhs) {
     return *this;
 }
 
