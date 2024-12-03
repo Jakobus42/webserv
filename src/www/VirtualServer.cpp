@@ -20,12 +20,16 @@ VirtualServer::VirtualServer(const std::string& name, int port, uint64_t maxBody
 /**
  * @brief Destroys the VirtualServer object.
  * @todo Should prolly close everything down neatly, this happens only at exit.
+ * @warning Edit: Should NOT close everything, otherwise creating Sockets
+ * @warning and placing them in CoreServer's vector triggers the destructor,
+ * @warning closing the socket in the process.
  */
 VirtualServer::~VirtualServer() {
-  for (t_connections::iterator it = m_connections.begin(); it != m_connections.end(); ++it) {
-    it->close();
-  }
-  this->getSocket().close();
+  // for (t_connections::iterator it = m_connections.begin(); it != m_connections.end(); ++it) {
+  //   if (it->getSocket().getFd() != -1)
+  //     it->close();
+  // }
+  // this->getSocket().close();
 }
 
 /**

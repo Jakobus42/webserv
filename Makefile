@@ -57,7 +57,7 @@ run: all
 
 leak: all
 	@echo "$(GREEN)Running $(NAME) with valgrind...$(NC)"
-	valgrind --leak-check=full --track-fds=yes --error-exitcode=1 ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --error-exitcode=1 ./$(NAME)
 
 debug: CFLAGS += $(DEBUG_FLAGS)
 debug: all

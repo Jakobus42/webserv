@@ -17,6 +17,7 @@ int main(int argc, char** const argv) {
 
   std::cout << "Added server: ";
   std::cout << server.getVirtualServers().at(0).getName() << std::endl;
+  server.getVirtualServers().at(0).getSocket().close();
 
   // if (server.getVirtualServers().at(0).addConnection() == false) {
   //   std::cout << "Oh darnit, adding connection to VServer failed" <<
