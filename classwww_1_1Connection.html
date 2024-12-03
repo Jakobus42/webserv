@@ -77,8 +77,9 @@ Collaboration diagram for www::Connection:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwww_1_1Connection__coll__graph.png" border="0" usemap="#awww_1_1Connection_coll__map" alt="Collaboration graph"/></div>
 <map name="awww_1_1Connection_coll__map" id="awww_1_1Connection_coll__map">
-<area shape="rect" title="..." alt="" coords="19,365,154,560"/>
+<area shape="rect" title="..." alt="" coords="113,365,247,589"/>
 <area shape="rect" href="classwww_1_1ClientSocket.html" title="..." alt="" coords="5,5,168,303"/>
+<area shape="rect" href="classhttp_1_1Request.html" title="..." alt="" coords="192,35,357,273"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -103,6 +104,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a3f1583c3d0e9eb5f48fc877726b5c2cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37ff88d25616dce2769c4a2a85610d88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classwww_1_1ClientSocket.html">ClientSocket</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1Connection.html#a37ff88d25616dce2769c4a2a85610d88">getSocket</a> (void)</td></tr>
 <tr class="separator:a37ff88d25616dce2769c4a2a85610d88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f966fe191dc5a1186b9c2b41a5e6677"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classhttp_1_1Request.html">http::Request</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1Connection.html#a4f966fe191dc5a1186b9c2b41a5e6677">getRequest</a> (void) const</td></tr>
+<tr class="separator:a4f966fe191dc5a1186b9c2b41a5e6677"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02417f0785b5760d4b4121a5d80c2f84"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhttp_1_1Request.html">http::Request</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1Connection.html#a02417f0785b5760d4b4121a5d80c2f84">getRequest</a> (void)</td></tr>
+<tr class="separator:a02417f0785b5760d4b4121a5d80c2f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68fe30de0adab883d0efc595efd766d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1Connection.html#a68fe30de0adab883d0efc595efd766d5">close</a> (void)</td></tr>
 <tr class="separator:a68fe30de0adab883d0efc595efd766d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b7e3eb6352c69904c501f184e9d6a35"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1Connection.html#a6b7e3eb6352c69904c501f184e9d6a35">operator==</a> (const <a class="el" href="classwww_1_1Connection.html">Connection</a> &amp;other) const</td></tr>
@@ -112,11 +117,13 @@ Public Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a15a2c784997ff6aa53c60eda4ce35019"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classwww_1_1ClientSocket.html">ClientSocket</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1Connection.html#a15a2c784997ff6aa53c60eda4ce35019">m_client_socket</a></td></tr>
 <tr class="separator:a15a2c784997ff6aa53c60eda4ce35019"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a304a28bac7860a6641a9accd7f6ff3bd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhttp_1_1Request.html">http::Request</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1Connection.html#a304a28bac7860a6641a9accd7f6ff3bd">m_request</a></td></tr>
+<tr class="separator:a304a28bac7860a6641a9accd7f6ff3bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>... </p>
 
-<p class="definition">Definition at line <a class="el" href="Connection_8hpp_source.html#l00011">11</a> of file <a class="el" href="Connection_8hpp_source.html">Connection.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Connection_8hpp_source.html#l00012">12</a> of file <a class="el" href="Connection_8hpp_source.html">Connection.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0d7572a603d6d13682173a7875ce4aa6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0d7572a603d6d13682173a7875ce4aa6">&#9670;&nbsp;</a></span>Connection() <span class="overload">[1/3]</span></h2>
@@ -136,8 +143,9 @@ Private Attributes</h2></td></tr>
 <p>Constructs a new <a class="el" href="classwww_1_1Connection.html" title="...">Connection</a> object. </p>
 
 <p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00010">10</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;: <a class="code" href="classwww_1_1Connection.html#a15a2c784997ff6aa53c60eda4ce35019">m_client_socket</a>() {}</div>
-<div class="ttc" id="aclasswww_1_1Connection_html_a15a2c784997ff6aa53c60eda4ce35019"><div class="ttname"><a href="classwww_1_1Connection.html#a15a2c784997ff6aa53c60eda4ce35019">www::Connection::m_client_socket</a></div><div class="ttdeci">ClientSocket m_client_socket</div><div class="ttdef"><b>Definition:</b> <a href="Connection_8hpp_source.html#l00026">Connection.hpp:26</a></div></div>
+<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;: <a class="code" href="classwww_1_1Connection.html#a15a2c784997ff6aa53c60eda4ce35019">m_client_socket</a>(), <a class="code" href="classwww_1_1Connection.html#a304a28bac7860a6641a9accd7f6ff3bd">m_request</a>() {}</div>
+<div class="ttc" id="aclasswww_1_1Connection_html_a15a2c784997ff6aa53c60eda4ce35019"><div class="ttname"><a href="classwww_1_1Connection.html#a15a2c784997ff6aa53c60eda4ce35019">www::Connection::m_client_socket</a></div><div class="ttdeci">ClientSocket m_client_socket</div><div class="ttdef"><b>Definition:</b> <a href="Connection_8hpp_source.html#l00029">Connection.hpp:29</a></div></div>
+<div class="ttc" id="aclasswww_1_1Connection_html_a304a28bac7860a6641a9accd7f6ff3bd"><div class="ttname"><a href="classwww_1_1Connection.html#a304a28bac7860a6641a9accd7f6ff3bd">www::Connection::m_request</a></div><div class="ttdeci">http::Request m_request</div><div class="ttdef"><b>Definition:</b> <a href="Connection_8hpp_source.html#l00030">Connection.hpp:30</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -166,7 +174,7 @@ Private Attributes</h2></td></tr>
 <p>Constructs a new <a class="el" href="classwww_1_1Connection.html" title="...">Connection</a> object. </p>
 
 <p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00015">15</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;: <a class="code" href="classwww_1_1Connection.html#a15a2c784997ff6aa53c60eda4ce35019">m_client_socket</a>(listen_socket) {}</div>
+<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;: <a class="code" href="classwww_1_1Connection.html#a15a2c784997ff6aa53c60eda4ce35019">m_client_socket</a>(listen_socket), <a class="code" href="classwww_1_1Connection.html#a304a28bac7860a6641a9accd7f6ff3bd">m_request</a>() {}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -190,7 +198,7 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00021">21</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{ this-&gt;<a class="code" href="classwww_1_1Connection.html#a68fe30de0adab883d0efc595efd766d5">close</a>(); }</div>
-<div class="ttc" id="aclasswww_1_1Connection_html_a68fe30de0adab883d0efc595efd766d5"><div class="ttname"><a href="classwww_1_1Connection.html#a68fe30de0adab883d0efc595efd766d5">www::Connection::close</a></div><div class="ttdeci">void close(void)</div><div class="ttdef"><b>Definition:</b> <a href="Connection_8cpp_source.html#l00041">Connection.cpp:41</a></div></div>
+<div class="ttc" id="aclasswww_1_1Connection_html_a68fe30de0adab883d0efc595efd766d5"><div class="ttname"><a href="classwww_1_1Connection.html#a68fe30de0adab883d0efc595efd766d5">www::Connection::close</a></div><div class="ttdeci">void close(void)</div><div class="ttdef"><b>Definition:</b> <a href="Connection_8cpp_source.html#l00043">Connection.cpp:43</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -230,7 +238,7 @@ Here is the call graph for this function:</div>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00027">27</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;: <a class="code" href="classwww_1_1Connection.html#a15a2c784997ff6aa53c60eda4ce35019">m_client_socket</a>(other.getSocket()) {}</div>
+<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;: <a class="code" href="classwww_1_1Connection.html#a15a2c784997ff6aa53c60eda4ce35019">m_client_socket</a>(other.getSocket()), <a class="code" href="classwww_1_1Connection.html#a304a28bac7860a6641a9accd7f6ff3bd">m_request</a>(other.getRequest()) {}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -251,10 +259,10 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00041">41</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{ this-&gt;<a class="code" href="classwww_1_1Connection.html#a3f1583c3d0e9eb5f48fc877726b5c2cc">getSocket</a>().<a class="code" href="classwww_1_1ClientSocket.html#a016e6961f175a4c84e21169f179c07c9">close</a>(); }</div>
+<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00043">43</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{ this-&gt;<a class="code" href="classwww_1_1Connection.html#a3f1583c3d0e9eb5f48fc877726b5c2cc">getSocket</a>().<a class="code" href="classwww_1_1ClientSocket.html#a016e6961f175a4c84e21169f179c07c9">close</a>(); }</div>
 <div class="ttc" id="aclasswww_1_1ClientSocket_html_a016e6961f175a4c84e21169f179c07c9"><div class="ttname"><a href="classwww_1_1ClientSocket.html#a016e6961f175a4c84e21169f179c07c9">www::ClientSocket::close</a></div><div class="ttdeci">void close(void)</div><div class="ttdef"><b>Definition:</b> <a href="ClientSocket_8cpp_source.html#l00067">ClientSocket.cpp:67</a></div></div>
-<div class="ttc" id="aclasswww_1_1Connection_html_a3f1583c3d0e9eb5f48fc877726b5c2cc"><div class="ttname"><a href="classwww_1_1Connection.html#a3f1583c3d0e9eb5f48fc877726b5c2cc">www::Connection::getSocket</a></div><div class="ttdeci">const ClientSocket &amp; getSocket(void) const</div><div class="ttdef"><b>Definition:</b> <a href="Connection_8cpp_source.html#l00043">Connection.cpp:43</a></div></div>
+<div class="ttc" id="aclasswww_1_1Connection_html_a3f1583c3d0e9eb5f48fc877726b5c2cc"><div class="ttname"><a href="classwww_1_1Connection.html#a3f1583c3d0e9eb5f48fc877726b5c2cc">www::Connection::getSocket</a></div><div class="ttdeci">const ClientSocket &amp; getSocket(void) const</div><div class="ttdef"><b>Definition:</b> <a href="Connection_8cpp_source.html#l00045">Connection.cpp:45</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -277,6 +285,54 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a02417f0785b5760d4b4121a5d80c2f84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02417f0785b5760d4b4121a5d80c2f84">&#9670;&nbsp;</a></span>getRequest() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhttp_1_1Request.html">http::Request</a>&amp; www::Connection::getRequest </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4f966fe191dc5a1186b9c2b41a5e6677"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f966fe191dc5a1186b9c2b41a5e6677">&#9670;&nbsp;</a></span>getRequest() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classhttp_1_1Request.html">http::Request</a> &amp; www::Connection::getRequest </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00049">49</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1Connection.html#a304a28bac7860a6641a9accd7f6ff3bd">m_request</a>; }</div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classwww_1_1Connection_a4f966fe191dc5a1186b9c2b41a5e6677_icgraph.png" border="0" usemap="#aclasswww_1_1Connection_a4f966fe191dc5a1186b9c2b41a5e6677_icgraph" alt=""/></div>
+<map name="aclasswww_1_1Connection_a4f966fe191dc5a1186b9c2b41a5e6677_icgraph" id="aclasswww_1_1Connection_a4f966fe191dc5a1186b9c2b41a5e6677_icgraph">
+<area shape="rect" title=" " alt="" coords="263,5,480,32"/>
+<area shape="rect" href="classwww_1_1Connection.html#adc05f681ec85baae903cbcbe310893d0" title="Copy assignment operator." alt="" coords="5,5,215,32"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a37ff88d25616dce2769c4a2a85610d88"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a37ff88d25616dce2769c4a2a85610d88">&#9670;&nbsp;</a></span>getSocket() <span class="overload">[1/2]</span></h2>
 
@@ -293,8 +349,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00045">45</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1Connection.html#a15a2c784997ff6aa53c60eda4ce35019">m_client_socket</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00047">47</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1Connection.html#a15a2c784997ff6aa53c60eda4ce35019">m_client_socket</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -314,8 +370,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00043">43</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1Connection.html#a15a2c784997ff6aa53c60eda4ce35019">m_client_socket</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00045">45</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1Connection.html#a15a2c784997ff6aa53c60eda4ce35019">m_client_socket</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -358,16 +414,19 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00034">34</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                                       {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="classwww_1_1Connection.html#a15a2c784997ff6aa53c60eda4ce35019">m_client_socket</a>.operator=(rhs.getSocket());</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs) <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <a class="code" href="classwww_1_1Connection.html#a15a2c784997ff6aa53c60eda4ce35019">m_client_socket</a>.operator=(rhs.getSocket());</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="classwww_1_1Connection.html#a304a28bac7860a6641a9accd7f6ff3bd">m_request</a> = rhs.getRequest();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwww_1_1Connection_adc05f681ec85baae903cbcbe310893d0_cgraph.png" border="0" usemap="#aclasswww_1_1Connection_adc05f681ec85baae903cbcbe310893d0_cgraph" alt=""/></div>
 <map name="aclasswww_1_1Connection_adc05f681ec85baae903cbcbe310893d0_cgraph" id="aclasswww_1_1Connection_adc05f681ec85baae903cbcbe310893d0_cgraph">
-<area shape="rect" title="Copy assignment operator." alt="" coords="5,5,215,32"/>
-<area shape="rect" href="classwww_1_1Connection.html#a3f1583c3d0e9eb5f48fc877726b5c2cc" title=" " alt="" coords="263,5,469,32"/>
+<area shape="rect" title="Copy assignment operator." alt="" coords="5,31,215,57"/>
+<area shape="rect" href="classwww_1_1Connection.html#a4f966fe191dc5a1186b9c2b41a5e6677" title=" " alt="" coords="263,5,480,32"/>
+<area shape="rect" href="classwww_1_1Connection.html#a3f1583c3d0e9eb5f48fc877726b5c2cc" title=" " alt="" coords="268,56,475,83"/>
 </map>
 </div>
 
@@ -389,8 +448,8 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00039">39</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{ <span class="keywordflow">return</span> other.getSocket() == this-&gt;<a class="code" href="classwww_1_1Connection.html#a3f1583c3d0e9eb5f48fc877726b5c2cc">getSocket</a>(); }</div>
+<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00041">41</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{ <span class="keywordflow">return</span> other.getSocket() == this-&gt;<a class="code" href="classwww_1_1Connection.html#a3f1583c3d0e9eb5f48fc877726b5c2cc">getSocket</a>(); }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -424,7 +483,31 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Connection_8hpp_source.html#l00026">26</a> of file <a class="el" href="Connection_8hpp_source.html">Connection.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Connection_8hpp_source.html#l00029">29</a> of file <a class="el" href="Connection_8hpp_source.html">Connection.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a304a28bac7860a6641a9accd7f6ff3bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a304a28bac7860a6641a9accd7f6ff3bd">&#9670;&nbsp;</a></span>m_request</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhttp_1_1Request.html">http::Request</a> www::Connection::m_request</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Connection_8hpp_source.html#l00030">30</a> of file <a class="el" href="Connection_8hpp_source.html">Connection.hpp</a>.</p>
 
 </div>
 </div>

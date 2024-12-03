@@ -9,6 +9,7 @@ var hierarchy =
     [ "www::Connection", "classwww_1_1Connection.html", null ],
     [ "www::CoreServer", "classwww_1_1CoreServer.html", null ],
     [ "logger::LoggerManager", "classlogger_1_1LoggerManager.html", null ],
+    [ "http::Request", "classhttp_1_1Request.html", null ],
     [ "configfile::s_config_data", "structconfigfile_1_1s__config__data.html", null ],
     [ "configfile::s_location", "structconfigfile_1_1s__location.html", null ],
     [ "configfile::s_server", "structconfigfile_1_1s__server.html", null ],
