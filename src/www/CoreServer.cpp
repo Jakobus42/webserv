@@ -16,6 +16,7 @@ CoreServer::CoreServer() : m_epoll_master_fd(-1), m_virtual_servers() {}
 
 /**
  * @brief Destroys the CoreServer object.
+ * @todo Close all connections and VirtualServer sockets
  */
 CoreServer::~CoreServer() { close(m_epoll_master_fd); }
 
@@ -52,16 +53,8 @@ const std::vector<VirtualServer>& CoreServer::getVirtualServers(void) const { re
 
 std::vector<VirtualServer>& CoreServer::getVirtualServers(void) { return m_virtual_servers; }
 
-void CoreServer::addVirtualServer() throw(std::exception) {
-  VirtualServer server("Default Server", 80);
-
-  m_virtual_servers.push_back(server);
-  if (m_virtual_servers.back().listen() == false) throw std::exception();
-}
-
-void CoreServer::addVirtualServer(const std::string& name, uint32_t port,
-                                  uint64_t clientMaxBodySize) throw(std::exception) {
-  VirtualServer server(name, port, clientMaxBodySize);
+void CoreServer::addVirtualServer(configfile::t_server& serverConfig) throw(std::exception) {
+  VirtualServer server(serverConfig);
 
   m_virtual_servers.push_back(server);
   if (m_virtual_servers.back().listen() == false) throw std::exception();
@@ -107,6 +100,22 @@ void CoreServer::react() {
       }
     }
   }
+}
+
+bool CoreServer::addVirtualServers(configfile::t_config_data& configData) {
+  for (size_t i = 0; i < configData.servers.size(); i++) {
+    VirtualServer server(configData.servers.at(i));
+    if (server.getSocket().init() == false) {
+      LOG("Failed to initialize socket for server " << configData.servers.at(i).server_names.at(0) << std::endl,
+          logger::ERROR);
+      return false;
+    }
+    for (size_t j = 0; j < configData.servers.at(i).locations.size(); j++) {
+      // server.addLocation(configData.servers.at(i).locations.at(j));
+    }
+    m_virtual_servers.push_back(server);
+  }
+  return true;
 }
 
 } /* namespace www */

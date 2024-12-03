@@ -7,6 +7,7 @@
 #include <stdexcept>
 #include <vector>
 
+#include "configfile/Parser.hpp"
 #include "runtime/EventHandler.hpp"
 #include "www/VirtualServer.hpp"
 
@@ -23,14 +24,14 @@ class CoreServer {
   CoreServer();
   ~CoreServer();
 
-  void init(void) throw(std::exception);
+  void init() throw(std::exception);
   int getEpollFd() const;
   const std::vector<VirtualServer>& getVirtualServers() const;
   std::vector<VirtualServer>& getVirtualServers();
 
-  void addVirtualServer() throw(std::exception);
-  void addVirtualServer(const std::string& name, uint32_t port, uint64_t clientMaxBodySize) throw(std::exception);
+  void addVirtualServer(configfile::t_server& serverConfig) throw(std::exception);
   bool removeVirtualServer(std::vector<VirtualServer>::iterator it);
+  bool addVirtualServers(configfile::t_config_data& configData);
 
   void registerHandler(int fd, runtime::EventHandler* handler, uint32_t events = EPOLLIN) throw(std::runtime_error);
   void unregisterHandler(int fd) throw(std::runtime_error);

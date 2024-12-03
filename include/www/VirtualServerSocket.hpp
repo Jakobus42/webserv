@@ -19,17 +19,17 @@ const uint32_t LOCALHOST_ADDRESS = 0x7F000001;   // 127.0.0.1
 const uint32_t DEFAULT_MAX_BODY_SIZE = 1048576;  // 1MB
 
 /**
- * @class ServerSocket
+ * @class VirtualServerSocket
  * @brief ...
  */
-class ServerSocket {
+class VirtualServerSocket {
  public:
   // just make the constructoor throw, then wrap its creation
-  ServerSocket();
-  ServerSocket(int port);
-  ~ServerSocket();
-  ServerSocket(const ServerSocket& other);
-  ServerSocket& operator=(const ServerSocket& other);
+  VirtualServerSocket();
+  VirtualServerSocket(int port, uint32_t ip = LOCALHOST_ADDRESS);
+  ~VirtualServerSocket();
+  VirtualServerSocket(const VirtualServerSocket& other);
+  VirtualServerSocket& operator=(const VirtualServerSocket& other);
 
   bool init();
   bool create();
@@ -40,6 +40,7 @@ class ServerSocket {
   void setBroken();
 
   int getFd() const;
+  uint32_t getIp() const;
   int getPort() const;
   t_sockaddr_in getSocketAddress() const;
   bool isOpen() const;
@@ -48,8 +49,9 @@ class ServerSocket {
 
  private:
   int m_fd;
-  t_sockaddr_in m_socketAddress;
+  uint32_t m_ip;
   int m_port;
+  t_sockaddr_in m_socketAddress;
   bool m_open;
   bool m_bound;
   bool m_listening;

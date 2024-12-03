@@ -71,10 +71,7 @@ void ConfigFileParser::printConfigData(int detailed) {
     if (detailed) {
       std::cout << "Port: " << m_configData.servers[i].port << std::endl;
       std::cout << "IP address: ";
-      for (unsigned long j = 0; j < m_configData.servers[i].ip_address.size(); j++) {
-        std::cout << m_configData.servers[i].ip_address[j];
-        if (j != m_configData.servers[i].ip_address.size() - 1) std::cout << ".";
-      }
+      std::cout << m_configData.servers[i].ip_address << std::endl;
       std::cout << std::endl;
       std::cout << "Server names: ";
       for (unsigned long j = 0; j < m_configData.servers[i].server_names.size(); j++) {

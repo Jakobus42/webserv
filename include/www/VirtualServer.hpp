@@ -5,7 +5,8 @@
 #include <string>
 #include <vector>
 
-#include "ServerSocket.hpp"
+#include "../configfile/Parser.hpp"
+#include "VirtualServerSocket.hpp"
 
 #define ONE_MEGABYTE 1048576UL
 #define MAX_CONNECTIONS 500
@@ -23,15 +24,15 @@ typedef std::vector<Connection> t_connections;
 class VirtualServer {
  public:
   VirtualServer();
-  VirtualServer(const std::string& name, int port = 80, uint64_t maxBodySize = ONE_MEGABYTE);
+  VirtualServer(configfile::t_server& serverConfig);
   ~VirtualServer();
   VirtualServer(const VirtualServer& other);
   VirtualServer& operator=(const VirtualServer& other);
 
   const std::string& getName(void) const;
   uint64_t getMaxBodySize(void) const;
-  const ServerSocket& getSocket(void) const;
-  ServerSocket& getSocket(void);
+  const VirtualServerSocket& getSocket(void) const;
+  VirtualServerSocket& getSocket(void);
   const t_connections& getConnections(void) const;
 
   bool addConnection(void);
@@ -43,7 +44,7 @@ class VirtualServer {
   std::string m_name;
   uint64_t m_client_max_body_size;
   // Locations with metadata
-  ServerSocket m_listen_socket;
+  VirtualServerSocket m_listen_socket;
   t_connections m_connections;
 };
 

@@ -184,13 +184,13 @@ int ConfigFileParser::loadConfigFile(std::string& configFileName) {
 
 int ConfigFileParser::getIsLoaded() const { return m_isLoaded; }
 
-t_Config_data ConfigFileParser::getConfigData() const { return m_configData; }
+t_config_data ConfigFileParser::getConfigData() const { return m_configData; }
 
 int ConfigFileParser::getServerSize() const { return m_configData.servers.size(); }
 
 int ConfigFileParser::getServerPort(int index) const { return m_configData.servers[index].port; }
 
-std::vector<int> ConfigFileParser::getServerIp(int index) const { return m_configData.servers[index].ip_address; }
+uint32_t ConfigFileParser::getServerIp(int index) const { return m_configData.servers[index].ip_address; }
 
 std::vector<std::string> ConfigFileParser::getServerNames(int index) const {
   return m_configData.servers[index].server_names;

@@ -54,7 +54,7 @@ int ConfigFileParser::server(std::vector<std::string>& args, int& lineCount, int
   t_server new_server;
   // set default values
   new_server.port = 80;
-  for (unsigned long i = 0; i < 4; i++) new_server.ip_address.push_back(0);
+  new_server.ip_address = 0x7F000001;
   new_server.max_body_size = 1000000;
   m_configData.servers.push_back(new_server);
   // TODO: Load default Error pages if none are provided
@@ -160,7 +160,10 @@ int ConfigFileParser::listen(std::vector<std::string>& args, int& lineCount, int
         return 1;
       }
       args[1] = args[1].substr(iter + 1);
-      m_configData.servers.back().ip_address[i] = j;
+      for (unsigned long k = 4 - i; k > 0; k--) {
+        m_configData.servers.back().ip_address += j << (8 * (k - 1));
+      }
+      std::cout << m_configData.servers.back().ip_address << std::endl;
     }
     if (args[1].size() != 0) {
       int i = ft_stoi(args[1]);
