@@ -1,4 +1,5 @@
-#include "../../include/configfile/Parser.hpp"
+#include "configfile/Parser.hpp"
+
 namespace configfile {
 
 /**

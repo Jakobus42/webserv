@@ -3,9 +3,9 @@
 #include <map>
 #include <memory>
 
-#include "../../include/logger/ALogger.hpp"
-#include "../../include/logger/ConsoleLogger.hpp"
-#include "../../include/logger/FileLogger.hpp"
+#include "logger/ALogger.hpp"
+#include "logger/ConsoleLogger.hpp"
+#include "logger/FileLogger.hpp"
 
 namespace logger {
 

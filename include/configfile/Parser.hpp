@@ -6,8 +6,8 @@
 #include <sstream>
 #include <vector>
 
-#include "../../include/configfile/Parser.hpp"
-#include "../../include/logger/LoggerManager.hpp"
+#include "configfile/Parser.hpp"
+#include "logger/LoggerManager.hpp"
 
 namespace configfile {
 

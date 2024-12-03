@@ -1,4 +1,4 @@
-#include "../../include/logger/LoggerManager.hpp"
+#include "logger/LoggerManager.hpp"
 
 namespace logger {
 
@@ -13,8 +13,9 @@ LoggerManager::LoggerManager() : m_globalLogLevel(logger::INFO) {}
 /**
  * @brief Destructor for the LoggerManager class.
  *
- * This destructor is responsible for cleaning up all logger objects stored in the `m_loggers` map.
- * It iterates over each logger and deletes the dynamically allocated logger instances to avoid memory leaks.
+ * This destructor is responsible for cleaning up all logger objects stored in
+ * the `m_loggers` map. It iterates over each logger and deletes the dynamically
+ * allocated logger instances to avoid memory leaks.
  */
 LoggerManager::~LoggerManager() {
   for (LogMap::iterator it = m_loggers.begin(); it != m_loggers.end(); ++it) {

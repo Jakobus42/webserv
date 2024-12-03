@@ -2,7 +2,8 @@
 CC = c++
 
 ###FLAGS###
-CFLAGS = -Wextra -Wall -Werror -std=c++98
+CFLAGS = -Wextra -Wall -Werror -std=c++98 -I$(INCDIR)
+CPPCHECKFLAGS = -I$(INCDIR)
 DEBUG_FLAGS = -g
 
 ###PROGRAM###
@@ -57,7 +58,7 @@ run: all
 
 leak: all
 	@echo "$(GREEN)Running $(NAME) with valgrind...$(NC)"
-	valgrind --leak-check=full --track-fds=yes --error-exitcode=1 ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --error-exitcode=1 ./$(NAME)
 
 debug: CFLAGS += $(DEBUG_FLAGS)
 debug: all
@@ -66,7 +67,7 @@ debug: all
 
 cppcheck:
 	@echo "Running cppcheck..."
-	cppcheck --enable=all --error-exitcode=1 --suppress=missingIncludeSystem --suppress=missingOverride --suppress=noExplicitConstructor --suppress=unusedFunction $(SRCDIR)/ $(INCDIR)/
+	cppcheck $(CPPCHECKFLAGS) --enable=all --error-exitcode=1 --suppress=missingIncludeSystem --suppress=missingOverride --suppress=noExplicitConstructor --suppress=unusedFunction $(SRCDIR)/ $(INCDIR)/
 
 strict: all cppcheck leak
 	@echo "$(GREEN)Strict build completed.$(NC)"
@@ -78,8 +79,8 @@ build_tests:
 
 test: build_tests
 	@echo "$(GREEN)Testing code...$(NC)"
-	cd build && ctest 
-	
+	cd build && ctest
+
 
 format:
 	@echo "Formatting code with clang-format..."

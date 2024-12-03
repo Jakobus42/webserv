@@ -2,9 +2,12 @@
 
 #include <netinet/in.h>
 #include <strings.h>
-#include <sys/epoll.h>
 #include <sys/socket.h>
 #include <unistd.h>
+
+#ifdef __linux__
+#include <sys/epoll.h>
+#endif
 
 #define DEFAULT_MAX_EVENTS 10
 #define MAX_EVENTS 10

@@ -1,4 +1,4 @@
-#include "../../include/utils/StringUtils.hpp"
+#include "utils/StringUtils.hpp"
 
 namespace utils {
 
@@ -12,8 +12,10 @@ namespace string {
  * delimiters string.
  *
  * @param str The string to be split into tokens.
- * @param delimiters A string containing delimiter characters used to split the input string.
- * @param result A vector to store the resulting tokens after splitting the input string.
+ * @param delimiters A string containing delimiter characters used to split the
+ * input string.
+ * @param result A vector to store the resulting tokens after splitting the
+ * input string.
  */
 void split(const std::string& str, std::vector<std::string>& result, const std::string& delimiters) {
   std::size_t start = str.find_first_not_of(delimiters);
@@ -27,13 +29,15 @@ void split(const std::string& str, std::vector<std::string>& result, const std::
 /**
  * @brief Trims leading and trailing characters from the input string.
  *
- * This function removes any characters at the beginning and end of the string `str`
- * that are found in the `delimiters` string.
+ * This function removes any characters at the beginning and end of the string
+ * `str` that are found in the `delimiters` string.
  *
  * @param str The string to be trimmed. The string is modified in place.
- * @param delimiters A string containing the characters to remove from the start and end of `str`.
+ * @param delimiters A string containing the characters to remove from the start
+ * and end of `str`.
  *
- * @note If the string only contains characters from `delimiters`, it will be cleared.
+ * @note If the string only contains characters from `delimiters`, it will be
+ * cleared.
  */
 void trim(std::string& str, const std::string& delimiters) {
   std::size_t start = str.find_first_not_of(delimiters);

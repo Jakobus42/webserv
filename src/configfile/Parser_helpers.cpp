@@ -1,4 +1,4 @@
-#include "../../include/configfile/Parser.hpp"
+#include "configfile/Parser.hpp"
 
 namespace configfile {
 
@@ -10,8 +10,8 @@ namespace configfile {
  * @return int 0 if successful, 1 if not.
  */
 int ConfigFileParser::handlePrompt(std::string& line, int layer, int& lineCount) {
-  // return 0 if successful and semicolon is found, 1 if semicolon is not found, 2 if error
-  // cut off trailing and starting spaces
+  // return 0 if successful and semicolon is found, 1 if semicolon is not found,
+  // 2 if error cut off trailing and starting spaces
   int qouteFlag = 1;
   while (line[line.size() - 1] == ' ') {
     line.erase(line.size() - 1);
@@ -57,7 +57,8 @@ t_location* ConfigFileParser::getLocation(int layer) {
 
 /**
  * @brief prints the configuration data.
- * @param detailed toggles between detailed and simple output. (0 for simple, 1 for detailed)
+ * @param detailed toggles between detailed and simple output. (0 for simple, 1
+ * for detailed)
  */
 void ConfigFileParser::printConfigData(int detailed) {
   if (m_isLoaded == 0) {
@@ -98,7 +99,8 @@ void ConfigFileParser::printConfigData(int detailed) {
  * @brief prints the locations of the server.
  * @param locations the locations to print.
  * @param layer the current layer of the configuration file.
- * @param detailed toggles between detailed and simple output. (0 for simple, 1 for detailed)
+ * @param detailed toggles between detailed and simple output. (0 for simple, 1
+ * for detailed)
  * @param layer_num the current layer number.
  */
 void ConfigFileParser::printLocations(const std::vector<configfile::t_location>& locations, int layer, int detailed,
@@ -177,10 +179,12 @@ int ConfigFileParser::testFunction(std::string const& key, std::vector<std::stri
 }
 
 /**
- * @brief Identifies the command in the configuration file. and returns the id of the command.
+ * @brief Identifies the command in the configuration file. and returns the id
+ * of the command.
  * @param key The key to identify.
- * @return The id of the command. (1 if listen, 2 if server_name, 3 if error_page, 4 if client_max_body_size, 5 if
- * location, 6 if limit_exept, 7 if return, 8 if root, 9 if autoindex, 10 if index, 404 if not found.)
+ * @return The id of the command. (1 if listen, 2 if server_name, 3 if
+ * error_page, 4 if client_max_body_size, 5 if location, 6 if limit_exept, 7 if
+ * return, 8 if root, 9 if autoindex, 10 if index, 404 if not found.)
  */
 enum CmdId ConfigFileParser::idCommand(std::string const& key) {
   if (key == "server")
@@ -213,7 +217,8 @@ enum CmdId ConfigFileParser::idCommand(std::string const& key) {
  * @brief Saves the configuration data.
  * @param args The arguments to save.
  * @param layer The layer of the configuration file.
- * @param qoute_flag The flag to check if quotes are found. 0 if found, 1 if not found.
+ * @param qoute_flag The flag to check if quotes are found. 0 if found, 1 if not
+ * found.
  * @param lineCount The current line number.
  * @return 0 if successful, 1 if error.
  */

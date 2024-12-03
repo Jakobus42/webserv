@@ -2,7 +2,7 @@
 
 #include <fstream>
 
-#include "../../include/logger/ALogger.hpp"
+#include "logger/ALogger.hpp"
 
 namespace logger {
 

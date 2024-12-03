@@ -23,7 +23,7 @@ class %CLASS_NAME% {
 
 '
 
-source_template='#include "../../include/%SUB_FOLDER%/%CLASS_NAME%.hpp"
+source_template='#include "%SUB_FOLDER%/%CLASS_NAME%.hpp"
 
 namespace %NAMESPACE% {
 
@@ -64,7 +64,7 @@ namespace %NAMESPACE% {
 
 test_template='
 #include <gtest/gtest.h>
-#include "../../include/%SUB_FOLDER%/%CLASS_NAME%.hpp"
+#include "%SUB_FOLDER%/%CLASS_NAME%.hpp"
 
 namespace %NAMESPACE% {
 
