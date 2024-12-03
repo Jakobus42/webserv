@@ -274,14 +274,15 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                                               {</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  bzero(&amp;<a class="code" href="classwww_1_1ClientSocket.html#acf47ceb0611361aad83e5bbf060f14f9">m_socketAddress</a>, <span class="keyword">sizeof</span>(<a class="code" href="namespacewww.html#a81173bdace5c11c7ba16a44f7ebca4cc">t_sockaddr</a>));</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <a class="code" href="classwww_1_1ClientSocket.html#a216fb04f89d2f719af53747c09b2e7bf">m_socketSize</a> = 0;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="classwww_1_1ClientSocket.html#ad1e661ecf052a5836b8b007357a029c9">m_fd</a> = <a class="code" href="classwww_1_1ClientSocket.html#a63e897ed23219323008d67f506c627f4">::accept</a>(listen_socket, &amp;<a class="code" href="classwww_1_1ClientSocket.html#acf47ceb0611361aad83e5bbf060f14f9">m_socketAddress</a>, &amp;<a class="code" href="classwww_1_1ClientSocket.html#a216fb04f89d2f719af53747c09b2e7bf">m_socketSize</a>);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classwww_1_1ClientSocket.html#ad1e661ecf052a5836b8b007357a029c9">m_fd</a> &lt; 0) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Shit, accept didn&#39;t work&quot;</span> &lt;&lt; errno &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">throw</span> std::exception();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <a class="code" href="classwww_1_1ClientSocket.html#ab0c686f2473551942144ce36e9974684">m_alive</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
-<div class="ttc" id="anamespacewww_html_a81173bdace5c11c7ba16a44f7ebca4cc"><div class="ttname"><a href="namespacewww.html#a81173bdace5c11c7ba16a44f7ebca4cc">www::t_sockaddr</a></div><div class="ttdeci">struct sockaddr t_sockaddr</div><div class="ttdef"><b>Definition:</b> <a href="ServerSocket_8cpp_source.html#l00001">ServerSocket.cpp:10</a></div></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Accepting connection for socket &quot;</span> &lt;&lt; listen_socket &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <a class="code" href="classwww_1_1ClientSocket.html#ad1e661ecf052a5836b8b007357a029c9">m_fd</a> = <a class="code" href="classwww_1_1ClientSocket.html#a63e897ed23219323008d67f506c627f4">::accept</a>(listen_socket, &amp;<a class="code" href="classwww_1_1ClientSocket.html#acf47ceb0611361aad83e5bbf060f14f9">m_socketAddress</a>, &amp;<a class="code" href="classwww_1_1ClientSocket.html#a216fb04f89d2f719af53747c09b2e7bf">m_socketSize</a>);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classwww_1_1ClientSocket.html#ad1e661ecf052a5836b8b007357a029c9">m_fd</a> &lt; 0) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Shit, accept didn&#39;t work&quot;</span> &lt;&lt; errno &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">throw</span> std::exception();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <a class="code" href="classwww_1_1ClientSocket.html#ab0c686f2473551942144ce36e9974684">m_alive</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="ttc" id="anamespacewww_html_a81173bdace5c11c7ba16a44f7ebca4cc"><div class="ttname"><a href="namespacewww.html#a81173bdace5c11c7ba16a44f7ebca4cc">www::t_sockaddr</a></div><div class="ttdeci">struct sockaddr t_sockaddr</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8cpp_source.html#l00001">VirtualServerSocket.cpp:10</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

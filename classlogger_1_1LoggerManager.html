@@ -227,12 +227,12 @@ Private Attributes</h2></td></tr>
 <p>Destructor for the <a class="el" href="classlogger_1_1LoggerManager.html" title="Manages multiple loggers and handles global logging operations.">LoggerManager</a> class. </p>
 <p>This destructor is responsible for cleaning up all logger objects stored in the <code>m_loggers</code> map. It iterates over each logger and deletes the dynamically allocated logger instances to avoid memory leaks. </p>
 
-<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00020">20</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                              {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordflow">for</span> (LogMap::iterator it = <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.begin(); it != <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.end(); ++it) {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">delete</span> it-&gt;second;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  }</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00019">19</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                              {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keywordflow">for</span> (LogMap::iterator it = <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.begin(); it != <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.end(); ++it) {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">delete</span> it-&gt;second;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
 <div class="ttc" id="aclasslogger_1_1LoggerManager_html_af2885846001affd86a455cf297797fce"><div class="ttname"><a href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">logger::LoggerManager::m_loggers</a></div><div class="ttdeci">LogMap m_loggers</div><div class="ttdef"><b>Definition:</b> <a href="LoggerManager_8hpp_source.html#l00042">LoggerManager.hpp:42</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -287,8 +287,8 @@ Private Attributes</h2></td></tr>
 <p>Retrieves the global log level, which determines the minimum level of messages that will be processed by the manager.</p>
 <dl class="section return"><dt>Returns</dt><dd>The current global log level. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00141">141</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classlogger_1_1LoggerManager.html#a2dfcb8ecb7a5c803dc4aaee1e92ad17b">m_globalLogLevel</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00140">140</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classlogger_1_1LoggerManager.html#a2dfcb8ecb7a5c803dc4aaee1e92ad17b">m_globalLogLevel</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -319,11 +319,11 @@ Private Attributes</h2></td></tr>
 <p>This method ensures that only one instance of <code><a class="el" href="classlogger_1_1LoggerManager.html" title="Manages multiple loggers and handles global logging operations.">LoggerManager</a></code> exists and provides access to it. The instance is created on first use and is returned for all subsequent calls.</p>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the singleton <code><a class="el" href="classlogger_1_1LoggerManager.html" title="Manages multiple loggers and handles global logging operations.">LoggerManager</a></code> instance. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00053">53</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                          {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">static</span> <a class="code" href="classlogger_1_1LoggerManager.html#adb629fe3dad321a3083c877904089bd2">LoggerManager</a> instance;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">return</span> instance;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00052">52</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                          {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keyword">static</span> <a class="code" href="classlogger_1_1LoggerManager.html#adb629fe3dad321a3083c877904089bd2">LoggerManager</a> instance;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordflow">return</span> instance;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
 <div class="ttc" id="aclasslogger_1_1LoggerManager_html_adb629fe3dad321a3083c877904089bd2"><div class="ttname"><a href="classlogger_1_1LoggerManager.html#adb629fe3dad321a3083c877904089bd2">logger::LoggerManager::LoggerManager</a></div><div class="ttdeci">LoggerManager()</div><div class="ttdoc">Constructs a new LoggerManager object.</div><div class="ttdef"><b>Definition:</b> <a href="LoggerManager_8cpp_source.html#l00011">LoggerManager.cpp:11</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -373,14 +373,14 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00098">98</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                                                                {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordflow">for</span> (LogMap::iterator it = <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.begin(); it != <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.end(); ++it) {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classlogger_1_1LoggerManager.html#a2dfcb8ecb7a5c803dc4aaee1e92ad17b">m_globalLogLevel</a> &lt;= level) {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      it-&gt;second-&gt;log(message, level);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00097">97</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                                                                {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordflow">for</span> (LogMap::iterator it = <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.begin(); it != <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.end(); ++it) {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classlogger_1_1LoggerManager.html#a2dfcb8ecb7a5c803dc4aaee1e92ad17b">m_globalLogLevel</a> &lt;= level) {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      it-&gt;second-&gt;log(message, level);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -418,13 +418,13 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to this <code><a class="el" href="classlogger_1_1LoggerManager.html" title="Manages multiple loggers and handles global logging operations.">LoggerManager</a></code> object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00037">37</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                                                  {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordflow">if</span> (<span class="keyword">this</span> != &amp;other) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classlogger_1_1LoggerManager.html#a2dfcb8ecb7a5c803dc4aaee1e92ad17b">m_globalLogLevel</a> = other.m_globalLogLevel;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
+<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00036">36</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                                                                  {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordflow">if</span> (<span class="keyword">this</span> != &amp;other) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classlogger_1_1LoggerManager.html#a2dfcb8ecb7a5c803dc4aaee1e92ad17b">m_globalLogLevel</a> = other.m_globalLogLevel;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;};</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -464,10 +464,10 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00067">67</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                                                               {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.insert(std::make_pair(loggerName, <a class="code" href="namespacelogger.html">logger</a>));</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00066">66</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                                                               {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.insert(std::make_pair(loggerName, <a class="code" href="namespacelogger.html">logger</a>));</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
 <div class="ttc" id="anamespacelogger_html"><div class="ttname"><a href="namespacelogger.html">logger</a></div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8cpp_source.html#l00003">ALogger.cpp:3</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -506,8 +506,8 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00131">131</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;{ <a class="code" href="classlogger_1_1LoggerManager.html#a2dfcb8ecb7a5c803dc4aaee1e92ad17b">m_globalLogLevel</a> = level; }</div>
+<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00130">130</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;{ <a class="code" href="classlogger_1_1LoggerManager.html#a2dfcb8ecb7a5c803dc4aaee1e92ad17b">m_globalLogLevel</a> = level; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -556,13 +556,13 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00116">116</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                                                                              {</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  LogMap::iterator it = <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.find(loggerName);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="keywordflow">if</span> (it != <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.end()) {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    it-&gt;second-&gt;setLevel(level);</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  }</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00115">115</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                                                                              {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  LogMap::iterator it = <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.find(loggerName);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordflow">if</span> (it != <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.end()) {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    it-&gt;second-&gt;setLevel(level);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -600,14 +600,14 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00080">80</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                                                {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  LogMap::iterator it = <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.find(loggerName);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordflow">if</span> (it != <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.end()) {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keyword">delete</span> it-&gt;second;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.erase(it);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="LoggerManager_8cpp_source.html#l00079">79</a> of file <a class="el" href="LoggerManager_8cpp_source.html">LoggerManager.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                                                {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  LogMap::iterator it = <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.find(loggerName);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordflow">if</span> (it != <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.end()) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">delete</span> it-&gt;second;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="classlogger_1_1LoggerManager.html#af2885846001affd86a455cf297797fce">m_loggers</a>.erase(it);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

@@ -13,6 +13,6 @@ var hierarchy =
     [ "configfile::s_config_data", "structconfigfile_1_1s__config__data.html", null ],
     [ "configfile::s_location", "structconfigfile_1_1s__location.html", null ],
     [ "configfile::s_server", "structconfigfile_1_1s__server.html", null ],
-    [ "www::ServerSocket", "classwww_1_1ServerSocket.html", null ],
-    [ "www::VirtualServer", "classwww_1_1VirtualServer.html", null ]
+    [ "www::VirtualServer", "classwww_1_1VirtualServer.html", null ],
+    [ "www::VirtualServerSocket", "classwww_1_1VirtualServerSocket.html", null ]
 ];
