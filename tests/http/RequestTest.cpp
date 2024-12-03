@@ -1,6 +1,6 @@
 
 #include <gtest/gtest.h>
-#include "../../include/http/Request.hpp"
+#include "http/Request.hpp"
 
 namespace http {
 

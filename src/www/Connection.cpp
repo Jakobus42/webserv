@@ -1,4 +1,4 @@
-#include "../../include/www/Connection.hpp"
+#include "www/Connection.hpp"
 
 #include <unistd.h>
 

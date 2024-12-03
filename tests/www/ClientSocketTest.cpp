@@ -1,6 +1,6 @@
 
 #include <gtest/gtest.h>
-#include "../../include/www/ClientSocket.hpp"
+#include "www/ClientSocket.hpp"
 
 namespace www {
 

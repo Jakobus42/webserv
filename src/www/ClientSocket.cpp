@@ -1,4 +1,4 @@
-#include "../../include/www/ClientSocket.hpp"
+#include "www/ClientSocket.hpp"
 
 #include <errno.h>
 #include <string.h>
