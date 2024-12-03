@@ -23,10 +23,10 @@ ServerSocket::ServerSocket(int port) : m_fd(-1), m_port(port), m_open(false), m_
 
 /**
  * @brief Destroys the ServerSocket object.
+ * @warning Does not close the FD (for a reason), close manually or it leaks!
+ * @note Could add a flag close_on_destroy that is checked in the destructor.
  */
-ServerSocket::~ServerSocket() {
-  //   this->close();
-}
+ServerSocket::~ServerSocket() {}
 
 /**
  * @brief Copy constructor.

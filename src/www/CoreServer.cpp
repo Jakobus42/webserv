@@ -48,12 +48,24 @@ const std::vector<VirtualServer>& CoreServer::getVirtualServers(void) const { re
 
 std::vector<VirtualServer>& CoreServer::getVirtualServers(void) { return m_virtual_servers; }
 
-bool CoreServer::addVirtualServer() {
-  VirtualServer server("Peter", 8080);
+void CoreServer::addVirtualServer() throw(std::exception) {
+  VirtualServer server("Default Server", 80);
+
   m_virtual_servers.push_back(server);
-  return true;
+  if (m_virtual_servers.back().listen() == false) throw std::exception();
 }
 
-bool CoreServer::removeVirtualServer() { return true; }
+void CoreServer::addVirtualServer(const std::string& name, uint32_t port,
+                                  uint64_t clientMaxBodySize) throw(std::exception) {
+  VirtualServer server(name, port, clientMaxBodySize);
+
+  m_virtual_servers.push_back(server);
+  if (m_virtual_servers.back().listen() == false) throw std::exception();
+}
+
+bool CoreServer::removeVirtualServer(std::vector<VirtualServer>::iterator it) {
+  m_virtual_servers.erase(it);
+  return true;
+}
 
 } /* namespace www */

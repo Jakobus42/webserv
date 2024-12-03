@@ -37,7 +37,7 @@ class VirtualServer {
   bool addConnection(void);
   bool removeConnection(Connection& connection);
 
-  void listen(void);
+  bool listen(void);
 
  private:
   std::string m_name;

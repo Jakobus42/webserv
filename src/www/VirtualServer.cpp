@@ -21,7 +21,12 @@ VirtualServer::VirtualServer(const std::string& name, int port, uint64_t maxBody
  * @brief Destroys the VirtualServer object.
  * @todo Should prolly close everything down neatly, this happens only at exit.
  */
-VirtualServer::~VirtualServer() {}
+VirtualServer::~VirtualServer() {
+  for (t_connections::iterator it = m_connections.begin(); it != m_connections.end(); ++it) {
+    it->close();
+  }
+  this->getSocket().close();
+}
 
 /**
  * @brief Copy constructor.
@@ -57,6 +62,13 @@ ServerSocket& VirtualServer::getSocket(void) { return m_listen_socket; }
 
 const t_connections& VirtualServer::getConnections(void) const { return m_connections; }
 
+/**
+ * @brief Accepts the next incoming connection in the VirtualServerSocket's
+ * queue
+ *
+ * @return true if the connection could be established
+ * @return false if accept() within Connection->ClientSocket fails
+ */
 bool VirtualServer::addConnection(void) {
   try {
     Connection newConnection(m_listen_socket.getFd());
@@ -79,6 +91,9 @@ bool VirtualServer::removeConnection(Connection& connection) {
   return true;
 }
 
-void VirtualServer::listen(void) {}
+bool VirtualServer::listen(void) {
+  if (this->getSocket().init() == false) return false;
+  return true;
+}
 
 } /* namespace www */
