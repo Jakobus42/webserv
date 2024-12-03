@@ -19,6 +19,9 @@ class CoreServer {
   int getEpollFd() const;
   const std::vector<VirtualServer>& getVirtualServers() const;
 
+  bool addVirtualServer();
+  bool removeVirtualServer();
+
  private:
   CoreServer(const CoreServer& other);
   CoreServer& operator=(const CoreServer& other);

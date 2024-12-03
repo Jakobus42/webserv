@@ -16,6 +16,10 @@ int main(int argc, char** const argv) {
     return 1;
   }
 
+  server.addVirtualServer();
+  std::cout << "Added" << std::endl;
+  std::cout << server.getVirtualServers().at(0).getName() << std::endl;
+
   try {
     logger::LoggerManager& loggerManager = logger::LoggerManager::getInstance();
     loggerManager.registerLogger("Console", new logger::ConsoleLogger());

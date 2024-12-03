@@ -46,4 +46,12 @@ void CoreServer::init(void) throw(std::exception) {
 
 const std::vector<VirtualServer>& CoreServer::getVirtualServers(void) const { return m_virtual_servers; }
 
+bool CoreServer::addVirtualServer() {
+  VirtualServer server;
+  m_virtual_servers.push_back(server);
+  return true;
+}
+
+bool CoreServer::removeVirtualServer() { return true; }
+
 } /* namespace www */
