@@ -211,11 +211,11 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Destroys the <a class="el" href="classwww_1_1ServerSocket.html" title="...">ServerSocket</a> object. </p>
+<dl class="section warning"><dt>Warning</dt><dd>Does not close the FD (for a reason), close manually or it leaks! </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Could add a flag close_on_destroy that is checked in the destructor. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ServerSocket_8cpp_source.html#l00027">27</a> of file <a class="el" href="ServerSocket_8cpp_source.html">ServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                            {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="comment">//   this-&gt;close();</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="ServerSocket_8cpp_source.html#l00029">29</a> of file <a class="el" href="ServerSocket_8cpp_source.html">ServerSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -357,10 +357,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwww_1_1ServerSocket_aa928555681110b1611ee61610267b20c_icgraph.png" border="0" usemap="#aclasswww_1_1ServerSocket_aa928555681110b1611ee61610267b20c_icgraph" alt=""/></div>
 <map name="aclasswww_1_1ServerSocket_aa928555681110b1611ee61610267b20c_icgraph" id="aclasswww_1_1ServerSocket_aa928555681110b1611ee61610267b20c_icgraph">
-<area shape="rect" title=" " alt="" coords="460,57,615,98"/>
+<area shape="rect" title=" " alt="" coords="460,90,615,131"/>
 <area shape="rect" href="classwww_1_1ServerSocket.html#abd85e324fc679a6b4c875b0f861e67e7" title=" " alt="" coords="229,5,412,32"/>
 <area shape="rect" href="classwww_1_1ServerSocket.html#ac66a59f0752f64f39ffab991133e1a03" title=" " alt="" coords="243,57,398,98"/>
 <area shape="rect" href="classwww_1_1ServerSocket.html#a998c6a1482ffdb0c6536cd70441b09b3" title=" " alt="" coords="243,122,398,163"/>
+<area shape="rect" href="classwww_1_1VirtualServer.html#a51f567a132d9f7d6558db98f0f7bcc0a" title="Destroys the VirtualServer object." alt="" coords="247,187,394,229"/>
 <area shape="rect" href="classwww_1_1ServerSocket.html#a9d48668c0a236d6056f2cf5d31bc1908" title=" " alt="" coords="5,64,181,91"/>
 </map>
 </div>
@@ -444,7 +445,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classwww_1_1ServerSocket_a14e5ddb50e630ee23670e80837f5c4ec_icgraph.png" border="0" usemap="#aclasswww_1_1ServerSocket_a14e5ddb50e630ee23670e80837f5c4ec_icgraph" alt=""/></div>
 <map name="aclasswww_1_1ServerSocket_a14e5ddb50e630ee23670e80837f5c4ec_icgraph" id="aclasswww_1_1ServerSocket_a14e5ddb50e630ee23670e80837f5c4ec_icgraph">
 <area shape="rect" title=" " alt="" coords="411,39,565,80"/>
-<area shape="rect" href="classwww_1_1VirtualServer.html#aede7b760b616e0d1efd0f10e3006f4e6" title=" " alt="" coords="212,5,359,47"/>
+<area shape="rect" href="classwww_1_1VirtualServer.html#aede7b760b616e0d1efd0f10e3006f4e6" title="Accepts the next incoming connection in the VirtualServerSocket&#39;s queue." alt="" coords="212,5,359,47"/>
 <area shape="rect" href="classwww_1_1ServerSocket.html#a006e7c28f9dcd6c10a37be35509001fb" title="Copy assignment operator." alt="" coords="208,71,363,112"/>
 <area shape="rect" href="classwww_1_1ServerSocket.html#a99d1c3ff6758e8625c0f07cbadc19b93" title="Copy constructor." alt="" coords="5,71,160,112"/>
 </map>
@@ -785,11 +786,12 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwww_1_1ServerSocket_a5672ece2600601edffb55f2abd002be3_icgraph.png" border="0" usemap="#aclasswww_1_1ServerSocket_a5672ece2600601edffb55f2abd002be3_icgraph" alt=""/></div>
 <map name="aclasswww_1_1ServerSocket_a5672ece2600601edffb55f2abd002be3_icgraph" id="aclasswww_1_1ServerSocket_a5672ece2600601edffb55f2abd002be3_icgraph">
-<area shape="rect" title=" " alt="" coords="663,57,817,98"/>
-<area shape="rect" href="classwww_1_1ServerSocket.html#aa928555681110b1611ee61610267b20c" title=" " alt="" coords="460,57,615,98"/>
+<area shape="rect" title=" " alt="" coords="663,90,817,131"/>
+<area shape="rect" href="classwww_1_1ServerSocket.html#aa928555681110b1611ee61610267b20c" title=" " alt="" coords="460,90,615,131"/>
 <area shape="rect" href="classwww_1_1ServerSocket.html#abd85e324fc679a6b4c875b0f861e67e7" title=" " alt="" coords="229,5,412,32"/>
 <area shape="rect" href="classwww_1_1ServerSocket.html#ac66a59f0752f64f39ffab991133e1a03" title=" " alt="" coords="243,57,398,98"/>
 <area shape="rect" href="classwww_1_1ServerSocket.html#a998c6a1482ffdb0c6536cd70441b09b3" title=" " alt="" coords="243,122,398,163"/>
+<area shape="rect" href="classwww_1_1VirtualServer.html#a51f567a132d9f7d6558db98f0f7bcc0a" title="Destroys the VirtualServer object." alt="" coords="247,187,394,229"/>
 <area shape="rect" href="classwww_1_1ServerSocket.html#a9d48668c0a236d6056f2cf5d31bc1908" title=" " alt="" coords="5,64,181,91"/>
 </map>
 </div>
