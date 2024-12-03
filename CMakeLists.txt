@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.14)
 project(webserv_test)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 98)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+include_directories(${CMAKE_SOURCE_DIR}/include)
 
 include(FetchContent)
 FetchContent_Declare(
