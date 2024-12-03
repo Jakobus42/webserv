@@ -76,32 +76,35 @@ Include dependency graph for main.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#amain_8cpp" alt=""/></div>
 <map name="amain_8cpp" id="amain_8cpp">
-<area shape="rect" title=" " alt="" coords="625,5,708,32"/>
-<area shape="rect" title=" " alt="" coords="368,87,453,114"/>
-<area shape="rect" title=" " alt="" coords="668,437,748,464"/>
-<area shape="rect" href="Parser_8hpp.html" title=" " alt="" coords="528,80,672,121"/>
-<area shape="rect" href="LoggerManager_8hpp.html" title=" " alt="" coords="323,169,477,211"/>
-<area shape="rect" href="StringUtils_8hpp.html" title=" " alt="" coords="1293,87,1507,114"/>
-<area shape="rect" href="CoreServer_8hpp.html" title=" " alt="" coords="989,87,1211,114"/>
-<area shape="rect" title=" " alt="" coords="514,355,587,382"/>
-<area shape="rect" title=" " alt="" coords="493,266,544,293"/>
-<area shape="rect" title=" " alt="" coords="537,437,612,464"/>
-<area shape="rect" title=" " alt="" coords="1213,177,1275,203"/>
-<area shape="rect" title=" " alt="" coords="5,266,83,293"/>
-<area shape="rect" href="ALogger_8hpp.html" title=" " alt="" coords="337,348,476,389"/>
-<area shape="rect" href="ConsoleLogger_8hpp.html" title=" " alt="" coords="107,259,256,300"/>
-<area shape="rect" href="FileLogger_8hpp.html" title=" " alt="" coords="331,259,469,300"/>
-<area shape="rect" title=" " alt="" coords="377,437,436,464"/>
-<area shape="rect" title=" " alt="" coords="1320,437,1379,464"/>
-<area shape="rect" title=" " alt="" coords="1437,177,1496,203"/>
-<area shape="rect" href="VirtualServer_8hpp.html" title=" " alt="" coords="1011,169,1189,211"/>
-<area shape="rect" title=" " alt="" coords="1131,266,1202,293"/>
-<area shape="rect" href="ServerSocket_8hpp.html" title=" " alt="" coords="973,266,1107,293"/>
-<area shape="rect" title=" " alt="" coords="771,355,867,382"/>
-<area shape="rect" title=" " alt="" coords="891,355,970,382"/>
-<area shape="rect" title=" " alt="" coords="994,355,1086,382"/>
-<area shape="rect" title=" " alt="" coords="1110,355,1213,382"/>
-<area shape="rect" title=" " alt="" coords="1237,355,1312,382"/>
+<area shape="rect" title=" " alt="" coords="555,5,637,32"/>
+<area shape="rect" title=" " alt="" coords="297,87,383,114"/>
+<area shape="rect" title=" " alt="" coords="597,437,677,464"/>
+<area shape="rect" href="Parser_8hpp.html" title=" " alt="" coords="457,80,601,121"/>
+<area shape="rect" href="LoggerManager_8hpp.html" title=" " alt="" coords="343,169,497,211"/>
+<area shape="rect" href="StringUtils_8hpp.html" title=" " alt="" coords="700,177,913,203"/>
+<area shape="rect" href="CoreServer_8hpp.html" title=" " alt="" coords="891,87,1112,114"/>
+<area shape="rect" title=" " alt="" coords="118,355,191,382"/>
+<area shape="rect" title=" " alt="" coords="524,266,575,293"/>
+<area shape="rect" title=" " alt="" coords="100,437,175,464"/>
+<area shape="rect" title=" " alt="" coords="919,266,982,293"/>
+<area shape="rect" title=" " alt="" coords="36,266,113,293"/>
+<area shape="rect" href="ALogger_8hpp.html" title=" " alt="" coords="296,348,435,389"/>
+<area shape="rect" href="ConsoleLogger_8hpp.html" title=" " alt="" coords="351,259,500,300"/>
+<area shape="rect" href="FileLogger_8hpp.html" title=" " alt="" coords="137,259,276,300"/>
+<area shape="rect" title=" " alt="" coords="336,437,395,464"/>
+<area shape="rect" title=" " alt="" coords="761,437,820,464"/>
+<area shape="rect" title=" " alt="" coords="828,266,887,293"/>
+<area shape="rect" href="VirtualServer_8hpp.html" title=" " alt="" coords="1039,169,1217,211"/>
+<area shape="rect" title=" " alt="" coords="1049,437,1119,464"/>
+<area shape="rect" href="ServerSocket_8hpp.html" title=" " alt="" coords="1449,266,1583,293"/>
+<area shape="rect" href="Connection_8hpp.html" title=" " alt="" coords="1111,266,1283,293"/>
+<area shape="rect" title=" " alt="" coords="1412,355,1508,382"/>
+<area shape="rect" title=" " alt="" coords="1533,355,1611,382"/>
+<area shape="rect" title=" " alt="" coords="1635,355,1727,382"/>
+<area shape="rect" title=" " alt="" coords="1490,437,1593,464"/>
+<area shape="rect" title=" " alt="" coords="1313,355,1388,382"/>
+<area shape="rect" href="ClientSocket_8hpp.html" title=" " alt="" coords="1109,355,1289,382"/>
+<area shape="rect" title=" " alt="" coords="1155,437,1242,464"/>
 </map>
 </div>
 </div>
@@ -150,29 +153,40 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  }</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classlogger_1_1LoggerManager.html">logger::LoggerManager</a>&amp; loggerManager = <a class="code" href="classlogger_1_1LoggerManager.html#ad140bde7c3a4c9241fb147f2c864d018">logger::LoggerManager::getInstance</a>();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    loggerManager.<a class="code" href="classlogger_1_1LoggerManager.html#ae26ebcbad9c6e4f85769438abac46db5">registerLogger</a>(<span class="stringliteral">&quot;Console&quot;</span>, <span class="keyword">new</span> <a class="code" href="classlogger_1_1ConsoleLogger.html">logger::ConsoleLogger</a>());</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    loggerManager.<a class="code" href="classlogger_1_1LoggerManager.html#a45d840b2a9bd9fbfccb34689ddc79527">setLoggerLevel</a>(<span class="stringliteral">&quot;Console&quot;</span>, <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601">logger::ERROR</a>);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    loggerManager.<a class="code" href="classlogger_1_1LoggerManager.html#ae26ebcbad9c6e4f85769438abac46db5">registerLogger</a>(<span class="stringliteral">&quot;File&quot;</span>, <span class="keyword">new</span> <a class="code" href="classlogger_1_1FileLogger.html">logger::FileLogger</a>());</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    loggerManager.<a class="code" href="classlogger_1_1LoggerManager.html#a45d840b2a9bd9fbfccb34689ddc79527">setLoggerLevel</a>(<span class="stringliteral">&quot;File&quot;</span>, <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c">logger::DEBUG</a>);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    loggerManager.<a class="code" href="classlogger_1_1LoggerManager.html#a7237ff5a6cead3d670328feb6ea60cbd">setGlobalLogLevel</a>(<a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c">logger::DEBUG</a>);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="LoggerManager_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;test log...&quot;</span>, <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2a6526ebf74c120c19c814fb5b34ad2dd4">logger::FATAL</a>);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::string <a class="code" href="namespaceconfigfile.html">configfile</a>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">if</span> (argc &gt; 1) {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;      <a class="code" href="namespaceconfigfile.html">configfile</a> = argv[1];</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      <a class="code" href="namespaceconfigfile.html">configfile</a> = <span class="stringliteral">&quot;config/configfile_example&quot;</span>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classconfigfile_1_1ConfigFileParser.html">configfile::ConfigFileParser</a> configFileParser;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">if</span> (configFileParser.<a class="code" href="classconfigfile_1_1ConfigFileParser.html#a50af4e49462d1d98e1323db4966b8066">loadConfigFile</a>(<a class="code" href="namespaceconfigfile.html">configfile</a>) == 1) <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// configFileParser.printConfigData(1);</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    loggerManager.<a class="code" href="classlogger_1_1LoggerManager.html#adf2a8a1ad83a5404d6249518fa460971">unregisterLogger</a>(<span class="stringliteral">&quot;File&quot;</span>);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    loggerManager.<a class="code" href="classlogger_1_1LoggerManager.html#adf2a8a1ad83a5404d6249518fa460971">unregisterLogger</a>(<span class="stringliteral">&quot;Console&quot;</span>);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="LoggerManager_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;ERROR: &quot;</span> &lt;&lt; e.what(), <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601">logger::ERROR</a>)</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="comment">// server.addVirtualServer();</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="comment">// std::cout &lt;&lt; &quot;Added server: &quot;;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="comment">// std::cout &lt;&lt; server.getVirtualServers().at(0).getName() &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="comment">// if (server.getVirtualServers().at(0).getSocket().init() == false) {</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="comment">//   std::cout &lt;&lt; &quot;Whoopsie&quot; &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="comment">// }</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="comment">// std::cout &lt;&lt; &quot;Initialized...&quot; &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="comment">// if (server.getVirtualServers().at(0).addConnection() == false) {</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="comment">//   std::cout &lt;&lt; &quot;Oh darnit&quot; &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="comment">// }</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classlogger_1_1LoggerManager.html">logger::LoggerManager</a>&amp; loggerManager = <a class="code" href="classlogger_1_1LoggerManager.html#ad140bde7c3a4c9241fb147f2c864d018">logger::LoggerManager::getInstance</a>();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    loggerManager.<a class="code" href="classlogger_1_1LoggerManager.html#ae26ebcbad9c6e4f85769438abac46db5">registerLogger</a>(<span class="stringliteral">&quot;Console&quot;</span>, <span class="keyword">new</span> <a class="code" href="classlogger_1_1ConsoleLogger.html">logger::ConsoleLogger</a>());</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    loggerManager.<a class="code" href="classlogger_1_1LoggerManager.html#a45d840b2a9bd9fbfccb34689ddc79527">setLoggerLevel</a>(<span class="stringliteral">&quot;Console&quot;</span>, <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601">logger::ERROR</a>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    loggerManager.<a class="code" href="classlogger_1_1LoggerManager.html#ae26ebcbad9c6e4f85769438abac46db5">registerLogger</a>(<span class="stringliteral">&quot;File&quot;</span>, <span class="keyword">new</span> <a class="code" href="classlogger_1_1FileLogger.html">logger::FileLogger</a>());</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    loggerManager.<a class="code" href="classlogger_1_1LoggerManager.html#a45d840b2a9bd9fbfccb34689ddc79527">setLoggerLevel</a>(<span class="stringliteral">&quot;File&quot;</span>, <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c">logger::DEBUG</a>);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    loggerManager.<a class="code" href="classlogger_1_1LoggerManager.html#a7237ff5a6cead3d670328feb6ea60cbd">setGlobalLogLevel</a>(<a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c">logger::DEBUG</a>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="LoggerManager_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;test log...&quot;</span>, <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2a6526ebf74c120c19c814fb5b34ad2dd4">logger::FATAL</a>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    std::string <a class="code" href="namespaceconfigfile.html">configfile</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">if</span> (argc &gt; 1) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      <a class="code" href="namespaceconfigfile.html">configfile</a> = argv[1];</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <a class="code" href="namespaceconfigfile.html">configfile</a> = <span class="stringliteral">&quot;config/configfile_example&quot;</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classconfigfile_1_1ConfigFileParser.html">configfile::ConfigFileParser</a> configFileParser;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span> (configFileParser.<a class="code" href="classconfigfile_1_1ConfigFileParser.html#a50af4e49462d1d98e1323db4966b8066">loadConfigFile</a>(<a class="code" href="namespaceconfigfile.html">configfile</a>) == 1) <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">// configFileParser.printConfigData(1);</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    loggerManager.<a class="code" href="classlogger_1_1LoggerManager.html#adf2a8a1ad83a5404d6249518fa460971">unregisterLogger</a>(<span class="stringliteral">&quot;File&quot;</span>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    loggerManager.<a class="code" href="classlogger_1_1LoggerManager.html#adf2a8a1ad83a5404d6249518fa460971">unregisterLogger</a>(<span class="stringliteral">&quot;Console&quot;</span>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="LoggerManager_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;ERROR: &quot;</span> &lt;&lt; e.what(), <a class="code" href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601">logger::ERROR</a>)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 <div class="ttc" id="aLoggerManager_8hpp_html_a35a9ed336fa2523662640093badacab1"><div class="ttname"><a href="LoggerManager_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a></div><div class="ttdeci">#define LOG(message, level)</div><div class="ttdoc">Logs a message using the LoggerManager.</div><div class="ttdef"><b>Definition:</b> <a href="LoggerManager_8hpp_source.html#l00063">LoggerManager.hpp:63</a></div></div>
 <div class="ttc" id="aclassconfigfile_1_1ConfigFileParser_html"><div class="ttname"><a href="classconfigfile_1_1ConfigFileParser.html">configfile::ConfigFileParser</a></div><div class="ttdoc">This class is responsible for parsing the configuration file.</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00065">Parser.hpp:65</a></div></div>
 <div class="ttc" id="aclassconfigfile_1_1ConfigFileParser_html_a50af4e49462d1d98e1323db4966b8066"><div class="ttname"><a href="classconfigfile_1_1ConfigFileParser.html#a50af4e49462d1d98e1323db4966b8066">configfile::ConfigFileParser::loadConfigFile</a></div><div class="ttdeci">int loadConfigFile(std::string &amp;configFileName)</div><div class="ttdoc">Loads the configuration file, saving all the information.</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8cpp_source.html#l00162">Parser.cpp:162</a></div></div>

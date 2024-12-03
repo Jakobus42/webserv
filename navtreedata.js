@@ -67,6 +67,7 @@ var NAVTREE =
       ] ],
       [ "Quick Command Reference", "md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md32", null ]
     ] ],
+    [ "Todo List", "todo.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -103,7 +104,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "ALogger_8cpp.html",
-"md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md16"
+"classwww_1_1VirtualServer.html#a87e822e295bcc2705afe0a6f93bfe1c0"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

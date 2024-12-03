@@ -78,7 +78,7 @@ Collaboration diagram for www::CoreServer:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwww_1_1CoreServer__coll__graph.png" border="0" usemap="#awww_1_1CoreServer_coll__map" alt="Collaboration graph"/></div>
 <map name="awww_1_1CoreServer_coll__map" id="awww_1_1CoreServer_coll__map">
-<area shape="rect" title="..." alt="" coords="5,5,165,185"/>
+<area shape="rect" title="..." alt="" coords="5,5,188,229"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -96,6 +96,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0a03136c8e71576495df9b106932d238"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a375b9148831eca17c0230a44fb129d72"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="classwww_1_1VirtualServer.html">VirtualServer</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1CoreServer.html#a375b9148831eca17c0230a44fb129d72">getVirtualServers</a> () const</td></tr>
 <tr class="separator:a375b9148831eca17c0230a44fb129d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad79a9897ea7b23e8b0963ae8d3978736"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classwww_1_1VirtualServer.html">VirtualServer</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1CoreServer.html#ad79a9897ea7b23e8b0963ae8d3978736">getVirtualServers</a> ()</td></tr>
+<tr class="separator:ad79a9897ea7b23e8b0963ae8d3978736"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3373d0205d8c881948c1b7a0ce2cc58e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1CoreServer.html#a3373d0205d8c881948c1b7a0ce2cc58e">addVirtualServer</a> ()</td></tr>
+<tr class="separator:a3373d0205d8c881948c1b7a0ce2cc58e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad8a45ac6555d4a081c90a474bbd9c2b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1CoreServer.html#aad8a45ac6555d4a081c90a474bbd9c2b">removeVirtualServer</a> ()</td></tr>
+<tr class="separator:aad8a45ac6555d4a081c90a474bbd9c2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -135,8 +141,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00011">11</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;: <a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>(-1), <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>() {}</div>
-<div class="ttc" id="aclasswww_1_1CoreServer_html_a2480fe35a8d69df0417662559867fe8e"><div class="ttname"><a href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">www::CoreServer::m_epoll_master_fd</a></div><div class="ttdeci">int m_epoll_master_fd</div><div class="ttdef"><b>Definition:</b> <a href="CoreServer_8hpp_source.html#l00026">CoreServer.hpp:26</a></div></div>
-<div class="ttc" id="aclasswww_1_1CoreServer_html_a78190c9b7d9ff49b8c010ff7bbe88a82"><div class="ttname"><a href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">www::CoreServer::m_virtual_servers</a></div><div class="ttdeci">std::vector&lt; VirtualServer &gt; m_virtual_servers</div><div class="ttdef"><b>Definition:</b> <a href="CoreServer_8hpp_source.html#l00027">CoreServer.hpp:27</a></div></div>
+<div class="ttc" id="aclasswww_1_1CoreServer_html_a2480fe35a8d69df0417662559867fe8e"><div class="ttname"><a href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">www::CoreServer::m_epoll_master_fd</a></div><div class="ttdeci">int m_epoll_master_fd</div><div class="ttdef"><b>Definition:</b> <a href="CoreServer_8hpp_source.html#l00030">CoreServer.hpp:30</a></div></div>
+<div class="ttc" id="aclasswww_1_1CoreServer_html_a78190c9b7d9ff49b8c010ff7bbe88a82"><div class="ttname"><a href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">www::CoreServer::m_virtual_servers</a></div><div class="ttdeci">std::vector&lt; VirtualServer &gt; m_virtual_servers</div><div class="ttdef"><b>Definition:</b> <a href="CoreServer_8hpp_source.html#l00031">CoreServer.hpp:31</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -189,6 +195,30 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a3373d0205d8c881948c1b7a0ce2cc58e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3373d0205d8c881948c1b7a0ce2cc58e">&#9670;&nbsp;</a></span>addVirtualServer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool www::CoreServer::addVirtualServer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00051">51</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                  {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  VirtualServer server(<span class="stringliteral">&quot;Peter&quot;</span>, 8080);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.push_back(server);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a0a03136c8e71576495df9b106932d238"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0a03136c8e71576495df9b106932d238">&#9670;&nbsp;</a></span>getEpollFd()</h2>
 
@@ -210,8 +240,29 @@ Private Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="ad79a9897ea7b23e8b0963ae8d3978736"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad79a9897ea7b23e8b0963ae8d3978736">&#9670;&nbsp;</a></span>getVirtualServers() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="classwww_1_1VirtualServer.html">VirtualServer</a> &gt; &amp; www::CoreServer::getVirtualServers </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00049">49</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a375b9148831eca17c0230a44fb129d72"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a375b9148831eca17c0230a44fb129d72">&#9670;&nbsp;</a></span>getVirtualServers()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a375b9148831eca17c0230a44fb129d72">&#9670;&nbsp;</a></span>getVirtualServers() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -296,6 +347,26 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="aad8a45ac6555d4a081c90a474bbd9c2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad8a45ac6555d4a081c90a474bbd9c2b">&#9670;&nbsp;</a></span>removeVirtualServer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool www::CoreServer::removeVirtualServer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00057">57</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{ <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a2480fe35a8d69df0417662559867fe8e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2480fe35a8d69df0417662559867fe8e">&#9670;&nbsp;</a></span>m_epoll_master_fd</h2>
@@ -317,7 +388,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8hpp_source.html#l00026">26</a> of file <a class="el" href="CoreServer_8hpp_source.html">CoreServer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8hpp_source.html#l00030">30</a> of file <a class="el" href="CoreServer_8hpp_source.html">CoreServer.hpp</a>.</p>
 
 </div>
 </div>
@@ -341,7 +412,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8hpp_source.html#l00027">27</a> of file <a class="el" href="CoreServer_8hpp_source.html">CoreServer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8hpp_source.html#l00031">31</a> of file <a class="el" href="CoreServer_8hpp_source.html">CoreServer.hpp</a>.</p>
 
 </div>
 </div>
