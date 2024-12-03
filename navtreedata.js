@@ -103,7 +103,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "ALogger_8cpp.html",
-"md__home_runner_work_webserv_webserv_docs_contributing_getting_started.html#autotoc_md16"
+"md__home_runner_work_webserv_webserv_docs_contributing_config_file_basics.html#autotoc_md6"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
