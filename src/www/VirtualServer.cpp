@@ -14,8 +14,11 @@ VirtualServer::VirtualServer()
 /**
  * @brief Constructs a new VirtualServer object.
  */
-VirtualServer::VirtualServer(const std::string& name, int port, uint64_t maxBodySize)
-    : m_name(name), m_client_max_body_size(maxBodySize), m_listen_socket(port), m_connections() {}
+VirtualServer::VirtualServer(configfile::t_server& serverConfig)
+    : m_name(serverConfig.server_names.at(0)),
+      m_client_max_body_size(serverConfig.max_body_size),
+      m_listen_socket(serverConfig.port, serverConfig.ip_address),
+      m_connections() {}
 
 /**
  * @brief Destroys the VirtualServer object.
@@ -24,13 +27,7 @@ VirtualServer::VirtualServer(const std::string& name, int port, uint64_t maxBody
  * @warning and placing them in CoreServer's vector triggers the destructor,
  * @warning closing the socket in the process.
  */
-VirtualServer::~VirtualServer() {
-  // for (t_connections::iterator it = m_connections.begin(); it != m_connections.end(); ++it) {
-  //   if (it->getSocket().getFd() != -1)
-  //     it->close();
-  // }
-  // this->getSocket().close();
-}
+VirtualServer::~VirtualServer() {}
 
 /**
  * @brief Copy constructor.
@@ -60,14 +57,14 @@ const std::string& VirtualServer::getName(void) const { return m_name; }
 
 uint64_t VirtualServer::getMaxBodySize(void) const { return m_client_max_body_size; }
 
-const ServerSocket& VirtualServer::getSocket(void) const { return m_listen_socket; }
+const VirtualServerSocket& VirtualServer::getSocket(void) const { return m_listen_socket; }
 
-ServerSocket& VirtualServer::getSocket(void) { return m_listen_socket; }
+VirtualServerSocket& VirtualServer::getSocket(void) { return m_listen_socket; }
 
 const t_connections& VirtualServer::getConnections(void) const { return m_connections; }
 
 /**
- * @brief Accepts the next incoming connection in the VirtualServerSocket's
+ * @brief Accepts the next incoming connection in the VirtualVirtualServerSocket's
  * queue
  *
  * @return true if the connection could be established

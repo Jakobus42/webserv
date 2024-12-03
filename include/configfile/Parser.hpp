@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -45,7 +47,7 @@ enum CmdId {
 typedef struct s_server {
   // configurations
   int port;
-  std::vector<int> ip_address;
+  uint32_t ip_address;
   std::vector<std::string> server_names;
   std::map<int, std::string> errorPages;
   unsigned long max_body_size;
@@ -56,7 +58,7 @@ typedef struct s_server {
 typedef struct s_config_data {
   // servers
   std::vector<t_server> servers;
-} t_Config_data;
+} t_config_data;
 
 /**
  * @class ConfigFileParser
@@ -70,10 +72,10 @@ class ConfigFileParser {
   int loadConfigFile(std::string& configFileName);
 
   int getIsLoaded() const;
-  t_Config_data getConfigData() const;
+  t_config_data getConfigData() const;
   int getServerSize() const;
   int getServerPort(int index) const;
-  std::vector<int> getServerIp(int index) const;
+  uint32_t getServerIp(int index) const;
   std::vector<std::string> getServerNames(int index) const;
   std::map<int, std::string> getErrorPages(int index) const;
   unsigned long getMaxBodySize(int index) const;
@@ -85,7 +87,7 @@ class ConfigFileParser {
  private:
   ConfigFileParser(const ConfigFileParser& other);
   ConfigFileParser& operator=(const ConfigFileParser& other);
-  t_Config_data m_configData;
+  t_config_data m_configData;
   int m_isLoaded;
 
   int readConfigFile(std::string& configFileName, std::string& file);
