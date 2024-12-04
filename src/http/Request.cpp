@@ -22,6 +22,8 @@ Request::~Request() {}
 Request::Request(const Request& other)
     : m_read_buffer(),
       m_received_bytes(other.getReceivedBytes()),
+      m_method(other.getMethod()),
+      m_uri(other.getUri()),
       m_data(other.getData()),
       m_head(other.getHead()),
       m_body(other.getBody()) {}
@@ -36,6 +38,7 @@ Request& Request::operator=(const Request& rhs) {
   m_data = rhs.getData();
   m_head = rhs.getHead();
   m_body = rhs.getBody();
+  m_uri = rhs.getUri();
   m_received_bytes = rhs.getReceivedBytes();
   bzero(m_read_buffer, sizeof(m_read_buffer));
   return *this;
