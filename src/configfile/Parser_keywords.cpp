@@ -128,6 +128,7 @@ int ConfigFileParser::listen(std::vector<std::string>& args, int& lineCount, int
     }
     m_configData.servers.back().port = i;
   } else {
+    m_configData.servers.back().ip_address = 0;
     for (unsigned long i = 0; i < 4; i++) {
       std::size_t iter;
       if (i == 3) {
@@ -159,11 +160,8 @@ int ConfigFileParser::listen(std::vector<std::string>& args, int& lineCount, int
             logger::ERROR);
         return 1;
       }
+      m_configData.servers.back().ip_address += j << (8 * (3 - i));
       args[1] = args[1].substr(iter + 1);
-      for (unsigned long k = 4 - i; k > 0; k--) {
-        m_configData.servers.back().ip_address += j << (8 * (k - 1));
-      }
-      std::cout << m_configData.servers.back().ip_address << std::endl;
     }
     if (args[1].size() != 0) {
       int i = ft_stoi(args[1]);
