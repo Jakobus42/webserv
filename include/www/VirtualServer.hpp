@@ -29,7 +29,9 @@ class VirtualServer {
   VirtualServer(const VirtualServer& other);
   VirtualServer& operator=(const VirtualServer& other);
 
-  const std::string& getName(void) const;
+  const std::vector<std::string>& getNames(void) const;
+  const std::map<int, std::string>& getErrorPages(void) const;
+  const std::vector<configfile::t_location>& getLocations(void) const;
   uint64_t getMaxBodySize(void) const;
   const VirtualServerSocket& getSocket(void) const;
   VirtualServerSocket& getSocket(void);
@@ -41,9 +43,10 @@ class VirtualServer {
   bool listen(void);
 
  private:
-  std::string m_name;
   uint64_t m_client_max_body_size;
-  // Locations with metadata
+  std::vector<std::string> m_names;
+  std::vector<configfile::t_location> m_locations;
+  std::map<int, std::string> m_errorPages;
   VirtualServerSocket m_listen_socket;
   t_connections m_connections;
 };

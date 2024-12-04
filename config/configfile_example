@@ -1,6 +1,6 @@
 server
 {
-	#listen 1.1.1.1:122;  # Choose the port
+	listen 127.0.0.1:80;  # Choose the port
 	server_name example.com;  # Setup server names
 
 	# Default error pages
