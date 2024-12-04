@@ -9,8 +9,8 @@
 #include <sys/epoll.h>
 #endif
 
-#define DEFAULT_MAX_EVENTS 10
-#define MAX_EVENTS 10
+#define DEFAULT_MAX_EVENTS 256
+#define MAX_EVENTS 256
 
 namespace www {
 
