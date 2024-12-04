@@ -221,7 +221,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    router.<a class="code" href="classwww_1_1Router.html#a52bb9a471e4840199e8fd2e0eb12a301">registerRoute</a>(<a class="code" href="structwww_1_1Route.html">www::Route</a>(<span class="stringliteral">&quot;foo&quot;</span>, <a class="code" href="namespacewww.html#aeec20d23be4412d0cfb3b343d22712e2a77ae1de937adbc9a58092ead589256a2">www::GET</a>), <a class="code" href="main_8cpp.html#ad8f8d06fea0e90c71460e714ca52692c">foo</a>);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classwww_1_1Response.html">www::Response</a> res;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    router.handleRequest(<a class="code" href="classhttp_1_1Request.html">http::Request</a>(), res);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    router.<a class="code" href="classwww_1_1Router.html#ab827928d8a6306c12ff08bdb67be7f4d">processRequest</a>(<a class="code" href="classhttp_1_1Request.html">http::Request</a>(), res);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// configFileParser.printConfigData(1);</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    loggerManager.<a class="code" href="classlogger_1_1LoggerManager.html#adf2a8a1ad83a5404d6249518fa460971">unregisterLogger</a>(<span class="stringliteral">&quot;File&quot;</span>);</div>
@@ -251,6 +251,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aclasswww_1_1Response_html"><div class="ttname"><a href="classwww_1_1Response.html">www::Response</a></div><div class="ttdef"><b>Definition:</b> <a href="Router_8hpp_source.html#l00012">Router.hpp:12</a></div></div>
 <div class="ttc" id="aclasswww_1_1Router_html"><div class="ttname"><a href="classwww_1_1Router.html">www::Router</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition:</b> <a href="Router_8hpp_source.html#l00039">Router.hpp:39</a></div></div>
 <div class="ttc" id="aclasswww_1_1Router_html_a52bb9a471e4840199e8fd2e0eb12a301"><div class="ttname"><a href="classwww_1_1Router.html#a52bb9a471e4840199e8fd2e0eb12a301">www::Router::registerRoute</a></div><div class="ttdeci">void registerRoute(const Route &amp;route, const HandlerFunc &amp;handler)</div><div class="ttdef"><b>Definition:</b> <a href="Router_8cpp_source.html#l00044">Router.cpp:44</a></div></div>
+<div class="ttc" id="aclasswww_1_1Router_html_ab827928d8a6306c12ff08bdb67be7f4d"><div class="ttname"><a href="classwww_1_1Router.html#ab827928d8a6306c12ff08bdb67be7f4d">www::Router::processRequest</a></div><div class="ttdeci">void processRequest(const http::Request &amp;req, Response &amp;res) const</div><div class="ttdef"><b>Definition:</b> <a href="Router_8cpp_source.html#l00048">Router.cpp:48</a></div></div>
 <div class="ttc" id="amain_8cpp_html_ad8f8d06fea0e90c71460e714ca52692c"><div class="ttname"><a href="main_8cpp.html#ad8f8d06fea0e90c71460e714ca52692c">foo</a></div><div class="ttdeci">void foo(const http::Request &amp;, www::Response &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00008">main.cpp:8</a></div></div>
 <div class="ttc" id="anamespaceconfigfile_html"><div class="ttname"><a href="namespaceconfigfile.html">configfile</a></div><div class="ttdef"><b>Definition:</b> <a href="Parser_8cpp_source.html#l00003">Parser.cpp:3</a></div></div>
 <div class="ttc" id="anamespacelogger_html_a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c"><div class="ttname"><a href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c">logger::DEBUG</a></div><div class="ttdeci">@ DEBUG</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8hpp_source.html#l00017">ALogger.hpp:17</a></div></div>
@@ -262,37 +263,38 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8cpp_a172241e088a9da9dabf2cf839a73c865_cgraph.png" border="0" usemap="#amain_8cpp_a172241e088a9da9dabf2cf839a73c865_cgraph" alt=""/></div>
 <map name="amain_8cpp_a172241e088a9da9dabf2cf839a73c865_cgraph" id="amain_8cpp_a172241e088a9da9dabf2cf839a73c865_cgraph">
-<area shape="rect" title=" " alt="" coords="5,377,60,403"/>
-<area shape="rect" href="classwww_1_1CoreServer.html#ad7b57e659886aef2bf711f2642b4253a" title=" " alt="" coords="108,69,317,111"/>
-<area shape="rect" href="main_8cpp.html#ad8f8d06fea0e90c71460e714ca52692c" title=" " alt="" coords="191,135,234,162"/>
-<area shape="rect" href="classlogger_1_1LoggerManager.html#ad140bde7c3a4c9241fb147f2c864d018" title="Provides access to the singleton instance of LoggerManager." alt="" coords="127,187,299,228"/>
-<area shape="rect" href="classwww_1_1CoreServer.html#a375b9148831eca17c0230a44fb129d72" title=" " alt="" coords="109,252,316,293"/>
-<area shape="rect" href="classwww_1_1CoreServer.html#a669f22616cd765a3eeddc0e8cd72d2ea" title=" " alt="" coords="131,318,294,345"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a50af4e49462d1d98e1323db4966b8066" title="Loads the configuration file, saving all the information." alt="" coords="116,369,309,411"/>
-<area shape="rect" href="classlogger_1_1LoggerManager.html#ae26ebcbad9c6e4f85769438abac46db5" title="Registers a new logger with the manager." alt="" coords="127,435,299,476"/>
-<area shape="rect" href="classwww_1_1Router.html#a52bb9a471e4840199e8fd2e0eb12a301" title=" " alt="" coords="112,501,313,527"/>
-<area shape="rect" href="classlogger_1_1LoggerManager.html#a7237ff5a6cead3d670328feb6ea60cbd" title="Sets the global log level." alt="" coords="127,552,299,593"/>
-<area shape="rect" href="classlogger_1_1LoggerManager.html#a45d840b2a9bd9fbfccb34689ddc79527" title="Sets the log level for a specific logger." alt="" coords="127,617,299,659"/>
-<area shape="rect" href="classlogger_1_1LoggerManager.html#adf2a8a1ad83a5404d6249518fa460971" title="Unregisters a logger from the manager." alt="" coords="127,683,299,724"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#af7511360a26373b0dead35fbf698c92d" title="Parses the configuration file." alt="" coords="365,336,559,377"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#ad44a28949997d104df4adf501df93e27" title="Reads the configuration file." alt="" coords="365,401,559,443"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a418f206d5a0144b7635d260560e08ddd" title="parses a line in the configuration file." alt="" coords="607,336,800,377"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#aebc8f5033289d1fb5a1f1ad49c8a0aa1" title="Saves the configuration data." alt="" coords="848,336,1041,377"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#af3f279ca9388592cca6cfd3a2ea92e2e" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="1331,201,1524,243"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a9ea431676031c75d2c43ed50f1a5686c" title="sets the max body size for the server." alt="" coords="1331,397,1524,439"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a0ee3094c6d18fb7878cddac3e33c31d4" title="sets the error pages for the server." alt="" coords="1331,332,1524,373"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#ab3d5fe6fa58a1cf92d20b3c91d125e69" title="Identifies the command in the configuration file. and returns the id of the command." alt="" coords="1089,307,1283,348"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a80477b149418fa6a0245418364bac231" title="sets the index files for the location. (index.html by default)" alt="" coords="1331,267,1524,308"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#ae1400a057e278646e00a33c759ffdc22" title="sets the methods allowed for the location." alt="" coords="1331,5,1524,47"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#aa483b28cb1db8afe132e944352dbb659" title="Sets the port and ip address of the server." alt="" coords="1331,463,1524,504"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a6ef03a4ad9248be6f13208da6e5d6896" title="Creates a new location struct, initializes it and adds it to the config data." alt="" coords="1331,528,1524,569"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#ac40ef360285d46826685425e60948a13" title="redirects the user to a different url with a specific return code." alt="" coords="1331,71,1524,112"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#ae043ce4248820f92530fa624fe175716" title="sets the root directory for the location." alt="" coords="1331,136,1524,177"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a80b3f6b4e30809628b7848d3c29e5575" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="1331,593,1524,635"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#ad183b45a0c20d5fda540cfc235488d06" title="Sets the server name(s) of the server." alt="" coords="1331,659,1524,700"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a91faa997adaf9945ec4e7b3016fc3a4d" title="finds the current location in the configuration file." alt="" coords="1572,136,1765,177"/>
-<area shape="rect" href="namespaceconfigfile.html#ad34d46b490514a9d5c9408620ed5e006" title="Converts a string to a positive integer." alt="" coords="1604,405,1733,431"/>
-<area shape="rect" href="namespaceconfigfile.html#abab751401cc4565602552b0da2b831aa" title="Checks if a string is a number." alt="" coords="1590,470,1747,497"/>
+<area shape="rect" title=" " alt="" coords="5,406,60,433"/>
+<area shape="rect" href="classwww_1_1CoreServer.html#ad7b57e659886aef2bf711f2642b4253a" title=" " alt="" coords="111,69,321,111"/>
+<area shape="rect" href="main_8cpp.html#ad8f8d06fea0e90c71460e714ca52692c" title=" " alt="" coords="195,135,237,162"/>
+<area shape="rect" href="classlogger_1_1LoggerManager.html#ad140bde7c3a4c9241fb147f2c864d018" title="Provides access to the singleton instance of LoggerManager." alt="" coords="130,187,302,228"/>
+<area shape="rect" href="classwww_1_1CoreServer.html#a375b9148831eca17c0230a44fb129d72" title=" " alt="" coords="113,252,319,293"/>
+<area shape="rect" href="classwww_1_1CoreServer.html#a669f22616cd765a3eeddc0e8cd72d2ea" title=" " alt="" coords="135,318,297,345"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a50af4e49462d1d98e1323db4966b8066" title="Loads the configuration file, saving all the information." alt="" coords="119,369,313,411"/>
+<area shape="rect" href="classwww_1_1Router.html#ab827928d8a6306c12ff08bdb67be7f4d" title=" " alt="" coords="108,435,324,462"/>
+<area shape="rect" href="classlogger_1_1LoggerManager.html#ae26ebcbad9c6e4f85769438abac46db5" title="Registers a new logger with the manager." alt="" coords="130,487,302,528"/>
+<area shape="rect" href="classwww_1_1Router.html#a52bb9a471e4840199e8fd2e0eb12a301" title=" " alt="" coords="115,553,317,579"/>
+<area shape="rect" href="classlogger_1_1LoggerManager.html#a7237ff5a6cead3d670328feb6ea60cbd" title="Sets the global log level." alt="" coords="130,604,302,645"/>
+<area shape="rect" href="classlogger_1_1LoggerManager.html#a45d840b2a9bd9fbfccb34689ddc79527" title="Sets the log level for a specific logger." alt="" coords="130,669,302,711"/>
+<area shape="rect" href="classlogger_1_1LoggerManager.html#adf2a8a1ad83a5404d6249518fa460971" title="Unregisters a logger from the manager." alt="" coords="130,735,302,776"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#af7511360a26373b0dead35fbf698c92d" title="Parses the configuration file." alt="" coords="372,336,565,377"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#ad44a28949997d104df4adf501df93e27" title="Reads the configuration file." alt="" coords="372,401,565,443"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a418f206d5a0144b7635d260560e08ddd" title="parses a line in the configuration file." alt="" coords="613,336,807,377"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#aebc8f5033289d1fb5a1f1ad49c8a0aa1" title="Saves the configuration data." alt="" coords="855,336,1048,377"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#af3f279ca9388592cca6cfd3a2ea92e2e" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="1337,201,1531,243"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a9ea431676031c75d2c43ed50f1a5686c" title="sets the max body size for the server." alt="" coords="1337,397,1531,439"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a0ee3094c6d18fb7878cddac3e33c31d4" title="sets the error pages for the server." alt="" coords="1337,332,1531,373"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#ab3d5fe6fa58a1cf92d20b3c91d125e69" title="Identifies the command in the configuration file. and returns the id of the command." alt="" coords="1096,307,1289,348"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a80477b149418fa6a0245418364bac231" title="sets the index files for the location. (index.html by default)" alt="" coords="1337,267,1531,308"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#ae1400a057e278646e00a33c759ffdc22" title="sets the methods allowed for the location." alt="" coords="1337,5,1531,47"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#aa483b28cb1db8afe132e944352dbb659" title="Sets the port and ip address of the server." alt="" coords="1337,463,1531,504"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a6ef03a4ad9248be6f13208da6e5d6896" title="Creates a new location struct, initializes it and adds it to the config data." alt="" coords="1337,528,1531,569"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#ac40ef360285d46826685425e60948a13" title="redirects the user to a different url with a specific return code." alt="" coords="1337,71,1531,112"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#ae043ce4248820f92530fa624fe175716" title="sets the root directory for the location." alt="" coords="1337,136,1531,177"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a80b3f6b4e30809628b7848d3c29e5575" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="1337,593,1531,635"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#ad183b45a0c20d5fda540cfc235488d06" title="Sets the server name(s) of the server." alt="" coords="1337,659,1531,700"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a91faa997adaf9945ec4e7b3016fc3a4d" title="finds the current location in the configuration file." alt="" coords="1579,136,1772,177"/>
+<area shape="rect" href="namespaceconfigfile.html#ad34d46b490514a9d5c9408620ed5e006" title="Converts a string to a positive integer." alt="" coords="1611,405,1740,431"/>
+<area shape="rect" href="namespaceconfigfile.html#abab751401cc4565602552b0da2b831aa" title="Checks if a string is a number." alt="" coords="1597,470,1754,497"/>
 </map>
 </div>
 
