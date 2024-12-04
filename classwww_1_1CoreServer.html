@@ -149,8 +149,8 @@ Private Attributes</h2></td></tr>
 
 <p>Constructs a new <a class="el" href="classwww_1_1CoreServer.html" title="...">CoreServer</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00013">13</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;: <a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>(-1), <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>() {}</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00015">15</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;: <a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>(-1), <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>() {}</div>
 <div class="ttc" id="aclasswww_1_1CoreServer_html_a2480fe35a8d69df0417662559867fe8e"><div class="ttname"><a href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">www::CoreServer::m_epoll_master_fd</a></div><div class="ttdeci">int m_epoll_master_fd</div><div class="ttdef"><b>Definition:</b> <a href="CoreServer_8hpp_source.html#l00043">CoreServer.hpp:43</a></div></div>
 <div class="ttc" id="aclasswww_1_1CoreServer_html_a78190c9b7d9ff49b8c010ff7bbe88a82"><div class="ttname"><a href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">www::CoreServer::m_virtual_servers</a></div><div class="ttdeci">std::vector&lt; VirtualServer &gt; m_virtual_servers</div><div class="ttdef"><b>Definition:</b> <a href="CoreServer_8hpp_source.html#l00044">CoreServer.hpp:44</a></div></div>
 </div><!-- fragment -->
@@ -173,8 +173,8 @@ Private Attributes</h2></td></tr>
 
 <p>Destroys the <a class="el" href="classwww_1_1CoreServer.html" title="...">CoreServer</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00018">18</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{ close(<a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>); }</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00020">20</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{ close(<a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>); }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -226,13 +226,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00053">53</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                                      {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  VirtualServer server(<span class="stringliteral">&quot;Default Server&quot;</span>, 80);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.push_back(server);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.back().listen() == <span class="keyword">false</span>) <span class="keywordflow">throw</span> std::exception();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00055">55</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                                      {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  VirtualServer server(<span class="stringliteral">&quot;Default Server&quot;</span>, 80);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.push_back(server);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.back().listen() == <span class="keyword">false</span>) <span class="keywordflow">throw</span> std::exception();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -283,13 +283,13 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00060">60</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                                                                  {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  VirtualServer server(name, port, clientMaxBodySize);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.push_back(server);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.back().listen() == <span class="keyword">false</span>) <span class="keywordflow">throw</span> std::exception();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00062">62</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                                                                                  {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  VirtualServer server(name, port, clientMaxBodySize);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.push_back(server);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.back().listen() == <span class="keyword">false</span>) <span class="keywordflow">throw</span> std::exception();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -309,8 +309,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00042">42</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00044">44</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -330,8 +330,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00051">51</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00053">53</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -351,8 +351,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00049">49</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00051">51</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -387,11 +387,11 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00044">44</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                              {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a> = epoll_create1(0);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a> &lt; 0) <span class="keywordflow">throw</span> std::exception();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00046">46</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                              {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a> = epoll_create1(0);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a> &lt; 0) <span class="keywordflow">throw</span> std::exception();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -445,25 +445,25 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00091">91</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                       {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <a class="code" href="namespacewww.html#a43aef677ab180a84e5efb3a2f96e2632">t_event</a> events[<a class="code" href="ServerSocket_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>];</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">int</span> nEvents = epoll_wait(<a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>, events, <a class="code" href="ServerSocket_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>, 60);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">if</span> (nEvents &lt; 0) {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: Epoll dun goofed up!&quot;</span>);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nEvents; i++) {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      <span class="keywordtype">int</span> fd = events[i].data.fd;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      uint32_t event_mask = events[i].events;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      <span class="keywordflow">if</span> (<a class="code" href="classwww_1_1CoreServer.html#ac6a47bc19fa4ce82f3010922183cb832">m_event_handlers</a>.find(fd) != <a class="code" href="classwww_1_1CoreServer.html#ac6a47bc19fa4ce82f3010922183cb832">m_event_handlers</a>.end()) {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <a class="code" href="classwww_1_1CoreServer.html#ac6a47bc19fa4ce82f3010922183cb832">m_event_handlers</a>.at(fd)-&gt;handle(fd, event_mask);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  }</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00093">93</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                       {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <a class="code" href="namespacewww.html#a43aef677ab180a84e5efb3a2f96e2632">t_event</a> events[<a class="code" href="ServerSocket_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>];</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">int</span> nEvents = epoll_wait(<a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>, events, <a class="code" href="ServerSocket_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>, 60);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span> (nEvents &lt; 0) {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error: Epoll dun goofed up!&quot;</span>);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nEvents; i++) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      <span class="keywordtype">int</span> fd = events[i].data.fd;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      uint32_t event_mask = events[i].events;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      <span class="keywordflow">if</span> (<a class="code" href="classwww_1_1CoreServer.html#ac6a47bc19fa4ce82f3010922183cb832">m_event_handlers</a>.find(fd) != <a class="code" href="classwww_1_1CoreServer.html#ac6a47bc19fa4ce82f3010922183cb832">m_event_handlers</a>.end()) {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <a class="code" href="classwww_1_1CoreServer.html#ac6a47bc19fa4ce82f3010922183cb832">m_event_handlers</a>.at(fd)-&gt;handle(fd, event_mask);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
 <div class="ttc" id="aServerSocket_8hpp_html_ae42954bb8545d24e3e9dcde5920c9a0b"><div class="ttname"><a href="ServerSocket_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a></div><div class="ttdeci">#define MAX_EVENTS</div><div class="ttdef"><b>Definition:</b> <a href="ServerSocket_8hpp_source.html#l00013">ServerSocket.hpp:13</a></div></div>
 <div class="ttc" id="aclasswww_1_1CoreServer_html_ac6a47bc19fa4ce82f3010922183cb832"><div class="ttname"><a href="classwww_1_1CoreServer.html#ac6a47bc19fa4ce82f3010922183cb832">www::CoreServer::m_event_handlers</a></div><div class="ttdeci">std::map&lt; int, runtime::EventHandler * &gt; m_event_handlers</div><div class="ttdef"><b>Definition:</b> <a href="CoreServer_8hpp_source.html#l00045">CoreServer.hpp:45</a></div></div>
 <div class="ttc" id="anamespacewww_html_a43aef677ab180a84e5efb3a2f96e2632"><div class="ttname"><a href="namespacewww.html#a43aef677ab180a84e5efb3a2f96e2632">www::t_event</a></div><div class="ttdeci">struct epoll_event t_event</div><div class="ttdef"><b>Definition:</b> <a href="CoreServer_8hpp_source.html#l00001">CoreServer.hpp:15</a></div></div>
@@ -508,17 +508,17 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00073">73</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                                                                                              {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="namespacewww.html#a43aef677ab180a84e5efb3a2f96e2632">t_event</a> event;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">event</span>.data.fd = fd;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">event</span>.events = events;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordflow">if</span> (epoll_ctl(<a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>, EPOLL_CTL_ADD, fd, &amp;event) &lt; 0) {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Crud! Couldn&#39;t register handler!&quot;</span>);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#ac6a47bc19fa4ce82f3010922183cb832">m_event_handlers</a>[fd] = handler;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00075">75</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                                                                                              {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="code" href="namespacewww.html#a43aef677ab180a84e5efb3a2f96e2632">t_event</a> event;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keyword">event</span>.data.fd = fd;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keyword">event</span>.events = events;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordflow">if</span> (epoll_ctl(<a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>, EPOLL_CTL_ADD, fd, &amp;event) &lt; 0) {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Crud! Couldn&#39;t register handler!&quot;</span>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#ac6a47bc19fa4ce82f3010922183cb832">m_event_handlers</a>[fd] = handler;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -538,11 +538,11 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00068">68</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                                                        {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.erase(it);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00070">70</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                                                        {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.erase(it);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -568,13 +568,13 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00084">84</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                                                 {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordflow">if</span> (epoll_ctl(<a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>, EPOLL_CTL_DEL, fd, NULL) &lt; 0) {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;пиздец!&quot;</span>);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#ac6a47bc19fa4ce82f3010922183cb832">m_event_handlers</a>.erase(fd);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00086">86</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                                                 {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordflow">if</span> (epoll_ctl(<a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>, EPOLL_CTL_DEL, fd, NULL) &lt; 0) {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;пиздец!&quot;</span>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#ac6a47bc19fa4ce82f3010922183cb832">m_event_handlers</a>.erase(fd);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
