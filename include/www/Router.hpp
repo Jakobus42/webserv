@@ -44,7 +44,7 @@ class Router {
   Router& operator=(const Router& rhs);
 
   void registerRoute(const Route& route, const HandlerFunc& handler);
-  bool handleRequest(const http::Request& req, Response& res) const;
+  void processRequest(const http::Request& req, Response& res) const;
 
  private:
   std::map<Route, HandlerFunc> m_routes;

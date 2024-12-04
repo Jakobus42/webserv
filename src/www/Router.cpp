@@ -1,37 +1,33 @@
 #include "www/Router.hpp"
-#include "logger/LoggerManager.hpp"
 
 namespace www {
 
 bool Route::operator<(const Route& other) const {
-    if (method != other.method) {
-        return method < other.method;
-    }
-    return relativePath < other.relativePath;
+  if (method != other.method) {
+    return method < other.method;
+  }
+  return relativePath < other.relativePath;
 }
 
 Route::Route() : relativePath("/"), method(GET) {}
 
 Route::Route(const std::string& relativePath, Method method) : relativePath(relativePath), method(method) {}
 
-
-
 /**
  * @brief Constructs a new Router object.
  */
-Router::Router(){}
+Router::Router() {}
 
 /**
  * @brief Destroys the Router object.
  */
-Router::~Router(){}
+Router::~Router() {}
 
 /**
  * @brief Copy constructor.
  * @param other The other Router object to copy.
  */
- Router::Router(const Router& other) : m_routes(other.m_routes) {
- }
+Router::Router(const Router& other) : m_routes(other.m_routes) {}
 
 /**
  * @brief Copy assignment operator.
@@ -39,7 +35,9 @@ Router::~Router(){}
  * @return A reference to the assigned Router object.
  */
 Router& Router::operator=(const Router& rhs) {
-    if (this == &rhs) return *this;
+  if (this != &rhs) {
+    m_routes = rhs.m_routes;
+  }
   return *this;
 }
 
@@ -47,9 +45,16 @@ void Router::registerRoute(const Route& route, const HandlerFunc& handler) {
   m_routes.insert(std::make_pair(route, handler));
 }
 
-bool Router::handleRequest(const http::Request&, Response&) const {
-  LOG("not implemented yet", logger::DEBUG)
-  return true;
+void Router::processRequest(const http::Request& req, Response& res) const {
+  std::map<Route, HandlerFunc>::const_iterator it;
+
+  it = m_routes.find(Route("todo", GET));
+  if (it == m_routes.end()) {
+    // TODO: write http not found response
+    // create response class and Head class for http headers
+    return;
+  }
+  it->second(req, res);
 }
 
 } /* namespace www */
