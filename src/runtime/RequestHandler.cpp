@@ -28,7 +28,7 @@ RequestHandler& RequestHandler::operator=(const RequestHandler& rhs) {
   return *this;
 }
 
-void handleRequest(int fd, uint32_t event) {
+void RequestHandler::handle(int fd, uint32_t event) {
   (void)fd;
   (void)event;
 }

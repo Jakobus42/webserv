@@ -5,6 +5,8 @@
 
 #include <stdexcept>
 
+#include "runtime/RequestHandler.hpp"
+
 namespace www {
 
 /**
