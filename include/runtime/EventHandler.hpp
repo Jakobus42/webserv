@@ -13,7 +13,7 @@ class EventHandler {
   EventHandler();
   virtual ~EventHandler();
 
-  virtual void handleEvent(int fd, uint32_t events) = 0;
+  virtual void handle(int fd, uint32_t events) = 0;
 
  private:
   EventHandler(const EventHandler& other);

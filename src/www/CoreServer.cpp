@@ -101,7 +101,7 @@ void CoreServer::react() {
       int fd = events[i].data.fd;
       uint32_t event_mask = events[i].events;
       if (m_event_handlers.find(fd) != m_event_handlers.end()) {
-        m_event_handlers.at(fd)->handleEvent(fd, event_mask);
+        m_event_handlers.at(fd)->handle(fd, event_mask);
       }
     }
   }
