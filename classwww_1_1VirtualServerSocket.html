@@ -163,7 +163,7 @@ Private Attributes</h2></td></tr>
 <p>Constructs a new <a class="el" href="classwww_1_1VirtualServerSocket.html" title="...">VirtualServerSocket</a> object for port 80. </p>
 
 <p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00015">15</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;: <a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a>(-1), <a class="code" href="classwww_1_1VirtualServerSocket.html#ab9299b141fe2d4c9c517ac0748274abb">m_ip</a>(0x7f000001), <a class="code" href="classwww_1_1VirtualServerSocket.html#a0674b36ccff62fb6a25fc2c66f44aff6">m_port</a>(80), <a class="code" href="classwww_1_1VirtualServerSocket.html#aae000783af306c0d9f8119ba4c00b202">m_open</a>(<span class="keyword">false</span>), <a class="code" href="classwww_1_1VirtualServerSocket.html#ae4386d6d34e3cb77e69bb75a6886c3bf">m_bound</a>(<span class="keyword">false</span>), <a class="code" href="classwww_1_1VirtualServerSocket.html#af29727107c8f3d5fc0336157edf984c6">m_listening</a>(<span class="keyword">false</span>) {}</div>
+<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    : <a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a>(-1), <a class="code" href="classwww_1_1VirtualServerSocket.html#ab9299b141fe2d4c9c517ac0748274abb">m_ip</a>(0x7f000001), <a class="code" href="classwww_1_1VirtualServerSocket.html#a0674b36ccff62fb6a25fc2c66f44aff6">m_port</a>(80), <a class="code" href="classwww_1_1VirtualServerSocket.html#aae000783af306c0d9f8119ba4c00b202">m_open</a>(<span class="keyword">false</span>), <a class="code" href="classwww_1_1VirtualServerSocket.html#ae4386d6d34e3cb77e69bb75a6886c3bf">m_bound</a>(<span class="keyword">false</span>), <a class="code" href="classwww_1_1VirtualServerSocket.html#af29727107c8f3d5fc0336157edf984c6">m_listening</a>(<span class="keyword">false</span>) {}</div>
 <div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_a0674b36ccff62fb6a25fc2c66f44aff6"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#a0674b36ccff62fb6a25fc2c66f44aff6">www::VirtualServerSocket::m_port</a></div><div class="ttdeci">int m_port</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8hpp_source.html#l00053">VirtualServerSocket.hpp:53</a></div></div>
 <div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_a32c1992a5120bd8b14fd6a72ad3cb030"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">www::VirtualServerSocket::m_fd</a></div><div class="ttdeci">int m_fd</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8hpp_source.html#l00050">VirtualServerSocket.hpp:50</a></div></div>
 <div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_aae000783af306c0d9f8119ba4c00b202"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#aae000783af306c0d9f8119ba4c00b202">www::VirtualServerSocket::m_open</a></div><div class="ttdeci">bool m_open</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8hpp_source.html#l00054">VirtualServerSocket.hpp:54</a></div></div>
@@ -201,10 +201,10 @@ Private Attributes</h2></td></tr>
 
 <p>Constructs a new <a class="el" href="classwww_1_1VirtualServerSocket.html" title="...">VirtualServerSocket</a> object for a specified port. </p>
 
-<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00020">20</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                                                              : <a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a>(-1), <a class="code" href="classwww_1_1VirtualServerSocket.html#ab9299b141fe2d4c9c517ac0748274abb">m_ip</a>(ip), <a class="code" href="classwww_1_1VirtualServerSocket.html#a0674b36ccff62fb6a25fc2c66f44aff6">m_port</a>(port), <a class="code" href="classwww_1_1VirtualServerSocket.html#aae000783af306c0d9f8119ba4c00b202">m_open</a>(<span class="keyword">false</span>), <a class="code" href="classwww_1_1VirtualServerSocket.html#ae4386d6d34e3cb77e69bb75a6886c3bf">m_bound</a>(<span class="keyword">false</span>), <a class="code" href="classwww_1_1VirtualServerSocket.html#af29727107c8f3d5fc0336157edf984c6">m_listening</a>(<span class="keyword">false</span>) {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="comment">// port better not be negative</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00021">21</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    : <a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a>(-1), <a class="code" href="classwww_1_1VirtualServerSocket.html#ab9299b141fe2d4c9c517ac0748274abb">m_ip</a>(ip), <a class="code" href="classwww_1_1VirtualServerSocket.html#a0674b36ccff62fb6a25fc2c66f44aff6">m_port</a>(port), <a class="code" href="classwww_1_1VirtualServerSocket.html#aae000783af306c0d9f8119ba4c00b202">m_open</a>(<span class="keyword">false</span>), <a class="code" href="classwww_1_1VirtualServerSocket.html#ae4386d6d34e3cb77e69bb75a6886c3bf">m_bound</a>(<span class="keyword">false</span>), <a class="code" href="classwww_1_1VirtualServerSocket.html#af29727107c8f3d5fc0336157edf984c6">m_listening</a>(<span class="keyword">false</span>) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="comment">// port better not be negative</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -227,8 +227,8 @@ Private Attributes</h2></td></tr>
 <dl class="section warning"><dt>Warning</dt><dd>Does not close the FD (for a reason), close manually or it leaks! </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Could add a flag close_on_destroy that is checked in the destructor. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00029">29</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{}</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00031">31</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -256,9 +256,9 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00035">35</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{ <a class="code" href="classwww_1_1VirtualServerSocket.html#a41e1d83cbea5032aa8a359baf1cfb0d7">operator=</a>(other); }</div>
-<div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_a41e1d83cbea5032aa8a359baf1cfb0d7"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#a41e1d83cbea5032aa8a359baf1cfb0d7">www::VirtualServerSocket::operator=</a></div><div class="ttdeci">VirtualServerSocket &amp; operator=(const VirtualServerSocket &amp;other)</div><div class="ttdoc">Copy assignment operator.</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8cpp_source.html#l00043">VirtualServerSocket.cpp:43</a></div></div>
+<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00037">37</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{ <a class="code" href="classwww_1_1VirtualServerSocket.html#a41e1d83cbea5032aa8a359baf1cfb0d7">operator=</a>(other); }</div>
+<div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_a41e1d83cbea5032aa8a359baf1cfb0d7"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#a41e1d83cbea5032aa8a359baf1cfb0d7">www::VirtualServerSocket::operator=</a></div><div class="ttdeci">VirtualServerSocket &amp; operator=(const VirtualServerSocket &amp;other)</div><div class="ttdoc">Copy assignment operator.</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8cpp_source.html#l00045">VirtualServerSocket.cpp:45</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -293,22 +293,22 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00084">84</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                               {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#abd9149f4521ff4ff88ed536915126261">m_socketAddress</a>.sin_family = AF_INET;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#abd9149f4521ff4ff88ed536915126261">m_socketAddress</a>.sin_port = htons(<a class="code" href="classwww_1_1VirtualServerSocket.html#a0674b36ccff62fb6a25fc2c66f44aff6">m_port</a>);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#abd9149f4521ff4ff88ed536915126261">m_socketAddress</a>.sin_addr.s_addr = htonl(<a class="code" href="classwww_1_1VirtualServerSocket.html#ab9299b141fe2d4c9c517ac0748274abb">m_ip</a>);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Binding to port &quot;</span> &lt;&lt; <a class="code" href="classwww_1_1VirtualServerSocket.html#a0674b36ccff62fb6a25fc2c66f44aff6">m_port</a> &lt;&lt; <span class="stringliteral">&quot;, address &quot;</span> &lt;&lt; <a class="code" href="classwww_1_1VirtualServerSocket.html#ab9299b141fe2d4c9c517ac0748274abb">m_ip</a> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordflow">if</span> (::<a class="code" href="classwww_1_1VirtualServerSocket.html#a5b58e4bce20866c59ea4d914b1ac4c82">bind</a>(<a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a>, (<a class="code" href="namespacewww.html#a81173bdace5c11c7ba16a44f7ebca4cc">t_sockaddr</a>*)&amp;<a class="code" href="classwww_1_1VirtualServerSocket.html#abd9149f4521ff4ff88ed536915126261">m_socketAddress</a>, <span class="keyword">sizeof</span>(<a class="code" href="classwww_1_1VirtualServerSocket.html#abd9149f4521ff4ff88ed536915126261">m_socketAddress</a>)) &lt; 0) {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Bind failed with &quot;</span> &lt;&lt; errno &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    this-&gt;<a class="code" href="classwww_1_1VirtualServerSocket.html#a195a76c132902ce8173b1ccb221ecf6c">close</a>();</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#ae4386d6d34e3cb77e69bb75a6886c3bf">m_bound</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
-<div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_a195a76c132902ce8173b1ccb221ecf6c"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#a195a76c132902ce8173b1ccb221ecf6c">www::VirtualServerSocket::close</a></div><div class="ttdeci">void close()</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8cpp_source.html#l00109">VirtualServerSocket.cpp:109</a></div></div>
-<div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_a5b58e4bce20866c59ea4d914b1ac4c82"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#a5b58e4bce20866c59ea4d914b1ac4c82">www::VirtualServerSocket::bind</a></div><div class="ttdeci">bool bind()</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8cpp_source.html#l00084">VirtualServerSocket.cpp:84</a></div></div>
+<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00086">86</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                               {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#abd9149f4521ff4ff88ed536915126261">m_socketAddress</a>.sin_family = AF_INET;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#abd9149f4521ff4ff88ed536915126261">m_socketAddress</a>.sin_port = htons(<a class="code" href="classwww_1_1VirtualServerSocket.html#a0674b36ccff62fb6a25fc2c66f44aff6">m_port</a>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#abd9149f4521ff4ff88ed536915126261">m_socketAddress</a>.sin_addr.s_addr = htonl(<a class="code" href="classwww_1_1VirtualServerSocket.html#ab9299b141fe2d4c9c517ac0748274abb">m_ip</a>);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Binding to port &quot;</span> &lt;&lt; <a class="code" href="classwww_1_1VirtualServerSocket.html#a0674b36ccff62fb6a25fc2c66f44aff6">m_port</a> &lt;&lt; <span class="stringliteral">&quot;, address &quot;</span> &lt;&lt; <a class="code" href="classwww_1_1VirtualServerSocket.html#ab9299b141fe2d4c9c517ac0748274abb">m_ip</a> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordflow">if</span> (::<a class="code" href="classwww_1_1VirtualServerSocket.html#a5b58e4bce20866c59ea4d914b1ac4c82">bind</a>(<a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a>, (<a class="code" href="namespacewww.html#a81173bdace5c11c7ba16a44f7ebca4cc">t_sockaddr</a>*)&amp;<a class="code" href="classwww_1_1VirtualServerSocket.html#abd9149f4521ff4ff88ed536915126261">m_socketAddress</a>, <span class="keyword">sizeof</span>(<a class="code" href="classwww_1_1VirtualServerSocket.html#abd9149f4521ff4ff88ed536915126261">m_socketAddress</a>)) &lt; 0) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Bind failed with &quot;</span> &lt;&lt; errno &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    this-&gt;<a class="code" href="classwww_1_1VirtualServerSocket.html#a195a76c132902ce8173b1ccb221ecf6c">close</a>();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#ae4386d6d34e3cb77e69bb75a6886c3bf">m_bound</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
+<div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_a195a76c132902ce8173b1ccb221ecf6c"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#a195a76c132902ce8173b1ccb221ecf6c">www::VirtualServerSocket::close</a></div><div class="ttdeci">void close()</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8cpp_source.html#l00111">VirtualServerSocket.cpp:111</a></div></div>
+<div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_a5b58e4bce20866c59ea4d914b1ac4c82"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#a5b58e4bce20866c59ea4d914b1ac4c82">www::VirtualServerSocket::bind</a></div><div class="ttdeci">bool bind()</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8cpp_source.html#l00086">VirtualServerSocket.cpp:86</a></div></div>
 <div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_abd9149f4521ff4ff88ed536915126261"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#abd9149f4521ff4ff88ed536915126261">www::VirtualServerSocket::m_socketAddress</a></div><div class="ttdeci">t_sockaddr_in m_socketAddress</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8hpp_source.html#l00051">VirtualServerSocket.hpp:51</a></div></div>
 <div class="ttc" id="anamespacewww_html_a81173bdace5c11c7ba16a44f7ebca4cc"><div class="ttname"><a href="namespacewww.html#a81173bdace5c11c7ba16a44f7ebca4cc">www::t_sockaddr</a></div><div class="ttdeci">struct sockaddr t_sockaddr</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8cpp_source.html#l00001">VirtualServerSocket.cpp:10</a></div></div>
 </div><!-- fragment --><div class="dynheader">
@@ -351,13 +351,13 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00109">109</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                                    {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#a195a76c132902ce8173b1ccb221ecf6c">::close</a>(<a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a>);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a> = -1;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  this-&gt;<a class="code" href="classwww_1_1VirtualServerSocket.html#ad8e8f6d7339841f18543bd39f17ce390">setBroken</a>();</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
-<div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_ad8e8f6d7339841f18543bd39f17ce390"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#ad8e8f6d7339841f18543bd39f17ce390">www::VirtualServerSocket::setBroken</a></div><div class="ttdeci">void setBroken()</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8cpp_source.html#l00115">VirtualServerSocket.cpp:115</a></div></div>
+<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00111">111</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                                    {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#a195a76c132902ce8173b1ccb221ecf6c">::close</a>(<a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a>);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a> = -1;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  this-&gt;<a class="code" href="classwww_1_1VirtualServerSocket.html#ad8e8f6d7339841f18543bd39f17ce390">setBroken</a>();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
+<div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_ad8e8f6d7339841f18543bd39f17ce390"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#ad8e8f6d7339841f18543bd39f17ce390">www::VirtualServerSocket::setBroken</a></div><div class="ttdeci">void setBroken()</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8cpp_source.html#l00117">VirtualServerSocket.cpp:117</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -400,21 +400,21 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00069">69</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                     {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">int</span> opt = 1;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a> = socket(AF_INET, SOCK_STREAM, 0);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;VirtualServerSocket Made&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a> == -1) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordflow">if</span> (setsockopt(<a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a>, SOL_SOCKET, SO_REUSEADDR, &amp;opt, <span class="keyword">sizeof</span>(opt)) &lt; 0) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;VirtualServerSocket options fucked&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    this-&gt;<a class="code" href="classwww_1_1VirtualServerSocket.html#a195a76c132902ce8173b1ccb221ecf6c">close</a>();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;VirtualServerSocket should be good to go&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00071">71</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                     {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordtype">int</span> opt = 1;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a> = socket(AF_INET, SOCK_STREAM, 0);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;VirtualServerSocket Made&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a> == -1) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">if</span> (setsockopt(<a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a>, SOL_SOCKET, SO_REUSEADDR, &amp;opt, <span class="keyword">sizeof</span>(opt)) &lt; 0) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;VirtualServerSocket options fucked&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    this-&gt;<a class="code" href="classwww_1_1VirtualServerSocket.html#a195a76c132902ce8173b1ccb221ecf6c">close</a>();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;VirtualServerSocket should be good to go&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -455,8 +455,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00055">55</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00057">57</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -486,8 +486,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00057">57</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServerSocket.html#a0674b36ccff62fb6a25fc2c66f44aff6">m_port</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00059">59</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServerSocket.html#a0674b36ccff62fb6a25fc2c66f44aff6">m_port</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -517,8 +517,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00059">59</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServerSocket.html#abd9149f4521ff4ff88ed536915126261">m_socketAddress</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00061">61</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServerSocket.html#abd9149f4521ff4ff88ed536915126261">m_socketAddress</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -548,10 +548,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00067">67</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{ <span class="keywordflow">return</span> (this-&gt;<a class="code" href="classwww_1_1VirtualServerSocket.html#a65d3ca6a817eb0e6a1b810a3f3cbd0c3">create</a>() &amp;&amp; this-&gt;<a class="code" href="classwww_1_1VirtualServerSocket.html#a5b58e4bce20866c59ea4d914b1ac4c82">bind</a>() &amp;&amp; this-&gt;<a class="code" href="classwww_1_1VirtualServerSocket.html#acef9ced2111c8d1efc35f4687f3675c8">listen</a>()); }</div>
-<div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_a65d3ca6a817eb0e6a1b810a3f3cbd0c3"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#a65d3ca6a817eb0e6a1b810a3f3cbd0c3">www::VirtualServerSocket::create</a></div><div class="ttdeci">bool create()</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8cpp_source.html#l00069">VirtualServerSocket.cpp:69</a></div></div>
-<div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_acef9ced2111c8d1efc35f4687f3675c8"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#acef9ced2111c8d1efc35f4687f3675c8">www::VirtualServerSocket::listen</a></div><div class="ttdeci">bool listen()</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8cpp_source.html#l00098">VirtualServerSocket.cpp:98</a></div></div>
+<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00069">69</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;{ <span class="keywordflow">return</span> (this-&gt;<a class="code" href="classwww_1_1VirtualServerSocket.html#a65d3ca6a817eb0e6a1b810a3f3cbd0c3">create</a>() &amp;&amp; this-&gt;<a class="code" href="classwww_1_1VirtualServerSocket.html#a5b58e4bce20866c59ea4d914b1ac4c82">bind</a>() &amp;&amp; this-&gt;<a class="code" href="classwww_1_1VirtualServerSocket.html#acef9ced2111c8d1efc35f4687f3675c8">listen</a>()); }</div>
+<div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_a65d3ca6a817eb0e6a1b810a3f3cbd0c3"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#a65d3ca6a817eb0e6a1b810a3f3cbd0c3">www::VirtualServerSocket::create</a></div><div class="ttdeci">bool create()</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8cpp_source.html#l00071">VirtualServerSocket.cpp:71</a></div></div>
+<div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_acef9ced2111c8d1efc35f4687f3675c8"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#acef9ced2111c8d1efc35f4687f3675c8">www::VirtualServerSocket::listen</a></div><div class="ttdeci">bool listen()</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8cpp_source.html#l00100">VirtualServerSocket.cpp:100</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -594,8 +594,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00063">63</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServerSocket.html#ae4386d6d34e3cb77e69bb75a6886c3bf">m_bound</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00065">65</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServerSocket.html#ae4386d6d34e3cb77e69bb75a6886c3bf">m_bound</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -625,8 +625,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00065">65</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServerSocket.html#af29727107c8f3d5fc0336157edf984c6">m_listening</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00067">67</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServerSocket.html#af29727107c8f3d5fc0336157edf984c6">m_listening</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -656,8 +656,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00061">61</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServerSocket.html#aae000783af306c0d9f8119ba4c00b202">m_open</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00063">63</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServerSocket.html#aae000783af306c0d9f8119ba4c00b202">m_open</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -687,17 +687,17 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00098">98</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                                     {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordflow">if</span> (::<a class="code" href="classwww_1_1VirtualServerSocket.html#acef9ced2111c8d1efc35f4687f3675c8">listen</a>(<a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a>, <a class="code" href="VirtualServerSocket_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>) &lt; 0) {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;E1&quot;</span> &lt;&lt; errno &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    this-&gt;<a class="code" href="classwww_1_1VirtualServerSocket.html#a195a76c132902ce8173b1ccb221ecf6c">close</a>();</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#af29727107c8f3d5fc0336157edf984c6">m_listening</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;ServerSocket is now listening&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00100">100</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                     {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordflow">if</span> (::<a class="code" href="classwww_1_1VirtualServerSocket.html#acef9ced2111c8d1efc35f4687f3675c8">listen</a>(<a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a>, <a class="code" href="VirtualServerSocket_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>) &lt; 0) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;E1&quot;</span> &lt;&lt; errno &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    this-&gt;<a class="code" href="classwww_1_1VirtualServerSocket.html#a195a76c132902ce8173b1ccb221ecf6c">close</a>();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#af29727107c8f3d5fc0336157edf984c6">m_listening</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;ServerSocket is now listening&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
 <div class="ttc" id="aVirtualServerSocket_8hpp_html_ae42954bb8545d24e3e9dcde5920c9a0b"><div class="ttname"><a href="VirtualServerSocket_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a></div><div class="ttdeci">#define MAX_EVENTS</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8hpp_source.html#l00013">VirtualServerSocket.hpp:13</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -753,18 +753,18 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00043">43</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                                                                                  {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs) <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a> = rhs.getFd();</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#abd9149f4521ff4ff88ed536915126261">m_socketAddress</a> = rhs.getSocketAddress();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#a0674b36ccff62fb6a25fc2c66f44aff6">m_port</a> = rhs.getPort();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#ab9299b141fe2d4c9c517ac0748274abb">m_ip</a> = rhs.m_ip;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#aae000783af306c0d9f8119ba4c00b202">m_open</a> = rhs.isOpen();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#ae4386d6d34e3cb77e69bb75a6886c3bf">m_bound</a> = rhs.isBound();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#af29727107c8f3d5fc0336157edf984c6">m_listening</a> = rhs.isListening();</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00045">45</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                                                                  {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs) <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030">m_fd</a> = rhs.getFd();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#abd9149f4521ff4ff88ed536915126261">m_socketAddress</a> = rhs.getSocketAddress();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#a0674b36ccff62fb6a25fc2c66f44aff6">m_port</a> = rhs.getPort();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#ab9299b141fe2d4c9c517ac0748274abb">m_ip</a> = rhs.m_ip;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#aae000783af306c0d9f8119ba4c00b202">m_open</a> = rhs.isOpen();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#ae4386d6d34e3cb77e69bb75a6886c3bf">m_bound</a> = rhs.isBound();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#af29727107c8f3d5fc0336157edf984c6">m_listening</a> = rhs.isListening();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -807,12 +807,12 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00115">115</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                                        {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#aae000783af306c0d9f8119ba4c00b202">m_open</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#ae4386d6d34e3cb77e69bb75a6886c3bf">m_bound</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#af29727107c8f3d5fc0336157edf984c6">m_listening</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServerSocket_8cpp_source.html#l00117">117</a> of file <a class="el" href="VirtualServerSocket_8cpp_source.html">VirtualServerSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                        {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#aae000783af306c0d9f8119ba4c00b202">m_open</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#ae4386d6d34e3cb77e69bb75a6886c3bf">m_bound</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <a class="code" href="classwww_1_1VirtualServerSocket.html#af29727107c8f3d5fc0336157edf984c6">m_listening</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

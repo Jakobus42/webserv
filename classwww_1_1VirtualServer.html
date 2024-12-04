@@ -159,9 +159,7 @@ Private Attributes</h2></td></tr>
 <p>Constructs a new <a class="el" href="classwww_1_1VirtualServer.html" title="...">VirtualServer</a> object. </p>
 
 <p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00011">11</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    : <a class="code" href="classwww_1_1VirtualServer.html#aaea5b3fbe683219fd3a902c1b2d8e58e">m_client_max_body_size</a>(<a class="code" href="VirtualServer_8hpp.html#aae4d4761b231a4321c08bd4bd18937e0">ONE_MEGABYTE</a>),</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#a32e4a7bfc139473cc8ccd4d1c0bf7eb9">m_listen_socket</a>(80),</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>() {}</div>
+<div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;: <a class="code" href="classwww_1_1VirtualServer.html#aaea5b3fbe683219fd3a902c1b2d8e58e">m_client_max_body_size</a>(<a class="code" href="VirtualServer_8hpp.html#aae4d4761b231a4321c08bd4bd18937e0">ONE_MEGABYTE</a>), <a class="code" href="classwww_1_1VirtualServer.html#a32e4a7bfc139473cc8ccd4d1c0bf7eb9">m_listen_socket</a>(80), <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>() {}</div>
 <div class="ttc" id="aVirtualServer_8hpp_html_aae4d4761b231a4321c08bd4bd18937e0"><div class="ttname"><a href="VirtualServer_8hpp.html#aae4d4761b231a4321c08bd4bd18937e0">ONE_MEGABYTE</a></div><div class="ttdeci">#define ONE_MEGABYTE</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServer_8hpp_source.html#l00011">VirtualServer.hpp:11</a></div></div>
 <div class="ttc" id="aclasswww_1_1VirtualServer_html_a32e4a7bfc139473cc8ccd4d1c0bf7eb9"><div class="ttname"><a href="classwww_1_1VirtualServer.html#a32e4a7bfc139473cc8ccd4d1c0bf7eb9">www::VirtualServer::m_listen_socket</a></div><div class="ttdeci">VirtualServerSocket m_listen_socket</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServer_8hpp_source.html#l00050">VirtualServer.hpp:50</a></div></div>
 <div class="ttc" id="aclasswww_1_1VirtualServer_html_aa4b63a743cc1558f22d5f3285ee52084"><div class="ttname"><a href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">www::VirtualServer::m_connections</a></div><div class="ttdeci">t_connections m_connections</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServer_8hpp_source.html#l00051">VirtualServer.hpp:51</a></div></div>
@@ -187,22 +185,22 @@ Private Attributes</h2></td></tr>
 
 <p>Constructs a new <a class="el" href="classwww_1_1VirtualServer.html" title="...">VirtualServer</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00019">19</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    : <a class="code" href="classwww_1_1VirtualServer.html#aaea5b3fbe683219fd3a902c1b2d8e58e">m_client_max_body_size</a>(serverConfig.<a class="code" href="structconfigfile_1_1s__server.html#ae3d6de3fef6de98d97ae9f23a2292bd5">max_body_size</a>), </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#a8b59eaa0148720673383ffc896459ed2">m_names</a>(serverConfig.<a class="code" href="structconfigfile_1_1s__server.html#a337dafdb8a98ff96e7c181acf873d99e">server_names</a>), </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#a46810a393adc50039dc76ccf9cb22532">m_locations</a>(serverConfig.<a class="code" href="structconfigfile_1_1s__server.html#a87a501f8efe791af3ed0c14370cf19a2">locations</a>), </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#ae2562c0af5380b68e853244b73fde404">m_errorPages</a>(serverConfig.<a class="code" href="structconfigfile_1_1s__server.html#a37bbc603c2766cc861a26c778b23801f">errorPages</a>), </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#a32e4a7bfc139473cc8ccd4d1c0bf7eb9">m_listen_socket</a>(serverConfig.<a class="code" href="structconfigfile_1_1s__server.html#a3ea96395a1872a9fa0db61bf9e382218">port</a>, serverConfig.<a class="code" href="structconfigfile_1_1s__server.html#aa24e6ed4340de7ea2ab1a392777c053f">ip_address</a>), </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>() {}</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00016">16</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    : <a class="code" href="classwww_1_1VirtualServer.html#aaea5b3fbe683219fd3a902c1b2d8e58e">m_client_max_body_size</a>(serverConfig.<a class="code" href="structconfigfile_1_1s__server.html#ae3d6de3fef6de98d97ae9f23a2292bd5">max_body_size</a>),</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#a8b59eaa0148720673383ffc896459ed2">m_names</a>(serverConfig.<a class="code" href="structconfigfile_1_1s__server.html#a337dafdb8a98ff96e7c181acf873d99e">server_names</a>),</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#a46810a393adc50039dc76ccf9cb22532">m_locations</a>(serverConfig.<a class="code" href="structconfigfile_1_1s__server.html#a87a501f8efe791af3ed0c14370cf19a2">locations</a>),</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#ae2562c0af5380b68e853244b73fde404">m_errorPages</a>(serverConfig.<a class="code" href="structconfigfile_1_1s__server.html#a37bbc603c2766cc861a26c778b23801f">errorPages</a>),</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#a32e4a7bfc139473cc8ccd4d1c0bf7eb9">m_listen_socket</a>(serverConfig.<a class="code" href="structconfigfile_1_1s__server.html#a3ea96395a1872a9fa0db61bf9e382218">port</a>, serverConfig.<a class="code" href="structconfigfile_1_1s__server.html#aa24e6ed4340de7ea2ab1a392777c053f">ip_address</a>),</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>() {}</div>
 <div class="ttc" id="aclasswww_1_1VirtualServer_html_a46810a393adc50039dc76ccf9cb22532"><div class="ttname"><a href="classwww_1_1VirtualServer.html#a46810a393adc50039dc76ccf9cb22532">www::VirtualServer::m_locations</a></div><div class="ttdeci">std::vector&lt; configfile::t_location &gt; m_locations</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServer_8hpp_source.html#l00048">VirtualServer.hpp:48</a></div></div>
 <div class="ttc" id="aclasswww_1_1VirtualServer_html_a8b59eaa0148720673383ffc896459ed2"><div class="ttname"><a href="classwww_1_1VirtualServer.html#a8b59eaa0148720673383ffc896459ed2">www::VirtualServer::m_names</a></div><div class="ttdeci">std::vector&lt; std::string &gt; m_names</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServer_8hpp_source.html#l00047">VirtualServer.hpp:47</a></div></div>
 <div class="ttc" id="aclasswww_1_1VirtualServer_html_ae2562c0af5380b68e853244b73fde404"><div class="ttname"><a href="classwww_1_1VirtualServer.html#ae2562c0af5380b68e853244b73fde404">www::VirtualServer::m_errorPages</a></div><div class="ttdeci">std::map&lt; int, std::string &gt; m_errorPages</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServer_8hpp_source.html#l00049">VirtualServer.hpp:49</a></div></div>
-<div class="ttc" id="astructconfigfile_1_1s__server_html_a337dafdb8a98ff96e7c181acf873d99e"><div class="ttname"><a href="structconfigfile_1_1s__server.html#a337dafdb8a98ff96e7c181acf873d99e">configfile::s_server::server_names</a></div><div class="ttdeci">std::vector&lt; std::string &gt; server_names</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00050">Parser.hpp:50</a></div></div>
-<div class="ttc" id="astructconfigfile_1_1s__server_html_a37bbc603c2766cc861a26c778b23801f"><div class="ttname"><a href="structconfigfile_1_1s__server.html#a37bbc603c2766cc861a26c778b23801f">configfile::s_server::errorPages</a></div><div class="ttdeci">std::map&lt; int, std::string &gt; errorPages</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00051">Parser.hpp:51</a></div></div>
-<div class="ttc" id="astructconfigfile_1_1s__server_html_a3ea96395a1872a9fa0db61bf9e382218"><div class="ttname"><a href="structconfigfile_1_1s__server.html#a3ea96395a1872a9fa0db61bf9e382218">configfile::s_server::port</a></div><div class="ttdeci">int port</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00048">Parser.hpp:48</a></div></div>
-<div class="ttc" id="astructconfigfile_1_1s__server_html_a87a501f8efe791af3ed0c14370cf19a2"><div class="ttname"><a href="structconfigfile_1_1s__server.html#a87a501f8efe791af3ed0c14370cf19a2">configfile::s_server::locations</a></div><div class="ttdeci">std::vector&lt; t_location &gt; locations</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00054">Parser.hpp:54</a></div></div>
-<div class="ttc" id="astructconfigfile_1_1s__server_html_aa24e6ed4340de7ea2ab1a392777c053f"><div class="ttname"><a href="structconfigfile_1_1s__server.html#aa24e6ed4340de7ea2ab1a392777c053f">configfile::s_server::ip_address</a></div><div class="ttdeci">uint32_t ip_address</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00049">Parser.hpp:49</a></div></div>
-<div class="ttc" id="astructconfigfile_1_1s__server_html_ae3d6de3fef6de98d97ae9f23a2292bd5"><div class="ttname"><a href="structconfigfile_1_1s__server.html#ae3d6de3fef6de98d97ae9f23a2292bd5">configfile::s_server::max_body_size</a></div><div class="ttdeci">unsigned long max_body_size</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00052">Parser.hpp:52</a></div></div>
+<div class="ttc" id="astructconfigfile_1_1s__server_html_a337dafdb8a98ff96e7c181acf873d99e"><div class="ttname"><a href="structconfigfile_1_1s__server.html#a337dafdb8a98ff96e7c181acf873d99e">configfile::s_server::server_names</a></div><div class="ttdeci">std::vector&lt; std::string &gt; server_names</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00051">Parser.hpp:51</a></div></div>
+<div class="ttc" id="astructconfigfile_1_1s__server_html_a37bbc603c2766cc861a26c778b23801f"><div class="ttname"><a href="structconfigfile_1_1s__server.html#a37bbc603c2766cc861a26c778b23801f">configfile::s_server::errorPages</a></div><div class="ttdeci">std::map&lt; int, std::string &gt; errorPages</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00052">Parser.hpp:52</a></div></div>
+<div class="ttc" id="astructconfigfile_1_1s__server_html_a3ea96395a1872a9fa0db61bf9e382218"><div class="ttname"><a href="structconfigfile_1_1s__server.html#a3ea96395a1872a9fa0db61bf9e382218">configfile::s_server::port</a></div><div class="ttdeci">int port</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00049">Parser.hpp:49</a></div></div>
+<div class="ttc" id="astructconfigfile_1_1s__server_html_a87a501f8efe791af3ed0c14370cf19a2"><div class="ttname"><a href="structconfigfile_1_1s__server.html#a87a501f8efe791af3ed0c14370cf19a2">configfile::s_server::locations</a></div><div class="ttdeci">std::vector&lt; t_location &gt; locations</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00055">Parser.hpp:55</a></div></div>
+<div class="ttc" id="astructconfigfile_1_1s__server_html_aa24e6ed4340de7ea2ab1a392777c053f"><div class="ttname"><a href="structconfigfile_1_1s__server.html#aa24e6ed4340de7ea2ab1a392777c053f">configfile::s_server::ip_address</a></div><div class="ttdeci">uint32_t ip_address</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00050">Parser.hpp:50</a></div></div>
+<div class="ttc" id="astructconfigfile_1_1s__server_html_ae3d6de3fef6de98d97ae9f23a2292bd5"><div class="ttname"><a href="structconfigfile_1_1s__server.html#ae3d6de3fef6de98d97ae9f23a2292bd5">configfile::s_server::max_body_size</a></div><div class="ttdeci">unsigned long max_body_size</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00053">Parser.hpp:53</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -229,8 +227,8 @@ and placing them in <a class="el" href="classwww_1_1CoreServer.html" title="..."
 <dd>
 closing the socket in the process. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00033">33</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{}</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00030">30</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -258,13 +256,13 @@ closing the socket in the process. </dd></dl>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00039">39</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    : <a class="code" href="classwww_1_1VirtualServer.html#aaea5b3fbe683219fd3a902c1b2d8e58e">m_client_max_body_size</a>(other.getMaxBodySize()),</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#a8b59eaa0148720673383ffc896459ed2">m_names</a>(other.getNames()),</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#a46810a393adc50039dc76ccf9cb22532">m_locations</a>(other.getLocations()),</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#ae2562c0af5380b68e853244b73fde404">m_errorPages</a>(other.getErrorPages()),</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#a32e4a7bfc139473cc8ccd4d1c0bf7eb9">m_listen_socket</a>(other.getSocket()),</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>(other.getConnections()) {}</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00036">36</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    : <a class="code" href="classwww_1_1VirtualServer.html#aaea5b3fbe683219fd3a902c1b2d8e58e">m_client_max_body_size</a>(other.getMaxBodySize()),</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#a8b59eaa0148720673383ffc896459ed2">m_names</a>(other.getNames()),</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#a46810a393adc50039dc76ccf9cb22532">m_locations</a>(other.getLocations()),</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#ae2562c0af5380b68e853244b73fde404">m_errorPages</a>(other.getErrorPages()),</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#a32e4a7bfc139473cc8ccd4d1c0bf7eb9">m_listen_socket</a>(other.getSocket()),</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>(other.getConnections()) {}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -290,19 +288,19 @@ closing the socket in the process. </dd></dl>
 <dd>
 false if accept() within Connection-&gt;<a class="el" href="classwww_1_1ClientSocket.html" title="...">ClientSocket</a> fails </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00084">84</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                      {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    Connection newConnection(<a class="code" href="classwww_1_1VirtualServer.html#a32e4a7bfc139473cc8ccd4d1c0bf7eb9">m_listen_socket</a>.<a class="code" href="classwww_1_1VirtualServerSocket.html#aff13f488a78047dbf58798974a7f429e">getFd</a>());</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>.push_back(newConnection);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Added a connection!&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Exception caught in VServer: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
-<div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_aff13f488a78047dbf58798974a7f429e"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#aff13f488a78047dbf58798974a7f429e">www::VirtualServerSocket::getFd</a></div><div class="ttdeci">int getFd() const</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8cpp_source.html#l00055">VirtualServerSocket.cpp:55</a></div></div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00081">81</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                      {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    Connection newConnection(<a class="code" href="classwww_1_1VirtualServer.html#a32e4a7bfc139473cc8ccd4d1c0bf7eb9">m_listen_socket</a>.<a class="code" href="classwww_1_1VirtualServerSocket.html#aff13f488a78047dbf58798974a7f429e">getFd</a>());</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>.push_back(newConnection);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Added a connection!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Exception caught in VServer: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
+<div class="ttc" id="aclasswww_1_1VirtualServerSocket_html_aff13f488a78047dbf58798974a7f429e"><div class="ttname"><a href="classwww_1_1VirtualServerSocket.html#aff13f488a78047dbf58798974a7f429e">www::VirtualServerSocket::getFd</a></div><div class="ttdeci">int getFd() const</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8cpp_source.html#l00057">VirtualServerSocket.cpp:57</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -331,8 +329,8 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00075">75</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00072">72</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -361,8 +359,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00065">65</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServer.html#ae2562c0af5380b68e853244b73fde404">m_errorPages</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00062">62</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServer.html#ae2562c0af5380b68e853244b73fde404">m_errorPages</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -391,8 +389,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00067">67</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServer.html#a46810a393adc50039dc76ccf9cb22532">m_locations</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00064">64</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServer.html#a46810a393adc50039dc76ccf9cb22532">m_locations</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -421,8 +419,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00069">69</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServer.html#aaea5b3fbe683219fd3a902c1b2d8e58e">m_client_max_body_size</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00066">66</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServer.html#aaea5b3fbe683219fd3a902c1b2d8e58e">m_client_max_body_size</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -451,8 +449,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00063">63</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServer.html#a8b59eaa0148720673383ffc896459ed2">m_names</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00060">60</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServer.html#a8b59eaa0148720673383ffc896459ed2">m_names</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -481,8 +479,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00073">73</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServer.html#a32e4a7bfc139473cc8ccd4d1c0bf7eb9">m_listen_socket</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00070">70</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServer.html#a32e4a7bfc139473cc8ccd4d1c0bf7eb9">m_listen_socket</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -502,8 +500,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00071">71</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServer.html#a32e4a7bfc139473cc8ccd4d1c0bf7eb9">m_listen_socket</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00068">68</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1VirtualServer.html#a32e4a7bfc139473cc8ccd4d1c0bf7eb9">m_listen_socket</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -535,12 +533,12 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00106">106</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                               {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classwww_1_1VirtualServer.html#a6da433f4b2a06ec647b6473ada0c08fb">getSocket</a>().init() == <span class="keyword">false</span>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
-<div class="ttc" id="aclasswww_1_1VirtualServer_html_a6da433f4b2a06ec647b6473ada0c08fb"><div class="ttname"><a href="classwww_1_1VirtualServer.html#a6da433f4b2a06ec647b6473ada0c08fb">www::VirtualServer::getSocket</a></div><div class="ttdeci">const VirtualServerSocket &amp; getSocket(void) const</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServer_8cpp_source.html#l00071">VirtualServer.cpp:71</a></div></div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00103">103</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                               {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classwww_1_1VirtualServer.html#a6da433f4b2a06ec647b6473ada0c08fb">getSocket</a>().init() == <span class="keyword">false</span>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
+<div class="ttc" id="aclasswww_1_1VirtualServer_html_a6da433f4b2a06ec647b6473ada0c08fb"><div class="ttname"><a href="classwww_1_1VirtualServer.html#a6da433f4b2a06ec647b6473ada0c08fb">www::VirtualServer::getSocket</a></div><div class="ttdeci">const VirtualServerSocket &amp; getSocket(void) const</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServer_8cpp_source.html#l00068">VirtualServer.cpp:68</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -578,17 +576,17 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the assigned <a class="el" href="classwww_1_1VirtualServer.html" title="...">VirtualServer</a> object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00052">52</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                                                {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs) <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="classwww_1_1VirtualServer.html#a8b59eaa0148720673383ffc896459ed2">m_names</a> = rhs.getNames();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <a class="code" href="classwww_1_1VirtualServer.html#ae2562c0af5380b68e853244b73fde404">m_errorPages</a> = rhs.getErrorPages();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="classwww_1_1VirtualServer.html#a46810a393adc50039dc76ccf9cb22532">m_locations</a> = rhs.getLocations();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="classwww_1_1VirtualServer.html#aaea5b3fbe683219fd3a902c1b2d8e58e">m_client_max_body_size</a> = rhs.getMaxBodySize();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="classwww_1_1VirtualServer.html#a32e4a7bfc139473cc8ccd4d1c0bf7eb9">m_listen_socket</a> = rhs.getSocket();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a> = rhs.getConnections();</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00049">49</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                                                {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs) <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <a class="code" href="classwww_1_1VirtualServer.html#a8b59eaa0148720673383ffc896459ed2">m_names</a> = rhs.getNames();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="classwww_1_1VirtualServer.html#ae2562c0af5380b68e853244b73fde404">m_errorPages</a> = rhs.getErrorPages();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <a class="code" href="classwww_1_1VirtualServer.html#a46810a393adc50039dc76ccf9cb22532">m_locations</a> = rhs.getLocations();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="classwww_1_1VirtualServer.html#aaea5b3fbe683219fd3a902c1b2d8e58e">m_client_max_body_size</a> = rhs.getMaxBodySize();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <a class="code" href="classwww_1_1VirtualServer.html#a32e4a7bfc139473cc8ccd4d1c0bf7eb9">m_listen_socket</a> = rhs.getSocket();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a> = rhs.getConnections();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -622,16 +620,16 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00096">96</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                                           {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  t_connections::iterator toRemove = std::find(<a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>.begin(), <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>.end(), connection);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordflow">if</span> (toRemove == <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>.end()) {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>.erase(toRemove);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00093">93</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                                           {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  t_connections::iterator toRemove = std::find(<a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>.begin(), <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>.end(), connection);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">if</span> (toRemove == <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>.end()) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <a class="code" href="classwww_1_1VirtualServer.html#aa4b63a743cc1558f22d5f3285ee52084">m_connections</a>.erase(toRemove);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
