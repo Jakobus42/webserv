@@ -8,11 +8,11 @@ var hierarchy =
     [ "configfile::ConfigFileParser", "classconfigfile_1_1ConfigFileParser.html", null ],
     [ "www::Connection", "classwww_1_1Connection.html", null ],
     [ "www::CoreServer", "classwww_1_1CoreServer.html", null ],
-    [ "runtime::EventHandler", "classruntime_1_1EventHandler.html", [
-      [ "runtime::RequestHandler", "classruntime_1_1RequestHandler.html", null ]
-    ] ],
     [ "logger::LoggerManager", "classlogger_1_1LoggerManager.html", null ],
     [ "http::Request", "classhttp_1_1Request.html", null ],
+    [ "www::Response", "classwww_1_1Response.html", null ],
+    [ "www::Route", "structwww_1_1Route.html", null ],
+    [ "www::Router", "classwww_1_1Router.html", null ],
     [ "configfile::s_config_data", "structconfigfile_1_1s__config__data.html", null ],
     [ "configfile::s_location", "structconfigfile_1_1s__location.html", null ],
     [ "configfile::s_server", "structconfigfile_1_1s__server.html", null ],

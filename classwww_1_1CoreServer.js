@@ -10,11 +10,7 @@ var classwww_1_1CoreServer =
     [ "getVirtualServers", "classwww_1_1CoreServer.html#a375b9148831eca17c0230a44fb129d72", null ],
     [ "init", "classwww_1_1CoreServer.html#a669f22616cd765a3eeddc0e8cd72d2ea", null ],
     [ "operator=", "classwww_1_1CoreServer.html#a13cb8ce6de6d2189438696d8876eb809", null ],
-    [ "react", "classwww_1_1CoreServer.html#ac676fb39d1bc369d51eb3fa1972ac4b3", null ],
-    [ "registerHandler", "classwww_1_1CoreServer.html#a510db9cd3a12c428c859bd924041a4bd", null ],
     [ "removeVirtualServer", "classwww_1_1CoreServer.html#ac00310f8976baf913876acf98d0bf9af", null ],
-    [ "unregisterHandler", "classwww_1_1CoreServer.html#a0dbcd969fd29385fe3f72200247b50e0", null ],
     [ "m_epoll_master_fd", "classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e", null ],
-    [ "m_event_handlers", "classwww_1_1CoreServer.html#ac6a47bc19fa4ce82f3010922183cb832", null ],
     [ "m_virtual_servers", "classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82", null ]
 ];

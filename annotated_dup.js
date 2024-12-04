@@ -15,14 +15,13 @@ var annotated_dup =
       [ "FileLogger", "classlogger_1_1FileLogger.html", "classlogger_1_1FileLogger" ],
       [ "LoggerManager", "classlogger_1_1LoggerManager.html", "classlogger_1_1LoggerManager" ]
     ] ],
-    [ "runtime", "namespaceruntime.html", [
-      [ "EventHandler", "classruntime_1_1EventHandler.html", "classruntime_1_1EventHandler" ],
-      [ "RequestHandler", "classruntime_1_1RequestHandler.html", "classruntime_1_1RequestHandler" ]
-    ] ],
     [ "www", "namespacewww.html", [
       [ "ClientSocket", "classwww_1_1ClientSocket.html", "classwww_1_1ClientSocket" ],
       [ "Connection", "classwww_1_1Connection.html", "classwww_1_1Connection" ],
       [ "CoreServer", "classwww_1_1CoreServer.html", "classwww_1_1CoreServer" ],
+      [ "Response", "classwww_1_1Response.html", null ],
+      [ "Route", "structwww_1_1Route.html", "structwww_1_1Route" ],
+      [ "Router", "classwww_1_1Router.html", "classwww_1_1Router" ],
       [ "ServerSocket", "classwww_1_1ServerSocket.html", "classwww_1_1ServerSocket" ],
       [ "VirtualServer", "classwww_1_1VirtualServer.html", "classwww_1_1VirtualServer" ]
     ] ]

@@ -62,6 +62,7 @@ $(document).ready(function(){initNavTree('namespacewww.html',''); initResizable(
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">www Namespace Reference</div>  </div>
@@ -79,6 +80,14 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1CoreServer.html">CoreServer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">...  <a href="classwww_1_1CoreServer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1Response.html">Response</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwww_1_1Route.html">Route</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">...  <a href="structwww_1_1Route.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1Router.html">Router</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">...  <a href="classwww_1_1Router.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1ServerSocket.html">ServerSocket</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">...  <a href="classwww_1_1ServerSocket.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -90,12 +99,19 @@ Classes</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:a81173bdace5c11c7ba16a44f7ebca4cc"><td class="memItemLeft" align="right" valign="top">typedef struct sockaddr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacewww.html#a81173bdace5c11c7ba16a44f7ebca4cc">t_sockaddr</a></td></tr>
 <tr class="separator:a81173bdace5c11c7ba16a44f7ebca4cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43aef677ab180a84e5efb3a2f96e2632"><td class="memItemLeft" align="right" valign="top">typedef struct epoll_event&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacewww.html#a43aef677ab180a84e5efb3a2f96e2632">t_event</a></td></tr>
-<tr class="separator:a43aef677ab180a84e5efb3a2f96e2632"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8a32e0bd8ade7bd2e0199006a1f1963"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacewww.html#aa8a32e0bd8ade7bd2e0199006a1f1963">HandlerFunc</a>) (const <a class="el" href="classhttp_1_1Request.html">http::Request</a> &amp;req, <a class="el" href="classwww_1_1Response.html">Response</a> &amp;res)</td></tr>
+<tr class="memdesc:aa8a32e0bd8ade7bd2e0199006a1f1963"><td class="mdescLeft">&#160;</td><td class="mdescRight">responsible for handling the http request  <a href="namespacewww.html#aa8a32e0bd8ade7bd2e0199006a1f1963">More...</a><br /></td></tr>
+<tr class="separator:aa8a32e0bd8ade7bd2e0199006a1f1963"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11dc45f60ed65920a1400e89678aa47e"><td class="memItemLeft" align="right" valign="top">typedef struct sockaddr_in&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacewww.html#a11dc45f60ed65920a1400e89678aa47e">t_sockaddr_in</a></td></tr>
 <tr class="separator:a11dc45f60ed65920a1400e89678aa47e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c3b385037615088ec57ed168852825f"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="classwww_1_1Connection.html">Connection</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacewww.html#a6c3b385037615088ec57ed168852825f">t_connections</a></td></tr>
 <tr class="separator:a6c3b385037615088ec57ed168852825f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:aeec20d23be4412d0cfb3b343d22712e2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacewww.html#aeec20d23be4412d0cfb3b343d22712e2">Method</a> { <a class="el" href="namespacewww.html#aeec20d23be4412d0cfb3b343d22712e2a77ae1de937adbc9a58092ead589256a2">GET</a>
+ }</td></tr>
+<tr class="separator:aeec20d23be4412d0cfb3b343d22712e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -105,6 +121,31 @@ Variables</h2></td></tr>
 <tr class="separator:ae939eaaa74b71876aa8344d3037b7af3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
+<a id="aa8a32e0bd8ade7bd2e0199006a1f1963"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8a32e0bd8ade7bd2e0199006a1f1963">&#9670;&nbsp;</a></span>HandlerFunc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* www::HandlerFunc) (const <a class="el" href="classhttp_1_1Request.html">http::Request</a> &amp;req, <a class="el" href="classwww_1_1Response.html">Response</a> &amp;res)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>responsible for handling the http request </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">req</td><td>Contains the Request metadata </td></tr>
+    <tr><td class="paramname">res</td><td>empty <a class="el" href="classwww_1_1Response.html">Response</a> to be written to </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="Router_8hpp_source.html#l00020">20</a> of file <a class="el" href="Router_8hpp_source.html">Router.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a6c3b385037615088ec57ed168852825f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6c3b385037615088ec57ed168852825f">&#9670;&nbsp;</a></span>t_connections</h2>
 
@@ -118,22 +159,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="VirtualServer_8hpp_source.html#l00017">17</a> of file <a class="el" href="VirtualServer_8hpp_source.html">VirtualServer.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a43aef677ab180a84e5efb3a2f96e2632"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43aef677ab180a84e5efb3a2f96e2632">&#9670;&nbsp;</a></span>t_event</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct epoll_event <a class="el" href="namespacewww.html#a43aef677ab180a84e5efb3a2f96e2632">www::t_event</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="CoreServer_8hpp_source.html#l00001">1</a> of file <a class="el" href="CoreServer_8hpp_source.html">CoreServer.hpp</a>.</p>
 
 </div>
 </div>
@@ -167,6 +192,28 @@ Variables</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ServerSocket_8hpp_source.html#l00001">1</a> of file <a class="el" href="ServerSocket_8hpp_source.html">ServerSocket.hpp</a>.</p>
 
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="aeec20d23be4412d0cfb3b343d22712e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeec20d23be4412d0cfb3b343d22712e2">&#9670;&nbsp;</a></span>Method</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacewww.html#aeec20d23be4412d0cfb3b343d22712e2">www::Method</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aeec20d23be4412d0cfb3b343d22712e2a77ae1de937adbc9a58092ead589256a2"></a>GET&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="Router_8hpp_source.html#l00011">11</a> of file <a class="el" href="Router_8hpp_source.html">Router.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{ <a class="code" href="namespacewww.html#aeec20d23be4412d0cfb3b343d22712e2a77ae1de937adbc9a58092ead589256a2">GET</a> };</div>
+<div class="ttc" id="anamespacewww_html_aeec20d23be4412d0cfb3b343d22712e2a77ae1de937adbc9a58092ead589256a2"><div class="ttname"><a href="namespacewww.html#aeec20d23be4412d0cfb3b343d22712e2a77ae1de937adbc9a58092ead589256a2">www::GET</a></div><div class="ttdeci">@ GET</div><div class="ttdef"><b>Definition:</b> <a href="Router_8hpp_source.html#l00011">Router.hpp:11</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
