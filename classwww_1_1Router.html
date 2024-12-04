@@ -108,7 +108,7 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>... </p>
 
-<p class="definition">Definition at line <a class="el" href="Router_8hpp_source.html#l00039">39</a> of file <a class="el" href="Router_8hpp_source.html">Router.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Router_8hpp_source.html#l00038">38</a> of file <a class="el" href="Router_8hpp_source.html">Router.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a93bd75a5cfb477ff1af5ab430c9c2f01"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a93bd75a5cfb477ff1af5ab430c9c2f01">&#9670;&nbsp;</a></span>Router() <span class="overload">[1/2]</span></h2>
@@ -180,7 +180,7 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="Router_8cpp_source.html#l00030">30</a> of file <a class="el" href="Router_8cpp_source.html">Router.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;: <a class="code" href="classwww_1_1Router.html#a5b6e91e582cce2715c3a24cf77984edd">m_routes</a>(other.m_routes) {}</div>
-<div class="ttc" id="aclasswww_1_1Router_html_a5b6e91e582cce2715c3a24cf77984edd"><div class="ttname"><a href="classwww_1_1Router.html#a5b6e91e582cce2715c3a24cf77984edd">www::Router::m_routes</a></div><div class="ttdeci">std::map&lt; Route, HandlerFunc &gt; m_routes</div><div class="ttdef"><b>Definition:</b> <a href="Router_8hpp_source.html#l00050">Router.hpp:50</a></div></div>
+<div class="ttc" id="aclasswww_1_1Router_html_a5b6e91e582cce2715c3a24cf77984edd"><div class="ttname"><a href="classwww_1_1Router.html#a5b6e91e582cce2715c3a24cf77984edd">www::Router::m_routes</a></div><div class="ttdeci">std::map&lt; Route, HandlerFunc &gt; m_routes</div><div class="ttdef"><b>Definition:</b> <a href="Router_8hpp_source.html#l00049">Router.hpp:49</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -250,7 +250,7 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                                                       {</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  std::map&lt;Route, HandlerFunc&gt;::const_iterator it;</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  it = <a class="code" href="classwww_1_1Router.html#a5b6e91e582cce2715c3a24cf77984edd">m_routes</a>.find(Route(<span class="stringliteral">&quot;todo&quot;</span>, <a class="code" href="namespacewww.html#aeec20d23be4412d0cfb3b343d22712e2a77ae1de937adbc9a58092ead589256a2">GET</a>));</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  it = <a class="code" href="classwww_1_1Router.html#a5b6e91e582cce2715c3a24cf77984edd">m_routes</a>.find(Route(req.<a class="code" href="classhttp_1_1Request.html#a221e4019a9c9e4fc7391bad30c72adde">getUri</a>(), req.<a class="code" href="classhttp_1_1Request.html#aa30f502a37a97744141e7e64e0368aa2">getMethod</a>()));</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">if</span> (it == <a class="code" href="classwww_1_1Router.html#a5b6e91e582cce2715c3a24cf77984edd">m_routes</a>.end()) {</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// TODO: write http not found response</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// create response class and Head class for http headers</span></div>
@@ -258,8 +258,19 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  }</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  it-&gt;second(req, res);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
-<div class="ttc" id="anamespacewww_html_aeec20d23be4412d0cfb3b343d22712e2a77ae1de937adbc9a58092ead589256a2"><div class="ttname"><a href="namespacewww.html#aeec20d23be4412d0cfb3b343d22712e2a77ae1de937adbc9a58092ead589256a2">www::GET</a></div><div class="ttdeci">@ GET</div><div class="ttdef"><b>Definition:</b> <a href="Router_8hpp_source.html#l00011">Router.hpp:11</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a221e4019a9c9e4fc7391bad30c72adde"><div class="ttname"><a href="classhttp_1_1Request.html#a221e4019a9c9e4fc7391bad30c72adde">http::Request::getUri</a></div><div class="ttdeci">const std::string &amp; getUri(void) const</div><div class="ttdef"><b>Definition:</b> <a href="Request_8cpp_source.html#l00048">Request.cpp:48</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_aa30f502a37a97744141e7e64e0368aa2"><div class="ttname"><a href="classhttp_1_1Request.html#aa30f502a37a97744141e7e64e0368aa2">http::Request::getMethod</a></div><div class="ttdeci">http::Method getMethod(void) const</div><div class="ttdef"><b>Definition:</b> <a href="Request_8cpp_source.html#l00047">Request.cpp:47</a></div></div>
 </div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classwww_1_1Router_ab827928d8a6306c12ff08bdb67be7f4d_cgraph.png" border="0" usemap="#aclasswww_1_1Router_ab827928d8a6306c12ff08bdb67be7f4d_cgraph" alt=""/></div>
+<map name="aclasswww_1_1Router_ab827928d8a6306c12ff08bdb67be7f4d_cgraph" id="aclasswww_1_1Router_ab827928d8a6306c12ff08bdb67be7f4d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,31,221,57"/>
+<area shape="rect" href="classhttp_1_1Request.html#aa30f502a37a97744141e7e64e0368aa2" title=" " alt="" coords="269,5,456,32"/>
+<area shape="rect" href="classhttp_1_1Request.html#a221e4019a9c9e4fc7391bad30c72adde" title=" " alt="" coords="284,56,441,83"/>
+</map>
+</div>
+<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwww_1_1Router_ab827928d8a6306c12ff08bdb67be7f4d_icgraph.png" border="0" usemap="#aclasswww_1_1Router_ab827928d8a6306c12ff08bdb67be7f4d_icgraph" alt=""/></div>
@@ -334,7 +345,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Router_8hpp_source.html#l00050">50</a> of file <a class="el" href="Router_8hpp_source.html">Router.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Router_8hpp_source.html#l00049">49</a> of file <a class="el" href="Router_8hpp_source.html">Router.hpp</a>.</p>
 
 </div>
 </div>

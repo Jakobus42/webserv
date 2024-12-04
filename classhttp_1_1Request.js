@@ -6,11 +6,15 @@ var classhttp_1_1Request =
     [ "getBody", "classhttp_1_1Request.html#a867f9779974151717071cbc33e09de37", null ],
     [ "getData", "classhttp_1_1Request.html#a8bed28739f9f095e37da00fdbfea3189", null ],
     [ "getHead", "classhttp_1_1Request.html#a23ba1b63e9b836434bddc526105fd69e", null ],
+    [ "getMethod", "classhttp_1_1Request.html#aa30f502a37a97744141e7e64e0368aa2", null ],
     [ "getReceivedBytes", "classhttp_1_1Request.html#a43815c2fb15f1780a37324e6953e7d17", null ],
+    [ "getUri", "classhttp_1_1Request.html#a221e4019a9c9e4fc7391bad30c72adde", null ],
     [ "operator=", "classhttp_1_1Request.html#a7db055fcd3236ab07f87ff46c9c5f6d2", null ],
     [ "m_body", "classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840", null ],
     [ "m_data", "classhttp_1_1Request.html#a6ff80f8234097fba13bd48eed4f8bdaf", null ],
     [ "m_head", "classhttp_1_1Request.html#aa84838a0d88f5f9750526a91dae03dac", null ],
+    [ "m_method", "classhttp_1_1Request.html#a209f172cc311ccea1cce70bdfab6f5df", null ],
     [ "m_read_buffer", "classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378", null ],
-    [ "m_received_bytes", "classhttp_1_1Request.html#af3b669ed3f8e1bd05f6d87ec4b62f807", null ]
+    [ "m_received_bytes", "classhttp_1_1Request.html#af3b669ed3f8e1bd05f6d87ec4b62f807", null ],
+    [ "m_uri", "classhttp_1_1Request.html#a7fec83fd9500e50659804603b965aeaf", null ]
 ];

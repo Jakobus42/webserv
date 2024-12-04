@@ -1,4 +1,47 @@
 var namespacehttp =
 [
-    [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ]
+    [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
+    [ "Method", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cf", [
+      [ "GET", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0", null ],
+      [ "POST", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab", null ],
+      [ "PUT", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa1224c995870beafdb255dddd58f75064", null ],
+      [ "DELETE", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30", null ],
+      [ "PATCH", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa8115e271195dadc3f061abb62b350c8a", null ],
+      [ "HEAD", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa6abb7e41c5bacb7a1ca9bde42977f87e", null ],
+      [ "OPTIONS", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa8eb60b331b9dd5b66681f85111d99c1e", null ],
+      [ "TRACE", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfac3ae7052b142891ae4cbd8c7d3952e4b", null ],
+      [ "CONNECT", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaacb1ee85ea00b29a2292736dd81b7992", null ]
+    ] ],
+    [ "StatusCode", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762", [
+      [ "OK", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc", null ],
+      [ "CREATED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a55ec2403fcca929391dbb044ffed5e85", null ],
+      [ "ACCEPTED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ada040cfaa65857ae3be3676c276fc87a", null ],
+      [ "NO_CONTENT", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a1f8808bf48e47d5ded8dd2093dc6401a", null ],
+      [ "MOVED_PERMANENTLY", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af48f28793b2b2cf55236a361684fe374", null ],
+      [ "FOUND", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a664deb693ad9829d972110894872ba8d", null ],
+      [ "SEE_OTHER", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a5717ca1f9dcd04dba55487f8210aa9f3", null ],
+      [ "NOT_MODIFIED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ad2025c2f62630fe5349c620f6c19b68a", null ],
+      [ "BAD_REQUEST", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb", null ],
+      [ "UNAUTHORIZED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3d7d9fa1fdefebf6853cb2a1bdb7ed45", null ],
+      [ "FORBIDDEN", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7", null ],
+      [ "NOT_FOUND", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a144f7cef2e3efe6d823debdf4e62b10c", null ],
+      [ "METHOD_NOT_ALLOWED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a951e17c8b8b27ee06ced2f743295c2ad", null ],
+      [ "NOT_ACCEPTABLE", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af02e26d07c2c0b6609ef53180fa5501b", null ],
+      [ "REQUEST_TIMEOUT", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762abfd170331bc52230235a1a5a3b8855b1", null ],
+      [ "CONFLICT", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a0102681b664612b47f268b7b25b455f3", null ],
+      [ "GONE", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a6a57adb9b4b8e48c83ffd31803861c90", null ],
+      [ "LENGTH_REQUIRED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a99433d071bad8a0f316f89d915e3a65f", null ],
+      [ "PRECONDITION_FAILED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a60a8bf8892fa4895d1fdabe169243458", null ],
+      [ "PAYLOAD_TOO_LARGE", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ae0967dfd6179bfd162129b973a2acf8a", null ],
+      [ "URI_TOO_LONG", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a873ca8ab2862e690356decb197a57b21", null ],
+      [ "UNSUPPORTED_MEDIA_TYPE", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a032b28c11dba5740005c00c42e23ee9b", null ],
+      [ "RANGE_NOT_SATISFIABLE", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762adf7a10453ad32b7ddaf6ea0cc390ecfd", null ],
+      [ "EXPECTATION_FAILED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a61bc4fa7ffe014a95f2fbf6afdc4e10c", null ],
+      [ "INTERNAL_SERVER_ERROR", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a8bed57973a8cc88394fe713a7a4c2cba", null ],
+      [ "NOT_IMPLEMENTED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702", null ],
+      [ "BAD_GATEWAY", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a28f37481a1370680536f38437874e5a7", null ],
+      [ "SERVICE_UNAVAILABLE", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a884dcbd834ba0952d75e6418b7dad03c", null ],
+      [ "GATEWAY_TIMEOUT", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a87353b86a06472ac0dea6f4580bf6683", null ],
+      [ "HTTP_VERSION_NOT_SUPPORTED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff", null ]
+    ] ]
 ];

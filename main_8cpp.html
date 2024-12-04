@@ -75,33 +75,34 @@ Include dependency graph for main.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#amain_8cpp" alt=""/></div>
 <map name="amain_8cpp" id="amain_8cpp">
-<area shape="rect" title=" " alt="" coords="635,5,717,32"/>
+<area shape="rect" title=" " alt="" coords="524,5,607,32"/>
 <area shape="rect" title=" " alt="" coords="16,379,96,405"/>
-<area shape="rect" href="Parser_8hpp.html" title=" " alt="" coords="600,80,752,107"/>
-<area shape="rect" href="LoggerManager_8hpp.html" title=" " alt="" coords="428,155,623,181"/>
-<area shape="rect" href="CoreServer_8hpp.html" title=" " alt="" coords="938,80,1097,107"/>
-<area shape="rect" href="Router_8hpp.html" title=" " alt="" coords="799,155,929,181"/>
-<area shape="rect" title=" " alt="" coords="563,304,637,331"/>
-<area shape="rect" title=" " alt="" coords="697,229,748,256"/>
-<area shape="rect" title=" " alt="" coords="743,379,817,405"/>
-<area shape="rect" title=" " alt="" coords="1037,379,1099,405"/>
-<area shape="rect" title=" " alt="" coords="93,229,171,256"/>
-<area shape="rect" href="ALogger_8hpp.html" title=" " alt="" coords="331,304,477,331"/>
-<area shape="rect" href="ConsoleLogger_8hpp.html" title=" " alt="" coords="246,229,437,256"/>
-<area shape="rect" href="FileLogger_8hpp.html" title=" " alt="" coords="461,229,622,256"/>
-<area shape="rect" title=" " alt="" coords="375,379,433,405"/>
-<area shape="rect" title=" " alt="" coords="864,379,923,405"/>
-<area shape="rect" href="VirtualServer_8hpp.html" title=" " alt="" coords="1131,155,1301,181"/>
-<area shape="rect" title=" " alt="" coords="1382,379,1453,405"/>
-<area shape="rect" href="ServerSocket_8hpp.html" title=" " alt="" coords="1739,229,1874,256"/>
-<area shape="rect" href="Connection_8hpp.html" title=" " alt="" coords="1207,229,1379,256"/>
-<area shape="rect" title=" " alt="" coords="1759,304,1855,331"/>
-<area shape="rect" title=" " alt="" coords="1879,304,1958,331"/>
-<area shape="rect" title=" " alt="" coords="1778,379,1881,405"/>
-<area shape="rect" title=" " alt="" coords="1660,304,1735,331"/>
-<area shape="rect" href="Request_8hpp.html" title=" " alt="" coords="1157,304,1302,331"/>
-<area shape="rect" href="ClientSocket_8hpp.html" title=" " alt="" coords="1455,304,1635,331"/>
-<area shape="rect" title=" " alt="" coords="1502,379,1589,405"/>
+<area shape="rect" href="Parser_8hpp.html" title=" " alt="" coords="352,80,504,107"/>
+<area shape="rect" href="LoggerManager_8hpp.html" title=" " alt="" coords="399,155,593,181"/>
+<area shape="rect" href="CoreServer_8hpp.html" title=" " alt="" coords="878,80,1037,107"/>
+<area shape="rect" href="Router_8hpp.html" title=" " alt="" coords="718,155,847,181"/>
+<area shape="rect" title=" " alt="" coords="193,304,266,331"/>
+<area shape="rect" title=" " alt="" coords="749,229,800,256"/>
+<area shape="rect" title=" " alt="" coords="183,379,257,405"/>
+<area shape="rect" title=" " alt="" coords="926,229,989,256"/>
+<area shape="rect" title=" " alt="" coords="381,229,459,256"/>
+<area shape="rect" href="ALogger_8hpp.html" title=" " alt="" coords="361,304,508,331"/>
+<area shape="rect" href="ConsoleLogger_8hpp.html" title=" " alt="" coords="534,229,725,256"/>
+<area shape="rect" href="FileLogger_8hpp.html" title=" " alt="" coords="195,229,357,256"/>
+<area shape="rect" title=" " alt="" coords="405,379,464,405"/>
+<area shape="rect" title=" " alt="" coords="903,379,961,405"/>
+<area shape="rect" href="VirtualServer_8hpp.html" title=" " alt="" coords="1029,155,1200,181"/>
+<area shape="rect" title=" " alt="" coords="1239,379,1310,405"/>
+<area shape="rect" href="ServerSocket_8hpp.html" title=" " alt="" coords="1610,229,1745,256"/>
+<area shape="rect" href="Connection_8hpp.html" title=" " alt="" coords="1065,229,1237,256"/>
+<area shape="rect" title=" " alt="" coords="1517,304,1613,331"/>
+<area shape="rect" title=" " alt="" coords="1638,304,1717,331"/>
+<area shape="rect" title=" " alt="" coords="1635,379,1738,405"/>
+<area shape="rect" title=" " alt="" coords="1741,304,1816,331"/>
+<area shape="rect" href="Request_8hpp.html" title=" " alt="" coords="1071,304,1217,331"/>
+<area shape="rect" href="ClientSocket_8hpp.html" title=" " alt="" coords="1313,304,1493,331"/>
+<area shape="rect" href="defines_8hpp.html" title=" " alt="" coords="1095,379,1193,405"/>
+<area shape="rect" title=" " alt="" coords="1359,379,1446,405"/>
 </map>
 </div>
 </div>
@@ -218,7 +219,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classconfigfile_1_1ConfigFileParser.html">configfile::ConfigFileParser</a> configFileParser;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span> (configFileParser.<a class="code" href="classconfigfile_1_1ConfigFileParser.html#a50af4e49462d1d98e1323db4966b8066">loadConfigFile</a>(<a class="code" href="namespaceconfigfile.html">configfile</a>) == 1) <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    router.<a class="code" href="classwww_1_1Router.html#a52bb9a471e4840199e8fd2e0eb12a301">registerRoute</a>(<a class="code" href="structwww_1_1Route.html">www::Route</a>(<span class="stringliteral">&quot;foo&quot;</span>, <a class="code" href="namespacewww.html#aeec20d23be4412d0cfb3b343d22712e2a77ae1de937adbc9a58092ead589256a2">www::GET</a>), <a class="code" href="main_8cpp.html#ad8f8d06fea0e90c71460e714ca52692c">foo</a>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    router.<a class="code" href="classwww_1_1Router.html#a52bb9a471e4840199e8fd2e0eb12a301">registerRoute</a>(<a class="code" href="structwww_1_1Route.html">www::Route</a>(<span class="stringliteral">&quot;foo&quot;</span>, <a class="code" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">http::GET</a>), <a class="code" href="main_8cpp.html#ad8f8d06fea0e90c71460e714ca52692c">foo</a>);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classwww_1_1Response.html">www::Response</a> res;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    router.<a class="code" href="classwww_1_1Router.html#ab827928d8a6306c12ff08bdb67be7f4d">processRequest</a>(<a class="code" href="classhttp_1_1Request.html">http::Request</a>(), res);</div>
@@ -235,7 +236,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aVirtualServer_8hpp_html_aae4d4761b231a4321c08bd4bd18937e0"><div class="ttname"><a href="VirtualServer_8hpp.html#aae4d4761b231a4321c08bd4bd18937e0">ONE_MEGABYTE</a></div><div class="ttdeci">#define ONE_MEGABYTE</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServer_8hpp_source.html#l00010">VirtualServer.hpp:10</a></div></div>
 <div class="ttc" id="aclassconfigfile_1_1ConfigFileParser_html"><div class="ttname"><a href="classconfigfile_1_1ConfigFileParser.html">configfile::ConfigFileParser</a></div><div class="ttdoc">This class is responsible for parsing the configuration file.</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00065">Parser.hpp:65</a></div></div>
 <div class="ttc" id="aclassconfigfile_1_1ConfigFileParser_html_a50af4e49462d1d98e1323db4966b8066"><div class="ttname"><a href="classconfigfile_1_1ConfigFileParser.html#a50af4e49462d1d98e1323db4966b8066">configfile::ConfigFileParser::loadConfigFile</a></div><div class="ttdeci">int loadConfigFile(std::string &amp;configFileName)</div><div class="ttdoc">Loads the configuration file, saving all the information.</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8cpp_source.html#l00163">Parser.cpp:163</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html"><div class="ttname"><a href="classhttp_1_1Request.html">http::Request</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00016">Request.hpp:16</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html"><div class="ttname"><a href="classhttp_1_1Request.html">http::Request</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00017">Request.hpp:17</a></div></div>
 <div class="ttc" id="aclasslogger_1_1ConsoleLogger_html"><div class="ttname"><a href="classlogger_1_1ConsoleLogger.html">logger::ConsoleLogger</a></div><div class="ttdoc">Logs messages to the console.</div><div class="ttdef"><b>Definition:</b> <a href="ConsoleLogger_8hpp_source.html#l00020">ConsoleLogger.hpp:20</a></div></div>
 <div class="ttc" id="aclasslogger_1_1FileLogger_html"><div class="ttname"><a href="classlogger_1_1FileLogger.html">logger::FileLogger</a></div><div class="ttdoc">Logs messages to a specified file.</div><div class="ttdef"><b>Definition:</b> <a href="FileLogger_8hpp_source.html#l00019">FileLogger.hpp:19</a></div></div>
 <div class="ttc" id="aclasslogger_1_1LoggerManager_html"><div class="ttname"><a href="classlogger_1_1LoggerManager.html">logger::LoggerManager</a></div><div class="ttdoc">Manages multiple loggers and handles global logging operations.</div><div class="ttdef"><b>Definition:</b> <a href="LoggerManager_8hpp_source.html#l00022">LoggerManager.hpp:22</a></div></div>
@@ -248,34 +249,34 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aclasswww_1_1CoreServer_html_a375b9148831eca17c0230a44fb129d72"><div class="ttname"><a href="classwww_1_1CoreServer.html#a375b9148831eca17c0230a44fb129d72">www::CoreServer::getVirtualServers</a></div><div class="ttdeci">const std::vector&lt; VirtualServer &gt; &amp; getVirtualServers() const</div><div class="ttdef"><b>Definition:</b> <a href="CoreServer_8cpp_source.html#l00047">CoreServer.cpp:47</a></div></div>
 <div class="ttc" id="aclasswww_1_1CoreServer_html_a669f22616cd765a3eeddc0e8cd72d2ea"><div class="ttname"><a href="classwww_1_1CoreServer.html#a669f22616cd765a3eeddc0e8cd72d2ea">www::CoreServer::init</a></div><div class="ttdeci">void init(void)</div><div class="ttdef"><b>Definition:</b> <a href="CoreServer_8cpp_source.html#l00042">CoreServer.cpp:42</a></div></div>
 <div class="ttc" id="aclasswww_1_1CoreServer_html_ad7b57e659886aef2bf711f2642b4253a"><div class="ttname"><a href="classwww_1_1CoreServer.html#ad7b57e659886aef2bf711f2642b4253a">www::CoreServer::addVirtualServer</a></div><div class="ttdeci">void addVirtualServer()</div><div class="ttdef"><b>Definition:</b> <a href="CoreServer_8cpp_source.html#l00051">CoreServer.cpp:51</a></div></div>
-<div class="ttc" id="aclasswww_1_1Response_html"><div class="ttname"><a href="classwww_1_1Response.html">www::Response</a></div><div class="ttdef"><b>Definition:</b> <a href="Router_8hpp_source.html#l00012">Router.hpp:12</a></div></div>
-<div class="ttc" id="aclasswww_1_1Router_html"><div class="ttname"><a href="classwww_1_1Router.html">www::Router</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition:</b> <a href="Router_8hpp_source.html#l00039">Router.hpp:39</a></div></div>
+<div class="ttc" id="aclasswww_1_1Response_html"><div class="ttname"><a href="classwww_1_1Response.html">www::Response</a></div><div class="ttdef"><b>Definition:</b> <a href="Router_8hpp_source.html#l00011">Router.hpp:11</a></div></div>
+<div class="ttc" id="aclasswww_1_1Router_html"><div class="ttname"><a href="classwww_1_1Router.html">www::Router</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition:</b> <a href="Router_8hpp_source.html#l00038">Router.hpp:38</a></div></div>
 <div class="ttc" id="aclasswww_1_1Router_html_a52bb9a471e4840199e8fd2e0eb12a301"><div class="ttname"><a href="classwww_1_1Router.html#a52bb9a471e4840199e8fd2e0eb12a301">www::Router::registerRoute</a></div><div class="ttdeci">void registerRoute(const Route &amp;route, const HandlerFunc &amp;handler)</div><div class="ttdef"><b>Definition:</b> <a href="Router_8cpp_source.html#l00044">Router.cpp:44</a></div></div>
 <div class="ttc" id="aclasswww_1_1Router_html_ab827928d8a6306c12ff08bdb67be7f4d"><div class="ttname"><a href="classwww_1_1Router.html#ab827928d8a6306c12ff08bdb67be7f4d">www::Router::processRequest</a></div><div class="ttdeci">void processRequest(const http::Request &amp;req, Response &amp;res) const</div><div class="ttdef"><b>Definition:</b> <a href="Router_8cpp_source.html#l00048">Router.cpp:48</a></div></div>
 <div class="ttc" id="amain_8cpp_html_ad8f8d06fea0e90c71460e714ca52692c"><div class="ttname"><a href="main_8cpp.html#ad8f8d06fea0e90c71460e714ca52692c">foo</a></div><div class="ttdeci">void foo(const http::Request &amp;, www::Response &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00008">main.cpp:8</a></div></div>
 <div class="ttc" id="anamespaceconfigfile_html"><div class="ttname"><a href="namespaceconfigfile.html">configfile</a></div><div class="ttdef"><b>Definition:</b> <a href="Parser_8cpp_source.html#l00003">Parser.cpp:3</a></div></div>
+<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">http::GET</a></div><div class="ttdeci">@ GET</div><div class="ttdef"><b>Definition:</b> <a href="defines_8hpp_source.html#l00046">defines.hpp:46</a></div></div>
 <div class="ttc" id="anamespacelogger_html_a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c"><div class="ttname"><a href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2a0b189dfc00bfa02dd8c23d7d6e1a538c">logger::DEBUG</a></div><div class="ttdeci">@ DEBUG</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8hpp_source.html#l00017">ALogger.hpp:17</a></div></div>
 <div class="ttc" id="anamespacelogger_html_a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601"><div class="ttname"><a href="namespacelogger.html#a08ef41fb8da9e671d65fcbd87b6574a2aca19ca2d7cd37bf3d7fc92322b429601">logger::ERROR</a></div><div class="ttdeci">@ ERROR</div><div class="ttdef"><b>Definition:</b> <a href="ALogger_8hpp_source.html#l00017">ALogger.hpp:17</a></div></div>
-<div class="ttc" id="anamespacewww_html_aeec20d23be4412d0cfb3b343d22712e2a77ae1de937adbc9a58092ead589256a2"><div class="ttname"><a href="namespacewww.html#aeec20d23be4412d0cfb3b343d22712e2a77ae1de937adbc9a58092ead589256a2">www::GET</a></div><div class="ttdeci">@ GET</div><div class="ttdef"><b>Definition:</b> <a href="Router_8hpp_source.html#l00011">Router.hpp:11</a></div></div>
-<div class="ttc" id="astructwww_1_1Route_html"><div class="ttname"><a href="structwww_1_1Route.html">www::Route</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition:</b> <a href="Router_8hpp_source.html#l00026">Router.hpp:26</a></div></div>
+<div class="ttc" id="astructwww_1_1Route_html"><div class="ttname"><a href="structwww_1_1Route.html">www::Route</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition:</b> <a href="Router_8hpp_source.html#l00025">Router.hpp:25</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8cpp_a172241e088a9da9dabf2cf839a73c865_cgraph.png" border="0" usemap="#amain_8cpp_a172241e088a9da9dabf2cf839a73c865_cgraph" alt=""/></div>
 <map name="amain_8cpp_a172241e088a9da9dabf2cf839a73c865_cgraph" id="amain_8cpp_a172241e088a9da9dabf2cf839a73c865_cgraph">
-<area shape="rect" title=" " alt="" coords="5,406,60,433"/>
-<area shape="rect" href="classwww_1_1CoreServer.html#ad7b57e659886aef2bf711f2642b4253a" title=" " alt="" coords="111,69,321,111"/>
-<area shape="rect" href="main_8cpp.html#ad8f8d06fea0e90c71460e714ca52692c" title=" " alt="" coords="195,135,237,162"/>
-<area shape="rect" href="classlogger_1_1LoggerManager.html#ad140bde7c3a4c9241fb147f2c864d018" title="Provides access to the singleton instance of LoggerManager." alt="" coords="130,187,302,228"/>
-<area shape="rect" href="classwww_1_1CoreServer.html#a375b9148831eca17c0230a44fb129d72" title=" " alt="" coords="113,252,319,293"/>
-<area shape="rect" href="classwww_1_1CoreServer.html#a669f22616cd765a3eeddc0e8cd72d2ea" title=" " alt="" coords="135,318,297,345"/>
-<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a50af4e49462d1d98e1323db4966b8066" title="Loads the configuration file, saving all the information." alt="" coords="119,369,313,411"/>
-<area shape="rect" href="classwww_1_1Router.html#ab827928d8a6306c12ff08bdb67be7f4d" title=" " alt="" coords="108,435,324,462"/>
-<area shape="rect" href="classlogger_1_1LoggerManager.html#ae26ebcbad9c6e4f85769438abac46db5" title="Registers a new logger with the manager." alt="" coords="130,487,302,528"/>
-<area shape="rect" href="classwww_1_1Router.html#a52bb9a471e4840199e8fd2e0eb12a301" title=" " alt="" coords="115,553,317,579"/>
-<area shape="rect" href="classlogger_1_1LoggerManager.html#a7237ff5a6cead3d670328feb6ea60cbd" title="Sets the global log level." alt="" coords="130,604,302,645"/>
-<area shape="rect" href="classlogger_1_1LoggerManager.html#a45d840b2a9bd9fbfccb34689ddc79527" title="Sets the log level for a specific logger." alt="" coords="130,669,302,711"/>
-<area shape="rect" href="classlogger_1_1LoggerManager.html#adf2a8a1ad83a5404d6249518fa460971" title="Unregisters a logger from the manager." alt="" coords="130,735,302,776"/>
+<area shape="rect" title=" " alt="" coords="5,438,60,465"/>
+<area shape="rect" href="classwww_1_1CoreServer.html#ad7b57e659886aef2bf711f2642b4253a" title=" " alt="" coords="111,101,321,143"/>
+<area shape="rect" href="main_8cpp.html#ad8f8d06fea0e90c71460e714ca52692c" title=" " alt="" coords="195,167,237,194"/>
+<area shape="rect" href="classlogger_1_1LoggerManager.html#ad140bde7c3a4c9241fb147f2c864d018" title="Provides access to the singleton instance of LoggerManager." alt="" coords="130,219,302,260"/>
+<area shape="rect" href="classwww_1_1CoreServer.html#a375b9148831eca17c0230a44fb129d72" title=" " alt="" coords="113,284,319,325"/>
+<area shape="rect" href="classwww_1_1CoreServer.html#a669f22616cd765a3eeddc0e8cd72d2ea" title=" " alt="" coords="135,350,297,377"/>
+<area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a50af4e49462d1d98e1323db4966b8066" title="Loads the configuration file, saving all the information." alt="" coords="119,401,313,443"/>
+<area shape="rect" href="classwww_1_1Router.html#ab827928d8a6306c12ff08bdb67be7f4d" title=" " alt="" coords="108,467,324,494"/>
+<area shape="rect" href="classlogger_1_1LoggerManager.html#ae26ebcbad9c6e4f85769438abac46db5" title="Registers a new logger with the manager." alt="" coords="130,519,302,560"/>
+<area shape="rect" href="classwww_1_1Router.html#a52bb9a471e4840199e8fd2e0eb12a301" title=" " alt="" coords="115,585,317,611"/>
+<area shape="rect" href="classlogger_1_1LoggerManager.html#a7237ff5a6cead3d670328feb6ea60cbd" title="Sets the global log level." alt="" coords="130,636,302,677"/>
+<area shape="rect" href="classlogger_1_1LoggerManager.html#a45d840b2a9bd9fbfccb34689ddc79527" title="Sets the log level for a specific logger." alt="" coords="130,701,302,743"/>
+<area shape="rect" href="classlogger_1_1LoggerManager.html#adf2a8a1ad83a5404d6249518fa460971" title="Unregisters a logger from the manager." alt="" coords="130,767,302,808"/>
 <area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#af7511360a26373b0dead35fbf698c92d" title="Parses the configuration file." alt="" coords="372,336,565,377"/>
 <area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#ad44a28949997d104df4adf501df93e27" title="Reads the configuration file." alt="" coords="372,401,565,443"/>
 <area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a418f206d5a0144b7635d260560e08ddd" title="parses a line in the configuration file." alt="" coords="613,336,807,377"/>
@@ -295,6 +296,8 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="classconfigfile_1_1ConfigFileParser.html#a91faa997adaf9945ec4e7b3016fc3a4d" title="finds the current location in the configuration file." alt="" coords="1579,136,1772,177"/>
 <area shape="rect" href="namespaceconfigfile.html#ad34d46b490514a9d5c9408620ed5e006" title="Converts a string to a positive integer." alt="" coords="1611,405,1740,431"/>
 <area shape="rect" href="namespaceconfigfile.html#abab751401cc4565602552b0da2b831aa" title="Checks if a string is a number." alt="" coords="1597,470,1754,497"/>
+<area shape="rect" href="classhttp_1_1Request.html#aa30f502a37a97744141e7e64e0368aa2" title=" " alt="" coords="375,467,562,494"/>
+<area shape="rect" href="classhttp_1_1Request.html#a221e4019a9c9e4fc7391bad30c72adde" title=" " alt="" coords="390,518,547,545"/>
 </map>
 </div>
 
