@@ -1,6 +1,6 @@
 #include "http/Request.hpp"
 
-#include <string.h>
+#include <strings.h>
 
 namespace http {
 
