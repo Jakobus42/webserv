@@ -110,10 +110,7 @@ TEST_F(ConfigFileParserTest, Listen) {
     std::vector<std::string> args = {"listen", "1.2.3.4:80"};
     int ret = instance.testFunction("listen", args, lineCount);
     ASSERT_EQ(instance.getConfigData().servers.back().port, 80);
-    ASSERT_EQ(instance.getConfigData().servers.back().ip_address[0], 1);
-    ASSERT_EQ(instance.getConfigData().servers.back().ip_address[1], 2);
-    ASSERT_EQ(instance.getConfigData().servers.back().ip_address[2], 3);
-    ASSERT_EQ(instance.getConfigData().servers.back().ip_address[3], 4);
+    ASSERT_EQ(instance.getConfigData().servers.back().ip_address, 16909060);
     ASSERT_EQ(ret, 0);
   }
   // incorrect usage

@@ -27,7 +27,7 @@ int main(int argc, char** const argv) {
     try {
       server.init();
       configfile::t_config_data configData = configFileParser.getConfigData();
-      server.addVirtualServers(configData);
+      if (server.addVirtualServers(configData) == false) return 1;
       // server.getVirtualServers().at(0).addConnection();
     } catch (std::exception& e) {
       std::cerr << "Exception caught in main: " << e.what() << std::endl;
