@@ -7,7 +7,8 @@ namespace http {
 /**
  * @brief Constructs a new Request object.
  */
-Request::Request() : m_read_buffer(), m_received_bytes(0), m_data(""), m_head(""), m_body("") {}
+Request::Request()
+    : m_read_buffer(), m_received_bytes(0), m_method(http::GET), m_uri("/"), m_data(""), m_head(""), m_body("") {}
 
 /**
  * @brief Destroys the Request object.

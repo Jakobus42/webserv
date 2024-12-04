@@ -41,7 +41,7 @@ enum StatusCode {
 
 /**
  * @enum HttpMethod
- * @brief Represents the various HTTP methods used in requests.
+ * @brief Represents the various HTTP methods
  */
 enum Method { GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS, TRACE, CONNECT };
 
