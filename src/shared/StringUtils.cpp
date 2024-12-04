@@ -1,4 +1,4 @@
-#include "utils/StringUtils.hpp"
+#include "shared/StringUtils.hpp"
 
 namespace utils {
 

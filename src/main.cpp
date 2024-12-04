@@ -3,9 +3,13 @@
 #include "configfile/Parser.hpp"
 #include "logger/LoggerManager.hpp"
 #include "www/CoreServer.hpp"
+#include "www/Router.hpp"
+
+void foo(const http::Request&, www::Response&) {}
 
 int main(int argc, char** const argv) {
   www::CoreServer server;
+  www::Router router;
 
   try {
     server.init();
@@ -27,11 +31,10 @@ int main(int argc, char** const argv) {
   try {
     logger::LoggerManager& loggerManager = logger::LoggerManager::getInstance();
     loggerManager.registerLogger("Console", new logger::ConsoleLogger());
-    loggerManager.setLoggerLevel("Console", logger::ERROR);
+    loggerManager.setLoggerLevel("Console", logger::DEBUG);
     loggerManager.registerLogger("File", new logger::FileLogger());
     loggerManager.setLoggerLevel("File", logger::DEBUG);
     loggerManager.setGlobalLogLevel(logger::DEBUG);
-    LOG("test log...", logger::FATAL);
     std::string configfile;
     if (argc > 1) {
       configfile = argv[1];
@@ -40,9 +43,15 @@ int main(int argc, char** const argv) {
     }
     configfile::ConfigFileParser configFileParser;
     if (configFileParser.loadConfigFile(configfile) == 1) return 1;
+    router.registerRoute(www::Route(), foo);
+
+    www::Response res;
+    router.handleRequest(http::Request(), res);
+
     // configFileParser.printConfigData(1);
     loggerManager.unregisterLogger("File");
     loggerManager.unregisterLogger("Console");
+
   } catch (const std::exception& e) {
     LOG("ERROR: " << e.what(), logger::ERROR)
   }
