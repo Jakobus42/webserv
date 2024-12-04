@@ -148,12 +148,15 @@ Private Attributes</h2></td></tr>
 <p>Constructs a new <a class="el" href="classhttp_1_1Request.html" title="...">Request</a> object. </p>
 
 <p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00010">10</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;: <a class="code" href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">m_read_buffer</a>(), <a class="code" href="classhttp_1_1Request.html#af3b669ed3f8e1bd05f6d87ec4b62f807">m_received_bytes</a>(0), <a class="code" href="classhttp_1_1Request.html#a6ff80f8234097fba13bd48eed4f8bdaf">m_data</a>(<span class="stringliteral">&quot;&quot;</span>), <a class="code" href="classhttp_1_1Request.html#aa84838a0d88f5f9750526a91dae03dac">m_head</a>(<span class="stringliteral">&quot;&quot;</span>), <a class="code" href="classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840">m_body</a>(<span class="stringliteral">&quot;&quot;</span>) {}</div>
+<div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    : <a class="code" href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">m_read_buffer</a>(), <a class="code" href="classhttp_1_1Request.html#af3b669ed3f8e1bd05f6d87ec4b62f807">m_received_bytes</a>(0), <a class="code" href="classhttp_1_1Request.html#a209f172cc311ccea1cce70bdfab6f5df">m_method</a>(<a class="code" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">http::GET</a>), <a class="code" href="classhttp_1_1Request.html#a7fec83fd9500e50659804603b965aeaf">m_uri</a>(<span class="stringliteral">&quot;/&quot;</span>), <a class="code" href="classhttp_1_1Request.html#a6ff80f8234097fba13bd48eed4f8bdaf">m_data</a>(<span class="stringliteral">&quot;&quot;</span>), <a class="code" href="classhttp_1_1Request.html#aa84838a0d88f5f9750526a91dae03dac">m_head</a>(<span class="stringliteral">&quot;&quot;</span>), <a class="code" href="classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840">m_body</a>(<span class="stringliteral">&quot;&quot;</span>) {}</div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a209f172cc311ccea1cce70bdfab6f5df"><div class="ttname"><a href="classhttp_1_1Request.html#a209f172cc311ccea1cce70bdfab6f5df">http::Request::m_method</a></div><div class="ttdeci">Method m_method</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00035">Request.hpp:35</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html_a6ff80f8234097fba13bd48eed4f8bdaf"><div class="ttname"><a href="classhttp_1_1Request.html#a6ff80f8234097fba13bd48eed4f8bdaf">http::Request::m_data</a></div><div class="ttdeci">std::string m_data</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00037">Request.hpp:37</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a7fec83fd9500e50659804603b965aeaf"><div class="ttname"><a href="classhttp_1_1Request.html#a7fec83fd9500e50659804603b965aeaf">http::Request::m_uri</a></div><div class="ttdeci">std::string m_uri</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00036">Request.hpp:36</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html_aa84838a0d88f5f9750526a91dae03dac"><div class="ttname"><a href="classhttp_1_1Request.html#aa84838a0d88f5f9750526a91dae03dac">http::Request::m_head</a></div><div class="ttdeci">std::string m_head</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00038">Request.hpp:38</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html_ac9a397728470ec78bb8d97eb5ae3b378"><div class="ttname"><a href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">http::Request::m_read_buffer</a></div><div class="ttdeci">char m_read_buffer[BUFFER_SIZE]</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00032">Request.hpp:32</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html_aeeeb51221d331e67c9b68f26720d7840"><div class="ttname"><a href="classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840">http::Request::m_body</a></div><div class="ttdeci">std::string m_body</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00039">Request.hpp:39</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html_af3b669ed3f8e1bd05f6d87ec4b62f807"><div class="ttname"><a href="classhttp_1_1Request.html#af3b669ed3f8e1bd05f6d87ec4b62f807">http::Request::m_received_bytes</a></div><div class="ttdeci">uint32_t m_received_bytes</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00033">Request.hpp:33</a></div></div>
+<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">http::GET</a></div><div class="ttdeci">@ GET</div><div class="ttdef"><b>Definition:</b> <a href="defines_8hpp_source.html#l00046">defines.hpp:46</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -174,8 +177,8 @@ Private Attributes</h2></td></tr>
 
 <p>Destroys the <a class="el" href="classhttp_1_1Request.html" title="...">Request</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00015">15</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{}</div>
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00016">16</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -203,12 +206,12 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00021">21</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    : <a class="code" href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">m_read_buffer</a>(),</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      <a class="code" href="classhttp_1_1Request.html#af3b669ed3f8e1bd05f6d87ec4b62f807">m_received_bytes</a>(other.getReceivedBytes()),</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;      <a class="code" href="classhttp_1_1Request.html#a6ff80f8234097fba13bd48eed4f8bdaf">m_data</a>(other.getData()),</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;      <a class="code" href="classhttp_1_1Request.html#aa84838a0d88f5f9750526a91dae03dac">m_head</a>(other.getHead()),</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;      <a class="code" href="classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840">m_body</a>(other.getBody()) {}</div>
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00022">22</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    : <a class="code" href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">m_read_buffer</a>(),</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;      <a class="code" href="classhttp_1_1Request.html#af3b669ed3f8e1bd05f6d87ec4b62f807">m_received_bytes</a>(other.getReceivedBytes()),</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;      <a class="code" href="classhttp_1_1Request.html#a6ff80f8234097fba13bd48eed4f8bdaf">m_data</a>(other.getData()),</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;      <a class="code" href="classhttp_1_1Request.html#aa84838a0d88f5f9750526a91dae03dac">m_head</a>(other.getHead()),</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;      <a class="code" href="classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840">m_body</a>(other.getBody()) {}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -229,8 +232,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00046">46</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840">m_body</a>; };</div>
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00047">47</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840">m_body</a>; };</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -259,8 +262,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00044">44</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Request.html#a6ff80f8234097fba13bd48eed4f8bdaf">m_data</a>; };</div>
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00045">45</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Request.html#a6ff80f8234097fba13bd48eed4f8bdaf">m_data</a>; };</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -289,8 +292,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00045">45</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Request.html#aa84838a0d88f5f9750526a91dae03dac">m_head</a>; };</div>
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00046">46</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Request.html#aa84838a0d88f5f9750526a91dae03dac">m_head</a>; };</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -319,9 +322,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00047">47</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Request.html#a209f172cc311ccea1cce70bdfab6f5df">m_method</a>; }</div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a209f172cc311ccea1cce70bdfab6f5df"><div class="ttname"><a href="classhttp_1_1Request.html#a209f172cc311ccea1cce70bdfab6f5df">http::Request::m_method</a></div><div class="ttdeci">Method m_method</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00035">Request.hpp:35</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00048">48</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Request.html#a209f172cc311ccea1cce70bdfab6f5df">m_method</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -351,8 +353,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00043">43</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Request.html#af3b669ed3f8e1bd05f6d87ec4b62f807">m_received_bytes</a>; };</div>
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00044">44</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Request.html#af3b669ed3f8e1bd05f6d87ec4b62f807">m_received_bytes</a>; };</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -381,9 +383,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00048">48</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Request.html#a7fec83fd9500e50659804603b965aeaf">m_uri</a>; }</div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a7fec83fd9500e50659804603b965aeaf"><div class="ttname"><a href="classhttp_1_1Request.html#a7fec83fd9500e50659804603b965aeaf">http::Request::m_uri</a></div><div class="ttdeci">std::string m_uri</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00036">Request.hpp:36</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00049">49</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Request.html#a7fec83fd9500e50659804603b965aeaf">m_uri</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -422,16 +423,16 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the assigned <a class="el" href="classhttp_1_1Request.html" title="...">Request</a> object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00033">33</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                              {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs) <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="classhttp_1_1Request.html#a6ff80f8234097fba13bd48eed4f8bdaf">m_data</a> = rhs.getData();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <a class="code" href="classhttp_1_1Request.html#aa84838a0d88f5f9750526a91dae03dac">m_head</a> = rhs.getHead();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840">m_body</a> = rhs.getBody();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="classhttp_1_1Request.html#af3b669ed3f8e1bd05f6d87ec4b62f807">m_received_bytes</a> = rhs.getReceivedBytes();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  bzero(<a class="code" href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">m_read_buffer</a>, <span class="keyword">sizeof</span>(<a class="code" href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">m_read_buffer</a>));</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00034">34</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                              {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs) <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <a class="code" href="classhttp_1_1Request.html#a6ff80f8234097fba13bd48eed4f8bdaf">m_data</a> = rhs.getData();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <a class="code" href="classhttp_1_1Request.html#aa84838a0d88f5f9750526a91dae03dac">m_head</a> = rhs.getHead();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840">m_body</a> = rhs.getBody();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <a class="code" href="classhttp_1_1Request.html#af3b669ed3f8e1bd05f6d87ec4b62f807">m_received_bytes</a> = rhs.getReceivedBytes();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  bzero(<a class="code" href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">m_read_buffer</a>, <span class="keyword">sizeof</span>(<a class="code" href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">m_read_buffer</a>));</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
