@@ -44,5 +44,7 @@ uint32_t Request::getReceivedBytes(void) const { return m_received_bytes; };
 const std::string& Request::getData(void) const { return m_data; };
 const std::string& Request::getHead(void) const { return m_head; };
 const std::string& Request::getBody(void) const { return m_body; };
+Method Request::getMethod(void) const { return m_method; }
+const std::string& Request::getUri(void) const { return m_uri; }
 
 } /* namespace http */

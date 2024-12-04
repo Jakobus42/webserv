@@ -9,9 +9,9 @@ bool Route::operator<(const Route& other) const {
   return relativePath < other.relativePath;
 }
 
-Route::Route() : relativePath("/"), method(GET) {}
+Route::Route() : relativePath("/"), method(http::GET) {}
 
-Route::Route(const std::string& relativePath, Method method) : relativePath(relativePath), method(method) {}
+Route::Route(const std::string& relativePath, http::Method method) : relativePath(relativePath), method(method) {}
 
 /**
  * @brief Constructs a new Router object.
@@ -48,7 +48,7 @@ void Router::registerRoute(const Route& route, const HandlerFunc& handler) {
 void Router::processRequest(const http::Request& req, Response& res) const {
   std::map<Route, HandlerFunc>::const_iterator it;
 
-  it = m_routes.find(Route("todo", GET));
+  it = m_routes.find(Route(req.getUri(), req.getMethod()));
   if (it == m_routes.end()) {
     // TODO: write http not found response
     // create response class and Head class for http headers

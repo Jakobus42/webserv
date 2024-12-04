@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+#include "defines.hpp"
+
 #define BUFFER_SIZE 256
 
 namespace http {
@@ -21,6 +23,8 @@ class Request {
   Request& operator=(const Request& rhs);
 
   uint32_t getReceivedBytes(void) const;
+  http::Method getMethod(void) const;
+  const std::string& getUri(void) const;
   const std::string& getData(void) const;
   const std::string& getHead(void) const;
   const std::string& getBody(void) const;
@@ -28,8 +32,11 @@ class Request {
  private:
   char m_read_buffer[BUFFER_SIZE];
   uint32_t m_received_bytes;
+
+  Method m_method;
+  std::string m_uri;
   std::string m_data;
-  std::string m_head;
+  std::string m_head;  // TODO: make a map of headers or a header class
   std::string m_body;
   // ...
 };

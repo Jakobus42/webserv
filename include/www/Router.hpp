@@ -8,7 +8,6 @@
 namespace www {
 
 // TODO: TMP
-enum Method { GET };
 class Response {};
 //----
 
@@ -25,10 +24,10 @@ typedef void (*HandlerFunc)(const http::Request& req, Response& res);
  */
 struct Route {
   std::string relativePath;
-  Method method;
+  http::Method method;
 
   Route();
-  Route(const std::string& relativePath, Method method);
+  Route(const std::string& relativePath, http::Method method);
   bool operator<(const Route& other) const;
 };
 
