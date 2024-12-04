@@ -78,7 +78,7 @@ Collaboration diagram for www::CoreServer:</div>
 <div class="dyncontent">
 <div class="center"><img src="classwww_1_1CoreServer__coll__graph.png" border="0" usemap="#awww_1_1CoreServer_coll__map" alt="Collaboration graph"/></div>
 <map name="awww_1_1CoreServer_coll__map" id="awww_1_1CoreServer_coll__map">
-<area shape="rect" title="..." alt="" coords="5,5,188,244"/>
+<area shape="rect" title="..." alt="" coords="5,5,188,259"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -90,8 +90,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2e90955a3aec80114d2c7ab88457399e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1CoreServer.html#a2e90955a3aec80114d2c7ab88457399e">~CoreServer</a> ()</td></tr>
 <tr class="memdesc:a2e90955a3aec80114d2c7ab88457399e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="classwww_1_1CoreServer.html" title="...">CoreServer</a> object.  <a href="classwww_1_1CoreServer.html#a2e90955a3aec80114d2c7ab88457399e">More...</a><br /></td></tr>
 <tr class="separator:a2e90955a3aec80114d2c7ab88457399e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a669f22616cd765a3eeddc0e8cd72d2ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1CoreServer.html#a669f22616cd765a3eeddc0e8cd72d2ea">init</a> (void)  throw (std::exception)</td></tr>
-<tr class="separator:a669f22616cd765a3eeddc0e8cd72d2ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dd1a1e7c3685b4afd63788b46558234"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1CoreServer.html#a5dd1a1e7c3685b4afd63788b46558234">init</a> ()  throw (std::exception)</td></tr>
+<tr class="separator:a5dd1a1e7c3685b4afd63788b46558234"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a03136c8e71576495df9b106932d238"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1CoreServer.html#a0a03136c8e71576495df9b106932d238">getEpollFd</a> () const</td></tr>
 <tr class="separator:a0a03136c8e71576495df9b106932d238"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a375b9148831eca17c0230a44fb129d72"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="classwww_1_1VirtualServer.html">VirtualServer</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1CoreServer.html#a375b9148831eca17c0230a44fb129d72">getVirtualServers</a> () const</td></tr>
@@ -100,10 +100,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad79a9897ea7b23e8b0963ae8d3978736"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7b57e659886aef2bf711f2642b4253a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1CoreServer.html#ad7b57e659886aef2bf711f2642b4253a">addVirtualServer</a> ()  throw (std::exception)</td></tr>
 <tr class="separator:ad7b57e659886aef2bf711f2642b4253a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae11113e90b0d1a02d92b74a52c0ffa0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1CoreServer.html#ae11113e90b0d1a02d92b74a52c0ffa0e">addVirtualServer</a> (const std::string &amp;name, uint32_t port, uint64_t clientMaxBodySize)  throw (std::exception)</td></tr>
-<tr class="separator:ae11113e90b0d1a02d92b74a52c0ffa0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac78aa3d9562104d88f6876f43bce995"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1CoreServer.html#aac78aa3d9562104d88f6876f43bce995">addVirtualServer</a> (<a class="el" href="namespaceconfigfile.html#aa80825aa8468926c8586f8d6f17a9643">configfile::t_server</a> &amp;serverConfig)  throw (			std::exception)</td></tr>
+<tr class="separator:aac78aa3d9562104d88f6876f43bce995"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac00310f8976baf913876acf98d0bf9af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1CoreServer.html#ac00310f8976baf913876acf98d0bf9af">removeVirtualServer</a> (std::vector&lt; <a class="el" href="classwww_1_1VirtualServer.html">VirtualServer</a> &gt;::iterator it)</td></tr>
 <tr class="separator:ac00310f8976baf913876acf98d0bf9af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96ecff7b3d31d9c8791f2bdafc974ecf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1CoreServer.html#a96ecff7b3d31d9c8791f2bdafc974ecf">addVirtualServers</a> (<a class="el" href="namespaceconfigfile.html#a7ddcd10f1358d304988e5b683d5ddfb3">configfile::t_config_data</a> &amp;configData)</td></tr>
+<tr class="separator:a96ecff7b3d31d9c8791f2bdafc974ecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -122,7 +124,7 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>... </p>
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8hpp_source.html#l00013">13</a> of file <a class="el" href="CoreServer_8hpp_source.html">CoreServer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8hpp_source.html#l00014">14</a> of file <a class="el" href="CoreServer_8hpp_source.html">CoreServer.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a81521c1c3b38bad3e79213b00beae4f8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a81521c1c3b38bad3e79213b00beae4f8">&#9670;&nbsp;</a></span>CoreServer() <span class="overload">[1/2]</span></h2>
@@ -143,8 +145,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00011">11</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;: <a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>(-1), <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>() {}</div>
-<div class="ttc" id="aclasswww_1_1CoreServer_html_a2480fe35a8d69df0417662559867fe8e"><div class="ttname"><a href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">www::CoreServer::m_epoll_master_fd</a></div><div class="ttdeci">int m_epoll_master_fd</div><div class="ttdef"><b>Definition:</b> <a href="CoreServer_8hpp_source.html#l00031">CoreServer.hpp:31</a></div></div>
-<div class="ttc" id="aclasswww_1_1CoreServer_html_a78190c9b7d9ff49b8c010ff7bbe88a82"><div class="ttname"><a href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">www::CoreServer::m_virtual_servers</a></div><div class="ttdeci">std::vector&lt; VirtualServer &gt; m_virtual_servers</div><div class="ttdef"><b>Definition:</b> <a href="CoreServer_8hpp_source.html#l00032">CoreServer.hpp:32</a></div></div>
+<div class="ttc" id="aclasswww_1_1CoreServer_html_a2480fe35a8d69df0417662559867fe8e"><div class="ttname"><a href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">www::CoreServer::m_epoll_master_fd</a></div><div class="ttdeci">int m_epoll_master_fd</div><div class="ttdef"><b>Definition:</b> <a href="CoreServer_8hpp_source.html#l00033">CoreServer.hpp:33</a></div></div>
+<div class="ttc" id="aclasswww_1_1CoreServer_html_a78190c9b7d9ff49b8c010ff7bbe88a82"><div class="ttname"><a href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">www::CoreServer::m_virtual_servers</a></div><div class="ttdeci">std::vector&lt; VirtualServer &gt; m_virtual_servers</div><div class="ttdef"><b>Definition:</b> <a href="CoreServer_8hpp_source.html#l00034">CoreServer.hpp:34</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -164,9 +166,12 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Destroys the <a class="el" href="classwww_1_1CoreServer.html" title="...">CoreServer</a> object. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Close all connections and <a class="el" href="classwww_1_1VirtualServer.html" title="...">VirtualServer</a> sockets </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00016">16</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{ close(<a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>); }</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00017">17</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{ </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    close(<a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>); </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -218,27 +223,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00051">51</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                                      {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  VirtualServer server(<span class="stringliteral">&quot;Default Server&quot;</span>, 80);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.push_back(server);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.back().listen() == <span class="keyword">false</span>) <span class="keywordflow">throw</span> std::exception();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classwww_1_1CoreServer_ad7b57e659886aef2bf711f2642b4253a_icgraph.png" border="0" usemap="#aclasswww_1_1CoreServer_ad7b57e659886aef2bf711f2642b4253a_icgraph" alt=""/></div>
-<map name="aclasswww_1_1CoreServer_ad7b57e659886aef2bf711f2642b4253a_icgraph" id="aclasswww_1_1CoreServer_ad7b57e659886aef2bf711f2642b4253a_icgraph">
-<area shape="rect" title=" " alt="" coords="108,5,317,47"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,39"/>
-</map>
-</div>
-
 </div>
 </div>
-<a id="ae11113e90b0d1a02d92b74a52c0ffa0e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae11113e90b0d1a02d92b74a52c0ffa0e">&#9670;&nbsp;</a></span>addVirtualServer() <span class="overload">[2/2]</span></h2>
+<a id="aac78aa3d9562104d88f6876f43bce995"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac78aa3d9562104d88f6876f43bce995">&#9670;&nbsp;</a></span>addVirtualServer() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -246,25 +234,9 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void www::CoreServer::addVirtualServer </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="namespaceconfigfile.html#aa80825aa8468926c8586f8d6f17a9643">configfile::t_server</a> &amp;&#160;</td>
+          <td class="paramname"><em>serverConfig</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>port</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>clientMaxBodySize</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
         <tr>
           <td align="right">throw </td><td>(</td><td colspan="2">std::exception</td>
@@ -275,14 +247,72 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00058">58</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                                                                  {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  VirtualServer server(name, port, clientMaxBodySize);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.push_back(server);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.back().listen() == <span class="keyword">false</span>) <span class="keywordflow">throw</span> std::exception();</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00062">62</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                                                                      {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  VirtualServer server(serverConfig);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.push_back(server);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.back().listen() == <span class="keyword">false</span>) <span class="keywordflow">throw</span> std::exception();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="a96ecff7b3d31d9c8791f2bdafc974ecf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96ecff7b3d31d9c8791f2bdafc974ecf">&#9670;&nbsp;</a></span>addVirtualServers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool www::CoreServer::addVirtualServers </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceconfigfile.html#a7ddcd10f1358d304988e5b683d5ddfb3">configfile::t_config_data</a> &amp;&#160;</td>
+          <td class="paramname"><em>configData</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00074">74</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; configData.<a class="code" href="structconfigfile_1_1s__config__data.html#ad3e3996d4c112f742959115050e2a46e">servers</a>.size(); i++) </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        VirtualServer server(configData.<a class="code" href="structconfigfile_1_1s__config__data.html#ad3e3996d4c112f742959115050e2a46e">servers</a>.at(i));</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">if</span> (server.getSocket().init() == <span class="keyword">false</span>) </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.clear();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.push_back(server);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
+<div class="ttc" id="astructconfigfile_1_1s__config__data_html_ad3e3996d4c112f742959115050e2a46e"><div class="ttname"><a href="structconfigfile_1_1s__config__data.html#ad3e3996d4c112f742959115050e2a46e">configfile::s_config_data::servers</a></div><div class="ttdeci">std::vector&lt; t_server &gt; servers</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00059">Parser.hpp:59</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classwww_1_1CoreServer_a96ecff7b3d31d9c8791f2bdafc974ecf_cgraph.png" border="0" usemap="#aclasswww_1_1CoreServer_a96ecff7b3d31d9c8791f2bdafc974ecf_cgraph" alt=""/></div>
+<map name="aclasswww_1_1CoreServer_a96ecff7b3d31d9c8791f2bdafc974ecf_cgraph" id="aclasswww_1_1CoreServer_a96ecff7b3d31d9c8791f2bdafc974ecf_cgraph">
+<area shape="rect" title=" " alt="" coords="5,39,215,80"/>
+<area shape="rect" href="classwww_1_1VirtualServer.html#a6da433f4b2a06ec647b6473ada0c08fb" title=" " alt="" coords="285,5,431,47"/>
+<area shape="rect" href="classwww_1_1VirtualServerSocket.html#a83165b6c7870734eb7daaea26b67e454" title=" " alt="" coords="263,71,453,112"/>
+<area shape="rect" href="classwww_1_1VirtualServerSocket.html#a5b58e4bce20866c59ea4d914b1ac4c82" title=" " alt="" coords="501,5,692,47"/>
+<area shape="rect" href="classwww_1_1VirtualServerSocket.html#a65d3ca6a817eb0e6a1b810a3f3cbd0c3" title=" " alt="" coords="501,71,692,112"/>
+<area shape="rect" href="classwww_1_1VirtualServerSocket.html#acef9ced2111c8d1efc35f4687f3675c8" title=" " alt="" coords="501,136,692,177"/>
+<area shape="rect" href="classwww_1_1VirtualServerSocket.html#a195a76c132902ce8173b1ccb221ecf6c" title=" " alt="" coords="740,71,931,112"/>
+<area shape="rect" href="classwww_1_1VirtualServerSocket.html#ad8e8f6d7339841f18543bd39f17ce390" title=" " alt="" coords="979,71,1169,112"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classwww_1_1CoreServer_a96ecff7b3d31d9c8791f2bdafc974ecf_icgraph.png" border="0" usemap="#aclasswww_1_1CoreServer_a96ecff7b3d31d9c8791f2bdafc974ecf_icgraph" alt=""/></div>
+<map name="aclasswww_1_1CoreServer_a96ecff7b3d31d9c8791f2bdafc974ecf_icgraph" id="aclasswww_1_1CoreServer_a96ecff7b3d31d9c8791f2bdafc974ecf_icgraph">
+<area shape="rect" title=" " alt="" coords="108,5,317,47"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,39"/>
+</map>
+</div>
+
 </div>
 </div>
 <a id="a0a03136c8e71576495df9b106932d238"></a>
@@ -301,8 +331,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00040">40</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00044">44</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -322,8 +352,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00049">49</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00053">53</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -343,22 +373,13 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00047">47</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>; }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classwww_1_1CoreServer_a375b9148831eca17c0230a44fb129d72_icgraph.png" border="0" usemap="#aclasswww_1_1CoreServer_a375b9148831eca17c0230a44fb129d72_icgraph" alt=""/></div>
-<map name="aclasswww_1_1CoreServer_a375b9148831eca17c0230a44fb129d72_icgraph" id="aclasswww_1_1CoreServer_a375b9148831eca17c0230a44fb129d72_icgraph">
-<area shape="rect" title=" " alt="" coords="108,5,315,47"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,39"/>
-</map>
-</div>
-
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00051">51</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>; }</div>
+</div><!-- fragment -->
 </div>
 </div>
-<a id="a669f22616cd765a3eeddc0e8cd72d2ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a669f22616cd765a3eeddc0e8cd72d2ea">&#9670;&nbsp;</a></span>init()</h2>
+<a id="a5dd1a1e7c3685b4afd63788b46558234"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dd1a1e7c3685b4afd63788b46558234">&#9670;&nbsp;</a></span>init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -379,16 +400,16 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00042">42</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                              {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a> = epoll_create1(0);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a> &lt; 0) <span class="keywordflow">throw</span> std::exception();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00046">46</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                              {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a> = epoll_create1(0);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classwww_1_1CoreServer.html#a2480fe35a8d69df0417662559867fe8e">m_epoll_master_fd</a> &lt; 0) <span class="keywordflow">throw</span> std::exception();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classwww_1_1CoreServer_a669f22616cd765a3eeddc0e8cd72d2ea_icgraph.png" border="0" usemap="#aclasswww_1_1CoreServer_a669f22616cd765a3eeddc0e8cd72d2ea_icgraph" alt=""/></div>
-<map name="aclasswww_1_1CoreServer_a669f22616cd765a3eeddc0e8cd72d2ea_icgraph" id="aclasswww_1_1CoreServer_a669f22616cd765a3eeddc0e8cd72d2ea_icgraph">
+<div class="center"><img src="classwww_1_1CoreServer_a5dd1a1e7c3685b4afd63788b46558234_icgraph.png" border="0" usemap="#aclasswww_1_1CoreServer_a5dd1a1e7c3685b4afd63788b46558234_icgraph" alt=""/></div>
+<map name="aclasswww_1_1CoreServer_a5dd1a1e7c3685b4afd63788b46558234_icgraph" id="aclasswww_1_1CoreServer_a5dd1a1e7c3685b4afd63788b46558234_icgraph">
 <area shape="rect" title=" " alt="" coords="108,5,271,32"/>
 <area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,32"/>
 </map>
@@ -438,11 +459,11 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00066">66</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                                                        {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.erase(it);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8cpp_source.html#l00069">69</a> of file <a class="el" href="CoreServer_8cpp_source.html">CoreServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                                                        {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="classwww_1_1CoreServer.html#a78190c9b7d9ff49b8c010ff7bbe88a82">m_virtual_servers</a>.erase(it);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -467,7 +488,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8hpp_source.html#l00031">31</a> of file <a class="el" href="CoreServer_8hpp_source.html">CoreServer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8hpp_source.html#l00033">33</a> of file <a class="el" href="CoreServer_8hpp_source.html">CoreServer.hpp</a>.</p>
 
 </div>
 </div>
@@ -491,7 +512,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CoreServer_8hpp_source.html#l00032">32</a> of file <a class="el" href="CoreServer_8hpp_source.html">CoreServer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CoreServer_8hpp_source.html#l00034">34</a> of file <a class="el" href="CoreServer_8hpp_source.html">CoreServer.hpp</a>.</p>
 
 </div>
 </div>

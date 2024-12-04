@@ -118,15 +118,16 @@ $(document).ready(function(){initNavTree('ClientSocket_8cpp_source.html',''); in
 <div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classwww_1_1ClientSocket.html#a63e897ed23219323008d67f506c627f4">   73</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classwww_1_1ClientSocket.html#a63e897ed23219323008d67f506c627f4">ClientSocket::accept</a>(<span class="keywordtype">int</span> listen_socket) <span class="keywordflow">throw</span>(std::exception) {</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  bzero(&amp;m_socketAddress, <span class="keyword">sizeof</span>(<a class="code" href="namespacewww.html#a81173bdace5c11c7ba16a44f7ebca4cc">t_sockaddr</a>));</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  m_socketSize = 0;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  m_fd = ::accept(listen_socket, &amp;m_socketAddress, &amp;m_socketSize);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">if</span> (m_fd &lt; 0) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Shit, accept didn&#39;t work&quot;</span> &lt;&lt; errno &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">throw</span> std::exception();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  m_alive = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;} <span class="comment">/* namespace www */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Accepting connection for socket &quot;</span> &lt;&lt; listen_socket &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  m_fd = ::accept(listen_socket, &amp;m_socketAddress, &amp;m_socketSize);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordflow">if</span> (m_fd &lt; 0) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Shit, accept didn&#39;t work&quot;</span> &lt;&lt; errno &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">throw</span> std::exception();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  m_alive = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;} <span class="comment">/* namespace www */</span></div>
 <div class="ttc" id="aClientSocket_8hpp_html"><div class="ttname"><a href="ClientSocket_8hpp.html">ClientSocket.hpp</a></div></div>
 <div class="ttc" id="aclasswww_1_1ClientSocket_html"><div class="ttname"><a href="classwww_1_1ClientSocket.html">www::ClientSocket</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition:</b> <a href="ClientSocket_8hpp_source.html#l00016">ClientSocket.hpp:16</a></div></div>
 <div class="ttc" id="aclasswww_1_1ClientSocket_html_a016e6961f175a4c84e21169f179c07c9"><div class="ttname"><a href="classwww_1_1ClientSocket.html#a016e6961f175a4c84e21169f179c07c9">www::ClientSocket::close</a></div><div class="ttdeci">void close(void)</div><div class="ttdef"><b>Definition:</b> <a href="ClientSocket_8cpp_source.html#l00067">ClientSocket.cpp:67</a></div></div>
@@ -144,7 +145,7 @@ $(document).ready(function(){initNavTree('ClientSocket_8cpp_source.html',''); in
 <div class="ttc" id="aclasswww_1_1ClientSocket_html_ad117441769a07be264a5cd262cc25327"><div class="ttname"><a href="classwww_1_1ClientSocket.html#ad117441769a07be264a5cd262cc25327">www::ClientSocket::getFd</a></div><div class="ttdeci">int getFd(void) const</div><div class="ttdef"><b>Definition:</b> <a href="ClientSocket_8cpp_source.html#l00057">ClientSocket.cpp:57</a></div></div>
 <div class="ttc" id="aclasswww_1_1ClientSocket_html_ad1e661ecf052a5836b8b007357a029c9"><div class="ttname"><a href="classwww_1_1ClientSocket.html#ad1e661ecf052a5836b8b007357a029c9">www::ClientSocket::m_fd</a></div><div class="ttdeci">int m_fd</div><div class="ttdef"><b>Definition:</b> <a href="ClientSocket_8hpp_source.html#l00035">ClientSocket.hpp:35</a></div></div>
 <div class="ttc" id="anamespacewww_html"><div class="ttname"><a href="namespacewww.html">www</a></div><div class="ttdef"><b>Definition:</b> <a href="ClientSocket_8cpp_source.html#l00009">ClientSocket.cpp:9</a></div></div>
-<div class="ttc" id="anamespacewww_html_a81173bdace5c11c7ba16a44f7ebca4cc"><div class="ttname"><a href="namespacewww.html#a81173bdace5c11c7ba16a44f7ebca4cc">www::t_sockaddr</a></div><div class="ttdeci">struct sockaddr t_sockaddr</div><div class="ttdef"><b>Definition:</b> <a href="ServerSocket_8cpp_source.html#l00001">ServerSocket.cpp:10</a></div></div>
+<div class="ttc" id="anamespacewww_html_a81173bdace5c11c7ba16a44f7ebca4cc"><div class="ttname"><a href="namespacewww.html#a81173bdace5c11c7ba16a44f7ebca4cc">www::t_sockaddr</a></div><div class="ttdeci">struct sockaddr t_sockaddr</div><div class="ttdef"><b>Definition:</b> <a href="VirtualServerSocket_8cpp_source.html#l00001">VirtualServerSocket.cpp:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
