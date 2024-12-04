@@ -46,7 +46,7 @@ int main(int argc, char** const argv) {
     router.registerRoute(www::Route("foo", www::GET), foo);
 
     www::Response res;
-    router.handleRequest(http::Request(), res);
+    router.processRequest(http::Request(), res);
 
     // configFileParser.printConfigData(1);
     loggerManager.unregisterLogger("File");
