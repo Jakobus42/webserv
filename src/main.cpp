@@ -43,7 +43,7 @@ int main(int argc, char** const argv) {
     }
     configfile::ConfigFileParser configFileParser;
     if (configFileParser.loadConfigFile(configfile) == 1) return 1;
-    router.registerRoute(www::Route(), foo);
+    router.registerRoute(www::Route("foo", www::GET), foo);
 
     www::Response res;
     router.handleRequest(http::Request(), res);

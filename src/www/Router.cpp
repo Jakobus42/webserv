@@ -9,6 +9,8 @@ bool Route::operator<(const Route&) const {
   return true;
 }
 
+Route::Route(const std::string& relativePath, Method method) : relativePath(relativePath), method(method) {}
+
 /**
  * @brief Constructs a new Router object.
  */

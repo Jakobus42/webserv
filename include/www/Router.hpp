@@ -27,6 +27,7 @@ struct Route {
   std::string relativePath;
   Method method;
 
+  Route(const std::string& relativePath, Method method);
   bool operator<(const Route& other) const;
 };
 
