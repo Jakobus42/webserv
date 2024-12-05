@@ -1,6 +1,6 @@
-#include "http/ErrorPageGenerator.hpp"
+#include "http/errorPageGenerator.hpp"
 
-#include "http/defines.hpp"
+#include "shared/defines.hpp"
 
 // #include "http/defines.hpp"
 #include <sstream>
