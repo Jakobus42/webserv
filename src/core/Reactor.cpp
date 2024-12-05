@@ -25,27 +25,27 @@ namespace core {
 		close(m_epoll_master_fd);
 	}
 
-	// /**
-	//  * @brief Copy constructor.
-	//  * @param other The other Reactor object to copy.
-	//  */
-	// Reactor::Reactor(const Reactor& other)
-	// 	: m_epoll_master_fd(other.getEpollFd()),
-	// 	  m_virtual_servers(other.getwww::VirtualServers()) {
-	// }
+	/**
+	 * @brief Copy constructor.
+	 * @param other The other Reactor object to copy.
+	 */
+	Reactor::Reactor(const Reactor &other)
+		: m_epoll_master_fd(other.getEpollFd())
+		, m_virtual_servers(other.getVirtualServers()) {
+	}
 
-	// /**
-	//  * @brief Copy assignment operator.
-	//  * @param other The other Reactor object to assign from.
-	//  * @return A reference to the assigned Reactor object.
-	//  */
-	// Reactor& Reactor::operator=(const Reactor& rhs) {
-	// 	if (this == &rhs)
-	// 		return *this;
-	// 	m_epoll_master_fd = rhs.getEpollFd();
-	// 	m_virtual_servers = rhs.getwww::VirtualServers();
-	// 	return *this;
-	// }
+	/**
+	 * @brief Copy assignment operator.
+	 * @param other The other Reactor object to assign from.
+	 * @return A reference to the assigned Reactor object.
+	 */
+	Reactor &Reactor::operator=(const Reactor &rhs) {
+		if (this == &rhs)
+			return *this;
+		m_epoll_master_fd = rhs.getEpollFd();
+		m_virtual_servers = rhs.getVirtualServers();
+		return *this;
+	}
 
 	int Reactor::getEpollFd(void) const {
 		return m_epoll_master_fd;
