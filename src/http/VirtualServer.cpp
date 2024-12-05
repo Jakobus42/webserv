@@ -94,6 +94,10 @@ namespace http {
 		return m_connections;
 	}
 
+	t_connections &VirtualServer::getConnections(void) {
+		return m_connections;
+	}
+
 	/**
 	 * @brief Accepts the next incoming connection in the
 	 * VirtualServerSocket's queue
