@@ -1,0 +1,25 @@
+BasedOnStyle: Google
+IndentWidth: 4
+PPIndentWidth: 4
+TabWidth: 4
+UseTab: Always
+IndentAccessModifiers: true
+IndentPPDirectives: AfterHash
+#AccessModifierOffset: 0
+PointerAlignment: Right
+ReferenceAlignment: Right
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortEnumsOnASingleLine: false
+AllowShortLambdasOnASingleLine: false
+AllowShortBlocksOnASingleLine: false
+EmptyLineBeforeAccessModifier: Never
+MaxEmptyLinesToKeep: 1
+# InsertNewlineAtEOF: true # not supported in v14
+SpaceBeforeAssignmentOperators: true
+#SpaceBeforeColon: false
+SpaceBeforeCtorInitializerColon: true
+SpaceBeforeInheritanceColon: true
+SpaceBeforeParens: ControlStatementsExceptControlMacros
