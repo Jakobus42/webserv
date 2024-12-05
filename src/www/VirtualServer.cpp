@@ -24,7 +24,7 @@ VirtualServer::VirtualServer(config::t_server& serverConfig)
  * @brief Destroys the VirtualServer object.
  * @todo Should prolly close everything down neatly, this happens only at exit.
  * @warning Edit: Should NOT close everything, otherwise creating Sockets
- * @warning and placing them in CoreServer's vector triggers the destructor,
+ * @warning and placing them in Reactor's vector triggers the destructor,
  * @warning closing the socket in the process.
  */
 VirtualServer::~VirtualServer() {}
