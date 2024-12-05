@@ -1,6 +1,6 @@
-#include "utils/StringUtils.hpp"
+#include "shared/StringUtils.hpp"
 
-namespace utils {
+namespace shared {
 
 namespace string {
 
@@ -51,4 +51,4 @@ void trim(std::string& str, const std::string& delimiters) {
 
 }  // namespace string
 
-}  // namespace utils
+}  // namespace shared

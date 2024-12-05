@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-namespace utils {
+namespace shared {
 
 namespace string {
 
@@ -17,4 +17,4 @@ void trim(std::string& str, const std::string& delimiters = WHITESPACES);
 
 }  // namespace string
 
-}  // namespace utils
+}  // namespace shared
