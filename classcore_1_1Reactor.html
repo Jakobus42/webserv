@@ -297,7 +297,7 @@ Here is the call graph for this function:</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <a class="code" href="classhttp_1_1VirtualServer.html">http::VirtualServer</a> server(configData.<a class="code" href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">servers</a>.at(i));</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keywordflow">if</span> (server.getSocket().init() == <span class="keyword">false</span>) {</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <a class="code" href="classcore_1_1Reactor.html#a96e186a75232b1e64c1f50db7dbea1ec">m_virtual_servers</a>.clear();</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <a class="code" href="defines_8hpp.html#a5b430c3d6958a69a76d52ccb4b44d82d">LOG</a>(<span class="stringliteral">&quot;Failed to initialize socket for server &quot;</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <a class="code" href="shared_2defines_8hpp.html#a5b430c3d6958a69a76d52ccb4b44d82d">LOG</a>(<span class="stringliteral">&quot;Failed to initialize socket for server &quot;</span></div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                        &lt;&lt; configData.<a class="code" href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">servers</a>.at(i).server_names.at(0) &lt;&lt; std::endl,</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                    1);</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
@@ -309,7 +309,7 @@ Here is the call graph for this function:</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        }</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    }</div>
-<div class="ttc" id="adefines_8hpp_html_a5b430c3d6958a69a76d52ccb4b44d82d"><div class="ttname"><a href="defines_8hpp.html#a5b430c3d6958a69a76d52ccb4b44d82d">LOG</a></div><div class="ttdeci">#define LOG(message, level)</div></div>
+<div class="ttc" id="ashared_2defines_8hpp_html_a5b430c3d6958a69a76d52ccb4b44d82d"><div class="ttname"><a href="shared_2defines_8hpp.html#a5b430c3d6958a69a76d52ccb4b44d82d">LOG</a></div><div class="ttdeci">#define LOG(message, level)</div></div>
 <div class="ttc" id="astructconfig_1_1s__config__data_html_aab30d42ac2d8d05f046afe671ed9a96c"><div class="ttname"><a href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">config::s_config_data::servers</a></div><div class="ttdeci">std::vector&lt; t_server &gt; servers</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00060">Parser.hpp:60</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -536,7 +536,7 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00108">108</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                        {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <a class="code" href="defines_8hpp.html#acd6d0d9c72020fc35be55606610702c8">t_event</a> events[<a class="code" href="ServerSocket_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>];</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <a class="code" href="shared_2defines_8hpp.html#acd6d0d9c72020fc35be55606610702c8">t_event</a> events[<a class="code" href="ServerSocket_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>];</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordtype">int</span> nEvents = epoll_wait(<a class="code" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a>, events, <a class="code" href="ServerSocket_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>, 60);</div>
@@ -555,7 +555,7 @@ Here is the call graph for this function:</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    }</div>
 <div class="ttc" id="aServerSocket_8hpp_html_ae42954bb8545d24e3e9dcde5920c9a0b"><div class="ttname"><a href="ServerSocket_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a></div><div class="ttdeci">#define MAX_EVENTS</div><div class="ttdef"><b>Definition:</b> <a href="ServerSocket_8hpp_source.html#l00012">ServerSocket.hpp:12</a></div></div>
 <div class="ttc" id="aclasscore_1_1Reactor_html_a5d1f6bc0a928665aca11fc69b0f016f9"><div class="ttname"><a href="classcore_1_1Reactor.html#a5d1f6bc0a928665aca11fc69b0f016f9">core::Reactor::m_event_handlers</a></div><div class="ttdeci">std::map&lt; int, core::RequestHandler * &gt; m_event_handlers</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8hpp_source.html#l00045">Reactor.hpp:45</a></div></div>
-<div class="ttc" id="adefines_8hpp_html_acd6d0d9c72020fc35be55606610702c8"><div class="ttname"><a href="defines_8hpp.html#acd6d0d9c72020fc35be55606610702c8">t_event</a></div><div class="ttdeci">struct epoll_event t_event</div><div class="ttdef"><b>Definition:</b> <a href="defines_8hpp_source.html#l00001">defines.hpp:10</a></div></div>
+<div class="ttc" id="ashared_2defines_8hpp_html_acd6d0d9c72020fc35be55606610702c8"><div class="ttname"><a href="shared_2defines_8hpp.html#acd6d0d9c72020fc35be55606610702c8">t_event</a></div><div class="ttdeci">struct epoll_event t_event</div><div class="ttdef"><b>Definition:</b> <a href="shared_2defines_8hpp_source.html#l00001">defines.hpp:10</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -599,7 +599,7 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00090">90</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                                                                                                              {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <a class="code" href="defines_8hpp.html#acd6d0d9c72020fc35be55606610702c8">t_event</a> event;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <a class="code" href="shared_2defines_8hpp.html#acd6d0d9c72020fc35be55606610702c8">t_event</a> event;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keyword">event</span>.data.fd = fd;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keyword">event</span>.events = events;</div>

@@ -16,5 +16,10 @@ var annotated_dup =
       [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
       [ "ServerSocket", "classhttp_1_1ServerSocket.html", "classhttp_1_1ServerSocket" ],
       [ "VirtualServer", "classhttp_1_1VirtualServer.html", "classhttp_1_1VirtualServer" ]
+    ] ],
+    [ "www", "namespacewww.html", [
+      [ "Response", "classwww_1_1Response.html", null ],
+      [ "Route", "structwww_1_1Route.html", "structwww_1_1Route" ],
+      [ "Router", "classwww_1_1Router.html", "classwww_1_1Router" ]
     ] ]
 ];
