@@ -1,9 +1,7 @@
 var namespaces_dup =
 [
-    [ "configfile", "namespaceconfigfile.html", "namespaceconfigfile" ],
+    [ "config", "namespaceconfig.html", "namespaceconfig" ],
+    [ "core", "namespacecore.html", "namespacecore" ],
     [ "http", "namespacehttp.html", "namespacehttp" ],
-    [ "logger", "namespacelogger.html", "namespacelogger" ],
-    [ "runtime", "namespaceruntime.html", "namespaceruntime" ],
-    [ "utils", "namespaceutils.html", "namespaceutils" ],
-    [ "www", "namespacewww.html", "namespacewww" ]
+    [ "shared", "namespaceshared.html", "namespaceshared" ]
 ];

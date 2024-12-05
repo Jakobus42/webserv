@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Webserv: /home/runner/work/webserv/webserv/include/www/ClientSocket.hpp File Reference</title>
+<title>Webserv: /home/runner/work/webserv/webserv/include/http/ClientSocket.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -66,34 +66,40 @@ $(document).ready(function(){initNavTree('ClientSocket_8hpp.html',''); initResiz
 <div class="title">ClientSocket.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;netinet/in.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;sys/socket.h&gt;</code><br />
 <code>#include &lt;exception&gt;</code><br />
+<code>#include &quot;<a class="el" href="defines_8hpp_source.html">shared/defines.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ClientSocket.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="ClientSocket_8hpp__incl.png" border="0" usemap="#a_2home_2runner_2work_2webserv_2webserv_2include_2www_2ClientSocket_8hpp" alt=""/></div>
-<map name="a_2home_2runner_2work_2webserv_2webserv_2include_2www_2ClientSocket_8hpp" id="a_2home_2runner_2work_2webserv_2webserv_2include_2www_2ClientSocket_8hpp">
-<area shape="rect" title=" " alt="" coords="10,5,293,47"/>
-<area shape="rect" title=" " alt="" coords="5,95,76,121"/>
-<area shape="rect" title=" " alt="" coords="100,95,203,121"/>
-<area shape="rect" title=" " alt="" coords="227,95,313,121"/>
+<div class="center"><img src="ClientSocket_8hpp__incl.png" border="0" usemap="#a_2home_2runner_2work_2webserv_2webserv_2include_2http_2ClientSocket_8hpp" alt=""/></div>
+<map name="a_2home_2runner_2work_2webserv_2webserv_2include_2http_2ClientSocket_8hpp" id="a_2home_2runner_2work_2webserv_2webserv_2include_2http_2ClientSocket_8hpp">
+<area shape="rect" title=" " alt="" coords="128,5,403,47"/>
+<area shape="rect" title=" " alt="" coords="5,169,101,196"/>
+<area shape="rect" title=" " alt="" coords="126,169,197,196"/>
+<area shape="rect" title=" " alt="" coords="425,169,527,196"/>
+<area shape="rect" title=" " alt="" coords="414,95,501,121"/>
+<area shape="rect" href="defines_8hpp.html" title=" " alt="" coords="193,95,338,121"/>
+<area shape="rect" title=" " alt="" coords="320,169,400,196"/>
+<area shape="rect" title=" " alt="" coords="221,169,296,196"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="ClientSocket_8hpp__dep__incl.png" border="0" usemap="#a_2home_2runner_2work_2webserv_2webserv_2include_2www_2ClientSocket_8hppdep" alt=""/></div>
-<map name="a_2home_2runner_2work_2webserv_2webserv_2include_2www_2ClientSocket_8hppdep" id="a_2home_2runner_2work_2webserv_2webserv_2include_2www_2ClientSocket_8hppdep">
-<area shape="rect" title=" " alt="" coords="70,5,353,47"/>
-<area shape="rect" href="ClientSocket_8cpp.html" title=" " alt="" coords="5,102,172,129"/>
-<area shape="rect" href="Connection_8hpp.html" title=" " alt="" coords="197,95,471,136"/>
-<area shape="rect" href="Connection_8cpp.html" title=" " alt="" coords="132,191,291,218"/>
-<area shape="rect" href="VirtualServer_8hpp.html" title=" " alt="" coords="315,184,601,225"/>
-<area shape="rect" href="VirtualServer_8cpp.html" title=" " alt="" coords="250,281,421,307"/>
-<area shape="rect" href="CoreServer_8hpp.html" title=" " alt="" coords="445,273,717,315"/>
-<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="467,363,550,389"/>
-<area shape="rect" href="CoreServer_8cpp.html" title=" " alt="" coords="574,363,731,389"/>
+<div class="center"><img src="ClientSocket_8hpp__dep__incl.png" border="0" usemap="#a_2home_2runner_2work_2webserv_2webserv_2include_2http_2ClientSocket_8hppdep" alt=""/></div>
+<map name="a_2home_2runner_2work_2webserv_2webserv_2include_2http_2ClientSocket_8hppdep" id="a_2home_2runner_2work_2webserv_2webserv_2include_2http_2ClientSocket_8hppdep">
+<area shape="rect" title=" " alt="" coords="67,5,341,47"/>
+<area shape="rect" href="ClientSocket_8cpp.html" title=" " alt="" coords="5,102,165,129"/>
+<area shape="rect" href="Connection_8hpp.html" title=" " alt="" coords="189,95,456,136"/>
+<area shape="rect" href="Connection_8cpp.html" title=" " alt="" coords="127,191,279,218"/>
+<area shape="rect" href="VirtualServer_8hpp.html" title=" " alt="" coords="303,184,582,225"/>
+<area shape="rect" href="VirtualServer_8cpp.html" title=" " alt="" coords="247,281,409,307"/>
+<area shape="rect" href="Reactor_8hpp.html" title=" " alt="" coords="433,273,679,315"/>
+<area shape="rect" href="Reactor_8cpp.html" title=" " alt="" coords="425,363,556,389"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="580,363,663,389"/>
 </map>
 </div>
 </div>
@@ -101,13 +107,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classwww_1_1ClientSocket.html">www::ClientSocket</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">...  <a href="classwww_1_1ClientSocket.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1ClientSocket.html">http::ClientSocket</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">...  <a href="classhttp_1_1ClientSocket.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:namespacewww"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacewww.html">www</a></td></tr>
+<tr class="memitem:namespacehttp"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html">http</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
@@ -115,7 +121,7 @@ Namespaces</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_d45cafd2e1ce153314812c9e7755b744.html">www</a></li><li class="navelem"><a class="el" href="ClientSocket_8hpp.html">ClientSocket.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_c0632c2c4769486d54d1bae76e6a432e.html">http</a></li><li class="navelem"><a class="el" href="ClientSocket_8hpp.html">ClientSocket.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

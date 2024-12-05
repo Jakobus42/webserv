@@ -1,6 +1,13 @@
 var namespacehttp =
 [
+    [ "ClientSocket", "classhttp_1_1ClientSocket.html", "classhttp_1_1ClientSocket" ],
+    [ "Connection", "classhttp_1_1Connection.html", "classhttp_1_1Connection" ],
     [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
+    [ "ServerSocket", "classhttp_1_1ServerSocket.html", "classhttp_1_1ServerSocket" ],
+    [ "VirtualServer", "classhttp_1_1VirtualServer.html", "classhttp_1_1VirtualServer" ],
+    [ "t_connections", "namespacehttp.html#aa3bcd24ae02414378f7cd9a8aafc784f", null ],
+    [ "t_sockaddr", "namespacehttp.html#a4b20fa68e7c12bf7aff9d3a71a4f2b88", null ],
+    [ "t_sockaddr_in", "namespacehttp.html#ac73171fb8c32554229836839f6c4e8ed", null ],
     [ "Method", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cf", [
       [ "GET", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0", null ],
       [ "POST", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab", null ],
@@ -49,5 +56,8 @@ var namespacehttp =
     ] ],
     [ "allocateErrorPageData", "namespacehttp.html#a73cf5f91499bc0e1c7d9c5069963b5aa", null ],
     [ "generateErrorPage", "namespacehttp.html#abf7077bb1b43902d0455848db0726b95", null ],
-    [ "generateErrorPage", "namespacehttp.html#ab99935c70c216969b7410a50c653cc58", null ]
+    [ "generateErrorPage", "namespacehttp.html#ab99935c70c216969b7410a50c653cc58", null ],
+    [ "DEFAULT_MAX_BODY_SIZE", "namespacehttp.html#aa5cb5111b732aced21198fa3b145c294", null ],
+    [ "LOCALHOST_ADDRESS", "namespacehttp.html#aca25a9fc3ae4f55904d8a48f1d18af63", null ],
+    [ "LOG", "namespacehttp.html#a608c57b9f089f4482f702ead6df3a94f", null ]
 ];
