@@ -2,15 +2,13 @@
 
 #include <stdint.h>
 
-#include "runtime/EventHandler.hpp"
-
 namespace runtime {
 
 /**
  * @class RequestHandler
  * @brief ...
  */
-class RequestHandler : public EventHandler {
+class RequestHandler {
  public:
   RequestHandler();
   ~RequestHandler();

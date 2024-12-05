@@ -5,7 +5,7 @@ namespace runtime {
 /**
  * @brief Constructs a new RequestHandler object.
  */
-RequestHandler::RequestHandler() : EventHandler() {}
+RequestHandler::RequestHandler() {}
 
 /**
  * @brief Destroys the RequestHandler object.
@@ -16,7 +16,7 @@ RequestHandler::~RequestHandler() {}
  * @brief Copy constructor.
  * @param other The other RequestHandler object to copy.
  */
-RequestHandler::RequestHandler(const RequestHandler& other) : EventHandler() { (void)other; }
+RequestHandler::RequestHandler(const RequestHandler& other) { (void)other; }
 
 /**
  * @brief Copy assignment operator.

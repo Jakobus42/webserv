@@ -8,7 +8,7 @@
 #include <vector>
 
 #include "config/Parser.hpp"
-#include "runtime/EventHandler.hpp"
+#include "runtime/RequestHandler.hpp"
 #include "www/VirtualServer.hpp"
 
 namespace www {
@@ -33,7 +33,7 @@ class CoreServer {
   bool removeVirtualServer(std::vector<VirtualServer>::iterator it);
   bool addVirtualServers(configfile::t_config_data& configData);
 
-  void registerHandler(int fd, runtime::EventHandler* handler, uint32_t events = EPOLLIN) throw(std::runtime_error);
+  void registerHandler(int fd, runtime::RequestHandler* handler, uint32_t events = EPOLLIN) throw(std::runtime_error);
   void unregisterHandler(int fd) throw(std::runtime_error);
   void react();
 
@@ -43,7 +43,7 @@ class CoreServer {
 
   int m_epoll_master_fd;
   std::vector<VirtualServer> m_virtual_servers;
-  std::map<int, runtime::EventHandler*> m_event_handlers;
+  std::map<int, runtime::RequestHandler*> m_event_handlers;
 };
 
 } /* namespace www */

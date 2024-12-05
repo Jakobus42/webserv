@@ -1,6 +1,7 @@
 #include "../../include/www/VirtualServerSocket.hpp"
 
 #include <errno.h>
+#include <fcntl.h>
 
 #include <iostream>
 #include <vector>
@@ -76,7 +77,7 @@ bool VirtualServerSocket::create(void) {
   m_fd = socket(AF_INET, SOCK_STREAM, 0);
   std::cout << "VirtualServerSocket Made" << std::endl;
   if (m_fd == -1) return false;
-  if (setsockopt(m_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) < 0) {
+  if (setsockopt(m_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) < 0 || fcntl(m_fd, F_SETFL, O_NONBLOCK) < 0) {
     std::cout << "VirtualServerSocket options fucked" << std::endl;
     this->close();
     return false;
