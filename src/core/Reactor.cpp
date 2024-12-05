@@ -129,9 +129,8 @@ namespace core {
 			http::VirtualServer server(configData.servers.at(i));
 			if (server.getSocket().init() == false) {
 				m_virtual_servers.clear();
-				LOG("Failed to initialize socket for server "
-						<< configData.servers.at(i).server_names.at(0) << std::endl,
-					1);
+				std::cout << "Failed to initialize socket for server "
+						  << configData.servers.at(i).server_names.at(0) << std::endl;
 				return false;
 			}
 			for (size_t j = 0; j < configData.servers.at(i).locations.size(); ++j) {
@@ -142,4 +141,4 @@ namespace core {
 		return true;
 	}
 
-} // namespace core
+} /* namespace core */
