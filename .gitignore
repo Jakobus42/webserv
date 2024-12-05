@@ -44,6 +44,6 @@ build
 
 # we need .vscode/tasks to run createClass.sh from the command bar
 !.vscode/tasks.json
-.clang-format
 .cache
 compile_commands.json
+bin

@@ -10,10 +10,11 @@ namespace http {
 Request::Request()
     : m_read_buffer(), m_received_bytes(0), m_method(http::GET), m_uri("/"), m_data(""), m_head(""), m_body("") {}
 
-/**
- * @brief Destroys the Request object.
- */
-Request::~Request() {}
+	/**
+	 * @brief Destroys the Request object.
+	 */
+	Request::~Request() {
+	}
 
 /**
  * @brief Copy constructor.

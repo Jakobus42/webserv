@@ -1,0 +1,71 @@
+#BasedOnStyle: Google
+UseTab: Always
+TabWidth: 4
+IndentWidth: 4
+ContinuationIndentWidth: 4
+IndentCaseLabels: true
+IndentPPDirectives: AfterHash
+IndentAccessModifiers: true
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: false
+AlignOperands: false
+# AlignTrailingComments: Always # wrong version
+BreakBeforeBraces: Attach
+PenaltyBreakBeforeFirstCallParameter: 1000
+PenaltyBreakComment: 300
+PenaltyBreakFirstLessLess: 120
+PenaltyBreakString: 1000
+PenaltyExcessCharacter: 0
+PenaltyReturnTypeOnItsOwnLine: 1000
+DerivePointerAlignment: false
+PointerAlignment: Right
+ReferenceAlignment: Right
+AccessModifierOffset: 0
+# RemoveParentheses: ReturnStatement # wrong version
+SpaceBeforeParens: ControlStatementsExceptControlMacros
+EmptyLineBeforeAccessModifier: Never
+EmptyLineAfterAccessModifier: Never
+# InsertNewlineAtEOF: true # wrong version
+BinPackParameters: false
+BinPackArguments: false
+PackConstructorInitializers: Never
+ColumnLimit: 0
+BreakConstructorInitializers: BeforeComma
+#BreakAfterReturnType: Automatic
+IncludeBlocks: Regroup
+SortIncludes: true
+IncludeCategories:
+  - Regex: '^<.*\.h>'        # System headers
+    Priority: 1
+  - Regex: '^"[^/].*"'       # Project headers
+    Priority: 2
+  - Regex: '.*'              # Other headers (optional)
+    Priority: 3
+# Optional: Add blank lines between different include categories
+IncludeIsMainRegex: '$'
+BraceWrapping:
+  AfterStruct: false
+  AfterUnion: false
+  AfterClass: false
+  AfterControlStatement: true
+  AfterFunction: true
+  BeforeCatch: true
+  BeforeElse: true
+  BeforeWhile: true
+  SplitEmptyFunction: true
+  SplitEmptyRecord: false
+  IndentBraces: true
+  SplitEmptyNamespace: false
+InsertTrailingCommas: Wrapped
+QualifierAlignment: Left
+SeparateDefinitionBlocks: Always
+NamespaceIndentation: All
+#RemoveEmptyLinesInUnwrappedLines: true # only in v20
+#SpacesBeforeAssignmentOperators: true
+SpacesInContainerLiterals: false
+#SpacesInCStyleParentheses: false
+#SpacesInEmptyPartentheses: false
+SpacesInSquareBrackets: false
+Cpp11BracedListStyle: true

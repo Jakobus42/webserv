@@ -113,20 +113,20 @@ create_class() {
     local class_name="$2"
     local header_path="include/${subfolder}/${class_name}.hpp"
     local source_path="src/${subfolder}/${class_name}.cpp"
-    local test_path="tests/${subfolder}/${class_name}Test.cpp"
+    # local test_path="tests/${subfolder}/${class_name}Test.cpp"
 
     local processed_header=$(echo "${header_template}" | sed -e "s/%CLASS_NAME%/${class_name}/g" -e "s/%NAMESPACE%/${namespace}/g")
     local processed_source=$(echo "${source_template}" | sed -e "s/%CLASS_NAME%/${class_name}/g" -e "s/%SUB_FOLDER%/${subfolder}/g" -e "s/%NAMESPACE%/${namespace}/g")
-    local processed_test=$(echo "${test_template}" | sed -e "s/%CLASS_NAME%/${class_name}/g" -e "s/%SUB_FOLDER%/${subfolder}/g" -e "s/%NAMESPACE%/${namespace}/g")
+    # local processed_test=$(echo "${test_template}" | sed -e "s/%CLASS_NAME%/${class_name}/g" -e "s/%SUB_FOLDER%/${subfolder}/g" -e "s/%NAMESPACE%/${namespace}/g")
 
-    mkdir -p "include/${subfolder}" "src/${subfolder}" "tests/${subfolder}" || {
+    mkdir -p "include/${subfolder}" "src/${subfolder}" || {
         echo "Failed to create directories"
         exit 1
     }
     echo "Creating class files at ${header_path}, ${source_path}, and test file at ${test_path}"
     echo "${processed_header}" >"${header_path}"
     echo "${processed_source}" >"${source_path}"
-    echo "${processed_test}" >"${test_path}"
+    # echo "${processed_test}" >"${test_path}"
 }
 
 check_arguments() {

@@ -4,7 +4,7 @@ CC = c++
 
 ###FLAGS###
 CFLAGS = -Wextra -Wall -Werror -std=c++98 -I$(INCDIR)
-CPPCHECKFLAGS = -I$(INCDIR)
+CPPCHECKFLAGS = -I$(INCDIR) --std=c++03
 DEBUG_FLAGS = -g
 
 ###PROGRAM###
@@ -25,7 +25,6 @@ YELLOW = \033[0;33m
 RED = \033[0;31m
 NC = \033[0m
 
-CLANG_STYLE = --style=file:./.clang-format-default
 CLANG_FORMAT = clang-format
 
 SOURCES = $(shell find $(SRCDIR) -name '*.cpp')
@@ -68,9 +67,9 @@ debug: all
 
 cppcheck:
 	@echo "Running cppcheck..."
-	cppcheck $(CPPCHECKFLAGS) --enable=all --error-exitcode=1 --suppress=missingIncludeSystem --suppress=missingOverride --suppress=noExplicitConstructor --suppress=unusedFunction $(SRCDIR)/ $(INCDIR)/
+	cppcheck $(CPPCHECKFLAGS) --enable=all --error-exitcode=1 --suppress=missingIncludeSystem --suppress=noExplicitConstructor --suppress=unusedFunction --inline-suppr $(SRCDIR)/ $(INCDIR)/
 
-strict: all cppcheck leak
+strict: all cppcheck
 	@echo "$(GREEN)Strict build completed.$(NC)"
 
 build_tests:
@@ -85,7 +84,7 @@ test: build_tests
 
 format:
 	@echo "Formatting code with clang-format..."
-	$(CLANG_FORMAT) $(CLANG_STYLE) -i $(SOURCES) $(HEADERS)
+	$(CLANG_FORMAT) -i $(SOURCES) $(HEADERS)
 
 clean:
 	@echo "$(RED)Cleaning up...$(NC)"

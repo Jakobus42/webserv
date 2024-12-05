@@ -5,9 +5,7 @@
     "-v",
     "${env:HOME}/.ssh:/root/.ssh",
     "-v",
-    "${env:HOME}/.zshrc:/root/.zshrc",
-    "-v",
-    "${env:HOME}/.clang-format:/workspaces/webserv/.clang-format"
+    "${env:HOME}/.zshrc:/root/.zshrc"
   ],
   "customizations": {
     "vscode": {
