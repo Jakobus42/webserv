@@ -5,6 +5,7 @@ var classhttp_1_1VirtualServer =
     [ "~VirtualServer", "classhttp_1_1VirtualServer.html#a9087762e937853061a5178078030280c", null ],
     [ "VirtualServer", "classhttp_1_1VirtualServer.html#a7b93ab6132d8abda9bddd09dbe6ca62d", null ],
     [ "addConnection", "classhttp_1_1VirtualServer.html#aba633077d4bc512dcb2caf15e6b035d4", null ],
+    [ "getConnections", "classhttp_1_1VirtualServer.html#a67064669544462157d63cb405d7006a4", null ],
     [ "getConnections", "classhttp_1_1VirtualServer.html#a9a2c96594ed7379e782a1fe266f9ebc9", null ],
     [ "getErrorPages", "classhttp_1_1VirtualServer.html#a6e49fabef8b4a8bd49c27ee057b43b32", null ],
     [ "getLocations", "classhttp_1_1VirtualServer.html#a4455cf3c4beae880c869d1292edbf1e8", null ],
