@@ -9,7 +9,7 @@
 #include <vector>
 
 #include "config/Parser.hpp"
-#include "logger/LoggerManager.hpp"
+#include "shared/defines.hpp"
 
 namespace config {
 

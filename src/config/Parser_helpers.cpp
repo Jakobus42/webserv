@@ -1,4 +1,5 @@
 #include "config/Parser.hpp"
+#include "shared/defines.hpp"
 
 namespace config {
 
@@ -26,7 +27,7 @@ int ConfigFileParser::handlePrompt(std::string& line, int layer, int& lineCount)
   if (line.find(';') != std::string::npos) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Missplaced semicolon (;) found" << std::endl,
-        logger::ERROR)
+        1)
     return 2;
   }
   std::vector<std::string> args;
@@ -224,7 +225,7 @@ int ConfigFileParser::SaveConfigData(std::vector<std::string>& args, int layer, 
   if (command_id == UNKNOWN_ID) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Unknown command found" << std::endl,
-        logger::ERROR)
+        1)
     return 1;
   }
   if (layer == 0)  // global
@@ -232,7 +233,7 @@ int ConfigFileParser::SaveConfigData(std::vector<std::string>& args, int layer, 
     if (qoute_flag == 0) {
       LOG("Configuration file (line " << lineCount << "): "
                                       << "Unexpected command found" << std::endl,
-          logger::ERROR)
+          1)
       return 1;
     } else {
       if (command_id == SERVER_ID) {
@@ -240,7 +241,7 @@ int ConfigFileParser::SaveConfigData(std::vector<std::string>& args, int layer, 
       } else {
         LOG("Configuration file (line " << lineCount << "): "
                                         << "Unexpected command found" << std::endl,
-            logger::ERROR)
+            1)
         return 1;
       }
     }
@@ -258,7 +259,7 @@ int ConfigFileParser::SaveConfigData(std::vector<std::string>& args, int layer, 
       } else {
         LOG("Configuration file (line " << lineCount << "): "
                                         << "Unexpected command found" << std::endl,
-            logger::ERROR)
+            1)
         return 1;
       }
     } else {
@@ -267,7 +268,7 @@ int ConfigFileParser::SaveConfigData(std::vector<std::string>& args, int layer, 
       } else {
         LOG("Configuration file (line " << lineCount << "): "
                                         << "Unexpected command found" << std::endl,
-            logger::ERROR)
+            1)
         return 1;
       }
     }
@@ -287,7 +288,7 @@ int ConfigFileParser::SaveConfigData(std::vector<std::string>& args, int layer, 
       } else {
         LOG("Configuration file (line " << lineCount << "): "
                                         << "Unexpected command found" << std::endl,
-            logger::ERROR)
+            1)
         return 1;
       }
     } else {
@@ -296,7 +297,7 @@ int ConfigFileParser::SaveConfigData(std::vector<std::string>& args, int layer, 
       } else {
         LOG("Configuration file (line " << lineCount << "): "
                                         << "Unexpected command found" << std::endl,
-            logger::ERROR)
+            1)
         return 1;
       }
     }

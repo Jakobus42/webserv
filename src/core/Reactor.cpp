@@ -107,8 +107,7 @@ bool Reactor::addVirtualServers(config::t_config_data& configData) {
     http::VirtualServer server(configData.servers.at(i));
     if (server.getSocket().init() == false) {
       m_virtual_servers.clear();
-      LOG("Failed to initialize socket for server " << configData.servers.at(i).server_names.at(0) << std::endl,
-          logger::ERROR);
+      LOG("Failed to initialize socket for server " << configData.servers.at(i).server_names.at(0) << std::endl, 1);
       return false;
     }
     for (size_t j = 0; j < configData.servers.at(i).locations.size(); j++) {

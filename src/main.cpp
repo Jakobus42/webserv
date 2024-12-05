@@ -2,17 +2,9 @@
 
 #include "config/Parser.hpp"
 #include "core/Reactor.hpp"
-#include "logger/LoggerManager.hpp"
 
 int main(int argc, char** const argv) {
   try {
-    logger::LoggerManager& loggerManager = logger::LoggerManager::getInstance();
-    loggerManager.registerLogger("Console", new logger::ConsoleLogger());
-    loggerManager.setLoggerLevel("Console", logger::ERROR);
-    loggerManager.registerLogger("File", new logger::FileLogger());
-    loggerManager.setLoggerLevel("File", logger::DEBUG);
-    loggerManager.setGlobalLogLevel(logger::DEBUG);
-    LOG("test log...", logger::FATAL);
     // start
     std::string configfile;
     if (argc > 1) {
@@ -34,9 +26,7 @@ int main(int argc, char** const argv) {
       return 1;
     }
     // end
-    loggerManager.unregisterLogger("File");
-    loggerManager.unregisterLogger("Console");
   } catch (const std::exception& e) {
-    LOG("ERROR: " << e.what(), logger::ERROR)
+    LOG("ERROR: " << e.what(), 1)
   }
 }

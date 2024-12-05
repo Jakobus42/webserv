@@ -4,7 +4,23 @@
 #include <stdint.h>
 #include <sys/socket.h>
 
+#include <iostream>
+#include <sstream>
+
 typedef struct epoll_event t_event;
+
+enum LogLevel {
+  INFO = 0,
+  WARNING,
+  ERROR,
+  DEBUG
+}
+
+#define LOG(message, level)                                                     \
+  std::ostringstream oss;                                                       \
+  oss << __FILE__ << ":" << __LINE__ << " " << __FUNCTION__ << ": " << message; \
+  std::cout << oss << std::endl;
+;
 
 namespace http {
 
