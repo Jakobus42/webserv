@@ -5,13 +5,12 @@
 #include <string>
 #include <vector>
 
-#include "../config/Parser.hpp"
 #include "VirtualServerSocket.hpp"
+#include "config/Parser.hpp"
+#include "www/Connection.hpp"
 
 #define ONE_MEGABYTE 1048576UL
 #define MAX_CONNECTIONS 500
-
-#include "../www/Connection.hpp"
 
 namespace www {
 
@@ -24,14 +23,14 @@ typedef std::vector<Connection> t_connections;
 class VirtualServer {
  public:
   VirtualServer();
-  VirtualServer(configfile::t_server& serverConfig);
+  VirtualServer(config::t_server& serverConfig);
   ~VirtualServer();
   VirtualServer(const VirtualServer& other);
   VirtualServer& operator=(const VirtualServer& other);
 
   const std::vector<std::string>& getNames(void) const;
   const std::map<int, std::string>& getErrorPages(void) const;
-  const std::vector<configfile::t_location>& getLocations(void) const;
+  const std::vector<config::t_location>& getLocations(void) const;
   uint64_t getMaxBodySize(void) const;
   const VirtualServerSocket& getSocket(void) const;
   VirtualServerSocket& getSocket(void);
@@ -45,7 +44,7 @@ class VirtualServer {
  private:
   uint64_t m_client_max_body_size;
   std::vector<std::string> m_names;
-  std::vector<configfile::t_location> m_locations;
+  std::vector<config::t_location> m_locations;
   std::map<int, std::string> m_errorPages;
   VirtualServerSocket m_listen_socket;
   t_connections m_connections;

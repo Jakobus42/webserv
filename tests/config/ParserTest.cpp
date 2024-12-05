@@ -3,7 +3,7 @@
 
 #include "config/Parser.hpp"
 
-namespace configfile {
+namespace config {
 
 class ConfigFileParserTest : public ::testing::Test {
 	protected:
@@ -477,4 +477,4 @@ TEST_F(ConfigFileParserTest, Index) {
 	}
 }
 
-} /* namespace configfile */
+}  // namespace config

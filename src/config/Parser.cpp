@@ -1,6 +1,6 @@
 #include "config/Parser.hpp"
 
-namespace configfile {
+namespace config {
 
 /**
  * @brief Constructs a new ConfigFileParser object.
@@ -204,4 +204,4 @@ unsigned long ConfigFileParser::getMaxBodySize(int index) const { return m_confi
 
 t_server* ConfigFileParser::getServer(int index) { return &m_configData.servers[index]; }
 
-} /* namespace configfile */
+}  // namespace config

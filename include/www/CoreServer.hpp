@@ -9,11 +9,10 @@
 
 #include "config/Parser.hpp"
 #include "runtime/RequestHandler.hpp"
+#include "shared/defines.hpp"
 #include "www/VirtualServer.hpp"
 
 namespace www {
-
-typedef struct epoll_event t_event;
 
 /**
  * @class CoreServer
@@ -29,9 +28,9 @@ class CoreServer {
   const std::vector<VirtualServer>& getVirtualServers() const;
   std::vector<VirtualServer>& getVirtualServers();
 
-  void addVirtualServer(configfile::t_server& serverConfig) throw(std::exception);
+  void addVirtualServer(config::t_server& serverConfig) throw(std::exception);
   bool removeVirtualServer(std::vector<VirtualServer>::iterator it);
-  bool addVirtualServers(configfile::t_config_data& configData);
+  bool addVirtualServers(config::t_config_data& configData);
 
   void registerHandler(int fd, runtime::RequestHandler* handler, uint32_t events = EPOLLIN) throw(std::runtime_error);
   void unregisterHandler(int fd) throw(std::runtime_error);

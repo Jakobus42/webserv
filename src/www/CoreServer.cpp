@@ -53,7 +53,7 @@ const std::vector<VirtualServer>& CoreServer::getVirtualServers(void) const { re
 
 std::vector<VirtualServer>& CoreServer::getVirtualServers(void) { return m_virtual_servers; }
 
-void CoreServer::addVirtualServer(configfile::t_server& serverConfig) throw(std::exception) {
+void CoreServer::addVirtualServer(config::t_server& serverConfig) throw(std::exception) {
   VirtualServer server(serverConfig);
 
   m_virtual_servers.push_back(server);
@@ -102,7 +102,7 @@ void CoreServer::react() {
   }
 }
 
-bool CoreServer::addVirtualServers(configfile::t_config_data& configData) {
+bool CoreServer::addVirtualServers(config::t_config_data& configData) {
   for (size_t i = 0; i < configData.servers.size(); i++) {
     VirtualServer server(configData.servers.at(i));
     if (server.getSocket().init() == false) {

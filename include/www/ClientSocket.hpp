@@ -1,9 +1,12 @@
 #pragma once
 
+#include <netinet/in.h>
 #include <stdint.h>
 #include <sys/socket.h>
 
 #include <exception>
+
+#include "shared/defines.hpp"
 
 namespace www {
 

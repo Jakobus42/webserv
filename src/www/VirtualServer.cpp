@@ -13,7 +13,7 @@ VirtualServer::VirtualServer() : m_client_max_body_size(ONE_MEGABYTE), m_listen_
 /**
  * @brief Constructs a new VirtualServer object.
  */
-VirtualServer::VirtualServer(configfile::t_server& serverConfig)
+VirtualServer::VirtualServer(config::t_server& serverConfig)
     : m_client_max_body_size(serverConfig.max_body_size),
       m_names(serverConfig.server_names),
       m_locations(serverConfig.locations),
@@ -61,7 +61,7 @@ const std::vector<std::string>& VirtualServer::getNames(void) const { return m_n
 
 const std::map<int, std::string>& VirtualServer::getErrorPages(void) const { return m_errorPages; }
 
-const std::vector<configfile::t_location>& VirtualServer::getLocations(void) const { return m_locations; }
+const std::vector<config::t_location>& VirtualServer::getLocations(void) const { return m_locations; }
 
 uint64_t VirtualServer::getMaxBodySize(void) const { return m_client_max_body_size; }
 

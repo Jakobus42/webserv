@@ -1,6 +1,6 @@
 
 #include <gtest/gtest.h>
-#include "../../include/www/VirtualServerSocket.hpp"
+#include "www/VirtualServerSocket.hpp"
 
 namespace www {
 

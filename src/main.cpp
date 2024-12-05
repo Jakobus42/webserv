@@ -21,12 +21,12 @@ int main(int argc, char** const argv) {
       configfile = "config/configfile_example";
     }
     www::CoreServer server;
-    configfile::ConfigFileParser configFileParser;
+    config::ConfigFileParser configFileParser;
     if (configFileParser.loadConfigFile(configfile) == 1) return 1;
 
     try {
       server.init();
-      configfile::t_config_data configData = configFileParser.getConfigData();
+      config::t_config_data configData = configFileParser.getConfigData();
       if (server.addVirtualServers(configData) == false) return 1;
       // server.getVirtualServers().at(0).addConnection();
     } catch (std::exception& e) {
