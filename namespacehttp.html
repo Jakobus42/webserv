@@ -61,7 +61,8 @@ $(document).ready(function(){initNavTree('namespacehttp.html',''); initResizable
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">http Namespace Reference</div>  </div>
 </div><!--header-->
@@ -135,6 +136,17 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:ad6f0ed7c44035f65821fa7509a03d4cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a73cf5f91499bc0e1c7d9c5069963b5aa"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a>, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a73cf5f91499bc0e1c7d9c5069963b5aa">allocateErrorPageData</a> ()</td></tr>
+<tr class="memdesc:a73cf5f91499bc0e1c7d9c5069963b5aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates the error page message data.  <a href="namespacehttp.html#a73cf5f91499bc0e1c7d9c5069963b5aa">More...</a><br /></td></tr>
+<tr class="separator:a73cf5f91499bc0e1c7d9c5069963b5aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab99935c70c216969b7410a50c653cc58"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#ab99935c70c216969b7410a50c653cc58">generateErrorPage</a> (<a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a> code)</td></tr>
+<tr class="memdesc:ab99935c70c216969b7410a50c653cc58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates an error page.  <a href="namespacehttp.html#ab99935c70c216969b7410a50c653cc58">More...</a><br /></td></tr>
+<tr class="separator:ab99935c70c216969b7410a50c653cc58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf7077bb1b43902d0455848db0726b95"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#abf7077bb1b43902d0455848db0726b95">generateErrorPage</a> (int code)</td></tr>
+<tr class="separator:abf7077bb1b43902d0455848db0726b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="ad6f0ed7c44035f65821fa7509a03d4cf"></a>
@@ -291,6 +303,146 @@ Enumerations</h2></td></tr>
 <div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762af48f28793b2b2cf55236a361684fe374"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af48f28793b2b2cf55236a361684fe374">http::MOVED_PERMANENTLY</a></div><div class="ttdeci">@ MOVED_PERMANENTLY</div><div class="ttdef"><b>Definition:</b> <a href="defines_8hpp_source.html#l00014">defines.hpp:14</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702">http::NOT_IMPLEMENTED</a></div><div class="ttdeci">@ NOT_IMPLEMENTED</div><div class="ttdef"><b>Definition:</b> <a href="defines_8hpp_source.html#l00038">defines.hpp:38</a></div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a73cf5f91499bc0e1c7d9c5069963b5aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73cf5f91499bc0e1c7d9c5069963b5aa">&#9670;&nbsp;</a></span>allocateErrorPageData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;<a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a>, std::string&gt; http::allocateErrorPageData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Allocates the error page message data. </p>
+<dl class="section return"><dt>Returns</dt><dd>std::map&lt;int, std::string&gt; The error page data. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ErrorPageGenerator_8cpp_source.html#l00014">14</a> of file <a class="el" href="ErrorPageGenerator_8cpp_source.html">ErrorPageGenerator.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                                                      {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  std::map&lt;StatusCode, std::string&gt; errorPages;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">BAD_REQUEST</a>] = <span class="stringliteral">&quot;Bad Request&quot;</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3d7d9fa1fdefebf6853cb2a1bdb7ed45">UNAUTHORIZED</a>] = <span class="stringliteral">&quot;Unauthorized&quot;</span>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">FORBIDDEN</a>] = <span class="stringliteral">&quot;Forbidden&quot;</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a144f7cef2e3efe6d823debdf4e62b10c">NOT_FOUND</a>] = <span class="stringliteral">&quot;Not Found&quot;</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a951e17c8b8b27ee06ced2f743295c2ad">METHOD_NOT_ALLOWED</a>] = <span class="stringliteral">&quot;Method Not Allowed&quot;</span>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af02e26d07c2c0b6609ef53180fa5501b">NOT_ACCEPTABLE</a>] = <span class="stringliteral">&quot;Not Acceptable&quot;</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762abfd170331bc52230235a1a5a3b8855b1">REQUEST_TIMEOUT</a>] = <span class="stringliteral">&quot;Request Timeout&quot;</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a0102681b664612b47f268b7b25b455f3">CONFLICT</a>] = <span class="stringliteral">&quot;Conflict&quot;</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a6a57adb9b4b8e48c83ffd31803861c90">GONE</a>] = <span class="stringliteral">&quot;Gone&quot;</span>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a99433d071bad8a0f316f89d915e3a65f">LENGTH_REQUIRED</a>] = <span class="stringliteral">&quot;Length Required&quot;</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ae0967dfd6179bfd162129b973a2acf8a">PAYLOAD_TOO_LARGE</a>] = <span class="stringliteral">&quot;Payload Too Large&quot;</span>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a873ca8ab2862e690356decb197a57b21">URI_TOO_LONG</a>] = <span class="stringliteral">&quot;URI Too Long&quot;</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a032b28c11dba5740005c00c42e23ee9b">UNSUPPORTED_MEDIA_TYPE</a>] = <span class="stringliteral">&quot;Unsupported Media Type&quot;</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762adf7a10453ad32b7ddaf6ea0cc390ecfd">RANGE_NOT_SATISFIABLE</a>] = <span class="stringliteral">&quot;Range Not Satisfiable&quot;</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a61bc4fa7ffe014a95f2fbf6afdc4e10c">EXPECTATION_FAILED</a>] = <span class="stringliteral">&quot;Expectation Failed&quot;</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aac28ecf126a5f02c8a8e5c6aede2532c">IM_A_TEAPOT</a>] = <span class="stringliteral">&quot;I&#39;m a teapot&quot;</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a6476fc983abd2f32a9978d54caf9a3f1">MISDIRECTED_REQUEST</a>] = <span class="stringliteral">&quot;Misdirected Request&quot;</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ac2025fee956f6968ae972ba1490e46a7">UPGRADE_REQUIRED</a>] = <span class="stringliteral">&quot;Upgrade Required&quot;</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a8bed57973a8cc88394fe713a7a4c2cba">INTERNAL_SERVER_ERROR</a>] = <span class="stringliteral">&quot;Internal Server Error&quot;</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702">NOT_IMPLEMENTED</a>] = <span class="stringliteral">&quot;Not Implemented&quot;</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a28f37481a1370680536f38437874e5a7">BAD_GATEWAY</a>] = <span class="stringliteral">&quot;Bad Gateway&quot;</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a884dcbd834ba0952d75e6418b7dad03c">SERVICE_UNAVAILABLE</a>] = <span class="stringliteral">&quot;Service Unavailable&quot;</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a87353b86a06472ac0dea6f4580bf6683">GATEWAY_TIMEOUT</a>] = <span class="stringliteral">&quot;Gateway Timeout&quot;</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  errorPages[<a class="code" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff">HTTP_VERSION_NOT_SUPPORTED</a>] = <span class="stringliteral">&quot;HTTP Version Not Supported&quot;</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordflow">return</span> errorPages;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacehttp_a73cf5f91499bc0e1c7d9c5069963b5aa_icgraph.png" border="0" usemap="#anamespacehttp_a73cf5f91499bc0e1c7d9c5069963b5aa_icgraph" alt=""/></div>
+<map name="anamespacehttp_a73cf5f91499bc0e1c7d9c5069963b5aa_icgraph" id="anamespacehttp_a73cf5f91499bc0e1c7d9c5069963b5aa_icgraph">
+<area shape="rect" title="Allocates the error page message data." alt="" coords="229,5,431,32"/>
+<area shape="rect" href="namespacehttp.html#ab99935c70c216969b7410a50c653cc58" title="Generates an error page." alt="" coords="5,5,181,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abf7077bb1b43902d0455848db0726b95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf7077bb1b43902d0455848db0726b95">&#9670;&nbsp;</a></span>generateErrorPage() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string http::generateErrorPage </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>code</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab99935c70c216969b7410a50c653cc58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab99935c70c216969b7410a50c653cc58">&#9670;&nbsp;</a></span>generateErrorPage() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string http::generateErrorPage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a>&#160;</td>
+          <td class="paramname"><em>code</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Generates an error page. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>The error code. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::string The error page as an HTML string. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="ErrorPageGenerator_8cpp_source.html#l00048">48</a> of file <a class="el" href="ErrorPageGenerator_8cpp_source.html">ErrorPageGenerator.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                             {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  std::map&lt;StatusCode, std::string&gt; errorPages;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="comment">// TODO: Define the error page once at the beginning of the program</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  errorPages = <a class="code" href="namespacehttp.html#a73cf5f91499bc0e1c7d9c5069963b5aa">allocateErrorPageData</a>();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">if</span> (errorPages.find(code) == errorPages.end()) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  std::ostringstream oss;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  oss &lt;&lt; code;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  std::string codeStr = oss.str();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  std::string errorPage = <span class="stringliteral">&quot;&lt;!DOCTYPE html&gt;\n&lt;html lang=\&quot;en\&quot;&gt;\n&lt;head&gt;\n&lt;title&gt;\n&quot;</span> + codeStr + <span class="stringliteral">&quot; &quot;</span> + errorPages[code] +</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                          <span class="stringliteral">&quot;\n&lt;/title&gt;\n&lt;style&gt;\nbody\n{\nbackground-color:&quot;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                          <span class="stringliteral">&quot;#2b3042;\njustify-content: center;\ntext-align: center;\ncolor: &quot;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                          <span class="stringliteral">&quot;#d3dbeb;\n\n}\nh1\n{\nfont-size: &quot;</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                          <span class="stringliteral">&quot;5rem;\n}\np\n{\nfont-size: 1.5rem;\npadding-bottom: &quot;</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                          <span class="stringliteral">&quot;10px;\n}\na\n{\ntext-decoration: none;\ncolor: &quot;</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                          <span class="stringliteral">&quot;#d3dbeb;\npadding: 10px;\nborder: 3px solid #d3dbeb;\nfont-weight: &quot;</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                          <span class="stringliteral">&quot;bold;\n}\n&lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n&lt;h1&gt;&quot;</span> +</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                          codeStr + <span class="stringliteral">&quot;&lt;/h1&gt;\n&lt;p&gt;\n&quot;</span> + errorPages[code] +</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                          <span class="stringliteral">&quot;\n&lt;/p&gt;\n&lt;a href=\&quot;/home_directory&gt;\&quot;&gt;\nGo Back to &quot;</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                          <span class="stringliteral">&quot;Home\n&lt;/a&gt;\n&lt;/body&gt;\n&lt;/html&gt;&quot;</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordflow">return</span> errorPage;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+<div class="ttc" id="anamespacehttp_html_a73cf5f91499bc0e1c7d9c5069963b5aa"><div class="ttname"><a href="namespacehttp.html#a73cf5f91499bc0e1c7d9c5069963b5aa">http::allocateErrorPageData</a></div><div class="ttdeci">std::map&lt; StatusCode, std::string &gt; allocateErrorPageData()</div><div class="ttdoc">Allocates the error page message data.</div><div class="ttdef"><b>Definition:</b> <a href="ErrorPageGenerator_8cpp_source.html#l00014">ErrorPageGenerator.cpp:14</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacehttp_ab99935c70c216969b7410a50c653cc58_cgraph.png" border="0" usemap="#anamespacehttp_ab99935c70c216969b7410a50c653cc58_cgraph" alt=""/></div>
+<map name="anamespacehttp_ab99935c70c216969b7410a50c653cc58_cgraph" id="anamespacehttp_ab99935c70c216969b7410a50c653cc58_cgraph">
+<area shape="rect" title="Generates an error page." alt="" coords="5,5,181,32"/>
+<area shape="rect" href="namespacehttp.html#a73cf5f91499bc0e1c7d9c5069963b5aa" title="Allocates the error page message data." alt="" coords="229,5,431,32"/>
+</map>
+</div>
+
 </div>
 </div>
 </div><!-- contents -->

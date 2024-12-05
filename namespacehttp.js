@@ -46,5 +46,8 @@ var namespacehttp =
       [ "SERVICE_UNAVAILABLE", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a884dcbd834ba0952d75e6418b7dad03c", null ],
       [ "GATEWAY_TIMEOUT", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a87353b86a06472ac0dea6f4580bf6683", null ],
       [ "HTTP_VERSION_NOT_SUPPORTED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff", null ]
-    ] ]
+    ] ],
+    [ "allocateErrorPageData", "namespacehttp.html#a73cf5f91499bc0e1c7d9c5069963b5aa", null ],
+    [ "generateErrorPage", "namespacehttp.html#abf7077bb1b43902d0455848db0726b95", null ],
+    [ "generateErrorPage", "namespacehttp.html#ab99935c70c216969b7410a50c653cc58", null ]
 ];
