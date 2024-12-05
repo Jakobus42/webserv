@@ -1,35 +1,30 @@
 
 #include <gtest/gtest.h>
-#include "../../include/error_page/Generator.hpp"
 
-namespace error_page {
+#include "http/ErrorPageGenerator.hpp"
 
-class GeneratorTest : public ::testing::Test {
-	
-};
+namespace http {
 
-TEST_F(GeneratorTest, CorrectUsage) {
-	
+class ErrorPageGeneratorTest : public ::testing::Test {};
+
+TEST_F(ErrorPageGeneratorTest, CorrectUsage) {
 	std::string error_page = generateErrorPage(404);
 	ASSERT_NE(error_page, "");
 }
 
-TEST_F(GeneratorTest, IncorrectNumber) {
-	
+TEST_F(ErrorPageGeneratorTest, IncorrectNumber) {
 	std::string error_page = generateErrorPage(600);
 	ASSERT_EQ(error_page, "");
 }
 
-TEST_F(GeneratorTest, NegativeNumber) {
-	
+TEST_F(ErrorPageGeneratorTest, NegativeNumber) {
 	std::string error_page = generateErrorPage(-1);
 	ASSERT_EQ(error_page, "");
 }
 
-TEST_F(GeneratorTest, Zero) {
-	
+TEST_F(ErrorPageGeneratorTest, Zero) {
 	std::string error_page = generateErrorPage(0);
 	ASSERT_EQ(error_page, "");
 }
 
-} /* namespace error_page */
+}  // namespace http

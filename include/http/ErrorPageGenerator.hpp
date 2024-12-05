@@ -4,8 +4,8 @@
 #include <iostream>
 #include <map>
 
-namespace error_page {
+namespace http {
 
 std::string generateErrorPage(int code);
 
-} /* namespace error_page */
+}  // namespace http
