@@ -49,7 +49,7 @@ int ConfigFileParser::server(std::vector<std::string>& args, int& lineCount, int
   if (args.size() != 1) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for server" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   t_server new_server;
@@ -75,13 +75,13 @@ int ConfigFileParser::location(std::vector<std::string>& args, int const& lineCo
   if (args.size() != 2) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for location" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   if (args[1].length() > 1000 || args[1].length() == 0) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Location name length invalid" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   t_location new_location;
@@ -116,7 +116,7 @@ int ConfigFileParser::listen(std::vector<std::string>& args, int& lineCount, int
   if (args.size() != 2) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for listen" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   if (is_number(args[1])) {
@@ -124,7 +124,7 @@ int ConfigFileParser::listen(std::vector<std::string>& args, int& lineCount, int
     if (i < 0 || i > 65535) {
       LOG("Configuration file (line " << lineCount << "): "
                                       << "Invalid number for listen" << std::endl,
-          logger::ERROR);
+          1);
       return 1;
     }
     m_configData.servers.back().port = i;
@@ -139,7 +139,7 @@ int ConfigFileParser::listen(std::vector<std::string>& args, int& lineCount, int
           if (j < 0 || j > 65535) {
             LOG("Configuration file (line " << lineCount << "): "
                                             << "Invalid number for listen" << std::endl,
-                logger::ERROR);
+                1);
             return 1;
           }
           m_configData.servers.back().port = i;
@@ -149,7 +149,7 @@ int ConfigFileParser::listen(std::vector<std::string>& args, int& lineCount, int
         if (iter == std::string::npos) {
           LOG("Configuration file (line " << lineCount << "): "
                                           << "Invalid number for listen" << std::endl,
-              logger::ERROR);
+              1);
           return 1;
         }
       }
@@ -158,7 +158,7 @@ int ConfigFileParser::listen(std::vector<std::string>& args, int& lineCount, int
       if (j < 0 || j > 255) {
         LOG("Configuration file (line " << lineCount << "): "
                                         << "Invalid number for listen" << std::endl,
-            logger::ERROR);
+            1);
         return 1;
       }
       m_configData.servers.back().ip_address += j << (8 * (3 - i));
@@ -169,7 +169,7 @@ int ConfigFileParser::listen(std::vector<std::string>& args, int& lineCount, int
       if (i < 0 || i > 65535) {
         LOG("Configuration file (line " << lineCount << "): "
                                         << "Invalid number for listen" << std::endl,
-            logger::ERROR);
+            1);
         return 1;
       }
       m_configData.servers.back().port = i;
@@ -191,21 +191,21 @@ int ConfigFileParser::serverName(std::vector<std::string>& args, int& lineCount,
   if (args.size() < 2) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for server_name" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   for (unsigned long i = 1; i < args.size(); i++) {
     if (args[i].length() > 1000 || args[i].length() == 0) {
       LOG("Configuration file (line " << lineCount << "): "
                                       << "Server name length invalid" << std::endl,
-          logger::ERROR);
+          1);
       return 1;
     }
     m_configData.servers.back().server_names.push_back(args[i]);
     if (i > 1000) {
       LOG("Configuration file (line " << lineCount << "): "
                                       << "Too many server names" << std::endl,
-          logger::ERROR);
+          1);
       return 1;
     }
   }
@@ -225,14 +225,14 @@ int ConfigFileParser::errorPage(std::vector<std::string>& args, int& lineCount, 
   if (args.size() < 3 || args.size() > 1001) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for error_page" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   std::string last = args.back();
   if (last.length() > 1000 || last.length() == 0) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Error page length invalid" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   // TODO: check if last is a valid path?
@@ -242,7 +242,7 @@ int ConfigFileParser::errorPage(std::vector<std::string>& args, int& lineCount, 
     if (j < 100 || j > 599) {
       LOG("Configuration file (line " << lineCount << "): "
                                       << "Invalid number for error_page" << std::endl,
-          logger::ERROR);
+          1);
       return 1;
     }
     m_configData.servers.back().errorPages[j] = last;
@@ -263,14 +263,14 @@ int ConfigFileParser::clientMaxBodySize(std::vector<std::string>& args, int& lin
   if (args.size() != 2) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for client_max_body_size" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   int i = ft_stoi(args[1]);
   if (i < 0) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number for client_max_body_size" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   m_configData.servers.back().max_body_size = i;
@@ -290,7 +290,7 @@ int ConfigFileParser::limitExcept(std::vector<std::string>& args, int& lineCount
   if (args.size() < 2 || args.size() > 15) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for limit_except" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   std::vector<std::string> methods;
@@ -309,7 +309,7 @@ int ConfigFileParser::limitExcept(std::vector<std::string>& args, int& lineCount
       if (j == methods.size() - 1) {
         LOG("Configuration file (line " << lineCount << "): "
                                         << "Invalid method for limit_except" << std::endl,
-            logger::ERROR);
+            1);
         return 1;
       }
     }
@@ -317,7 +317,7 @@ int ConfigFileParser::limitExcept(std::vector<std::string>& args, int& lineCount
   if (allowed_methods.size() == 0) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "No methods found for limit_except" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   t_location* current = getLocation(layer);
@@ -337,13 +337,13 @@ int ConfigFileParser::returnKeyword(std::vector<std::string>& args, int const& l
   if (args.size() != 2) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for return" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   if (args[1].length() > 1000 || args[1].length() == 0) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Return url length invalid" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   // TODO: check if valid url?
@@ -365,13 +365,13 @@ int ConfigFileParser::root(std::vector<std::string>& args, int& lineCount, int l
   if (args.size() != 2) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for root" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   if (args[1].length() > 1000 || args[1].length() == 0) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Root length invalid" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   // TODO: check if path is valid
@@ -393,7 +393,7 @@ int ConfigFileParser::autoindex(std::vector<std::string>& args, int& lineCount, 
   if (args.size() != 2) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for autoindex" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   t_location* current = getLocation(layer);
@@ -404,7 +404,7 @@ int ConfigFileParser::autoindex(std::vector<std::string>& args, int& lineCount, 
   } else {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid argument for autoindex" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   return 0;
@@ -424,7 +424,7 @@ int ConfigFileParser::index(std::vector<std::string>& args, int& lineCount, int 
   if (args.size() < 2 || args.size() > 1001) {
     LOG("Configuration file (line " << lineCount << "): "
                                     << "Invalid number of arguments for index" << std::endl,
-        logger::ERROR);
+        1);
     return 1;
   }
   t_location* current = getLocation(layer);
@@ -433,7 +433,7 @@ int ConfigFileParser::index(std::vector<std::string>& args, int& lineCount, int 
     if (args[i].length() > 1000 || args[i].length() == 0) {
       LOG("Configuration file (line " << lineCount << "): "
                                       << "Index file length invalid" << std::endl,
-          logger::ERROR);
+          1);
       return 1;
     }
     current->index.push_back(args[i]);
