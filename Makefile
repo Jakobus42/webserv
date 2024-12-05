@@ -3,7 +3,7 @@ CC = c++
 
 ###FLAGS###
 CFLAGS = -Wextra -Wall -Werror -std=c++98 -I$(INCDIR)
-CPPCHECKFLAGS = -I$(INCDIR)
+CPPCHECKFLAGS = -I$(INCDIR) --std=c++03
 DEBUG_FLAGS = -g
 
 ###PROGRAM###
