@@ -114,9 +114,11 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:ad69dd070551bcd0cffa08471dcf8bd94"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#ad69dd070551bcd0cffa08471dcf8bd94">Reactor</a> (const <a class="el" href="classcore_1_1Reactor.html">Reactor</a> &amp;other)</td></tr>
+<tr class="memdesc:ad69dd070551bcd0cffa08471dcf8bd94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="classcore_1_1Reactor.html#ad69dd070551bcd0cffa08471dcf8bd94">More...</a><br /></td></tr>
 <tr class="separator:ad69dd070551bcd0cffa08471dcf8bd94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec733f03819d5796f43076583e310cec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcore_1_1Reactor.html">Reactor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#aec733f03819d5796f43076583e310cec">operator=</a> (const <a class="el" href="classcore_1_1Reactor.html">Reactor</a> &amp;other)</td></tr>
-<tr class="separator:aec733f03819d5796f43076583e310cec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0b7e9ad0a45f7a47f1c114b1e82ba12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcore_1_1Reactor.html">Reactor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#ae0b7e9ad0a45f7a47f1c114b1e82ba12">operator=</a> (const <a class="el" href="classcore_1_1Reactor.html">Reactor</a> &amp;other)</td></tr>
+<tr class="memdesc:ae0b7e9ad0a45f7a47f1c114b1e82ba12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assignment operator.  <a href="classcore_1_1Reactor.html#ae0b7e9ad0a45f7a47f1c114b1e82ba12">More...</a><br /></td></tr>
+<tr class="separator:ae0b7e9ad0a45f7a47f1c114b1e82ba12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -207,6 +209,19 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Copy constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The other <a class="el" href="classcore_1_1Reactor.html" title="...">Reactor</a> object to copy. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00032">32</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        : <a class="code" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a>(other.getEpollFd())</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        , <a class="code" href="classcore_1_1Reactor.html#a96e186a75232b1e64c1f50db7dbea1ec">m_virtual_servers</a>(other.getVirtualServers()) {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -327,7 +342,16 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                      {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a>;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
-</div><!-- fragment -->
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcore_1_1Reactor_a7ed17e055952b4a06b0edd71866caca9_icgraph.png" border="0" usemap="#aclasscore_1_1Reactor_a7ed17e055952b4a06b0edd71866caca9_icgraph" alt=""/></div>
+<map name="aclasscore_1_1Reactor_a7ed17e055952b4a06b0edd71866caca9_icgraph" id="aclasscore_1_1Reactor_a7ed17e055952b4a06b0edd71866caca9_icgraph">
+<area shape="rect" title=" " alt="" coords="236,5,421,32"/>
+<area shape="rect" href="classcore_1_1Reactor.html#ae0b7e9ad0a45f7a47f1c114b1e82ba12" title="Copy assignment operator." alt="" coords="5,5,188,32"/>
+</map>
+</div>
+
 </div>
 </div>
 <a id="a44724dfdbd11cf3d959a9135cad073c7"></a>
@@ -373,7 +397,16 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                                                             {</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classcore_1_1Reactor.html#a96e186a75232b1e64c1f50db7dbea1ec">m_virtual_servers</a>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
-</div><!-- fragment -->
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcore_1_1Reactor_a9524e3c9eba3cdd2175cddaf646e50de_icgraph.png" border="0" usemap="#aclasscore_1_1Reactor_a9524e3c9eba3cdd2175cddaf646e50de_icgraph" alt=""/></div>
+<map name="aclasscore_1_1Reactor_a9524e3c9eba3cdd2175cddaf646e50de_icgraph" id="aclasscore_1_1Reactor_a9524e3c9eba3cdd2175cddaf646e50de_icgraph">
+<area shape="rect" title=" " alt="" coords="236,5,416,47"/>
+<area shape="rect" href="classcore_1_1Reactor.html#ae0b7e9ad0a45f7a47f1c114b1e82ba12" title="Copy assignment operator." alt="" coords="5,13,188,39"/>
+</map>
+</div>
+
 </div>
 </div>
 <a id="a71cf64a92f1a7a6293121ede5df60981"></a>
@@ -416,8 +449,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="aec733f03819d5796f43076583e310cec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec733f03819d5796f43076583e310cec">&#9670;&nbsp;</a></span>operator=()</h2>
+<a id="ae0b7e9ad0a45f7a47f1c114b1e82ba12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0b7e9ad0a45f7a47f1c114b1e82ba12">&#9670;&nbsp;</a></span>operator=()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -426,10 +459,10 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classcore_1_1Reactor.html">Reactor</a>&amp; core::Reactor::operator= </td>
+          <td class="memname"><a class="el" href="classcore_1_1Reactor.html">Reactor</a> &amp; core::Reactor::operator= </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classcore_1_1Reactor.html">Reactor</a> &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
+          <td class="paramname"><em>rhs</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -439,6 +472,34 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Copy assignment operator. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The other <a class="el" href="classcore_1_1Reactor.html" title="...">Reactor</a> object to assign from. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A reference to the assigned <a class="el" href="classcore_1_1Reactor.html" title="...">Reactor</a> object. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00042">42</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                                  {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a> = rhs.getEpollFd();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="classcore_1_1Reactor.html#a96e186a75232b1e64c1f50db7dbea1ec">m_virtual_servers</a> = rhs.getVirtualServers();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcore_1_1Reactor_ae0b7e9ad0a45f7a47f1c114b1e82ba12_cgraph.png" border="0" usemap="#aclasscore_1_1Reactor_ae0b7e9ad0a45f7a47f1c114b1e82ba12_cgraph" alt=""/></div>
+<map name="aclasscore_1_1Reactor_ae0b7e9ad0a45f7a47f1c114b1e82ba12_cgraph" id="aclasscore_1_1Reactor_ae0b7e9ad0a45f7a47f1c114b1e82ba12_cgraph">
+<area shape="rect" title="Copy assignment operator." alt="" coords="5,35,188,61"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a7ed17e055952b4a06b0edd71866caca9" title=" " alt="" coords="236,5,421,32"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a9524e3c9eba3cdd2175cddaf646e50de" title=" " alt="" coords="239,57,419,98"/>
+</map>
+</div>
 
 </div>
 </div>
