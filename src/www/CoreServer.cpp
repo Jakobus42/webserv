@@ -65,7 +65,7 @@ bool CoreServer::removeVirtualServer(std::vector<VirtualServer>::iterator it) {
   return true;
 }
 
-void CoreServer::registerHandler(int fd, runtime::EventHandler* handler, uint32_t events) throw(std::runtime_error) {
+void CoreServer::registerHandler(int fd, runtime::RequestHandler* handler, uint32_t events) throw(std::runtime_error) {
   t_event event;
 
   event.data.fd = fd;
