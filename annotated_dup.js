@@ -7,6 +7,8 @@ var annotated_dup =
       [ "ConfigFileParser", "classconfigfile_1_1ConfigFileParser.html", "classconfigfile_1_1ConfigFileParser" ]
     ] ],
     [ "http", "namespacehttp.html", [
+      [ "s_requestData", "structhttp_1_1s__requestData.html", "structhttp_1_1s__requestData" ],
+      [ "parsingData", "structhttp_1_1parsingData.html", "structhttp_1_1parsingData" ],
       [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ]
     ] ],
     [ "logger", "namespacelogger.html", [
