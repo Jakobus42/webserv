@@ -8,7 +8,7 @@
 #include <sstream>
 #include <vector>
 
-#include "configfile/Parser.hpp"
+#include "config/Parser.hpp"
 #include "logger/LoggerManager.hpp"
 
 namespace configfile {

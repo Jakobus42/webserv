@@ -72,8 +72,8 @@ VirtualServerSocket& VirtualServer::getSocket(void) { return m_listen_socket; }
 const t_connections& VirtualServer::getConnections(void) const { return m_connections; }
 
 /**
- * @brief Accepts the next incoming connection in the VirtualVirtualServerSocket's
- * queue
+ * @brief Accepts the next incoming connection in the
+ * VirtualVirtualServerSocket's queue
  *
  * @return true if the connection could be established
  * @return false if accept() within Connection->ClientSocket fails

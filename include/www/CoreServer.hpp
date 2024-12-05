@@ -7,7 +7,7 @@
 #include <stdexcept>
 #include <vector>
 
-#include "configfile/Parser.hpp"
+#include "config/Parser.hpp"
 #include "runtime/EventHandler.hpp"
 #include "www/VirtualServer.hpp"
 
