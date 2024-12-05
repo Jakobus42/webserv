@@ -1,6 +1,6 @@
-#include "runtime/RequestHandler.hpp"
+#include "core/RequestHandler.hpp"
 
-namespace runtime {
+namespace core {
 
 /**
  * @brief Constructs a new RequestHandler object.
@@ -33,4 +33,4 @@ void RequestHandler::handle(int fd, uint32_t event) {
   (void)event;
 }
 
-} /* namespace runtime */
+} /* namespace core */

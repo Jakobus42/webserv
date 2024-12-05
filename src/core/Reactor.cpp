@@ -5,7 +5,7 @@
 
 #include <stdexcept>
 
-#include "runtime/RequestHandler.hpp"
+#include "core/RequestHandler.hpp"
 
 namespace core {
 
@@ -65,7 +65,7 @@ bool Reactor::removeVirtualServer(std::vector<http::VirtualServer>::iterator it)
   return true;
 }
 
-void Reactor::registerHandler(int fd, runtime::RequestHandler* handler, uint32_t events) throw(std::runtime_error) {
+void Reactor::registerHandler(int fd, core::RequestHandler* handler, uint32_t events) throw(std::runtime_error) {
   t_event event;
 
   event.data.fd = fd;

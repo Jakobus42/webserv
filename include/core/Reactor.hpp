@@ -8,8 +8,8 @@
 #include <vector>
 
 #include "config/Parser.hpp"
+#include "core/RequestHandler.hpp"
 #include "http/VirtualServer.hpp"
-#include "runtime/RequestHandler.hpp"
 #include "shared/defines.hpp"
 
 namespace core {
@@ -32,7 +32,7 @@ class Reactor {
   bool removeVirtualServer(std::vector<http::VirtualServer>::iterator it);
   bool addVirtualServers(config::t_config_data& configData);
 
-  void registerHandler(int fd, runtime::RequestHandler* handler, uint32_t events = EPOLLIN) throw(std::runtime_error);
+  void registerHandler(int fd, core::RequestHandler* handler, uint32_t events = EPOLLIN) throw(std::runtime_error);
   void unregisterHandler(int fd) throw(std::runtime_error);
   void react();
 
@@ -42,7 +42,7 @@ class Reactor {
 
   int m_epoll_master_fd;
   std::vector<http::VirtualServer> m_virtual_servers;
-  std::map<int, runtime::RequestHandler*> m_event_handlers;
+  std::map<int, core::RequestHandler*> m_event_handlers;
 };
 
 }  // namespace core
