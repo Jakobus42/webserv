@@ -14,6 +14,13 @@ var defines_8hpp =
       [ "TRACE", "defines_8hpp.html#ad6f0ed7c44035f65821fa7509a03d4cfac3ae7052b142891ae4cbd8c7d3952e4b", null ],
       [ "CONNECT", "defines_8hpp.html#ad6f0ed7c44035f65821fa7509a03d4cfaacb1ee85ea00b29a2292736dd81b7992", null ]
     ] ],
+    [ "RequestStatus", "defines_8hpp.html#a068cab601142fb739077ccd62379df64", [
+      [ "PARSE_START", "defines_8hpp.html#a068cab601142fb739077ccd62379df64af1ec52e66d8011ff2329d6937794bdb3", null ],
+      [ "PARSE_HEAD", "defines_8hpp.html#a068cab601142fb739077ccd62379df64a6e55d4fbcb4414ad97de58c56bfc3654", null ],
+      [ "PARSE_HEADERS", "defines_8hpp.html#a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc", null ],
+      [ "PARSE_BODY", "defines_8hpp.html#a068cab601142fb739077ccd62379df64ac4ffb0e12ded445e68ca3f683a01ba21", null ],
+      [ "PARSE_END", "defines_8hpp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff", null ]
+    ] ],
     [ "StatusCode", "defines_8hpp.html#ac125d409f7c7b6034fe7e49d237b7762", [
       [ "OK", "defines_8hpp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc", null ],
       [ "CREATED", "defines_8hpp.html#ac125d409f7c7b6034fe7e49d237b7762a55ec2403fcca929391dbb044ffed5e85", null ],
