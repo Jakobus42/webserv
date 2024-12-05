@@ -4,19 +4,19 @@
 
 namespace core {
 
-/**
- * @class RequestHandler
- * @brief ...
- */
-class RequestHandler {
-	public:
-		RequestHandler();
-		~RequestHandler();
+	/**
+	 * @class RequestHandler
+	 * @brief ...
+	 */
+	class RequestHandler {
+		public:
+			RequestHandler();
+			~RequestHandler();
 
-		void handle(int fd, uint32_t events);
-	private:
-		RequestHandler(const RequestHandler& other);
-		RequestHandler& operator=(const RequestHandler& rhs);
-};
+			void handle(int fd, uint32_t events);
+		private:
+			RequestHandler(const RequestHandler &other);
+			RequestHandler &operator=(const RequestHandler &rhs);
+	};
 
 } /* namespace core */

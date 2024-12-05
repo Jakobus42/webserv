@@ -7,15 +7,14 @@
 
 namespace shared {
 
-namespace string {
+	namespace string {
 
-const std::string WHITESPACES = " \t\n\v\f\r";
+		const std::string WHITESPACES = " \t\n\v\f\r";
 
-void split(const std::string& str, std::vector<std::string>& result,
-		   const std::string& delimiters = WHITESPACES);
+		void split(const std::string &str, std::vector<std::string> &result, const std::string &delimiters = WHITESPACES);
 
-void trim(std::string& str, const std::string& delimiters = WHITESPACES);
+		void trim(std::string &str, const std::string &delimiters = WHITESPACES);
 
-}  // namespace string
+	} // namespace string
 
-}  // namespace shared
+} // namespace shared

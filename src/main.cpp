@@ -1,9 +1,9 @@
-#include <iostream>
-
 #include "config/Parser.hpp"
 #include "core/Reactor.hpp"
 
-int main(int argc, char** const argv) {
+#include <iostream>
+
+int main(int argc, char **const argv) {
 	try {
 		// start
 		std::string configfile;
@@ -23,12 +23,12 @@ int main(int argc, char** const argv) {
 			if (server.addVirtualServers(configData) == false)
 				return 1;
 			// server.getVirtualServers().at(0).addConnection();
-		} catch (std::exception& e) {
+		} catch (std::exception &e) {
 			std::cerr << "Exception caught in main: " << e.what() << std::endl;
 			return 1;
 		}
 		// end
-	} catch (const std::exception& e) {
+	} catch (const std::exception &e) {
 		LOG("ERROR: " << e.what(), 1)
 	}
 }

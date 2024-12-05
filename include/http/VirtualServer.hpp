@@ -2,51 +2,51 @@
 
 #include <stdint.h>
 
-#include <string>
-#include <vector>
-
 #include "ServerSocket.hpp"
 #include "config/Parser.hpp"
 #include "http/Connection.hpp"
+
+#include <string>
+#include <vector>
 
 #define ONE_MEGABYTE 1048576UL
 #define MAX_CONNECTIONS 500
 
 namespace http {
 
-typedef std::vector<Connection> t_connections;
+	typedef std::vector<Connection> t_connections;
 
-/**
- * @class VirtualServer
- * @brief ...
- */
-class VirtualServer {
-	public:
-		VirtualServer();
-		VirtualServer(config::t_server& serverConfig);
-		~VirtualServer();
-		VirtualServer(const VirtualServer& other);
-		VirtualServer& operator=(const VirtualServer& other);
+	/**
+	 * @class VirtualServer
+	 * @brief ...
+	 */
+	class VirtualServer {
+		public:
+			VirtualServer();
+			VirtualServer(config::t_server &serverConfig);
+			~VirtualServer();
+			VirtualServer(const VirtualServer &other);
+			VirtualServer &operator=(const VirtualServer &other);
 
-		const std::vector<std::string>& getNames(void) const;
-		const std::map<int, std::string>& getErrorPages(void) const;
-		const std::vector<config::t_location>& getLocations(void) const;
-		uint64_t getMaxBodySize(void) const;
-		const ServerSocket& getSocket(void) const;
-		ServerSocket& getSocket(void);
-		const t_connections& getConnections(void) const;
+			const std::vector<std::string> &getNames(void) const;
+			const std::map<int, std::string> &getErrorPages(void) const;
+			const std::vector<config::t_location> &getLocations(void) const;
+			uint64_t getMaxBodySize(void) const;
+			const ServerSocket &getSocket(void) const;
+			ServerSocket &getSocket(void);
+			const t_connections &getConnections(void) const;
 
-		bool addConnection(void);
-		bool removeConnection(Connection& connection);
+			bool addConnection(void);
+			bool removeConnection(Connection &connection);
 
-		bool listen(void);
-	private:
-		uint64_t m_client_max_body_size;
-		std::vector<std::string> m_names;
-		std::vector<config::t_location> m_locations;
-		std::map<int, std::string> m_errorPages;
-		ServerSocket m_listen_socket;
-		t_connections m_connections;
-};
+			bool listen(void);
+		private:
+			uint64_t m_client_max_body_size;
+			std::vector<std::string> m_names;
+			std::vector<config::t_location> m_locations;
+			std::map<int, std::string> m_errorPages;
+			ServerSocket m_listen_socket;
+			t_connections m_connections;
+	};
 
-}  // namespace http
+} // namespace http

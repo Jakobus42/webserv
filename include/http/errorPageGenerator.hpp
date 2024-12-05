@@ -6,6 +6,6 @@
 
 namespace http {
 
-std::string generateErrorPage(int code);
+	std::string generateErrorPage(int code);
 
-}  // namespace http
+} // namespace http

@@ -11,7 +11,7 @@ AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
 AllowShortBlocksOnASingleLine: false
 AlignOperands: false
-AlignTrailingComments: Always
+# AlignTrailingComments: Always # wrong version
 BreakBeforeBraces: Attach
 PenaltyBreakBeforeFirstCallParameter: 1000
 PenaltyBreakComment: 300
@@ -23,11 +23,11 @@ DerivePointerAlignment: false
 PointerAlignment: Right
 ReferenceAlignment: Right
 AccessModifierOffset: 0
-RemoveParentheses: ReturnStatement
+# RemoveParentheses: ReturnStatement # wrong version
 SpaceBeforeParens: ControlStatementsExceptControlMacros
 EmptyLineBeforeAccessModifier: Never
 EmptyLineAfterAccessModifier: Never
-InsertNewlineAtEOF: true
+# InsertNewlineAtEOF: true # wrong version
 BinPackParameters: false
 BinPackArguments: false
 PackConstructorInitializers: Never
