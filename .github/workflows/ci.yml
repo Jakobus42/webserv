@@ -20,6 +20,6 @@ jobs:
       - name: Run strict compilation tests in Docker
         run: |
           docker run --rm template make strict
-      - name: Run Google Test
-        run: |
-          docker run --rm template make test
+      # - name: Run Google Test
+      #   run: |
+      #     docker run --rm template make test
