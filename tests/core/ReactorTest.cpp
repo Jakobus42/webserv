@@ -14,4 +14,4 @@ TEST_F(ReactorTest, DefaultConstructor) {
 	ASSERT_NO_THROW(Reactor new_instance;);
 }
 
-} /* namespace www */
+} /* namespace http */

@@ -1,8 +1,8 @@
-#include "www/Connection.hpp"
+#include "http/Connection.hpp"
 
 #include <unistd.h>
 
-namespace www {
+namespace http {
 
 /**
  * @brief Constructs a new Connection object.
@@ -48,4 +48,4 @@ ClientSocket& Connection::getSocket(void) { return m_client_socket; }
 
 const http::Request& Connection::getRequest(void) const { return m_request; }
 
-} /* namespace www */
+}  // namespace http

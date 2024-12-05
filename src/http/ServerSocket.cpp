@@ -1,4 +1,4 @@
-#include "../../include/www/ServerSocket.hpp"
+#include "../../include/http/ServerSocket.hpp"
 
 #include <errno.h>
 #include <fcntl.h>
@@ -6,7 +6,7 @@
 #include <iostream>
 #include <vector>
 
-namespace www {
+namespace http {
 
 typedef struct sockaddr t_sockaddr;
 
@@ -123,4 +123,4 @@ void ServerSocket::setBroken(void) {
   m_listening = false;
 }
 
-} /* namespace www */
+}  // namespace http

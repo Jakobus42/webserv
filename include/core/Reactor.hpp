@@ -8,9 +8,9 @@
 #include <vector>
 
 #include "config/Parser.hpp"
+#include "http/VirtualServer.hpp"
 #include "runtime/RequestHandler.hpp"
 #include "shared/defines.hpp"
-#include "www/VirtualServer.hpp"
 
 namespace core {
 
@@ -25,11 +25,11 @@ class Reactor {
 
   void init() throw(std::exception);
   int getEpollFd() const;
-  const std::vector<www::VirtualServer>& getVirtualServers() const;
-  std::vector<www::VirtualServer>& getVirtualServers();
+  const std::vector<http::VirtualServer>& getVirtualServers() const;
+  std::vector<http::VirtualServer>& getVirtualServers();
 
   void addVirtualServer(config::t_server& serverConfig) throw(std::exception);
-  bool removeVirtualServer(std::vector<www::VirtualServer>::iterator it);
+  bool removeVirtualServer(std::vector<http::VirtualServer>::iterator it);
   bool addVirtualServers(config::t_config_data& configData);
 
   void registerHandler(int fd, runtime::RequestHandler* handler, uint32_t events = EPOLLIN) throw(std::runtime_error);
@@ -41,7 +41,7 @@ class Reactor {
   Reactor& operator=(const Reactor& other);
 
   int m_epoll_master_fd;
-  std::vector<www::VirtualServer> m_virtual_servers;
+  std::vector<http::VirtualServer> m_virtual_servers;
   std::map<int, runtime::RequestHandler*> m_event_handlers;
 };
 
