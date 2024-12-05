@@ -104,7 +104,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "ALogger_8cpp.html",
-"classwww_1_1Connection.html#ad2ef94768a458418cdb4059c73f109fb"
+"classwww_1_1Connection.html#ad2ef94768a458418cdb4059c73f109fb",
+"namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ae0967dfd6179bfd162129b973a2acf8a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
