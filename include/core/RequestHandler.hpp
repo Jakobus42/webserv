@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-namespace runtime {
+namespace core {
 
 /**
  * @class RequestHandler
@@ -20,4 +20,4 @@ class RequestHandler {
   RequestHandler& operator=(const RequestHandler& rhs);
 };
 
-} /* namespace runtime */
+} /* namespace core */
