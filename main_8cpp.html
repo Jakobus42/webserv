@@ -65,39 +65,39 @@ $(document).ready(function(){initNavTree('main_8cpp.html',''); initResizable(); 
 <div class="title">main.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
-<code>#include &quot;<a class="el" href="Parser_8hpp_source.html">config/Parser.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="Parser_8hpp_source.html">config/Parser.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Reactor_8hpp_source.html">core/Reactor.hpp</a>&quot;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#amain_8cpp" alt=""/></div>
 <map name="amain_8cpp" id="amain_8cpp">
-<area shape="rect" title=" " alt="" coords="15,5,97,32"/>
-<area shape="rect" title=" " alt="" coords="103,453,183,480"/>
-<area shape="rect" href="Parser_8hpp.html" title=" " alt="" coords="178,304,310,331"/>
-<area shape="rect" href="Reactor_8hpp.html" title=" " alt="" coords="300,80,431,107"/>
-<area shape="rect" title=" " alt="" coords="605,453,675,480"/>
-<area shape="rect" title=" " alt="" coords="231,379,305,405"/>
-<area shape="rect" title=" " alt="" coords="55,379,105,405"/>
-<area shape="rect" title=" " alt="" coords="369,453,444,480"/>
-<area shape="rect" title=" " alt="" coords="431,379,494,405"/>
-<area shape="rect" href="defines_8hpp.html" title=" " alt="" coords="866,379,1011,405"/>
-<area shape="rect" title=" " alt="" coords="1088,453,1184,480"/>
-<area shape="rect" title=" " alt="" coords="961,453,1063,480"/>
-<area shape="rect" title=" " alt="" coords="1442,379,1534,405"/>
-<area shape="rect" title=" " alt="" coords="195,155,258,181"/>
-<area shape="rect" title=" " alt="" coords="282,155,369,181"/>
-<area shape="rect" href="RequestHandler_8hpp.html" title=" " alt="" coords="221,229,406,256"/>
-<area shape="rect" href="VirtualServer_8hpp.html" title=" " alt="" coords="514,155,678,181"/>
-<area shape="rect" title=" " alt="" coords="519,379,577,405"/>
-<area shape="rect" href="ServerSocket_8hpp.html" title=" " alt="" coords="1161,304,1295,331"/>
-<area shape="rect" href="Connection_8hpp.html" title=" " alt="" coords="770,229,923,256"/>
-<area shape="rect" title=" " alt="" coords="1189,379,1267,405"/>
-<area shape="rect" title=" " alt="" coords="1292,379,1367,405"/>
-<area shape="rect" href="ClientSocket_8hpp.html" title=" " alt="" coords="802,304,963,331"/>
-<area shape="rect" href="Request_8hpp.html" title=" " alt="" coords="583,304,716,331"/>
-<area shape="rect" title=" " alt="" coords="703,379,790,405"/>
+<area shape="rect" title=" " alt="" coords="1270,5,1353,32"/>
+<area shape="rect" href="Parser_8hpp.html" title=" " alt="" coords="1168,304,1300,331"/>
+<area shape="rect" title=" " alt="" coords="1306,453,1386,480"/>
+<area shape="rect" href="Reactor_8hpp.html" title=" " alt="" coords="1018,80,1149,107"/>
+<area shape="rect" title=" " alt="" coords="947,453,1017,480"/>
+<area shape="rect" href="defines_8hpp.html" title=" " alt="" coords="691,379,836,405"/>
+<area shape="rect" title=" " alt="" coords="1113,453,1187,480"/>
+<area shape="rect" title=" " alt="" coords="1184,379,1257,405"/>
+<area shape="rect" title=" " alt="" coords="1383,379,1434,405"/>
+<area shape="rect" title=" " alt="" coords="1045,379,1108,405"/>
+<area shape="rect" title=" " alt="" coords="354,453,450,480"/>
+<area shape="rect" title=" " alt="" coords="475,453,577,480"/>
+<area shape="rect" title=" " alt="" coords="309,379,401,405"/>
+<area shape="rect" href="RequestHandler_8hpp.html" title=" " alt="" coords="1400,229,1585,256"/>
+<area shape="rect" href="VirtualServer_8hpp.html" title=" " alt="" coords="925,155,1089,181"/>
+<area shape="rect" title=" " alt="" coords="279,155,341,181"/>
+<area shape="rect" title=" " alt="" coords="365,155,452,181"/>
+<area shape="rect" href="ServerSocket_8hpp.html" title=" " alt="" coords="204,304,339,331"/>
+<area shape="rect" href="Connection_8hpp.html" title=" " alt="" coords="816,229,969,256"/>
+<area shape="rect" title=" " alt="" coords="861,379,919,405"/>
+<area shape="rect" title=" " alt="" coords="5,379,84,405"/>
+<area shape="rect" title=" " alt="" coords="109,379,183,405"/>
+<area shape="rect" href="ClientSocket_8hpp.html" title=" " alt="" coords="528,304,689,331"/>
+<area shape="rect" href="Request_8hpp.html" title=" " alt="" coords="831,304,965,331"/>
+<area shape="rect" title=" " alt="" coords="528,379,615,405"/>
 </map>
 </div>
 </div>
@@ -156,21 +156,21 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">if</span> (server.<a class="code" href="classcore_1_1Reactor.html#a78d35da396b0218bc397acdce3119c74">addVirtualServers</a>(configData) == <span class="keyword">false</span>)</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="comment">// server.getVirtualServers().at(0).addConnection();</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        } <span class="keywordflow">catch</span> (std::exception &amp;e) {</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            std::cerr &lt;&lt; <span class="stringliteral">&quot;Exception caught in main: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="comment">// end</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="defines_8hpp.html#a5b430c3d6958a69a76d52ccb4b44d82d">LOG</a>(<span class="stringliteral">&quot;ERROR: &quot;</span> &lt;&lt; e.what(), 1)</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
 <div class="ttc" id="aclassconfig_1_1ConfigFileParser_html"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html">config::ConfigFileParser</a></div><div class="ttdoc">This class is responsible for parsing the configuration file.</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00067">Parser.hpp:67</a></div></div>
-<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_a074868ef888a640498f54df02a8dd47e"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#a074868ef888a640498f54df02a8dd47e">config::ConfigFileParser::loadConfigFile</a></div><div class="ttdeci">int loadConfigFile(std::string &amp;configFileName)</div><div class="ttdoc">Loads the configuration file, saving all the information.</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8cpp_source.html#l00188">Parser.cpp:188</a></div></div>
-<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_ac1aa143b263ccf1e587402e01f612590"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#ac1aa143b263ccf1e587402e01f612590">config::ConfigFileParser::getConfigData</a></div><div class="ttdeci">t_config_data getConfigData() const</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8cpp_source.html#l00215">Parser.cpp:215</a></div></div>
+<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_a074868ef888a640498f54df02a8dd47e"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#a074868ef888a640498f54df02a8dd47e">config::ConfigFileParser::loadConfigFile</a></div><div class="ttdeci">int loadConfigFile(std::string &amp;configFileName)</div><div class="ttdoc">Loads the configuration file, saving all the information.</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8cpp_source.html#l00186">Parser.cpp:186</a></div></div>
+<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_ac1aa143b263ccf1e587402e01f612590"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#ac1aa143b263ccf1e587402e01f612590">config::ConfigFileParser::getConfigData</a></div><div class="ttdeci">t_config_data getConfigData() const</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8cpp_source.html#l00213">Parser.cpp:213</a></div></div>
 <div class="ttc" id="aclasscore_1_1Reactor_html"><div class="ttname"><a href="classcore_1_1Reactor.html">core::Reactor</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8hpp_source.html#l00021">Reactor.hpp:21</a></div></div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_a71cf64a92f1a7a6293121ede5df60981"><div class="ttname"><a href="classcore_1_1Reactor.html#a71cf64a92f1a7a6293121ede5df60981">core::Reactor::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8cpp_source.html#l00052">Reactor.cpp:52</a></div></div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_a78d35da396b0218bc397acdce3119c74"><div class="ttname"><a href="classcore_1_1Reactor.html#a78d35da396b0218bc397acdce3119c74">core::Reactor::addVirtualServers</a></div><div class="ttdeci">bool addVirtualServers(config::t_config_data &amp;configData)</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8cpp_source.html#l00119">Reactor.cpp:119</a></div></div>
+<div class="ttc" id="aclasscore_1_1Reactor_html_a71cf64a92f1a7a6293121ede5df60981"><div class="ttname"><a href="classcore_1_1Reactor.html#a71cf64a92f1a7a6293121ede5df60981">core::Reactor::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8cpp_source.html#l00054">Reactor.cpp:54</a></div></div>
+<div class="ttc" id="aclasscore_1_1Reactor_html_a78d35da396b0218bc397acdce3119c74"><div class="ttname"><a href="classcore_1_1Reactor.html#a78d35da396b0218bc397acdce3119c74">core::Reactor::addVirtualServers</a></div><div class="ttdeci">bool addVirtualServers(config::t_config_data &amp;configData)</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8cpp_source.html#l00120">Reactor.cpp:120</a></div></div>
 <div class="ttc" id="adefines_8hpp_html_a5b430c3d6958a69a76d52ccb4b44d82d"><div class="ttname"><a href="defines_8hpp.html#a5b430c3d6958a69a76d52ccb4b44d82d">LOG</a></div><div class="ttdeci">#define LOG(message, level)</div></div>
 <div class="ttc" id="astructconfig_1_1s__config__data_html"><div class="ttname"><a href="structconfig_1_1s__config__data.html">config::s_config_data</a></div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00058">Parser.hpp:58</a></div></div>
 </div><!-- fragment --><div class="dynheader">
@@ -197,12 +197,12 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#aae76c210ff9aae74d87a6b57feeb474e" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="1224,475,1397,516"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a9201327984c6bb55a4ae4e9cb9f1afc9" title="sets the max body size for the server." alt="" coords="1224,671,1397,712"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#ab0873aafd871776227166466648adcff" title="sets the error pages for the server." alt="" coords="1224,605,1397,647"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a64b3973598ac33dd8ed10b1c306148f0" title="Identifies the command in the configuration file. and returns the id of the command." alt="" coords="1003,435,1176,476"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#af23de28a87beadfcc28c48021a066a14" title="Identifies the command in the configuration file. and returns the id of the command." alt="" coords="1003,435,1176,476"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a7cc3cfe78fd8d52b3bf1f7272cf19de2" title="sets the index files for the location. (index.html by default)" alt="" coords="1224,540,1397,581"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a5c03d6d709d348eb69db590a9bed2529" title="sets the methods allowed for the location." alt="" coords="1224,279,1397,320"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a054df9e80c847c57ee4fcf634ec96512" title="Sets the port and ip address of the server." alt="" coords="1224,736,1397,777"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a35ab3fe4aa52c8a0b5211ab5029c8dde" title="Creates a new location struct, initializes it and adds it to the config data." alt="" coords="1224,83,1397,124"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#aab9bc2d45dc4854fa14707989f6d7dd6" title="redirects the user to a different url with a specific return code." alt="" coords="1224,344,1397,385"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a7c2637468e844f1a45ce90488e01affb" title="Creates a new location struct, initializes it and adds it to the config data." alt="" coords="1224,83,1397,124"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae96980a09075f768b9b072297e2e25f6" title="redirects the user to a different url with a specific return code." alt="" coords="1224,344,1397,385"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a488be040c87c81b95572fdae4d10b9e9" title="sets the root directory for the location." alt="" coords="1224,409,1397,451"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a68a1194c8822b39ccdeaf2024f68e2df" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="1224,148,1397,189"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#ad660e1b92477502518971b41373ee60a" title="Sets the server name(s) of the server." alt="" coords="1224,213,1397,255"/>

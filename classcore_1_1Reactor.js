@@ -15,6 +15,6 @@ var classcore_1_1Reactor =
     [ "removeVirtualServer", "classcore_1_1Reactor.html#a46a9763a8f1b22894e9a856862466869", null ],
     [ "unregisterHandler", "classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f", null ],
     [ "m_epoll_master_fd", "classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d", null ],
-    [ "m_event_handlers", "classcore_1_1Reactor.html#aca834074761deb672714d36dde0c0056", null ],
+    [ "m_event_handlers", "classcore_1_1Reactor.html#a5d1f6bc0a928665aca11fc69b0f016f9", null ],
     [ "m_virtual_servers", "classcore_1_1Reactor.html#a96e186a75232b1e64c1f50db7dbea1ec", null ]
 ];

@@ -150,8 +150,11 @@ Private Attributes</h2></td></tr>
 <p>Constructs a new <a class="el" href="classhttp_1_1ClientSocket.html" title="...">ClientSocket</a> object. </p>
 
 <p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00014">14</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    : <a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a>(-1), <a class="code" href="classhttp_1_1ClientSocket.html#a9c3b77c83970cdb20152f77c2fb28920">m_socketAddress</a>(), <a class="code" href="classhttp_1_1ClientSocket.html#a8dc519534333a362956b73d51e73512c">m_socketSize</a>(), <a class="code" href="classhttp_1_1ClientSocket.html#a832057ebf419b68c68623c6e9c99b64f">m_alive</a>(<span class="keyword">false</span>) {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        : <a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a>(-1)</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        , <a class="code" href="classhttp_1_1ClientSocket.html#a9c3b77c83970cdb20152f77c2fb28920">m_socketAddress</a>()</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        , <a class="code" href="classhttp_1_1ClientSocket.html#a8dc519534333a362956b73d51e73512c">m_socketSize</a>()</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        , <a class="code" href="classhttp_1_1ClientSocket.html#a832057ebf419b68c68623c6e9c99b64f">m_alive</a>(<span class="keyword">false</span>) {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
 <div class="ttc" id="aclasshttp_1_1ClientSocket_html_a832057ebf419b68c68623c6e9c99b64f"><div class="ttname"><a href="classhttp_1_1ClientSocket.html#a832057ebf419b68c68623c6e9c99b64f">http::ClientSocket::m_alive</a></div><div class="ttdeci">int m_alive</div><div class="ttdef"><b>Definition:</b> <a href="ClientSocket_8hpp_source.html#l00040">ClientSocket.hpp:40</a></div></div>
 <div class="ttc" id="aclasshttp_1_1ClientSocket_html_a8dc519534333a362956b73d51e73512c"><div class="ttname"><a href="classhttp_1_1ClientSocket.html#a8dc519534333a362956b73d51e73512c">http::ClientSocket::m_socketSize</a></div><div class="ttdeci">unsigned int m_socketSize</div><div class="ttdef"><b>Definition:</b> <a href="ClientSocket_8hpp_source.html#l00039">ClientSocket.hpp:39</a></div></div>
 <div class="ttc" id="aclasshttp_1_1ClientSocket_html_a984373e7284e5bffabdfe1b070cf2550"><div class="ttname"><a href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">http::ClientSocket::m_fd</a></div><div class="ttdeci">int m_fd</div><div class="ttdef"><b>Definition:</b> <a href="ClientSocket_8hpp_source.html#l00037">ClientSocket.hpp:37</a></div></div>
@@ -183,11 +186,14 @@ Private Attributes</h2></td></tr>
 
 <p>Constructs a new <a class="el" href="classhttp_1_1ClientSocket.html" title="...">ClientSocket</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00021">21</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    : <a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a>(-1), <a class="code" href="classhttp_1_1ClientSocket.html#a9c3b77c83970cdb20152f77c2fb28920">m_socketAddress</a>(), <a class="code" href="classhttp_1_1ClientSocket.html#a8dc519534333a362956b73d51e73512c">m_socketSize</a>(), <a class="code" href="classhttp_1_1ClientSocket.html#a832057ebf419b68c68623c6e9c99b64f">m_alive</a>(<span class="keyword">false</span>) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    this-&gt;<a class="code" href="classhttp_1_1ClientSocket.html#a40be3362141a4bc97a1c75c62a3f92bb">accept</a>(listen_socket);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
-<div class="ttc" id="aclasshttp_1_1ClientSocket_html_a40be3362141a4bc97a1c75c62a3f92bb"><div class="ttname"><a href="classhttp_1_1ClientSocket.html#a40be3362141a4bc97a1c75c62a3f92bb">http::ClientSocket::accept</a></div><div class="ttdeci">void accept(int listen_socket)</div><div class="ttdef"><b>Definition:</b> <a href="ClientSocket_8cpp_source.html#l00090">ClientSocket.cpp:90</a></div></div>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00024">24</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        : <a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a>(-1)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        , <a class="code" href="classhttp_1_1ClientSocket.html#a9c3b77c83970cdb20152f77c2fb28920">m_socketAddress</a>()</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        , <a class="code" href="classhttp_1_1ClientSocket.html#a8dc519534333a362956b73d51e73512c">m_socketSize</a>()</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        , <a class="code" href="classhttp_1_1ClientSocket.html#a832057ebf419b68c68623c6e9c99b64f">m_alive</a>(<span class="keyword">false</span>) {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        this-&gt;<a class="code" href="classhttp_1_1ClientSocket.html#a40be3362141a4bc97a1c75c62a3f92bb">accept</a>(listen_socket);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
+<div class="ttc" id="aclasshttp_1_1ClientSocket_html_a40be3362141a4bc97a1c75c62a3f92bb"><div class="ttname"><a href="classhttp_1_1ClientSocket.html#a40be3362141a4bc97a1c75c62a3f92bb">http::ClientSocket::accept</a></div><div class="ttdeci">void accept(int listen_socket)</div><div class="ttdef"><b>Definition:</b> <a href="ClientSocket_8cpp_source.html#l00096">ClientSocket.cpp:96</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -211,9 +217,9 @@ Private Attributes</h2></td></tr>
 <dl class="section warning"><dt>Warning</dt><dd>Does not close the FD (for a reason), close manually or it leaks! </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Could add a flag close_on_destroy that is checked in the destructor. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00031">31</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                            {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00037">37</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                                {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -241,12 +247,12 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00038">38</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    : <a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a>(other.getFd()),</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      <a class="code" href="classhttp_1_1ClientSocket.html#a9c3b77c83970cdb20152f77c2fb28920">m_socketAddress</a>(other.getSocketAddress()),</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <a class="code" href="classhttp_1_1ClientSocket.html#a8dc519534333a362956b73d51e73512c">m_socketSize</a>(other.getSocketSize()),</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      <a class="code" href="classhttp_1_1ClientSocket.html#a832057ebf419b68c68623c6e9c99b64f">m_alive</a>(other.isAlive()) {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00044">44</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        : <a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a>(other.getFd())</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        , <a class="code" href="classhttp_1_1ClientSocket.html#a9c3b77c83970cdb20152f77c2fb28920">m_socketAddress</a>(other.getSocketAddress())</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        , <a class="code" href="classhttp_1_1ClientSocket.html#a8dc519534333a362956b73d51e73512c">m_socketSize</a>(other.getSocketSize())</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        , <a class="code" href="classhttp_1_1ClientSocket.html#a832057ebf419b68c68623c6e9c99b64f">m_alive</a>(other.isAlive()) {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -273,19 +279,19 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00090">90</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                                                               {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    bzero(&amp;<a class="code" href="classhttp_1_1ClientSocket.html#a9c3b77c83970cdb20152f77c2fb28920">m_socketAddress</a>, <span class="keyword">sizeof</span>(<a class="code" href="namespacehttp.html#a4b20fa68e7c12bf7aff9d3a71a4f2b88">t_sockaddr</a>));</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="classhttp_1_1ClientSocket.html#a8dc519534333a362956b73d51e73512c">m_socketSize</a> = 0;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Accepting connection for socket &quot;</span> &lt;&lt; listen_socket</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;              &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a> = <a class="code" href="classhttp_1_1ClientSocket.html#a40be3362141a4bc97a1c75c62a3f92bb">::accept</a>(listen_socket, &amp;<a class="code" href="classhttp_1_1ClientSocket.html#a9c3b77c83970cdb20152f77c2fb28920">m_socketAddress</a>, &amp;<a class="code" href="classhttp_1_1ClientSocket.html#a8dc519534333a362956b73d51e73512c">m_socketSize</a>);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a> &lt; 0) {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Shit, accept didn&#39;t work&quot;</span> &lt;&lt; errno &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">throw</span> std::exception();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="classhttp_1_1ClientSocket.html#a832057ebf419b68c68623c6e9c99b64f">m_alive</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00096">96</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                                                                   {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        bzero(&amp;<a class="code" href="classhttp_1_1ClientSocket.html#a9c3b77c83970cdb20152f77c2fb28920">m_socketAddress</a>, <span class="keyword">sizeof</span>(<a class="code" href="namespacehttp.html#a4b20fa68e7c12bf7aff9d3a71a4f2b88">t_sockaddr</a>));</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <a class="code" href="classhttp_1_1ClientSocket.html#a8dc519534333a362956b73d51e73512c">m_socketSize</a> = 0;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Accepting connection for socket &quot;</span> &lt;&lt; listen_socket</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                  &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a> = <a class="code" href="classhttp_1_1ClientSocket.html#a40be3362141a4bc97a1c75c62a3f92bb">::accept</a>(listen_socket, &amp;<a class="code" href="classhttp_1_1ClientSocket.html#a9c3b77c83970cdb20152f77c2fb28920">m_socketAddress</a>, &amp;<a class="code" href="classhttp_1_1ClientSocket.html#a8dc519534333a362956b73d51e73512c">m_socketSize</a>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a> &lt; 0) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;Shit, accept didn&#39;t work&quot;</span> &lt;&lt; errno &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">throw</span> std::exception();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <a class="code" href="classhttp_1_1ClientSocket.html#a832057ebf419b68c68623c6e9c99b64f">m_alive</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
 <div class="ttc" id="anamespacehttp_html_a4b20fa68e7c12bf7aff9d3a71a4f2b88"><div class="ttname"><a href="namespacehttp.html#a4b20fa68e7c12bf7aff9d3a71a4f2b88">http::t_sockaddr</a></div><div class="ttdeci">struct sockaddr t_sockaddr</div><div class="ttdef"><b>Definition:</b> <a href="ServerSocket_8cpp_source.html#l00001">ServerSocket.cpp:11</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -306,13 +312,13 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00084">84</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                             {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="classhttp_1_1ClientSocket.html#aaf3b22f0486aa9f8ebfd15bc842c5767">::close</a>(<a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a>);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a> = -1;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="classhttp_1_1ClientSocket.html#a832057ebf419b68c68623c6e9c99b64f">m_alive</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
-<div class="ttc" id="aclasshttp_1_1ClientSocket_html_aaf3b22f0486aa9f8ebfd15bc842c5767"><div class="ttname"><a href="classhttp_1_1ClientSocket.html#aaf3b22f0486aa9f8ebfd15bc842c5767">http::ClientSocket::close</a></div><div class="ttdeci">void close(void)</div><div class="ttdef"><b>Definition:</b> <a href="ClientSocket_8cpp_source.html#l00084">ClientSocket.cpp:84</a></div></div>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00090">90</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                                 {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <a class="code" href="classhttp_1_1ClientSocket.html#aaf3b22f0486aa9f8ebfd15bc842c5767">::close</a>(<a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a>);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a> = -1;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="classhttp_1_1ClientSocket.html#a832057ebf419b68c68623c6e9c99b64f">m_alive</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="ttc" id="aclasshttp_1_1ClientSocket_html_aaf3b22f0486aa9f8ebfd15bc842c5767"><div class="ttname"><a href="classhttp_1_1ClientSocket.html#aaf3b22f0486aa9f8ebfd15bc842c5767">http::ClientSocket::close</a></div><div class="ttdeci">void close(void)</div><div class="ttdef"><b>Definition:</b> <a href="ClientSocket_8cpp_source.html#l00090">ClientSocket.cpp:90</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -342,10 +348,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00068">68</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                            {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a>;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00074">74</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -365,10 +371,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00064">64</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                  {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00070">70</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                      {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -398,10 +404,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00072">72</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                                    {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1ClientSocket.html#a9c3b77c83970cdb20152f77c2fb28920">m_socketAddress</a>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00078">78</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                                                        {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1ClientSocket.html#a9c3b77c83970cdb20152f77c2fb28920">m_socketAddress</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -430,10 +436,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00076">76</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                               {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1ClientSocket.html#a8dc519534333a362956b73d51e73512c">m_socketSize</a>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00082">82</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                                   {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1ClientSocket.html#a8dc519534333a362956b73d51e73512c">m_socketSize</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -462,10 +468,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00080">80</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                     {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1ClientSocket.html#a832057ebf419b68c68623c6e9c99b64f">m_alive</a>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00086">86</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                         {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1ClientSocket.html#a832057ebf419b68c68623c6e9c99b64f">m_alive</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -503,16 +509,16 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the assigned <a class="el" href="classhttp_1_1ClientSocket.html" title="...">ClientSocket</a> object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00050">50</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                                             {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs)</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a> = rhs.getFd();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="classhttp_1_1ClientSocket.html#a9c3b77c83970cdb20152f77c2fb28920">m_socketAddress</a> = rhs.getSocketAddress();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classhttp_1_1ClientSocket.html#a8dc519534333a362956b73d51e73512c">m_socketSize</a> = rhs.getSocketSize();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classhttp_1_1ClientSocket.html#a832057ebf419b68c68623c6e9c99b64f">m_alive</a> = rhs.isAlive();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00056">56</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                                                 {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">m_fd</a> = rhs.getFd();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="classhttp_1_1ClientSocket.html#a9c3b77c83970cdb20152f77c2fb28920">m_socketAddress</a> = rhs.getSocketAddress();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <a class="code" href="classhttp_1_1ClientSocket.html#a8dc519534333a362956b73d51e73512c">m_socketSize</a> = rhs.getSocketSize();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <a class="code" href="classhttp_1_1ClientSocket.html#a832057ebf419b68c68623c6e9c99b64f">m_alive</a> = rhs.isAlive();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -544,10 +550,10 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00060">60</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                                             {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> (other.getFd() == this-&gt;getFd());</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="ClientSocket_8cpp_source.html#l00066">66</a> of file <a class="el" href="ClientSocket_8cpp_source.html">ClientSocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                                                 {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">return</span> (other.getFd() == this-&gt;getFd());</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
