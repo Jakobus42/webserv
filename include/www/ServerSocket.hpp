@@ -17,17 +17,17 @@ typedef struct sockaddr_in t_sockaddr_in;
 typedef struct sockaddr t_sockaddr;
 
 /**
- * @class VirtualServerSocket
+ * @class ServerSocket
  * @brief ...
  */
-class VirtualServerSocket {
+class ServerSocket {
  public:
   // just make the constructoor throw, then wrap its creation
-  VirtualServerSocket();
-  VirtualServerSocket(int port, uint32_t ip = LOCALHOST_ADDRESS);
-  ~VirtualServerSocket();
-  VirtualServerSocket(const VirtualServerSocket& other);
-  VirtualServerSocket& operator=(const VirtualServerSocket& other);
+  ServerSocket();
+  ServerSocket(int port, uint32_t ip = LOCALHOST_ADDRESS);
+  ~ServerSocket();
+  ServerSocket(const ServerSocket& other);
+  ServerSocket& operator=(const ServerSocket& other);
 
   bool init();
   bool create();

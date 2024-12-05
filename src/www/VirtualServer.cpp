@@ -65,15 +65,15 @@ const std::vector<config::t_location>& VirtualServer::getLocations(void) const {
 
 uint64_t VirtualServer::getMaxBodySize(void) const { return m_client_max_body_size; }
 
-const VirtualServerSocket& VirtualServer::getSocket(void) const { return m_listen_socket; }
+const ServerSocket& VirtualServer::getSocket(void) const { return m_listen_socket; }
 
-VirtualServerSocket& VirtualServer::getSocket(void) { return m_listen_socket; }
+ServerSocket& VirtualServer::getSocket(void) { return m_listen_socket; }
 
 const t_connections& VirtualServer::getConnections(void) const { return m_connections; }
 
 /**
  * @brief Accepts the next incoming connection in the
- * VirtualVirtualServerSocket's queue
+ * VirtualServerSocket's queue
  *
  * @return true if the connection could be established
  * @return false if accept() within Connection->ClientSocket fails

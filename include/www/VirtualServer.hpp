@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#include "VirtualServerSocket.hpp"
+#include "ServerSocket.hpp"
 #include "config/Parser.hpp"
 #include "www/Connection.hpp"
 
@@ -32,8 +32,8 @@ class VirtualServer {
   const std::map<int, std::string>& getErrorPages(void) const;
   const std::vector<config::t_location>& getLocations(void) const;
   uint64_t getMaxBodySize(void) const;
-  const VirtualServerSocket& getSocket(void) const;
-  VirtualServerSocket& getSocket(void);
+  const ServerSocket& getSocket(void) const;
+  ServerSocket& getSocket(void);
   const t_connections& getConnections(void) const;
 
   bool addConnection(void);
@@ -46,7 +46,7 @@ class VirtualServer {
   std::vector<std::string> m_names;
   std::vector<config::t_location> m_locations;
   std::map<int, std::string> m_errorPages;
-  VirtualServerSocket m_listen_socket;
+  ServerSocket m_listen_socket;
   t_connections m_connections;
 };
 
