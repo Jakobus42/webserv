@@ -1,4 +1,4 @@
-#include "www/Reactor.hpp"
+#include "core/Reactor.hpp"
 
 #include <sys/epoll.h>
 #include <unistd.h>
@@ -7,7 +7,7 @@
 
 #include "runtime/RequestHandler.hpp"
 
-namespace www {
+namespace core {
 
 /**
  * @brief Constructs a new Reactor object.
@@ -16,7 +16,7 @@ Reactor::Reactor() : m_epoll_master_fd(-1), m_virtual_servers() {}
 
 /**
  * @brief Destroys the Reactor object.
- * @todo Close all connections and VirtualServer sockets
+ * @todo Close all connections and www::VirtualServer sockets
  */
 Reactor::~Reactor() { close(m_epoll_master_fd); }
 
@@ -26,7 +26,7 @@ Reactor::~Reactor() { close(m_epoll_master_fd); }
 //  */
 // Reactor::Reactor(const Reactor& other)
 // 	: m_epoll_master_fd(other.getEpollFd()),
-// 	  m_virtual_servers(other.getVirtualServers()) {
+// 	  m_virtual_servers(other.getwww::VirtualServers()) {
 // }
 
 // /**
@@ -38,7 +38,7 @@ Reactor::~Reactor() { close(m_epoll_master_fd); }
 // 	if (this == &rhs)
 // 		return *this;
 // 	m_epoll_master_fd = rhs.getEpollFd();
-// 	m_virtual_servers = rhs.getVirtualServers();
+// 	m_virtual_servers = rhs.getwww::VirtualServers();
 // 	return *this;
 // }
 
@@ -49,18 +49,18 @@ void Reactor::init(void) throw(std::exception) {
   if (m_epoll_master_fd < 0) throw std::exception();
 }
 
-const std::vector<VirtualServer>& Reactor::getVirtualServers(void) const { return m_virtual_servers; }
+const std::vector<www::VirtualServer>& Reactor::getVirtualServers(void) const { return m_virtual_servers; }
 
-std::vector<VirtualServer>& Reactor::getVirtualServers(void) { return m_virtual_servers; }
+std::vector<www::VirtualServer>& Reactor::getVirtualServers(void) { return m_virtual_servers; }
 
 void Reactor::addVirtualServer(config::t_server& serverConfig) throw(std::exception) {
-  VirtualServer server(serverConfig);
+  www::VirtualServer server(serverConfig);
 
   m_virtual_servers.push_back(server);
   if (m_virtual_servers.back().listen() == false) throw std::exception();
 }
 
-bool Reactor::removeVirtualServer(std::vector<VirtualServer>::iterator it) {
+bool Reactor::removeVirtualServer(std::vector<www::VirtualServer>::iterator it) {
   m_virtual_servers.erase(it);
   return true;
 }
@@ -104,7 +104,7 @@ void Reactor::react() {
 
 bool Reactor::addVirtualServers(config::t_config_data& configData) {
   for (size_t i = 0; i < configData.servers.size(); i++) {
-    VirtualServer server(configData.servers.at(i));
+    www::VirtualServer server(configData.servers.at(i));
     if (server.getSocket().init() == false) {
       m_virtual_servers.clear();
       LOG("Failed to initialize socket for server " << configData.servers.at(i).server_names.at(0) << std::endl,
@@ -119,4 +119,4 @@ bool Reactor::addVirtualServers(config::t_config_data& configData) {
   return true;
 }
 
-} /* namespace www */
+}  // namespace core

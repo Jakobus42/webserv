@@ -1,9 +1,9 @@
 
 #include <gtest/gtest.h>
 
-#include "www/Reactor.hpp"
+#include "core/Reactor.hpp"
 
-namespace www {
+namespace core {
 
 class ReactorTest : public ::testing::Test {
 	protected:
