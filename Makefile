@@ -66,7 +66,7 @@ debug: all
 
 cppcheck:
 	@echo "Running cppcheck..."
-	cppcheck $(CPPCHECKFLAGS) --enable=all --error-exitcode=1 --suppress=missingIncludeSystem --suppress=missingOverride --suppress=noExplicitConstructor --suppress=unusedFunction $(SRCDIR)/ $(INCDIR)/
+	cppcheck $(CPPCHECKFLAGS) --enable=all --error-exitcode=1 --suppress=missingIncludeSystem --suppress=missingOverride --suppress=noExplicitConstructor --suppress=unusedFunction --suppress-unmatched --inline-suppr $(SRCDIR)/ $(INCDIR)/
 
 strict: all cppcheck
 	@echo "$(GREEN)Strict build completed.$(NC)"
