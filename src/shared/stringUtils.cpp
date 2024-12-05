@@ -17,13 +17,14 @@ namespace string {
  * @param result A vector to store the resulting tokens after splitting the
  * input string.
  */
-void split(const std::string& str, std::vector<std::string>& result, const std::string& delimiters) {
-  std::size_t start = str.find_first_not_of(delimiters);
-  while (start != std::string::npos) {
-    std::size_t end = str.find_first_of(delimiters, start);
-    result.push_back(str.substr(start, end - start));
-    start = str.find_first_not_of(delimiters, end);
-  }
+void split(const std::string& str, std::vector<std::string>& result,
+		   const std::string& delimiters) {
+	std::size_t start = str.find_first_not_of(delimiters);
+	while (start != std::string::npos) {
+		std::size_t end = str.find_first_of(delimiters, start);
+		result.push_back(str.substr(start, end - start));
+		start = str.find_first_not_of(delimiters, end);
+	}
 }
 
 /**
@@ -40,13 +41,13 @@ void split(const std::string& str, std::vector<std::string>& result, const std::
  * cleared.
  */
 void trim(std::string& str, const std::string& delimiters) {
-  std::size_t start = str.find_first_not_of(delimiters);
-  std::size_t end = str.find_last_not_of(delimiters);
-  if (start != std::string::npos && end != std::string::npos) {
-    str = str.substr(start, end - start + 1);
-  } else {
-    str.clear();
-  }
+	std::size_t start = str.find_first_not_of(delimiters);
+	std::size_t end = str.find_last_not_of(delimiters);
+	if (start != std::string::npos && end != std::string::npos) {
+		str = str.substr(start, end - start + 1);
+	} else {
+		str.clear();
+	}
 }
 
 }  // namespace string

@@ -21,38 +21,37 @@ typedef struct sockaddr t_sockaddr;
  * @brief ...
  */
 class ServerSocket {
- public:
-  // just make the constructoor throw, then wrap its creation
-  ServerSocket();
-  ServerSocket(int port, uint32_t ip = LOCALHOST_ADDRESS);
-  ~ServerSocket();
-  ServerSocket(const ServerSocket& other);
-  ServerSocket& operator=(const ServerSocket& other);
+	public:
+		// just make the constructoor throw, then wrap its creation
+		ServerSocket();
+		ServerSocket(int port, uint32_t ip = LOCALHOST_ADDRESS);
+		~ServerSocket();
+		ServerSocket(const ServerSocket& other);
+		ServerSocket& operator=(const ServerSocket& other);
 
-  bool init();
-  bool create();
-  bool bind();
-  bool listen();
-  void close();
+		bool init();
+		bool create();
+		bool bind();
+		bool listen();
+		void close();
 
-  void setBroken();
+		void setBroken();
 
-  int getFd() const;
-  uint32_t getIp() const;
-  int getPort() const;
-  t_sockaddr_in getSocketAddress() const;
-  bool isOpen() const;
-  bool isBound() const;
-  bool isListening() const;
-
- private:
-  int m_fd;
-  uint32_t m_ip;
-  int m_port;
-  t_sockaddr_in m_socketAddress;
-  bool m_open;
-  bool m_bound;
-  bool m_listening;
+		int getFd() const;
+		uint32_t getIp() const;
+		int getPort() const;
+		t_sockaddr_in getSocketAddress() const;
+		bool isOpen() const;
+		bool isBound() const;
+		bool isListening() const;
+	private:
+		int m_fd;
+		uint32_t m_ip;
+		int m_port;
+		t_sockaddr_in m_socketAddress;
+		bool m_open;
+		bool m_bound;
+		bool m_listening;
 };
 
 }  // namespace http
