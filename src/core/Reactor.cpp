@@ -4,6 +4,7 @@
 #include <unistd.h>
 
 #include "core/RequestHandler.hpp"
+#include "http/VirtualServer.hpp"
 
 #include <stdexcept>
 
@@ -22,6 +23,12 @@ namespace core {
 	 * @todo Close all connections and http::VirtualServer sockets
 	 */
 	Reactor::~Reactor() {
+		for (std::vector<http::VirtualServer>::iterator server = m_virtual_servers.begin(); server != m_virtual_servers.end(); ++server) {
+			for (http::t_connections::iterator connection = server->getConnections().begin(); connection != server->getConnections().end(); ++connection) {
+				connection->close();
+			}
+			server->getSocket().close();
+		}
 		close(m_epoll_master_fd);
 	}
 
@@ -68,10 +75,10 @@ namespace core {
 	void Reactor::addVirtualServer(config::t_server &serverConfig) throw(
 		std::exception) {
 		http::VirtualServer server(serverConfig);
+		if (server.listen() == false)
+			throw std::runtime_error("A VirtualServer couldn't acquire its socket!");
 
 		m_virtual_servers.push_back(server);
-		if (m_virtual_servers.back().listen() == false)
-			throw std::exception();
 	}
 
 	bool Reactor::removeVirtualServer(
@@ -86,14 +93,14 @@ namespace core {
 		event.data.fd = fd;
 		event.events = events;
 		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_ADD, fd, &event) < 0) {
-			throw std::runtime_error("Crud! Couldn't register handler!");
+			throw std::runtime_error("Crud! Couldn't register event handler!");
 		}
 		m_event_handlers[fd] = handler;
 	}
 
 	void Reactor::unregisterHandler(int fd) throw(std::runtime_error) {
 		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_DEL, fd, NULL) < 0) {
-			throw std::runtime_error("пиздец!");
+			throw std::runtime_error("Пиздец! Couldn't unregister event handler!");
 		}
 		m_event_handlers.erase(fd);
 	}
@@ -104,10 +111,10 @@ namespace core {
 		while (true) {
 			int nEvents = epoll_wait(m_epoll_master_fd, events, MAX_EVENTS, 60);
 			if (nEvents < 0) {
-				throw std::runtime_error("Error: Epoll dun goofed up!");
+				throw std::runtime_error("Epoll dun goofed up!");
 			}
 
-			for (int i = 0; i < nEvents; i++) {
+			for (int i = 0; i < nEvents; ++i) {
 				int fd = events[i].data.fd;
 				uint32_t event_mask = events[i].events;
 				if (m_event_handlers.find(fd) != m_event_handlers.end()) {
@@ -118,7 +125,7 @@ namespace core {
 	}
 
 	bool Reactor::addVirtualServers(config::t_config_data &configData) {
-		for (size_t i = 0; i < configData.servers.size(); i++) {
+		for (size_t i = 0; i < configData.servers.size(); ++i) {
 			http::VirtualServer server(configData.servers.at(i));
 			if (server.getSocket().init() == false) {
 				m_virtual_servers.clear();
@@ -127,7 +134,7 @@ namespace core {
 					1);
 				return false;
 			}
-			for (size_t j = 0; j < configData.servers.at(i).locations.size(); j++) {
+			for (size_t j = 0; j < configData.servers.at(i).locations.size(); ++j) {
 				// server.addLocation(configData.servers.at(i).locations.at(j));
 			}
 			m_virtual_servers.push_back(server);

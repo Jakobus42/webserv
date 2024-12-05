@@ -2,7 +2,6 @@
 
 #include <sys/epoll.h>
 
-#include "config/Parser.hpp"
 #include "core/RequestHandler.hpp"
 #include "http/VirtualServer.hpp"
 #include "shared/defines.hpp"
