@@ -1,4 +1,4 @@
-#include "shared/StringUtils.hpp"
+#include "shared/stringUtils.hpp"
 
 namespace shared {
 
