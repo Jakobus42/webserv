@@ -7,12 +7,12 @@
 
 #include "ServerSocket.hpp"
 #include "config/Parser.hpp"
-#include "www/Connection.hpp"
+#include "http/Connection.hpp"
 
 #define ONE_MEGABYTE 1048576UL
 #define MAX_CONNECTIONS 500
 
-namespace www {
+namespace http {
 
 typedef std::vector<Connection> t_connections;
 
@@ -50,4 +50,4 @@ class VirtualServer {
   t_connections m_connections;
 };
 
-} /* namespace www */
+}  // namespace http

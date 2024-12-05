@@ -1,9 +1,9 @@
-#include "www/VirtualServer.hpp"
+#include "http/VirtualServer.hpp"
 
 #include <algorithm>
 #include <iostream>
 
-namespace www {
+namespace http {
 
 /**
  * @brief Constructs a new VirtualServer object.
@@ -105,4 +105,4 @@ bool VirtualServer::listen(void) {
   return true;
 }
 
-} /* namespace www */
+}  // namespace http

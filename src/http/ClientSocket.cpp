@@ -1,4 +1,4 @@
-#include "www/ClientSocket.hpp"
+#include "http/ClientSocket.hpp"
 
 #include <errno.h>
 #include <string.h>
@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-namespace www {
+namespace http {
 
 /**
  * @brief Constructs a new ClientSocket object.
@@ -82,4 +82,4 @@ void ClientSocket::accept(int listen_socket) throw(std::exception) {
   m_alive = true;
 }
 
-} /* namespace www */
+}  // namespace http

@@ -55,7 +55,7 @@ int ConfigFileParser::server(std::vector<std::string>& args, int& lineCount, int
   t_server new_server;
   // set default values
   new_server.port = 80;
-  new_server.ip_address = www::LOCALHOST_ADDRESS;
+  new_server.ip_address = http::LOCALHOST_ADDRESS;
   new_server.max_body_size = 1000000;
   m_configData.servers.push_back(new_server);
   // TODO: Load default Error pages if none are provided

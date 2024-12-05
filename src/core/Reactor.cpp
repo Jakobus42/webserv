@@ -16,7 +16,7 @@ Reactor::Reactor() : m_epoll_master_fd(-1), m_virtual_servers() {}
 
 /**
  * @brief Destroys the Reactor object.
- * @todo Close all connections and www::VirtualServer sockets
+ * @todo Close all connections and http::VirtualServer sockets
  */
 Reactor::~Reactor() { close(m_epoll_master_fd); }
 
@@ -49,18 +49,18 @@ void Reactor::init(void) throw(std::exception) {
   if (m_epoll_master_fd < 0) throw std::exception();
 }
 
-const std::vector<www::VirtualServer>& Reactor::getVirtualServers(void) const { return m_virtual_servers; }
+const std::vector<http::VirtualServer>& Reactor::getVirtualServers(void) const { return m_virtual_servers; }
 
-std::vector<www::VirtualServer>& Reactor::getVirtualServers(void) { return m_virtual_servers; }
+std::vector<http::VirtualServer>& Reactor::getVirtualServers(void) { return m_virtual_servers; }
 
 void Reactor::addVirtualServer(config::t_server& serverConfig) throw(std::exception) {
-  www::VirtualServer server(serverConfig);
+  http::VirtualServer server(serverConfig);
 
   m_virtual_servers.push_back(server);
   if (m_virtual_servers.back().listen() == false) throw std::exception();
 }
 
-bool Reactor::removeVirtualServer(std::vector<www::VirtualServer>::iterator it) {
+bool Reactor::removeVirtualServer(std::vector<http::VirtualServer>::iterator it) {
   m_virtual_servers.erase(it);
   return true;
 }
@@ -104,7 +104,7 @@ void Reactor::react() {
 
 bool Reactor::addVirtualServers(config::t_config_data& configData) {
   for (size_t i = 0; i < configData.servers.size(); i++) {
-    www::VirtualServer server(configData.servers.at(i));
+    http::VirtualServer server(configData.servers.at(i));
     if (server.getSocket().init() == false) {
       m_virtual_servers.clear();
       LOG("Failed to initialize socket for server " << configData.servers.at(i).server_names.at(0) << std::endl,

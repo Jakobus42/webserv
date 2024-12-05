@@ -11,7 +11,7 @@
 #define DEFAULT_MAX_EVENTS 256
 #define MAX_EVENTS 256
 
-namespace www {
+namespace http {
 
 typedef struct sockaddr_in t_sockaddr_in;
 typedef struct sockaddr t_sockaddr;
@@ -55,4 +55,4 @@ class ServerSocket {
   bool m_listening;
 };
 
-} /* namespace www */
+}  // namespace http

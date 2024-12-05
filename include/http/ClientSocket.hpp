@@ -8,7 +8,7 @@
 
 #include "shared/defines.hpp"
 
-namespace www {
+namespace http {
 
 typedef struct sockaddr t_sockaddr;
 
@@ -41,4 +41,4 @@ class ClientSocket {
   int m_alive;
 };
 
-} /* namespace www */
+}  // namespace http

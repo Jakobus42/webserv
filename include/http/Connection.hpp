@@ -1,9 +1,9 @@
 #pragma once
 
+#include "http/ClientSocket.hpp"
 #include "http/Request.hpp"
-#include "www/ClientSocket.hpp"
 
-namespace www {
+namespace http {
 
 /**
  * @class Connection
@@ -30,4 +30,4 @@ class Connection {
   http::Request m_request;
 };
 
-} /* namespace www */
+}  // namespace http
