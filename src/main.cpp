@@ -2,7 +2,7 @@
 
 #include "config/Parser.hpp"
 #include "logger/LoggerManager.hpp"
-#include "www/CoreServer.hpp"
+#include "www/Reactor.hpp"
 
 int main(int argc, char** const argv) {
   try {
@@ -20,7 +20,7 @@ int main(int argc, char** const argv) {
     } else {
       configfile = "config/configfile_example";
     }
-    www::CoreServer server;
+    www::Reactor server;
     config::ConfigFileParser configFileParser;
     if (configFileParser.loadConfigFile(configfile) == 1) return 1;
 

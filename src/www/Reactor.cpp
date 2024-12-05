@@ -1,4 +1,4 @@
-#include "www/CoreServer.hpp"
+#include "www/Reactor.hpp"
 
 #include <sys/epoll.h>
 #include <unistd.h>
@@ -10,31 +10,31 @@
 namespace www {
 
 /**
- * @brief Constructs a new CoreServer object.
+ * @brief Constructs a new Reactor object.
  */
-CoreServer::CoreServer() : m_epoll_master_fd(-1), m_virtual_servers() {}
+Reactor::Reactor() : m_epoll_master_fd(-1), m_virtual_servers() {}
 
 /**
- * @brief Destroys the CoreServer object.
+ * @brief Destroys the Reactor object.
  * @todo Close all connections and VirtualServer sockets
  */
-CoreServer::~CoreServer() { close(m_epoll_master_fd); }
+Reactor::~Reactor() { close(m_epoll_master_fd); }
 
 // /**
 //  * @brief Copy constructor.
-//  * @param other The other CoreServer object to copy.
+//  * @param other The other Reactor object to copy.
 //  */
-// CoreServer::CoreServer(const CoreServer& other)
+// Reactor::Reactor(const Reactor& other)
 // 	: m_epoll_master_fd(other.getEpollFd()),
 // 	  m_virtual_servers(other.getVirtualServers()) {
 // }
 
 // /**
 //  * @brief Copy assignment operator.
-//  * @param other The other CoreServer object to assign from.
-//  * @return A reference to the assigned CoreServer object.
+//  * @param other The other Reactor object to assign from.
+//  * @return A reference to the assigned Reactor object.
 //  */
-// CoreServer& CoreServer::operator=(const CoreServer& rhs) {
+// Reactor& Reactor::operator=(const Reactor& rhs) {
 // 	if (this == &rhs)
 // 		return *this;
 // 	m_epoll_master_fd = rhs.getEpollFd();
@@ -42,30 +42,30 @@ CoreServer::~CoreServer() { close(m_epoll_master_fd); }
 // 	return *this;
 // }
 
-int CoreServer::getEpollFd(void) const { return m_epoll_master_fd; }
+int Reactor::getEpollFd(void) const { return m_epoll_master_fd; }
 
-void CoreServer::init(void) throw(std::exception) {
+void Reactor::init(void) throw(std::exception) {
   m_epoll_master_fd = epoll_create1(0);
   if (m_epoll_master_fd < 0) throw std::exception();
 }
 
-const std::vector<VirtualServer>& CoreServer::getVirtualServers(void) const { return m_virtual_servers; }
+const std::vector<VirtualServer>& Reactor::getVirtualServers(void) const { return m_virtual_servers; }
 
-std::vector<VirtualServer>& CoreServer::getVirtualServers(void) { return m_virtual_servers; }
+std::vector<VirtualServer>& Reactor::getVirtualServers(void) { return m_virtual_servers; }
 
-void CoreServer::addVirtualServer(config::t_server& serverConfig) throw(std::exception) {
+void Reactor::addVirtualServer(config::t_server& serverConfig) throw(std::exception) {
   VirtualServer server(serverConfig);
 
   m_virtual_servers.push_back(server);
   if (m_virtual_servers.back().listen() == false) throw std::exception();
 }
 
-bool CoreServer::removeVirtualServer(std::vector<VirtualServer>::iterator it) {
+bool Reactor::removeVirtualServer(std::vector<VirtualServer>::iterator it) {
   m_virtual_servers.erase(it);
   return true;
 }
 
-void CoreServer::registerHandler(int fd, runtime::RequestHandler* handler, uint32_t events) throw(std::runtime_error) {
+void Reactor::registerHandler(int fd, runtime::RequestHandler* handler, uint32_t events) throw(std::runtime_error) {
   t_event event;
 
   event.data.fd = fd;
@@ -76,14 +76,14 @@ void CoreServer::registerHandler(int fd, runtime::RequestHandler* handler, uint3
   m_event_handlers[fd] = handler;
 }
 
-void CoreServer::unregisterHandler(int fd) throw(std::runtime_error) {
+void Reactor::unregisterHandler(int fd) throw(std::runtime_error) {
   if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_DEL, fd, NULL) < 0) {
     throw std::runtime_error("пиздец!");
   }
   m_event_handlers.erase(fd);
 }
 
-void CoreServer::react() {
+void Reactor::react() {
   t_event events[MAX_EVENTS];
 
   while (true) {
@@ -102,7 +102,7 @@ void CoreServer::react() {
   }
 }
 
-bool CoreServer::addVirtualServers(config::t_config_data& configData) {
+bool Reactor::addVirtualServers(config::t_config_data& configData) {
   for (size_t i = 0; i < configData.servers.size(); i++) {
     VirtualServer server(configData.servers.at(i));
     if (server.getSocket().init() == false) {

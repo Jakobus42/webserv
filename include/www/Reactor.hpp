@@ -15,13 +15,13 @@
 namespace www {
 
 /**
- * @class CoreServer
+ * @class Reactor
  * @brief ...
  */
-class CoreServer {
+class Reactor {
  public:
-  CoreServer();
-  ~CoreServer();
+  Reactor();
+  ~Reactor();
 
   void init() throw(std::exception);
   int getEpollFd() const;
@@ -37,8 +37,8 @@ class CoreServer {
   void react();
 
  private:
-  CoreServer(const CoreServer& other);
-  CoreServer& operator=(const CoreServer& other);
+  Reactor(const Reactor& other);
+  Reactor& operator=(const Reactor& other);
 
   int m_epoll_master_fd;
   std::vector<VirtualServer> m_virtual_servers;
