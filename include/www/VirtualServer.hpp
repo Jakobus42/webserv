@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#include "../configfile/Parser.hpp"
+#include "../config/Parser.hpp"
 #include "VirtualServerSocket.hpp"
 
 #define ONE_MEGABYTE 1048576UL

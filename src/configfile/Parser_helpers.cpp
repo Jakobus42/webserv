@@ -1,4 +1,4 @@
-#include "configfile/Parser.hpp"
+#include "config/Parser.hpp"
 
 namespace configfile {
 
@@ -10,8 +10,8 @@ namespace configfile {
  * @return int 0 if successful, 1 if not.
  */
 int ConfigFileParser::handlePrompt(std::string& line, int layer, int& lineCount) {
-  // return 0 if successful and semicolon is found, 1 if semicolon is not found,
-  // 2 if error cut off trailing and starting spaces
+  // return 0 if successful and semicolon is found, 1 if semicolon is not
+  // found, 2 if error cut off trailing and starting spaces
   int qouteFlag = 1;
   while (line[line.size() - 1] == ' ') {
     line.erase(line.size() - 1);
