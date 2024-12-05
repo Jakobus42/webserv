@@ -1,0 +1,28 @@
+var classwww_1_1VirtualServerSocket =
+[
+    [ "VirtualServerSocket", "classwww_1_1VirtualServerSocket.html#a72d4b2ea7ebe7db661af6165db17ef59", null ],
+    [ "VirtualServerSocket", "classwww_1_1VirtualServerSocket.html#a8a5f6a1e0b648d6e141fe5c7dafae8a5", null ],
+    [ "~VirtualServerSocket", "classwww_1_1VirtualServerSocket.html#a9395ba2bd21163d5b54ad73ae796eb37", null ],
+    [ "VirtualServerSocket", "classwww_1_1VirtualServerSocket.html#aafe5ed528b4b3003e185719684386606", null ],
+    [ "bind", "classwww_1_1VirtualServerSocket.html#a5b58e4bce20866c59ea4d914b1ac4c82", null ],
+    [ "close", "classwww_1_1VirtualServerSocket.html#a195a76c132902ce8173b1ccb221ecf6c", null ],
+    [ "create", "classwww_1_1VirtualServerSocket.html#a65d3ca6a817eb0e6a1b810a3f3cbd0c3", null ],
+    [ "getFd", "classwww_1_1VirtualServerSocket.html#aff13f488a78047dbf58798974a7f429e", null ],
+    [ "getIp", "classwww_1_1VirtualServerSocket.html#a1204027b54f01d6ef30f5dc1e9e3f29e", null ],
+    [ "getPort", "classwww_1_1VirtualServerSocket.html#ae087737b1440ea8184df62ab96f79b9f", null ],
+    [ "getSocketAddress", "classwww_1_1VirtualServerSocket.html#ae2f7a158a41be6a4633156116f1de2a8", null ],
+    [ "init", "classwww_1_1VirtualServerSocket.html#a83165b6c7870734eb7daaea26b67e454", null ],
+    [ "isBound", "classwww_1_1VirtualServerSocket.html#a611fc726fde14f9346339419d6158485", null ],
+    [ "isListening", "classwww_1_1VirtualServerSocket.html#a82e964ade0c80eca66d7535a5402a35f", null ],
+    [ "isOpen", "classwww_1_1VirtualServerSocket.html#af93839a6bfc3166216b235aa51b83d1e", null ],
+    [ "listen", "classwww_1_1VirtualServerSocket.html#acef9ced2111c8d1efc35f4687f3675c8", null ],
+    [ "operator=", "classwww_1_1VirtualServerSocket.html#a41e1d83cbea5032aa8a359baf1cfb0d7", null ],
+    [ "setBroken", "classwww_1_1VirtualServerSocket.html#ad8e8f6d7339841f18543bd39f17ce390", null ],
+    [ "m_bound", "classwww_1_1VirtualServerSocket.html#ae4386d6d34e3cb77e69bb75a6886c3bf", null ],
+    [ "m_fd", "classwww_1_1VirtualServerSocket.html#a32c1992a5120bd8b14fd6a72ad3cb030", null ],
+    [ "m_ip", "classwww_1_1VirtualServerSocket.html#ab9299b141fe2d4c9c517ac0748274abb", null ],
+    [ "m_listening", "classwww_1_1VirtualServerSocket.html#af29727107c8f3d5fc0336157edf984c6", null ],
+    [ "m_open", "classwww_1_1VirtualServerSocket.html#aae000783af306c0d9f8119ba4c00b202", null ],
+    [ "m_port", "classwww_1_1VirtualServerSocket.html#a0674b36ccff62fb6a25fc2c66f44aff6", null ],
+    [ "m_socketAddress", "classwww_1_1VirtualServerSocket.html#abd9149f4521ff4ff88ed536915126261", null ]
+];

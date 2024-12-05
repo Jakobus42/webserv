@@ -7,8 +7,6 @@ var annotated_dup =
       [ "ConfigFileParser", "classconfigfile_1_1ConfigFileParser.html", "classconfigfile_1_1ConfigFileParser" ]
     ] ],
     [ "http", "namespacehttp.html", [
-      [ "s_requestData", "structhttp_1_1s__requestData.html", "structhttp_1_1s__requestData" ],
-      [ "parsingData", "structhttp_1_1parsingData.html", "structhttp_1_1parsingData" ],
       [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ]
     ] ],
     [ "logger", "namespacelogger.html", [
@@ -25,7 +23,7 @@ var annotated_dup =
       [ "ClientSocket", "classwww_1_1ClientSocket.html", "classwww_1_1ClientSocket" ],
       [ "Connection", "classwww_1_1Connection.html", "classwww_1_1Connection" ],
       [ "CoreServer", "classwww_1_1CoreServer.html", "classwww_1_1CoreServer" ],
-      [ "ServerSocket", "classwww_1_1ServerSocket.html", "classwww_1_1ServerSocket" ],
-      [ "VirtualServer", "classwww_1_1VirtualServer.html", "classwww_1_1VirtualServer" ]
+      [ "VirtualServer", "classwww_1_1VirtualServer.html", "classwww_1_1VirtualServer" ],
+      [ "VirtualServerSocket", "classwww_1_1VirtualServerSocket.html", "classwww_1_1VirtualServerSocket" ]
     ] ]
 ];

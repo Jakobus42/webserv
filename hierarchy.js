@@ -12,12 +12,10 @@ var hierarchy =
       [ "runtime::RequestHandler", "classruntime_1_1RequestHandler.html", null ]
     ] ],
     [ "logger::LoggerManager", "classlogger_1_1LoggerManager.html", null ],
-    [ "http::parsingData", "structhttp_1_1parsingData.html", null ],
     [ "http::Request", "classhttp_1_1Request.html", null ],
     [ "configfile::s_config_data", "structconfigfile_1_1s__config__data.html", null ],
     [ "configfile::s_location", "structconfigfile_1_1s__location.html", null ],
-    [ "http::s_requestData", "structhttp_1_1s__requestData.html", null ],
     [ "configfile::s_server", "structconfigfile_1_1s__server.html", null ],
-    [ "www::ServerSocket", "classwww_1_1ServerSocket.html", null ],
-    [ "www::VirtualServer", "classwww_1_1VirtualServer.html", null ]
+    [ "www::VirtualServer", "classwww_1_1VirtualServer.html", null ],
+    [ "www::VirtualServerSocket", "classwww_1_1VirtualServerSocket.html", null ]
 ];

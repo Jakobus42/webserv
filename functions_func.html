@@ -69,7 +69,10 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 : <a class="el" href="classwww_1_1VirtualServer.html#aede7b760b616e0d1efd0f10e3006f4e6">www::VirtualServer</a>
 </li>
 <li>addVirtualServer()
-: <a class="el" href="classwww_1_1CoreServer.html#ad7b57e659886aef2bf711f2642b4253a">www::CoreServer</a>
+: <a class="el" href="classwww_1_1CoreServer.html#aac78aa3d9562104d88f6876f43bce995">www::CoreServer</a>
+</li>
+<li>addVirtualServers()
+: <a class="el" href="classwww_1_1CoreServer.html#a96ecff7b3d31d9c8791f2bdafc974ecf">www::CoreServer</a>
 </li>
 <li>ALogger()
 : <a class="el" href="classlogger_1_1ALogger.html#a40ab0d997f116c8b520476d56d944a98">logger::ALogger</a>
@@ -82,7 +85,7 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 <h3><a id="index_b"></a>- b -</h3><ul>
 <li>bind()
-: <a class="el" href="classwww_1_1ServerSocket.html#abd85e324fc679a6b4c875b0f861e67e7">www::ServerSocket</a>
+: <a class="el" href="classwww_1_1VirtualServerSocket.html#a5b58e4bce20866c59ea4d914b1ac4c82">www::VirtualServerSocket</a>
 </li>
 </ul>
 
@@ -97,7 +100,7 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>close()
 : <a class="el" href="classwww_1_1ClientSocket.html#a016e6961f175a4c84e21169f179c07c9">www::ClientSocket</a>
 , <a class="el" href="classwww_1_1Connection.html#a68fe30de0adab883d0efc595efd766d5">www::Connection</a>
-, <a class="el" href="classwww_1_1ServerSocket.html#aa928555681110b1611ee61610267b20c">www::ServerSocket</a>
+, <a class="el" href="classwww_1_1VirtualServerSocket.html#a195a76c132902ce8173b1ccb221ecf6c">www::VirtualServerSocket</a>
 </li>
 <li>ConfigFileParser()
 : <a class="el" href="classconfigfile_1_1ConfigFileParser.html#a44906ae9c44eb968d92e610759c3dd8b">configfile::ConfigFileParser</a>
@@ -112,7 +115,7 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 : <a class="el" href="classwww_1_1CoreServer.html#a81521c1c3b38bad3e79213b00beae4f8">www::CoreServer</a>
 </li>
 <li>create()
-: <a class="el" href="classwww_1_1ServerSocket.html#ac66a59f0752f64f39ffab991133e1a03">www::ServerSocket</a>
+: <a class="el" href="classwww_1_1VirtualServerSocket.html#a65d3ca6a817eb0e6a1b810a3f3cbd0c3">www::VirtualServerSocket</a>
 </li>
 </ul>
 
@@ -135,27 +138,40 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
+<li>getBody()
+: <a class="el" href="classhttp_1_1Request.html#a867f9779974151717071cbc33e09de37">http::Request</a>
+</li>
 <li>getConfigData()
-: <a class="el" href="classconfigfile_1_1ConfigFileParser.html#ae4763f147e79ef285b9744e7ae722916">configfile::ConfigFileParser</a>
+: <a class="el" href="classconfigfile_1_1ConfigFileParser.html#afddcd2b12ad9a5d82544feaca228187a">configfile::ConfigFileParser</a>
 </li>
 <li>getConnections()
 : <a class="el" href="classwww_1_1VirtualServer.html#a1aa223db515b7246ac3173d9e61cf15b">www::VirtualServer</a>
+</li>
+<li>getData()
+: <a class="el" href="classhttp_1_1Request.html#a8bed28739f9f095e37da00fdbfea3189">http::Request</a>
 </li>
 <li>getEpollFd()
 : <a class="el" href="classwww_1_1CoreServer.html#a0a03136c8e71576495df9b106932d238">www::CoreServer</a>
 </li>
 <li>getErrorPages()
 : <a class="el" href="classconfigfile_1_1ConfigFileParser.html#a1a5b61814d437333167e0ca645e7da59">configfile::ConfigFileParser</a>
+, <a class="el" href="classwww_1_1VirtualServer.html#a0bfd8cd5171265e006f2ff6d9e8d5ef7">www::VirtualServer</a>
 </li>
 <li>getFd()
 : <a class="el" href="classwww_1_1ClientSocket.html#ad117441769a07be264a5cd262cc25327">www::ClientSocket</a>
-, <a class="el" href="classwww_1_1ServerSocket.html#a14e5ddb50e630ee23670e80837f5c4ec">www::ServerSocket</a>
+, <a class="el" href="classwww_1_1VirtualServerSocket.html#aff13f488a78047dbf58798974a7f429e">www::VirtualServerSocket</a>
 </li>
 <li>getGlobalLogLevel()
 : <a class="el" href="classlogger_1_1LoggerManager.html#a9b189b4a2165b561d16ccc31021ee4b0">logger::LoggerManager</a>
 </li>
+<li>getHead()
+: <a class="el" href="classhttp_1_1Request.html#a23ba1b63e9b836434bddc526105fd69e">http::Request</a>
+</li>
 <li>getInstance()
 : <a class="el" href="classlogger_1_1LoggerManager.html#ad140bde7c3a4c9241fb147f2c864d018">logger::LoggerManager</a>
+</li>
+<li>getIp()
+: <a class="el" href="classwww_1_1VirtualServerSocket.html#a1204027b54f01d6ef30f5dc1e9e3f29e">www::VirtualServerSocket</a>
 </li>
 <li>getIsLoaded()
 : <a class="el" href="classconfigfile_1_1ConfigFileParser.html#a1b586a2a18726ab1eb5bda4db61bb391">configfile::ConfigFileParser</a>
@@ -165,6 +181,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 </li>
 <li>getLocation()
 : <a class="el" href="classconfigfile_1_1ConfigFileParser.html#a91faa997adaf9945ec4e7b3016fc3a4d">configfile::ConfigFileParser</a>
+</li>
+<li>getLocations()
+: <a class="el" href="classwww_1_1VirtualServer.html#acb38990cf6cc4d00be5fbf1c49ce1217">www::VirtualServer</a>
 </li>
 <li>getLogLevelAsString()
 : <a class="el" href="classlogger_1_1ALogger.html#aeec7dc86db5a5df42d02b494e24802cf">logger::ALogger</a>
@@ -176,29 +195,23 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 : <a class="el" href="classconfigfile_1_1ConfigFileParser.html#ac59ceb4ac32d2b7dd97a94912db4918e">configfile::ConfigFileParser</a>
 , <a class="el" href="classwww_1_1VirtualServer.html#a066baaa9d5b30eb842bb0c9dbdcc8ff8">www::VirtualServer</a>
 </li>
-<li>getName()
-: <a class="el" href="classwww_1_1VirtualServer.html#a1de86b03916d95c71b22e0058163a701">www::VirtualServer</a>
-</li>
-<li>getParsingData()
-: <a class="el" href="classhttp_1_1Request.html#abb41cb1a74fae850cbbe841b377f8acf">http::Request</a>
+<li>getNames()
+: <a class="el" href="classwww_1_1VirtualServer.html#a16e1a987b8001309bd4121af0d0f1fe1">www::VirtualServer</a>
 </li>
 <li>getPort()
-: <a class="el" href="classwww_1_1ServerSocket.html#a92ff4df12af7ba61862bf2d2c472588f">www::ServerSocket</a>
+: <a class="el" href="classwww_1_1VirtualServerSocket.html#ae087737b1440ea8184df62ab96f79b9f">www::VirtualServerSocket</a>
 </li>
 <li>getReceivedBytes()
 : <a class="el" href="classhttp_1_1Request.html#a43815c2fb15f1780a37324e6953e7d17">http::Request</a>
 </li>
 <li>getRequest()
-: <a class="el" href="classwww_1_1Connection.html#a02417f0785b5760d4b4121a5d80c2f84">www::Connection</a>
-</li>
-<li>getRequestData()
-: <a class="el" href="classhttp_1_1Request.html#a5b597eb2a2ab75e361c2e26f81a2a578">http::Request</a>
+: <a class="el" href="classwww_1_1Connection.html#a4f966fe191dc5a1186b9c2b41a5e6677">www::Connection</a>
 </li>
 <li>getServer()
 : <a class="el" href="classconfigfile_1_1ConfigFileParser.html#a45c5138e6ce2a9e7bc8fe43d91a8b5d6">configfile::ConfigFileParser</a>
 </li>
 <li>getServerIp()
-: <a class="el" href="classconfigfile_1_1ConfigFileParser.html#a1bb30f2a06521572b234bffa5da88900">configfile::ConfigFileParser</a>
+: <a class="el" href="classconfigfile_1_1ConfigFileParser.html#a0153686ebf4920999a9647376c81069c">configfile::ConfigFileParser</a>
 </li>
 <li>getServerNames()
 : <a class="el" href="classconfigfile_1_1ConfigFileParser.html#a334b2a2968d74a771a4f3e3353207383">configfile::ConfigFileParser</a>
@@ -210,18 +223,15 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 : <a class="el" href="classconfigfile_1_1ConfigFileParser.html#a6de4c24b7f1b6d4509eda8ebecd3e8b1">configfile::ConfigFileParser</a>
 </li>
 <li>getSocket()
-: <a class="el" href="classwww_1_1Connection.html#a37ff88d25616dce2769c4a2a85610d88">www::Connection</a>
-, <a class="el" href="classwww_1_1VirtualServer.html#a4e74226ef6a4686875105373334a98aa">www::VirtualServer</a>
+: <a class="el" href="classwww_1_1Connection.html#a3f1583c3d0e9eb5f48fc877726b5c2cc">www::Connection</a>
+, <a class="el" href="classwww_1_1VirtualServer.html#a6da433f4b2a06ec647b6473ada0c08fb">www::VirtualServer</a>
 </li>
 <li>getSocketAddress()
 : <a class="el" href="classwww_1_1ClientSocket.html#a88d1c1eb818918075be1708a324c8b54">www::ClientSocket</a>
-, <a class="el" href="classwww_1_1ServerSocket.html#a58df05e86784d98070de4ba380b27522">www::ServerSocket</a>
+, <a class="el" href="classwww_1_1VirtualServerSocket.html#ae2f7a158a41be6a4633156116f1de2a8">www::VirtualServerSocket</a>
 </li>
 <li>getSocketSize()
 : <a class="el" href="classwww_1_1ClientSocket.html#acdc5a298f500970491925e389cabb4f0">www::ClientSocket</a>
-</li>
-<li>getStatus()
-: <a class="el" href="classhttp_1_1Request.html#a4b7e002480a6445f108a7c1382e87a80">http::Request</a>
 </li>
 <li>getTimeStamp()
 : <a class="el" href="classlogger_1_1ALogger.html#a0b5d4d94c2eac993058f212848cab04a">logger::ALogger</a>
@@ -254,20 +264,20 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 : <a class="el" href="classconfigfile_1_1ConfigFileParser.html#a80477b149418fa6a0245418364bac231">configfile::ConfigFileParser</a>
 </li>
 <li>init()
-: <a class="el" href="classwww_1_1CoreServer.html#a669f22616cd765a3eeddc0e8cd72d2ea">www::CoreServer</a>
-, <a class="el" href="classwww_1_1ServerSocket.html#a9d48668c0a236d6056f2cf5d31bc1908">www::ServerSocket</a>
+: <a class="el" href="classwww_1_1CoreServer.html#a5dd1a1e7c3685b4afd63788b46558234">www::CoreServer</a>
+, <a class="el" href="classwww_1_1VirtualServerSocket.html#a83165b6c7870734eb7daaea26b67e454">www::VirtualServerSocket</a>
 </li>
 <li>isAlive()
 : <a class="el" href="classwww_1_1ClientSocket.html#a26ae74ac97bf556a94c3c9c5ffd4015f">www::ClientSocket</a>
 </li>
 <li>isBound()
-: <a class="el" href="classwww_1_1ServerSocket.html#a62c23807e9ea55781ab7183f6d53cf41">www::ServerSocket</a>
+: <a class="el" href="classwww_1_1VirtualServerSocket.html#a611fc726fde14f9346339419d6158485">www::VirtualServerSocket</a>
 </li>
 <li>isListening()
-: <a class="el" href="classwww_1_1ServerSocket.html#a9f9c8bfcd212990fc7a36940c32af0e1">www::ServerSocket</a>
+: <a class="el" href="classwww_1_1VirtualServerSocket.html#a82e964ade0c80eca66d7535a5402a35f">www::VirtualServerSocket</a>
 </li>
 <li>isOpen()
-: <a class="el" href="classwww_1_1ServerSocket.html#a9f3eb630c1e538132dc20e141eeae9e4">www::ServerSocket</a>
+: <a class="el" href="classwww_1_1VirtualServerSocket.html#af93839a6bfc3166216b235aa51b83d1e">www::VirtualServerSocket</a>
 </li>
 </ul>
 
@@ -278,8 +288,8 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 </li>
 <li>listen()
 : <a class="el" href="classconfigfile_1_1ConfigFileParser.html#aa483b28cb1db8afe132e944352dbb659">configfile::ConfigFileParser</a>
-, <a class="el" href="classwww_1_1ServerSocket.html#a998c6a1482ffdb0c6536cd70441b09b3">www::ServerSocket</a>
 , <a class="el" href="classwww_1_1VirtualServer.html#ac017f0e3ee3ccb3ee13e5803bc801c08">www::VirtualServer</a>
+, <a class="el" href="classwww_1_1VirtualServerSocket.html#acef9ced2111c8d1efc35f4687f3675c8">www::VirtualServerSocket</a>
 </li>
 <li>loadConfigFile()
 : <a class="el" href="classconfigfile_1_1ConfigFileParser.html#a50af4e49462d1d98e1323db4966b8066">configfile::ConfigFileParser</a>
@@ -312,8 +322,8 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 , <a class="el" href="classwww_1_1ClientSocket.html#a7ed71e86226efb775d3594521e2d3891">www::ClientSocket</a>
 , <a class="el" href="classwww_1_1Connection.html#adc05f681ec85baae903cbcbe310893d0">www::Connection</a>
 , <a class="el" href="classwww_1_1CoreServer.html#a13cb8ce6de6d2189438696d8876eb809">www::CoreServer</a>
-, <a class="el" href="classwww_1_1ServerSocket.html#a006e7c28f9dcd6c10a37be35509001fb">www::ServerSocket</a>
 , <a class="el" href="classwww_1_1VirtualServer.html#a87e822e295bcc2705afe0a6f93bfe1c0">www::VirtualServer</a>
+, <a class="el" href="classwww_1_1VirtualServerSocket.html#a41e1d83cbea5032aa8a359baf1cfb0d7">www::VirtualServerSocket</a>
 </li>
 <li>operator==()
 : <a class="el" href="classwww_1_1ClientSocket.html#a81e8acfa9180a97a200a8317748ffa03">www::ClientSocket</a>
@@ -323,20 +333,8 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 
 <h3><a id="index_p"></a>- p -</h3><ul>
-<li>parse()
-: <a class="el" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993">http::Request</a>
-</li>
-<li>parseBody()
-: <a class="el" href="classhttp_1_1Request.html#a1d3a29f13ac9ee1048a9113c0a6fbece">http::Request</a>
-</li>
 <li>parseConfigFile()
 : <a class="el" href="classconfigfile_1_1ConfigFileParser.html#af7511360a26373b0dead35fbf698c92d">configfile::ConfigFileParser</a>
-</li>
-<li>parseHead()
-: <a class="el" href="classhttp_1_1Request.html#aed8ed09de632d5a8001d566aede5da5d">http::Request</a>
-</li>
-<li>parseHeaders()
-: <a class="el" href="classhttp_1_1Request.html#a208c65a2ba200651baf10b050ab0c1e4">http::Request</a>
 </li>
 <li>printConfigData()
 : <a class="el" href="classconfigfile_1_1ConfigFileParser.html#a64b1bbafb3cb257b3c5805c9e8f401d0">configfile::ConfigFileParser</a>
@@ -391,11 +389,8 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>serverName()
 : <a class="el" href="classconfigfile_1_1ConfigFileParser.html#ad183b45a0c20d5fda540cfc235488d06">configfile::ConfigFileParser</a>
 </li>
-<li>ServerSocket()
-: <a class="el" href="classwww_1_1ServerSocket.html#ac72a30b61268278a3d1a6353389fa287">www::ServerSocket</a>
-</li>
 <li>setBroken()
-: <a class="el" href="classwww_1_1ServerSocket.html#a5672ece2600601edffb55f2abd002be3">www::ServerSocket</a>
+: <a class="el" href="classwww_1_1VirtualServerSocket.html#ad8e8f6d7339841f18543bd39f17ce390">www::VirtualServerSocket</a>
 </li>
 <li>setGlobalLogLevel()
 : <a class="el" href="classlogger_1_1LoggerManager.html#a7237ff5a6cead3d670328feb6ea60cbd">logger::LoggerManager</a>
@@ -429,6 +424,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <h3><a id="index_v"></a>- v -</h3><ul>
 <li>VirtualServer()
 : <a class="el" href="classwww_1_1VirtualServer.html#a7edc96248b827c7f76e23b34f9de0028">www::VirtualServer</a>
+</li>
+<li>VirtualServerSocket()
+: <a class="el" href="classwww_1_1VirtualServerSocket.html#a72d4b2ea7ebe7db661af6165db17ef59">www::VirtualServerSocket</a>
 </li>
 </ul>
 
@@ -467,11 +465,11 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>~RequestHandler()
 : <a class="el" href="classruntime_1_1RequestHandler.html#a4bb6a40c17c816304d842dcae5434d4e">runtime::RequestHandler</a>
 </li>
-<li>~ServerSocket()
-: <a class="el" href="classwww_1_1ServerSocket.html#ad9d4f84bbfb4a754b28e7813d2a7ed4b">www::ServerSocket</a>
-</li>
 <li>~VirtualServer()
 : <a class="el" href="classwww_1_1VirtualServer.html#a51f567a132d9f7d6558db98f0f7bcc0a">www::VirtualServer</a>
+</li>
+<li>~VirtualServerSocket()
+: <a class="el" href="classwww_1_1VirtualServerSocket.html#a9395ba2bd21163d5b54ad73ae796eb37">www::VirtualServerSocket</a>
 </li>
 </ul>
 </div><!-- contents -->
