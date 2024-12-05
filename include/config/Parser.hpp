@@ -11,7 +11,7 @@
 #include "config/Parser.hpp"
 #include "logger/LoggerManager.hpp"
 
-namespace configfile {
+namespace config {
 
 typedef struct s_location t_location;
 
@@ -111,9 +111,9 @@ class ConfigFileParser {
   int autoindex(std::vector<std::string>& args, int& lineCount, int layer);
   int index(std::vector<std::string>& args, int& lineCount, int layer);
 
-  void printLocations(const std::vector<configfile::t_location>& locations, int layer, int detailed,
+  void printLocations(const std::vector<config::t_location>& locations, int layer, int detailed,
                       std::vector<int> layer_num);
-  configfile::t_location* getLocation(int layer);
+  config::t_location* getLocation(int layer);
 };
 
-} /* namespace configfile */
+}  // namespace config

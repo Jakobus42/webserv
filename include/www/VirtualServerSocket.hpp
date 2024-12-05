@@ -2,12 +2,11 @@
 
 #include <netinet/in.h>
 #include <strings.h>
+#include <sys/epoll.h>
 #include <sys/socket.h>
 #include <unistd.h>
 
-#ifdef __linux__
-#include <sys/epoll.h>
-#endif
+#include "shared/defines.hpp"
 
 #define DEFAULT_MAX_EVENTS 256
 #define MAX_EVENTS 256
@@ -15,8 +14,7 @@
 namespace www {
 
 typedef struct sockaddr_in t_sockaddr_in;
-const uint32_t LOCALHOST_ADDRESS = 0x7F000001;   // 127.0.0.1
-const uint32_t DEFAULT_MAX_BODY_SIZE = 1048576;  // 1MB
+typedef struct sockaddr t_sockaddr;
 
 /**
  * @class VirtualServerSocket

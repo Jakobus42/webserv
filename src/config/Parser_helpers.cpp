@@ -1,6 +1,6 @@
 #include "config/Parser.hpp"
 
-namespace configfile {
+namespace config {
 
 /**
  * @brief parses a line in the configuration file.
@@ -48,7 +48,7 @@ int ConfigFileParser::handlePrompt(std::string& line, int layer, int& lineCount)
  * @return struct location* the current location.
  */
 t_location* ConfigFileParser::getLocation(int layer) {
-  configfile::t_location* temp = &m_configData.servers.back().locations.back();
+  config::t_location* temp = &m_configData.servers.back().locations.back();
   for (int i = 2; i < layer; i++) {
     temp = &temp->locations.back();
   }
@@ -100,7 +100,7 @@ void ConfigFileParser::printConfigData(int detailed) {
  * for detailed)
  * @param layer_num the current layer number.
  */
-void ConfigFileParser::printLocations(const std::vector<configfile::t_location>& locations, int layer, int detailed,
+void ConfigFileParser::printLocations(const std::vector<config::t_location>& locations, int layer, int detailed,
                                       std::vector<int> layer_num) {
   std::string c = "";
   for (int i = 0; i < layer; i++) {
@@ -304,4 +304,4 @@ int ConfigFileParser::SaveConfigData(std::vector<std::string>& args, int layer, 
   return 0;
 }
 
-} /* namespace configfile */
+}  // namespace config

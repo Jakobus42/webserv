@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../http/Request.hpp"
-#include "../www/ClientSocket.hpp"
+#include "http/Request.hpp"
+#include "www/ClientSocket.hpp"
 
 namespace www {
 
