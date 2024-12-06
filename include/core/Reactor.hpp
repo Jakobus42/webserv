@@ -2,7 +2,7 @@
 
 #include <sys/epoll.h>
 
-#include "core/RequestHandler.hpp"
+#include "core/IHandler.hpp"
 #include "http/VirtualServer.hpp"
 #include "shared/defines.hpp"
 
@@ -33,7 +33,7 @@ namespace core {
 			bool addVirtualServers(config::t_config_data &configData);
 
 			void registerHandler(
-				int fd, core::RequestHandler *handler, uint32_t events = EPOLLIN) throw(std::runtime_error);
+				int fd, IHandler *handler, uint32_t events = EPOLLIN) throw(std::runtime_error);
 			void unregisterHandler(int fd) throw(std::runtime_error);
 			void react();
 		private:
@@ -41,8 +41,8 @@ namespace core {
 			Reactor &operator=(const Reactor &other);
 
 			int m_epoll_master_fd;
-			std::vector<http::VirtualServer> m_virtual_servers;
-			std::map<int, core::RequestHandler *> m_event_handlers;
+			std::vector<http::VirtualServer> m_vServers;
+			std::map<int, IHandler *> m_eventHandlers;
 	};
 
 } // namespace core

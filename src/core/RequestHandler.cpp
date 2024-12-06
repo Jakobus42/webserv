@@ -32,9 +32,9 @@ namespace core {
 		return *this;
 	}
 
-	void RequestHandler::handle(int fd, uint32_t event) {
-		(void)fd;
-		(void)event;
+	void RequestHandler::handle(HandleContext &ctx) {
+		std::cout << "I am a cool request handler" << std::endl;
+		std::cout << "I am handling connection: " << ctx.conn.getSocket().getFd() << std::endl;
 	}
 
 } /* namespace core */
