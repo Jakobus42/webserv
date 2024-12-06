@@ -17,11 +17,11 @@ namespace config {
 
 	typedef struct s_location {
 			// location name
-			std::string name;
+			std::string uri;
 			// return
 			std::string return_url;
 			// configurations
-			std::vector<std::string> methods;
+			std::vector<http::Method> methods;
 			bool autoindex;
 			std::string root;
 			std::vector<std::string> index;
@@ -96,6 +96,7 @@ namespace config {
 			int handlePrompt(std::string &line, int layer, int &lineCount);
 			int SaveConfigData(std::vector<std::string> &args, int layer, int qoute_flag, int &lineCount);
 			enum CmdId idCommand(const std::string &command);
+			http::Method stringToHttpMethod(const std::string &method);
 
 			int server(std::vector<std::string> &args, int &lineCount, int layer);
 			int location(std::vector<std::string> &args, const int &lineCount, int layer);

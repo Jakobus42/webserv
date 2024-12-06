@@ -327,11 +327,11 @@ namespace config {
 		methods.push_back("POST");
 		methods.push_back("PUT");
 		methods.push_back("DELETE");
-		std::vector<std::string> allowed_methods;
+		std::vector<http::Method> allowed_methods;
 		for (unsigned long i = 1; i < args.size(); i++) {
 			for (unsigned long j = 0; j < methods.size(); j++) {
 				if (args[i] == methods[j]) {
-					allowed_methods.push_back(args[i]);
+					allowed_methods.push_back(stringToHttpMethod(args[i]));
 					methods.erase(methods.begin() + j);
 					break;
 				}

@@ -222,6 +222,30 @@ namespace config {
 			return UNKNOWN_ID;
 	}
 
+	http::Method ConfigFileParser::stringToHttpMethod(const std::string &method) {
+		if (method == "GET") {
+			return http::GET;
+		} else if (method == "POST") {
+			return http::POST;
+		} else if (method == "PUT") {
+			return http::PUT;
+		} else if (method == "DELETE") {
+			return http::DELETE;
+		} else if (method == "PATCH") {
+			return http::PATCH;
+		} else if (method == "HEAD") {
+			return http::HEAD;
+		} else if (method == "OPTIONS") {
+			return http::OPTIONS;
+		} else if (method == "TRACE") {
+			return http::TRACE;
+		} else if (method == "CONNECT") {
+			return http::CONNECT;
+		} else {
+			throw std::invalid_argument("Invalid HTTP method: " + method);
+		}
+	}
+
 	/**
 	 * @brief Saves the configuration data.
 	 * @param args The arguments to save.
