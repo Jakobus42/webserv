@@ -35,6 +35,7 @@ namespace http {
 			const ServerSocket &getSocket(void) const;
 			ServerSocket &getSocket(void);
 			const t_connections &getConnections(void) const;
+			t_connections &getConnections(void);
 
 			bool addConnection(void);
 			bool removeConnection(Connection &connection);
