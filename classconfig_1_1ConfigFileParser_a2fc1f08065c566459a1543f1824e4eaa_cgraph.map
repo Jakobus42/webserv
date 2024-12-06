@@ -1,18 +1,19 @@
 <map id="config::ConfigFileParser::SaveConfigData" name="config::ConfigFileParser::SaveConfigData">
 <area shape="rect" id="node1" title="Saves the configuration data." alt="" coords="5,336,179,377"/>
-<area shape="rect" id="node2" href="$classconfig_1_1ConfigFileParser.html#aae76c210ff9aae74d87a6b57feeb474e" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="448,201,621,243"/>
+<area shape="rect" id="node2" href="$classconfig_1_1ConfigFileParser.html#aae76c210ff9aae74d87a6b57feeb474e" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="448,71,621,112"/>
 <area shape="rect" id="node4" href="$classconfig_1_1ConfigFileParser.html#a9201327984c6bb55a4ae4e9cb9f1afc9" title="sets the max body size for the server." alt="" coords="448,397,621,439"/>
 <area shape="rect" id="node6" href="$classconfig_1_1ConfigFileParser.html#ab0873aafd871776227166466648adcff" title="sets the error pages for the server." alt="" coords="448,332,621,373"/>
 <area shape="rect" id="node7" href="$classconfig_1_1ConfigFileParser.html#af23de28a87beadfcc28c48021a066a14" title="Identifies the command in the configuration file. and returns the id of the command." alt="" coords="227,307,400,348"/>
-<area shape="rect" id="node8" href="$classconfig_1_1ConfigFileParser.html#a7cc3cfe78fd8d52b3bf1f7272cf19de2" title="sets the index files for the location. (index.html by default)" alt="" coords="448,267,621,308"/>
-<area shape="rect" id="node9" href="$classconfig_1_1ConfigFileParser.html#a5c03d6d709d348eb69db590a9bed2529" title="sets the methods allowed for the location." alt="" coords="448,5,621,47"/>
-<area shape="rect" id="node10" href="$classconfig_1_1ConfigFileParser.html#a054df9e80c847c57ee4fcf634ec96512" title="Sets the port and ip address of the server." alt="" coords="448,463,621,504"/>
-<area shape="rect" id="node12" href="$classconfig_1_1ConfigFileParser.html#a7c2637468e844f1a45ce90488e01affb" title="Creates a new location struct, initializes it and adds it to the config data." alt="" coords="448,528,621,569"/>
-<area shape="rect" id="node13" href="$classconfig_1_1ConfigFileParser.html#ae96980a09075f768b9b072297e2e25f6" title="redirects the user to a different url with a specific return code." alt="" coords="448,71,621,112"/>
-<area shape="rect" id="node14" href="$classconfig_1_1ConfigFileParser.html#a488be040c87c81b95572fdae4d10b9e9" title="sets the root directory for the location." alt="" coords="448,136,621,177"/>
-<area shape="rect" id="node15" href="$classconfig_1_1ConfigFileParser.html#a68a1194c8822b39ccdeaf2024f68e2df" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="448,593,621,635"/>
-<area shape="rect" id="node16" href="$classconfig_1_1ConfigFileParser.html#ad660e1b92477502518971b41373ee60a" title="Sets the server name(s) of the server." alt="" coords="448,659,621,700"/>
+<area shape="rect" id="node8" href="$classconfig_1_1ConfigFileParser.html#a7cc3cfe78fd8d52b3bf1f7272cf19de2" title="sets the index files for the location. (index.html by default)" alt="" coords="448,136,621,177"/>
+<area shape="rect" id="node9" href="$classconfig_1_1ConfigFileParser.html#a5c03d6d709d348eb69db590a9bed2529" title="sets the methods allowed for the location." alt="" coords="448,267,621,308"/>
+<area shape="rect" id="node11" href="$classconfig_1_1ConfigFileParser.html#a054df9e80c847c57ee4fcf634ec96512" title="Sets the port and ip address of the server." alt="" coords="448,463,621,504"/>
+<area shape="rect" id="node13" href="$classconfig_1_1ConfigFileParser.html#a7c2637468e844f1a45ce90488e01affb" title="Creates a new location struct, initializes it and adds it to the config data." alt="" coords="448,528,621,569"/>
+<area shape="rect" id="node14" href="$classconfig_1_1ConfigFileParser.html#ae96980a09075f768b9b072297e2e25f6" title="redirects the user to a different url with a specific return code." alt="" coords="448,201,621,243"/>
+<area shape="rect" id="node15" href="$classconfig_1_1ConfigFileParser.html#a488be040c87c81b95572fdae4d10b9e9" title="sets the root directory for the location." alt="" coords="448,5,621,47"/>
+<area shape="rect" id="node16" href="$classconfig_1_1ConfigFileParser.html#a68a1194c8822b39ccdeaf2024f68e2df" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="448,593,621,635"/>
+<area shape="rect" id="node17" href="$classconfig_1_1ConfigFileParser.html#ad660e1b92477502518971b41373ee60a" title="Sets the server name(s) of the server." alt="" coords="448,659,621,700"/>
 <area shape="rect" id="node3" href="$classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="669,136,843,177"/>
 <area shape="rect" id="node5" href="$namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a" title="Converts a string to a positive integer." alt="" coords="701,405,811,431"/>
-<area shape="rect" id="node11" href="$namespaceconfig.html#ab0ce9a159a3d72a05a0321e13dcdac80" title="Checks if a string is a number." alt="" coords="687,470,825,497"/>
+<area shape="rect" id="node10" href="$classconfig_1_1ConfigFileParser.html#a5b7270c4bd5b61dbd2827b03a96736ec" title=" " alt="" coords="669,267,843,308"/>
+<area shape="rect" id="node12" href="$namespaceconfig.html#ab0ce9a159a3d72a05a0321e13dcdac80" title="Checks if a string is a number." alt="" coords="687,470,825,497"/>
 </map>

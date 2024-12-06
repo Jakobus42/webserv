@@ -6,7 +6,6 @@ var dir_c0632c2c4769486d54d1bae76e6a432e =
     [ "Connection.hpp", "Connection_8hpp.html", [
       [ "Connection", "classhttp_1_1Connection.html", "classhttp_1_1Connection" ]
     ] ],
-    [ "defines.hpp", "http_2defines_8hpp.html", "http_2defines_8hpp" ],
     [ "errorPageGenerator.hpp", "errorPageGenerator_8hpp.html", "errorPageGenerator_8hpp" ],
     [ "Request.hpp", "Request_8hpp.html", "Request_8hpp" ],
     [ "ServerSocket.hpp", "ServerSocket_8hpp.html", "ServerSocket_8hpp" ],

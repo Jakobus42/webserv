@@ -34,6 +34,7 @@ var classconfig_1_1ConfigFileParser =
     [ "SaveConfigData", "classconfig_1_1ConfigFileParser.html#a2fc1f08065c566459a1543f1824e4eaa", null ],
     [ "server", "classconfig_1_1ConfigFileParser.html#a68a1194c8822b39ccdeaf2024f68e2df", null ],
     [ "serverName", "classconfig_1_1ConfigFileParser.html#ad660e1b92477502518971b41373ee60a", null ],
+    [ "stringToHttpMethod", "classconfig_1_1ConfigFileParser.html#a5b7270c4bd5b61dbd2827b03a96736ec", null ],
     [ "testFunction", "classconfig_1_1ConfigFileParser.html#aad5c5dbe59ce54bb7321f9b2a57b59f6", null ],
     [ "m_configData", "classconfig_1_1ConfigFileParser.html#a0c5e3a46b81944a6aaf484b597e3416e", null ],
     [ "m_isLoaded", "classconfig_1_1ConfigFileParser.html#abeb1e6536a0095bc521d5ba717822b4c", null ]
