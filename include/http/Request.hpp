@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-#include "defines.hpp"
+#include "shared/defines.hpp"
 
 #include <string>
 
