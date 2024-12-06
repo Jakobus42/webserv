@@ -3,9 +3,10 @@
 #include <sys/epoll.h>
 #include <unistd.h>
 
-#include "core/RequestHandler.hpp"
+#include "core/IOHandler.hpp"
 #include "http/VirtualServer.hpp"
 
+#include <cstring>
 #include <stdexcept>
 
 namespace core {
@@ -15,7 +16,7 @@ namespace core {
 	 */
 	Reactor::Reactor()
 		: m_epoll_master_fd(-1)
-		, m_virtual_servers() {
+		, m_vServers() {
 	}
 
 	/**
@@ -23,7 +24,7 @@ namespace core {
 	 * @todo Close all connections and http::VirtualServer sockets
 	 */
 	Reactor::~Reactor() {
-		for (std::vector<http::VirtualServer>::iterator server = m_virtual_servers.begin(); server != m_virtual_servers.end(); ++server) {
+		for (std::vector<http::VirtualServer>::iterator server = m_vServers.begin(); server != m_vServers.end(); ++server) {
 			for (http::t_connections::iterator connection = server->getConnections().begin(); connection != server->getConnections().end(); ++connection) {
 				connection->close();
 			}
@@ -38,7 +39,7 @@ namespace core {
 	 */
 	Reactor::Reactor(const Reactor &other)
 		: m_epoll_master_fd(other.getEpollFd())
-		, m_virtual_servers(other.getVirtualServers()) {
+		, m_vServers(other.getVirtualServers()) {
 	}
 
 	/**
@@ -50,7 +51,7 @@ namespace core {
 		if (this == &rhs)
 			return *this;
 		m_epoll_master_fd = rhs.getEpollFd();
-		m_virtual_servers = rhs.getVirtualServers();
+		m_vServers = rhs.getVirtualServers();
 		return *this;
 	}
 
@@ -65,11 +66,11 @@ namespace core {
 	}
 
 	const std::vector<http::VirtualServer> &Reactor::getVirtualServers(void) const {
-		return m_virtual_servers;
+		return m_vServers;
 	}
 
 	std::vector<http::VirtualServer> &Reactor::getVirtualServers(void) {
-		return m_virtual_servers;
+		return m_vServers;
 	}
 
 	void Reactor::addVirtualServer(config::t_server &serverConfig) throw(
@@ -78,48 +79,52 @@ namespace core {
 		if (server.listen() == false)
 			throw std::runtime_error("A VirtualServer couldn't acquire its socket!");
 
-		m_virtual_servers.push_back(server);
+		m_vServers.push_back(server);
 	}
 
 	bool Reactor::removeVirtualServer(
 		std::vector<http::VirtualServer>::iterator it) {
-		m_virtual_servers.erase(it);
+		m_vServers.erase(it);
 		return true;
 	}
 
-	void Reactor::registerHandler(int fd, core::RequestHandler *handler, uint32_t events) throw(std::runtime_error) {
+	void Reactor::registerHandler(int fd, IHandler *handler, uint32_t events) throw(std::runtime_error) {
 		t_event event;
 
 		event.data.fd = fd;
 		event.events = events;
 		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_ADD, fd, &event) < 0) {
-			throw std::runtime_error("Crud! Couldn't register event handler!");
+			std::cerr << "epoll_ctl failed for fd " << fd << ": " << strerror(errno) << std::endl;
+			throw std::runtime_error("Crud! Couldn't register event handler!"); // TODO: dont use exception
 		}
-		m_event_handlers[fd] = handler;
+		m_eventHandlers[fd] = handler;
 	}
 
 	void Reactor::unregisterHandler(int fd) throw(std::runtime_error) {
 		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_DEL, fd, NULL) < 0) {
 			throw std::runtime_error("Пиздец! Couldn't unregister event handler!");
 		}
-		m_event_handlers.erase(fd);
+		m_eventHandlers.erase(fd);
 	}
 
 	void Reactor::react() {
 		t_event events[MAX_EVENTS];
 
 		while (true) {
+			for (std::vector<http::VirtualServer>::iterator it = m_vServers.begin(); it != m_vServers.end(); ++it) {
+				http::VirtualServer &vServer = *it;
+				bool isEstablished = true;
+
+				while (isEstablished) {
+					isEstablished = vServer.addConnection();
+					if (isEstablished) {
+						this->registerHandler(vServer.getConnections().back().getSocket().getFd(), new IOHandler(), EPOLLIN | EPOLLOUT);
+					}
+				}
+			}
 			int nEvents = epoll_wait(m_epoll_master_fd, events, MAX_EVENTS, 60);
 			if (nEvents < 0) {
 				throw std::runtime_error("Epoll dun goofed up!");
-			}
-
-			for (int i = 0; i < nEvents; ++i) {
-				int fd = events[i].data.fd;
-				uint32_t event_mask = events[i].events;
-				if (m_event_handlers.find(fd) != m_event_handlers.end()) {
-					m_event_handlers.at(fd)->handle(fd, event_mask);
-				}
 			}
 		}
 	}
@@ -128,7 +133,7 @@ namespace core {
 		for (size_t i = 0; i < configData.servers.size(); ++i) {
 			http::VirtualServer server(configData.servers.at(i));
 			if (server.getSocket().init() == false) {
-				m_virtual_servers.clear();
+				m_vServers.clear();
 				std::cout << "Failed to initialize socket for server "
 						  << configData.servers.at(i).server_names.at(0) << std::endl;
 				return false;
@@ -136,7 +141,7 @@ namespace core {
 			for (size_t j = 0; j < configData.servers.at(i).locations.size(); ++j) {
 				// server.addLocation(configData.servers.at(i).locations.at(j));
 			}
-			m_virtual_servers.push_back(server);
+			m_vServers.push_back(server);
 		}
 		return true;
 	}

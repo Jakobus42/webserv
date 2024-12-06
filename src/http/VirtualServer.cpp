@@ -111,7 +111,6 @@ namespace http {
 			m_connections.push_back(newConnection);
 			std::cout << "Added a connection!" << std::endl;
 		} catch (std::exception &e) {
-			std::cerr << "Exception caught in VServer: " << e.what() << std::endl;
 			return false;
 		}
 		return true;
