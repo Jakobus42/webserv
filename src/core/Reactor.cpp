@@ -108,22 +108,26 @@ namespace core {
 		return true;
 	}
 
-	void Reactor::registerHandler(int fd, IHandler *handler, HandleContext *ctx) throw(std::runtime_error) {
+	void Reactor::registerHandler(int fd, AHandler *handler, HandlerContext ctx, uint32_t events) {
 		t_event event;
 
-		event.data.ptr = ctx; // note: leaking (just temporary)
-		event.events = ctx->events;
+		event.events = events;
+		event.data.ptr = new EventData(handler, ctx); // note: decided to store data int the event ptr to avoid later lookup
 		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_ADD, fd, &event) < 0) {
 			throw std::runtime_error("Crud! Couldn't register event handler!");
 		}
-		m_eventHandlers[fd] = handler;
 	}
 
 	void Reactor::unregisterHandler(int fd) throw(std::runtime_error) {
-		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_DEL, fd, NULL) < 0) {
+		t_event event;
+
+		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_DEL, fd, &event) < 0) {
 			throw std::runtime_error("Пиздец! Couldn't unregister event handler!");
 		}
-		m_eventHandlers.erase(fd);
+
+		EventData *data = reinterpret_cast<EventData *>(event.data.ptr);
+		delete data->handler;
+		delete data;
 	}
 
 	void Reactor::react() {
@@ -147,10 +151,7 @@ namespace core {
 
 			while (vServer.addConnection()) {
 				http::Connection &conn = vServer.getConnections().back();
-				// TODO:
-				//  dont take events in context as we add them when events happen
-				//  HandleContext should be stored differently and not be allocated
-				this->registerHandler(conn.getSocket().getFd(), new IOHandler(), new HandleContext(vServer, conn, EPOLLIN | EPOLLOUT));
+				this->registerHandler(conn.getSocket().getFd(), new IOHandler(), HandlerContext(vServer, conn), EPOLLIN | EPOLLOUT);
 			}
 		}
 	}
@@ -158,10 +159,14 @@ namespace core {
 	void Reactor::handleEvents(t_event *events, int nEvents) {
 		for (int i = 0; i < nEvents; ++i) {
 			t_event &event = events[i];
+			EventData *data = reinterpret_cast<EventData *>(event.data.ptr);
 
-			HandleContext *ctx = reinterpret_cast<HandleContext *>(event.data.ptr);
-			ctx->events = event.events;
-			m_eventHandlers.at(ctx->conn.getSocket().getFd())->handle(*ctx);
+			data->ctx.events = event.events;
+			data->handler->handle(data->ctx);
+
+			if (data->handler->hasCompleted()) {
+				unregisterHandler(event.data.fd);
+			}
 		}
 	}
 

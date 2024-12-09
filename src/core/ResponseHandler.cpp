@@ -33,7 +33,7 @@ namespace core {
 	}
 
 	// note: the implementation is just temporary
-	void ResponseHandler::handle(HandleContext &ctx) {
+	void ResponseHandler::handle(HandlerContext &ctx) {
 		int fd = ctx.conn.getSocket().getFd();
 		std::cout << "ResponseHandler on fd: " << fd << std::endl;
 		const char *response =
@@ -44,13 +44,14 @@ namespace core {
 			"Hello, World!";
 
 		ssize_t bytesSent = send(fd, response, strlen(response), 0);
-		close(fd);
+		close(fd); //???
 
 		if (bytesSent < 0) {
 			std::cerr << "Error sending data" << std::endl;
 			return;
 		}
 		std::cout << "Sent response: " << response << std::endl;
+		m_state = COMPLETED;
 	}
 
 } /* namespace core */

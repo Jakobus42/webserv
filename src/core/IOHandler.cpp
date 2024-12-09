@@ -30,7 +30,7 @@ namespace core {
 		return *this;
 	}
 
-	void IOHandler::handle(HandleContext &ctx) {
+	void IOHandler::handle(HandlerContext &ctx) {
 		if (ctx.events & EPOLLIN) {
 			m_requestHandler.handle(ctx);
 		}
@@ -40,6 +40,10 @@ namespace core {
 		if (ctx.events & EPOLLERR) {
 			std::cout << "oup oup oup" << std::endl;
 		}
+	}
+
+	bool IOHandler::hasCompleted() const {
+		return m_requestHandler.hasCompleted() && m_responseHandler.hasCompleted();
 	}
 
 } /* namespace core */
