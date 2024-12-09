@@ -156,6 +156,7 @@ namespace core {
 					this->registerHandler(conn.getSocket().getFd(), handler, HandlerContext(vServer, conn), EPOLLIN | EPOLLOUT);
 				} catch (std::exception &e) {
 					delete handler;
+					std::cerr << e.what() << std::endl;
 				}
 			}
 		}
