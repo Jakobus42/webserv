@@ -39,6 +39,7 @@ namespace core {
 
 		ssize_t bytesReceived = recv(fd, buffer, sizeof(buffer) - 1, 0);
 		if (bytesReceived < 0) {
+			m_state = COMPLETED; // just temporary
 			std::cerr << "Error receiving data" << std::endl;
 			return;
 		}
