@@ -116,16 +116,13 @@ namespace core {
 		while (true) {
 			for (std::vector<http::VirtualServer>::iterator it = m_vServers.begin(); it != m_vServers.end(); ++it) {
 				http::VirtualServer &vServer = *it;
-				bool isEstablished = true;
 
-				while (isEstablished) {
-					isEstablished = vServer.addConnection();
-					if (isEstablished) {
-						http::Connection &conn = vServer.getConnections().back();
-						this->registerHandler(conn.getSocket().getFd(), new IOHandler(), new HandleContext(vServer, conn), EPOLLIN | EPOLLOUT);
-					}
+				while (vServer.addConnection()) {
+					http::Connection &conn = vServer.getConnections().back();
+					this->registerHandler(conn.getSocket().getFd(), new IOHandler(), new HandleContext(vServer, conn), EPOLLIN | EPOLLOUT);
 				}
 			}
+
 			int nEvents = epoll_wait(m_epoll_master_fd, events, MAX_EVENTS, 60);
 			if (nEvents < 0) {
 				throw std::runtime_error("Epoll dun goofed up!");
