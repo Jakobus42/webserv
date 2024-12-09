@@ -256,17 +256,24 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00149">149</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                                       {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">for</span> (std::vector&lt;http::VirtualServer&gt;::iterator it = <a class="code" href="classcore_1_1Reactor.html#a5ec2aade1fe15c8a13b06a7ac0d26469">m_vServers</a>.begin(); it != <a class="code" href="classcore_1_1Reactor.html#a5ec2aade1fe15c8a13b06a7ac0d26469">m_vServers</a>.end(); ++it) {</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <a class="code" href="classhttp_1_1VirtualServer.html">http::VirtualServer</a> &amp;vServer = *it;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <span class="keywordflow">while</span> (vServer.<a class="code" href="classhttp_1_1VirtualServer.html#aba633077d4bc512dcb2caf15e6b035d4">addConnection</a>()) {</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                <a class="code" href="classhttp_1_1Connection.html">http::Connection</a> &amp;conn = vServer.<a class="code" href="classhttp_1_1VirtualServer.html#a9a2c96594ed7379e782a1fe266f9ebc9">getConnections</a>().back();</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                this-&gt;<a class="code" href="classcore_1_1Reactor.html#a4d4addc4a1552b4560a9ef7da596b869">registerHandler</a>(conn.<a class="code" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">getSocket</a>().<a class="code" href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf">getFd</a>(), <span class="keyword">new</span> IOHandler(), HandlerContext(vServer, conn), EPOLLIN | EPOLLOUT);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            }</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        }</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00146">146</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                                       {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keywordflow">for</span> (std::vector&lt;http::VirtualServer&gt;::iterator it = <a class="code" href="classcore_1_1Reactor.html#a5ec2aade1fe15c8a13b06a7ac0d26469">m_vServers</a>.begin(); it != <a class="code" href="classcore_1_1Reactor.html#a5ec2aade1fe15c8a13b06a7ac0d26469">m_vServers</a>.end(); ++it) {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <a class="code" href="classhttp_1_1VirtualServer.html">http::VirtualServer</a> &amp;vServer = *it;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordflow">while</span> (vServer.<a class="code" href="classhttp_1_1VirtualServer.html#aba633077d4bc512dcb2caf15e6b035d4">addConnection</a>()) {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                <a class="code" href="classhttp_1_1Connection.html">http::Connection</a> &amp;conn = vServer.<a class="code" href="classhttp_1_1VirtualServer.html#a9a2c96594ed7379e782a1fe266f9ebc9">getConnections</a>().back();</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                AHandler *handler = NULL;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                    handler = <span class="keyword">new</span> IOHandler;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                    this-&gt;<a class="code" href="classcore_1_1Reactor.html#a4d4addc4a1552b4560a9ef7da596b869">registerHandler</a>(conn.<a class="code" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">getSocket</a>().<a class="code" href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf">getFd</a>(), handler, HandlerContext(vServer, conn), EPOLLIN | EPOLLOUT);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                } <span class="keywordflow">catch</span> (std::exception &amp;e) {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                    <span class="keyword">delete</span> handler;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    }</div>
 <div class="ttc" id="aclasscore_1_1Reactor_html_a4d4addc4a1552b4560a9ef7da596b869"><div class="ttname"><a href="classcore_1_1Reactor.html#a4d4addc4a1552b4560a9ef7da596b869">core::Reactor::registerHandler</a></div><div class="ttdeci">void registerHandler(int fd, AHandler *handler, const HandlerContext &amp;ctx, uint32_t events=EPOLLIN)</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8cpp_source.html#l00111">Reactor.cpp:111</a></div></div>
 <div class="ttc" id="aclasshttp_1_1ClientSocket_html_a03a9208ccb375195d2799ee47270e1bf"><div class="ttname"><a href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf">http::ClientSocket::getFd</a></div><div class="ttdeci">int getFd(void) const</div><div class="ttdef"><b>Definition:</b> <a href="ClientSocket_8cpp_source.html#l00071">ClientSocket.cpp:71</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Connection_html"><div class="ttname"><a href="classhttp_1_1Connection.html">http::Connection</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition:</b> <a href="Connection_8hpp_source.html#l00012">Connection.hpp:12</a></div></div>
@@ -526,23 +533,24 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00160">160</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                                                           {</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nEvents; ++i) {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <a class="code" href="defines_8hpp.html#acd6d0d9c72020fc35be55606610702c8">t_event</a> &amp;<span class="keyword">event</span> = events[i];</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            EventData *data = <span class="keyword">static_cast&lt;</span>EventData *<span class="keyword">&gt;</span>(<span class="keyword">event</span>.data.ptr);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            HandlerContext &amp;ctx = data-&gt;ctx;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            ctx.events = <span class="keyword">event</span>.events;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            data-&gt;handler-&gt;handle(ctx);</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            <span class="keywordflow">if</span> (data-&gt;handler-&gt;hasCompleted()) {</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                <a class="code" href="classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f">unregisterHandler</a>(ctx.conn.getSocket().getFd());</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                <span class="keyword">delete</span> data-&gt;handler;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <span class="keyword">delete</span> data;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            }</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        }</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_a1804e0ff999d620cb670118403e4de7f"><div class="ttname"><a href="classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f">core::Reactor::unregisterHandler</a></div><div class="ttdeci">void unregisterHandler(int fd)</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8cpp_source.html#l00125">Reactor.cpp:125</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00164">164</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                                                           {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nEvents; ++i) {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            <a class="code" href="defines_8hpp.html#acd6d0d9c72020fc35be55606610702c8">t_event</a> &amp;<span class="keyword">event</span> = events[i];</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            EventData *data = <span class="keyword">static_cast&lt;</span>EventData *<span class="keyword">&gt;</span>(<span class="keyword">event</span>.data.ptr);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            HandlerContext &amp;ctx = data-&gt;ctx;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            ctx.events = <span class="keyword">event</span>.events;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            data-&gt;handler-&gt;handle(ctx);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="keywordflow">if</span> (data-&gt;handler-&gt;hasCompleted()) {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                <a class="code" href="classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f">unregisterHandler</a>(ctx.conn.getSocket().getFd());</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <span class="keyword">delete</span> data-&gt;handler;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                <span class="keyword">delete</span> data;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    }</div>
+<div class="ttc" id="aclasscore_1_1Reactor_html_a1804e0ff999d620cb670118403e4de7f"><div class="ttname"><a href="classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f">core::Reactor::unregisterHandler</a></div><div class="ttdeci">void unregisterHandler(int fd)</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8cpp_source.html#l00122">Reactor.cpp:122</a></div></div>
 <div class="ttc" id="adefines_8hpp_html_acd6d0d9c72020fc35be55606610702c8"><div class="ttname"><a href="defines_8hpp.html#acd6d0d9c72020fc35be55606610702c8">t_event</a></div><div class="ttdeci">struct epoll_event t_event</div><div class="ttdef"><b>Definition:</b> <a href="defines_8hpp_source.html#l00001">defines.hpp:10</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -679,24 +687,24 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00134">134</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                        {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <a class="code" href="defines_8hpp.html#acd6d0d9c72020fc35be55606610702c8">t_event</a> events[<a class="code" href="ServerSocket_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>];</div>
+<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00131">131</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                        {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <a class="code" href="defines_8hpp.html#acd6d0d9c72020fc35be55606610702c8">t_event</a> events[<a class="code" href="ServerSocket_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>];</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <a class="code" href="classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552">acceptNewConnections</a>();</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <a class="code" href="classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552">acceptNewConnections</a>();</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keywordtype">int</span> nEvents = epoll_wait(<a class="code" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a>, events, <a class="code" href="ServerSocket_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>, 60);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordflow">if</span> (nEvents &lt; 0) {</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;epoll_wait failed&quot;</span>);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            }</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <a class="code" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671">handleEvents</a>(events, nEvents);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        }</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordtype">int</span> nEvents = epoll_wait(<a class="code" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a>, events, <a class="code" href="ServerSocket_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>, 60);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordflow">if</span> (nEvents &lt; 0) {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;epoll_wait failed&quot;</span>);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <a class="code" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671">handleEvents</a>(events, nEvents);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    }</div>
 <div class="ttc" id="aServerSocket_8hpp_html_ae42954bb8545d24e3e9dcde5920c9a0b"><div class="ttname"><a href="ServerSocket_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a></div><div class="ttdeci">#define MAX_EVENTS</div><div class="ttdef"><b>Definition:</b> <a href="ServerSocket_8hpp_source.html#l00012">ServerSocket.hpp:12</a></div></div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_a6e1c99b3c9a7c9c3ce63cb413a24f552"><div class="ttname"><a href="classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552">core::Reactor::acceptNewConnections</a></div><div class="ttdeci">void acceptNewConnections()</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8cpp_source.html#l00149">Reactor.cpp:149</a></div></div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_a991302a5853c8ae892987d8673db2671"><div class="ttname"><a href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671">core::Reactor::handleEvents</a></div><div class="ttdeci">void handleEvents(t_event *events, int nEvents)</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8cpp_source.html#l00160">Reactor.cpp:160</a></div></div>
+<div class="ttc" id="aclasscore_1_1Reactor_html_a6e1c99b3c9a7c9c3ce63cb413a24f552"><div class="ttname"><a href="classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552">core::Reactor::acceptNewConnections</a></div><div class="ttdeci">void acceptNewConnections()</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8cpp_source.html#l00146">Reactor.cpp:146</a></div></div>
+<div class="ttc" id="aclasscore_1_1Reactor_html_a991302a5853c8ae892987d8673db2671"><div class="ttname"><a href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671">core::Reactor::handleEvents</a></div><div class="ttdeci">void handleEvents(t_event *events, int nEvents)</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8cpp_source.html#l00164">Reactor.cpp:164</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -779,15 +787,12 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="defines_8hpp.html#acd6d0d9c72020fc35be55606610702c8">t_event</a> event;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keyword">event</span>.events = events;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keyword">event</span>.data.ptr = <span class="keyword">new</span> EventData(handler, ctx); <span class="comment">// note: decided to store data in the event ptr to avoid later lookup</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        std::cout &lt;&lt; <span class="keyword">event</span>.data.ptr &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;handler: &quot;</span> &lt;&lt; handler &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">if</span> (epoll_ctl(<a class="code" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a>, EPOLL_CTL_ADD, fd, &amp;event) &lt; 0) {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keyword">delete</span> handler;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keyword">delete</span> <span class="keyword">static_cast&lt;</span>EventData *<span class="keyword">&gt;</span>(<span class="keyword">event</span>.data.ptr);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Crud! Couldn&#39;t register event handler!&quot;</span>);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        }</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keyword">event</span>.data.ptr = <span class="keyword">new</span> EventData(handler, ctx);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">if</span> (epoll_ctl(<a class="code" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a>, EPOLL_CTL_ADD, fd, &amp;event) &lt; 0) {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keyword">delete</span> <span class="keyword">static_cast&lt;</span>EventData *<span class="keyword">&gt;</span>(<span class="keyword">event</span>.data.ptr);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Crud! Couldn&#39;t register event handler!&quot;</span>);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -856,15 +861,15 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00125">125</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                                                                  {</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <a class="code" href="defines_8hpp.html#acd6d0d9c72020fc35be55606610702c8">t_event</a> event;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">if</span> (epoll_ctl(<a class="code" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a>, EPOLL_CTL_DEL, fd, &amp;event) &lt; 0) {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Пиздец! Couldn&#39;t unregister event handler!&quot;</span>);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        close(fd); <span class="comment">// tmp;</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00122">122</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                                                                  {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <a class="code" href="defines_8hpp.html#acd6d0d9c72020fc35be55606610702c8">t_event</a> event;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">if</span> (epoll_ctl(<a class="code" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a>, EPOLL_CTL_DEL, fd, &amp;event) &lt; 0) {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Пиздец! Couldn&#39;t unregister event handler!&quot;</span>);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        close(fd);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

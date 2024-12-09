@@ -256,9 +256,9 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        ssize_t bytesSent = send(fd, response, strlen(response), 0);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">if</span> (bytesSent &lt; 0) {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            std::cerr &lt;&lt; <span class="stringliteral">&quot;Error sending data&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Sent response: &quot;</span> &lt;&lt; response &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;Sent response: &quot;</span> &lt;&lt; response &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="classcore_1_1AHandler.html#a2f59955dbd14d8250ce1eb0bc83b3473">m_state</a> = <a class="code" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a6e31c0e2dab1b21ac70715fca05a0ff4">COMPLETED</a>;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
 <div class="ttc" id="aclasscore_1_1AHandler_html_a2f59955dbd14d8250ce1eb0bc83b3473"><div class="ttname"><a href="classcore_1_1AHandler.html#a2f59955dbd14d8250ce1eb0bc83b3473">core::AHandler::m_state</a></div><div class="ttdeci">HandlerState m_state</div><div class="ttdef"><b>Definition:</b> <a href="AHandler_8hpp_source.html#l00043">AHandler.hpp:43</a></div></div>
