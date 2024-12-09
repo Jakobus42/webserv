@@ -85,61 +85,6 @@ namespace core {
 		m_vServers.push_back(server);
 	}
 
-	bool Reactor::removeVirtualServer(
-		std::vector<http::VirtualServer>::iterator it) {
-		m_vServers.erase(it);
-		return true;
-	}
-
-	void Reactor::registerHandler(int fd, IHandler *handler, HandleContext *ctx, uint32_t events) throw(std::runtime_error) {
-		t_event event;
-
-		event.data.ptr = ctx; // leaking :c just store in a map maybe
-		event.events = events;
-		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_ADD, fd, &event) < 0) {
-			std::cerr << "epoll_ctl failed for fd " << fd << ": " << strerror(errno) << std::endl;
-			throw std::runtime_error("Crud! Couldn't register event handler!"); // TODO: dont use exception
-		}
-		m_eventHandlers[fd] = handler;
-	}
-
-	void Reactor::unregisterHandler(int fd) throw(std::runtime_error) {
-		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_DEL, fd, NULL) < 0) {
-			throw std::runtime_error("Пиздец! Couldn't unregister event handler!");
-		}
-		m_eventHandlers.erase(fd);
-	}
-
-	void Reactor::react() {
-		t_event events[MAX_EVENTS];
-
-		while (true) {
-			for (std::vector<http::VirtualServer>::iterator it = m_vServers.begin(); it != m_vServers.end(); ++it) {
-				http::VirtualServer &vServer = *it;
-
-				while (vServer.addConnection()) {
-					http::Connection &conn = vServer.getConnections().back();
-					this->registerHandler(conn.getSocket().getFd(), new IOHandler(), new HandleContext(vServer, conn), EPOLLIN | EPOLLOUT);
-				}
-			}
-
-			int nEvents = epoll_wait(m_epoll_master_fd, events, MAX_EVENTS, 60);
-			if (nEvents < 0) {
-				throw std::runtime_error("Epoll dun goofed up!");
-			}
-
-			for (int i = 0; i < nEvents; ++i) {
-				t_event &event = events[i];
-				HandleContext *ctx = reinterpret_cast<HandleContext *>(event.data.ptr);
-				if (!ctx) {
-					continue;
-				}
-				m_eventHandlers.at(ctx->conn.getSocket().getFd())->handle(*ctx);
-				ctx->conn.close(); // tmp;
-			}
-		}
-	}
-
 	bool Reactor::addVirtualServers(config::t_config_data &configData) {
 		for (size_t i = 0; i < configData.servers.size(); ++i) {
 			http::VirtualServer server(configData.servers.at(i));
@@ -155,6 +100,69 @@ namespace core {
 			m_vServers.push_back(server);
 		}
 		return true;
+	}
+
+	bool Reactor::removeVirtualServer(
+		std::vector<http::VirtualServer>::iterator it) {
+		m_vServers.erase(it);
+		return true;
+	}
+
+	void Reactor::registerHandler(int fd, IHandler *handler, HandleContext *ctx) throw(std::runtime_error) {
+		t_event event;
+
+		event.data.ptr = ctx; // note: leaking (just temporary)
+		event.events = ctx->events;
+		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_ADD, fd, &event) < 0) {
+			throw std::runtime_error("Crud! Couldn't register event handler!");
+		}
+		m_eventHandlers[fd] = handler;
+	}
+
+	void Reactor::unregisterHandler(int fd) throw(std::runtime_error) {
+		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_DEL, fd, NULL) < 0) {
+			throw std::runtime_error("Пиздец! Couldn't unregister event handler!");
+		}
+		m_eventHandlers.erase(fd);
+	}
+
+	void Reactor::react() {
+		t_event events[MAX_EVENTS];
+
+		while (true) {
+			acceptNewConnections();
+
+			int nEvents = epoll_wait(m_epoll_master_fd, events, MAX_EVENTS, 60);
+			if (nEvents < 0) {
+				throw std::runtime_error("epoll_wait failed");
+			}
+
+			handleEvents(events, nEvents);
+		}
+	}
+
+	void Reactor::acceptNewConnections() {
+		for (std::vector<http::VirtualServer>::iterator it = m_vServers.begin(); it != m_vServers.end(); ++it) {
+			http::VirtualServer &vServer = *it;
+
+			while (vServer.addConnection()) {
+				http::Connection &conn = vServer.getConnections().back();
+				// TODO:
+				//  dont take events in context as we add them when events happen
+				//  HandleContext should be stored differently and not be allocated
+				this->registerHandler(conn.getSocket().getFd(), new IOHandler(), new HandleContext(vServer, conn, EPOLLIN | EPOLLOUT));
+			}
+		}
+	}
+
+	void Reactor::handleEvents(t_event *events, int nEvents) {
+		for (int i = 0; i < nEvents; ++i) {
+			t_event &event = events[i];
+
+			HandleContext *ctx = reinterpret_cast<HandleContext *>(event.data.ptr);
+			ctx->events = event.events;
+			m_eventHandlers.at(ctx->conn.getSocket().getFd())->handle(*ctx);
+		}
 	}
 
 } /* namespace core */

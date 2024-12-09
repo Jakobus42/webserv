@@ -105,6 +105,7 @@ namespace http {
 	 * @return true if the connection could be established
 	 * @return false if accept() within Connection->ClientSocket fails
 	 */
+	// TODO: take a connection as parameter and call explictly accept brefor adding
 	bool VirtualServer::addConnection(void) {
 		try {
 			Connection newConnection(m_listen_socket.getFd());

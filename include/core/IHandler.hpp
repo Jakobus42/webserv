@@ -8,10 +8,12 @@ namespace core {
 	struct HandleContext {
 			http::VirtualServer &vServer;
 			http::Connection &conn;
+			uint32_t events;
 
-			HandleContext(http::VirtualServer &vServer, http::Connection &conn)
+			HandleContext(http::VirtualServer &vServer, http::Connection &conn, uint32_t events)
 				: vServer(vServer)
-				, conn(conn) {}
+				, conn(conn)
+				, events(events) {}
 	};
 
 	/**

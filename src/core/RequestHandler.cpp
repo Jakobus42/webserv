@@ -33,8 +33,22 @@ namespace core {
 	}
 
 	void RequestHandler::handle(HandleContext &ctx) {
-		std::cout << "I am a cool request handler" << std::endl;
-		std::cout << "I am handling connection: " << ctx.conn.getSocket().getFd() << std::endl;
+		int fd = ctx.conn.getSocket().getFd();
+		char buffer[1024];
+
+		ssize_t bytesReceived = recv(fd, buffer, sizeof(buffer) - 1, 0);
+		if (bytesReceived < 0) {
+			ctx.conn.close();
+			std::cerr << "Error receiving data" << std::endl;
+			return;
+		}
+		if (bytesReceived == 0) {
+			ctx.conn.close(); // why can I close it in read and response? sus
+			return;
+		}
+		buffer[bytesReceived] = '\0';
+		std::cout << "Received bytes: " << bytesReceived << std::endl;
+		std::cout << "Received data: " << buffer << std::endl;
 	}
 
 } /* namespace core */

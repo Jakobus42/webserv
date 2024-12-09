@@ -30,8 +30,16 @@ namespace core {
 		return *this;
 	}
 
-	void IOHandler::handle(HandleContext &) {
-		std::cout << "IO HANDLER DOING IOOOOO" << std::endl;
+	void IOHandler::handle(HandleContext &ctx) {
+		if (ctx.events & EPOLLIN) {
+			m_requestHandler.handle(ctx);
+		}
+		if (ctx.events & EPOLLOUT) {
+			m_responseHandler.handle(ctx);
+		}
+		if (ctx.events & EPOLLERR) {
+			std::cout << "oup oup oup" << std::endl;
+		}
 	}
 
 } /* namespace core */
