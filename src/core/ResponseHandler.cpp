@@ -1,5 +1,7 @@
 #include "core/ResponseHandler.hpp"
 
+#include <cstring>
+
 namespace core {
 
 	/**
@@ -30,7 +32,24 @@ namespace core {
 		return *this;
 	}
 
-	void ResponseHandler::handle(HandleContext &) {
+	void ResponseHandler::handle(HandleContext &ctx) {
+		int fd = ctx.conn.getSocket().getFd();
+		std::cout << "ResponseHandler on fd: " << fd << std::endl;
+		const char *response =
+			"HTTP/1.1 200 OK\r\n"
+			"Content-Type: text/plain\r\n"
+			"Content-Length: 13\r\n"
+			"\r\n"
+			"Hello, World!";
+
+		ssize_t bytesSent = send(fd, response, strlen(response), 0);
+		close(fd);
+
+		if (bytesSent < 0) {
+			std::cerr << "Error sending data" << std::endl;
+			return;
+		}
+		std::cout << "Sent response: " << response << std::endl;
 	}
 
 } /* namespace core */
