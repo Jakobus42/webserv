@@ -166,9 +166,9 @@ namespace core {
 			ctx.events = event.events;
 			data->handler->handle(ctx);
 			if (data->handler->hasCompleted()) {
+				unregisterHandler(ctx.conn.getSocket().getFd());
 				delete data->handler;
 				delete data;
-				unregisterHandler(ctx.conn.getSocket().getFd());
 			}
 		}
 	}
