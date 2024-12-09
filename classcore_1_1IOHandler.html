@@ -245,13 +245,14 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">if</span> (ctx.events &amp; EPOLLIN) {</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <a class="code" href="classcore_1_1IOHandler.html#a60674611e839de1a77fa0a0c5714cfed">m_requestHandler</a>.<a class="code" href="classcore_1_1RequestHandler.html#aa2df5eedf161076297b594d47951022b">handle</a>(ctx);</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">if</span> (ctx.events &amp; EPOLLOUT) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">if</span> (ctx.events &amp; EPOLLOUT &amp;&amp; <a class="code" href="classcore_1_1IOHandler.html#a60674611e839de1a77fa0a0c5714cfed">m_requestHandler</a>.<a class="code" href="classcore_1_1AHandler.html#ac06b9786e3ee7593b7b788a59c82d0c5">hasCompleted</a>()) {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <a class="code" href="classcore_1_1IOHandler.html#a729c0ee52ace1148df13ebd395499803">m_responseHandler</a>.<a class="code" href="classcore_1_1ResponseHandler.html#abdbc50c5c4d5319cfb71891b1dc05ee1">handle</a>(ctx);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">if</span> (ctx.events &amp; EPOLLERR) {</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;oup oup oup&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        }</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="ttc" id="aclasscore_1_1AHandler_html_ac06b9786e3ee7593b7b788a59c82d0c5"><div class="ttname"><a href="classcore_1_1AHandler.html#ac06b9786e3ee7593b7b788a59c82d0c5">core::AHandler::hasCompleted</a></div><div class="ttdeci">virtual bool hasCompleted() const</div><div class="ttdef"><b>Definition:</b> <a href="AHandler_8hpp_source.html#l00033">AHandler.hpp:33</a></div></div>
 <div class="ttc" id="aclasscore_1_1IOHandler_html_a60674611e839de1a77fa0a0c5714cfed"><div class="ttname"><a href="classcore_1_1IOHandler.html#a60674611e839de1a77fa0a0c5714cfed">core::IOHandler::m_requestHandler</a></div><div class="ttdeci">RequestHandler m_requestHandler</div><div class="ttdef"><b>Definition:</b> <a href="IOHandler_8hpp_source.html#l00023">IOHandler.hpp:23</a></div></div>
 <div class="ttc" id="aclasscore_1_1IOHandler_html_a729c0ee52ace1148df13ebd395499803"><div class="ttname"><a href="classcore_1_1IOHandler.html#a729c0ee52ace1148df13ebd395499803">core::IOHandler::m_responseHandler</a></div><div class="ttdeci">ResponseHandler m_responseHandler</div><div class="ttdef"><b>Definition:</b> <a href="IOHandler_8hpp_source.html#l00024">IOHandler.hpp:24</a></div></div>
 <div class="ttc" id="aclasscore_1_1RequestHandler_html_aa2df5eedf161076297b594d47951022b"><div class="ttname"><a href="classcore_1_1RequestHandler.html#aa2df5eedf161076297b594d47951022b">core::RequestHandler::handle</a></div><div class="ttdeci">void handle(HandlerContext &amp;ctx)</div><div class="ttdef"><b>Definition:</b> <a href="RequestHandler_8cpp_source.html#l00036">RequestHandler.cpp:36</a></div></div>
@@ -261,13 +262,12 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcore_1_1IOHandler_a8f7dd3c2e34976242f5afffa57a6387f_cgraph.png" border="0" usemap="#aclasscore_1_1IOHandler_a8f7dd3c2e34976242f5afffa57a6387f_cgraph" alt=""/></div>
 <map name="aclasscore_1_1IOHandler_a8f7dd3c2e34976242f5afffa57a6387f_cgraph" id="aclasscore_1_1IOHandler_a8f7dd3c2e34976242f5afffa57a6387f_cgraph">
-<area shape="rect" title=" " alt="" coords="5,101,180,127"/>
-<area shape="rect" href="classcore_1_1RequestHandler.html#aa2df5eedf161076297b594d47951022b" title=" " alt="" coords="233,60,395,101"/>
-<area shape="rect" href="classcore_1_1ResponseHandler.html#abdbc50c5c4d5319cfb71891b1dc05ee1" title=" " alt="" coords="228,125,400,167"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e" title=" " alt="" coords="448,17,619,43"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e" title=" " alt="" coords="667,71,868,98"/>
-<area shape="rect" href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf" title=" " alt="" coords="465,119,602,160"/>
-<area shape="rect" href="classhttp_1_1ClientSocket.html#aaf3b22f0486aa9f8ebfd15bc842c5767" title=" " alt="" coords="699,5,836,47"/>
+<area shape="rect" title=" " alt="" coords="5,78,180,105"/>
+<area shape="rect" href="classcore_1_1RequestHandler.html#aa2df5eedf161076297b594d47951022b" title=" " alt="" coords="257,71,419,112"/>
+<area shape="rect" href="classcore_1_1ResponseHandler.html#abdbc50c5c4d5319cfb71891b1dc05ee1" title=" " alt="" coords="252,5,424,47"/>
+<area shape="rect" href="classcore_1_1AHandler.html#ac06b9786e3ee7593b7b788a59c82d0c5" title=" " alt="" coords="228,137,448,163"/>
+<area shape="rect" href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf" title=" " alt="" coords="528,8,665,49"/>
+<area shape="rect" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e" title=" " alt="" coords="496,75,697,102"/>
 </map>
 </div>
 
@@ -302,7 +302,6 @@ Here is the call graph for this function:</div>
 <div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                       {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classcore_1_1IOHandler.html#a60674611e839de1a77fa0a0c5714cfed">m_requestHandler</a>.<a class="code" href="classcore_1_1AHandler.html#ac06b9786e3ee7593b7b788a59c82d0c5">hasCompleted</a>() &amp;&amp; <a class="code" href="classcore_1_1IOHandler.html#a729c0ee52ace1148df13ebd395499803">m_responseHandler</a>.<a class="code" href="classcore_1_1AHandler.html#ac06b9786e3ee7593b7b788a59c82d0c5">hasCompleted</a>();</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
-<div class="ttc" id="aclasscore_1_1AHandler_html_ac06b9786e3ee7593b7b788a59c82d0c5"><div class="ttname"><a href="classcore_1_1AHandler.html#ac06b9786e3ee7593b7b788a59c82d0c5">core::AHandler::hasCompleted</a></div><div class="ttdeci">virtual bool hasCompleted() const</div><div class="ttdef"><b>Definition:</b> <a href="AHandler_8hpp_source.html#l00033">AHandler.hpp:33</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

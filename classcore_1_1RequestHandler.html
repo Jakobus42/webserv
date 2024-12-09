@@ -250,19 +250,17 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        ssize_t bytesReceived = recv(fd, buffer, <span class="keyword">sizeof</span>(buffer) - 1, 0);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">if</span> (bytesReceived &lt; 0) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            ctx.conn.close();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            std::cerr &lt;&lt; <span class="stringliteral">&quot;Error receiving data&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">if</span> (bytesReceived == 0) {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            ctx.conn.close(); <span class="comment">//??? why can I close it in read and response? sus</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        buffer[bytesReceived] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Received bytes: &quot;</span> &lt;&lt; bytesReceived &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Received data: &quot;</span> &lt;&lt; buffer &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="classcore_1_1AHandler.html#a2f59955dbd14d8250ce1eb0bc83b3473">m_state</a> = <a class="code" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a6e31c0e2dab1b21ac70715fca05a0ff4">COMPLETED</a>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            std::cerr &lt;&lt; <span class="stringliteral">&quot;Error receiving data&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">if</span> (bytesReceived == 0) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        buffer[bytesReceived] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Received bytes: &quot;</span> &lt;&lt; bytesReceived &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Received data: &quot;</span> &lt;&lt; buffer &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="classcore_1_1AHandler.html#a2f59955dbd14d8250ce1eb0bc83b3473">m_state</a> = <a class="code" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a6e31c0e2dab1b21ac70715fca05a0ff4">COMPLETED</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
 <div class="ttc" id="aclasscore_1_1AHandler_html_a2f59955dbd14d8250ce1eb0bc83b3473"><div class="ttname"><a href="classcore_1_1AHandler.html#a2f59955dbd14d8250ce1eb0bc83b3473">core::AHandler::m_state</a></div><div class="ttdeci">HandlerState m_state</div><div class="ttdef"><b>Definition:</b> <a href="AHandler_8hpp_source.html#l00043">AHandler.hpp:43</a></div></div>
 <div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701a6e31c0e2dab1b21ac70715fca05a0ff4"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a6e31c0e2dab1b21ac70715fca05a0ff4">core::COMPLETED</a></div><div class="ttdeci">@ COMPLETED</div><div class="ttdef"><b>Definition:</b> <a href="AHandler_8hpp_source.html#l00011">AHandler.hpp:11</a></div></div>
 </div><!-- fragment --><div class="dynheader">
@@ -270,11 +268,9 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcore_1_1RequestHandler_aa2df5eedf161076297b594d47951022b_cgraph.png" border="0" usemap="#aclasscore_1_1RequestHandler_aa2df5eedf161076297b594d47951022b_cgraph" alt=""/></div>
 <map name="aclasscore_1_1RequestHandler_aa2df5eedf161076297b594d47951022b_cgraph" id="aclasscore_1_1RequestHandler_aa2df5eedf161076297b594d47951022b_cgraph">
-<area shape="rect" title=" " alt="" coords="5,64,168,105"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e" title=" " alt="" coords="216,21,387,47"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e" title=" " alt="" coords="435,71,636,98"/>
-<area shape="rect" href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf" title=" " alt="" coords="233,123,370,164"/>
-<area shape="rect" href="classhttp_1_1ClientSocket.html#aaf3b22f0486aa9f8ebfd15bc842c5767" title=" " alt="" coords="467,5,604,47"/>
+<area shape="rect" title=" " alt="" coords="5,35,168,76"/>
+<area shape="rect" href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf" title=" " alt="" coords="248,5,385,47"/>
+<area shape="rect" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e" title=" " alt="" coords="216,71,417,98"/>
 </map>
 </div>
 <div class="dynheader">
