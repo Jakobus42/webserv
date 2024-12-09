@@ -296,14 +296,13 @@ closing the socket in the process. </dd></dl>
 <dd>
 false if accept() within Connection-&gt;<a class="el" href="classhttp_1_1ClientSocket.html" title="...">ClientSocket</a> fails </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00108">108</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                                          {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            Connection newConnection(<a class="code" href="classhttp_1_1VirtualServer.html#a0ccb6949859fbe3a345acfdc1caa1ef2">m_listen_socket</a>.<a class="code" href="classhttp_1_1ServerSocket.html#a86ec14f7462724b7389ead42881090f9">getFd</a>());</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <a class="code" href="classhttp_1_1VirtualServer.html#a988cfdac3be2b003b0dc353959b2125f">m_connections</a>.push_back(newConnection);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;Added a connection!&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        } <span class="keywordflow">catch</span> (std::exception &amp;e) {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            std::cerr &lt;&lt; <span class="stringliteral">&quot;Exception caught in VServer: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00109">109</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                                          {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            Connection newConnection(<a class="code" href="classhttp_1_1VirtualServer.html#a0ccb6949859fbe3a345acfdc1caa1ef2">m_listen_socket</a>.<a class="code" href="classhttp_1_1ServerSocket.html#a86ec14f7462724b7389ead42881090f9">getFd</a>());</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <a class="code" href="classhttp_1_1VirtualServer.html#a988cfdac3be2b003b0dc353959b2125f">m_connections</a>.push_back(newConnection);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;Added a connection!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        } <span class="keywordflow">catch</span> (std::exception &amp;e) {</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -316,6 +315,17 @@ Here is the call graph for this function:</div>
 <map name="aclasshttp_1_1VirtualServer_aba633077d4bc512dcb2caf15e6b035d4_cgraph" id="aclasshttp_1_1VirtualServer_aba633077d4bc512dcb2caf15e6b035d4_cgraph">
 <area shape="rect" title="Accepts the next incoming connection in the VirtualServerSocket&#39;s queue." alt="" coords="5,5,147,47"/>
 <area shape="rect" href="classhttp_1_1ServerSocket.html#a86ec14f7462724b7389ead42881090f9" title=" " alt="" coords="195,5,336,47"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1VirtualServer_aba633077d4bc512dcb2caf15e6b035d4_icgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_aba633077d4bc512dcb2caf15e6b035d4_icgraph" alt=""/></div>
+<map name="aclasshttp_1_1VirtualServer_aba633077d4bc512dcb2caf15e6b035d4_icgraph" id="aclasshttp_1_1VirtualServer_aba633077d4bc512dcb2caf15e6b035d4_icgraph">
+<area shape="rect" title="Accepts the next incoming connection in the VirtualServerSocket&#39;s queue." alt="" coords="541,5,683,47"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552" title=" " alt="" coords="305,5,493,47"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,39"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,39"/>
 </map>
 </div>
 
@@ -369,8 +379,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1VirtualServer_a9a2c96594ed7379e782a1fe266f9ebc9_icgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_a9a2c96594ed7379e782a1fe266f9ebc9_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1VirtualServer_a9a2c96594ed7379e782a1fe266f9ebc9_icgraph" id="aclasshttp_1_1VirtualServer_a9a2c96594ed7379e782a1fe266f9ebc9_icgraph">
-<area shape="rect" title=" " alt="" coords="195,5,336,47"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a94861a855f49f9780fca077fd12059f4" title="Copy assignment operator." alt="" coords="5,5,147,47"/>
+<area shape="rect" title=" " alt="" coords="541,39,683,80"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552" title=" " alt="" coords="305,5,493,47"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a94861a855f49f9780fca077fd12059f4" title="Copy assignment operator." alt="" coords="329,71,470,112"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,39"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,39"/>
 </map>
 </div>
 

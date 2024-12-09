@@ -65,6 +65,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>accept()
 : <a class="el" href="classhttp_1_1ClientSocket.html#a40be3362141a4bc97a1c75c62a3f92bb">http::ClientSocket</a>
 </li>
+<li>acceptNewConnections()
+: <a class="el" href="classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552">core::Reactor</a>
+</li>
 <li>addConnection()
 : <a class="el" href="classhttp_1_1VirtualServer.html#aba633077d4bc512dcb2caf15e6b035d4">http::VirtualServer</a>
 </li>
@@ -73,6 +76,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>addVirtualServers()
 : <a class="el" href="classcore_1_1Reactor.html#a78d35da396b0218bc397acdce3119c74">core::Reactor</a>
+</li>
+<li>AHandler()
+: <a class="el" href="classcore_1_1AHandler.html#abe3f5d4d25436c5ac05d8ea8779ba155">core::AHandler</a>
 </li>
 <li>autoindex()
 : <a class="el" href="classconfig_1_1ConfigFileParser.html#aae76c210ff9aae74d87a6b57feeb474e">config::ConfigFileParser</a>
@@ -84,9 +90,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <h3><a id="index_b"></a>- b -</h3><ul>
 <li>bind()
 : <a class="el" href="classhttp_1_1ServerSocket.html#ab9a7f8f2c1fe4cded5ac535f12abd84b">http::ServerSocket</a>
-</li>
-<li>body
-: <a class="el" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">http::s_requestData</a>
 </li>
 </ul>
 
@@ -106,11 +109,17 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>ConfigFileParser()
 : <a class="el" href="classconfig_1_1ConfigFileParser.html#ab79a3fdb72f8be15da321b11d2314107">config::ConfigFileParser</a>
 </li>
+<li>conn
+: <a class="el" href="structcore_1_1HandlerContext.html#a4e6fb4c920d541f2f6416a5a9cd1bc8f">core::HandlerContext</a>
+</li>
 <li>Connection()
 : <a class="el" href="classhttp_1_1Connection.html#a6806966a982b17c0b97c4d83ff756293">http::Connection</a>
 </li>
 <li>create()
 : <a class="el" href="classhttp_1_1ServerSocket.html#afd477001689e0c9d1330a57c14618021">http::ServerSocket</a>
+</li>
+<li>ctx
+: <a class="el" href="structcore_1_1EventData.html#a3d9ad76d6d321fa1c3ca3acfa4279d2f">core::EventData</a>
 </li>
 </ul>
 
@@ -122,15 +131,27 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>errorPages
 : <a class="el" href="structconfig_1_1s__server.html#accde464cc4926f08d84f39d39f0ba22d">config::s_server</a>
 </li>
+<li>EventData()
+: <a class="el" href="structcore_1_1EventData.html#a1eb10e56a6f18d1fb89512c541a25083">core::EventData</a>
+</li>
+<li>events
+: <a class="el" href="structcore_1_1HandlerContext.html#a226f641e8e6d4585508ec9e1007e987a">core::HandlerContext</a>
+</li>
 </ul>
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
+<li>getBody()
+: <a class="el" href="classhttp_1_1Request.html#a867f9779974151717071cbc33e09de37">http::Request</a>
+</li>
 <li>getConfigData()
 : <a class="el" href="classconfig_1_1ConfigFileParser.html#ac1aa143b263ccf1e587402e01f612590">config::ConfigFileParser</a>
 </li>
 <li>getConnections()
-: <a class="el" href="classhttp_1_1VirtualServer.html#a9a2c96594ed7379e782a1fe266f9ebc9">http::VirtualServer</a>
+: <a class="el" href="classhttp_1_1VirtualServer.html#a67064669544462157d63cb405d7006a4">http::VirtualServer</a>
+</li>
+<li>getData()
+: <a class="el" href="classhttp_1_1Request.html#a8bed28739f9f095e37da00fdbfea3189">http::Request</a>
 </li>
 <li>getEpollFd()
 : <a class="el" href="classcore_1_1Reactor.html#a7ed17e055952b4a06b0edd71866caca9">core::Reactor</a>
@@ -142,6 +163,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>getFd()
 : <a class="el" href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf">http::ClientSocket</a>
 , <a class="el" href="classhttp_1_1ServerSocket.html#a86ec14f7462724b7389ead42881090f9">http::ServerSocket</a>
+</li>
+<li>getHead()
+: <a class="el" href="classhttp_1_1Request.html#a23ba1b63e9b836434bddc526105fd69e">http::Request</a>
 </li>
 <li>getIp()
 : <a class="el" href="classhttp_1_1ServerSocket.html#a71633055677f6eeb2465e73402979a16">http::ServerSocket</a>
@@ -162,9 +186,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>getNames()
 : <a class="el" href="classhttp_1_1VirtualServer.html#a891d494699e5d2a0cc7bc6834d5c0b7b">http::VirtualServer</a>
 </li>
-<li>getParsingData()
-: <a class="el" href="classhttp_1_1Request.html#abb41cb1a74fae850cbbe841b377f8acf">http::Request</a>
-</li>
 <li>getPort()
 : <a class="el" href="classhttp_1_1ServerSocket.html#a70c95db76d534c58b7cc8e0a5608f73b">http::ServerSocket</a>
 </li>
@@ -172,10 +193,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classhttp_1_1Request.html#a43815c2fb15f1780a37324e6953e7d17">http::Request</a>
 </li>
 <li>getRequest()
-: <a class="el" href="classhttp_1_1Connection.html#ac46e0ad2251ed55b75d9d50179fa3353">http::Connection</a>
-</li>
-<li>getRequestData()
-: <a class="el" href="classhttp_1_1Request.html#a5b597eb2a2ab75e361c2e26f81a2a578">http::Request</a>
+: <a class="el" href="classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894">http::Connection</a>
 </li>
 <li>getServer()
 : <a class="el" href="classconfig_1_1ConfigFileParser.html#a7f4b8b3efb99afbf4797b14160eeee8e">config::ConfigFileParser</a>
@@ -203,8 +221,8 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>getSocketSize()
 : <a class="el" href="classhttp_1_1ClientSocket.html#ad4adf10fede3315fce1b1dd6ec53d7f1">http::ClientSocket</a>
 </li>
-<li>getStatus()
-: <a class="el" href="classhttp_1_1Request.html#a94b960f923e856df1cc565ebbac086c0">http::Request</a>
+<li>getState()
+: <a class="el" href="classcore_1_1AHandler.html#ad34f2097e2bf34b389eb9eeb2b04549d">core::AHandler</a>
 </li>
 <li>getVirtualServers()
 : <a class="el" href="classcore_1_1Reactor.html#a9524e3c9eba3cdd2175cddaf646e50de">core::Reactor</a>
@@ -214,16 +232,29 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_h"></a>- h -</h3><ul>
 <li>handle()
-: <a class="el" href="classcore_1_1RequestHandler.html#a4337bc53e9dc8bbd167e4dae6491fd5b">core::RequestHandler</a>
+: <a class="el" href="classcore_1_1AHandler.html#a729ca645cf9f83e0c431e2a7dfa528d5">core::AHandler</a>
+, <a class="el" href="classcore_1_1IOHandler.html#a8f7dd3c2e34976242f5afffa57a6387f">core::IOHandler</a>
+, <a class="el" href="classcore_1_1RequestHandler.html#aa2df5eedf161076297b594d47951022b">core::RequestHandler</a>
+, <a class="el" href="classcore_1_1ResponseHandler.html#abdbc50c5c4d5319cfb71891b1dc05ee1">core::ResponseHandler</a>
+</li>
+<li>handleEvents()
+: <a class="el" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671">core::Reactor</a>
 </li>
 <li>handlePrompt()
 : <a class="el" href="classconfig_1_1ConfigFileParser.html#a0c3ffd6d214cb723d953db468e5ebb81">config::ConfigFileParser</a>
 </li>
+<li>handler
+: <a class="el" href="structcore_1_1EventData.html#a367265dc18a5378c01cba01b997b6fe9">core::EventData</a>
+</li>
+<li>HandlerContext()
+: <a class="el" href="structcore_1_1HandlerContext.html#adfabe96a59bfacf4db732692a6ddd2fc">core::HandlerContext</a>
+</li>
 <li>handleServer()
 : <a class="el" href="classconfig_1_1ConfigFileParser.html#a73b58cf8caaac5ec283af208236fb0f5">config::ConfigFileParser</a>
 </li>
-<li>headers
-: <a class="el" href="structhttp_1_1s__requestData.html#aed46f20567a24def45d61720604dce0e">http::s_requestData</a>
+<li>hasCompleted()
+: <a class="el" href="classcore_1_1AHandler.html#ac06b9786e3ee7593b7b788a59c82d0c5">core::AHandler</a>
+, <a class="el" href="classcore_1_1IOHandler.html#ac200ac593f7acb4b9e102921555d25b9">core::IOHandler</a>
 </li>
 </ul>
 
@@ -239,6 +270,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>init()
 : <a class="el" href="classcore_1_1Reactor.html#a71cf64a92f1a7a6293121ede5df60981">core::Reactor</a>
 , <a class="el" href="classhttp_1_1ServerSocket.html#a6701c4cbd2b84873f00d5505f0754bb3">http::ServerSocket</a>
+</li>
+<li>IOHandler()
+: <a class="el" href="classcore_1_1IOHandler.html#a4103c887bdf42b53f51fe2a28e623ff4">core::IOHandler</a>
 </li>
 <li>ip_address
 : <a class="el" href="structconfig_1_1s__server.html#a721adf4101ff6dd0b3a1f7f5a9b11814">config::s_server</a>
@@ -284,6 +318,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>m_alive
 : <a class="el" href="classhttp_1_1ClientSocket.html#a832057ebf419b68c68623c6e9c99b64f">http::ClientSocket</a>
 </li>
+<li>m_body
+: <a class="el" href="classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840">http::Request</a>
+</li>
 <li>m_bound
 : <a class="el" href="classhttp_1_1ServerSocket.html#ab589ae312925db55549cfd9e7abda1ac">http::ServerSocket</a>
 </li>
@@ -299,18 +336,21 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>m_connections
 : <a class="el" href="classhttp_1_1VirtualServer.html#a988cfdac3be2b003b0dc353959b2125f">http::VirtualServer</a>
 </li>
+<li>m_data
+: <a class="el" href="classhttp_1_1Request.html#a6ff80f8234097fba13bd48eed4f8bdaf">http::Request</a>
+</li>
 <li>m_epoll_master_fd
 : <a class="el" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">core::Reactor</a>
 </li>
 <li>m_errorPages
 : <a class="el" href="classhttp_1_1VirtualServer.html#a69f9dbe3c0a9c449ad81b64972ad620c">http::VirtualServer</a>
 </li>
-<li>m_event_handlers
-: <a class="el" href="classcore_1_1Reactor.html#a5d1f6bc0a928665aca11fc69b0f016f9">core::Reactor</a>
-</li>
 <li>m_fd
 : <a class="el" href="classhttp_1_1ClientSocket.html#a984373e7284e5bffabdfe1b070cf2550">http::ClientSocket</a>
 , <a class="el" href="classhttp_1_1ServerSocket.html#a809f85dc1d3c6e8c952e2fd59e139e66">http::ServerSocket</a>
+</li>
+<li>m_head
+: <a class="el" href="classhttp_1_1Request.html#aa84838a0d88f5f9750526a91dae03dac">http::Request</a>
 </li>
 <li>m_ip
 : <a class="el" href="classhttp_1_1ServerSocket.html#a41dec02af78f34bc5beb68a13c4e6c5d">http::ServerSocket</a>
@@ -333,9 +373,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>m_open
 : <a class="el" href="classhttp_1_1ServerSocket.html#afe8f3ce532156c6e355d7d8f3f4f0887">http::ServerSocket</a>
 </li>
-<li>m_parsingData
-: <a class="el" href="classhttp_1_1Request.html#a36cc8bb4d441db0fcdf8280c96d0a0bf">http::Request</a>
-</li>
 <li>m_port
 : <a class="el" href="classhttp_1_1ServerSocket.html#abf264281f8922ee914efa53cda6dd3d0">http::ServerSocket</a>
 </li>
@@ -348,8 +385,11 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>m_request
 : <a class="el" href="classhttp_1_1Connection.html#a477ffbed6afb1d2803fe0635b00bd24e">http::Connection</a>
 </li>
-<li>m_requestData
-: <a class="el" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">http::Request</a>
+<li>m_requestHandler
+: <a class="el" href="classcore_1_1IOHandler.html#a60674611e839de1a77fa0a0c5714cfed">core::IOHandler</a>
+</li>
+<li>m_responseHandler
+: <a class="el" href="classcore_1_1IOHandler.html#a729c0ee52ace1148df13ebd395499803">core::IOHandler</a>
 </li>
 <li>m_socketAddress
 : <a class="el" href="classhttp_1_1ClientSocket.html#a9c3b77c83970cdb20152f77c2fb28920">http::ClientSocket</a>
@@ -358,17 +398,14 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>m_socketSize
 : <a class="el" href="classhttp_1_1ClientSocket.html#a8dc519534333a362956b73d51e73512c">http::ClientSocket</a>
 </li>
-<li>m_status
-: <a class="el" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">http::Request</a>
+<li>m_state
+: <a class="el" href="classcore_1_1AHandler.html#a2f59955dbd14d8250ce1eb0bc83b3473">core::AHandler</a>
 </li>
-<li>m_virtual_servers
-: <a class="el" href="classcore_1_1Reactor.html#a96e186a75232b1e64c1f50db7dbea1ec">core::Reactor</a>
+<li>m_vServers
+: <a class="el" href="classcore_1_1Reactor.html#a5ec2aade1fe15c8a13b06a7ac0d26469">core::Reactor</a>
 </li>
 <li>max_body_size
 : <a class="el" href="structconfig_1_1s__server.html#ade81d4fc8e4062f98956c64ea9d866cd">config::s_server</a>
-</li>
-<li>method
-: <a class="el" href="structhttp_1_1s__requestData.html#abad9164bd968c0d77bc39b42e3f4569e">http::s_requestData</a>
 </li>
 <li>methods
 : <a class="el" href="structconfig_1_1s__location.html#a905db2d74ba67f5a0c096825c26a9b9e">config::s_location</a>
@@ -386,8 +423,10 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <h3><a id="index_o"></a>- o -</h3><ul>
 <li>operator=()
 : <a class="el" href="classconfig_1_1ConfigFileParser.html#a0acb350ccad3132be696833d398aa10e">config::ConfigFileParser</a>
+, <a class="el" href="classcore_1_1IOHandler.html#afcded5e63867d4e7fde4c36505eecdcc">core::IOHandler</a>
 , <a class="el" href="classcore_1_1Reactor.html#ae0b7e9ad0a45f7a47f1c114b1e82ba12">core::Reactor</a>
 , <a class="el" href="classcore_1_1RequestHandler.html#aee1ed51a526c87beb9c09c9c69afdee1">core::RequestHandler</a>
+, <a class="el" href="classcore_1_1ResponseHandler.html#ab1adbf051bb4b7547c837e74dfb3f02d">core::ResponseHandler</a>
 , <a class="el" href="classhttp_1_1ClientSocket.html#a7567631efc845df2b238a90a446c3e16">http::ClientSocket</a>
 , <a class="el" href="classhttp_1_1Connection.html#a2f8d41f9bfeb7736635e6cba132d378f">http::Connection</a>
 , <a class="el" href="classhttp_1_1Request.html#a7db055fcd3236ab07f87ff46c9c5f6d2">http::Request</a>
@@ -402,26 +441,11 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index_p"></a>- p -</h3><ul>
-<li>parse()
-: <a class="el" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993">http::Request</a>
-</li>
-<li>parseBody()
-: <a class="el" href="classhttp_1_1Request.html#a1d3a29f13ac9ee1048a9113c0a6fbece">http::Request</a>
-</li>
 <li>parseConfigFile()
 : <a class="el" href="classconfig_1_1ConfigFileParser.html#aa5ac9363ea9ba96a657a351b9b2f3219">config::ConfigFileParser</a>
 </li>
-<li>parseHead()
-: <a class="el" href="classhttp_1_1Request.html#aed8ed09de632d5a8001d566aede5da5d">http::Request</a>
-</li>
-<li>parseHeaders()
-: <a class="el" href="classhttp_1_1Request.html#a208c65a2ba200651baf10b050ab0c1e4">http::Request</a>
-</li>
 <li>port
 : <a class="el" href="structconfig_1_1s__server.html#a5aa5a677f8063439a30812833486cb89">config::s_server</a>
-</li>
-<li>pos
-: <a class="el" href="structhttp_1_1parsingData.html#a2f63e57aae90958ca56842d2a533efac">http::parsingData</a>
 </li>
 <li>printConfigData()
 : <a class="el" href="classconfig_1_1ConfigFileParser.html#a79b633612d04a1d8f9044f66309449d6">config::ConfigFileParser</a>
@@ -443,7 +467,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classconfig_1_1ConfigFileParser.html#adcd94ec61a24121c76942f86999f72dd">config::ConfigFileParser</a>
 </li>
 <li>registerHandler()
-: <a class="el" href="classcore_1_1Reactor.html#a6ff3200c44ff551bcdbee21126206144">core::Reactor</a>
+: <a class="el" href="classcore_1_1Reactor.html#af14262a3af5e40b2e77695ff456839cd">core::Reactor</a>
 </li>
 <li>removeConnection()
 : <a class="el" href="classhttp_1_1VirtualServer.html#a43f961e40bece5869f1d53ec1da8bb9e">http::VirtualServer</a>
@@ -452,13 +476,13 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="classcore_1_1Reactor.html#a46a9763a8f1b22894e9a856862466869">core::Reactor</a>
 </li>
 <li>Request()
-: <a class="el" href="classhttp_1_1Request.html#a20cb90fc8ee4461541ec901399af0a0e">http::Request</a>
+: <a class="el" href="classhttp_1_1Request.html#a5cb6dcae12c90f9f832bf33e2a40ae93">http::Request</a>
 </li>
 <li>RequestHandler()
 : <a class="el" href="classcore_1_1RequestHandler.html#a2bb49f1501fd8b5eee0ecb97b59dc55c">core::RequestHandler</a>
 </li>
-<li>rest
-: <a class="el" href="structhttp_1_1parsingData.html#a23f8b5721d6de6a4af15ba2294cd37bf">http::parsingData</a>
+<li>ResponseHandler()
+: <a class="el" href="classcore_1_1ResponseHandler.html#a78253290483268a82f0bcdc8ba653c56">core::ResponseHandler</a>
 </li>
 <li>return_url
 : <a class="el" href="structconfig_1_1s__location.html#a2beb42e013f131553e26c5c39f180324">config::s_location</a>
@@ -509,23 +533,23 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>unregisterHandler()
 : <a class="el" href="classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f">core::Reactor</a>
 </li>
-<li>uri
-: <a class="el" href="structhttp_1_1s__requestData.html#a57738de926238dbd5142105534918f44">http::s_requestData</a>
-</li>
 </ul>
 
 
 <h3><a id="index_v"></a>- v -</h3><ul>
-<li>version
-: <a class="el" href="structhttp_1_1s__requestData.html#aa89ee8974428c29ddad21ad20b328fab">http::s_requestData</a>
-</li>
 <li>VirtualServer()
 : <a class="el" href="classhttp_1_1VirtualServer.html#a8778b3ec4c25edd59c70e56561a7749b">http::VirtualServer</a>
+</li>
+<li>vServer
+: <a class="el" href="structcore_1_1HandlerContext.html#acc44fe5daa1646f29fd9eb70086a547f">core::HandlerContext</a>
 </li>
 </ul>
 
 
 <h3><a id="index__7E"></a>- ~ -</h3><ul>
+<li>~AHandler()
+: <a class="el" href="classcore_1_1AHandler.html#add5d4cd5e59c6cb5d365987d79f12e33">core::AHandler</a>
+</li>
 <li>~ClientSocket()
 : <a class="el" href="classhttp_1_1ClientSocket.html#a4af23c50a979c4e9d5313b0591676704">http::ClientSocket</a>
 </li>
@@ -535,6 +559,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>~Connection()
 : <a class="el" href="classhttp_1_1Connection.html#aaac47857dfaa6f11c7c46dd7a823b994">http::Connection</a>
 </li>
+<li>~IOHandler()
+: <a class="el" href="classcore_1_1IOHandler.html#a7f072695f4f02382603610e2791f548d">core::IOHandler</a>
+</li>
 <li>~Reactor()
 : <a class="el" href="classcore_1_1Reactor.html#aaff6c3b3cce496556bd797d711f0a37c">core::Reactor</a>
 </li>
@@ -543,6 +570,9 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>~RequestHandler()
 : <a class="el" href="classcore_1_1RequestHandler.html#a07dadef35670a33d85711d047501d0ca">core::RequestHandler</a>
+</li>
+<li>~ResponseHandler()
+: <a class="el" href="classcore_1_1ResponseHandler.html#a473df0e68d7e85ce200b62e984b42590">core::ResponseHandler</a>
 </li>
 <li>~ServerSocket()
 : <a class="el" href="classhttp_1_1ServerSocket.html#af84eff3c0b5f0a1e4909ad42ed84461d">http::ServerSocket</a>

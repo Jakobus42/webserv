@@ -2,14 +2,10 @@ var namespacehttp =
 [
     [ "ClientSocket", "classhttp_1_1ClientSocket.html", "classhttp_1_1ClientSocket" ],
     [ "Connection", "classhttp_1_1Connection.html", "classhttp_1_1Connection" ],
-    [ "s_requestData", "structhttp_1_1s__requestData.html", "structhttp_1_1s__requestData" ],
-    [ "parsingData", "structhttp_1_1parsingData.html", "structhttp_1_1parsingData" ],
     [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
     [ "ServerSocket", "classhttp_1_1ServerSocket.html", "classhttp_1_1ServerSocket" ],
     [ "VirtualServer", "classhttp_1_1VirtualServer.html", "classhttp_1_1VirtualServer" ],
     [ "t_connections", "namespacehttp.html#aa3bcd24ae02414378f7cd9a8aafc784f", null ],
-    [ "t_parsingData", "namespacehttp.html#acefbcae490658d0f2960c373a9535648", null ],
-    [ "t_requestData", "namespacehttp.html#a344224153c4286273f922e54b792a50d", null ],
     [ "t_sockaddr", "namespacehttp.html#a4b20fa68e7c12bf7aff9d3a71a4f2b88", null ],
     [ "t_sockaddr_in", "namespacehttp.html#ac73171fb8c32554229836839f6c4e8ed", null ],
     [ "Method", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cf", [
@@ -22,13 +18,6 @@ var namespacehttp =
       [ "OPTIONS", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa8eb60b331b9dd5b66681f85111d99c1e", null ],
       [ "TRACE", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfac3ae7052b142891ae4cbd8c7d3952e4b", null ],
       [ "CONNECT", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaacb1ee85ea00b29a2292736dd81b7992", null ]
-    ] ],
-    [ "RequestStatus", "namespacehttp.html#a068cab601142fb739077ccd62379df64", [
-      [ "PARSE_START", "namespacehttp.html#a068cab601142fb739077ccd62379df64af1ec52e66d8011ff2329d6937794bdb3", null ],
-      [ "PARSE_HEAD", "namespacehttp.html#a068cab601142fb739077ccd62379df64a6e55d4fbcb4414ad97de58c56bfc3654", null ],
-      [ "PARSE_HEADERS", "namespacehttp.html#a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc", null ],
-      [ "PARSE_BODY", "namespacehttp.html#a068cab601142fb739077ccd62379df64ac4ffb0e12ded445e68ca3f683a01ba21", null ],
-      [ "PARSE_END", "namespacehttp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff", null ]
     ] ],
     [ "StatusCode", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762", [
       [ "OK", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc", null ],

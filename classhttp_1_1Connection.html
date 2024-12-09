@@ -77,11 +77,9 @@ Collaboration diagram for http::Connection:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Connection__coll__graph.png" border="0" usemap="#ahttp_1_1Connection_coll__map" alt="Collaboration graph"/></div>
 <map name="ahttp_1_1Connection_coll__map" id="ahttp_1_1Connection_coll__map">
-<area shape="rect" title="..." alt="" coords="104,564,235,788"/>
-<area shape="rect" href="classhttp_1_1ClientSocket.html" title="..." alt="" coords="5,204,168,501"/>
-<area shape="rect" href="classhttp_1_1Request.html" title="..." alt="" coords="192,219,357,487"/>
-<area shape="rect" href="structhttp_1_1parsingData.html" title=" " alt="" coords="123,27,258,119"/>
-<area shape="rect" href="structhttp_1_1s__requestData.html" title=" " alt="" coords="282,5,433,141"/>
+<area shape="rect" title="..." alt="" coords="115,365,245,589"/>
+<area shape="rect" href="classhttp_1_1ClientSocket.html" title="..." alt="" coords="5,5,168,303"/>
+<area shape="rect" href="classhttp_1_1Request.html" title="..." alt="" coords="192,35,357,273"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -204,21 +202,8 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00027">27</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                            {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        this-&gt;<a class="code" href="classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e">close</a>();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_ab84f4a281cf14d914c045dd0487b386e"><div class="ttname"><a href="classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e">http::Connection::close</a></div><div class="ttdeci">void close(void)</div><div class="ttdef"><b>Definition:</b> <a href="Connection_8cpp_source.html#l00057">Connection.cpp:57</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Connection_aaac47857dfaa6f11c7c46dd7a823b994_cgraph.png" border="0" usemap="#aclasshttp_1_1Connection_aaac47857dfaa6f11c7c46dd7a823b994_cgraph" alt=""/></div>
-<map name="aclasshttp_1_1Connection_aaac47857dfaa6f11c7c46dd7a823b994_cgraph" id="aclasshttp_1_1Connection_aaac47857dfaa6f11c7c46dd7a823b994_cgraph">
-<area shape="rect" title="Destroys the Connection object." alt="" coords="5,35,143,76"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e" title=" " alt="" coords="191,42,361,69"/>
-<area shape="rect" href="classhttp_1_1ClientSocket.html#aaf3b22f0486aa9f8ebfd15bc842c5767" title=" " alt="" coords="441,5,579,47"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e" title=" " alt="" coords="409,71,611,98"/>
-</map>
-</div>
-
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af5a8245eb4674ed237a5e22e46ecf74b"></a>
@@ -245,10 +230,10 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00035">35</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        : <a class="code" href="classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50">m_client_socket</a>(other.getSocket())</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        , <a class="code" href="classhttp_1_1Connection.html#a477ffbed6afb1d2803fe0635b00bd24e">m_request</a>(other.getRequest()) {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00034">34</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        : <a class="code" href="classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50">m_client_socket</a>(other.getSocket())</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        , <a class="code" href="classhttp_1_1Connection.html#a477ffbed6afb1d2803fe0635b00bd24e">m_request</a>(other.getRequest()) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -269,12 +254,12 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00057">57</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                               {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        this-&gt;<a class="code" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">getSocket</a>().<a class="code" href="classhttp_1_1ClientSocket.html#aaf3b22f0486aa9f8ebfd15bc842c5767">close</a>();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
-<div class="ttc" id="aclasshttp_1_1ClientSocket_html_aaf3b22f0486aa9f8ebfd15bc842c5767"><div class="ttname"><a href="classhttp_1_1ClientSocket.html#aaf3b22f0486aa9f8ebfd15bc842c5767">http::ClientSocket::close</a></div><div class="ttdeci">void close(void)</div><div class="ttdef"><b>Definition:</b> <a href="ClientSocket_8cpp_source.html#l00090">ClientSocket.cpp:90</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_ae16a6e4f68981b34d70f101ff798e06e"><div class="ttname"><a href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">http::Connection::getSocket</a></div><div class="ttdeci">const ClientSocket &amp; getSocket(void) const</div><div class="ttdef"><b>Definition:</b> <a href="Connection_8cpp_source.html#l00061">Connection.cpp:61</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00056">56</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                               {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        this-&gt;<a class="code" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">getSocket</a>().<a class="code" href="classhttp_1_1ClientSocket.html#aaf3b22f0486aa9f8ebfd15bc842c5767">close</a>();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
+<div class="ttc" id="aclasshttp_1_1ClientSocket_html_aaf3b22f0486aa9f8ebfd15bc842c5767"><div class="ttname"><a href="classhttp_1_1ClientSocket.html#aaf3b22f0486aa9f8ebfd15bc842c5767">http::ClientSocket::close</a></div><div class="ttdeci">void close(void)</div><div class="ttdef"><b>Definition:</b> <a href="ClientSocket_8cpp_source.html#l00091">ClientSocket.cpp:91</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_ae16a6e4f68981b34d70f101ff798e06e"><div class="ttname"><a href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">http::Connection::getSocket</a></div><div class="ttdeci">const ClientSocket &amp; getSocket(void) const</div><div class="ttdef"><b>Definition:</b> <a href="Connection_8cpp_source.html#l00060">Connection.cpp:60</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -290,8 +275,9 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Connection_ab84f4a281cf14d914c045dd0487b386e_icgraph.png" border="0" usemap="#aclasshttp_1_1Connection_ab84f4a281cf14d914c045dd0487b386e_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1Connection_ab84f4a281cf14d914c045dd0487b386e_icgraph" id="aclasshttp_1_1Connection_ab84f4a281cf14d914c045dd0487b386e_icgraph">
-<area shape="rect" title=" " alt="" coords="191,13,361,39"/>
-<area shape="rect" href="classhttp_1_1Connection.html#aaac47857dfaa6f11c7c46dd7a823b994" title="Destroys the Connection object." alt="" coords="5,5,143,47"/>
+<area shape="rect" title=" " alt="" coords="439,13,609,39"/>
+<area shape="rect" href="classcore_1_1RequestHandler.html#aa2df5eedf161076297b594d47951022b" title=" " alt="" coords="228,5,391,47"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a8f7dd3c2e34976242f5afffa57a6387f" title=" " alt="" coords="5,13,180,39"/>
 </map>
 </div>
 
@@ -331,10 +317,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00069">69</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                                        {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Connection.html#a477ffbed6afb1d2803fe0635b00bd24e">m_request</a>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00068">68</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                                        {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Connection.html#a477ffbed6afb1d2803fe0635b00bd24e">m_request</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -363,10 +349,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00065">65</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                            {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50">m_client_socket</a>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00064">64</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                            {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50">m_client_socket</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -386,20 +372,25 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00061">61</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                                        {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50">m_client_socket</a>;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00060">60</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                                        {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50">m_client_socket</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Connection_ae16a6e4f68981b34d70f101ff798e06e_icgraph.png" border="0" usemap="#aclasshttp_1_1Connection_ae16a6e4f68981b34d70f101ff798e06e_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1Connection_ae16a6e4f68981b34d70f101ff798e06e_icgraph" id="aclasshttp_1_1Connection_ae16a6e4f68981b34d70f101ff798e06e_icgraph">
-<area shape="rect" title=" " alt="" coords="453,63,655,90"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e" title=" " alt="" coords="213,13,383,39"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a2f8d41f9bfeb7736635e6cba132d378f" title="Copy assignment operator." alt="" coords="197,63,399,90"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a0096bcce0cada05a9f7e5e4f5d9d6bfc" title=" " alt="" coords="191,114,405,141"/>
-<area shape="rect" href="classhttp_1_1Connection.html#aaac47857dfaa6f11c7c46dd7a823b994" title="Destroys the Connection object." alt="" coords="5,5,143,47"/>
+<area shape="rect" title=" " alt="" coords="711,147,912,174"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552" title=" " alt="" coords="461,5,649,47"/>
+<area shape="rect" href="classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e" title=" " alt="" coords="470,71,641,98"/>
+<area shape="rect" href="classcore_1_1RequestHandler.html#aa2df5eedf161076297b594d47951022b" title=" " alt="" coords="233,100,395,141"/>
+<area shape="rect" href="classcore_1_1ResponseHandler.html#abdbc50c5c4d5319cfb71891b1dc05ee1" title=" " alt="" coords="228,165,400,207"/>
+<area shape="rect" href="classhttp_1_1Connection.html#a2f8d41f9bfeb7736635e6cba132d378f" title="Copy assignment operator." alt="" coords="454,223,657,250"/>
+<area shape="rect" href="classhttp_1_1Connection.html#a0096bcce0cada05a9f7e5e4f5d9d6bfc" title=" " alt="" coords="448,274,663,301"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="239,13,389,39"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="65,13,120,39"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a8f7dd3c2e34976242f5afffa57a6387f" title=" " alt="" coords="5,139,180,166"/>
 </map>
 </div>
 
@@ -430,14 +421,14 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the assigned <a class="el" href="classhttp_1_1Connection.html" title="...">Connection</a> object. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00045">45</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                                           {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50">m_client_socket</a>.operator=(rhs.getSocket());</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="classhttp_1_1Connection.html#a477ffbed6afb1d2803fe0635b00bd24e">m_request</a> = rhs.getRequest();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00044">44</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                                           {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50">m_client_socket</a>.operator=(rhs.getSocket());</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="classhttp_1_1Connection.html#a477ffbed6afb1d2803fe0635b00bd24e">m_request</a> = rhs.getRequest();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -467,10 +458,10 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00053">53</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                                             {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">return</span> other.getSocket() == this-&gt;<a class="code" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">getSocket</a>();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<p class="definition">Definition at line <a class="el" href="Connection_8cpp_source.html#l00052">52</a> of file <a class="el" href="Connection_8cpp_source.html">Connection.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                                             {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">return</span> other.getSocket() == this-&gt;<a class="code" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">getSocket</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
