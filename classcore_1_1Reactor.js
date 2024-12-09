@@ -13,7 +13,7 @@ var classcore_1_1Reactor =
     [ "init", "classcore_1_1Reactor.html#a71cf64a92f1a7a6293121ede5df60981", null ],
     [ "operator=", "classcore_1_1Reactor.html#ae0b7e9ad0a45f7a47f1c114b1e82ba12", null ],
     [ "react", "classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35", null ],
-    [ "registerHandler", "classcore_1_1Reactor.html#af14262a3af5e40b2e77695ff456839cd", null ],
+    [ "registerHandler", "classcore_1_1Reactor.html#a4d4addc4a1552b4560a9ef7da596b869", null ],
     [ "removeVirtualServer", "classcore_1_1Reactor.html#a46a9763a8f1b22894e9a856862466869", null ],
     [ "unregisterHandler", "classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f", null ],
     [ "m_epoll_master_fd", "classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d", null ],

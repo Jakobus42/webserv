@@ -115,8 +115,8 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:ae0b7e9ad0a45f7a47f1c114b1e82ba12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcore_1_1Reactor.html">Reactor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#ae0b7e9ad0a45f7a47f1c114b1e82ba12">operator=</a> (const <a class="el" href="classcore_1_1Reactor.html">Reactor</a> &amp;other)</td></tr>
 <tr class="memdesc:ae0b7e9ad0a45f7a47f1c114b1e82ba12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assignment operator.  <a href="classcore_1_1Reactor.html#ae0b7e9ad0a45f7a47f1c114b1e82ba12">More...</a><br /></td></tr>
 <tr class="separator:ae0b7e9ad0a45f7a47f1c114b1e82ba12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af14262a3af5e40b2e77695ff456839cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#af14262a3af5e40b2e77695ff456839cd">registerHandler</a> (int fd, <a class="el" href="classcore_1_1AHandler.html">AHandler</a> *handler, <a class="el" href="structcore_1_1HandlerContext.html">HandlerContext</a> ctx, uint32_t events=EPOLLIN)</td></tr>
-<tr class="separator:af14262a3af5e40b2e77695ff456839cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d4addc4a1552b4560a9ef7da596b869"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#a4d4addc4a1552b4560a9ef7da596b869">registerHandler</a> (int fd, <a class="el" href="classcore_1_1AHandler.html">AHandler</a> *handler, const <a class="el" href="structcore_1_1HandlerContext.html">HandlerContext</a> &amp;ctx, uint32_t events=EPOLLIN)</td></tr>
+<tr class="separator:a4d4addc4a1552b4560a9ef7da596b869"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1804e0ff999d620cb670118403e4de7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f">unregisterHandler</a> (int fd)  throw (std::runtime_error)</td></tr>
 <tr class="separator:a1804e0ff999d620cb670118403e4de7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e1c99b3c9a7c9c3ce63cb413a24f552"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552">acceptNewConnections</a> ()</td></tr>
@@ -263,11 +263,11 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">while</span> (vServer.<a class="code" href="classhttp_1_1VirtualServer.html#aba633077d4bc512dcb2caf15e6b035d4">addConnection</a>()) {</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                <a class="code" href="classhttp_1_1Connection.html">http::Connection</a> &amp;conn = vServer.<a class="code" href="classhttp_1_1VirtualServer.html#a9a2c96594ed7379e782a1fe266f9ebc9">getConnections</a>().back();</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                this-&gt;<a class="code" href="classcore_1_1Reactor.html#af14262a3af5e40b2e77695ff456839cd">registerHandler</a>(conn.<a class="code" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">getSocket</a>().<a class="code" href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf">getFd</a>(), <span class="keyword">new</span> IOHandler(), HandlerContext(vServer, conn), EPOLLIN | EPOLLOUT);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                this-&gt;<a class="code" href="classcore_1_1Reactor.html#a4d4addc4a1552b4560a9ef7da596b869">registerHandler</a>(conn.<a class="code" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">getSocket</a>().<a class="code" href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf">getFd</a>(), <span class="keyword">new</span> IOHandler(), HandlerContext(vServer, conn), EPOLLIN | EPOLLOUT);</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            }</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        }</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    }</div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_af14262a3af5e40b2e77695ff456839cd"><div class="ttname"><a href="classcore_1_1Reactor.html#af14262a3af5e40b2e77695ff456839cd">core::Reactor::registerHandler</a></div><div class="ttdeci">void registerHandler(int fd, AHandler *handler, HandlerContext ctx, uint32_t events=EPOLLIN)</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8cpp_source.html#l00111">Reactor.cpp:111</a></div></div>
+<div class="ttc" id="aclasscore_1_1Reactor_html_a4d4addc4a1552b4560a9ef7da596b869"><div class="ttname"><a href="classcore_1_1Reactor.html#a4d4addc4a1552b4560a9ef7da596b869">core::Reactor::registerHandler</a></div><div class="ttdeci">void registerHandler(int fd, AHandler *handler, const HandlerContext &amp;ctx, uint32_t events=EPOLLIN)</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8cpp_source.html#l00111">Reactor.cpp:111</a></div></div>
 <div class="ttc" id="aclasshttp_1_1ClientSocket_html_a03a9208ccb375195d2799ee47270e1bf"><div class="ttname"><a href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf">http::ClientSocket::getFd</a></div><div class="ttdeci">int getFd(void) const</div><div class="ttdef"><b>Definition:</b> <a href="ClientSocket_8cpp_source.html#l00071">ClientSocket.cpp:71</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Connection_html"><div class="ttname"><a href="classhttp_1_1Connection.html">http::Connection</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition:</b> <a href="Connection_8hpp_source.html#l00012">Connection.hpp:12</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Connection_html_ae16a6e4f68981b34d70f101ff798e06e"><div class="ttname"><a href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">http::Connection::getSocket</a></div><div class="ttdeci">const ClientSocket &amp; getSocket(void) const</div><div class="ttdef"><b>Definition:</b> <a href="Connection_8cpp_source.html#l00060">Connection.cpp:60</a></div></div>
@@ -284,7 +284,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="classhttp_1_1VirtualServer.html#a9a2c96594ed7379e782a1fe266f9ebc9" title=" " alt="" coords="279,71,421,112"/>
 <area shape="rect" href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf" title=" " alt="" coords="281,136,419,177"/>
 <area shape="rect" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e" title=" " alt="" coords="249,202,451,229"/>
-<area shape="rect" href="classcore_1_1Reactor.html#af14262a3af5e40b2e77695ff456839cd" title=" " alt="" coords="241,253,459,279"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a4d4addc4a1552b4560a9ef7da596b869" title=" " alt="" coords="241,253,459,279"/>
 <area shape="rect" href="classhttp_1_1ServerSocket.html#a86ec14f7462724b7389ead42881090f9" title=" " alt="" coords="507,5,648,47"/>
 </map>
 </div>
@@ -705,7 +705,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="classhttp_1_1VirtualServer.html#a9a2c96594ed7379e782a1fe266f9ebc9" title=" " alt="" coords="494,71,635,112"/>
 <area shape="rect" href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf" title=" " alt="" coords="496,136,633,177"/>
 <area shape="rect" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e" title=" " alt="" coords="464,202,665,229"/>
-<area shape="rect" href="classcore_1_1Reactor.html#af14262a3af5e40b2e77695ff456839cd" title=" " alt="" coords="456,253,673,279"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a4d4addc4a1552b4560a9ef7da596b869" title=" " alt="" coords="456,253,673,279"/>
 <area shape="rect" href="classhttp_1_1ServerSocket.html#a86ec14f7462724b7389ead42881090f9" title=" " alt="" coords="723,5,864,47"/>
 <area shape="rect" href="classcore_1_1AHandler.html#a729ca645cf9f83e0c431e2a7dfa528d5" title=" " alt="" coords="479,303,650,330"/>
 <area shape="rect" href="classcore_1_1AHandler.html#ac06b9786e3ee7593b7b788a59c82d0c5" title=" " alt="" coords="455,354,675,381"/>
@@ -724,8 +724,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="af14262a3af5e40b2e77695ff456839cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af14262a3af5e40b2e77695ff456839cd">&#9670;&nbsp;</a></span>registerHandler()</h2>
+<a id="a4d4addc4a1552b4560a9ef7da596b869"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d4addc4a1552b4560a9ef7da596b869">&#9670;&nbsp;</a></span>registerHandler()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -748,7 +748,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structcore_1_1HandlerContext.html">HandlerContext</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="structcore_1_1HandlerContext.html">HandlerContext</a> &amp;&#160;</td>
           <td class="paramname"><em>ctx</em>, </td>
         </tr>
         <tr>
@@ -771,7 +771,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00111">111</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                                                                                                {</div>
+<div class="fragment"><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                                                                                                       {</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="defines_8hpp.html#acd6d0d9c72020fc35be55606610702c8">t_event</a> event;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keyword">event</span>.events = events;</div>
@@ -783,8 +783,8 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classcore_1_1Reactor_af14262a3af5e40b2e77695ff456839cd_icgraph.png" border="0" usemap="#aclasscore_1_1Reactor_af14262a3af5e40b2e77695ff456839cd_icgraph" alt=""/></div>
-<map name="aclasscore_1_1Reactor_af14262a3af5e40b2e77695ff456839cd_icgraph" id="aclasscore_1_1Reactor_af14262a3af5e40b2e77695ff456839cd_icgraph">
+<div class="center"><img src="classcore_1_1Reactor_a4d4addc4a1552b4560a9ef7da596b869_icgraph.png" border="0" usemap="#aclasscore_1_1Reactor_a4d4addc4a1552b4560a9ef7da596b869_icgraph" alt=""/></div>
+<map name="aclasscore_1_1Reactor_a4d4addc4a1552b4560a9ef7da596b869_icgraph" id="aclasscore_1_1Reactor_a4d4addc4a1552b4560a9ef7da596b869_icgraph">
 <area shape="rect" title=" " alt="" coords="541,13,759,39"/>
 <area shape="rect" href="classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552" title=" " alt="" coords="305,5,493,47"/>
 <area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,39"/>
