@@ -25,7 +25,6 @@ namespace http {
 	 * @note Closes the file, since this is our only reference to it.
 	 */
 	Connection::~Connection() {
-		this->close();
 	}
 
 	/**

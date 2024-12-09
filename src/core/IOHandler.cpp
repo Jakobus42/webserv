@@ -31,6 +31,7 @@ namespace core {
 	}
 
 	void IOHandler::handle(HandleContext &) {
+		std::cout << "IO HANDLER DOING IOOOOO" << std::endl;
 	}
 
 } /* namespace core */
