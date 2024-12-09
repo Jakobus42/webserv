@@ -1,6 +1,6 @@
 #pragma once
 
-#include "core/IHandler.hpp"
+#include "core/AHandler.hpp"
 
 namespace core {
 
@@ -8,12 +8,12 @@ namespace core {
 	 * @class RequestHandler
 	 * @brief ...
 	 */
-	class RequestHandler : public IHandler {
+	class RequestHandler : public AHandler {
 		public:
 			RequestHandler();
 			~RequestHandler();
 
-			void handle(HandleContext &ctx);
+			void handle(HandlerContext &ctx);
 		private:
 			RequestHandler(const RequestHandler &other);
 			RequestHandler &operator=(const RequestHandler &rhs);

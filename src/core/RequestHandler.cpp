@@ -33,7 +33,7 @@ namespace core {
 	}
 
 	// note: the implementation is just temporary
-	void RequestHandler::handle(HandleContext &ctx) {
+	void RequestHandler::handle(HandlerContext &ctx) {
 		int fd = ctx.conn.getSocket().getFd();
 		char buffer[1024];
 
@@ -44,12 +44,13 @@ namespace core {
 			return;
 		}
 		if (bytesReceived == 0) {
-			ctx.conn.close(); // why can I close it in read and response? sus
+			ctx.conn.close(); //??? why can I close it in read and response? sus
 			return;
 		}
 		buffer[bytesReceived] = '\0';
 		std::cout << "Received bytes: " << bytesReceived << std::endl;
 		std::cout << "Received data: " << buffer << std::endl;
+		m_state = COMPLETED;
 	}
 
 } /* namespace core */
