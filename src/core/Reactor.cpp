@@ -1,5 +1,6 @@
 #include "core/Reactor.hpp"
 
+#include <fcntl.h>
 #include <sys/epoll.h>
 #include <unistd.h>
 
@@ -8,6 +9,8 @@
 
 #include <cstring>
 #include <stdexcept>
+
+// TODO: refactor this fucker but shit is working (except some nice fd and memory leaks)
 
 namespace core {
 
@@ -88,10 +91,10 @@ namespace core {
 		return true;
 	}
 
-	void Reactor::registerHandler(int fd, IHandler *handler, uint32_t events) throw(std::runtime_error) {
+	void Reactor::registerHandler(int fd, IHandler *handler, HandleContext *ctx, uint32_t events) throw(std::runtime_error) {
 		t_event event;
 
-		event.data.fd = fd;
+		event.data.ptr = ctx; // leaking :c just store in a map maybe
 		event.events = events;
 		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_ADD, fd, &event) < 0) {
 			std::cerr << "epoll_ctl failed for fd " << fd << ": " << strerror(errno) << std::endl;
@@ -118,13 +121,24 @@ namespace core {
 				while (isEstablished) {
 					isEstablished = vServer.addConnection();
 					if (isEstablished) {
-						this->registerHandler(vServer.getConnections().back().getSocket().getFd(), new IOHandler(), EPOLLIN | EPOLLOUT);
+						http::Connection &conn = vServer.getConnections().back();
+						this->registerHandler(conn.getSocket().getFd(), new IOHandler(), new HandleContext(vServer, conn), EPOLLIN | EPOLLOUT);
 					}
 				}
 			}
 			int nEvents = epoll_wait(m_epoll_master_fd, events, MAX_EVENTS, 60);
 			if (nEvents < 0) {
 				throw std::runtime_error("Epoll dun goofed up!");
+			}
+
+			for (int i = 0; i < nEvents; ++i) {
+				t_event &event = events[i];
+				HandleContext *ctx = reinterpret_cast<HandleContext *>(event.data.ptr);
+				if (!ctx) {
+					continue;
+				}
+				m_eventHandlers.at(ctx->conn.getSocket().getFd())->handle(*ctx);
+				ctx->conn.close(); // tmp;
 			}
 		}
 	}

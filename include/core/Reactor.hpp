@@ -32,8 +32,7 @@ namespace core {
 			bool removeVirtualServer(std::vector<http::VirtualServer>::iterator it);
 			bool addVirtualServers(config::t_config_data &configData);
 
-			void registerHandler(
-				int fd, IHandler *handler, uint32_t events = EPOLLIN) throw(std::runtime_error);
+			void registerHandler(int fd, IHandler *handler, HandleContext *ctx, uint32_t events = EPOLLIN) throw(std::runtime_error);
 			void unregisterHandler(int fd) throw(std::runtime_error);
 			void react();
 		private:
