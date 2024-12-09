@@ -32,6 +32,7 @@ namespace core {
 		return *this;
 	}
 
+	// note: the implementation is just temporary
 	void RequestHandler::handle(HandleContext &ctx) {
 		int fd = ctx.conn.getSocket().getFd();
 		char buffer[1024];

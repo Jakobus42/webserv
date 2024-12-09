@@ -32,6 +32,7 @@ namespace core {
 		return *this;
 	}
 
+	// note: the implementation is just temporary
 	void ResponseHandler::handle(HandleContext &ctx) {
 		int fd = ctx.conn.getSocket().getFd();
 		std::cout << "ResponseHandler on fd: " << fd << std::endl;
