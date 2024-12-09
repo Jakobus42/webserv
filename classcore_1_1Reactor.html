@@ -265,7 +265,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                <a class="code" href="classhttp_1_1Connection.html">http::Connection</a> &amp;conn = vServer.<a class="code" href="classhttp_1_1VirtualServer.html#a9a2c96594ed7379e782a1fe266f9ebc9">getConnections</a>().back();</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                AHandler *handler = NULL;</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                <span class="keywordflow">try</span> { <span class="comment">// we have to get rid of this shit try stuff</span></div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                    handler = <span class="keyword">new</span> IOHandler;</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                    this-&gt;<a class="code" href="classcore_1_1Reactor.html#a4d4addc4a1552b4560a9ef7da596b869">registerHandler</a>(conn.<a class="code" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">getSocket</a>().<a class="code" href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf">getFd</a>(), handler, HandlerContext(vServer, conn), EPOLLIN | EPOLLOUT);</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                } <span class="keywordflow">catch</span> (std::exception &amp;e) {</div>
