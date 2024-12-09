@@ -151,7 +151,7 @@ namespace core {
 				http::Connection &conn = vServer.getConnections().back();
 				AHandler *handler = NULL;
 
-				try {
+				try { // we have to get rid of this shit try stuff
 					handler = new IOHandler;
 					this->registerHandler(conn.getSocket().getFd(), handler, HandlerContext(vServer, conn), EPOLLIN | EPOLLOUT);
 				} catch (std::exception &e) {
