@@ -39,12 +39,10 @@ namespace core {
 
 		ssize_t bytesReceived = recv(fd, buffer, sizeof(buffer) - 1, 0);
 		if (bytesReceived < 0) {
-			ctx.conn.close();
 			std::cerr << "Error receiving data" << std::endl;
 			return;
 		}
 		if (bytesReceived == 0) {
-			ctx.conn.close(); //??? why can I close it in read and response? sus
 			return;
 		}
 		buffer[bytesReceived] = '\0';

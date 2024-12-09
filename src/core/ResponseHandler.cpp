@@ -44,8 +44,6 @@ namespace core {
 			"Hello, World!";
 
 		ssize_t bytesSent = send(fd, response, strlen(response), 0);
-		close(fd); //???
-
 		if (bytesSent < 0) {
 			std::cerr << "Error sending data" << std::endl;
 			return;
