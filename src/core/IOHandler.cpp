@@ -34,7 +34,7 @@ namespace core {
 		if (ctx.events & EPOLLIN) {
 			m_requestHandler.handle(ctx);
 		}
-		if (ctx.events & EPOLLOUT) {
+		if (ctx.events & EPOLLOUT && m_requestHandler.hasCompleted()) {
 			m_responseHandler.handle(ctx);
 		}
 		if (ctx.events & EPOLLERR) {
