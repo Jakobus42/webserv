@@ -17,7 +17,7 @@ namespace core {
 			AHandler *handler;
 			HandlerContext ctx;
 
-			EventData(AHandler *handler, HandlerContext ctx)
+			EventData(AHandler *handler, const HandlerContext &ctx)
 				: handler(handler)
 				, ctx(ctx) {}
 	};
@@ -46,7 +46,7 @@ namespace core {
 			Reactor(const Reactor &other);
 			Reactor &operator=(const Reactor &other);
 
-			void registerHandler(int fd, AHandler *handler, HandlerContext ctx, uint32_t events = EPOLLIN);
+			void registerHandler(int fd, AHandler *handler, const HandlerContext &ctx, uint32_t events = EPOLLIN);
 			void unregisterHandler(int fd) throw(std::runtime_error);
 
 			void acceptNewConnections();

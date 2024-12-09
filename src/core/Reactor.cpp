@@ -108,7 +108,7 @@ namespace core {
 		return true;
 	}
 
-	void Reactor::registerHandler(int fd, AHandler *handler, HandlerContext ctx, uint32_t events) {
+	void Reactor::registerHandler(int fd, AHandler *handler, const HandlerContext &ctx, uint32_t events) {
 		t_event event;
 
 		event.events = events;
