@@ -112,11 +112,8 @@ namespace core {
 		t_event event;
 
 		event.events = events;
-		event.data.ptr = new EventData(handler, ctx); // note: decided to store data in the event ptr to avoid later lookup
-		std::cout << event.data.ptr << std::endl;
-		std::cout << "handler: " << handler << std::endl;
+		event.data.ptr = new EventData(handler, ctx);
 		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_ADD, fd, &event) < 0) {
-			delete handler;
 			delete static_cast<EventData *>(event.data.ptr);
 			throw std::runtime_error("Crud! Couldn't register event handler!");
 		}
@@ -128,7 +125,7 @@ namespace core {
 		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_DEL, fd, &event) < 0) {
 			throw std::runtime_error("Пиздец! Couldn't unregister event handler!");
 		}
-		close(fd); // tmp;
+		close(fd);
 	}
 
 	void Reactor::react() {
@@ -152,7 +149,14 @@ namespace core {
 
 			while (vServer.addConnection()) {
 				http::Connection &conn = vServer.getConnections().back();
-				this->registerHandler(conn.getSocket().getFd(), new IOHandler(), HandlerContext(vServer, conn), EPOLLIN | EPOLLOUT);
+				AHandler *handler = NULL;
+
+				try {
+					handler = new IOHandler;
+					this->registerHandler(conn.getSocket().getFd(), handler, HandlerContext(vServer, conn), EPOLLIN | EPOLLOUT);
+				} catch (std::exception &e) {
+					delete handler;
+				}
 			}
 		}
 	}
@@ -165,6 +169,7 @@ namespace core {
 
 			ctx.events = event.events;
 			data->handler->handle(ctx);
+
 			if (data->handler->hasCompleted()) {
 				unregisterHandler(ctx.conn.getSocket().getFd());
 				delete data->handler;

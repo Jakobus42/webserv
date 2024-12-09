@@ -46,9 +46,9 @@ namespace core {
 		ssize_t bytesSent = send(fd, response, strlen(response), 0);
 		if (bytesSent < 0) {
 			std::cerr << "Error sending data" << std::endl;
-			return;
+		} else {
+			std::cout << "Sent response: " << response << std::endl;
 		}
-		std::cout << "Sent response: " << response << std::endl;
 		m_state = COMPLETED;
 	}
 
