@@ -1,6 +1,7 @@
 #include "http/ClientSocket.hpp"
 
 #include <errno.h>
+#include <fcntl.h>
 #include <string.h>
 #include <unistd.h>
 
@@ -93,15 +94,15 @@ namespace http {
 		m_alive = false;
 	}
 
-	void ClientSocket::accept(int listen_socket) throw(std::exception) {
+	void ClientSocket::accept(int listen_socket) throw(std::runtime_error) {
 		bzero(&m_socketAddress, sizeof(t_sockaddr));
 		m_socketSize = 0;
-		std::cout << "Accepting connection for socket " << listen_socket
-				  << std::endl;
 		m_fd = ::accept(listen_socket, &m_socketAddress, &m_socketSize);
 		if (m_fd < 0) {
-			std::cout << "Shit, accept didn't work" << errno << std::endl;
-			throw std::exception();
+			throw std::runtime_error("failed to accept client");
+		}
+		if (fcntl(m_fd, F_SETFL, O_NONBLOCK) == -1) {
+			throw std::runtime_error("failed to set client socket to non blocking");
 		}
 		m_alive = true;
 	}

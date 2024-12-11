@@ -32,9 +32,24 @@ namespace core {
 		return *this;
 	}
 
-	void RequestHandler::handle(int fd, uint32_t event) {
-		(void)fd;
-		(void)event;
+	// note: the implementation is just temporary
+	void RequestHandler::handle(HandlerContext &ctx) {
+		int fd = ctx.conn.getSocket().getFd();
+		char buffer[1024];
+
+		ssize_t bytesReceived = recv(fd, buffer, sizeof(buffer) - 1, 0);
+		if (bytesReceived < 0) {
+			m_state = COMPLETED; // just temporary
+			std::cerr << "Error receiving data" << std::endl;
+			return;
+		}
+		if (bytesReceived == 0) {
+			return;
+		}
+		buffer[bytesReceived] = '\0';
+		std::cout << "Received bytes: " << bytesReceived << std::endl;
+		std::cout << "Received data: " << buffer << std::endl;
+		m_state = COMPLETED;
 	}
 
 } /* namespace core */

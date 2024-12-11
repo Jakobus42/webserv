@@ -105,13 +105,13 @@ namespace http {
 	 * @return true if the connection could be established
 	 * @return false if accept() within Connection->ClientSocket fails
 	 */
+	// TODO: take a connection as parameter and call explictly accept brefor adding
 	bool VirtualServer::addConnection(void) {
 		try {
 			Connection newConnection(m_listen_socket.getFd());
 			m_connections.push_back(newConnection);
 			std::cout << "Added a connection!" << std::endl;
 		} catch (std::exception &e) {
-			std::cerr << "Exception caught in VServer: " << e.what() << std::endl;
 			return false;
 		}
 		return true;

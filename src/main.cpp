@@ -5,30 +5,20 @@
 
 int main(int argc, char **const argv) {
 	try {
-		// start
-		std::string configfile;
-		if (argc > 1) {
-			configfile = argv[1];
-		} else {
-			configfile = "config/configfile_example";
-		}
-		core::Reactor server;
+		std::string configPath = argc > 1 ? argv[1] : "config/configfile_example";
 		config::ConfigFileParser configFileParser;
-		if (configFileParser.loadConfigFile(configfile) == 1)
+		if (configFileParser.loadConfigFile(configPath) == 1)
 			return 1;
+		config::t_config_data configData = configFileParser.getConfigData();
 
-		try {
-			server.init();
-			config::t_config_data configData = configFileParser.getConfigData();
-			if (server.addVirtualServers(configData) == false)
-				return 1;
-			// server.getVirtualServers().at(0).addConnection();
-		} catch (std::exception &e) {
-			std::cerr << "Exception caught in main: " << e.what() << std::endl;
+		core::Reactor reactor;
+		reactor.init();
+		if (reactor.addVirtualServers(configData) == false)
 			return 1;
-		}
-		// end
+		reactor.react();
 	} catch (const std::exception &e) {
-		LOG("ERROR: " << e.what(), 1)
+		std::cout << e.what() << std::endl;
+		return 1;
 	}
+	return 0;
 }

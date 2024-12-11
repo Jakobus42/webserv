@@ -25,7 +25,7 @@ namespace http {
 			ClientSocket &operator=(const ClientSocket &rhs);
 			bool operator==(const ClientSocket &other) const;
 
-			void accept(int listen_socket) throw(std::exception);
+			void accept(int listen_socket) throw(std::runtime_error);
 
 			int getFd(void) const;
 			int getFd(void);
