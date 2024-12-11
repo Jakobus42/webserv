@@ -10,10 +10,8 @@ namespace http {
 	Request::Request()
 		: m_read_buffer()
 		, m_received_bytes(0)
-		, m_data("")
-		, m_head("")
-		, m_body("") {
-	}
+		, m_requestData()
+		, m_status(PARSE_START) {}
 
 	/**
 	 * @brief Destroys the Request object.
@@ -28,10 +26,8 @@ namespace http {
 	Request::Request(const Request &other)
 		: m_read_buffer()
 		, m_received_bytes(other.getReceivedBytes())
-		, m_data(other.getData())
-		, m_head(other.getHead())
-		, m_body(other.getBody()) {
-	}
+		, m_requestData(other.getRequestData())
+		, m_status(other.m_status) {}
 
 	/**
 	 * @brief Copy assignment operator.
@@ -41,10 +37,9 @@ namespace http {
 	Request &Request::operator=(const Request &rhs) {
 		if (this == &rhs)
 			return *this;
-		m_data = rhs.getData();
-		m_head = rhs.getHead();
-		m_body = rhs.getBody();
+		m_requestData = rhs.getRequestData();
 		m_received_bytes = rhs.getReceivedBytes();
+		m_status = rhs.m_status;
 		bzero(m_read_buffer, sizeof(m_read_buffer));
 		return *this;
 	}
@@ -53,16 +48,58 @@ namespace http {
 		return m_received_bytes;
 	};
 
-	const std::string &Request::getData(void) const {
-		return m_data;
+	const t_requestData &Request::getRequestData(void) const {
+		return m_requestData;
 	};
 
-	const std::string &Request::getHead(void) const {
-		return m_head;
+	const RequestStatus &Request::getStatus(void) const {
+		return m_status;
 	};
 
-	const std::string &Request::getBody(void) const {
-		return m_body;
-	};
+	// 3 different things can occur:
+	// 1. The request is not fully received
+	// 2. The request is fully received and there is no leftover data
+	// 3. The request is fully received and there is leftover data
+
+	bool Request::parse(void) {
+		std::string input;
+		if (m_restData != "") {
+			input = m_restData;
+		}
+		input += m_read_buffer;
+		// Remove \r from input 
+		for (int i = 0; i < input.size(); i++) 
+		{
+			if (input[i] == '\r') 
+			{
+				if (input[i + 1] == '\n') {
+					input.erase(i, 1);
+				}
+			}
+			if (input[i] == '	') 
+			{
+				input[i] = ' ';
+			}
+		}	
+		if (m_status == PARSE_HEAD || m_status == PARSE_START) {
+			if (!parseHead(input))
+				return false;
+		}
+		if (m_status == PARSE_HEADERS) {
+			if (!parseHeaders(input))
+				return false;
+		}
+		if (m_status == PARSE_BODY) {
+			if (!parseBody(input))
+				return false;
+		}
+		if (m_status == PARSE_END) {
+			//Parsing done
+		}
+		if (input != "") {
+			m_restData = input;
+		}
+		return true;
+	}
 
 } /* namespace http */
