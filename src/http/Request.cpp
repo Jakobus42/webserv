@@ -11,7 +11,6 @@ namespace http {
 		: m_read_buffer()
 		, m_received_bytes(0)
 		, m_requestData()
-		, m_parsingData()
 		, m_status(PARSE_START) {}
 
 	/**
@@ -28,7 +27,6 @@ namespace http {
 		: m_read_buffer()
 		, m_received_bytes(other.getReceivedBytes())
 		, m_requestData(other.getRequestData())
-		, m_parsingData(other.getParsingData())
 		, m_status(other.m_status) {}
 
 	/**
@@ -40,7 +38,6 @@ namespace http {
 		if (this == &rhs)
 			return *this;
 		m_requestData = rhs.getRequestData();
-		m_parsingData = rhs.m_parsingData;
 		m_received_bytes = rhs.getReceivedBytes();
 		m_status = rhs.m_status;
 		bzero(m_read_buffer, sizeof(m_read_buffer));
@@ -55,10 +52,6 @@ namespace http {
 		return m_requestData;
 	};
 
-	const t_parsingData &Request::getParsingData(void) const {
-		return m_parsingData;
-	};
-
 	const RequestStatus &Request::getStatus(void) const {
 		return m_status;
 	};
@@ -69,20 +62,42 @@ namespace http {
 	// 3. The request is fully received and there is leftover data
 
 	bool Request::parse(void) {
+		std::string input;
+		if (m_restData != "") {
+			input = m_restData;
+		}
+		input += m_read_buffer;
+		// Remove \r from input 
+		for (int i = 0; i < input.size(); i++) 
+		{
+			if (input[i] == '\r') 
+			{
+				if (input[i + 1] == '\n') {
+					input.erase(i, 1);
+				}
+			}
+			if (input[i] == '	') 
+			{
+				input[i] = ' ';
+			}
+		}	
 		if (m_status == PARSE_HEAD || m_status == PARSE_START) {
-			if (!parseHead())
+			if (!parseHead(input))
 				return false;
 		}
 		if (m_status == PARSE_HEADERS) {
-			if (!parseHeaders())
+			if (!parseHeaders(input))
 				return false;
 		}
 		if (m_status == PARSE_BODY) {
-			if (!parseBody())
+			if (!parseBody(input))
 				return false;
 		}
 		if (m_status == PARSE_END) {
-			return true;
+			//Parsing done
+		}
+		if (input != "") {
+			m_restData = input;
 		}
 		return true;
 	}
