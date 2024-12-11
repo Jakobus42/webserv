@@ -10,7 +10,6 @@ var hierarchy =
     [ "http::Connection", "classhttp_1_1Connection.html", null ],
     [ "core::EventData", "structcore_1_1EventData.html", null ],
     [ "core::HandlerContext", "structcore_1_1HandlerContext.html", null ],
-    [ "http::parsingData", "structhttp_1_1parsingData.html", null ],
     [ "core::Reactor", "classcore_1_1Reactor.html", null ],
     [ "http::Request", "classhttp_1_1Request.html", null ],
     [ "config::s_config_data", "structconfig_1_1s__config__data.html", null ],
