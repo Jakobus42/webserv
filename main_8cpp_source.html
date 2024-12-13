@@ -65,41 +65,32 @@ $(document).ready(function(){initNavTree('main_8cpp_source.html',''); initResiza
 <div class="contents">
 <a href="main_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Parser_8hpp.html">config/Parser.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Reactor_8hpp.html">core/Reactor.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865">    6</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **<span class="keyword">const</span> argv) {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="classhttp_1_1Request.html">http::Request</a> request;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    std::string input = <span class="stringliteral">&quot;GET / HTTP/1.1\nHost: localhost:8080, abcde\nUser-Agent: curl/7.68.0\nAccept: */*\nContent-Length: 30\n\n 1234123213567890&quot;</span>;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="comment">//std::cout &lt;&lt; &quot;input1: &quot; &lt;&lt; input.substr(0, 5) &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; input.size(); i += 5) {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        request.<a class="code" href="classhttp_1_1Request.html#a147a2f09d8b34a36d0ad2720e2041b1f">setReadBuffer</a>(input.substr(i, 5).c_str());</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        request.<a class="code" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993">parse</a>();</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    }</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    request.<a class="code" href="classhttp_1_1Request.html#a5d644f426dafcff5a49ed1c53c85ed5b">PrintRequestData</a>();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ErrorMessages_8hpp.html">http/ErrorMessages.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865">    7</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** <span class="keyword">const</span> argv) {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="classhttp_1_1ErrorMessages.html#a27cdba675ad06a6255b07395a249b9f2">http::ErrorMessages::eagerInit</a>();</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        std::string configPath = argc &gt; 1 ? argv[1] : <span class="stringliteral">&quot;config/configfile_example&quot;</span>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <a class="code" href="classconfig_1_1ConfigFileParser.html">config::ConfigFileParser</a> configFileParser;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keywordflow">if</span> (configFileParser.<a class="code" href="classconfig_1_1ConfigFileParser.html#a074868ef888a640498f54df02a8dd47e">loadConfigFile</a>(configPath) == 1)</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="structconfig_1_1s__config__data.html">config::t_config_data</a> configData = configFileParser.<a class="code" href="classconfig_1_1ConfigFileParser.html#ac1aa143b263ccf1e587402e01f612590">getConfigData</a>();</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        std::string configPath = argc &gt; 1 ? argv[1] : <span class="stringliteral">&quot;config/configfile_example&quot;</span>;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="classconfig_1_1ConfigFileParser.html">config::ConfigFileParser</a> configFileParser;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">if</span> (configFileParser.<a class="code" href="classconfig_1_1ConfigFileParser.html#a074868ef888a640498f54df02a8dd47e">loadConfigFile</a>(configPath) == 1)</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="structconfig_1_1s__config__data.html">config::t_config_data</a> configData = configFileParser.<a class="code" href="classconfig_1_1ConfigFileParser.html#ac1aa143b263ccf1e587402e01f612590">getConfigData</a>();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="classcore_1_1Reactor.html">core::Reactor</a> reactor;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        reactor.<a class="code" href="classcore_1_1Reactor.html#a71cf64a92f1a7a6293121ede5df60981">init</a>();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">if</span> (reactor.<a class="code" href="classcore_1_1Reactor.html#a78d35da396b0218bc397acdce3119c74">addVirtualServers</a>(configData) == <span class="keyword">false</span>)</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        reactor.<a class="code" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35">react</a>();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception &amp;e) {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        std::cout &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classcore_1_1Reactor.html">core::Reactor</a> reactor;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        reactor.<a class="code" href="classcore_1_1Reactor.html#a71cf64a92f1a7a6293121ede5df60981">init</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">if</span> (reactor.<a class="code" href="classcore_1_1Reactor.html#a78d35da396b0218bc397acdce3119c74">addVirtualServers</a>(configData) == <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        reactor.<a class="code" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35">react</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        std::cout &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+<div class="ttc" id="aErrorMessages_8hpp_html"><div class="ttname"><a href="ErrorMessages_8hpp.html">ErrorMessages.hpp</a></div></div>
 <div class="ttc" id="aParser_8hpp_html"><div class="ttname"><a href="Parser_8hpp.html">Parser.hpp</a></div></div>
 <div class="ttc" id="aReactor_8hpp_html"><div class="ttname"><a href="Reactor_8hpp.html">Reactor.hpp</a></div></div>
 <div class="ttc" id="aclassconfig_1_1ConfigFileParser_html"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html">config::ConfigFileParser</a></div><div class="ttdoc">This class is responsible for parsing the configuration file.</div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00067">Parser.hpp:67</a></div></div>
@@ -109,11 +100,8 @@ $(document).ready(function(){initNavTree('main_8cpp_source.html',''); initResiza
 <div class="ttc" id="aclasscore_1_1Reactor_html_a3e4e9145e4a5623750c0604ee8015b35"><div class="ttname"><a href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35">core::Reactor::react</a></div><div class="ttdeci">void react()</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8cpp_source.html#l00131">Reactor.cpp:131</a></div></div>
 <div class="ttc" id="aclasscore_1_1Reactor_html_a71cf64a92f1a7a6293121ede5df60981"><div class="ttname"><a href="classcore_1_1Reactor.html#a71cf64a92f1a7a6293121ede5df60981">core::Reactor::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8cpp_source.html#l00065">Reactor.cpp:65</a></div></div>
 <div class="ttc" id="aclasscore_1_1Reactor_html_a78d35da396b0218bc397acdce3119c74"><div class="ttname"><a href="classcore_1_1Reactor.html#a78d35da396b0218bc397acdce3119c74">core::Reactor::addVirtualServers</a></div><div class="ttdeci">bool addVirtualServers(config::t_config_data &amp;configData)</div><div class="ttdef"><b>Definition:</b> <a href="Reactor_8cpp_source.html#l00088">Reactor.cpp:88</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html"><div class="ttname"><a href="classhttp_1_1Request.html">http::Request</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00041">Request.hpp:41</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a147a2f09d8b34a36d0ad2720e2041b1f"><div class="ttname"><a href="classhttp_1_1Request.html#a147a2f09d8b34a36d0ad2720e2041b1f">http::Request::setReadBuffer</a></div><div class="ttdeci">void setReadBuffer(const char *buffer)</div><div class="ttdoc">Sets the read buffer.</div><div class="ttdef"><b>Definition:</b> <a href="Request_8cpp_source.html#l00106">Request.cpp:106</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a5d644f426dafcff5a49ed1c53c85ed5b"><div class="ttname"><a href="classhttp_1_1Request.html#a5d644f426dafcff5a49ed1c53c85ed5b">http::Request::PrintRequestData</a></div><div class="ttdeci">void PrintRequestData()</div><div class="ttdef"><b>Definition:</b> <a href="Request_8cpp_source.html#l00110">Request.cpp:110</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_aa8d85c69627d45f4d6d69d94131a6993"><div class="ttname"><a href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993">http::Request::parse</a></div><div class="ttdeci">bool parse(void)</div><div class="ttdef"><b>Definition:</b> <a href="Request_8cpp_source.html#l00059">Request.cpp:59</a></div></div>
-<div class="ttc" id="amain_8cpp_html_a172241e088a9da9dabf2cf839a73c865"><div class="ttname"><a href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865">main</a></div><div class="ttdeci">int main(int argc, char **const argv)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00006">main.cpp:6</a></div></div>
+<div class="ttc" id="aclasshttp_1_1ErrorMessages_html_a27cdba675ad06a6255b07395a249b9f2"><div class="ttname"><a href="classhttp_1_1ErrorMessages.html#a27cdba675ad06a6255b07395a249b9f2">http::ErrorMessages::eagerInit</a></div><div class="ttdeci">static void eagerInit()</div><div class="ttdef"><b>Definition:</b> <a href="ErrorMessages_8hpp_source.html#l00027">ErrorMessages.hpp:27</a></div></div>
+<div class="ttc" id="amain_8cpp_html_a172241e088a9da9dabf2cf839a73c865"><div class="ttname"><a href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865">main</a></div><div class="ttdeci">int main(int argc, char **const argv)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00007">main.cpp:7</a></div></div>
 <div class="ttc" id="astructconfig_1_1s__config__data_html"><div class="ttname"><a href="structconfig_1_1s__config__data.html">config::s_config_data</a></div><div class="ttdef"><b>Definition:</b> <a href="Parser_8hpp_source.html#l00058">Parser.hpp:58</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
