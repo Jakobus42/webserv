@@ -60,6 +60,7 @@ $(document).ready(function(){initNavTree('Parse__head_8cpp.html',''); initResiza
 <div id="doc-content">
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Parse_head.cpp File Reference</div>  </div>
@@ -87,53 +88,16 @@ Include dependency graph for Parse_head.cpp:</div>
 </div>
 <p><a href="Parse__head_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacehttp"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html">http</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac98575a77a3a31ef28dd3424c3ee78fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Parse__head_8cpp.html#ac98575a77a3a31ef28dd3424c3ee78fa">checkHead</a> (std::vector&lt; std::string &gt; &amp;args)</td></tr>
-<tr class="separator:ac98575a77a3a31ef28dd3424c3ee78fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab573664fa35760fc9437b1fff6d88685"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#ab573664fa35760fc9437b1fff6d88685">http::checkHead</a> (std::vector&lt; std::string &gt; &amp;args)</td></tr>
+<tr class="separator:ab573664fa35760fc9437b1fff6d88685"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="ac98575a77a3a31ef28dd3424c3ee78fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac98575a77a3a31ef28dd3424c3ee78fa">&#9670;&nbsp;</a></span>checkHead()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool checkHead </td>
-          <td>(</td>
-          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&#160;</td>
-          <td class="paramname"><em>args</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Parse__head_8cpp_source.html#l00003">3</a> of file <a class="el" href="Parse__head_8cpp_source.html">Parse_head.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;                                           {</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    <span class="keywordflow">if</span> (args[0] != <span class="stringliteral">&quot;GET&quot;</span> &amp;&amp; args[0] != <span class="stringliteral">&quot;POST&quot;</span> &amp;&amp; args[0] != <span class="stringliteral">&quot;PUT&quot;</span> &amp;&amp; args[0] != <span class="stringliteral">&quot;DELETE&quot;</span>) </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    }</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordflow">if</span> (args[2] != <span class="stringliteral">&quot;HTTP/1.1&quot;</span>) </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    }</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="Parse__head_8cpp_ac98575a77a3a31ef28dd3424c3ee78fa_icgraph.png" border="0" usemap="#aParse__head_8cpp_ac98575a77a3a31ef28dd3424c3ee78fa_icgraph" alt=""/></div>
-<map name="aParse__head_8cpp_ac98575a77a3a31ef28dd3424c3ee78fa_icgraph" id="aParse__head_8cpp_ac98575a77a3a31ef28dd3424c3ee78fa_icgraph">
-<area shape="rect" title=" " alt="" coords="441,5,536,32"/>
-<area shape="rect" href="classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac" title=" " alt="" coords="207,5,393,32"/>
-<area shape="rect" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993" title=" " alt="" coords="5,5,159,32"/>
-</map>
-</div>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

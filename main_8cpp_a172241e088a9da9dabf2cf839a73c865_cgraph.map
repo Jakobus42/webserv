@@ -1,45 +1,52 @@
 <map id="main" name="main">
-<area shape="rect" id="node1" title=" " alt="" coords="5,299,60,326"/>
-<area shape="rect" id="node2" href="$classcore_1_1Reactor.html#a78d35da396b0218bc397acdce3119c74" title=" " alt="" coords="108,104,291,145"/>
-<area shape="rect" id="node10" href="$classconfig_1_1ConfigFileParser.html#ac1aa143b263ccf1e587402e01f612590" title=" " alt="" coords="113,233,286,275"/>
-<area shape="rect" id="node11" href="$classcore_1_1Reactor.html#a71cf64a92f1a7a6293121ede5df60981" title=" " alt="" coords="131,299,268,326"/>
-<area shape="rect" id="node12" href="$classconfig_1_1ConfigFileParser.html#a074868ef888a640498f54df02a8dd47e" title="Loads the configuration file, saving all the information." alt="" coords="113,351,286,392"/>
-<area shape="rect" id="node32" href="$classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="125,514,274,541"/>
-<area shape="rect" id="node3" href="$classhttp_1_1VirtualServer.html#a86f31cc41a5d0ff839a0878ce001114c" title=" " alt="" coords="370,39,511,80"/>
-<area shape="rect" id="node4" href="$classhttp_1_1ServerSocket.html#a6701c4cbd2b84873f00d5505f0754bb3" title=" " alt="" coords="370,104,511,145"/>
-<area shape="rect" id="node5" href="$classhttp_1_1ServerSocket.html#ab9a7f8f2c1fe4cded5ac535f12abd84b" title=" " alt="" coords="630,5,771,47"/>
-<area shape="rect" id="node8" href="$classhttp_1_1ServerSocket.html#afd477001689e0c9d1330a57c14618021" title=" " alt="" coords="630,71,771,112"/>
-<area shape="rect" id="node9" href="$classhttp_1_1ServerSocket.html#ae00a1912f9565b216a0d129b45c66dcd" title=" " alt="" coords="630,136,771,177"/>
-<area shape="rect" id="node6" href="$classhttp_1_1ServerSocket.html#aaf8216a618ce26ba9669b4f90f1d9b38" title=" " alt="" coords="875,39,1016,80"/>
-<area shape="rect" id="node7" href="$classhttp_1_1ServerSocket.html#a6110681c21dc1d2e99ba238817993321" title=" " alt="" coords="1096,5,1237,47"/>
-<area shape="rect" id="node13" href="$classconfig_1_1ConfigFileParser.html#aa5ac9363ea9ba96a657a351b9b2f3219" title="Parses the configuration file." alt="" coords="354,317,527,359"/>
-<area shape="rect" id="node31" href="$classconfig_1_1ConfigFileParser.html#adcd94ec61a24121c76942f86999f72dd" title="Reads the configuration file." alt="" coords="354,383,527,424"/>
-<area shape="rect" id="node14" href="$classconfig_1_1ConfigFileParser.html#a0c3ffd6d214cb723d953db468e5ebb81" title="parses a line in the configuration file." alt="" coords="614,317,787,359"/>
-<area shape="rect" id="node15" href="$classconfig_1_1ConfigFileParser.html#a2fc1f08065c566459a1543f1824e4eaa" title="Saves the configuration data." alt="" coords="859,317,1032,359"/>
-<area shape="rect" id="node16" href="$classconfig_1_1ConfigFileParser.html#aae76c210ff9aae74d87a6b57feeb474e" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="1301,416,1475,457"/>
-<area shape="rect" id="node18" href="$classconfig_1_1ConfigFileParser.html#a9201327984c6bb55a4ae4e9cb9f1afc9" title="sets the max body size for the server." alt="" coords="1301,612,1475,653"/>
-<area shape="rect" id="node20" href="$classconfig_1_1ConfigFileParser.html#ab0873aafd871776227166466648adcff" title="sets the error pages for the server." alt="" coords="1301,547,1475,588"/>
-<area shape="rect" id="node21" href="$classconfig_1_1ConfigFileParser.html#af23de28a87beadfcc28c48021a066a14" title="Identifies the command in the configuration file. and returns the id of the command." alt="" coords="1080,376,1253,417"/>
-<area shape="rect" id="node22" href="$classconfig_1_1ConfigFileParser.html#a7cc3cfe78fd8d52b3bf1f7272cf19de2" title="sets the index files for the location. (index.html by default)" alt="" coords="1301,481,1475,523"/>
-<area shape="rect" id="node23" href="$classconfig_1_1ConfigFileParser.html#a5c03d6d709d348eb69db590a9bed2529" title="sets the methods allowed for the location." alt="" coords="1301,220,1475,261"/>
-<area shape="rect" id="node24" href="$classconfig_1_1ConfigFileParser.html#a054df9e80c847c57ee4fcf634ec96512" title="Sets the port and ip address of the server." alt="" coords="1301,677,1475,719"/>
-<area shape="rect" id="node26" href="$classconfig_1_1ConfigFileParser.html#a7c2637468e844f1a45ce90488e01affb" title="Creates a new location struct, initializes it and adds it to the config data." alt="" coords="1301,24,1475,65"/>
-<area shape="rect" id="node27" href="$classconfig_1_1ConfigFileParser.html#ae96980a09075f768b9b072297e2e25f6" title="redirects the user to a different url with a specific return code." alt="" coords="1301,285,1475,327"/>
-<area shape="rect" id="node28" href="$classconfig_1_1ConfigFileParser.html#a488be040c87c81b95572fdae4d10b9e9" title="sets the root directory for the location." alt="" coords="1301,351,1475,392"/>
-<area shape="rect" id="node29" href="$classconfig_1_1ConfigFileParser.html#a68a1194c8822b39ccdeaf2024f68e2df" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="1301,89,1475,131"/>
-<area shape="rect" id="node30" href="$classconfig_1_1ConfigFileParser.html#ad660e1b92477502518971b41373ee60a" title="Sets the server name(s) of the server." alt="" coords="1301,155,1475,196"/>
-<area shape="rect" id="node17" href="$classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="1523,351,1696,392"/>
-<area shape="rect" id="node19" href="$namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a" title="Converts a string to a positive integer." alt="" coords="1555,619,1664,646"/>
-<area shape="rect" id="node25" href="$namespaceconfig.html#ab0ce9a159a3d72a05a0321e13dcdac80" title="Checks if a string is a number." alt="" coords="1541,685,1678,711"/>
-<area shape="rect" id="node33" href="$classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552" title=" " alt="" coords="347,507,535,548"/>
-<area shape="rect" id="node40" href="$classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="339,657,543,683"/>
-<area shape="rect" id="node34" href="$classhttp_1_1VirtualServer.html#aba633077d4bc512dcb2caf15e6b035d4" title="Accepts the next incoming connection in the VirtualServerSocket&#39;s queue." alt="" coords="630,383,771,424"/>
-<area shape="rect" id="node36" href="$classhttp_1_1VirtualServer.html#a9a2c96594ed7379e782a1fe266f9ebc9" title=" " alt="" coords="630,448,771,489"/>
-<area shape="rect" id="node37" href="$classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf" title=" " alt="" coords="632,565,769,607"/>
-<area shape="rect" id="node38" href="$classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e" title=" " alt="" coords="600,631,801,658"/>
-<area shape="rect" id="node39" href="$classcore_1_1Reactor.html#a4d4addc4a1552b4560a9ef7da596b869" title=" " alt="" coords="592,514,809,541"/>
-<area shape="rect" id="node35" href="$classhttp_1_1ServerSocket.html#a86ec14f7462724b7389ead42881090f9" title=" " alt="" coords="875,383,1016,424"/>
-<area shape="rect" id="node41" href="$classcore_1_1AHandler.html#a729ca645cf9f83e0c431e2a7dfa528d5" title=" " alt="" coords="615,682,786,709"/>
-<area shape="rect" id="node42" href="$classcore_1_1AHandler.html#ac06b9786e3ee7593b7b788a59c82d0c5" title=" " alt="" coords="591,733,811,759"/>
-<area shape="rect" id="node43" href="$classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f" title=" " alt="" coords="609,784,792,825"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,434,60,461"/>
+<area shape="rect" id="node2" href="$classcore_1_1Reactor.html#a78d35da396b0218bc397acdce3119c74" title=" " alt="" coords="132,205,315,247"/>
+<area shape="rect" id="node10" href="$classconfig_1_1ConfigFileParser.html#ac1aa143b263ccf1e587402e01f612590" title=" " alt="" coords="137,280,310,321"/>
+<area shape="rect" id="node11" href="$classcore_1_1Reactor.html#a71cf64a92f1a7a6293121ede5df60981" title=" " alt="" coords="155,346,292,373"/>
+<area shape="rect" id="node12" href="$classconfig_1_1ConfigFileParser.html#a074868ef888a640498f54df02a8dd47e" title="Loads the configuration file, saving all the information." alt="" coords="137,397,310,439"/>
+<area shape="rect" id="node29" href="$classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993" title=" " alt="" coords="147,463,300,490"/>
+<area shape="rect" id="node37" href="$classhttp_1_1Request.html#a5d644f426dafcff5a49ed1c53c85ed5b" title=" " alt="" coords="108,514,339,541"/>
+<area shape="rect" id="node38" href="$classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="149,657,298,683"/>
+<area shape="rect" id="node50" href="$classhttp_1_1Request.html#a147a2f09d8b34a36d0ad2720e2041b1f" title="Sets the read buffer." alt="" coords="119,707,328,734"/>
+<area shape="rect" id="node3" href="$classhttp_1_1VirtualServer.html#a86f31cc41a5d0ff839a0878ce001114c" title=" " alt="" coords="419,205,561,247"/>
+<area shape="rect" id="node4" href="$classhttp_1_1ServerSocket.html#a6701c4cbd2b84873f00d5505f0754bb3" title=" " alt="" coords="419,104,561,145"/>
+<area shape="rect" id="node5" href="$classhttp_1_1ServerSocket.html#ab9a7f8f2c1fe4cded5ac535f12abd84b" title=" " alt="" coords="681,5,822,47"/>
+<area shape="rect" id="node8" href="$classhttp_1_1ServerSocket.html#afd477001689e0c9d1330a57c14618021" title=" " alt="" coords="681,71,822,112"/>
+<area shape="rect" id="node9" href="$classhttp_1_1ServerSocket.html#ae00a1912f9565b216a0d129b45c66dcd" title=" " alt="" coords="681,136,822,177"/>
+<area shape="rect" id="node6" href="$classhttp_1_1ServerSocket.html#aaf8216a618ce26ba9669b4f90f1d9b38" title=" " alt="" coords="925,51,1067,92"/>
+<area shape="rect" id="node7" href="$classhttp_1_1ServerSocket.html#a6110681c21dc1d2e99ba238817993321" title=" " alt="" coords="1147,40,1288,81"/>
+<area shape="rect" id="node13" href="$classconfig_1_1ConfigFileParser.html#aa5ac9363ea9ba96a657a351b9b2f3219" title="Parses the configuration file." alt="" coords="403,357,577,399"/>
+<area shape="rect" id="node28" href="$classconfig_1_1ConfigFileParser.html#adcd94ec61a24121c76942f86999f72dd" title="Reads the configuration file." alt="" coords="403,292,577,333"/>
+<area shape="rect" id="node14" href="$classconfig_1_1ConfigFileParser.html#a0c3ffd6d214cb723d953db468e5ebb81" title="parses a line in the configuration file." alt="" coords="665,343,838,384"/>
+<area shape="rect" id="node15" href="$classconfig_1_1ConfigFileParser.html#a2fc1f08065c566459a1543f1824e4eaa" title="Saves the configuration data." alt="" coords="909,360,1083,401"/>
+<area shape="rect" id="node16" href="$classconfig_1_1ConfigFileParser.html#aae76c210ff9aae74d87a6b57feeb474e" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="1352,255,1525,296"/>
+<area shape="rect" id="node17" href="$classconfig_1_1ConfigFileParser.html#a9201327984c6bb55a4ae4e9cb9f1afc9" title="sets the max body size for the server." alt="" coords="1352,320,1525,361"/>
+<area shape="rect" id="node18" href="$classconfig_1_1ConfigFileParser.html#ab0873aafd871776227166466648adcff" title="sets the error pages for the server." alt="" coords="1352,385,1525,427"/>
+<area shape="rect" id="node19" href="$classconfig_1_1ConfigFileParser.html#af23de28a87beadfcc28c48021a066a14" title="Identifies the command in the configuration file. and returns the id of the command." alt="" coords="1131,360,1304,401"/>
+<area shape="rect" id="node20" href="$classconfig_1_1ConfigFileParser.html#a7cc3cfe78fd8d52b3bf1f7272cf19de2" title="sets the index files for the location. (index.html by default)" alt="" coords="1352,451,1525,492"/>
+<area shape="rect" id="node21" href="$classconfig_1_1ConfigFileParser.html#a5c03d6d709d348eb69db590a9bed2529" title="sets the methods allowed for the location." alt="" coords="1352,516,1525,557"/>
+<area shape="rect" id="node22" href="$classconfig_1_1ConfigFileParser.html#a054df9e80c847c57ee4fcf634ec96512" title="Sets the port and ip address of the server." alt="" coords="1352,581,1525,623"/>
+<area shape="rect" id="node23" href="$classconfig_1_1ConfigFileParser.html#a7c2637468e844f1a45ce90488e01affb" title="Creates a new location struct, initializes it and adds it to the config data." alt="" coords="1352,647,1525,688"/>
+<area shape="rect" id="node24" href="$classconfig_1_1ConfigFileParser.html#ae96980a09075f768b9b072297e2e25f6" title="redirects the user to a different url with a specific return code." alt="" coords="1352,712,1525,753"/>
+<area shape="rect" id="node25" href="$classconfig_1_1ConfigFileParser.html#a488be040c87c81b95572fdae4d10b9e9" title="sets the root directory for the location." alt="" coords="1352,59,1525,100"/>
+<area shape="rect" id="node26" href="$classconfig_1_1ConfigFileParser.html#a68a1194c8822b39ccdeaf2024f68e2df" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="1352,124,1525,165"/>
+<area shape="rect" id="node27" href="$classconfig_1_1ConfigFileParser.html#ad660e1b92477502518971b41373ee60a" title="Sets the server name(s) of the server." alt="" coords="1352,189,1525,231"/>
+<area shape="rect" id="node30" href="$classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4" title=" " alt="" coords="397,423,583,450"/>
+<area shape="rect" id="node32" href="$classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac" title=" " alt="" coords="397,474,583,501"/>
+<area shape="rect" id="node34" href="$classhttp_1_1Request.html#aeab4490334788d6010997914a3db2060" title=" " alt="" coords="387,533,593,559"/>
+<area shape="rect" id="node31" href="$classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135" title=" " alt="" coords="658,408,845,449"/>
+<area shape="rect" id="node33" href="$namespacehttp.html#ab573664fa35760fc9437b1fff6d88685" title=" " alt="" coords="687,474,815,501"/>
+<area shape="rect" id="node35" href="$classhttp_1_1Request.html#adc2cfb1a5dcf1dc7a715c1d8fb503322" title=" " alt="" coords="665,525,838,567"/>
+<area shape="rect" id="node36" href="$classhttp_1_1Request.html#ab7b54f98bd335b71a509d3cc112e36ff" title=" " alt="" coords="651,591,851,618"/>
+<area shape="rect" id="node39" href="$classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552" title=" " alt="" coords="396,893,584,935"/>
+<area shape="rect" id="node46" href="$classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="388,734,592,761"/>
+<area shape="rect" id="node40" href="$classhttp_1_1VirtualServer.html#aba633077d4bc512dcb2caf15e6b035d4" title="Accepts the next incoming connection in the VirtualServerSocket&#39;s queue." alt="" coords="681,1044,822,1085"/>
+<area shape="rect" id="node42" href="$classhttp_1_1VirtualServer.html#a9a2c96594ed7379e782a1fe266f9ebc9" title=" " alt="" coords="681,927,822,968"/>
+<area shape="rect" id="node43" href="$classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf" title=" " alt="" coords="683,861,820,903"/>
+<area shape="rect" id="node44" href="$classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e" title=" " alt="" coords="651,810,852,837"/>
+<area shape="rect" id="node45" href="$classcore_1_1Reactor.html#a4d4addc4a1552b4560a9ef7da596b869" title=" " alt="" coords="643,993,860,1019"/>
+<area shape="rect" id="node41" href="$classhttp_1_1ServerSocket.html#a86ec14f7462724b7389ead42881090f9" title=" " alt="" coords="925,1044,1067,1085"/>
+<area shape="rect" id="node47" href="$classcore_1_1AHandler.html#a729ca645cf9f83e0c431e2a7dfa528d5" title=" " alt="" coords="666,709,837,735"/>
+<area shape="rect" id="node48" href="$classcore_1_1AHandler.html#ac06b9786e3ee7593b7b788a59c82d0c5" title=" " alt="" coords="641,759,861,786"/>
+<area shape="rect" id="node49" href="$classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f" title=" " alt="" coords="660,643,843,684"/>
 </map>

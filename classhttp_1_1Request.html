@@ -78,8 +78,8 @@ Collaboration diagram for http::Request:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Request__coll__graph.png" border="0" usemap="#ahttp_1_1Request_coll__map" alt="Collaboration graph"/></div>
 <map name="ahttp_1_1Request_coll__map" id="ahttp_1_1Request_coll__map">
-<area shape="rect" title="..." alt="" coords="5,204,171,472"/>
-<area shape="rect" href="structhttp_1_1s__requestData.html" title=" " alt="" coords="13,5,163,141"/>
+<area shape="rect" title="..." alt="" coords="5,204,172,575"/>
+<area shape="rect" href="structhttp_1_1s__requestData.html" title=" " alt="" coords="13,5,164,141"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -103,6 +103,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5b597eb2a2ab75e361c2e26f81a2a578"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94b960f923e856df1cc565ebbac086c0"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacehttp.html#a068cab601142fb739077ccd62379df64">RequestStatus</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#a94b960f923e856df1cc565ebbac086c0">getStatus</a> (void) const</td></tr>
 <tr class="separator:a94b960f923e856df1cc565ebbac086c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a147a2f09d8b34a36d0ad2720e2041b1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#a147a2f09d8b34a36d0ad2720e2041b1f">setReadBuffer</a> (const char *buffer)</td></tr>
+<tr class="memdesc:a147a2f09d8b34a36d0ad2720e2041b1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the read buffer.  <a href="classhttp_1_1Request.html#a147a2f09d8b34a36d0ad2720e2041b1f">More...</a><br /></td></tr>
+<tr class="separator:a147a2f09d8b34a36d0ad2720e2041b1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d644f426dafcff5a49ed1c53c85ed5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#a5d644f426dafcff5a49ed1c53c85ed5b">PrintRequestData</a> ()</td></tr>
+<tr class="separator:a5d644f426dafcff5a49ed1c53c85ed5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8d85c69627d45f4d6d69d94131a6993"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993">parse</a> (void)</td></tr>
 <tr class="separator:aa8d85c69627d45f4d6d69d94131a6993"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -114,24 +119,34 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:aeab4490334788d6010997914a3db2060"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a739141ad7c8494442039ff4b865020c4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4">parseBody</a> (std::string &amp;input)</td></tr>
 <tr class="separator:a739141ad7c8494442039ff4b865020c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7b54f98bd335b71a509d3cc112e36ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#ab7b54f98bd335b71a509d3cc112e36ff">parseHeader</a> (std::string &amp;line)</td></tr>
+<tr class="separator:ab7b54f98bd335b71a509d3cc112e36ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc2cfb1a5dcf1dc7a715c1d8fb503322"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#adc2cfb1a5dcf1dc7a715c1d8fb503322">interpretHeaders</a> ()</td></tr>
+<tr class="separator:adc2cfb1a5dcf1dc7a715c1d8fb503322"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c6bb71ac8e08b4547c54f4ba662b135"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135">parseBodyChunked</a> (std::string &amp;input)</td></tr>
+<tr class="separator:a8c6bb71ac8e08b4547c54f4ba662b135"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ac9a397728470ec78bb8d97eb5ae3b378"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">m_read_buffer</a> [<a class="el" href="Request_8hpp.html#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>]</td></tr>
 <tr class="separator:ac9a397728470ec78bb8d97eb5ae3b378"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3b669ed3f8e1bd05f6d87ec4b62f807"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#af3b669ed3f8e1bd05f6d87ec4b62f807">m_received_bytes</a></td></tr>
-<tr class="separator:af3b669ed3f8e1bd05f6d87ec4b62f807"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26cda86e213aadc1010685e2d745b4c5"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#a26cda86e213aadc1010685e2d745b4c5">m_receivedBytes</a></td></tr>
+<tr class="separator:a26cda86e213aadc1010685e2d745b4c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e26162ee32cb6f0e2e4e429e7a1dd76"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a></td></tr>
+<tr class="separator:a8e26162ee32cb6f0e2e4e429e7a1dd76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d6014b52596e2ea30717ffce6fcb27b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#a1d6014b52596e2ea30717ffce6fcb27b">m_restData</a></td></tr>
 <tr class="separator:a1d6014b52596e2ea30717ffce6fcb27b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9002d730df24c04a1e4c1fcd48a0f28f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacehttp.html#a344224153c4286273f922e54b792a50d">t_requestData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a></td></tr>
 <tr class="separator:a9002d730df24c04a1e4c1fcd48a0f28f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9174b2d46902c66064874f2e37c06660"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacehttp.html#a068cab601142fb739077ccd62379df64">RequestStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a></td></tr>
 <tr class="separator:a9174b2d46902c66064874f2e37c06660"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9e7fe64ab82b2384fb54a9ce9d13d4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1">ExpectedBody</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">m_expectedBody</a></td></tr>
+<tr class="separator:aa9e7fe64ab82b2384fb54a9ce9d13d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>... </p>
 
-<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00027">27</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00041">41</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a20cb90fc8ee4461541ec901399af0a0e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a20cb90fc8ee4461541ec901399af0a0e">&#9670;&nbsp;</a></span>Request() <span class="overload">[1/2]</span></h2>
@@ -152,13 +167,13 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00010">10</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        : <a class="code" href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">m_read_buffer</a>()</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        , <a class="code" href="classhttp_1_1Request.html#af3b669ed3f8e1bd05f6d87ec4b62f807">m_received_bytes</a>(0)</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        , <a class="code" href="classhttp_1_1Request.html#a26cda86e213aadc1010685e2d745b4c5">m_receivedBytes</a>(0)</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        , <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>()</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        , <a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a>(<a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64af1ec52e66d8011ff2329d6937794bdb3">PARSE_START</a>) {}</div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a9002d730df24c04a1e4c1fcd48a0f28f"><div class="ttname"><a href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">http::Request::m_requestData</a></div><div class="ttdeci">t_requestData m_requestData</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00043">Request.hpp:43</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a9174b2d46902c66064874f2e37c06660"><div class="ttname"><a href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">http::Request::m_status</a></div><div class="ttdeci">RequestStatus m_status</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00044">Request.hpp:44</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_ac9a397728470ec78bb8d97eb5ae3b378"><div class="ttname"><a href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">http::Request::m_read_buffer</a></div><div class="ttdeci">char m_read_buffer[BUFFER_SIZE]</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00040">Request.hpp:40</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_af3b669ed3f8e1bd05f6d87ec4b62f807"><div class="ttname"><a href="classhttp_1_1Request.html#af3b669ed3f8e1bd05f6d87ec4b62f807">http::Request::m_received_bytes</a></div><div class="ttdeci">uint32_t m_received_bytes</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00041">Request.hpp:41</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a26cda86e213aadc1010685e2d745b4c5"><div class="ttname"><a href="classhttp_1_1Request.html#a26cda86e213aadc1010685e2d745b4c5">http::Request::m_receivedBytes</a></div><div class="ttdeci">uint32_t m_receivedBytes</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00057">Request.hpp:57</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a9002d730df24c04a1e4c1fcd48a0f28f"><div class="ttname"><a href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">http::Request::m_requestData</a></div><div class="ttdeci">t_requestData m_requestData</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00060">Request.hpp:60</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a9174b2d46902c66064874f2e37c06660"><div class="ttname"><a href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">http::Request::m_status</a></div><div class="ttdeci">RequestStatus m_status</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00062">Request.hpp:62</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_ac9a397728470ec78bb8d97eb5ae3b378"><div class="ttname"><a href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">http::Request::m_read_buffer</a></div><div class="ttdeci">char m_read_buffer[BUFFER_SIZE]</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00056">Request.hpp:56</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64af1ec52e66d8011ff2329d6937794bdb3"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64af1ec52e66d8011ff2329d6937794bdb3">http::PARSE_START</a></div><div class="ttdeci">@ PARSE_START</div><div class="ttdef"><b>Definition:</b> <a href="defines_8hpp_source.html#l00088">defines.hpp:88</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -212,7 +227,7 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00026">26</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        : <a class="code" href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">m_read_buffer</a>()</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        , <a class="code" href="classhttp_1_1Request.html#af3b669ed3f8e1bd05f6d87ec4b62f807">m_received_bytes</a>(other.getReceivedBytes())</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        , <a class="code" href="classhttp_1_1Request.html#a26cda86e213aadc1010685e2d745b4c5">m_receivedBytes</a>(other.getReceivedBytes())</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        , <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>(other.getRequestData())</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        , <a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a>(other.m_status) {}</div>
 </div><!-- fragment -->
@@ -237,7 +252,7 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00047">47</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                                                 {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Request.html#af3b669ed3f8e1bd05f6d87ec4b62f807">m_received_bytes</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classhttp_1_1Request.html#a26cda86e213aadc1010685e2d745b4c5">m_receivedBytes</a>;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    };</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -306,6 +321,69 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="adc2cfb1a5dcf1dc7a715c1d8fb503322"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc2cfb1a5dcf1dc7a715c1d8fb503322">&#9670;&nbsp;</a></span>interpretHeaders()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool http::Request::interpretHeaders </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Parse__headers_8cpp_source.html#l00097">97</a> of file <a class="el" href="Parse__headers_8cpp_source.html">Parse_headers.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;{</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> i = 0; i &lt; <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a701f1f313621acf5b71fe8c83ccc82a2">headers</a>.size(); i++) </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="comment">//TODO: Implement</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a701f1f313621acf5b71fe8c83ccc82a2">headers</a>[<span class="stringliteral">&quot;Transfer-Encoding&quot;</span>][0] == <span class="stringliteral">&quot;chunked&quot;</span>)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <a class="code" href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">m_expectedBody</a> = <a class="code" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a68569ee38513d8278c9a268641b6cfe5">CHUNKED</a>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a701f1f313621acf5b71fe8c83ccc82a2">headers</a>[<span class="stringliteral">&quot;Content-Length&quot;</span>].size() &gt; 0)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <a class="code" href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">m_expectedBody</a> = <a class="code" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a9c21a9fbb3e0b3b4602276b6ad85b7f3">CONTENT_LENGTH</a>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            std::istringstream(<a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a701f1f313621acf5b71fe8c83ccc82a2">headers</a>[<span class="stringliteral">&quot;Content-Length&quot;</span>][0]) &gt;&gt; i;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <a class="code" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> = i;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;HI!!! Content-Length: &quot;</span> &lt;&lt; <a class="code" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a8e26162ee32cb6f0e2e4e429e7a1dd76"><div class="ttname"><a href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">http::Request::m_contentLength</a></div><div class="ttdeci">uint32_t m_contentLength</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00058">Request.hpp:58</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_aa9e7fe64ab82b2384fb54a9ce9d13d4c"><div class="ttname"><a href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">http::Request::m_expectedBody</a></div><div class="ttdeci">ExpectedBody m_expectedBody</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00063">Request.hpp:63</a></div></div>
+<div class="ttc" id="anamespacehttp_html_aa30eeff7ce0e852dffe3ef46a55406f1a68569ee38513d8278c9a268641b6cfe5"><div class="ttname"><a href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a68569ee38513d8278c9a268641b6cfe5">http::CHUNKED</a></div><div class="ttdeci">@ CHUNKED</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00033">Request.hpp:33</a></div></div>
+<div class="ttc" id="anamespacehttp_html_aa30eeff7ce0e852dffe3ef46a55406f1a9c21a9fbb3e0b3b4602276b6ad85b7f3"><div class="ttname"><a href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a9c21a9fbb3e0b3b4602276b6ad85b7f3">http::CONTENT_LENGTH</a></div><div class="ttdeci">@ CONTENT_LENGTH</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00035">Request.hpp:34</a></div></div>
+<div class="ttc" id="astructhttp_1_1s__requestData_html_a701f1f313621acf5b71fe8c83ccc82a2"><div class="ttname"><a href="structhttp_1_1s__requestData.html#a701f1f313621acf5b71fe8c83ccc82a2">http::s_requestData::headers</a></div><div class="ttdeci">std::map&lt; std::string, std::vector&lt; std::string &gt; &gt; headers</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00019">Request.hpp:19</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1Request_adc2cfb1a5dcf1dc7a715c1d8fb503322_icgraph.png" border="0" usemap="#aclasshttp_1_1Request_adc2cfb1a5dcf1dc7a715c1d8fb503322_icgraph" alt=""/></div>
+<map name="aclasshttp_1_1Request_adc2cfb1a5dcf1dc7a715c1d8fb503322_icgraph" id="aclasshttp_1_1Request_adc2cfb1a5dcf1dc7a715c1d8fb503322_icgraph">
+<area shape="rect" title=" " alt="" coords="564,5,737,47"/>
+<area shape="rect" href="classhttp_1_1Request.html#aeab4490334788d6010997914a3db2060" title=" " alt="" coords="309,13,516,39"/>
+<area shape="rect" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993" title=" " alt="" coords="108,13,261,39"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,39"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a7db055fcd3236ab07f87ff46c9c5f6d2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7db055fcd3236ab07f87ff46c9c5f6d2">&#9670;&nbsp;</a></span>operator=()</h2>
 
@@ -336,7 +414,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs)</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a> = rhs.getRequestData();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classhttp_1_1Request.html#af3b669ed3f8e1bd05f6d87ec4b62f807">m_received_bytes</a> = rhs.getReceivedBytes();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classhttp_1_1Request.html#a26cda86e213aadc1010685e2d745b4c5">m_receivedBytes</a> = rhs.getReceivedBytes();</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> = rhs.m_status;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        bzero(<a class="code" href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">m_read_buffer</a>, <span class="keyword">sizeof</span>(<a class="code" href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">m_read_buffer</a>));</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
@@ -370,51 +448,53 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00064">64</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                            {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        std::string input;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1Request.html#a1d6014b52596e2ea30717ffce6fcb27b">m_restData</a> != <span class="stringliteral">&quot;&quot;</span>) {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            input = <a class="code" href="classhttp_1_1Request.html#a1d6014b52596e2ea30717ffce6fcb27b">m_restData</a>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        input += <a class="code" href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">m_read_buffer</a>;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="comment">// Remove \r from input </span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; input.size(); i++) </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">if</span> (input[i] == <span class="charliteral">&#39;\r&#39;</span>) </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="keywordflow">if</span> (input[i + 1] == <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    input.erase(i, 1);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">if</span> (input[i] == <span class="charliteral">&#39;   &#39;</span>) </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                input[i] = <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }   </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> == <a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a6e55d4fbcb4414ad97de58c56bfc3654">PARSE_HEAD</a> || <a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> == <a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64af1ec52e66d8011ff2329d6937794bdb3">PARSE_START</a>) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac">parseHead</a>(input))</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> == <a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc">PARSE_HEADERS</a>) {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="classhttp_1_1Request.html#aeab4490334788d6010997914a3db2060">parseHeaders</a>(input))</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> == <a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64ac4ffb0e12ded445e68ca3f683a01ba21">PARSE_BODY</a>) {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4">parseBody</a>(input))</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00059">59</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                            {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        std::string input;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1Request.html#a1d6014b52596e2ea30717ffce6fcb27b">m_restData</a> != <span class="stringliteral">&quot;&quot;</span>) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            input = <a class="code" href="classhttp_1_1Request.html#a1d6014b52596e2ea30717ffce6fcb27b">m_restData</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <a class="code" href="classhttp_1_1Request.html#a1d6014b52596e2ea30717ffce6fcb27b">m_restData</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        input += <a class="code" href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">m_read_buffer</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;input: &quot;</span> &lt;&lt; input &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="comment">//Remove \r from input &amp; replace tabs with spaces</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> i = 0; i &lt; input.size(); i++) </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">if</span> (input[i] == <span class="charliteral">&#39;\r&#39;</span>) </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="keywordflow">if</span> (input[i + 1] == <span class="charliteral">&#39;\n&#39;</span>) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                    input.erase(i, 1);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">if</span> (input[i] == <span class="charliteral">&#39;   &#39;</span>) </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                input[i] = <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }   </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> == <a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a6e55d4fbcb4414ad97de58c56bfc3654">PARSE_HEAD</a> || <a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> == <a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64af1ec52e66d8011ff2329d6937794bdb3">PARSE_START</a>) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac">parseHead</a>(input))</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> == <a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc">PARSE_HEADERS</a>) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="classhttp_1_1Request.html#aeab4490334788d6010997914a3db2060">parseHeaders</a>(input))</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> == <a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64ac4ffb0e12ded445e68ca3f683a01ba21">PARSE_BODY</a>) {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4">parseBody</a>(input))</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> == <a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff">PARSE_END</a>) {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="comment">//Parsing done</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> == <a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff">PARSE_END</a>) {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="comment">//Parsing done</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">if</span> (input != <span class="stringliteral">&quot;&quot;</span>) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <a class="code" href="classhttp_1_1Request.html#a1d6014b52596e2ea30717ffce6fcb27b">m_restData</a> = input;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">if</span> (input != <span class="stringliteral">&quot;&quot;</span>) {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <a class="code" href="classhttp_1_1Request.html#a1d6014b52596e2ea30717ffce6fcb27b">m_restData</a> = input;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a1d6014b52596e2ea30717ffce6fcb27b"><div class="ttname"><a href="classhttp_1_1Request.html#a1d6014b52596e2ea30717ffce6fcb27b">http::Request::m_restData</a></div><div class="ttdeci">std::string m_restData</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00042">Request.hpp:42</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a739141ad7c8494442039ff4b865020c4"><div class="ttname"><a href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4">http::Request::parseBody</a></div><div class="ttdeci">bool parseBody(std::string &amp;input)</div><div class="ttdef"><b>Definition:</b> <a href="Parse__body_8cpp_source.html#l00003">Parse_body.cpp:3</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a7c94a929bf55670e716d50ac819ec8ac"><div class="ttname"><a href="classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac">http::Request::parseHead</a></div><div class="ttdeci">bool parseHead(std::string &amp;input)</div><div class="ttdef"><b>Definition:</b> <a href="Parse__head_8cpp_source.html#l00015">Parse_head.cpp:15</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_aeab4490334788d6010997914a3db2060"><div class="ttname"><a href="classhttp_1_1Request.html#aeab4490334788d6010997914a3db2060">http::Request::parseHeaders</a></div><div class="ttdeci">bool parseHeaders(std::string &amp;input)</div><div class="ttdef"><b>Definition:</b> <a href="Parse__headers_8cpp_source.html#l00003">Parse_headers.cpp:3</a></div></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a1d6014b52596e2ea30717ffce6fcb27b"><div class="ttname"><a href="classhttp_1_1Request.html#a1d6014b52596e2ea30717ffce6fcb27b">http::Request::m_restData</a></div><div class="ttdeci">std::string m_restData</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00059">Request.hpp:59</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a739141ad7c8494442039ff4b865020c4"><div class="ttname"><a href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4">http::Request::parseBody</a></div><div class="ttdeci">bool parseBody(std::string &amp;input)</div><div class="ttdef"><b>Definition:</b> <a href="Parse__body_8cpp_source.html#l00005">Parse_body.cpp:5</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a7c94a929bf55670e716d50ac819ec8ac"><div class="ttname"><a href="classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac">http::Request::parseHead</a></div><div class="ttdeci">bool parseHead(std::string &amp;input)</div><div class="ttdef"><b>Definition:</b> <a href="Parse__head_8cpp_source.html#l00017">Parse_head.cpp:17</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_aeab4490334788d6010997914a3db2060"><div class="ttname"><a href="classhttp_1_1Request.html#aeab4490334788d6010997914a3db2060">http::Request::parseHeaders</a></div><div class="ttdeci">bool parseHeaders(std::string &amp;input)</div><div class="ttdef"><b>Definition:</b> <a href="Parse__headers_8cpp_source.html#l00065">Parse_headers.cpp:65</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff">http::PARSE_END</a></div><div class="ttdeci">@ PARSE_END</div><div class="ttdef"><b>Definition:</b> <a href="defines_8hpp_source.html#l00092">defines.hpp:92</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64a6e55d4fbcb4414ad97de58c56bfc3654"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64a6e55d4fbcb4414ad97de58c56bfc3654">http::PARSE_HEAD</a></div><div class="ttdeci">@ PARSE_HEAD</div><div class="ttdef"><b>Definition:</b> <a href="defines_8hpp_source.html#l00089">defines.hpp:89</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc">http::PARSE_HEADERS</a></div><div class="ttdeci">@ PARSE_HEADERS</div><div class="ttdef"><b>Definition:</b> <a href="defines_8hpp_source.html#l00090">defines.hpp:90</a></div></div>
@@ -424,11 +504,23 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Request_aa8d85c69627d45f4d6d69d94131a6993_cgraph.png" border="0" usemap="#aclasshttp_1_1Request_aa8d85c69627d45f4d6d69d94131a6993_cgraph" alt=""/></div>
 <map name="aclasshttp_1_1Request_aa8d85c69627d45f4d6d69d94131a6993_cgraph" id="aclasshttp_1_1Request_aa8d85c69627d45f4d6d69d94131a6993_cgraph">
-<area shape="rect" title=" " alt="" coords="5,56,159,83"/>
-<area shape="rect" href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4" title=" " alt="" coords="217,5,403,32"/>
-<area shape="rect" href="classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac" title=" " alt="" coords="217,56,403,83"/>
-<area shape="rect" href="classhttp_1_1Request.html#aeab4490334788d6010997914a3db2060" title=" " alt="" coords="207,107,413,133"/>
-<area shape="rect" href="Parse__head_8cpp.html#ac98575a77a3a31ef28dd3424c3ee78fa" title=" " alt="" coords="461,56,556,83"/>
+<area shape="rect" title=" " alt="" coords="5,71,159,98"/>
+<area shape="rect" href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4" title=" " alt="" coords="217,17,403,43"/>
+<area shape="rect" href="classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac" title=" " alt="" coords="217,71,403,98"/>
+<area shape="rect" href="classhttp_1_1Request.html#aeab4490334788d6010997914a3db2060" title=" " alt="" coords="207,130,413,157"/>
+<area shape="rect" href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135" title=" " alt="" coords="468,5,655,47"/>
+<area shape="rect" href="namespacehttp.html#ab573664fa35760fc9437b1fff6d88685" title=" " alt="" coords="497,71,625,98"/>
+<area shape="rect" href="classhttp_1_1Request.html#adc2cfb1a5dcf1dc7a715c1d8fb503322" title=" " alt="" coords="475,123,648,164"/>
+<area shape="rect" href="classhttp_1_1Request.html#ab7b54f98bd335b71a509d3cc112e36ff" title=" " alt="" coords="461,189,661,215"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1Request_aa8d85c69627d45f4d6d69d94131a6993_icgraph.png" border="0" usemap="#aclasshttp_1_1Request_aa8d85c69627d45f4d6d69d94131a6993_icgraph" alt=""/></div>
+<map name="aclasshttp_1_1Request_aa8d85c69627d45f4d6d69d94131a6993_icgraph" id="aclasshttp_1_1Request_aa8d85c69627d45f4d6d69d94131a6993_icgraph">
+<area shape="rect" title=" " alt="" coords="108,5,261,32"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,32"/>
 </map>
 </div>
 
@@ -458,18 +550,128 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parse__body_8cpp_source.html#l00003">3</a> of file <a class="el" href="Parse__body_8cpp_source.html">Parse_body.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;                                {</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    <span class="comment">// ...</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="Parse__body_8cpp_source.html#l00005">5</a> of file <a class="el" href="Parse__body_8cpp_source.html">Parse_body.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;                                        {</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">m_expectedBody</a> == <a class="code" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a8eaf4a1b7a6cf303cfbdae8b0a8b32eb">NO_BODY</a>) {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        <a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> = <a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff">PARSE_END</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    }</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">m_expectedBody</a> == <a class="code" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a68569ee38513d8278c9a268641b6cfe5">CHUNKED</a>) </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135">parseBodyChunked</a>(input)) </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    }</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">m_expectedBody</a> == <a class="code" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a9c21a9fbb3e0b3b4602276b6ad85b7f3">CONTENT_LENGTH</a>) </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a>.size() + input.size() &lt; <a class="code" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a>) </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a> += input;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            input = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">else</span> </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a> += input.substr(0, <a class="code" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> - <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a>.size());</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            input = input.substr(<a class="code" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> - <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a>.size());</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> = <a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff">PARSE_END</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a8c6bb71ac8e08b4547c54f4ba662b135"><div class="ttname"><a href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135">http::Request::parseBodyChunked</a></div><div class="ttdeci">bool parseBodyChunked(std::string &amp;input)</div><div class="ttdef"><b>Definition:</b> <a href="Parse__body_8cpp_source.html#l00037">Parse_body.cpp:37</a></div></div>
+<div class="ttc" id="anamespacehttp_html_aa30eeff7ce0e852dffe3ef46a55406f1a8eaf4a1b7a6cf303cfbdae8b0a8b32eb"><div class="ttname"><a href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a8eaf4a1b7a6cf303cfbdae8b0a8b32eb">http::NO_BODY</a></div><div class="ttdeci">@ NO_BODY</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00032">Request.hpp:32</a></div></div>
+<div class="ttc" id="astructhttp_1_1s__requestData_html_a632cb5e08356d2cef3b9c8398ed7dad2"><div class="ttname"><a href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">http::s_requestData::body</a></div><div class="ttdeci">std::string body</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00020">Request.hpp:20</a></div></div>
 </div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1Request_a739141ad7c8494442039ff4b865020c4_cgraph.png" border="0" usemap="#aclasshttp_1_1Request_a739141ad7c8494442039ff4b865020c4_cgraph" alt=""/></div>
+<map name="aclasshttp_1_1Request_a739141ad7c8494442039ff4b865020c4_cgraph" id="aclasshttp_1_1Request_a739141ad7c8494442039ff4b865020c4_cgraph">
+<area shape="rect" title=" " alt="" coords="5,13,192,39"/>
+<area shape="rect" href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135" title=" " alt="" coords="240,5,427,47"/>
+</map>
+</div>
+<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Request_a739141ad7c8494442039ff4b865020c4_icgraph.png" border="0" usemap="#aclasshttp_1_1Request_a739141ad7c8494442039ff4b865020c4_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1Request_a739141ad7c8494442039ff4b865020c4_icgraph" id="aclasshttp_1_1Request_a739141ad7c8494442039ff4b865020c4_icgraph">
-<area shape="rect" title=" " alt="" coords="207,5,393,32"/>
-<area shape="rect" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993" title=" " alt="" coords="5,5,159,32"/>
+<area shape="rect" title=" " alt="" coords="309,5,496,32"/>
+<area shape="rect" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993" title=" " alt="" coords="108,5,261,32"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8c6bb71ac8e08b4547c54f4ba662b135"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c6bb71ac8e08b4547c54f4ba662b135">&#9670;&nbsp;</a></span>parseBodyChunked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool http::Request::parseBodyChunked </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Parse__body_8cpp_source.html#l00037">37</a> of file <a class="el" href="Parse__body_8cpp_source.html">Parse_body.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    std::string line;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> i = 0; i &lt; input.size(); i++) </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> != 0) </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            std::string chunk = input.substr(i, <a class="code" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <a class="code" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> -= chunk.size();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a> += chunk;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            input = input.substr(i + <a class="code" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a>);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (input[i] == <span class="charliteral">&#39;\n&#39;</span>) </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">if</span> (line == <span class="stringliteral">&quot;0&quot;</span>) </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> = <a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff">PARSE_END</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="comment">//TODO: get this to work</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="comment">//m_contentLength = std::stoi(line, 0, 16);</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            input = input.substr(i + 1);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            i = 0;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            line += input[i];</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1Request_a8c6bb71ac8e08b4547c54f4ba662b135_icgraph.png" border="0" usemap="#aclasshttp_1_1Request_a8c6bb71ac8e08b4547c54f4ba662b135_icgraph" alt=""/></div>
+<map name="aclasshttp_1_1Request_a8c6bb71ac8e08b4547c54f4ba662b135_icgraph" id="aclasshttp_1_1Request_a8c6bb71ac8e08b4547c54f4ba662b135_icgraph">
+<area shape="rect" title=" " alt="" coords="544,5,731,47"/>
+<area shape="rect" href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4" title=" " alt="" coords="309,13,496,39"/>
+<area shape="rect" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993" title=" " alt="" coords="108,13,261,39"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,39"/>
 </map>
 </div>
 
@@ -499,42 +701,43 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parse__head_8cpp_source.html#l00015">15</a> of file <a class="el" href="Parse__head_8cpp_source.html">Parse_head.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                                            {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    std::string line;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    std::string key;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; input.size(); i++) {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">if</span> (input[i] == <span class="charliteral">&#39;\n&#39;</span>) </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            std::vector&lt;std::string&gt; args;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            std::stringstream stream(line);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            input = input.substr(i + 1);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keywordflow">while</span> (getline(stream, key, <span class="charliteral">&#39; &#39;</span>)) </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                args.push_back(key);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">if</span> (args.size() == 3 &amp;&amp; <a class="code" href="Parse__head_8cpp.html#ac98575a77a3a31ef28dd3424c3ee78fa">checkHead</a>(args) == <span class="keyword">true</span>) </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#abad9164bd968c0d77bc39b42e3f4569e">method</a> = args[0];</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a57738de926238dbd5142105534918f44">uri</a> = args[1];</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#aa89ee8974428c29ddad21ad20b328fab">version</a> = args[2];</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> = <a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc">PARSE_HEADERS</a>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            line += input[i];</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
-<div class="ttc" id="aParse__head_8cpp_html_ac98575a77a3a31ef28dd3424c3ee78fa"><div class="ttname"><a href="Parse__head_8cpp.html#ac98575a77a3a31ef28dd3424c3ee78fa">checkHead</a></div><div class="ttdeci">bool checkHead(std::vector&lt; std::string &gt; &amp;args)</div><div class="ttdef"><b>Definition:</b> <a href="Parse__head_8cpp_source.html#l00003">Parse_head.cpp:3</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Parse__head_8cpp_source.html#l00017">17</a> of file <a class="el" href="Parse__head_8cpp_source.html">Parse_head.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                        {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    std::string line;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::string key;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> i = 0; i &lt; input.size(); i++) {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">if</span> (input[i] == <span class="charliteral">&#39;\n&#39;</span>) </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            std::vector&lt;std::string&gt; args;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            std::stringstream stream(line);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            input = input.substr(i + 1);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            i = 0;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordflow">while</span> (getline(stream, key, <span class="charliteral">&#39; &#39;</span>)) </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                args.push_back(key);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            <span class="keywordflow">if</span> (args.size() == 3 &amp;&amp; <a class="code" href="namespacehttp.html#ab573664fa35760fc9437b1fff6d88685">checkHead</a>(args) == <span class="keyword">true</span>) </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#abad9164bd968c0d77bc39b42e3f4569e">method</a> = args[0];</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a57738de926238dbd5142105534918f44">uri</a> = args[1];</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#aa89ee8974428c29ddad21ad20b328fab">version</a> = args[2];</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> = <a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc">PARSE_HEADERS</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            line += input[i];</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="ttc" id="anamespacehttp_html_ab573664fa35760fc9437b1fff6d88685"><div class="ttname"><a href="namespacehttp.html#ab573664fa35760fc9437b1fff6d88685">http::checkHead</a></div><div class="ttdeci">bool checkHead(std::vector&lt; std::string &gt; &amp;args)</div><div class="ttdef"><b>Definition:</b> <a href="Parse__head_8cpp_source.html#l00005">Parse_head.cpp:5</a></div></div>
 <div class="ttc" id="astructhttp_1_1s__requestData_html_a57738de926238dbd5142105534918f44"><div class="ttname"><a href="structhttp_1_1s__requestData.html#a57738de926238dbd5142105534918f44">http::s_requestData::uri</a></div><div class="ttdeci">std::string uri</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00017">Request.hpp:17</a></div></div>
 <div class="ttc" id="astructhttp_1_1s__requestData_html_aa89ee8974428c29ddad21ad20b328fab"><div class="ttname"><a href="structhttp_1_1s__requestData.html#aa89ee8974428c29ddad21ad20b328fab">http::s_requestData::version</a></div><div class="ttdeci">std::string version</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00018">Request.hpp:18</a></div></div>
 <div class="ttc" id="astructhttp_1_1s__requestData_html_abad9164bd968c0d77bc39b42e3f4569e"><div class="ttname"><a href="structhttp_1_1s__requestData.html#abad9164bd968c0d77bc39b42e3f4569e">http::s_requestData::method</a></div><div class="ttdeci">std::string method</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00016">Request.hpp:16</a></div></div>
@@ -544,7 +747,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classhttp_1_1Request_a7c94a929bf55670e716d50ac819ec8ac_cgraph.png" border="0" usemap="#aclasshttp_1_1Request_a7c94a929bf55670e716d50ac819ec8ac_cgraph" alt=""/></div>
 <map name="aclasshttp_1_1Request_a7c94a929bf55670e716d50ac819ec8ac_cgraph" id="aclasshttp_1_1Request_a7c94a929bf55670e716d50ac819ec8ac_cgraph">
 <area shape="rect" title=" " alt="" coords="5,5,192,32"/>
-<area shape="rect" href="Parse__head_8cpp.html#ac98575a77a3a31ef28dd3424c3ee78fa" title=" " alt="" coords="240,5,335,32"/>
+<area shape="rect" href="namespacehttp.html#ab573664fa35760fc9437b1fff6d88685" title=" " alt="" coords="240,5,368,32"/>
 </map>
 </div>
 <div class="dynheader">
@@ -552,8 +755,110 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Request_a7c94a929bf55670e716d50ac819ec8ac_icgraph.png" border="0" usemap="#aclasshttp_1_1Request_a7c94a929bf55670e716d50ac819ec8ac_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1Request_a7c94a929bf55670e716d50ac819ec8ac_icgraph" id="aclasshttp_1_1Request_a7c94a929bf55670e716d50ac819ec8ac_icgraph">
-<area shape="rect" title=" " alt="" coords="207,5,393,32"/>
-<area shape="rect" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993" title=" " alt="" coords="5,5,159,32"/>
+<area shape="rect" title=" " alt="" coords="309,5,496,32"/>
+<area shape="rect" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993" title=" " alt="" coords="108,5,261,32"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab7b54f98bd335b71a509d3cc112e36ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7b54f98bd335b71a509d3cc112e36ff">&#9670;&nbsp;</a></span>parseHeader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool http::Request::parseHeader </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>line</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Parse__headers_8cpp_source.html#l00005">5</a> of file <a class="el" href="Parse__headers_8cpp_source.html">Parse_headers.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8">QuoteFlag</a> qf = <a class="code" href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8ab3b96bab0d8747049e4366de54c43db2">NO_QUOTE</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    std::string key = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    std::vector&lt;std::string&gt; values;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">int</span> promptStart = 0;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> i = 0; i &lt; line.size(); i++)</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="comment">//quote Management</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordflow">if</span> ((line[i] == <span class="charliteral">&#39;\&#39;&#39;</span> || line[i] == <span class="charliteral">&#39;\&quot;&#39;</span>) &amp;&amp; qf == <a class="code" href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8ab3b96bab0d8747049e4366de54c43db2">NO_QUOTE</a>)</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keywordflow">if</span> (line[i] == <span class="charliteral">&#39;\&#39;&#39;</span>) {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                qf = <a class="code" href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8aecf6d91bbe6ec97eae702c654674fc5e">SINGLE_QUOTE</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                qf = <a class="code" href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8a54ca709140c11cb88c8c22ab0f925387">DOUBLE_QUOTE</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">if</span> ((line[i] == <span class="charliteral">&#39;\&#39;&#39;</span> &amp;&amp; qf == <a class="code" href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8aecf6d91bbe6ec97eae702c654674fc5e">SINGLE_QUOTE</a>) || (line[i] == <span class="charliteral">&#39;\&quot;&#39;</span> &amp;&amp; qf == <a class="code" href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8a54ca709140c11cb88c8c22ab0f925387">DOUBLE_QUOTE</a>))</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            qf = <a class="code" href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8ab3b96bab0d8747049e4366de54c43db2">NO_QUOTE</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="comment">//find key</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">if</span> (line[i] == <span class="charliteral">&#39;:&#39;</span> &amp;&amp; qf == <a class="code" href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8ab3b96bab0d8747049e4366de54c43db2">NO_QUOTE</a>)</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">if</span> (i == 0)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <span class="comment">//ERROR MESSAGE</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            key = line.substr(0, i);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            promptStart = i;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="comment">//find values</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">if</span> ((line[i] == <span class="charliteral">&#39;,&#39;</span> &amp;&amp; qf == <a class="code" href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8ab3b96bab0d8747049e4366de54c43db2">NO_QUOTE</a>) || i == line.size() - 1)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">if</span> (i == line.size() - 1)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                i++;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">if</span> (key == <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="comment">//ERROR MESSAGE</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            std::string val = line.substr(promptStart, i - promptStart);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            val = val.substr(val.find_first_not_of(<span class="charliteral">&#39; &#39;</span>) + 1);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">if</span> (val == <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                <span class="comment">//ERROR MESSAGE</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            values.push_back(val);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            promptStart = i;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a701f1f313621acf5b71fe8c83ccc82a2">headers</a>[key] = values;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="ttc" id="anamespacehttp_html_a65130a0278ed6baadd18c1f3594ccdb8"><div class="ttname"><a href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8">http::QuoteFlag</a></div><div class="ttdeci">QuoteFlag</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00023">Request.hpp:23</a></div></div>
+<div class="ttc" id="anamespacehttp_html_a65130a0278ed6baadd18c1f3594ccdb8a54ca709140c11cb88c8c22ab0f925387"><div class="ttname"><a href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8a54ca709140c11cb88c8c22ab0f925387">http::DOUBLE_QUOTE</a></div><div class="ttdeci">@ DOUBLE_QUOTE</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00028">Request.hpp:26</a></div></div>
+<div class="ttc" id="anamespacehttp_html_a65130a0278ed6baadd18c1f3594ccdb8ab3b96bab0d8747049e4366de54c43db2"><div class="ttname"><a href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8ab3b96bab0d8747049e4366de54c43db2">http::NO_QUOTE</a></div><div class="ttdeci">@ NO_QUOTE</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00024">Request.hpp:24</a></div></div>
+<div class="ttc" id="anamespacehttp_html_a65130a0278ed6baadd18c1f3594ccdb8aecf6d91bbe6ec97eae702c654674fc5e"><div class="ttname"><a href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8aecf6d91bbe6ec97eae702c654674fc5e">http::SINGLE_QUOTE</a></div><div class="ttdeci">@ SINGLE_QUOTE</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00025">Request.hpp:25</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1Request_ab7b54f98bd335b71a509d3cc112e36ff_icgraph.png" border="0" usemap="#aclasshttp_1_1Request_ab7b54f98bd335b71a509d3cc112e36ff_icgraph" alt=""/></div>
+<map name="aclasshttp_1_1Request_ab7b54f98bd335b71a509d3cc112e36ff_icgraph" id="aclasshttp_1_1Request_ab7b54f98bd335b71a509d3cc112e36ff_icgraph">
+<area shape="rect" title=" " alt="" coords="564,5,764,32"/>
+<area shape="rect" href="classhttp_1_1Request.html#aeab4490334788d6010997914a3db2060" title=" " alt="" coords="309,5,516,32"/>
+<area shape="rect" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993" title=" " alt="" coords="108,5,261,32"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,32"/>
 </map>
 </div>
 
@@ -583,71 +888,195 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parse__headers_8cpp_source.html#l00003">3</a> of file <a class="el" href="Parse__headers_8cpp_source.html">Parse_headers.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;                                               {</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    std::string line;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i; i &lt; input.size(); i++) </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;        <span class="keywordflow">if</span> (input[i] == <span class="charliteral">&#39;\n&#39;</span>) </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;            input = input.substr(i + 1);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;            <span class="keywordflow">if</span> (input[i + 1] == <span class="charliteral">&#39;\n&#39;</span>)</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;            {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                input = input.substr(1);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                <a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> = <a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64ac4ffb0e12ded445e68ca3f683a01ba21">PARSE_BODY</a>;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;            }</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keywordflow">if</span> (line[0] != <span class="charliteral">&#39; &#39;</span>)</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                <span class="keywordflow">if</span> (line.find(<span class="charliteral">&#39;:&#39;</span>) == std::string::npos)</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                std::string key;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                std::string value;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                std::stringstream stream(line);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                getline(stream, key, <span class="charliteral">&#39;:&#39;</span>);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                <span class="keywordflow">if</span> (key == <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                <span class="keywordflow">while</span> (getline(stream, value, <span class="charliteral">&#39;,&#39;</span>))</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                {</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                    <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a701f1f313621acf5b71fe8c83ccc82a2">headers</a>[key].push_back(value);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            }</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <span class="keywordflow">if</span> (line.find(<span class="charliteral">&#39;:&#39;</span>) == std::string::npos)</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            line.clear();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            i = 0;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            line += input[i];</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
-<div class="ttc" id="astructhttp_1_1s__requestData_html_a701f1f313621acf5b71fe8c83ccc82a2"><div class="ttname"><a href="structhttp_1_1s__requestData.html#a701f1f313621acf5b71fe8c83ccc82a2">http::s_requestData::headers</a></div><div class="ttdeci">std::map&lt; std::string, std::vector&lt; std::string &gt; &gt; headers</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00019">Request.hpp:19</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Parse__headers_8cpp_source.html#l00065">65</a> of file <a class="el" href="Parse__headers_8cpp_source.html">Parse_headers.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                           {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    std::string line;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> i = 0; i &lt; input.size(); i++) </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">if</span> (input[i] == <span class="charliteral">&#39;\n&#39;</span>) </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="classhttp_1_1Request.html#ab7b54f98bd335b71a509d3cc112e36ff">parseHeader</a>(line))</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            line.clear();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            input = input.substr(i);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            i = 0;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">if</span> (input[i + 1] == <span class="charliteral">&#39;\n&#39;</span>)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                input = input.substr(1);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <a class="code" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> = <a class="code" href="namespacehttp.html#a068cab601142fb739077ccd62379df64ac4ffb0e12ded445e68ca3f683a01ba21">PARSE_BODY</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordflow">if</span> (!<a class="code" href="classhttp_1_1Request.html#adc2cfb1a5dcf1dc7a715c1d8fb503322">interpretHeaders</a>())</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            line += input[i];</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<div class="ttc" id="aclasshttp_1_1Request_html_ab7b54f98bd335b71a509d3cc112e36ff"><div class="ttname"><a href="classhttp_1_1Request.html#ab7b54f98bd335b71a509d3cc112e36ff">http::Request::parseHeader</a></div><div class="ttdeci">bool parseHeader(std::string &amp;line)</div><div class="ttdef"><b>Definition:</b> <a href="Parse__headers_8cpp_source.html#l00005">Parse_headers.cpp:5</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_adc2cfb1a5dcf1dc7a715c1d8fb503322"><div class="ttname"><a href="classhttp_1_1Request.html#adc2cfb1a5dcf1dc7a715c1d8fb503322">http::Request::interpretHeaders</a></div><div class="ttdeci">bool interpretHeaders()</div><div class="ttdef"><b>Definition:</b> <a href="Parse__headers_8cpp_source.html#l00097">Parse_headers.cpp:97</a></div></div>
 </div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1Request_aeab4490334788d6010997914a3db2060_cgraph.png" border="0" usemap="#aclasshttp_1_1Request_aeab4490334788d6010997914a3db2060_cgraph" alt=""/></div>
+<map name="aclasshttp_1_1Request_aeab4490334788d6010997914a3db2060_cgraph" id="aclasshttp_1_1Request_aeab4490334788d6010997914a3db2060_cgraph">
+<area shape="rect" title=" " alt="" coords="5,42,212,69"/>
+<area shape="rect" href="classhttp_1_1Request.html#adc2cfb1a5dcf1dc7a715c1d8fb503322" title=" " alt="" coords="273,5,447,47"/>
+<area shape="rect" href="classhttp_1_1Request.html#ab7b54f98bd335b71a509d3cc112e36ff" title=" " alt="" coords="260,71,460,98"/>
+</map>
+</div>
+<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Request_aeab4490334788d6010997914a3db2060_icgraph.png" border="0" usemap="#aclasshttp_1_1Request_aeab4490334788d6010997914a3db2060_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1Request_aeab4490334788d6010997914a3db2060_icgraph" id="aclasshttp_1_1Request_aeab4490334788d6010997914a3db2060_icgraph">
-<area shape="rect" title=" " alt="" coords="207,5,413,32"/>
-<area shape="rect" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993" title=" " alt="" coords="5,5,159,32"/>
+<area shape="rect" title=" " alt="" coords="309,5,516,32"/>
+<area shape="rect" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993" title=" " alt="" coords="108,5,261,32"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5d644f426dafcff5a49ed1c53c85ed5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d644f426dafcff5a49ed1c53c85ed5b">&#9670;&nbsp;</a></span>PrintRequestData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void http::Request::PrintRequestData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00110">110</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                   {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Method: &quot;</span> &lt;&lt; <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#abad9164bd968c0d77bc39b42e3f4569e">method</a> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;URI: &quot;</span> &lt;&lt; <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a57738de926238dbd5142105534918f44">uri</a> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Version: &quot;</span> &lt;&lt; <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#aa89ee8974428c29ddad21ad20b328fab">version</a> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Headers: &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">for</span> (std::map&lt;std::string, std::vector&lt;std::string&gt; &gt;::const_iterator it = <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a701f1f313621acf5b71fe8c83ccc82a2">headers</a>.begin(); it != <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a701f1f313621acf5b71fe8c83ccc82a2">headers</a>.end(); ++it) {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            std::cout &lt;&lt; it-&gt;first &lt;&lt; <span class="stringliteral">&quot;: &quot;</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keywordflow">for</span> (std::vector&lt;std::string&gt;::const_iterator val = it-&gt;second.begin(); val != it-&gt;second.end(); ++val) {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                std::cout &lt;&lt; *val &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            std::cout &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Body: &quot;</span> &lt;&lt; <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1Request_a5d644f426dafcff5a49ed1c53c85ed5b_icgraph.png" border="0" usemap="#aclasshttp_1_1Request_a5d644f426dafcff5a49ed1c53c85ed5b_icgraph" alt=""/></div>
+<map name="aclasshttp_1_1Request_a5d644f426dafcff5a49ed1c53c85ed5b_icgraph" id="aclasshttp_1_1Request_a5d644f426dafcff5a49ed1c53c85ed5b_icgraph">
+<area shape="rect" title=" " alt="" coords="108,5,339,32"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a147a2f09d8b34a36d0ad2720e2041b1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a147a2f09d8b34a36d0ad2720e2041b1f">&#9670;&nbsp;</a></span>setReadBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void http::Request::setReadBuffer </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the read buffer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>The buffer to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00106">106</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                                                  {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        memcpy(<a class="code" href="classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378">m_read_buffer</a>, buffer, <a class="code" href="Request_8hpp.html#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    }</div>
+<div class="ttc" id="aRequest_8hpp_html_a6b20d41d6252e9871430c242cb1a56e7"><div class="ttname"><a href="Request_8hpp.html#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a></div><div class="ttdeci">#define BUFFER_SIZE</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00011">Request.hpp:11</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1Request_a147a2f09d8b34a36d0ad2720e2041b1f_icgraph.png" border="0" usemap="#aclasshttp_1_1Request_a147a2f09d8b34a36d0ad2720e2041b1f_icgraph" alt=""/></div>
+<map name="aclasshttp_1_1Request_a147a2f09d8b34a36d0ad2720e2041b1f_icgraph" id="aclasshttp_1_1Request_a147a2f09d8b34a36d0ad2720e2041b1f_icgraph">
+<area shape="rect" title="Sets the read buffer." alt="" coords="108,5,317,32"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,32"/>
 </map>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a8e26162ee32cb6f0e2e4e429e7a1dd76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e26162ee32cb6f0e2e4e429e7a1dd76">&#9670;&nbsp;</a></span>m_contentLength</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t http::Request::m_contentLength</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00058">58</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aa9e7fe64ab82b2384fb54a9ce9d13d4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9e7fe64ab82b2384fb54a9ce9d13d4c">&#9670;&nbsp;</a></span>m_expectedBody</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1">ExpectedBody</a> http::Request::m_expectedBody</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00063">63</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+
+</div>
+</div>
 <a id="ac9a397728470ec78bb8d97eb5ae3b378"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac9a397728470ec78bb8d97eb5ae3b378">&#9670;&nbsp;</a></span>m_read_buffer</h2>
 
@@ -668,12 +1097,12 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00040">40</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00056">56</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
 
 </div>
 </div>
-<a id="af3b669ed3f8e1bd05f6d87ec4b62f807"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3b669ed3f8e1bd05f6d87ec4b62f807">&#9670;&nbsp;</a></span>m_received_bytes</h2>
+<a id="a26cda86e213aadc1010685e2d745b4c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26cda86e213aadc1010685e2d745b4c5">&#9670;&nbsp;</a></span>m_receivedBytes</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -682,7 +1111,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t http::Request::m_received_bytes</td>
+          <td class="memname">uint32_t http::Request::m_receivedBytes</td>
         </tr>
       </table>
   </td>
@@ -692,7 +1121,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00041">41</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00057">57</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
 
 </div>
 </div>
@@ -716,7 +1145,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00043">43</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00060">60</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
 
 </div>
 </div>
@@ -740,7 +1169,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00042">42</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00059">59</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
 
 </div>
 </div>
@@ -764,7 +1193,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00044">44</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00062">62</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
 
 </div>
 </div>
