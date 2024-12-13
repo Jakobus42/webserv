@@ -40,7 +40,7 @@ namespace core {
 	 * @brief Copy constructor.
 	 * @param other The other Reactor object to copy.
 	 */
-	Reactor::Reactor(const Reactor &other)
+	Reactor::Reactor(const Reactor& other)
 		: m_epoll_master_fd(other.getEpollFd())
 		, m_vServers(other.getVirtualServers()) {
 	}
@@ -50,7 +50,7 @@ namespace core {
 	 * @param other The other Reactor object to assign from.
 	 * @return A reference to the assigned Reactor object.
 	 */
-	Reactor &Reactor::operator=(const Reactor &rhs) {
+	Reactor& Reactor::operator=(const Reactor& rhs) {
 		if (this == &rhs)
 			return *this;
 		m_epoll_master_fd = rhs.getEpollFd();
@@ -68,15 +68,15 @@ namespace core {
 			throw std::exception();
 	}
 
-	const std::vector<http::VirtualServer> &Reactor::getVirtualServers(void) const {
+	const std::vector<http::VirtualServer>& Reactor::getVirtualServers(void) const {
 		return m_vServers;
 	}
 
-	std::vector<http::VirtualServer> &Reactor::getVirtualServers(void) {
+	std::vector<http::VirtualServer>& Reactor::getVirtualServers(void) {
 		return m_vServers;
 	}
 
-	void Reactor::addVirtualServer(config::t_server &serverConfig) throw(
+	void Reactor::addVirtualServer(config::t_server& serverConfig) throw(
 		std::exception) {
 		http::VirtualServer server(serverConfig);
 		if (server.listen() == false)
@@ -85,7 +85,7 @@ namespace core {
 		m_vServers.push_back(server);
 	}
 
-	bool Reactor::addVirtualServers(config::t_config_data &configData) {
+	bool Reactor::addVirtualServers(config::t_config_data& configData) {
 		for (size_t i = 0; i < configData.servers.size(); ++i) {
 			http::VirtualServer server(configData.servers.at(i));
 			if (server.getSocket().init() == false) {
@@ -108,13 +108,13 @@ namespace core {
 		return true;
 	}
 
-	void Reactor::registerHandler(int fd, AHandler *handler, const HandlerContext &ctx, uint32_t events) {
+	void Reactor::registerHandler(int fd, AHandler* handler, const HandlerContext& ctx, uint32_t events) {
 		t_event event;
 
 		event.events = events;
 		event.data.ptr = new EventData(handler, ctx);
 		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_ADD, fd, &event) < 0) {
-			delete static_cast<EventData *>(event.data.ptr);
+			delete static_cast<EventData*>(event.data.ptr);
 			throw std::runtime_error("Crud! Couldn't register event handler!");
 		}
 	}
@@ -145,16 +145,16 @@ namespace core {
 
 	void Reactor::acceptNewConnections() {
 		for (std::vector<http::VirtualServer>::iterator it = m_vServers.begin(); it != m_vServers.end(); ++it) {
-			http::VirtualServer &vServer = *it;
+			http::VirtualServer& vServer = *it;
 
 			while (vServer.addConnection()) {
-				http::Connection &conn = vServer.getConnections().back();
-				AHandler *handler = NULL;
+				http::Connection& conn = vServer.getConnections().back();
+				AHandler* handler = NULL;
 
 				try { // we have to get rid of this shit try stuff
 					handler = new IOHandler;
 					this->registerHandler(conn.getSocket().getFd(), handler, HandlerContext(vServer, conn), EPOLLIN | EPOLLOUT);
-				} catch (std::exception &e) {
+				} catch (std::exception& e) {
 					delete handler;
 					std::cerr << e.what() << std::endl;
 				}
@@ -162,11 +162,11 @@ namespace core {
 		}
 	}
 
-	void Reactor::handleEvents(t_event *events, int nEvents) {
+	void Reactor::handleEvents(t_event* events, int nEvents) {
 		for (int i = 0; i < nEvents; ++i) {
-			t_event &event = events[i];
-			EventData *data = static_cast<EventData *>(event.data.ptr);
-			HandlerContext &ctx = data->ctx;
+			t_event& event = events[i];
+			EventData* data = static_cast<EventData*>(event.data.ptr);
+			HandlerContext& ctx = data->ctx;
 
 			ctx.events = event.events;
 			data->handler->handle(ctx);

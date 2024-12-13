@@ -17,7 +17,7 @@ namespace http {
 	 * @return std::string The error page as an HTML string.
 	 */
 	std::string generateErrorPage(StatusCode code) {
-		const t_errorMessages &errorPages = ErrorMessages::getInstance().getErrorMessages();
+		const t_errorMessages& errorPages = ErrorMessages::getInstance().getErrorMessages();
 		if (errorPages.find(code) == errorPages.end()) {
 			return "";
 		}

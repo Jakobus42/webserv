@@ -39,7 +39,7 @@ namespace http {
 	 * @brief Copy constructor.
 	 * @param other The other ErrorMessages object to copy.
 	 */
-	ErrorMessages::ErrorMessages(const ErrorMessages &other) {
+	ErrorMessages::ErrorMessages(const ErrorMessages& other) {
 		(void)other;
 	}
 
@@ -48,12 +48,12 @@ namespace http {
 	 * @param other The other ErrorMessages object to assign from.
 	 * @return A reference to the assigned ErrorMessages object.
 	 */
-	ErrorMessages &ErrorMessages::operator=(const ErrorMessages &rhs) {
+	ErrorMessages& ErrorMessages::operator=(const ErrorMessages& rhs) {
 		(void)rhs;
 		return *this;
 	}
 
-	const t_errorMessages &ErrorMessages::getErrorMessages() const {
+	const t_errorMessages& ErrorMessages::getErrorMessages() const {
 		return m_errorMessages;
 	}
 

@@ -18,7 +18,7 @@ namespace core {
 	 * @brief Copy constructor.
 	 * @param other The other RequestHandler object to copy.
 	 */
-	RequestHandler::RequestHandler(const RequestHandler &other) {
+	RequestHandler::RequestHandler(const RequestHandler& other) {
 		(void)other;
 	}
 
@@ -27,13 +27,13 @@ namespace core {
 	 * @param other The other RequestHandler object to assign from.
 	 * @return A reference to the assigned RequestHandler object.
 	 */
-	RequestHandler &RequestHandler::operator=(const RequestHandler &rhs) {
+	RequestHandler& RequestHandler::operator=(const RequestHandler& rhs) {
 		(void)rhs;
 		return *this;
 	}
 
 	// note: the implementation is just temporary
-	void RequestHandler::handle(HandlerContext &ctx) {
+	void RequestHandler::handle(HandlerContext& ctx) {
 		int fd = ctx.conn.getSocket().getFd();
 		char buffer[1024];
 

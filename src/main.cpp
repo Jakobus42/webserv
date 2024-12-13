@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-int main(int argc, char **const argv) {
+int main(int argc, char** const argv) {
 	try {
 		http::ErrorMessages::eagerInit();
 
@@ -19,7 +19,7 @@ int main(int argc, char **const argv) {
 		if (reactor.addVirtualServers(configData) == false)
 			return 1;
 		reactor.react();
-	} catch (const std::exception &e) {
+	} catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
 		return 1;
 	}

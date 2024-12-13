@@ -13,10 +13,11 @@ namespace core {
 			ResponseHandler();
 			~ResponseHandler();
 
-			void handle(HandlerContext &ctx);
+			void handle(HandlerContext& ctx);
+
 		private:
-			ResponseHandler(const ResponseHandler &other);
-			ResponseHandler &operator=(const ResponseHandler &rhs);
+			ResponseHandler(const ResponseHandler& other);
+			ResponseHandler& operator=(const ResponseHandler& rhs);
 	};
 
 } /* namespace core */
