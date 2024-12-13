@@ -20,6 +20,8 @@ namespace http {
 		std::string start_line;
 		start_line = HTTP_NAME + ONE_DOT_ONE + " " + status(status_code) + CRLF;
 
+		response += start_line;
+
 		return response;
 	}
 
