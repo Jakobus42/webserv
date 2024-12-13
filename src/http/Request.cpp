@@ -9,7 +9,7 @@ namespace http {
 	 */
 	Request::Request()
 		: m_read_buffer()
-		, m_received_bytes(0)
+		, m_receivedBytes(0)
 		, m_requestData()
 		, m_status(PARSE_START) {}
 
@@ -25,7 +25,7 @@ namespace http {
 	 */
 	Request::Request(const Request &other)
 		: m_read_buffer()
-		, m_received_bytes(other.getReceivedBytes())
+		, m_receivedBytes(other.getReceivedBytes())
 		, m_requestData(other.getRequestData())
 		, m_status(other.m_status) {}
 
@@ -38,14 +38,14 @@ namespace http {
 		if (this == &rhs)
 			return *this;
 		m_requestData = rhs.getRequestData();
-		m_received_bytes = rhs.getReceivedBytes();
+		m_receivedBytes = rhs.getReceivedBytes();
 		m_status = rhs.m_status;
 		bzero(m_read_buffer, sizeof(m_read_buffer));
 		return *this;
 	}
 
 	uint32_t Request::getReceivedBytes(void) const {
-		return m_received_bytes;
+		return m_receivedBytes;
 	};
 
 	const t_requestData &Request::getRequestData(void) const {
@@ -56,19 +56,16 @@ namespace http {
 		return m_status;
 	};
 
-	// 3 different things can occur:
-	// 1. The request is not fully received
-	// 2. The request is fully received and there is no leftover data
-	// 3. The request is fully received and there is leftover data
-
 	bool Request::parse(void) {
 		std::string input;
 		if (m_restData != "") {
 			input = m_restData;
+			m_restData = "";
 		}
 		input += m_read_buffer;
-		// Remove \r from input 
-		for (int i = 0; i < input.size(); i++) 
+		std::cout << "input: " << input << std::endl;
+		//Remove \r from input & replace tabs with spaces
+		for (unsigned long i = 0; i < input.size(); i++) 
 		{
 			if (input[i] == '\r') 
 			{
@@ -100,6 +97,29 @@ namespace http {
 			m_restData = input;
 		}
 		return true;
+	}
+
+	/**
+	 * @brief Sets the read buffer.
+	 * @param buffer The buffer to set.
+	 */
+	void Request::setReadBuffer(const char *buffer) {
+		memcpy(m_read_buffer, buffer, BUFFER_SIZE);
+	}
+
+	void Request::PrintRequestData() {
+		std::cout << "Method: " << m_requestData.method << std::endl;
+		std::cout << "URI: " << m_requestData.uri << std::endl;
+		std::cout << "Version: " << m_requestData.version << std::endl;
+		std::cout << "Headers: " << std::endl;
+		for (std::map<std::string, std::vector<std::string> >::const_iterator it = m_requestData.headers.begin(); it != m_requestData.headers.end(); ++it) {
+			std::cout << it->first << ": ";
+			for (std::vector<std::string>::const_iterator val = it->second.begin(); val != it->second.end(); ++val) {
+				std::cout << *val << " ";
+			}
+			std::cout << std::endl;
+		}
+		std::cout << "Body: " << m_requestData.body << std::endl;
 	}
 
 } /* namespace http */

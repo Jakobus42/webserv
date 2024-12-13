@@ -1,5 +1,7 @@
 #include "http/Request.hpp"
 
+namespace http {
+
 bool checkHead(std::vector<std::string> &args) {
 	if (args[0] != "GET" && args[0] != "POST" && args[0] != "PUT" && args[0] != "DELETE") 
 	{
@@ -12,16 +14,17 @@ bool checkHead(std::vector<std::string> &args) {
 	return true;
 }
 
-bool http::Request::parseHead(std::string &input) {
+bool Request::parseHead(std::string &input) {
 	std::string line;
 	std::string key;
-	for (int i = 0; i < input.size(); i++) {
+	for (unsigned long i = 0; i < input.size(); i++) {
 		if (input[i] == '\n') 
 		{
 			std::vector<std::string> args;
 			std::stringstream stream(line);
 			
 			input = input.substr(i + 1);
+			i = 0;
 			while (getline(stream, key, ' ')) 
 			{
 				args.push_back(key);
@@ -46,3 +49,5 @@ bool http::Request::parseHead(std::string &input) {
 	}
 	return true;
 }
+
+} /* namespace http */
