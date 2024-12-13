@@ -13,11 +13,11 @@ namespace core {
 	};
 
 	struct HandlerContext {
-			http::VirtualServer &vServer;
-			http::Connection &conn;
+			http::VirtualServer& vServer;
+			http::Connection& conn;
 			uint32_t events;
 
-			HandlerContext(http::VirtualServer &vServer, http::Connection &conn)
+			HandlerContext(http::VirtualServer& vServer, http::Connection& conn)
 				: vServer(vServer)
 				, conn(conn)
 				, events(EPOLLIN) {}
@@ -28,7 +28,7 @@ namespace core {
 			AHandler()
 				: m_state(PENDING) {}
 
-			virtual void handle(HandlerContext &ctx) = 0;
+			virtual void handle(HandlerContext& ctx) = 0;
 
 			virtual bool hasCompleted() const {
 				return m_state == COMPLETED;
@@ -39,6 +39,7 @@ namespace core {
 			}
 
 			virtual ~AHandler() {}
+
 		protected:
 			HandlerState m_state;
 	};

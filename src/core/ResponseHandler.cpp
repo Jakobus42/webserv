@@ -20,7 +20,7 @@ namespace core {
 	 * @brief Copy constructor.
 	 * @param other The other ResponseHandler object to copy.
 	 */
-	ResponseHandler::ResponseHandler(const ResponseHandler &) {
+	ResponseHandler::ResponseHandler(const ResponseHandler&) {
 	}
 
 	/**
@@ -28,15 +28,15 @@ namespace core {
 	 * @param other The other ResponseHandler object to assign from.
 	 * @return A reference to the assigned ResponseHandler object.
 	 */
-	ResponseHandler &ResponseHandler::operator=(const ResponseHandler &) {
+	ResponseHandler& ResponseHandler::operator=(const ResponseHandler&) {
 		return *this;
 	}
 
 	// note: the implementation is just temporary
-	void ResponseHandler::handle(HandlerContext &ctx) {
+	void ResponseHandler::handle(HandlerContext& ctx) {
 		int fd = ctx.conn.getSocket().getFd();
 		std::cout << "ResponseHandler on fd: " << fd << std::endl;
-		const char *response =
+		const char* response =
 			"HTTP/1.1 200 OK\r\n"
 			"Content-Type: text/plain\r\n"
 			"Content-Length: 13\r\n"

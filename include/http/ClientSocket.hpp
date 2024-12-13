@@ -21,9 +21,9 @@ namespace http {
 			ClientSocket(void);
 			ClientSocket(int listen_socket) throw(std::exception);
 			~ClientSocket(void);
-			ClientSocket(const ClientSocket &other);
-			ClientSocket &operator=(const ClientSocket &rhs);
-			bool operator==(const ClientSocket &other) const;
+			ClientSocket(const ClientSocket& other);
+			ClientSocket& operator=(const ClientSocket& rhs);
+			bool operator==(const ClientSocket& other) const;
 
 			void accept(int listen_socket) throw(std::runtime_error);
 
@@ -33,6 +33,7 @@ namespace http {
 			unsigned int getSocketSize(void) const;
 			bool isAlive(void) const;
 			void close(void);
+
 		private:
 			int m_fd;
 			t_sockaddr m_socketAddress;

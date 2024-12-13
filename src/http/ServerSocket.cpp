@@ -47,7 +47,7 @@ namespace http {
 	 * @brief Copy constructor.
 	 * @param other The other ServerSocket object to copy.
 	 */
-	ServerSocket::ServerSocket(const ServerSocket &other) {
+	ServerSocket::ServerSocket(const ServerSocket& other) {
 		operator=(other);
 	}
 
@@ -57,7 +57,7 @@ namespace http {
 	 * @throws
 	 * @return A reference to the assigned ServerSocket object.
 	 */
-	ServerSocket &ServerSocket::operator=(const ServerSocket &rhs) {
+	ServerSocket& ServerSocket::operator=(const ServerSocket& rhs) {
 		if (this == &rhs)
 			return *this;
 		m_fd = rhs.getFd();
@@ -125,7 +125,7 @@ namespace http {
 		m_socketAddress.sin_addr.s_addr = htonl(m_ip);
 		std::cout << "Binding to port " << m_port << ", address " << m_ip
 				  << std::endl;
-		if (::bind(m_fd, (t_sockaddr *)&m_socketAddress, sizeof(m_socketAddress)) <
+		if (::bind(m_fd, (t_sockaddr*)&m_socketAddress, sizeof(m_socketAddress)) <
 			0) {
 			std::cout << "Bind failed with " << errno << std::endl;
 			this->close();

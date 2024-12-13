@@ -25,7 +25,7 @@ namespace http {
 	 * @brief Copy constructor.
 	 * @param other The other Request object to copy.
 	 */
-	Request::Request(const Request &other)
+	Request::Request(const Request& other)
 		: m_read_buffer()
 		, m_received_bytes(other.getReceivedBytes())
 		, m_data(other.getData())
@@ -38,7 +38,7 @@ namespace http {
 	 * @param other The other Request object to assign from.
 	 * @return A reference to the assigned Request object.
 	 */
-	Request &Request::operator=(const Request &rhs) {
+	Request& Request::operator=(const Request& rhs) {
 		if (this == &rhs)
 			return *this;
 		m_data = rhs.getData();
@@ -53,15 +53,15 @@ namespace http {
 		return m_received_bytes;
 	};
 
-	const std::string &Request::getData(void) const {
+	const std::string& Request::getData(void) const {
 		return m_data;
 	};
 
-	const std::string &Request::getHead(void) const {
+	const std::string& Request::getHead(void) const {
 		return m_head;
 	};
 
-	const std::string &Request::getBody(void) const {
+	const std::string& Request::getBody(void) const {
 		return m_body;
 	};
 

@@ -17,7 +17,7 @@ namespace shared {
 		 * @param result A vector to store the resulting tokens after splitting the
 		 * input string.
 		 */
-		void split(const std::string &str, std::vector<std::string> &result, const std::string &delimiters) {
+		void split(const std::string& str, std::vector<std::string>& result, const std::string& delimiters) {
 			std::size_t start = str.find_first_not_of(delimiters);
 			while (start != std::string::npos) {
 				std::size_t end = str.find_first_of(delimiters, start);
@@ -39,7 +39,7 @@ namespace shared {
 		 * @note If the string only contains characters from `delimiters`, it will be
 		 * cleared.
 		 */
-		void trim(std::string &str, const std::string &delimiters) {
+		void trim(std::string& str, const std::string& delimiters) {
 			std::size_t start = str.find_first_not_of(delimiters);
 			std::size_t end = str.find_last_not_of(delimiters);
 			if (start != std::string::npos && end != std::string::npos) {

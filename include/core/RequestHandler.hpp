@@ -13,10 +13,11 @@ namespace core {
 			RequestHandler();
 			~RequestHandler();
 
-			void handle(HandlerContext &ctx);
+			void handle(HandlerContext& ctx);
+
 		private:
-			RequestHandler(const RequestHandler &other);
-			RequestHandler &operator=(const RequestHandler &rhs);
+			RequestHandler(const RequestHandler& other);
+			RequestHandler& operator=(const RequestHandler& rhs);
 	};
 
 } /* namespace core */

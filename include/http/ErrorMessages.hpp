@@ -18,7 +18,7 @@ namespace http {
 		public:
 			~ErrorMessages();
 
-			static const ErrorMessages &getInstance() {
+			static const ErrorMessages& getInstance() {
 				static ErrorMessages instance;
 				return instance;
 			}
@@ -28,11 +28,12 @@ namespace http {
 				(void)getInstance();
 			}
 
-			const t_errorMessages &getErrorMessages() const;
+			const t_errorMessages& getErrorMessages() const;
+
 		private:
 			ErrorMessages();
-			ErrorMessages(const ErrorMessages &other);
-			ErrorMessages &operator=(const ErrorMessages &rhs);
+			ErrorMessages(const ErrorMessages& other);
+			ErrorMessages& operator=(const ErrorMessages& rhs);
 
 			t_errorMessages m_errorMessages;
 	};

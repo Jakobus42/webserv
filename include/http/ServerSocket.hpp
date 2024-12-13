@@ -26,8 +26,8 @@ namespace http {
 			ServerSocket();
 			ServerSocket(int port, uint32_t ip = LOCALHOST_ADDRESS);
 			~ServerSocket();
-			ServerSocket(const ServerSocket &other);
-			ServerSocket &operator=(const ServerSocket &other);
+			ServerSocket(const ServerSocket& other);
+			ServerSocket& operator=(const ServerSocket& other);
 
 			bool init();
 			bool create();
@@ -44,6 +44,7 @@ namespace http {
 			bool isOpen() const;
 			bool isBound() const;
 			bool isListening() const;
+
 		private:
 			int m_fd;
 			uint32_t m_ip;

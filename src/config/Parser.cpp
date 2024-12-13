@@ -19,7 +19,7 @@ namespace config {
 	 * @brief Copy constructor.
 	 * @param other The other ConfigFileParser object to copy.
 	 */
-	ConfigFileParser::ConfigFileParser(const ConfigFileParser &) {
+	ConfigFileParser::ConfigFileParser(const ConfigFileParser&) {
 		m_isLoaded = 0;
 	}
 
@@ -28,7 +28,7 @@ namespace config {
 	 * @param other The other ConfigFileParser object to assign from.
 	 * @return A reference to the assigned ConfigFileParser object.
 	 */
-	ConfigFileParser &ConfigFileParser::operator=(const ConfigFileParser &) {
+	ConfigFileParser& ConfigFileParser::operator=(const ConfigFileParser&) {
 		m_isLoaded = 0;
 		return *this;
 	}
@@ -38,8 +38,8 @@ namespace config {
 	 * @param configFileName The name of the configuration file.
 	 * @param line the location where the configuration file is stored by the read.
 	 */
-	int ConfigFileParser::readConfigFile(std::string &configFileName,
-										 std::string &line) {
+	int ConfigFileParser::readConfigFile(std::string& configFileName,
+										 std::string& line) {
 		if (configFileName.empty()) {
 			LOG("Configuration file name is empty." << std::endl, 1)
 			return 1;
@@ -87,7 +87,7 @@ namespace config {
 	 * @param lineCount The current line number.
 	 * @return 0 if successful, 1 if error.
 	 */
-	int ConfigFileParser::parseConfigFile(std::string &str, int layer, unsigned long &i, int &lineCount) {
+	int ConfigFileParser::parseConfigFile(std::string& str, int layer, unsigned long& i, int& lineCount) {
 		std::string line;
 		int findQuotesFlag = 0;
 		for (; i < str.size(); i++) {
@@ -183,7 +183,7 @@ namespace config {
 	 * @param configFileName The name of the configuration file.
 	 * @return 0 if successful, 1 if error.
 	 */
-	int ConfigFileParser::loadConfigFile(std::string &configFileName) {
+	int ConfigFileParser::loadConfigFile(std::string& configFileName) {
 		std::string file;
 		readConfigFile(configFileName, file);
 		if (file.empty()) {
@@ -238,7 +238,7 @@ namespace config {
 		return m_configData.servers[index].max_body_size;
 	}
 
-	t_server *ConfigFileParser::getServer(int index) {
+	t_server* ConfigFileParser::getServer(int index) {
 		return &m_configData.servers[index];
 	}
 

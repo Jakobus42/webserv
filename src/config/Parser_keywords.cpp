@@ -30,7 +30,7 @@ namespace config {
 	 * @param str The string to check.
 	 * @return true if the string is a number, false otherwise.
 	 */
-	bool is_number(const std::string &str) {
+	bool is_number(const std::string& str) {
 		std::string::const_iterator it = str.begin();
 		while (it != str.end() && std::isdigit(*it))
 			++it;
@@ -48,7 +48,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::server(std::vector<std::string> &args, int &lineCount, int layer) {
+	int ConfigFileParser::server(std::vector<std::string>& args, int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() != 1) {
 			LOG("Configuration file (line "
@@ -76,8 +76,8 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::location(std::vector<std::string> &args,
-								   const int &lineCount,
+	int ConfigFileParser::location(std::vector<std::string>& args,
+								   const int& lineCount,
 								   int layer) {
 		if (args.size() != 2) {
 			LOG("Configuration file (line "
@@ -104,7 +104,7 @@ namespace config {
 			m_configData.servers.back().locations.push_back(new_location);
 			return 0;
 		}
-		t_location *temp = &m_configData.servers.back().locations.back();
+		t_location* temp = &m_configData.servers.back().locations.back();
 		for (int i = 2; i < layer; i++) {
 			temp = &temp->locations.back();
 		}
@@ -120,7 +120,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::listen(std::vector<std::string> &args, int &lineCount, int layer) {
+	int ConfigFileParser::listen(std::vector<std::string>& args, int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() != 2) {
 			LOG("Configuration file (line "
@@ -201,7 +201,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::serverName(std::vector<std::string> &args, int &lineCount, int layer) {
+	int ConfigFileParser::serverName(std::vector<std::string>& args, int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() < 2) {
 			LOG("Configuration file (line "
@@ -238,7 +238,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::errorPage(std::vector<std::string> &args, int &lineCount, int layer) {
+	int ConfigFileParser::errorPage(std::vector<std::string>& args, int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() < 3 || args.size() > 1001) {
 			LOG("Configuration file (line "
@@ -279,8 +279,8 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::clientMaxBodySize(std::vector<std::string> &args,
-											int &lineCount,
+	int ConfigFileParser::clientMaxBodySize(std::vector<std::string>& args,
+											int& lineCount,
 											int layer) {
 		(void)layer;
 		if (args.size() != 2) {
@@ -311,8 +311,8 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::limitExcept(std::vector<std::string> &args,
-									  int &lineCount,
+	int ConfigFileParser::limitExcept(std::vector<std::string>& args,
+									  int& lineCount,
 									  int layer) {
 		(void)layer;
 		if (args.size() < 2 || args.size() > 15) {
@@ -351,7 +351,7 @@ namespace config {
 				1);
 			return 1;
 		}
-		t_location *current = getLocation(layer);
+		t_location* current = getLocation(layer);
 		current->methods = allowed_methods;
 		return 0;
 	}
@@ -364,8 +364,8 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::returnKeyword(std::vector<std::string> &args,
-										const int &lineCount,
+	int ConfigFileParser::returnKeyword(std::vector<std::string>& args,
+										const int& lineCount,
 										int layer) {
 		if (args.size() != 2) {
 			LOG("Configuration file (line "
@@ -382,7 +382,7 @@ namespace config {
 			return 1;
 		}
 		// TODO: check if valid url?
-		t_location *current = getLocation(layer);
+		t_location* current = getLocation(layer);
 		current->return_url = args[1];
 		return 0;
 	}
@@ -395,7 +395,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::root(std::vector<std::string> &args, int &lineCount, int layer) {
+	int ConfigFileParser::root(std::vector<std::string>& args, int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() != 2) {
 			LOG("Configuration file (line "
@@ -411,7 +411,7 @@ namespace config {
 			return 1;
 		}
 		// TODO: check if path is valid
-		t_location *current = getLocation(layer);
+		t_location* current = getLocation(layer);
 		current->root = args[1];
 		return 0;
 	}
@@ -424,7 +424,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::autoindex(std::vector<std::string> &args, int &lineCount, int layer) {
+	int ConfigFileParser::autoindex(std::vector<std::string>& args, int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() != 2) {
 			LOG("Configuration file (line "
@@ -433,7 +433,7 @@ namespace config {
 				1);
 			return 1;
 		}
-		t_location *current = getLocation(layer);
+		t_location* current = getLocation(layer);
 		if (args[1] == "on") {
 			current->autoindex = true;
 		} else if (args[1] == "off") {
@@ -456,7 +456,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::index(std::vector<std::string> &args, int &lineCount, int layer) {
+	int ConfigFileParser::index(std::vector<std::string>& args, int& lineCount, int layer) {
 		(void)layer;
 
 		if (args.size() < 2 || args.size() > 1001) {
@@ -466,7 +466,7 @@ namespace config {
 				1);
 			return 1;
 		}
-		t_location *current = getLocation(layer);
+		t_location* current = getLocation(layer);
 		current->index.clear();
 		for (unsigned long i = 1; i < args.size(); i++) {
 			if (args[i].length() > 1000 || args[i].length() == 0) {

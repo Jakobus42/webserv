@@ -20,12 +20,12 @@ PenaltyBreakString: 1000
 PenaltyExcessCharacter: 0
 PenaltyReturnTypeOnItsOwnLine: 1000
 DerivePointerAlignment: false
-PointerAlignment: Right
-ReferenceAlignment: Right
+PointerAlignment: Left
+ReferenceAlignment: Left
 AccessModifierOffset: 0
 # RemoveParentheses: ReturnStatement # wrong version
 SpaceBeforeParens: ControlStatementsExceptControlMacros
-EmptyLineBeforeAccessModifier: Never
+EmptyLineBeforeAccessModifier: Always
 EmptyLineAfterAccessModifier: Never
 # InsertNewlineAtEOF: true # wrong version
 BinPackParameters: false
