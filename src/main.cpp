@@ -1,10 +1,13 @@
 #include "config/Parser.hpp"
 #include "core/Reactor.hpp"
+#include "http/ErrorMessages.hpp"
 
 #include <iostream>
 
 int main(int argc, char **const argv) {
 	try {
+		http::ErrorMessages::eagerInit();
+
 		std::string configPath = argc > 1 ? argv[1] : "config/configfile_example";
 		config::ConfigFileParser configFileParser;
 		if (configFileParser.loadConfigFile(configPath) == 1)
