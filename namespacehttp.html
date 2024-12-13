@@ -460,8 +460,10 @@ Variables</h2></td></tr>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        std::string start_line;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        start_line = <a class="code" href="createResponse_8cpp.html#aa8c7815fae449943e6cd7ef174516bdf">HTTP_NAME</a> + <a class="code" href="createResponse_8cpp.html#a8a93e7e3fdffc39a8ace86cea675acb1">ONE_DOT_ONE</a> + <span class="stringliteral">&quot; &quot;</span> + <a class="code" href="namespacehttp.html#a02e06383b1493a41cc6694d095cc8aa9">status</a>(status_code) + <a class="code" href="createResponse_8cpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a>;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">return</span> response;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        response += start_line;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">return</span> response;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
 <div class="ttc" id="acreateResponse_8cpp_html_a26894f5f61a3de2e81c8b9837517ee35"><div class="ttname"><a href="createResponse_8cpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a></div><div class="ttdeci">const std::string CRLF</div><div class="ttdef"><b>Definition:</b> <a href="createResponse_8cpp_source.html#l00007">createResponse.cpp:7</a></div></div>
 <div class="ttc" id="acreateResponse_8cpp_html_a8a93e7e3fdffc39a8ace86cea675acb1"><div class="ttname"><a href="createResponse_8cpp.html#a8a93e7e3fdffc39a8ace86cea675acb1">ONE_DOT_ONE</a></div><div class="ttdeci">const std::string ONE_DOT_ONE</div><div class="ttdef"><b>Definition:</b> <a href="createResponse_8cpp_source.html#l00006">createResponse.cpp:6</a></div></div>
 <div class="ttc" id="acreateResponse_8cpp_html_aa8c7815fae449943e6cd7ef174516bdf"><div class="ttname"><a href="createResponse_8cpp.html#aa8c7815fae449943e6cd7ef174516bdf">HTTP_NAME</a></div><div class="ttdeci">const std::string HTTP_NAME</div><div class="ttdef"><b>Definition:</b> <a href="createResponse_8cpp_source.html#l00005">createResponse.cpp:5</a></div></div>

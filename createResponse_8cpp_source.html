@@ -85,10 +85,12 @@ $(document).ready(function(){initNavTree('createResponse_8cpp_source.html',''); 
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        std::string start_line;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        start_line = <a class="code" href="createResponse_8cpp.html#aa8c7815fae449943e6cd7ef174516bdf">HTTP_NAME</a> + <a class="code" href="createResponse_8cpp.html#a8a93e7e3fdffc39a8ace86cea675acb1">ONE_DOT_ONE</a> + <span class="stringliteral">&quot; &quot;</span> + <a class="code" href="namespacehttp.html#a02e06383b1493a41cc6694d095cc8aa9">status</a>(status_code) + <a class="code" href="createResponse_8cpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a>;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">return</span> response;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;} <span class="comment">// namespace http</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        response += start_line;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">return</span> response;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;} <span class="comment">// namespace http</span></div>
 <div class="ttc" id="aErrorMessages_8hpp_html"><div class="ttname"><a href="ErrorMessages_8hpp.html">ErrorMessages.hpp</a></div></div>
 <div class="ttc" id="aclasshttp_1_1ErrorMessages_html_a602c028f5668b767719b36198ac52416"><div class="ttname"><a href="classhttp_1_1ErrorMessages.html#a602c028f5668b767719b36198ac52416">http::ErrorMessages::getInstance</a></div><div class="ttdeci">static const ErrorMessages &amp; getInstance()</div><div class="ttdef"><b>Definition:</b> <a href="ErrorMessages_8hpp_source.html#l00021">ErrorMessages.hpp:21</a></div></div>
 <div class="ttc" id="aclasshttp_1_1ErrorMessages_html_aa2d1db2c269bdc0e4b40bb67760d6858"><div class="ttname"><a href="classhttp_1_1ErrorMessages.html#aa2d1db2c269bdc0e4b40bb67760d6858">http::ErrorMessages::getErrorMessages</a></div><div class="ttdeci">const t_errorMessages &amp; getErrorMessages() const</div><div class="ttdef"><b>Definition:</b> <a href="ErrorMessages_8cpp_source.html#l00056">ErrorMessages.cpp:56</a></div></div>
