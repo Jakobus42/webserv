@@ -17,7 +17,7 @@ namespace http {
 	/**
 	 * @brief Constructs a new VirtualServer object.
 	 */
-	VirtualServer::VirtualServer(config::t_server &serverConfig)
+	VirtualServer::VirtualServer(config::t_server& serverConfig)
 		: m_client_max_body_size(serverConfig.max_body_size)
 		, m_names(serverConfig.server_names)
 		, m_locations(serverConfig.locations)
@@ -40,7 +40,7 @@ namespace http {
 	 * @brief Copy constructor.
 	 * @param other The other VirtualServer object to copy.
 	 */
-	VirtualServer::VirtualServer(const VirtualServer &other)
+	VirtualServer::VirtualServer(const VirtualServer& other)
 		: m_client_max_body_size(other.getMaxBodySize())
 		, m_names(other.getNames())
 		, m_locations(other.getLocations())
@@ -54,7 +54,7 @@ namespace http {
 	 * @param other The other VirtualServer object to assign from.
 	 * @return A reference to the assigned VirtualServer object.
 	 */
-	VirtualServer &VirtualServer::operator=(const VirtualServer &rhs) {
+	VirtualServer& VirtualServer::operator=(const VirtualServer& rhs) {
 		if (this == &rhs)
 			return *this;
 		m_names = rhs.getNames();
@@ -66,15 +66,15 @@ namespace http {
 		return *this;
 	}
 
-	const std::vector<std::string> &VirtualServer::getNames(void) const {
+	const std::vector<std::string>& VirtualServer::getNames(void) const {
 		return m_names;
 	}
 
-	const std::map<int, std::string> &VirtualServer::getErrorPages(void) const {
+	const std::map<int, std::string>& VirtualServer::getErrorPages(void) const {
 		return m_errorPages;
 	}
 
-	const std::vector<config::t_location> &VirtualServer::getLocations(void) const {
+	const std::vector<config::t_location>& VirtualServer::getLocations(void) const {
 		return m_locations;
 	}
 
@@ -82,19 +82,19 @@ namespace http {
 		return m_client_max_body_size;
 	}
 
-	const ServerSocket &VirtualServer::getSocket(void) const {
+	const ServerSocket& VirtualServer::getSocket(void) const {
 		return m_listen_socket;
 	}
 
-	ServerSocket &VirtualServer::getSocket(void) {
+	ServerSocket& VirtualServer::getSocket(void) {
 		return m_listen_socket;
 	}
 
-	const t_connections &VirtualServer::getConnections(void) const {
+	const t_connections& VirtualServer::getConnections(void) const {
 		return m_connections;
 	}
 
-	t_connections &VirtualServer::getConnections(void) {
+	t_connections& VirtualServer::getConnections(void) {
 		return m_connections;
 	}
 
@@ -111,13 +111,13 @@ namespace http {
 			Connection newConnection(m_listen_socket.getFd());
 			m_connections.push_back(newConnection);
 			std::cout << "Added a connection!" << std::endl;
-		} catch (std::exception &e) {
+		} catch (std::exception& e) {
 			return false;
 		}
 		return true;
 	}
 
-	bool VirtualServer::removeConnection(Connection &connection) {
+	bool VirtualServer::removeConnection(Connection& connection) {
 		t_connections::iterator toRemove =
 			std::find(m_connections.begin(), m_connections.end(), connection);
 

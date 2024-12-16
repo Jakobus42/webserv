@@ -23,7 +23,7 @@ namespace http {
 	 * @brief Copy constructor.
 	 * @param other The other Request object to copy.
 	 */
-	Request::Request(const Request &other)
+	Request::Request(const Request& other)
 		: m_read_buffer()
 		, m_receivedBytes(other.getReceivedBytes())
 		, m_requestData(other.getRequestData())
@@ -34,7 +34,7 @@ namespace http {
 	 * @param other The other Request object to assign from.
 	 * @return A reference to the assigned Request object.
 	 */
-	Request &Request::operator=(const Request &rhs) {
+	Request& Request::operator=(const Request& rhs) {
 		if (this == &rhs)
 			return *this;
 		m_requestData = rhs.getRequestData();

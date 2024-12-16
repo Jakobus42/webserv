@@ -31,7 +31,7 @@ namespace http {
 	 * @brief Copy constructor.
 	 * @param other The other Connection object to copy.
 	 */
-	Connection::Connection(const Connection &other)
+	Connection::Connection(const Connection& other)
 		: m_client_socket(other.getSocket())
 		, m_request(other.getRequest()) {
 	}
@@ -41,7 +41,7 @@ namespace http {
 	 * @param other The other Connection object to assign from.
 	 * @return A reference to the assigned Connection object.
 	 */
-	Connection &Connection::operator=(const Connection &rhs) {
+	Connection& Connection::operator=(const Connection& rhs) {
 		if (this == &rhs)
 			return *this;
 		m_client_socket.operator=(rhs.getSocket());
@@ -49,7 +49,7 @@ namespace http {
 		return *this;
 	}
 
-	bool Connection::operator==(const Connection &other) const {
+	bool Connection::operator==(const Connection& other) const {
 		return other.getSocket() == this->getSocket();
 	}
 
@@ -57,15 +57,15 @@ namespace http {
 		this->getSocket().close();
 	}
 
-	const ClientSocket &Connection::getSocket(void) const {
+	const ClientSocket& Connection::getSocket(void) const {
 		return m_client_socket;
 	}
 
-	ClientSocket &Connection::getSocket(void) {
+	ClientSocket& Connection::getSocket(void) {
 		return m_client_socket;
 	}
 
-	const http::Request &Connection::getRequest(void) const {
+	const http::Request& Connection::getRequest(void) const {
 		return m_request;
 	}
 

@@ -1,9 +1,11 @@
 #include "config/Parser.hpp"
 #include "core/Reactor.hpp"
+#include "http/ErrorMessages.hpp"
 
 #include <iostream>
 
-int main(int argc, char **const argv) {
+int main(int argc, char** const argv) {
+
 	http::Request request;
 	std::string input = "GET / HTTP/1.1\nHost: localhost:8080, abcde\nUser-Agent: curl/7.68.0\nAccept: */*\nContent-Length: 30\n\n 1234123213567890";
 	//std::cout << "input1: " << input.substr(0, 5) << std::endl;
@@ -12,12 +14,11 @@ int main(int argc, char **const argv) {
 		request.parse();
 	}
 	request.PrintRequestData();
-	
 
-	
-	
-	
+
 	try {
+		http::ErrorMessages::eagerInit();
+
 		std::string configPath = argc > 1 ? argv[1] : "config/configfile_example";
 		config::ConfigFileParser configFileParser;
 		if (configFileParser.loadConfigFile(configPath) == 1)
@@ -29,7 +30,7 @@ int main(int argc, char **const argv) {
 		if (reactor.addVirtualServers(configData) == false)
 			return 1;
 		reactor.react();
-	} catch (const std::exception &e) {
+	} catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
 		return 1;
 	}

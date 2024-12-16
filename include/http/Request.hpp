@@ -42,8 +42,8 @@ namespace http {
 		public:
 			Request();
 			~Request();
-			Request(const Request &other);
-			Request &operator=(const Request &rhs);
+			Request(const Request& other);
+			Request& operator=(const Request& rhs);
 
 			uint32_t getReceivedBytes(void) const;
 			const t_requestData &getRequestData(void) const;

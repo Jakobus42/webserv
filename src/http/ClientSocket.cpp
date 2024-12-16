@@ -42,7 +42,7 @@ namespace http {
 	 * @brief Copy constructor.
 	 * @param other The other ClientSocket object to copy.
 	 */
-	ClientSocket::ClientSocket(const ClientSocket &other)
+	ClientSocket::ClientSocket(const ClientSocket& other)
 		: m_fd(other.getFd())
 		, m_socketAddress(other.getSocketAddress())
 		, m_socketSize(other.getSocketSize())
@@ -54,7 +54,7 @@ namespace http {
 	 * @param other The other ClientSocket object to assign from.
 	 * @return A reference to the assigned ClientSocket object.
 	 */
-	ClientSocket &ClientSocket::operator=(const ClientSocket &rhs) {
+	ClientSocket& ClientSocket::operator=(const ClientSocket& rhs) {
 		if (this == &rhs)
 			return *this;
 		m_fd = rhs.getFd();
@@ -64,7 +64,7 @@ namespace http {
 		return *this;
 	}
 
-	bool ClientSocket::operator==(const ClientSocket &other) const {
+	bool ClientSocket::operator==(const ClientSocket& other) const {
 		return (other.getFd() == this->getFd());
 	}
 

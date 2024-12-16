@@ -18,7 +18,7 @@ namespace core {
 	 * @brief Copy constructor.
 	 * @param other The other IOHandler object to copy.
 	 */
-	IOHandler::IOHandler(const IOHandler &) {
+	IOHandler::IOHandler(const IOHandler&) {
 	}
 
 	/**
@@ -26,11 +26,11 @@ namespace core {
 	 * @param other The other IOHandler object to assign from.
 	 * @return A reference to the assigned IOHandler object.
 	 */
-	IOHandler &IOHandler::operator=(const IOHandler &) {
+	IOHandler& IOHandler::operator=(const IOHandler&) {
 		return *this;
 	}
 
-	void IOHandler::handle(HandlerContext &ctx) {
+	void IOHandler::handle(HandlerContext& ctx) {
 		if (ctx.events & EPOLLIN) {
 			m_requestHandler.handle(ctx);
 		}
