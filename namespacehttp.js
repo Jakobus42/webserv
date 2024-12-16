@@ -3,14 +3,21 @@ var namespacehttp =
     [ "ClientSocket", "classhttp_1_1ClientSocket.html", "classhttp_1_1ClientSocket" ],
     [ "Connection", "classhttp_1_1Connection.html", "classhttp_1_1Connection" ],
     [ "ErrorMessages", "classhttp_1_1ErrorMessages.html", "classhttp_1_1ErrorMessages" ],
+    [ "s_requestData", "structhttp_1_1s__requestData.html", "structhttp_1_1s__requestData" ],
     [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
     [ "ServerSocket", "classhttp_1_1ServerSocket.html", "classhttp_1_1ServerSocket" ],
     [ "VirtualServer", "classhttp_1_1VirtualServer.html", "classhttp_1_1VirtualServer" ],
     [ "t_connections", "namespacehttp.html#aa3bcd24ae02414378f7cd9a8aafc784f", null ],
     [ "t_errorMessage", "namespacehttp.html#aaaa7534547fe86546f2bfdd34cf99d40", null ],
     [ "t_errorMessages", "namespacehttp.html#a1e177883f48c7b0477b645c807a34bb8", null ],
+    [ "t_requestData", "namespacehttp.html#a344224153c4286273f922e54b792a50d", null ],
     [ "t_sockaddr", "namespacehttp.html#a4b20fa68e7c12bf7aff9d3a71a4f2b88", null ],
     [ "t_sockaddr_in", "namespacehttp.html#ac73171fb8c32554229836839f6c4e8ed", null ],
+    [ "ExpectedBody", "namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1", [
+      [ "NO_BODY", "namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a8eaf4a1b7a6cf303cfbdae8b0a8b32eb", null ],
+      [ "CHUNKED", "namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a68569ee38513d8278c9a268641b6cfe5", null ],
+      [ "CONTENT_LENGTH", "namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a9c21a9fbb3e0b3b4602276b6ad85b7f3", null ]
+    ] ],
     [ "Method", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cf", [
       [ "GET", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0", null ],
       [ "POST", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab", null ],
@@ -21,6 +28,18 @@ var namespacehttp =
       [ "OPTIONS", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa8eb60b331b9dd5b66681f85111d99c1e", null ],
       [ "TRACE", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfac3ae7052b142891ae4cbd8c7d3952e4b", null ],
       [ "CONNECT", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaacb1ee85ea00b29a2292736dd81b7992", null ]
+    ] ],
+    [ "QuoteFlag", "namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8", [
+      [ "NO_QUOTE", "namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8ab3b96bab0d8747049e4366de54c43db2", null ],
+      [ "SINGLE_QUOTE", "namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8aecf6d91bbe6ec97eae702c654674fc5e", null ],
+      [ "DOUBLE_QUOTE", "namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8a54ca709140c11cb88c8c22ab0f925387", null ]
+    ] ],
+    [ "RequestStatus", "namespacehttp.html#a068cab601142fb739077ccd62379df64", [
+      [ "PARSE_START", "namespacehttp.html#a068cab601142fb739077ccd62379df64af1ec52e66d8011ff2329d6937794bdb3", null ],
+      [ "PARSE_HEAD", "namespacehttp.html#a068cab601142fb739077ccd62379df64a6e55d4fbcb4414ad97de58c56bfc3654", null ],
+      [ "PARSE_HEADERS", "namespacehttp.html#a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc", null ],
+      [ "PARSE_BODY", "namespacehttp.html#a068cab601142fb739077ccd62379df64ac4ffb0e12ded445e68ca3f683a01ba21", null ],
+      [ "PARSE_END", "namespacehttp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff", null ]
     ] ],
     [ "StatusCode", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762", [
       [ "OK", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc", null ],
@@ -57,6 +76,7 @@ var namespacehttp =
       [ "GATEWAY_TIMEOUT", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a87353b86a06472ac0dea6f4580bf6683", null ],
       [ "HTTP_VERSION_NOT_SUPPORTED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff", null ]
     ] ],
+    [ "checkHead", "namespacehttp.html#ab573664fa35760fc9437b1fff6d88685", null ],
     [ "createResponse", "namespacehttp.html#abb0d5652324cd36455bb9ecc571ee87f", null ],
     [ "generateErrorPage", "namespacehttp.html#abf7077bb1b43902d0455848db0726b95", null ],
     [ "generateErrorPage", "namespacehttp.html#ab99935c70c216969b7410a50c653cc58", null ],

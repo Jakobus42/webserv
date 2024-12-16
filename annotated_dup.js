@@ -19,6 +19,7 @@ var annotated_dup =
       [ "ClientSocket", "classhttp_1_1ClientSocket.html", "classhttp_1_1ClientSocket" ],
       [ "Connection", "classhttp_1_1Connection.html", "classhttp_1_1Connection" ],
       [ "ErrorMessages", "classhttp_1_1ErrorMessages.html", "classhttp_1_1ErrorMessages" ],
+      [ "s_requestData", "structhttp_1_1s__requestData.html", "structhttp_1_1s__requestData" ],
       [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
       [ "ServerSocket", "classhttp_1_1ServerSocket.html", "classhttp_1_1ServerSocket" ],
       [ "VirtualServer", "classhttp_1_1VirtualServer.html", "classhttp_1_1VirtualServer" ]
