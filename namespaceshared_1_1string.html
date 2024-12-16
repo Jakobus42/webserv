@@ -75,6 +75,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a548d2887496a48cb38f3ab46dd407c6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a548d2887496a48cb38f3ab46dd407c6b">trim</a> (std::string &amp;str, const std::string &amp;delimiters)</td></tr>
 <tr class="memdesc:a548d2887496a48cb38f3ab46dd407c6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trims leading and trailing characters from the input string.  <a href="namespaceshared_1_1string.html#a548d2887496a48cb38f3ab46dd407c6b">More...</a><br /></td></tr>
 <tr class="separator:a548d2887496a48cb38f3ab46dd407c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adacf97347d5bc1e8d7e2d203486b8dd2"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#adacf97347d5bc1e8d7e2d203486b8dd2">posStoi</a> (std::string str, int base)</td></tr>
+<tr class="memdesc:adacf97347d5bc1e8d7e2d203486b8dd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string to an unsigned integer.  <a href="namespaceshared_1_1string.html#adacf97347d5bc1e8d7e2d203486b8dd2">More...</a><br /></td></tr>
+<tr class="separator:adacf97347d5bc1e8d7e2d203486b8dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -82,6 +85,75 @@ Variables</h2></td></tr>
 <tr class="separator:a5841ad66349ecb863209150dfd2b0192"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="adacf97347d5bc1e8d7e2d203486b8dd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adacf97347d5bc1e8d7e2d203486b8dd2">&#9670;&nbsp;</a></span>posStoi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t shared::string::posStoi </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>base</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a string to an unsigned integer. </p>
+<p>This function converts a string to an unsigned integer using the specified base. The function will stop converting when it encounters a character that is not a digit in the given base. If the result would exceed the maximum value of a 32-bit unsigned integer, the function returns -1.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The string to convert to an integer. </td></tr>
+    <tr><td class="paramname">base</td><td>The base to use for the conversion. The default is 10.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The converted integer value, or -1 if the result would exceed the maximum value of a 32-bit unsigned integer. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="stringUtils_8cpp_source.html#l00066">66</a> of file <a class="el" href="stringUtils_8cpp_source.html">stringUtils.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                                  {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            uint32_t result = 0;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            uint64_t max = std::numeric_limits&lt;uint32_t&gt;::max();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordtype">size_t</span> i = 0;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">while</span> (i &lt; str.size() &amp;&amp; str[i] &gt;= <span class="charliteral">&#39;0&#39;</span> &amp;&amp; str[i] &lt;= <span class="charliteral">&#39;9&#39;</span>) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="keywordflow">if</span> (result * base + str[i] - <span class="charliteral">&#39;0&#39;</span> &gt; max) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                result = result * base + str[i] - <span class="charliteral">&#39;0&#39;</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                i++;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">if</span> (i != str.size()) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceshared_1_1string_adacf97347d5bc1e8d7e2d203486b8dd2_icgraph.png" border="0" usemap="#anamespaceshared_1_1string_adacf97347d5bc1e8d7e2d203486b8dd2_icgraph" alt=""/></div>
+<map name="anamespaceshared_1_1string_adacf97347d5bc1e8d7e2d203486b8dd2_icgraph" id="anamespaceshared_1_1string_adacf97347d5bc1e8d7e2d203486b8dd2_icgraph">
+<area shape="rect" title="Converts a string to an unsigned integer." alt="" coords="779,13,945,39"/>
+<area shape="rect" href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135" title=" " alt="" coords="544,5,731,47"/>
+<area shape="rect" href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4" title=" " alt="" coords="309,13,496,39"/>
+<area shape="rect" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993" title="Parses the request." alt="" coords="108,13,261,39"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,39"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="aa68d026861d0f4c81179e94efca2ed7c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa68d026861d0f4c81179e94efca2ed7c">&#9670;&nbsp;</a></span>split()</h2>
 
@@ -200,7 +272,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stringUtils_8hpp_source.html#l00012">12</a> of file <a class="el" href="stringUtils_8hpp_source.html">stringUtils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stringUtils_8hpp_source.html#l00014">14</a> of file <a class="el" href="stringUtils_8hpp_source.html">stringUtils.hpp</a>.</p>
 
 </div>
 </div>

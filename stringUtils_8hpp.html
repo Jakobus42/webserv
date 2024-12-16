@@ -67,7 +67,8 @@ $(document).ready(function(){initNavTree('stringUtils_8hpp.html',''); initResiza
 <div class="title">stringUtils.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;limits&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
@@ -76,11 +77,12 @@ Include dependency graph for stringUtils.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="stringUtils_8hpp__incl.png" border="0" usemap="#a_2home_2runner_2work_2webserv_2webserv_2include_2shared_2stringUtils_8hpp" alt=""/></div>
 <map name="a_2home_2runner_2work_2webserv_2webserv_2include_2shared_2stringUtils_8hpp" id="a_2home_2runner_2work_2webserv_2webserv_2include_2shared_2stringUtils_8hpp">
-<area shape="rect" title=" " alt="" coords="78,5,282,61"/>
-<area shape="rect" title=" " alt="" coords="5,109,85,136"/>
-<area shape="rect" title=" " alt="" coords="109,109,168,136"/>
-<area shape="rect" title=" " alt="" coords="192,109,251,136"/>
-<area shape="rect" title=" " alt="" coords="275,109,338,136"/>
+<area shape="rect" title=" " alt="" coords="132,5,336,61"/>
+<area shape="rect" title=" " alt="" coords="5,109,76,136"/>
+<area shape="rect" title=" " alt="" coords="101,109,181,136"/>
+<area shape="rect" title=" " alt="" coords="205,109,263,136"/>
+<area shape="rect" title=" " alt="" coords="287,109,346,136"/>
+<area shape="rect" title=" " alt="" coords="371,109,433,136"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -88,8 +90,27 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="stringUtils_8hpp__dep__incl.png" border="0" usemap="#a_2home_2runner_2work_2webserv_2webserv_2include_2shared_2stringUtils_8hppdep" alt=""/></div>
 <map name="a_2home_2runner_2work_2webserv_2webserv_2include_2shared_2stringUtils_8hppdep" id="a_2home_2runner_2work_2webserv_2webserv_2include_2shared_2stringUtils_8hppdep">
-<area shape="rect" title=" " alt="" coords="5,5,209,61"/>
-<area shape="rect" href="stringUtils_8cpp.html" title=" " alt="" coords="25,109,189,136"/>
+<area shape="rect" title=" " alt="" coords="228,5,432,61"/>
+<area shape="rect" href="stringUtils_8cpp.html" title=" " alt="" coords="133,117,297,143"/>
+<area shape="rect" href="Request_8hpp.html" title=" " alt="" coords="321,109,568,151"/>
+<area shape="rect" href="Parse__body_8cpp.html" title=" " alt="" coords="5,206,156,233"/>
+<area shape="rect" href="Parse__head_8cpp.html" title=" " alt="" coords="180,206,333,233"/>
+<area shape="rect" href="Parse__headers_8cpp.html" title=" " alt="" coords="358,206,531,233"/>
+<area shape="rect" href="Request_8cpp.html" title=" " alt="" coords="556,206,688,233"/>
+<area shape="rect" href="Connection_8hpp.html" title=" " alt="" coords="713,199,979,240"/>
+<area shape="rect" href="Connection_8cpp.html" title=" " alt="" coords="650,295,802,322"/>
+<area shape="rect" href="VirtualServer_8hpp.html" title=" " alt="" coords="827,288,1105,329"/>
+<area shape="rect" href="Reactor_8cpp.html" title=" " alt="" coords="805,660,935,687"/>
+<area shape="rect" href="VirtualServer_8cpp.html" title=" " alt="" coords="826,385,989,411"/>
+<area shape="rect" href="AHandler_8hpp.html" title=" " alt="" coords="1084,377,1339,419"/>
+<area shape="rect" href="Reactor_8hpp.html" title=" " alt="" coords="826,474,1071,515"/>
+<area shape="rect" href="IOHandler_8hpp.html" title=" " alt="" coords="1233,571,1493,612"/>
+<area shape="rect" href="RequestHandler_8hpp.html" title=" " alt="" coords="1402,474,1701,515"/>
+<area shape="rect" href="ResponseHandler_8hpp.html" title=" " alt="" coords="1096,467,1327,523"/>
+<area shape="rect" href="IOHandler_8cpp.html" title=" " alt="" coords="1291,660,1436,687"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="907,578,990,605"/>
+<area shape="rect" href="RequestHandler_8cpp.html" title=" " alt="" coords="1518,578,1702,605"/>
+<area shape="rect" href="ResponseHandler_8cpp.html" title=" " alt="" coords="1014,578,1209,605"/>
 </map>
 </div>
 </div>
@@ -110,6 +131,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a548d2887496a48cb38f3ab46dd407c6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a548d2887496a48cb38f3ab46dd407c6b">shared::string::trim</a> (std::string &amp;str, const std::string &amp;delimiters)</td></tr>
 <tr class="memdesc:a548d2887496a48cb38f3ab46dd407c6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trims leading and trailing characters from the input string.  <a href="namespaceshared_1_1string.html#a548d2887496a48cb38f3ab46dd407c6b">More...</a><br /></td></tr>
 <tr class="separator:a548d2887496a48cb38f3ab46dd407c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adacf97347d5bc1e8d7e2d203486b8dd2"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#adacf97347d5bc1e8d7e2d203486b8dd2">shared::string::posStoi</a> (std::string str, int base)</td></tr>
+<tr class="memdesc:adacf97347d5bc1e8d7e2d203486b8dd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string to an unsigned integer.  <a href="namespaceshared_1_1string.html#adacf97347d5bc1e8d7e2d203486b8dd2">More...</a><br /></td></tr>
+<tr class="separator:adacf97347d5bc1e8d7e2d203486b8dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>

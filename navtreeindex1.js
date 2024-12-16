@@ -1,6 +1,10 @@
 var NAVTREEINDEX1 =
 {
-"classhttp_1_1Request.html#aeab4490334788d6010997914a3db2060":[5,0,2,4,13],
+"classhttp_1_1Request.html#abb2647d3c48dd8635d116d5c20ae0ef2":[5,0,2,4,5],
+"classhttp_1_1Request.html#ac9a397728470ec78bb8d97eb5ae3b378":[5,0,2,4,22],
+"classhttp_1_1Request.html#ad7a36836922ba4e911cef7e1862ec221":[5,0,2,4,1],
+"classhttp_1_1Request.html#adc2cfb1a5dcf1dc7a715c1d8fb503322":[5,0,2,4,10],
+"classhttp_1_1Request.html#aeab4490334788d6010997914a3db2060":[5,0,2,4,17],
 "classhttp_1_1ServerSocket.html":[5,0,2,5],
 "classhttp_1_1ServerSocket.html#a2c16d759b30b9fd5a2c34abb0f1fc729":[5,0,2,5,10],
 "classhttp_1_1ServerSocket.html#a39b86bde33155fb9c6e5d39363cd7e97":[5,0,2,5,3],
@@ -245,9 +249,5 @@ var NAVTREEINDEX1 =
 "namespacehttp.html#a608c57b9f089f4482f702ead6df3a94f":[4,0,2,25],
 "namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8":[4,0,2,15],
 "namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8a54ca709140c11cb88c8c22ab0f925387":[4,0,2,15,2],
-"namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8ab3b96bab0d8747049e4366de54c43db2":[4,0,2,15,0],
-"namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8aecf6d91bbe6ec97eae702c654674fc5e":[4,0,2,15,1],
-"namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1":[4,0,2,13],
-"namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a68569ee38513d8278c9a268641b6cfe5":[4,0,2,13,1],
-"namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a8eaf4a1b7a6cf303cfbdae8b0a8b32eb":[4,0,2,13,0]
+"namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8ab3b96bab0d8747049e4366de54c43db2":[4,0,2,15,0]
 };
