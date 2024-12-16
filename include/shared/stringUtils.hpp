@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stdint.h>
+
 #include <iostream>
 #include <limits>
 #include <string>
@@ -15,6 +17,7 @@ namespace shared {
 
 		void trim(std::string& str, const std::string& delimiters = WHITESPACES);
 
+		uint32_t posStoi(std::string str, int base = 10);
 	} // namespace string
 
 } // namespace shared

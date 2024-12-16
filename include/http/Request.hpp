@@ -3,10 +3,12 @@
 #include <stdint.h>
 
 #include "shared/defines.hpp"
+#include "shared/stringUtils.hpp"
 
+#include <limits>
+#include <map>
 #include <string>
 #include <vector>
-#include <map>
 
 #define BUFFER_SIZE 256
 
@@ -27,8 +29,7 @@ namespace http {
 
 	};
 
-	enum ExpectedBody 
-	{
+	enum ExpectedBody {
 		NO_BODY = 0,
 		CHUNKED = 1,
 		CONTENT_LENGTH = 2
@@ -45,30 +46,35 @@ namespace http {
 			Request(const Request& other);
 			Request& operator=(const Request& rhs);
 
+			const char* getReadBuffer(void) const;
 			uint32_t getReceivedBytes(void) const;
-			const t_requestData &getRequestData(void) const;
-			const RequestStatus &getStatus(void) const;
+			const uint32_t& getContentLength(void) const;
+			const std::string& getRestData(void) const;
+			const t_requestData& getRequestData(void) const;
+			const RequestStatus& getStatus(void) const;
+			const ExpectedBody& getExpectedBody(void) const;
 
-			void setReadBuffer(const char *buffer);
+			void setReadBuffer(const char* buffer);
 			void PrintRequestData();
 			bool parse(void);
+
 		private:
 			char m_read_buffer[BUFFER_SIZE];
 			uint32_t m_receivedBytes;
 			uint32_t m_contentLength;
 			std::string m_restData;
 			t_requestData m_requestData;
-			
+
 			RequestStatus m_status;
 			ExpectedBody m_expectedBody;
-			
+
 			bool parseHead(std::string& input);
 			bool parseHeaders(std::string& input);
 			bool parseBody(std::string& input);
 
-			bool parseHeader(std::string &line);
+			bool parseHeader(std::string& line);
 			bool interpretHeaders();
-			bool parseBodyChunked(std::string &input);
+			bool parseBodyChunked(std::string& input);
 
 			// ...
 	};

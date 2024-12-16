@@ -7,15 +7,19 @@
 int main(int argc, char** const argv) {
 
 	http::Request request;
-	std::string input = "GET / HTTP/1.1\nHost: localhost:8080, abcde\nUser-Agent: curl/7.68.0\nAccept: */*\nContent-Length: 30\n\n 1234123213567890";
-	//std::cout << "input1: " << input.substr(0, 5) << std::endl;
+	std::string input2 = "GET / HTTP/1.1\r\nHost: localhost:8080, abcde\r\nUser-Agent: curl/7.68.0\r\nAccept: */*\r\nContent-Length: 30\r\n\r\n 1234123213567890";
+	std::string input = "POST / HTTP/1.1\r\nHost: www.example.com\r\nTransfer-Encoding: chunked\r\nContent-Type: text/plain\r\n\r\n5\r\nHello\r\n6\r\nWorld\r\n0\r\n";
 	for (size_t i = 0; i < input.size(); i += 5) {
 		request.setReadBuffer(input.substr(i, 5).c_str());
-		request.parse();
+		if (!request.parse()) {
+			std::cout << "Failed to parse request" << std::endl;
+			return 1;
+		}
 	}
 	request.PrintRequestData();
+	return 0;
 
-
+	std::cout << "--------------------------------------------" << std::endl;
 	try {
 		http::ErrorMessages::eagerInit();
 

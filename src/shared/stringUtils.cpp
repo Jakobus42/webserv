@@ -49,6 +49,37 @@ namespace shared {
 			}
 		}
 
+		/**
+		 * @brief Converts a string to an unsigned integer.
+		 *
+		 * This function converts a string to an unsigned integer using the specified
+		 * base. The function will stop converting when it encounters a character that
+		 * is not a digit in the given base. If the result would exceed the maximum
+		 * value of a 32-bit unsigned integer, the function returns -1.
+		 *
+		 * @param str The string to convert to an integer.
+		 * @param base The base to use for the conversion. The default is 10.
+		 *
+		 * @return The converted integer value, or -1 if the result would exceed the
+		 * maximum value of a 32-bit unsigned integer.
+		 */
+		uint32_t posStoi(std::string str, int base) {
+			uint32_t result = 0;
+			uint64_t max = std::numeric_limits<uint32_t>::max();
+			size_t i = 0;
+			while (i < str.size() && str[i] >= '0' && str[i] <= '9') {
+				if (result * base + str[i] - '0' > max) {
+					return -1;
+				}
+				result = result * base + str[i] - '0';
+				i++;
+			}
+			if (i != str.size()) {
+				return -1;
+			}
+			return result;
+		}
+
 	} // namespace string
 
 } // namespace shared
