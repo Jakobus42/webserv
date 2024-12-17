@@ -50,36 +50,50 @@ namespace shared {
 		}
 
 		/**
-		 * @brief Converts a string to an unsigned integer.
+		 * @brief Converts a hexadecimal string to an unsigned integer.
 		 *
-		 * This function converts a string to an unsigned integer using the specified
-		 * base. The function will stop converting when it encounters a character that
-		 * is not a digit in the given base. If the result would exceed the maximum
-		 * value of a 32-bit unsigned integer, the function returns -1.
+		 * This function converts a hexadecimal string to an unsigned integer. The
+		 * function will stop converting when it encounters a character that is not a
+		 * hexadecimal digit. If the result would exceed the maximum value of a 32-bit
+		 * unsigned integer, the function returns 0 and sets the `ret` parameter to -1.
 		 *
-		 * @param str The string to convert to an integer.
-		 * @param base The base to use for the conversion. The default is 10.
+		 * @param str The hexadecimal string to convert to an integer.
+		 * @param ret A reference to an integer that will be set to -1 in case of incorrect input.
 		 *
-		 * @return The converted integer value, or -1 if the result would exceed the
-		 * maximum value of a 32-bit unsigned integer.
+		 * @return The converted integer value, or 0 if the string is not a valid
+		 * hexadecimal number. In this case, the `ret` parameter will be set to -1.
 		 */
-		uint32_t posStoi(std::string str, int base) {
+		uint32_t StoiHex(std::string str, int& ret) {
 			uint32_t result = 0;
 			uint64_t max = std::numeric_limits<uint32_t>::max();
 			size_t i = 0;
-			while (i < str.size() && str[i] >= '0' && str[i] <= '9') {
-				if (result * base + str[i] - '0' > max) {
-					return -1;
+			while (i < str.size()) {
+				if (str[i] >= '0' && str[i] <= '9') {
+					if (result * 16 + str[i] - '0' > max) {
+						return 0;
+						ret = -1;
+					}
+					result = result * 16 + str[i] - '0';
+				} else if (str[i] >= 'A' && str[i] <= 'F') {
+					if (result * 16 + str[i] - 'A' + 10 > max) {
+						return 0;
+						ret = -1;
+					}
+					result = result * 16 + str[i] - 'A' + 10;
+				} else if (str[i] >= 'a' && str[i] <= 'f') {
+					if (result * 16 + str[i] - 'a' + 10 > max) {
+						return 0;
+						ret = -1;
+					}
+					result = result * 16 + str[i] - 'a' + 10;
+				} else {
+					return 0;
+					ret = -1;
 				}
-				result = result * base + str[i] - '0';
 				i++;
-			}
-			if (i != str.size()) {
-				return -1;
 			}
 			return result;
 		}
-
 	} // namespace string
 
 } // namespace shared

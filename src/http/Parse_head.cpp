@@ -18,18 +18,17 @@ namespace http {
 		for (unsigned long i = 0; i < input.size(); i++) {
 			if (input[i] == '\r') {
 				if (i != input.length() - 1 && input[i + 1] != '\n') {
-					// ERROR MESSAGE
+					LOG("Request: Error: Invalid line ending in header", 1);
 					return false;
 				}
 			}
 			if (input[i] == '\n') {
 				if (input[i - 1] != '\r') {
-					// ERROR MESSAGE
+					LOG("Request: Error: Invalid line ending in header", 1);
 					return false;
 				}
 				std::vector<std::string> args;
 				std::stringstream stream(line);
-
 				input = input.substr(i + 1);
 				i = 0;
 				while (getline(stream, key, ' ')) {
@@ -42,6 +41,7 @@ namespace http {
 					m_status = PARSE_HEADERS;
 					return true;
 				} else {
+					LOG("Request: Error: Invalid request line", 1);
 					return false;
 				}
 			} else {

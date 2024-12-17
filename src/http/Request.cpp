@@ -14,7 +14,8 @@ namespace http {
 		, m_restData("")
 		, m_requestData()
 		, m_status(PARSE_START)
-		, m_expectedBody(NO_BODY) {}
+		, m_expectedBody(NO_BODY)
+		, m_chunkedStatus(CHUNK_SIZE) {}
 
 	/**
 	 * @brief Destroys the Request object.
@@ -33,7 +34,8 @@ namespace http {
 		, m_restData(other.getRestData())
 		, m_requestData(other.getRequestData())
 		, m_status(other.m_status)
-		, m_expectedBody(other.getExpectedBody()) {}
+		, m_expectedBody(other.getExpectedBody())
+		, m_chunkedStatus(other.getChunkedStatus()) {}
 
 	/**
 	 * @brief Copy assignment operator.
@@ -43,9 +45,7 @@ namespace http {
 	Request& Request::operator=(const Request& rhs) {
 		if (this == &rhs)
 			return *this;
-		m_requestData = rhs.getRequestData();
-		m_receivedBytes = rhs.getReceivedBytes();
-		m_status = rhs.m_status;
+		*this = Request(rhs);
 		return *this;
 	}
 
@@ -77,6 +77,10 @@ namespace http {
 		return m_expectedBody;
 	};
 
+	const ChunkedStatus& Request::getChunkedStatus(void) const {
+		return m_chunkedStatus;
+	};
+
 	/**
 	 * @brief Parses the request.
 	 * @return True if the request was parsed successfully, false otherwise.
@@ -88,27 +92,20 @@ namespace http {
 			m_restData = "";
 		}
 		input += m_read_buffer;
-		std::cout << "input: " << input << std::endl;
 		if (m_status == PARSE_HEAD || m_status == PARSE_START) {
 			if (!parseHead(input)) {
-				// ERROR MESSAGE
 				return false;
 			}
 		}
 		if (m_status == PARSE_HEADERS) {
 			if (!parseHeaders(input)) {
-				// ERROR MESSAGE
 				return false;
 			}
 		}
 		if (m_status == PARSE_BODY) {
 			if (!parseBody(input)) {
-				// ERROR MESSAGE
 				return false;
 			}
-		}
-		if (m_status == PARSE_END) {
-			// Parsing done
 		}
 		if (input != "") {
 			m_restData = input;
@@ -121,7 +118,7 @@ namespace http {
 	 * @param buffer The buffer to set.
 	 */
 	void Request::setReadBuffer(const char* buffer) {
-		memcpy(m_read_buffer, buffer, BUFFER_SIZE);
+		strncpy(m_read_buffer, buffer, BUFFER_SIZE);	
 	}
 
 	void Request::PrintRequestData() {

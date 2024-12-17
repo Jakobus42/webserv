@@ -35,6 +35,13 @@ namespace http {
 		CONTENT_LENGTH = 2
 	};
 
+	enum ChunkedStatus {
+		CHUNK_SIZE = 0,
+		CHUNK_DATA = 1,
+		CHUNK_DATA_END = 2,
+		CHUNK_END = 3
+	};
+
 	/**
 	 * @class Request
 	 * @brief ...
@@ -53,6 +60,7 @@ namespace http {
 			const t_requestData& getRequestData(void) const;
 			const RequestStatus& getStatus(void) const;
 			const ExpectedBody& getExpectedBody(void) const;
+			const ChunkedStatus& getChunkedStatus(void) const;
 
 			void setReadBuffer(const char* buffer);
 			void PrintRequestData();
@@ -67,6 +75,7 @@ namespace http {
 
 			RequestStatus m_status;
 			ExpectedBody m_expectedBody;
+			ChunkedStatus m_chunkedStatus;
 
 			bool parseHead(std::string& input);
 			bool parseHeaders(std::string& input);
