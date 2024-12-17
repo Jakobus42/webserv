@@ -88,29 +88,43 @@ $(document).ready(function(){initNavTree('stringUtils_8cpp_source.html',''); ini
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="namespaceshared_1_1string.html#adacf97347d5bc1e8d7e2d203486b8dd2">   66</a></span>&#160;        uint32_t <a class="code" href="namespaceshared_1_1string.html#adacf97347d5bc1e8d7e2d203486b8dd2">posStoi</a>(std::string str, <span class="keywordtype">int</span> base) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="namespaceshared_1_1string.html#a11b92e79ee1735a5a934a9c2981f3709">   66</a></span>&#160;        uint32_t <a class="code" href="namespaceshared_1_1string.html#a11b92e79ee1735a5a934a9c2981f3709">StoiHex</a>(std::string str, <span class="keywordtype">int</span>&amp; ret) {</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            uint32_t result = 0;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            uint64_t max = std::numeric_limits&lt;uint32_t&gt;::max();</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordtype">size_t</span> i = 0;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">while</span> (i &lt; str.size() &amp;&amp; str[i] &gt;= <span class="charliteral">&#39;0&#39;</span> &amp;&amp; str[i] &lt;= <span class="charliteral">&#39;9&#39;</span>) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="keywordflow">if</span> (result * base + str[i] - <span class="charliteral">&#39;0&#39;</span> &gt; max) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                result = result * base + str[i] - <span class="charliteral">&#39;0&#39;</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                i++;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">if</span> (i != str.size()) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    } <span class="comment">// namespace string</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;} <span class="comment">// namespace shared</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">while</span> (i &lt; str.size()) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="keywordflow">if</span> (str[i] &gt;= <span class="charliteral">&#39;0&#39;</span> &amp;&amp; str[i] &lt;= <span class="charliteral">&#39;9&#39;</span>) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    <span class="keywordflow">if</span> (result * 16 + str[i] - <span class="charliteral">&#39;0&#39;</span> &gt; max) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        ret = -1;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    result = result * 16 + str[i] - <span class="charliteral">&#39;0&#39;</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (str[i] &gt;= <span class="charliteral">&#39;A&#39;</span> &amp;&amp; str[i] &lt;= <span class="charliteral">&#39;F&#39;</span>) {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    <span class="keywordflow">if</span> (result * 16 + str[i] - <span class="charliteral">&#39;A&#39;</span> + 10 &gt; max) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                        ret = -1;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    result = result * 16 + str[i] - <span class="charliteral">&#39;A&#39;</span> + 10;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (str[i] &gt;= <span class="charliteral">&#39;a&#39;</span> &amp;&amp; str[i] &lt;= <span class="charliteral">&#39;f&#39;</span>) {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    <span class="keywordflow">if</span> (result * 16 + str[i] - <span class="charliteral">&#39;a&#39;</span> + 10 &gt; max) {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        ret = -1;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    result = result * 16 + str[i] - <span class="charliteral">&#39;a&#39;</span> + 10;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    ret = -1;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                i++;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    } <span class="comment">// namespace string</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;} <span class="comment">// namespace shared</span></div>
+<div class="ttc" id="anamespaceshared_1_1string_html_a11b92e79ee1735a5a934a9c2981f3709"><div class="ttname"><a href="namespaceshared_1_1string.html#a11b92e79ee1735a5a934a9c2981f3709">shared::string::StoiHex</a></div><div class="ttdeci">uint32_t StoiHex(std::string str, int &amp;ret)</div><div class="ttdoc">Converts a hexadecimal string to an unsigned integer.</div><div class="ttdef"><b>Definition:</b> <a href="stringUtils_8cpp_source.html#l00066">stringUtils.cpp:66</a></div></div>
 <div class="ttc" id="anamespaceshared_1_1string_html_a548d2887496a48cb38f3ab46dd407c6b"><div class="ttname"><a href="namespaceshared_1_1string.html#a548d2887496a48cb38f3ab46dd407c6b">shared::string::trim</a></div><div class="ttdeci">void trim(std::string &amp;str, const std::string &amp;delimiters)</div><div class="ttdoc">Trims leading and trailing characters from the input string.</div><div class="ttdef"><b>Definition:</b> <a href="stringUtils_8cpp_source.html#l00042">stringUtils.cpp:42</a></div></div>
 <div class="ttc" id="anamespaceshared_1_1string_html_aa68d026861d0f4c81179e94efca2ed7c"><div class="ttname"><a href="namespaceshared_1_1string.html#aa68d026861d0f4c81179e94efca2ed7c">shared::string::split</a></div><div class="ttdeci">void split(const std::string &amp;str, std::vector&lt; std::string &gt; &amp;result, const std::string &amp;delimiters)</div><div class="ttdoc">Splits the given string into tokens based on the specified delimiters.</div><div class="ttdef"><b>Definition:</b> <a href="stringUtils_8cpp_source.html#l00020">stringUtils.cpp:20</a></div></div>
-<div class="ttc" id="anamespaceshared_1_1string_html_adacf97347d5bc1e8d7e2d203486b8dd2"><div class="ttname"><a href="namespaceshared_1_1string.html#adacf97347d5bc1e8d7e2d203486b8dd2">shared::string::posStoi</a></div><div class="ttdeci">uint32_t posStoi(std::string str, int base)</div><div class="ttdoc">Converts a string to an unsigned integer.</div><div class="ttdef"><b>Definition:</b> <a href="stringUtils_8cpp_source.html#l00066">stringUtils.cpp:66</a></div></div>
 <div class="ttc" id="anamespaceshared_html"><div class="ttname"><a href="namespaceshared.html">shared</a></div><div class="ttdef"><b>Definition:</b> <a href="stringUtils_8cpp_source.html#l00003">stringUtils.cpp:3</a></div></div>
 <div class="ttc" id="astringUtils_8hpp_html"><div class="ttname"><a href="stringUtils_8hpp.html">stringUtils.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

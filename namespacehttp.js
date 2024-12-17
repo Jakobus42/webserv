@@ -13,6 +13,12 @@ var namespacehttp =
     [ "t_requestData", "namespacehttp.html#a344224153c4286273f922e54b792a50d", null ],
     [ "t_sockaddr", "namespacehttp.html#a4b20fa68e7c12bf7aff9d3a71a4f2b88", null ],
     [ "t_sockaddr_in", "namespacehttp.html#ac73171fb8c32554229836839f6c4e8ed", null ],
+    [ "ChunkedStatus", "namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437", [
+      [ "CHUNK_SIZE", "namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2", null ],
+      [ "CHUNK_DATA", "namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a4524451e5b885e5f0ba84ab20483b115", null ],
+      [ "CHUNK_DATA_END", "namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a972da3acf199745ed9169a7d0728b0e8", null ],
+      [ "CHUNK_END", "namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90b8fb0cbdb7c2e0ec8f5e1c1d357895", null ]
+    ] ],
     [ "ExpectedBody", "namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1", [
       [ "NO_BODY", "namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a8eaf4a1b7a6cf303cfbdae8b0a8b32eb", null ],
       [ "CHUNKED", "namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a68569ee38513d8278c9a268641b6cfe5", null ],

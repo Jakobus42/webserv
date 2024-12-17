@@ -120,6 +120,12 @@ Enumerations</h2></td></tr>
 , <a class="el" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a9c21a9fbb3e0b3b4602276b6ad85b7f3">CONTENT_LENGTH</a> = 2
  }</td></tr>
 <tr class="separator:aa30eeff7ce0e852dffe3ef46a55406f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55613d0fcbf92587a5c39431cc8fa437"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437">ChunkedStatus</a> { <a class="el" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2">CHUNK_SIZE</a> = 0
+, <a class="el" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a4524451e5b885e5f0ba84ab20483b115">CHUNK_DATA</a> = 1
+, <a class="el" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a972da3acf199745ed9169a7d0728b0e8">CHUNK_DATA_END</a> = 2
+, <a class="el" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90b8fb0cbdb7c2e0ec8f5e1c1d357895">CHUNK_END</a> = 3
+ }</td></tr>
+<tr class="separator:a55613d0fcbf92587a5c39431cc8fa437"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac125d409f7c7b6034fe7e49d237b7762"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a> { <br />
 &#160;&#160;<a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc">OK</a> = 200
 , <a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a55ec2403fcca929391dbb044ffed5e85">CREATED</a> = 201
@@ -310,6 +316,38 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a55613d0fcbf92587a5c39431cc8fa437"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55613d0fcbf92587a5c39431cc8fa437">&#9670;&nbsp;</a></span>ChunkedStatus</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437">http::ChunkedStatus</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2"></a>CHUNK_SIZE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a55613d0fcbf92587a5c39431cc8fa437a4524451e5b885e5f0ba84ab20483b115"></a>CHUNK_DATA&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a55613d0fcbf92587a5c39431cc8fa437a972da3acf199745ed9169a7d0728b0e8"></a>CHUNK_DATA_END&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a55613d0fcbf92587a5c39431cc8fa437a90b8fb0cbdb7c2e0ec8f5e1c1d357895"></a>CHUNK_END&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00038">38</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                       {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2">CHUNK_SIZE</a> = 0,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a4524451e5b885e5f0ba84ab20483b115">CHUNK_DATA</a> = 1,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a972da3acf199745ed9169a7d0728b0e8">CHUNK_DATA_END</a> = 2,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90b8fb0cbdb7c2e0ec8f5e1c1d357895">CHUNK_END</a> = 3</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    };</div>
+<div class="ttc" id="anamespacehttp_html_a55613d0fcbf92587a5c39431cc8fa437a4524451e5b885e5f0ba84ab20483b115"><div class="ttname"><a href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a4524451e5b885e5f0ba84ab20483b115">http::CHUNK_DATA</a></div><div class="ttdeci">@ CHUNK_DATA</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00040">Request.hpp:40</a></div></div>
+<div class="ttc" id="anamespacehttp_html_a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2"><div class="ttname"><a href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2">http::CHUNK_SIZE</a></div><div class="ttdeci">@ CHUNK_SIZE</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00039">Request.hpp:39</a></div></div>
+<div class="ttc" id="anamespacehttp_html_a55613d0fcbf92587a5c39431cc8fa437a90b8fb0cbdb7c2e0ec8f5e1c1d357895"><div class="ttname"><a href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90b8fb0cbdb7c2e0ec8f5e1c1d357895">http::CHUNK_END</a></div><div class="ttdeci">@ CHUNK_END</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00043">Request.hpp:42</a></div></div>
+<div class="ttc" id="anamespacehttp_html_a55613d0fcbf92587a5c39431cc8fa437a972da3acf199745ed9169a7d0728b0e8"><div class="ttname"><a href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a972da3acf199745ed9169a7d0728b0e8">http::CHUNK_DATA_END</a></div><div class="ttdeci">@ CHUNK_DATA_END</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00041">Request.hpp:41</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="aa30eeff7ce0e852dffe3ef46a55406f1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa30eeff7ce0e852dffe3ef46a55406f1">&#9670;&nbsp;</a></span>ExpectedBody</h2>
 
@@ -602,10 +640,9 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacehttp_ab573664fa35760fc9437b1fff6d88685_icgraph.png" border="0" usemap="#anamespacehttp_ab573664fa35760fc9437b1fff6d88685_icgraph" alt=""/></div>
 <map name="anamespacehttp_ab573664fa35760fc9437b1fff6d88685_icgraph" id="anamespacehttp_ab573664fa35760fc9437b1fff6d88685_icgraph">
-<area shape="rect" title=" " alt="" coords="544,5,672,32"/>
-<area shape="rect" href="classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac" title=" " alt="" coords="309,5,496,32"/>
-<area shape="rect" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993" title="Parses the request." alt="" coords="108,5,261,32"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,32"/>
+<area shape="rect" title=" " alt="" coords="441,5,569,32"/>
+<area shape="rect" href="classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac" title=" " alt="" coords="207,5,393,32"/>
+<area shape="rect" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993" title="Parses the request." alt="" coords="5,5,159,32"/>
 </map>
 </div>
 
