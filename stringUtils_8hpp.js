@@ -1,5 +1,6 @@
 var stringUtils_8hpp =
 [
+    [ "isGreyspace", "stringUtils_8hpp.html#a2c0ea281fde1150615baa77e6dcce5d3", null ],
     [ "posStoi", "stringUtils_8hpp.html#a66dbf48761b7b07dd8b7001a6e1d6c56", null ],
     [ "split", "stringUtils_8hpp.html#aa68d026861d0f4c81179e94efca2ed7c", null ],
     [ "StoiHex", "stringUtils_8hpp.html#a11b92e79ee1735a5a934a9c2981f3709", null ],

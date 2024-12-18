@@ -24,6 +24,10 @@ var namespacehttp =
       [ "CHUNKED", "namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a68569ee38513d8278c9a268641b6cfe5", null ],
       [ "CONTENT_LENGTH", "namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a9c21a9fbb3e0b3b4602276b6ad85b7f3", null ]
     ] ],
+    [ "headerType", "namespacehttp.html#a7c19be9b9ab696f1ba9531474228f449", [
+      [ "HEADER", "namespacehttp.html#a7c19be9b9ab696f1ba9531474228f449ac63def395b20ae89ed55534b0f7caf82", null ],
+      [ "TRAILING", "namespacehttp.html#a7c19be9b9ab696f1ba9531474228f449adbbb0d56581c84173dc952aefb568471", null ]
+    ] ],
     [ "Method", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cf", [
       [ "GET", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0", null ],
       [ "POST", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab", null ],
@@ -82,7 +86,6 @@ var namespacehttp =
       [ "GATEWAY_TIMEOUT", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a87353b86a06472ac0dea6f4580bf6683", null ],
       [ "HTTP_VERSION_NOT_SUPPORTED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff", null ]
     ] ],
-    [ "checkHead", "namespacehttp.html#ab573664fa35760fc9437b1fff6d88685", null ],
     [ "createResponse", "namespacehttp.html#abb0d5652324cd36455bb9ecc571ee87f", null ],
     [ "generateErrorPage", "namespacehttp.html#abf7077bb1b43902d0455848db0726b95", null ],
     [ "generateErrorPage", "namespacehttp.html#ab99935c70c216969b7410a50c653cc58", null ],

@@ -78,6 +78,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a11b92e79ee1735a5a934a9c2981f3709"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a11b92e79ee1735a5a934a9c2981f3709">StoiHex</a> (std::string str, int &amp;ret)</td></tr>
 <tr class="memdesc:a11b92e79ee1735a5a934a9c2981f3709"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a hexadecimal string to an unsigned integer.  <a href="namespaceshared_1_1string.html#a11b92e79ee1735a5a934a9c2981f3709">More...</a><br /></td></tr>
 <tr class="separator:a11b92e79ee1735a5a934a9c2981f3709"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c0ea281fde1150615baa77e6dcce5d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3">isGreyspace</a> (char c)</td></tr>
+<tr class="memdesc:a2c0ea281fde1150615baa77e6dcce5d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if a character is a whitespace character exept for '<br  />
+' and '\r'  <a href="namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3">More...</a><br /></td></tr>
+<tr class="separator:a2c0ea281fde1150615baa77e6dcce5d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66dbf48761b7b07dd8b7001a6e1d6c56"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a66dbf48761b7b07dd8b7001a6e1d6c56">posStoi</a> (std::string str, int base=10)</td></tr>
 <tr class="separator:a66dbf48761b7b07dd8b7001a6e1d6c56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -87,6 +91,53 @@ Variables</h2></td></tr>
 <tr class="separator:a5841ad66349ecb863209150dfd2b0192"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a2c0ea281fde1150615baa77e6dcce5d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c0ea281fde1150615baa77e6dcce5d3">&#9670;&nbsp;</a></span>isGreyspace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool shared::string::isGreyspace </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>checks if a character is a whitespace character exept for '<br  />
+' and '\r' </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>the character to check</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a bool indicating if the character is a whitespace character exept for '<br  />
+' and '\r' </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="stringUtils_8cpp_source.html#l00105">105</a> of file <a class="el" href="stringUtils_8cpp_source.html">stringUtils.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                                 {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">return</span> c == <span class="charliteral">&#39; &#39;</span> || c == <span class="charliteral">&#39;\t&#39;</span> || c == <span class="charliteral">&#39;\v&#39;</span> || c == <span class="charliteral">&#39;\f&#39;</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceshared_1_1string_a2c0ea281fde1150615baa77e6dcce5d3_icgraph.png" border="0" usemap="#anamespaceshared_1_1string_a2c0ea281fde1150615baa77e6dcce5d3_icgraph" alt=""/></div>
+<map name="anamespaceshared_1_1string_a2c0ea281fde1150615baa77e6dcce5d3_icgraph" id="anamespaceshared_1_1string_a2c0ea281fde1150615baa77e6dcce5d3_icgraph">
+<area shape="rect" title="checks if a character is a whitespace character exept for &#39; &#39; and &#39;\r&#39;" alt="" coords="1179,5,1377,32"/>
+<area shape="rect" href="classhttp_1_1Request.html#a601419b1ee5e28ec7fc870c394c1cb37" title=" " alt="" coords="931,5,1131,32"/>
+<area shape="rect" href="classhttp_1_1Request.html#a5e091023f91601f3852a860cc5f4ce33" title=" " alt="" coords="676,5,883,32"/>
+<area shape="rect" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993" title="Parses the request." alt="" coords="5,5,159,32"/>
+<area shape="rect" href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135" title=" " alt="" coords="441,27,628,69"/>
+<area shape="rect" href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4" title=" " alt="" coords="207,31,393,57"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a66dbf48761b7b07dd8b7001a6e1d6c56"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a66dbf48761b7b07dd8b7001a6e1d6c56">&#9670;&nbsp;</a></span>posStoi()</h2>
 
@@ -215,25 +266,25 @@ Variables</h2></td></tr>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">while</span> (i &lt; str.size()) {</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="keywordflow">if</span> (str[i] &gt;= <span class="charliteral">&#39;0&#39;</span> &amp;&amp; str[i] &lt;= <span class="charliteral">&#39;9&#39;</span>) {</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    <span class="keywordflow">if</span> (result * 16 + str[i] - <span class="charliteral">&#39;0&#39;</span> &gt; max) {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        ret = -1;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        ret = -1;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                    }</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    result = result * 16 + str[i] - <span class="charliteral">&#39;0&#39;</span>;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (str[i] &gt;= <span class="charliteral">&#39;A&#39;</span> &amp;&amp; str[i] &lt;= <span class="charliteral">&#39;F&#39;</span>) {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    <span class="keywordflow">if</span> (result * 16 + str[i] - <span class="charliteral">&#39;A&#39;</span> + 10 &gt; max) {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                        ret = -1;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        ret = -1;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    result = result * 16 + str[i] - <span class="charliteral">&#39;A&#39;</span> + 10;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (str[i] &gt;= <span class="charliteral">&#39;a&#39;</span> &amp;&amp; str[i] &lt;= <span class="charliteral">&#39;f&#39;</span>) {</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    <span class="keywordflow">if</span> (result * 16 + str[i] - <span class="charliteral">&#39;a&#39;</span> + 10 &gt; max) {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        ret = -1;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                        ret = -1;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    }</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    result = result * 16 + str[i] - <span class="charliteral">&#39;a&#39;</span> + 10;</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    ret = -1;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    ret = -1;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                }</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                i++;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            }</div>

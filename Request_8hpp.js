@@ -15,6 +15,10 @@ var Request_8hpp =
       [ "CHUNKED", "Request_8hpp.html#aa30eeff7ce0e852dffe3ef46a55406f1a68569ee38513d8278c9a268641b6cfe5", null ],
       [ "CONTENT_LENGTH", "Request_8hpp.html#aa30eeff7ce0e852dffe3ef46a55406f1a9c21a9fbb3e0b3b4602276b6ad85b7f3", null ]
     ] ],
+    [ "headerType", "Request_8hpp.html#a7c19be9b9ab696f1ba9531474228f449", [
+      [ "HEADER", "Request_8hpp.html#a7c19be9b9ab696f1ba9531474228f449ac63def395b20ae89ed55534b0f7caf82", null ],
+      [ "TRAILING", "Request_8hpp.html#a7c19be9b9ab696f1ba9531474228f449adbbb0d56581c84173dc952aefb568471", null ]
+    ] ],
     [ "QuoteFlag", "Request_8hpp.html#a65130a0278ed6baadd18c1f3594ccdb8", [
       [ "NO_QUOTE", "Request_8hpp.html#a65130a0278ed6baadd18c1f3594ccdb8ab3b96bab0d8747049e4366de54c43db2", null ],
       [ "SINGLE_QUOTE", "Request_8hpp.html#a65130a0278ed6baadd18c1f3594ccdb8aecf6d91bbe6ec97eae702c654674fc5e", null ],
