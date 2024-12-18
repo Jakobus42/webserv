@@ -2,7 +2,7 @@
 
 namespace http {
 
-	bool Request::checkHead(std::vector<std::string>& args) {
+	bool Request::checkHead(const std::vector<std::string>& args) {
 		if (args[0] != "GET" && args[0] != "POST" && args[0] != "PUT" && args[0] != "DELETE") {
 			return false;
 		}

@@ -90,7 +90,7 @@ namespace http {
 			bool parseHeader(std::string& line, headerType type);
 			bool interpretHeaders(headerType type);
 			bool parseBodyChunked(std::string& input);
-			bool checkHead(std::vector<std::string>& args);
+			bool checkHead(const std::vector<std::string>& args);
 
 			// ...
 	};
