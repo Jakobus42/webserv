@@ -98,7 +98,7 @@ namespace http {
 			}
 		}
 		if (m_status == PARSE_HEADERS) {
-			if (!parseHeaders(input)) {
+			if (!parseHeaders(input, HEADER)) {
 				return false;
 			}
 		}
@@ -118,13 +118,14 @@ namespace http {
 	 * @param buffer The buffer to set.
 	 */
 	void Request::setReadBuffer(const char* buffer) {
-		strncpy(m_read_buffer, buffer, BUFFER_SIZE);	
+		strncpy(m_read_buffer, buffer, BUFFER_SIZE);
 	}
 
 	void Request::PrintRequestData() {
 		std::cout << "Method: " << m_requestData.method << std::endl;
 		std::cout << "URI: " << m_requestData.uri << std::endl;
 		std::cout << "Version: " << m_requestData.version << std::endl;
+		std::cout << "------------------------------" << std::endl;
 		std::cout << "Headers: " << std::endl;
 		for (std::map<std::string, std::vector<std::string> >::const_iterator it = m_requestData.headers.begin(); it != m_requestData.headers.end(); ++it) {
 			std::cout << it->first << ": ";
@@ -133,7 +134,19 @@ namespace http {
 			}
 			std::cout << std::endl;
 		}
+		std::cout << "------------------------------" << std::endl;
+		std::cout << "Trailing headers: " << std::endl;
+		for (std::map<std::string, std::vector<std::string> >::const_iterator it = m_requestData.trailing_headers.begin(); it != m_requestData.trailing_headers.end(); ++it) {
+			std::cout << it->first << ": ";
+			for (std::vector<std::string>::const_iterator val = it->second.begin(); val != it->second.end(); ++val) {
+				std::cout << *val << " ";
+			}
+			std::cout << std::endl;
+		}
+		std::cout << "------------------------------" << std::endl;
 		std::cout << "Body: " << m_requestData.body << std::endl;
+		std::cout << "------------------------------" << std::endl;
+		std::cout << "Status: " << m_status << std::endl;
 	}
 
 } /* namespace http */

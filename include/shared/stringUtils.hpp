@@ -20,6 +20,8 @@ namespace shared {
 		uint32_t posStoi(std::string str, int base = 10);
 
 		uint32_t StoiHex(std::string str, int& ret);
+
+		bool isGreyspace(char c);
 	} // namespace string
 
 } // namespace shared

@@ -20,6 +20,7 @@ namespace http {
 			std::string version;
 			std::map<std::string, std::vector<std::string> > headers;
 			std::string body;
+			std::map<std::string, std::vector<std::string> > trailing_headers;
 	} t_requestData;
 
 	enum QuoteFlag {
@@ -40,6 +41,11 @@ namespace http {
 		CHUNK_DATA = 1,
 		CHUNK_DATA_END = 2,
 		CHUNK_END = 3
+	};
+
+	enum headerType {
+		HEADER = 0,
+		TRAILING = 1
 	};
 
 	/**
@@ -78,12 +84,13 @@ namespace http {
 			ChunkedStatus m_chunkedStatus;
 
 			bool parseHead(std::string& input);
-			bool parseHeaders(std::string& input);
+			bool parseHeaders(std::string& input, headerType type);
 			bool parseBody(std::string& input);
 
-			bool parseHeader(std::string& line);
-			bool interpretHeaders();
+			bool parseHeader(std::string& line, headerType type);
+			bool interpretHeaders(headerType type);
 			bool parseBodyChunked(std::string& input);
+			bool checkHead(std::vector<std::string>& args);
 
 			// ...
 	};

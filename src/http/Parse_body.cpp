@@ -28,82 +28,67 @@ namespace http {
 		return true;
 	}
 
+
 	bool Request::parseBodyChunked(std::string& input) {
-		while (1)
-		{
-			if (m_chunkedStatus == CHUNK_SIZE)
-			{
+		while (1) {
+			if (m_chunkedStatus == CHUNK_SIZE) {
 				std::string line;
-				for (unsigned long i = 0; i < input.size(); i++)
-				{
-					if (input[i] == '\r' && input[i + 1] == '\n')
-					{
-						if (line == "")
-						{
+				for (unsigned long i = 0; i < input.size(); i++) {
+					// TODO: Chunk Extension
+					if (input[i] == '\r' && input[i + 1] == '\n') {
+						if (line == "") {
 							LOG("Error: Empty line in chunked encoding", 1);
 							return false;
 						}
-						if (line == "0")
-						{
+						if (line == "0") {
+							input = input.substr(i + 2);
 							m_chunkedStatus = CHUNK_END;
-							return true;
+							break;
 						}
 						int ret = 0;
 						m_contentLength = shared::string::StoiHex(line, ret);
-						if (ret == -1)
-						{
+						if (ret == -1) {
 							LOG("Error: Invalid hexadecimal number in chunked encoding", 1);
 							return false;
 						}
-						std::cout << m_contentLength << std::endl;
 						m_chunkedStatus = CHUNK_DATA;
 						input = input.substr(i + 2);
 						break;
-					}
-					else
-					{
+					} else {
 						line += input[i];
 					}
 				}
-				if (m_chunkedStatus == CHUNK_SIZE)
-				{
+				if (m_chunkedStatus == CHUNK_SIZE) {
 					return true;
 				}
 			}
-			if (m_chunkedStatus == CHUNK_DATA)
-			{
+			if (m_chunkedStatus == CHUNK_DATA) {
 				std::string chunk = input.substr(0, m_contentLength);
 				m_contentLength -= chunk.size();
 				m_requestData.body += chunk;
 				input = input.substr(chunk.size());
 				if (m_contentLength == 0) {
 					m_chunkedStatus = CHUNK_DATA_END;
-				}
-				else {
+				} else {
 					return true;
 				}
 			}
-			if (m_chunkedStatus == CHUNK_DATA_END)
-			{
-				if (input.length() < 2)
-				{
+			if (m_chunkedStatus == CHUNK_DATA_END) {
+				if (input.length() < 2) {
 					return true;
 				}
-				if (input[0] == '\r' && input[1] == '\n')
-				{
+				if (input[0] == '\r' && input[1] == '\n') {
 					input = input.substr(2);
 					m_chunkedStatus = CHUNK_SIZE;
-				}
-				else
-				{
+				} else {
 					LOG("Error: Invalid chunked encoding, \r\n expected after chunk.", 1);
 					return false;
 				}
 			}
-			if (m_chunkedStatus == CHUNK_END)
-			{
-				//TODO: Interpret trailers
-				m_status = PARSE_END;
+			if (m_chunkedStatus == CHUNK_END) {
+				if (!parseHeaders(input, TRAILING)) {
+					return false;
+				}
 				return true;
 			}
 		}

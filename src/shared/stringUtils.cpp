@@ -70,29 +70,40 @@ namespace shared {
 			while (i < str.size()) {
 				if (str[i] >= '0' && str[i] <= '9') {
 					if (result * 16 + str[i] - '0' > max) {
-						return 0;
 						ret = -1;
+						return 0;
 					}
 					result = result * 16 + str[i] - '0';
 				} else if (str[i] >= 'A' && str[i] <= 'F') {
 					if (result * 16 + str[i] - 'A' + 10 > max) {
-						return 0;
 						ret = -1;
+						return 0;
 					}
 					result = result * 16 + str[i] - 'A' + 10;
 				} else if (str[i] >= 'a' && str[i] <= 'f') {
 					if (result * 16 + str[i] - 'a' + 10 > max) {
-						return 0;
 						ret = -1;
+						return 0;
 					}
 					result = result * 16 + str[i] - 'a' + 10;
 				} else {
-					return 0;
 					ret = -1;
+					return 0;
 				}
 				i++;
 			}
 			return result;
+		}
+
+		/**
+		 * @brief checks if a character is a whitespace character exept for '\n' and '\r'
+		 *
+		 * @param c the character to check
+		 *
+		 * @return a bool indicating if the character is a whitespace character exept for '\n' and '\r'
+		 */
+		bool isGreyspace(char c) {
+			return c == ' ' || c == '\t' || c == '\v' || c == '\f';
 		}
 	} // namespace string
 
