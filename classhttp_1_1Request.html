@@ -136,8 +136,8 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:ab407c3b5e76faece83ba51004001c02f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c6bb71ac8e08b4547c54f4ba662b135"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135">parseBodyChunked</a> (std::string &amp;input)</td></tr>
 <tr class="separator:a8c6bb71ac8e08b4547c54f4ba662b135"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab261ff916a58f4ce7a16813b27a723e9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#ab261ff916a58f4ce7a16813b27a723e9">checkHead</a> (std::vector&lt; std::string &gt; &amp;args)</td></tr>
-<tr class="separator:ab261ff916a58f4ce7a16813b27a723e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b34649af1a6d967989ad522fc3491e8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#a9b34649af1a6d967989ad522fc3491e8">checkHead</a> (const std::vector&lt; std::string &gt; &amp;args)</td></tr>
+<tr class="separator:a9b34649af1a6d967989ad522fc3491e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -272,8 +272,8 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab261ff916a58f4ce7a16813b27a723e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab261ff916a58f4ce7a16813b27a723e9">&#9670;&nbsp;</a></span>checkHead()</h2>
+<a id="a9b34649af1a6d967989ad522fc3491e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b34649af1a6d967989ad522fc3491e8">&#9670;&nbsp;</a></span>checkHead()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -284,7 +284,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">bool http::Request::checkHead </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
           <td class="paramname"><em>args</em></td><td>)</td>
           <td></td>
         </tr>
@@ -297,7 +297,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="Parse__head_8cpp_source.html#l00005">5</a> of file <a class="el" href="Parse__head_8cpp_source.html">Parse_head.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;                                                      {</div>
+<div class="fragment"><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;                                                            {</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;        <span class="keywordflow">if</span> (args[0] != <span class="stringliteral">&quot;GET&quot;</span> &amp;&amp; args[0] != <span class="stringliteral">&quot;POST&quot;</span> &amp;&amp; args[0] != <span class="stringliteral">&quot;PUT&quot;</span> &amp;&amp; args[0] != <span class="stringliteral">&quot;DELETE&quot;</span>) {</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        }</div>
@@ -309,8 +309,8 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Request_ab261ff916a58f4ce7a16813b27a723e9_icgraph.png" border="0" usemap="#aclasshttp_1_1Request_ab261ff916a58f4ce7a16813b27a723e9_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Request_ab261ff916a58f4ce7a16813b27a723e9_icgraph" id="aclasshttp_1_1Request_ab261ff916a58f4ce7a16813b27a723e9_icgraph">
+<div class="center"><img src="classhttp_1_1Request_a9b34649af1a6d967989ad522fc3491e8_icgraph.png" border="0" usemap="#aclasshttp_1_1Request_a9b34649af1a6d967989ad522fc3491e8_icgraph" alt=""/></div>
+<map name="aclasshttp_1_1Request_a9b34649af1a6d967989ad522fc3491e8_icgraph" id="aclasshttp_1_1Request_a9b34649af1a6d967989ad522fc3491e8_icgraph">
 <area shape="rect" title=" " alt="" coords="441,5,631,32"/>
 <area shape="rect" href="classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac" title=" " alt="" coords="207,5,393,32"/>
 <area shape="rect" href="classhttp_1_1Request.html#aa8d85c69627d45f4d6d69d94131a6993" title="Parses the request." alt="" coords="5,5,159,32"/>
@@ -683,7 +683,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="classhttp_1_1Request.html#ab407c3b5e76faece83ba51004001c02f" title=" " alt="" coords="947,31,1120,72"/>
 <area shape="rect" href="classhttp_1_1Request.html#a601419b1ee5e28ec7fc870c394c1cb37" title=" " alt="" coords="933,97,1133,123"/>
 <area shape="rect" href="namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3" title="checks if a character is a whitespace character exept for &#39; &#39; and &#39;\r&#39;" alt="" coords="1181,97,1380,123"/>
-<area shape="rect" href="classhttp_1_1Request.html#ab261ff916a58f4ce7a16813b27a723e9" title=" " alt="" coords="441,122,631,149"/>
+<area shape="rect" href="classhttp_1_1Request.html#a9b34649af1a6d967989ad522fc3491e8" title=" " alt="" coords="441,122,631,149"/>
 </map>
 </div>
 
@@ -945,7 +945,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    args.push_back(key);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    key.clear();</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keywordflow">if</span> (args.size() == 3 &amp;&amp; <a class="code" href="classhttp_1_1Request.html#ab261ff916a58f4ce7a16813b27a723e9">checkHead</a>(args) == <span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keywordflow">if</span> (args.size() == 3 &amp;&amp; <a class="code" href="classhttp_1_1Request.html#a9b34649af1a6d967989ad522fc3491e8">checkHead</a>(args) == <span class="keyword">true</span>) {</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                    <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#abad9164bd968c0d77bc39b42e3f4569e">method</a> = args[0];</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                    <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#a57738de926238dbd5142105534918f44">uri</a> = args[1];</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                    <a class="code" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code" href="structhttp_1_1s__requestData.html#aa89ee8974428c29ddad21ad20b328fab">version</a> = args[2];</div>
@@ -961,7 +961,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
-<div class="ttc" id="aclasshttp_1_1Request_html_ab261ff916a58f4ce7a16813b27a723e9"><div class="ttname"><a href="classhttp_1_1Request.html#ab261ff916a58f4ce7a16813b27a723e9">http::Request::checkHead</a></div><div class="ttdeci">bool checkHead(std::vector&lt; std::string &gt; &amp;args)</div><div class="ttdef"><b>Definition:</b> <a href="Parse__head_8cpp_source.html#l00005">Parse_head.cpp:5</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a9b34649af1a6d967989ad522fc3491e8"><div class="ttname"><a href="classhttp_1_1Request.html#a9b34649af1a6d967989ad522fc3491e8">http::Request::checkHead</a></div><div class="ttdeci">bool checkHead(const std::vector&lt; std::string &gt; &amp;args)</div><div class="ttdef"><b>Definition:</b> <a href="Parse__head_8cpp_source.html#l00005">Parse_head.cpp:5</a></div></div>
 <div class="ttc" id="astructhttp_1_1s__requestData_html_a57738de926238dbd5142105534918f44"><div class="ttname"><a href="structhttp_1_1s__requestData.html#a57738de926238dbd5142105534918f44">http::s_requestData::uri</a></div><div class="ttdeci">std::string uri</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00019">Request.hpp:19</a></div></div>
 <div class="ttc" id="astructhttp_1_1s__requestData_html_aa89ee8974428c29ddad21ad20b328fab"><div class="ttname"><a href="structhttp_1_1s__requestData.html#aa89ee8974428c29ddad21ad20b328fab">http::s_requestData::version</a></div><div class="ttdeci">std::string version</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00020">Request.hpp:20</a></div></div>
 <div class="ttc" id="astructhttp_1_1s__requestData_html_abad9164bd968c0d77bc39b42e3f4569e"><div class="ttname"><a href="structhttp_1_1s__requestData.html#abad9164bd968c0d77bc39b42e3f4569e">http::s_requestData::method</a></div><div class="ttdeci">std::string method</div><div class="ttdef"><b>Definition:</b> <a href="Request_8hpp_source.html#l00018">Request.hpp:18</a></div></div>
@@ -971,7 +971,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classhttp_1_1Request_a7c94a929bf55670e716d50ac819ec8ac_cgraph.png" border="0" usemap="#aclasshttp_1_1Request_a7c94a929bf55670e716d50ac819ec8ac_cgraph" alt=""/></div>
 <map name="aclasshttp_1_1Request_a7c94a929bf55670e716d50ac819ec8ac_cgraph" id="aclasshttp_1_1Request_a7c94a929bf55670e716d50ac819ec8ac_cgraph">
 <area shape="rect" title=" " alt="" coords="5,5,192,32"/>
-<area shape="rect" href="classhttp_1_1Request.html#ab261ff916a58f4ce7a16813b27a723e9" title=" " alt="" coords="240,5,429,32"/>
+<area shape="rect" href="classhttp_1_1Request.html#a9b34649af1a6d967989ad522fc3491e8" title=" " alt="" coords="240,5,429,32"/>
 </map>
 </div>
 <div class="dynheader">

@@ -3,7 +3,7 @@ var classhttp_1_1Request =
     [ "Request", "classhttp_1_1Request.html#a20cb90fc8ee4461541ec901399af0a0e", null ],
     [ "~Request", "classhttp_1_1Request.html#ad7a36836922ba4e911cef7e1862ec221", null ],
     [ "Request", "classhttp_1_1Request.html#a5cb6dcae12c90f9f832bf33e2a40ae93", null ],
-    [ "checkHead", "classhttp_1_1Request.html#ab261ff916a58f4ce7a16813b27a723e9", null ],
+    [ "checkHead", "classhttp_1_1Request.html#a9b34649af1a6d967989ad522fc3491e8", null ],
     [ "getChunkedStatus", "classhttp_1_1Request.html#ada53b2cb4efed5e8e41461e3ce9d7f9d", null ],
     [ "getContentLength", "classhttp_1_1Request.html#a522f9d16cffdf0dfd36978671425d43a", null ],
     [ "getExpectedBody", "classhttp_1_1Request.html#a0ce916638592c9c9ac35b54e1c3c0851", null ],
