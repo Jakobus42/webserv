@@ -1,9 +1,15 @@
 <map id="core::HandlerContext" name="core::HandlerContext">
-<area shape="rect" id="node1" title=" " alt="" coords="116,1100,276,1177"/>
-<area shape="rect" id="node2" href="$classhttp_1_1VirtualServer.html" title="..." alt="" coords="5,755,200,1037"/>
-<area shape="rect" id="node3" href="$classhttp_1_1ServerSocket.html" title="..." alt="" coords="30,299,175,611"/>
-<area shape="rect" id="node4" href="$classhttp_1_1Connection.html" title="..." alt="" coords="224,784,355,1008"/>
-<area shape="rect" id="node5" href="$classhttp_1_1ClientSocket.html" title="..." alt="" coords="204,307,367,604"/>
-<area shape="rect" id="node6" href="$classhttp_1_1Request.html" title="..." alt="" coords="391,219,558,692"/>
-<area shape="rect" id="node7" href="$structhttp_1_1s__requestData.html" title=" " alt="" coords="399,5,550,156"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="117,1329,269,1395"/>
+<area shape="rect" id="Node000002" href="$classhttp_1_1VirtualServer.html" title="..." alt="" coords="5,921,199,1267"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="156,1266,170,1304,173,1313,168,1315,165,1306,151,1268"/>
+<area shape="rect" id="Node000003" href="$classhttp_1_1ServerSocket.html" title="..." alt="" coords="31,353,173,739"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="105,739,105,905,99,905,99,739"/>
+<area shape="rect" id="Node000004" href="$classhttp_1_1Connection.html" title="..." alt="" coords="223,961,346,1227"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="263,1228,235,1306,230,1317,225,1314,230,1304,258,1226"/>
+<area shape="rect" id="Node000005" href="$classhttp_1_1ClientSocket.html" title="..." alt="" coords="202,363,357,729"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="284,729,286,945,281,945,278,729"/>
+<area shape="rect" id="Node000006" href="$classhttp_1_1Request.html" title="..." alt="" coords="381,233,545,859"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="419,860,406,898,384,948,357,995,352,992,379,945,401,896,414,858"/>
+<area shape="rect" id="Node000007" href="$structhttp_1_1s__requestData.html" title=" " alt="" coords="392,5,535,171"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="466,171,466,217,461,217,461,171"/>
 </map>

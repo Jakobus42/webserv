@@ -1,18 +1,39 @@
 <map id="/home/runner/work/webserv/webserv/include/http/ClientSocket.hpp" name="/home/runner/work/webserv/webserv/include/http/ClientSocket.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="341,5,616,47"/>
-<area shape="rect" id="node2" href="$ClientSocket_8cpp.html" title=" " alt="" coords="281,102,441,129"/>
-<area shape="rect" id="node3" href="$AHandler_8hpp.html" title=" " alt="" coords="323,273,578,315"/>
-<area shape="rect" id="node13" href="$Connection_8hpp.html" title=" " alt="" coords="551,95,817,136"/>
-<area shape="rect" id="node4" href="$IOHandler_8hpp.html" title=" " alt="" coords="214,467,474,508"/>
-<area shape="rect" id="node7" href="$Reactor_8hpp.html" title=" " alt="" coords="636,370,881,411"/>
-<area shape="rect" id="node9" href="$RequestHandler_8hpp.html" title=" " alt="" coords="7,370,305,411"/>
-<area shape="rect" id="node11" href="$ResponseHandler_8hpp.html" title=" " alt="" coords="381,363,611,419"/>
-<area shape="rect" id="node5" href="$IOHandler_8cpp.html" title=" " alt="" coords="271,556,417,583"/>
-<area shape="rect" id="node6" href="$Reactor_8cpp.html" title=" " alt="" coords="772,556,903,583"/>
-<area shape="rect" id="node8" href="$main_8cpp.html" title=" " alt="" coords="717,474,800,501"/>
-<area shape="rect" id="node10" href="$RequestHandler_8cpp.html" title=" " alt="" coords="5,474,189,501"/>
-<area shape="rect" id="node12" href="$ResponseHandler_8cpp.html" title=" " alt="" coords="499,474,693,501"/>
-<area shape="rect" id="node14" href="$Connection_8cpp.html" title=" " alt="" coords="848,191,1000,218"/>
-<area shape="rect" id="node15" href="$VirtualServer_8hpp.html" title=" " alt="" coords="545,184,823,225"/>
-<area shape="rect" id="node16" href="$VirtualServer_8cpp.html" title=" " alt="" coords="603,281,765,307"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="547,5,821,45"/>
+<area shape="rect" id="Node000002" href="$AHandler_8hpp.html" title=" " alt="" coords="323,269,578,309"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="606,53,571,71,541,95,508,138,483,187,467,233,457,270,452,268,462,232,478,185,503,136,537,91,569,67,604,48"/>
+<area shape="rect" id="Node000012" href="$Connection_8hpp.html" title=" " alt="" coords="551,93,817,133"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="687,59,687,93,681,93,681,59"/>
+<area shape="rect" id="Node000016" href="$ClientSocket_8cpp.html" title=" " alt="" coords="841,101,1001,126"/>
+<area shape="poly" id="edge21_Node000001_Node000016" title=" " alt="" coords="750,48,891,98,889,103,748,53"/>
+<area shape="rect" id="Node000003" href="$IOHandler_8hpp.html" title=" " alt="" coords="214,460,474,500"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="408,319,387,337,370,359,359,384,351,412,347,460,341,459,346,411,354,382,366,356,383,334,405,315"/>
+<area shape="rect" id="Node000006" href="$Reactor_8hpp.html" title=" " alt="" coords="636,365,881,405"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="527,311,697,362,696,367,525,316"/>
+<area shape="rect" id="Node000008" href="$RequestHandler_8hpp.html" title=" " alt="" coords="7,365,305,405"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="379,316,216,367,215,362,377,311"/>
+<area shape="rect" id="Node000010" href="$ResponseHandler_8hpp.html" title=" " alt="" coords="381,357,611,412"/>
+<area shape="poly" id="edge11_Node000002_Node000010" title=" " alt="" coords="468,320,486,356,481,358,463,323"/>
+<area shape="rect" id="Node000004" href="$IOHandler_8cpp.html" title=" " alt="" coords="271,548,417,573"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="347,514,347,548,341,548,341,514"/>
+<area shape="rect" id="Node000005" href="$Reactor_8cpp.html" title=" " alt="" coords="772,548,903,573"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="476,499,772,546,772,552,475,505"/>
+<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="786,414,814,459,831,507,838,547,833,548,826,509,810,461,782,417"/>
+<area shape="rect" id="Node000007" href="$main_8cpp.html" title=" " alt="" coords="717,467,800,493"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="761,419,761,467,756,467,756,419"/>
+<area shape="poly" id="edge9_Node000008_Node000003" title=" " alt="" coords="207,408,307,458,305,462,205,413"/>
+<area shape="rect" id="Node000009" href="$RequestHandler_8cpp.html" title=" " alt="" coords="5,467,189,493"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="139,417,107,468,102,466,135,415"/>
+<area shape="poly" id="edge12_Node000010_Node000003" title=" " alt="" coords="443,421,376,462,373,458,440,417"/>
+<area shape="rect" id="Node000011" href="$ResponseHandler_8cpp.html" title=" " alt="" coords="499,467,693,493"/>
+<area shape="poly" id="edge13_Node000010_Node000011" title=" " alt="" coords="536,420,585,465,581,469,532,423"/>
+<area shape="rect" id="Node000013" href="$VirtualServer_8hpp.html" title=" " alt="" coords="545,181,823,221"/>
+<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="687,147,687,181,681,181,681,147"/>
+<area shape="rect" id="Node000015" href="$Connection_8cpp.html" title=" " alt="" coords="848,189,1000,214"/>
+<area shape="poly" id="edge20_Node000012_Node000015" title=" " alt="" coords="750,135,893,186,891,191,748,140"/>
+<area shape="poly" id="edge16_Node000013_Node000002" title=" " alt="" coords="621,229,503,272,501,267,619,224"/>
+<area shape="poly" id="edge18_Node000013_Node000005" title=" " alt="" coords="747,225,788,247,830,276,868,312,896,356,903,384,904,412,900,440,892,467,869,515,848,549,844,546,865,513,887,465,895,439,899,412,898,384,891,358,864,316,827,280,785,251,745,230"/>
+<area shape="poly" id="edge17_Node000013_Node000006" title=" " alt="" coords="739,226,762,245,780,268,787,294,785,320,771,365,766,364,780,319,781,294,775,271,758,248,736,230"/>
+<area shape="rect" id="Node000014" href="$VirtualServer_8cpp.html" title=" " alt="" coords="603,277,765,302"/>
+<area shape="poly" id="edge19_Node000013_Node000014" title=" " alt="" coords="687,235,687,276,681,276,681,235"/>
 </map>

@@ -1,8 +1,13 @@
 var defines_8hpp =
 [
-    [ "LOG", "defines_8hpp.html#a5b430c3d6958a69a76d52ccb4b44d82d", null ],
+    [ "LOG", "defines_8hpp.html#a35a9ed336fa2523662640093badacab1", null ],
     [ "t_event", "defines_8hpp.html#acd6d0d9c72020fc35be55606610702c8", null ],
-    [ "LogLevel", "defines_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9", null ],
+    [ "LogLevel", "defines_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9", [
+      [ "INFO", "defines_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806", null ],
+      [ "WARNING", "defines_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81", null ],
+      [ "ERROR", "defines_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90", null ],
+      [ "DEBUG", "defines_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a0593585da9181e972974c1274d8f2b4f", null ]
+    ] ],
     [ "Method", "defines_8hpp.html#ad6f0ed7c44035f65821fa7509a03d4cf", [
       [ "GET", "defines_8hpp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0", null ],
       [ "POST", "defines_8hpp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab", null ],
@@ -56,11 +61,6 @@ var defines_8hpp =
       [ "GATEWAY_TIMEOUT", "defines_8hpp.html#ac125d409f7c7b6034fe7e49d237b7762a87353b86a06472ac0dea6f4580bf6683", null ],
       [ "HTTP_VERSION_NOT_SUPPORTED", "defines_8hpp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff", null ]
     ] ],
-    [ "DEBUG", "defines_8hpp.html#a73585d7121de037cf2e2ca12b27eb83e", null ],
     [ "DEFAULT_MAX_BODY_SIZE", "defines_8hpp.html#aa5cb5111b732aced21198fa3b145c294", null ],
-    [ "ERROR", "defines_8hpp.html#a9eaada089c4de774cfc8b7aea4b9379a", null ],
-    [ "INFO", "defines_8hpp.html#ab1764b91c3b44a5988564bbfe1d6e352", null ],
-    [ "LOCALHOST_ADDRESS", "defines_8hpp.html#aca25a9fc3ae4f55904d8a48f1d18af63", null ],
-    [ "LOG", "defines_8hpp.html#a608c57b9f089f4482f702ead6df3a94f", null ],
-    [ "WARNING", "defines_8hpp.html#a1dfc73ab73898d3f4f348d462a5d126a", null ]
+    [ "LOCALHOST_ADDRESS", "defines_8hpp.html#aca25a9fc3ae4f55904d8a48f1d18af63", null ]
 ];

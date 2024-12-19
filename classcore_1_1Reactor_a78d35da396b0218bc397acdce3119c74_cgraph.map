@@ -1,10 +1,22 @@
 <map id="core::Reactor::addVirtualServers" name="core::Reactor::addVirtualServers">
-<area shape="rect" id="node1" title=" " alt="" coords="5,39,188,80"/>
-<area shape="rect" id="node2" href="$classhttp_1_1VirtualServer.html#a86f31cc41a5d0ff839a0878ce001114c" title=" " alt="" coords="236,5,377,47"/>
-<area shape="rect" id="node3" href="$classhttp_1_1ServerSocket.html#a6701c4cbd2b84873f00d5505f0754bb3" title=" " alt="" coords="236,71,377,112"/>
-<area shape="rect" id="node4" href="$classhttp_1_1ServerSocket.html#ab9a7f8f2c1fe4cded5ac535f12abd84b" title=" " alt="" coords="425,5,567,47"/>
-<area shape="rect" id="node7" href="$classhttp_1_1ServerSocket.html#afd477001689e0c9d1330a57c14618021" title=" " alt="" coords="425,71,567,112"/>
-<area shape="rect" id="node8" href="$classhttp_1_1ServerSocket.html#ae00a1912f9565b216a0d129b45c66dcd" title=" " alt="" coords="425,136,567,177"/>
-<area shape="rect" id="node5" href="$classhttp_1_1ServerSocket.html#aaf8216a618ce26ba9669b4f90f1d9b38" title=" " alt="" coords="615,71,756,112"/>
-<area shape="rect" id="node6" href="$classhttp_1_1ServerSocket.html#a6110681c21dc1d2e99ba238817993321" title=" " alt="" coords="804,71,945,112"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,61,188,101"/>
+<area shape="rect" id="Node000002" href="$classhttp_1_1VirtualServer.html#a86f31cc41a5d0ff839a0878ce001114c" title=" " alt="" coords="236,29,377,69"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,65,222,59,223,65,189,70"/>
+<area shape="rect" id="Node000003" href="$classhttp_1_1ServerSocket.html#a6701c4cbd2b84873f00d5505f0754bb3" title=" " alt="" coords="236,93,377,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="189,93,223,98,222,103,188,98"/>
+<area shape="rect" id="Node000004" href="$classhttp_1_1ServerSocket.html#ab9a7f8f2c1fe4cded5ac535f12abd84b" title=" " alt="" coords="425,29,567,69"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="366,91,423,71,424,76,367,96"/>
+<area shape="rect" id="Node000007" href="$classhttp_1_1ServerSocket.html#afd477001689e0c9d1330a57c14618021" title=" " alt="" coords="425,93,567,133"/>
+<area shape="poly" id="edge8_Node000003_Node000007" title=" " alt="" coords="378,111,411,111,411,116,378,116"/>
+<area shape="rect" id="Node000008" href="$classhttp_1_1ServerSocket.html#ae00a1912f9565b216a0d129b45c66dcd" title=" " alt="" coords="425,181,567,221"/>
+<area shape="poly" id="edge10_Node000003_Node000008" title=" " alt="" coords="352,131,441,173,439,178,350,136"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="460,30,458,20,464,11,477,5,496,3,518,6,531,13,528,17,517,11,496,8,478,10,467,15,463,21,465,28"/>
+<area shape="rect" id="Node000005" href="$classhttp_1_1ServerSocket.html#aaf8216a618ce26ba9669b4f90f1d9b38" title=" " alt="" coords="615,93,756,133"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="557,67,614,86,612,91,555,72"/>
+<area shape="poly" id="edge6_Node000005_Node000005" title=" " alt="" coords="649,94,647,84,653,75,666,69,685,67,708,70,720,77,717,81,706,75,685,72,667,74,657,79,653,85,655,92"/>
+<area shape="rect" id="Node000006" href="$classhttp_1_1ServerSocket.html#a6110681c21dc1d2e99ba238817993321" title=" " alt="" coords="804,93,945,133"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="756,111,790,111,790,116,756,116"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="567,111,601,111,601,116,567,116"/>
+<area shape="poly" id="edge11_Node000008_Node000005" title=" " alt="" coords="539,179,628,137,630,142,541,184"/>
+<area shape="poly" id="edge12_Node000008_Node000008" title=" " alt="" coords="460,182,458,172,464,163,477,157,496,155,518,158,531,165,528,169,517,163,496,160,478,162,467,167,463,173,465,180"/>
 </map>

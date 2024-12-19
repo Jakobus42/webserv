@@ -1,7 +1,7 @@
 var Request_8hpp =
 [
-    [ "s_requestData", "structhttp_1_1s__requestData.html", "structhttp_1_1s__requestData" ],
-    [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
+    [ "http::s_requestData", "structhttp_1_1s__requestData.html", "structhttp_1_1s__requestData" ],
+    [ "http::Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
     [ "BUFFER_SIZE", "Request_8hpp.html#a6b20d41d6252e9871430c242cb1a56e7", null ],
     [ "t_requestData", "Request_8hpp.html#a344224153c4286273f922e54b792a50d", null ],
     [ "ChunkedStatus", "Request_8hpp.html#a55613d0fcbf92587a5c39431cc8fa437", [
@@ -15,9 +15,14 @@ var Request_8hpp =
       [ "CHUNKED", "Request_8hpp.html#aa30eeff7ce0e852dffe3ef46a55406f1a68569ee38513d8278c9a268641b6cfe5", null ],
       [ "CONTENT_LENGTH", "Request_8hpp.html#aa30eeff7ce0e852dffe3ef46a55406f1a9c21a9fbb3e0b3b4602276b6ad85b7f3", null ]
     ] ],
-    [ "headerType", "Request_8hpp.html#a7c19be9b9ab696f1ba9531474228f449", [
-      [ "HEADER", "Request_8hpp.html#a7c19be9b9ab696f1ba9531474228f449ac63def395b20ae89ed55534b0f7caf82", null ],
-      [ "TRAILING", "Request_8hpp.html#a7c19be9b9ab696f1ba9531474228f449adbbb0d56581c84173dc952aefb568471", null ]
+    [ "GetLineStatus", "Request_8hpp.html#a0325991cc9f3cebcf9ec0f3806355ebd", [
+      [ "GET_LINE_OK", "Request_8hpp.html#a0325991cc9f3cebcf9ec0f3806355ebda2d2a69026169f0582bad6016bf779e7a", null ],
+      [ "GET_LINE_END", "Request_8hpp.html#a0325991cc9f3cebcf9ec0f3806355ebdad7f6e0544cd2c2347a7e973f6c73dec2", null ],
+      [ "GET_LINE_ERROR", "Request_8hpp.html#a0325991cc9f3cebcf9ec0f3806355ebda7df9bcb858d1de24281eb6d9d7415267", null ]
+    ] ],
+    [ "HeaderType", "Request_8hpp.html#a1c72fd539e7c768e0800949cda8716a6", [
+      [ "HEADER", "Request_8hpp.html#a1c72fd539e7c768e0800949cda8716a6ac63def395b20ae89ed55534b0f7caf82", null ],
+      [ "TRAILING", "Request_8hpp.html#a1c72fd539e7c768e0800949cda8716a6adbbb0d56581c84173dc952aefb568471", null ]
     ] ],
     [ "QuoteFlag", "Request_8hpp.html#a65130a0278ed6baadd18c1f3594ccdb8", [
       [ "NO_QUOTE", "Request_8hpp.html#a65130a0278ed6baadd18c1f3594ccdb8ab3b96bab0d8747049e4366de54c43db2", null ],

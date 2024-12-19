@@ -3,8 +3,8 @@ var namespacehttp =
     [ "ClientSocket", "classhttp_1_1ClientSocket.html", "classhttp_1_1ClientSocket" ],
     [ "Connection", "classhttp_1_1Connection.html", "classhttp_1_1Connection" ],
     [ "ErrorMessages", "classhttp_1_1ErrorMessages.html", "classhttp_1_1ErrorMessages" ],
-    [ "s_requestData", "structhttp_1_1s__requestData.html", "structhttp_1_1s__requestData" ],
     [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
+    [ "s_requestData", "structhttp_1_1s__requestData.html", "structhttp_1_1s__requestData" ],
     [ "ServerSocket", "classhttp_1_1ServerSocket.html", "classhttp_1_1ServerSocket" ],
     [ "VirtualServer", "classhttp_1_1VirtualServer.html", "classhttp_1_1VirtualServer" ],
     [ "t_connections", "namespacehttp.html#aa3bcd24ae02414378f7cd9a8aafc784f", null ],
@@ -24,9 +24,14 @@ var namespacehttp =
       [ "CHUNKED", "namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a68569ee38513d8278c9a268641b6cfe5", null ],
       [ "CONTENT_LENGTH", "namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a9c21a9fbb3e0b3b4602276b6ad85b7f3", null ]
     ] ],
-    [ "headerType", "namespacehttp.html#a7c19be9b9ab696f1ba9531474228f449", [
-      [ "HEADER", "namespacehttp.html#a7c19be9b9ab696f1ba9531474228f449ac63def395b20ae89ed55534b0f7caf82", null ],
-      [ "TRAILING", "namespacehttp.html#a7c19be9b9ab696f1ba9531474228f449adbbb0d56581c84173dc952aefb568471", null ]
+    [ "GetLineStatus", "namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebd", [
+      [ "GET_LINE_OK", "namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda2d2a69026169f0582bad6016bf779e7a", null ],
+      [ "GET_LINE_END", "namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebdad7f6e0544cd2c2347a7e973f6c73dec2", null ],
+      [ "GET_LINE_ERROR", "namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda7df9bcb858d1de24281eb6d9d7415267", null ]
+    ] ],
+    [ "HeaderType", "namespacehttp.html#a1c72fd539e7c768e0800949cda8716a6", [
+      [ "HEADER", "namespacehttp.html#a1c72fd539e7c768e0800949cda8716a6ac63def395b20ae89ed55534b0f7caf82", null ],
+      [ "TRAILING", "namespacehttp.html#a1c72fd539e7c768e0800949cda8716a6adbbb0d56581c84173dc952aefb568471", null ]
     ] ],
     [ "Method", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cf", [
       [ "GET", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0", null ],
@@ -91,6 +96,5 @@ var namespacehttp =
     [ "generateErrorPage", "namespacehttp.html#ab99935c70c216969b7410a50c653cc58", null ],
     [ "status", "namespacehttp.html#a02e06383b1493a41cc6694d095cc8aa9", null ],
     [ "DEFAULT_MAX_BODY_SIZE", "namespacehttp.html#aa5cb5111b732aced21198fa3b145c294", null ],
-    [ "LOCALHOST_ADDRESS", "namespacehttp.html#aca25a9fc3ae4f55904d8a48f1d18af63", null ],
-    [ "LOG", "namespacehttp.html#a608c57b9f089f4482f702ead6df3a94f", null ]
+    [ "LOCALHOST_ADDRESS", "namespacehttp.html#aca25a9fc3ae4f55904d8a48f1d18af63", null ]
 ];

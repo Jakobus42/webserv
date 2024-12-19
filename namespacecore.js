@@ -1,9 +1,9 @@
 var namespacecore =
 [
-    [ "HandlerContext", "structcore_1_1HandlerContext.html", "structcore_1_1HandlerContext" ],
     [ "AHandler", "classcore_1_1AHandler.html", "classcore_1_1AHandler" ],
-    [ "IOHandler", "classcore_1_1IOHandler.html", "classcore_1_1IOHandler" ],
     [ "EventData", "structcore_1_1EventData.html", "structcore_1_1EventData" ],
+    [ "HandlerContext", "structcore_1_1HandlerContext.html", "structcore_1_1HandlerContext" ],
+    [ "IOHandler", "classcore_1_1IOHandler.html", "classcore_1_1IOHandler" ],
     [ "Reactor", "classcore_1_1Reactor.html", "classcore_1_1Reactor" ],
     [ "RequestHandler", "classcore_1_1RequestHandler.html", "classcore_1_1RequestHandler" ],
     [ "ResponseHandler", "classcore_1_1ResponseHandler.html", "classcore_1_1ResponseHandler" ],

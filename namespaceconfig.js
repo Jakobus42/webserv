@@ -1,9 +1,9 @@
 var namespaceconfig =
 [
+    [ "ConfigFileParser", "classconfig_1_1ConfigFileParser.html", "classconfig_1_1ConfigFileParser" ],
+    [ "s_config_data", "structconfig_1_1s__config__data.html", "structconfig_1_1s__config__data" ],
     [ "s_location", "structconfig_1_1s__location.html", "structconfig_1_1s__location" ],
     [ "s_server", "structconfig_1_1s__server.html", "structconfig_1_1s__server" ],
-    [ "s_config_data", "structconfig_1_1s__config__data.html", "structconfig_1_1s__config__data" ],
-    [ "ConfigFileParser", "classconfig_1_1ConfigFileParser.html", "classconfig_1_1ConfigFileParser" ],
     [ "t_config_data", "namespaceconfig.html#a5ad2df98cd114bd5b68424130848c0a0", null ],
     [ "t_location", "namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb", null ],
     [ "t_server", "namespaceconfig.html#a8c27ddf595c5b22c961cb4aff2ae935d", null ],

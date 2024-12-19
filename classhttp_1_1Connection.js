@@ -5,7 +5,7 @@ var classhttp_1_1Connection =
     [ "~Connection", "classhttp_1_1Connection.html#aaac47857dfaa6f11c7c46dd7a823b994", null ],
     [ "Connection", "classhttp_1_1Connection.html#af5a8245eb4674ed237a5e22e46ecf74b", null ],
     [ "close", "classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e", null ],
-    [ "getRequest", "classhttp_1_1Connection.html#ac46e0ad2251ed55b75d9d50179fa3353", null ],
+    [ "getRequest", "classhttp_1_1Connection.html#ad1c64792c56b24889445c5683e17ee8e", null ],
     [ "getRequest", "classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894", null ],
     [ "getSocket", "classhttp_1_1Connection.html#ae42cd82a9bec6c298d0f6d36e9047847", null ],
     [ "getSocket", "classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e", null ],
