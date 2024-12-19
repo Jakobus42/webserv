@@ -42,9 +42,6 @@ namespace http {
 						LOG("Error: Empty line in chunked encoding", 1);
 						return false;
 					}
-					if (line == "0") {
-						m_chunkedStatus = CHUNK_END;
-					}
 					else
 					{
 						int ret = 0;
@@ -53,7 +50,13 @@ namespace http {
 							LOG("Error: Invalid hexadecimal number in chunked encoding", 1);
 							return false;
 						}
-						m_chunkedStatus = CHUNK_DATA;
+						if (m_contentLength == 0) {
+							m_chunkedStatus = CHUNK_END;
+						}
+						else{
+							m_chunkedStatus = CHUNK_DATA;
+						}
+						//if (line != "") { //TODO: chunk extension
 					}
 				}
 				if (m_chunkedStatus == CHUNK_SIZE) {

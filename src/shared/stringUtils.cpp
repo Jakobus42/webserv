@@ -63,8 +63,8 @@ namespace shared {
 		 * @return The converted integer value, or 0 if the string is not a valid
 		 * hexadecimal number. In this case, the `ret` parameter will be set to -1.
 		 */
-		uint32_t StoiHex(std::string str, int& ret) {
-			uint32_t result = 0;
+		uint32_t StoiHex(std::string& str, int& ret) {
+			uint64_t result = 0;
 			uint64_t max = std::numeric_limits<uint32_t>::max();
 			size_t i = 0;
 			while (i < str.size()) {
@@ -87,8 +87,12 @@ namespace shared {
 					}
 					result = result * 16 + str[i] - 'a' + 10;
 				} else {
-					ret = -1;
-					return 0;
+					if (i == 0) {
+						ret = -1;
+						return 0;
+					}
+					str = str.substr(0, i);
+					break;
 				}
 				i++;
 			}
