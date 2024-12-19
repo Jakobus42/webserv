@@ -33,18 +33,20 @@ namespace http {
 		while (1) {
 			if (m_chunkedStatus == CHUNK_SIZE) {
 				std::string line;
-				for (unsigned long i = 0; i < input.size(); i++) {
-					// TODO: Chunk Extension
-					if (input[i] == '\r' && input[i + 1] == '\n') {
-						if (line == "") {
-							LOG("Error: Empty line in chunked encoding", 1);
-							return false;
-						}
-						if (line == "0") {
-							input = input.substr(i + 2);
-							m_chunkedStatus = CHUNK_END;
-							break;
-						}
+				GetLineStatus status = getNextLineHTTP(input, line);
+				if (status == GET_LINE_ERROR) {
+					return false;
+				}
+				if (status == GET_LINE_OK) {
+					if (line == "") {
+						LOG("Error: Empty line in chunked encoding", 1);
+						return false;
+					}
+					if (line == "0") {
+						m_chunkedStatus = CHUNK_END;
+					}
+					else
+					{
 						int ret = 0;
 						m_contentLength = shared::string::StoiHex(line, ret);
 						if (ret == -1) {
@@ -52,10 +54,6 @@ namespace http {
 							return false;
 						}
 						m_chunkedStatus = CHUNK_DATA;
-						input = input.substr(i + 2);
-						break;
-					} else {
-						line += input[i];
 					}
 				}
 				if (m_chunkedStatus == CHUNK_SIZE) {
@@ -93,4 +91,5 @@ namespace http {
 			}
 		}
 	}
+
 } /* namespace http */

@@ -2,7 +2,7 @@
 
 namespace http {
 
-	bool Request::parseHeader(std::string& line, headerType type) {
+	bool Request::parseHeader(std::string& line, HeaderType type) {
 		bool last_flag = false;
 		QuoteFlag qf = NO_QUOTE;
 		std::string key = "";
@@ -75,50 +75,41 @@ namespace http {
 		if (type == HEADER) {
 			m_requestData.headers[key] = values;
 		} else {
-			m_requestData.trailing_headers[key] = values;
+			m_requestData.trailingHeaders[key] = values;
 		}
 		return true;
 	}
 
-	bool Request::parseHeaders(std::string& input, headerType type) {
+	bool Request::parseHeaders(std::string& input, HeaderType type)
+	{
 		std::string line;
-		for (unsigned long i = 0; i < input.size(); i++) {
-			if (input[i] == '\r') {
-				if (i != input.length() - 1 && input[i + 1] != '\n') {
-					LOG("Request: Error: Invalid line ending in header", 1);
+		while (1)
+		{
+			GetLineStatus status = getNextLineHTTP(input, line);
+			if (status == GET_LINE_END)
+				break;
+			if (status == GET_LINE_ERROR)
+				return false;
+			if (line == "") {
+				if (type == HEADER) {
+					m_status = PARSE_BODY;
+				} else {
+					m_status = PARSE_END;
+				}
+				if (!interpretHeaders(type)) {
 					return false;
 				}
-			} else if (input[i] == '\n') {
-				if (i != 0 && input[i - 1] != '\r') {
-					LOG("Request: Error: Invalid line ending in header", 1);
-					return false;
-				}
-				if (line == "") {
-					input = input.substr(i + 1);
-					if (type == HEADER) {
-						m_status = PARSE_BODY;
-					} else {
-						m_status = PARSE_END;
-					}
-					if (!interpretHeaders(type)) {
-						return false;
-					}
-					return true;
-				}
-				if (!parseHeader(line, type)) {
-					return false;
-				}
-				line.clear();
-				input = input.substr(i + 1);
-				i = -1;
-			} else {
-				line += input[i];
+				return true;
 			}
+			if (!parseHeader(line, type)) {
+				return false;
+			}
+			line.clear();
 		}
 		return true;
 	}
 
-	bool Request::interpretHeaders(headerType type) {
+	bool Request::interpretHeaders(HeaderType type) {
 		(void)type;
 		for (std::map<std::string, std::vector<std::string> >::iterator it = m_requestData.headers.begin(); it != m_requestData.headers.end(); ++it) {
 			// TODO: Implement

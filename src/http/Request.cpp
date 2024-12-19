@@ -136,7 +136,7 @@ namespace http {
 		}
 		std::cout << "------------------------------" << std::endl;
 		std::cout << "Trailing headers: " << std::endl;
-		for (std::map<std::string, std::vector<std::string> >::const_iterator it = m_requestData.trailing_headers.begin(); it != m_requestData.trailing_headers.end(); ++it) {
+		for (std::map<std::string, std::vector<std::string> >::const_iterator it = m_requestData.trailingHeaders.begin(); it != m_requestData.trailingHeaders.end(); ++it) {
 			std::cout << it->first << ": ";
 			for (std::vector<std::string>::const_iterator val = it->second.begin(); val != it->second.end(); ++val) {
 				std::cout << *val << " ";
@@ -148,5 +148,26 @@ namespace http {
 		std::cout << "------------------------------" << std::endl;
 		std::cout << "Status: " << m_status << std::endl;
 	}
+
+	GetLineStatus Request::getNextLineHTTP(std::string& input, std::string& line) {
+	for (unsigned long i = 0; i < input.size(); i++) {
+		if (input[i] == '\r') {
+			if (i != input.length() - 1 && input[i + 1] != '\n') {
+				LOG("Error: Invalid line ending", 1);
+				return GET_LINE_ERROR;
+			}
+		}
+		if (input[i] == '\n') {
+			if (input[i - 1] != '\r') {
+				LOG("Error: Invalid line ending", 1);
+				return GET_LINE_ERROR;
+			}
+			line = input.substr(0, i - 1);
+			input = input.substr(i + 1);
+			return GET_LINE_OK;
+		}
+	}
+	return GET_LINE_END;
+}
 
 } /* namespace http */
