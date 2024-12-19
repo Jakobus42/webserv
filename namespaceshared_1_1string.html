@@ -75,9 +75,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a548d2887496a48cb38f3ab46dd407c6b" id="r_a548d2887496a48cb38f3ab46dd407c6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a548d2887496a48cb38f3ab46dd407c6b">trim</a> (std::string &amp;str, const std::string &amp;delimiters)</td></tr>
 <tr class="memdesc:a548d2887496a48cb38f3ab46dd407c6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trims leading and trailing characters from the input string.  <br /></td></tr>
 <tr class="separator:a548d2887496a48cb38f3ab46dd407c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11b92e79ee1735a5a934a9c2981f3709" id="r_a11b92e79ee1735a5a934a9c2981f3709"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a11b92e79ee1735a5a934a9c2981f3709">StoiHex</a> (std::string str, int &amp;ret)</td></tr>
-<tr class="memdesc:a11b92e79ee1735a5a934a9c2981f3709"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a hexadecimal string to an unsigned integer.  <br /></td></tr>
-<tr class="separator:a11b92e79ee1735a5a934a9c2981f3709"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f7b586737ab36eade3fc402c9abe0a7" id="r_a0f7b586737ab36eade3fc402c9abe0a7"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a0f7b586737ab36eade3fc402c9abe0a7">StoiHex</a> (std::string &amp;str, int &amp;ret)</td></tr>
+<tr class="memdesc:a0f7b586737ab36eade3fc402c9abe0a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a hexadecimal string to an unsigned integer.  <br /></td></tr>
+<tr class="separator:a0f7b586737ab36eade3fc402c9abe0a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c0ea281fde1150615baa77e6dcce5d3" id="r_a2c0ea281fde1150615baa77e6dcce5d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3">isGreyspace</a> (char c)</td></tr>
 <tr class="memdesc:a2c0ea281fde1150615baa77e6dcce5d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if a character is a whitespace character exept for '<br  />
 ' and '\r'  <br /></td></tr>
@@ -118,10 +118,10 @@ Variables</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>a bool indicating if the character is a whitespace character exept for '<br  />
 ' and '\r' </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="stringUtils_8cpp_source.html#l00105">105</a> of file <a class="el" href="stringUtils_8cpp_source.html">stringUtils.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  105</span>                                 {</div>
-<div class="line"><span class="lineno">  106</span>            <span class="keywordflow">return</span> c == <span class="charliteral">&#39; &#39;</span> || c == <span class="charliteral">&#39;\t&#39;</span> || c == <span class="charliteral">&#39;\v&#39;</span> || c == <span class="charliteral">&#39;\f&#39;</span>;</div>
-<div class="line"><span class="lineno">  107</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="stringUtils_8cpp_source.html#l00109">109</a> of file <a class="el" href="stringUtils_8cpp_source.html">stringUtils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  109</span>                                 {</div>
+<div class="line"><span class="lineno">  110</span>            <span class="keywordflow">return</span> c == <span class="charliteral">&#39; &#39;</span> || c == <span class="charliteral">&#39;\t&#39;</span> || c == <span class="charliteral">&#39;\v&#39;</span> || c == <span class="charliteral">&#39;\f&#39;</span>;</div>
+<div class="line"><span class="lineno">  111</span>        }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -227,8 +227,8 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a11b92e79ee1735a5a934a9c2981f3709" name="a11b92e79ee1735a5a934a9c2981f3709"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a11b92e79ee1735a5a934a9c2981f3709">&#9670;&#160;</a></span>StoiHex()</h2>
+<a id="a0f7b586737ab36eade3fc402c9abe0a7" name="a0f7b586737ab36eade3fc402c9abe0a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f7b586737ab36eade3fc402c9abe0a7">&#9670;&#160;</a></span>StoiHex()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -236,7 +236,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">uint32_t shared::string::StoiHex </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
+          <td class="paramtype">std::string &amp;&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
@@ -265,8 +265,8 @@ Here is the caller graph for this function:</div>
 <dl class="section return"><dt>Returns</dt><dd>The converted integer value, or 0 if the string is not a valid hexadecimal number. In this case, the <code>ret</code> parameter will be set to -1. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="stringUtils_8cpp_source.html#l00066">66</a> of file <a class="el" href="stringUtils_8cpp_source.html">stringUtils.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   66</span>                                                  {</div>
-<div class="line"><span class="lineno">   67</span>            uint32_t result = 0;</div>
+<div class="fragment"><div class="line"><span class="lineno">   66</span>                                                   {</div>
+<div class="line"><span class="lineno">   67</span>            uint64_t result = 0;</div>
 <div class="line"><span class="lineno">   68</span>            uint64_t max = std::numeric_limits&lt;uint32_t&gt;::max();</div>
 <div class="line"><span class="lineno">   69</span>            <span class="keywordtype">size_t</span> i = 0;</div>
 <div class="line"><span class="lineno">   70</span>            <span class="keywordflow">while</span> (i &lt; str.size()) {</div>
@@ -289,18 +289,22 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   87</span>                    }</div>
 <div class="line"><span class="lineno">   88</span>                    result = result * 16 + str[i] - <span class="charliteral">&#39;a&#39;</span> + 10;</div>
 <div class="line"><span class="lineno">   89</span>                } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   90</span>                    ret = -1;</div>
-<div class="line"><span class="lineno">   91</span>                    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   92</span>                }</div>
-<div class="line"><span class="lineno">   93</span>                i++;</div>
-<div class="line"><span class="lineno">   94</span>            }</div>
-<div class="line"><span class="lineno">   95</span>            <span class="keywordflow">return</span> result;</div>
-<div class="line"><span class="lineno">   96</span>        }</div>
+<div class="line"><span class="lineno">   90</span>                    <span class="keywordflow">if</span> (i == 0) {</div>
+<div class="line"><span class="lineno">   91</span>                        ret = -1;</div>
+<div class="line"><span class="lineno">   92</span>                        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   93</span>                    }</div>
+<div class="line"><span class="lineno">   94</span>                    str = str.substr(0, i);</div>
+<div class="line"><span class="lineno">   95</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   96</span>                }</div>
+<div class="line"><span class="lineno">   97</span>                i++;</div>
+<div class="line"><span class="lineno">   98</span>            }</div>
+<div class="line"><span class="lineno">   99</span>            <span class="keywordflow">return</span> result;</div>
+<div class="line"><span class="lineno">  100</span>        }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="namespaceshared_1_1string_a11b92e79ee1735a5a934a9c2981f3709_icgraph.png" border="0" usemap="#anamespaceshared_1_1string_a11b92e79ee1735a5a934a9c2981f3709_icgraph" alt=""/></div>
-<map name="anamespaceshared_1_1string_a11b92e79ee1735a5a934a9c2981f3709_icgraph" id="anamespaceshared_1_1string_a11b92e79ee1735a5a934a9c2981f3709_icgraph">
+<div class="center"><img src="namespaceshared_1_1string_a0f7b586737ab36eade3fc402c9abe0a7_icgraph.png" border="0" usemap="#anamespaceshared_1_1string_a0f7b586737ab36eade3fc402c9abe0a7_icgraph" alt=""/></div>
+<map name="anamespaceshared_1_1string_a0f7b586737ab36eade3fc402c9abe0a7_icgraph" id="anamespaceshared_1_1string_a0f7b586737ab36eade3fc402c9abe0a7_icgraph">
 <area shape="rect" title="Converts a hexadecimal string to an unsigned integer." alt="" coords="676,13,847,38"/>
 <area shape="rect" href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135" title=" " alt="" coords="441,5,628,45"/>
 <area shape="poly" title=" " alt="" coords="663,28,628,28,628,23,663,23"/>
@@ -376,7 +380,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stringUtils_8hpp_source.html#l00014">14</a> of file <a class="el" href="stringUtils_8hpp_source.html">stringUtils.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stringUtils_8hpp_source.html#l00015">15</a> of file <a class="el" href="stringUtils_8hpp_source.html">stringUtils.hpp</a>.</p>
 
 </div>
 </div>

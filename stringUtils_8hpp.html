@@ -72,22 +72,33 @@ $(document).ready(function(){initNavTree('stringUtils_8hpp.html',''); initResiza
 <code>#include &lt;limits&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="defines_8hpp_source.html">shared/defines.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for stringUtils.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="stringUtils_8hpp__incl.png" border="0" usemap="#a_2home_2runner_2work_2webserv_2webserv_2include_2shared_2stringUtils_8hpp" alt=""/></div>
 <map name="a_2home_2runner_2work_2webserv_2webserv_2include_2shared_2stringUtils_8hpp" id="a_2home_2runner_2work_2webserv_2webserv_2include_2shared_2stringUtils_8hpp">
-<area shape="rect" title=" " alt="" coords="132,5,336,60"/>
-<area shape="rect" title=" " alt="" coords="5,108,76,133"/>
-<area shape="poly" title=" " alt="" coords="176,63,80,105,78,100,174,58"/>
-<area shape="rect" title=" " alt="" coords="101,108,181,133"/>
-<area shape="poly" title=" " alt="" coords="207,62,165,100,162,96,204,58"/>
-<area shape="rect" title=" " alt="" coords="205,108,263,133"/>
-<area shape="poly" title=" " alt="" coords="237,60,237,94,231,94,231,60"/>
-<area shape="rect" title=" " alt="" coords="287,108,346,133"/>
-<area shape="poly" title=" " alt="" coords="261,58,298,96,294,100,257,62"/>
-<area shape="rect" title=" " alt="" coords="371,108,433,133"/>
-<area shape="poly" title=" " alt="" coords="287,58,368,99,366,104,284,62"/>
+<area shape="rect" title=" " alt="" coords="212,5,416,60"/>
+<area shape="rect" title=" " alt="" coords="5,181,76,207"/>
+<area shape="poly" title=" " alt="" coords="246,63,197,84,149,110,103,142,65,174,62,170,100,138,146,106,195,80,244,58"/>
+<area shape="rect" title=" " alt="" coords="101,181,181,207"/>
+<area shape="poly" title=" " alt="" coords="235,62,199,83,168,110,153,138,146,168,140,167,148,136,164,106,195,78,232,58"/>
+<area shape="rect" title=" " alt="" coords="349,108,407,133"/>
+<area shape="poly" title=" " alt="" coords="336,58,363,95,359,99,331,62"/>
+<area shape="rect" title=" " alt="" coords="431,108,490,133"/>
+<area shape="poly" title=" " alt="" coords="360,58,430,99,428,103,357,62"/>
+<area shape="rect" title=" " alt="" coords="515,108,577,133"/>
+<area shape="poly" title=" " alt="" coords="386,58,503,101,501,106,384,63"/>
+<area shape="rect" href="defines_8hpp.html" title=" " alt="" coords="179,108,324,133"/>
+<area shape="poly" title=" " alt="" coords="297,62,270,98,266,95,293,58"/>
+<area shape="poly" title=" " alt="" coords="218,136,88,179,87,174,217,131"/>
+<area shape="poly" title=" " alt="" coords="235,136,172,176,169,171,232,131"/>
+<area shape="rect" title=" " alt="" coords="205,181,301,207"/>
+<area shape="poly" title=" " alt="" coords="254,134,255,168,250,168,249,134"/>
+<area shape="rect" title=" " alt="" coords="325,181,428,207"/>
+<area shape="poly" title=" " alt="" coords="273,131,346,172,343,177,270,136"/>
+<area shape="rect" title=" " alt="" coords="453,181,527,207"/>
+<area shape="poly" title=" " alt="" coords="290,131,440,175,439,180,289,136"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -163,9 +174,9 @@ Functions</h2></td></tr>
 <tr class="separator:a548d2887496a48cb38f3ab46dd407c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66dbf48761b7b07dd8b7001a6e1d6c56" id="r_a66dbf48761b7b07dd8b7001a6e1d6c56"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a66dbf48761b7b07dd8b7001a6e1d6c56">shared::string::posStoi</a> (std::string str, int base=10)</td></tr>
 <tr class="separator:a66dbf48761b7b07dd8b7001a6e1d6c56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11b92e79ee1735a5a934a9c2981f3709" id="r_a11b92e79ee1735a5a934a9c2981f3709"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a11b92e79ee1735a5a934a9c2981f3709">shared::string::StoiHex</a> (std::string str, int &amp;ret)</td></tr>
-<tr class="memdesc:a11b92e79ee1735a5a934a9c2981f3709"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a hexadecimal string to an unsigned integer.  <br /></td></tr>
-<tr class="separator:a11b92e79ee1735a5a934a9c2981f3709"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f7b586737ab36eade3fc402c9abe0a7" id="r_a0f7b586737ab36eade3fc402c9abe0a7"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a0f7b586737ab36eade3fc402c9abe0a7">shared::string::StoiHex</a> (std::string &amp;str, int &amp;ret)</td></tr>
+<tr class="memdesc:a0f7b586737ab36eade3fc402c9abe0a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a hexadecimal string to an unsigned integer.  <br /></td></tr>
+<tr class="separator:a0f7b586737ab36eade3fc402c9abe0a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c0ea281fde1150615baa77e6dcce5d3" id="r_a2c0ea281fde1150615baa77e6dcce5d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3">shared::string::isGreyspace</a> (char c)</td></tr>
 <tr class="memdesc:a2c0ea281fde1150615baa77e6dcce5d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if a character is a whitespace character exept for '<br  />
 ' and '\r'  <br /></td></tr>
