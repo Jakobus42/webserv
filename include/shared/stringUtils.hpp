@@ -1,9 +1,12 @@
 #pragma once
 
+#include <stdint.h>
+
 #include <iostream>
 #include <limits>
 #include <string>
 #include <vector>
+#include "shared/defines.hpp"
 
 namespace shared {
 
@@ -15,6 +18,11 @@ namespace shared {
 
 		void trim(std::string& str, const std::string& delimiters = WHITESPACES);
 
+		uint32_t posStoi(std::string str, int base = 10);
+
+		uint32_t StoiHex(std::string& str, int& ret);
+
+		bool isGreyspace(char c);
 	} // namespace string
 
 } // namespace shared
