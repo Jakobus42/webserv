@@ -84,4 +84,12 @@ namespace http {
 		CONNECT
 	};
 
+	enum RequestStatus {
+		PARSE_START,
+		PARSE_HEAD,
+		PARSE_HEADERS,
+		PARSE_BODY,
+		PARSE_END,
+	};
+
 } // namespace http

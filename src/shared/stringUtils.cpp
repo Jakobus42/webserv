@@ -49,6 +49,66 @@ namespace shared {
 			}
 		}
 
+		/**
+		 * @brief Converts a hexadecimal string to an unsigned integer.
+		 *
+		 * This function converts a hexadecimal string to an unsigned integer. The
+		 * function will stop converting when it encounters a character that is not a
+		 * hexadecimal digit. If the result would exceed the maximum value of a 32-bit
+		 * unsigned integer, the function returns 0 and sets the `ret` parameter to -1.
+		 *
+		 * @param str The hexadecimal string to convert to an integer.
+		 * @param ret A reference to an integer that will be set to -1 in case of incorrect input.
+		 *
+		 * @return The converted integer value, or 0 if the string is not a valid
+		 * hexadecimal number. In this case, the `ret` parameter will be set to -1.
+		 */
+		uint32_t StoiHex(std::string& str, int& ret) {
+			uint64_t result = 0;
+			uint64_t max = std::numeric_limits<uint32_t>::max();
+			size_t i = 0;
+			while (i < str.size()) {
+				if (str[i] >= '0' && str[i] <= '9') {
+					if (result * 16 + str[i] - '0' > max) {
+						ret = -1;
+						return 0;
+					}
+					result = result * 16 + str[i] - '0';
+				} else if (str[i] >= 'A' && str[i] <= 'F') {
+					if (result * 16 + str[i] - 'A' + 10 > max) {
+						ret = -1;
+						return 0;
+					}
+					result = result * 16 + str[i] - 'A' + 10;
+				} else if (str[i] >= 'a' && str[i] <= 'f') {
+					if (result * 16 + str[i] - 'a' + 10 > max) {
+						ret = -1;
+						return 0;
+					}
+					result = result * 16 + str[i] - 'a' + 10;
+				} else {
+					if (i == 0) {
+						ret = -1;
+						return 0;
+					}
+					str = str.substr(0, i);
+					break;
+				}
+				i++;
+			}
+			return result;
+		}
+
+		/**
+		 * @brief checks if a character is a whitespace character exept for '\n' and '\r'
+		 *
+		 * @param c the character to check
+		 *
+		 * @return a bool indicating if the character is a whitespace character exept for '\n' and '\r'
+		 */
+		bool isGreyspace(char c) {
+			return c == ' ' || c == '\t' || c == '\v' || c == '\f';
+		}
 	} // namespace string
 
 } // namespace shared
