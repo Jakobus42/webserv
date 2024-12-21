@@ -28,7 +28,6 @@ namespace http {
 		return true;
 	}
 
-
 	bool Request::parseBodyChunked(std::string& input) {
 		while (1) {
 			if (m_chunkedStatus == CHUNK_SIZE) {
@@ -41,9 +40,7 @@ namespace http {
 					if (line == "") {
 						LOG("Error: Empty line in chunked encoding", 1);
 						return false;
-					}
-					else
-					{
+					} else {
 						int ret = 0;
 						m_contentLength = shared::string::StoiHex(line, ret);
 						if (ret == -1) {
@@ -52,11 +49,10 @@ namespace http {
 						}
 						if (m_contentLength == 0) {
 							m_chunkedStatus = CHUNK_END;
-						}
-						else{
+						} else {
 							m_chunkedStatus = CHUNK_DATA;
 						}
-						//if (line != "") { //TODO: chunk extension
+						// if (line != "") { //TODO: chunk extension
 					}
 				}
 				if (m_chunkedStatus == CHUNK_SIZE) {

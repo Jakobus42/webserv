@@ -12,11 +12,9 @@ namespace http {
 		return true;
 	}
 
-
-	bool Request::parseHead(std::string& input)
-	{
+	bool Request::parseHead(std::string& input) {
 		std::string line;
-		GetLineStatus status =  getNextLineHTTP(input, line);
+		GetLineStatus status = getNextLineHTTP(input, line);
 		if (status == GET_LINE_ERROR)
 			return false;
 		if (status == GET_LINE_END)
@@ -47,8 +45,6 @@ namespace http {
 			LOG("Request: Error: Invalid request line", 1);
 			return false;
 		}
-
-
 	}
 
 } /* namespace http */

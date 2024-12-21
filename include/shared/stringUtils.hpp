@@ -2,11 +2,12 @@
 
 #include <stdint.h>
 
+#include "shared/defines.hpp"
+
 #include <iostream>
 #include <limits>
 #include <string>
 #include <vector>
-#include "shared/defines.hpp"
 
 namespace shared {
 

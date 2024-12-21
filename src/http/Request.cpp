@@ -150,24 +150,24 @@ namespace http {
 	}
 
 	GetLineStatus Request::getNextLineHTTP(std::string& input, std::string& line) {
-	for (unsigned long i = 0; i < input.size(); i++) {
-		if (input[i] == '\r') {
-			if (i != input.length() - 1 && input[i + 1] != '\n') {
-				LOG("Error: Invalid line ending", 1);
-				return GET_LINE_ERROR;
+		for (unsigned long i = 0; i < input.size(); i++) {
+			if (input[i] == '\r') {
+				if (i != input.length() - 1 && input[i + 1] != '\n') {
+					LOG("Error: Invalid line ending", 1);
+					return GET_LINE_ERROR;
+				}
+			}
+			if (input[i] == '\n') {
+				if (input[i - 1] != '\r') {
+					LOG("Error: Invalid line ending", 1);
+					return GET_LINE_ERROR;
+				}
+				line = input.substr(0, i - 1);
+				input = input.substr(i + 1);
+				return GET_LINE_OK;
 			}
 		}
-		if (input[i] == '\n') {
-			if (input[i - 1] != '\r') {
-				LOG("Error: Invalid line ending", 1);
-				return GET_LINE_ERROR;
-			}
-			line = input.substr(0, i - 1);
-			input = input.substr(i + 1);
-			return GET_LINE_OK;
-		}
+		return GET_LINE_END;
 	}
-	return GET_LINE_END;
-}
 
 } /* namespace http */

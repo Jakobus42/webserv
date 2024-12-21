@@ -15,13 +15,14 @@ int main(int argc, char** const argv) {
 			return 1;
 		config::t_config_data configData = configFileParser.getConfigData();
 
-				core::Reactor reactor;
-				reactor.init();
-				if (reactor.addVirtualServers(configData) == false)
-					return 1;
-				reactor.react();
+		core::Reactor reactor;
+		reactor.init();
+		if (reactor.addVirtualServers(configData) == false)
+			return 1;
+		reactor.react();
 	} catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
+		std::cout << "Server died :(" << std::endl;
 		return 1;
 	}
 	return 0;
