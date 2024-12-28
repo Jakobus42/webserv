@@ -94,10 +94,7 @@ namespace http {
 				} else {
 					m_status = PARSE_END;
 				}
-				if (!interpretHeaders(type)) {
-					return false;
-				}
-				return true;
+				return interpretHeaders(type);
 			}
 			if (!parseHeader(line, type)) {
 				return false;

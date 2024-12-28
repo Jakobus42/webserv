@@ -325,7 +325,6 @@ namespace config {
 		std::vector<std::string> methods;
 		methods.push_back("GET");
 		methods.push_back("POST");
-		methods.push_back("PUT");
 		methods.push_back("DELETE");
 		std::vector<std::string> allowed_methods;
 		for (unsigned long i = 1; i < args.size(); i++) {

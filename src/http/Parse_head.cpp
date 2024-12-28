@@ -3,7 +3,7 @@
 namespace http {
 
 	bool Request::checkHead(const std::vector<std::string>& args) {
-		if (args[0] != "GET" && args[0] != "POST" && args[0] != "PUT" && args[0] != "DELETE") {
+		if (args[0] != "GET" && args[0] != "POST" && args[0] != "DELETE") {
 			return false;
 		}
 		if (args[2] != "HTTP/1.1") {
@@ -20,7 +20,7 @@ namespace http {
 		if (status == GET_LINE_END)
 			return true;
 		if (line == "") {
-			LOG("Request: Error: Empty line in  request line", 1);
+			LOG("Request: Error: Empty line in request line", 1);
 			return false;
 		}
 		std::string key;

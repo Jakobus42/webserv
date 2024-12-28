@@ -13,6 +13,8 @@
 
 namespace core {
 
+	typedef std::vector<http::VirtualServer> t_virtualServers;
+
 	struct EventData {
 			AHandler* handler;
 			HandlerContext ctx;
@@ -33,12 +35,13 @@ namespace core {
 
 			void init() throw(std::exception);
 			int getEpollFd() const;
-			const std::vector<http::VirtualServer>& getVirtualServers() const;
-			std::vector<http::VirtualServer>& getVirtualServers();
+			const t_virtualServers& getVirtualServers() const;
+			t_virtualServers& getVirtualServers();
+			const std::map<int, EventData*>& getEvents() const;
+			std::map<int, EventData*>& getEvents();
 
-			void addVirtualServer(config::t_server& serverConfig) throw(
-				std::exception);
-			bool removeVirtualServer(std::vector<http::VirtualServer>::iterator it);
+			void addVirtualServer(config::t_server& serverConfig) throw(std::exception);
+			bool removeVirtualServer(t_virtualServers::iterator it);
 			bool addVirtualServers(config::t_config_data& configData);
 
 			void react();
@@ -48,13 +51,17 @@ namespace core {
 			Reactor& operator=(const Reactor& other);
 
 			void registerHandler(int fd, AHandler* handler, const HandlerContext& ctx, uint32_t events = EPOLLIN);
+			void modifyHandler(int fd, HandlerContext& ctx, uint32_t events);
 			void unregisterHandler(int fd) throw(std::runtime_error);
-
-			void acceptNewConnections();
 			void handleEvents(t_event* events, int nEvents);
 
+			void acceptNewConnections();
+			void pruneConnections(t_event* events, int nEvents);
+
+		private:
 			int m_epoll_master_fd;
-			std::vector<http::VirtualServer> m_vServers;
+			t_virtualServers m_vServers;
+			std::map<int, EventData*> m_events;
 	};
 
 } // namespace core

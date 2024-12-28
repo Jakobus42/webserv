@@ -14,6 +14,7 @@ namespace core {
 			~RequestHandler();
 
 			void handle(HandlerContext& ctx);
+			bool shouldDrop() const;
 
 		private:
 			RequestHandler(const RequestHandler& other);

@@ -5,24 +5,19 @@ namespace http {
 	bool Request::parseBody(std::string& input) {
 		if (m_expectedBody == NO_BODY) {
 			m_status = PARSE_END;
-			return true;
+			return true; // error if body exists?
 		}
 		if (m_expectedBody == CHUNKED) {
-			if (!parseBodyChunked(input)) {
-				return false;
-			}
-			return true;
+			return parseBodyChunked(input);
 		}
 		if (m_expectedBody == CONTENT_LENGTH) {
 			if (m_requestData.body.size() + input.size() < m_contentLength) {
 				m_requestData.body += input;
 				input = "";
-				return true;
 			} else {
 				m_requestData.body += input.substr(0, m_contentLength - m_requestData.body.size());
 				input = input.substr(m_contentLength - m_requestData.body.size());
 				m_status = PARSE_END;
-				return true;
 			}
 		}
 		return true;
@@ -83,10 +78,7 @@ namespace http {
 				}
 			}
 			if (m_chunkedStatus == CHUNK_END) {
-				if (!parseHeaders(input, TRAILING)) {
-					return false;
-				}
-				return true;
+				return parseHeaders(input, TRAILING);
 			}
 		}
 	}

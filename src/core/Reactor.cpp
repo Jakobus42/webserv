@@ -4,7 +4,8 @@
 #include <sys/epoll.h>
 #include <unistd.h>
 
-#include "core/IOHandler.hpp"
+#include "core/RequestHandler.hpp"
+#include "core/ResponseHandler.hpp"
 #include "http/VirtualServer.hpp"
 
 #include <cstring>
@@ -27,7 +28,7 @@ namespace core {
 	 * @todo Close all connections and http::VirtualServer sockets
 	 */
 	Reactor::~Reactor() {
-		for (std::vector<http::VirtualServer>::iterator server = m_vServers.begin(); server != m_vServers.end(); ++server) {
+		for (t_virtualServers::iterator server = m_vServers.begin(); server != m_vServers.end(); ++server) {
 			for (http::t_connections::iterator connection = server->getConnections().begin(); connection != server->getConnections().end(); ++connection) {
 				connection->close();
 			}
@@ -42,7 +43,8 @@ namespace core {
 	 */
 	Reactor::Reactor(const Reactor& other)
 		: m_epoll_master_fd(other.getEpollFd())
-		, m_vServers(other.getVirtualServers()) {
+		, m_vServers(other.getVirtualServers())
+		, m_events(other.getEvents()) {
 	}
 
 	/**
@@ -68,16 +70,23 @@ namespace core {
 			throw std::exception();
 	}
 
-	const std::vector<http::VirtualServer>& Reactor::getVirtualServers(void) const {
+	const t_virtualServers& Reactor::getVirtualServers(void) const {
 		return m_vServers;
 	}
 
-	std::vector<http::VirtualServer>& Reactor::getVirtualServers(void) {
+	t_virtualServers& Reactor::getVirtualServers(void) {
 		return m_vServers;
 	}
 
-	void Reactor::addVirtualServer(config::t_server& serverConfig) throw(
-		std::exception) {
+	const std::map<int, EventData*>& Reactor::getEvents(void) const {
+		return m_events;
+	}
+
+	std::map<int, EventData*>& Reactor::getEvents(void) {
+		return m_events;
+	}
+
+	void Reactor::addVirtualServer(config::t_server& serverConfig) throw(std::exception) {
 		http::VirtualServer server(serverConfig);
 		if (server.listen() == false)
 			throw std::runtime_error("A VirtualServer couldn't acquire its socket!");
@@ -103,7 +112,7 @@ namespace core {
 	}
 
 	bool Reactor::removeVirtualServer(
-		std::vector<http::VirtualServer>::iterator it) {
+		t_virtualServers::iterator it) {
 		m_vServers.erase(it);
 		return true;
 	}
@@ -112,39 +121,89 @@ namespace core {
 		t_event event;
 
 		event.events = events;
-		event.data.ptr = new EventData(handler, ctx);
+		EventData* data = new EventData(handler, ctx);
+		m_events[fd] = data;
+		event.data.ptr = m_events[fd];
 		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_ADD, fd, &event) < 0) {
 			delete static_cast<EventData*>(event.data.ptr);
 			throw std::runtime_error("Crud! Couldn't register event handler!");
 		}
 	}
 
-	void Reactor::unregisterHandler(int fd) throw(std::runtime_error) {
+	void Reactor::modifyHandler(int fd, HandlerContext& ctx, uint32_t events) {
 		t_event event;
 
-		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_DEL, fd, &event) < 0) {
+		event.events = events;
+		event.data.ptr = m_events[fd];
+		ctx.events = events;
+		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_MOD, fd, &event) < 0)
+			throw std::runtime_error("Dang! Couldn't modify Handler!");
+	}
+
+	void Reactor::unregisterHandler(int fd) throw(std::runtime_error) {
+		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_DEL, fd, NULL) < 0) {
 			throw std::runtime_error("Пиздец! Couldn't unregister event handler!");
 		}
 		close(fd);
+		std::cout << "Unregistered a handler!" << std::endl;
 	}
 
 	void Reactor::react() {
 		t_event events[MAX_EVENTS];
+		int prevEvents = 0;
 
-		while (true) {
+		int i = 0;
+		while (i < 10) {
 			acceptNewConnections();
 
 			int nEvents = epoll_wait(m_epoll_master_fd, events, MAX_EVENTS, 60);
 			if (nEvents < 0) {
 				throw std::runtime_error("epoll_wait failed");
 			}
-
+			if (nEvents != prevEvents) {
+				prevEvents = nEvents;
+				std::cout << "Now handling " << nEvents << " events!" << std::endl;
+				i++;
+			}
 			handleEvents(events, nEvents);
+			// change event handlers if required
+			pruneConnections(events, nEvents);
+		}
+		std::cout << "Handled 10 events (probably), stopping execution for now..." << std::endl;
+	}
+
+	void Reactor::pruneConnections(t_event* events, int nEvents) {
+		for (int i = 0; i < nEvents; ++i) {
+			t_event& event = events[i];
+			EventData* data = static_cast<EventData*>(event.data.ptr);
+			HandlerContext& ctx = data->ctx;
+
+			if (data->handler->shouldDrop()) {
+				std::cout << "Dropping connection!" << std::endl;
+				ctx.vServer.removeConnection(ctx.conn);
+				unregisterHandler(ctx.conn.getSocket().getFd());
+				delete data->handler;
+				delete data;
+				continue;
+			} else if (data->handler->completed()) {
+				// std::cout << "Handler completed!" << std::endl;
+				// TODO: only do this if we should actually drop the connection, otherwise keep alive
+				ctx.vServer.removeConnection(ctx.conn);
+				unregisterHandler(ctx.conn.getSocket().getFd());
+				delete data->handler;
+				delete data;
+			} else if (data->handler->failed()) {
+				std::cout << "Handler failed, taking it out back..." << std::endl;
+				// ctx.vServer.removeConnection(ctx.conn);
+				// unregisterHandler(ctx.conn.getSocket().getFd());
+				// delete data->handler;
+				// delete data;
+			}
 		}
 	}
 
 	void Reactor::acceptNewConnections() {
-		for (std::vector<http::VirtualServer>::iterator it = m_vServers.begin(); it != m_vServers.end(); ++it) {
+		for (t_virtualServers::iterator it = m_vServers.begin(); it != m_vServers.end(); ++it) {
 			http::VirtualServer& vServer = *it;
 
 			while (vServer.addConnection()) {
@@ -152,8 +211,8 @@ namespace core {
 				AHandler* handler = NULL;
 
 				try { // we have to get rid of this shit try stuff
-					handler = new IOHandler;
-					this->registerHandler(conn.getSocket().getFd(), handler, HandlerContext(vServer, conn), EPOLLIN | EPOLLOUT);
+					handler = new RequestHandler;
+					this->registerHandler(conn.getClientSocketFd(), handler, HandlerContext(vServer, conn), EPOLLIN | EPOLLOUT);
 				} catch (std::exception& e) {
 					delete handler;
 					std::cerr << e.what() << std::endl;
@@ -166,15 +225,47 @@ namespace core {
 		for (int i = 0; i < nEvents; ++i) {
 			t_event& event = events[i];
 			EventData* data = static_cast<EventData*>(event.data.ptr);
+			AHandler& handler = *data->handler;
 			HandlerContext& ctx = data->ctx;
 
 			ctx.events = event.events;
-			data->handler->handle(ctx);
+			handler.handle(ctx);
 
-			if (data->handler->hasCompleted()) {
-				unregisterHandler(ctx.conn.getSocket().getFd());
-				delete data->handler;
-				delete data;
+			std::cout << "Handler state: " << handler.getState() << std::endl;
+			if (handler.failed()) {
+				std::cout << "HANDLEEVENTS FOUND FAILED HANDLER" << std::endl;
+				// unregisterHandler(ctx.conn.getSocket().getFd());
+				// ctx.vServer.removeConnection(ctx.conn);
+				// delete data->handler;
+				// delete data;
+			} else if (handler.completed()) {
+				std::cout << "HANDLEEVENTS FOUND COMPLETED" << std::endl;
+				if (ctx.events == EPOLLIN) {
+					// change event to EPOLLOUT
+					// TODO: abort connection if it gets dropped
+					// double check if there's another case where on success we shouldn't respond
+					// maybe when streaming several files for a single thingy, I guess
+					std::cout << "Modifying handler for " << ctx.conn.getSocket().getFd() << " to out woo wee" << std::endl;
+					modifyHandler(ctx.conn.getSocket().getFd(), ctx, EPOLLOUT); // just pass ctx, dummy
+					delete data->handler;
+					data->handler = new ResponseHandler;
+					// handler = *data->handler;
+					continue;
+				} else if (ctx.events == EPOLLOUT) {
+					// change event to EPOLLIN
+					// unless Connection header was set to "close" in the Client's Request
+					// is there any other case?
+					std::cout << "Modifying handler for " << ctx.conn.getSocket().getFd() << " to in woo wee" << std::endl;
+					modifyHandler(ctx.conn.getSocket().getFd(), ctx, EPOLLIN);
+					delete data->handler;
+					data->handler = new RequestHandler;
+					// handler = *data->handler;
+					continue;
+				}
+				// unregisterHandler(ctx.conn.getSocket().getFd());
+				// ctx.vServer.removeConnection(ctx.conn);
+				// delete data->handler;
+				// delete data;
 			}
 		}
 	}

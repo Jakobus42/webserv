@@ -7,7 +7,8 @@ namespace core {
 	/**
 	 * @brief Constructs a new ResponseHandler object.
 	 */
-	ResponseHandler::ResponseHandler() {
+	ResponseHandler::ResponseHandler()
+		: AHandler() {
 	}
 
 	/**
@@ -20,7 +21,8 @@ namespace core {
 	 * @brief Copy constructor.
 	 * @param other The other ResponseHandler object to copy.
 	 */
-	ResponseHandler::ResponseHandler(const ResponseHandler&) {
+	ResponseHandler::ResponseHandler(const ResponseHandler&)
+		: AHandler() {
 	}
 
 	/**
@@ -30,6 +32,13 @@ namespace core {
 	 */
 	ResponseHandler& ResponseHandler::operator=(const ResponseHandler&) {
 		return *this;
+	}
+
+	// TODO: Implement logic to find out what to do
+	bool ResponseHandler::shouldDrop(void) const {
+		if (m_state == FAILED)
+			return true;
+		return false;
 	}
 
 	// note: the implementation is just temporary
@@ -48,8 +57,11 @@ namespace core {
 			std::cerr << "Error sending data" << std::endl;
 		} else {
 			std::cout << "Sent response: " << response << std::endl;
+			(void)response;
+			// }
+			setState(COMPLETED);
+			std::cout << "Response set to COMPLETED" << std::endl;
 		}
-		m_state = COMPLETED;
 	}
 
 } /* namespace core */

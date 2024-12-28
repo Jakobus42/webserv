@@ -18,7 +18,8 @@ namespace core {
 			IOHandler& operator=(const IOHandler& rhs);
 
 			void handle(HandlerContext& ctx);
-			bool hasCompleted() const;
+			bool completed() const;
+			bool failed() const;
 
 		private:
 			RequestHandler m_requestHandler;

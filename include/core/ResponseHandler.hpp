@@ -14,6 +14,7 @@ namespace core {
 			~ResponseHandler();
 
 			void handle(HandlerContext& ctx);
+			bool shouldDrop() const;
 
 		private:
 			ResponseHandler(const ResponseHandler& other);

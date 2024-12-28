@@ -8,8 +8,7 @@ namespace http {
 	 * @brief Constructs a new Request object.
 	 */
 	Request::Request()
-		: m_read_buffer()
-		, m_receivedBytes(0)
+		: m_receivedBytes(0)
 		, m_contentLength(0)
 		, m_restData("")
 		, m_requestData()
@@ -28,8 +27,7 @@ namespace http {
 	 * @param other The other Request object to copy.
 	 */
 	Request::Request(const Request& other)
-		: m_read_buffer()
-		, m_receivedBytes(other.getReceivedBytes())
+		: m_receivedBytes(other.getReceivedBytes())
 		, m_contentLength(other.getContentLength())
 		, m_restData(other.getRestData())
 		, m_requestData(other.getRequestData())
@@ -45,12 +43,8 @@ namespace http {
 	Request& Request::operator=(const Request& rhs) {
 		if (this == &rhs)
 			return *this;
-		*this = Request(rhs);
+		*this = rhs;
 		return *this;
-	}
-
-	const char* Request::getReadBuffer(void) const {
-		return m_read_buffer;
 	}
 
 	uint32_t Request::getReceivedBytes(void) const {
@@ -85,40 +79,31 @@ namespace http {
 	 * @brief Parses the request.
 	 * @return True if the request was parsed successfully, false otherwise.
 	 */
-	bool Request::parse(void) {
+	bool Request::parse(char buffer[BUFFER_SIZE]) {
 		std::string input;
+
 		if (m_restData != "") {
 			input = m_restData;
 			m_restData = "";
 		}
-		input += m_read_buffer;
-		if (m_status == PARSE_HEAD || m_status == PARSE_START) {
-			if (!parseHead(input)) {
-				return false;
-			}
+		input += buffer;
+		if ((m_status == PARSE_HEAD || m_status == PARSE_START) && !parseHead(input)) {
+			std::cout << "first oof" << std::endl;
+			return false;
 		}
-		if (m_status == PARSE_HEADERS) {
-			if (!parseHeaders(input, HEADER)) {
-				return false;
-			}
+		if (m_status == PARSE_HEADERS && !parseHeaders(input, HEADER)) {
+			std::cout << "second oof" << std::endl;
+			return false;
 		}
-		if (m_status == PARSE_BODY) {
-			if (!parseBody(input)) {
-				return false;
-			}
+		if (m_status == PARSE_BODY && !parseBody(input)) {
+			std::cout << "third oof" << std::endl;
+			return false;
 		}
 		if (input != "") {
 			m_restData = input;
 		}
+		std::cout << "Request.parse successful" << std::endl;
 		return true;
-	}
-
-	/**
-	 * @brief Sets the read buffer.
-	 * @param buffer The buffer to set.
-	 */
-	void Request::setReadBuffer(const char* buffer) {
-		strncpy(m_read_buffer, buffer, BUFFER_SIZE);
 	}
 
 	void Request::PrintRequestData() {

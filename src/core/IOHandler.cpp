@@ -5,7 +5,8 @@ namespace core {
 	/**
 	 * @brief Constructs a new IOHandler object.
 	 */
-	IOHandler::IOHandler() {
+	IOHandler::IOHandler()
+		: AHandler() {
 	}
 
 	/**
@@ -18,7 +19,8 @@ namespace core {
 	 * @brief Copy constructor.
 	 * @param other The other IOHandler object to copy.
 	 */
-	IOHandler::IOHandler(const IOHandler&) {
+	IOHandler::IOHandler(const IOHandler&)
+		: AHandler() {
 	}
 
 	/**
@@ -34,7 +36,7 @@ namespace core {
 		if (ctx.events & EPOLLIN) {
 			m_requestHandler.handle(ctx);
 		}
-		if (ctx.events & EPOLLOUT && m_requestHandler.hasCompleted()) {
+		if (ctx.events & EPOLLOUT && m_requestHandler.completed()) {
 			m_responseHandler.handle(ctx);
 		}
 		if (ctx.events & EPOLLERR) {
@@ -42,8 +44,12 @@ namespace core {
 		}
 	}
 
-	bool IOHandler::hasCompleted() const {
-		return m_requestHandler.hasCompleted() && m_responseHandler.hasCompleted();
+	bool IOHandler::completed() const {
+		return m_requestHandler.completed() && m_responseHandler.completed();
+	}
+
+	bool IOHandler::failed() const {
+		return m_requestHandler.failed() || m_responseHandler.failed();
 	}
 
 } /* namespace core */
