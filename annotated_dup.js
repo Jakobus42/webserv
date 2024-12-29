@@ -7,13 +7,8 @@ var annotated_dup =
       [ "s_server", "structconfig_1_1s__server.html", "structconfig_1_1s__server" ]
     ] ],
     [ "core", "namespacecore.html", [
-      [ "AHandler", "classcore_1_1AHandler.html", "classcore_1_1AHandler" ],
-      [ "EventData", "structcore_1_1EventData.html", "structcore_1_1EventData" ],
-      [ "HandlerContext", "structcore_1_1HandlerContext.html", "structcore_1_1HandlerContext" ],
-      [ "IOHandler", "classcore_1_1IOHandler.html", "classcore_1_1IOHandler" ],
-      [ "Reactor", "classcore_1_1Reactor.html", "classcore_1_1Reactor" ],
-      [ "RequestHandler", "classcore_1_1RequestHandler.html", "classcore_1_1RequestHandler" ],
-      [ "ResponseHandler", "classcore_1_1ResponseHandler.html", "classcore_1_1ResponseHandler" ]
+      [ "EventHandler", "classcore_1_1EventHandler.html", "classcore_1_1EventHandler" ],
+      [ "Reactor", "classcore_1_1Reactor.html", "classcore_1_1Reactor" ]
     ] ],
     [ "http", "namespacehttp.html", [
       [ "ClientSocket", "classhttp_1_1ClientSocket.html", "classhttp_1_1ClientSocket" ],

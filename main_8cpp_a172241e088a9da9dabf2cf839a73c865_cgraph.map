@@ -1,105 +1,115 @@
 <map id="main" name="main">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,381,60,406"/>
-<area shape="rect" id="Node000002" href="$classcore_1_1Reactor.html#a78d35da396b0218bc397acdce3119c74" title=" " alt="" coords="108,177,291,217"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="37,379,64,328,83,296,106,266,154,223,158,227,110,270,88,299,68,330,42,382"/>
-<area shape="rect" id="Node000010" href="$classhttp_1_1ErrorMessages.html#a27cdba675ad06a6255b07395a249b9f2" title=" " alt="" coords="123,280,275,320"/>
-<area shape="poly" id="edge14_Node000001_Node000010" title=" " alt="" coords="45,379,72,354,107,330,119,323,122,328,109,334,75,358,48,382"/>
-<area shape="rect" id="Node000012" href="$classconfig_1_1ConfigFileParser.html#ac1aa143b263ccf1e587402e01f612590" title=" " alt="" coords="113,344,286,384"/>
-<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="60,386,99,379,100,384,61,391"/>
-<area shape="rect" id="Node000013" href="$classcore_1_1Reactor.html#a71cf64a92f1a7a6293121ede5df60981" title=" " alt="" coords="131,409,268,434"/>
-<area shape="poly" id="edge17_Node000001_Node000013" title=" " alt="" coords="61,395,117,405,116,410,60,400"/>
-<area shape="rect" id="Node000014" href="$classconfig_1_1ConfigFileParser.html#a074868ef888a640498f54df02a8dd47e" title="Loads the configuration file, saving all the information." alt="" coords="113,459,286,499"/>
-<area shape="poly" id="edge18_Node000001_Node000014" title=" " alt="" coords="51,404,109,443,126,451,123,456,107,448,48,408"/>
-<area shape="rect" id="Node000034" href="$classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="125,639,274,665"/>
-<area shape="poly" id="edge45_Node000001_Node000034" title=" " alt="" coords="44,405,110,509,185,626,180,629,106,512,40,407"/>
-<area shape="rect" id="Node000003" href="$classhttp_1_1VirtualServer.html#a86f31cc41a5d0ff839a0878ce001114c" title=" " alt="" coords="370,177,511,217"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="291,195,356,195,356,200,291,200"/>
-<area shape="rect" id="Node000004" href="$classhttp_1_1ServerSocket.html#a6701c4cbd2b84873f00d5505f0754bb3" title=" " alt="" coords="370,95,511,135"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="258,175,368,137,370,142,259,180"/>
-<area shape="rect" id="Node000005" href="$classhttp_1_1ServerSocket.html#ab9a7f8f2c1fe4cded5ac535f12abd84b" title=" " alt="" coords="630,29,771,69"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="511,94,616,68,617,73,512,100"/>
-<area shape="rect" id="Node000008" href="$classhttp_1_1ServerSocket.html#afd477001689e0c9d1330a57c14618021" title=" " alt="" coords="630,93,771,133"/>
-<area shape="poly" id="edge9_Node000004_Node000008" title=" " alt="" coords="512,112,616,111,616,116,512,117"/>
-<area shape="rect" id="Node000009" href="$classhttp_1_1ServerSocket.html#ae00a1912f9565b216a0d129b45c66dcd" title=" " alt="" coords="630,181,771,221"/>
-<area shape="poly" id="edge11_Node000004_Node000009" title=" " alt="" coords="503,132,627,174,626,179,501,137"/>
-<area shape="poly" id="edge5_Node000005_Node000005" title=" " alt="" coords="655,30,653,20,660,10,676,5,701,3,729,6,744,13,742,18,727,11,701,8,677,10,663,15,658,21,661,28"/>
-<area shape="rect" id="Node000006" href="$classhttp_1_1ServerSocket.html#aaf8216a618ce26ba9669b4f90f1d9b38" title=" " alt="" coords="875,88,1016,128"/>
-<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="772,64,862,85,861,91,771,69"/>
-<area shape="poly" id="edge7_Node000006_Node000006" title=" " alt="" coords="904,88,901,78,908,69,923,63,945,61,971,64,985,72,983,76,970,69,945,67,924,69,911,73,907,79,909,87"/>
-<area shape="rect" id="Node000007" href="$classhttp_1_1ServerSocket.html#a6110681c21dc1d2e99ba238817993321" title=" " alt="" coords="1096,87,1237,127"/>
-<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="1016,105,1082,105,1082,110,1016,110"/>
-<area shape="poly" id="edge10_Node000008_Node000006" title=" " alt="" coords="771,109,861,107,861,112,771,114"/>
-<area shape="poly" id="edge12_Node000009_Node000006" title=" " alt="" coords="753,179,878,131,880,136,755,184"/>
-<area shape="poly" id="edge13_Node000009_Node000009" title=" " alt="" coords="655,182,653,172,660,162,676,157,701,155,729,158,744,165,742,170,727,163,701,160,677,162,663,167,658,173,661,180"/>
-<area shape="rect" id="Node000011" href="$classhttp_1_1ErrorMessages.html#ad1640de72cff09f771fdc311b185de0b" title=" " alt="" coords="365,280,517,320"/>
-<area shape="poly" id="edge15_Node000010_Node000011" title=" " alt="" coords="276,297,351,297,351,303,276,303"/>
-<area shape="rect" id="Node000015" href="$classconfig_1_1ConfigFileParser.html#aa5ac9363ea9ba96a657a351b9b2f3219" title="Parses the configuration file." alt="" coords="354,461,527,501"/>
-<area shape="poly" id="edge19_Node000014_Node000015" title=" " alt="" coords="286,477,340,478,340,483,286,482"/>
-<area shape="rect" id="Node000033" href="$classconfig_1_1ConfigFileParser.html#adcd94ec61a24121c76942f86999f72dd" title="Reads the configuration file." alt="" coords="354,373,527,413"/>
-<area shape="poly" id="edge44_Node000014_Node000033" title=" " alt="" coords="255,456,290,443,338,423,360,415,362,420,340,428,292,448,257,461"/>
-<area shape="poly" id="edge43_Node000015_Node000015" title=" " alt="" coords="396,462,393,452,400,442,416,437,441,435,469,438,484,445,482,450,467,443,441,440,417,442,404,447,398,453,401,460"/>
-<area shape="rect" id="Node000016" href="$classconfig_1_1ConfigFileParser.html#a0c3ffd6d214cb723d953db468e5ebb81" title="parses a line in the configuration file." alt="" coords="614,461,787,501"/>
-<area shape="poly" id="edge20_Node000015_Node000016" title=" " alt="" coords="528,479,600,479,600,484,528,484"/>
-<area shape="rect" id="Node000017" href="$classconfig_1_1ConfigFileParser.html#a2fc1f08065c566459a1543f1824e4eaa" title="Saves the configuration data." alt="" coords="859,471,1032,511"/>
-<area shape="poly" id="edge21_Node000016_Node000017" title=" " alt="" coords="788,482,845,484,845,490,788,487"/>
-<area shape="rect" id="Node000018" href="$classconfig_1_1ConfigFileParser.html#aae76c210ff9aae74d87a6b57feeb474e" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="1080,599,1253,639"/>
-<area shape="poly" id="edge22_Node000017_Node000018" title=" " alt="" coords="972,509,1021,546,1081,584,1095,591,1092,596,1079,589,1018,551,969,513"/>
-<area shape="rect" id="Node000020" href="$classconfig_1_1ConfigFileParser.html#a9201327984c6bb55a4ae4e9cb9f1afc9" title="sets the max body size for the server." alt="" coords="1080,727,1253,767"/>
-<area shape="poly" id="edge24_Node000017_Node000020" title=" " alt="" coords="956,510,973,552,999,606,1036,663,1057,689,1082,713,1088,717,1085,722,1078,717,1054,693,1031,666,994,609,968,554,951,512"/>
-<area shape="rect" id="Node000022" href="$classconfig_1_1ConfigFileParser.html#ab0873aafd871776227166466648adcff" title="sets the error pages for the server." alt="" coords="1080,663,1253,703"/>
-<area shape="poly" id="edge26_Node000017_Node000022" title=" " alt="" coords="961,509,1008,577,1043,615,1082,649,1090,654,1087,658,1078,653,1039,619,1004,580,956,512"/>
-<area shape="rect" id="Node000023" href="$classconfig_1_1ConfigFileParser.html#af23de28a87beadfcc28c48021a066a14" title="Identifies the command in the configuration file. and returns the id of the command." alt="" coords="1080,855,1253,895"/>
-<area shape="poly" id="edge28_Node000017_Node000023" title=" " alt="" coords="951,510,961,574,983,662,1000,710,1022,757,1049,801,1082,841,1086,845,1083,849,1078,845,1044,805,1017,759,995,712,978,663,956,575,946,511"/>
-<area shape="rect" id="Node000024" href="$classconfig_1_1ConfigFileParser.html#a7cc3cfe78fd8d52b3bf1f7272cf19de2" title="sets the index files for the location. (index.html by default)" alt="" coords="1080,343,1253,383"/>
-<area shape="poly" id="edge29_Node000017_Node000024" title=" " alt="" coords="969,468,1018,431,1079,392,1092,386,1095,390,1081,397,1021,435,972,473"/>
-<area shape="rect" id="Node000025" href="$classconfig_1_1ConfigFileParser.html#a5c03d6d709d348eb69db590a9bed2529" title="sets the methods allowed for the location." alt="" coords="1080,407,1253,447"/>
-<area shape="poly" id="edge31_Node000017_Node000025" title=" " alt="" coords="1015,468,1083,448,1085,453,1016,473"/>
-<area shape="rect" id="Node000026" href="$classconfig_1_1ConfigFileParser.html#a054df9e80c847c57ee4fcf634ec96512" title="Sets the port and ip address of the server." alt="" coords="1080,791,1253,831"/>
-<area shape="poly" id="edge33_Node000017_Node000026" title=" " alt="" coords="953,510,966,563,991,634,1029,710,1053,746,1082,777,1086,781,1083,785,1078,781,1049,749,1024,713,986,636,961,565,948,512"/>
-<area shape="rect" id="Node000028" href="$classconfig_1_1ConfigFileParser.html#a7c2637468e844f1a45ce90488e01affb" title="Creates a new location struct, initializes it and adds it to the config data." alt="" coords="1080,151,1253,191"/>
-<area shape="poly" id="edge36_Node000017_Node000028" title=" " alt="" coords="948,470,961,417,986,345,1024,268,1049,232,1078,201,1083,197,1086,201,1082,205,1053,236,1029,271,991,347,966,418,953,471"/>
-<area shape="rect" id="Node000029" href="$classconfig_1_1ConfigFileParser.html#ae96980a09075f768b9b072297e2e25f6" title="redirects the user to a different url with a specific return code." alt="" coords="1080,471,1253,511"/>
-<area shape="poly" id="edge37_Node000017_Node000029" title=" " alt="" coords="1032,488,1066,488,1066,493,1032,493"/>
-<area shape="rect" id="Node000030" href="$classconfig_1_1ConfigFileParser.html#a488be040c87c81b95572fdae4d10b9e9" title="sets the root directory for the location." alt="" coords="1080,535,1253,575"/>
-<area shape="poly" id="edge39_Node000017_Node000030" title=" " alt="" coords="1016,508,1085,528,1083,533,1015,513"/>
-<area shape="rect" id="Node000031" href="$classconfig_1_1ConfigFileParser.html#a68a1194c8822b39ccdeaf2024f68e2df" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="1080,215,1253,255"/>
-<area shape="poly" id="edge41_Node000017_Node000031" title=" " alt="" coords="951,469,968,427,994,372,1031,315,1054,288,1078,265,1085,260,1088,264,1082,269,1057,292,1036,318,999,375,973,429,956,471"/>
-<area shape="rect" id="Node000032" href="$classconfig_1_1ConfigFileParser.html#ad660e1b92477502518971b41373ee60a" title="Sets the server name(s) of the server." alt="" coords="1080,279,1253,319"/>
-<area shape="poly" id="edge42_Node000017_Node000032" title=" " alt="" coords="956,469,1004,401,1039,362,1078,329,1087,323,1090,327,1082,333,1043,366,1008,404,961,472"/>
-<area shape="rect" id="Node000019" href="$classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="1301,471,1475,511"/>
-<area shape="poly" id="edge23_Node000018_Node000019" title=" " alt="" coords="1227,596,1252,584,1305,551,1351,517,1354,521,1308,556,1255,589,1229,601"/>
-<area shape="rect" id="Node000021" href="$namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a" title="Converts a string to a positive integer." alt="" coords="1333,734,1443,759"/>
-<area shape="poly" id="edge25_Node000020_Node000021" title=" " alt="" coords="1254,744,1319,744,1319,749,1254,749"/>
-<area shape="poly" id="edge27_Node000022_Node000021" title=" " alt="" coords="1237,700,1331,728,1329,733,1236,705"/>
-<area shape="poly" id="edge30_Node000024_Node000019" title=" " alt="" coords="1229,380,1255,392,1308,426,1354,460,1351,464,1305,430,1252,397,1227,385"/>
-<area shape="poly" id="edge32_Node000025_Node000019" title=" " alt="" coords="1237,444,1306,464,1305,469,1236,449"/>
-<area shape="poly" id="edge34_Node000026_Node000021" title=" " alt="" coords="1236,788,1329,761,1331,766,1237,793"/>
-<area shape="rect" id="Node000027" href="$namespaceconfig.html#ab0ce9a159a3d72a05a0321e13dcdac80" title="Checks if a string is a number." alt="" coords="1319,798,1457,823"/>
-<area shape="poly" id="edge35_Node000026_Node000027" title=" " alt="" coords="1254,808,1305,808,1305,813,1254,813"/>
-<area shape="poly" id="edge38_Node000029_Node000019" title=" " alt="" coords="1254,488,1287,488,1287,493,1254,493"/>
-<area shape="poly" id="edge40_Node000030_Node000019" title=" " alt="" coords="1236,532,1305,512,1306,517,1237,537"/>
-<area shape="rect" id="Node000035" href="$classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552" title=" " alt="" coords="347,771,535,811"/>
-<area shape="poly" id="edge46_Node000034_Node000035" title=" " alt="" coords="224,662,394,761,392,766,221,667"/>
-<area shape="rect" id="Node000042" href="$classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="339,639,543,665"/>
-<area shape="poly" id="edge53_Node000034_Node000042" title=" " alt="" coords="274,649,325,649,325,655,274,655"/>
-<area shape="rect" id="Node000036" href="$classhttp_1_1VirtualServer.html#aba633077d4bc512dcb2caf15e6b035d4" title="Accepts the next incoming connection in the VirtualServerSocket&#39;s queue." alt="" coords="630,917,771,957"/>
-<area shape="poly" id="edge47_Node000035_Node000036" title=" " alt="" coords="465,809,520,856,555,881,592,903,617,914,615,919,589,908,552,886,517,860,461,813"/>
-<area shape="rect" id="Node000038" href="$classhttp_1_1VirtualServer.html#a9a2c96594ed7379e782a1fe266f9ebc9" title=" " alt="" coords="630,803,771,843"/>
-<area shape="poly" id="edge49_Node000035_Node000038" title=" " alt="" coords="535,800,617,810,616,815,535,805"/>
-<area shape="rect" id="Node000039" href="$classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf" title=" " alt="" coords="632,739,769,779"/>
-<area shape="poly" id="edge50_Node000035_Node000039" title=" " alt="" coords="535,776,618,766,619,771,535,782"/>
-<area shape="rect" id="Node000040" href="$classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e" title=" " alt="" coords="600,689,801,714"/>
-<area shape="poly" id="edge51_Node000035_Node000040" title=" " alt="" coords="482,768,533,746,590,724,622,715,624,720,592,729,535,750,485,773"/>
-<area shape="rect" id="Node000041" href="$classcore_1_1Reactor.html#a4d4addc4a1552b4560a9ef7da596b869" title=" " alt="" coords="592,867,809,893"/>
-<area shape="poly" id="edge52_Node000035_Node000041" title=" " alt="" coords="485,808,535,831,592,852,624,861,622,867,590,857,533,836,482,813"/>
-<area shape="rect" id="Node000037" href="$classhttp_1_1ServerSocket.html#a86ec14f7462724b7389ead42881090f9" title=" " alt="" coords="875,917,1016,957"/>
-<area shape="poly" id="edge48_Node000036_Node000037" title=" " alt="" coords="771,935,861,935,861,940,771,940"/>
-<area shape="poly" id="edge54_Node000042_Node000039" title=" " alt="" coords="465,662,522,692,592,724,619,734,618,739,590,729,519,697,463,667"/>
-<area shape="poly" id="edge55_Node000042_Node000040" title=" " alt="" coords="509,662,620,683,619,689,508,667"/>
-<area shape="rect" id="Node000043" href="$classcore_1_1AHandler.html#a729ca645cf9f83e0c431e2a7dfa528d5" title=" " alt="" coords="615,590,786,615"/>
-<area shape="poly" id="edge56_Node000042_Node000043" title=" " alt="" coords="508,637,619,615,620,621,509,642"/>
-<area shape="rect" id="Node000044" href="$classcore_1_1AHandler.html#ac06b9786e3ee7593b7b788a59c82d0c5" title=" " alt="" coords="591,639,811,665"/>
-<area shape="poly" id="edge57_Node000042_Node000044" title=" " alt="" coords="543,649,577,649,577,655,543,655"/>
-<area shape="rect" id="Node000045" href="$classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f" title=" " alt="" coords="609,525,792,565"/>
-<area shape="poly" id="edge58_Node000042_Node000045" title=" " alt="" coords="463,637,519,607,590,575,611,567,613,572,592,580,522,612,465,642"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,258,60,283"/>
+<area shape="rect" id="Node000002" href="$classcore_1_1Reactor.html#a78d35da396b0218bc397acdce3119c74" title=" " alt="" coords="108,93,291,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="36,257,60,202,80,171,106,143,113,138,116,143,110,147,85,174,65,205,41,259"/>
+<area shape="rect" id="Node000010" href="$classhttp_1_1ErrorMessages.html#a27cdba675ad06a6255b07395a249b9f2" title=" " alt="" coords="123,157,275,197"/>
+<area shape="poly" id="edge14_Node000001_Node000010" title=" " alt="" coords="45,256,72,231,107,207,119,200,122,205,109,212,75,236,48,260"/>
+<area shape="rect" id="Node000012" href="$classconfig_1_1ConfigFileParser.html#ac1aa143b263ccf1e587402e01f612590" title=" " alt="" coords="113,221,286,261"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="60,263,99,256,100,262,61,269"/>
+<area shape="rect" id="Node000013" href="$classcore_1_1Reactor.html#a71cf64a92f1a7a6293121ede5df60981" title=" " alt="" coords="131,286,268,311"/>
+<area shape="poly" id="edge17_Node000001_Node000013" title=" " alt="" coords="61,273,117,282,116,287,60,278"/>
+<area shape="rect" id="Node000014" href="$classconfig_1_1ConfigFileParser.html#a074868ef888a640498f54df02a8dd47e" title="Loads the configuration file, saving all the information." alt="" coords="113,336,286,376"/>
+<area shape="poly" id="edge18_Node000001_Node000014" title=" " alt="" coords="51,281,109,320,126,328,123,333,107,325,48,286"/>
+<area shape="rect" id="Node000034" href="$classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="125,686,274,711"/>
+<area shape="poly" id="edge27_Node000001_Node000034" title=" " alt="" coords="41,283,191,672,186,674,36,284"/>
+<area shape="rect" id="Node000003" href="$classhttp_1_1VirtualServer.html#a86f31cc41a5d0ff839a0878ce001114c" title=" " alt="" coords="385,29,526,69"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="279,91,371,68,372,73,281,96"/>
+<area shape="rect" id="Node000004" href="$classhttp_1_1ServerSocket.html#a6701c4cbd2b84873f00d5505f0754bb3" title=" " alt="" coords="385,93,526,133"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="291,111,371,111,371,116,291,116"/>
+<area shape="rect" id="Node000005" href="$classhttp_1_1ServerSocket.html#ab9a7f8f2c1fe4cded5ac535f12abd84b" title=" " alt="" coords="662,29,803,69"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="526,95,648,66,649,71,527,100"/>
+<area shape="rect" id="Node000008" href="$classhttp_1_1ServerSocket.html#afd477001689e0c9d1330a57c14618021" title=" " alt="" coords="662,93,803,133"/>
+<area shape="poly" id="edge9_Node000004_Node000008" title=" " alt="" coords="526,111,648,111,648,116,526,116"/>
+<area shape="rect" id="Node000009" href="$classhttp_1_1ServerSocket.html#ae00a1912f9565b216a0d129b45c66dcd" title=" " alt="" coords="662,181,803,221"/>
+<area shape="poly" id="edge11_Node000004_Node000009" title=" " alt="" coords="527,129,573,143,665,174,664,179,571,148,526,134"/>
+<area shape="poly" id="edge5_Node000005_Node000005" title=" " alt="" coords="684,30,681,20,689,10,706,5,733,3,763,5,780,13,778,18,762,11,733,8,707,10,692,15,686,21,689,28"/>
+<area shape="rect" id="Node000006" href="$classhttp_1_1ServerSocket.html#aaf8216a618ce26ba9669b4f90f1d9b38" title=" " alt="" coords="928,93,1069,133"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="804,64,915,91,914,96,803,69"/>
+<area shape="poly" id="edge7_Node000006_Node000006" title=" " alt="" coords="954,94,951,84,958,74,974,69,999,67,1027,70,1042,77,1040,82,1025,75,999,72,975,74,962,79,956,85,959,92"/>
+<area shape="rect" id="Node000007" href="$classhttp_1_1ServerSocket.html#a6110681c21dc1d2e99ba238817993321" title=" " alt="" coords="1168,93,1309,133"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="1070,111,1154,111,1154,116,1070,116"/>
+<area shape="poly" id="edge10_Node000008_Node000006" title=" " alt="" coords="804,111,914,111,914,116,804,116"/>
+<area shape="poly" id="edge12_Node000009_Node000006" title=" " alt="" coords="794,179,923,135,925,140,795,184"/>
+<area shape="poly" id="edge13_Node000009_Node000009" title=" " alt="" coords="684,182,681,172,689,162,706,157,733,155,763,157,780,165,778,170,762,163,733,160,707,162,692,167,686,173,689,180"/>
+<area shape="rect" id="Node000011" href="$classhttp_1_1ErrorMessages.html#ad1640de72cff09f771fdc311b185de0b" title=" " alt="" coords="379,157,531,197"/>
+<area shape="poly" id="edge15_Node000010_Node000011" title=" " alt="" coords="276,175,366,175,366,180,276,180"/>
+<area shape="rect" id="Node000015" href="$classconfig_1_1ConfigFileParser.html#aa5ac9363ea9ba96a657a351b9b2f3219" title="Parses the configuration file." alt="" coords="369,259,542,299"/>
+<area shape="poly" id="edge19_Node000014_Node000015" title=" " alt="" coords="266,333,375,300,376,305,267,338"/>
+<area shape="rect" id="Node000033" href="$classconfig_1_1ConfigFileParser.html#adcd94ec61a24121c76942f86999f72dd" title="Reads the configuration file." alt="" coords="369,336,542,376"/>
+<area shape="poly" id="edge26_Node000014_Node000033" title=" " alt="" coords="286,353,355,353,355,359,286,359"/>
+<area shape="poly" id="edge25_Node000015_Node000015" title=" " alt="" coords="408,259,405,249,413,240,429,234,455,232,485,235,501,242,499,247,484,240,455,237,431,239,416,244,410,250,413,257"/>
+<area shape="rect" id="Node000016" href="$classconfig_1_1ConfigFileParser.html#a0c3ffd6d214cb723d953db468e5ebb81" title="parses a line in the configuration file." alt="" coords="646,252,819,292"/>
+<area shape="poly" id="edge20_Node000015_Node000016" title=" " alt="" coords="542,274,633,272,633,277,542,279"/>
+<area shape="rect" id="Node000017" href="$classconfig_1_1ConfigFileParser.html#a2fc1f08065c566459a1543f1824e4eaa" title="Saves the configuration data." alt="" coords="912,252,1085,292"/>
+<area shape="poly" id="edge21_Node000016_Node000017" title=" " alt="" coords="819,269,898,269,898,275,819,275"/>
+<area shape="rect" id="Node000018" href="$classconfig_1_1ConfigFileParser.html#aae76c210ff9aae74d87a6b57feeb474e" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="1152,188,1325,228"/>
+<area shape="poly" id="edge22_Node000017_Node000018" title=" " alt="" coords="1074,249,1149,229,1151,234,1075,255"/>
+<area shape="rect" id="Node000020" href="$classconfig_1_1ConfigFileParser.html#a9201327984c6bb55a4ae4e9cb9f1afc9" title="sets the max body size for the server." alt="" coords="1152,252,1325,292"/>
+<area shape="poly" id="edge23_Node000017_Node000020" title=" " alt="" coords="1085,269,1139,269,1139,275,1085,275"/>
+<area shape="rect" id="Node000022" href="$classconfig_1_1ConfigFileParser.html#ab0873aafd871776227166466648adcff" title="sets the error pages for the server." alt="" coords="1152,316,1325,356"/>
+<area shape="poly" id="edge24_Node000017_Node000022" title=" " alt="" coords="1075,289,1151,310,1149,315,1074,295"/>
+<area shape="rect" id="Node000035" href="$classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552" title=" " alt="" coords="361,419,549,459"/>
+<area shape="poly" id="edge28_Node000034_Node000035" title=" " alt="" coords="211,684,423,467,427,470,215,688"/>
+<area shape="rect" id="Node000042" href="$classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="353,686,557,711"/>
+<area shape="poly" id="edge35_Node000034_Node000042" title=" " alt="" coords="274,696,339,696,339,701,274,701"/>
+<area shape="rect" id="Node000069" href="$classcore_1_1Reactor.html#ad54fef7d5aa596da93d7e0e71f35ae45" title=" " alt="" coords="357,903,554,929"/>
+<area shape="poly" id="edge54_Node000034_Node000069" title=" " alt="" coords="208,710,225,746,253,795,292,846,315,869,340,888,353,896,351,900,337,893,311,873,288,850,249,798,221,749,203,713"/>
+<area shape="rect" id="Node000070" href="$classcore_1_1Reactor.html#a6cceee1737c651d1ec1ae1f3b15ce547" title=" " alt="" coords="339,854,572,879"/>
+<area shape="poly" id="edge55_Node000034_Node000070" title=" " alt="" coords="222,709,425,844,422,848,219,714"/>
+<area shape="rect" id="Node000036" href="$classhttp_1_1VirtualServer.html#aba633077d4bc512dcb2caf15e6b035d4" title="Accepts the next incoming connection in the VirtualServerSocket&#39;s queue." alt="" coords="662,316,803,356"/>
+<area shape="poly" id="edge29_Node000035_Node000036" title=" " alt="" coords="501,416,619,366,648,356,649,361,621,370,503,421"/>
+<area shape="rect" id="Node000038" href="$classhttp_1_1VirtualServer.html#a9a2c96594ed7379e782a1fe266f9ebc9" title=" " alt="" coords="662,380,803,420"/>
+<area shape="poly" id="edge31_Node000035_Node000038" title=" " alt="" coords="549,423,648,409,649,414,550,428"/>
+<area shape="rect" id="Node000039" href="$classcore_1_1Reactor.html#a9a84da7bb8fc141a1233c0bd1ce164e8" title=" " alt="" coords="624,445,841,470"/>
+<area shape="poly" id="edge32_Node000035_Node000039" title=" " alt="" coords="550,442,611,446,610,452,549,448"/>
+<area shape="rect" id="Node000037" href="$classhttp_1_1ServerSocket.html#a86ec14f7462724b7389ead42881090f9" title=" " alt="" coords="928,316,1069,356"/>
+<area shape="poly" id="edge30_Node000036_Node000037" title=" " alt="" coords="804,333,914,333,914,339,804,339"/>
+<area shape="rect" id="Node000040" href="$classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597" title=" " alt="" coords="901,384,1097,424"/>
+<area shape="poly" id="edge33_Node000039_Node000040" title=" " alt="" coords="796,442,887,424,888,429,797,447"/>
+<area shape="rect" id="Node000041" href="$classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf" title=" " alt="" coords="1170,540,1307,580"/>
+<area shape="poly" id="edge34_Node000040_Node000041" title=" " alt="" coords="1080,422,1105,434,1137,455,1166,480,1214,528,1210,531,1163,483,1134,459,1103,438,1078,426"/>
+<area shape="rect" id="Node000043" href="$classcore_1_1Reactor.html#a3b15d93bc9be9b22340c533324e24d70" title=" " alt="" coords="620,775,845,801"/>
+<area shape="poly" id="edge36_Node000042_Node000043" title=" " alt="" coords="487,709,548,734,621,760,655,770,654,775,619,765,546,739,485,714"/>
+<area shape="rect" id="Node000044" href="$classcore_1_1EventHandler.html#ab5616520f0084b2e893e5fb548b5385d" title=" " alt="" coords="659,545,806,585"/>
+<area shape="poly" id="edge37_Node000042_Node000044" title=" " alt="" coords="482,683,677,589,679,594,484,688"/>
+<area shape="rect" id="Node000062" href="$classcore_1_1EventHandler.html#ab7eda0928608173913bcdd658ea67912" title=" " alt="" coords="659,647,806,687"/>
+<area shape="poly" id="edge44_Node000042_Node000062" title=" " alt="" coords="557,684,645,674,646,679,558,690"/>
+<area shape="rect" id="Node000065" href="$classcore_1_1EventHandler.html#a5d434426a474d7c9876837de7240f2fb" title=" " alt="" coords="659,711,806,751"/>
+<area shape="poly" id="edge50_Node000042_Node000065" title=" " alt="" coords="558,708,646,718,645,723,557,713"/>
+<area shape="poly" id="edge39_Node000044_Node000040" title=" " alt="" coords="805,547,826,537,843,525,860,503,867,480,874,457,891,434,898,429,901,433,895,438,878,459,872,482,865,505,847,529,828,542,808,551"/>
+<area shape="rect" id="Node000045" href="$classhttp_1_1Connection.html#ae6d69a9ff147672f0a114311ae63c166" title=" " alt="" coords="900,449,1097,474"/>
+<area shape="poly" id="edge38_Node000044_Node000045" title=" " alt="" coords="804,543,844,524,858,514,867,504,877,493,892,483,908,476,910,481,895,488,880,497,871,507,861,518,847,529,806,548"/>
+<area shape="rect" id="Node000046" href="$classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894" title=" " alt="" coords="893,597,1104,622"/>
+<area shape="poly" id="edge40_Node000044_Node000046" title=" " alt="" coords="807,575,909,592,908,597,806,580"/>
+<area shape="rect" id="Node000047" href="$classhttp_1_1Request.html#a94b960f923e856df1cc565ebbac086c0" title=" " alt="" coords="909,498,1088,523"/>
+<area shape="poly" id="edge41_Node000044_Node000047" title=" " alt="" coords="806,548,922,524,923,529,807,553"/>
+<area shape="rect" id="Node000048" href="$classhttp_1_1Request.html#a9080f26f273ea9257a4dbac3a9e7d9c1" title="Parses the request." alt="" coords="922,547,1075,573"/>
+<area shape="poly" id="edge42_Node000044_Node000048" title=" " alt="" coords="806,561,908,559,909,564,806,567"/>
+<area shape="rect" id="Node000061" href="$classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862" title=" " alt="" coords="925,647,1072,687"/>
+<area shape="poly" id="edge43_Node000044_Node000061" title=" " alt="" coords="779,583,894,631,919,640,917,645,892,636,777,588"/>
+<area shape="poly" id="edge45_Node000062_Node000041" title=" " alt="" coords="807,682,894,696,954,705,1002,713,1047,713,1103,696,1138,676,1170,648,1196,618,1216,591,1220,594,1200,622,1173,652,1142,680,1105,701,1048,718,1001,719,953,710,893,701,806,687"/>
+<area shape="poly" id="edge46_Node000062_Node000046" title=" " alt="" coords="806,648,925,622,926,628,807,654"/>
+<area shape="poly" id="edge49_Node000062_Node000061" title=" " alt="" coords="806,664,911,664,911,669,806,669"/>
+<area shape="rect" id="Node000063" href="$classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e" title=" " alt="" coords="1373,815,1575,841"/>
+<area shape="poly" id="edge47_Node000062_Node000063" title=" " alt="" coords="807,683,846,696,870,709,894,720,1017,755,1142,782,1259,801,1360,814,1359,820,1259,807,1141,787,1015,760,892,725,868,713,844,701,806,688"/>
+<area shape="rect" id="Node000064" href="$classhttp_1_1Request.html#a9f89032cd603dc018f0573e34cec49ed" title=" " alt="" coords="923,813,1074,838"/>
+<area shape="poly" id="edge48_Node000062_Node000064" title=" " alt="" coords="808,676,828,684,847,697,865,721,872,745,878,769,895,791,917,805,914,809,892,795,873,771,867,747,861,723,844,701,826,689,806,681"/>
+<area shape="rect" id="Node000066" href="$classhttp_1_1VirtualServer.html#a43f961e40bece5869f1d53ec1da8bb9e" title=" " alt="" coords="922,863,1075,903"/>
+<area shape="poly" id="edge51_Node000065_Node000066" title=" " alt="" coords="807,740,828,749,847,761,865,783,872,805,879,827,895,847,911,858,908,862,892,851,874,829,867,807,860,785,844,765,826,753,805,745"/>
+<area shape="rect" id="Node000067" href="$classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e" title=" " alt="" coords="1153,841,1324,866"/>
+<area shape="poly" id="edge52_Node000066_Node000067" title=" " alt="" coords="1075,871,1139,863,1140,868,1076,876"/>
+<area shape="poly" id="edge53_Node000067_Node000063" title=" " alt="" coords="1324,841,1359,838,1360,843,1325,847"/>
+<area shape="poly" id="edge57_Node000070_Node000040" title=" " alt="" coords="468,852,518,798,546,761,570,722,580,694,584,669,585,622,585,599,589,577,599,554,618,531,646,510,673,499,700,495,726,496,782,497,812,492,844,479,858,469,867,457,877,445,892,434,905,427,907,432,895,438,881,449,872,461,862,472,847,484,813,497,782,502,726,501,700,501,674,504,648,515,622,535,604,557,594,578,590,600,590,622,590,669,585,695,574,724,550,764,522,801,472,856"/>
+<area shape="poly" id="edge59_Node000070_Node000043" title=" " alt="" coords="501,851,673,802,675,807,502,856"/>
+<area shape="poly" id="edge61_Node000070_Node000066" title=" " alt="" coords="572,859,704,857,845,861,909,867,908,873,845,867,704,863,572,864"/>
+<area shape="rect" id="Node000071" href="$classcore_1_1Reactor.html#a165e90fb3a86e99aba2a3c38f39c43e5" title=" " alt="" coords="635,876,830,916"/>
+<area shape="poly" id="edge56_Node000070_Node000071" title=" " alt="" coords="573,876,622,882,622,887,572,882"/>
+<area shape="rect" id="Node000072" href="$classcore_1_1EventHandler.html#adc91c5985ff39da1c978f54921c032f7" title=" " alt="" coords="659,940,806,980"/>
+<area shape="poly" id="edge58_Node000070_Node000072" title=" " alt="" coords="542,877,573,888,588,897,598,907,607,917,621,926,647,937,645,942,619,930,604,921,594,911,585,902,571,893,540,882"/>
+<area shape="rect" id="Node000073" href="$classcore_1_1EventHandler.html#a6f104be35989c3d26400bffcaca07176" title=" " alt="" coords="659,1004,806,1044"/>
+<area shape="poly" id="edge60_Node000070_Node000073" title=" " alt="" coords="555,877,574,889,586,901,593,914,599,940,604,966,611,978,622,990,647,1006,645,1010,618,994,606,981,599,968,594,941,588,916,582,904,570,893,552,882"/>
+<area shape="rect" id="Node000074" href="$classcore_1_1EventHandler.html#a3f46aa96a8811210f242f13822c77640" title=" " alt="" coords="659,1068,806,1108"/>
+<area shape="poly" id="edge62_Node000070_Node000074" title=" " alt="" coords="558,877,574,889,590,909,598,930,599,972,600,1014,607,1034,622,1054,648,1071,645,1076,618,1058,602,1037,595,1015,594,973,593,931,586,912,570,893,554,882"/>
+<area shape="rect" id="Node000075" href="$classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f" title=" " alt="" coords="641,1132,824,1172"/>
+<area shape="poly" id="edge63_Node000070_Node000075" title=" " alt="" coords="559,877,574,889,595,917,603,946,604,976,600,1005,596,1034,596,1062,603,1090,622,1118,631,1126,627,1130,618,1122,598,1092,590,1063,590,1033,594,1004,598,975,598,947,590,920,570,893,556,882"/>
 </map>

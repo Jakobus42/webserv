@@ -335,30 +335,30 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int 0 if successful, 1 if not. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Parser__keywords_8cpp_source.html#l00427">427</a> of file <a class="el" href="Parser__keywords_8cpp_source.html">Parser_keywords.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  427</span>                                                                                         {</div>
-<div class="line"><span class="lineno">  428</span>        (void)layer;</div>
-<div class="line"><span class="lineno">  429</span>        <span class="keywordflow">if</span> (args.size() != 2) {</div>
-<div class="line"><span class="lineno">  430</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span></div>
-<div class="line"><span class="lineno">  431</span>                    &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
-<div class="line"><span class="lineno">  432</span>                    &lt;&lt; <span class="stringliteral">&quot;Invalid number of arguments for autoindex&quot;</span> &lt;&lt; std::endl,</div>
-<div class="line"><span class="lineno">  433</span>                1);</div>
-<div class="line"><span class="lineno">  434</span>            <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  435</span>        }</div>
-<div class="line"><span class="lineno">  436</span>        <a class="code hl_typedef" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a>* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">getLocation</a>(layer);</div>
-<div class="line"><span class="lineno">  437</span>        <span class="keywordflow">if</span> (args[1] == <span class="stringliteral">&quot;on&quot;</span>) {</div>
-<div class="line"><span class="lineno">  438</span>            current-&gt;autoindex = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  439</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (args[1] == <span class="stringliteral">&quot;off&quot;</span>) {</div>
-<div class="line"><span class="lineno">  440</span>            current-&gt;autoindex = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  441</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  442</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span> &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
-<div class="line"><span class="lineno">  443</span>                                            &lt;&lt; <span class="stringliteral">&quot;Invalid argument for autoindex&quot;</span></div>
-<div class="line"><span class="lineno">  444</span>                                            &lt;&lt; std::endl,</div>
-<div class="line"><span class="lineno">  445</span>                1);</div>
-<div class="line"><span class="lineno">  446</span>            <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  447</span>        }</div>
-<div class="line"><span class="lineno">  448</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  449</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Parser__keywords_8cpp_source.html#l00426">426</a> of file <a class="el" href="Parser__keywords_8cpp_source.html">Parser_keywords.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  426</span>                                                                                         {</div>
+<div class="line"><span class="lineno">  427</span>        (void)layer;</div>
+<div class="line"><span class="lineno">  428</span>        <span class="keywordflow">if</span> (args.size() != 2) {</div>
+<div class="line"><span class="lineno">  429</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span></div>
+<div class="line"><span class="lineno">  430</span>                    &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
+<div class="line"><span class="lineno">  431</span>                    &lt;&lt; <span class="stringliteral">&quot;Invalid number of arguments for autoindex&quot;</span> &lt;&lt; std::endl,</div>
+<div class="line"><span class="lineno">  432</span>                1);</div>
+<div class="line"><span class="lineno">  433</span>            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  434</span>        }</div>
+<div class="line"><span class="lineno">  435</span>        <a class="code hl_typedef" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a>* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">getLocation</a>(layer);</div>
+<div class="line"><span class="lineno">  436</span>        <span class="keywordflow">if</span> (args[1] == <span class="stringliteral">&quot;on&quot;</span>) {</div>
+<div class="line"><span class="lineno">  437</span>            current-&gt;autoindex = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  438</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (args[1] == <span class="stringliteral">&quot;off&quot;</span>) {</div>
+<div class="line"><span class="lineno">  439</span>            current-&gt;autoindex = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  440</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  441</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span> &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
+<div class="line"><span class="lineno">  442</span>                                            &lt;&lt; <span class="stringliteral">&quot;Invalid argument for autoindex&quot;</span></div>
+<div class="line"><span class="lineno">  443</span>                                            &lt;&lt; std::endl,</div>
+<div class="line"><span class="lineno">  444</span>                1);</div>
+<div class="line"><span class="lineno">  445</span>            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  446</span>        }</div>
+<div class="line"><span class="lineno">  447</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  448</span>    }</div>
 <div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_ae0b230ea3d9469e19885dea44ff8fef7"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">config::ConfigFileParser::getLocation</a></div><div class="ttdeci">config::t_location * getLocation(int layer)</div><div class="ttdoc">finds the current location in the configuration file.</div><div class="ttdef"><b>Definition</b> <a href="Parser__helpers_8cpp_source.html#l00052">Parser_helpers.cpp:52</a></div></div>
 <div class="ttc" id="adefines_8hpp_html_a35a9ed336fa2523662640093badacab1"><div class="ttname"><a href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a></div><div class="ttdeci">#define LOG(message, level)</div></div>
 <div class="ttc" id="anamespaceconfig_html_a92373d4ff5d1405bbbfa5e975ba089eb"><div class="ttname"><a href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">config::t_location</a></div><div class="ttdeci">struct s_location t_location</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00016">Parser.hpp:16</a></div></div>
@@ -681,7 +681,7 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><span class="lineno">  233</span>                                                                          {</div>
 <div class="line"><span class="lineno">  234</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classconfig_1_1ConfigFileParser.html#a0c5e3a46b81944a6aaf484b597e3416e">m_configData</a>.<a class="code hl_variable" href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">servers</a>[<a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a7cc3cfe78fd8d52b3bf1f7272cf19de2">index</a>].errorPages;</div>
 <div class="line"><span class="lineno">  235</span>    }</div>
-<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_a7cc3cfe78fd8d52b3bf1f7272cf19de2"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#a7cc3cfe78fd8d52b3bf1f7272cf19de2">config::ConfigFileParser::index</a></div><div class="ttdeci">int index(std::vector&lt; std::string &gt; &amp;args, int &amp;lineCount, int layer)</div><div class="ttdoc">sets the index files for the location. (index.html by default)</div><div class="ttdef"><b>Definition</b> <a href="Parser__keywords_8cpp_source.html#l00459">Parser_keywords.cpp:459</a></div></div>
+<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_a7cc3cfe78fd8d52b3bf1f7272cf19de2"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#a7cc3cfe78fd8d52b3bf1f7272cf19de2">config::ConfigFileParser::index</a></div><div class="ttdeci">int index(std::vector&lt; std::string &gt; &amp;args, int &amp;lineCount, int layer)</div><div class="ttdoc">sets the index files for the location. (index.html by default)</div><div class="ttdef"><b>Definition</b> <a href="Parser__keywords_8cpp_source.html#l00458">Parser_keywords.cpp:458</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1350,31 +1350,31 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int 0 if successful, 1 if not. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Parser__keywords_8cpp_source.html#l00459">459</a> of file <a class="el" href="Parser__keywords_8cpp_source.html">Parser_keywords.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  459</span>                                                                                     {</div>
-<div class="line"><span class="lineno">  460</span>        (void)layer;</div>
-<div class="line"><span class="lineno">  461</span> </div>
-<div class="line"><span class="lineno">  462</span>        <span class="keywordflow">if</span> (args.size() &lt; 2 || args.size() &gt; 1001) {</div>
-<div class="line"><span class="lineno">  463</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span></div>
-<div class="line"><span class="lineno">  464</span>                    &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
-<div class="line"><span class="lineno">  465</span>                    &lt;&lt; <span class="stringliteral">&quot;Invalid number of arguments for index&quot;</span> &lt;&lt; std::endl,</div>
-<div class="line"><span class="lineno">  466</span>                1);</div>
-<div class="line"><span class="lineno">  467</span>            <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  468</span>        }</div>
-<div class="line"><span class="lineno">  469</span>        <a class="code hl_typedef" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a>* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">getLocation</a>(layer);</div>
-<div class="line"><span class="lineno">  470</span>        current-&gt;index.clear();</div>
-<div class="line"><span class="lineno">  471</span>        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> i = 1; i &lt; args.size(); i++) {</div>
-<div class="line"><span class="lineno">  472</span>            <span class="keywordflow">if</span> (args[i].length() &gt; 1000 || args[i].length() == 0) {</div>
-<div class="line"><span class="lineno">  473</span>                <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span> &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
-<div class="line"><span class="lineno">  474</span>                                                &lt;&lt; <span class="stringliteral">&quot;Index file length invalid&quot;</span></div>
-<div class="line"><span class="lineno">  475</span>                                                &lt;&lt; std::endl,</div>
-<div class="line"><span class="lineno">  476</span>                    1);</div>
-<div class="line"><span class="lineno">  477</span>                <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  478</span>            }</div>
-<div class="line"><span class="lineno">  479</span>            current-&gt;index.push_back(args[i]);</div>
-<div class="line"><span class="lineno">  480</span>        }</div>
-<div class="line"><span class="lineno">  481</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  482</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Parser__keywords_8cpp_source.html#l00458">458</a> of file <a class="el" href="Parser__keywords_8cpp_source.html">Parser_keywords.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  458</span>                                                                                     {</div>
+<div class="line"><span class="lineno">  459</span>        (void)layer;</div>
+<div class="line"><span class="lineno">  460</span> </div>
+<div class="line"><span class="lineno">  461</span>        <span class="keywordflow">if</span> (args.size() &lt; 2 || args.size() &gt; 1001) {</div>
+<div class="line"><span class="lineno">  462</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span></div>
+<div class="line"><span class="lineno">  463</span>                    &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
+<div class="line"><span class="lineno">  464</span>                    &lt;&lt; <span class="stringliteral">&quot;Invalid number of arguments for index&quot;</span> &lt;&lt; std::endl,</div>
+<div class="line"><span class="lineno">  465</span>                1);</div>
+<div class="line"><span class="lineno">  466</span>            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  467</span>        }</div>
+<div class="line"><span class="lineno">  468</span>        <a class="code hl_typedef" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a>* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">getLocation</a>(layer);</div>
+<div class="line"><span class="lineno">  469</span>        current-&gt;index.clear();</div>
+<div class="line"><span class="lineno">  470</span>        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> i = 1; i &lt; args.size(); i++) {</div>
+<div class="line"><span class="lineno">  471</span>            <span class="keywordflow">if</span> (args[i].length() &gt; 1000 || args[i].length() == 0) {</div>
+<div class="line"><span class="lineno">  472</span>                <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span> &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
+<div class="line"><span class="lineno">  473</span>                                                &lt;&lt; <span class="stringliteral">&quot;Index file length invalid&quot;</span></div>
+<div class="line"><span class="lineno">  474</span>                                                &lt;&lt; std::endl,</div>
+<div class="line"><span class="lineno">  475</span>                    1);</div>
+<div class="line"><span class="lineno">  476</span>                <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  477</span>            }</div>
+<div class="line"><span class="lineno">  478</span>            current-&gt;index.push_back(args[i]);</div>
+<div class="line"><span class="lineno">  479</span>        }</div>
+<div class="line"><span class="lineno">  480</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  481</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1490,36 +1490,35 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  325</span>        std::vector&lt;std::string&gt; methods;</div>
 <div class="line"><span class="lineno">  326</span>        methods.push_back(<span class="stringliteral">&quot;GET&quot;</span>);</div>
 <div class="line"><span class="lineno">  327</span>        methods.push_back(<span class="stringliteral">&quot;POST&quot;</span>);</div>
-<div class="line"><span class="lineno">  328</span>        methods.push_back(<span class="stringliteral">&quot;PUT&quot;</span>);</div>
-<div class="line"><span class="lineno">  329</span>        methods.push_back(<span class="stringliteral">&quot;DELETE&quot;</span>);</div>
-<div class="line"><span class="lineno">  330</span>        std::vector&lt;std::string&gt; allowed_methods;</div>
-<div class="line"><span class="lineno">  331</span>        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> i = 1; i &lt; args.size(); i++) {</div>
-<div class="line"><span class="lineno">  332</span>            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> j = 0; j &lt; methods.size(); j++) {</div>
-<div class="line"><span class="lineno">  333</span>                <span class="keywordflow">if</span> (args[i] == methods[j]) {</div>
-<div class="line"><span class="lineno">  334</span>                    allowed_methods.push_back(args[i]);</div>
-<div class="line"><span class="lineno">  335</span>                    methods.erase(methods.begin() + j);</div>
-<div class="line"><span class="lineno">  336</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  337</span>                }</div>
-<div class="line"><span class="lineno">  338</span>                <span class="keywordflow">if</span> (j == methods.size() - 1) {</div>
-<div class="line"><span class="lineno">  339</span>                    <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span></div>
-<div class="line"><span class="lineno">  340</span>                            &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
-<div class="line"><span class="lineno">  341</span>                            &lt;&lt; <span class="stringliteral">&quot;Invalid method for limit_except&quot;</span> &lt;&lt; std::endl,</div>
-<div class="line"><span class="lineno">  342</span>                        1);</div>
-<div class="line"><span class="lineno">  343</span>                    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  344</span>                }</div>
-<div class="line"><span class="lineno">  345</span>            }</div>
-<div class="line"><span class="lineno">  346</span>        }</div>
-<div class="line"><span class="lineno">  347</span>        <span class="keywordflow">if</span> (allowed_methods.size() == 0) {</div>
-<div class="line"><span class="lineno">  348</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span> &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
-<div class="line"><span class="lineno">  349</span>                                            &lt;&lt; <span class="stringliteral">&quot;No methods found for limit_except&quot;</span></div>
-<div class="line"><span class="lineno">  350</span>                                            &lt;&lt; std::endl,</div>
-<div class="line"><span class="lineno">  351</span>                1);</div>
-<div class="line"><span class="lineno">  352</span>            <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  353</span>        }</div>
-<div class="line"><span class="lineno">  354</span>        <a class="code hl_typedef" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a>* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">getLocation</a>(layer);</div>
-<div class="line"><span class="lineno">  355</span>        current-&gt;methods = allowed_methods;</div>
-<div class="line"><span class="lineno">  356</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  357</span>    }</div>
+<div class="line"><span class="lineno">  328</span>        methods.push_back(<span class="stringliteral">&quot;DELETE&quot;</span>);</div>
+<div class="line"><span class="lineno">  329</span>        std::vector&lt;std::string&gt; allowed_methods;</div>
+<div class="line"><span class="lineno">  330</span>        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> i = 1; i &lt; args.size(); i++) {</div>
+<div class="line"><span class="lineno">  331</span>            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> j = 0; j &lt; methods.size(); j++) {</div>
+<div class="line"><span class="lineno">  332</span>                <span class="keywordflow">if</span> (args[i] == methods[j]) {</div>
+<div class="line"><span class="lineno">  333</span>                    allowed_methods.push_back(args[i]);</div>
+<div class="line"><span class="lineno">  334</span>                    methods.erase(methods.begin() + j);</div>
+<div class="line"><span class="lineno">  335</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  336</span>                }</div>
+<div class="line"><span class="lineno">  337</span>                <span class="keywordflow">if</span> (j == methods.size() - 1) {</div>
+<div class="line"><span class="lineno">  338</span>                    <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span></div>
+<div class="line"><span class="lineno">  339</span>                            &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
+<div class="line"><span class="lineno">  340</span>                            &lt;&lt; <span class="stringliteral">&quot;Invalid method for limit_except&quot;</span> &lt;&lt; std::endl,</div>
+<div class="line"><span class="lineno">  341</span>                        1);</div>
+<div class="line"><span class="lineno">  342</span>                    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  343</span>                }</div>
+<div class="line"><span class="lineno">  344</span>            }</div>
+<div class="line"><span class="lineno">  345</span>        }</div>
+<div class="line"><span class="lineno">  346</span>        <span class="keywordflow">if</span> (allowed_methods.size() == 0) {</div>
+<div class="line"><span class="lineno">  347</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span> &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
+<div class="line"><span class="lineno">  348</span>                                            &lt;&lt; <span class="stringliteral">&quot;No methods found for limit_except&quot;</span></div>
+<div class="line"><span class="lineno">  349</span>                                            &lt;&lt; std::endl,</div>
+<div class="line"><span class="lineno">  350</span>                1);</div>
+<div class="line"><span class="lineno">  351</span>            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  352</span>        }</div>
+<div class="line"><span class="lineno">  353</span>        <a class="code hl_typedef" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a>* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">getLocation</a>(layer);</div>
+<div class="line"><span class="lineno">  354</span>        current-&gt;methods = allowed_methods;</div>
+<div class="line"><span class="lineno">  355</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  356</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2387,8 +2386,8 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">  155</span>            layer_num.back()++;</div>
 <div class="line"><span class="lineno">  156</span>        }</div>
 <div class="line"><span class="lineno">  157</span>    }</div>
-<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_a488be040c87c81b95572fdae4d10b9e9"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#a488be040c87c81b95572fdae4d10b9e9">config::ConfigFileParser::root</a></div><div class="ttdeci">int root(std::vector&lt; std::string &gt; &amp;args, int &amp;lineCount, int layer)</div><div class="ttdoc">sets the root directory for the location.</div><div class="ttdef"><b>Definition</b> <a href="Parser__keywords_8cpp_source.html#l00398">Parser_keywords.cpp:398</a></div></div>
-<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_aae76c210ff9aae74d87a6b57feeb474e"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#aae76c210ff9aae74d87a6b57feeb474e">config::ConfigFileParser::autoindex</a></div><div class="ttdeci">int autoindex(std::vector&lt; std::string &gt; &amp;args, int &amp;lineCount, int layer)</div><div class="ttdoc">turns the autoindex on or off for the location. (off by default)</div><div class="ttdef"><b>Definition</b> <a href="Parser__keywords_8cpp_source.html#l00427">Parser_keywords.cpp:427</a></div></div>
+<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_a488be040c87c81b95572fdae4d10b9e9"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#a488be040c87c81b95572fdae4d10b9e9">config::ConfigFileParser::root</a></div><div class="ttdeci">int root(std::vector&lt; std::string &gt; &amp;args, int &amp;lineCount, int layer)</div><div class="ttdoc">sets the root directory for the location.</div><div class="ttdef"><b>Definition</b> <a href="Parser__keywords_8cpp_source.html#l00397">Parser_keywords.cpp:397</a></div></div>
+<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_aae76c210ff9aae74d87a6b57feeb474e"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#aae76c210ff9aae74d87a6b57feeb474e">config::ConfigFileParser::autoindex</a></div><div class="ttdeci">int autoindex(std::vector&lt; std::string &gt; &amp;args, int &amp;lineCount, int layer)</div><div class="ttdoc">turns the autoindex on or off for the location. (off by default)</div><div class="ttdef"><b>Definition</b> <a href="Parser__keywords_8cpp_source.html#l00426">Parser_keywords.cpp:426</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2571,27 +2570,27 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int 0 if successful, 1 if not. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Parser__keywords_8cpp_source.html#l00367">367</a> of file <a class="el" href="Parser__keywords_8cpp_source.html">Parser_keywords.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  369</span>                                                   {</div>
-<div class="line"><span class="lineno">  370</span>        <span class="keywordflow">if</span> (args.size() != 2) {</div>
-<div class="line"><span class="lineno">  371</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span></div>
-<div class="line"><span class="lineno">  372</span>                    &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
-<div class="line"><span class="lineno">  373</span>                    &lt;&lt; <span class="stringliteral">&quot;Invalid number of arguments for return&quot;</span> &lt;&lt; std::endl,</div>
-<div class="line"><span class="lineno">  374</span>                1);</div>
-<div class="line"><span class="lineno">  375</span>            <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  376</span>        }</div>
-<div class="line"><span class="lineno">  377</span>        <span class="keywordflow">if</span> (args[1].length() &gt; 1000 || args[1].length() == 0) {</div>
-<div class="line"><span class="lineno">  378</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span> &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
-<div class="line"><span class="lineno">  379</span>                                            &lt;&lt; <span class="stringliteral">&quot;Return url length invalid&quot;</span></div>
-<div class="line"><span class="lineno">  380</span>                                            &lt;&lt; std::endl,</div>
-<div class="line"><span class="lineno">  381</span>                1);</div>
-<div class="line"><span class="lineno">  382</span>            <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  383</span>        }</div>
-<div class="line"><span class="lineno">  384</span>        <span class="comment">// TODO: check if valid url?</span></div>
-<div class="line"><span class="lineno">  385</span>        <a class="code hl_typedef" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a>* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">getLocation</a>(layer);</div>
-<div class="line"><span class="lineno">  386</span>        current-&gt;return_url = args[1];</div>
-<div class="line"><span class="lineno">  387</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  388</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Parser__keywords_8cpp_source.html#l00366">366</a> of file <a class="el" href="Parser__keywords_8cpp_source.html">Parser_keywords.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  368</span>                                                   {</div>
+<div class="line"><span class="lineno">  369</span>        <span class="keywordflow">if</span> (args.size() != 2) {</div>
+<div class="line"><span class="lineno">  370</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span></div>
+<div class="line"><span class="lineno">  371</span>                    &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
+<div class="line"><span class="lineno">  372</span>                    &lt;&lt; <span class="stringliteral">&quot;Invalid number of arguments for return&quot;</span> &lt;&lt; std::endl,</div>
+<div class="line"><span class="lineno">  373</span>                1);</div>
+<div class="line"><span class="lineno">  374</span>            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  375</span>        }</div>
+<div class="line"><span class="lineno">  376</span>        <span class="keywordflow">if</span> (args[1].length() &gt; 1000 || args[1].length() == 0) {</div>
+<div class="line"><span class="lineno">  377</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span> &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
+<div class="line"><span class="lineno">  378</span>                                            &lt;&lt; <span class="stringliteral">&quot;Return url length invalid&quot;</span></div>
+<div class="line"><span class="lineno">  379</span>                                            &lt;&lt; std::endl,</div>
+<div class="line"><span class="lineno">  380</span>                1);</div>
+<div class="line"><span class="lineno">  381</span>            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  382</span>        }</div>
+<div class="line"><span class="lineno">  383</span>        <span class="comment">// TODO: check if valid url?</span></div>
+<div class="line"><span class="lineno">  384</span>        <a class="code hl_typedef" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a>* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">getLocation</a>(layer);</div>
+<div class="line"><span class="lineno">  385</span>        current-&gt;return_url = args[1];</div>
+<div class="line"><span class="lineno">  386</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  387</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2677,27 +2676,27 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int 0 if successful, 1 if not. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Parser__keywords_8cpp_source.html#l00398">398</a> of file <a class="el" href="Parser__keywords_8cpp_source.html">Parser_keywords.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  398</span>                                                                                    {</div>
-<div class="line"><span class="lineno">  399</span>        (void)layer;</div>
-<div class="line"><span class="lineno">  400</span>        <span class="keywordflow">if</span> (args.size() != 2) {</div>
-<div class="line"><span class="lineno">  401</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span></div>
-<div class="line"><span class="lineno">  402</span>                    &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
-<div class="line"><span class="lineno">  403</span>                    &lt;&lt; <span class="stringliteral">&quot;Invalid number of arguments for root&quot;</span> &lt;&lt; std::endl,</div>
-<div class="line"><span class="lineno">  404</span>                1);</div>
-<div class="line"><span class="lineno">  405</span>            <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  406</span>        }</div>
-<div class="line"><span class="lineno">  407</span>        <span class="keywordflow">if</span> (args[1].length() &gt; 1000 || args[1].length() == 0) {</div>
-<div class="line"><span class="lineno">  408</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span> &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
-<div class="line"><span class="lineno">  409</span>                                            &lt;&lt; <span class="stringliteral">&quot;Root length invalid&quot;</span> &lt;&lt; std::endl,</div>
-<div class="line"><span class="lineno">  410</span>                1);</div>
-<div class="line"><span class="lineno">  411</span>            <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  412</span>        }</div>
-<div class="line"><span class="lineno">  413</span>        <span class="comment">// TODO: check if path is valid</span></div>
-<div class="line"><span class="lineno">  414</span>        <a class="code hl_typedef" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a>* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">getLocation</a>(layer);</div>
-<div class="line"><span class="lineno">  415</span>        current-&gt;root = args[1];</div>
-<div class="line"><span class="lineno">  416</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  417</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Parser__keywords_8cpp_source.html#l00397">397</a> of file <a class="el" href="Parser__keywords_8cpp_source.html">Parser_keywords.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  397</span>                                                                                    {</div>
+<div class="line"><span class="lineno">  398</span>        (void)layer;</div>
+<div class="line"><span class="lineno">  399</span>        <span class="keywordflow">if</span> (args.size() != 2) {</div>
+<div class="line"><span class="lineno">  400</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span></div>
+<div class="line"><span class="lineno">  401</span>                    &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
+<div class="line"><span class="lineno">  402</span>                    &lt;&lt; <span class="stringliteral">&quot;Invalid number of arguments for root&quot;</span> &lt;&lt; std::endl,</div>
+<div class="line"><span class="lineno">  403</span>                1);</div>
+<div class="line"><span class="lineno">  404</span>            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  405</span>        }</div>
+<div class="line"><span class="lineno">  406</span>        <span class="keywordflow">if</span> (args[1].length() &gt; 1000 || args[1].length() == 0) {</div>
+<div class="line"><span class="lineno">  407</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Configuration file (line &quot;</span> &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
+<div class="line"><span class="lineno">  408</span>                                            &lt;&lt; <span class="stringliteral">&quot;Root length invalid&quot;</span> &lt;&lt; std::endl,</div>
+<div class="line"><span class="lineno">  409</span>                1);</div>
+<div class="line"><span class="lineno">  410</span>            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  411</span>        }</div>
+<div class="line"><span class="lineno">  412</span>        <span class="comment">// TODO: check if path is valid</span></div>
+<div class="line"><span class="lineno">  413</span>        <a class="code hl_typedef" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a>* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">getLocation</a>(layer);</div>
+<div class="line"><span class="lineno">  414</span>        current-&gt;root = args[1];</div>
+<div class="line"><span class="lineno">  415</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  416</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2905,7 +2904,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_a9201327984c6bb55a4ae4e9cb9f1afc9"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#a9201327984c6bb55a4ae4e9cb9f1afc9">config::ConfigFileParser::clientMaxBodySize</a></div><div class="ttdeci">int clientMaxBodySize(std::vector&lt; std::string &gt; &amp;args, int &amp;lineCount, int layer)</div><div class="ttdoc">sets the max body size for the server.</div><div class="ttdef"><b>Definition</b> <a href="Parser__keywords_8cpp_source.html#l00282">Parser_keywords.cpp:282</a></div></div>
 <div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_ab0873aafd871776227166466648adcff"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#ab0873aafd871776227166466648adcff">config::ConfigFileParser::errorPage</a></div><div class="ttdeci">int errorPage(std::vector&lt; std::string &gt; &amp;args, int &amp;lineCount, int layer)</div><div class="ttdoc">sets the error pages for the server.</div><div class="ttdef"><b>Definition</b> <a href="Parser__keywords_8cpp_source.html#l00241">Parser_keywords.cpp:241</a></div></div>
 <div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_ad660e1b92477502518971b41373ee60a"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#ad660e1b92477502518971b41373ee60a">config::ConfigFileParser::serverName</a></div><div class="ttdeci">int serverName(std::vector&lt; std::string &gt; &amp;args, int &amp;lineCount, int layer)</div><div class="ttdoc">Sets the server name(s) of the server.</div><div class="ttdef"><b>Definition</b> <a href="Parser__keywords_8cpp_source.html#l00204">Parser_keywords.cpp:204</a></div></div>
-<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_ae96980a09075f768b9b072297e2e25f6"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#ae96980a09075f768b9b072297e2e25f6">config::ConfigFileParser::returnKeyword</a></div><div class="ttdeci">int returnKeyword(std::vector&lt; std::string &gt; &amp;args, const int &amp;lineCount, int layer)</div><div class="ttdoc">redirects the user to a different url with a specific return code.</div><div class="ttdef"><b>Definition</b> <a href="Parser__keywords_8cpp_source.html#l00367">Parser_keywords.cpp:367</a></div></div>
+<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_ae96980a09075f768b9b072297e2e25f6"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#ae96980a09075f768b9b072297e2e25f6">config::ConfigFileParser::returnKeyword</a></div><div class="ttdeci">int returnKeyword(std::vector&lt; std::string &gt; &amp;args, const int &amp;lineCount, int layer)</div><div class="ttdoc">redirects the user to a different url with a specific return code.</div><div class="ttdef"><b>Definition</b> <a href="Parser__keywords_8cpp_source.html#l00366">Parser_keywords.cpp:366</a></div></div>
 <div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_af23de28a87beadfcc28c48021a066a14"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#af23de28a87beadfcc28c48021a066a14">config::ConfigFileParser::idCommand</a></div><div class="ttdeci">enum CmdId idCommand(const std::string &amp;command)</div><div class="ttdoc">Identifies the command in the configuration file. and returns the id of the command.</div><div class="ttdef"><b>Definition</b> <a href="Parser__helpers_8cpp_source.html#l00198">Parser_helpers.cpp:198</a></div></div>
 <div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6">config::CmdId</a></div><div class="ttdeci">CmdId</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00032">Parser.hpp:32</a></div></div>
 </div><!-- fragment --><div class="dynheader">

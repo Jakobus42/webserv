@@ -72,88 +72,123 @@ $(document).ready(function(){initNavTree('Connection_8cpp_source.html',''); init
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;unistd.h&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehttp.html">http</a> {</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;cstring&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#a6806966a982b17c0b97c4d83ff756293">   10</a></span>    <a class="code hl_function" href="classhttp_1_1Connection.html#a6806966a982b17c0b97c4d83ff756293">Connection::Connection</a>()</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        : m_client_socket()</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        , m_request() {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    }</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacehttp.html">http</a> {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="}">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#a6806966a982b17c0b97c4d83ff756293">   12</a></span>    <a class="code hl_function" href="classhttp_1_1Connection.html#a6806966a982b17c0b97c4d83ff756293">Connection::Connection</a>()</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        : m_client_socket()</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        , m_request()</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        , m_read_buffer() {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    }</div>
 </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#a87e85a3b64af7f9b1c8c0310f290b4f2">   18</a></span>    <a class="code hl_function" href="classhttp_1_1Connection.html#a6806966a982b17c0b97c4d83ff756293">Connection::Connection</a>(<span class="keywordtype">int</span> listen_socket) <span class="keywordflow">throw</span>(std::exception)</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        : m_client_socket(listen_socket)</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        , m_request() {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    }</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="}">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#a87e85a3b64af7f9b1c8c0310f290b4f2">   21</a></span>    <a class="code hl_function" href="classhttp_1_1Connection.html#a6806966a982b17c0b97c4d83ff756293">Connection::Connection</a>(<span class="keywordtype">int</span> listen_socket) <span class="keywordflow">throw</span>(std::exception)</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        : m_client_socket(listen_socket)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        , m_request()</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        , m_read_buffer() {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    }</div>
 </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#aaac47857dfaa6f11c7c46dd7a823b994">   27</a></span>    <a class="code hl_function" href="classhttp_1_1Connection.html#aaac47857dfaa6f11c7c46dd7a823b994">Connection::~Connection</a>() {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    }</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="}">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#aaac47857dfaa6f11c7c46dd7a823b994">   31</a></span>    <a class="code hl_function" href="classhttp_1_1Connection.html#aaac47857dfaa6f11c7c46dd7a823b994">Connection::~Connection</a>() {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    }</div>
 </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="foldopen" id="foldopen00034" data-start="{" data-end="}">
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#af5a8245eb4674ed237a5e22e46ecf74b">   34</a></span>    <a class="code hl_function" href="classhttp_1_1Connection.html#a6806966a982b17c0b97c4d83ff756293">Connection::Connection</a>(<span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1Connection.html">Connection</a>&amp; other)</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        : m_client_socket(other.getSocket())</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        , m_request(other.getRequest()) {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    }</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#af5a8245eb4674ed237a5e22e46ecf74b">   38</a></span>    <a class="code hl_function" href="classhttp_1_1Connection.html#a6806966a982b17c0b97c4d83ff756293">Connection::Connection</a>(<span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1Connection.html">Connection</a>&amp; other)</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        : m_client_socket(other.getSocket())</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        , m_request(other.getRequest())</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        , m_read_buffer() {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        std::memcpy(<a class="code hl_variable" href="classhttp_1_1Connection.html#a6cec8f74e25faf7f39d8aac058682af2">m_read_buffer</a>, other.<a class="code hl_function" href="classhttp_1_1Connection.html#ae6d69a9ff147672f0a114311ae63c166">getBuffer</a>(), <a class="code hl_define" href="Request_8hpp.html#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
 </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#a2f8d41f9bfeb7736635e6cba132d378f">   44</a></span>    <a class="code hl_class" href="classhttp_1_1Connection.html">Connection</a>&amp; <a class="code hl_function" href="classhttp_1_1Connection.html#a2f8d41f9bfeb7736635e6cba132d378f">Connection::operator=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1Connection.html">Connection</a>&amp; rhs) {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs)</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_variable" href="classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50">m_client_socket</a>.operator=(rhs.<a class="code hl_function" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">getSocket</a>());</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <a class="code hl_variable" href="classhttp_1_1Connection.html#a477ffbed6afb1d2803fe0635b00bd24e">m_request</a> = rhs.<a class="code hl_function" href="classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894">getRequest</a>();</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="}">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#a2f8d41f9bfeb7736635e6cba132d378f">   50</a></span>    <a class="code hl_class" href="classhttp_1_1Connection.html">Connection</a>&amp; <a class="code hl_function" href="classhttp_1_1Connection.html#a2f8d41f9bfeb7736635e6cba132d378f">Connection::operator=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1Connection.html">Connection</a>&amp; rhs) {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <a class="code hl_variable" href="classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50">m_client_socket</a>.operator=(rhs.<a class="code hl_function" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">getSocket</a>());</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <a class="code hl_variable" href="classhttp_1_1Connection.html#a477ffbed6afb1d2803fe0635b00bd24e">m_request</a> = rhs.<a class="code hl_function" href="classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894">getRequest</a>();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    }</div>
 </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#a0096bcce0cada05a9f7e5e4f5d9d6bfc">   52</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classhttp_1_1Connection.html#a0096bcce0cada05a9f7e5e4f5d9d6bfc">Connection::operator==</a>(<span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1Connection.html">Connection</a>&amp; other)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">return</span> other.<a class="code hl_function" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">getSocket</a>() == this-&gt;<a class="code hl_function" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">getSocket</a>();</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="foldopen" id="foldopen00058" data-start="{" data-end="}">
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#a0096bcce0cada05a9f7e5e4f5d9d6bfc">   58</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classhttp_1_1Connection.html#a0096bcce0cada05a9f7e5e4f5d9d6bfc">Connection::operator==</a>(<span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1Connection.html">Connection</a>&amp; other)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">return</span> other.<a class="code hl_function" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">getSocket</a>() == this-&gt;<a class="code hl_function" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">getSocket</a>();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
 </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="foldopen" id="foldopen00056" data-start="{" data-end="}">
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e">   56</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e">Connection::close</a>(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">getSocket</a>().<a class="code hl_function" href="classhttp_1_1ClientSocket.html#aaf3b22f0486aa9f8ebfd15bc842c5767">close</a>();</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e">   62</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e">Connection::close</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">getSocket</a>().<a class="code hl_function" href="classhttp_1_1ClientSocket.html#aaf3b22f0486aa9f8ebfd15bc842c5767">close</a>();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
 </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="foldopen" id="foldopen00060" data-start="{" data-end="}">
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">   60</a></span>    <span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1ClientSocket.html">ClientSocket</a>&amp; <a class="code hl_function" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">Connection::getSocket</a>(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50">m_client_socket</a>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">   66</a></span>    <span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1ClientSocket.html">ClientSocket</a>&amp; <a class="code hl_function" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">Connection::getSocket</a>(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50">m_client_socket</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
 </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="foldopen" id="foldopen00064" data-start="{" data-end="}">
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#ae42cd82a9bec6c298d0f6d36e9047847">   64</a></span>    <a class="code hl_class" href="classhttp_1_1ClientSocket.html">ClientSocket</a>&amp; <a class="code hl_function" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">Connection::getSocket</a>(<span class="keywordtype">void</span>) {</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50">m_client_socket</a>;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="foldopen" id="foldopen00070" data-start="{" data-end="}">
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#ae42cd82a9bec6c298d0f6d36e9047847">   70</a></span>    <a class="code hl_class" href="classhttp_1_1ClientSocket.html">ClientSocket</a>&amp; <a class="code hl_function" href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">Connection::getSocket</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50">m_client_socket</a>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    }</div>
 </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="foldopen" id="foldopen00068" data-start="{" data-end="}">
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894">   68</a></span>    <span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1Request.html">http::Request</a>&amp; <a class="code hl_function" href="classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894">Connection::getRequest</a>(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Connection.html#a477ffbed6afb1d2803fe0635b00bd24e">m_request</a>;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    }</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597">   74</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597">Connection::getClientSocketFd</a>(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50">m_client_socket</a>.<a class="code hl_function" href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf">getFd</a>();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    }</div>
 </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>} <span class="comment">// namespace http</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="foldopen" id="foldopen00078" data-start="{" data-end="}">
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894">   78</a></span>    <span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1Request.html">http::Request</a>&amp; <a class="code hl_function" href="classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894">Connection::getRequest</a>(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Connection.html#a477ffbed6afb1d2803fe0635b00bd24e">m_request</a>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    }</div>
+</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="foldopen" id="foldopen00082" data-start="{" data-end="}">
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#ad1c64792c56b24889445c5683e17ee8e">   82</a></span>    <a class="code hl_class" href="classhttp_1_1Request.html">http::Request</a>&amp; <a class="code hl_function" href="classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894">Connection::getRequest</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Connection.html#a477ffbed6afb1d2803fe0635b00bd24e">m_request</a>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
+</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="foldopen" id="foldopen00086" data-start="{" data-end="}">
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#ae6d69a9ff147672f0a114311ae63c166">   86</a></span>    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="classhttp_1_1Connection.html#ae6d69a9ff147672f0a114311ae63c166">Connection::getBuffer</a>(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Connection.html#a6cec8f74e25faf7f39d8aac058682af2">m_read_buffer</a>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
+</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="foldopen" id="foldopen00090" data-start="{" data-end="}">
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classhttp_1_1Connection.html#a7a3451a0510d3874965df9ca06c6c5dd">   90</a></span>    <span class="keywordtype">char</span>* <a class="code hl_function" href="classhttp_1_1Connection.html#ae6d69a9ff147672f0a114311ae63c166">Connection::getBuffer</a>(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Connection.html#a6cec8f74e25faf7f39d8aac058682af2">m_read_buffer</a>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    }</div>
+</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>} <span class="comment">// namespace http</span></div>
 <div class="ttc" id="aConnection_8hpp_html"><div class="ttname"><a href="Connection_8hpp.html">Connection.hpp</a></div></div>
+<div class="ttc" id="aRequest_8hpp_html_a6b20d41d6252e9871430c242cb1a56e7"><div class="ttname"><a href="Request_8hpp.html#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a></div><div class="ttdeci">#define BUFFER_SIZE</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00013">Request.hpp:13</a></div></div>
 <div class="ttc" id="aclasshttp_1_1ClientSocket_html"><div class="ttname"><a href="classhttp_1_1ClientSocket.html">http::ClientSocket</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="ClientSocket_8hpp_source.html#l00019">ClientSocket.hpp:19</a></div></div>
+<div class="ttc" id="aclasshttp_1_1ClientSocket_html_a03a9208ccb375195d2799ee47270e1bf"><div class="ttname"><a href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf">http::ClientSocket::getFd</a></div><div class="ttdeci">int getFd(void) const</div><div class="ttdef"><b>Definition</b> <a href="ClientSocket_8cpp_source.html#l00071">ClientSocket.cpp:71</a></div></div>
 <div class="ttc" id="aclasshttp_1_1ClientSocket_html_aaf3b22f0486aa9f8ebfd15bc842c5767"><div class="ttname"><a href="classhttp_1_1ClientSocket.html#aaf3b22f0486aa9f8ebfd15bc842c5767">http::ClientSocket::close</a></div><div class="ttdeci">void close(void)</div><div class="ttdef"><b>Definition</b> <a href="ClientSocket_8cpp_source.html#l00091">ClientSocket.cpp:91</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Connection_html"><div class="ttname"><a href="classhttp_1_1Connection.html">http::Connection</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="Connection_8hpp_source.html#l00012">Connection.hpp:12</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_a0096bcce0cada05a9f7e5e4f5d9d6bfc"><div class="ttname"><a href="classhttp_1_1Connection.html#a0096bcce0cada05a9f7e5e4f5d9d6bfc">http::Connection::operator==</a></div><div class="ttdeci">bool operator==(const Connection &amp;other) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00052">Connection.cpp:52</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_a2f8d41f9bfeb7736635e6cba132d378f"><div class="ttname"><a href="classhttp_1_1Connection.html#a2f8d41f9bfeb7736635e6cba132d378f">http::Connection::operator=</a></div><div class="ttdeci">Connection &amp; operator=(const Connection &amp;rhs)</div><div class="ttdoc">Copy assignment operator.</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00044">Connection.cpp:44</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_a477ffbed6afb1d2803fe0635b00bd24e"><div class="ttname"><a href="classhttp_1_1Connection.html#a477ffbed6afb1d2803fe0635b00bd24e">http::Connection::m_request</a></div><div class="ttdeci">http::Request m_request</div><div class="ttdef"><b>Definition</b> <a href="Connection_8hpp_source.html#l00030">Connection.hpp:30</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_a6806966a982b17c0b97c4d83ff756293"><div class="ttname"><a href="classhttp_1_1Connection.html#a6806966a982b17c0b97c4d83ff756293">http::Connection::Connection</a></div><div class="ttdeci">Connection()</div><div class="ttdoc">Constructs a new Connection object.</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00010">Connection.cpp:10</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_a948bbde86fb6f85ce1d6592fd5970e50"><div class="ttname"><a href="classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50">http::Connection::m_client_socket</a></div><div class="ttdeci">ClientSocket m_client_socket</div><div class="ttdef"><b>Definition</b> <a href="Connection_8hpp_source.html#l00029">Connection.hpp:29</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_aaac47857dfaa6f11c7c46dd7a823b994"><div class="ttname"><a href="classhttp_1_1Connection.html#aaac47857dfaa6f11c7c46dd7a823b994">http::Connection::~Connection</a></div><div class="ttdeci">~Connection()</div><div class="ttdoc">Destroys the Connection object.</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00027">Connection.cpp:27</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_ab84f4a281cf14d914c045dd0487b386e"><div class="ttname"><a href="classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e">http::Connection::close</a></div><div class="ttdeci">void close(void)</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00056">Connection.cpp:56</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_ae16a6e4f68981b34d70f101ff798e06e"><div class="ttname"><a href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">http::Connection::getSocket</a></div><div class="ttdeci">const ClientSocket &amp; getSocket(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00060">Connection.cpp:60</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_ae609a5b0ff966946283c6c4619c4a894"><div class="ttname"><a href="classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894">http::Connection::getRequest</a></div><div class="ttdeci">const http::Request &amp; getRequest(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00068">Connection.cpp:68</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_a0096bcce0cada05a9f7e5e4f5d9d6bfc"><div class="ttname"><a href="classhttp_1_1Connection.html#a0096bcce0cada05a9f7e5e4f5d9d6bfc">http::Connection::operator==</a></div><div class="ttdeci">bool operator==(const Connection &amp;other) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00058">Connection.cpp:58</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_a2f8d41f9bfeb7736635e6cba132d378f"><div class="ttname"><a href="classhttp_1_1Connection.html#a2f8d41f9bfeb7736635e6cba132d378f">http::Connection::operator=</a></div><div class="ttdeci">Connection &amp; operator=(const Connection &amp;rhs)</div><div class="ttdoc">Copy assignment operator.</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00050">Connection.cpp:50</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_a3bf8eb2db35a8030685b73971e3d8597"><div class="ttname"><a href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597">http::Connection::getClientSocketFd</a></div><div class="ttdeci">int getClientSocketFd(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00074">Connection.cpp:74</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_a477ffbed6afb1d2803fe0635b00bd24e"><div class="ttname"><a href="classhttp_1_1Connection.html#a477ffbed6afb1d2803fe0635b00bd24e">http::Connection::m_request</a></div><div class="ttdeci">http::Request m_request</div><div class="ttdef"><b>Definition</b> <a href="Connection_8hpp_source.html#l00034">Connection.hpp:34</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_a6806966a982b17c0b97c4d83ff756293"><div class="ttname"><a href="classhttp_1_1Connection.html#a6806966a982b17c0b97c4d83ff756293">http::Connection::Connection</a></div><div class="ttdeci">Connection()</div><div class="ttdoc">Constructs a new Connection object.</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00012">Connection.cpp:12</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_a6cec8f74e25faf7f39d8aac058682af2"><div class="ttname"><a href="classhttp_1_1Connection.html#a6cec8f74e25faf7f39d8aac058682af2">http::Connection::m_read_buffer</a></div><div class="ttdeci">char m_read_buffer[BUFFER_SIZE]</div><div class="ttdef"><b>Definition</b> <a href="Connection_8hpp_source.html#l00035">Connection.hpp:35</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_a948bbde86fb6f85ce1d6592fd5970e50"><div class="ttname"><a href="classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50">http::Connection::m_client_socket</a></div><div class="ttdeci">ClientSocket m_client_socket</div><div class="ttdef"><b>Definition</b> <a href="Connection_8hpp_source.html#l00033">Connection.hpp:33</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_aaac47857dfaa6f11c7c46dd7a823b994"><div class="ttname"><a href="classhttp_1_1Connection.html#aaac47857dfaa6f11c7c46dd7a823b994">http::Connection::~Connection</a></div><div class="ttdeci">~Connection()</div><div class="ttdoc">Destroys the Connection object.</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00031">Connection.cpp:31</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_ab84f4a281cf14d914c045dd0487b386e"><div class="ttname"><a href="classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e">http::Connection::close</a></div><div class="ttdeci">void close(void)</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00062">Connection.cpp:62</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_ae16a6e4f68981b34d70f101ff798e06e"><div class="ttname"><a href="classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e">http::Connection::getSocket</a></div><div class="ttdeci">const ClientSocket &amp; getSocket(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00066">Connection.cpp:66</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_ae609a5b0ff966946283c6c4619c4a894"><div class="ttname"><a href="classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894">http::Connection::getRequest</a></div><div class="ttdeci">const http::Request &amp; getRequest(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00078">Connection.cpp:78</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_ae6d69a9ff147672f0a114311ae63c166"><div class="ttname"><a href="classhttp_1_1Connection.html#ae6d69a9ff147672f0a114311ae63c166">http::Connection::getBuffer</a></div><div class="ttdeci">const char * getBuffer(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00086">Connection.cpp:86</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html"><div class="ttname"><a href="classhttp_1_1Request.html">http::Request</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00061">Request.hpp:61</a></div></div>
 <div class="ttc" id="anamespacehttp_html"><div class="ttname"><a href="namespacehttp.html">http</a></div><div class="ttdef"><b>Definition</b> <a href="ClientSocket_8cpp_source.html#l00010">ClientSocket.cpp:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
