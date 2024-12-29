@@ -75,6 +75,7 @@ namespace http {
 
 			void PrintRequestData();
 			bool parse(char buffer[BUFFER_SIZE]);
+			void reset(void);
 
 		private:
 			uint32_t m_receivedBytes;

@@ -7,8 +7,8 @@ namespace core {
 	/**
 	 * @brief Constructs a new ResponseHandler object.
 	 */
-	ResponseHandler::ResponseHandler()
-		: AHandler() {
+	ResponseHandler::ResponseHandler(const HandlerContext& ctx)
+		: AHandler(ctx) {
 	}
 
 	/**
@@ -21,8 +21,8 @@ namespace core {
 	 * @brief Copy constructor.
 	 * @param other The other ResponseHandler object to copy.
 	 */
-	ResponseHandler::ResponseHandler(const ResponseHandler&)
-		: AHandler() {
+	ResponseHandler::ResponseHandler(const ResponseHandler& other)
+		: AHandler(other.getContext()) {
 	}
 
 	/**
@@ -30,20 +30,24 @@ namespace core {
 	 * @param other The other ResponseHandler object to assign from.
 	 * @return A reference to the assigned ResponseHandler object.
 	 */
-	ResponseHandler& ResponseHandler::operator=(const ResponseHandler&) {
+	ResponseHandler& ResponseHandler::operator=(const ResponseHandler& rhs) {
+		if (this == &rhs)
+			return *this;
+		this->AHandler::operator=(rhs);
 		return *this;
 	}
 
 	// TODO: Implement logic to find out what to do
 	bool ResponseHandler::shouldDrop(void) const {
+		// return true;
 		if (m_state == FAILED)
 			return true;
 		return false;
 	}
 
 	// note: the implementation is just temporary
-	void ResponseHandler::handle(HandlerContext& ctx) {
-		int fd = ctx.conn.getSocket().getFd();
+	void ResponseHandler::handle() {
+		int fd = m_context.conn.getSocket().getFd();
 		std::cout << "ResponseHandler on fd: " << fd << std::endl;
 		const char* response =
 			"HTTP/1.1 200 OK\r\n"
@@ -58,6 +62,7 @@ namespace core {
 		} else {
 			std::cout << "Sent response: " << response << std::endl;
 			(void)response;
+			m_context.conn.getRequest().reset();
 			// }
 			setState(COMPLETED);
 			std::cout << "Response set to COMPLETED" << std::endl;

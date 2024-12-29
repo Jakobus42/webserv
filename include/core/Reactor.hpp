@@ -2,7 +2,6 @@
 
 #include <sys/epoll.h>
 
-#include "core/AHandler.hpp"
 #include "http/VirtualServer.hpp"
 #include "shared/defines.hpp"
 
@@ -13,16 +12,9 @@
 
 namespace core {
 
+	class AHandler;
+
 	typedef std::vector<http::VirtualServer> t_virtualServers;
-
-	struct EventData {
-			AHandler* handler;
-			HandlerContext ctx;
-
-			EventData(AHandler* handler, const HandlerContext& ctx)
-				: handler(handler)
-				, ctx(ctx) {}
-	};
 
 	/**
 	 * @class Reactor
@@ -37,12 +29,15 @@ namespace core {
 			int getEpollFd() const;
 			const t_virtualServers& getVirtualServers() const;
 			t_virtualServers& getVirtualServers();
-			const std::map<int, EventData*>& getEvents() const;
-			std::map<int, EventData*>& getEvents();
+			const std::map<int, AHandler*>& getEvents() const;
+			std::map<int, AHandler*>& getEvents();
 
 			void addVirtualServer(config::t_server& serverConfig) throw(std::exception);
 			bool removeVirtualServer(t_virtualServers::iterator it);
 			bool addVirtualServers(config::t_config_data& configData);
+			AHandler* upsertEventHandler(int fd, EPOLL_EVENTS event, struct HandlerContext& ctx);
+			void removeEventHandler(int);
+			AHandler* getEventHandler(int);
 
 			void react();
 
@@ -50,8 +45,8 @@ namespace core {
 			Reactor(const Reactor& other);
 			Reactor& operator=(const Reactor& other);
 
-			void registerHandler(int fd, AHandler* handler, const HandlerContext& ctx, uint32_t events = EPOLLIN);
-			void modifyHandler(int fd, HandlerContext& ctx, uint32_t events);
+			void registerHandler(int fd, AHandler* handler, EPOLL_EVENTS events);
+			AHandler* modifyHandler(AHandler*, EPOLL_EVENTS events);
 			void unregisterHandler(int fd) throw(std::runtime_error);
 			void handleEvents(t_event* events, int nEvents);
 
@@ -61,7 +56,7 @@ namespace core {
 		private:
 			int m_epoll_master_fd;
 			t_virtualServers m_vServers;
-			std::map<int, EventData*> m_events;
+			std::map<int, AHandler*> m_eventHandlers;
 	};
 
 } // namespace core

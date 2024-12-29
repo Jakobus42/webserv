@@ -4,6 +4,10 @@
 
 #include <iostream>
 
+int signal_handler(int signum) {
+	return signum;
+}
+
 int main(int argc, char** const argv) {
 
 	try {

@@ -10,13 +10,14 @@ namespace core {
 	 */
 	class ResponseHandler : public AHandler {
 		public:
-			ResponseHandler();
+			ResponseHandler(const HandlerContext& ctx);
 			~ResponseHandler();
 
-			void handle(HandlerContext& ctx);
+			void handle();
 			bool shouldDrop() const;
 
 		private:
+			ResponseHandler();
 			ResponseHandler(const ResponseHandler& other);
 			ResponseHandler& operator=(const ResponseHandler& rhs);
 	};

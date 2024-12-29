@@ -43,7 +43,13 @@ namespace http {
 	Request& Request::operator=(const Request& rhs) {
 		if (this == &rhs)
 			return *this;
-		*this = rhs;
+		m_receivedBytes = rhs.getReceivedBytes();
+		m_contentLength = rhs.getContentLength();
+		m_restData = rhs.getRestData();
+		m_requestData = rhs.getRequestData();
+		m_status = rhs.getStatus();
+		m_expectedBody = rhs.getExpectedBody();
+		m_chunkedStatus = rhs.getChunkedStatus();
 		return *this;
 	}
 
@@ -104,6 +110,19 @@ namespace http {
 		}
 		std::cout << "Request.parse successful" << std::endl;
 		return true;
+	}
+
+	void Request::reset(void) {
+		m_receivedBytes = 0;
+		m_contentLength = 0;
+		m_restData = "";
+		m_requestData.method = "";
+		m_requestData.uri = "";
+		m_requestData.version = "";
+		(void)m_requestData.headers.empty();
+		m_requestData.body = "";
+		(void)m_requestData.trailingHeaders.empty();
+		m_status = PARSE_START;
 	}
 
 	void Request::PrintRequestData() {

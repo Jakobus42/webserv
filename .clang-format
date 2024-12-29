@@ -65,6 +65,12 @@ SeparateDefinitionBlocks: Always
 NamespaceIndentation: All
 #RemoveEmptyLinesInUnwrappedLines: true # only in v20
 #SpacesBeforeAssignmentOperators: true
+# KeepEmptyLines:
+#   AtEndOfFile: false
+#   AtStartOfBlock: false
+#   AtStartOfFile: false
+MaxEmptyLinesToKeep: 5
+AlignTrailingComments: true
 SpacesInContainerLiterals: false
 #SpacesInCStyleParentheses: false
 #SpacesInEmptyPartentheses: false
