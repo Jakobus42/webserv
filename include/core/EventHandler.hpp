@@ -15,8 +15,11 @@ namespace core {
 	typedef std::queue<http::Request> t_requests;
 
 	enum HandlerState {
-		PENDING,
+		PENDING_READ,
 		PROCESSING,
+		WAITING_FOR_WRITE,
+		WRITING,
+		SENDING,
 		COMPLETED,
 		FAILED
 	};

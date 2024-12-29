@@ -13,7 +13,7 @@ namespace core {
 	 */
 	EventHandler::EventHandler(http::VirtualServer& server, http::Connection& connection, uint32_t events)
 		: m_events(events)
-		, m_state(PENDING)
+		, m_state(PENDING_READ)
 		, m_requests()
 		, m_connection(connection)
 		, m_server(server) {}
@@ -88,7 +88,11 @@ namespace core {
 
 	bool EventHandler::shouldDrop(void) const {
 		// @TODO: implement depending on the event
-		return true;
+		if (m_state == FAILED)
+			return true;
+		if (m_state == COMPLETED)
+			return true;
+		return false;
 	}
 
 	// EVENT HANDLING LOGIC
@@ -131,7 +135,7 @@ namespace core {
 		}
 		if (m_connection.getRequest().getStatus() == http::PARSE_END) {
 			std::cout << "Request COMPLETED right after parsing" << std::endl;
-			setState(COMPLETED);
+			setState(WAITING_FOR_WRITE);
 		} else
 			setState(PROCESSING);
 		// if request.done() then setState(COMPLETED);
