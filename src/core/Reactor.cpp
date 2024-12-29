@@ -4,9 +4,6 @@
 #include <sys/epoll.h>
 #include <unistd.h>
 
-#include "core/AHandler.hpp"
-#include "core/RequestHandler.hpp"
-#include "core/ResponseHandler.hpp"
 #include "http/VirtualServer.hpp"
 
 #include <csignal>
@@ -17,14 +14,15 @@
 
 namespace core {
 
-	static bool g_running = true;
+	bool Reactor::m_reacting = true;
 
 	/**
 	 * @brief Constructs a new Reactor object.
 	 */
 	Reactor::Reactor()
 		: m_epoll_master_fd(-1)
-		, m_vServers() {
+		, m_vServers()
+		, m_eventHandlers() {
 	}
 
 	/**
@@ -37,9 +35,6 @@ namespace core {
 				connection->close();
 			}
 			server->getSocket().close();
-		}
-		for (std::map<int, AHandler*>::iterator it = m_eventHandlers.begin(); it != m_eventHandlers.end(); ++it) {
-			delete it->second;
 		}
 		close(m_epoll_master_fd);
 	}
@@ -89,11 +84,11 @@ namespace core {
 		return m_vServers;
 	}
 
-	const std::map<int, AHandler*>& Reactor::getEvents(void) const {
+	const std::map<int, EventHandler>& Reactor::getEvents(void) const {
 		return m_eventHandlers;
 	}
 
-	std::map<int, AHandler*>& Reactor::getEvents(void) {
+	std::map<int, EventHandler>& Reactor::getEvents(void) {
 		return m_eventHandlers;
 	}
 
@@ -132,19 +127,54 @@ namespace core {
 		return true;
 	}
 
+	void Reactor::deleteEventHandler(int fd) {
+		try {
+			m_eventHandlers.erase(fd);
+		} catch (std::exception& e) {
+			std::cout << "deleteEventHandler failed: " << e.what() << std::endl;
+		}
+	}
+
+	EventHandler& Reactor::getEventHandler(int fd) {
+		try {
+			return m_eventHandlers.at(fd);
+		} catch (std::exception& e) {
+			std::cout << "getEventHandler failed: " << e.what() << std::endl;
+			throw e;
+		}
+	}
+
+	void Reactor::registerHandler(http::VirtualServer& vServer, http::Connection& connection, uint32_t events) {
+		EventHandler handler(vServer, connection, events);
+		int fd = connection.getClientSocketFd();
+		t_event event;
+
+		event.events = events;
+		event.data.fd = fd;
+		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_ADD, fd, &event) < 0) {
+			throw std::runtime_error("Crud! Couldn't register event handler!");
+		}
+		m_eventHandlers.insert(std::make_pair(fd, handler));
+	}
+
+	void Reactor::unregisterHandler(int fd) throw(std::runtime_error) {
+		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_DEL, fd, NULL) < 0) {
+			std::cout << fd << " " << errno << std::endl;
+			throw std::runtime_error("Пиздец! Couldn't unregister event handler!");
+		}
+		std::cout << "Unregistered a handler!" << std::endl;
+	}
+
 	void Reactor::acceptNewConnections() {
 		for (t_virtualServers::iterator it = m_vServers.begin(); it != m_vServers.end(); ++it) {
 			http::VirtualServer& vServer = *it;
 
 			while (vServer.addConnection()) {
-				http::Connection& conn = vServer.getConnections().back();
-				AHandler* handler = NULL;
+				http::Connection& connection = vServer.getConnections().back();
 
 				try { // we have to get rid of this shit try stuff
-					handler = new RequestHandler(HandlerContext(vServer, conn));
-					this->registerHandler(conn.getClientSocketFd(), handler, EPOLLIN);
+					this->registerHandler(vServer, connection, EPOLLIN | EPOLLOUT | EPOLLHUP);
 				} catch (std::exception& e) {
-					delete handler;
 					std::cerr << "acceptNewConnections: " << e.what() << std::endl;
 				}
 			}
@@ -154,170 +184,78 @@ namespace core {
 	void Reactor::pruneConnections(t_event* events, int nEvents) {
 		for (int i = 0; i < nEvents; ++i) {
 			t_event& event = events[i];
-			AHandler* handler = getEventHandler(event.data.fd);
-			// AHandler* handler = m_eventHandlers.at(event.)
+			EventHandler& handler = getEventHandler(event.data.fd);
 
-			if (handler != NULL && handler->shouldDrop()) {
-				const HandlerContext ctx = handler->getContext();
-				int fd = ctx.conn.getClientSocketFd();
-				std::cout << "Dropping connection!" << std::endl;
+			if (handler.shouldDrop()) {
+				http::Connection& connection = handler.getConnection();
+				int fd = connection.getClientSocketFd();
+				std::cout << "Dropping connection for " << fd << "!" << std::endl;
 				unregisterHandler(fd);
-				ctx.vServer.removeConnection(ctx.conn);
+				handler.getServer().removeConnection(connection);
+				deleteEventHandler(fd);
 			}
 		}
 	}
 
-	// if found, replaces an existing handler for the same fd
-	// allocates a new AHandler
-	AHandler* Reactor::upsertEventHandler(int fd, EPOLL_EVENTS event, HandlerContext& ctx) {
-		AHandler* handler = NULL;
-		try {
-			ctx.events = event;
-
-			switch (event) {
-				case EPOLLIN:
-					handler = new RequestHandler(ctx);
-					break;
-				case EPOLLOUT:
-					handler = new ResponseHandler(ctx);
-					break;
-				default:
-					std::cout << "Notice: couldn't add event handler, event " << event << " is not implemented." << std::endl;
-					return NULL;
-			}
-			handler->getContext().events = event;
-			if (m_eventHandlers.find(fd) != m_eventHandlers.end()) {
-				removeEventHandler(fd);
-			}
-			m_eventHandlers[fd] = handler;
-			return handler;
-		} catch (std::exception& e) {
-			std::cout << "upsertEventHandler failed: " << e.what() << std::endl;
-			delete handler;
-			return NULL;
-		}
-	}
-
-	// deallocates an AHandler if found
-	void Reactor::removeEventHandler(int fd) {
-		try {
-			delete m_eventHandlers.at(fd);
-			m_eventHandlers.erase(fd);
-		} catch (std::exception& e) {
-			std::cout << "removeEventHandler failed: " << e.what() << std::endl;
-		}
-	}
-
-	AHandler* Reactor::getEventHandler(int fd) {
-		try {
-			// return m_eventHandlers.at(fd); // lol
-			AHandler* h = m_eventHandlers.at(fd);
-			return h;
-		} catch (std::exception& e) {
-			std::cout << "getEventHandler failed: " << e.what() << std::endl;
-			return NULL;
-		}
-	}
-
-	void Reactor::registerHandler(int fd, AHandler* handler, EPOLL_EVENTS events) {
-		t_event event;
-
-		event.events = events;
-		event.data.fd = fd;
-		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_ADD, fd, &event) < 0) {
-			throw std::runtime_error("Crud! Couldn't register event handler!");
-		}
-		m_eventHandlers[fd] = handler;
-	}
-
-	AHandler* Reactor::modifyHandler(AHandler* oldHandler, EPOLL_EVENTS events) {
-		HandlerContext& ctx = oldHandler->getContext();
-		int fd = ctx.conn.getClientSocketFd();
-		t_event event;
-
-		event.events = events;
-		event.data.fd = fd;
-		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_MOD, fd, &event) < 0) {
-			throw std::runtime_error("Dang! Couldn't modify Handler!");
-		}
-
-		AHandler* newHandler = upsertEventHandler(fd, events, ctx);
-		if (newHandler == NULL) {
-			throw std::runtime_error("Argh! Couldn't modify handler, upsert failed!");
-		}
-		return newHandler;
-	}
-
-	void Reactor::unregisterHandler(int fd) throw(std::runtime_error) {
-		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_DEL, fd, NULL) < 0) {
-			std::cout << fd << " " << errno << std::endl;
-			throw std::runtime_error("Пиздец! Couldn't unregister event handler!");
-		}
-		removeEventHandler(fd);
-		std::cout << "Unregistered a handler!" << std::endl;
-	}
-
-	void sigint_handler(int signum) {
+	void Reactor::handleSigint(int signum) {
 		if (signum == SIGINT)
-			g_running = false;
+			m_reacting = false;
 	}
 
 	void Reactor::react() {
 		t_event events[MAX_EVENTS];
 		int prevEvents = 0;
-
 		int i = 0;
-		signal(SIGINT, sigint_handler);
-		while (g_running) {
-			acceptNewConnections();
 
+		signal(SIGINT, handleSigint);
+		while (m_reacting) {
+			acceptNewConnections();
 			int nEvents = epoll_wait(m_epoll_master_fd, events, MAX_EVENTS, 60);
-			if (nEvents != prevEvents) {
+
+			if (nEvents != prevEvents && m_reacting == true) {
 				std::cout << "Now handling " << nEvents << " instead of " << prevEvents << " events!" << std::endl;
 				prevEvents = nEvents;
 				i++;
 			}
-			if (nEvents < 0 && g_running == true) {
+			if (nEvents < 0 && m_reacting == true) {
 				std::cout << "Errno for epoll_wait: " << errno << std::endl;
 				throw std::runtime_error("epoll_wait failed");
 			}
+
 			handleEvents(events, nEvents);
-			// change event handlers if required
-			// updateEventHandlers();
 			pruneConnections(events, nEvents);
 		}
-		std::cout << "Handled 10 events (probably), stopping execution for now..." << std::endl;
 	}
 
 	void Reactor::handleEvents(t_event* events, int nEvents) {
 		for (int i = 0; i < nEvents; ++i) {
 			t_event& event = events[i];
-			AHandler* handler = getEventHandler(event.data.fd);
-			if (handler == NULL) {
-				std::cout << "Notice: handleEvents couldn't reinterpret handler ptr" << std::endl;
-				continue;
-			}
+			EventHandler& handler = getEventHandler(event.data.fd);
 
-			HandlerContext& ctx = handler->getContext();
-			ctx.events = static_cast<EPOLL_EVENTS>(event.events);
-			handler->handle();
-
-			if (handler->completed() && !handler->shouldDrop()) {
-				std::cout << "HANDLEEVENTS FOUND HANDLER TO REPLACE" << std::endl;
-				EPOLL_EVENTS newEvents = ctx.events == EPOLLIN ? EPOLLOUT : EPOLLIN;
-				// TODO: abort connection if it gets dropped
-				// double check if there's another case where on success we shouldn't respond
-				// maybe when streaming several files for a single thingy, I guess
-				// if was out, change event to EPOLLIN
-				// unless Connection header was set to "close" in the Client's Request
-				// is there any other case?
-				handler = modifyHandler(handler, newEvents); // just pass ctx, dummy
-				std::cout << "Modified handler for " << ctx.conn.getSocket().getFd() << " to event " << newEvents << std::endl;
-			} else {
-				std::cout << "HANDLER " << handler->getContext().conn.getSocket().getFd() << " IN PROGRESS OR SOMETHING, MAY ALSO BE DONE" << std::endl;
+			if (event.events & EPOLLHUP) {
+				// possibly also if epoll.events is ANYTHINHG else????????
+				// this would indicate some kind of error, could this even happen since we don't listen to anything else?
+				handler.killSelf();
+				return;
 			}
+			if (event.events & EPOLLIN) {
+				handler.handleRequest();
+				return;
+			}
+			if (event.events & EPOLLOUT) {
+				handler.handleResponse();
+				return;
+			}
+			// if (handler.completed() && !handler.shouldDrop()) {
+			// 	std::cout << "HANDLEEVENTS FOUND COMPLETED HANDLER AND SHOULDN'T DROP, MOVE IT TO NEXT STATE" << std::endl;
+			// 	// TODO: abort connection if it gets dropped
+			// 	// double check if there's another case where on success we shouldn't respond
+			// 	// maybe when streaming several files for a single thingy, I guess
+			// 	// if was out, change event to EPOLLIN
+			// 	// unless Connection header was set to "close" in the Client's Request
+			// 	// is there any other case?
+			// }
 		}
-		std::cout << "Handled events" << std::endl;
 	}
 
 } /* namespace core */
