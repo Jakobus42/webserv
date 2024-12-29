@@ -2,7 +2,7 @@
 
 #include <sys/epoll.h>
 
-#include "core/AHandler.hpp"
+#include "core/EventHandler.hpp"
 #include "http/VirtualServer.hpp"
 #include "shared/defines.hpp"
 
@@ -13,14 +13,7 @@
 
 namespace core {
 
-	struct EventData {
-			AHandler* handler;
-			HandlerContext ctx;
-
-			EventData(AHandler* handler, const HandlerContext& ctx)
-				: handler(handler)
-				, ctx(ctx) {}
-	};
+	typedef std::vector<http::VirtualServer> t_virtualServers;
 
 	/**
 	 * @class Reactor
@@ -33,13 +26,16 @@ namespace core {
 
 			void init() throw(std::exception);
 			int getEpollFd() const;
-			const std::vector<http::VirtualServer>& getVirtualServers() const;
-			std::vector<http::VirtualServer>& getVirtualServers();
+			const t_virtualServers& getVirtualServers() const;
+			t_virtualServers& getVirtualServers();
+			const std::map<int, EventHandler>& getEvents() const;
+			std::map<int, EventHandler>& getEvents();
 
-			void addVirtualServer(config::t_server& serverConfig) throw(
-				std::exception);
-			bool removeVirtualServer(std::vector<http::VirtualServer>::iterator it);
+			void addVirtualServer(config::t_server& serverConfig) throw(std::exception);
+			bool removeVirtualServer(t_virtualServers::iterator it);
 			bool addVirtualServers(config::t_config_data& configData);
+			void deleteEventHandler(int);
+			EventHandler& getEventHandler(int);
 
 			void react();
 
@@ -47,14 +43,20 @@ namespace core {
 			Reactor(const Reactor& other);
 			Reactor& operator=(const Reactor& other);
 
-			void registerHandler(int fd, AHandler* handler, const HandlerContext& ctx, uint32_t events = EPOLLIN);
-			void unregisterHandler(int fd) throw(std::runtime_error);
+			static void handleSigint(int);
 
-			void acceptNewConnections();
+			void registerHandler(http::VirtualServer& vServer, http::Connection& connection, uint32_t events);
+			void unregisterHandler(int fd) throw(std::runtime_error);
 			void handleEvents(t_event* events, int nEvents);
 
+			void acceptNewConnections();
+			void pruneConnections(t_event* events, int nEvents);
+
+		private:
+			static bool m_reacting;
 			int m_epoll_master_fd;
-			std::vector<http::VirtualServer> m_vServers;
+			t_virtualServers m_vServers;
+			std::map<int, EventHandler> m_eventHandlers;
 	};
 
 } // namespace core

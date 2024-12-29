@@ -2,6 +2,8 @@
 
 #include <unistd.h>
 
+#include <cstring>
+
 namespace http {
 
 	/**
@@ -9,7 +11,8 @@ namespace http {
 	 */
 	Connection::Connection()
 		: m_client_socket()
-		, m_request() {
+		, m_request()
+		, m_read_buffer() {
 	}
 
 	/**
@@ -17,7 +20,8 @@ namespace http {
 	 */
 	Connection::Connection(int listen_socket) throw(std::exception)
 		: m_client_socket(listen_socket)
-		, m_request() {
+		, m_request()
+		, m_read_buffer() {
 	}
 
 	/**
@@ -33,7 +37,9 @@ namespace http {
 	 */
 	Connection::Connection(const Connection& other)
 		: m_client_socket(other.getSocket())
-		, m_request(other.getRequest()) {
+		, m_request(other.getRequest())
+		, m_read_buffer() {
+		std::memcpy(m_read_buffer, other.getBuffer(), BUFFER_SIZE);
 	}
 
 	/**
@@ -65,8 +71,24 @@ namespace http {
 		return m_client_socket;
 	}
 
+	int Connection::getClientSocketFd(void) const {
+		return m_client_socket.getFd();
+	}
+
 	const http::Request& Connection::getRequest(void) const {
 		return m_request;
+	}
+
+	http::Request& Connection::getRequest(void) {
+		return m_request;
+	}
+
+	const char* Connection::getBuffer(void) const {
+		return m_read_buffer;
+	}
+
+	char* Connection::getBuffer(void) {
+		return m_read_buffer;
 	}
 
 } // namespace http

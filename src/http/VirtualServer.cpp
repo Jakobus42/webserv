@@ -124,6 +124,7 @@ namespace http {
 		if (toRemove == m_connections.end()) {
 			return false;
 		}
+		connection.close();
 		m_connections.erase(toRemove);
 		return true;
 	}

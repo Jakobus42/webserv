@@ -65,7 +65,6 @@ namespace http {
 			Request(const Request& other);
 			Request& operator=(const Request& rhs);
 
-			const char* getReadBuffer(void) const;
 			uint32_t getReceivedBytes(void) const;
 			const uint32_t& getContentLength(void) const;
 			const std::string& getRestData(void) const;
@@ -74,12 +73,11 @@ namespace http {
 			const ExpectedBody& getExpectedBody(void) const;
 			const ChunkedStatus& getChunkedStatus(void) const;
 
-			void setReadBuffer(const char* buffer);
 			void PrintRequestData();
-			bool parse(void);
+			bool parse(char buffer[BUFFER_SIZE]);
+			void reset(void);
 
 		private:
-			char m_read_buffer[BUFFER_SIZE];
 			uint32_t m_receivedBytes;
 			uint32_t m_contentLength;
 			std::string m_restData;

@@ -21,7 +21,7 @@ server
 	location /kapouet 
 	{
 	    # Accepted HTTP methods
-	    limit_except GET POST PUT DELETE;
+	    limit_except GET POST DELETE;
 	    # Directory configuration
 	    root /tmp/www;  # Base directory
 	    autoindex on;  # Enable directory listing

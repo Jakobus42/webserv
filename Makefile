@@ -1,5 +1,5 @@
 ###COMPILER###
-CC = c++
+CC = c++ -g
 
 ###FLAGS###
 CFLAGS = -Wextra -Wall -Werror -std=c++98 -I$(INCDIR)

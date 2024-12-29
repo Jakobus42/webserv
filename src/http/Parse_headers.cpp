@@ -80,11 +80,9 @@ namespace http {
 		return true;
 	}
 
-	bool Request::parseHeaders(std::string& input, HeaderType type)
-	{
+	bool Request::parseHeaders(std::string& input, HeaderType type) {
 		std::string line;
-		while (1)
-		{
+		while (1) {
 			GetLineStatus status = getNextLineHTTP(input, line);
 			if (status == GET_LINE_END)
 				break;
@@ -96,10 +94,7 @@ namespace http {
 				} else {
 					m_status = PARSE_END;
 				}
-				if (!interpretHeaders(type)) {
-					return false;
-				}
-				return true;
+				return interpretHeaders(type);
 			}
 			if (!parseHeader(line, type)) {
 				return false;
