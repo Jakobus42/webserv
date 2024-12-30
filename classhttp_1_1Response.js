@@ -7,6 +7,8 @@ var classhttp_1_1Response =
     [ "getStatus", "classhttp_1_1Response.html#a59ab4e815742b5e68b301f056c017593", null ],
     [ "getStatusCode", "classhttp_1_1Response.html#a8c573e4eaa628291ea54c4171512239c", null ],
     [ "operator=", "classhttp_1_1Response.html#a1b00fb80f823eba2d3b023eecc4d93ab", null ],
+    [ "reset", "classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364", null ],
+    [ "setRawResponse", "classhttp_1_1Response.html#a269913ddc411476e598ec3e70fe3c652", null ],
     [ "m_rawResponse", "classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be", null ],
     [ "m_status", "classhttp_1_1Response.html#a36401f0a792bd65f8913df5c59479fff", null ],
     [ "m_statusCode", "classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b", null ]

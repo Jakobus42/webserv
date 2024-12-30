@@ -78,19 +78,21 @@ Collaboration diagram for core::EventHandler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcore_1_1EventHandler__coll__graph.png" border="0" usemap="#acore_1_1EventHandler_coll__map" alt="Collaboration graph"/></div>
 <map name="acore_1_1EventHandler_coll__map" id="acore_1_1EventHandler_coll__map">
-<area shape="rect" title="..." alt="" coords="284,1289,423,1635"/>
-<area shape="rect" href="classhttp_1_1Connection.html" title="..." alt="" coords="176,891,333,1217"/>
-<area shape="poly" title=" " alt="" coords="297,1216,310,1273,305,1274,291,1217"/>
+<area shape="rect" title="..." alt="" coords="391,1289,529,1635"/>
+<area shape="rect" href="classhttp_1_1Connection.html" title="..." alt="" coords="283,921,440,1187"/>
+<area shape="poly" title=" " alt="" coords="396,1186,417,1273,412,1274,391,1188"/>
 <area shape="rect" href="classhttp_1_1ClientSocket.html" title="..." alt="" coords="5,343,160,709"/>
-<area shape="poly" title=" " alt="" coords="105,708,120,783,142,856,170,918,165,920,138,858,115,785,100,709"/>
+<area shape="poly" title=" " alt="" coords="125,708,154,784,192,856,231,910,273,960,269,964,226,913,187,859,149,786,120,710"/>
 <area shape="rect" href="classhttp_1_1Request.html" title="..." alt="" coords="185,233,349,819"/>
-<area shape="poly" title=" " alt="" coords="263,819,261,874,256,874,257,819"/>
+<area shape="poly" title=" " alt="" coords="306,818,313,857,324,905,318,906,308,858,301,819"/>
 <area shape="rect" href="structhttp_1_1s__requestData.html" title=" " alt="" coords="195,5,338,171"/>
 <area shape="poly" title=" " alt="" coords="269,171,269,216,264,216,264,171"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html" title="..." alt="" coords="358,881,551,1227"/>
-<area shape="poly" title=" " alt="" coords="420,1227,411,1266,409,1274,403,1273,405,1265,415,1226"/>
-<area shape="rect" href="classhttp_1_1ServerSocket.html" title="..." alt="" coords="383,333,526,719"/>
-<area shape="poly" title=" " alt="" coords="457,719,457,864,452,864,452,719"/>
+<area shape="rect" href="classhttp_1_1Response.html" title="..." alt="" coords="373,393,523,659"/>
+<area shape="poly" title=" " alt="" coords="429,659,388,905,383,904,424,658"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html" title="..." alt="" coords="502,881,695,1227"/>
+<area shape="poly" title=" " alt="" coords="542,1228,526,1275,521,1273,537,1226"/>
+<area shape="rect" href="classhttp_1_1ServerSocket.html" title="..." alt="" coords="547,333,690,719"/>
+<area shape="poly" title=" " alt="" coords="614,719,608,865,603,864,609,719"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -140,8 +142,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5d434426a474d7c9876837de7240f2fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5616520f0084b2e893e5fb548b5385d" id="r_ab5616520f0084b2e893e5fb548b5385d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1EventHandler.html#ab5616520f0084b2e893e5fb548b5385d">handleRequest</a> (void)</td></tr>
 <tr class="separator:ab5616520f0084b2e893e5fb548b5385d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7eda0928608173913bcdd658ea67912" id="r_ab7eda0928608173913bcdd658ea67912"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1EventHandler.html#ab7eda0928608173913bcdd658ea67912">handleResponse</a> (void)</td></tr>
-<tr class="separator:ab7eda0928608173913bcdd658ea67912"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e36084c6c90216475b3ced2d5de9699" id="r_a1e36084c6c90216475b3ced2d5de9699"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699">buildResponse</a> (void)</td></tr>
+<tr class="separator:a1e36084c6c90216475b3ced2d5de9699"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1807c394423626629cff70026027a81f" id="r_a1807c394423626629cff70026027a81f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1EventHandler.html#a1807c394423626629cff70026027a81f">sendResponse</a> (void)</td></tr>
+<tr class="separator:a1807c394423626629cff70026027a81f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36c2c9d8451edec2092bfb7d9dcf790b" id="r_a36c2c9d8451edec2092bfb7d9dcf790b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1EventHandler.html#a36c2c9d8451edec2092bfb7d9dcf790b">handleError</a> (void)</td></tr>
 <tr class="separator:a36c2c9d8451edec2092bfb7d9dcf790b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -211,12 +215,12 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   18</span>        , <a class="code hl_variable" href="classcore_1_1EventHandler.html#a3135d335cb48cb3cbaf06e6725624476">m_responses</a>()</div>
 <div class="line"><span class="lineno">   19</span>        , <a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>(connection)</div>
 <div class="line"><span class="lineno">   20</span>        , <a class="code hl_variable" href="classcore_1_1EventHandler.html#a3d4b82dc5fd7df427588db5dc006e813">m_server</a>(server) {}</div>
-<div class="ttc" id="aclasscore_1_1EventHandler_html_a3135d335cb48cb3cbaf06e6725624476"><div class="ttname"><a href="classcore_1_1EventHandler.html#a3135d335cb48cb3cbaf06e6725624476">core::EventHandler::m_responses</a></div><div class="ttdeci">t_responses m_responses</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00068">EventHandler.hpp:68</a></div></div>
-<div class="ttc" id="aclasscore_1_1EventHandler_html_a3d4b82dc5fd7df427588db5dc006e813"><div class="ttname"><a href="classcore_1_1EventHandler.html#a3d4b82dc5fd7df427588db5dc006e813">core::EventHandler::m_server</a></div><div class="ttdeci">http::VirtualServer &amp; m_server</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00070">EventHandler.hpp:70</a></div></div>
-<div class="ttc" id="aclasscore_1_1EventHandler_html_a77badb9ee990e9a661227bd2235be12e"><div class="ttname"><a href="classcore_1_1EventHandler.html#a77badb9ee990e9a661227bd2235be12e">core::EventHandler::m_events</a></div><div class="ttdeci">uint32_t m_events</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00065">EventHandler.hpp:65</a></div></div>
-<div class="ttc" id="aclasscore_1_1EventHandler_html_aa1ec7a25a3befaf455b43e5a7bf2875a"><div class="ttname"><a href="classcore_1_1EventHandler.html#aa1ec7a25a3befaf455b43e5a7bf2875a">core::EventHandler::m_requests</a></div><div class="ttdeci">t_requests m_requests</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00067">EventHandler.hpp:67</a></div></div>
-<div class="ttc" id="aclasscore_1_1EventHandler_html_ac76b53aa9035800888c546a5225d9ad9"><div class="ttname"><a href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">core::EventHandler::m_connection</a></div><div class="ttdeci">http::Connection &amp; m_connection</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00069">EventHandler.hpp:69</a></div></div>
-<div class="ttc" id="aclasscore_1_1EventHandler_html_addedacf1a0307399bfce1b669843d935"><div class="ttname"><a href="classcore_1_1EventHandler.html#addedacf1a0307399bfce1b669843d935">core::EventHandler::m_state</a></div><div class="ttdeci">HandlerState m_state</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00066">EventHandler.hpp:66</a></div></div>
+<div class="ttc" id="aclasscore_1_1EventHandler_html_a3135d335cb48cb3cbaf06e6725624476"><div class="ttname"><a href="classcore_1_1EventHandler.html#a3135d335cb48cb3cbaf06e6725624476">core::EventHandler::m_responses</a></div><div class="ttdeci">t_responses m_responses</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00069">EventHandler.hpp:69</a></div></div>
+<div class="ttc" id="aclasscore_1_1EventHandler_html_a3d4b82dc5fd7df427588db5dc006e813"><div class="ttname"><a href="classcore_1_1EventHandler.html#a3d4b82dc5fd7df427588db5dc006e813">core::EventHandler::m_server</a></div><div class="ttdeci">http::VirtualServer &amp; m_server</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00071">EventHandler.hpp:71</a></div></div>
+<div class="ttc" id="aclasscore_1_1EventHandler_html_a77badb9ee990e9a661227bd2235be12e"><div class="ttname"><a href="classcore_1_1EventHandler.html#a77badb9ee990e9a661227bd2235be12e">core::EventHandler::m_events</a></div><div class="ttdeci">uint32_t m_events</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00066">EventHandler.hpp:66</a></div></div>
+<div class="ttc" id="aclasscore_1_1EventHandler_html_aa1ec7a25a3befaf455b43e5a7bf2875a"><div class="ttname"><a href="classcore_1_1EventHandler.html#aa1ec7a25a3befaf455b43e5a7bf2875a">core::EventHandler::m_requests</a></div><div class="ttdeci">t_requests m_requests</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00068">EventHandler.hpp:68</a></div></div>
+<div class="ttc" id="aclasscore_1_1EventHandler_html_ac76b53aa9035800888c546a5225d9ad9"><div class="ttname"><a href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">core::EventHandler::m_connection</a></div><div class="ttdeci">http::Connection &amp; m_connection</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00070">EventHandler.hpp:70</a></div></div>
+<div class="ttc" id="aclasscore_1_1EventHandler_html_addedacf1a0307399bfce1b669843d935"><div class="ttname"><a href="classcore_1_1EventHandler.html#addedacf1a0307399bfce1b669843d935">core::EventHandler::m_state</a></div><div class="ttdeci">HandlerState m_state</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00067">EventHandler.hpp:67</a></div></div>
 <div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701a05c173243c29e5bb8b7c4b7a448798ec"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a05c173243c29e5bb8b7c4b7a448798ec">core::PENDING_READ</a></div><div class="ttdeci">@ PENDING_READ</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00020">EventHandler.hpp:20</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -303,6 +307,66 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1e36084c6c90216475b3ced2d5de9699" name="a1e36084c6c90216475b3ced2d5de9699"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e36084c6c90216475b3ced2d5de9699">&#9670;&#160;</a></span>buildResponse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void core::EventHandler::buildResponse </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="EventHandler_8cpp_source.html#l00158">158</a> of file <a class="el" href="EventHandler_8cpp_source.html">EventHandler.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  158</span>                                         {</div>
+<div class="line"><span class="lineno">  159</span>        <a class="code hl_class" href="classhttp_1_1Response.html">http::Response</a>&amp; currentResponse = <a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>.<a class="code hl_function" href="classhttp_1_1Connection.html#ac6f386a2cb7654aa51ab54b558992a9e">getResponse</a>();</div>
+<div class="line"><span class="lineno">  160</span>        <span class="keyword">const</span> std::string response =</div>
+<div class="line"><span class="lineno">  161</span>            <span class="stringliteral">&quot;HTTP/1.1 200 OK\r\n&quot;</span></div>
+<div class="line"><span class="lineno">  162</span>            <span class="stringliteral">&quot;Content-Type: text/plain\r\n&quot;</span></div>
+<div class="line"><span class="lineno">  163</span>            <span class="stringliteral">&quot;Content-Length: 13\r\n&quot;</span></div>
+<div class="line"><span class="lineno">  164</span>            <span class="stringliteral">&quot;\r\n&quot;</span></div>
+<div class="line"><span class="lineno">  165</span>            <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
+<div class="line"><span class="lineno">  166</span> </div>
+<div class="line"><span class="lineno">  167</span>        currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a269913ddc411476e598ec3e70fe3c652">setRawResponse</a>(response);</div>
+<div class="line"><span class="lineno">  168</span>    }</div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_ac6f386a2cb7654aa51ab54b558992a9e"><div class="ttname"><a href="classhttp_1_1Connection.html#ac6f386a2cb7654aa51ab54b558992a9e">http::Connection::getResponse</a></div><div class="ttdeci">const http::Response &amp; getResponse(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00089">Connection.cpp:89</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html"><div class="ttname"><a href="classhttp_1_1Response.html">http::Response</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00020">Response.hpp:20</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a269913ddc411476e598ec3e70fe3c652"><div class="ttname"><a href="classhttp_1_1Response.html#a269913ddc411476e598ec3e70fe3c652">http::Response::setRawResponse</a></div><div class="ttdeci">void setRawResponse(const std::string &amp;)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00054">Response.cpp:54</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcore_1_1EventHandler_a1e36084c6c90216475b3ced2d5de9699_cgraph.png" border="0" usemap="#aclasscore_1_1EventHandler_a1e36084c6c90216475b3ced2d5de9699_cgraph" alt=""/></div>
+<map name="aclasscore_1_1EventHandler_a1e36084c6c90216475b3ced2d5de9699_cgraph" id="aclasscore_1_1EventHandler_a1e36084c6c90216475b3ced2d5de9699_cgraph">
+<area shape="rect" title=" " alt="" coords="5,23,152,63"/>
+<area shape="rect" href="classhttp_1_1Connection.html#ac6f386a2cb7654aa51ab54b558992a9e" title=" " alt="" coords="209,5,430,31"/>
+<area shape="poly" title=" " alt="" coords="152,33,195,28,195,34,152,38"/>
+<area shape="rect" href="classhttp_1_1Response.html#a269913ddc411476e598ec3e70fe3c652" title=" " alt="" coords="200,55,439,80"/>
+<area shape="poly" title=" " alt="" coords="152,48,187,51,186,57,152,53"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcore_1_1EventHandler_a1e36084c6c90216475b3ced2d5de9699_icgraph.png" border="0" usemap="#aclasscore_1_1EventHandler_a1e36084c6c90216475b3ced2d5de9699_icgraph" alt=""/></div>
+<map name="aclasscore_1_1EventHandler_a1e36084c6c90216475b3ced2d5de9699_icgraph" id="aclasscore_1_1EventHandler_a1e36084c6c90216475b3ced2d5de9699_icgraph">
+<area shape="rect" title=" " alt="" coords="557,5,704,45"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,13,509,38"/>
+<area shape="poly" title=" " alt="" coords="544,28,510,28,510,23,544,23"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
+<area shape="poly" title=" " alt="" coords="291,28,258,28,258,23,291,23"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
+<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a0ed5034b6ffd0ed1a9b531c84580b3f7" name="a0ed5034b6ffd0ed1a9b531c84580b3f7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ed5034b6ffd0ed1a9b531c84580b3f7">&#9670;&#160;</a></span>completed()</h2>
 
@@ -657,10 +721,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EventHandler_8cpp_source.html#l00179">179</a> of file <a class="el" href="EventHandler_8cpp_source.html">EventHandler.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  179</span>                                       {</div>
-<div class="line"><span class="lineno">  180</span>        <span class="comment">// ...</span></div>
-<div class="line"><span class="lineno">  181</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="EventHandler_8cpp_source.html#l00190">190</a> of file <a class="el" href="EventHandler_8cpp_source.html">EventHandler.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  190</span>                                       {</div>
+<div class="line"><span class="lineno">  191</span>        <span class="comment">// ...</span></div>
+<div class="line"><span class="lineno">  192</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -726,9 +790,9 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  156</span>    }</div>
 <div class="ttc" id="aRequest_8hpp_html_a6b20d41d6252e9871430c242cb1a56e7"><div class="ttname"><a href="Request_8hpp.html#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a></div><div class="ttdeci">#define BUFFER_SIZE</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00013">Request.hpp:13</a></div></div>
 <div class="ttc" id="aclasscore_1_1EventHandler_html_a85a5119b2ca5045dde4da35e53e29862"><div class="ttname"><a href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862">core::EventHandler::setState</a></div><div class="ttdeci">void setState(HandlerState)</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8cpp_source.html#l00096">EventHandler.cpp:96</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_a3bf8eb2db35a8030685b73971e3d8597"><div class="ttname"><a href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597">http::Connection::getClientSocketFd</a></div><div class="ttdeci">int getClientSocketFd(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00074">Connection.cpp:74</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_ae609a5b0ff966946283c6c4619c4a894"><div class="ttname"><a href="classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894">http::Connection::getRequest</a></div><div class="ttdeci">const http::Request &amp; getRequest(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00078">Connection.cpp:78</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_ae6d69a9ff147672f0a114311ae63c166"><div class="ttname"><a href="classhttp_1_1Connection.html#ae6d69a9ff147672f0a114311ae63c166">http::Connection::getBuffer</a></div><div class="ttdeci">const char * getBuffer(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00086">Connection.cpp:86</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_a3bf8eb2db35a8030685b73971e3d8597"><div class="ttname"><a href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597">http::Connection::getClientSocketFd</a></div><div class="ttdeci">int getClientSocketFd(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00077">Connection.cpp:77</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_ae609a5b0ff966946283c6c4619c4a894"><div class="ttname"><a href="classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894">http::Connection::getRequest</a></div><div class="ttdeci">const http::Request &amp; getRequest(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00081">Connection.cpp:81</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_ae6d69a9ff147672f0a114311ae63c166"><div class="ttname"><a href="classhttp_1_1Connection.html#ae6d69a9ff147672f0a114311ae63c166">http::Connection::getBuffer</a></div><div class="ttdeci">const char * getBuffer(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00097">Connection.cpp:97</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html"><div class="ttname"><a href="classhttp_1_1Request.html">http::Request</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00061">Request.hpp:61</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html_a9080f26f273ea9257a4dbac3a9e7d9c1"><div class="ttname"><a href="classhttp_1_1Request.html#a9080f26f273ea9257a4dbac3a9e7d9c1">http::Request::parse</a></div><div class="ttdeci">bool parse(char buffer[BUFFER_SIZE])</div><div class="ttdoc">Parses the request.</div><div class="ttdef"><b>Definition</b> <a href="Request_8cpp_source.html#l00088">Request.cpp:88</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html_a94b960f923e856df1cc565ebbac086c0"><div class="ttname"><a href="classhttp_1_1Request.html#a94b960f923e856df1cc565ebbac086c0">http::Request::getStatus</a></div><div class="ttdeci">const RequestStatus &amp; getStatus(void) const</div><div class="ttdef"><b>Definition</b> <a href="Request_8cpp_source.html#l00072">Request.cpp:72</a></div></div>
@@ -810,73 +874,6 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ab7eda0928608173913bcdd658ea67912" name="ab7eda0928608173913bcdd658ea67912"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab7eda0928608173913bcdd658ea67912">&#9670;&#160;</a></span>handleResponse()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core::EventHandler::handleResponse </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="EventHandler_8cpp_source.html#l00159">159</a> of file <a class="el" href="EventHandler_8cpp_source.html">EventHandler.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  159</span>                                          {</div>
-<div class="line"><span class="lineno">  160</span>        <span class="keywordtype">int</span> fd = <a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>.<a class="code hl_function" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597">getClientSocketFd</a>();</div>
-<div class="line"><span class="lineno">  161</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;handleResponse on fd: &quot;</span> &lt;&lt; fd &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  162</span>        <span class="keyword">const</span> <span class="keywordtype">char</span>* response =</div>
-<div class="line"><span class="lineno">  163</span>            <span class="stringliteral">&quot;HTTP/1.1 200 OK\r\n&quot;</span></div>
-<div class="line"><span class="lineno">  164</span>            <span class="stringliteral">&quot;Content-Type: text/plain\r\n&quot;</span></div>
-<div class="line"><span class="lineno">  165</span>            <span class="stringliteral">&quot;Content-Length: 13\r\n&quot;</span></div>
-<div class="line"><span class="lineno">  166</span>            <span class="stringliteral">&quot;\r\n&quot;</span></div>
-<div class="line"><span class="lineno">  167</span>            <span class="stringliteral">&quot;Hello, World!&quot;</span>;</div>
-<div class="line"><span class="lineno">  168</span> </div>
-<div class="line"><span class="lineno">  169</span>        ssize_t bytesSent = send(fd, response, strlen(response), 0);</div>
-<div class="line"><span class="lineno">  170</span>        <span class="keywordflow">if</span> (bytesSent &lt; 0) {</div>
-<div class="line"><span class="lineno">  171</span>            std::cerr &lt;&lt; <span class="stringliteral">&quot;Error sending data&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  172</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  173</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Sent response: &quot;</span> &lt;&lt; response &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  174</span>            <a class="code hl_function" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862">setState</a>(<a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a6e31c0e2dab1b21ac70715fca05a0ff4">COMPLETED</a>);</div>
-<div class="line"><span class="lineno">  175</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Response set to COMPLETED&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  176</span>        }</div>
-<div class="line"><span class="lineno">  177</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classcore_1_1EventHandler_ab7eda0928608173913bcdd658ea67912_cgraph.png" border="0" usemap="#aclasscore_1_1EventHandler_ab7eda0928608173913bcdd658ea67912_cgraph" alt=""/></div>
-<map name="aclasscore_1_1EventHandler_ab7eda0928608173913bcdd658ea67912_cgraph" id="aclasscore_1_1EventHandler_ab7eda0928608173913bcdd658ea67912_cgraph">
-<area shape="rect" title=" " alt="" coords="5,37,152,77"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597" title=" " alt="" coords="200,5,396,45"/>
-<area shape="poly" title=" " alt="" coords="152,44,186,39,187,44,153,49"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862" title=" " alt="" coords="225,69,371,109"/>
-<area shape="poly" title=" " alt="" coords="153,65,212,74,211,79,152,71"/>
-<area shape="rect" href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf" title=" " alt="" coords="444,5,581,45"/>
-<area shape="poly" title=" " alt="" coords="396,23,430,23,430,28,396,28"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classcore_1_1EventHandler_ab7eda0928608173913bcdd658ea67912_icgraph.png" border="0" usemap="#aclasscore_1_1EventHandler_ab7eda0928608173913bcdd658ea67912_icgraph" alt=""/></div>
-<map name="aclasscore_1_1EventHandler_ab7eda0928608173913bcdd658ea67912_icgraph" id="aclasscore_1_1EventHandler_ab7eda0928608173913bcdd658ea67912_icgraph">
-<area shape="rect" title=" " alt="" coords="557,5,704,45"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,13,509,38"/>
-<area shape="poly" title=" " alt="" coords="544,28,510,28,510,23,544,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
-<area shape="poly" title=" " alt="" coords="291,28,258,28,258,23,291,23"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
-</map>
-</div>
-
-</div>
-</div>
 <a id="a5d434426a474d7c9876837de7240f2fb" name="a5d434426a474d7c9876837de7240f2fb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5d434426a474d7c9876837de7240f2fb">&#9670;&#160;</a></span>killSelf()</h2>
 
@@ -893,10 +890,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EventHandler_8cpp_source.html#l00183">183</a> of file <a class="el" href="EventHandler_8cpp_source.html">EventHandler.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  183</span>                                    {</div>
-<div class="line"><span class="lineno">  184</span>        <a class="code hl_variable" href="classcore_1_1EventHandler.html#a3d4b82dc5fd7df427588db5dc006e813">m_server</a>.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a43f961e40bece5869f1d53ec1da8bb9e">removeConnection</a>(<a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>);</div>
-<div class="line"><span class="lineno">  185</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="EventHandler_8cpp_source.html#l00194">194</a> of file <a class="el" href="EventHandler_8cpp_source.html">EventHandler.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  194</span>                                    {</div>
+<div class="line"><span class="lineno">  195</span>        <a class="code hl_variable" href="classcore_1_1EventHandler.html#a3d4b82dc5fd7df427588db5dc006e813">m_server</a>.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a43f961e40bece5869f1d53ec1da8bb9e">removeConnection</a>(<a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>);</div>
+<div class="line"><span class="lineno">  196</span>    }</div>
 <div class="ttc" id="aclasshttp_1_1VirtualServer_html_a43f961e40bece5869f1d53ec1da8bb9e"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a43f961e40bece5869f1d53ec1da8bb9e">http::VirtualServer::removeConnection</a></div><div class="ttdeci">bool removeConnection(Connection &amp;connection)</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00120">VirtualServer.cpp:120</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -992,6 +989,80 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a id="a1807c394423626629cff70026027a81f" name="a1807c394423626629cff70026027a81f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1807c394423626629cff70026027a81f">&#9670;&#160;</a></span>sendResponse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void core::EventHandler::sendResponse </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="EventHandler_8cpp_source.html#l00171">171</a> of file <a class="el" href="EventHandler_8cpp_source.html">EventHandler.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  171</span>                                        {</div>
+<div class="line"><span class="lineno">  172</span>        <a class="code hl_class" href="classhttp_1_1Response.html">http::Response</a>&amp; currentResponse = <a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>.<a class="code hl_function" href="classhttp_1_1Connection.html#ac6f386a2cb7654aa51ab54b558992a9e">getResponse</a>();</div>
+<div class="line"><span class="lineno">  173</span>        <span class="keywordtype">int</span> fd = <a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>.<a class="code hl_function" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597">getClientSocketFd</a>();</div>
+<div class="line"><span class="lineno">  174</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;sendResponse on fd: &quot;</span> &lt;&lt; fd &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  175</span> </div>
+<div class="line"><span class="lineno">  176</span>        <span class="comment">// if response.complete() then m_responses.push(response);</span></div>
+<div class="line"><span class="lineno">  177</span>        <span class="comment">// else keep going</span></div>
+<div class="line"><span class="lineno">  178</span> </div>
+<div class="line"><span class="lineno">  179</span>        ssize_t bytesSent = send(fd, currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d">getRawResponse</a>().c_str(), currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d">getRawResponse</a>().length(), 0);</div>
+<div class="line"><span class="lineno">  180</span>        <span class="keywordflow">if</span> (bytesSent &lt; 0) {</div>
+<div class="line"><span class="lineno">  181</span>            std::cerr &lt;&lt; <span class="stringliteral">&quot;Error sending data&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  182</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  183</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Sent response: &quot;</span> &lt;&lt; currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d">getRawResponse</a>() &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  184</span>            <a class="code hl_function" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862">setState</a>(<a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a6e31c0e2dab1b21ac70715fca05a0ff4">COMPLETED</a>);</div>
+<div class="line"><span class="lineno">  185</span>            currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364">reset</a>();</div>
+<div class="line"><span class="lineno">  186</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Response set to COMPLETED&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  187</span>        }</div>
+<div class="line"><span class="lineno">  188</span>    }</div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a4eb56ec0c2d1c77b78241a8855c4d364"><div class="ttname"><a href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364">http::Response::reset</a></div><div class="ttdeci">void reset(void)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00058">Response.cpp:58</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a67954e9b8cc54cebe557b5e4702fc94d"><div class="ttname"><a href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d">http::Response::getRawResponse</a></div><div class="ttdeci">const std::string &amp; getRawResponse(void) const</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00042">Response.cpp:42</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcore_1_1EventHandler_a1807c394423626629cff70026027a81f_cgraph.png" border="0" usemap="#aclasscore_1_1EventHandler_a1807c394423626629cff70026027a81f_cgraph" alt=""/></div>
+<map name="aclasscore_1_1EventHandler_a1807c394423626629cff70026027a81f_cgraph" id="aclasscore_1_1EventHandler_a1807c394423626629cff70026027a81f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,112,152,152"/>
+<area shape="rect" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597" title=" " alt="" coords="221,5,417,45"/>
+<area shape="poly" title=" " alt="" coords="106,110,148,82,199,55,218,47,220,52,201,60,151,86,109,114"/>
+<area shape="rect" href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d" title=" " alt="" coords="200,70,439,95"/>
+<area shape="poly" title=" " alt="" coords="152,114,199,104,241,95,242,101,201,109,153,119"/>
+<area shape="rect" href="classhttp_1_1Connection.html#ac6f386a2cb7654aa51ab54b558992a9e" title=" " alt="" coords="209,119,430,145"/>
+<area shape="poly" title=" " alt="" coords="152,129,195,129,195,135,152,135"/>
+<area shape="rect" href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364" title=" " alt="" coords="239,169,399,194"/>
+<area shape="poly" title=" " alt="" coords="153,144,244,163,243,169,152,150"/>
+<area shape="rect" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862" title=" " alt="" coords="246,219,393,259"/>
+<area shape="poly" title=" " alt="" coords="109,150,152,177,201,203,234,215,232,220,199,208,149,182,106,154"/>
+<area shape="rect" href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf" title=" " alt="" coords="487,5,624,45"/>
+<area shape="poly" title=" " alt="" coords="418,23,473,23,473,28,418,28"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcore_1_1EventHandler_a1807c394423626629cff70026027a81f_icgraph.png" border="0" usemap="#aclasscore_1_1EventHandler_a1807c394423626629cff70026027a81f_icgraph" alt=""/></div>
+<map name="aclasscore_1_1EventHandler_a1807c394423626629cff70026027a81f_icgraph" id="aclasscore_1_1EventHandler_a1807c394423626629cff70026027a81f_icgraph">
+<area shape="rect" title=" " alt="" coords="557,5,704,45"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,13,509,38"/>
+<area shape="poly" title=" " alt="" coords="544,28,510,28,510,23,544,23"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
+<area shape="poly" title=" " alt="" coords="291,28,258,28,258,23,291,23"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
+<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a85a5119b2ca5045dde4da35e53e29862" name="a85a5119b2ca5045dde4da35e53e29862"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a85a5119b2ca5045dde4da35e53e29862">&#9670;&#160;</a></span>setState()</h2>
 
@@ -1020,7 +1091,7 @@ Here is the caller graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="752,37,899,77"/>
 <area shape="rect" href="classcore_1_1EventHandler.html#ab5616520f0084b2e893e5fb548b5385d" title=" " alt="" coords="557,5,704,45"/>
 <area shape="poly" title=" " alt="" coords="738,46,704,40,705,35,739,40"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#ab7eda0928608173913bcdd658ea67912" title=" " alt="" coords="557,69,704,109"/>
+<area shape="rect" href="classcore_1_1EventHandler.html#a1807c394423626629cff70026027a81f" title=" " alt="" coords="557,69,704,109"/>
 <area shape="poly" title=" " alt="" coords="739,74,705,80,704,75,738,69"/>
 <area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,45,509,70"/>
 <area shape="poly" title=" " alt="" coords="544,40,496,47,496,42,543,35"/>
@@ -1097,7 +1168,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EventHandler_8hpp_source.html#l00069">69</a> of file <a class="el" href="EventHandler_8hpp_source.html">EventHandler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EventHandler_8hpp_source.html#l00070">70</a> of file <a class="el" href="EventHandler_8hpp_source.html">EventHandler.hpp</a>.</p>
 
 </div>
 </div>
@@ -1121,7 +1192,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EventHandler_8hpp_source.html#l00065">65</a> of file <a class="el" href="EventHandler_8hpp_source.html">EventHandler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EventHandler_8hpp_source.html#l00066">66</a> of file <a class="el" href="EventHandler_8hpp_source.html">EventHandler.hpp</a>.</p>
 
 </div>
 </div>
@@ -1145,7 +1216,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EventHandler_8hpp_source.html#l00067">67</a> of file <a class="el" href="EventHandler_8hpp_source.html">EventHandler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EventHandler_8hpp_source.html#l00068">68</a> of file <a class="el" href="EventHandler_8hpp_source.html">EventHandler.hpp</a>.</p>
 
 </div>
 </div>
@@ -1169,7 +1240,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EventHandler_8hpp_source.html#l00068">68</a> of file <a class="el" href="EventHandler_8hpp_source.html">EventHandler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EventHandler_8hpp_source.html#l00069">69</a> of file <a class="el" href="EventHandler_8hpp_source.html">EventHandler.hpp</a>.</p>
 
 </div>
 </div>
@@ -1193,7 +1264,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EventHandler_8hpp_source.html#l00070">70</a> of file <a class="el" href="EventHandler_8hpp_source.html">EventHandler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EventHandler_8hpp_source.html#l00071">71</a> of file <a class="el" href="EventHandler_8hpp_source.html">EventHandler.hpp</a>.</p>
 
 </div>
 </div>
@@ -1217,7 +1288,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EventHandler_8hpp_source.html#l00066">66</a> of file <a class="el" href="EventHandler_8hpp_source.html">EventHandler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EventHandler_8hpp_source.html#l00067">67</a> of file <a class="el" href="EventHandler_8hpp_source.html">EventHandler.hpp</a>.</p>
 
 </div>
 </div>

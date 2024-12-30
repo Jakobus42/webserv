@@ -10,11 +10,14 @@ var classhttp_1_1Connection =
     [ "getClientSocketFd", "classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597", null ],
     [ "getRequest", "classhttp_1_1Connection.html#ad1c64792c56b24889445c5683e17ee8e", null ],
     [ "getRequest", "classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894", null ],
+    [ "getResponse", "classhttp_1_1Connection.html#a372e3ed4a0be9ffe40ea732b03adc46b", null ],
+    [ "getResponse", "classhttp_1_1Connection.html#ac6f386a2cb7654aa51ab54b558992a9e", null ],
     [ "getSocket", "classhttp_1_1Connection.html#ae42cd82a9bec6c298d0f6d36e9047847", null ],
     [ "getSocket", "classhttp_1_1Connection.html#ae16a6e4f68981b34d70f101ff798e06e", null ],
     [ "operator=", "classhttp_1_1Connection.html#a2f8d41f9bfeb7736635e6cba132d378f", null ],
     [ "operator==", "classhttp_1_1Connection.html#a0096bcce0cada05a9f7e5e4f5d9d6bfc", null ],
     [ "m_client_socket", "classhttp_1_1Connection.html#a948bbde86fb6f85ce1d6592fd5970e50", null ],
     [ "m_read_buffer", "classhttp_1_1Connection.html#a6cec8f74e25faf7f39d8aac058682af2", null ],
-    [ "m_request", "classhttp_1_1Connection.html#a477ffbed6afb1d2803fe0635b00bd24e", null ]
+    [ "m_request", "classhttp_1_1Connection.html#a477ffbed6afb1d2803fe0635b00bd24e", null ],
+    [ "m_response", "classhttp_1_1Connection.html#a3ac030a7b7682623c967858c16c0536f", null ]
 ];
