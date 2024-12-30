@@ -1,6 +1,6 @@
 #include "http/createResponse.hpp"
 
-#include "http/ErrorMessages.hpp"
+#include "http/StatusMessages.hpp"
 
 const std::string HTTP_NAME = "HTTP/";
 const std::string ONE_DOT_ONE = "1.1";
@@ -11,7 +11,7 @@ namespace http {
 	// there are many like it, but not one to match its excellency
 
 	const std::string status(http::StatusCode status_code) {
-		return ErrorMessages::getInstance().getErrorMessages().at(status_code);
+		return StatusMessages::getInstance().getStatusMessages().at(status_code);
 	}
 
 	const std::string createResponse(StatusCode status_code) {

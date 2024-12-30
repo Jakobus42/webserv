@@ -1,6 +1,6 @@
 #pragma once
 
-#include "http/ErrorMessages.hpp"
+#include "http/StatusMessages.hpp"
 
 #include <string>
 
