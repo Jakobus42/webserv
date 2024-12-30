@@ -9,6 +9,7 @@ var dir_2d29d7dff7c7baf1180920f6796c23ae =
     [ "Parse_head.cpp", "Parse__head_8cpp.html", null ],
     [ "Parse_headers.cpp", "Parse__headers_8cpp.html", null ],
     [ "Request.cpp", "Request_8cpp.html", null ],
+    [ "Response.cpp", "Response_8cpp.html", null ],
     [ "ServerSocket.cpp", "ServerSocket_8cpp.html", "ServerSocket_8cpp" ],
     [ "VirtualServer.cpp", "VirtualServer_8cpp.html", null ]
 ];

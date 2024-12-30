@@ -81,6 +81,8 @@ Classes</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:a3f850046c268c46fb72762c55a51f565" id="r_a3f850046c268c46fb72762c55a51f565"><td class="memItemLeft" align="right" valign="top">typedef std::queue&lt; <a class="el" href="classhttp_1_1Request.html">http::Request</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecore.html#a3f850046c268c46fb72762c55a51f565">t_requests</a></td></tr>
 <tr class="separator:a3f850046c268c46fb72762c55a51f565"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adafddba83020bbc82dea161593194467" id="r_adafddba83020bbc82dea161593194467"><td class="memItemLeft" align="right" valign="top">typedef std::queue&lt; <a class="el" href="classhttp_1_1Response.html">http::Response</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecore.html#adafddba83020bbc82dea161593194467">t_responses</a></td></tr>
+<tr class="separator:adafddba83020bbc82dea161593194467"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67f4732639e9ae56728fe0440356e132" id="r_a67f4732639e9ae56728fe0440356e132"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="classhttp_1_1VirtualServer.html">http::VirtualServer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecore.html#a67f4732639e9ae56728fe0440356e132">t_virtualServers</a></td></tr>
 <tr class="separator:a67f4732639e9ae56728fe0440356e132"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -112,7 +114,23 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EventHandler_8hpp_source.html#l00015">15</a> of file <a class="el" href="EventHandler_8hpp_source.html">EventHandler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="EventHandler_8hpp_source.html#l00016">16</a> of file <a class="el" href="EventHandler_8hpp_source.html">EventHandler.hpp</a>.</p>
+
+</div>
+</div>
+<a id="adafddba83020bbc82dea161593194467" name="adafddba83020bbc82dea161593194467"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adafddba83020bbc82dea161593194467">&#9670;&#160;</a></span>t_responses</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::queue&lt;<a class="el" href="classhttp_1_1Response.html">http::Response</a>&gt; <a class="el" href="namespacecore.html#adafddba83020bbc82dea161593194467">core::t_responses</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="EventHandler_8hpp_source.html#l00017">17</a> of file <a class="el" href="EventHandler_8hpp_source.html">EventHandler.hpp</a>.</p>
 
 </div>
 </div>
@@ -154,23 +172,23 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="a7722fc98a69f1090256a12783efa8701a5d20d70733b90f0c53f3ed7b2d04e76c" name="a7722fc98a69f1090256a12783efa8701a5d20d70733b90f0c53f3ed7b2d04e76c"></a>FAILED&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="EventHandler_8hpp_source.html#l00017">17</a> of file <a class="el" href="EventHandler_8hpp_source.html">EventHandler.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   17</span>                      {</div>
-<div class="line"><span class="lineno">   18</span>        <a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a05c173243c29e5bb8b7c4b7a448798ec">PENDING_READ</a>,</div>
-<div class="line"><span class="lineno">   19</span>        <a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701ae68723f301d0fb80a6e4e6b1ff7a8c2b">PROCESSING</a>,</div>
-<div class="line"><span class="lineno">   20</span>        <a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701af78c1fc87a1be36d429e7392d6b9f665">WAITING_FOR_WRITE</a>,</div>
-<div class="line"><span class="lineno">   21</span>        <a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a591ab51024c7525d13aaf8efb8c23843">WRITING</a>,</div>
-<div class="line"><span class="lineno">   22</span>        <a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a0e492901e669f96c26ca11dbba817907">SENDING</a>,</div>
-<div class="line"><span class="lineno">   23</span>        <a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a6e31c0e2dab1b21ac70715fca05a0ff4">COMPLETED</a>,</div>
-<div class="line"><span class="lineno">   24</span>        <a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a5d20d70733b90f0c53f3ed7b2d04e76c">FAILED</a></div>
-<div class="line"><span class="lineno">   25</span>    };</div>
-<div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701a05c173243c29e5bb8b7c4b7a448798ec"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a05c173243c29e5bb8b7c4b7a448798ec">core::PENDING_READ</a></div><div class="ttdeci">@ PENDING_READ</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00018">EventHandler.hpp:18</a></div></div>
-<div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701a0e492901e669f96c26ca11dbba817907"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a0e492901e669f96c26ca11dbba817907">core::SENDING</a></div><div class="ttdeci">@ SENDING</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00022">EventHandler.hpp:22</a></div></div>
-<div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701a591ab51024c7525d13aaf8efb8c23843"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a591ab51024c7525d13aaf8efb8c23843">core::WRITING</a></div><div class="ttdeci">@ WRITING</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00021">EventHandler.hpp:21</a></div></div>
-<div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701a5d20d70733b90f0c53f3ed7b2d04e76c"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a5d20d70733b90f0c53f3ed7b2d04e76c">core::FAILED</a></div><div class="ttdeci">@ FAILED</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00025">EventHandler.hpp:24</a></div></div>
-<div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701a6e31c0e2dab1b21ac70715fca05a0ff4"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a6e31c0e2dab1b21ac70715fca05a0ff4">core::COMPLETED</a></div><div class="ttdeci">@ COMPLETED</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00023">EventHandler.hpp:23</a></div></div>
-<div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701ae68723f301d0fb80a6e4e6b1ff7a8c2b"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701ae68723f301d0fb80a6e4e6b1ff7a8c2b">core::PROCESSING</a></div><div class="ttdeci">@ PROCESSING</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00019">EventHandler.hpp:19</a></div></div>
-<div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701af78c1fc87a1be36d429e7392d6b9f665"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701af78c1fc87a1be36d429e7392d6b9f665">core::WAITING_FOR_WRITE</a></div><div class="ttdeci">@ WAITING_FOR_WRITE</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00020">EventHandler.hpp:20</a></div></div>
+<p class="definition">Definition at line <a class="el" href="EventHandler_8hpp_source.html#l00019">19</a> of file <a class="el" href="EventHandler_8hpp_source.html">EventHandler.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>                      {</div>
+<div class="line"><span class="lineno">   20</span>        <a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a05c173243c29e5bb8b7c4b7a448798ec">PENDING_READ</a>,</div>
+<div class="line"><span class="lineno">   21</span>        <a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701ae68723f301d0fb80a6e4e6b1ff7a8c2b">PROCESSING</a>,</div>
+<div class="line"><span class="lineno">   22</span>        <a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701af78c1fc87a1be36d429e7392d6b9f665">WAITING_FOR_WRITE</a>,</div>
+<div class="line"><span class="lineno">   23</span>        <a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a591ab51024c7525d13aaf8efb8c23843">WRITING</a>,</div>
+<div class="line"><span class="lineno">   24</span>        <a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a0e492901e669f96c26ca11dbba817907">SENDING</a>,</div>
+<div class="line"><span class="lineno">   25</span>        <a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a6e31c0e2dab1b21ac70715fca05a0ff4">COMPLETED</a>,</div>
+<div class="line"><span class="lineno">   26</span>        <a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a5d20d70733b90f0c53f3ed7b2d04e76c">FAILED</a></div>
+<div class="line"><span class="lineno">   27</span>    };</div>
+<div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701a05c173243c29e5bb8b7c4b7a448798ec"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a05c173243c29e5bb8b7c4b7a448798ec">core::PENDING_READ</a></div><div class="ttdeci">@ PENDING_READ</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00020">EventHandler.hpp:20</a></div></div>
+<div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701a0e492901e669f96c26ca11dbba817907"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a0e492901e669f96c26ca11dbba817907">core::SENDING</a></div><div class="ttdeci">@ SENDING</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00024">EventHandler.hpp:24</a></div></div>
+<div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701a591ab51024c7525d13aaf8efb8c23843"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a591ab51024c7525d13aaf8efb8c23843">core::WRITING</a></div><div class="ttdeci">@ WRITING</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00023">EventHandler.hpp:23</a></div></div>
+<div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701a5d20d70733b90f0c53f3ed7b2d04e76c"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a5d20d70733b90f0c53f3ed7b2d04e76c">core::FAILED</a></div><div class="ttdeci">@ FAILED</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00027">EventHandler.hpp:26</a></div></div>
+<div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701a6e31c0e2dab1b21ac70715fca05a0ff4"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a6e31c0e2dab1b21ac70715fca05a0ff4">core::COMPLETED</a></div><div class="ttdeci">@ COMPLETED</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00025">EventHandler.hpp:25</a></div></div>
+<div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701ae68723f301d0fb80a6e4e6b1ff7a8c2b"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701ae68723f301d0fb80a6e4e6b1ff7a8c2b">core::PROCESSING</a></div><div class="ttdeci">@ PROCESSING</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00021">EventHandler.hpp:21</a></div></div>
+<div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701af78c1fc87a1be36d429e7392d6b9f665"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701af78c1fc87a1be36d429e7392d6b9f665">core::WAITING_FOR_WRITE</a></div><div class="ttdeci">@ WAITING_FOR_WRITE</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00022">EventHandler.hpp:22</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

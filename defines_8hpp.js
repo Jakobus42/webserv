@@ -27,6 +27,7 @@ var defines_8hpp =
       [ "PARSE_END", "defines_8hpp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff", null ]
     ] ],
     [ "StatusCode", "defines_8hpp.html#ac125d409f7c7b6034fe7e49d237b7762", [
+      [ "UNKNWN", "defines_8hpp.html#ac125d409f7c7b6034fe7e49d237b7762ad9006f1cb7c0f5a565cba334dc8c78aa", null ],
       [ "OK", "defines_8hpp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc", null ],
       [ "CREATED", "defines_8hpp.html#ac125d409f7c7b6034fe7e49d237b7762a55ec2403fcca929391dbb044ffed5e85", null ],
       [ "ACCEPTED", "defines_8hpp.html#ac125d409f7c7b6034fe7e49d237b7762ada040cfaa65857ae3be3676c276fc87a", null ],

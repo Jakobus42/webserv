@@ -2,6 +2,7 @@ var EventHandler_8hpp =
 [
     [ "core::EventHandler", "classcore_1_1EventHandler.html", "classcore_1_1EventHandler" ],
     [ "t_requests", "EventHandler_8hpp.html#a3f850046c268c46fb72762c55a51f565", null ],
+    [ "t_responses", "EventHandler_8hpp.html#adafddba83020bbc82dea161593194467", null ],
     [ "HandlerState", "EventHandler_8hpp.html#a7722fc98a69f1090256a12783efa8701", [
       [ "PENDING_READ", "EventHandler_8hpp.html#a7722fc98a69f1090256a12783efa8701a05c173243c29e5bb8b7c4b7a448798ec", null ],
       [ "PROCESSING", "EventHandler_8hpp.html#a7722fc98a69f1090256a12783efa8701ae68723f301d0fb80a6e4e6b1ff7a8c2b", null ],

@@ -4,6 +4,7 @@ var namespacehttp =
     [ "Connection", "classhttp_1_1Connection.html", "classhttp_1_1Connection" ],
     [ "ErrorMessages", "classhttp_1_1ErrorMessages.html", "classhttp_1_1ErrorMessages" ],
     [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
+    [ "Response", "classhttp_1_1Response.html", "classhttp_1_1Response" ],
     [ "s_requestData", "structhttp_1_1s__requestData.html", "structhttp_1_1s__requestData" ],
     [ "ServerSocket", "classhttp_1_1ServerSocket.html", "classhttp_1_1ServerSocket" ],
     [ "VirtualServer", "classhttp_1_1VirtualServer.html", "classhttp_1_1VirtualServer" ],
@@ -56,7 +57,14 @@ var namespacehttp =
       [ "PARSE_BODY", "namespacehttp.html#a068cab601142fb739077ccd62379df64ac4ffb0e12ded445e68ca3f683a01ba21", null ],
       [ "PARSE_END", "namespacehttp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff", null ]
     ] ],
+    [ "ResponseBuilderStatus", "namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1a", [
+      [ "PENDING_WRITE", "namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaf966f2e5a987b48464b2a8fad68c4011", null ],
+      [ "WRITING", "namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aa7307a91bef7a3eade7b5b2426845497b", null ],
+      [ "PENDING_SEND", "namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aa04df9d985ac43132b14fb58e6d9aa31a", null ],
+      [ "SENT", "namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaedea9362e706174c3e634e43b1a0e0fb", null ]
+    ] ],
     [ "StatusCode", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762", [
+      [ "UNKNWN", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ad9006f1cb7c0f5a565cba334dc8c78aa", null ],
       [ "OK", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc", null ],
       [ "CREATED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a55ec2403fcca929391dbb044ffed5e85", null ],
       [ "ACCEPTED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ada040cfaa65857ae3be3676c276fc87a", null ],

@@ -9,8 +9,10 @@ var classcore_1_1EventHandler =
     [ "getConnection", "classcore_1_1EventHandler.html#adc91c5985ff39da1c978f54921c032f7", null ],
     [ "getConnection", "classcore_1_1EventHandler.html#ad83d2c43ff03be2e5e553fff70fa8b44", null ],
     [ "getEvents", "classcore_1_1EventHandler.html#a1d873d0081a97effa2204caa71454ca8", null ],
-    [ "getRequests", "classcore_1_1EventHandler.html#a1e4d384383a576b2e98a51e49308f89a", null ],
-    [ "getRequests", "classcore_1_1EventHandler.html#a60e03e06160530d62ce3973726e969da", null ],
+    [ "getRequests", "classcore_1_1EventHandler.html#aa4d814bf37e5ac21d2302a5a13328fa3", null ],
+    [ "getRequests", "classcore_1_1EventHandler.html#a48a57171e16669bb6dee5cf19fcee6d0", null ],
+    [ "getResponses", "classcore_1_1EventHandler.html#aada3647452d1b629bbdc9723e948f725", null ],
+    [ "getResponses", "classcore_1_1EventHandler.html#a4f0be67600ff7c9a1ac60ecdecfe8799", null ],
     [ "getServer", "classcore_1_1EventHandler.html#a6f104be35989c3d26400bffcaca07176", null ],
     [ "getServer", "classcore_1_1EventHandler.html#aa840f0216ac231d82a3068d6aa9f97be", null ],
     [ "getState", "classcore_1_1EventHandler.html#acfbb03c7b89736ce57420e53d3ce41fd", null ],
@@ -24,6 +26,7 @@ var classcore_1_1EventHandler =
     [ "m_connection", "classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9", null ],
     [ "m_events", "classcore_1_1EventHandler.html#a77badb9ee990e9a661227bd2235be12e", null ],
     [ "m_requests", "classcore_1_1EventHandler.html#aa1ec7a25a3befaf455b43e5a7bf2875a", null ],
+    [ "m_responses", "classcore_1_1EventHandler.html#a3135d335cb48cb3cbaf06e6725624476", null ],
     [ "m_server", "classcore_1_1EventHandler.html#a3d4b82dc5fd7df427588db5dc006e813", null ],
     [ "m_state", "classcore_1_1EventHandler.html#addedacf1a0307399bfce1b669843d935", null ]
 ];
