@@ -55,6 +55,10 @@ namespace http {
 		m_rawResponse = to;
 	}
 
+	bool Response::done(void) const {
+		return true;
+	}
+
 	void Response::reset(void) {
 		m_rawResponse = "";
 		m_status = PENDING_WRITE;

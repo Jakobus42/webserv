@@ -153,9 +153,12 @@ namespace core {
 		} else
 			setState(PROCESSING);
 		// if request.done() then setState(COMPLETED);
+		std::cout << "m_responses now " << m_responses.size() << " long" << std::endl;
 	}
 
 	void EventHandler::buildResponse(void) {
+		if (m_requests.empty() || m_state > WRITING)
+			return;
 		http::Response& currentResponse = m_connection.getResponse();
 		const std::string response =
 			"HTTP/1.1 200 OK\r\n"
@@ -165,16 +168,23 @@ namespace core {
 			"Hello, World!";
 
 		currentResponse.setRawResponse(response);
+		if (currentResponse.done()) {
+			m_responses.push(currentResponse);
+			m_requests.pop();
+			setState(PENDING_SEND);
+			currentResponse.reset();
+		}
+		std::cout << "m_requests now " << m_requests.size() << " long" << std::endl;
 	}
 
 	// take the topmost request from the queue and build a response
 	void EventHandler::sendResponse(void) {
-		http::Response& currentResponse = m_connection.getResponse();
+		if (m_responses.empty() || m_state < PENDING_SEND)
+			return;
+		setState(SENDING);
+		http::Response& currentResponse = m_responses.front();
 		int fd = m_connection.getClientSocketFd();
 		std::cout << "sendResponse on fd: " << fd << std::endl;
-
-		// if response.complete() then m_responses.push(response);
-		// else keep going
 
 		ssize_t bytesSent = send(fd, currentResponse.getRawResponse().c_str(), currentResponse.getRawResponse().length(), 0);
 		if (bytesSent < 0) {
@@ -183,8 +193,10 @@ namespace core {
 			std::cout << "Sent response: " << currentResponse.getRawResponse() << std::endl;
 			setState(COMPLETED);
 			currentResponse.reset();
+			m_responses.pop();
 			std::cout << "Response set to COMPLETED" << std::endl;
 		}
+		std::cout << "m_responses now " << m_responses.size() << " long" << std::endl;
 	}
 
 	void EventHandler::handleError(void) {

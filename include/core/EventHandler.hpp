@@ -5,6 +5,7 @@
 #include "http/Response.hpp"
 
 #include <queue>
+#include <sstream>
 
 namespace http {
 	class VirtualServer;
@@ -21,6 +22,7 @@ namespace core {
 		PROCESSING,
 		WAITING_FOR_WRITE,
 		WRITING,
+		PENDING_SEND,
 		SENDING,
 		COMPLETED,
 		FAILED

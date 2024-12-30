@@ -29,6 +29,7 @@ namespace http {
 			ResponseBuilderStatus getStatus(void) const;
 			StatusCode getStatusCode(void) const;
 
+			bool done(void) const;
 			void reset(void);
 
 		private:
