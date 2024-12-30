@@ -2,6 +2,7 @@
 #include <sys/epoll.h>
 
 #include "http/Request.hpp"
+#include "http/Response.hpp"
 
 #include <queue>
 
@@ -13,6 +14,7 @@ namespace http {
 namespace core {
 
 	typedef std::queue<http::Request> t_requests;
+	typedef std::queue<http::Response> t_responses;
 
 	enum HandlerState {
 		PENDING_READ,
@@ -35,8 +37,10 @@ namespace core {
 			EventHandler(const EventHandler& other);
 			EventHandler& operator=(const EventHandler& rhs);
 
-			std::queue<http::Request>& getRequests(void);
-			const std::queue<http::Request>& getRequests(void) const;
+			t_requests& getRequests(void);
+			const t_requests& getRequests(void) const;
+			t_responses& getResponses(void);
+			const t_responses& getResponses(void) const;
 			HandlerState getState(void) const;
 			http::VirtualServer& getServer(void);
 			http::VirtualServer& getServer(void) const;
@@ -61,6 +65,7 @@ namespace core {
 			uint32_t m_events;
 			HandlerState m_state;
 			t_requests m_requests;
+			t_responses m_responses;
 			http::Connection& m_connection;
 			http::VirtualServer& m_server;
 	};

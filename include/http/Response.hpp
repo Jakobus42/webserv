@@ -25,6 +25,7 @@ namespace http {
 			Response& operator=(const Response& rhs);
 
 			const std::string& getRawResponse(void) const;
+			ResponseBuilderStatus getStatus(void) const;
 			StatusCode getStatusCode(void) const;
 
 		private:

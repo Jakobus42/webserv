@@ -15,6 +15,7 @@ namespace core {
 		: m_events(events)
 		, m_state(PENDING_READ)
 		, m_requests()
+		, m_responses()
 		, m_connection(connection)
 		, m_server(server) {}
 
@@ -31,6 +32,7 @@ namespace core {
 		: m_events(other.getEvents())
 		, m_state(other.getState())
 		, m_requests(other.getRequests())
+		, m_responses(other.getResponses())
 		, m_connection(other.getConnection())
 		, m_server(other.getServer()) {}
 
@@ -45,17 +47,26 @@ namespace core {
 		m_events = rhs.getEvents();
 		m_state = rhs.getState();
 		m_requests = rhs.getRequests();
+		m_responses = rhs.getResponses();
 		m_connection = rhs.getConnection();
 		m_server = rhs.getServer();
 		return *this;
 	}
 
-	std::queue<http::Request>& EventHandler::getRequests(void) {
+	t_requests& EventHandler::getRequests(void) {
 		return m_requests;
 	}
 
-	const std::queue<http::Request>& EventHandler::getRequests(void) const {
+	const t_requests& EventHandler::getRequests(void) const {
 		return m_requests;
+	}
+
+	t_responses& EventHandler::getResponses(void) {
+		return m_responses;
+	}
+
+	const t_responses& EventHandler::getResponses(void) const {
+		return m_responses;
 	}
 
 	HandlerState EventHandler::getState(void) const {
@@ -160,7 +171,6 @@ namespace core {
 			std::cerr << "Error sending data" << std::endl;
 		} else {
 			std::cout << "Sent response: " << response << std::endl;
-			m_connection.getRequest().reset();
 			setState(COMPLETED);
 			std::cout << "Response set to COMPLETED" << std::endl;
 		}
