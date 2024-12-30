@@ -11,6 +11,7 @@ var namespacehttp =
     [ "t_connections", "namespacehttp.html#aa3bcd24ae02414378f7cd9a8aafc784f", null ],
     [ "t_errorMessage", "namespacehttp.html#aaaa7534547fe86546f2bfdd34cf99d40", null ],
     [ "t_errorMessages", "namespacehttp.html#a1e177883f48c7b0477b645c807a34bb8", null ],
+    [ "t_headerFields", "namespacehttp.html#a5fc275abcbe27d3c4113fcf5e74b2a09", null ],
     [ "t_requestData", "namespacehttp.html#a344224153c4286273f922e54b792a50d", null ],
     [ "t_sockaddr", "namespacehttp.html#a4b20fa68e7c12bf7aff9d3a71a4f2b88", null ],
     [ "t_sockaddr_in", "namespacehttp.html#ac73171fb8c32554229836839f6c4e8ed", null ],

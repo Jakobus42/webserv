@@ -1,6 +1,7 @@
 var Response_8hpp =
 [
     [ "http::Response", "classhttp_1_1Response.html", "classhttp_1_1Response" ],
+    [ "t_headerFields", "Response_8hpp.html#a5fc275abcbe27d3c4113fcf5e74b2a09", null ],
     [ "ResponseBuilderStatus", "Response_8hpp.html#aba0c98b4a16a22ebfcf0867839c59d1a", [
       [ "PENDING_WRITE", "Response_8hpp.html#aba0c98b4a16a22ebfcf0867839c59d1aaf966f2e5a987b48464b2a8fad68c4011", null ],
       [ "WRITING", "Response_8hpp.html#aba0c98b4a16a22ebfcf0867839c59d1aa7307a91bef7a3eade7b5b2426845497b", null ],
