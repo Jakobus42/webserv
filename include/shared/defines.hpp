@@ -89,7 +89,7 @@ namespace http {
 		PARSE_HEAD,
 		PARSE_HEADERS,
 		PARSE_BODY,
-		PARSE_END,
+		PARSE_END
 	};
 
 } // namespace http

@@ -103,6 +103,7 @@ namespace core {
 	void EventHandler::handleRequest(void) {
 		int fd = m_connection.getClientSocketFd();
 		char* buffer = m_connection.getBuffer();
+		http::Request& request = m_connection.getRequest(); // @TODO: ensure this always works on the right (foremost) request
 
 		ssize_t bytesReceived = recv(fd, buffer, BUFFER_SIZE - 1, 0);
 		if (bytesReceived < 0) {
@@ -127,22 +128,25 @@ namespace core {
 		buffer[bytesReceived] = '\0';
 		std::cout << "Received bytes: " << bytesReceived << std::endl;
 		std::cout << "Received data: " << buffer << std::endl;
-		if (!m_connection.getRequest().parse(buffer)) {
+		if (!request.parse(buffer)) {
 			setState(FAILED);
 			// handle failure
 			std::cout << "Request FAILED" << std::endl;
 			return;
 		}
-		if (m_connection.getRequest().getStatus() == http::PARSE_END) {
+		if (request.getStatus() == http::PARSE_END) {
 			std::cout << "Request COMPLETED right after parsing" << std::endl;
+			m_requests.push(request);
+			request.reset();
 			setState(WAITING_FOR_WRITE);
 		} else
 			setState(PROCESSING);
 		// if request.done() then setState(COMPLETED);
 	}
 
+	// take the topmost request from the queue and build a response
 	void EventHandler::handleResponse(void) {
-		int fd = m_connection.getSocket().getFd();
+		int fd = m_connection.getClientSocketFd();
 		std::cout << "handleResponse on fd: " << fd << std::endl;
 		const char* response =
 			"HTTP/1.1 200 OK\r\n"
@@ -156,7 +160,6 @@ namespace core {
 			std::cerr << "Error sending data" << std::endl;
 		} else {
 			std::cout << "Sent response: " << response << std::endl;
-			(void)response;
 			m_connection.getRequest().reset();
 			setState(COMPLETED);
 			std::cout << "Response set to COMPLETED" << std::endl;
