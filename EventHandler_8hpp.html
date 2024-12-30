@@ -72,51 +72,53 @@ $(document).ready(function(){initNavTree('EventHandler_8hpp.html',''); initResiz
 <code>#include &quot;<a class="el" href="Request_8hpp_source.html">http/Request.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Response_8hpp_source.html">http/Response.hpp</a>&quot;</code><br />
 <code>#include &lt;queue&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for EventHandler.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="EventHandler_8hpp__incl.png" border="0" usemap="#a_2home_2runner_2work_2webserv_2webserv_2include_2core_2EventHandler_8hpp" alt=""/></div>
 <map name="a_2home_2runner_2work_2webserv_2webserv_2include_2core_2EventHandler_8hpp" id="a_2home_2runner_2work_2webserv_2webserv_2include_2core_2EventHandler_8hpp">
-<area shape="rect" title=" " alt="" coords="182,5,465,45"/>
-<area shape="rect" title=" " alt="" coords="141,93,233,119"/>
-<area shape="poly" title=" " alt="" coords="292,48,221,89,218,84,289,43"/>
-<area shape="rect" href="Request_8hpp.html" title=" " alt="" coords="309,93,442,119"/>
-<area shape="poly" title=" " alt="" coords="338,44,362,80,358,83,334,47"/>
-<area shape="rect" href="Response_8hpp.html" title=" " alt="" coords="16,167,159,192"/>
-<area shape="poly" title=" " alt="" coords="314,47,286,84,246,121,198,147,150,165,148,160,196,142,243,117,282,80,309,44"/>
-<area shape="rect" title=" " alt="" coords="467,93,529,119"/>
-<area shape="poly" title=" " alt="" coords="366,43,461,85,459,90,364,48"/>
-<area shape="rect" title=" " alt="" coords="456,313,527,339"/>
-<area shape="poly" title=" " alt="" coords="432,116,520,138,560,151,587,164,608,181,622,196,641,239,644,253,640,267,620,288,595,304,567,315,541,322,539,316,566,310,592,299,617,284,636,264,639,253,635,241,617,199,604,184,585,169,558,156,519,143,431,121"/>
-<area shape="rect" href="defines_8hpp.html" title=" " alt="" coords="207,240,352,265"/>
-<area shape="poly" title=" " alt="" coords="338,121,303,139,287,152,275,168,270,182,268,197,273,226,268,227,263,197,265,181,270,165,283,149,300,135,335,116"/>
-<area shape="rect" href="stringUtils_8hpp.html" title=" " alt="" coords="359,167,525,192"/>
-<area shape="poly" title=" " alt="" coords="388,117,424,155,420,158,384,121"/>
-<area shape="rect" title=" " alt="" coords="479,240,538,265"/>
-<area shape="poly" title=" " alt="" coords="425,116,492,137,521,150,539,165,545,181,544,199,529,230,524,228,538,197,540,182,535,168,518,155,490,142,423,121"/>
-<area shape="rect" title=" " alt="" coords="123,240,182,265"/>
-<area shape="poly" title=" " alt="" coords="351,121,309,142,262,169,217,201,178,232,175,228,214,197,259,164,306,137,349,116"/>
-<area shape="rect" title=" " alt="" coords="563,240,625,265"/>
-<area shape="poly" title=" " alt="" coords="427,116,504,138,538,151,561,165,582,194,592,225,587,227,577,196,558,169,536,156,503,143,426,121"/>
-<area shape="rect" title=" " alt="" coords="285,167,335,192"/>
-<area shape="poly" title=" " alt="" coords="367,121,332,158,328,155,363,117"/>
-<area shape="poly" title=" " alt="" coords="314,263,445,306,443,311,313,268"/>
-<area shape="rect" title=" " alt="" coords="231,313,327,339"/>
-<area shape="poly" title=" " alt="" coords="282,266,282,300,277,300,277,266"/>
-<area shape="rect" title=" " alt="" coords="5,313,108,339"/>
-<area shape="poly" title=" " alt="" coords="244,268,106,312,105,307,243,263"/>
-<area shape="rect" title=" " alt="" coords="351,313,431,339"/>
-<area shape="poly" title=" " alt="" coords="299,263,363,303,360,308,296,268"/>
-<area shape="rect" title=" " alt="" coords="133,313,207,339"/>
-<area shape="poly" title=" " alt="" coords="263,268,201,308,198,303,260,263"/>
-<area shape="poly" title=" " alt="" coords="448,192,470,264,483,299,478,301,465,266,443,193"/>
-<area shape="poly" title=" " alt="" coords="417,194,320,237,317,232,415,190"/>
-<area shape="poly" title=" " alt="" coords="440,193,402,301,397,300,435,192"/>
-<area shape="poly" title=" " alt="" coords="455,191,490,228,487,232,451,194"/>
-<area shape="poly" title=" " alt="" coords="393,195,196,242,195,237,392,189"/>
-<area shape="poly" title=" " alt="" coords="468,190,558,232,556,237,465,194"/>
-<area shape="poly" title=" " alt="" coords="119,190,236,232,234,237,117,195"/>
-<area shape="poly" title=" " alt="" coords="100,191,135,228,131,232,96,194"/>
+<area shape="rect" title=" " alt="" coords="350,5,633,45"/>
+<area shape="rect" title=" " alt="" coords="257,93,349,119"/>
+<area shape="poly" title=" " alt="" coords="447,48,345,90,343,85,445,43"/>
+<area shape="rect" href="Request_8hpp.html" title=" " alt="" coords="425,93,558,119"/>
+<area shape="poly" title=" " alt="" coords="494,46,494,79,489,79,489,46"/>
+<area shape="rect" title=" " alt="" coords="578,313,653,339"/>
+<area shape="poly" title=" " alt="" coords="519,44,572,91,601,126,624,165,651,214,656,237,653,266,635,303,630,301,647,265,651,237,646,216,620,168,597,129,568,95,515,48"/>
+<area shape="rect" href="Response_8hpp.html" title=" " alt="" coords="5,167,148,192"/>
+<area shape="poly" title=" " alt="" coords="472,48,424,85,362,121,312,140,260,154,163,172,162,167,259,149,310,135,360,116,421,81,469,43"/>
+<area shape="rect" title=" " alt="" coords="741,93,804,119"/>
+<area shape="poly" title=" " alt="" coords="559,43,729,90,727,95,558,48"/>
+<area shape="rect" title=" " alt="" coords="396,313,467,339"/>
+<area shape="poly" title=" " alt="" coords="516,116,561,142,608,178,626,199,637,221,639,244,630,267,598,296,560,314,519,324,481,328,480,322,518,318,558,309,595,291,625,264,634,243,632,222,621,202,604,182,558,146,514,121"/>
+<area shape="rect" href="defines_8hpp.html" title=" " alt="" coords="115,240,260,265"/>
+<area shape="poly" title=" " alt="" coords="425,120,295,144,241,157,213,169,203,181,197,196,190,227,185,225,192,194,199,178,210,165,239,152,294,139,424,115"/>
+<area shape="rect" href="stringUtils_8hpp.html" title=" " alt="" coords="349,167,514,192"/>
+<area shape="poly" title=" " alt="" coords="483,121,452,158,448,154,479,117"/>
+<area shape="rect" title=" " alt="" coords="469,240,527,265"/>
+<area shape="poly" title=" " alt="" coords="503,117,517,139,529,166,530,183,528,200,516,230,511,227,523,198,525,183,523,167,512,141,498,120"/>
+<area shape="rect" title=" " alt="" coords="285,240,343,265"/>
+<area shape="poly" title=" " alt="" coords="425,121,379,139,357,152,339,168,323,196,317,227,312,226,318,195,335,165,354,148,376,134,423,116"/>
+<area shape="rect" title=" " alt="" coords="552,240,615,265"/>
+<area shape="poly" title=" " alt="" coords="505,117,526,138,547,165,564,196,577,226,572,228,559,198,542,168,522,142,502,121"/>
+<area shape="rect" title=" " alt="" coords="223,167,274,192"/>
+<area shape="poly" title=" " alt="" coords="453,121,288,169,286,164,452,116"/>
+<area shape="poly" title=" " alt="" coords="227,263,384,308,382,313,226,268"/>
+<area shape="rect" title=" " alt="" coords="23,313,119,339"/>
+<area shape="poly" title=" " alt="" coords="170,268,103,308,101,304,167,263"/>
+<area shape="rect" title=" " alt="" coords="144,313,247,339"/>
+<area shape="poly" title=" " alt="" coords="191,265,195,300,190,300,186,266"/>
+<area shape="rect" title=" " alt="" coords="285,313,365,339"/>
+<area shape="poly" title=" " alt="" coords="211,263,291,305,289,309,208,268"/>
+<area shape="poly" title=" " alt="" coords="257,263,565,314,564,319,256,268"/>
+<area shape="poly" title=" " alt="" coords="434,192,434,300,429,300,429,192"/>
+<area shape="poly" title=" " alt="" coords="393,195,241,239,239,234,391,189"/>
+<area shape="poly" title=" " alt="" coords="425,194,343,304,339,301,420,191"/>
+<area shape="poly" title=" " alt="" coords="444,191,480,228,476,232,440,194"/>
+<area shape="poly" title=" " alt="" coords="414,194,346,235,344,230,411,190"/>
+<area shape="poly" title=" " alt="" coords="457,190,547,232,545,237,455,194"/>
+<area shape="poly" title=" " alt="" coords="96,190,159,230,156,235,93,194"/>
+<area shape="poly" title=" " alt="" coords="116,189,272,236,271,241,114,195"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -166,7 +168,8 @@ Enumerations</h2></td></tr>
 , <a class="el" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701af78c1fc87a1be36d429e7392d6b9f665">core::WAITING_FOR_WRITE</a>
 , <a class="el" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a591ab51024c7525d13aaf8efb8c23843">core::WRITING</a>
 , <br />
-&#160;&#160;<a class="el" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a0e492901e669f96c26ca11dbba817907">core::SENDING</a>
+&#160;&#160;<a class="el" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701ad336826de1fecf7a2d036304585e1897">core::PENDING_SEND</a>
+, <a class="el" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a0e492901e669f96c26ca11dbba817907">core::SENDING</a>
 , <a class="el" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a6e31c0e2dab1b21ac70715fca05a0ff4">core::COMPLETED</a>
 , <a class="el" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a5d20d70733b90f0c53f3ed7b2d04e76c">core::FAILED</a>
 <br />
