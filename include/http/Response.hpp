@@ -24,9 +24,12 @@ namespace http {
 			Response(const Response& other);
 			Response& operator=(const Response& rhs);
 
+			void setRawResponse(const std::string&); // probably just temporary
 			const std::string& getRawResponse(void) const;
 			ResponseBuilderStatus getStatus(void) const;
 			StatusCode getStatusCode(void) const;
+
+			void reset(void);
 
 		private:
 			std::string m_rawResponse;

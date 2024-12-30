@@ -51,4 +51,14 @@ namespace http {
 		return m_statusCode;
 	}
 
+	void Response::setRawResponse(const std::string& to) {
+		m_rawResponse = to;
+	}
+
+	void Response::reset(void) {
+		m_rawResponse = "";
+		m_status = PENDING_WRITE;
+		m_statusCode = UNKNWN;
+	}
+
 } /* namespace http */

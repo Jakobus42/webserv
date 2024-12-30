@@ -243,7 +243,8 @@ namespace core {
 				return;
 			}
 			if (event.events & EPOLLOUT) {
-				handler.handleResponse();
+				handler.buildResponse();
+				handler.sendResponse();
 				return;
 			}
 			// if (handler.completed() && !handler.shouldDrop()) {

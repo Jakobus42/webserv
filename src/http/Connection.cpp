@@ -12,6 +12,7 @@ namespace http {
 	Connection::Connection()
 		: m_client_socket()
 		, m_request()
+		, m_response()
 		, m_read_buffer() {
 	}
 
@@ -21,6 +22,7 @@ namespace http {
 	Connection::Connection(int listen_socket) throw(std::exception)
 		: m_client_socket(listen_socket)
 		, m_request()
+		, m_response()
 		, m_read_buffer() {
 	}
 
@@ -38,6 +40,7 @@ namespace http {
 	Connection::Connection(const Connection& other)
 		: m_client_socket(other.getSocket())
 		, m_request(other.getRequest())
+		, m_response(other.getResponse())
 		, m_read_buffer() {
 		std::memcpy(m_read_buffer, other.getBuffer(), BUFFER_SIZE);
 	}
@@ -81,6 +84,14 @@ namespace http {
 
 	http::Request& Connection::getRequest(void) {
 		return m_request;
+	}
+
+	const http::Response& Connection::getResponse(void) const {
+		return m_response;
+	}
+
+	http::Response& Connection::getResponse(void) {
+		return m_response;
 	}
 
 	const char* Connection::getBuffer(void) const {

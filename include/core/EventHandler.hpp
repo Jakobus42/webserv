@@ -56,7 +56,8 @@ namespace core {
 			void killSelf(void);
 
 			void handleRequest(void);
-			void handleResponse(void);
+			void buildResponse(void);
+			void sendResponse(void);
 			void handleError(void);
 
 		private:

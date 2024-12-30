@@ -2,6 +2,7 @@
 
 #include "http/ClientSocket.hpp"
 #include "http/Request.hpp"
+#include "http/Response.hpp"
 
 namespace http {
 
@@ -22,6 +23,8 @@ namespace http {
 			int getClientSocketFd(void) const;
 			const http::Request& getRequest(void) const;
 			http::Request& getRequest(void);
+			const http::Response& getResponse(void) const;
+			http::Response& getResponse(void);
 			const char* getBuffer(void) const;
 			char* getBuffer(void);
 
@@ -32,6 +35,7 @@ namespace http {
 		private:
 			ClientSocket m_client_socket;
 			http::Request m_request;
+			http::Response m_response;
 			char m_read_buffer[BUFFER_SIZE];
 	};
 
