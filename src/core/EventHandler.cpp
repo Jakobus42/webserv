@@ -113,8 +113,8 @@ namespace core {
 	// potentially wasting a lot of time while we're still in EPOLLIN
 	void EventHandler::handleRequest(void) {
 		int fd = m_connection.getClientSocketFd();
-		char* buffer = m_connection.getBuffer();
-		http::Request& request = m_connection.getRequest(); // @TODO: ensure this always works on the right (foremost) request
+		char* buffer = m_connection.getByteBuffer();
+		http::Request& request = m_connection.getRequestBuffer(); // @TODO: ensure this always works on the right (foremost) request
 
 		ssize_t bytesReceived = recv(fd, buffer, BUFFER_SIZE - 1, 0);
 		if (bytesReceived < 0) {
@@ -160,7 +160,7 @@ namespace core {
 		if (m_requests.empty() || m_state > WRITING)
 			return;
 		const http::Request& currentRequest = m_requests.front();
-		http::Response& currentResponse = m_connection.getResponse();
+		http::Response& currentResponse = m_connection.getResponseBuffer();
 		const std::string response =
 			"HTTP/1.1 200 OK\r\n"
 			"Content-Type: text/plain\r\n"

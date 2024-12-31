@@ -10,20 +10,20 @@ namespace http {
 	 * @brief Constructs a new Connection object.
 	 */
 	Connection::Connection()
-		: m_client_socket()
-		, m_request()
-		, m_response()
-		, m_read_buffer() {
+		: m_clientSocket()
+		, m_requestBuffer()
+		, m_responseBuffer()
+		, m_byteBuffer() {
 	}
 
 	/**
 	 * @brief Constructs a new Connection object.
 	 */
-	Connection::Connection(int listen_socket) throw(std::exception)
-		: m_client_socket(listen_socket)
-		, m_request()
-		, m_response()
-		, m_read_buffer() {
+	Connection::Connection(int listenSocket) throw(std::exception)
+		: m_clientSocket(listenSocket)
+		, m_requestBuffer()
+		, m_responseBuffer()
+		, m_byteBuffer() {
 	}
 
 	/**
@@ -38,11 +38,11 @@ namespace http {
 	 * @param other The other Connection object to copy.
 	 */
 	Connection::Connection(const Connection& other)
-		: m_client_socket(other.getSocket())
-		, m_request(other.getRequest())
-		, m_response(other.getResponse())
-		, m_read_buffer() {
-		std::memcpy(m_read_buffer, other.getBuffer(), BUFFER_SIZE);
+		: m_clientSocket(other.getSocket())
+		, m_requestBuffer(other.getRequestBuffer())
+		, m_responseBuffer(other.getResponseBuffer())
+		, m_byteBuffer() {
+		std::memcpy(m_byteBuffer, other.getByteBuffer(), BUFFER_SIZE);
 	}
 
 	/**
@@ -53,8 +53,8 @@ namespace http {
 	Connection& Connection::operator=(const Connection& rhs) {
 		if (this == &rhs)
 			return *this;
-		m_client_socket.operator=(rhs.getSocket());
-		m_request = rhs.getRequest();
+		m_clientSocket.operator=(rhs.getSocket());
+		m_requestBuffer = rhs.getRequestBuffer();
 		return *this;
 	}
 
@@ -67,39 +67,39 @@ namespace http {
 	}
 
 	const ClientSocket& Connection::getSocket(void) const {
-		return m_client_socket;
+		return m_clientSocket;
 	}
 
 	ClientSocket& Connection::getSocket(void) {
-		return m_client_socket;
+		return m_clientSocket;
 	}
 
 	int Connection::getClientSocketFd(void) const {
-		return m_client_socket.getFd();
+		return m_clientSocket.getFd();
 	}
 
-	const http::Request& Connection::getRequest(void) const {
-		return m_request;
+	const http::Request& Connection::getRequestBuffer(void) const {
+		return m_requestBuffer;
 	}
 
-	http::Request& Connection::getRequest(void) {
-		return m_request;
+	http::Request& Connection::getRequestBuffer(void) {
+		return m_requestBuffer;
 	}
 
-	const http::Response& Connection::getResponse(void) const {
-		return m_response;
+	const http::Response& Connection::getResponseBuffer(void) const {
+		return m_responseBuffer;
 	}
 
-	http::Response& Connection::getResponse(void) {
-		return m_response;
+	http::Response& Connection::getResponseBuffer(void) {
+		return m_responseBuffer;
 	}
 
-	const char* Connection::getBuffer(void) const {
-		return m_read_buffer;
+	const char* Connection::getByteBuffer(void) const {
+		return m_byteBuffer;
 	}
 
-	char* Connection::getBuffer(void) {
-		return m_read_buffer;
+	char* Connection::getByteBuffer(void) {
+		return m_byteBuffer;
 	}
 
 } // namespace http
