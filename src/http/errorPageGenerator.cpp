@@ -1,6 +1,6 @@
 #include "http/errorPageGenerator.hpp"
 
-#include "http/ErrorMessages.hpp"
+#include "http/StatusMessages.hpp"
 #include "shared/defines.hpp"
 
 #include <sstream>
@@ -17,7 +17,7 @@ namespace http {
 	 * @return std::string The error page as an HTML string.
 	 */
 	std::string generateErrorPage(StatusCode code) {
-		const t_errorMessages& errorPages = ErrorMessages::getInstance().getErrorMessages();
+		const t_statusMessages& errorPages = StatusMessages::getInstance().getStatusMessages();
 		if (errorPages.find(code) == errorPages.end()) {
 			return "";
 		}

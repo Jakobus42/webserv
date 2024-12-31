@@ -33,6 +33,7 @@ namespace http {
 	 * @brief Represents the various standard HTTP status codes.
 	 */
 	enum StatusCode {
+		UNKNWN = 0,
 		OK = 200,
 		CREATED = 201,
 		ACCEPTED = 202,
@@ -89,7 +90,7 @@ namespace http {
 		PARSE_HEAD,
 		PARSE_HEADERS,
 		PARSE_BODY,
-		PARSE_END,
+		PARSE_END
 	};
 
 } // namespace http

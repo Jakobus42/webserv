@@ -208,6 +208,7 @@ namespace core {
 		int i = 0;
 
 		signal(SIGINT, handleSigint);
+		signal(SIGQUIT, SIG_IGN);
 		while (m_reacting) {
 			acceptNewConnections();
 			int nEvents = epoll_wait(m_epoll_master_fd, events, MAX_EVENTS, 60);
@@ -242,8 +243,11 @@ namespace core {
 				handler.handleRequest();
 				return;
 			}
+			if (event.events & EPOLLIN || event.events & EPOLLOUT) {
+				handler.buildResponse();
+			}
 			if (event.events & EPOLLOUT) {
-				handler.handleResponse();
+				handler.sendResponse();
 				return;
 			}
 			// if (handler.completed() && !handler.shouldDrop()) {
