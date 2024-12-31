@@ -108,14 +108,17 @@ namespace http {
 		std::stringstream ss("");
 		(void)request; // process the request
 
-		m_headerFields.insert(std::make_pair("hi", "ho"));
-		m_headerFields.insert(std::make_pair("he", "hoa"));
-		m_headerFields.insert(std::make_pair("his", "homie"));
-		m_headerFields.insert(std::make_pair("hih", "hoh"));
+		m_headerFields.insert(std::make_pair("Content-Type", "text/plain"));
+		m_headerFields.insert(std::make_pair("Content-Length", "13"));
+		m_statusCode = OK;
+		m_body = "Hello, world!";
 		this->statusLineString(ss);
 		std::cout << "done" << std::endl;
 		this->headersString(ss);
 		ss << CRLF;
+		if (!m_body.empty()) {
+			ss << m_body;
+		}
 		m_rawResponse = ss.str();
 		std::cout << "buildFromRequest built: " << m_rawResponse << std::endl;
 	}

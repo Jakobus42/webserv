@@ -3,6 +3,15 @@
 namespace http {
 
 	StatusMessages::StatusMessages() {
+		m_statusMessages[UNKNWN] = "Unknown Status Code, Whoopsie";
+		m_statusMessages[OK] = "OK";
+		m_statusMessages[CREATED] = "Created";
+		m_statusMessages[ACCEPTED] = "Accepted";
+		m_statusMessages[NO_CONTENT] = "No Content";
+		m_statusMessages[MOVED_PERMANENTLY] = "Moved Permanently";
+		m_statusMessages[FOUND] = "Found";
+		m_statusMessages[SEE_OTHER] = "See Other";
+		m_statusMessages[NOT_MODIFIED] = "Not Modified";
 		m_statusMessages[BAD_REQUEST] = "Bad Request";
 		m_statusMessages[UNAUTHORIZED] = "Unauthorized";
 		m_statusMessages[FORBIDDEN] = "Forbidden";
@@ -13,6 +22,7 @@ namespace http {
 		m_statusMessages[CONFLICT] = "Conflict";
 		m_statusMessages[GONE] = "Gone";
 		m_statusMessages[LENGTH_REQUIRED] = "Length Required";
+		m_statusMessages[PRECONDITION_FAILED] = "Precondition Failed";
 		m_statusMessages[PAYLOAD_TOO_LARGE] = "Payload Too Large";
 		m_statusMessages[URI_TOO_LONG] = "URI Too Long";
 		m_statusMessages[UNSUPPORTED_MEDIA_TYPE] = "Unsupported Media Type";

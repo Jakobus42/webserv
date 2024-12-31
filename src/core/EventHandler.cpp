@@ -183,7 +183,6 @@ namespace core {
 				currentResponse.buildErrorResponse(currentRequest);
 				break;
 		}
-		currentResponse.setRawResponse(response); // for testing; delete later, the above build functions mutate m_rawResponse
 		if (currentResponse.done()) {
 			m_responses.push(currentResponse);
 			m_requests.pop();
