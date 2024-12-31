@@ -79,6 +79,7 @@ namespace http {
 		m_rawResponse = to;
 	}
 
+	// TODO: implement
 	bool Response::done(void) const {
 		return true;
 	}
@@ -87,7 +88,6 @@ namespace http {
 		std::cout << "creating status line string" << std::endl;
 		std::string message;
 		try {
-
 			message = StatusMessages::getInstance().getStatusMessages().at(m_statusCode);
 		} catch (std::exception& e) {
 			std::cerr << "statusLineString failed: " << e.what() << std::endl;
@@ -96,18 +96,26 @@ namespace http {
 		return o << HTTP_NAME << ONE_DOT_ONE << ' ' << m_statusCode << ' ' << message << CRLF; // << statusMessage at the end
 	}
 
+	// put all the headers in the stream, formatted properly
 	std::ostream& Response::headersString(std::ostream& o) {
-		return o << "";
+		for (t_headerFields::iterator it = m_headerFields.begin(); it != m_headerFields.end(); ++it) {
+			o << it->first << ": " << it->second << CRLF;
+		}
+		return o;
 	}
 
 	void Response::buildFromRequest(const Request& request) {
 		std::stringstream ss("");
 		(void)request; // process the request
+
+		m_headerFields.insert(std::make_pair("hi", "ho"));
+		m_headerFields.insert(std::make_pair("he", "hoa"));
+		m_headerFields.insert(std::make_pair("his", "homie"));
+		m_headerFields.insert(std::make_pair("hih", "hoh"));
 		this->statusLineString(ss);
 		std::cout << "done" << std::endl;
-		ss << CRLF;
 		this->headersString(ss);
-		ss << CRLF << CRLF;
+		ss << CRLF;
 		m_rawResponse = ss.str();
 		std::cout << "buildFromRequest built: " << m_rawResponse << std::endl;
 	}

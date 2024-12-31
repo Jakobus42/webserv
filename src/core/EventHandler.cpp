@@ -169,6 +169,8 @@ namespace core {
 			"Hello, World!";
 
 		// set response type: CGI, error, or normal
+		// i.e. look for file and error if not found, otherwise build that
+		// or, if cgi header found, validate, run and respond accordingly
 
 		switch (currentResponse.getType()) {
 			case (http::IDK_NORMAL_I_GUESS):
@@ -181,7 +183,6 @@ namespace core {
 				currentResponse.buildErrorResponse(currentRequest);
 				break;
 		}
-		currentResponse.buildFromRequest(currentRequest);
 		currentResponse.setRawResponse(response); // for testing; delete later, the above build functions mutate m_rawResponse
 		if (currentResponse.done()) {
 			m_responses.push(currentResponse);
