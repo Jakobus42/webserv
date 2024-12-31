@@ -3,7 +3,12 @@
 #include "shared/defines.hpp"
 
 #include <map>
+#include <ostream>
 #include <string>
+
+const std::string HTTP_NAME = "HTTP/";
+const std::string ONE_DOT_ONE = "1.1";
+const std::string CRLF = "\r\n";
 
 namespace http {
 
@@ -18,6 +23,12 @@ namespace http {
 		SENT
 	};
 
+	enum ResponseType {
+		IDK_NORMAL_I_GUESS,
+		CGI,
+		ERROR
+	};
+
 	/**
 	 * @class Response
 	 * @brief ...
@@ -30,22 +41,26 @@ namespace http {
 			Response& operator=(const Response& rhs);
 
 			ResponseBuilderStatus getBuilderStatus(void) const;
+			ResponseType getType(void) const;
 			const std::string& getRawResponse(void) const;
 			StatusCode getStatusCode(void) const;
-			const std::string& getStatusLine(void) const;
 			const t_headerFields& getHeaderFields(void) const;
 			const std::string& getBody(void) const;
 
 			void setRawResponse(const std::string&); // probably just temporary
 
+			std::ostream& headersString(std::ostream& o);
+			inline std::ostream& statusLineString(std::ostream& o);
 			void buildFromRequest(const http::Request&);
+			void buildCGIResponse(const http::Request&);
+			void buildErrorResponse(const http::Request&);
 			bool done(void) const;
 			void reset(void);
 
 		private:
+			ResponseType m_type;
 			std::string m_rawResponse;
 			StatusCode m_statusCode;
-			std::string m_statusLine;
 			t_headerFields m_headerFields;
 			std::string m_body;
 

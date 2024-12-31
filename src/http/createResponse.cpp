@@ -1,5 +1,7 @@
 #include "http/createResponse.hpp"
 
+// this will probably be replaced by the Response class
+
 #include "http/StatusMessages.hpp"
 
 const std::string HTTP_NAME = "HTTP/";

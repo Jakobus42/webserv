@@ -1,6 +1,7 @@
 #include "http/Response.hpp"
 
 #include "http/Request.hpp"
+#include "http/StatusMessages.hpp"
 
 namespace http {
 
@@ -8,9 +9,9 @@ namespace http {
 	 * @brief Constructs a new Response object.
 	 */
 	Response::Response()
-		: m_rawResponse("")
+		: m_type(IDK_NORMAL_I_GUESS)
+		, m_rawResponse("")
 		, m_statusCode(UNKNWN)
-		, m_statusLine("")
 		, m_headerFields()
 		, m_body()
 		, m_builderStatus(PENDING_WRITE) {}
@@ -26,9 +27,9 @@ namespace http {
 	 * @param other The other Response object to copy.
 	 */
 	Response::Response(const Response& other)
-		: m_rawResponse(other.getRawResponse())
+		: m_type(other.getType())
+		, m_rawResponse(other.getRawResponse())
 		, m_statusCode(other.getStatusCode())
-		, m_statusLine(other.getStatusLine())
 		, m_headerFields(other.getHeaderFields())
 		, m_body(other.getBody())
 		, m_builderStatus(other.getBuilderStatus()) {}
@@ -41,9 +42,9 @@ namespace http {
 	Response& Response::operator=(const Response& rhs) {
 		if (this == &rhs)
 			return *this;
+		m_type = rhs.getType();
 		m_rawResponse = rhs.getRawResponse();
 		m_statusCode = rhs.getStatusCode();
-		m_statusLine = rhs.getStatusLine();
 		m_headerFields = rhs.getHeaderFields();
 		m_body = rhs.getBody();
 		m_builderStatus = rhs.getBuilderStatus();
@@ -54,16 +55,16 @@ namespace http {
 		return m_builderStatus;
 	}
 
+	ResponseType Response::getType(void) const {
+		return m_type;
+	}
+
 	const std::string& Response::getRawResponse(void) const {
 		return m_rawResponse;
 	}
 
 	StatusCode Response::getStatusCode(void) const {
 		return m_statusCode;
-	}
-
-	const std::string& Response::getStatusLine(void) const {
-		return m_statusLine;
 	}
 
 	const t_headerFields& Response::getHeaderFields(void) const {
@@ -82,14 +83,50 @@ namespace http {
 		return true;
 	}
 
+	inline std::ostream& Response::statusLineString(std::ostream& o) {
+		std::cout << "creating status line string" << std::endl;
+		std::string message;
+		try {
+
+			message = StatusMessages::getInstance().getStatusMessages().at(m_statusCode);
+		} catch (std::exception& e) {
+			std::cerr << "statusLineString failed: " << e.what() << std::endl;
+			message = "fuck";
+		}
+		return o << HTTP_NAME << ONE_DOT_ONE << ' ' << m_statusCode << ' ' << message << CRLF; // << statusMessage at the end
+	}
+
+	std::ostream& Response::headersString(std::ostream& o) {
+		return o << "";
+	}
+
 	void Response::buildFromRequest(const Request& request) {
+		std::stringstream ss("");
+		(void)request; // process the request
+		this->statusLineString(ss);
+		std::cout << "done" << std::endl;
+		ss << CRLF;
+		this->headersString(ss);
+		ss << CRLF << CRLF;
+		m_rawResponse = ss.str();
+		std::cout << "buildFromRequest built: " << m_rawResponse << std::endl;
+	}
+
+	void Response::buildCGIResponse(const Request& request) {
+		(void)request;
+	}
+
+	void Response::buildErrorResponse(const Request& request) {
 		(void)request;
 	}
 
 	void Response::reset(void) {
-		m_rawResponse = "";
-		m_builderStatus = PENDING_WRITE;
+		m_type = IDK_NORMAL_I_GUESS;
+		m_rawResponse.clear();
 		m_statusCode = UNKNWN;
+		m_headerFields.clear();
+		m_body.clear();
+		m_builderStatus = PENDING_WRITE;
 	}
 
 } /* namespace http */

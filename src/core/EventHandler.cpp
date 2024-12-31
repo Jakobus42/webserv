@@ -159,6 +159,7 @@ namespace core {
 	void EventHandler::buildResponse(void) {
 		if (m_requests.empty() || m_state > WRITING)
 			return;
+		const http::Request& currentRequest = m_requests.front();
 		http::Response& currentResponse = m_connection.getResponse();
 		const std::string response =
 			"HTTP/1.1 200 OK\r\n"
@@ -167,7 +168,21 @@ namespace core {
 			"\r\n"
 			"Hello, World!";
 
-		currentResponse.setRawResponse(response);
+		// set response type: CGI, error, or normal
+
+		switch (currentResponse.getType()) {
+			case (http::IDK_NORMAL_I_GUESS):
+				currentResponse.buildFromRequest(currentRequest);
+				break;
+			case (http::CGI):
+				currentResponse.buildCGIResponse(currentRequest);
+				break;
+			case (http::ERROR):
+				currentResponse.buildErrorResponse(currentRequest);
+				break;
+		}
+		currentResponse.buildFromRequest(currentRequest);
+		currentResponse.setRawResponse(response); // for testing; delete later, the above build functions mutate m_rawResponse
 		if (currentResponse.done()) {
 			m_responses.push(currentResponse);
 			m_requests.pop();
@@ -194,7 +209,6 @@ namespace core {
 			setState(COMPLETED);
 			currentResponse.reset();
 			m_responses.pop();
-			std::cout << "Response set to COMPLETED" << std::endl;
 		}
 		std::cout << "m_responses now " << m_responses.size() << " long" << std::endl;
 	}
