@@ -254,10 +254,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00115">115</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  115</span>                                                          {</div>
-<div class="line"><span class="lineno">  116</span>        (void)request;</div>
-<div class="line"><span class="lineno">  117</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00123">123</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  123</span>                                                          {</div>
+<div class="line"><span class="lineno">  124</span>        (void)request;</div>
+<div class="line"><span class="lineno">  125</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -293,10 +293,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00119">119</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  119</span>                                                            {</div>
-<div class="line"><span class="lineno">  120</span>        (void)request;</div>
-<div class="line"><span class="lineno">  121</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00127">127</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  127</span>                                                            {</div>
+<div class="line"><span class="lineno">  128</span>        (void)request;</div>
+<div class="line"><span class="lineno">  129</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -332,20 +332,24 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00103">103</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  103</span>                                                          {</div>
-<div class="line"><span class="lineno">  104</span>        std::stringstream ss(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">  105</span>        (void)request; <span class="comment">// process the request</span></div>
-<div class="line"><span class="lineno">  106</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1Response.html#a2d1e7ec002dfef0005ca5ef8f88d4567">statusLineString</a>(ss);</div>
-<div class="line"><span class="lineno">  107</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;done&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  108</span>        ss &lt;&lt; <a class="code hl_variable" href="createResponse_8cpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a>;</div>
-<div class="line"><span class="lineno">  109</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1Response.html#a7e9fb022362f77c3d9bfc19e76249977">headersString</a>(ss);</div>
-<div class="line"><span class="lineno">  110</span>        ss &lt;&lt; <a class="code hl_variable" href="createResponse_8cpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a> &lt;&lt; <a class="code hl_variable" href="createResponse_8cpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a>;</div>
-<div class="line"><span class="lineno">  111</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">m_rawResponse</a> = ss.str();</div>
-<div class="line"><span class="lineno">  112</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;buildFromRequest built: &quot;</span> &lt;&lt; <a class="code hl_variable" href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">m_rawResponse</a> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  113</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a2d1e7ec002dfef0005ca5ef8f88d4567"><div class="ttname"><a href="classhttp_1_1Response.html#a2d1e7ec002dfef0005ca5ef8f88d4567">http::Response::statusLineString</a></div><div class="ttdeci">std::ostream &amp; statusLineString(std::ostream &amp;o)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00086">Response.cpp:86</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a7e9fb022362f77c3d9bfc19e76249977"><div class="ttname"><a href="classhttp_1_1Response.html#a7e9fb022362f77c3d9bfc19e76249977">http::Response::headersString</a></div><div class="ttdeci">std::ostream &amp; headersString(std::ostream &amp;o)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00099">Response.cpp:99</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00107">107</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  107</span>                                                          {</div>
+<div class="line"><span class="lineno">  108</span>        std::stringstream ss(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">  109</span>        (void)request; <span class="comment">// process the request</span></div>
+<div class="line"><span class="lineno">  110</span> </div>
+<div class="line"><span class="lineno">  111</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>.insert(std::make_pair(<span class="stringliteral">&quot;hi&quot;</span>, <span class="stringliteral">&quot;ho&quot;</span>));</div>
+<div class="line"><span class="lineno">  112</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>.insert(std::make_pair(<span class="stringliteral">&quot;he&quot;</span>, <span class="stringliteral">&quot;hoa&quot;</span>));</div>
+<div class="line"><span class="lineno">  113</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>.insert(std::make_pair(<span class="stringliteral">&quot;his&quot;</span>, <span class="stringliteral">&quot;homie&quot;</span>));</div>
+<div class="line"><span class="lineno">  114</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>.insert(std::make_pair(<span class="stringliteral">&quot;hih&quot;</span>, <span class="stringliteral">&quot;hoh&quot;</span>));</div>
+<div class="line"><span class="lineno">  115</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1Response.html#a2d1e7ec002dfef0005ca5ef8f88d4567">statusLineString</a>(ss);</div>
+<div class="line"><span class="lineno">  116</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;done&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  117</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1Response.html#a7e9fb022362f77c3d9bfc19e76249977">headersString</a>(ss);</div>
+<div class="line"><span class="lineno">  118</span>        ss &lt;&lt; <a class="code hl_variable" href="createResponse_8cpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a>;</div>
+<div class="line"><span class="lineno">  119</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">m_rawResponse</a> = ss.str();</div>
+<div class="line"><span class="lineno">  120</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;buildFromRequest built: &quot;</span> &lt;&lt; <a class="code hl_variable" href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">m_rawResponse</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  121</span>    }</div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a2d1e7ec002dfef0005ca5ef8f88d4567"><div class="ttname"><a href="classhttp_1_1Response.html#a2d1e7ec002dfef0005ca5ef8f88d4567">http::Response::statusLineString</a></div><div class="ttdeci">std::ostream &amp; statusLineString(std::ostream &amp;o)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00087">Response.cpp:87</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a7e9fb022362f77c3d9bfc19e76249977"><div class="ttname"><a href="classhttp_1_1Response.html#a7e9fb022362f77c3d9bfc19e76249977">http::Response::headersString</a></div><div class="ttdeci">std::ostream &amp; headersString(std::ostream &amp;o)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00100">Response.cpp:100</a></div></div>
 <div class="ttc" id="acreateResponse_8cpp_html_a26894f5f61a3de2e81c8b9837517ee35"><div class="ttname"><a href="createResponse_8cpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a></div><div class="ttdeci">const std::string CRLF</div><div class="ttdef"><b>Definition</b> <a href="createResponse_8cpp_source.html#l00009">createResponse.cpp:9</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -398,10 +402,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00082">82</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   82</span>                                  {</div>
-<div class="line"><span class="lineno">   83</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   84</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00083">83</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   83</span>                                  {</div>
+<div class="line"><span class="lineno">   84</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   85</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -651,10 +655,13 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00099">99</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   99</span>                                                     {</div>
-<div class="line"><span class="lineno">  100</span>        <span class="keywordflow">return</span> o &lt;&lt; <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">  101</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00100">100</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  100</span>                                                     {</div>
+<div class="line"><span class="lineno">  101</span>        <span class="keywordflow">for</span> (t_headerFields::iterator it = <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>.begin(); it != <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>.end(); ++it) {</div>
+<div class="line"><span class="lineno">  102</span>            o &lt;&lt; it-&gt;first &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; it-&gt;second &lt;&lt; <a class="code hl_variable" href="createResponse_8cpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a>;</div>
+<div class="line"><span class="lineno">  103</span>        }</div>
+<div class="line"><span class="lineno">  104</span>        <span class="keywordflow">return</span> o;</div>
+<div class="line"><span class="lineno">  105</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -752,15 +759,15 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00123">123</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  123</span>                             {</div>
-<div class="line"><span class="lineno">  124</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a58a2ced46982e7ccdd9faf0541ae14d4">IDK_NORMAL_I_GUESS</a>;</div>
-<div class="line"><span class="lineno">  125</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">m_rawResponse</a>.clear();</div>
-<div class="line"><span class="lineno">  126</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ad9006f1cb7c0f5a565cba334dc8c78aa">UNKNWN</a>;</div>
-<div class="line"><span class="lineno">  127</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>.clear();</div>
-<div class="line"><span class="lineno">  128</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a>.clear();</div>
-<div class="line"><span class="lineno">  129</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#ab605df89bb0a7ac92cae038851286e78">m_builderStatus</a> = <a class="code hl_enumvalue" href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaf966f2e5a987b48464b2a8fad68c4011">PENDING_WRITE</a>;</div>
-<div class="line"><span class="lineno">  130</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00131">131</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  131</span>                             {</div>
+<div class="line"><span class="lineno">  132</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a58a2ced46982e7ccdd9faf0541ae14d4">IDK_NORMAL_I_GUESS</a>;</div>
+<div class="line"><span class="lineno">  133</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">m_rawResponse</a>.clear();</div>
+<div class="line"><span class="lineno">  134</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ad9006f1cb7c0f5a565cba334dc8c78aa">UNKNWN</a>;</div>
+<div class="line"><span class="lineno">  135</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>.clear();</div>
+<div class="line"><span class="lineno">  136</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a>.clear();</div>
+<div class="line"><span class="lineno">  137</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#ab605df89bb0a7ac92cae038851286e78">m_builderStatus</a> = <a class="code hl_enumvalue" href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaf966f2e5a987b48464b2a8fad68c4011">PENDING_WRITE</a>;</div>
+<div class="line"><span class="lineno">  138</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -846,12 +853,11 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00086">86</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   86</span>                                                               {</div>
-<div class="line"><span class="lineno">   87</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;creating status line string&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   88</span>        std::string message;</div>
-<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">   90</span> </div>
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00087">87</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   87</span>                                                               {</div>
+<div class="line"><span class="lineno">   88</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;creating status line string&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   89</span>        std::string message;</div>
+<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">try</span> {</div>
 <div class="line"><span class="lineno">   91</span>            message = <a class="code hl_function" href="classhttp_1_1StatusMessages.html#a3d17f32acbc296b9961720a164705a19">StatusMessages::getInstance</a>().<a class="code hl_function" href="classhttp_1_1StatusMessages.html#a71f9de359b5eb6a10afa9dffb10718bb">getStatusMessages</a>().at(<a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a>);</div>
 <div class="line"><span class="lineno">   92</span>        } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
 <div class="line"><span class="lineno">   93</span>            std::cerr &lt;&lt; <span class="stringliteral">&quot;statusLineString failed: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
