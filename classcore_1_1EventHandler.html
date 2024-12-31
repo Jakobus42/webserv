@@ -78,21 +78,21 @@ Collaboration diagram for core::EventHandler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcore_1_1EventHandler__coll__graph.png" border="0" usemap="#acore_1_1EventHandler_coll__map" alt="Collaboration graph"/></div>
 <map name="acore_1_1EventHandler_coll__map" id="acore_1_1EventHandler_coll__map">
-<area shape="rect" title="..." alt="" coords="391,1289,529,1635"/>
-<area shape="rect" href="classhttp_1_1Connection.html" title="..." alt="" coords="283,921,440,1187"/>
-<area shape="poly" title=" " alt="" coords="396,1186,417,1273,412,1274,391,1188"/>
+<area shape="rect" title="..." alt="" coords="388,1289,527,1635"/>
+<area shape="rect" href="classhttp_1_1Connection.html" title="..." alt="" coords="280,921,437,1187"/>
+<area shape="poly" title=" " alt="" coords="393,1186,414,1273,409,1274,388,1188"/>
 <area shape="rect" href="classhttp_1_1ClientSocket.html" title="..." alt="" coords="5,343,160,709"/>
-<area shape="poly" title=" " alt="" coords="125,708,154,784,192,856,231,910,273,960,269,964,226,913,187,859,149,786,120,710"/>
+<area shape="poly" title=" " alt="" coords="113,708,136,784,169,856,190,889,215,921,270,977,266,981,211,924,186,892,164,859,131,786,108,710"/>
 <area shape="rect" href="classhttp_1_1Request.html" title="..." alt="" coords="185,233,349,819"/>
-<area shape="poly" title=" " alt="" coords="306,818,313,857,324,905,318,906,308,858,301,819"/>
+<area shape="poly" title=" " alt="" coords="278,819,285,857,298,905,293,906,280,858,273,820"/>
 <area shape="rect" href="structhttp_1_1s__requestData.html" title=" " alt="" coords="195,5,338,171"/>
 <area shape="poly" title=" " alt="" coords="269,171,269,216,264,216,264,171"/>
 <area shape="rect" href="classhttp_1_1Response.html" title="..." alt="" coords="373,343,523,709"/>
-<area shape="poly" title=" " alt="" coords="421,709,388,906,383,905,415,708"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html" title="..." alt="" coords="502,881,695,1227"/>
-<area shape="poly" title=" " alt="" coords="542,1228,526,1275,521,1273,537,1226"/>
+<area shape="poly" title=" " alt="" coords="431,709,408,858,398,906,393,905,403,857,425,709"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html" title="..." alt="" coords="499,881,693,1227"/>
+<area shape="poly" title=" " alt="" coords="540,1228,524,1275,519,1273,535,1226"/>
 <area shape="rect" href="classhttp_1_1ServerSocket.html" title="..." alt="" coords="547,333,690,719"/>
-<area shape="poly" title=" " alt="" coords="614,719,608,865,603,864,609,719"/>
+<area shape="poly" title=" " alt="" coords="613,719,607,865,601,864,608,719"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -328,7 +328,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  160</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classcore_1_1EventHandler.html#aa1ec7a25a3befaf455b43e5a7bf2875a">m_requests</a>.empty() || <a class="code hl_variable" href="classcore_1_1EventHandler.html#addedacf1a0307399bfce1b669843d935">m_state</a> &gt; <a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a591ab51024c7525d13aaf8efb8c23843">WRITING</a>)</div>
 <div class="line"><span class="lineno">  161</span>            <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  162</span>        <span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1Request.html">http::Request</a>&amp; currentRequest = <a class="code hl_variable" href="classcore_1_1EventHandler.html#aa1ec7a25a3befaf455b43e5a7bf2875a">m_requests</a>.front();</div>
-<div class="line"><span class="lineno">  163</span>        <a class="code hl_class" href="classhttp_1_1Response.html">http::Response</a>&amp; currentResponse = <a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>.<a class="code hl_function" href="classhttp_1_1Connection.html#ac6f386a2cb7654aa51ab54b558992a9e">getResponse</a>();</div>
+<div class="line"><span class="lineno">  163</span>        <a class="code hl_class" href="classhttp_1_1Response.html">http::Response</a>&amp; currentResponse = <a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>.<a class="code hl_function" href="classhttp_1_1Connection.html#a2e2e6883518370dd49f9fc23762a6c2d">getResponseBuffer</a>();</div>
 <div class="line"><span class="lineno">  164</span>        <span class="keyword">const</span> std::string response =</div>
 <div class="line"><span class="lineno">  165</span>            <span class="stringliteral">&quot;HTTP/1.1 200 OK\r\n&quot;</span></div>
 <div class="line"><span class="lineno">  166</span>            <span class="stringliteral">&quot;Content-Type: text/plain\r\n&quot;</span></div>
@@ -360,7 +360,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  192</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;m_requests now &quot;</span> &lt;&lt; <a class="code hl_variable" href="classcore_1_1EventHandler.html#aa1ec7a25a3befaf455b43e5a7bf2875a">m_requests</a>.size() &lt;&lt; <span class="stringliteral">&quot; long&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">  193</span>    }</div>
 <div class="ttc" id="aclasscore_1_1EventHandler_html_a85a5119b2ca5045dde4da35e53e29862"><div class="ttname"><a href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862">core::EventHandler::setState</a></div><div class="ttdeci">void setState(HandlerState)</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8cpp_source.html#l00096">EventHandler.cpp:96</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_ac6f386a2cb7654aa51ab54b558992a9e"><div class="ttname"><a href="classhttp_1_1Connection.html#ac6f386a2cb7654aa51ab54b558992a9e">http::Connection::getResponse</a></div><div class="ttdeci">const http::Response &amp; getResponse(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00089">Connection.cpp:89</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_a2e2e6883518370dd49f9fc23762a6c2d"><div class="ttname"><a href="classhttp_1_1Connection.html#a2e2e6883518370dd49f9fc23762a6c2d">http::Connection::getResponseBuffer</a></div><div class="ttdeci">const http::Response &amp; getResponseBuffer(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00089">Connection.cpp:89</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html"><div class="ttname"><a href="classhttp_1_1Request.html">http::Request</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00061">Request.hpp:61</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Response_html"><div class="ttname"><a href="classhttp_1_1Response.html">http::Response</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00036">Response.hpp:36</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Response_html_a01c142188318790efefff94436580437"><div class="ttname"><a href="classhttp_1_1Response.html#a01c142188318790efefff94436580437">http::Response::done</a></div><div class="ttdeci">bool done(void) const</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00082">Response.cpp:82</a></div></div>
@@ -380,25 +380,25 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcore_1_1EventHandler_a1e36084c6c90216475b3ced2d5de9699_cgraph.png" border="0" usemap="#aclasscore_1_1EventHandler_a1e36084c6c90216475b3ced2d5de9699_cgraph" alt=""/></div>
 <map name="aclasscore_1_1EventHandler_a1e36084c6c90216475b3ced2d5de9699_cgraph" id="aclasscore_1_1EventHandler_a1e36084c6c90216475b3ced2d5de9699_cgraph">
-<area shape="rect" title=" " alt="" coords="5,226,152,266"/>
+<area shape="rect" title=" " alt="" coords="5,234,152,274"/>
 <area shape="rect" href="classhttp_1_1Response.html#a9b46cf97a3ed97510778410591f5b460" title=" " alt="" coords="200,5,445,31"/>
-<area shape="poly" title=" " alt="" coords="83,225,98,185,121,135,154,84,175,61,198,41,210,34,213,39,202,45,179,65,159,87,126,138,103,187,88,226"/>
+<area shape="poly" title=" " alt="" coords="83,233,97,192,120,139,153,86,174,62,198,41,209,34,212,39,202,45,178,66,158,89,125,142,102,193,88,234"/>
 <area shape="rect" href="classhttp_1_1Response.html#a52625989a3fb2bcc1e367b5bc13bd99e" title=" " alt="" coords="227,55,418,95"/>
-<area shape="poly" title=" " alt="" coords="90,224,133,165,163,132,199,105,213,97,216,102,201,110,167,136,137,168,94,227"/>
+<area shape="poly" title=" " alt="" coords="89,232,131,169,162,134,199,105,213,97,216,102,201,110,166,138,135,172,93,235"/>
 <area shape="rect" href="classhttp_1_1Response.html#ae0efdf9f8df4b4ba5d173171ad868cc7" title=" " alt="" coords="227,119,419,159"/>
-<area shape="poly" title=" " alt="" coords="106,224,149,196,199,170,222,161,224,166,201,175,152,201,109,228"/>
+<area shape="poly" title=" " alt="" coords="103,232,146,200,199,170,221,161,223,166,201,175,149,205,106,236"/>
 <area shape="rect" href="classhttp_1_1Response.html#a01c142188318790efefff94436580437" title=" " alt="" coords="243,184,402,209"/>
-<area shape="poly" title=" " alt="" coords="152,229,245,209,246,215,153,234"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ac6f386a2cb7654aa51ab54b558992a9e" title=" " alt="" coords="212,233,433,259"/>
-<area shape="poly" title=" " alt="" coords="152,243,198,243,198,249,152,249"/>
-<area shape="rect" href="classhttp_1_1Response.html#a5fb55b37425d748d5d1bf83e48a49826" title=" " alt="" coords="233,283,412,308"/>
-<area shape="poly" title=" " alt="" coords="153,259,201,269,243,277,242,283,199,274,152,264"/>
-<area shape="rect" href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364" title=" " alt="" coords="243,332,403,357"/>
-<area shape="poly" title=" " alt="" coords="108,264,150,292,201,318,230,328,228,333,199,323,147,297,105,268"/>
-<area shape="rect" href="classhttp_1_1Response.html#a269913ddc411476e598ec3e70fe3c652" title=" " alt="" coords="203,381,442,407"/>
-<area shape="poly" title=" " alt="" coords="96,265,139,317,168,345,201,368,215,374,213,379,199,372,165,349,135,321,92,268"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862" title=" " alt="" coords="249,431,396,471"/>
-<area shape="poly" title=" " alt="" coords="91,265,107,298,131,340,163,382,202,417,237,435,235,440,198,422,159,385,126,343,102,301,86,267"/>
+<area shape="poly" title=" " alt="" coords="152,231,199,219,243,210,244,215,201,225,153,237"/>
+<area shape="rect" href="classhttp_1_1Connection.html#a2e2e6883518370dd49f9fc23762a6c2d" title=" " alt="" coords="212,234,433,274"/>
+<area shape="poly" title=" " alt="" coords="152,251,198,251,198,257,152,257"/>
+<area shape="rect" href="classhttp_1_1Response.html#a5fb55b37425d748d5d1bf83e48a49826" title=" " alt="" coords="233,299,412,324"/>
+<area shape="poly" title=" " alt="" coords="153,271,201,283,244,293,243,298,199,289,152,277"/>
+<area shape="rect" href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364" title=" " alt="" coords="243,348,403,373"/>
+<area shape="poly" title=" " alt="" coords="105,272,148,305,201,334,230,344,228,349,199,339,145,309,101,276"/>
+<area shape="rect" href="classhttp_1_1Response.html#a269913ddc411476e598ec3e70fe3c652" title=" " alt="" coords="203,397,442,423"/>
+<area shape="poly" title=" " alt="" coords="94,273,137,329,167,359,201,384,214,390,212,395,199,388,164,363,133,333,90,276"/>
+<area shape="rect" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862" title=" " alt="" coords="249,447,396,487"/>
+<area shape="poly" title=" " alt="" coords="90,273,106,308,130,352,162,396,202,433,237,451,235,456,198,438,158,399,125,355,101,311,85,276"/>
 <area shape="rect" href="classhttp_1_1Response.html#a7e9fb022362f77c3d9bfc19e76249977" title=" " alt="" coords="493,99,711,124"/>
 <area shape="poly" title=" " alt="" coords="419,127,480,121,480,126,419,132"/>
 <area shape="rect" href="classhttp_1_1Response.html#a2d1e7ec002dfef0005ca5ef8f88d4567" title=" " alt="" coords="505,149,699,189"/>
@@ -806,8 +806,8 @@ Here is the caller graph for this function:</div>
 <p class="definition">Definition at line <a class="el" href="EventHandler_8cpp_source.html#l00114">114</a> of file <a class="el" href="EventHandler_8cpp_source.html">EventHandler.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  114</span>                                         {</div>
 <div class="line"><span class="lineno">  115</span>        <span class="keywordtype">int</span> fd = <a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>.<a class="code hl_function" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597">getClientSocketFd</a>();</div>
-<div class="line"><span class="lineno">  116</span>        <span class="keywordtype">char</span>* buffer = <a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>.<a class="code hl_function" href="classhttp_1_1Connection.html#ae6d69a9ff147672f0a114311ae63c166">getBuffer</a>();</div>
-<div class="line"><span class="lineno">  117</span>        <a class="code hl_class" href="classhttp_1_1Request.html">http::Request</a>&amp; request = <a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>.<a class="code hl_function" href="classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894">getRequest</a>(); <span class="comment">// @TODO: ensure this always works on the right (foremost) request</span></div>
+<div class="line"><span class="lineno">  116</span>        <span class="keywordtype">char</span>* buffer = <a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>.<a class="code hl_function" href="classhttp_1_1Connection.html#a71e0d84361ef9d7cdca612716dfe2bb3">getByteBuffer</a>();</div>
+<div class="line"><span class="lineno">  117</span>        <a class="code hl_class" href="classhttp_1_1Request.html">http::Request</a>&amp; request = <a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>.<a class="code hl_function" href="classhttp_1_1Connection.html#a06be1704cbc74d761ed349a082f81f4e">getRequestBuffer</a>(); <span class="comment">// @TODO: ensure this always works on the right (foremost) request</span></div>
 <div class="line"><span class="lineno">  118</span> </div>
 <div class="line"><span class="lineno">  119</span>        ssize_t bytesReceived = recv(fd, buffer, <a class="code hl_define" href="Request_8hpp.html#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a> - 1, 0);</div>
 <div class="line"><span class="lineno">  120</span>        <span class="keywordflow">if</span> (bytesReceived &lt; 0) {</div>
@@ -849,9 +849,9 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  156</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;m_responses now &quot;</span> &lt;&lt; <a class="code hl_variable" href="classcore_1_1EventHandler.html#a3135d335cb48cb3cbaf06e6725624476">m_responses</a>.size() &lt;&lt; <span class="stringliteral">&quot; long&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">  157</span>    }</div>
 <div class="ttc" id="aRequest_8hpp_html_a6b20d41d6252e9871430c242cb1a56e7"><div class="ttname"><a href="Request_8hpp.html#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a></div><div class="ttdeci">#define BUFFER_SIZE</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00013">Request.hpp:13</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_a06be1704cbc74d761ed349a082f81f4e"><div class="ttname"><a href="classhttp_1_1Connection.html#a06be1704cbc74d761ed349a082f81f4e">http::Connection::getRequestBuffer</a></div><div class="ttdeci">const http::Request &amp; getRequestBuffer(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00081">Connection.cpp:81</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Connection_html_a3bf8eb2db35a8030685b73971e3d8597"><div class="ttname"><a href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597">http::Connection::getClientSocketFd</a></div><div class="ttdeci">int getClientSocketFd(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00077">Connection.cpp:77</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_ae609a5b0ff966946283c6c4619c4a894"><div class="ttname"><a href="classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894">http::Connection::getRequest</a></div><div class="ttdeci">const http::Request &amp; getRequest(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00081">Connection.cpp:81</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_ae6d69a9ff147672f0a114311ae63c166"><div class="ttname"><a href="classhttp_1_1Connection.html#ae6d69a9ff147672f0a114311ae63c166">http::Connection::getBuffer</a></div><div class="ttdeci">const char * getBuffer(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00097">Connection.cpp:97</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Connection_html_a71e0d84361ef9d7cdca612716dfe2bb3"><div class="ttname"><a href="classhttp_1_1Connection.html#a71e0d84361ef9d7cdca612716dfe2bb3">http::Connection::getByteBuffer</a></div><div class="ttdeci">const char * getByteBuffer(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00097">Connection.cpp:97</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html_a9080f26f273ea9257a4dbac3a9e7d9c1"><div class="ttname"><a href="classhttp_1_1Request.html#a9080f26f273ea9257a4dbac3a9e7d9c1">http::Request::parse</a></div><div class="ttdeci">bool parse(char buffer[BUFFER_SIZE])</div><div class="ttdoc">Parses the request.</div><div class="ttdef"><b>Definition</b> <a href="Request_8cpp_source.html#l00088">Request.cpp:88</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html_a94b960f923e856df1cc565ebbac086c0"><div class="ttname"><a href="classhttp_1_1Request.html#a94b960f923e856df1cc565ebbac086c0">http::Request::getStatus</a></div><div class="ttdeci">const RequestStatus &amp; getStatus(void) const</div><div class="ttdef"><b>Definition</b> <a href="Request_8cpp_source.html#l00072">Request.cpp:72</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html_a9f89032cd603dc018f0573e34cec49ed"><div class="ttname"><a href="classhttp_1_1Request.html#a9f89032cd603dc018f0573e34cec49ed">http::Request::reset</a></div><div class="ttdeci">void reset(void)</div><div class="ttdef"><b>Definition</b> <a href="Request_8cpp_source.html#l00115">Request.cpp:115</a></div></div>
@@ -865,54 +865,54 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcore_1_1EventHandler_ab5616520f0084b2e893e5fb548b5385d_cgraph.png" border="0" usemap="#aclasscore_1_1EventHandler_ab5616520f0084b2e893e5fb548b5385d_cgraph" alt=""/></div>
 <map name="aclasscore_1_1EventHandler_ab5616520f0084b2e893e5fb548b5385d_cgraph" id="aclasscore_1_1EventHandler_ab5616520f0084b2e893e5fb548b5385d_cgraph">
-<area shape="rect" title=" " alt="" coords="5,162,152,202"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ae6d69a9ff147672f0a114311ae63c166" title=" " alt="" coords="207,5,404,31"/>
-<area shape="poly" title=" " alt="" coords="90,160,132,101,163,68,199,41,213,33,216,38,201,46,167,72,137,104,94,163"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597" title=" " alt="" coords="207,55,403,95"/>
-<area shape="poly" title=" " alt="" coords="106,159,149,132,199,105,217,97,219,102,201,110,152,136,109,164"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ae609a5b0ff966946283c6c4619c4a894" title=" " alt="" coords="200,120,411,145"/>
-<area shape="poly" title=" " alt="" coords="152,164,232,146,234,151,153,169"/>
-<area shape="rect" href="classhttp_1_1Request.html#a94b960f923e856df1cc565ebbac086c0" title=" " alt="" coords="216,169,395,195"/>
-<area shape="poly" title=" " alt="" coords="152,179,202,179,202,185,152,185"/>
-<area shape="rect" href="classhttp_1_1Request.html#a9080f26f273ea9257a4dbac3a9e7d9c1" title="Parses the request." alt="" coords="229,219,382,244"/>
-<area shape="poly" title=" " alt="" coords="153,195,234,213,232,218,152,200"/>
-<area shape="rect" href="classhttp_1_1Request.html#a9f89032cd603dc018f0573e34cec49ed" title=" " alt="" coords="230,268,381,293"/>
-<area shape="poly" title=" " alt="" coords="108,200,151,228,201,254,222,262,220,267,199,259,148,233,105,204"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862" title=" " alt="" coords="232,318,379,358"/>
-<area shape="poly" title=" " alt="" coords="96,201,140,252,169,280,201,304,221,314,218,318,199,308,166,284,136,256,92,204"/>
-<area shape="rect" href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf" title=" " alt="" coords="483,55,621,95"/>
-<area shape="poly" title=" " alt="" coords="403,73,470,73,470,78,403,78"/>
-<area shape="rect" href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4" title=" " alt="" coords="459,219,645,244"/>
-<area shape="poly" title=" " alt="" coords="383,229,445,229,445,234,383,234"/>
-<area shape="rect" href="classhttp_1_1Request.html#a8346c819a5b757937c3f50af058f70f7" title=" " alt="" coords="928,129,1135,155"/>
-<area shape="poly" title=" " alt="" coords="382,216,458,205,702,174,914,151,915,156,702,180,459,210,383,221"/>
-<area shape="rect" href="classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac" title=" " alt="" coords="938,332,1125,357"/>
-<area shape="poly" title=" " alt="" coords="382,241,459,254,932,327,931,333,458,259,381,247"/>
-<area shape="rect" href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135" title=" " alt="" coords="693,211,880,251"/>
-<area shape="poly" title=" " alt="" coords="645,229,680,229,680,234,645,234"/>
-<area shape="rect" href="classhttp_1_1Request.html#a4a1c007b045c1a6e3b1c2401ef783f63" title=" " alt="" coords="1183,281,1413,307"/>
-<area shape="poly" title=" " alt="" coords="853,249,928,266,1052,281,1169,289,1169,294,1051,286,928,271,852,254"/>
-<area shape="poly" title=" " alt="" coords="833,209,927,171,973,156,975,161,929,177,835,214"/>
-<area shape="rect" href="namespacehttp.html#a02e06383b1493a41cc6694d095cc8aa9" title=" " alt="" coords="1250,183,1346,208"/>
-<area shape="poly" title=" " alt="" coords="880,220,928,217,1236,196,1236,202,928,222,880,226"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a0f7b586737ab36eade3fc402c9abe0a7" title="Converts a hexadecimal string to an unsigned integer." alt="" coords="946,231,1117,256"/>
-<area shape="poly" title=" " alt="" coords="880,233,932,236,932,241,880,239"/>
-<area shape="poly" title=" " alt="" coords="1056,152,1264,272,1261,277,1053,157"/>
-<area shape="rect" href="classhttp_1_1Request.html#a00503d511356e69b471a842f419f0bec" title=" " alt="" coords="1211,65,1385,105"/>
-<area shape="poly" title=" " alt="" coords="1091,127,1198,103,1199,109,1092,132"/>
-<area shape="rect" href="classhttp_1_1Request.html#a419c2262506e00fd2bb302a4a4451287" title=" " alt="" coords="1198,129,1398,155"/>
-<area shape="poly" title=" " alt="" coords="1135,139,1184,139,1184,145,1135,145"/>
-<area shape="poly" title=" " alt="" coords="1096,152,1237,181,1236,186,1095,157"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3" title="checks if a character is a whitespace character exept for &#39; &#39; and &#39;\r&#39;" alt="" coords="1461,125,1660,151"/>
-<area shape="poly" title=" " alt="" coords="1398,138,1447,137,1447,142,1398,143"/>
-<area shape="rect" href="classhttp_1_1StatusMessages.html#a3d17f32acbc296b9961720a164705a19" title=" " alt="" coords="1479,239,1642,279"/>
-<area shape="poly" title=" " alt="" coords="1347,204,1467,234,1465,239,1346,210"/>
-<area shape="rect" href="classhttp_1_1StatusMessages.html#a71f9de359b5eb6a10afa9dffb10718bb" title=" " alt="" coords="1479,175,1642,215"/>
-<area shape="poly" title=" " alt="" coords="1346,193,1465,193,1465,198,1346,198"/>
-<area shape="poly" title=" " alt="" coords="1098,329,1216,307,1217,312,1099,335"/>
-<area shape="poly" title=" " alt="" coords="1054,330,1261,212,1264,217,1056,334"/>
-<area shape="rect" href="classhttp_1_1Request.html#a9b34649af1a6d967989ad522fc3491e8" title=" " alt="" coords="1203,332,1393,357"/>
-<area shape="poly" title=" " alt="" coords="1125,342,1189,342,1189,347,1125,347"/>
+<area shape="rect" title=" " alt="" coords="5,191,152,231"/>
+<area shape="rect" href="classhttp_1_1Connection.html#a71e0d84361ef9d7cdca612716dfe2bb3" title=" " alt="" coords="211,5,399,45"/>
+<area shape="poly" title=" " alt="" coords="88,189,130,123,162,87,198,55,208,49,211,54,202,59,165,90,135,127,93,192"/>
+<area shape="rect" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597" title=" " alt="" coords="207,69,403,109"/>
+<area shape="poly" title=" " alt="" coords="101,188,144,153,199,119,214,112,216,117,201,124,147,158,104,192"/>
+<area shape="rect" href="classhttp_1_1Connection.html#a06be1704cbc74d761ed349a082f81f4e" title=" " alt="" coords="200,133,411,173"/>
+<area shape="poly" title=" " alt="" coords="151,190,212,174,213,179,153,195"/>
+<area shape="rect" href="classhttp_1_1Request.html#a94b960f923e856df1cc565ebbac086c0" title=" " alt="" coords="216,198,395,223"/>
+<area shape="poly" title=" " alt="" coords="152,208,202,208,202,213,152,213"/>
+<area shape="rect" href="classhttp_1_1Request.html#a9080f26f273ea9257a4dbac3a9e7d9c1" title="Parses the request." alt="" coords="229,247,382,273"/>
+<area shape="poly" title=" " alt="" coords="153,224,234,242,232,247,152,229"/>
+<area shape="rect" href="classhttp_1_1Request.html#a9f89032cd603dc018f0573e34cec49ed" title=" " alt="" coords="230,297,381,322"/>
+<area shape="poly" title=" " alt="" coords="108,229,151,257,201,283,222,290,220,295,199,288,148,261,105,233"/>
+<area shape="rect" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862" title=" " alt="" coords="232,347,379,387"/>
+<area shape="poly" title=" " alt="" coords="96,229,140,281,169,309,201,332,221,342,218,347,199,337,166,313,136,284,92,233"/>
+<area shape="rect" href="classhttp_1_1ClientSocket.html#a03a9208ccb375195d2799ee47270e1bf" title=" " alt="" coords="483,69,621,109"/>
+<area shape="poly" title=" " alt="" coords="403,87,470,87,470,92,403,92"/>
+<area shape="rect" href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4" title=" " alt="" coords="459,247,645,273"/>
+<area shape="poly" title=" " alt="" coords="383,257,445,257,445,263,383,263"/>
+<area shape="rect" href="classhttp_1_1Request.html#a8346c819a5b757937c3f50af058f70f7" title=" " alt="" coords="928,157,1135,182"/>
+<area shape="poly" title=" " alt="" coords="382,245,458,233,702,203,914,179,915,184,703,208,459,239,383,250"/>
+<area shape="rect" href="classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac" title=" " alt="" coords="938,359,1125,385"/>
+<area shape="poly" title=" " alt="" coords="382,270,459,283,931,355,930,360,458,288,381,275"/>
+<area shape="rect" href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135" title=" " alt="" coords="693,240,880,280"/>
+<area shape="poly" title=" " alt="" coords="645,257,680,257,680,263,645,263"/>
+<area shape="rect" href="classhttp_1_1Request.html#a4a1c007b045c1a6e3b1c2401ef783f63" title=" " alt="" coords="1183,309,1413,334"/>
+<area shape="poly" title=" " alt="" coords="856,277,928,293,1052,308,1169,316,1169,321,1051,313,928,299,855,283"/>
+<area shape="poly" title=" " alt="" coords="832,237,927,199,973,183,975,188,929,204,834,242"/>
+<area shape="rect" href="namespacehttp.html#a02e06383b1493a41cc6694d095cc8aa9" title=" " alt="" coords="1250,210,1346,235"/>
+<area shape="poly" title=" " alt="" coords="880,248,928,244,1236,223,1236,229,928,249,880,253"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a0f7b586737ab36eade3fc402c9abe0a7" title="Converts a hexadecimal string to an unsigned integer." alt="" coords="946,258,1117,283"/>
+<area shape="poly" title=" " alt="" coords="880,261,932,264,932,269,880,267"/>
+<area shape="poly" title=" " alt="" coords="1056,180,1264,299,1261,304,1053,184"/>
+<area shape="rect" href="classhttp_1_1Request.html#a00503d511356e69b471a842f419f0bec" title=" " alt="" coords="1211,92,1385,132"/>
+<area shape="poly" title=" " alt="" coords="1091,154,1198,131,1199,136,1092,159"/>
+<area shape="rect" href="classhttp_1_1Request.html#a419c2262506e00fd2bb302a4a4451287" title=" " alt="" coords="1198,157,1398,182"/>
+<area shape="poly" title=" " alt="" coords="1135,167,1184,167,1184,172,1135,172"/>
+<area shape="poly" title=" " alt="" coords="1096,179,1237,208,1236,213,1095,185"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3" title="checks if a character is a whitespace character exept for &#39; &#39; and &#39;\r&#39;" alt="" coords="1461,153,1660,178"/>
+<area shape="poly" title=" " alt="" coords="1398,165,1447,164,1447,170,1398,170"/>
+<area shape="rect" href="classhttp_1_1StatusMessages.html#a3d17f32acbc296b9961720a164705a19" title=" " alt="" coords="1479,267,1642,307"/>
+<area shape="poly" title=" " alt="" coords="1347,232,1467,261,1465,266,1346,237"/>
+<area shape="rect" href="classhttp_1_1StatusMessages.html#a71f9de359b5eb6a10afa9dffb10718bb" title=" " alt="" coords="1479,203,1642,243"/>
+<area shape="poly" title=" " alt="" coords="1346,220,1465,220,1465,225,1346,225"/>
+<area shape="poly" title=" " alt="" coords="1098,357,1216,334,1217,339,1099,362"/>
+<area shape="poly" title=" " alt="" coords="1054,357,1261,240,1264,244,1056,362"/>
+<area shape="rect" href="classhttp_1_1Request.html#a9b34649af1a6d967989ad522fc3491e8" title=" " alt="" coords="1203,359,1393,385"/>
+<area shape="poly" title=" " alt="" coords="1125,369,1189,369,1189,375,1125,375"/>
 </map>
 </div>
 <div class="dynheader">
