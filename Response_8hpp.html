@@ -64,25 +64,29 @@ $(document).ready(function(){initNavTree('Response_8hpp.html',''); initResizable
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Response.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="defines_8hpp_source.html">shared/defines.hpp</a>&quot;</code><br />
 <code>#include &lt;map&gt;</code><br />
+<code>#include &lt;ostream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Response.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="Response_8hpp__incl.png" border="0" usemap="#a_2home_2runner_2work_2webserv_2webserv_2include_2http_2Response_8hpp" alt=""/></div>
 <map name="a_2home_2runner_2work_2webserv_2webserv_2include_2http_2Response_8hpp" id="a_2home_2runner_2work_2webserv_2webserv_2include_2http_2Response_8hpp">
-<area shape="rect" title=" " alt="" coords="266,5,523,45"/>
+<area shape="rect" title=" " alt="" coords="310,5,567,45"/>
 <area shape="rect" href="defines_8hpp.html" title=" " alt="" coords="199,93,345,119"/>
-<area shape="poly" title=" " alt="" coords="366,48,303,88,300,84,364,43"/>
+<area shape="poly" title=" " alt="" coords="400,48,310,90,308,85,398,43"/>
 <area shape="rect" title=" " alt="" coords="369,93,420,119"/>
-<area shape="poly" title=" " alt="" coords="397,46,397,79,392,79,392,46"/>
-<area shape="rect" title=" " alt="" coords="444,93,503,119"/>
-<area shape="poly" title=" " alt="" coords="416,44,454,82,450,85,412,47"/>
+<area shape="poly" title=" " alt="" coords="430,47,410,83,406,80,426,44"/>
+<area shape="rect" title=" " alt="" coords="445,93,521,119"/>
+<area shape="poly" title=" " alt="" coords="452,44,472,80,467,83,447,47"/>
+<area shape="rect" title=" " alt="" coords="545,93,604,119"/>
+<area shape="poly" title=" " alt="" coords="473,43,544,84,541,89,470,48"/>
 <area shape="rect" title=" " alt="" coords="5,167,101,192"/>
 <area shape="poly" title=" " alt="" coords="238,121,103,165,101,160,236,116"/>
 <area shape="rect" title=" " alt="" coords="126,167,197,192"/>
@@ -154,7 +158,70 @@ Enumerations</h2></td></tr>
 , <a class="el" href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaedea9362e706174c3e634e43b1a0e0fb">http::SENT</a>
  }</td></tr>
 <tr class="separator:aba0c98b4a16a22ebfcf0867839c59d1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6e973c7de76304f6098773e22b209a9" id="r_ac6e973c7de76304f6098773e22b209a9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9">http::ResponseType</a> { <a class="el" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a58a2ced46982e7ccdd9faf0541ae14d4">http::IDK_NORMAL_I_GUESS</a>
+, <a class="el" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a9167933a319383a182cc8ac9213469e3">http::CGI</a>
+, <a class="el" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">http::ERROR</a>
+ }</td></tr>
+<tr class="separator:ac6e973c7de76304f6098773e22b209a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aa8c7815fae449943e6cd7ef174516bdf" id="r_aa8c7815fae449943e6cd7ef174516bdf"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Response_8hpp.html#aa8c7815fae449943e6cd7ef174516bdf">HTTP_NAME</a> = &quot;HTTP/&quot;</td></tr>
+<tr class="separator:aa8c7815fae449943e6cd7ef174516bdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a93e7e3fdffc39a8ace86cea675acb1" id="r_a8a93e7e3fdffc39a8ace86cea675acb1"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Response_8hpp.html#a8a93e7e3fdffc39a8ace86cea675acb1">ONE_DOT_ONE</a> = &quot;1.1&quot;</td></tr>
+<tr class="separator:a8a93e7e3fdffc39a8ace86cea675acb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26894f5f61a3de2e81c8b9837517ee35" id="r_a26894f5f61a3de2e81c8b9837517ee35"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Response_8hpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a> = &quot;\r\n&quot;</td></tr>
+<tr class="separator:a26894f5f61a3de2e81c8b9837517ee35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a26894f5f61a3de2e81c8b9837517ee35" name="a26894f5f61a3de2e81c8b9837517ee35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26894f5f61a3de2e81c8b9837517ee35">&#9670;&#160;</a></span>CRLF</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string CRLF = &quot;\r\n&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00011">11</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aa8c7815fae449943e6cd7ef174516bdf" name="aa8c7815fae449943e6cd7ef174516bdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8c7815fae449943e6cd7ef174516bdf">&#9670;&#160;</a></span>HTTP_NAME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string HTTP_NAME = &quot;HTTP/&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00009">9</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a8a93e7e3fdffc39a8ace86cea675acb1" name="a8a93e7e3fdffc39a8ace86cea675acb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a93e7e3fdffc39a8ace86cea675acb1">&#9670;&#160;</a></span>ONE_DOT_ONE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string ONE_DOT_ONE = &quot;1.1&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00010">10</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

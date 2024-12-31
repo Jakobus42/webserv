@@ -78,9 +78,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Connection.html">Connection</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">...  <a href="classhttp_1_1Connection.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1ErrorMessages.html">ErrorMessages</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singleton class to store and retrieve error messages.  <a href="classhttp_1_1ErrorMessages.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html">Request</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">...  <a href="classhttp_1_1Request.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -92,6 +89,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1ServerSocket.html">ServerSocket</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">...  <a href="classhttp_1_1ServerSocket.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1StatusMessages.html">StatusMessages</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singleton class to store and retrieve status messages.  <a href="classhttp_1_1StatusMessages.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html">VirtualServer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">...  <a href="classhttp_1_1VirtualServer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -100,16 +100,16 @@ Classes</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:a4b20fa68e7c12bf7aff9d3a71a4f2b88" id="r_a4b20fa68e7c12bf7aff9d3a71a4f2b88"><td class="memItemLeft" align="right" valign="top">typedef struct sockaddr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a4b20fa68e7c12bf7aff9d3a71a4f2b88">t_sockaddr</a></td></tr>
 <tr class="separator:a4b20fa68e7c12bf7aff9d3a71a4f2b88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaaa7534547fe86546f2bfdd34cf99d40" id="r_aaaa7534547fe86546f2bfdd34cf99d40"><td class="memItemLeft" align="right" valign="top">typedef std::pair&lt; <a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">http::StatusCode</a>, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#aaaa7534547fe86546f2bfdd34cf99d40">t_errorMessage</a></td></tr>
-<tr class="separator:aaaa7534547fe86546f2bfdd34cf99d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e177883f48c7b0477b645c807a34bb8" id="r_a1e177883f48c7b0477b645c807a34bb8"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; t_errorMessage::first_type, t_errorMessage::second_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a1e177883f48c7b0477b645c807a34bb8">t_errorMessages</a></td></tr>
-<tr class="separator:a1e177883f48c7b0477b645c807a34bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a344224153c4286273f922e54b792a50d" id="r_a344224153c4286273f922e54b792a50d"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structhttp_1_1s__requestData.html">http::s_requestData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a344224153c4286273f922e54b792a50d">t_requestData</a></td></tr>
 <tr class="separator:a344224153c4286273f922e54b792a50d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5fc275abcbe27d3c4113fcf5e74b2a09" id="r_a5fc275abcbe27d3c4113fcf5e74b2a09"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a5fc275abcbe27d3c4113fcf5e74b2a09">t_headerFields</a></td></tr>
 <tr class="separator:a5fc275abcbe27d3c4113fcf5e74b2a09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac73171fb8c32554229836839f6c4e8ed" id="r_ac73171fb8c32554229836839f6c4e8ed"><td class="memItemLeft" align="right" valign="top">typedef struct sockaddr_in&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#ac73171fb8c32554229836839f6c4e8ed">t_sockaddr_in</a></td></tr>
 <tr class="separator:ac73171fb8c32554229836839f6c4e8ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47f81e5e1f7ce9c0800e88c6ad0dc744" id="r_a47f81e5e1f7ce9c0800e88c6ad0dc744"><td class="memItemLeft" align="right" valign="top">typedef std::pair&lt; <a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">http::StatusCode</a>, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a47f81e5e1f7ce9c0800e88c6ad0dc744">t_statusMessage</a></td></tr>
+<tr class="separator:a47f81e5e1f7ce9c0800e88c6ad0dc744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a463684a60be674627b3d18124863c207" id="r_a463684a60be674627b3d18124863c207"><td class="memItemLeft" align="right" valign="top">typedef std::map&lt; t_statusMessage::first_type, t_statusMessage::second_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a463684a60be674627b3d18124863c207">t_statusMessages</a></td></tr>
+<tr class="separator:a463684a60be674627b3d18124863c207"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3bcd24ae02414378f7cd9a8aafc784f" id="r_aa3bcd24ae02414378f7cd9a8aafc784f"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="classhttp_1_1Connection.html">Connection</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#aa3bcd24ae02414378f7cd9a8aafc784f">t_connections</a></td></tr>
 <tr class="separator:aa3bcd24ae02414378f7cd9a8aafc784f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -146,6 +146,11 @@ Enumerations</h2></td></tr>
 , <a class="el" href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaedea9362e706174c3e634e43b1a0e0fb">SENT</a>
  }</td></tr>
 <tr class="separator:aba0c98b4a16a22ebfcf0867839c59d1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6e973c7de76304f6098773e22b209a9" id="r_ac6e973c7de76304f6098773e22b209a9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9">ResponseType</a> { <a class="el" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a58a2ced46982e7ccdd9faf0541ae14d4">IDK_NORMAL_I_GUESS</a>
+, <a class="el" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a9167933a319383a182cc8ac9213469e3">CGI</a>
+, <a class="el" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">ERROR</a>
+ }</td></tr>
+<tr class="separator:ac6e973c7de76304f6098773e22b209a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac125d409f7c7b6034fe7e49d237b7762" id="r_ac125d409f7c7b6034fe7e49d237b7762"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a> { <br />
 &#160;&#160;<a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ad9006f1cb7c0f5a565cba334dc8c78aa">UNKNWN</a> = 0
 , <a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc">OK</a> = 200
@@ -254,38 +259,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aaaa7534547fe86546f2bfdd34cf99d40" name="aaaa7534547fe86546f2bfdd34cf99d40"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaaa7534547fe86546f2bfdd34cf99d40">&#9670;&#160;</a></span>t_errorMessage</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::pair&lt;<a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">http::StatusCode</a>, std::string&gt; <a class="el" href="namespacehttp.html#aaaa7534547fe86546f2bfdd34cf99d40">http::t_errorMessage</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="ErrorMessages_8hpp_source.html#l00010">10</a> of file <a class="el" href="ErrorMessages_8hpp_source.html">ErrorMessages.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a1e177883f48c7b0477b645c807a34bb8" name="a1e177883f48c7b0477b645c807a34bb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e177883f48c7b0477b645c807a34bb8">&#9670;&#160;</a></span>t_errorMessages</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef std::map&lt;t_errorMessage::first_type, t_errorMessage::second_type&gt; <a class="el" href="namespacehttp.html#a1e177883f48c7b0477b645c807a34bb8">http::t_errorMessages</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="ErrorMessages_8hpp_source.html#l00011">11</a> of file <a class="el" href="ErrorMessages_8hpp_source.html">ErrorMessages.hpp</a>.</p>
-
-</div>
-</div>
 <a id="a5fc275abcbe27d3c4113fcf5e74b2a09" name="a5fc275abcbe27d3c4113fcf5e74b2a09"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5fc275abcbe27d3c4113fcf5e74b2a09">&#9670;&#160;</a></span>t_headerFields</h2>
 
@@ -298,7 +271,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00012">12</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00017">17</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
 
 </div>
 </div>
@@ -345,6 +318,38 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="ServerSocket_8hpp_source.html#l00016">16</a> of file <a class="el" href="ServerSocket_8hpp_source.html">ServerSocket.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a47f81e5e1f7ce9c0800e88c6ad0dc744" name="a47f81e5e1f7ce9c0800e88c6ad0dc744"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47f81e5e1f7ce9c0800e88c6ad0dc744">&#9670;&#160;</a></span>t_statusMessage</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::pair&lt;<a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">http::StatusCode</a>, std::string&gt; <a class="el" href="namespacehttp.html#a47f81e5e1f7ce9c0800e88c6ad0dc744">http::t_statusMessage</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="StatusMessages_8hpp_source.html#l00010">10</a> of file <a class="el" href="StatusMessages_8hpp_source.html">StatusMessages.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a463684a60be674627b3d18124863c207" name="a463684a60be674627b3d18124863c207"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a463684a60be674627b3d18124863c207">&#9670;&#160;</a></span>t_statusMessages</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::map&lt;t_statusMessage::first_type, t_statusMessage::second_type&gt; <a class="el" href="namespacehttp.html#a463684a60be674627b3d18124863c207">http::t_statusMessages</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="StatusMessages_8hpp_source.html#l00011">11</a> of file <a class="el" href="StatusMessages_8hpp_source.html">StatusMessages.hpp</a>.</p>
 
 </div>
 </div>
@@ -595,15 +600,44 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="aba0c98b4a16a22ebfcf0867839c59d1aaedea9362e706174c3e634e43b1a0e0fb" name="aba0c98b4a16a22ebfcf0867839c59d1aaedea9362e706174c3e634e43b1a0e0fb"></a>SENT&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00014">14</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   14</span>                               {</div>
-<div class="line"><span class="lineno">   15</span>        <a class="code hl_enumvalue" href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaf966f2e5a987b48464b2a8fad68c4011">PENDING_WRITE</a>,</div>
-<div class="line"><span class="lineno">   16</span>        WRITING,</div>
-<div class="line"><span class="lineno">   17</span>        PENDING_SEND,</div>
-<div class="line"><span class="lineno">   18</span>        <a class="code hl_enumvalue" href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaedea9362e706174c3e634e43b1a0e0fb">SENT</a></div>
-<div class="line"><span class="lineno">   19</span>    };</div>
-<div class="ttc" id="anamespacehttp_html_aba0c98b4a16a22ebfcf0867839c59d1aaedea9362e706174c3e634e43b1a0e0fb"><div class="ttname"><a href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaedea9362e706174c3e634e43b1a0e0fb">http::SENT</a></div><div class="ttdeci">@ SENT</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00019">Response.hpp:18</a></div></div>
-<div class="ttc" id="anamespacehttp_html_aba0c98b4a16a22ebfcf0867839c59d1aaf966f2e5a987b48464b2a8fad68c4011"><div class="ttname"><a href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaf966f2e5a987b48464b2a8fad68c4011">http::PENDING_WRITE</a></div><div class="ttdeci">@ PENDING_WRITE</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00015">Response.hpp:15</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00019">19</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>                               {</div>
+<div class="line"><span class="lineno">   20</span>        <a class="code hl_enumvalue" href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaf966f2e5a987b48464b2a8fad68c4011">PENDING_WRITE</a>,</div>
+<div class="line"><span class="lineno">   21</span>        WRITING,</div>
+<div class="line"><span class="lineno">   22</span>        PENDING_SEND,</div>
+<div class="line"><span class="lineno">   23</span>        <a class="code hl_enumvalue" href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaedea9362e706174c3e634e43b1a0e0fb">SENT</a></div>
+<div class="line"><span class="lineno">   24</span>    };</div>
+<div class="ttc" id="anamespacehttp_html_aba0c98b4a16a22ebfcf0867839c59d1aaedea9362e706174c3e634e43b1a0e0fb"><div class="ttname"><a href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaedea9362e706174c3e634e43b1a0e0fb">http::SENT</a></div><div class="ttdeci">@ SENT</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00024">Response.hpp:23</a></div></div>
+<div class="ttc" id="anamespacehttp_html_aba0c98b4a16a22ebfcf0867839c59d1aaf966f2e5a987b48464b2a8fad68c4011"><div class="ttname"><a href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaf966f2e5a987b48464b2a8fad68c4011">http::PENDING_WRITE</a></div><div class="ttdeci">@ PENDING_WRITE</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00020">Response.hpp:20</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac6e973c7de76304f6098773e22b209a9" name="ac6e973c7de76304f6098773e22b209a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6e973c7de76304f6098773e22b209a9">&#9670;&#160;</a></span>ResponseType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9">http::ResponseType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ac6e973c7de76304f6098773e22b209a9a58a2ced46982e7ccdd9faf0541ae14d4" name="ac6e973c7de76304f6098773e22b209a9a58a2ced46982e7ccdd9faf0541ae14d4"></a>IDK_NORMAL_I_GUESS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac6e973c7de76304f6098773e22b209a9a9167933a319383a182cc8ac9213469e3" name="ac6e973c7de76304f6098773e22b209a9a9167933a319383a182cc8ac9213469e3"></a>CGI&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612" name="ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612"></a>ERROR&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00026">26</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>                      {</div>
+<div class="line"><span class="lineno">   27</span>        <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a58a2ced46982e7ccdd9faf0541ae14d4">IDK_NORMAL_I_GUESS</a>,</div>
+<div class="line"><span class="lineno">   28</span>        <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a9167933a319383a182cc8ac9213469e3">CGI</a>,</div>
+<div class="line"><span class="lineno">   29</span>        <a class="code hl_enumvalue" href="defines_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">ERROR</a></div>
+<div class="line"><span class="lineno">   30</span>    };</div>
+<div class="ttc" id="adefines_8hpp_html_aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90"><div class="ttname"><a href="defines_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a2fd6f336d08340583bd620a7f5694c90">ERROR</a></div><div class="ttdeci">@ ERROR</div><div class="ttdef"><b>Definition</b> <a href="defines_8hpp_source.html#l00015">defines.hpp:15</a></div></div>
+<div class="ttc" id="anamespacehttp_html_ac6e973c7de76304f6098773e22b209a9a58a2ced46982e7ccdd9faf0541ae14d4"><div class="ttname"><a href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a58a2ced46982e7ccdd9faf0541ae14d4">http::IDK_NORMAL_I_GUESS</a></div><div class="ttdeci">@ IDK_NORMAL_I_GUESS</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00027">Response.hpp:27</a></div></div>
+<div class="ttc" id="anamespacehttp_html_ac6e973c7de76304f6098773e22b209a9a9167933a319383a182cc8ac9213469e3"><div class="ttname"><a href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a9167933a319383a182cc8ac9213469e3">http::CGI</a></div><div class="ttdeci">@ CGI</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00028">Response.hpp:28</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -746,21 +780,21 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="createResponse_8cpp_source.html#l00017">17</a> of file <a class="el" href="createResponse_8cpp_source.html">createResponse.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   17</span>                                                           {</div>
-<div class="line"><span class="lineno">   18</span>        std::string response;</div>
-<div class="line"><span class="lineno">   19</span> </div>
-<div class="line"><span class="lineno">   20</span>        std::string start_line;</div>
-<div class="line"><span class="lineno">   21</span>        start_line = <a class="code hl_variable" href="createResponse_8cpp.html#aa8c7815fae449943e6cd7ef174516bdf">HTTP_NAME</a> + <a class="code hl_variable" href="createResponse_8cpp.html#a8a93e7e3fdffc39a8ace86cea675acb1">ONE_DOT_ONE</a> + <span class="stringliteral">&quot; &quot;</span> + <a class="code hl_function" href="namespacehttp.html#a02e06383b1493a41cc6694d095cc8aa9">status</a>(status_code) + <a class="code hl_variable" href="createResponse_8cpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a>;</div>
-<div class="line"><span class="lineno">   22</span> </div>
-<div class="line"><span class="lineno">   23</span>        response += start_line;</div>
+<p class="definition">Definition at line <a class="el" href="createResponse_8cpp_source.html#l00019">19</a> of file <a class="el" href="createResponse_8cpp_source.html">createResponse.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>                                                           {</div>
+<div class="line"><span class="lineno">   20</span>        std::string response;</div>
+<div class="line"><span class="lineno">   21</span> </div>
+<div class="line"><span class="lineno">   22</span>        std::string start_line;</div>
+<div class="line"><span class="lineno">   23</span>        start_line = <a class="code hl_variable" href="createResponse_8cpp.html#aa8c7815fae449943e6cd7ef174516bdf">HTTP_NAME</a> + <a class="code hl_variable" href="createResponse_8cpp.html#a8a93e7e3fdffc39a8ace86cea675acb1">ONE_DOT_ONE</a> + <span class="stringliteral">&quot; &quot;</span> + <a class="code hl_function" href="namespacehttp.html#a02e06383b1493a41cc6694d095cc8aa9">status</a>(status_code) + <a class="code hl_variable" href="createResponse_8cpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a>;</div>
 <div class="line"><span class="lineno">   24</span> </div>
-<div class="line"><span class="lineno">   25</span>        <span class="keywordflow">return</span> response;</div>
-<div class="line"><span class="lineno">   26</span>    }</div>
-<div class="ttc" id="acreateResponse_8cpp_html_a26894f5f61a3de2e81c8b9837517ee35"><div class="ttname"><a href="createResponse_8cpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a></div><div class="ttdeci">const std::string CRLF</div><div class="ttdef"><b>Definition</b> <a href="createResponse_8cpp_source.html#l00007">createResponse.cpp:7</a></div></div>
-<div class="ttc" id="acreateResponse_8cpp_html_a8a93e7e3fdffc39a8ace86cea675acb1"><div class="ttname"><a href="createResponse_8cpp.html#a8a93e7e3fdffc39a8ace86cea675acb1">ONE_DOT_ONE</a></div><div class="ttdeci">const std::string ONE_DOT_ONE</div><div class="ttdef"><b>Definition</b> <a href="createResponse_8cpp_source.html#l00006">createResponse.cpp:6</a></div></div>
-<div class="ttc" id="acreateResponse_8cpp_html_aa8c7815fae449943e6cd7ef174516bdf"><div class="ttname"><a href="createResponse_8cpp.html#aa8c7815fae449943e6cd7ef174516bdf">HTTP_NAME</a></div><div class="ttdeci">const std::string HTTP_NAME</div><div class="ttdef"><b>Definition</b> <a href="createResponse_8cpp_source.html#l00005">createResponse.cpp:5</a></div></div>
-<div class="ttc" id="anamespacehttp_html_a02e06383b1493a41cc6694d095cc8aa9"><div class="ttname"><a href="namespacehttp.html#a02e06383b1493a41cc6694d095cc8aa9">http::status</a></div><div class="ttdeci">const std::string status(http::StatusCode status_code)</div><div class="ttdef"><b>Definition</b> <a href="createResponse_8cpp_source.html#l00013">createResponse.cpp:13</a></div></div>
+<div class="line"><span class="lineno">   25</span>        response += start_line;</div>
+<div class="line"><span class="lineno">   26</span> </div>
+<div class="line"><span class="lineno">   27</span>        <span class="keywordflow">return</span> response;</div>
+<div class="line"><span class="lineno">   28</span>    }</div>
+<div class="ttc" id="acreateResponse_8cpp_html_a26894f5f61a3de2e81c8b9837517ee35"><div class="ttname"><a href="createResponse_8cpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a></div><div class="ttdeci">const std::string CRLF</div><div class="ttdef"><b>Definition</b> <a href="createResponse_8cpp_source.html#l00009">createResponse.cpp:9</a></div></div>
+<div class="ttc" id="acreateResponse_8cpp_html_a8a93e7e3fdffc39a8ace86cea675acb1"><div class="ttname"><a href="createResponse_8cpp.html#a8a93e7e3fdffc39a8ace86cea675acb1">ONE_DOT_ONE</a></div><div class="ttdeci">const std::string ONE_DOT_ONE</div><div class="ttdef"><b>Definition</b> <a href="createResponse_8cpp_source.html#l00008">createResponse.cpp:8</a></div></div>
+<div class="ttc" id="acreateResponse_8cpp_html_aa8c7815fae449943e6cd7ef174516bdf"><div class="ttname"><a href="createResponse_8cpp.html#aa8c7815fae449943e6cd7ef174516bdf">HTTP_NAME</a></div><div class="ttdeci">const std::string HTTP_NAME</div><div class="ttdef"><b>Definition</b> <a href="createResponse_8cpp_source.html#l00007">createResponse.cpp:7</a></div></div>
+<div class="ttc" id="anamespacehttp_html_a02e06383b1493a41cc6694d095cc8aa9"><div class="ttname"><a href="namespacehttp.html#a02e06383b1493a41cc6694d095cc8aa9">http::status</a></div><div class="ttdeci">const std::string status(http::StatusCode status_code)</div><div class="ttdef"><b>Definition</b> <a href="createResponse_8cpp_source.html#l00015">createResponse.cpp:15</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -769,10 +803,10 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,45,165,70"/>
 <area shape="rect" href="namespacehttp.html#a02e06383b1493a41cc6694d095cc8aa9" title=" " alt="" coords="213,45,309,70"/>
 <area shape="poly" title=" " alt="" coords="166,55,200,55,200,60,166,60"/>
-<area shape="rect" href="classhttp_1_1ErrorMessages.html#aa2d1db2c269bdc0e4b40bb67760d6858" title=" " alt="" coords="357,5,509,45"/>
-<area shape="poly" title=" " alt="" coords="309,46,343,39,344,45,310,51"/>
-<area shape="rect" href="classhttp_1_1ErrorMessages.html#ad1640de72cff09f771fdc311b185de0b" title=" " alt="" coords="357,69,509,109"/>
-<area shape="poly" title=" " alt="" coords="310,64,344,70,343,75,309,69"/>
+<area shape="rect" href="classhttp_1_1StatusMessages.html#a3d17f32acbc296b9961720a164705a19" title=" " alt="" coords="357,5,520,45"/>
+<area shape="poly" title=" " alt="" coords="309,46,343,40,344,45,310,51"/>
+<area shape="rect" href="classhttp_1_1StatusMessages.html#a71f9de359b5eb6a10afa9dffb10718bb" title=" " alt="" coords="357,69,520,109"/>
+<area shape="poly" title=" " alt="" coords="310,63,344,70,343,75,309,69"/>
 </map>
 </div>
 
@@ -824,7 +858,7 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="errorPageGenerator_8cpp_source.html#l00019">19</a> of file <a class="el" href="errorPageGenerator_8cpp_source.html">errorPageGenerator.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   19</span>                                                 {</div>
-<div class="line"><span class="lineno">   20</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespacehttp.html#a1e177883f48c7b0477b645c807a34bb8">t_errorMessages</a>&amp; errorPages = ErrorMessages::getInstance().getErrorMessages();</div>
+<div class="line"><span class="lineno">   20</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespacehttp.html#a463684a60be674627b3d18124863c207">t_statusMessages</a>&amp; errorPages = StatusMessages::getInstance().getStatusMessages();</div>
 <div class="line"><span class="lineno">   21</span>        <span class="keywordflow">if</span> (errorPages.find(code) == errorPages.end()) {</div>
 <div class="line"><span class="lineno">   22</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><span class="lineno">   23</span>        }</div>
@@ -846,17 +880,17 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">   39</span>            <span class="stringliteral">&quot;Home\n&lt;/a&gt;\n&lt;/body&gt;\n&lt;/html&gt;&quot;</span>;</div>
 <div class="line"><span class="lineno">   40</span>        <span class="keywordflow">return</span> errorPage;</div>
 <div class="line"><span class="lineno">   41</span>    }</div>
-<div class="ttc" id="anamespacehttp_html_a1e177883f48c7b0477b645c807a34bb8"><div class="ttname"><a href="namespacehttp.html#a1e177883f48c7b0477b645c807a34bb8">http::t_errorMessages</a></div><div class="ttdeci">std::map&lt; t_errorMessage::first_type, t_errorMessage::second_type &gt; t_errorMessages</div><div class="ttdef"><b>Definition</b> <a href="ErrorMessages_8hpp_source.html#l00011">ErrorMessages.hpp:11</a></div></div>
+<div class="ttc" id="anamespacehttp_html_a463684a60be674627b3d18124863c207"><div class="ttname"><a href="namespacehttp.html#a463684a60be674627b3d18124863c207">http::t_statusMessages</a></div><div class="ttdeci">std::map&lt; t_statusMessage::first_type, t_statusMessage::second_type &gt; t_statusMessages</div><div class="ttdef"><b>Definition</b> <a href="StatusMessages_8hpp_source.html#l00011">StatusMessages.hpp:11</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacehttp_ab99935c70c216969b7410a50c653cc58_cgraph.png" border="0" usemap="#anamespacehttp_ab99935c70c216969b7410a50c653cc58_cgraph" alt=""/></div>
 <map name="anamespacehttp_ab99935c70c216969b7410a50c653cc58_cgraph" id="anamespacehttp_ab99935c70c216969b7410a50c653cc58_cgraph">
 <area shape="rect" title="Allocates the error page message data." alt="" coords="5,45,181,70"/>
-<area shape="rect" href="classhttp_1_1ErrorMessages.html#aa2d1db2c269bdc0e4b40bb67760d6858" title=" " alt="" coords="229,5,381,45"/>
-<area shape="poly" title=" " alt="" coords="178,42,215,36,216,41,178,47"/>
-<area shape="rect" href="classhttp_1_1ErrorMessages.html#ad1640de72cff09f771fdc311b185de0b" title=" " alt="" coords="229,69,381,109"/>
-<area shape="poly" title=" " alt="" coords="178,67,216,73,215,78,178,73"/>
+<area shape="rect" href="classhttp_1_1StatusMessages.html#a3d17f32acbc296b9961720a164705a19" title=" " alt="" coords="229,5,392,45"/>
+<area shape="poly" title=" " alt="" coords="180,42,215,37,216,42,181,47"/>
+<area shape="rect" href="classhttp_1_1StatusMessages.html#a71f9de359b5eb6a10afa9dffb10718bb" title=" " alt="" coords="229,69,392,109"/>
+<area shape="poly" title=" " alt="" coords="181,67,216,73,215,78,180,73"/>
 </map>
 </div>
 
@@ -878,20 +912,20 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="createResponse_8cpp_source.html#l00013">13</a> of file <a class="el" href="createResponse_8cpp_source.html">createResponse.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   13</span>                                                       {</div>
-<div class="line"><span class="lineno">   14</span>        <span class="keywordflow">return</span> ErrorMessages::getInstance().getErrorMessages().at(status_code);</div>
-<div class="line"><span class="lineno">   15</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="createResponse_8cpp_source.html#l00015">15</a> of file <a class="el" href="createResponse_8cpp_source.html">createResponse.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   15</span>                                                       {</div>
+<div class="line"><span class="lineno">   16</span>        <span class="keywordflow">return</span> StatusMessages::getInstance().getStatusMessages().at(status_code);</div>
+<div class="line"><span class="lineno">   17</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespacehttp_a02e06383b1493a41cc6694d095cc8aa9_cgraph.png" border="0" usemap="#anamespacehttp_a02e06383b1493a41cc6694d095cc8aa9_cgraph" alt=""/></div>
 <map name="anamespacehttp_a02e06383b1493a41cc6694d095cc8aa9_cgraph" id="anamespacehttp_a02e06383b1493a41cc6694d095cc8aa9_cgraph">
 <area shape="rect" title=" " alt="" coords="5,45,101,70"/>
-<area shape="rect" href="classhttp_1_1ErrorMessages.html#aa2d1db2c269bdc0e4b40bb67760d6858" title=" " alt="" coords="149,5,301,45"/>
-<area shape="poly" title=" " alt="" coords="101,46,135,39,136,45,102,51"/>
-<area shape="rect" href="classhttp_1_1ErrorMessages.html#ad1640de72cff09f771fdc311b185de0b" title=" " alt="" coords="149,69,301,109"/>
-<area shape="poly" title=" " alt="" coords="102,64,136,70,135,75,101,69"/>
+<area shape="rect" href="classhttp_1_1StatusMessages.html#a3d17f32acbc296b9961720a164705a19" title=" " alt="" coords="149,5,312,45"/>
+<area shape="poly" title=" " alt="" coords="101,46,135,40,136,45,102,51"/>
+<area shape="rect" href="classhttp_1_1StatusMessages.html#a71f9de359b5eb6a10afa9dffb10718bb" title=" " alt="" coords="149,69,312,109"/>
+<area shape="poly" title=" " alt="" coords="102,63,136,70,135,75,101,69"/>
 </map>
 </div>
 <div class="dynheader">

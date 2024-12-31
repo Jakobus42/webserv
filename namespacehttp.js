@@ -2,19 +2,19 @@ var namespacehttp =
 [
     [ "ClientSocket", "classhttp_1_1ClientSocket.html", "classhttp_1_1ClientSocket" ],
     [ "Connection", "classhttp_1_1Connection.html", "classhttp_1_1Connection" ],
-    [ "ErrorMessages", "classhttp_1_1ErrorMessages.html", "classhttp_1_1ErrorMessages" ],
     [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
     [ "Response", "classhttp_1_1Response.html", "classhttp_1_1Response" ],
     [ "s_requestData", "structhttp_1_1s__requestData.html", "structhttp_1_1s__requestData" ],
     [ "ServerSocket", "classhttp_1_1ServerSocket.html", "classhttp_1_1ServerSocket" ],
+    [ "StatusMessages", "classhttp_1_1StatusMessages.html", "classhttp_1_1StatusMessages" ],
     [ "VirtualServer", "classhttp_1_1VirtualServer.html", "classhttp_1_1VirtualServer" ],
     [ "t_connections", "namespacehttp.html#aa3bcd24ae02414378f7cd9a8aafc784f", null ],
-    [ "t_errorMessage", "namespacehttp.html#aaaa7534547fe86546f2bfdd34cf99d40", null ],
-    [ "t_errorMessages", "namespacehttp.html#a1e177883f48c7b0477b645c807a34bb8", null ],
     [ "t_headerFields", "namespacehttp.html#a5fc275abcbe27d3c4113fcf5e74b2a09", null ],
     [ "t_requestData", "namespacehttp.html#a344224153c4286273f922e54b792a50d", null ],
     [ "t_sockaddr", "namespacehttp.html#a4b20fa68e7c12bf7aff9d3a71a4f2b88", null ],
     [ "t_sockaddr_in", "namespacehttp.html#ac73171fb8c32554229836839f6c4e8ed", null ],
+    [ "t_statusMessage", "namespacehttp.html#a47f81e5e1f7ce9c0800e88c6ad0dc744", null ],
+    [ "t_statusMessages", "namespacehttp.html#a463684a60be674627b3d18124863c207", null ],
     [ "ChunkedStatus", "namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437", [
       [ "CHUNK_SIZE", "namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2", null ],
       [ "CHUNK_DATA", "namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a4524451e5b885e5f0ba84ab20483b115", null ],
@@ -63,6 +63,11 @@ var namespacehttp =
       [ "WRITING", "namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aa7307a91bef7a3eade7b5b2426845497b", null ],
       [ "PENDING_SEND", "namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aa04df9d985ac43132b14fb58e6d9aa31a", null ],
       [ "SENT", "namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaedea9362e706174c3e634e43b1a0e0fb", null ]
+    ] ],
+    [ "ResponseType", "namespacehttp.html#ac6e973c7de76304f6098773e22b209a9", [
+      [ "IDK_NORMAL_I_GUESS", "namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a58a2ced46982e7ccdd9faf0541ae14d4", null ],
+      [ "CGI", "namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a9167933a319383a182cc8ac9213469e3", null ],
+      [ "ERROR", "namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612", null ]
     ] ],
     [ "StatusCode", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762", [
       [ "UNKNWN", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ad9006f1cb7c0f5a565cba334dc8c78aa", null ],
