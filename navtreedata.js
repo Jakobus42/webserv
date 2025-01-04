@@ -107,8 +107,8 @@ var NAVTREEINDEX =
 [
 "ClientSocket_8cpp.html",
 "classcore_1_1EventHandler.html#ab5616520f0084b2e893e5fb548b5385d",
-"classhttp_1_1Response.html#ae8759895f45b47aa851c76d450753093",
-"md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2config__file__basics.html"
+"classhttp_1_1Response.html#ae0efdf9f8df4b4ba5d173171ad868cc7",
+"main_8cpp_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

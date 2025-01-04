@@ -6,6 +6,7 @@ var classhttp_1_1Response =
     [ "buildCGIResponse", "classhttp_1_1Response.html#a9b46cf97a3ed97510778410591f5b460", null ],
     [ "buildErrorResponse", "classhttp_1_1Response.html#a52625989a3fb2bcc1e367b5bc13bd99e", null ],
     [ "buildFromRequest", "classhttp_1_1Response.html#ae0efdf9f8df4b4ba5d173171ad868cc7", null ],
+    [ "dateString", "classhttp_1_1Response.html#a7122bb1e022880c9832e9e644a80397f", null ],
     [ "done", "classhttp_1_1Response.html#a01c142188318790efefff94436580437", null ],
     [ "getBody", "classhttp_1_1Response.html#ae8759895f45b47aa851c76d450753093", null ],
     [ "getBuilderStatus", "classhttp_1_1Response.html#afcf3e817ef9bc0d3c70329a51a6f668d", null ],

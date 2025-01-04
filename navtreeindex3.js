@@ -1,5 +1,7 @@
 var NAVTREEINDEX3 =
 {
+"main_8cpp_source.html":[6,0,6],
+"md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2allowed__functions.html":[0],
 "md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2config__file__basics.html":[1],
 "md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2config__file__basics.html#autotoc_md10":[1,3,1],
 "md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2config__file__basics.html#autotoc_md2":[1,0],
