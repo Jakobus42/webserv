@@ -3,6 +3,9 @@
 #include "http/Request.hpp"
 #include "http/StatusMessages.hpp"
 
+#include <ctime>
+#include <iomanip>
+
 namespace http {
 
 	/**
@@ -96,6 +99,14 @@ namespace http {
 		return o << HTTP_NAME << ONE_DOT_ONE << ' ' << m_statusCode << ' ' << message << CRLF; // << statusMessage at the end
 	}
 
+	inline std::ostream& Response::dateString(std::ostream& o) {
+		char buffer[64] = "";
+		std::time_t now = std::time(NULL);
+		std::tm* gmtTime = std::gmtime(&now);
+		std::strftime(buffer, sizeof(buffer), "Date: %a, %d %b %Y %H:%M:%S GMT", gmtTime);
+		return o << buffer << CRLF;
+	}
+
 	// put all the headers in the stream, formatted properly
 	std::ostream& Response::headersString(std::ostream& o) {
 		for (t_headerFields::iterator it = m_headerFields.begin(); it != m_headerFields.end(); ++it) {
@@ -113,6 +124,7 @@ namespace http {
 		m_statusCode = OK;
 		m_body = "Hello, world!";
 		this->statusLineString(ss);
+		this->dateString(ss);
 		std::cout << "done" << std::endl;
 		this->headersString(ss);
 		ss << CRLF;

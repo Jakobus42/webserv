@@ -51,6 +51,8 @@ namespace http {
 
 			std::ostream& headersString(std::ostream& o);
 			inline std::ostream& statusLineString(std::ostream& o);
+			inline std::ostream& dateString(std::ostream& o);
+
 			void buildFromRequest(const http::Request&);
 			void buildCGIResponse(const http::Request&);
 			void buildErrorResponse(const http::Request&);

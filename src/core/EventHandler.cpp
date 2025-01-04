@@ -99,9 +99,7 @@ namespace core {
 
 	bool EventHandler::shouldDrop(void) const {
 		// @TODO: implement depending on the event
-		if (m_state == FAILED)
-			return true;
-		if (m_state == COMPLETED)
+		if (m_state == FAILED || m_state == COMPLETED)
 			return true;
 		return false;
 	}
@@ -137,8 +135,7 @@ namespace core {
 			return;
 		}
 		buffer[bytesReceived] = '\0';
-		std::cout << "Received bytes: " << bytesReceived << std::endl;
-		std::cout << "Received data: " << buffer << std::endl;
+		std::cout << "Received " << bytesReceived << " bytes:" << std::endl;
 		if (!request.parse(buffer)) {
 			setState(FAILED);
 			// handle failure
@@ -161,12 +158,6 @@ namespace core {
 			return;
 		const http::Request& currentRequest = m_requests.front();
 		http::Response& currentResponse = m_connection.getResponseBuffer();
-		const std::string response =
-			"HTTP/1.1 200 OK\r\n"
-			"Content-Type: text/plain\r\n"
-			"Content-Length: 13\r\n"
-			"\r\n"
-			"Hello, World!";
 
 		// set response type: CGI, error, or normal
 		// i.e. look for file and error if not found, otherwise build that
