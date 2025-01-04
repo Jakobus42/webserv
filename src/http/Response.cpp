@@ -2,6 +2,7 @@
 
 #include "http/Request.hpp"
 #include "http/StatusMessages.hpp"
+#include "http/errorPageGenerator.hpp"
 
 #include <ctime>
 #include <iomanip>
@@ -107,12 +108,23 @@ namespace http {
 		return o << buffer << CRLF;
 	}
 
+	inline std::ostream& Response::serverString(std::ostream& o) {
+		return o << "Server: Very Epic Gamer Server/0.1 (Powered by Hopes and Dreams)" << CRLF;
+	}
+
 	// put all the headers in the stream, formatted properly
 	std::ostream& Response::headersString(std::ostream& o) {
 		for (t_headerFields::iterator it = m_headerFields.begin(); it != m_headerFields.end(); ++it) {
 			o << it->first << ": " << it->second << CRLF;
 		}
 		return o;
+	}
+
+	// temporarily always error to test error response
+	void Response::doMagicToCalculateStatusCode(const Request& request) {
+		(void)request;
+		m_statusCode = NOT_FOUND;
+		m_type = ERROR;
 	}
 
 	void Response::buildFromRequest(const Request& request) {
@@ -124,6 +136,7 @@ namespace http {
 		m_statusCode = OK;
 		m_body = "Hello, world!";
 		this->statusLineString(ss);
+		this->serverString(ss);
 		this->dateString(ss);
 		std::cout << "done" << std::endl;
 		this->headersString(ss);
@@ -141,6 +154,27 @@ namespace http {
 
 	void Response::buildErrorResponse(const Request& request) {
 		(void)request;
+
+		this->m_body = generateErrorPage(m_statusCode);
+
+		std::stringstream ss("");
+
+		this->statusLineString(ss);
+		this->serverString(ss);
+		this->dateString(ss);
+
+		std::stringstream stupid;
+		stupid << m_body.length();
+		std::string stupider = stupid.str();
+		m_headerFields.insert(std::make_pair("Content-Type", "text/html"));
+		m_headerFields.insert(std::make_pair("Content-Length", stupider.c_str()));
+		this->headersString(ss);
+		ss << CRLF;
+		if (!m_body.empty()) {
+			ss << m_body;
+		}
+		m_rawResponse = ss.str();
+		std::cout << "buildErrorResponse built: " << m_rawResponse << std::endl;
 	}
 
 	void Response::reset(void) {

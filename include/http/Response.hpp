@@ -48,10 +48,12 @@ namespace http {
 			const std::string& getBody(void) const;
 
 			void setRawResponse(const std::string&); // probably just temporary
+			void doMagicToCalculateStatusCode(const Request&);
 
 			std::ostream& headersString(std::ostream& o);
 			inline std::ostream& statusLineString(std::ostream& o);
 			inline std::ostream& dateString(std::ostream& o);
+			inline std::ostream& serverString(std::ostream& o);
 
 			void buildFromRequest(const http::Request&);
 			void buildCGIResponse(const http::Request&);

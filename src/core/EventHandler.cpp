@@ -158,6 +158,7 @@ namespace core {
 			return;
 		const http::Request& currentRequest = m_requests.front();
 		http::Response& currentResponse = m_connection.getResponseBuffer();
+		currentResponse.doMagicToCalculateStatusCode(currentRequest);
 
 		// set response type: CGI, error, or normal
 		// i.e. look for file and error if not found, otherwise build that
