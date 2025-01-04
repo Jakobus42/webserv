@@ -2,6 +2,7 @@
 
 #include "http/ClientSocket.hpp"
 #include "http/Request.hpp"
+#include "http/Response.hpp"
 
 namespace http {
 
@@ -20,19 +21,22 @@ namespace http {
 			const ClientSocket& getSocket(void) const;
 			ClientSocket& getSocket(void);
 			int getClientSocketFd(void) const;
-			const http::Request& getRequest(void) const;
-			http::Request& getRequest(void);
-			const char* getBuffer(void) const;
-			char* getBuffer(void);
+			const http::Request& getRequestBuffer(void) const;
+			http::Request& getRequestBuffer(void);
+			const http::Response& getResponseBuffer(void) const;
+			http::Response& getResponseBuffer(void);
+			const char* getByteBuffer(void) const;
+			char* getByteBuffer(void);
 
 			void close(void);
 
 			bool operator==(const Connection& other) const;
 
 		private:
-			ClientSocket m_client_socket;
-			http::Request m_request;
-			char m_read_buffer[BUFFER_SIZE];
+			ClientSocket m_clientSocket;
+			http::Request m_requestBuffer;
+			http::Response m_responseBuffer;
+			char m_byteBuffer[BUFFER_SIZE];
 	};
 
 } // namespace http

@@ -15,6 +15,7 @@ namespace core {
 		: m_events(events)
 		, m_state(PENDING_READ)
 		, m_requests()
+		, m_responses()
 		, m_connection(connection)
 		, m_server(server) {}
 
@@ -31,6 +32,7 @@ namespace core {
 		: m_events(other.getEvents())
 		, m_state(other.getState())
 		, m_requests(other.getRequests())
+		, m_responses(other.getResponses())
 		, m_connection(other.getConnection())
 		, m_server(other.getServer()) {}
 
@@ -45,17 +47,26 @@ namespace core {
 		m_events = rhs.getEvents();
 		m_state = rhs.getState();
 		m_requests = rhs.getRequests();
+		m_responses = rhs.getResponses();
 		m_connection = rhs.getConnection();
 		m_server = rhs.getServer();
 		return *this;
 	}
 
-	std::queue<http::Request>& EventHandler::getRequests(void) {
+	t_requests& EventHandler::getRequests(void) {
 		return m_requests;
 	}
 
-	const std::queue<http::Request>& EventHandler::getRequests(void) const {
+	const t_requests& EventHandler::getRequests(void) const {
 		return m_requests;
+	}
+
+	t_responses& EventHandler::getResponses(void) {
+		return m_responses;
+	}
+
+	const t_responses& EventHandler::getResponses(void) const {
+		return m_responses;
 	}
 
 	HandlerState EventHandler::getState(void) const {
@@ -88,9 +99,7 @@ namespace core {
 
 	bool EventHandler::shouldDrop(void) const {
 		// @TODO: implement depending on the event
-		if (m_state == FAILED)
-			return true;
-		if (m_state == COMPLETED)
+		if (m_state == FAILED || m_state == COMPLETED)
 			return true;
 		return false;
 	}
@@ -102,7 +111,8 @@ namespace core {
 	// potentially wasting a lot of time while we're still in EPOLLIN
 	void EventHandler::handleRequest(void) {
 		int fd = m_connection.getClientSocketFd();
-		char* buffer = m_connection.getBuffer();
+		char* buffer = m_connection.getByteBuffer();
+		http::Request& request = m_connection.getRequestBuffer(); // @TODO: ensure this always works on the right (foremost) request
 
 		ssize_t bytesReceived = recv(fd, buffer, BUFFER_SIZE - 1, 0);
 		if (bytesReceived < 0) {
@@ -125,42 +135,74 @@ namespace core {
 			return;
 		}
 		buffer[bytesReceived] = '\0';
-		std::cout << "Received bytes: " << bytesReceived << std::endl;
-		std::cout << "Received data: " << buffer << std::endl;
-		if (!m_connection.getRequest().parse(buffer)) {
+		std::cout << "Received " << bytesReceived << " bytes:" << std::endl;
+		if (!request.parse(buffer)) {
 			setState(FAILED);
 			// handle failure
 			std::cout << "Request FAILED" << std::endl;
 			return;
 		}
-		if (m_connection.getRequest().getStatus() == http::PARSE_END) {
+		if (request.getStatus() == http::PARSE_END) {
 			std::cout << "Request COMPLETED right after parsing" << std::endl;
+			m_requests.push(request);
+			request.reset();
 			setState(WAITING_FOR_WRITE);
 		} else
 			setState(PROCESSING);
 		// if request.done() then setState(COMPLETED);
+		std::cout << "m_responses now " << m_responses.size() << " long" << std::endl;
 	}
 
-	void EventHandler::handleResponse(void) {
-		int fd = m_connection.getSocket().getFd();
-		std::cout << "handleResponse on fd: " << fd << std::endl;
-		const char* response =
-			"HTTP/1.1 200 OK\r\n"
-			"Content-Type: text/plain\r\n"
-			"Content-Length: 13\r\n"
-			"\r\n"
-			"Hello, World!";
+	void EventHandler::buildResponse(void) {
+		if (m_requests.empty() || m_state > WRITING)
+			return;
+		const http::Request& currentRequest = m_requests.front();
+		http::Response& currentResponse = m_connection.getResponseBuffer();
+		currentResponse.doMagicToCalculateStatusCode(currentRequest);
 
-		ssize_t bytesSent = send(fd, response, strlen(response), 0);
+		// set response type: CGI, error, or normal
+		// i.e. look for file and error if not found, otherwise build that
+		// or, if cgi header found, validate, run and respond accordingly
+
+		switch (currentResponse.getType()) {
+			case (http::IDK_NORMAL_I_GUESS):
+				currentResponse.buildFromRequest(currentRequest);
+				break;
+			case (http::CGI):
+				currentResponse.buildCGIResponse(currentRequest);
+				break;
+			case (http::ERROR):
+				currentResponse.buildErrorResponse(currentRequest);
+				break;
+		}
+		if (currentResponse.done()) {
+			m_responses.push(currentResponse);
+			m_requests.pop();
+			setState(PENDING_SEND);
+			currentResponse.reset();
+		}
+		std::cout << "m_requests now " << m_requests.size() << " long" << std::endl;
+	}
+
+	// take the topmost request from the queue and build a response
+	void EventHandler::sendResponse(void) {
+		if (m_responses.empty() || m_state < PENDING_SEND)
+			return;
+		setState(SENDING);
+		http::Response& currentResponse = m_responses.front();
+		int fd = m_connection.getClientSocketFd();
+		std::cout << "sendResponse on fd: " << fd << std::endl;
+
+		ssize_t bytesSent = send(fd, currentResponse.getRawResponse().c_str(), currentResponse.getRawResponse().length(), 0);
 		if (bytesSent < 0) {
 			std::cerr << "Error sending data" << std::endl;
 		} else {
-			std::cout << "Sent response: " << response << std::endl;
-			(void)response;
-			m_connection.getRequest().reset();
+			std::cout << "Sent response: " << currentResponse.getRawResponse() << std::endl;
 			setState(COMPLETED);
-			std::cout << "Response set to COMPLETED" << std::endl;
+			currentResponse.reset();
+			m_responses.pop();
 		}
+		std::cout << "m_responses now " << m_responses.size() << " long" << std::endl;
 	}
 
 	void EventHandler::handleError(void) {

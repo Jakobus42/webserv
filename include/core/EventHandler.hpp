@@ -2,8 +2,10 @@
 #include <sys/epoll.h>
 
 #include "http/Request.hpp"
+#include "http/Response.hpp"
 
 #include <queue>
+#include <sstream>
 
 namespace http {
 	class VirtualServer;
@@ -13,12 +15,14 @@ namespace http {
 namespace core {
 
 	typedef std::queue<http::Request> t_requests;
+	typedef std::queue<http::Response> t_responses;
 
 	enum HandlerState {
 		PENDING_READ,
 		PROCESSING,
 		WAITING_FOR_WRITE,
 		WRITING,
+		PENDING_SEND,
 		SENDING,
 		COMPLETED,
 		FAILED
@@ -35,8 +39,10 @@ namespace core {
 			EventHandler(const EventHandler& other);
 			EventHandler& operator=(const EventHandler& rhs);
 
-			std::queue<http::Request>& getRequests(void);
-			const std::queue<http::Request>& getRequests(void) const;
+			t_requests& getRequests(void);
+			const t_requests& getRequests(void) const;
+			t_responses& getResponses(void);
+			const t_responses& getResponses(void) const;
 			HandlerState getState(void) const;
 			http::VirtualServer& getServer(void);
 			http::VirtualServer& getServer(void) const;
@@ -52,7 +58,8 @@ namespace core {
 			void killSelf(void);
 
 			void handleRequest(void);
-			void handleResponse(void);
+			void buildResponse(void);
+			void sendResponse(void);
 			void handleError(void);
 
 		private:
@@ -61,6 +68,7 @@ namespace core {
 			uint32_t m_events;
 			HandlerState m_state;
 			t_requests m_requests;
+			t_responses m_responses;
 			http::Connection& m_connection;
 			http::VirtualServer& m_server;
 	};

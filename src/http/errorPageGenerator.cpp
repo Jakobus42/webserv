@@ -1,6 +1,6 @@
 #include "http/errorPageGenerator.hpp"
 
-#include "http/ErrorMessages.hpp"
+#include "http/StatusMessages.hpp"
 #include "shared/defines.hpp"
 
 #include <sstream>
@@ -17,26 +17,34 @@ namespace http {
 	 * @return std::string The error page as an HTML string.
 	 */
 	std::string generateErrorPage(StatusCode code) {
-		const t_errorMessages& errorPages = ErrorMessages::getInstance().getErrorMessages();
-		if (errorPages.find(code) == errorPages.end()) {
-			return "";
+		const t_statusMessages& statusMessages = StatusMessages::getInstance().getStatusMessages();
+		std::string message;
+
+		try {
+			message = statusMessages.at(code);
+		} catch (...) {
+			message = "Oopsie";
 		}
 		std::ostringstream oss;
 		oss << code;
 		std::string codeStr = oss.str();
-		std::string errorPage =
-			"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<title>\n" + codeStr +
-			" " + errorPages.at(code) +
-			"\n</title>\n<style>\nbody\n{\nbackground-color:"
-			"#2b3042;\njustify-content: center;\ntext-align: center;\ncolor: "
-			"#d3dbeb;\n\n}\nh1\n{\nfont-size: "
-			"5rem;\n}\np\n{\nfont-size: 1.5rem;\npadding-bottom: "
-			"10px;\n}\na\n{\ntext-decoration: none;\ncolor: "
-			"#d3dbeb;\npadding: 10px;\nborder: 3px solid #d3dbeb;\nfont-weight: "
-			"bold;\n}\n</style>\n</head>\n<body>\n<h1>" +
-			codeStr + "</h1>\n<p>\n" + errorPages.at(code) +
-			"\n</p>\n<a href=\"/home_directory>\">\nGo Back to "
-			"Home\n</a>\n</body>\n</html>";
+		std::cout << "Codestr = " << codeStr << ", message = " << message << std::endl;
+
+		std::stringstream ss("");
+
+		ss << "<!DOCTYPE html><html lang=\"en\"><head><title>" << codeStr << ' ' << message;
+		ss << "</title><style>body{background-color:";
+		ss << "#2b3042;justify-content: center;text-align: center;color: ";
+		ss << "#d3dbeb;}h1{font-size: ";
+		ss << "5rem;}p{font-size: 1.5rem;padding-bottom: ";
+		ss << "10px;}a{text-decoration: none;color: ";
+		ss << "#d3dbeb;padding: 10px;border: 3px solid #d3dbeb;font-weight: ";
+		ss << "bold;}</style></head><body><h1>";
+		ss << codeStr << "</h1><p>" << message;
+		ss << "</p><a href=\"/home_directory>\">Go Back to Home</a></body></html>";
+
+
+		std::string errorPage = ss.str();
 		return errorPage;
 	}
 
