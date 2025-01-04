@@ -329,40 +329,42 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  158</span>            <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  159</span>        <span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1Request.html">http::Request</a>&amp; currentRequest = <a class="code hl_variable" href="classcore_1_1EventHandler.html#aa1ec7a25a3befaf455b43e5a7bf2875a">m_requests</a>.front();</div>
 <div class="line"><span class="lineno">  160</span>        <a class="code hl_class" href="classhttp_1_1Response.html">http::Response</a>&amp; currentResponse = <a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>.<a class="code hl_function" href="classhttp_1_1Connection.html#a2e2e6883518370dd49f9fc23762a6c2d">getResponseBuffer</a>();</div>
-<div class="line"><span class="lineno">  161</span> </div>
-<div class="line"><span class="lineno">  162</span>        <span class="comment">// set response type: CGI, error, or normal</span></div>
-<div class="line"><span class="lineno">  163</span>        <span class="comment">// i.e. look for file and error if not found, otherwise build that</span></div>
-<div class="line"><span class="lineno">  164</span>        <span class="comment">// or, if cgi header found, validate, run and respond accordingly</span></div>
-<div class="line"><span class="lineno">  165</span> </div>
-<div class="line"><span class="lineno">  166</span>        <span class="keywordflow">switch</span> (currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a5fb55b37425d748d5d1bf83e48a49826">getType</a>()) {</div>
-<div class="line"><span class="lineno">  167</span>            <span class="keywordflow">case</span> (<a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a58a2ced46982e7ccdd9faf0541ae14d4">http::IDK_NORMAL_I_GUESS</a>):</div>
-<div class="line"><span class="lineno">  168</span>                currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#ae0efdf9f8df4b4ba5d173171ad868cc7">buildFromRequest</a>(currentRequest);</div>
-<div class="line"><span class="lineno">  169</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  170</span>            <span class="keywordflow">case</span> (<a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a9167933a319383a182cc8ac9213469e3">http::CGI</a>):</div>
-<div class="line"><span class="lineno">  171</span>                currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a9b46cf97a3ed97510778410591f5b460">buildCGIResponse</a>(currentRequest);</div>
-<div class="line"><span class="lineno">  172</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  173</span>            <span class="keywordflow">case</span> (<a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">http::ERROR</a>):</div>
-<div class="line"><span class="lineno">  174</span>                currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a52625989a3fb2bcc1e367b5bc13bd99e">buildErrorResponse</a>(currentRequest);</div>
-<div class="line"><span class="lineno">  175</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  176</span>        }</div>
-<div class="line"><span class="lineno">  177</span>        <span class="keywordflow">if</span> (currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a01c142188318790efefff94436580437">done</a>()) {</div>
-<div class="line"><span class="lineno">  178</span>            <a class="code hl_variable" href="classcore_1_1EventHandler.html#a3135d335cb48cb3cbaf06e6725624476">m_responses</a>.push(currentResponse);</div>
-<div class="line"><span class="lineno">  179</span>            <a class="code hl_variable" href="classcore_1_1EventHandler.html#aa1ec7a25a3befaf455b43e5a7bf2875a">m_requests</a>.pop();</div>
-<div class="line"><span class="lineno">  180</span>            <a class="code hl_function" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862">setState</a>(<a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701ad336826de1fecf7a2d036304585e1897">PENDING_SEND</a>);</div>
-<div class="line"><span class="lineno">  181</span>            currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364">reset</a>();</div>
-<div class="line"><span class="lineno">  182</span>        }</div>
-<div class="line"><span class="lineno">  183</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;m_requests now &quot;</span> &lt;&lt; <a class="code hl_variable" href="classcore_1_1EventHandler.html#aa1ec7a25a3befaf455b43e5a7bf2875a">m_requests</a>.size() &lt;&lt; <span class="stringliteral">&quot; long&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  184</span>    }</div>
+<div class="line"><span class="lineno">  161</span>        currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#ac923fe1857f3c3803e3cdc6b230e64f2">doMagicToCalculateStatusCode</a>(currentRequest);</div>
+<div class="line"><span class="lineno">  162</span> </div>
+<div class="line"><span class="lineno">  163</span>        <span class="comment">// set response type: CGI, error, or normal</span></div>
+<div class="line"><span class="lineno">  164</span>        <span class="comment">// i.e. look for file and error if not found, otherwise build that</span></div>
+<div class="line"><span class="lineno">  165</span>        <span class="comment">// or, if cgi header found, validate, run and respond accordingly</span></div>
+<div class="line"><span class="lineno">  166</span> </div>
+<div class="line"><span class="lineno">  167</span>        <span class="keywordflow">switch</span> (currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a5fb55b37425d748d5d1bf83e48a49826">getType</a>()) {</div>
+<div class="line"><span class="lineno">  168</span>            <span class="keywordflow">case</span> (<a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a58a2ced46982e7ccdd9faf0541ae14d4">http::IDK_NORMAL_I_GUESS</a>):</div>
+<div class="line"><span class="lineno">  169</span>                currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#ae0efdf9f8df4b4ba5d173171ad868cc7">buildFromRequest</a>(currentRequest);</div>
+<div class="line"><span class="lineno">  170</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  171</span>            <span class="keywordflow">case</span> (<a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a9167933a319383a182cc8ac9213469e3">http::CGI</a>):</div>
+<div class="line"><span class="lineno">  172</span>                currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a9b46cf97a3ed97510778410591f5b460">buildCGIResponse</a>(currentRequest);</div>
+<div class="line"><span class="lineno">  173</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  174</span>            <span class="keywordflow">case</span> (<a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">http::ERROR</a>):</div>
+<div class="line"><span class="lineno">  175</span>                currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a52625989a3fb2bcc1e367b5bc13bd99e">buildErrorResponse</a>(currentRequest);</div>
+<div class="line"><span class="lineno">  176</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  177</span>        }</div>
+<div class="line"><span class="lineno">  178</span>        <span class="keywordflow">if</span> (currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a01c142188318790efefff94436580437">done</a>()) {</div>
+<div class="line"><span class="lineno">  179</span>            <a class="code hl_variable" href="classcore_1_1EventHandler.html#a3135d335cb48cb3cbaf06e6725624476">m_responses</a>.push(currentResponse);</div>
+<div class="line"><span class="lineno">  180</span>            <a class="code hl_variable" href="classcore_1_1EventHandler.html#aa1ec7a25a3befaf455b43e5a7bf2875a">m_requests</a>.pop();</div>
+<div class="line"><span class="lineno">  181</span>            <a class="code hl_function" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862">setState</a>(<a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701ad336826de1fecf7a2d036304585e1897">PENDING_SEND</a>);</div>
+<div class="line"><span class="lineno">  182</span>            currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364">reset</a>();</div>
+<div class="line"><span class="lineno">  183</span>        }</div>
+<div class="line"><span class="lineno">  184</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;m_requests now &quot;</span> &lt;&lt; <a class="code hl_variable" href="classcore_1_1EventHandler.html#aa1ec7a25a3befaf455b43e5a7bf2875a">m_requests</a>.size() &lt;&lt; <span class="stringliteral">&quot; long&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  185</span>    }</div>
 <div class="ttc" id="aclasscore_1_1EventHandler_html_a85a5119b2ca5045dde4da35e53e29862"><div class="ttname"><a href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862">core::EventHandler::setState</a></div><div class="ttdeci">void setState(HandlerState)</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8cpp_source.html#l00096">EventHandler.cpp:96</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Connection_html_a2e2e6883518370dd49f9fc23762a6c2d"><div class="ttname"><a href="classhttp_1_1Connection.html#a2e2e6883518370dd49f9fc23762a6c2d">http::Connection::getResponseBuffer</a></div><div class="ttdeci">const http::Response &amp; getResponseBuffer(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00089">Connection.cpp:89</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html"><div class="ttname"><a href="classhttp_1_1Request.html">http::Request</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00061">Request.hpp:61</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Response_html"><div class="ttname"><a href="classhttp_1_1Response.html">http::Response</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00036">Response.hpp:36</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a01c142188318790efefff94436580437"><div class="ttname"><a href="classhttp_1_1Response.html#a01c142188318790efefff94436580437">http::Response::done</a></div><div class="ttdeci">bool done(void) const</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00086">Response.cpp:86</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a4eb56ec0c2d1c77b78241a8855c4d364"><div class="ttname"><a href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364">http::Response::reset</a></div><div class="ttdeci">void reset(void)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00146">Response.cpp:146</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a52625989a3fb2bcc1e367b5bc13bd99e"><div class="ttname"><a href="classhttp_1_1Response.html#a52625989a3fb2bcc1e367b5bc13bd99e">http::Response::buildErrorResponse</a></div><div class="ttdeci">void buildErrorResponse(const http::Request &amp;)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00142">Response.cpp:142</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a5fb55b37425d748d5d1bf83e48a49826"><div class="ttname"><a href="classhttp_1_1Response.html#a5fb55b37425d748d5d1bf83e48a49826">http::Response::getType</a></div><div class="ttdeci">ResponseType getType(void) const</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00061">Response.cpp:61</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a9b46cf97a3ed97510778410591f5b460"><div class="ttname"><a href="classhttp_1_1Response.html#a9b46cf97a3ed97510778410591f5b460">http::Response::buildCGIResponse</a></div><div class="ttdeci">void buildCGIResponse(const http::Request &amp;)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00138">Response.cpp:138</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_ae0efdf9f8df4b4ba5d173171ad868cc7"><div class="ttname"><a href="classhttp_1_1Response.html#ae0efdf9f8df4b4ba5d173171ad868cc7">http::Response::buildFromRequest</a></div><div class="ttdeci">void buildFromRequest(const http::Request &amp;)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00118">Response.cpp:118</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a01c142188318790efefff94436580437"><div class="ttname"><a href="classhttp_1_1Response.html#a01c142188318790efefff94436580437">http::Response::done</a></div><div class="ttdeci">bool done(void) const</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00087">Response.cpp:87</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a4eb56ec0c2d1c77b78241a8855c4d364"><div class="ttname"><a href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364">http::Response::reset</a></div><div class="ttdeci">void reset(void)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00180">Response.cpp:180</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a52625989a3fb2bcc1e367b5bc13bd99e"><div class="ttname"><a href="classhttp_1_1Response.html#a52625989a3fb2bcc1e367b5bc13bd99e">http::Response::buildErrorResponse</a></div><div class="ttdeci">void buildErrorResponse(const http::Request &amp;)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00155">Response.cpp:155</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a5fb55b37425d748d5d1bf83e48a49826"><div class="ttname"><a href="classhttp_1_1Response.html#a5fb55b37425d748d5d1bf83e48a49826">http::Response::getType</a></div><div class="ttdeci">ResponseType getType(void) const</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00062">Response.cpp:62</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a9b46cf97a3ed97510778410591f5b460"><div class="ttname"><a href="classhttp_1_1Response.html#a9b46cf97a3ed97510778410591f5b460">http::Response::buildCGIResponse</a></div><div class="ttdeci">void buildCGIResponse(const http::Request &amp;)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00151">Response.cpp:151</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_ac923fe1857f3c3803e3cdc6b230e64f2"><div class="ttname"><a href="classhttp_1_1Response.html#ac923fe1857f3c3803e3cdc6b230e64f2">http::Response::doMagicToCalculateStatusCode</a></div><div class="ttdeci">void doMagicToCalculateStatusCode(const Request &amp;)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00124">Response.cpp:124</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_ae0efdf9f8df4b4ba5d173171ad868cc7"><div class="ttname"><a href="classhttp_1_1Response.html#ae0efdf9f8df4b4ba5d173171ad868cc7">http::Response::buildFromRequest</a></div><div class="ttdeci">void buildFromRequest(const http::Request &amp;)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00130">Response.cpp:130</a></div></div>
 <div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701a591ab51024c7525d13aaf8efb8c23843"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a591ab51024c7525d13aaf8efb8c23843">core::WRITING</a></div><div class="ttdeci">@ WRITING</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00024">EventHandler.hpp:24</a></div></div>
 <div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701ad336826de1fecf7a2d036304585e1897"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701ad336826de1fecf7a2d036304585e1897">core::PENDING_SEND</a></div><div class="ttdeci">@ PENDING_SEND</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00025">EventHandler.hpp:25</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612"><div class="ttname"><a href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">http::ERROR</a></div><div class="ttdeci">@ ERROR</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00030">Response.hpp:29</a></div></div>
@@ -373,33 +375,45 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcore_1_1EventHandler_a1e36084c6c90216475b3ced2d5de9699_cgraph.png" border="0" usemap="#aclasscore_1_1EventHandler_a1e36084c6c90216475b3ced2d5de9699_cgraph" alt=""/></div>
 <map name="aclasscore_1_1EventHandler_a1e36084c6c90216475b3ced2d5de9699_cgraph" id="aclasscore_1_1EventHandler_a1e36084c6c90216475b3ced2d5de9699_cgraph">
-<area shape="rect" title=" " alt="" coords="5,206,152,246"/>
+<area shape="rect" title=" " alt="" coords="5,241,152,281"/>
 <area shape="rect" href="classhttp_1_1Response.html#a9b46cf97a3ed97510778410591f5b460" title=" " alt="" coords="200,5,445,31"/>
-<area shape="poly" title=" " alt="" coords="85,205,100,169,124,124,157,79,198,41,211,34,213,39,202,45,161,82,129,127,105,171,90,207"/>
-<area shape="rect" href="classhttp_1_1Response.html#a52625989a3fb2bcc1e367b5bc13bd99e" title=" " alt="" coords="227,55,418,95"/>
-<area shape="poly" title=" " alt="" coords="93,204,136,154,166,128,199,105,213,98,216,102,201,110,169,132,140,158,97,208"/>
-<area shape="rect" href="classhttp_1_1Response.html#ae0efdf9f8df4b4ba5d173171ad868cc7" title=" " alt="" coords="227,119,419,159"/>
-<area shape="poly" title=" " alt="" coords="119,203,199,169,224,161,225,166,201,174,121,208"/>
-<area shape="rect" href="classhttp_1_1Response.html#a01c142188318790efefff94436580437" title=" " alt="" coords="243,184,402,209"/>
-<area shape="poly" title=" " alt="" coords="152,215,229,205,230,210,153,220"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a2e2e6883518370dd49f9fc23762a6c2d" title=" " alt="" coords="212,234,433,274"/>
-<area shape="poly" title=" " alt="" coords="153,232,199,237,198,242,152,237"/>
-<area shape="rect" href="classhttp_1_1Response.html#a5fb55b37425d748d5d1bf83e48a49826" title=" " alt="" coords="233,299,412,324"/>
-<area shape="poly" title=" " alt="" coords="115,244,156,265,201,283,233,293,231,298,199,289,153,269,113,248"/>
-<area shape="rect" href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364" title=" " alt="" coords="243,348,403,373"/>
-<area shape="poly" title=" " alt="" coords="98,245,141,291,170,315,201,334,230,346,228,351,199,339,167,319,138,295,94,248"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862" title=" " alt="" coords="249,398,396,438"/>
-<area shape="poly" title=" " alt="" coords="92,245,133,314,164,352,201,384,238,401,235,406,199,388,160,355,129,317,87,248"/>
-<area shape="rect" href="classhttp_1_1Response.html#a7122bb1e022880c9832e9e644a80397f" title=" " alt="" coords="505,77,699,103"/>
-<area shape="poly" title=" " alt="" coords="418,120,516,102,517,108,419,125"/>
-<area shape="rect" href="classhttp_1_1Response.html#a7e9fb022362f77c3d9bfc19e76249977" title=" " alt="" coords="493,127,711,152"/>
-<area shape="poly" title=" " alt="" coords="419,137,479,137,479,142,419,142"/>
-<area shape="rect" href="classhttp_1_1Response.html#a2d1e7ec002dfef0005ca5ef8f88d4567" title=" " alt="" coords="505,177,699,217"/>
-<area shape="poly" title=" " alt="" coords="419,156,492,171,491,177,418,162"/>
-<area shape="rect" href="classhttp_1_1StatusMessages.html#a3d17f32acbc296b9961720a164705a19" title=" " alt="" coords="759,145,921,185"/>
-<area shape="poly" title=" " alt="" coords="699,181,744,175,745,180,700,186"/>
-<area shape="rect" href="classhttp_1_1StatusMessages.html#a71f9de359b5eb6a10afa9dffb10718bb" title=" " alt="" coords="759,209,921,249"/>
-<area shape="poly" title=" " alt="" coords="700,207,745,213,744,219,699,212"/>
+<area shape="poly" title=" " alt="" coords="83,239,96,197,119,143,153,88,174,63,198,41,209,34,212,39,202,45,178,66,157,91,124,146,101,199,88,241"/>
+<area shape="rect" href="classhttp_1_1Response.html#a52625989a3fb2bcc1e367b5bc13bd99e" title=" " alt="" coords="227,119,418,159"/>
+<area shape="poly" title=" " alt="" coords="100,238,144,203,199,169,216,162,218,166,201,174,147,207,103,242"/>
+<area shape="rect" href="classhttp_1_1Response.html#ae0efdf9f8df4b4ba5d173171ad868cc7" title=" " alt="" coords="227,55,419,95"/>
+<area shape="poly" title=" " alt="" coords="88,239,130,173,161,136,198,105,213,97,215,102,202,110,165,140,134,176,92,242"/>
+<area shape="rect" href="classhttp_1_1Response.html#ac923fe1857f3c3803e3cdc6b230e64f2" title=" " alt="" coords="225,183,421,223"/>
+<area shape="poly" title=" " alt="" coords="152,241,223,224,225,229,153,246"/>
+<area shape="rect" href="classhttp_1_1Response.html#a01c142188318790efefff94436580437" title=" " alt="" coords="243,248,402,273"/>
+<area shape="poly" title=" " alt="" coords="152,258,230,258,230,263,152,263"/>
+<area shape="rect" href="classhttp_1_1Connection.html#a2e2e6883518370dd49f9fc23762a6c2d" title=" " alt="" coords="212,298,433,338"/>
+<area shape="poly" title=" " alt="" coords="153,275,225,292,223,297,152,280"/>
+<area shape="rect" href="classhttp_1_1Response.html#a5fb55b37425d748d5d1bf83e48a49826" title=" " alt="" coords="233,363,412,388"/>
+<area shape="poly" title=" " alt="" coords="103,279,146,315,201,348,224,356,222,361,199,352,143,319,99,283"/>
+<area shape="rect" href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364" title=" " alt="" coords="243,412,403,437"/>
+<area shape="poly" title=" " alt="" coords="94,280,136,340,166,372,201,398,230,411,228,416,199,403,163,376,132,343,89,283"/>
+<area shape="rect" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862" title=" " alt="" coords="249,462,396,502"/>
+<area shape="poly" title=" " alt="" coords="89,280,105,316,128,362,161,408,202,448,237,466,235,471,198,452,157,412,124,365,100,318,85,282"/>
+<area shape="rect" href="classhttp_1_1Response.html#a7122bb1e022880c9832e9e644a80397f" title=" " alt="" coords="505,5,699,31"/>
+<area shape="poly" title=" " alt="" coords="417,119,444,105,459,90,467,74,475,57,492,41,505,34,508,38,495,45,480,60,472,76,463,93,447,109,419,124"/>
+<area shape="rect" href="namespacehttp.html#ab99935c70c216969b7410a50c653cc58" title="Allocates the error page message data." alt="" coords="514,219,690,244"/>
+<area shape="poly" title=" " alt="" coords="416,157,447,169,471,187,481,197,495,205,513,212,511,217,492,210,477,201,468,192,444,174,415,162"/>
+<area shape="rect" href="classhttp_1_1Response.html#a7e9fb022362f77c3d9bfc19e76249977" title=" " alt="" coords="493,120,711,145"/>
+<area shape="poly" title=" " alt="" coords="418,134,480,133,480,138,418,140"/>
+<area shape="rect" href="classhttp_1_1Response.html#a637305890d24151f4d8b9dc4d13cdbb0" title=" " alt="" coords="499,169,705,195"/>
+<area shape="poly" title=" " alt="" coords="418,151,506,165,505,170,418,156"/>
+<area shape="rect" href="classhttp_1_1Response.html#a2d1e7ec002dfef0005ca5ef8f88d4567" title=" " alt="" coords="505,55,699,95"/>
+<area shape="poly" title=" " alt="" coords="410,117,500,96,501,101,411,122"/>
+<area shape="rect" href="classhttp_1_1StatusMessages.html#a3d17f32acbc296b9961720a164705a19" title=" " alt="" coords="759,79,921,119"/>
+<area shape="poly" title=" " alt="" coords="685,216,709,205,725,193,734,181,743,167,757,152,793,125,796,129,760,156,747,171,738,184,728,197,712,210,687,221"/>
+<area shape="rect" href="classhttp_1_1StatusMessages.html#a71f9de359b5eb6a10afa9dffb10718bb" title=" " alt="" coords="759,166,921,206"/>
+<area shape="poly" title=" " alt="" coords="669,216,744,201,745,207,670,221"/>
+<area shape="poly" title=" " alt="" coords="700,82,745,87,745,92,699,88"/>
+<area shape="poly" title=" " alt="" coords="681,93,712,105,759,130,801,156,798,161,756,134,710,110,679,98"/>
+<area shape="poly" title=" " alt="" coords="418,53,526,31,527,36,419,58"/>
+<area shape="poly" title=" " alt="" coords="419,92,527,115,526,120,418,98"/>
+<area shape="poly" title=" " alt="" coords="420,92,447,105,462,118,471,131,480,143,495,154,511,162,509,167,492,159,476,147,467,134,458,121,444,110,418,97"/>
+<area shape="poly" title=" " alt="" coords="419,73,491,73,491,78,419,78"/>
 </map>
 </div>
 <div class="dynheader">
@@ -773,10 +787,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EventHandler_8cpp_source.html#l00207">207</a> of file <a class="el" href="EventHandler_8cpp_source.html">EventHandler.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  207</span>                                       {</div>
-<div class="line"><span class="lineno">  208</span>        <span class="comment">// ...</span></div>
-<div class="line"><span class="lineno">  209</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="EventHandler_8cpp_source.html#l00208">208</a> of file <a class="el" href="EventHandler_8cpp_source.html">EventHandler.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  208</span>                                       {</div>
+<div class="line"><span class="lineno">  209</span>        <span class="comment">// ...</span></div>
+<div class="line"><span class="lineno">  210</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -940,10 +954,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EventHandler_8cpp_source.html#l00211">211</a> of file <a class="el" href="EventHandler_8cpp_source.html">EventHandler.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  211</span>                                    {</div>
-<div class="line"><span class="lineno">  212</span>        <a class="code hl_variable" href="classcore_1_1EventHandler.html#a3d4b82dc5fd7df427588db5dc006e813">m_server</a>.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a43f961e40bece5869f1d53ec1da8bb9e">removeConnection</a>(<a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>);</div>
-<div class="line"><span class="lineno">  213</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="EventHandler_8cpp_source.html#l00212">212</a> of file <a class="el" href="EventHandler_8cpp_source.html">EventHandler.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  212</span>                                    {</div>
+<div class="line"><span class="lineno">  213</span>        <a class="code hl_variable" href="classcore_1_1EventHandler.html#a3d4b82dc5fd7df427588db5dc006e813">m_server</a>.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a43f961e40bece5869f1d53ec1da8bb9e">removeConnection</a>(<a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>);</div>
+<div class="line"><span class="lineno">  214</span>    }</div>
 <div class="ttc" id="aclasshttp_1_1VirtualServer_html_a43f961e40bece5869f1d53ec1da8bb9e"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a43f961e40bece5869f1d53ec1da8bb9e">http::VirtualServer::removeConnection</a></div><div class="ttdeci">bool removeConnection(Connection &amp;connection)</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00120">VirtualServer.cpp:120</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1055,27 +1069,27 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="EventHandler_8cpp_source.html#l00187">187</a> of file <a class="el" href="EventHandler_8cpp_source.html">EventHandler.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  187</span>                                        {</div>
-<div class="line"><span class="lineno">  188</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classcore_1_1EventHandler.html#a3135d335cb48cb3cbaf06e6725624476">m_responses</a>.empty() || <a class="code hl_variable" href="classcore_1_1EventHandler.html#addedacf1a0307399bfce1b669843d935">m_state</a> &lt; <a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701ad336826de1fecf7a2d036304585e1897">PENDING_SEND</a>)</div>
-<div class="line"><span class="lineno">  189</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  190</span>        <a class="code hl_function" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862">setState</a>(<a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a0e492901e669f96c26ca11dbba817907">SENDING</a>);</div>
-<div class="line"><span class="lineno">  191</span>        <a class="code hl_class" href="classhttp_1_1Response.html">http::Response</a>&amp; currentResponse = <a class="code hl_variable" href="classcore_1_1EventHandler.html#a3135d335cb48cb3cbaf06e6725624476">m_responses</a>.front();</div>
-<div class="line"><span class="lineno">  192</span>        <span class="keywordtype">int</span> fd = <a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>.<a class="code hl_function" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597">getClientSocketFd</a>();</div>
-<div class="line"><span class="lineno">  193</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;sendResponse on fd: &quot;</span> &lt;&lt; fd &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  194</span> </div>
-<div class="line"><span class="lineno">  195</span>        ssize_t bytesSent = send(fd, currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d">getRawResponse</a>().c_str(), currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d">getRawResponse</a>().length(), 0);</div>
-<div class="line"><span class="lineno">  196</span>        <span class="keywordflow">if</span> (bytesSent &lt; 0) {</div>
-<div class="line"><span class="lineno">  197</span>            std::cerr &lt;&lt; <span class="stringliteral">&quot;Error sending data&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  198</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  199</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Sent response: &quot;</span> &lt;&lt; currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d">getRawResponse</a>() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  200</span>            <a class="code hl_function" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862">setState</a>(<a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a6e31c0e2dab1b21ac70715fca05a0ff4">COMPLETED</a>);</div>
-<div class="line"><span class="lineno">  201</span>            currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364">reset</a>();</div>
-<div class="line"><span class="lineno">  202</span>            <a class="code hl_variable" href="classcore_1_1EventHandler.html#a3135d335cb48cb3cbaf06e6725624476">m_responses</a>.pop();</div>
-<div class="line"><span class="lineno">  203</span>        }</div>
-<div class="line"><span class="lineno">  204</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;m_responses now &quot;</span> &lt;&lt; <a class="code hl_variable" href="classcore_1_1EventHandler.html#a3135d335cb48cb3cbaf06e6725624476">m_responses</a>.size() &lt;&lt; <span class="stringliteral">&quot; long&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  205</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a67954e9b8cc54cebe557b5e4702fc94d"><div class="ttname"><a href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d">http::Response::getRawResponse</a></div><div class="ttdeci">const std::string &amp; getRawResponse(void) const</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00065">Response.cpp:65</a></div></div>
+<p class="definition">Definition at line <a class="el" href="EventHandler_8cpp_source.html#l00188">188</a> of file <a class="el" href="EventHandler_8cpp_source.html">EventHandler.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  188</span>                                        {</div>
+<div class="line"><span class="lineno">  189</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classcore_1_1EventHandler.html#a3135d335cb48cb3cbaf06e6725624476">m_responses</a>.empty() || <a class="code hl_variable" href="classcore_1_1EventHandler.html#addedacf1a0307399bfce1b669843d935">m_state</a> &lt; <a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701ad336826de1fecf7a2d036304585e1897">PENDING_SEND</a>)</div>
+<div class="line"><span class="lineno">  190</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  191</span>        <a class="code hl_function" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862">setState</a>(<a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a0e492901e669f96c26ca11dbba817907">SENDING</a>);</div>
+<div class="line"><span class="lineno">  192</span>        <a class="code hl_class" href="classhttp_1_1Response.html">http::Response</a>&amp; currentResponse = <a class="code hl_variable" href="classcore_1_1EventHandler.html#a3135d335cb48cb3cbaf06e6725624476">m_responses</a>.front();</div>
+<div class="line"><span class="lineno">  193</span>        <span class="keywordtype">int</span> fd = <a class="code hl_variable" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">m_connection</a>.<a class="code hl_function" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597">getClientSocketFd</a>();</div>
+<div class="line"><span class="lineno">  194</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;sendResponse on fd: &quot;</span> &lt;&lt; fd &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  195</span> </div>
+<div class="line"><span class="lineno">  196</span>        ssize_t bytesSent = send(fd, currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d">getRawResponse</a>().c_str(), currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d">getRawResponse</a>().length(), 0);</div>
+<div class="line"><span class="lineno">  197</span>        <span class="keywordflow">if</span> (bytesSent &lt; 0) {</div>
+<div class="line"><span class="lineno">  198</span>            std::cerr &lt;&lt; <span class="stringliteral">&quot;Error sending data&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  199</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  200</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Sent response: &quot;</span> &lt;&lt; currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d">getRawResponse</a>() &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  201</span>            <a class="code hl_function" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862">setState</a>(<a class="code hl_enumvalue" href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a6e31c0e2dab1b21ac70715fca05a0ff4">COMPLETED</a>);</div>
+<div class="line"><span class="lineno">  202</span>            currentResponse.<a class="code hl_function" href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364">reset</a>();</div>
+<div class="line"><span class="lineno">  203</span>            <a class="code hl_variable" href="classcore_1_1EventHandler.html#a3135d335cb48cb3cbaf06e6725624476">m_responses</a>.pop();</div>
+<div class="line"><span class="lineno">  204</span>        }</div>
+<div class="line"><span class="lineno">  205</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;m_responses now &quot;</span> &lt;&lt; <a class="code hl_variable" href="classcore_1_1EventHandler.html#a3135d335cb48cb3cbaf06e6725624476">m_responses</a>.size() &lt;&lt; <span class="stringliteral">&quot; long&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  206</span>    }</div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a67954e9b8cc54cebe557b5e4702fc94d"><div class="ttname"><a href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d">http::Response::getRawResponse</a></div><div class="ttdeci">const std::string &amp; getRawResponse(void) const</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00066">Response.cpp:66</a></div></div>
 <div class="ttc" id="anamespacecore_html_a7722fc98a69f1090256a12783efa8701a0e492901e669f96c26ca11dbba817907"><div class="ttname"><a href="namespacecore.html#a7722fc98a69f1090256a12783efa8701a0e492901e669f96c26ca11dbba817907">core::SENDING</a></div><div class="ttdeci">@ SENDING</div><div class="ttdef"><b>Definition</b> <a href="EventHandler_8hpp_source.html#l00026">EventHandler.hpp:26</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>

@@ -232,8 +232,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ab99935c70c216969b7410a50c653cc58" id="r_ab99935c70c216969b7410a50c653cc58"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#ab99935c70c216969b7410a50c653cc58">generateErrorPage</a> (<a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a> code)</td></tr>
 <tr class="memdesc:ab99935c70c216969b7410a50c653cc58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates the error page message data.  <br /></td></tr>
 <tr class="separator:ab99935c70c216969b7410a50c653cc58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf7077bb1b43902d0455848db0726b95" id="r_abf7077bb1b43902d0455848db0726b95"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#abf7077bb1b43902d0455848db0726b95">generateErrorPage</a> (int code)</td></tr>
-<tr class="separator:abf7077bb1b43902d0455848db0726b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -812,26 +810,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="abf7077bb1b43902d0455848db0726b95" name="abf7077bb1b43902d0455848db0726b95"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf7077bb1b43902d0455848db0726b95">&#9670;&#160;</a></span>generateErrorPage() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string http::generateErrorPage </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>code</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ab99935c70c216969b7410a50c653cc58" name="ab99935c70c216969b7410a50c653cc58"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab99935c70c216969b7410a50c653cc58">&#9670;&#160;</a></span>generateErrorPage() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab99935c70c216969b7410a50c653cc58">&#9670;&#160;</a></span>generateErrorPage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -858,28 +838,36 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="errorPageGenerator_8cpp_source.html#l00019">19</a> of file <a class="el" href="errorPageGenerator_8cpp_source.html">errorPageGenerator.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   19</span>                                                 {</div>
-<div class="line"><span class="lineno">   20</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespacehttp.html#a463684a60be674627b3d18124863c207">t_statusMessages</a>&amp; errorPages = StatusMessages::getInstance().getStatusMessages();</div>
-<div class="line"><span class="lineno">   21</span>        <span class="keywordflow">if</span> (errorPages.find(code) == errorPages.end()) {</div>
-<div class="line"><span class="lineno">   22</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">   23</span>        }</div>
-<div class="line"><span class="lineno">   24</span>        std::ostringstream oss;</div>
-<div class="line"><span class="lineno">   25</span>        oss &lt;&lt; code;</div>
-<div class="line"><span class="lineno">   26</span>        std::string codeStr = oss.str();</div>
-<div class="line"><span class="lineno">   27</span>        std::string errorPage =</div>
-<div class="line"><span class="lineno">   28</span>            <span class="stringliteral">&quot;&lt;!DOCTYPE html&gt;\n&lt;html lang=\&quot;en\&quot;&gt;\n&lt;head&gt;\n&lt;title&gt;\n&quot;</span> + codeStr +</div>
-<div class="line"><span class="lineno">   29</span>            <span class="stringliteral">&quot; &quot;</span> + errorPages.at(code) +</div>
-<div class="line"><span class="lineno">   30</span>            <span class="stringliteral">&quot;\n&lt;/title&gt;\n&lt;style&gt;\nbody\n{\nbackground-color:&quot;</span></div>
-<div class="line"><span class="lineno">   31</span>            <span class="stringliteral">&quot;#2b3042;\njustify-content: center;\ntext-align: center;\ncolor: &quot;</span></div>
-<div class="line"><span class="lineno">   32</span>            <span class="stringliteral">&quot;#d3dbeb;\n\n}\nh1\n{\nfont-size: &quot;</span></div>
-<div class="line"><span class="lineno">   33</span>            <span class="stringliteral">&quot;5rem;\n}\np\n{\nfont-size: 1.5rem;\npadding-bottom: &quot;</span></div>
-<div class="line"><span class="lineno">   34</span>            <span class="stringliteral">&quot;10px;\n}\na\n{\ntext-decoration: none;\ncolor: &quot;</span></div>
-<div class="line"><span class="lineno">   35</span>            <span class="stringliteral">&quot;#d3dbeb;\npadding: 10px;\nborder: 3px solid #d3dbeb;\nfont-weight: &quot;</span></div>
-<div class="line"><span class="lineno">   36</span>            <span class="stringliteral">&quot;bold;\n}\n&lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n&lt;h1&gt;&quot;</span> +</div>
-<div class="line"><span class="lineno">   37</span>            codeStr + <span class="stringliteral">&quot;&lt;/h1&gt;\n&lt;p&gt;\n&quot;</span> + errorPages.at(code) +</div>
-<div class="line"><span class="lineno">   38</span>            <span class="stringliteral">&quot;\n&lt;/p&gt;\n&lt;a href=\&quot;/home_directory&gt;\&quot;&gt;\nGo Back to &quot;</span></div>
-<div class="line"><span class="lineno">   39</span>            <span class="stringliteral">&quot;Home\n&lt;/a&gt;\n&lt;/body&gt;\n&lt;/html&gt;&quot;</span>;</div>
-<div class="line"><span class="lineno">   40</span>        <span class="keywordflow">return</span> errorPage;</div>
-<div class="line"><span class="lineno">   41</span>    }</div>
+<div class="line"><span class="lineno">   20</span>        <span class="keyword">const</span> <a class="code hl_typedef" href="namespacehttp.html#a463684a60be674627b3d18124863c207">t_statusMessages</a>&amp; statusMessages = StatusMessages::getInstance().getStatusMessages();</div>
+<div class="line"><span class="lineno">   21</span>        std::string message;</div>
+<div class="line"><span class="lineno">   22</span> </div>
+<div class="line"><span class="lineno">   23</span>        <span class="keywordflow">try</span> {</div>
+<div class="line"><span class="lineno">   24</span>            message = statusMessages.at(code);</div>
+<div class="line"><span class="lineno">   25</span>        } <span class="keywordflow">catch</span> (...) {</div>
+<div class="line"><span class="lineno">   26</span>            message = <span class="stringliteral">&quot;Oopsie&quot;</span>;</div>
+<div class="line"><span class="lineno">   27</span>        }</div>
+<div class="line"><span class="lineno">   28</span>        std::ostringstream oss;</div>
+<div class="line"><span class="lineno">   29</span>        oss &lt;&lt; code;</div>
+<div class="line"><span class="lineno">   30</span>        std::string codeStr = oss.str();</div>
+<div class="line"><span class="lineno">   31</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Codestr = &quot;</span> &lt;&lt; codeStr &lt;&lt; <span class="stringliteral">&quot;, message = &quot;</span> &lt;&lt; message &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>        std::stringstream ss(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">   34</span> </div>
+<div class="line"><span class="lineno">   35</span>        ss &lt;&lt; <span class="stringliteral">&quot;&lt;!DOCTYPE html&gt;&lt;html lang=\&quot;en\&quot;&gt;&lt;head&gt;&lt;title&gt;&quot;</span> &lt;&lt; codeStr &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; message;</div>
+<div class="line"><span class="lineno">   36</span>        ss &lt;&lt; <span class="stringliteral">&quot;&lt;/title&gt;&lt;style&gt;body{background-color:&quot;</span>;</div>
+<div class="line"><span class="lineno">   37</span>        ss &lt;&lt; <span class="stringliteral">&quot;#2b3042;justify-content: center;text-align: center;color: &quot;</span>;</div>
+<div class="line"><span class="lineno">   38</span>        ss &lt;&lt; <span class="stringliteral">&quot;#d3dbeb;}h1{font-size: &quot;</span>;</div>
+<div class="line"><span class="lineno">   39</span>        ss &lt;&lt; <span class="stringliteral">&quot;5rem;}p{font-size: 1.5rem;padding-bottom: &quot;</span>;</div>
+<div class="line"><span class="lineno">   40</span>        ss &lt;&lt; <span class="stringliteral">&quot;10px;}a{text-decoration: none;color: &quot;</span>;</div>
+<div class="line"><span class="lineno">   41</span>        ss &lt;&lt; <span class="stringliteral">&quot;#d3dbeb;padding: 10px;border: 3px solid #d3dbeb;font-weight: &quot;</span>;</div>
+<div class="line"><span class="lineno">   42</span>        ss &lt;&lt; <span class="stringliteral">&quot;bold;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;&quot;</span>;</div>
+<div class="line"><span class="lineno">   43</span>        ss &lt;&lt; codeStr &lt;&lt; <span class="stringliteral">&quot;&lt;/h1&gt;&lt;p&gt;&quot;</span> &lt;&lt; message;</div>
+<div class="line"><span class="lineno">   44</span>        ss &lt;&lt; <span class="stringliteral">&quot;&lt;/p&gt;&lt;a href=\&quot;/home_directory&gt;\&quot;&gt;Go Back to Home&lt;/a&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>;</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>        std::string errorPage = ss.str();</div>
+<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">return</span> errorPage;</div>
+<div class="line"><span class="lineno">   49</span>    }</div>
 <div class="ttc" id="anamespacehttp_html_a463684a60be674627b3d18124863c207"><div class="ttname"><a href="namespacehttp.html#a463684a60be674627b3d18124863c207">http::t_statusMessages</a></div><div class="ttdeci">std::map&lt; t_statusMessage::first_type, t_statusMessage::second_type &gt; t_statusMessages</div><div class="ttdef"><b>Definition</b> <a href="StatusMessages_8hpp_source.html#l00011">StatusMessages.hpp:11</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -891,6 +879,24 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="180,42,215,37,216,42,181,47"/>
 <area shape="rect" href="classhttp_1_1StatusMessages.html#a71f9de359b5eb6a10afa9dffb10718bb" title=" " alt="" coords="229,69,392,109"/>
 <area shape="poly" title=" " alt="" coords="181,67,216,73,215,78,180,73"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespacehttp_ab99935c70c216969b7410a50c653cc58_icgraph.png" border="0" usemap="#anamespacehttp_ab99935c70c216969b7410a50c653cc58_icgraph" alt=""/></div>
+<map name="anamespacehttp_ab99935c70c216969b7410a50c653cc58_icgraph" id="anamespacehttp_ab99935c70c216969b7410a50c653cc58_icgraph">
+<area shape="rect" title="Allocates the error page message data." alt="" coords="991,13,1167,38"/>
+<area shape="rect" href="classhttp_1_1Response.html#a52625989a3fb2bcc1e367b5bc13bd99e" title=" " alt="" coords="752,5,943,45"/>
+<area shape="poly" title=" " alt="" coords="977,28,943,28,943,23,977,23"/>
+<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="557,5,704,45"/>
+<area shape="poly" title=" " alt="" coords="738,28,704,28,704,23,738,23"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,13,509,38"/>
+<area shape="poly" title=" " alt="" coords="544,28,510,28,510,23,544,23"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
+<area shape="poly" title=" " alt="" coords="291,28,258,28,258,23,291,23"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
+<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
 </map>
 </div>
 

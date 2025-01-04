@@ -106,7 +106,6 @@ var namespacehttp =
       [ "HTTP_VERSION_NOT_SUPPORTED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff", null ]
     ] ],
     [ "createResponse", "namespacehttp.html#abb0d5652324cd36455bb9ecc571ee87f", null ],
-    [ "generateErrorPage", "namespacehttp.html#abf7077bb1b43902d0455848db0726b95", null ],
     [ "generateErrorPage", "namespacehttp.html#ab99935c70c216969b7410a50c653cc58", null ],
     [ "status", "namespacehttp.html#a02e06383b1493a41cc6694d095cc8aa9", null ],
     [ "DEFAULT_MAX_BODY_SIZE", "namespacehttp.html#aa5cb5111b732aced21198fa3b145c294", null ],
