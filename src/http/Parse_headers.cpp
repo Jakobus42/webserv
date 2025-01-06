@@ -33,6 +33,7 @@ namespace http {
 				key = line.substr(0, i);
 				promptStart = i + 1;
 			}
+			// find values
 			if ((line[i] == ',' && qf == NO_QUOTE) || i == line.size() - 1) {
 				if (i == line.size() - 1) {
 					if (line[i] != ',') {
@@ -56,7 +57,15 @@ namespace http {
 					promptStart++;
 				}
 				std::string val = line.substr(promptStart, i - promptStart);
+				if (val.length() > 1000) {
+					LOG("Request: Error: Too long value in header", 1);
+					return false;
+				}
 				values.push_back(val);
+				if (values.size() > 1000) {
+					LOG("Request: Error: Too many values in header", 1);
+					return false;
+				}
 				promptStart = i + 1;
 			}
 		}

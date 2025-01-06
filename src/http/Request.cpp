@@ -14,7 +14,8 @@ namespace http {
 		, m_requestData()
 		, m_status(PARSE_START)
 		, m_expectedBody(NO_BODY)
-		, m_chunkedStatus(CHUNK_SIZE) {}
+		, m_chunkedStatus(CHUNK_SIZE)
+		, m_chunkedExtensions() {}
 
 	/**
 	 * @brief Destroys the Request object.
@@ -33,7 +34,8 @@ namespace http {
 		, m_requestData(other.getRequestData())
 		, m_status(other.m_status)
 		, m_expectedBody(other.getExpectedBody())
-		, m_chunkedStatus(other.getChunkedStatus()) {}
+		, m_chunkedStatus(other.getChunkedStatus()) 
+		, m_chunkedExtensions(other.getChunkedExtensions()) {}
 
 	/**
 	 * @brief Copy assignment operator.
@@ -50,6 +52,7 @@ namespace http {
 		m_status = rhs.getStatus();
 		m_expectedBody = rhs.getExpectedBody();
 		m_chunkedStatus = rhs.getChunkedStatus();
+		m_chunkedExtensions = rhs.getChunkedExtensions();
 		return *this;
 	}
 
@@ -81,6 +84,10 @@ namespace http {
 		return m_chunkedStatus;
 	};
 
+	const std::vector<t_chunkedExtension>& Request::getChunkedExtensions(void) const {
+		return m_chunkedExtensions;
+	};
+
 	/**
 	 * @brief Parses the request.
 	 * @return True if the request was parsed successfully, false otherwise.
@@ -108,7 +115,7 @@ namespace http {
 		if (input != "") {
 			m_restData = input;
 		}
-		std::cout << "Request.parse successful" << std::endl;
+		//std::cout << "Request.parse successful" << std::endl;
 		return true;
 	}
 
@@ -150,11 +157,23 @@ namespace http {
 		std::cout << "------------------------------" << std::endl;
 		std::cout << "Body: " << m_requestData.body << std::endl;
 		std::cout << "------------------------------" << std::endl;
+		std::cout << "Chunked extensions: " << std::endl;
+		for (std::vector<t_chunkedExtension>::const_iterator it = m_chunkedExtensions.begin(); it != m_chunkedExtensions.end(); ++it) {
+			std::cout << "Start: " << it->start << " End: " << it->end << std::endl;
+			for (std::map<std::string, std::string>::const_iterator ext = it->extensions.begin(); ext != it->extensions.end(); ++ext) {
+				std::cout << ext->first << ": " << ext->second << std::endl;
+			}
+		}
+		std::cout << "------------------------------" << std::endl;
 		std::cout << "Status: " << m_status << std::endl;
 	}
 
 	GetLineStatus Request::getNextLineHTTP(std::string& input, std::string& line) {
 		for (unsigned long i = 0; i < input.size(); i++) {
+			if (i > 10000000) {
+				LOG("Error: Line too long", 1);
+				return GET_LINE_ERROR;
+			} 
 			if (input[i] == '\r') {
 				if (i != input.length() - 1 && input[i + 1] != '\n') {
 					LOG("Error: Invalid line ending", 1);

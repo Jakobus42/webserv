@@ -22,6 +22,12 @@ namespace http {
 			std::string body;
 			std::map<std::string, std::vector<std::string> > trailingHeaders;
 	} t_requestData;
+	
+	typedef struct s_chunkedExtension {
+		unsigned long start;
+		unsigned long end;
+		std::map<std::string, std::string> extensions;
+	} t_chunkedExtension;
 
 	enum QuoteFlag {
 		NO_QUOTE = 0,
@@ -72,6 +78,7 @@ namespace http {
 			const RequestStatus& getStatus(void) const;
 			const ExpectedBody& getExpectedBody(void) const;
 			const ChunkedStatus& getChunkedStatus(void) const;
+			const std::vector<t_chunkedExtension>& getChunkedExtensions(void) const;
 
 			void PrintRequestData();
 			bool parse(char buffer[BUFFER_SIZE]);
@@ -86,6 +93,7 @@ namespace http {
 			RequestStatus m_status;
 			ExpectedBody m_expectedBody;
 			ChunkedStatus m_chunkedStatus;
+			std::vector<t_chunkedExtension> m_chunkedExtensions;
 
 			bool parseHead(std::string& input);
 			bool parseHeaders(std::string& input, HeaderType type);
@@ -94,6 +102,8 @@ namespace http {
 			bool parseHeader(std::string& line, HeaderType type);
 			bool interpretHeaders(HeaderType type);
 			bool parseBodyChunked(std::string& input);
+			bool parseChunkExtentions(std::string& line);
+			bool parseBodyChunkedSize(std::string& input);
 			bool checkHead(const std::vector<std::string>& args);
 			GetLineStatus getNextLineHTTP(std::string& input, std::string& line);
 

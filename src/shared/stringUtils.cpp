@@ -91,11 +91,11 @@ namespace shared {
 						ret = -1;
 						return 0;
 					}
-					str = str.substr(0, i);
 					break;
 				}
 				i++;
 			}
+			str = str.substr(i);
 			return result;
 		}
 
