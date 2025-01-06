@@ -22,11 +22,11 @@ namespace http {
 			std::string body;
 			std::map<std::string, std::vector<std::string> > trailingHeaders;
 	} t_requestData;
-	
+
 	typedef struct s_chunkedExtension {
-		unsigned long start;
-		unsigned long end;
-		std::map<std::string, std::string> extensions;
+			unsigned long start;
+			unsigned long end;
+			std::map<std::string, std::string> extensions;
 	} t_chunkedExtension;
 
 	enum QuoteFlag {

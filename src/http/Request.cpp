@@ -34,7 +34,7 @@ namespace http {
 		, m_requestData(other.getRequestData())
 		, m_status(other.m_status)
 		, m_expectedBody(other.getExpectedBody())
-		, m_chunkedStatus(other.getChunkedStatus()) 
+		, m_chunkedStatus(other.getChunkedStatus())
 		, m_chunkedExtensions(other.getChunkedExtensions()) {}
 
 	/**
@@ -115,7 +115,7 @@ namespace http {
 		if (input != "") {
 			m_restData = input;
 		}
-		//std::cout << "Request.parse successful" << std::endl;
+		// std::cout << "Request.parse successful" << std::endl;
 		return true;
 	}
 
@@ -173,7 +173,7 @@ namespace http {
 			if (i > 10000000) {
 				LOG("Error: Line too long", 1);
 				return GET_LINE_ERROR;
-			} 
+			}
 			if (input[i] == '\r') {
 				if (i != input.length() - 1 && input[i + 1] != '\n') {
 					LOG("Error: Invalid line ending", 1);
