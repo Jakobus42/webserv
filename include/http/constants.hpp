@@ -79,5 +79,6 @@ namespace http {
 	};
 
 	const std::string& getStatusMessage(StatusCode statusCode);
+	std::string generateErrorPage(StatusCode code);
 
 } // namespace http

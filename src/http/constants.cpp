@@ -1,5 +1,7 @@
 #include "http/constants.hpp"
 
+#include <cstdio>
+
 namespace http {
 
 	const std::string& getStatusMessage(StatusCode statusCode) {
@@ -48,6 +50,21 @@ namespace http {
 
 		static const std::string unknownStatus = "Unknown Status Code, Whoopsie";
 		return unknownStatus;
+	}
+
+	std::string generateErrorPage(StatusCode code) {
+		static const char* errorPageTemplate =
+			"<!DOCTYPE html><html lang=\"en\"><head><title>%d %s</title><style>"
+			"body{background-color:#2b3042;justify-content: center;text-align: center;color:#d3dbeb;}"
+			"h1{font-size:5rem;}p{font-size: 1.5rem;padding-bottom: 10px;}a{"
+			"text-decoration: none;color: #d3dbeb;padding: 10px;border: 3px solid #d3dbeb;font-weight: bold;}</style>"
+			"</head><body><h1>%d</h1><p>%s</p><a href=\"/home_directory\">Go Back to Home</a></body></html>";
+
+		char errorPage[1024];
+		const char* statusMessage = getStatusMessage(code).c_str();
+		snprintf(errorPage, sizeof(errorPage), errorPageTemplate, code, statusMessage, code, statusMessage);
+
+		return std::string(errorPage);
 	}
 
 } // namespace http

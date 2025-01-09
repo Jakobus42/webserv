@@ -1,7 +1,7 @@
 #include "http/Response.hpp"
 
 #include "http/Request.hpp"
-#include "http/errorPageGenerator.hpp"
+#include "http/constants.hpp"
 
 #include <ctime>
 #include <iomanip>
