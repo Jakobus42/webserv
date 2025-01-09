@@ -24,6 +24,10 @@ namespace http {
 		this->close();
 	}
 
+	/**
+	 * @brief Copies the socket by duplicating the file descriptor.
+	 * @throws std::runtime_error if duplication fails.
+	 */
 	Socket::Socket(const Socket& other)
 		: m_fd(-1)
 		, m_sockAddr(other.m_sockAddr) {
@@ -33,6 +37,10 @@ namespace http {
 		}
 	}
 
+	/**
+	 * @brief Assigns another Socket object by duplicating its file descriptor.
+	 * @throws std::runtime_error if duplication fails.
+	 */
 	Socket& Socket::operator=(const Socket& other) {
 		if (this != &other) {
 			::close(m_fd);
