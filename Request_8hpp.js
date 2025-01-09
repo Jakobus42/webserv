@@ -1,10 +1,8 @@
 var Request_8hpp =
 [
     [ "http::s_requestData", "structhttp_1_1s__requestData.html", "structhttp_1_1s__requestData" ],
-    [ "http::s_chunkedExtension", "structhttp_1_1s__chunkedExtension.html", "structhttp_1_1s__chunkedExtension" ],
     [ "http::Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
     [ "BUFFER_SIZE", "Request_8hpp.html#a6b20d41d6252e9871430c242cb1a56e7", null ],
-    [ "t_chunkedExtension", "Request_8hpp.html#ab91509e22727b7e79820333b56687bcc", null ],
     [ "t_requestData", "Request_8hpp.html#a344224153c4286273f922e54b792a50d", null ],
     [ "ChunkedStatus", "Request_8hpp.html#a55613d0fcbf92587a5c39431cc8fa437", [
       [ "CHUNK_SIZE", "Request_8hpp.html#a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2", null ],

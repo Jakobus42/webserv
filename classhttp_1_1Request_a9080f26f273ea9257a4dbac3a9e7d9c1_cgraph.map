@@ -1,40 +1,26 @@
 <map id="http::Request::parse" name="http::Request::parse">
-<area shape="rect" id="Node000001" title="Parses the request." alt="" coords="5,169,159,195"/>
-<area shape="rect" id="Node000002" href="$classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4" title=" " alt="" coords="207,116,393,141"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,167,234,142,235,147,136,172"/>
-<area shape="rect" id="Node000012" href="$classhttp_1_1Request.html#a8346c819a5b757937c3f50af058f70f7" title=" " alt="" coords="676,169,883,195"/>
-<area shape="poly" id="edge21_Node000001_Node000012" title=" " alt="" coords="159,179,662,179,662,185,159,185"/>
-<area shape="rect" id="Node000016" href="$classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac" title=" " alt="" coords="686,220,873,245"/>
-<area shape="poly" id="edge17_Node000001_Node000016" title=" " alt="" coords="159,185,673,222,672,228,159,190"/>
-<area shape="rect" id="Node000003" href="$classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135" title=" " alt="" coords="441,105,628,145"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="393,124,428,124,428,129,393,130"/>
-<area shape="rect" id="Node000004" href="$classhttp_1_1Request.html#a9fa9ac30c7d21bb8531a71d06c200041" title=" " alt="" coords="686,105,873,145"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="628,122,672,122,672,127,628,127"/>
-<area shape="poly" id="edge11_Node000003_Node000012" title=" " alt="" coords="621,142,712,164,710,169,620,147"/>
-<area shape="rect" id="Node000005" href="$classhttp_1_1Request.html#a4a1c007b045c1a6e3b1c2401ef783f63" title=" " alt="" coords="931,169,1161,195"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="874,142,973,164,972,169,872,147"/>
-<area shape="rect" id="Node000006" href="$classhttp_1_1Request.html#a163b25cf6a510113d9020c5acb03a46f" title=" " alt="" coords="949,55,1143,95"/>
-<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="873,105,934,93,935,98,873,110"/>
-<area shape="rect" id="Node000008" href="$namespacehttp.html#a02e06383b1493a41cc6694d095cc8aa9" title=" " alt="" coords="998,120,1094,145"/>
-<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="873,125,985,128,984,134,873,130"/>
-<area shape="rect" id="Node000011" href="$namespaceshared_1_1string.html#a0f7b586737ab36eade3fc402c9abe0a7" title="Converts a hexadecimal string to an unsigned integer." alt="" coords="961,5,1131,31"/>
-<area shape="poly" id="edge10_Node000004_Node000011" title=" " alt="" coords="810,102,865,71,930,41,959,31,961,37,932,46,867,75,813,107"/>
-<area shape="rect" id="Node000007" href="$namespacehttp.html#a351eaecda88fa2e6e0ec2f3154a56c64" title=" " alt="" coords="1214,63,1403,88"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1143,73,1200,73,1200,78,1143,78"/>
-<area shape="rect" id="Node000009" href="$classhttp_1_1StatusMessages.html#a3d17f32acbc296b9961720a164705a19" title=" " alt="" coords="1227,113,1390,153"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1094,130,1213,130,1213,135,1094,135"/>
-<area shape="rect" id="Node000010" href="$classhttp_1_1StatusMessages.html#a71f9de359b5eb6a10afa9dffb10718bb" title=" " alt="" coords="1227,177,1390,217"/>
-<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="1095,139,1162,154,1225,170,1223,176,1161,159,1093,144"/>
-<area shape="poly" id="edge12_Node000012_Node000005" title=" " alt="" coords="883,179,917,179,917,185,883,185"/>
-<area shape="poly" id="edge16_Node000012_Node000008" title=" " alt="" coords="848,167,984,141,985,147,849,172"/>
-<area shape="rect" id="Node000013" href="$classhttp_1_1Request.html#a00503d511356e69b471a842f419f0bec" title=" " alt="" coords="959,219,1133,259"/>
-<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="840,192,947,215,946,221,839,197"/>
-<area shape="rect" id="Node000014" href="$classhttp_1_1Request.html#a419c2262506e00fd2bb302a4a4451287" title=" " alt="" coords="946,284,1146,309"/>
-<area shape="poly" id="edge14_Node000012_Node000014" title=" " alt="" coords="858,192,884,205,901,221,909,238,917,254,932,269,945,276,943,281,929,273,913,258,904,241,896,224,881,210,856,197"/>
-<area shape="rect" id="Node000015" href="$namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3" title="checks if a character is a whitespace character exept for &#39; &#39; and &#39;\r&#39;" alt="" coords="1209,284,1408,309"/>
-<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="1146,294,1195,294,1195,299,1146,299"/>
-<area shape="poly" id="edge19_Node000016_Node000005" title=" " alt="" coords="846,217,964,195,965,200,847,223"/>
-<area shape="poly" id="edge20_Node000016_Node000008" title=" " alt="" coords="849,217,881,204,896,192,904,180,914,167,929,154,956,143,983,136,985,141,958,148,932,159,918,170,909,183,900,196,884,208,851,222"/>
-<area shape="rect" id="Node000017" href="$classhttp_1_1Request.html#a9b34649af1a6d967989ad522fc3491e8" title=" " alt="" coords="951,333,1141,359"/>
-<area shape="poly" id="edge18_Node000016_Node000017" title=" " alt="" coords="799,243,856,281,893,302,932,320,955,327,953,332,930,324,891,307,853,286,796,248"/>
+<area shape="rect" id="Node000001" title="Parses the request." alt="" coords="5,116,159,141"/>
+<area shape="rect" id="Node000002" href="$classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4" title=" " alt="" coords="207,37,393,62"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,113,250,65,252,70,119,118"/>
+<area shape="rect" id="Node000005" href="$classhttp_1_1Request.html#a8346c819a5b757937c3f50af058f70f7" title=" " alt="" coords="679,133,885,158"/>
+<area shape="poly" id="edge13_Node000001_Node000005" title=" " alt="" coords="138,138,207,151,326,166,418,173,511,173,630,166,698,158,698,163,631,171,511,178,418,178,325,171,206,156,137,144"/>
+<area shape="rect" id="Node000010" href="$classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac" title=" " alt="" coords="207,116,393,141"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="159,126,193,126,193,131,159,131"/>
+<area shape="rect" id="Node000003" href="$classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135" title=" " alt="" coords="443,15,629,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="393,41,429,39,429,44,394,47"/>
+<area shape="rect" id="Node000004" href="$classhttp_1_1Request.html#a4a1c007b045c1a6e3b1c2401ef783f63" title=" " alt="" coords="933,76,1164,101"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="629,14,687,7,752,3,820,5,886,14,922,24,957,37,1016,66,1013,71,955,42,920,29,885,19,819,10,752,9,688,13,630,20"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="583,53,741,125,739,130,580,57"/>
+<area shape="rect" id="Node000009" href="$namespaceshared_1_1string.html#a0f7b586737ab36eade3fc402c9abe0a7" title="Converts a hexadecimal string to an unsigned integer." alt="" coords="697,29,867,54"/>
+<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="630,35,683,36,682,42,630,40"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="841,130,975,101,976,106,842,136"/>
+<area shape="rect" id="Node000006" href="$classhttp_1_1Request.html#a00503d511356e69b471a842f419f0bec" title=" " alt="" coords="962,126,1135,166"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="885,143,948,143,948,148,885,148"/>
+<area shape="rect" id="Node000007" href="$classhttp_1_1Request.html#a419c2262506e00fd2bb302a4a4451287" title=" " alt="" coords="949,190,1149,216"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="842,156,976,185,975,190,841,161"/>
+<area shape="rect" id="Node000008" href="$namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3" title="checks if a character is a whitespace character exept for &#39; &#39; and &#39;\r&#39;" alt="" coords="1212,190,1411,216"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="1149,200,1198,200,1198,206,1149,206"/>
+<area shape="poly" id="edge12_Node000010_Node000004" title=" " alt="" coords="393,118,441,115,919,91,919,96,441,120,394,124"/>
+<area shape="rect" id="Node000011" href="$classhttp_1_1Request.html#a9b34649af1a6d967989ad522fc3491e8" title=" " alt="" coords="441,130,631,156"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="394,131,428,134,428,139,393,137"/>
 </map>

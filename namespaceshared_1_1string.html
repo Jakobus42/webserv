@@ -301,11 +301,11 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   91</span>                        ret = -1;</div>
 <div class="line"><span class="lineno">   92</span>                        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">   93</span>                    }</div>
-<div class="line"><span class="lineno">   94</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   95</span>                }</div>
-<div class="line"><span class="lineno">   96</span>                i++;</div>
-<div class="line"><span class="lineno">   97</span>            }</div>
-<div class="line"><span class="lineno">   98</span>            str = str.substr(i);</div>
+<div class="line"><span class="lineno">   94</span>                    str = str.substr(0, i);</div>
+<div class="line"><span class="lineno">   95</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   96</span>                }</div>
+<div class="line"><span class="lineno">   97</span>                i++;</div>
+<div class="line"><span class="lineno">   98</span>            }</div>
 <div class="line"><span class="lineno">   99</span>            <span class="keywordflow">return</span> result;</div>
 <div class="line"><span class="lineno">  100</span>        }</div>
 </div><!-- fragment --><div class="dynheader">
@@ -313,9 +313,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceshared_1_1string_a0f7b586737ab36eade3fc402c9abe0a7_icgraph.png" border="0" usemap="#anamespaceshared_1_1string_a0f7b586737ab36eade3fc402c9abe0a7_icgraph" alt=""/></div>
 <map name="anamespaceshared_1_1string_a0f7b586737ab36eade3fc402c9abe0a7_icgraph" id="anamespaceshared_1_1string_a0f7b586737ab36eade3fc402c9abe0a7_icgraph">
-<area shape="rect" title="Converts a hexadecimal string to an unsigned integer." alt="" coords="1657,13,1828,38"/>
-<area shape="rect" href="classhttp_1_1Request.html#a9fa9ac30c7d21bb8531a71d06c200041" title=" " alt="" coords="1423,5,1609,45"/>
-<area shape="poly" title=" " alt="" coords="1644,28,1609,28,1609,23,1644,23"/>
+<area shape="rect" title="Converts a hexadecimal string to an unsigned integer." alt="" coords="1423,13,1593,38"/>
 <area shape="rect" href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135" title=" " alt="" coords="1188,5,1375,45"/>
 <area shape="poly" title=" " alt="" coords="1409,28,1375,28,1375,23,1409,23"/>
 <area shape="rect" href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4" title=" " alt="" coords="953,13,1140,38"/>

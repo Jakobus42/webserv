@@ -2,6 +2,7 @@ var defines_8hpp =
 [
     [ "LOG", "defines_8hpp.html#a35a9ed336fa2523662640093badacab1", null ],
     [ "t_event", "defines_8hpp.html#acd6d0d9c72020fc35be55606610702c8", null ],
+    [ "t_sockaddr_in", "defines_8hpp.html#a2af8e61712d1896fb2b2da8c8cd66cf2", null ],
     [ "LogLevel", "defines_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9", [
       [ "INFO", "defines_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a748005382152808a72b1a9177d9dc806", null ],
       [ "WARNING", "defines_8hpp.html#aca1fd1d8935433e6ba2e3918214e07f9a984de77c680eaff141ec910e25568a81", null ],

@@ -1,5 +1,11 @@
 <map id="http::VirtualServer::addConnection" name="http::VirtualServer::addConnection">
-<area shape="rect" id="Node000001" title="Accepts the next incoming connection in the VirtualServerSocket&#39;s queue." alt="" coords="5,5,147,45"/>
-<area shape="rect" id="Node000002" href="$classhttp_1_1ServerSocket.html#a86ec14f7462724b7389ead42881090f9" title=" " alt="" coords="195,5,336,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,23,181,23,181,28,147,28"/>
+<area shape="rect" id="Node000001" title="Accepts the next incoming connection in the VirtualServerSocket&#39;s queue." alt="" coords="5,22,147,62"/>
+<area shape="rect" id="Node000002" href="$classhttp_1_1Socket.html#a86da59b5636f0d11d787304d7285ffc0" title="Accepts an incoming connection." alt="" coords="195,29,345,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,39,181,39,181,45,147,45"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="238,31,232,21,235,11,248,5,270,3,296,6,307,15,304,19,294,11,270,8,250,10,239,15,237,20,243,28"/>
+<area shape="rect" id="Node000003" href="$classhttp_1_1Socket.html#a5ab3a33cfce8ea36e4a327d237c5857f" title="Sets the socket to non&#45;blocking mode." alt="" coords="393,29,603,55"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="346,39,379,39,379,45,346,45"/>
+<area shape="rect" id="Node000004" href="$classhttp_1_1Socket.html#a9691f8c60897ad4cc6dc0bc257b1f365" title="Closes the socket." alt="" coords="651,29,792,55"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="603,39,636,39,636,45,603,45"/>
+<area shape="poly" id="edge5_Node000004_Node000004" title=" " alt="" coords="685,31,677,21,681,11,696,5,721,3,752,6,764,15,761,20,750,11,721,8,698,10,685,15,683,20,689,28"/>
 </map>
