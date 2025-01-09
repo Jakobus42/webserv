@@ -8,6 +8,7 @@
 #include <sstream>
 
 typedef struct epoll_event t_event;
+typedef struct sockaddr_in t_sockaddr_in;
 
 enum LogLevel {
 	INFO = 0,

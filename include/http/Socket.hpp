@@ -3,7 +3,7 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 
-#include "defines.hpp"
+#include "shared/defines.hpp"
 
 #include <string>
 
@@ -18,30 +18,32 @@ namespace http {
 			Socket();
 			~Socket();
 
-			bool create();
-			bool bind(uint16_t port, uint32_t ip = LOCALHOST_ADDRESS);
-			bool listen(int backlog = SOMAXCONN);
-			Socket accept(); // returns invalid socket on error
+			void create();
+			void bind(uint16_t port, uint32_t ip = LOCALHOST_ADDRESS);
+			void listen(int backlog = SOMAXCONN);
+			Socket accept();
 			void close();
 
 			ssize_t send(const char* data, size_t len) const;
 			ssize_t recv(char* buffer, size_t len) const;
 
-
 			bool isValid() const;
 
 			int getFd() const;
-			struct sockaddr_in getSockaddr() const;
+			t_sockaddr_in getSockaddr() const;
+
+		private:
+			Socket(const Socket&) {}
+
+			Socket& operator=(const Socket&) {
+				return *this;
+			}
+
+			void setNonBlocking();
 
 		private:
 			int m_fd;
-			struct sockaddr_in m_sockAddr;
-
-			Socket(const Socket&) {}
-
-			Socket& operator=(const Socket&) {}
-
-			bool setNonBlocking();
+			t_sockaddr_in m_sockAddr;
 	};
 
 } /* namespace http */
