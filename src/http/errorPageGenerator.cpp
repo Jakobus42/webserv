@@ -28,7 +28,6 @@ namespace http {
 		std::ostringstream oss;
 		oss << code;
 		std::string codeStr = oss.str();
-		std::cout << "Codestr = " << codeStr << ", message = " << message << std::endl;
 
 		std::stringstream ss("");
 

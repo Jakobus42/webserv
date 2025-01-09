@@ -16,11 +16,8 @@ namespace http {
 		, m_byteBuffer() {
 	}
 
-	/**
-	 * @brief Constructs a new Connection object.
-	 */
-	Connection::Connection(int listenSocket) throw(std::exception)
-		: m_clientSocket(listenSocket)
+	Connection::Connection(const Socket& socket)
+		: m_clientSocket(socket)
 		, m_requestBuffer()
 		, m_responseBuffer()
 		, m_byteBuffer() {
@@ -59,18 +56,18 @@ namespace http {
 	}
 
 	bool Connection::operator==(const Connection& other) const {
-		return other.getSocket() == this->getSocket();
+		return other.getSocket().getFd() == this->getSocket().getFd();
 	}
 
 	void Connection::close(void) {
 		this->getSocket().close();
 	}
 
-	const ClientSocket& Connection::getSocket(void) const {
+	const Socket& Connection::getSocket(void) const {
 		return m_clientSocket;
 	}
 
-	ClientSocket& Connection::getSocket(void) {
+	Socket& Connection::getSocket(void) {
 		return m_clientSocket;
 	}
 

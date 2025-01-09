@@ -110,18 +110,12 @@ namespace core {
 	// otherwise, we would always wait until we get EPOLLOUT until we start building
 	// potentially wasting a lot of time while we're still in EPOLLIN
 	void EventHandler::handleRequest(void) {
-		int fd = m_connection.getClientSocketFd();
 		char* buffer = m_connection.getByteBuffer();
 		http::Request& request = m_connection.getRequestBuffer(); // @TODO: ensure this always works on the right (foremost) request
 
-		ssize_t bytesReceived = recv(fd, buffer, BUFFER_SIZE - 1, 0);
+		ssize_t bytesReceived = m_connection.getSocket().recv(buffer, BUFFER_SIZE - 1);
 		if (bytesReceived < 0) {
-			// if (errno == EAGAIN || errno == EWOULDBLOCK) {
-			// 	return;
-			// 	// hmm
-			// }
-			setState(FAILED); // just temporary
-			// std::cerr << "Error receiving data for " << fd << ": " << errno << std::endl;
+			setState(FAILED);
 			std::cout << "Request FAILED somehow" << std::endl;
 			static int i = 0;
 			i++;
@@ -190,14 +184,11 @@ namespace core {
 			return;
 		setState(SENDING);
 		http::Response& currentResponse = m_responses.front();
-		int fd = m_connection.getClientSocketFd();
-		std::cout << "sendResponse on fd: " << fd << std::endl;
 
-		ssize_t bytesSent = send(fd, currentResponse.getRawResponse().c_str(), currentResponse.getRawResponse().length(), 0);
+		ssize_t bytesSent = m_connection.getSocket().send(currentResponse.getRawResponse().c_str(), currentResponse.getRawResponse().length());
 		if (bytesSent < 0) {
 			std::cerr << "Error sending data" << std::endl;
 		} else {
-			std::cout << "Sent response: " << currentResponse.getRawResponse() << std::endl;
 			setState(COMPLETED);
 			currentResponse.reset();
 			m_responses.pop();
