@@ -2,6 +2,7 @@ var namespacecore =
 [
     [ "EventHandler", "classcore_1_1EventHandler.html", "classcore_1_1EventHandler" ],
     [ "Reactor", "classcore_1_1Reactor.html", "classcore_1_1Reactor" ],
+    [ "t_event", "namespacecore.html#a0b78aa55a6d88355f8be1feb0d20dad8", null ],
     [ "t_requests", "namespacecore.html#a3f850046c268c46fb72762c55a51f565", null ],
     [ "t_responses", "namespacecore.html#adafddba83020bbc82dea161593194467", null ],
     [ "t_virtualServers", "namespacecore.html#a67f4732639e9ae56728fe0440356e132", null ],

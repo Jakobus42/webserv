@@ -11,12 +11,11 @@ var annotated_dup =
       [ "Reactor", "classcore_1_1Reactor.html", "classcore_1_1Reactor" ]
     ] ],
     [ "http", "namespacehttp.html", [
-      [ "Connection", "structhttp_1_1Connection.html", "structhttp_1_1Connection" ],
+      [ "Connection", "classhttp_1_1Connection.html", "classhttp_1_1Connection" ],
       [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
       [ "Response", "classhttp_1_1Response.html", "classhttp_1_1Response" ],
       [ "s_requestData", "structhttp_1_1s__requestData.html", "structhttp_1_1s__requestData" ],
       [ "Socket", "classhttp_1_1Socket.html", "classhttp_1_1Socket" ],
-      [ "StatusMessages", "classhttp_1_1StatusMessages.html", "classhttp_1_1StatusMessages" ],
       [ "VirtualServer", "classhttp_1_1VirtualServer.html", "classhttp_1_1VirtualServer" ]
     ] ]
 ];

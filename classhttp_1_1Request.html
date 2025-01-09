@@ -193,7 +193,7 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="aclasshttp_1_1Request_html_a9174b2d46902c66064874f2e37c06660"><div class="ttname"><a href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">http::Request::m_status</a></div><div class="ttdeci">RequestStatus m_status</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00086">Request.hpp:86</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html_aa9e7fe64ab82b2384fb54a9ce9d13d4c"><div class="ttname"><a href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">http::Request::m_expectedBody</a></div><div class="ttdeci">ExpectedBody m_expectedBody</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00087">Request.hpp:87</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html_ab8dd2df0a3986e48f7ea3dd666f5eae1"><div class="ttname"><a href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">http::Request::m_chunkedStatus</a></div><div class="ttdeci">ChunkedStatus m_chunkedStatus</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00088">Request.hpp:88</a></div></div>
-<div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64af1ec52e66d8011ff2329d6937794bdb3"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64af1ec52e66d8011ff2329d6937794bdb3">http::PARSE_START</a></div><div class="ttdeci">@ PARSE_START</div><div class="ttdef"><b>Definition</b> <a href="defines_8hpp_source.html#l00090">defines.hpp:90</a></div></div>
+<div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64af1ec52e66d8011ff2329d6937794bdb3"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64af1ec52e66d8011ff2329d6937794bdb3">http::PARSE_START</a></div><div class="ttdeci">@ PARSE_START</div><div class="ttdef"><b>Definition</b> <a href="constants_8hpp_source.html#l00074">constants.hpp:74</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2"><div class="ttname"><a href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2">http::CHUNK_SIZE</a></div><div class="ttdeci">@ CHUNK_SIZE</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00040">Request.hpp:40</a></div></div>
 <div class="ttc" id="anamespacehttp_html_aa30eeff7ce0e852dffe3ef46a55406f1a8eaf4a1b7a6cf303cfbdae8b0a8b32eb"><div class="ttname"><a href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a8eaf4a1b7a6cf303cfbdae8b0a8b32eb">http::NO_BODY</a></div><div class="ttdeci">@ NO_BODY</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00034">Request.hpp:34</a></div></div>
 </div><!-- fragment -->
@@ -453,23 +453,23 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  157</span>        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> i = 0; i &lt; input.size(); i++) {</div>
 <div class="line"><span class="lineno">  158</span>            <span class="keywordflow">if</span> (input[i] == <span class="charliteral">&#39;\r&#39;</span>) {</div>
 <div class="line"><span class="lineno">  159</span>                <span class="keywordflow">if</span> (i != input.length() - 1 &amp;&amp; input[i + 1] != <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line"><span class="lineno">  160</span>                    <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Error: Invalid line ending&quot;</span>, 1);</div>
-<div class="line"><span class="lineno">  161</span>                    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda7df9bcb858d1de24281eb6d9d7415267">GET_LINE_ERROR</a>;</div>
-<div class="line"><span class="lineno">  162</span>                }</div>
-<div class="line"><span class="lineno">  163</span>            }</div>
-<div class="line"><span class="lineno">  164</span>            <span class="keywordflow">if</span> (input[i] == <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line"><span class="lineno">  165</span>                <span class="keywordflow">if</span> (input[i - 1] != <span class="charliteral">&#39;\r&#39;</span>) {</div>
-<div class="line"><span class="lineno">  166</span>                    <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Error: Invalid line ending&quot;</span>, 1);</div>
-<div class="line"><span class="lineno">  167</span>                    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda7df9bcb858d1de24281eb6d9d7415267">GET_LINE_ERROR</a>;</div>
-<div class="line"><span class="lineno">  168</span>                }</div>
-<div class="line"><span class="lineno">  169</span>                line = input.substr(0, i - 1);</div>
-<div class="line"><span class="lineno">  170</span>                input = input.substr(i + 1);</div>
-<div class="line"><span class="lineno">  171</span>                <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda2d2a69026169f0582bad6016bf779e7a">GET_LINE_OK</a>;</div>
-<div class="line"><span class="lineno">  172</span>            }</div>
-<div class="line"><span class="lineno">  173</span>        }</div>
-<div class="line"><span class="lineno">  174</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebdad7f6e0544cd2c2347a7e973f6c73dec2">GET_LINE_END</a>;</div>
-<div class="line"><span class="lineno">  175</span>    }</div>
-<div class="ttc" id="adefines_8hpp_html_a35a9ed336fa2523662640093badacab1"><div class="ttname"><a href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a></div><div class="ttdeci">#define LOG(message, level)</div></div>
+<div class="line"><span class="lineno">  160</span>                    std::cout &lt;&lt; <span class="stringliteral">&quot;Error: Invalid line ending&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  161</span>                    ;</div>
+<div class="line"><span class="lineno">  162</span>                    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda7df9bcb858d1de24281eb6d9d7415267">GET_LINE_ERROR</a>;</div>
+<div class="line"><span class="lineno">  163</span>                }</div>
+<div class="line"><span class="lineno">  164</span>            }</div>
+<div class="line"><span class="lineno">  165</span>            <span class="keywordflow">if</span> (input[i] == <span class="charliteral">&#39;\n&#39;</span>) {</div>
+<div class="line"><span class="lineno">  166</span>                <span class="keywordflow">if</span> (input[i - 1] != <span class="charliteral">&#39;\r&#39;</span>) {</div>
+<div class="line"><span class="lineno">  167</span>                    std::cout &lt;&lt; <span class="stringliteral">&quot;Error: Invalid line ending&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  168</span>                    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda7df9bcb858d1de24281eb6d9d7415267">GET_LINE_ERROR</a>;</div>
+<div class="line"><span class="lineno">  169</span>                }</div>
+<div class="line"><span class="lineno">  170</span>                line = input.substr(0, i - 1);</div>
+<div class="line"><span class="lineno">  171</span>                input = input.substr(i + 1);</div>
+<div class="line"><span class="lineno">  172</span>                <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda2d2a69026169f0582bad6016bf779e7a">GET_LINE_OK</a>;</div>
+<div class="line"><span class="lineno">  173</span>            }</div>
+<div class="line"><span class="lineno">  174</span>        }</div>
+<div class="line"><span class="lineno">  175</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebdad7f6e0544cd2c2347a7e973f6c73dec2">GET_LINE_END</a>;</div>
+<div class="line"><span class="lineno">  176</span>    }</div>
 <div class="ttc" id="anamespacehttp_html_a0325991cc9f3cebcf9ec0f3806355ebda2d2a69026169f0582bad6016bf779e7a"><div class="ttname"><a href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda2d2a69026169f0582bad6016bf779e7a">http::GET_LINE_OK</a></div><div class="ttdeci">@ GET_LINE_OK</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00052">Request.hpp:52</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a0325991cc9f3cebcf9ec0f3806355ebda7df9bcb858d1de24281eb6d9d7415267"><div class="ttname"><a href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda7df9bcb858d1de24281eb6d9d7415267">http::GET_LINE_ERROR</a></div><div class="ttdeci">@ GET_LINE_ERROR</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00055">Request.hpp:54</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a0325991cc9f3cebcf9ec0f3806355ebdad7f6e0544cd2c2347a7e973f6c73dec2"><div class="ttname"><a href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebdad7f6e0544cd2c2347a7e973f6c73dec2">http::GET_LINE_END</a></div><div class="ttdeci">@ GET_LINE_END</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00053">Request.hpp:53</a></div></div>
@@ -676,13 +676,13 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  110</span>            <span class="comment">// TODO: Implement</span></div>
 <div class="line"><span class="lineno">  111</span>            <span class="keywordflow">if</span> (it-&gt;first == <span class="stringliteral">&quot;Transfer-Encoding&quot;</span> &amp;&amp; it-&gt;second[0] == <span class="stringliteral">&quot;chunked&quot;</span>) {</div>
 <div class="line"><span class="lineno">  112</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#a701f1f313621acf5b71fe8c83ccc82a2">headers</a>[<span class="stringliteral">&quot;Content-Length&quot;</span>].size() &gt; 0) {</div>
-<div class="line"><span class="lineno">  113</span>                    <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Request: Error: Both Content-Length and Transfer-Encoding header found&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  113</span>                    std::cout &lt;&lt; <span class="stringliteral">&quot;Request: Error: Both Content-Length and Transfer-Encoding header found&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">  114</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  115</span>                }</div>
 <div class="line"><span class="lineno">  116</span>                <a class="code hl_variable" href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">m_expectedBody</a> = <a class="code hl_enumvalue" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a68569ee38513d8278c9a268641b6cfe5">CHUNKED</a>;</div>
 <div class="line"><span class="lineno">  117</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (it-&gt;first == <span class="stringliteral">&quot;Content-Length&quot;</span> &amp;&amp; it-&gt;second.size() &gt; 0) {</div>
 <div class="line"><span class="lineno">  118</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">m_expectedBody</a> == <a class="code hl_enumvalue" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a68569ee38513d8278c9a268641b6cfe5">CHUNKED</a>) {</div>
-<div class="line"><span class="lineno">  119</span>                    <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Request: Error: Both Content-Length and Transfer-Encoding header found&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  119</span>                    std::cout &lt;&lt; <span class="stringliteral">&quot;Request: Error: Both Content-Length and Transfer-Encoding header found&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">  120</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  121</span>                }</div>
 <div class="line"><span class="lineno">  122</span>                <a class="code hl_variable" href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">m_expectedBody</a> = <a class="code hl_enumvalue" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a9c21a9fbb3e0b3b4602276b6ad85b7f3">CONTENT_LENGTH</a>;</div>
@@ -836,9 +836,9 @@ Here is the call graph for this function:</div>
 <div class="ttc" id="aclasshttp_1_1Request_html_a739141ad7c8494442039ff4b865020c4"><div class="ttname"><a href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4">http::Request::parseBody</a></div><div class="ttdeci">bool parseBody(std::string &amp;input)</div><div class="ttdef"><b>Definition</b> <a href="RequestParser_8cpp_source.html#l00176">RequestParser.cpp:176</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html_a7c94a929bf55670e716d50ac819ec8ac"><div class="ttname"><a href="classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac">http::Request::parseHead</a></div><div class="ttdeci">bool parseHead(std::string &amp;input)</div><div class="ttdef"><b>Definition</b> <a href="RequestParser_8cpp_source.html#l00141">RequestParser.cpp:141</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html_a8346c819a5b757937c3f50af058f70f7"><div class="ttname"><a href="classhttp_1_1Request.html#a8346c819a5b757937c3f50af058f70f7">http::Request::parseHeaders</a></div><div class="ttdeci">bool parseHeaders(std::string &amp;input, HeaderType type)</div><div class="ttdef"><b>Definition</b> <a href="RequestParser_8cpp_source.html#l00083">RequestParser.cpp:83</a></div></div>
-<div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64a6e55d4fbcb4414ad97de58c56bfc3654"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64a6e55d4fbcb4414ad97de58c56bfc3654">http::PARSE_HEAD</a></div><div class="ttdeci">@ PARSE_HEAD</div><div class="ttdef"><b>Definition</b> <a href="defines_8hpp_source.html#l00091">defines.hpp:91</a></div></div>
-<div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc">http::PARSE_HEADERS</a></div><div class="ttdeci">@ PARSE_HEADERS</div><div class="ttdef"><b>Definition</b> <a href="defines_8hpp_source.html#l00092">defines.hpp:92</a></div></div>
-<div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64ac4ffb0e12ded445e68ca3f683a01ba21"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64ac4ffb0e12ded445e68ca3f683a01ba21">http::PARSE_BODY</a></div><div class="ttdeci">@ PARSE_BODY</div><div class="ttdef"><b>Definition</b> <a href="defines_8hpp_source.html#l00093">defines.hpp:93</a></div></div>
+<div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64a6e55d4fbcb4414ad97de58c56bfc3654"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64a6e55d4fbcb4414ad97de58c56bfc3654">http::PARSE_HEAD</a></div><div class="ttdeci">@ PARSE_HEAD</div><div class="ttdef"><b>Definition</b> <a href="constants_8hpp_source.html#l00075">constants.hpp:75</a></div></div>
+<div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc">http::PARSE_HEADERS</a></div><div class="ttdeci">@ PARSE_HEADERS</div><div class="ttdef"><b>Definition</b> <a href="constants_8hpp_source.html#l00076">constants.hpp:76</a></div></div>
+<div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64ac4ffb0e12ded445e68ca3f683a01ba21"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64ac4ffb0e12ded445e68ca3f683a01ba21">http::PARSE_BODY</a></div><div class="ttdeci">@ PARSE_BODY</div><div class="ttdef"><b>Definition</b> <a href="constants_8hpp_source.html#l00077">constants.hpp:77</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a1c72fd539e7c768e0800949cda8716a6ac63def395b20ae89ed55534b0f7caf82"><div class="ttname"><a href="namespacehttp.html#a1c72fd539e7c768e0800949cda8716a6ac63def395b20ae89ed55534b0f7caf82">http::HEADER</a></div><div class="ttdeci">@ HEADER</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00047">Request.hpp:47</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -936,7 +936,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  194</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  195</span>    }</div>
 <div class="ttc" id="aclasshttp_1_1Request_html_a8c6bb71ac8e08b4547c54f4ba662b135"><div class="ttname"><a href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135">http::Request::parseBodyChunked</a></div><div class="ttdeci">bool parseBodyChunked(std::string &amp;input)</div><div class="ttdef"><b>Definition</b> <a href="RequestParser_8cpp_source.html#l00197">RequestParser.cpp:197</a></div></div>
-<div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff">http::PARSE_END</a></div><div class="ttdeci">@ PARSE_END</div><div class="ttdef"><b>Definition</b> <a href="defines_8hpp_source.html#l00095">defines.hpp:94</a></div></div>
+<div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff">http::PARSE_END</a></div><div class="ttdeci">@ PARSE_END</div><div class="ttdef"><b>Definition</b> <a href="constants_8hpp_source.html#l00079">constants.hpp:78</a></div></div>
 <div class="ttc" id="astructhttp_1_1s__requestData_html_a632cb5e08356d2cef3b9c8398ed7dad2"><div class="ttname"><a href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">http::s_requestData::body</a></div><div class="ttdeci">std::string body</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00022">Request.hpp:22</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1017,13 +1017,13 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  204</span>                }</div>
 <div class="line"><span class="lineno">  205</span>                <span class="keywordflow">if</span> (status == <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda2d2a69026169f0582bad6016bf779e7a">GET_LINE_OK</a>) {</div>
 <div class="line"><span class="lineno">  206</span>                    <span class="keywordflow">if</span> (line == <span class="stringliteral">&quot;&quot;</span>) {</div>
-<div class="line"><span class="lineno">  207</span>                        <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Error: Empty line in chunked encoding&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  207</span>                        std::cout &lt;&lt; <span class="stringliteral">&quot;Error: Empty line in chunked encoding&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">  208</span>                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  209</span>                    } <span class="keywordflow">else</span> {</div>
 <div class="line"><span class="lineno">  210</span>                        <span class="keywordtype">int</span> ret = 0;</div>
 <div class="line"><span class="lineno">  211</span>                        <a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> = <a class="code hl_function" href="namespaceshared_1_1string.html#a0f7b586737ab36eade3fc402c9abe0a7">shared::string::StoiHex</a>(line, ret);</div>
 <div class="line"><span class="lineno">  212</span>                        <span class="keywordflow">if</span> (ret == -1) {</div>
-<div class="line"><span class="lineno">  213</span>                            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Error: Invalid hexadecimal number in chunked encoding&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  213</span>                            std::cout &lt;&lt; <span class="stringliteral">&quot;Error: Invalid hexadecimal number in chunked encoding&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">  214</span>                            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  215</span>                        }</div>
 <div class="line"><span class="lineno">  216</span>                        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> == 0) {</div>
@@ -1057,7 +1057,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  244</span>                    input = input.substr(2);</div>
 <div class="line"><span class="lineno">  245</span>                    <a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> = <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2">CHUNK_SIZE</a>;</div>
 <div class="line"><span class="lineno">  246</span>                } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  247</span>                    <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Error: Invalid chunked encoding, \r\n expected after chunk.&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  247</span>                    std::cout &lt;&lt; <span class="stringliteral">&quot;Error: Invalid chunked encoding, \r\n expected after chunk.&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">  248</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  249</span>                }</div>
 <div class="line"><span class="lineno">  250</span>            }</div>
@@ -1150,7 +1150,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  146</span>        <span class="keywordflow">if</span> (status == <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebdad7f6e0544cd2c2347a7e973f6c73dec2">GET_LINE_END</a>)</div>
 <div class="line"><span class="lineno">  147</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  148</span>        <span class="keywordflow">if</span> (line == <span class="stringliteral">&quot;&quot;</span>) {</div>
-<div class="line"><span class="lineno">  149</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Request: Error: Empty line in request line&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  149</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Request: Error: Empty line in request line&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">  150</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  151</span>        }</div>
 <div class="line"><span class="lineno">  152</span>        std::string key;</div>
@@ -1172,7 +1172,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  168</span>            <a class="code hl_variable" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> = <a class="code hl_enumvalue" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc">PARSE_HEADERS</a>;</div>
 <div class="line"><span class="lineno">  169</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  170</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  171</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Request: Error: Invalid request line&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  171</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Request: Error: Invalid request line&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">  172</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  173</span>        }</div>
 <div class="line"><span class="lineno">  174</span>    }</div>
@@ -1269,11 +1269,11 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   23</span>            <span class="comment">// find key</span></div>
 <div class="line"><span class="lineno">   24</span>            <span class="keywordflow">if</span> (line[i] == <span class="charliteral">&#39;:&#39;</span> &amp;&amp; qf == <a class="code hl_enumvalue" href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8ab3b96bab0d8747049e4366de54c43db2">NO_QUOTE</a> &amp;&amp; key == <span class="stringliteral">&quot;&quot;</span>) {</div>
 <div class="line"><span class="lineno">   25</span>                <span class="keywordflow">if</span> (i == 0) {</div>
-<div class="line"><span class="lineno">   26</span>                    <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Request: Error: Empty key in header&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   26</span>                    std::cout &lt;&lt; <span class="stringliteral">&quot;Request: Error: Empty key in header&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">   27</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   28</span>                }</div>
 <div class="line"><span class="lineno">   29</span>                <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3">shared::string::isGreyspace</a>(line[i - 1])) {</div>
-<div class="line"><span class="lineno">   30</span>                    <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Request: Error: Found whitespace before colon in the header section&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   30</span>                    std::cout &lt;&lt; <span class="stringliteral">&quot;Request: Error: Found whitespace before colon in the header section&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">   31</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   32</span>                }</div>
 <div class="line"><span class="lineno">   33</span>                key = line.substr(0, i);</div>
@@ -1287,15 +1287,15 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   41</span>                    i++;</div>
 <div class="line"><span class="lineno">   42</span>                }</div>
 <div class="line"><span class="lineno">   43</span>                <span class="keywordflow">if</span> (key == <span class="stringliteral">&quot;&quot;</span>) {</div>
-<div class="line"><span class="lineno">   44</span>                    <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Request: Error: Found value before key&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   44</span>                    std::cout &lt;&lt; <span class="stringliteral">&quot;Request: Error: Found value before key&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">   45</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   46</span>                }</div>
 <div class="line"><span class="lineno">   47</span>                <span class="keywordflow">if</span> (i == promptStart) {</div>
-<div class="line"><span class="lineno">   48</span>                    <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Request: Error: Empty value in header&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   48</span>                    std::cout &lt;&lt; <span class="stringliteral">&quot;Request: Error: Empty value in header&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">   49</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   50</span>                }</div>
 <div class="line"><span class="lineno">   51</span>                <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3">shared::string::isGreyspace</a>(line[i - 1])) {</div>
-<div class="line"><span class="lineno">   52</span>                    <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Request: Error: Found whitespace before comma in the header section&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   52</span>                    std::cout &lt;&lt; <span class="stringliteral">&quot;Request: Error: Found whitespace before comma in the header section&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">   53</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   54</span>                }</div>
 <div class="line"><span class="lineno">   55</span>                <span class="keywordflow">while</span> (<a class="code hl_function" href="namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3">shared::string::isGreyspace</a>(line[promptStart])) {</div>
@@ -1307,15 +1307,15 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   61</span>            }</div>
 <div class="line"><span class="lineno">   62</span>        }</div>
 <div class="line"><span class="lineno">   63</span>        <span class="keywordflow">if</span> (key == <span class="stringliteral">&quot;&quot;</span>) {</div>
-<div class="line"><span class="lineno">   64</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Request: Error: No key found in header&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   64</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Request: Error: No key found in header&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">   65</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   66</span>        }</div>
 <div class="line"><span class="lineno">   67</span>        <span class="keywordflow">if</span> (values.size() == 0) {</div>
-<div class="line"><span class="lineno">   68</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Request: Error: No values found in header&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   68</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Request: Error: No values found in header&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">   69</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   70</span>        }</div>
 <div class="line"><span class="lineno">   71</span>        <span class="keywordflow">if</span> (last_flag == <span class="keyword">false</span>) {</div>
-<div class="line"><span class="lineno">   72</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Request: Error: A comma found at the end of the header&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   72</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Request: Error: A comma found at the end of the header&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">   73</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   74</span>        }</div>
 <div class="line"><span class="lineno">   75</span>        <span class="keywordflow">if</span> (type == <a class="code hl_enumvalue" href="namespacehttp.html#a1c72fd539e7c768e0800949cda8716a6ac63def395b20ae89ed55534b0f7caf82">HEADER</a>) {</div>

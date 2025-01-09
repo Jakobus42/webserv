@@ -1,17 +1,15 @@
 var namespacehttp =
 [
-    [ "Connection", "structhttp_1_1Connection.html", "structhttp_1_1Connection" ],
+    [ "Connection", "classhttp_1_1Connection.html", "classhttp_1_1Connection" ],
     [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
     [ "Response", "classhttp_1_1Response.html", "classhttp_1_1Response" ],
     [ "s_requestData", "structhttp_1_1s__requestData.html", "structhttp_1_1s__requestData" ],
     [ "Socket", "classhttp_1_1Socket.html", "classhttp_1_1Socket" ],
-    [ "StatusMessages", "classhttp_1_1StatusMessages.html", "classhttp_1_1StatusMessages" ],
     [ "VirtualServer", "classhttp_1_1VirtualServer.html", "classhttp_1_1VirtualServer" ],
     [ "t_connections", "namespacehttp.html#aa3bcd24ae02414378f7cd9a8aafc784f", null ],
     [ "t_headerFields", "namespacehttp.html#a5fc275abcbe27d3c4113fcf5e74b2a09", null ],
     [ "t_requestData", "namespacehttp.html#a344224153c4286273f922e54b792a50d", null ],
-    [ "t_statusMessage", "namespacehttp.html#a47f81e5e1f7ce9c0800e88c6ad0dc744", null ],
-    [ "t_statusMessages", "namespacehttp.html#a463684a60be674627b3d18124863c207", null ],
+    [ "t_sockaddr_in", "namespacehttp.html#ac73171fb8c32554229836839f6c4e8ed", null ],
     [ "ChunkedStatus", "namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437", [
       [ "CHUNK_SIZE", "namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2", null ],
       [ "CHUNK_DATA", "namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a4524451e5b885e5f0ba84ab20483b115", null ],
@@ -103,6 +101,7 @@ var namespacehttp =
       [ "HTTP_VERSION_NOT_SUPPORTED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff", null ]
     ] ],
     [ "generateErrorPage", "namespacehttp.html#ab99935c70c216969b7410a50c653cc58", null ],
+    [ "getStatusMessage", "namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc", null ],
     [ "DEFAULT_MAX_BODY_SIZE", "namespacehttp.html#aa5cb5111b732aced21198fa3b145c294", null ],
     [ "LOCALHOST_ADDRESS", "namespacehttp.html#aca25a9fc3ae4f55904d8a48f1d18af63", null ]
 ];
