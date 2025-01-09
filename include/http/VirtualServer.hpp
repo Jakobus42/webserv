@@ -5,6 +5,7 @@
 #include "ServerSocket.hpp"
 #include "config/Parser.hpp"
 #include "http/Connection.hpp"
+#include "http/Socket.hpp"
 
 #include <string>
 #include <vector>
@@ -32,22 +33,22 @@ namespace http {
 			const std::map<int, std::string>& getErrorPages(void) const;
 			const std::vector<config::t_location>& getLocations(void) const;
 			uint64_t getMaxBodySize(void) const;
-			const ServerSocket& getSocket(void) const;
-			ServerSocket& getSocket(void);
+			const Socket& getSocket(void) const;
+			Socket& getSocket(void);
 			const t_connections& getConnections(void) const;
 			t_connections& getConnections(void);
 
 			bool addConnection(void);
 			bool removeConnection(Connection& connection);
 
-			bool listen(void);
+			void listen(void);
 
 		private:
 			uint64_t m_client_max_body_size;
 			std::vector<std::string> m_names;
 			std::vector<config::t_location> m_locations;
 			std::map<int, std::string> m_errorPages;
-			ServerSocket m_listen_socket;
+			Socket m_listen_socket;
 			t_connections m_connections;
 	};
 

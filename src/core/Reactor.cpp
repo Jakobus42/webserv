@@ -95,25 +95,21 @@ namespace core {
 	void Reactor::addVirtualServer(config::t_server& serverConfig) throw(std::exception) {
 		http::VirtualServer server(serverConfig);
 
-		if (server.listen() == false)
-			throw std::runtime_error("A VirtualServer couldn't acquire its socket!");
-
+		server.listen();
 		m_vServers.push_back(server);
 	}
 
 	bool Reactor::addVirtualServers(config::t_config_data& configData) {
 		for (size_t i = 0; i < configData.servers.size(); ++i) {
-			http::VirtualServer server(configData.servers.at(i));
-			if (server.getSocket().init() == false) {
+			try {
+				http::VirtualServer server(configData.servers.at(i));
+				server.getSocket().listen();
+				m_vServers.push_back(server);
+			} catch (const std::exception& e) {
 				m_vServers.clear();
-				std::cout << "Failed to initialize socket for server "
-						  << configData.servers.at(i).server_names.at(0) << std::endl;
+				std::cerr << e.what() << std::endl;
 				return false;
 			}
-			for (size_t j = 0; j < configData.servers.at(i).locations.size(); ++j) {
-				// server.addLocation(configData.servers.at(i).locations.at(j));
-			}
-			m_vServers.push_back(server);
 		}
 		return true;
 	}
@@ -209,6 +205,7 @@ namespace core {
 
 		signal(SIGINT, handleSigint);
 		signal(SIGQUIT, SIG_IGN);
+
 		while (m_reacting) {
 			acceptNewConnections();
 			int nEvents = epoll_wait(m_epoll_master_fd, events, MAX_EVENTS, 60);
@@ -218,6 +215,7 @@ namespace core {
 				prevEvents = nEvents;
 				i++;
 			}
+
 			if (nEvents < 0 && m_reacting == true) {
 				std::cout << "Errno for epoll_wait: " << errno << std::endl;
 				throw std::runtime_error("epoll_wait failed");

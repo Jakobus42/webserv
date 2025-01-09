@@ -1,8 +1,8 @@
 #pragma once
 
-#include "http/ClientSocket.hpp"
 #include "http/Request.hpp"
 #include "http/Response.hpp"
+#include "http/Socket.hpp"
 
 namespace http {
 
@@ -13,13 +13,13 @@ namespace http {
 	class Connection {
 		public:
 			Connection();
-			Connection(int listen_socket) throw(std::exception);
+			Connection(const Socket& socket);
 			~Connection();
 			Connection(const Connection& other);
 			Connection& operator=(const Connection& rhs);
 
-			const ClientSocket& getSocket(void) const;
-			ClientSocket& getSocket(void);
+			const Socket& getSocket(void) const;
+			Socket& getSocket(void);
 			int getClientSocketFd(void) const;
 			const http::Request& getRequestBuffer(void) const;
 			http::Request& getRequestBuffer(void);
@@ -33,7 +33,7 @@ namespace http {
 			bool operator==(const Connection& other) const;
 
 		private:
-			ClientSocket m_clientSocket;
+			Socket m_clientSocket;
 			http::Request m_requestBuffer;
 			http::Response m_responseBuffer;
 			char m_byteBuffer[BUFFER_SIZE];

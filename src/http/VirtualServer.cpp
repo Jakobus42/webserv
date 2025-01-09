@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <iostream>
 
+// TODO: make vServer non copyable
+
 namespace http {
 
 	/**
@@ -10,8 +12,10 @@ namespace http {
 	 */
 	VirtualServer::VirtualServer()
 		: m_client_max_body_size(ONE_MEGABYTE)
-		, m_listen_socket(80)
+		, m_listen_socket()
 		, m_connections() {
+		m_listen_socket.create();
+		m_listen_socket.bind(8080); // TODO
 	}
 
 	/**
@@ -22,8 +26,10 @@ namespace http {
 		, m_names(serverConfig.server_names)
 		, m_locations(serverConfig.locations)
 		, m_errorPages(serverConfig.errorPages)
-		, m_listen_socket(serverConfig.port, serverConfig.ip_address)
+		, m_listen_socket()
 		, m_connections() {
+		m_listen_socket.create();
+		m_listen_socket.bind(serverConfig.port, serverConfig.ip_address);
 	}
 
 	/**
@@ -45,7 +51,7 @@ namespace http {
 		, m_names(other.getNames())
 		, m_locations(other.getLocations())
 		, m_errorPages(other.getErrorPages())
-		, m_listen_socket(other.getSocket())
+		, m_listen_socket(other.m_listen_socket)
 		, m_connections(other.getConnections()) {
 	}
 
@@ -60,8 +66,8 @@ namespace http {
 		m_names = rhs.getNames();
 		m_errorPages = rhs.getErrorPages();
 		m_locations = rhs.getLocations();
+		m_listen_socket = rhs.m_listen_socket;
 		m_client_max_body_size = rhs.getMaxBodySize();
-		m_listen_socket = rhs.getSocket();
 		m_connections = rhs.getConnections();
 		return *this;
 	}
@@ -82,11 +88,11 @@ namespace http {
 		return m_client_max_body_size;
 	}
 
-	const ServerSocket& VirtualServer::getSocket(void) const {
+	const Socket& VirtualServer::getSocket(void) const {
 		return m_listen_socket;
 	}
 
-	ServerSocket& VirtualServer::getSocket(void) {
+	Socket& VirtualServer::getSocket(void) {
 		return m_listen_socket;
 	}
 
@@ -105,10 +111,9 @@ namespace http {
 	 * @return true if the connection could be established
 	 * @return false if accept() within Connection->ClientSocket fails
 	 */
-	// TODO: take a connection as parameter and call explictly accept brefor adding
 	bool VirtualServer::addConnection(void) {
 		try {
-			Connection newConnection(m_listen_socket.getFd());
+			Connection newConnection(m_listen_socket.accept());
 			m_connections.push_back(newConnection);
 			std::cout << "Added a connection!" << std::endl;
 		} catch (std::exception& e) {
@@ -129,10 +134,8 @@ namespace http {
 		return true;
 	}
 
-	bool VirtualServer::listen(void) {
-		if (this->getSocket().init() == false)
-			return false;
-		return true;
+	void VirtualServer::listen(void) {
+		m_listen_socket.listen();
 	}
 
 } // namespace http

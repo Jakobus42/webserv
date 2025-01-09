@@ -24,6 +24,29 @@ namespace http {
 		this->close();
 	}
 
+	Socket::Socket(const Socket& other)
+		: m_fd(-1)
+		, m_sockAddr(other.m_sockAddr) {
+		m_fd = dup(other.m_fd);
+		if (m_fd == -1) {
+			throw std::runtime_error("dup() failed: " + std::string(strerror(errno)));
+		}
+	}
+
+	Socket& Socket::operator=(const Socket& other) {
+		if (this != &other) {
+			::close(m_fd);
+
+			m_fd = dup(other.m_fd);
+			if (m_fd == -1) {
+				throw std::runtime_error("dup() failed: " + std::string(strerror(errno)));
+			}
+
+			m_sockAddr = other.m_sockAddr;
+		}
+		return *this;
+	}
+
 	/**
 	 * @brief Creates a TCP socket and sets it to non-blocking mode.
 	 * @throws std::runtime_error on failure.
@@ -145,7 +168,7 @@ namespace http {
 	 * @brief Gets the socket address.
 	 * @returns The sockaddr_in structure.
 	 */
-	struct sockaddr_in Socket::getSockaddr() const {
+	t_sockaddr_in Socket::getSockaddr() const {
 		return m_sockAddr;
 	}
 
