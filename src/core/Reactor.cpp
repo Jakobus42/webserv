@@ -32,7 +32,7 @@ namespace core {
 	Reactor::~Reactor() {
 		for (t_virtualServers::iterator server = m_vServers.begin(); server != m_vServers.end(); ++server) {
 			for (http::t_connections::iterator connection = server->getConnections().begin(); connection != server->getConnections().end(); ++connection) {
-				connection->close();
+				connection->clientSocket.close();
 			}
 			server->getSocket().close();
 		}
@@ -116,7 +116,7 @@ namespace core {
 
 	bool Reactor::removeVirtualServer(t_virtualServers::iterator it) {
 		for (http::t_connections::iterator connection = it->getConnections().begin(); connection != it->getConnections().end(); ++connection) {
-			connection->close();
+			connection->clientSocket.close();
 		}
 		it->getSocket().close();
 		m_vServers.erase(it);
@@ -142,7 +142,7 @@ namespace core {
 
 	void Reactor::registerHandler(http::VirtualServer& vServer, http::Connection& connection, uint32_t events) {
 		EventHandler handler(vServer, connection, events);
-		int fd = connection.getClientSocketFd();
+		int fd = connection.clientSocket.getFd();
 		t_event event;
 
 		event.events = events;
@@ -184,7 +184,7 @@ namespace core {
 
 			if (handler.shouldDrop()) {
 				http::Connection& connection = handler.getConnection();
-				int fd = connection.getClientSocketFd();
+				int fd = connection.clientSocket.getFd();
 				std::cout << "Dropping connection for " << fd << "!" << std::endl;
 				unregisterHandler(fd);
 				handler.getServer().removeConnection(connection);

@@ -113,8 +113,7 @@ namespace http {
 	 */
 	bool VirtualServer::addConnection(void) {
 		try {
-			Connection newConnection(m_listen_socket.accept());
-			m_connections.push_back(newConnection);
+			m_connections.push_back(Connection(m_listen_socket.accept()));
 			std::cout << "Added a connection!" << std::endl;
 		} catch (std::exception& e) {
 			return false;
@@ -129,7 +128,7 @@ namespace http {
 		if (toRemove == m_connections.end()) {
 			return false;
 		}
-		connection.close();
+		connection.clientSocket.close();
 		m_connections.erase(toRemove);
 		return true;
 	}

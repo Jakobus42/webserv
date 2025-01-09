@@ -3,9 +3,11 @@
 #include <stdint.h>
 
 #include "config/Parser.hpp"
-#include "http/Connection.hpp"
+#include "http/Request.hpp"
+#include "http/Response.hpp"
 #include "http/Socket.hpp"
 
+#include <cstring>
 #include <string>
 #include <vector>
 
@@ -14,7 +16,24 @@
 
 namespace http {
 
-	typedef std::vector<Connection> t_connections;
+	struct Connection {
+			Socket clientSocket;
+			http::Request requestBuffer;
+			http::Response responseBuffer;
+			char byteBuffer[BUFFER_SIZE];
+
+			Connection(const Socket& clientSocket)
+				: clientSocket(clientSocket) {
+				std::memset(byteBuffer, 0, sizeof(byteBuffer));
+			}
+
+			bool operator==(const Connection& other) const {
+				return clientSocket.getFd() == other.clientSocket.getFd();
+			}
+	};
+
+	typedef std::vector<Connection>
+		t_connections;
 
 	/**
 	 * @class VirtualServer

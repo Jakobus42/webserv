@@ -1,6 +1,5 @@
 #include "core/EventHandler.hpp"
 
-#include "http/Connection.hpp"
 #include "http/Request.hpp"
 #include "http/VirtualServer.hpp"
 
@@ -110,10 +109,10 @@ namespace core {
 	// otherwise, we would always wait until we get EPOLLOUT until we start building
 	// potentially wasting a lot of time while we're still in EPOLLIN
 	void EventHandler::handleRequest(void) {
-		char* buffer = m_connection.getByteBuffer();
-		http::Request& request = m_connection.getRequestBuffer(); // @TODO: ensure this always works on the right (foremost) request
+		char* buffer = m_connection.byteBuffer;
+		http::Request& request = m_connection.requestBuffer; // @TODO: ensure this always works on the right (foremost) request
 
-		ssize_t bytesReceived = m_connection.getSocket().recv(buffer, BUFFER_SIZE - 1);
+		ssize_t bytesReceived = m_connection.clientSocket.recv(buffer, BUFFER_SIZE - 1);
 		if (bytesReceived < 0) {
 			setState(FAILED);
 			std::cout << "Request FAILED somehow" << std::endl;
@@ -151,7 +150,7 @@ namespace core {
 		if (m_requests.empty() || m_state > WRITING)
 			return;
 		const http::Request& currentRequest = m_requests.front();
-		http::Response& currentResponse = m_connection.getResponseBuffer();
+		http::Response& currentResponse = m_connection.responseBuffer;
 		currentResponse.doMagicToCalculateStatusCode(currentRequest);
 
 		// set response type: CGI, error, or normal
@@ -185,7 +184,7 @@ namespace core {
 		setState(SENDING);
 		http::Response& currentResponse = m_responses.front();
 
-		ssize_t bytesSent = m_connection.getSocket().send(currentResponse.getRawResponse().c_str(), currentResponse.getRawResponse().length());
+		ssize_t bytesSent = m_connection.clientSocket.send(currentResponse.getRawResponse().c_str(), currentResponse.getRawResponse().length());
 		if (bytesSent < 0) {
 			std::cerr << "Error sending data" << std::endl;
 		} else {
