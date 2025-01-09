@@ -10,18 +10,6 @@
 
 namespace http {
 
-	// tmp
-#define LOG(message, level) std::cout << message << level << std::endl;
-
-	enum LogLevel {
-		INFO = 0,
-		WARNING,
-		FOO,
-		DEBUG
-	};
-
-	//
-
 	const uint32_t LOCALHOST_ADDRESS = 0x7F000001;	// 127.0.0.1
 	const uint32_t DEFAULT_MAX_BODY_SIZE = 1048576; // 1MB
 
@@ -90,6 +78,6 @@ namespace http {
 		PARSE_END
 	};
 
-    const std::string& getStatusMessage(StatusCode statusCode);
+	const std::string& getStatusMessage(StatusCode statusCode);
 
 } // namespace http

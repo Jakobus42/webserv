@@ -23,11 +23,11 @@ namespace http {
 			// find key
 			if (line[i] == ':' && qf == NO_QUOTE && key == "") {
 				if (i == 0) {
-					LOG("Request: Error: Empty key in header", 1);
+					std::cout << "Request: Error: Empty key in header" << std::endl;
 					return false;
 				}
 				if (shared::string::isGreyspace(line[i - 1])) {
-					LOG("Request: Error: Found whitespace before colon in the header section", 1);
+					std::cout << "Request: Error: Found whitespace before colon in the header section" << std::endl;
 					return false;
 				}
 				key = line.substr(0, i);
@@ -41,15 +41,15 @@ namespace http {
 					i++;
 				}
 				if (key == "") {
-					LOG("Request: Error: Found value before key", 1);
+					std::cout << "Request: Error: Found value before key" << std::endl;
 					return false;
 				}
 				if (i == promptStart) {
-					LOG("Request: Error: Empty value in header", 1);
+					std::cout << "Request: Error: Empty value in header" << std::endl;
 					return false;
 				}
 				if (shared::string::isGreyspace(line[i - 1])) {
-					LOG("Request: Error: Found whitespace before comma in the header section", 1);
+					std::cout << "Request: Error: Found whitespace before comma in the header section" << std::endl;
 					return false;
 				}
 				while (shared::string::isGreyspace(line[promptStart])) {
@@ -61,15 +61,15 @@ namespace http {
 			}
 		}
 		if (key == "") {
-			LOG("Request: Error: No key found in header", 1);
+			std::cout << "Request: Error: No key found in header" << std::endl;
 			return false;
 		}
 		if (values.size() == 0) {
-			LOG("Request: Error: No values found in header", 1);
+			std::cout << "Request: Error: No values found in header" << std::endl;
 			return false;
 		}
 		if (last_flag == false) {
-			LOG("Request: Error: A comma found at the end of the header", 1);
+			std::cout << "Request: Error: A comma found at the end of the header" << std::endl;
 			return false;
 		}
 		if (type == HEADER) {
@@ -110,13 +110,13 @@ namespace http {
 			// TODO: Implement
 			if (it->first == "Transfer-Encoding" && it->second[0] == "chunked") {
 				if (m_requestData.headers["Content-Length"].size() > 0) {
-					LOG("Request: Error: Both Content-Length and Transfer-Encoding header found", 1);
+					std::cout << "Request: Error: Both Content-Length and Transfer-Encoding header found" << std::endl;
 					return false;
 				}
 				m_expectedBody = CHUNKED;
 			} else if (it->first == "Content-Length" && it->second.size() > 0) {
 				if (m_expectedBody == CHUNKED) {
-					LOG("Request: Error: Both Content-Length and Transfer-Encoding header found", 1);
+					std::cout << "Request: Error: Both Content-Length and Transfer-Encoding header found" << std::endl;
 					return false;
 				}
 				m_expectedBody = CONTENT_LENGTH;
@@ -146,7 +146,7 @@ namespace http {
 		if (status == GET_LINE_END)
 			return true;
 		if (line == "") {
-			LOG("Request: Error: Empty line in request line", 1);
+			std::cout << "Request: Error: Empty line in request line" << std::endl;
 			return false;
 		}
 		std::string key;
@@ -168,7 +168,7 @@ namespace http {
 			m_status = PARSE_HEADERS;
 			return true;
 		} else {
-			LOG("Request: Error: Invalid request line", 1);
+			std::cout << "Request: Error: Invalid request line" << std::endl;
 			return false;
 		}
 	}
@@ -204,13 +204,13 @@ namespace http {
 				}
 				if (status == GET_LINE_OK) {
 					if (line == "") {
-						LOG("Error: Empty line in chunked encoding", 1);
+						std::cout << "Error: Empty line in chunked encoding" << std::endl;
 						return false;
 					} else {
 						int ret = 0;
 						m_contentLength = shared::string::StoiHex(line, ret);
 						if (ret == -1) {
-							LOG("Error: Invalid hexadecimal number in chunked encoding", 1);
+							std::cout << "Error: Invalid hexadecimal number in chunked encoding" << std::endl;
 							return false;
 						}
 						if (m_contentLength == 0) {
@@ -244,7 +244,7 @@ namespace http {
 					input = input.substr(2);
 					m_chunkedStatus = CHUNK_SIZE;
 				} else {
-					LOG("Error: Invalid chunked encoding, \r\n expected after chunk.", 1);
+					std::cout << "Error: Invalid chunked encoding, \r\n expected after chunk." << std::endl;
 					return false;
 				}
 			}

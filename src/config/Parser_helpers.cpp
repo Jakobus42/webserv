@@ -25,10 +25,9 @@ namespace config {
 			line.erase(line.size() - 1);
 		}
 		if (line.find(';') != std::string::npos) {
-			LOG("Configuration file (line " << lineCount << "): "
-											<< "Missplaced semicolon (;) found"
-											<< std::endl,
-				1)
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "Missplaced semicolon (;) found"
+					  << std::endl;
 			return 2;
 		}
 		std::vector<std::string> args;
@@ -234,28 +233,25 @@ namespace config {
 	int ConfigFileParser::SaveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, int& lineCount) {
 		enum CmdId command_id = idCommand(args[0]);
 		if (command_id == UNKNOWN_ID) {
-			LOG("Configuration file (line " << lineCount << "): "
-											<< "Unknown command found" << std::endl,
-				1)
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "Unknown command found" << std::endl;
 			return 1;
 		}
 		if (layer == 0) // global
 		{
 			if (qoute_flag == 0) {
-				LOG("Configuration file (line " << lineCount << "): "
-												<< "Unexpected command found"
-												<< std::endl,
-					1)
+				std::cout << "Configuration file (line " << lineCount << "): "
+						  << "Unexpected command found"
+						  << std::endl;
 				return 1;
 			} else {
 				if (command_id == SERVER_ID) {
 					if (server(args, lineCount, layer) == 1)
 						return 1;
 				} else {
-					LOG("Configuration file (line " << lineCount << "): "
-													<< "Unexpected command found"
-													<< std::endl,
-						1)
+					std::cout << "Configuration file (line " << lineCount << "): "
+							  << "Unexpected command found"
+							  << std::endl;
 					return 1;
 				}
 			}
@@ -275,10 +271,9 @@ namespace config {
 					if (clientMaxBodySize(args, lineCount, layer) == 1)
 						return 1;
 				} else {
-					LOG("Configuration file (line " << lineCount << "): "
-													<< "Unexpected command found"
-													<< std::endl,
-						1)
+					std::cout << "Configuration file (line " << lineCount << "): "
+							  << "Unexpected command found"
+							  << std::endl;
 					return 1;
 				}
 			} else {
@@ -286,10 +281,9 @@ namespace config {
 					if (location(args, lineCount, layer) == 1)
 						return 1;
 				} else {
-					LOG("Configuration file (line " << lineCount << "): "
-													<< "Unexpected command found"
-													<< std::endl,
-						1)
+					std::cout << "Configuration file (line " << lineCount << "): "
+							  << "Unexpected command found"
+							  << std::endl;
 					return 1;
 				}
 			}
@@ -312,10 +306,9 @@ namespace config {
 					if (index(args, lineCount, layer) == 1)
 						return 1;
 				} else {
-					LOG("Configuration file (line " << lineCount << "): "
-													<< "Unexpected command found"
-													<< std::endl,
-						1)
+					std::cout << "Configuration file (line " << lineCount << "): "
+							  << "Unexpected command found"
+							  << std::endl;
 					return 1;
 				}
 			} else {
@@ -323,10 +316,9 @@ namespace config {
 					if (location(args, lineCount, layer) == 1)
 						return 1;
 				} else {
-					LOG("Configuration file (line " << lineCount << "): "
-													<< "Unexpected command found"
-													<< std::endl,
-						1)
+					std::cout << "Configuration file (line " << lineCount << "): "
+							  << "Unexpected command found"
+							  << std::endl;
 					return 1;
 				}
 			}
