@@ -43,7 +43,7 @@ namespace http {
 	 */
 	Socket& Socket::operator=(const Socket& other) {
 		if (this != &other) {
-			::close(m_fd);
+			this->close();
 
 			m_fd = dup(other.m_fd);
 			if (m_fd == -1) {
