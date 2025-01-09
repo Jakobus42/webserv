@@ -1,7 +1,6 @@
 #include "http/Response.hpp"
 
 #include "http/Request.hpp"
-#include "http/StatusMessages.hpp"
 #include "http/errorPageGenerator.hpp"
 
 #include <ctime>
@@ -92,7 +91,7 @@ namespace http {
 		std::cout << "creating status line string" << std::endl;
 		std::string message;
 		try {
-			message = StatusMessages::getInstance().getStatusMessages().at(m_statusCode);
+			message = getStatusMessage(m_statusCode);
 		} catch (std::exception& e) {
 			std::cerr << "statusLineString failed: " << e.what() << std::endl;
 			message = "fuck";

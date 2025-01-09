@@ -1,5 +1,5 @@
 #include "config/Parser.hpp"
-#include "shared/defines.hpp"
+#include "http/constants.hpp"
 
 namespace config {
 

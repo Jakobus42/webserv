@@ -1,6 +1,5 @@
 #include "config/Parser.hpp"
 #include "core/Reactor.hpp"
-#include "http/StatusMessages.hpp"
 
 #include <iostream>
 
@@ -11,7 +10,6 @@ int signal_handler(int signum) {
 int main(int argc, char** const argv) {
 
 	try {
-		http::StatusMessages::eagerInit();
 
 		std::string configPath = argc > 1 ? argv[1] : "config/configfile_example";
 		config::ConfigFileParser configFileParser;

@@ -3,11 +3,13 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 
-#include "shared/defines.hpp"
+#include "http/constants.hpp"
 
 #include <string>
 
 namespace http {
+
+	typedef struct sockaddr_in t_sockaddr_in;
 
 	/**
 	 * @class Socket

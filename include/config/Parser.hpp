@@ -3,7 +3,7 @@
 #include <stdint.h>
 
 #include "config/Parser.hpp"
-#include "shared/defines.hpp"
+#include "http/constants.hpp"
 
 #include <fstream>
 #include <iostream>

@@ -4,17 +4,19 @@
 
 #include "core/EventHandler.hpp"
 #include "http/VirtualServer.hpp"
-#include "shared/defines.hpp"
+#include "http/constants.hpp"
 
 #include <map>
 #include <queue>
 #include <stdexcept>
 #include <vector>
 
+#define MAX_EVENTS 256
+
 namespace core {
 
 	typedef std::vector<http::VirtualServer> t_virtualServers;
-#define MAX_EVENTS 256
+	typedef struct epoll_event t_event;
 
 	/**
 	 * @class Reactor

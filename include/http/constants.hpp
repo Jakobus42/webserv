@@ -5,26 +5,22 @@
 #include <sys/socket.h>
 
 #include <iostream>
+#include <map>
 #include <sstream>
 
-typedef struct epoll_event t_event;
-typedef struct sockaddr_in t_sockaddr_in;
-
-enum LogLevel {
-	INFO = 0,
-	WARNING,
-	ERROR,
-	DEBUG
-}
-
-#define LOG(message, level)                                           \
-	std::ostringstream oss;                                           \
-	oss << __FILE__ << ":" << __LINE__ << " " << __FUNCTION__ << ": " \
-		<< message;                                                   \
-	std::cout << oss << std::endl;
-;
-
 namespace http {
+
+	// tmp
+#define LOG(message, level) std::cout << message << level << std::endl;
+
+	enum LogLevel {
+		INFO = 0,
+		WARNING,
+		FOO,
+		DEBUG
+	};
+
+	//
 
 	const uint32_t LOCALHOST_ADDRESS = 0x7F000001;	// 127.0.0.1
 	const uint32_t DEFAULT_MAX_BODY_SIZE = 1048576; // 1MB
@@ -93,5 +89,7 @@ namespace http {
 		PARSE_BODY,
 		PARSE_END
 	};
+
+    const std::string& getStatusMessage(StatusCode statusCode);
 
 } // namespace http

@@ -1,7 +1,6 @@
 #include "http/errorPageGenerator.hpp"
 
-#include "http/StatusMessages.hpp"
-#include "shared/defines.hpp"
+#include "http/constants.hpp"
 
 #include <sstream>
 
@@ -17,21 +16,13 @@ namespace http {
 	 * @return std::string The error page as an HTML string.
 	 */
 	std::string generateErrorPage(StatusCode code) {
-		const t_statusMessages& statusMessages = StatusMessages::getInstance().getStatusMessages();
-		std::string message;
-
-		try {
-			message = statusMessages.at(code);
-		} catch (...) {
-			message = "Oopsie";
-		}
 		std::ostringstream oss;
 		oss << code;
 		std::string codeStr = oss.str();
-
 		std::stringstream ss("");
+		std::string msg = getStatusMessage(code);
 
-		ss << "<!DOCTYPE html><html lang=\"en\"><head><title>" << codeStr << ' ' << message;
+		ss << "<!DOCTYPE html><html lang=\"en\"><head><title>" << codeStr << ' ' << msg;
 		ss << "</title><style>body{background-color:";
 		ss << "#2b3042;justify-content: center;text-align: center;color: ";
 		ss << "#d3dbeb;}h1{font-size: ";
@@ -39,7 +30,7 @@ namespace http {
 		ss << "10px;}a{text-decoration: none;color: ";
 		ss << "#d3dbeb;padding: 10px;border: 3px solid #d3dbeb;font-weight: ";
 		ss << "bold;}</style></head><body><h1>";
-		ss << codeStr << "</h1><p>" << message;
+		ss << codeStr << "</h1><p>" << msg;
 		ss << "</p><a href=\"/home_directory>\">Go Back to Home</a></body></html>";
 
 

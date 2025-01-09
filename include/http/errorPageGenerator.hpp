@@ -1,6 +1,6 @@
 #pragma once
 
-#include "shared/defines.hpp"
+#include "http/constants.hpp"
 
 #include <cstdarg>
 #include <iostream>
