@@ -1,9 +1,5 @@
 var NAVTREEINDEX3 =
 {
-"namespacecore.html#adafddba83020bbc82dea161593194467":[4,0,1,3],
-"namespacehttp.html":[4,0,2],
-"namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebd":[4,0,2,14],
-"namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda2d2a69026169f0582bad6016bf779e7a":[4,0,2,14,0],
 "namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda7df9bcb858d1de24281eb6d9d7415267":[4,0,2,14,2],
 "namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebdad7f6e0544cd2c2347a7e973f6c73dec2":[4,0,2,14,1],
 "namespacehttp.html#a068cab601142fb739077ccd62379df64":[4,0,2,18],

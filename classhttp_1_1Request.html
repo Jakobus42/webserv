@@ -282,16 +282,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parse__head_8cpp_source.html#l00005">5</a> of file <a class="el" href="Parse__head_8cpp_source.html">Parse_head.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    5</span>                                                            {</div>
-<div class="line"><span class="lineno">    6</span>        <span class="keywordflow">if</span> (args[0] != <span class="stringliteral">&quot;GET&quot;</span> &amp;&amp; args[0] != <span class="stringliteral">&quot;POST&quot;</span> &amp;&amp; args[0] != <span class="stringliteral">&quot;DELETE&quot;</span>) {</div>
-<div class="line"><span class="lineno">    7</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">    8</span>        }</div>
-<div class="line"><span class="lineno">    9</span>        <span class="keywordflow">if</span> (args[2] != <span class="stringliteral">&quot;HTTP/1.1&quot;</span>) {</div>
-<div class="line"><span class="lineno">   10</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   11</span>        }</div>
-<div class="line"><span class="lineno">   12</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   13</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="RequestParser_8cpp_source.html#l00131">131</a> of file <a class="el" href="RequestParser_8cpp_source.html">RequestParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  131</span>                                                            {</div>
+<div class="line"><span class="lineno">  132</span>        <span class="keywordflow">if</span> (args[0] != <span class="stringliteral">&quot;GET&quot;</span> &amp;&amp; args[0] != <span class="stringliteral">&quot;POST&quot;</span> &amp;&amp; args[0] != <span class="stringliteral">&quot;DELETE&quot;</span>) {</div>
+<div class="line"><span class="lineno">  133</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  134</span>        }</div>
+<div class="line"><span class="lineno">  135</span>        <span class="keywordflow">if</span> (args[2] != <span class="stringliteral">&quot;HTTP/1.1&quot;</span>) {</div>
+<div class="line"><span class="lineno">  136</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  137</span>        }</div>
+<div class="line"><span class="lineno">  138</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  139</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -669,7 +669,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parse__headers_8cpp_source.html#l00107">107</a> of file <a class="el" href="Parse__headers_8cpp_source.html">Parse_headers.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RequestParser_8cpp_source.html#l00107">107</a> of file <a class="el" href="RequestParser_8cpp_source.html">RequestParser.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  107</span>                                                  {</div>
 <div class="line"><span class="lineno">  108</span>        (void)type;</div>
 <div class="line"><span class="lineno">  109</span>        <span class="keywordflow">for</span> (std::map&lt;std::string, std::vector&lt;std::string&gt; &gt;::iterator it = <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#a701f1f313621acf5b71fe8c83ccc82a2">headers</a>.begin(); it != <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#a701f1f313621acf5b71fe8c83ccc82a2">headers</a>.end(); ++it) {</div>
@@ -833,9 +833,9 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">  111</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Request.parse successful&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">  112</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  113</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a739141ad7c8494442039ff4b865020c4"><div class="ttname"><a href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4">http::Request::parseBody</a></div><div class="ttdeci">bool parseBody(std::string &amp;input)</div><div class="ttdef"><b>Definition</b> <a href="Parse__body_8cpp_source.html#l00005">Parse_body.cpp:5</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a7c94a929bf55670e716d50ac819ec8ac"><div class="ttname"><a href="classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac">http::Request::parseHead</a></div><div class="ttdeci">bool parseHead(std::string &amp;input)</div><div class="ttdef"><b>Definition</b> <a href="Parse__head_8cpp_source.html#l00015">Parse_head.cpp:15</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a8346c819a5b757937c3f50af058f70f7"><div class="ttname"><a href="classhttp_1_1Request.html#a8346c819a5b757937c3f50af058f70f7">http::Request::parseHeaders</a></div><div class="ttdeci">bool parseHeaders(std::string &amp;input, HeaderType type)</div><div class="ttdef"><b>Definition</b> <a href="Parse__headers_8cpp_source.html#l00083">Parse_headers.cpp:83</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a739141ad7c8494442039ff4b865020c4"><div class="ttname"><a href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4">http::Request::parseBody</a></div><div class="ttdeci">bool parseBody(std::string &amp;input)</div><div class="ttdef"><b>Definition</b> <a href="RequestParser_8cpp_source.html#l00176">RequestParser.cpp:176</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a7c94a929bf55670e716d50ac819ec8ac"><div class="ttname"><a href="classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac">http::Request::parseHead</a></div><div class="ttdeci">bool parseHead(std::string &amp;input)</div><div class="ttdef"><b>Definition</b> <a href="RequestParser_8cpp_source.html#l00141">RequestParser.cpp:141</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a8346c819a5b757937c3f50af058f70f7"><div class="ttname"><a href="classhttp_1_1Request.html#a8346c819a5b757937c3f50af058f70f7">http::Request::parseHeaders</a></div><div class="ttdeci">bool parseHeaders(std::string &amp;input, HeaderType type)</div><div class="ttdef"><b>Definition</b> <a href="RequestParser_8cpp_source.html#l00083">RequestParser.cpp:83</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64a6e55d4fbcb4414ad97de58c56bfc3654"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64a6e55d4fbcb4414ad97de58c56bfc3654">http::PARSE_HEAD</a></div><div class="ttdeci">@ PARSE_HEAD</div><div class="ttdef"><b>Definition</b> <a href="defines_8hpp_source.html#l00091">defines.hpp:91</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc">http::PARSE_HEADERS</a></div><div class="ttdeci">@ PARSE_HEADERS</div><div class="ttdef"><b>Definition</b> <a href="defines_8hpp_source.html#l00092">defines.hpp:92</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64ac4ffb0e12ded445e68ca3f683a01ba21"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64ac4ffb0e12ded445e68ca3f683a01ba21">http::PARSE_BODY</a></div><div class="ttdeci">@ PARSE_BODY</div><div class="ttdef"><b>Definition</b> <a href="defines_8hpp_source.html#l00093">defines.hpp:93</a></div></div>
@@ -914,28 +914,28 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parse__body_8cpp_source.html#l00005">5</a> of file <a class="el" href="Parse__body_8cpp_source.html">Parse_body.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    5</span>                                            {</div>
-<div class="line"><span class="lineno">    6</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">m_expectedBody</a> == <a class="code hl_enumvalue" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a8eaf4a1b7a6cf303cfbdae8b0a8b32eb">NO_BODY</a>) {</div>
-<div class="line"><span class="lineno">    7</span>            <a class="code hl_variable" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> = <a class="code hl_enumvalue" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff">PARSE_END</a>;</div>
-<div class="line"><span class="lineno">    8</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// error if body exists?</span></div>
-<div class="line"><span class="lineno">    9</span>        }</div>
-<div class="line"><span class="lineno">   10</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">m_expectedBody</a> == <a class="code hl_enumvalue" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a68569ee38513d8278c9a268641b6cfe5">CHUNKED</a>) {</div>
-<div class="line"><span class="lineno">   11</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135">parseBodyChunked</a>(input);</div>
-<div class="line"><span class="lineno">   12</span>        }</div>
-<div class="line"><span class="lineno">   13</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">m_expectedBody</a> == <a class="code hl_enumvalue" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a9c21a9fbb3e0b3b4602276b6ad85b7f3">CONTENT_LENGTH</a>) {</div>
-<div class="line"><span class="lineno">   14</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a>.size() + input.size() &lt; <a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a>) {</div>
-<div class="line"><span class="lineno">   15</span>                <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a> += input;</div>
-<div class="line"><span class="lineno">   16</span>                input = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">   17</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   18</span>                <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a> += input.substr(0, <a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> - <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a>.size());</div>
-<div class="line"><span class="lineno">   19</span>                input = input.substr(<a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> - <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a>.size());</div>
-<div class="line"><span class="lineno">   20</span>                <a class="code hl_variable" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> = <a class="code hl_enumvalue" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff">PARSE_END</a>;</div>
-<div class="line"><span class="lineno">   21</span>            }</div>
-<div class="line"><span class="lineno">   22</span>        }</div>
-<div class="line"><span class="lineno">   23</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   24</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a8c6bb71ac8e08b4547c54f4ba662b135"><div class="ttname"><a href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135">http::Request::parseBodyChunked</a></div><div class="ttdeci">bool parseBodyChunked(std::string &amp;input)</div><div class="ttdef"><b>Definition</b> <a href="Parse__body_8cpp_source.html#l00026">Parse_body.cpp:26</a></div></div>
+<p class="definition">Definition at line <a class="el" href="RequestParser_8cpp_source.html#l00176">176</a> of file <a class="el" href="RequestParser_8cpp_source.html">RequestParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  176</span>                                            {</div>
+<div class="line"><span class="lineno">  177</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">m_expectedBody</a> == <a class="code hl_enumvalue" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a8eaf4a1b7a6cf303cfbdae8b0a8b32eb">NO_BODY</a>) {</div>
+<div class="line"><span class="lineno">  178</span>            <a class="code hl_variable" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> = <a class="code hl_enumvalue" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff">PARSE_END</a>;</div>
+<div class="line"><span class="lineno">  179</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>; <span class="comment">// error if body exists?</span></div>
+<div class="line"><span class="lineno">  180</span>        }</div>
+<div class="line"><span class="lineno">  181</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">m_expectedBody</a> == <a class="code hl_enumvalue" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a68569ee38513d8278c9a268641b6cfe5">CHUNKED</a>) {</div>
+<div class="line"><span class="lineno">  182</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135">parseBodyChunked</a>(input);</div>
+<div class="line"><span class="lineno">  183</span>        }</div>
+<div class="line"><span class="lineno">  184</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">m_expectedBody</a> == <a class="code hl_enumvalue" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a9c21a9fbb3e0b3b4602276b6ad85b7f3">CONTENT_LENGTH</a>) {</div>
+<div class="line"><span class="lineno">  185</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a>.size() + input.size() &lt; <a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a>) {</div>
+<div class="line"><span class="lineno">  186</span>                <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a> += input;</div>
+<div class="line"><span class="lineno">  187</span>                input = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">  188</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  189</span>                <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a> += input.substr(0, <a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> - <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a>.size());</div>
+<div class="line"><span class="lineno">  190</span>                input = input.substr(<a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> - <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a>.size());</div>
+<div class="line"><span class="lineno">  191</span>                <a class="code hl_variable" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> = <a class="code hl_enumvalue" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff">PARSE_END</a>;</div>
+<div class="line"><span class="lineno">  192</span>            }</div>
+<div class="line"><span class="lineno">  193</span>        }</div>
+<div class="line"><span class="lineno">  194</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  195</span>    }</div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a8c6bb71ac8e08b4547c54f4ba662b135"><div class="ttname"><a href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135">http::Request::parseBodyChunked</a></div><div class="ttdeci">bool parseBodyChunked(std::string &amp;input)</div><div class="ttdef"><b>Definition</b> <a href="RequestParser_8cpp_source.html#l00197">RequestParser.cpp:197</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff"><div class="ttname"><a href="namespacehttp.html#a068cab601142fb739077ccd62379df64a5becdb8b02d81768bd29e3315117c7ff">http::PARSE_END</a></div><div class="ttdeci">@ PARSE_END</div><div class="ttdef"><b>Definition</b> <a href="defines_8hpp_source.html#l00095">defines.hpp:94</a></div></div>
 <div class="ttc" id="astructhttp_1_1s__requestData_html_a632cb5e08356d2cef3b9c8398ed7dad2"><div class="ttname"><a href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">http::s_requestData::body</a></div><div class="ttdeci">std::string body</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00022">Request.hpp:22</a></div></div>
 </div><!-- fragment --><div class="dynheader">
@@ -1006,66 +1006,66 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parse__body_8cpp_source.html#l00026">26</a> of file <a class="el" href="Parse__body_8cpp_source.html">Parse_body.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   26</span>                                                   {</div>
-<div class="line"><span class="lineno">   27</span>        <span class="keywordflow">while</span> (1) {</div>
-<div class="line"><span class="lineno">   28</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> == <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2">CHUNK_SIZE</a>) {</div>
-<div class="line"><span class="lineno">   29</span>                std::string line;</div>
-<div class="line"><span class="lineno">   30</span>                <a class="code hl_enumeration" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebd">GetLineStatus</a> status = <a class="code hl_function" href="classhttp_1_1Request.html#a4a1c007b045c1a6e3b1c2401ef783f63">getNextLineHTTP</a>(input, line);</div>
-<div class="line"><span class="lineno">   31</span>                <span class="keywordflow">if</span> (status == <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda7df9bcb858d1de24281eb6d9d7415267">GET_LINE_ERROR</a>) {</div>
-<div class="line"><span class="lineno">   32</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   33</span>                }</div>
-<div class="line"><span class="lineno">   34</span>                <span class="keywordflow">if</span> (status == <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda2d2a69026169f0582bad6016bf779e7a">GET_LINE_OK</a>) {</div>
-<div class="line"><span class="lineno">   35</span>                    <span class="keywordflow">if</span> (line == <span class="stringliteral">&quot;&quot;</span>) {</div>
-<div class="line"><span class="lineno">   36</span>                        <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Error: Empty line in chunked encoding&quot;</span>, 1);</div>
-<div class="line"><span class="lineno">   37</span>                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   38</span>                    } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   39</span>                        <span class="keywordtype">int</span> ret = 0;</div>
-<div class="line"><span class="lineno">   40</span>                        <a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> = <a class="code hl_function" href="namespaceshared_1_1string.html#a0f7b586737ab36eade3fc402c9abe0a7">shared::string::StoiHex</a>(line, ret);</div>
-<div class="line"><span class="lineno">   41</span>                        <span class="keywordflow">if</span> (ret == -1) {</div>
-<div class="line"><span class="lineno">   42</span>                            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Error: Invalid hexadecimal number in chunked encoding&quot;</span>, 1);</div>
-<div class="line"><span class="lineno">   43</span>                            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   44</span>                        }</div>
-<div class="line"><span class="lineno">   45</span>                        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> == 0) {</div>
-<div class="line"><span class="lineno">   46</span>                            <a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> = <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90b8fb0cbdb7c2e0ec8f5e1c1d357895">CHUNK_END</a>;</div>
-<div class="line"><span class="lineno">   47</span>                        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   48</span>                            <a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> = <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a4524451e5b885e5f0ba84ab20483b115">CHUNK_DATA</a>;</div>
-<div class="line"><span class="lineno">   49</span>                        }</div>
-<div class="line"><span class="lineno">   50</span>                        <span class="comment">// if (line != &quot;&quot;) { //TODO: chunk extension</span></div>
-<div class="line"><span class="lineno">   51</span>                    }</div>
-<div class="line"><span class="lineno">   52</span>                }</div>
-<div class="line"><span class="lineno">   53</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> == <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2">CHUNK_SIZE</a>) {</div>
-<div class="line"><span class="lineno">   54</span>                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   55</span>                }</div>
-<div class="line"><span class="lineno">   56</span>            }</div>
-<div class="line"><span class="lineno">   57</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> == <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a4524451e5b885e5f0ba84ab20483b115">CHUNK_DATA</a>) {</div>
-<div class="line"><span class="lineno">   58</span>                std::string chunk = input.substr(0, <a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a>);</div>
-<div class="line"><span class="lineno">   59</span>                <a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> -= chunk.size();</div>
-<div class="line"><span class="lineno">   60</span>                <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a> += chunk;</div>
-<div class="line"><span class="lineno">   61</span>                input = input.substr(chunk.size());</div>
-<div class="line"><span class="lineno">   62</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> == 0) {</div>
-<div class="line"><span class="lineno">   63</span>                    <a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> = <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a972da3acf199745ed9169a7d0728b0e8">CHUNK_DATA_END</a>;</div>
-<div class="line"><span class="lineno">   64</span>                } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   65</span>                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   66</span>                }</div>
-<div class="line"><span class="lineno">   67</span>            }</div>
-<div class="line"><span class="lineno">   68</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> == <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a972da3acf199745ed9169a7d0728b0e8">CHUNK_DATA_END</a>) {</div>
-<div class="line"><span class="lineno">   69</span>                <span class="keywordflow">if</span> (input.length() &lt; 2) {</div>
-<div class="line"><span class="lineno">   70</span>                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   71</span>                }</div>
-<div class="line"><span class="lineno">   72</span>                <span class="keywordflow">if</span> (input[0] == <span class="charliteral">&#39;\r&#39;</span> &amp;&amp; input[1] == <span class="charliteral">&#39;\n&#39;</span>) {</div>
-<div class="line"><span class="lineno">   73</span>                    input = input.substr(2);</div>
-<div class="line"><span class="lineno">   74</span>                    <a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> = <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2">CHUNK_SIZE</a>;</div>
-<div class="line"><span class="lineno">   75</span>                } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   76</span>                    <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Error: Invalid chunked encoding, \r\n expected after chunk.&quot;</span>, 1);</div>
-<div class="line"><span class="lineno">   77</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   78</span>                }</div>
-<div class="line"><span class="lineno">   79</span>            }</div>
-<div class="line"><span class="lineno">   80</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> == <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90b8fb0cbdb7c2e0ec8f5e1c1d357895">CHUNK_END</a>) {</div>
-<div class="line"><span class="lineno">   81</span>                <span class="keywordflow">return</span> <a class="code hl_function" href="classhttp_1_1Request.html#a8346c819a5b757937c3f50af058f70f7">parseHeaders</a>(input, <a class="code hl_enumvalue" href="namespacehttp.html#a1c72fd539e7c768e0800949cda8716a6adbbb0d56581c84173dc952aefb568471">TRAILING</a>);</div>
-<div class="line"><span class="lineno">   82</span>            }</div>
-<div class="line"><span class="lineno">   83</span>        }</div>
-<div class="line"><span class="lineno">   84</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="RequestParser_8cpp_source.html#l00197">197</a> of file <a class="el" href="RequestParser_8cpp_source.html">RequestParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  197</span>                                                   {</div>
+<div class="line"><span class="lineno">  198</span>        <span class="keywordflow">while</span> (1) {</div>
+<div class="line"><span class="lineno">  199</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> == <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2">CHUNK_SIZE</a>) {</div>
+<div class="line"><span class="lineno">  200</span>                std::string line;</div>
+<div class="line"><span class="lineno">  201</span>                <a class="code hl_enumeration" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebd">GetLineStatus</a> status = <a class="code hl_function" href="classhttp_1_1Request.html#a4a1c007b045c1a6e3b1c2401ef783f63">getNextLineHTTP</a>(input, line);</div>
+<div class="line"><span class="lineno">  202</span>                <span class="keywordflow">if</span> (status == <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda7df9bcb858d1de24281eb6d9d7415267">GET_LINE_ERROR</a>) {</div>
+<div class="line"><span class="lineno">  203</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  204</span>                }</div>
+<div class="line"><span class="lineno">  205</span>                <span class="keywordflow">if</span> (status == <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda2d2a69026169f0582bad6016bf779e7a">GET_LINE_OK</a>) {</div>
+<div class="line"><span class="lineno">  206</span>                    <span class="keywordflow">if</span> (line == <span class="stringliteral">&quot;&quot;</span>) {</div>
+<div class="line"><span class="lineno">  207</span>                        <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Error: Empty line in chunked encoding&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  208</span>                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  209</span>                    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  210</span>                        <span class="keywordtype">int</span> ret = 0;</div>
+<div class="line"><span class="lineno">  211</span>                        <a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> = <a class="code hl_function" href="namespaceshared_1_1string.html#a0f7b586737ab36eade3fc402c9abe0a7">shared::string::StoiHex</a>(line, ret);</div>
+<div class="line"><span class="lineno">  212</span>                        <span class="keywordflow">if</span> (ret == -1) {</div>
+<div class="line"><span class="lineno">  213</span>                            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Error: Invalid hexadecimal number in chunked encoding&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  214</span>                            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  215</span>                        }</div>
+<div class="line"><span class="lineno">  216</span>                        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> == 0) {</div>
+<div class="line"><span class="lineno">  217</span>                            <a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> = <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90b8fb0cbdb7c2e0ec8f5e1c1d357895">CHUNK_END</a>;</div>
+<div class="line"><span class="lineno">  218</span>                        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  219</span>                            <a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> = <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a4524451e5b885e5f0ba84ab20483b115">CHUNK_DATA</a>;</div>
+<div class="line"><span class="lineno">  220</span>                        }</div>
+<div class="line"><span class="lineno">  221</span>                        <span class="comment">// if (line != &quot;&quot;) { //TODO: chunk extension</span></div>
+<div class="line"><span class="lineno">  222</span>                    }</div>
+<div class="line"><span class="lineno">  223</span>                }</div>
+<div class="line"><span class="lineno">  224</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> == <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2">CHUNK_SIZE</a>) {</div>
+<div class="line"><span class="lineno">  225</span>                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  226</span>                }</div>
+<div class="line"><span class="lineno">  227</span>            }</div>
+<div class="line"><span class="lineno">  228</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> == <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a4524451e5b885e5f0ba84ab20483b115">CHUNK_DATA</a>) {</div>
+<div class="line"><span class="lineno">  229</span>                std::string chunk = input.substr(0, <a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a>);</div>
+<div class="line"><span class="lineno">  230</span>                <a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> -= chunk.size();</div>
+<div class="line"><span class="lineno">  231</span>                <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#a632cb5e08356d2cef3b9c8398ed7dad2">body</a> += chunk;</div>
+<div class="line"><span class="lineno">  232</span>                input = input.substr(chunk.size());</div>
+<div class="line"><span class="lineno">  233</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">m_contentLength</a> == 0) {</div>
+<div class="line"><span class="lineno">  234</span>                    <a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> = <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a972da3acf199745ed9169a7d0728b0e8">CHUNK_DATA_END</a>;</div>
+<div class="line"><span class="lineno">  235</span>                } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  236</span>                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  237</span>                }</div>
+<div class="line"><span class="lineno">  238</span>            }</div>
+<div class="line"><span class="lineno">  239</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> == <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a972da3acf199745ed9169a7d0728b0e8">CHUNK_DATA_END</a>) {</div>
+<div class="line"><span class="lineno">  240</span>                <span class="keywordflow">if</span> (input.length() &lt; 2) {</div>
+<div class="line"><span class="lineno">  241</span>                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  242</span>                }</div>
+<div class="line"><span class="lineno">  243</span>                <span class="keywordflow">if</span> (input[0] == <span class="charliteral">&#39;\r&#39;</span> &amp;&amp; input[1] == <span class="charliteral">&#39;\n&#39;</span>) {</div>
+<div class="line"><span class="lineno">  244</span>                    input = input.substr(2);</div>
+<div class="line"><span class="lineno">  245</span>                    <a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> = <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2">CHUNK_SIZE</a>;</div>
+<div class="line"><span class="lineno">  246</span>                } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  247</span>                    <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Error: Invalid chunked encoding, \r\n expected after chunk.&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  248</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  249</span>                }</div>
+<div class="line"><span class="lineno">  250</span>            }</div>
+<div class="line"><span class="lineno">  251</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">m_chunkedStatus</a> == <a class="code hl_enumvalue" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90b8fb0cbdb7c2e0ec8f5e1c1d357895">CHUNK_END</a>) {</div>
+<div class="line"><span class="lineno">  252</span>                <span class="keywordflow">return</span> <a class="code hl_function" href="classhttp_1_1Request.html#a8346c819a5b757937c3f50af058f70f7">parseHeaders</a>(input, <a class="code hl_enumvalue" href="namespacehttp.html#a1c72fd539e7c768e0800949cda8716a6adbbb0d56581c84173dc952aefb568471">TRAILING</a>);</div>
+<div class="line"><span class="lineno">  253</span>            }</div>
+<div class="line"><span class="lineno">  254</span>        }</div>
+<div class="line"><span class="lineno">  255</span>    }</div>
 <div class="ttc" id="aclasshttp_1_1Request_html_a4a1c007b045c1a6e3b1c2401ef783f63"><div class="ttname"><a href="classhttp_1_1Request.html#a4a1c007b045c1a6e3b1c2401ef783f63">http::Request::getNextLineHTTP</a></div><div class="ttdeci">GetLineStatus getNextLineHTTP(std::string &amp;input, std::string &amp;line)</div><div class="ttdef"><b>Definition</b> <a href="Request_8cpp_source.html#l00156">Request.cpp:156</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a0325991cc9f3cebcf9ec0f3806355ebd"><div class="ttname"><a href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebd">http::GetLineStatus</a></div><div class="ttdeci">GetLineStatus</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00051">Request.hpp:51</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a1c72fd539e7c768e0800949cda8716a6adbbb0d56581c84173dc952aefb568471"><div class="ttname"><a href="namespacehttp.html#a1c72fd539e7c768e0800949cda8716a6adbbb0d56581c84173dc952aefb568471">http::TRAILING</a></div><div class="ttdeci">@ TRAILING</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00049">Request.hpp:48</a></div></div>
@@ -1141,42 +1141,42 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parse__head_8cpp_source.html#l00015">15</a> of file <a class="el" href="Parse__head_8cpp_source.html">Parse_head.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   15</span>                                            {</div>
-<div class="line"><span class="lineno">   16</span>        std::string line;</div>
-<div class="line"><span class="lineno">   17</span>        <a class="code hl_enumeration" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebd">GetLineStatus</a> status = <a class="code hl_function" href="classhttp_1_1Request.html#a4a1c007b045c1a6e3b1c2401ef783f63">getNextLineHTTP</a>(input, line);</div>
-<div class="line"><span class="lineno">   18</span>        <span class="keywordflow">if</span> (status == <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda7df9bcb858d1de24281eb6d9d7415267">GET_LINE_ERROR</a>)</div>
-<div class="line"><span class="lineno">   19</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   20</span>        <span class="keywordflow">if</span> (status == <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebdad7f6e0544cd2c2347a7e973f6c73dec2">GET_LINE_END</a>)</div>
-<div class="line"><span class="lineno">   21</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   22</span>        <span class="keywordflow">if</span> (line == <span class="stringliteral">&quot;&quot;</span>) {</div>
-<div class="line"><span class="lineno">   23</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Request: Error: Empty line in request line&quot;</span>, 1);</div>
-<div class="line"><span class="lineno">   24</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   25</span>        }</div>
-<div class="line"><span class="lineno">   26</span>        std::string key;</div>
-<div class="line"><span class="lineno">   27</span>        std::vector&lt;std::string&gt; args;</div>
-<div class="line"><span class="lineno">   28</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> pos = 0;</div>
-<div class="line"><span class="lineno">   29</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> a = 0; a &lt; 3; a++) {</div>
-<div class="line"><span class="lineno">   30</span>            <span class="keywordflow">while</span> (pos &lt; line.size() &amp;&amp; line[pos] != <span class="charliteral">&#39; &#39;</span>) {</div>
-<div class="line"><span class="lineno">   31</span>                key += line[pos];</div>
-<div class="line"><span class="lineno">   32</span>                pos++;</div>
-<div class="line"><span class="lineno">   33</span>            }</div>
-<div class="line"><span class="lineno">   34</span>            pos++;</div>
-<div class="line"><span class="lineno">   35</span>            args.push_back(key);</div>
-<div class="line"><span class="lineno">   36</span>            key.clear();</div>
-<div class="line"><span class="lineno">   37</span>        }</div>
-<div class="line"><span class="lineno">   38</span>        <span class="keywordflow">if</span> (args.size() == 3 &amp;&amp; <a class="code hl_function" href="classhttp_1_1Request.html#a9b34649af1a6d967989ad522fc3491e8">checkHead</a>(args) == <span class="keyword">true</span>) {</div>
-<div class="line"><span class="lineno">   39</span>            <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#abad9164bd968c0d77bc39b42e3f4569e">method</a> = args[0];</div>
-<div class="line"><span class="lineno">   40</span>            <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#a57738de926238dbd5142105534918f44">uri</a> = args[1];</div>
-<div class="line"><span class="lineno">   41</span>            <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#aa89ee8974428c29ddad21ad20b328fab">version</a> = args[2];</div>
-<div class="line"><span class="lineno">   42</span>            <a class="code hl_variable" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> = <a class="code hl_enumvalue" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc">PARSE_HEADERS</a>;</div>
-<div class="line"><span class="lineno">   43</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   44</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   45</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Request: Error: Invalid request line&quot;</span>, 1);</div>
-<div class="line"><span class="lineno">   46</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   47</span>        }</div>
-<div class="line"><span class="lineno">   48</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a9b34649af1a6d967989ad522fc3491e8"><div class="ttname"><a href="classhttp_1_1Request.html#a9b34649af1a6d967989ad522fc3491e8">http::Request::checkHead</a></div><div class="ttdeci">bool checkHead(const std::vector&lt; std::string &gt; &amp;args)</div><div class="ttdef"><b>Definition</b> <a href="Parse__head_8cpp_source.html#l00005">Parse_head.cpp:5</a></div></div>
+<p class="definition">Definition at line <a class="el" href="RequestParser_8cpp_source.html#l00141">141</a> of file <a class="el" href="RequestParser_8cpp_source.html">RequestParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  141</span>                                            {</div>
+<div class="line"><span class="lineno">  142</span>        std::string line;</div>
+<div class="line"><span class="lineno">  143</span>        <a class="code hl_enumeration" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebd">GetLineStatus</a> status = <a class="code hl_function" href="classhttp_1_1Request.html#a4a1c007b045c1a6e3b1c2401ef783f63">getNextLineHTTP</a>(input, line);</div>
+<div class="line"><span class="lineno">  144</span>        <span class="keywordflow">if</span> (status == <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda7df9bcb858d1de24281eb6d9d7415267">GET_LINE_ERROR</a>)</div>
+<div class="line"><span class="lineno">  145</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  146</span>        <span class="keywordflow">if</span> (status == <a class="code hl_enumvalue" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebdad7f6e0544cd2c2347a7e973f6c73dec2">GET_LINE_END</a>)</div>
+<div class="line"><span class="lineno">  147</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  148</span>        <span class="keywordflow">if</span> (line == <span class="stringliteral">&quot;&quot;</span>) {</div>
+<div class="line"><span class="lineno">  149</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Request: Error: Empty line in request line&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  150</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  151</span>        }</div>
+<div class="line"><span class="lineno">  152</span>        std::string key;</div>
+<div class="line"><span class="lineno">  153</span>        std::vector&lt;std::string&gt; args;</div>
+<div class="line"><span class="lineno">  154</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> pos = 0;</div>
+<div class="line"><span class="lineno">  155</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> a = 0; a &lt; 3; a++) {</div>
+<div class="line"><span class="lineno">  156</span>            <span class="keywordflow">while</span> (pos &lt; line.size() &amp;&amp; line[pos] != <span class="charliteral">&#39; &#39;</span>) {</div>
+<div class="line"><span class="lineno">  157</span>                key += line[pos];</div>
+<div class="line"><span class="lineno">  158</span>                pos++;</div>
+<div class="line"><span class="lineno">  159</span>            }</div>
+<div class="line"><span class="lineno">  160</span>            pos++;</div>
+<div class="line"><span class="lineno">  161</span>            args.push_back(key);</div>
+<div class="line"><span class="lineno">  162</span>            key.clear();</div>
+<div class="line"><span class="lineno">  163</span>        }</div>
+<div class="line"><span class="lineno">  164</span>        <span class="keywordflow">if</span> (args.size() == 3 &amp;&amp; <a class="code hl_function" href="classhttp_1_1Request.html#a9b34649af1a6d967989ad522fc3491e8">checkHead</a>(args) == <span class="keyword">true</span>) {</div>
+<div class="line"><span class="lineno">  165</span>            <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#abad9164bd968c0d77bc39b42e3f4569e">method</a> = args[0];</div>
+<div class="line"><span class="lineno">  166</span>            <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#a57738de926238dbd5142105534918f44">uri</a> = args[1];</div>
+<div class="line"><span class="lineno">  167</span>            <a class="code hl_variable" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">m_requestData</a>.<a class="code hl_variable" href="structhttp_1_1s__requestData.html#aa89ee8974428c29ddad21ad20b328fab">version</a> = args[2];</div>
+<div class="line"><span class="lineno">  168</span>            <a class="code hl_variable" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">m_status</a> = <a class="code hl_enumvalue" href="namespacehttp.html#a068cab601142fb739077ccd62379df64a7bb2006ced5537e4b6ab2f88b3246ebc">PARSE_HEADERS</a>;</div>
+<div class="line"><span class="lineno">  169</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  170</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  171</span>            <a class="code hl_define" href="defines_8hpp.html#a35a9ed336fa2523662640093badacab1">LOG</a>(<span class="stringliteral">&quot;Request: Error: Invalid request line&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  172</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  173</span>        }</div>
+<div class="line"><span class="lineno">  174</span>    }</div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a9b34649af1a6d967989ad522fc3491e8"><div class="ttname"><a href="classhttp_1_1Request.html#a9b34649af1a6d967989ad522fc3491e8">http::Request::checkHead</a></div><div class="ttdeci">bool checkHead(const std::vector&lt; std::string &gt; &amp;args)</div><div class="ttdef"><b>Definition</b> <a href="RequestParser_8cpp_source.html#l00131">RequestParser.cpp:131</a></div></div>
 <div class="ttc" id="astructhttp_1_1s__requestData_html_a57738de926238dbd5142105534918f44"><div class="ttname"><a href="structhttp_1_1s__requestData.html#a57738de926238dbd5142105534918f44">http::s_requestData::uri</a></div><div class="ttdeci">std::string uri</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00019">Request.hpp:19</a></div></div>
 <div class="ttc" id="astructhttp_1_1s__requestData_html_aa89ee8974428c29ddad21ad20b328fab"><div class="ttname"><a href="structhttp_1_1s__requestData.html#aa89ee8974428c29ddad21ad20b328fab">http::s_requestData::version</a></div><div class="ttdeci">std::string version</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00020">Request.hpp:20</a></div></div>
 <div class="ttc" id="astructhttp_1_1s__requestData_html_abad9164bd968c0d77bc39b42e3f4569e"><div class="ttname"><a href="structhttp_1_1s__requestData.html#abad9164bd968c0d77bc39b42e3f4569e">http::s_requestData::method</a></div><div class="ttdeci">std::string method</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00018">Request.hpp:18</a></div></div>
@@ -1247,7 +1247,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parse__headers_8cpp_source.html#l00005">5</a> of file <a class="el" href="Parse__headers_8cpp_source.html">Parse_headers.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RequestParser_8cpp_source.html#l00005">5</a> of file <a class="el" href="RequestParser_8cpp_source.html">RequestParser.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">    5</span>                                                              {</div>
 <div class="line"><span class="lineno">    6</span>        <span class="keywordtype">bool</span> last_flag = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">    7</span>        <a class="code hl_enumeration" href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8">QuoteFlag</a> qf = <a class="code hl_enumvalue" href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8ab3b96bab0d8747049e4366de54c43db2">NO_QUOTE</a>;</div>
@@ -1403,7 +1403,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parse__headers_8cpp_source.html#l00083">83</a> of file <a class="el" href="Parse__headers_8cpp_source.html">Parse_headers.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RequestParser_8cpp_source.html#l00083">83</a> of file <a class="el" href="RequestParser_8cpp_source.html">RequestParser.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   83</span>                                                                {</div>
 <div class="line"><span class="lineno">   84</span>        std::string line;</div>
 <div class="line"><span class="lineno">   85</span>        <span class="keywordflow">while</span> (1) {</div>
@@ -1427,8 +1427,8 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  103</span>        }</div>
 <div class="line"><span class="lineno">  104</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  105</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a00503d511356e69b471a842f419f0bec"><div class="ttname"><a href="classhttp_1_1Request.html#a00503d511356e69b471a842f419f0bec">http::Request::interpretHeaders</a></div><div class="ttdeci">bool interpretHeaders(HeaderType type)</div><div class="ttdef"><b>Definition</b> <a href="Parse__headers_8cpp_source.html#l00107">Parse_headers.cpp:107</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a419c2262506e00fd2bb302a4a4451287"><div class="ttname"><a href="classhttp_1_1Request.html#a419c2262506e00fd2bb302a4a4451287">http::Request::parseHeader</a></div><div class="ttdeci">bool parseHeader(std::string &amp;line, HeaderType type)</div><div class="ttdef"><b>Definition</b> <a href="Parse__headers_8cpp_source.html#l00005">Parse_headers.cpp:5</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a00503d511356e69b471a842f419f0bec"><div class="ttname"><a href="classhttp_1_1Request.html#a00503d511356e69b471a842f419f0bec">http::Request::interpretHeaders</a></div><div class="ttdeci">bool interpretHeaders(HeaderType type)</div><div class="ttdef"><b>Definition</b> <a href="RequestParser_8cpp_source.html#l00107">RequestParser.cpp:107</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a419c2262506e00fd2bb302a4a4451287"><div class="ttname"><a href="classhttp_1_1Request.html#a419c2262506e00fd2bb302a4a4451287">http::Request::parseHeader</a></div><div class="ttdeci">bool parseHeader(std::string &amp;line, HeaderType type)</div><div class="ttdef"><b>Definition</b> <a href="RequestParser_8cpp_source.html#l00005">RequestParser.cpp:5</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1736,10 +1736,8 @@ Here is the caller graph for this function:</div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/runner/work/webserv/webserv/include/http/<a class="el" href="Request_8hpp_source.html">Request.hpp</a></li>
-<li>http/<a class="el" href="Parse__body_8cpp_source.html">Parse_body.cpp</a></li>
-<li>http/<a class="el" href="Parse__head_8cpp_source.html">Parse_head.cpp</a></li>
-<li>http/<a class="el" href="Parse__headers_8cpp_source.html">Parse_headers.cpp</a></li>
 <li>http/<a class="el" href="Request_8cpp_source.html">Request.cpp</a></li>
+<li>http/<a class="el" href="RequestParser_8cpp_source.html">RequestParser.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
