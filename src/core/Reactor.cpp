@@ -239,10 +239,8 @@ namespace core {
 			}
 			if (event.events & EPOLLIN) {
 				handler.handleRequest();
-				return;
-			}
-			if (event.events & EPOLLIN || event.events & EPOLLOUT) {
 				handler.buildResponse();
+				return;
 			}
 			if (event.events & EPOLLOUT) {
 				handler.sendResponse();

@@ -174,7 +174,6 @@ namespace http {
 			ss << m_body;
 		}
 		m_rawResponse = ss.str();
-		std::cout << "buildErrorResponse built: " << m_rawResponse << std::endl;
 	}
 
 	void Response::reset(void) {
