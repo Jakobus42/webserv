@@ -21,7 +21,6 @@ namespace http {
 			Socket(const Socket&);
 			Socket& operator=(const Socket&);
 
-
 			void create();
 			void bind(uint16_t port, uint32_t ip = LOCALHOST_ADDRESS);
 			void listen(int backlog = SOMAXCONN);
@@ -35,7 +34,6 @@ namespace http {
 
 			int getFd() const;
 			t_sockaddr_in getSockaddr() const;
-
 
 		private:
 			void setNonBlocking();

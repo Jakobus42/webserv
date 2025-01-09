@@ -2,7 +2,6 @@
 
 #include <stdint.h>
 
-#include "ServerSocket.hpp"
 #include "config/Parser.hpp"
 #include "http/Connection.hpp"
 #include "http/Socket.hpp"

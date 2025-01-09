@@ -14,6 +14,7 @@
 namespace core {
 
 	typedef std::vector<http::VirtualServer> t_virtualServers;
+#define MAX_EVENTS 256
 
 	/**
 	 * @class Reactor

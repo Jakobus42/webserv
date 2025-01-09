@@ -122,7 +122,7 @@ namespace http {
 	 * @throws std::runtime_error on failure.
 	 */
 	void Socket::close() {
-		if (m_fd != -1) {
+		if (m_fd == -1) {
 			return;
 		}
 
