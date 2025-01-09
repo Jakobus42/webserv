@@ -105,10 +105,10 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"Connection_8cpp.html",
-"classcore_1_1EventHandler.html#adf94eeb367f7fdf169b854571f0e76a8",
-"classhttp_1_1Socket.html#afa3095cf8f2b53688bd57af904d52892",
-"namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda7df9bcb858d1de24281eb6d9d7415267"
+"EventHandler_8cpp.html",
+"classcore_1_1Reactor.html#a0468a522e06fd37653bf86dd8cee4568",
+"classhttp_1_1VirtualServer.html#a8778b3ec4c25edd59c70e56561a7749b",
+"namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a60a8bf8892fa4895d1fdabe169243458"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

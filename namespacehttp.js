@@ -1,6 +1,6 @@
 var namespacehttp =
 [
-    [ "Connection", "classhttp_1_1Connection.html", "classhttp_1_1Connection" ],
+    [ "Connection", "structhttp_1_1Connection.html", "structhttp_1_1Connection" ],
     [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
     [ "Response", "classhttp_1_1Response.html", "classhttp_1_1Response" ],
     [ "s_requestData", "structhttp_1_1s__requestData.html", "structhttp_1_1s__requestData" ],

@@ -1,6 +1,5 @@
 var dir_c0632c2c4769486d54d1bae76e6a432e =
 [
-    [ "Connection.hpp", "Connection_8hpp.html", "Connection_8hpp" ],
     [ "errorPageGenerator.hpp", "errorPageGenerator_8hpp.html", "errorPageGenerator_8hpp" ],
     [ "Request.hpp", "Request_8hpp.html", "Request_8hpp" ],
     [ "Response.hpp", "Response_8hpp.html", "Response_8hpp" ],
