@@ -17,8 +17,6 @@ var classhttp_1_1Request =
     [ "parse", "classhttp_1_1Request.html#a9080f26f273ea9257a4dbac3a9e7d9c1", null ],
     [ "parseBody", "classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4", null ],
     [ "parseBodyChunked", "classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135", null ],
-    [ "parseBodyChunkedSize", "classhttp_1_1Request.html#a9fa9ac30c7d21bb8531a71d06c200041", null ],
-    [ "parseChunkExtentions", "classhttp_1_1Request.html#a163b25cf6a510113d9020c5acb03a46f", null ],
     [ "parseHead", "classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac", null ],
     [ "parseHeader", "classhttp_1_1Request.html#a419c2262506e00fd2bb302a4a4451287", null ],
     [ "parseHeaders", "classhttp_1_1Request.html#a8346c819a5b757937c3f50af058f70f7", null ],
