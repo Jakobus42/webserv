@@ -53,50 +53,6 @@ namespace core {
 		return *this;
 	}
 
-	t_requests& EventHandler::getRequests(void) {
-		return m_requests;
-	}
-
-	const t_requests& EventHandler::getRequests(void) const {
-		return m_requests;
-	}
-
-	t_responses& EventHandler::getResponses(void) {
-		return m_responses;
-	}
-
-	const t_responses& EventHandler::getResponses(void) const {
-		return m_responses;
-	}
-
-	HandlerState EventHandler::getState(void) const {
-		return m_state;
-	}
-
-	http::VirtualServer& EventHandler::getServer(void) {
-		return m_server;
-	}
-
-	http::VirtualServer& EventHandler::getServer(void) const {
-		return m_server;
-	}
-
-	http::Connection& EventHandler::getConnection(void) {
-		return m_connection;
-	}
-
-	http::Connection& EventHandler::getConnection(void) const {
-		return m_connection;
-	}
-
-	uint32_t EventHandler::getEvents(void) const {
-		return m_events;
-	}
-
-	void EventHandler::setState(HandlerState newState) {
-		m_state = newState;
-	}
-
 	bool EventHandler::shouldDrop(void) const {
 		// @TODO: implement depending on the event
 		if (m_state == FAILED || m_state == COMPLETED)
@@ -203,5 +159,50 @@ namespace core {
 	void EventHandler::killSelf(void) {
 		m_server.removeConnection(m_connection);
 	}
+
+	t_requests& EventHandler::getRequests(void) {
+		return m_requests;
+	}
+
+	const t_requests& EventHandler::getRequests(void) const {
+		return m_requests;
+	}
+
+	t_responses& EventHandler::getResponses(void) {
+		return m_responses;
+	}
+
+	const t_responses& EventHandler::getResponses(void) const {
+		return m_responses;
+	}
+
+	HandlerState EventHandler::getState(void) const {
+		return m_state;
+	}
+
+	http::VirtualServer& EventHandler::getServer(void) {
+		return m_server;
+	}
+
+	http::VirtualServer& EventHandler::getServer(void) const {
+		return m_server;
+	}
+
+	http::Connection& EventHandler::getConnection(void) {
+		return m_connection;
+	}
+
+	http::Connection& EventHandler::getConnection(void) const {
+		return m_connection;
+	}
+
+	uint32_t EventHandler::getEvents(void) const {
+		return m_events;
+	}
+
+	void EventHandler::setState(HandlerState newState) {
+		m_state = newState;
+	}
+
 
 } /* namespace core */
