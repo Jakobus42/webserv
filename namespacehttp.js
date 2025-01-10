@@ -3,9 +3,12 @@ var namespacehttp =
     [ "Connection", "classhttp_1_1Connection.html", "classhttp_1_1Connection" ],
     [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
     [ "Response", "classhttp_1_1Response.html", "classhttp_1_1Response" ],
+    [ "s_chunkedExtension", "structhttp_1_1s__chunkedExtension.html", "structhttp_1_1s__chunkedExtension" ],
     [ "s_requestData", "structhttp_1_1s__requestData.html", "structhttp_1_1s__requestData" ],
     [ "Socket", "classhttp_1_1Socket.html", "classhttp_1_1Socket" ],
     [ "VirtualServer", "classhttp_1_1VirtualServer.html", "classhttp_1_1VirtualServer" ],
+    [ "t_chunkedExtension", "namespacehttp.html#ab91509e22727b7e79820333b56687bcc", null ],
+    [ "t_chunkedExtensions", "namespacehttp.html#a89e20f6091e8cac88b2d785d9bc5f3d7", null ],
     [ "t_connections", "namespacehttp.html#aa3bcd24ae02414378f7cd9a8aafc784f", null ],
     [ "t_headerFields", "namespacehttp.html#a5fc275abcbe27d3c4113fcf5e74b2a09", null ],
     [ "t_requestData", "namespacehttp.html#a344224153c4286273f922e54b792a50d", null ],
@@ -102,6 +105,7 @@ var namespacehttp =
     ] ],
     [ "generateErrorPage", "namespacehttp.html#ab99935c70c216969b7410a50c653cc58", null ],
     [ "getStatusMessage", "namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc", null ],
+    [ "removeWhitespaces", "namespacehttp.html#a351eaecda88fa2e6e0ec2f3154a56c64", null ],
     [ "DEFAULT_MAX_BODY_SIZE", "namespacehttp.html#aa5cb5111b732aced21198fa3b145c294", null ],
     [ "LOCALHOST_ADDRESS", "namespacehttp.html#aca25a9fc3ae4f55904d8a48f1d18af63", null ]
 ];
