@@ -111,7 +111,7 @@ namespace core {
 	// potentially wasting a lot of time while we're still in EPOLLIN
 	void EventHandler::handleRequest(void) {
 		char* buffer = m_connection.getByteBuffer();
-		http::Request& request = m_connection.getRequestBuffer(); // @TODO: ensure this always works on the right (foremost) request
+		// http::Request& request = m_connection.getRequestBuffer(); // @TODO: ensure this always works on the right (foremost) request
 
 		ssize_t bytesReceived = m_connection.getSocket().recv(buffer, BUFFER_SIZE - 1);
 		if (bytesReceived < 0) {
@@ -129,21 +129,22 @@ namespace core {
 			return;
 		}
 		buffer[bytesReceived] = '\0';
-		std::cout << "Received " << bytesReceived << " bytes:" << std::endl;
-		if (!request.parse(buffer)) {
-			setState(FAILED);
-			// handle failure
-			std::cout << "Request FAILED" << std::endl;
-			return;
-		}
-		if (request.getStatus() == http::PARSE_END) {
-			std::cout << "Request COMPLETED right after parsing" << std::endl;
-			m_requests.push(request);
-			request.reset();
-			setState(WAITING_FOR_WRITE);
-		} else
-			setState(PROCESSING);
-		// if request.done() then setState(COMPLETED);
+		// TODO
+		//  std::cout << "Received " << bytesReceived << " bytes:" << std::endl;
+		//  if (!request.parse(buffer)) {
+		//  	setState(FAILED);
+		//  	// handle failure
+		//  	std::cout << "Request FAILED" << std::endl;
+		//  	return;
+		//  }
+		//  if (request.getStatus() == http::PARSE_END) {
+		//  	std::cout << "Request COMPLETED right after parsing" << std::endl;
+		//  	m_requests.push(request);
+		//  	request.reset();
+		//  	setState(WAITING_FOR_WRITE);
+		//  } else
+		//  	setState(PROCESSING);
+		//  if request.done() then setState(COMPLETED);
 		std::cout << "m_responses now " << m_responses.size() << " long" << std::endl;
 	}
 

@@ -52,7 +52,28 @@ namespace http {
 		return unknownStatus;
 	}
 
-	std::string generateErrorPage(StatusCode code) {
+	std::string getMethodString(Method method) {
+		switch (method) {
+			case GET:
+				return "GET";
+			case POST:
+				return "POST";
+			case PUT:
+				return "PUT";
+			case DELETE:
+				return "DELETE";
+			case PATCH:
+				return "PATCH";
+			case OPTIONS:
+				return "OPTIONS";
+			case HEAD:
+				return "HEAD";
+			default:
+				return "UNKNOWN";
+		}
+	}
+
+	std::string getErrorPage(StatusCode code) {
 		static const char* errorPageTemplate =
 			"<!DOCTYPE html><html lang=\"en\"><head><title>%d %s</title><style>"
 			"body{background-color:#2b3042;justify-content: center;text-align: center;color:#d3dbeb;}"

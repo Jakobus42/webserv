@@ -1,6 +1,6 @@
 #include "http/Request.hpp"
 
-#include <string.h>
+#include "http/constants.hpp"
 
 namespace http {
 
@@ -8,13 +8,10 @@ namespace http {
 	 * @brief Constructs a new Request object.
 	 */
 	Request::Request()
-		: m_receivedBytes(0)
-		, m_contentLength(0)
-		, m_restData("")
-		, m_requestData()
-		, m_status(PARSE_START)
-		, m_expectedBody(NO_BODY)
-		, m_chunkedStatus(CHUNK_SIZE) {}
+		: m_method(GET)
+		, m_uri("/")
+		, m_version(HTTP_VERSION) {
+	}
 
 	/**
 	 * @brief Destroys the Request object.
@@ -27,13 +24,12 @@ namespace http {
 	 * @param other The other Request object to copy.
 	 */
 	Request::Request(const Request& other)
-		: m_receivedBytes(other.getReceivedBytes())
-		, m_contentLength(other.getContentLength())
-		, m_restData(other.getRestData())
-		, m_requestData(other.getRequestData())
-		, m_status(other.m_status)
-		, m_expectedBody(other.getExpectedBody())
-		, m_chunkedStatus(other.getChunkedStatus()) {}
+		: m_method(other.m_method)
+		, m_uri(other.m_uri)
+		, m_version(other.m_version)
+		, m_headers(other.m_headers)
+		, m_body(other.m_body) {
+	}
 
 	/**
 	 * @brief Copy assignment operator.
@@ -41,138 +37,76 @@ namespace http {
 	 * @return A reference to the assigned Request object.
 	 */
 	Request& Request::operator=(const Request& rhs) {
-		if (this == &rhs)
-			return *this;
-		m_receivedBytes = rhs.getReceivedBytes();
-		m_contentLength = rhs.getContentLength();
-		m_restData = rhs.getRestData();
-		m_requestData = rhs.getRequestData();
-		m_status = rhs.getStatus();
-		m_expectedBody = rhs.getExpectedBody();
-		m_chunkedStatus = rhs.getChunkedStatus();
+		if (this != &rhs) {
+			m_method = rhs.m_method;
+			m_uri = rhs.m_uri;
+			m_version = rhs.m_version;
+			m_body = rhs.m_body;
+			m_headers = rhs.m_headers;
+		}
 		return *this;
 	}
 
-	uint32_t Request::getReceivedBytes(void) const {
-		return m_receivedBytes;
-	};
+	std::string Request::toString() const {
+		std::ostringstream oss;
 
-	const uint32_t& Request::getContentLength(void) const {
-		return m_contentLength;
+		oss << getMethodString(m_method) << " "
+			<< m_uri << " "
+			<< m_version << CRLF;
+
+		std::map<std::string, std::string>::const_iterator it;
+		for (it = m_headers.begin(); it != m_headers.end(); ++it) {
+			oss << it->first << ": " << it->second << CRLF;
+		}
+
+		if (!m_headers.empty()) {
+			oss << CRLF;
+		}
+
+		if (!m_body.empty()) {
+			oss << m_body;
+		}
+
+		return oss.str();
 	}
 
-	const std::string& Request::getRestData(void) const {
-		return m_restData;
+	Method Request::getMethod() const { return m_method; }
+
+	const std::string& Request::getUri() const { return m_uri; }
+
+	const std::string& Request::getVersion() const { return m_version; }
+
+	const std::string& Request::getBody() const { return m_body; }
+
+	const std::map<std::string, std::string>& Request::getHeaders() const { return m_headers; }
+
+	void Request::setMethod(Method method) { m_method = method; }
+
+	void Request::setUri(const std::string& uri) {
+		if (uri.empty()) {
+			throw std::invalid_argument("URI cannot be empty");
+		}
+		if (uri[0] != '/') {
+			throw std::invalid_argument("URI must start with '/'");
+		}
+
+		m_uri = uri;
 	}
 
-	const t_requestData& Request::getRequestData(void) const {
-		return m_requestData;
-	};
-
-	const RequestStatus& Request::getStatus(void) const {
-		return m_status;
-	};
-
-	const ExpectedBody& Request::getExpectedBody(void) const {
-		return m_expectedBody;
-	};
-
-	const ChunkedStatus& Request::getChunkedStatus(void) const {
-		return m_chunkedStatus;
-	};
-
-	/**
-	 * @brief Parses the request.
-	 * @return True if the request was parsed successfully, false otherwise.
-	 */
-	bool Request::parse(char buffer[BUFFER_SIZE]) {
-		std::string input;
-
-		if (m_restData != "") {
-			input = m_restData;
-			m_restData = "";
+	void Request::setVersion(const std::string& version) {
+		if (version != HTTP_VERSION) {
+			throw std::invalid_argument("unsupported HTTP version: " + version);
 		}
-		input += buffer;
-		if ((m_status == PARSE_HEAD || m_status == PARSE_START) && !parseHead(input)) {
-			std::cout << "first oof" << std::endl;
-			return false;
-		}
-		if (m_status == PARSE_HEADERS && !parseHeaders(input, HEADER)) {
-			std::cout << "second oof" << std::endl;
-			return false;
-		}
-		if (m_status == PARSE_BODY && !parseBody(input)) {
-			std::cout << "third oof" << std::endl;
-			return false;
-		}
-		if (input != "") {
-			m_restData = input;
-		}
-		std::cout << "Request.parse successful" << std::endl;
-		return true;
+		m_version = version;
 	}
 
-	void Request::reset(void) {
-		m_receivedBytes = 0;
-		m_contentLength = 0;
-		m_restData = "";
-		m_requestData.method = "";
-		m_requestData.uri = "";
-		m_requestData.version = "";
-		(void)m_requestData.headers.empty();
-		m_requestData.body = "";
-		(void)m_requestData.trailingHeaders.empty();
-		m_status = PARSE_START;
-	}
+	void Request::setBody(const std::string& body) { m_body = body; }
 
-	void Request::PrintRequestData() {
-		std::cout << "Method: " << m_requestData.method << std::endl;
-		std::cout << "URI: " << m_requestData.uri << std::endl;
-		std::cout << "Version: " << m_requestData.version << std::endl;
-		std::cout << "------------------------------" << std::endl;
-		std::cout << "Headers: " << std::endl;
-		for (std::map<std::string, std::vector<std::string> >::const_iterator it = m_requestData.headers.begin(); it != m_requestData.headers.end(); ++it) {
-			std::cout << it->first << ": ";
-			for (std::vector<std::string>::const_iterator val = it->second.begin(); val != it->second.end(); ++val) {
-				std::cout << *val << " ";
-			}
-			std::cout << std::endl;
+	void Request::setHeader(const std::string& key, const std::string& value) {
+		if (key.empty()) {
+			throw std::invalid_argument("header key cannot be empty");
 		}
-		std::cout << "------------------------------" << std::endl;
-		std::cout << "Trailing headers: " << std::endl;
-		for (std::map<std::string, std::vector<std::string> >::const_iterator it = m_requestData.trailingHeaders.begin(); it != m_requestData.trailingHeaders.end(); ++it) {
-			std::cout << it->first << ": ";
-			for (std::vector<std::string>::const_iterator val = it->second.begin(); val != it->second.end(); ++val) {
-				std::cout << *val << " ";
-			}
-			std::cout << std::endl;
-		}
-		std::cout << "------------------------------" << std::endl;
-		std::cout << "Body: " << m_requestData.body << std::endl;
-		std::cout << "------------------------------" << std::endl;
-		std::cout << "Status: " << m_status << std::endl;
-	}
-
-	GetLineStatus Request::getNextLineHTTP(std::string& input, std::string& line) {
-		for (unsigned long i = 0; i < input.size(); i++) {
-			if (input[i] == '\r') {
-				if (i != input.length() - 1 && input[i + 1] != '\n') {
-					std::cout << "Error: Invalid line ending" << std::endl;
-					;
-					return GET_LINE_ERROR;
-				}
-			}
-			if (input[i] == '\n') {
-				if (input[i - 1] != '\r') {
-					std::cout << "Error: Invalid line ending" << std::endl;
-					return GET_LINE_ERROR;
-				}
-				line = input.substr(0, i - 1);
-				input = input.substr(i + 1);
-				return GET_LINE_OK;
-			}
-		}
-		return GET_LINE_END;
+		m_headers[key] = value;
 	}
 
 } /* namespace http */

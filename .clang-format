@@ -7,10 +7,9 @@ ContinuationIndentWidth: 4
 IndentCaseLabels: true
 IndentPPDirectives: AfterHash
 IndentAccessModifiers: true
-AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
-AllowShortBlocksOnASingleLine: false
+AllowShortBlocksOnASingleLine: true
 AlignOperands: false
 # AlignTrailingComments: Always # wrong version
 BreakBeforeBraces: Attach
@@ -51,17 +50,16 @@ BraceWrapping:
   AfterUnion: false
   AfterClass: false
   AfterControlStatement: true
-  AfterFunction: true
   BeforeCatch: true
   BeforeElse: true
   BeforeWhile: true
-  SplitEmptyFunction: true
   SplitEmptyRecord: false
   IndentBraces: true
   SplitEmptyNamespace: false
 InsertTrailingCommas: Wrapped
 QualifierAlignment: Left
 SeparateDefinitionBlocks: Always
+AllowShortFunctionsOnASingleLine: All
 NamespaceIndentation: All
 #RemoveEmptyLinesInUnwrappedLines: true # only in v20
 #SpacesBeforeAssignmentOperators: true

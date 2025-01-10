@@ -13,6 +13,9 @@ namespace http {
 	const uint32_t LOCALHOST_ADDRESS = 0x7F000001;	// 127.0.0.1
 	const uint32_t DEFAULT_MAX_BODY_SIZE = 1048576; // 1MB
 
+	const std::string HTTP_VERSION = "HTTP/1.1";
+	const std::string CRLF = "\r\n";
+
 	/**
 	 * @enum HttpStatusCode
 	 * @brief Represents the various standard HTTP status codes.
@@ -79,6 +82,7 @@ namespace http {
 	};
 
 	const std::string& getStatusMessage(StatusCode statusCode);
-	std::string generateErrorPage(StatusCode code);
+	std::string getErrorPage(StatusCode code);
+	std::string getMethodString(Method method);
 
 } // namespace http

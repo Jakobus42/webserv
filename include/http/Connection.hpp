@@ -4,6 +4,8 @@
 #include "http/Response.hpp"
 #include "http/Socket.hpp"
 
+#define BUFFER_SIZE 1024
+
 namespace http {
 
 	/**
@@ -36,7 +38,7 @@ namespace http {
 			Socket m_clientSocket;
 			http::Request m_requestBuffer;
 			http::Response m_responseBuffer;
-			char m_byteBuffer[BUFFER_SIZE];
+			char m_byteBuffer[BUFFER_SIZE]; // TODO
 	};
 
 } // namespace http

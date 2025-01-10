@@ -154,7 +154,7 @@ namespace http {
 	void Response::buildErrorResponse(const Request& request) {
 		(void)request;
 
-		this->m_body = generateErrorPage(m_statusCode);
+		this->m_body = getErrorPage(m_statusCode);
 
 		std::stringstream ss("");
 
