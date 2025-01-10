@@ -150,11 +150,23 @@ namespace http {
 		std::cout << "------------------------------" << std::endl;
 		std::cout << "Body: " << m_requestData.body << std::endl;
 		std::cout << "------------------------------" << std::endl;
+		std::cout << "Chunked extensions: " << std::endl;
+		for (t_chunkedExtensions::const_iterator it = m_requestData.chunkedExtensions.begin(); it != m_requestData.chunkedExtensions.end(); ++it) {
+			std::cout << "Start: " << it->start << " End: " << it->end << std::endl;
+			for (std::map<std::string, std::string>::const_iterator ext = it->extensions.begin(); ext != it->extensions.end(); ++ext) {
+				std::cout << ext->first << ": " << ext->second << std::endl;
+			}
+		}
+		std::cout << "------------------------------" << std::endl;
 		std::cout << "Status: " << m_status << std::endl;
 	}
 
 	GetLineStatus Request::getNextLineHTTP(std::string& input, std::string& line) {
 		for (unsigned long i = 0; i < input.size(); i++) {
+			if (i > 10000000) {
+				std::cout << "Error: Line too long" << std::endl;
+				return GET_LINE_ERROR;
+			}
 			if (input[i] == '\r') {
 				if (i != input.length() - 1 && input[i + 1] != '\n') {
 					std::cout << "Error: Invalid line ending" << std::endl;
