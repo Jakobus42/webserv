@@ -37,8 +37,8 @@ namespace core {
 			void addVirtualServer(config::t_server& serverConfig) throw(std::exception);
 			bool removeVirtualServer(t_virtualServers::iterator it);
 			bool addVirtualServers(config::t_config_data& configData);
-			void deleteEventHandler(int);
-			EventHandler& getEventHandler(int);
+			void deleteEventHandler(int fd);
+			EventHandler& getEventHandler(int fd);
 
 			void react();
 
