@@ -2,16 +2,6 @@
 
 namespace http {
 
-	bool Request::checkHead(const std::vector<std::string>& args) {
-		if (args[0] != "GET" && args[0] != "POST" && args[0] != "DELETE") {
-			return false;
-		}
-		if (args[2] != "HTTP/1.1") {
-			return false;
-		}
-		return true;
-	}
-
 	bool Request::parseHead(std::string& input) {
 		std::string line;
 		GetLineStatus status = getNextLineHTTP(input, line);
@@ -32,10 +22,18 @@ namespace http {
 				pos++;
 			}
 			pos++;
+			if (key == "") {
+				std::cout << "Request: Error: Empty key in request line" << std::endl;
+				return false;
+			}
 			args.push_back(key);
 			key.clear();
 		}
-		if (args.size() == 3 && checkHead(args) == true) {
+		if (pos < line.size()) {
+			std::cout << "Request: Error: Invalid request line" << std::endl;
+			return false;
+		}
+		if (args.size() == 3) {
 			m_requestData.method = args[0];
 			m_requestData.uri = args[1];
 			m_requestData.version = args[2];
@@ -126,9 +124,9 @@ namespace http {
 			return false;
 		}
 		if (type == HEADER) {
-			m_requestData.headers[key] = values;
+			m_requestData.headers.push_back(std::make_pair(key, values));
 		} else {
-			m_requestData.trailingHeaders[key] = values;
+			m_requestData.trailingHeaders.push_back(std::make_pair(key, values));
 		}
 		return true;
 	}
@@ -158,22 +156,49 @@ namespace http {
 	}
 
 	bool Request::interpretHeaders(HeaderType type) {
-		(void)type;
-		for (std::map<std::string, std::vector<std::string> >::iterator it = m_requestData.headers.begin(); it != m_requestData.headers.end(); ++it) {
-			// TODO: Implement
-			if (it->first == "Transfer-Encoding" && it->second[0] == "chunked") {
-				if (m_requestData.headers["Content-Length"].size() > 0) {
-					std::cout << "Request: Error: Both Content-Length and Transfer-Encoding header found" << std::endl;
+		if (type == TRAILING) {
+			return true;
+		}
+		for (std::vector<t_header>::iterator it = m_requestData.headers.begin(); it != m_requestData.headers.end(); ++it) {	
+			if (it->first == "Transfer-Encoding") {
+				//Checks
+				std::cout << "hi" << std::endl;
+				if (it->second[it->second.size() -1] != "chunked")
+				{
+					std::cout << "Error: Invalid Transfer-Encoding header, chunked has to be the terminating argument for a request (rfc9112 6.1)" << std::endl;
 					return false;
 				}
-				m_expectedBody = CHUNKED;
-			} else if (it->first == "Content-Length" && it->second.size() > 0) {
 				if (m_expectedBody == CHUNKED) {
-					std::cout << "Request: Error: Both Content-Length and Transfer-Encoding header found" << std::endl;
+					std::cout << "Error: Multiple Transfer-Encoding headers found" << std::endl;
 					return false;
 				}
+				if (m_expectedBody == CONTENT_LENGTH) {
+					std::cout << "Error: Both Content-Length and Transfer-Encoding header found" << std::endl;
+					return false;
+				}
+				//Set
+				m_expectedBody = CHUNKED;
+			} else if (it->first == "Content-Length") {
+				//Checks
+				if (m_expectedBody == CHUNKED) {
+					std::cout << "Error: Both Content-Length and Transfer-Encoding header found" << std::endl;
+					return false;
+				}
+				if (m_expectedBody == CONTENT_LENGTH) {
+					std::cout << "Error: Multiple Content-Length headers found" << std::endl;
+					return false;
+				}
+				if (it->second[0].find_first_not_of("0123456789") != std::string::npos) {
+					std::cout << "Error: Invalid Content-Length value" << std::endl;
+					return false;
+				}
+				//Set
 				m_expectedBody = CONTENT_LENGTH;
-				int i;
+				uint32_t i;
+				if (it->second[0].size() > 10) {
+					std::cout << "Request: Error: Content-Length value too large" << std::endl;
+					return false;
+				}
 				std::istringstream(it->second[0]) >> i;
 				m_contentLength = i;
 			}

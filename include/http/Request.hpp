@@ -21,13 +21,15 @@ namespace http {
 	} t_chunkedExtension;
 	
 	typedef std::vector<t_chunkedExtension> t_chunkedExtensions;
+
+	typedef std::pair<std::string, std::vector<std::string> > t_header;
 	typedef struct s_requestData {
 			std::string method;
 			std::string uri;
 			std::string version;
-			std::map<std::string, std::vector<std::string> > headers;
+			std::vector<t_header> headers;
+			std::vector<t_header> trailingHeaders;
 			std::string body;
-			std::map<std::string, std::vector<std::string> > trailingHeaders;
 			t_chunkedExtensions chunkedExtensions;
 	} t_requestData;
 

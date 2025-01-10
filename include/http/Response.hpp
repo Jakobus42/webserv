@@ -16,6 +16,13 @@ namespace http {
 
 	typedef std::map<std::string, std::string> t_headerFields;
 
+	typedef struct s_PathData {
+		std::string scheme;
+		std::string authority;
+		std::string pure_path;
+		std::string query;
+	} t_PathData;
+
 	enum ResponseBuilderStatus {
 		PENDING_WRITE,
 		WRITING,
@@ -46,6 +53,7 @@ namespace http {
 			StatusCode getStatusCode(void) const;
 			const t_headerFields& getHeaderFields(void) const;
 			const std::string& getBody(void) const;
+			const t_PathData getPathData(void) const;
 
 			void setRawResponse(const std::string&); // probably just temporary
 			void doMagicToCalculateStatusCode(const Request&);
@@ -67,8 +75,14 @@ namespace http {
 			StatusCode m_statusCode;
 			t_headerFields m_headerFields;
 			std::string m_body;
-
+			t_PathData m_pathData;
+			
 			ResponseBuilderStatus m_builderStatus;
+
+			void checkRequestData(const Request &request);
+			void checkAndReconstructTargetUri(const Request &request);
+			bool parseAbsoluteForm(const std::string &path, const Request& request, t_PathData &pathData);
+			bool parseOriginForm(const std::string &path, const Request& request, t_PathData &pathData);
 	};
 
 } /* namespace http */

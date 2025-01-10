@@ -131,7 +131,7 @@ namespace http {
 		std::cout << "Version: " << m_requestData.version << std::endl;
 		std::cout << "------------------------------" << std::endl;
 		std::cout << "Headers: " << std::endl;
-		for (std::map<std::string, std::vector<std::string> >::const_iterator it = m_requestData.headers.begin(); it != m_requestData.headers.end(); ++it) {
+		for (std::vector<t_header>::const_iterator it = m_requestData.headers.begin(); it != m_requestData.headers.end(); ++it) {
 			std::cout << it->first << ": ";
 			for (std::vector<std::string>::const_iterator val = it->second.begin(); val != it->second.end(); ++val) {
 				std::cout << *val << " ";
@@ -140,7 +140,7 @@ namespace http {
 		}
 		std::cout << "------------------------------" << std::endl;
 		std::cout << "Trailing headers: " << std::endl;
-		for (std::map<std::string, std::vector<std::string> >::const_iterator it = m_requestData.trailingHeaders.begin(); it != m_requestData.trailingHeaders.end(); ++it) {
+		for (std::vector<t_header>::const_iterator it = m_requestData.trailingHeaders.begin(); it != m_requestData.trailingHeaders.end(); ++it) {
 			std::cout << it->first << ": ";
 			for (std::vector<std::string>::const_iterator val = it->second.begin(); val != it->second.end(); ++val) {
 				std::cout << *val << " ";
