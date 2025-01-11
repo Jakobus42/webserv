@@ -1,6 +1,7 @@
 #include "config/Parser.hpp"
 #include "core/Reactor.hpp"
 #include "http/Request.hpp"
+#include "http/RequestParser.hpp"
 
 #include <iostream>
 
@@ -12,16 +13,21 @@ int main(int argc, char** const argv) {
 
 	try {
 		std::string dummyReq =
-			"POST /login HTTP/1.1\n"
-			"Host: example.com\n"
-			"Content-Type: application/json\n"
-			"Authorization: Bearer some-jwt-token\n"
-			"User-Agent: MyCustomClient/1.0\n"
-			"Content-Length: 34\n"
-			"\n"
+			"POST /login HTTP/1.1\r\n"
+			"Host: example.com\r\n"
+			"Content-Type: application/json\r\n"
+			"Authorization: Bearer some-jwt-token\r\n"
+			"User-Agent: MyCustomClient/1.0\r\n"
+			"Content-Length: 34\r\n"
+			"\r\n"
 			"{\"username\": \"user\", \"password\": \"pass123\"}";
 
+		http::RequestParser reqParser;
 
+		reqParser.feed(dummyReq.c_str(), dummyReq.size());
+
+		const http::Request& req = reqParser.getRequest();
+		std::cout << req.toString() << std::endl;
 
 
 
