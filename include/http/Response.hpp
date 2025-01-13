@@ -69,6 +69,9 @@ namespace http {
 			bool done(void) const;
 			void reset(void);
 
+			// for testing purposes
+			int testParseURI(std::string uri, int mode);
+
 		private:
 			ResponseType m_type;
 			std::string m_rawResponse;

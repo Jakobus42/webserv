@@ -126,7 +126,6 @@ namespace http {
 		return o;
 	}
 
-	// temporarily always error to test error response
 	void Response::doMagicToCalculateStatusCode(const Request& request) {
 		m_statusCode = OK;
 		m_type = IDK_NORMAL_I_GUESS;
@@ -134,12 +133,6 @@ namespace http {
 		if (m_type == ERROR) {
 			return;
 		}
-		/* Actuall path is saved in the m_true_path member;
-		 		
-		for CGI
-		- Parse the incoming request's URL path. (Router)
-		- Match the path against your configured CGI paths or extensions.
-		- If there's a match, treat it as a CGI request and forward it to the appropriate handler.*/
 	}
 
 	void Response::buildFromRequest(const Request& request) {
@@ -223,7 +216,6 @@ namespace http {
 		}
 		if (path.find('?') != std::string::npos) { // optional query part after the first question mark
 			query = path.substr(path.find('?') +1);
-			//TODO: Check query
 		}
 		pure_path = path.substr(path.find(':') +1, path.find('?') - path.find(':') -1);
 		if (pure_path[0] != '/' && pure_path[1] != '/') { // authority part starts with two slashes
@@ -235,6 +227,9 @@ namespace http {
 			return false;
 		}
 		authority = pure_path.substr(0, pure_path.find('/'));
+		if (authority.empty()) {
+			return false;
+		}
 		pure_path = pure_path.substr(pure_path.find('/'));
 		pathData.query = query;
 		pathData.pure_path = pure_path;
@@ -337,5 +332,39 @@ namespace http {
 			return;
 		} */
 	}
+
+	int Response::testParseURI(std::string uri, int mode)
+	{
+		std::cout << "-----------------------------------" << std::endl;
+		t_PathData pathData;
+		if (mode == 0) {
+			Request req;
+			std::vector<std::string> host;
+			host.push_back("localhost");
+			req.setHeader("Host", host);
+			if (parseOriginForm(uri, req, pathData)) {
+				std::cout << "Origin form parsed successfully" << std::endl;
+			} else {
+				std::cout << "Origin form failed" << std::endl;
+				std::cout << "-----------------------------------" << std::endl;
+				return 1;
+			}
+		} else {
+			if (parseAbsoluteForm(uri, Request(), pathData)) {
+				std::cout << "Absolute form parsed successfully" << std::endl;
+			} else {
+				std::cout << "Absolute form failed" << std::endl;
+				std::cout << "-----------------------------------" << std::endl;
+				return 1;
+			}
+		}
+		std::cout << "Scheme: " << pathData.scheme << std::endl;
+		std::cout << "Authority: " << pathData.authority << std::endl;
+		std::cout << "Pure path: " << pathData.pure_path << std::endl;
+		std::cout << "Query: " << pathData.query << std::endl;
+		std::cout << "-----------------------------------" << std::endl;
+		return 0;
+	}
+
 
 } /* namespace http */

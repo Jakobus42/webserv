@@ -88,6 +88,8 @@ namespace http {
 			bool parse(char buffer[BUFFER_SIZE]);
 			void reset(void);
 
+			//for testing purposes
+			void setHeader(const std::string key, const std::vector<std::string> value);
 		private:
 			uint32_t m_receivedBytes;
 			uint32_t m_contentLength;
