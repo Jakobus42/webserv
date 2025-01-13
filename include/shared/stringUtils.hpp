@@ -19,11 +19,26 @@ namespace shared {
 
 		void trim(std::string& str, const std::string& delimiters = WHITESPACES);
 
-		uint32_t posStoi(std::string str, int base = 10);
-
 		uint32_t StoiHex(std::string& str, int& ret);
 
+		template <typename T>
+		T toNum(const std::string& str, int base) {
+			T result;
+			std::istringstream stream(str);
+
+			if (base == 16) {
+				stream >> std::hex;
+			} else if (base == 8) {
+				stream >> std::oct;
+			}
+			stream >> result;
+			if (stream.fail() || !stream.eof())
+				throw std::runtime_error("cant convert to number");
+			return result;
+		}
+
 		bool isGreyspace(char c);
+
 	} // namespace string
 
 } // namespace shared

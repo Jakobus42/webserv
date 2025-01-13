@@ -73,6 +73,25 @@ namespace http {
 		}
 	}
 
+	Method stringToMethod(const std::string& method) {
+		if (method == "GET") {
+			return GET;
+		} else if (method == "POST") {
+			return POST;
+		} else if (method == "PUT") {
+			return PUT;
+		} else if (method == "DELETE") {
+			return DELETE;
+		} else if (method == "PATCH") {
+			return PATCH;
+		} else if (method == "OPTIONS") {
+			return OPTIONS;
+		} else if (method == "HEAD") {
+			return HEAD;
+		}
+		throw std::invalid_argument("invalid http method");
+	}
+
 	std::string getErrorPage(StatusCode code) {
 		static const char* errorPageTemplate =
 			"<!DOCTYPE html><html lang=\"en\"><head><title>%d %s</title><style>"

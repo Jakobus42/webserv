@@ -84,5 +84,6 @@ namespace http {
 	const std::string& getStatusMessage(StatusCode statusCode);
 	std::string getErrorPage(StatusCode code);
 	std::string getMethodString(Method method);
+	Method stringToMethod(const std::string& method);
 
 } // namespace http

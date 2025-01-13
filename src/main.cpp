@@ -13,23 +13,30 @@ int main(int argc, char** const argv) {
 
 	try {
 		std::string dummyReq =
-			"POST /login HTTP/1.1\r\n"
+			"POST /upload HTTP/1.1\r\n"
 			"Host: example.com\r\n"
-			"Content-Type: application/json\r\n"
-			"Authorization: Bearer some-jwt-token\r\n"
+			"Transfer-Encoding: chunked\r\n"
 			"User-Agent: MyCustomClient/1.0\r\n"
-			"Content-Length: 34\r\n"
+			"Authorization: Bearer some-jwt-token\r\n"
 			"\r\n"
-			"{\"username\": \"user\", \"password\": \"pass123\"}";
+			"7\r\n"
+			"Hello, \r\n"
+			"5\r\n"
+			"world!\r\n"
+			"0\r\n"
+			"\r\n";
 
 		http::RequestParser reqParser;
 
-		reqParser.feed(dummyReq.c_str(), dummyReq.size());
+		shared::Buffer<BUFFER_SIZE>& writeBuffer = reqParser.getWriteBuffer();
+		writeBuffer.append(dummyReq.c_str(), dummyReq.length());
+		reqParser.process();
 
-		const http::Request& req = reqParser.getRequest();
-		std::cout << req.toString() << std::endl;
+		const http::Request* req = reqParser.releaseRequest();
+		std::cout << std::endl
+				  << req->toString() << std::endl;
 
-
+		delete req;
 
 		std::string configPath = argc > 1 ? argv[1] : "config/configfile_example";
 		config::ConfigFileParser configFileParser;

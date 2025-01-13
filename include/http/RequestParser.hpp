@@ -1,20 +1,12 @@
 #pragma once
 
+#include "shared/Buffer.hpp"
+
 #include <http/Request.hpp>
-#include <vector>
 
 namespace http {
 
-	const std::size_t BUFFER_SIZEEEE = 1024;
-
-	enum ParseState {
-		STATE_START,
-		STATE_HEADERS,
-		STATE_BODY,
-		STATE_CHUNK_SIZE,
-		STATE_CHUNK_DATA,
-		STATE_COMPLETE
-	};
+#define BUFFER_SIZE 1024
 
 	/**
 	 * @class RequestParser
@@ -25,38 +17,71 @@ namespace http {
 			RequestParser();
 			~RequestParser();
 
-			void feed(const char* data, std::size_t size);
+			void process();
+			shared::Buffer<BUFFER_SIZE>& getWriteBuffer();
 
 			void reset();
 
 			bool isComplete() const;
+			bool isPending() const;
 
-			const Request& getRequest() const;
+			Request* releaseRequest();
 
 		private:
 			RequestParser(const RequestParser&);
 			RequestParser& operator=(const RequestParser&);
 
-			void compactBuffer();
+			enum ParseState {
+				START = 0x01,
+				HEADERS = 0x02,
+				BODY = 0x04,
+				CHUNK_SIZE = 0x08,
+				CHUNK_DATA = 0x10,
+				COMPLETE = 0x20,
+			};
 
-			char* findCRLF();
-			const char* readLine();
+			struct Token {
+					const char* token;
+					std::size_t size;
 
-			void parse();
+					Token()
+						: token(NULL)
+						, size(0) {}
+
+					Token(const char* token, std::size_t size)
+						: token(token)
+						, size(size) {}
+			};
+
+			char* readLine();
+
 			void parseRequestLine();
+
 			void parseHeaders();
+			Token extractHeaderKey(char*& line);
+			Token extractHeaderValue(char*& line);
+
 			void parseBody();
 			void parseChunkSize();
 			void parseChunkData();
 
+			bool isTChar(char c) const;
+
+			void setPendingState();
+			void clearPendingState();
+			void setState(ParseState state);
+
 		private:
-			Request m_req; // for now (keep copying in mind)
+			static const char TCHAR[];
+			static const char WHITESPACE[];
 
-			char m_buffer[BUFFER_SIZEEEE];
-			std::size_t m_readPos;
-			std::size_t m_writePos;
+			static const int PENDING_MASK;
 
-			ParseState m_state;
+			Request* m_req;
+
+			shared::Buffer<BUFFER_SIZE> m_buffer;
+			std::size_t m_chunkSize;
+			int m_state;
 	};
 
 } /* namespace http */
