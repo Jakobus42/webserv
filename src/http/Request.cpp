@@ -81,6 +81,10 @@ namespace http {
 		return m_chunkedStatus;
 	};
 
+	void Request::setHeader(const std::string& key, const std::vector<std::string>& value) {
+		m_requestData.headers.push_back(std::make_pair(key, value));
+	}
+
 	/**
 	 * @brief Parses the request.
 	 * @return True if the request was parsed successfully, false otherwise.
@@ -131,7 +135,7 @@ namespace http {
 		std::cout << "Version: " << m_requestData.version << std::endl;
 		std::cout << "------------------------------" << std::endl;
 		std::cout << "Headers: " << std::endl;
-		for (std::map<std::string, std::vector<std::string> >::const_iterator it = m_requestData.headers.begin(); it != m_requestData.headers.end(); ++it) {
+		for (std::vector<t_header>::const_iterator it = m_requestData.headers.begin(); it != m_requestData.headers.end(); ++it) {
 			std::cout << it->first << ": ";
 			for (std::vector<std::string>::const_iterator val = it->second.begin(); val != it->second.end(); ++val) {
 				std::cout << *val << " ";
@@ -140,7 +144,7 @@ namespace http {
 		}
 		std::cout << "------------------------------" << std::endl;
 		std::cout << "Trailing headers: " << std::endl;
-		for (std::map<std::string, std::vector<std::string> >::const_iterator it = m_requestData.trailingHeaders.begin(); it != m_requestData.trailingHeaders.end(); ++it) {
+		for (std::vector<t_header>::const_iterator it = m_requestData.trailingHeaders.begin(); it != m_requestData.trailingHeaders.end(); ++it) {
 			std::cout << it->first << ": ";
 			for (std::vector<std::string>::const_iterator val = it->second.begin(); val != it->second.end(); ++val) {
 				std::cout << *val << " ";
@@ -150,11 +154,23 @@ namespace http {
 		std::cout << "------------------------------" << std::endl;
 		std::cout << "Body: " << m_requestData.body << std::endl;
 		std::cout << "------------------------------" << std::endl;
+		std::cout << "Chunked extensions: " << std::endl;
+		for (t_chunkedExtensions::const_iterator it = m_requestData.chunkedExtensions.begin(); it != m_requestData.chunkedExtensions.end(); ++it) {
+			std::cout << "Start: " << it->start << " End: " << it->end << std::endl;
+			for (std::map<std::string, std::string>::const_iterator ext = it->extensions.begin(); ext != it->extensions.end(); ++ext) {
+				std::cout << ext->first << ": " << ext->second << std::endl;
+			}
+		}
+		std::cout << "------------------------------" << std::endl;
 		std::cout << "Status: " << m_status << std::endl;
 	}
 
 	GetLineStatus Request::getNextLineHTTP(std::string& input, std::string& line) {
 		for (unsigned long i = 0; i < input.size(); i++) {
+			if (i > 10000000) {
+				std::cout << "Error: Line too long" << std::endl;
+				return GET_LINE_ERROR;
+			}
 			if (input[i] == '\r') {
 				if (i != input.length() - 1 && input[i + 1] != '\n') {
 					std::cout << "Error: Invalid line ending" << std::endl;
