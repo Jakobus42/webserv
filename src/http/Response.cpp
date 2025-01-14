@@ -2,6 +2,8 @@
 
 #include "http/Request.hpp"
 #include "http/constants.hpp"
+#include "config/Parser.hpp"
+#include "http/Router.hpp"
 
 #include <ctime>
 #include <iomanip>
@@ -126,13 +128,15 @@ namespace http {
 		return o;
 	}
 
-	void Response::doMagicToCalculateStatusCode(const Request& request) {
+	void Response::doMagicToCalculateStatusCode(const Request& request, const std::vector<config::t_location>& locations) {
 		m_statusCode = OK;
 		m_type = IDK_NORMAL_I_GUESS;
 		checkRequestData(request);
 		if (m_type == ERROR) {
 			return;
 		}
+		config::t_location* location = Router::getLocation(m_pathData.pure_path, locations);
+		(void)location;
 	}
 
 	void Response::buildFromRequest(const Request& request) {
