@@ -24,6 +24,7 @@ var classhttp_1_1Request =
     [ "parseHeaders", "classhttp_1_1Request.html#a8346c819a5b757937c3f50af058f70f7", null ],
     [ "PrintRequestData", "classhttp_1_1Request.html#a5d644f426dafcff5a49ed1c53c85ed5b", null ],
     [ "reset", "classhttp_1_1Request.html#a9f89032cd603dc018f0573e34cec49ed", null ],
+    [ "setHeader", "classhttp_1_1Request.html#a7c09eb04488314c1687c04d32f025a99", null ],
     [ "m_chunkedStatus", "classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1", null ],
     [ "m_contentLength", "classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76", null ],
     [ "m_expectedBody", "classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c", null ],
