@@ -26,7 +26,7 @@ var classhttp_1_1Response =
     [ "serverString", "classhttp_1_1Response.html#a637305890d24151f4d8b9dc4d13cdbb0", null ],
     [ "setRawResponse", "classhttp_1_1Response.html#a269913ddc411476e598ec3e70fe3c652", null ],
     [ "statusLineString", "classhttp_1_1Response.html#a2d1e7ec002dfef0005ca5ef8f88d4567", null ],
-    [ "testParseURI", "classhttp_1_1Response.html#a56b823ed9de6185729c6c3bc325a0ba8", null ],
+    [ "testParseURI", "classhttp_1_1Response.html#a7df178d1590622ac14b509e43d3d6235", null ],
     [ "m_body", "classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe", null ],
     [ "m_builderStatus", "classhttp_1_1Response.html#ab605df89bb0a7ac92cae038851286e78", null ],
     [ "m_headerFields", "classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e", null ],

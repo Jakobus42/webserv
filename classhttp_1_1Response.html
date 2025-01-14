@@ -134,8 +134,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a01c142188318790efefff94436580437"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4eb56ec0c2d1c77b78241a8855c4d364" id="r_a4eb56ec0c2d1c77b78241a8855c4d364"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364">reset</a> (void)</td></tr>
 <tr class="separator:a4eb56ec0c2d1c77b78241a8855c4d364"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56b823ed9de6185729c6c3bc325a0ba8" id="r_a56b823ed9de6185729c6c3bc325a0ba8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a56b823ed9de6185729c6c3bc325a0ba8">testParseURI</a> (std::string uri, int mode)</td></tr>
-<tr class="separator:a56b823ed9de6185729c6c3bc325a0ba8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7df178d1590622ac14b509e43d3d6235" id="r_a7df178d1590622ac14b509e43d3d6235"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a7df178d1590622ac14b509e43d3d6235">testParseURI</a> (const std::string &amp;uri, int mode)</td></tr>
+<tr class="separator:a7df178d1590622ac14b509e43d3d6235"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -502,20 +502,20 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00283">283</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  284</span>    {</div>
-<div class="line"><span class="lineno">  285</span>        (void)request;</div>
-<div class="line"><span class="lineno">  286</span>        <span class="keywordtype">bool</span> ret = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  287</span>        <span class="keywordflow">if</span> (request.getRequestData().uri[0] == <span class="charliteral">&#39;/&#39;</span>) {</div>
-<div class="line"><span class="lineno">  288</span>            ret = <a class="code hl_function" href="classhttp_1_1Response.html#a7ce94f17523ca26c67126fca5a7a67fb">parseOriginForm</a>(request.getRequestData().uri, request, <a class="code hl_variable" href="classhttp_1_1Response.html#aad02e5ae325387fc0ddacdb30594dccd">m_pathData</a>);</div>
-<div class="line"><span class="lineno">  289</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  290</span>            ret = <a class="code hl_function" href="classhttp_1_1Response.html#af3ce515c1a3145598ce568ae27e681a4">parseAbsoluteForm</a>(request.getRequestData().uri, request, <a class="code hl_variable" href="classhttp_1_1Response.html#aad02e5ae325387fc0ddacdb30594dccd">m_pathData</a>);</div>
-<div class="line"><span class="lineno">  291</span>        }</div>
-<div class="line"><span class="lineno">  292</span>        <span class="keywordflow">if</span> (!ret) {</div>
-<div class="line"><span class="lineno">  293</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">BAD_REQUEST</a>;</div>
-<div class="line"><span class="lineno">  294</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">ERROR</a>;</div>
-<div class="line"><span class="lineno">  295</span>        }</div>
-<div class="line"><span class="lineno">  296</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00282">282</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  283</span>    {</div>
+<div class="line"><span class="lineno">  284</span>        (void)request;</div>
+<div class="line"><span class="lineno">  285</span>        <span class="keywordtype">bool</span> ret = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  286</span>        <span class="keywordflow">if</span> (request.getRequestData().uri[0] == <span class="charliteral">&#39;/&#39;</span>) {</div>
+<div class="line"><span class="lineno">  287</span>            ret = <a class="code hl_function" href="classhttp_1_1Response.html#a7ce94f17523ca26c67126fca5a7a67fb">parseOriginForm</a>(request.getRequestData().uri, request, <a class="code hl_variable" href="classhttp_1_1Response.html#aad02e5ae325387fc0ddacdb30594dccd">m_pathData</a>);</div>
+<div class="line"><span class="lineno">  288</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  289</span>            ret = <a class="code hl_function" href="classhttp_1_1Response.html#af3ce515c1a3145598ce568ae27e681a4">parseAbsoluteForm</a>(request.getRequestData().uri, request, <a class="code hl_variable" href="classhttp_1_1Response.html#aad02e5ae325387fc0ddacdb30594dccd">m_pathData</a>);</div>
+<div class="line"><span class="lineno">  290</span>        }</div>
+<div class="line"><span class="lineno">  291</span>        <span class="keywordflow">if</span> (!ret) {</div>
+<div class="line"><span class="lineno">  292</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">BAD_REQUEST</a>;</div>
+<div class="line"><span class="lineno">  293</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">ERROR</a>;</div>
+<div class="line"><span class="lineno">  294</span>        }</div>
+<div class="line"><span class="lineno">  295</span>    }</div>
 <div class="ttc" id="aclasshttp_1_1Response_html_a7ce94f17523ca26c67126fca5a7a67fb"><div class="ttname"><a href="classhttp_1_1Response.html#a7ce94f17523ca26c67126fca5a7a67fb">http::Response::parseOriginForm</a></div><div class="ttdeci">bool parseOriginForm(const std::string &amp;path, const Request &amp;request, t_PathData &amp;pathData)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00241">Response.cpp:241</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Response_html_af3ce515c1a3145598ce568ae27e681a4"><div class="ttname"><a href="classhttp_1_1Response.html#af3ce515c1a3145598ce568ae27e681a4">http::Response::parseAbsoluteForm</a></div><div class="ttdeci">bool parseAbsoluteForm(const std::string &amp;path, const Request &amp;request, t_PathData &amp;pathData)</div><div class="ttdoc">Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3....</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00202">Response.cpp:202</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">http::BAD_REQUEST</a></div><div class="ttdeci">@ BAD_REQUEST</div><div class="ttdef"><b>Definition</b> <a href="constants_8hpp_source.html#l00030">constants.hpp:30</a></div></div>
@@ -595,36 +595,36 @@ Here is the caller graph for this function:</div>
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00306">306</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  307</span>    {</div>
-<div class="line"><span class="lineno">  308</span>        <span class="keywordflow">if</span> (request.getRequestData().method != <span class="stringliteral">&quot;GET&quot;</span> &amp;&amp; request.getRequestData().method != <span class="stringliteral">&quot;POST&quot;</span> &amp;&amp; request.getRequestData().method != <span class="stringliteral">&quot;DELETE&quot;</span>) {</div>
-<div class="line"><span class="lineno">  309</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702">NOT_IMPLEMENTED</a>;</div>
-<div class="line"><span class="lineno">  310</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">ERROR</a>;</div>
-<div class="line"><span class="lineno">  311</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  312</span>        }</div>
-<div class="line"><span class="lineno">  313</span>        <span class="keywordflow">if</span> (request.getRequestData().uri.length() &gt; 8192) {</div>
-<div class="line"><span class="lineno">  314</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a873ca8ab2862e690356decb197a57b21">URI_TOO_LONG</a>;</div>
-<div class="line"><span class="lineno">  315</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">ERROR</a>;</div>
-<div class="line"><span class="lineno">  316</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  317</span>        }</div>
-<div class="line"><span class="lineno">  318</span>        <a class="code hl_function" href="classhttp_1_1Response.html#af757d6a96ba06dd76fab3ba48f8ee5a8">checkAndReconstructTargetUri</a>(request);</div>
-<div class="line"><span class="lineno">  319</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> == <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">ERROR</a>) {</div>
-<div class="line"><span class="lineno">  320</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  321</span>        }</div>
-<div class="line"><span class="lineno">  322</span>        <span class="keywordflow">if</span> (request.getRequestData().version != <span class="stringliteral">&quot;HTTP/1.1&quot;</span>) {</div>
-<div class="line"><span class="lineno">  323</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff">HTTP_VERSION_NOT_SUPPORTED</a>;</div>
-<div class="line"><span class="lineno">  324</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">ERROR</a>;</div>
-<div class="line"><span class="lineno">  325</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  326</span>        }</div>
-<div class="line"><span class="lineno">  327</span>        <span class="comment">// (RFC 9112 3.2)</span></div>
-<div class="line"><span class="lineno">  328</span><span class="comment">/*      if (request.getRequestData().headers.find(&quot;Host&quot;) == request.getRequestData().headers.end() </span></div>
-<div class="line"><span class="lineno">  329</span><span class="comment">            || request.getRequestData().headers.find(&quot;Host&quot;)-&gt;second.size() != 1) {</span></div>
-<div class="line"><span class="lineno">  330</span><span class="comment">            m_statusCode = BAD_REQUEST;</span></div>
-<div class="line"><span class="lineno">  331</span><span class="comment">            m_type = ERROR;</span></div>
-<div class="line"><span class="lineno">  332</span><span class="comment">            return;</span></div>
-<div class="line"><span class="lineno">  333</span><span class="comment">        } */</span></div>
-<div class="line"><span class="lineno">  334</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Response_html_af757d6a96ba06dd76fab3ba48f8ee5a8"><div class="ttname"><a href="classhttp_1_1Response.html#af757d6a96ba06dd76fab3ba48f8ee5a8">http::Response::checkAndReconstructTargetUri</a></div><div class="ttdeci">void checkAndReconstructTargetUri(const Request &amp;request)</div><div class="ttdoc">find request target form, check it and reconstruct it (RFC 9112 3.2)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00283">Response.cpp:283</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00305">305</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  306</span>    {</div>
+<div class="line"><span class="lineno">  307</span>        <span class="keywordflow">if</span> (request.getRequestData().method != <span class="stringliteral">&quot;GET&quot;</span> &amp;&amp; request.getRequestData().method != <span class="stringliteral">&quot;POST&quot;</span> &amp;&amp; request.getRequestData().method != <span class="stringliteral">&quot;DELETE&quot;</span>) {</div>
+<div class="line"><span class="lineno">  308</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702">NOT_IMPLEMENTED</a>;</div>
+<div class="line"><span class="lineno">  309</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">ERROR</a>;</div>
+<div class="line"><span class="lineno">  310</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  311</span>        }</div>
+<div class="line"><span class="lineno">  312</span>        <span class="keywordflow">if</span> (request.getRequestData().uri.length() &gt; 8192) {</div>
+<div class="line"><span class="lineno">  313</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a873ca8ab2862e690356decb197a57b21">URI_TOO_LONG</a>;</div>
+<div class="line"><span class="lineno">  314</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">ERROR</a>;</div>
+<div class="line"><span class="lineno">  315</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  316</span>        }</div>
+<div class="line"><span class="lineno">  317</span>        <a class="code hl_function" href="classhttp_1_1Response.html#af757d6a96ba06dd76fab3ba48f8ee5a8">checkAndReconstructTargetUri</a>(request);</div>
+<div class="line"><span class="lineno">  318</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> == <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">ERROR</a>) {</div>
+<div class="line"><span class="lineno">  319</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  320</span>        }</div>
+<div class="line"><span class="lineno">  321</span>        <span class="keywordflow">if</span> (request.getRequestData().version != <span class="stringliteral">&quot;HTTP/1.1&quot;</span>) {</div>
+<div class="line"><span class="lineno">  322</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff">HTTP_VERSION_NOT_SUPPORTED</a>;</div>
+<div class="line"><span class="lineno">  323</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">ERROR</a>;</div>
+<div class="line"><span class="lineno">  324</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  325</span>        }</div>
+<div class="line"><span class="lineno">  326</span>        <span class="comment">// (RFC 9112 3.2)</span></div>
+<div class="line"><span class="lineno">  327</span><span class="comment">/*      if (request.getRequestData().headers.find(&quot;Host&quot;) == request.getRequestData().headers.end() </span></div>
+<div class="line"><span class="lineno">  328</span><span class="comment">            || request.getRequestData().headers.find(&quot;Host&quot;)-&gt;second.size() != 1) {</span></div>
+<div class="line"><span class="lineno">  329</span><span class="comment">            m_statusCode = BAD_REQUEST;</span></div>
+<div class="line"><span class="lineno">  330</span><span class="comment">            m_type = ERROR;</span></div>
+<div class="line"><span class="lineno">  331</span><span class="comment">            return;</span></div>
+<div class="line"><span class="lineno">  332</span><span class="comment">        } */</span></div>
+<div class="line"><span class="lineno">  333</span>    }</div>
+<div class="ttc" id="aclasshttp_1_1Response_html_af757d6a96ba06dd76fab3ba48f8ee5a8"><div class="ttname"><a href="classhttp_1_1Response.html#af757d6a96ba06dd76fab3ba48f8ee5a8">http::Response::checkAndReconstructTargetUri</a></div><div class="ttdeci">void checkAndReconstructTargetUri(const Request &amp;request)</div><div class="ttdoc">find request target form, check it and reconstruct it (RFC 9112 3.2)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00282">Response.cpp:282</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff">http::HTTP_VERSION_NOT_SUPPORTED</a></div><div class="ttdeci">@ HTTP_VERSION_NOT_SUPPORTED</div><div class="ttdef"><b>Definition</b> <a href="constants_8hpp_source.html#l00055">constants.hpp:54</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762a873ca8ab2862e690356decb197a57b21"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a873ca8ab2862e690356decb197a57b21">http::URI_TOO_LONG</a></div><div class="ttdeci">@ URI_TOO_LONG</div><div class="ttdef"><b>Definition</b> <a href="constants_8hpp_source.html#l00042">constants.hpp:42</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702">http::NOT_IMPLEMENTED</a></div><div class="ttdeci">@ NOT_IMPLEMENTED</div><div class="ttdef"><b>Definition</b> <a href="constants_8hpp_source.html#l00050">constants.hpp:50</a></div></div>
@@ -748,7 +748,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  134</span>            <span class="keywordflow">return</span>;</div>
 <div class="line"><span class="lineno">  135</span>        }</div>
 <div class="line"><span class="lineno">  136</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a2e20040657655a595e84a9c1f1f9293a"><div class="ttname"><a href="classhttp_1_1Response.html#a2e20040657655a595e84a9c1f1f9293a">http::Response::checkRequestData</a></div><div class="ttdeci">void checkRequestData(const Request &amp;request)</div><div class="ttdoc">Check if the request data is valid, and set the status code accordingly.</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00306">Response.cpp:306</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a2e20040657655a595e84a9c1f1f9293a"><div class="ttname"><a href="classhttp_1_1Response.html#a2e20040657655a595e84a9c1f1f9293a">http::Response::checkRequestData</a></div><div class="ttdeci">void checkRequestData(const Request &amp;request)</div><div class="ttdoc">Check if the request data is valid, and set the status code accordingly.</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00305">Response.cpp:305</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1278,7 +1278,7 @@ Here is the caller graph for this function:</div>
 <area shape="rect" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="1552,42,1805,67"/>
 <area shape="rect" href="classhttp_1_1Response.html#af757d6a96ba06dd76fab3ba48f8ee5a8" title="find request target form, check it and reconstruct it (RFC 9112 3.2)" alt="" coords="1303,5,1494,45"/>
 <area shape="poly" title=" " alt="" coords="1544,43,1494,38,1495,33,1544,38"/>
-<area shape="rect" href="classhttp_1_1Response.html#a56b823ed9de6185729c6c3bc325a0ba8" title=" " alt="" coords="1293,70,1504,95"/>
+<area shape="rect" href="classhttp_1_1Response.html#a7df178d1590622ac14b509e43d3d6235" title=" " alt="" coords="1293,70,1504,95"/>
 <area shape="poly" title=" " alt="" coords="1538,71,1504,75,1504,70,1538,66"/>
 <area shape="rect" href="classhttp_1_1Response.html#a2e20040657655a595e84a9c1f1f9293a" title="Check if the request data is valid, and set the status code accordingly." alt="" coords="996,13,1245,38"/>
 <area shape="poly" title=" " alt="" coords="1289,28,1245,28,1245,23,1289,23"/>
@@ -1339,40 +1339,39 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00241">241</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  242</span>    {</div>
-<div class="line"><span class="lineno">  243</span>        std::string scheme;</div>
-<div class="line"><span class="lineno">  244</span>        std::string authority;</div>
-<div class="line"><span class="lineno">  245</span>        std::string pure_path;</div>
-<div class="line"><span class="lineno">  246</span>        std::string query;</div>
-<div class="line"><span class="lineno">  247</span>        <span class="keywordflow">if</span> (path.find(<span class="charliteral">&#39;?&#39;</span>) != std::string::npos) { <span class="comment">// optional query part after the first question mark</span></div>
-<div class="line"><span class="lineno">  248</span>            query = path.substr(path.find(<span class="charliteral">&#39;?&#39;</span>) +1); </div>
-<div class="line"><span class="lineno">  249</span>        }</div>
-<div class="line"><span class="lineno">  250</span>        pure_path = path.substr(0, path.find(<span class="charliteral">&#39;?&#39;</span>));</div>
-<div class="line"><span class="lineno">  251</span>        <span class="keywordflow">if</span> (pure_path[0] != <span class="charliteral">&#39;/&#39;</span>) {</div>
-<div class="line"><span class="lineno">  252</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  253</span>        }</div>
-<div class="line"><span class="lineno">  254</span>        <span class="keywordtype">int</span> found = 0;</div>
-<div class="line"><span class="lineno">  255</span>        <span class="keywordflow">for</span> (std::vector&lt;t_header&gt;::const_iterator it = request.getRequestData().headers.begin(); it != request.getRequestData().headers.end(); ++it)</div>
-<div class="line"><span class="lineno">  256</span>        {</div>
-<div class="line"><span class="lineno">  257</span>            <span class="keywordflow">if</span> (it-&gt;first == <span class="stringliteral">&quot;Host&quot;</span>) {</div>
-<div class="line"><span class="lineno">  258</span>                <span class="keywordflow">if</span> (found == 1) {</div>
-<div class="line"><span class="lineno">  259</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  260</span>                }</div>
-<div class="line"><span class="lineno">  261</span>                <span class="keywordflow">if</span> (it-&gt;second.size() != 1) {</div>
-<div class="line"><span class="lineno">  262</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  263</span>                }</div>
-<div class="line"><span class="lineno">  264</span>                authority = it-&gt;second[0];</div>
-<div class="line"><span class="lineno">  265</span>                found = 1;</div>
-<div class="line"><span class="lineno">  266</span>            }</div>
-<div class="line"><span class="lineno">  267</span>        }</div>
-<div class="line"><span class="lineno">  268</span>        <span class="keywordflow">if</span> (found == 0) {</div>
-<div class="line"><span class="lineno">  269</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  270</span>        }</div>
-<div class="line"><span class="lineno">  271</span>        pathData.query = query;</div>
-<div class="line"><span class="lineno">  272</span>        pathData.pure_path = pure_path;</div>
-<div class="line"><span class="lineno">  273</span>        pathData.authority = authority;</div>
-<div class="line"><span class="lineno">  274</span>        pathData.scheme = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">  275</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  276</span>    }</div>
+<div class="line"><span class="lineno">  243</span>        std::string authority;</div>
+<div class="line"><span class="lineno">  244</span>        std::string pure_path;</div>
+<div class="line"><span class="lineno">  245</span>        std::string query;</div>
+<div class="line"><span class="lineno">  246</span>        <span class="keywordflow">if</span> (path.find(<span class="charliteral">&#39;?&#39;</span>) != std::string::npos) { <span class="comment">// optional query part after the first question mark</span></div>
+<div class="line"><span class="lineno">  247</span>            query = path.substr(path.find(<span class="charliteral">&#39;?&#39;</span>) +1); </div>
+<div class="line"><span class="lineno">  248</span>        }</div>
+<div class="line"><span class="lineno">  249</span>        pure_path = path.substr(0, path.find(<span class="charliteral">&#39;?&#39;</span>));</div>
+<div class="line"><span class="lineno">  250</span>        <span class="keywordflow">if</span> (pure_path[0] != <span class="charliteral">&#39;/&#39;</span>) {</div>
+<div class="line"><span class="lineno">  251</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  252</span>        }</div>
+<div class="line"><span class="lineno">  253</span>        <span class="keywordtype">int</span> found = 0;</div>
+<div class="line"><span class="lineno">  254</span>        <span class="keywordflow">for</span> (std::vector&lt;t_header&gt;::const_iterator it = request.getRequestData().headers.begin(); it != request.getRequestData().headers.end(); ++it)</div>
+<div class="line"><span class="lineno">  255</span>        {</div>
+<div class="line"><span class="lineno">  256</span>            <span class="keywordflow">if</span> (it-&gt;first == <span class="stringliteral">&quot;Host&quot;</span>) {</div>
+<div class="line"><span class="lineno">  257</span>                <span class="keywordflow">if</span> (found == 1) {</div>
+<div class="line"><span class="lineno">  258</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  259</span>                }</div>
+<div class="line"><span class="lineno">  260</span>                <span class="keywordflow">if</span> (it-&gt;second.size() != 1) {</div>
+<div class="line"><span class="lineno">  261</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  262</span>                }</div>
+<div class="line"><span class="lineno">  263</span>                authority = it-&gt;second[0];</div>
+<div class="line"><span class="lineno">  264</span>                found = 1;</div>
+<div class="line"><span class="lineno">  265</span>            }</div>
+<div class="line"><span class="lineno">  266</span>        }</div>
+<div class="line"><span class="lineno">  267</span>        <span class="keywordflow">if</span> (found == 0) {</div>
+<div class="line"><span class="lineno">  268</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  269</span>        }</div>
+<div class="line"><span class="lineno">  270</span>        pathData.query = query;</div>
+<div class="line"><span class="lineno">  271</span>        pathData.pure_path = pure_path;</div>
+<div class="line"><span class="lineno">  272</span>        pathData.authority = authority;</div>
+<div class="line"><span class="lineno">  273</span>        pathData.scheme = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">  274</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  275</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1391,7 +1390,7 @@ Here is the caller graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="1552,42,1787,67"/>
 <area shape="rect" href="classhttp_1_1Response.html#af757d6a96ba06dd76fab3ba48f8ee5a8" title="find request target form, check it and reconstruct it (RFC 9112 3.2)" alt="" coords="1303,5,1494,45"/>
 <area shape="poly" title=" " alt="" coords="1538,43,1494,38,1495,33,1539,38"/>
-<area shape="rect" href="classhttp_1_1Response.html#a56b823ed9de6185729c6c3bc325a0ba8" title=" " alt="" coords="1293,70,1504,95"/>
+<area shape="rect" href="classhttp_1_1Response.html#a7df178d1590622ac14b509e43d3d6235" title=" " alt="" coords="1293,70,1504,95"/>
 <area shape="poly" title=" " alt="" coords="1538,71,1504,74,1504,69,1538,66"/>
 <area shape="rect" href="classhttp_1_1Response.html#a2e20040657655a595e84a9c1f1f9293a" title="Check if the request data is valid, and set the status code accordingly." alt="" coords="996,13,1245,38"/>
 <area shape="poly" title=" " alt="" coords="1289,28,1245,28,1245,23,1289,23"/>
@@ -1605,8 +1604,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a56b823ed9de6185729c6c3bc325a0ba8" name="a56b823ed9de6185729c6c3bc325a0ba8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56b823ed9de6185729c6c3bc325a0ba8">&#9670;&#160;</a></span>testParseURI()</h2>
+<a id="a7df178d1590622ac14b509e43d3d6235" name="a7df178d1590622ac14b509e43d3d6235"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7df178d1590622ac14b509e43d3d6235">&#9670;&#160;</a></span>testParseURI()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1614,7 +1613,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">int http::Response::testParseURI </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>uri</em>, </td>
         </tr>
         <tr>
@@ -1631,51 +1630,51 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00336">336</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  337</span>    {</div>
-<div class="line"><span class="lineno">  338</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;-----------------------------------&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  339</span>        <a class="code hl_typedef" href="namespacehttp.html#a5596bfd6bd3cc3870c674bf38cd4a165">t_PathData</a> pathData;</div>
-<div class="line"><span class="lineno">  340</span>        <span class="keywordflow">if</span> (mode == 0) {</div>
-<div class="line"><span class="lineno">  341</span>            Request req;</div>
-<div class="line"><span class="lineno">  342</span>            std::vector&lt;std::string&gt; host;</div>
-<div class="line"><span class="lineno">  343</span>            host.push_back(<span class="stringliteral">&quot;localhost&quot;</span>);</div>
-<div class="line"><span class="lineno">  344</span>            req.setHeader(<span class="stringliteral">&quot;Host&quot;</span>, host);</div>
-<div class="line"><span class="lineno">  345</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classhttp_1_1Response.html#a7ce94f17523ca26c67126fca5a7a67fb">parseOriginForm</a>(uri, req, pathData)) {</div>
-<div class="line"><span class="lineno">  346</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Origin form parsed successfully&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  347</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  348</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Origin form failed&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  349</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;-----------------------------------&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  350</span>                <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  351</span>            }</div>
-<div class="line"><span class="lineno">  352</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  353</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classhttp_1_1Response.html#af3ce515c1a3145598ce568ae27e681a4">parseAbsoluteForm</a>(uri, Request(), pathData)) {</div>
-<div class="line"><span class="lineno">  354</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Absolute form parsed successfully&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  355</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  356</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Absolute form failed&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  357</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;-----------------------------------&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  358</span>                <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  359</span>            }</div>
-<div class="line"><span class="lineno">  360</span>        }</div>
-<div class="line"><span class="lineno">  361</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Scheme: &quot;</span> &lt;&lt; pathData.<a class="code hl_variable" href="structhttp_1_1s__PathData.html#a86f2ec7cc99ae4c42cd86bc64c53903c">scheme</a> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  362</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Authority: &quot;</span> &lt;&lt; pathData.authority &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  363</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Pure path: &quot;</span> &lt;&lt; pathData.pure_path &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  364</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Query: &quot;</span> &lt;&lt; pathData.query &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  365</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;-----------------------------------&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  366</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  367</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00335">335</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  336</span>    {</div>
+<div class="line"><span class="lineno">  337</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;-----------------------------------&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  338</span>        <a class="code hl_typedef" href="namespacehttp.html#a5596bfd6bd3cc3870c674bf38cd4a165">t_PathData</a> pathData;</div>
+<div class="line"><span class="lineno">  339</span>        <span class="keywordflow">if</span> (mode == 0) {</div>
+<div class="line"><span class="lineno">  340</span>            Request req;</div>
+<div class="line"><span class="lineno">  341</span>            std::vector&lt;std::string&gt; host;</div>
+<div class="line"><span class="lineno">  342</span>            host.push_back(<span class="stringliteral">&quot;localhost&quot;</span>);</div>
+<div class="line"><span class="lineno">  343</span>            req.setHeader(<span class="stringliteral">&quot;Host&quot;</span>, host);</div>
+<div class="line"><span class="lineno">  344</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classhttp_1_1Response.html#a7ce94f17523ca26c67126fca5a7a67fb">parseOriginForm</a>(uri, req, pathData)) {</div>
+<div class="line"><span class="lineno">  345</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Origin form parsed successfully&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  346</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  347</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Origin form failed&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  348</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;-----------------------------------&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  349</span>                <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  350</span>            }</div>
+<div class="line"><span class="lineno">  351</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  352</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classhttp_1_1Response.html#af3ce515c1a3145598ce568ae27e681a4">parseAbsoluteForm</a>(uri, Request(), pathData)) {</div>
+<div class="line"><span class="lineno">  353</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Absolute form parsed successfully&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  354</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  355</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Absolute form failed&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  356</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;-----------------------------------&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  357</span>                <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  358</span>            }</div>
+<div class="line"><span class="lineno">  359</span>        }</div>
+<div class="line"><span class="lineno">  360</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Scheme: &quot;</span> &lt;&lt; pathData.<a class="code hl_variable" href="structhttp_1_1s__PathData.html#a86f2ec7cc99ae4c42cd86bc64c53903c">scheme</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  361</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Authority: &quot;</span> &lt;&lt; pathData.authority &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  362</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Pure path: &quot;</span> &lt;&lt; pathData.pure_path &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  363</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Query: &quot;</span> &lt;&lt; pathData.query &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  364</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;-----------------------------------&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  365</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  366</span>    }</div>
 <div class="ttc" id="anamespacehttp_html_a5596bfd6bd3cc3870c674bf38cd4a165"><div class="ttname"><a href="namespacehttp.html#a5596bfd6bd3cc3870c674bf38cd4a165">http::t_PathData</a></div><div class="ttdeci">struct http::s_PathData t_PathData</div></div>
 <div class="ttc" id="astructhttp_1_1s__PathData_html_a86f2ec7cc99ae4c42cd86bc64c53903c"><div class="ttname"><a href="structhttp_1_1s__PathData.html#a86f2ec7cc99ae4c42cd86bc64c53903c">http::s_PathData::scheme</a></div><div class="ttdeci">std::string scheme</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00020">Response.hpp:20</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a56b823ed9de6185729c6c3bc325a0ba8_cgraph.png" border="0" usemap="#aclasshttp_1_1Response_a56b823ed9de6185729c6c3bc325a0ba8_cgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a56b823ed9de6185729c6c3bc325a0ba8_cgraph" id="aclasshttp_1_1Response_a56b823ed9de6185729c6c3bc325a0ba8_cgraph">
+<div class="center"><img src="classhttp_1_1Response_a7df178d1590622ac14b509e43d3d6235_cgraph.png" border="0" usemap="#aclasshttp_1_1Response_a7df178d1590622ac14b509e43d3d6235_cgraph" alt=""/></div>
+<map name="aclasshttp_1_1Response_a7df178d1590622ac14b509e43d3d6235_cgraph" id="aclasshttp_1_1Response_a7df178d1590622ac14b509e43d3d6235_cgraph">
 <area shape="rect" title=" " alt="" coords="5,55,216,80"/>
 <area shape="rect" href="classhttp_1_1Response.html#af3ce515c1a3145598ce568ae27e681a4" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="264,5,517,31"/>
 <area shape="poly" title=" " alt="" coords="183,52,304,31,305,36,184,57"/>
 <area shape="rect" href="classhttp_1_1Response.html#a7ce94f17523ca26c67126fca5a7a67fb" title=" " alt="" coords="273,55,508,80"/>
 <area shape="poly" title=" " alt="" coords="216,65,260,65,260,70,216,70"/>
-<area shape="rect" href="classhttp_1_1Request.html#a7c09eb04488314c1687c04d32f025a99" title=" " alt="" coords="299,104,483,129"/>
+<area shape="rect" href="classhttp_1_1Request.html#aa53cfe5217e6457a2f4b0f81b32939cf" title=" " alt="" coords="299,104,483,129"/>
 <area shape="poly" title=" " alt="" coords="184,77,305,99,304,104,183,83"/>
 <area shape="rect" href="classhttp_1_1Request.html#a5b597eb2a2ab75e361c2e26f81a2a578" title=" " alt="" coords="565,55,788,80"/>
 <area shape="poly" title=" " alt="" coords="508,65,551,65,551,70,508,70"/>
