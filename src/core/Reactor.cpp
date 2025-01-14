@@ -10,11 +10,9 @@
 #include <cstring>
 #include <stdexcept>
 
-// TODO: refactor this fucker but shit is working (except some nice fd and memory leaks)
-
 namespace core {
 
-	bool Reactor::m_reacting = true;
+	bool Reactor::m_reacting = false;
 
 	/**
 	 * @brief Constructs a new Reactor object.
@@ -44,9 +42,9 @@ namespace core {
 	 * @param other The other Reactor object to copy.
 	 */
 	Reactor::Reactor(const Reactor& other)
-		: m_epoll_master_fd(other.getEpollFd())
-		, m_vServers(other.getVirtualServers())
-		, m_eventHandlers(other.getEvents()) {
+		: m_epoll_master_fd(other.m_epoll_master_fd)
+		, m_vServers(other.m_vServers)
+		, m_eventHandlers(other.m_eventHandlers) {
 	}
 
 	/**
@@ -55,110 +53,68 @@ namespace core {
 	 * @return A reference to the assigned Reactor object.
 	 */
 	Reactor& Reactor::operator=(const Reactor& rhs) {
-		if (this == &rhs)
+		if (this == &rhs) {
 			return *this;
-		m_epoll_master_fd = rhs.getEpollFd();
-		m_vServers = rhs.getVirtualServers();
+		}
+
+		m_epoll_master_fd = rhs.m_epoll_master_fd;
+		m_vServers = rhs.m_vServers;
 		return *this;
 	}
 
-	void Reactor::init(void) throw(std::exception) {
+	void Reactor::init(config::t_config_data& conf) {
+		signal(SIGINT, handleSigint);
+		signal(SIGQUIT, SIG_IGN);
+
 		m_epoll_master_fd = epoll_create1(0);
-		if (m_epoll_master_fd < 0)
-			throw std::exception();
+		if (m_epoll_master_fd < 0) {
+			throw std::runtime_error("epoll_create1() failed: " + std::string(strerror(errno)));
+		}
+
+		for (size_t i = 0; i < conf.servers.size(); ++i) {
+			http::VirtualServer server(conf.servers.at(i));
+			server.listen();
+			m_vServers.push_back(server);
+		}
 	}
 
-	//
-	//	Getters and setters
-	//
+	void Reactor::react() {
+		t_event events[MAX_EVENTS];
 
-	int Reactor::getEpollFd(void) const {
-		return m_epoll_master_fd;
-	}
+		m_reacting = true;
+		while (m_reacting) {
+			acceptNewConnections();
 
-	const t_virtualServers& Reactor::getVirtualServers(void) const {
-		return m_vServers;
-	}
-
-	t_virtualServers& Reactor::getVirtualServers(void) {
-		return m_vServers;
-	}
-
-	const std::map<int, EventHandler>& Reactor::getEvents(void) const {
-		return m_eventHandlers;
-	}
-
-	std::map<int, EventHandler>& Reactor::getEvents(void) {
-		return m_eventHandlers;
-	}
-
-	void Reactor::addVirtualServer(config::t_server& serverConfig) throw(std::exception) {
-		http::VirtualServer server(serverConfig);
-
-		server.listen();
-		m_vServers.push_back(server);
-	}
-
-	bool Reactor::addVirtualServers(config::t_config_data& configData) {
-		for (size_t i = 0; i < configData.servers.size(); ++i) {
-			try {
-				http::VirtualServer server(configData.servers.at(i));
-				server.getSocket().listen();
-				m_vServers.push_back(server);
-			} catch (const std::exception& e) {
-				m_vServers.clear();
-				std::cerr << e.what() << std::endl;
-				return false;
+			int nEvents = epoll_wait(m_epoll_master_fd, events, MAX_EVENTS, 60);
+			if (nEvents < 0) {
+				if (errno == EINTR) {
+					continue;
+				}
+				throw std::runtime_error("epoll_wait() failed: " + std::string(strerror(errno)));
 			}
-		}
-		return true;
-	}
 
-	bool Reactor::removeVirtualServer(t_virtualServers::iterator it) {
-		for (http::t_connections::iterator connection = it->getConnections().begin(); connection != it->getConnections().end(); ++connection) {
-			connection->close();
-		}
-		it->getSocket().close();
-		m_vServers.erase(it);
-		return true;
-	}
-
-	void Reactor::deleteEventHandler(int fd) {
-		try {
-			m_eventHandlers.erase(fd);
-		} catch (std::exception& e) {
-			std::cout << "deleteEventHandler failed: " << e.what() << std::endl;
-		}
-	}
-
-	EventHandler& Reactor::getEventHandler(int fd) {
-		try {
-			return m_eventHandlers.at(fd);
-		} catch (std::exception& e) {
-			std::cout << "getEventHandler failed: " << e.what() << std::endl;
-			throw e;
+			handleEvents(events, nEvents);
+			pruneConnections(events, nEvents);
 		}
 	}
 
 	void Reactor::registerHandler(http::VirtualServer& vServer, http::Connection& connection, uint32_t events) {
+		t_event event;
 		EventHandler handler(vServer, connection, events);
 		int fd = connection.getClientSocketFd();
-		t_event event;
 
 		event.events = events;
 		event.data.fd = fd;
 		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_ADD, fd, &event) < 0) {
-			throw std::runtime_error("Crud! Couldn't register event handler!");
+			throw std::runtime_error("epoll_ctl() failed: " + std::string(strerror(errno)));
 		}
 		m_eventHandlers.insert(std::make_pair(fd, handler));
 	}
 
-	void Reactor::unregisterHandler(int fd) throw(std::runtime_error) {
+	void Reactor::unregisterHandler(int fd) {
 		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_DEL, fd, NULL) < 0) {
-			std::cout << fd << " " << errno << std::endl;
-			throw std::runtime_error("Пиздец! Couldn't unregister event handler!");
+			throw std::runtime_error("epoll_ctl() failed: " + std::string(strerror(errno)));
 		}
-		std::cout << "Unregistered a handler!" << std::endl;
 	}
 
 	void Reactor::acceptNewConnections() {
@@ -168,7 +124,7 @@ namespace core {
 			while (vServer.addConnection()) {
 				http::Connection& connection = vServer.getConnections().back();
 
-				try { // we have to get rid of this shit try stuff
+				try {
 					this->registerHandler(vServer, connection, EPOLLIN | EPOLLOUT | EPOLLHUP);
 				} catch (std::exception& e) {
 					std::cerr << "acceptNewConnections: " << e.what() << std::endl;
@@ -179,82 +135,47 @@ namespace core {
 
 	void Reactor::pruneConnections(t_event* events, int nEvents) {
 		for (int i = 0; i < nEvents; ++i) {
-			t_event& event = events[i];
-			EventHandler& handler = getEventHandler(event.data.fd);
+			try {
+				t_event& event = events[i];
+				EventHandler& handler = m_eventHandlers.at(event.data.fd);
 
-			if (handler.shouldDrop()) {
-				http::Connection& connection = handler.getConnection();
-				int fd = connection.getClientSocketFd();
-				std::cout << "Dropping connection for " << fd << "!" << std::endl;
-				unregisterHandler(fd);
-				handler.getServer().removeConnection(connection);
-				deleteEventHandler(fd);
+				if (handler.shouldDrop()) {
+					http::Connection& connection = handler.getConnection();
+					int fd = connection.getClientSocketFd();
+
+					unregisterHandler(fd);
+					handler.getServer().removeConnection(connection);
+					m_eventHandlers.erase(fd);
+				}
+			} catch (const std::exception& e) {
+				std::cerr << "pruneConnections: " << e.what() << std::endl;
 			}
-		}
-	}
-
-	void Reactor::handleSigint(int signum) {
-		if (signum == SIGINT)
-			m_reacting = false;
-	}
-
-	void Reactor::react() {
-		t_event events[MAX_EVENTS];
-		int prevEvents = 0;
-		int i = 0;
-
-		signal(SIGINT, handleSigint);
-		signal(SIGQUIT, SIG_IGN);
-
-		while (m_reacting) {
-			acceptNewConnections();
-			int nEvents = epoll_wait(m_epoll_master_fd, events, MAX_EVENTS, 60);
-
-			if (nEvents != prevEvents && m_reacting == true) {
-				std::cout << "Now handling " << nEvents << " instead of " << prevEvents << " events!" << std::endl;
-				prevEvents = nEvents;
-				i++;
-			}
-
-			if (nEvents < 0 && m_reacting == true) {
-				std::cout << "Errno for epoll_wait: " << errno << std::endl;
-				throw std::runtime_error("epoll_wait failed");
-			}
-
-			handleEvents(events, nEvents);
-			pruneConnections(events, nEvents);
 		}
 	}
 
 	void Reactor::handleEvents(t_event* events, int nEvents) {
 		for (int i = 0; i < nEvents; ++i) {
-			t_event& event = events[i];
-			EventHandler& handler = getEventHandler(event.data.fd);
+			try {
+				t_event& event = events[i];
+				EventHandler& handler = m_eventHandlers.at(event.data.fd);
 
-			if (event.events & EPOLLHUP) {
-				// possibly also if epoll.events is ANYTHINHG else????????
-				// this would indicate some kind of error, could this even happen since we don't listen to anything else?
-				handler.killSelf();
-				return;
+				if (event.events & EPOLLHUP || event.events & EPOLLERR) {
+					handler.killSelf();
+				} else if (event.events & EPOLLIN) {
+					handler.handleRequest();
+					handler.buildResponse();
+				} else if (event.events & EPOLLOUT) {
+					handler.sendResponse();
+				}
+			} catch (const std::exception& e) {
+				std::cerr << "handleEvents: " << e.what() << std::endl;
 			}
-			if (event.events & EPOLLIN) {
-				handler.handleRequest();
-				handler.buildResponse();
-				return;
-			}
-			if (event.events & EPOLLOUT) {
-				handler.sendResponse();
-				return;
-			}
-			// if (handler.completed() && !handler.shouldDrop()) {
-			// 	std::cout << "HANDLEEVENTS FOUND COMPLETED HANDLER AND SHOULDN'T DROP, MOVE IT TO NEXT STATE" << std::endl;
-			// 	// TODO: abort connection if it gets dropped
-			// 	// double check if there's another case where on success we shouldn't respond
-			// 	// maybe when streaming several files for a single thingy, I guess
-			// 	// if was out, change event to EPOLLIN
-			// 	// unless Connection header was set to "close" in the Client's Request
-			// 	// is there any other case?
-			// }
+		}
+	}
+
+	void Reactor::handleSigint(int signum) {
+		if (signum == SIGINT) {
+			m_reacting = false;
 		}
 	}
 

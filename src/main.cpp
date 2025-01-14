@@ -18,9 +18,7 @@ int main(int argc, char** const argv) {
 		config::t_config_data configData = configFileParser.getConfigData();
 
 		core::Reactor reactor;
-		reactor.init();
-		if (reactor.addVirtualServers(configData) == false)
-			return 1;
+		reactor.init(configData);
 		reactor.react();
 	} catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;

@@ -27,19 +27,7 @@ namespace core {
 			Reactor();
 			~Reactor();
 
-			void init() throw(std::exception);
-			int getEpollFd() const;
-			const t_virtualServers& getVirtualServers() const;
-			t_virtualServers& getVirtualServers();
-			const std::map<int, EventHandler>& getEvents() const;
-			std::map<int, EventHandler>& getEvents();
-
-			void addVirtualServer(config::t_server& serverConfig) throw(std::exception);
-			bool removeVirtualServer(t_virtualServers::iterator it);
-			bool addVirtualServers(config::t_config_data& configData);
-			void deleteEventHandler(int);
-			EventHandler& getEventHandler(int);
-
+			void init(config::t_config_data& conf);
 			void react();
 
 		private:
@@ -49,7 +37,7 @@ namespace core {
 			static void handleSigint(int);
 
 			void registerHandler(http::VirtualServer& vServer, http::Connection& connection, uint32_t events);
-			void unregisterHandler(int fd) throw(std::runtime_error);
+			void unregisterHandler(int fd);
 			void handleEvents(t_event* events, int nEvents);
 
 			void acceptNewConnections();
@@ -58,6 +46,7 @@ namespace core {
 		private:
 			static bool m_reacting;
 			int m_epoll_master_fd;
+
 			t_virtualServers m_vServers;
 			std::map<int, EventHandler> m_eventHandlers;
 	};

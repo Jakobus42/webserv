@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-prefixes=("feat" "bugfix" "hotfix" "chore" "sandbox" "build" "refactor")
+prefixes=("feat" "bugfix" "hotfix" "chore" "sandbox" "build" "refactor" "style")
 
 branch_name=$(git rev-parse --abbrev-ref HEAD)
 
