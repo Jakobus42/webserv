@@ -70,7 +70,7 @@ namespace http {
 			void reset(void);
 
 			// for testing purposes
-			int testParseURI(std::string uri, int mode);
+			int testParseURI(const std::string& uri, int mode);
 
 		private:
 			ResponseType m_type;

@@ -81,7 +81,7 @@ namespace http {
 		return m_chunkedStatus;
 	};
 
-	void Request::setHeader(const std::string key, const std::vector<std::string> value) {
+	void Request::setHeader(const std::string& key, const std::vector<std::string>& value) {
 		m_requestData.headers.push_back(std::make_pair(key, value));
 	}
 

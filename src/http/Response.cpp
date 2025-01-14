@@ -240,7 +240,6 @@ namespace http {
 
 	bool  Response::parseOriginForm(const std::string &path, const Request& request, t_PathData &pathData)
 	{
-		std::string scheme;
 		std::string authority;
 		std::string pure_path;
 		std::string query;
@@ -333,7 +332,7 @@ namespace http {
 		} */
 	}
 
-	int Response::testParseURI(std::string uri, int mode)
+	int Response::testParseURI(const std::string& uri, int mode)
 	{
 		std::cout << "-----------------------------------" << std::endl;
 		t_PathData pathData;
