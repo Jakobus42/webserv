@@ -1,4 +1,4 @@
-#include "http/constants.hpp"
+#include "http/http.hpp"
 
 #include <cstdio>
 
@@ -68,9 +68,8 @@ namespace http {
 				return "OPTIONS";
 			case HEAD:
 				return "HEAD";
-			default:
-				return "UNKNOWN";
 		}
+		throw http::exception(NOT_IMPLEMENTED, "method not implemented");
 	}
 
 	Method stringToMethod(const std::string& method) {
@@ -89,7 +88,7 @@ namespace http {
 		} else if (method == "HEAD") {
 			return HEAD;
 		}
-		throw std::invalid_argument("invalid http method");
+		throw http::exception(NOT_IMPLEMENTED, "method not implemented");
 	}
 
 	std::string getErrorPage(StatusCode code) {
@@ -105,6 +104,34 @@ namespace http {
 		snprintf(errorPage, sizeof(errorPage), errorPageTemplate, code, statusMessage, code, statusMessage);
 
 		return std::string(errorPage);
+	}
+
+	exception::exception(StatusCode code)
+		: std::runtime_error(buildErrorMessage(code, getStatusMessage(code)))
+		, m_code(code)
+		, m_message(getStatusMessage(code)) {
+	}
+
+	exception::exception(StatusCode code, const std::string& message)
+		: std::runtime_error(buildErrorMessage(code, message))
+		, m_code(code)
+		, m_message(message) {
+	}
+
+	exception::~exception() throw() {}
+
+	StatusCode exception::getCode() const {
+		return m_code;
+	}
+
+	const std::string& exception::getMessage() const {
+		return m_message;
+	}
+
+	std::string exception::buildErrorMessage(StatusCode code, const std::string& message) {
+		std::ostringstream oss;
+		oss << static_cast<int>(code) << " - " << message;
+		return oss.str(); // Only one construction of the string
 	}
 
 } // namespace http

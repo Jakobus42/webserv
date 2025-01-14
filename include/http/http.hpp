@@ -10,8 +10,7 @@
 
 namespace http {
 
-	const uint32_t LOCALHOST_ADDRESS = 0x7F000001;	// 127.0.0.1
-	const uint32_t DEFAULT_MAX_BODY_SIZE = 1048576; // 1MB
+	const uint32_t LOCALHOST_ADDRESS = 0x7F000001; // 127.0.0.1
 
 	const std::string HTTP_VERSION = "HTTP/1.1";
 	const std::string CRLF = "\r\n";
@@ -73,12 +72,21 @@ namespace http {
 		CONNECT
 	};
 
-	enum RequestStatus {
-		PARSE_START,
-		PARSE_HEAD,
-		PARSE_HEADERS,
-		PARSE_BODY,
-		PARSE_END
+	class exception : public std::runtime_error {
+		public:
+			explicit exception(StatusCode code);
+			exception(StatusCode code, const std::string& message);
+			virtual ~exception() throw();
+
+			StatusCode getCode() const;
+			const std::string& getMessage() const;
+
+		private:
+			std::string buildErrorMessage(StatusCode code, const std::string& message);
+
+		private:
+			StatusCode m_code;
+			std::string m_message;
 	};
 
 	const std::string& getStatusMessage(StatusCode statusCode);

@@ -6,7 +6,7 @@
 
 namespace http {
 
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZEE 16 * 1024 // 16KB
 
 	/**
 	 * @class RequestParser
@@ -18,7 +18,7 @@ namespace http {
 			~RequestParser();
 
 			void process();
-			shared::Buffer<BUFFER_SIZE>& getWriteBuffer();
+			shared::Buffer<BUFFER_SIZEE>& getWriteBuffer();
 
 			void reset();
 
@@ -55,12 +55,11 @@ namespace http {
 
 			char* readLine();
 
+			void parse();
 			void parseRequestLine();
-
 			void parseHeaders();
 			Token extractHeaderKey(char*& line);
 			Token extractHeaderValue(char*& line);
-
 			void parseBody();
 			void parseChunkSize();
 			void parseChunkData();
@@ -75,12 +74,13 @@ namespace http {
 			static const char TCHAR[];
 			static const char WHITESPACE[];
 
-			static const int PENDING_MASK;
+			static const int PENDING_MASK = 0x1000;
 
 			Request* m_req;
 
-			shared::Buffer<BUFFER_SIZE> m_buffer;
+			shared::Buffer<BUFFER_SIZEE> m_buffer;
 			std::size_t m_chunkSize;
+			std::size_t m_contentLength;
 			int m_state;
 	};
 

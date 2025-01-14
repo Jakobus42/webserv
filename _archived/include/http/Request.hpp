@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-#include "http/constants.hpp"
+#include "http/http.hpp"
 #include "shared/stringUtils.hpp"
 
 #include <limits>

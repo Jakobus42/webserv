@@ -4,7 +4,7 @@
 
 #include "core/EventHandler.hpp"
 #include "http/VirtualServer.hpp"
-#include "http/constants.hpp"
+#include "http/http.hpp"
 
 #include <map>
 #include <queue>

@@ -2,14 +2,12 @@
 
 #include "shared/stringUtils.hpp"
 
-// TODO error handling
+// todo error handling
 
 namespace http {
 
 	const char RequestParser::TCHAR[256] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ' ', '!', 0, '#', '$', '%', '&', '\'', 0, 0, '*', '+', 0, '-', '.', 0, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 0, 0, 0, 0, 0, 0, 0, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 0, 0, 0, '^', '_', '`', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 0, '|', 0, '~', 0}; // the formatter is shit pardon me
 	const char RequestParser::WHITESPACE[] = " \t";
-
-	const int RequestParser::PENDING_MASK = 0x1000;
 
 	RequestParser::RequestParser()
 		: m_req(new Request())
@@ -20,9 +18,20 @@ namespace http {
 		delete m_req;
 	}
 
+	// note: this function expects the caller to fill the write buffer with data before each call
 	void RequestParser::process() {
 		this->clearPendingState();
 
+		try {
+			this->parse();
+		} catch (const http::exception& e) { // avoid reconstructing exception
+			throw e;
+		} catch (const std::exception& e) {
+			throw http::exception(INTERNAL_SERVER_ERROR, e.what());
+		}
+	}
+
+	void RequestParser::parse() {
 		while (this->isComplete() != true && this->isPending() != true) {
 			if (m_state == START) {
 				this->parseRequestLine();
@@ -38,9 +47,6 @@ namespace http {
 		}
 	}
 
-	// RFC 7230 Section 3.1.1
-	// note: method, target and version must be seperated by a single space.
-	// missing: uri decoding
 	void RequestParser::parseRequestLine() {
 		char* line = this->readLine();
 		if (!line) {
@@ -59,29 +65,30 @@ namespace http {
 		m_req->setVersion(line, size);
 		line += size;
 
-		if (*line != '\0') {
-			throw std::runtime_error("invalid request line format");
+		if (*line) {
+			throw http::exception(BAD_REQUEST, "malformed request line: expected seperation of exactly 2 spaces");
 		}
+
 		m_state = HEADERS;
 	}
 
-	// todo: check for trailing headers
-
-	// RFC 7230 Section 3.2
-	// field-name ":" OWS field-value OWS
 	void RequestParser::parseHeaders() {
-		while (char* line = this->readLine()) {
+		while (true) {
+			char* line = this->readLine();
+			if (!line || !*line) {
+				break;
+			}
 			Token key = this->extractHeaderKey(line);
 			while (*line) {
 				Token value = this->extractHeaderValue(line);
 				m_req->setHeader(key.token, key.size, value.token, value.size);
-				break;
 			}
 		}
 
-		if (m_req->hasHeader("Content-Length")) {
+		// todo: check for trailing headers
+		if (m_req->hasHeader("content-length")) {
 			this->setState(BODY);
-		} else if (m_req->isChunked()) {
+		} else if (m_req->isChunked()) { // todo send error if transfer but not chunked
 			this->setState(CHUNK_SIZE);
 		} else {
 			this->setState(COMPLETE);
@@ -92,36 +99,73 @@ namespace http {
 		std::size_t keySize = 0;
 		for (; *line && *line != ':'; ++line) {
 			if (this->isTChar(*line) != true) {
-				throw std::runtime_error("invalid char found in header name field: expected tchar");
+				throw http::exception(BAD_REQUEST, "malformed header name: expected tchar");
 			}
+			*line = std::tolower(*line);
 			keySize++;
 		}
-		if (*line != ':' || std::strchr(WHITESPACE, *(line - 1))) {
-			throw std::runtime_error("invalid header name format");
+
+		if (keySize == 0) {
+			throw http::exception(BAD_REQUEST, "malformed header name: expected size > 0");
+		} else if (*line != ':') {
+			throw http::exception(BAD_REQUEST, "malformed header name: missing colon separator");
+		} else if (std::strchr(WHITESPACE, *(line - 1))) {
+			throw http::exception(BAD_REQUEST, "malformed header name: no whitespace allowed before colon");
 		}
+
 		return Token(line++ - keySize, keySize);
 	}
 
-	RequestParser::Token RequestParser::extractHeaderValue(char*&) {
-		return Token();
+	// empty values are allowed.
+	RequestParser::Token RequestParser::extractHeaderValue(char*& line) {
+		const char* value = line + std::strspn(line, WHITESPACE);
+		std::size_t raw_size = std::strcspn(value, ",");
+
+		std::size_t size = raw_size;
+		while (size > 0 && std::strchr(WHITESPACE, value[size - 1])) {
+			--size;
+		}
+
+		line = const_cast<char*>(value + raw_size);
+		if (*line == ',') {
+			++line;
+		}
+		return Token(value, size);
 	}
 
 	void RequestParser::parseBody() {
-		if (m_req->getHeader("Content-Length").size() != 1) {
-			throw std::runtime_error("invalid Content-Length: too many values");
+		if (!m_contentLength) {
+			if (m_req->getHeader("content-length").size() != 1) {
+				throw http::exception(BAD_REQUEST, "invalid content-length: too many values");
+			}
+
+			try {
+				m_contentLength = shared::string::toNum<std::size_t>(m_req->getHeader("content-length").at(0), 10);
+				if (m_contentLength == 0) {
+					this->setState(COMPLETE);
+					return;
+				}
+			} catch (const std::exception& e) {
+				throw http::exception(BAD_REQUEST, "invalid content-length: could not parse: " + std::string(e.what()));
+			}
 		}
 
-		const std::string& contentLength = m_req->getHeader("Content-Length").at(0);
-		std::size_t len = shared::string::toNum<std::size_t>(contentLength, 10);
-		if (m_buffer.size() < len) {
+		size_t available = std::min(m_buffer.size(), m_contentLength);
+		if (available == 0) {
 			this->setPendingState();
 			return;
 		}
 
-		m_req->setBody(std::string(m_buffer.getReadPos(), len));
-		m_buffer.consume(len);
+		m_req->appendToBody(m_buffer.getReadPos(), available);
+		m_buffer.consume(available);
+		m_contentLength -= available;
 
-		this->setState(COMPLETE);
+		if (m_contentLength == 0) {
+			this->setState(COMPLETE);
+			std::cout << m_buffer.size() << std::endl;
+		} else {
+			this->setPendingState();
+		}
 	}
 
 	void RequestParser::parseChunkSize() {
@@ -130,7 +174,12 @@ namespace http {
 			return;
 		}
 
-		m_chunkSize = shared::string::toNum<std::size_t>(line, 16);
+		try {
+			m_chunkSize = shared::string::toNum<std::size_t>(line, 16);
+		} catch (const std::exception& e) {
+			throw http::exception(BAD_REQUEST, "Invalid chunk size: could not parse.");
+		}
+
 		if (m_chunkSize == 0) {
 			this->setState(COMPLETE);
 		} else {
@@ -139,17 +188,29 @@ namespace http {
 	}
 
 	void RequestParser::parseChunkData() {
-		if (m_buffer.size() < m_chunkSize) {
+		size_t available = std::min(m_buffer.size(), m_chunkSize);
+		if (available == 0) {
 			this->setPendingState();
 			return;
 		}
 
-		m_req->appendToBody(m_buffer.getReadPos(), m_chunkSize);
-		m_buffer.consume(m_chunkSize + CRLF.length());
+		m_req->appendToBody(m_buffer.getReadPos(), available);
+		m_buffer.consume(available);
+		m_chunkSize -= available;
 
-		this->setState(CHUNK_SIZE);
+		if (m_chunkSize == 0) {
+			if (m_buffer.size() < CRLF.length()) {
+				this->setPendingState();
+				return;
+			}
+			m_buffer.consume(CRLF.length());
+			this->setState(CHUNK_SIZE);
+		} else {
+			this->setPendingState();
+		}
 	}
 
+	// this is actually making us read the data twice
 	char* RequestParser::readLine() {
 		char* line = m_buffer.getReadPos();
 
@@ -160,8 +221,7 @@ namespace http {
 		}
 
 		*lineEnd = '\0';
-		std::size_t consumed = line == lineEnd ? 0 : lineEnd + CRLF.size() - line;
-		m_buffer.consume(consumed);
+		m_buffer.consume(lineEnd + CRLF.length() - line);
 		return line;
 	}
 
@@ -186,7 +246,7 @@ namespace http {
 		return m_state & PENDING_MASK;
 	}
 
-	shared::Buffer<BUFFER_SIZE>& RequestParser::getWriteBuffer() {
+	shared::Buffer<BUFFER_SIZEE>& RequestParser::getWriteBuffer() {
 		return m_buffer;
 	}
 

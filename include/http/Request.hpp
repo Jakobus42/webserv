@@ -1,9 +1,10 @@
 #pragma once
 
-#include "http/constants.hpp"
+#include "http/http.hpp"
 
 #include <vector>
 
+// todo: enforce a MAX size for body, uri, etc.
 namespace http {
 
 	/**

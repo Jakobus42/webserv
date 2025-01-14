@@ -1,6 +1,6 @@
 #include "http/Request.hpp"
 
-#include "http/constants.hpp"
+#include "http/http.hpp"
 
 #include <algorithm>
 #include <cstring>
@@ -81,14 +81,13 @@ namespace http {
 		return oss.str();
 	}
 
-	// todo set tolower
 	bool Request::hasHeader(const std::string& key) const {
 		return m_headers.find(key) != m_headers.end();
 	}
 
 	bool Request::isChunked() const {
-		if (this->hasHeader("Transfer-Encoding")) {
-			const std::vector<std::string>& values = m_headers.at("Transfer-Encoding");
+		if (this->hasHeader("transfer-encoding")) {
+			const std::vector<std::string>& values = m_headers.at("transfer-encoding");
 			return std::find(values.begin(), values.end(), "chunked") != values.end();
 		}
 		return false;
@@ -126,7 +125,6 @@ namespace http {
 	}
 
 	void Request::setUri(const char* uri, std::size_t len) {
-		std::cout << uri << std::endl;
 		this->validateUri(uri, len);
 		m_uri.assign(uri, len);
 	}
@@ -146,44 +144,36 @@ namespace http {
 	void Request::setBody(const char* body, std::size_t len) { m_body.assign(body, len); }
 
 	void Request::setHeader(const std::string& key, const std::string& value) {
-
 		this->validateHeader(key.c_str(), key.length(), value.c_str(), value.length());
 		m_headers[key].push_back(value);
-
-		for (std::size_t i = 0; i < m_headers[key].back().size(); ++i) {
-			m_headers[key].back()[i] = std::tolower(m_headers[key].back()[i]);
-		}
 	}
 
 	void Request::setHeader(const char* key, std::size_t keyLen, const char* value, std::size_t valueLen) {
 		this->validateHeader(key, keyLen, value, valueLen);
-
-		std::string keyStr(key, keyLen); // :/
-		m_headers[keyStr].push_back(std::string(value, valueLen));
-
-		for (std::size_t i = 0; i < m_headers[keyStr].back().size(); ++i) {
-			m_headers[keyStr].back()[i] = std::tolower(m_headers[keyStr].back()[i]);
-		}
+		m_headers[std::string(key, keyLen)].push_back(std::string(value, valueLen));
 	}
 
 	void Request::validateUri(const char* uri, std::size_t len) {
 		if (len == 0 || uri == NULL) {
-			throw std::invalid_argument("URI cannot be empty");
+			throw http::exception(BAD_REQUEST, "URI can not be empty");
 		}
 		if (uri[0] != '/') {
-			throw std::invalid_argument("URI must start with '/'");
+			throw http::exception(BAD_REQUEST, "URI must start with '/'");
 		}
 	}
 
 	void Request::validateVersion(const char* version, std::size_t len) {
 		if (version == NULL || len == 0 || std::strcmp(version, HTTP_VERSION.c_str())) {
-			throw std::invalid_argument("unsupported HTTP version: " + std::string(version, len));
+			throw http::exception(NOT_IMPLEMENTED, "unsupported HTTP version: " + std::string(version, len));
 		}
 	}
 
 	void Request::validateHeader(const char* key, std::size_t keyLen, const char*, std::size_t) {
 		if (key == NULL || keyLen == 0) {
-			throw std::invalid_argument("header key cannot be empty");
+			throw http::exception(BAD_REQUEST, "header key can not be empty");
 		}
 	}
+
+
+
 } /* namespace http */
