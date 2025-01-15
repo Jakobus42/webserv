@@ -172,6 +172,14 @@ namespace config {
 	}
 
 	/**
+	 * @brief Checks the configuration data.
+	 * @return 0 if successful, 1 if error.
+	 */
+	int ConfigFileParser::checkConfigData() {
+		return 0;
+	}
+
+	/**
 	 * @brief Loads the configuration file, saving all the information.
 	 * @param configFileName The name of the configuration file.
 	 * @return 0 if successful, 1 if error.
@@ -192,6 +200,10 @@ namespace config {
 			std::cout << "Configuration file (line "
 					  << lineCount << "): "
 					  << "No servers found in configuration file" << std::endl;
+			return 1;
+		}
+		if (checkConfigData() == 1) {
+			m_configData.servers.clear();
 			return 1;
 		}
 		m_isLoaded = 1;

@@ -31,6 +31,7 @@ namespace http {
 			const std::vector<std::string>& getNames(void) const;
 			const std::map<int, std::string>& getErrorPages(void) const;
 			const std::vector<config::t_location>& getLocations(void) const;
+			std::vector<config::t_location> getLocations(void);
 			uint64_t getMaxBodySize(void) const;
 			const Socket& getSocket(void) const;
 			Socket& getSocket(void);

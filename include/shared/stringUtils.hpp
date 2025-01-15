@@ -24,6 +24,8 @@ namespace shared {
 		uint32_t StoiHex(std::string& str, int& ret);
 
 		bool isGreyspace(char c);
+
+		int splitPath(const std::string& path, std::vector<std::string>& result);
 	} // namespace string
 
 } // namespace shared

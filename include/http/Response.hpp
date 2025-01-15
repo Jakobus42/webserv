@@ -57,7 +57,7 @@ namespace http {
 			const t_PathData getPathData(void) const;
 
 			void setRawResponse(const std::string&); // probably just temporary
-			void doMagicToCalculateStatusCode(const Request&, const std::vector<config::t_location>& locations);
+			void doMagicToCalculateStatusCode(const Request&, std::vector<config::t_location> locations);
 
 			std::ostream& headersString(std::ostream& o);
 			inline std::ostream& statusLineString(std::ostream& o);

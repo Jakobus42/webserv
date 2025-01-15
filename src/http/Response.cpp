@@ -128,14 +128,19 @@ namespace http {
 		return o;
 	}
 
-	void Response::doMagicToCalculateStatusCode(const Request& request, const std::vector<config::t_location>& locations) {
+	void Response::doMagicToCalculateStatusCode(const Request& request, std::vector<config::t_location> locations) {
 		m_statusCode = OK;
 		m_type = IDK_NORMAL_I_GUESS;
 		checkRequestData(request);
 		if (m_type == ERROR) {
 			return;
 		}
-		config::t_location* location = Router::getLocation(m_pathData.pure_path, locations);
+		config::t_location* location = NULL;
+		if (Router::getLocation(m_pathData.pure_path, locations, location) == 1) {
+			m_statusCode = NOT_FOUND;
+			m_type = ERROR;
+			return;
+		}
 		(void)location;
 	}
 

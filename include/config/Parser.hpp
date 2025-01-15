@@ -4,6 +4,7 @@
 
 #include "config/Parser.hpp"
 #include "http/constants.hpp"
+#include "shared/stringUtils.hpp"
 
 #include <fstream>
 #include <iostream>
@@ -17,7 +18,8 @@ namespace config {
 
 	typedef struct s_location {
 			// location name
-			std::string name;
+			//std::string name;
+			std::vector<std::string> path;
 			// return
 			std::string return_url;
 			// configurations
@@ -92,6 +94,7 @@ namespace config {
 
 			int readConfigFile(std::string& configFileName, std::string& file);
 			int parseConfigFile(std::string& configFileName, int layer, unsigned long& i, int& lineCount);
+			int checkConfigData();
 
 			int handleServer(std::string& line, unsigned long* i);
 			int handlePrompt(std::string& line, int layer, int& lineCount);

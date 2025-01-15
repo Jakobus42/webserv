@@ -84,6 +84,10 @@ namespace http {
 		return m_locations;
 	}
 
+	std::vector<config::t_location> VirtualServer::getLocations(void) {
+		return m_locations;
+	}
+
 	uint64_t VirtualServer::getMaxBodySize(void) const {
 		return m_client_max_body_size;
 	}
