@@ -2,8 +2,6 @@
 
 #include "shared/stringUtils.hpp"
 
-// todo error handling
-
 namespace http {
 
 	const char RequestParser::TCHAR[256] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ' ', '!', 0, '#', '$', '%', '&', '\'', 0, 0, '*', '+', 0, '-', '.', 0, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 0, 0, 0, 0, 0, 0, 0, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 0, 0, 0, '^', '_', '`', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 0, '|', 0, '~', 0}; // the formatter is shit pardon me
@@ -18,13 +16,12 @@ namespace http {
 		delete m_req;
 	}
 
-	// note: this function expects the caller to fill the write buffer with data before each call
 	void RequestParser::process() {
 		this->clearPendingState();
 
 		try {
 			this->parse();
-		} catch (const http::exception& e) { // avoid reconstructing exception
+		} catch (const http::exception& e) {
 			throw e;
 		} catch (const std::exception& e) {
 			throw http::exception(INTERNAL_SERVER_ERROR, e.what());
@@ -35,14 +32,12 @@ namespace http {
 		while (this->isComplete() != true && this->isPending() != true) {
 			if (m_state == START) {
 				this->parseRequestLine();
-			} else if (m_state == HEADERS) {
+			} else if (m_state == HEADERS || m_state == TRAILING_HEADERS) {
 				this->parseHeaders();
-			} else if (m_state == BODY) {
-				this->parseBody();
 			} else if (m_state == CHUNK_SIZE) {
 				this->parseChunkSize();
-			} else if (m_state == CHUNK_DATA) {
-				this->parseChunkData();
+			} else if (m_state == BODY || m_state == CHUNK_DATA) {
+				this->parseData();
 			}
 		}
 	}
@@ -58,6 +53,9 @@ namespace http {
 		line += size + 1;
 
 		size = std::strcspn(line, WHITESPACE);
+		if (size > MAX_URI_LENGTH) {
+			throw http::exception(URI_TOO_LONG, "URI too large");
+		}
 		m_req->setUri(line, size);
 		line += size + 1;
 
@@ -75,22 +73,31 @@ namespace http {
 	void RequestParser::parseHeaders() {
 		while (true) {
 			char* line = this->readLine();
-			if (!line || !*line) {
+			if (!line) {
+				return;
+			} else if (!*line) {
 				break;
 			}
+
 			Token key = this->extractHeaderKey(line);
+			if (!*line) {
+				m_req->setHeader(key.token, key.size, NULL, 0);
+			}
+			std::size_t valCount = 0;
 			while (*line) {
 				Token value = this->extractHeaderValue(line);
 				m_req->setHeader(key.token, key.size, value.token, value.size);
+				if (++valCount > MAX_HEADER_VALUE_COUNT) {
+					throw http::exception(PAYLOAD_TOO_LARGE, "header value count too large");
+				}
+			}
+			if (m_req->getHeaders().size() > MAX_HEADER_COUNT) {
+				throw http::exception(PAYLOAD_TOO_LARGE, "header count too large");
 			}
 		}
-
-		// todo: check for trailing headers
-		if (m_req->hasHeader("content-length")) {
-			this->setState(BODY);
-		} else if (m_req->isChunked()) { // todo send error if transfer but not chunked
-			this->setState(CHUNK_SIZE);
-		} else {
+		if (m_state == HEADERS) {
+			this->interpretHeaders();
+		} else if (m_state == TRAILING_HEADERS) {
 			this->setState(COMPLETE);
 		}
 	}
@@ -113,6 +120,10 @@ namespace http {
 			throw http::exception(BAD_REQUEST, "malformed header name: no whitespace allowed before colon");
 		}
 
+		if (keySize > MAX_HEADER_NAME_LENGTH) {
+			throw http::exception(PAYLOAD_TOO_LARGE, "header key too large");
+		}
+
 		return Token(line++ - keySize, keySize);
 	}
 
@@ -130,41 +141,59 @@ namespace http {
 		if (*line == ',') {
 			++line;
 		}
+
+		if (size > MAX_HEADER_VALUE_LENGTH) {
+			throw http::exception(PAYLOAD_TOO_LARGE, "header value length too large");
+		}
 		return Token(value, size);
 	}
 
-	void RequestParser::parseBody() {
-		if (!m_contentLength) {
-			if (m_req->getHeader("content-length").size() != 1) {
-				throw http::exception(BAD_REQUEST, "invalid content-length: too many values");
-			}
-
-			try {
-				m_contentLength = shared::string::toNum<std::size_t>(m_req->getHeader("content-length").at(0), 10);
-				if (m_contentLength == 0) {
-					this->setState(COMPLETE);
-					return;
-				}
-			} catch (const std::exception& e) {
-				throw http::exception(BAD_REQUEST, "invalid content-length: could not parse: " + std::string(e.what()));
-			}
+	void RequestParser::interpretHeaders() {
+		if (m_req->hasHeader("content-length") && m_req->hasHeader("transfer-encoding")) {
+			throw http::exception(BAD_REQUEST, "invalid header combination: cant have content-length and transfer-encoding");
 		}
 
-		size_t available = std::min(m_buffer.size(), m_contentLength);
-		if (available == 0) {
-			this->setPendingState();
-			return;
-		}
-
-		m_req->appendToBody(m_buffer.getReadPos(), available);
-		m_buffer.consume(available);
-		m_contentLength -= available;
-
-		if (m_contentLength == 0) {
-			this->setState(COMPLETE);
-			std::cout << m_buffer.size() << std::endl;
+		if (m_req->hasHeader("content-length")) {
+			this->validateContentLength();
+			this->setState(m_contentLength == 0 ? COMPLETE : BODY);
+		} else if (m_req->hasHeader("transfer-encoding")) {
+			this->validateTransferEncoding();
+			this->setState(CHUNK_SIZE);
 		} else {
-			this->setPendingState();
+			this->setState(COMPLETE);
+		}
+	}
+
+	void RequestParser::parseData() {
+		if (m_contentLength) {
+			size_t available = std::min(m_buffer.size(), m_contentLength);
+			if (available == 0) {
+				this->setPendingState();
+				return;
+			}
+
+			m_req->appendToBody(m_buffer.getReadPos(), available);
+			if (m_req->getBody().size() > MAX_BODY_SIZE) {
+				throw http::exception(PAYLOAD_TOO_LARGE, "body too large");
+			}
+			m_buffer.consume(available);
+			m_contentLength -= available;
+			if (m_contentLength > 0) {
+				this->setPendingState();
+				return;
+			}
+		}
+
+
+		if (m_state == BODY) {
+			this->setState(COMPLETE);
+		} else if (m_state == CHUNK_DATA) {
+			if (m_buffer.size() < CRLF.length()) {
+				this->setPendingState();
+			} else {
+				m_buffer.consume(CRLF.length());
+				this->setState(CHUNK_SIZE);
+			}
 		}
 	}
 
@@ -175,42 +204,21 @@ namespace http {
 		}
 
 		try {
-			m_chunkSize = shared::string::toNum<std::size_t>(line, 16);
+			m_contentLength = shared::string::toNum<std::size_t>(line, 16);
 		} catch (const std::exception& e) {
-			throw http::exception(BAD_REQUEST, "Invalid chunk size: could not parse.");
+			throw http::exception(BAD_REQUEST, "invalid chunk size: could not parse.");
+		}
+		if (m_contentLength > MAX_BODY_SIZE) {
+			throw http::exception(PAYLOAD_TOO_LARGE, "chunk size too large");
 		}
 
-		if (m_chunkSize == 0) {
-			this->setState(COMPLETE);
+		if (m_contentLength == 0) {
+			this->setState(TRAILING_HEADERS);
 		} else {
 			this->setState(CHUNK_DATA);
 		}
 	}
 
-	void RequestParser::parseChunkData() {
-		size_t available = std::min(m_buffer.size(), m_chunkSize);
-		if (available == 0) {
-			this->setPendingState();
-			return;
-		}
-
-		m_req->appendToBody(m_buffer.getReadPos(), available);
-		m_buffer.consume(available);
-		m_chunkSize -= available;
-
-		if (m_chunkSize == 0) {
-			if (m_buffer.size() < CRLF.length()) {
-				this->setPendingState();
-				return;
-			}
-			m_buffer.consume(CRLF.length());
-			this->setState(CHUNK_SIZE);
-		} else {
-			this->setPendingState();
-		}
-	}
-
-	// this is actually making us read the data twice
 	char* RequestParser::readLine() {
 		char* line = m_buffer.getReadPos();
 
@@ -223,6 +231,34 @@ namespace http {
 		*lineEnd = '\0';
 		m_buffer.consume(lineEnd + CRLF.length() - line);
 		return line;
+	}
+
+	void RequestParser::validateContentLength() {
+		const std::vector<std::string>& contentLengthVec = m_req->getHeader("content-length");
+		if (contentLengthVec.size() != 1) {
+			throw http::exception(BAD_REQUEST, "malformed content-length: expected exactly one value");
+		}
+
+		try {
+			m_contentLength = shared::string::toNum<std::size_t>(contentLengthVec.at(0), 10);
+		} catch (const std::exception& e) {
+			throw http::exception(BAD_REQUEST, "invalid content-length: could not parse: " + std::string(e.what()));
+		}
+		if (m_contentLength > MAX_BODY_SIZE) {
+			throw http::exception(PAYLOAD_TOO_LARGE, "content-length too large");
+		}
+	}
+
+	void RequestParser::validateTransferEncoding() {
+		const std::vector<std::string>& transferEncodingVec = m_req->getHeader("transfer-encoding");
+		if (transferEncodingVec.size() != 1) {
+			throw http::exception(BAD_REQUEST, "malformed transfer-encoding: expected exactly one value");
+		}
+
+		const std::string& encoding = transferEncodingVec.at(0);
+		if (encoding != "chunked") {
+			throw http::exception(NOT_IMPLEMENTED, "transfer-encoding " + encoding + " is not implemented");
+		}
 	}
 
 	void RequestParser::reset() {

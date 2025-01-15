@@ -85,18 +85,6 @@ namespace http {
 		return m_headers.find(key) != m_headers.end();
 	}
 
-	bool Request::isChunked() const {
-		if (this->hasHeader("transfer-encoding")) {
-			const std::vector<std::string>& values = m_headers.at("transfer-encoding");
-			return std::find(values.begin(), values.end(), "chunked") != values.end();
-		}
-		return false;
-	}
-
-	void Request::appendToBody(const std::string& data) {
-		m_body.append(data);
-	}
-
 	void Request::appendToBody(const char* data, std::size_t len) {
 		m_body.append(data, len);
 	}
@@ -113,15 +101,8 @@ namespace http {
 
 	const std::vector<std::string>& Request::getHeader(const std::string& key) const { return m_headers.at(key); }
 
-	void Request::setMethod(Method method) { m_method = method; }
-
 	void Request::setMethod(const char* method, std::size_t len) {
 		m_method = stringToMethod(std::string(method, len));
-	}
-
-	void Request::setUri(const std::string& uri) {
-		this->validateUri(uri.c_str(), uri.length());
-		m_uri = uri;
 	}
 
 	void Request::setUri(const char* uri, std::size_t len) {
@@ -129,24 +110,12 @@ namespace http {
 		m_uri.assign(uri, len);
 	}
 
-	void Request::setVersion(const std::string& version) {
-		this->validateVersion(version.c_str(), version.length());
-		m_version = version;
-	}
-
 	void Request::setVersion(const char* version, std::size_t len) {
 		this->validateVersion(version, len);
 		m_version.assign(version, len);
 	}
 
-	void Request::setBody(const std::string& body) { m_body = body; }
-
 	void Request::setBody(const char* body, std::size_t len) { m_body.assign(body, len); }
-
-	void Request::setHeader(const std::string& key, const std::string& value) {
-		this->validateHeader(key.c_str(), key.length(), value.c_str(), value.length());
-		m_headers[key].push_back(value);
-	}
 
 	void Request::setHeader(const char* key, std::size_t keyLen, const char* value, std::size_t valueLen) {
 		this->validateHeader(key, keyLen, value, valueLen);

@@ -67,9 +67,7 @@ namespace http {
 		DELETE,
 		PATCH,
 		HEAD,
-		OPTIONS,
-		TRACE,
-		CONNECT
+		OPTIONS
 	};
 
 	class exception : public std::runtime_error {

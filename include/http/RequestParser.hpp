@@ -37,7 +37,8 @@ namespace http {
 				BODY = 0x04,
 				CHUNK_SIZE = 0x08,
 				CHUNK_DATA = 0x10,
-				COMPLETE = 0x20,
+				TRAILING_HEADERS = 0x20,
+				COMPLETE = 0x40,
 			};
 
 			struct Token {
@@ -57,12 +58,16 @@ namespace http {
 
 			void parse();
 			void parseRequestLine();
+
 			void parseHeaders();
 			Token extractHeaderKey(char*& line);
 			Token extractHeaderValue(char*& line);
-			void parseBody();
+			void interpretHeaders();
+			void validateContentLength();
+			void validateTransferEncoding();
+
+			void parseData();
 			void parseChunkSize();
-			void parseChunkData();
 
 			bool isTChar(char c) const;
 
@@ -76,10 +81,16 @@ namespace http {
 
 			static const int PENDING_MASK = 0x1000;
 
+			static const size_t MAX_URI_LENGTH = 8 * 1024; // 8KB
+			static const size_t MAX_HEADER_COUNT = 128;
+			static const size_t MAX_HEADER_VALUE_COUNT = 64;
+			static const size_t MAX_HEADER_NAME_LENGTH = 256;		// 256B
+			static const size_t MAX_HEADER_VALUE_LENGTH = 8 * 1024; // 8KB
+			static const size_t MAX_BODY_SIZE = 10 * 1024 * 1024;	// 10MB
+
 			Request* m_req;
 
 			shared::Buffer<BUFFER_SIZEE> m_buffer;
-			std::size_t m_chunkSize;
 			std::size_t m_contentLength;
 			int m_state;
 	};
