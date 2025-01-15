@@ -47,6 +47,10 @@ namespace shared {
 
 	template <std::size_t Capacity>
 	void Buffer<Capacity>::compact() {
+		if (m_readPos == 0) {
+			return;
+		}
+
 		std::size_t unreadSize = m_writePos - m_readPos;
 		if (unreadSize > 0) {
 			std::memmove(m_data, m_data + m_readPos, unreadSize);
@@ -60,11 +64,11 @@ namespace shared {
 		if (m_writePos + size > Capacity) {
 			this->compact();
 			if (m_writePos + size > Capacity) {
-				throw std::runtime_error("buffer overflow: not enough space to append");
+				throw std::runtime_error("buffer full");
 			}
 		}
 		std::memcpy(m_data + m_writePos, data, size);
-		m_writePos += size;
+		this->advanceWriter(size);
 	}
 
 	template <std::size_t Capacity>
@@ -73,6 +77,23 @@ namespace shared {
 			throw std::out_of_range("cannot consume more data than available");
 		}
 		m_readPos += size;
+	}
+
+	template <std::size_t Capacity>
+	std::size_t Buffer<Capacity>::prepareWrite() {
+		if (m_writePos == Capacity) {
+			compact();
+		}
+
+		return Capacity - m_writePos;
+	}
+
+	template <std::size_t Capacity>
+	void Buffer<Capacity>::advanceWriter(std::size_t size) {
+		if (size > availableSpace()) {
+			throw std::runtime_error("write advancement too large");
+		}
+		m_writePos += size;
 	}
 
 	template <std::size_t Capacity>
@@ -90,7 +111,7 @@ namespace shared {
 
 	template <std::size_t Capacity>
 	std::size_t Buffer<Capacity>::availableSpace() const {
-		return Capacity - (m_writePos - m_readPos);
+		return Capacity - m_writePos;
 	}
 
 	template <std::size_t Capacity>

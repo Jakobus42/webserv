@@ -18,6 +18,8 @@ namespace shared {
 
 			void compact();
 			void append(const char* data, std::size_t size);
+			std::size_t prepareWrite();
+			void advanceWriter(std::size_t size);
 			void consume(std::size_t size);
 			void reset();
 

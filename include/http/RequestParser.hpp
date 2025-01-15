@@ -45,10 +45,6 @@ namespace http {
 					const char* token;
 					std::size_t size;
 
-					Token()
-						: token(NULL)
-						, size(0) {}
-
 					Token(const char* token, std::size_t size)
 						: token(token)
 						, size(size) {}
@@ -58,16 +54,15 @@ namespace http {
 
 			void parse();
 			void parseRequestLine();
-
+			void parseData();
+			void parseChunkSize();
 			void parseHeaders();
+
 			Token extractHeaderKey(char*& line);
 			Token extractHeaderValue(char*& line);
 			void interpretHeaders();
 			void validateContentLength();
 			void validateTransferEncoding();
-
-			void parseData();
-			void parseChunkSize();
 
 			bool isTChar(char c) const;
 
@@ -81,12 +76,12 @@ namespace http {
 
 			static const int PENDING_MASK = 0x1000;
 
-			static const size_t MAX_URI_LENGTH = 8 * 1024; // 8KB
-			static const size_t MAX_HEADER_COUNT = 128;
-			static const size_t MAX_HEADER_VALUE_COUNT = 64;
-			static const size_t MAX_HEADER_NAME_LENGTH = 256;		// 256B
-			static const size_t MAX_HEADER_VALUE_LENGTH = 8 * 1024; // 8KB
-			static const size_t MAX_BODY_SIZE = 10 * 1024 * 1024;	// 10MB
+			static const std::size_t MAX_URI_LENGTH = 8 * 1024;			 // 8KB
+			static const std::size_t MAX_BODY_SIZE = 10 * 1024 * 1024;	 // 10MB
+			static const std::size_t MAX_HEADER_VALUE_LENGTH = 8 * 1024; // 8KB
+			static const std::size_t MAX_HEADER_COUNT = 128;
+			static const std::size_t MAX_HEADER_VALUE_COUNT = 64;
+			static const std::size_t MAX_HEADER_NAME_LENGTH = 256;
 
 			Request* m_req;
 
