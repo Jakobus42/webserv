@@ -1,8 +1,8 @@
 #include "core/EventHandler.hpp"
 
+#include "core/VirtualServer.hpp"
 #include "http/Connection.hpp"
 #include "http/Request.hpp"
-#include "http/VirtualServer.hpp"
 
 #include <cstring>
 

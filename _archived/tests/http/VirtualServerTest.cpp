@@ -1,17 +1,17 @@
 
 #include <gtest/gtest.h>
 
-#include "http/VirtualServer.hpp"
+#include "core/VirtualServer.hpp"
 
 namespace http {
 
-class VirtualServerTest : public ::testing::Test {
-	protected:
-		VirtualServer instance;	 // Instance of the class being tested
-};
+	class VirtualServerTest : public ::testing::Test {
+		protected:
+			VirtualServer instance; // Instance of the class being tested
+	};
 
-TEST_F(VirtualServerTest, DefaultConstructor) {
-	ASSERT_NO_THROW(VirtualServer new_instance;);
-}
+	TEST_F(VirtualServerTest, DefaultConstructor) {
+		ASSERT_NO_THROW(VirtualServer new_instance;);
+	}
 
-}  // namespace http
+} // namespace http

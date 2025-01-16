@@ -2,7 +2,7 @@
 
 #include "core/Dispatcher.hpp"
 #include "core/IHandler.hpp"
-#include "http/VirtualServer.hpp"
+#include "core/VirtualServer.hpp"
 
 namespace core {
 

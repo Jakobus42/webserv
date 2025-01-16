@@ -18,7 +18,9 @@ namespace core {
 			throw std::runtime_error("listen socket error: EPOLLERR detected.");
 		} else if (events & EPOLLHUP) {
 			throw std::runtime_error("listen socket error: EPOLLHUP detected (socket hangup).");
-		} else if (events & EPOLLIN) {
+		}
+
+		if (events & EPOLLIN) {
 			while (m_vServer.acceptClient()) {
 				IHandler* handler = new IOHandler(m_vServer);
 				m_dispatcher.registerHandler(m_vServer.getClients().back(), EPOLLIN | EPOLLOUT | EPOLLERR | EPOLLHUP, handler);

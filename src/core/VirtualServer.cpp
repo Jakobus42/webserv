@@ -1,4 +1,4 @@
-#include "http/VirtualServer.hpp"
+#include "core/VirtualServer.hpp"
 
 #include <assert.h>
 #include <errno.h>
@@ -102,7 +102,10 @@ namespace http {
 		std::memset(&clientAddr, 0, clientAddrLen);
 		int clientSocket = ::accept(m_listenSocket, reinterpret_cast<struct sockaddr*>(&clientAddr), &clientAddrLen);
 		if (clientSocket == -1) {
-			return false;
+			if (errno == EAGAIN || errno == EWOULDBLOCK) {
+				return false;
+			}
+			throw std::runtime_error("accept() failed: " + std::string(strerror(errno)));
 		}
 
 		this->setNonBlocking(clientSocket);
@@ -112,7 +115,6 @@ namespace http {
 
 	void VirtualServer::setNonBlocking(int32_t socket) {
 		if (fcntl(socket, F_SETFL, O_NONBLOCK)) {
-			::close(socket);
 			throw std::runtime_error("fcntl() failed to set non-blocking: " + std::string(strerror(errno)));
 		}
 	}

@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 #include "core/AcceptHandler.hpp"
-#include "http/VirtualServer.hpp"
+#include "core/VirtualServer.hpp"
 
 #include <csignal>
 #include <cstring>

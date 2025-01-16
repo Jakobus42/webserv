@@ -2,7 +2,7 @@
 
 #include "core/Dispatcher.hpp"
 #include "core/IHandler.hpp"
-#include "http/VirtualServer.hpp"
+#include "core/VirtualServer.hpp"
 
 // todo: maybe have dispatcher as member to handle stay alive etc.
 namespace core {
@@ -19,9 +19,11 @@ namespace core {
 			void handle(int32_t fd, uint32_t events);
 
 		private:
-			http::VirtualServer& m_vServer;
+			void handleRead(int32_t fd);
+			void handleWrite(int32_t fd);
 
-			// todo: add a map for method to handler
+		private:
+			http::VirtualServer& m_vServer;
 	};
 
 } /* namespace core */
