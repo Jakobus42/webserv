@@ -115,7 +115,6 @@ namespace http {
 		try {
 			Connection newConnection(m_listen_socket.accept());
 			m_connections.push_back(newConnection);
-			std::cout << "Added a connection!" << std::endl;
 		} catch (std::exception& e) {
 			return false;
 		}

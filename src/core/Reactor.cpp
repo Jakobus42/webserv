@@ -4,6 +4,7 @@
 #include <sys/epoll.h>
 #include <unistd.h>
 
+#include "core/AcceptHandler.hpp"
 #include "http/VirtualServer.hpp"
 
 #include <csignal>
@@ -38,7 +39,8 @@ namespace core {
 			http::VirtualServer server(conf.servers.at(i));
 			server.listen();
 			m_vServers.push_back(server);
-			// todo: register accepter
+			IHandler* handler = new AcceptHandler(m_vServers.back(), m_dispatcher);
+			m_dispatcher.registerHandler(m_vServers.back().getSocket().getFd(), EPOLLIN | EPOLLERR | EPOLLHUP, handler);
 		}
 	}
 

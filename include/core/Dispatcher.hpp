@@ -13,7 +13,7 @@ namespace core {
 	 * @class Dispatcher
 	 * @brief ...
 	 */
-	class Dispatcher {
+	class Dispatcher : shared::NonCopyable {
 		public:
 			Dispatcher();
 			~Dispatcher();
@@ -22,10 +22,6 @@ namespace core {
 			void unregisterHandler(int32_t fd);
 
 			void dispatch();
-
-		private:
-			Dispatcher& operator=(const Dispatcher& rhs);
-			Dispatcher(const Dispatcher& other);
 
 		private:
 			static const std::size_t MAX_EVENTS = 256;

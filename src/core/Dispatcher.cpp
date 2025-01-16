@@ -38,6 +38,7 @@ namespace core {
 		event.events = events;
 		event.data.fd = fd;
 		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_ADD, fd, &event) < 0) {
+			delete handler;
 			throw std::runtime_error("epoll_ctl() failed: " + std::string(strerror(errno)));
 		}
 		m_handlers.insert(std::make_pair(fd, handler));
@@ -51,7 +52,6 @@ namespace core {
 		m_handlers.erase(fd);
 	}
 
-	// todo: handle timeouts
 	void Dispatcher::dispatch() {
 		int32_t nEvents = epoll_wait(m_epoll_master_fd, m_events, MAX_EVENTS, 60); // todo timeout
 		if (nEvents < 0) {
@@ -68,7 +68,8 @@ namespace core {
 
 				handler->handle(event.data.fd, event.events);
 			} catch (const std::exception& e) {
-				std::cerr << e.what() << std::endl;
+				this->unregisterHandler(m_events[i].data.fd);
+				std::cerr << "dispatch(): " << e.what() << std::endl;
 			}
 		}
 	}

@@ -6,6 +6,7 @@
 #include "core/IHandler.hpp"
 #include "http/VirtualServer.hpp"
 #include "http/constants.hpp"
+#include "shared/NonCopyable.hpp"
 
 #include <map>
 #include <stdexcept>
@@ -16,7 +17,7 @@ namespace core {
 	 * @class Reactor
 	 * @brief ...
 	 */
-	class Reactor {
+	class Reactor : shared::NonCopyable {
 		public:
 			Reactor();
 			~Reactor();
@@ -25,9 +26,6 @@ namespace core {
 			void react();
 
 		private:
-			Reactor(const Reactor& other);
-			Reactor& operator=(const Reactor& other);
-
 			static void handleSigint(int);
 
 		private:

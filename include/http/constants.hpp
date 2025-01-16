@@ -61,13 +61,7 @@ namespace http {
 	enum Method {
 		GET,
 		POST,
-		PUT,
-		DELETE,
-		PATCH,
-		HEAD,
-		OPTIONS,
-		TRACE,
-		CONNECT
+		DELETE
 	};
 
 	enum RequestStatus {
