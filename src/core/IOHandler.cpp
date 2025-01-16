@@ -5,9 +5,8 @@ namespace core {
 	/**
 	 * @brief Constructs a new IOHandler object.
 	 */
-	IOHandler::IOHandler(http::VirtualServer& vServer, http::Connection& conn)
-		: m_vServer(vServer)
-		, m_connection(conn) {
+	IOHandler::IOHandler(http::VirtualServer& vServer)
+		: m_vServer(vServer) {
 	}
 
 	/**

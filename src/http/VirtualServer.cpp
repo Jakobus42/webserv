@@ -1,35 +1,27 @@
 #include "http/VirtualServer.hpp"
 
-#include <algorithm>
-#include <iostream>
+#include <assert.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <unistd.h>
 
-// TODO: make vServer non copyable
+#include "http/constants.hpp"
+
+#include <cstring>
+#include <iostream>
+#include <string>
 
 namespace http {
 
 	/**
 	 * @brief Constructs a new VirtualServer object.
 	 */
-	VirtualServer::VirtualServer()
-		: m_client_max_body_size(ONE_MEGABYTE)
-		, m_listen_socket()
-		, m_connections() {
-		m_listen_socket.create();
-		m_listen_socket.bind(8080); // TODO
-	}
-
-	/**
-	 * @brief Constructs a new VirtualServer object.
-	 */
-	VirtualServer::VirtualServer(config::t_server& serverConfig)
-		: m_client_max_body_size(serverConfig.max_body_size)
-		, m_names(serverConfig.server_names)
-		, m_locations(serverConfig.locations)
-		, m_errorPages(serverConfig.errorPages)
-		, m_listen_socket()
-		, m_connections() {
-		m_listen_socket.create();
-		m_listen_socket.bind(serverConfig.port, serverConfig.ip_address);
+	VirtualServer::VirtualServer(config::t_server& conf)
+		: m_config(conf)
+		, m_clients()
+		, m_listenSocket(-1) {
 	}
 
 	/**
@@ -40,6 +32,16 @@ namespace http {
 	 * @warning closing the socket in the process.
 	 */
 	VirtualServer::~VirtualServer() {
+		for (std::vector<int32_t>::iterator it = m_clients.begin(); it != m_clients.end(); ++it) {
+			int32_t fd = *it;
+			if (fd != -1) {
+				::close(*it);
+			}
+		}
+
+		if (m_listenSocket != -1) {
+			::close(m_listenSocket);
+		}
 	}
 
 	/**
@@ -47,12 +49,9 @@ namespace http {
 	 * @param other The other VirtualServer object to copy.
 	 */
 	VirtualServer::VirtualServer(const VirtualServer& other)
-		: m_client_max_body_size(other.getMaxBodySize())
-		, m_names(other.getNames())
-		, m_locations(other.getLocations())
-		, m_errorPages(other.getErrorPages())
-		, m_listen_socket(other.m_listen_socket)
-		, m_connections(other.getConnections()) {
+		: m_config(other.m_config)
+		, m_clients(other.m_clients)
+		, m_listenSocket(other.m_listenSocket) {
 	}
 
 	/**
@@ -63,78 +62,67 @@ namespace http {
 	VirtualServer& VirtualServer::operator=(const VirtualServer& rhs) {
 		if (this == &rhs)
 			return *this;
-		m_names = rhs.getNames();
-		m_errorPages = rhs.getErrorPages();
-		m_locations = rhs.getLocations();
-		m_listen_socket = rhs.m_listen_socket;
-		m_client_max_body_size = rhs.getMaxBodySize();
-		m_connections = rhs.getConnections();
+		m_config = rhs.m_config;
+		m_clients = rhs.m_clients;
+		m_listenSocket = rhs.m_listenSocket;
 		return *this;
 	}
 
-	const std::vector<std::string>& VirtualServer::getNames(void) const {
-		return m_names;
+	void VirtualServer::init() {
+		m_listenSocket = socket(AF_INET, SOCK_STREAM, 0);
+		if (m_listenSocket == -1) {
+			throw std::runtime_error("socket() failed: " + std::string(strerror(errno)));
+		}
+
+		this->setNonBlocking(m_listenSocket);
+
+		int32_t opt = true;
+		if (setsockopt(m_listenSocket, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) < 0) {
+			throw std::runtime_error("setsockopt() failed: " + std::string(strerror(errno)));
+		}
+
+		struct sockaddr_in sockAddr;
+		std::memset(&sockAddr, 0, sizeof(sockAddr));
+		sockAddr.sin_family = AF_INET;
+		sockAddr.sin_port = htons(m_config.port);
+		sockAddr.sin_addr.s_addr = htonl(m_config.ip_address);
+		if (::bind(m_listenSocket, reinterpret_cast<const sockaddr*>(&sockAddr), sizeof(sockAddr)) < 0) {
+			throw std::runtime_error("bind() failed: " + std::string(strerror(errno)));
+		}
+
+		if (::listen(m_listenSocket, SOMAXCONN)) {
+			throw std::runtime_error("listen() failed: " + std::string(strerror(errno)));
+		}
 	}
 
-	const std::map<int, std::string>& VirtualServer::getErrorPages(void) const {
-		return m_errorPages;
-	}
+	bool VirtualServer::acceptClient() {
+		sockaddr_in clientAddr;
+		socklen_t clientAddrLen = sizeof(clientAddr);
 
-	const std::vector<config::t_location>& VirtualServer::getLocations(void) const {
-		return m_locations;
-	}
-
-	uint64_t VirtualServer::getMaxBodySize(void) const {
-		return m_client_max_body_size;
-	}
-
-	const Socket& VirtualServer::getSocket(void) const {
-		return m_listen_socket;
-	}
-
-	Socket& VirtualServer::getSocket(void) {
-		return m_listen_socket;
-	}
-
-	const t_connections& VirtualServer::getConnections(void) const {
-		return m_connections;
-	}
-
-	t_connections& VirtualServer::getConnections(void) {
-		return m_connections;
-	}
-
-	/**
-	 * @brief Accepts the next incoming connection in the
-	 * VirtualServerSocket's queue
-	 *
-	 * @return true if the connection could be established
-	 * @return false if accept() within Connection->ClientSocket fails
-	 */
-	bool VirtualServer::addConnection(void) {
-		try {
-			Connection newConnection(m_listen_socket.accept());
-			m_connections.push_back(newConnection);
-		} catch (std::exception& e) {
+		std::memset(&clientAddr, 0, clientAddrLen);
+		int clientSocket = ::accept(m_listenSocket, reinterpret_cast<struct sockaddr*>(&clientAddr), &clientAddrLen);
+		if (clientSocket == -1) {
 			return false;
 		}
+
+		this->setNonBlocking(clientSocket);
+		m_clients.push_back(clientSocket);
 		return true;
 	}
 
-	bool VirtualServer::removeConnection(Connection& connection) {
-		t_connections::iterator toRemove =
-			std::find(m_connections.begin(), m_connections.end(), connection);
-
-		if (toRemove == m_connections.end()) {
-			return false;
+	void VirtualServer::setNonBlocking(int32_t socket) {
+		if (fcntl(socket, F_SETFL, O_NONBLOCK)) {
+			::close(socket);
+			throw std::runtime_error("fcntl() failed to set non-blocking: " + std::string(strerror(errno)));
 		}
-		connection.close();
-		m_connections.erase(toRemove);
-		return true;
 	}
 
-	void VirtualServer::listen(void) {
-		m_listen_socket.listen();
-	}
+	int32_t VirtualServer::getSocket(void) { return m_listenSocket; }
+
+	const std::vector<int32_t>& VirtualServer::getClients(void) const { return m_clients; }
+
+	std::vector<int32_t>& VirtualServer::getClients(void) { return m_clients; }
+
+	const config::t_server& VirtualServer::getConfig() const { return m_config; }
 
 } // namespace http

@@ -13,14 +13,13 @@ namespace core {
 	 */
 	class IOHandler : public IHandler {
 		public:
-			IOHandler(http::VirtualServer& vServer, http::Connection& conn);
+			IOHandler(http::VirtualServer& vServer);
 			~IOHandler();
 
 			void handle(int32_t fd, uint32_t events);
 
 		private:
 			http::VirtualServer& m_vServer;
-			http::Connection& m_connection;
 
 			// todo: add a map for method to handler
 	};

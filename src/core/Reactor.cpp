@@ -36,11 +36,12 @@ namespace core {
 
 
 		for (size_t i = 0; i < conf.servers.size(); ++i) {
-			http::VirtualServer server(conf.servers.at(i));
-			server.listen();
-			m_vServers.push_back(server);
+			m_vServers.push_back(http::VirtualServer(conf.servers.at(i)));
+			http::VirtualServer& vServer = m_vServers.back();
+			vServer.init();
+
 			IHandler* handler = new AcceptHandler(m_vServers.back(), m_dispatcher);
-			m_dispatcher.registerHandler(m_vServers.back().getSocket().getFd(), EPOLLIN | EPOLLERR | EPOLLHUP, handler);
+			m_dispatcher.registerHandler(vServer.getSocket(), EPOLLIN | EPOLLERR | EPOLLHUP, handler);
 		}
 	}
 
