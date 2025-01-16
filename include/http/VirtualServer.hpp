@@ -3,8 +3,8 @@
 #include <stdint.h>
 
 #include "config/Parser.hpp"
+#include "core/Socket.hpp"
 #include "http/Connection.hpp"
-#include "http/Socket.hpp"
 
 #include <string>
 #include <vector>

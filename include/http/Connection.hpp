@@ -1,8 +1,8 @@
 #pragma once
 
+#include "core/Socket.hpp"
 #include "http/Request.hpp"
 #include "http/Response.hpp"
-#include "http/Socket.hpp"
 
 namespace http {
 

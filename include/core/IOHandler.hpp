@@ -4,6 +4,7 @@
 #include "core/IHandler.hpp"
 #include "http/VirtualServer.hpp"
 
+// todo: maybe have dispatcher as member to handle stay alive etc.
 namespace core {
 
 	/**
@@ -20,6 +21,8 @@ namespace core {
 		private:
 			http::VirtualServer& m_vServer;
 			http::Connection& m_connection;
+
+			// todo: add a map for method to handler
 	};
 
 } /* namespace core */

@@ -69,7 +69,7 @@ namespace core {
 				handler->handle(event.data.fd, event.events);
 			} catch (const std::exception& e) {
 				this->unregisterHandler(m_events[i].data.fd);
-				std::cerr << "dispatch(): " << e.what() << std::endl;
+				std::cerr << "dispatch(): " << e.what() << std::endl; // todo: log
 			}
 		}
 	}
