@@ -1,16 +1,12 @@
 #include "config/Parser.hpp"
 #include "core/Reactor.hpp"
+#include "shared/Logger.hpp"
 
 #include <iostream>
-
-int signal_handler(int signum) {
-	return signum;
-}
 
 int main(int argc, char** const argv) {
 
 	try {
-
 		std::string configPath = argc > 1 ? argv[1] : "config/configfile_example";
 		config::ConfigFileParser configFileParser;
 		if (configFileParser.loadConfigFile(configPath) == 1)

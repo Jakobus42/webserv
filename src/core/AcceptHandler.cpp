@@ -20,11 +20,9 @@ namespace core {
 			throw std::runtime_error("listen socket error: EPOLLHUP detected (socket hangup).");
 		}
 
-		if (events & EPOLLIN) {
-			while (m_vServer.acceptClient()) {
-				IHandler* handler = new IOHandler(m_vServer);
-				m_dispatcher.registerHandler(m_vServer.getClients().back(), EPOLLIN | EPOLLOUT | EPOLLERR | EPOLLHUP, handler);
-			}
+		while (m_vServer.acceptClient()) {
+			IHandler* handler = new IOHandler(m_vServer);
+			m_dispatcher.registerHandler(m_vServer.getClients().back(), EPOLLIN | EPOLLOUT, handler);
 		}
 	}
 

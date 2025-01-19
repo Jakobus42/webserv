@@ -41,7 +41,7 @@ namespace core {
 			vServer.init();
 
 			IHandler* handler = new AcceptHandler(m_vServers.back(), m_dispatcher);
-			m_dispatcher.registerHandler(vServer.getSocket(), EPOLLIN | EPOLLERR | EPOLLHUP, handler);
+			m_dispatcher.registerHandler(vServer.getSocket(), EPOLLIN, handler);
 		}
 	}
 
