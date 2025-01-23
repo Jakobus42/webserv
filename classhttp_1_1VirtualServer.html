@@ -514,7 +514,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  151</span>        }</div>
 <div class="line"><span class="lineno">  152</span> </div>
 <div class="line"><span class="lineno">  153</span>        <span class="keywordtype">char</span> clientIP[INET_ADDRSTRLEN];</div>
-<div class="line"><span class="lineno">  154</span>        inet_ntop(AF_INET, &amp;(clientAddr.sin_addr), clientIP, INET_ADDRSTRLEN);</div>
+<div class="line"><span class="lineno">  154</span>        inet_ntop(AF_INET, &amp;(clientAddr.sin_addr), clientIP, INET_ADDRSTRLEN); <span class="comment">// todo idk if allowed</span></div>
 <div class="line"><span class="lineno">  155</span> </div>
 <div class="line"><span class="lineno">  156</span>        int32_t clientPort = ntohs(clientAddr.sin_port);</div>
 <div class="line"><span class="lineno">  157</span> </div>
