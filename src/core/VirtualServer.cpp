@@ -1,5 +1,6 @@
 #include "core/VirtualServer.hpp"
 
+#include <arpa/inet.h>
 #include <assert.h>
 #include <errno.h>
 #include <fcntl.h>
@@ -8,6 +9,7 @@
 #include <unistd.h>
 
 #include "http/constants.hpp"
+#include "shared/stringUtils.hpp"
 
 #include <cstring>
 #include <iostream>
@@ -21,7 +23,8 @@ namespace http {
 	VirtualServer::VirtualServer(config::t_server& conf)
 		: m_config(conf)
 		, m_clients()
-		, m_listenSocket(-1) {
+		, m_listenSocket(-1)
+		, m_logger() {
 	}
 
 	/**
@@ -32,15 +35,8 @@ namespace http {
 	 * @warning closing the socket in the process.
 	 */
 	VirtualServer::~VirtualServer() {
-		for (std::vector<int32_t>::iterator it = m_clients.begin(); it != m_clients.end(); ++it) {
-			int32_t fd = *it;
-			if (fd != -1) {
-				::close(*it);
-			}
-		}
-
 		if (m_listenSocket != -1) {
-			::close(m_listenSocket);
+			this->shutDown();
 		}
 	}
 
@@ -93,6 +89,8 @@ namespace http {
 		if (::listen(m_listenSocket, SOMAXCONN)) {
 			throw std::runtime_error("listen() failed: " + std::string(strerror(errno)));
 		}
+
+		m_logger.setFile(m_config.server_names.at(0) + ".log"); // todo: why are there multiple names?!
 	}
 
 	bool VirtualServer::acceptClient() {
@@ -100,7 +98,7 @@ namespace http {
 		socklen_t clientAddrLen = sizeof(clientAddr);
 
 		std::memset(&clientAddr, 0, clientAddrLen);
-		int clientSocket = ::accept(m_listenSocket, reinterpret_cast<struct sockaddr*>(&clientAddr), &clientAddrLen);
+		int32_t clientSocket = ::accept(m_listenSocket, reinterpret_cast<struct sockaddr*>(&clientAddr), &clientAddrLen);
 		if (clientSocket == -1) {
 			if (errno == EAGAIN || errno == EWOULDBLOCK) {
 				return false;
@@ -110,7 +108,34 @@ namespace http {
 
 		this->setNonBlocking(clientSocket);
 		m_clients.push_back(clientSocket);
+
+		char clientIP[INET_ADDRSTRLEN];
+		inet_ntop(AF_INET, &(clientAddr.sin_addr), clientIP, INET_ADDRSTRLEN); // todo probably cant use this
+		int32_t clientPort = ntohs(clientAddr.sin_port);
+		std::string clientInfo = "(IP: " + std::string(clientIP) + ", Port: " + shared::string::to_string(clientPort) + ")";
+		this->log("accepted new client " + clientInfo, shared::INFO);
 		return true;
+	}
+
+	void VirtualServer::shutDown() {
+		this->log("shutting down server", shared::INFO);
+		for (std::vector<int32_t>::iterator it = m_clients.begin(); it != m_clients.end(); ++it) {
+			int32_t fd = *it;
+			if (fd != -1) {
+				::close(*it);
+				*it = -1;
+			}
+		}
+
+		if (m_listenSocket != -1) {
+			::close(m_listenSocket);
+			m_listenSocket = -1;
+		}
+	}
+
+	void VirtualServer::log(const std::string& msg, shared::LogLevel level) {
+		const std::string formatted = "[" + m_config.server_names.at(0) + "] " + msg;
+		m_logger.log(formatted, level);
 	}
 
 	void VirtualServer::setNonBlocking(int32_t socket) {

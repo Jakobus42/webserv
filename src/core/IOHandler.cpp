@@ -16,7 +16,6 @@ namespace core {
 	}
 
 	void IOHandler::handle(int32_t, uint32_t) {
-		std::cout << "handling" << std::endl;
 	}
 
 } /* namespace core */

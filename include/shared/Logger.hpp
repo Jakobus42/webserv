@@ -30,6 +30,7 @@ namespace shared {
 			static Logger& getInstance();
 
 			void setLevel(LogLevel level);
+			void setFile(const std::string& filename);
 			LogLevel getLevel() const;
 
 		private:

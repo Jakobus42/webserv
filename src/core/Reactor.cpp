@@ -40,7 +40,7 @@ namespace core {
 			http::VirtualServer& vServer = m_vServers.back();
 			vServer.init();
 
-			IHandler* handler = new AcceptHandler(m_vServers.back(), m_dispatcher);
+			AHandler* handler = new AcceptHandler(vServer, m_dispatcher);
 			m_dispatcher.registerHandler(vServer.getSocket(), EPOLLIN, handler);
 		}
 	}

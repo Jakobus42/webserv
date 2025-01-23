@@ -24,6 +24,14 @@ namespace shared {
 		uint32_t StoiHex(std::string& str, int& ret);
 
 		bool isGreyspace(char c);
+
+		template <typename T>
+		std::string to_string(const T& value) {
+			std::ostringstream oss;
+			oss << value;
+			return oss.str();
+		}
+
 	} // namespace string
 
 } // namespace shared

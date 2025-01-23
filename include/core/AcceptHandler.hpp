@@ -1,7 +1,7 @@
 #pragma once
 
+#include "core/AHandler.hpp"
 #include "core/Dispatcher.hpp"
-#include "core/IHandler.hpp"
 #include "core/VirtualServer.hpp"
 
 namespace core {
@@ -10,7 +10,7 @@ namespace core {
 	 * @class AcceptHandler
 	 * @brief ...
 	 */
-	class AcceptHandler : public IHandler {
+	class AcceptHandler : public AHandler {
 		public:
 			AcceptHandler(http::VirtualServer& vServer, Dispatcher& dispatcher);
 

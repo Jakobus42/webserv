@@ -8,22 +8,30 @@ namespace core {
 	 * @brief Constructs a new AcceptHandler object.
 	 */
 	AcceptHandler::AcceptHandler(http::VirtualServer& vServer, Dispatcher& dispatcher)
-		: IHandler()
+		: AHandler()
 		, m_vServer(vServer)
 		, m_dispatcher(dispatcher) {
 	}
 
 	void AcceptHandler::handle(int32_t, uint32_t events) {
-		if (events & EPOLLERR) {
-			throw std::runtime_error("listen socket error: EPOLLERR detected.");
-		} else if (events & EPOLLHUP) {
-			throw std::runtime_error("listen socket error: EPOLLHUP detected (socket hangup).");
+		if (events & EPOLLHUP || events & EPOLLERR) {
+			m_vServer.log("unexpected epoll event on listen socket", shared::ERROR);
+			m_vServer.shutDown();
+			return this->markDone();
 		}
 
-		while (m_vServer.acceptClient()) {
-			IHandler* handler = new IOHandler(m_vServer);
-			m_dispatcher.registerHandler(m_vServer.getClients().back(), EPOLLIN | EPOLLOUT, handler);
+		try {
+			while (m_vServer.acceptClient()) {
+				int32_t clientSocket = m_vServer.getClients().back();
+				AHandler* handler = new IOHandler(m_vServer);
+				m_dispatcher.registerHandler(clientSocket, EPOLLIN | EPOLLOUT, handler);
+			}
+		} catch (const std::exception& e) {
+			m_vServer.log(e.what(), shared::ERROR);
+			m_vServer.shutDown();
+			return this->markDone();
 		}
 	}
+
 
 } /* namespace core */

@@ -3,6 +3,8 @@
 #include <errno.h>
 #include <unistd.h>
 
+#include "shared/Logger.hpp"
+
 #include <cstring>
 #include <iostream>
 #include <stdexcept>
@@ -25,14 +27,14 @@ namespace core {
 	 * @brief Destroys the Dispatcher object.
 	 */
 	Dispatcher::~Dispatcher() {
-		for (std::map<int32_t, IHandler*>::iterator it = m_handlers.begin(); it != m_handlers.end(); ++it) {
+		for (std::map<int32_t, AHandler*>::iterator it = m_handlers.begin(); it != m_handlers.end(); ++it) {
 			delete it->second;
 		}
 		close(m_epoll_master_fd);
 	}
 
-	// takes ownership of the IHandler.
-	void Dispatcher::registerHandler(int32_t fd, uint32_t events, IHandler* handler) {
+	// takes ownership of the AHandler.
+	void Dispatcher::registerHandler(int32_t fd, uint32_t events, AHandler* handler) {
 		epoll_event event;
 
 		event.events = events;
@@ -45,9 +47,7 @@ namespace core {
 	}
 
 	void Dispatcher::unregisterHandler(int32_t fd) {
-		if (epoll_ctl(m_epoll_master_fd, EPOLL_CTL_DEL, fd, NULL) < 0) {
-			throw std::runtime_error("epoll_ctl() failed: " + std::string(strerror(errno)));
-		}
+		epoll_ctl(m_epoll_master_fd, EPOLL_CTL_DEL, fd, NULL);
 		delete m_handlers.at(fd);
 		m_handlers.erase(fd);
 	}
@@ -62,14 +62,12 @@ namespace core {
 		}
 
 		for (int32_t i = 0; i < nEvents; ++i) {
-			try {
-				const epoll_event& event = m_events[i];
-				IHandler* handler = m_handlers.at(event.data.fd);
+			const epoll_event& event = m_events[i];
+			AHandler* handler = m_handlers.at(event.data.fd);
 
-				handler->handle(event.data.fd, event.events);
-			} catch (const std::exception& e) {
-				this->unregisterHandler(m_events[i].data.fd);
-				std::cerr << "dispatch(): " << e.what() << std::endl; // todo: log
+			handler->handle(event.data.fd, event.events);
+			if (handler->isDone()) {
+				this->unregisterHandler(event.data.fd);
 			}
 		}
 	}

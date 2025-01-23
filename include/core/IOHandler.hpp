@@ -1,7 +1,7 @@
 #pragma once
 
+#include "core/AHandler.hpp"
 #include "core/Dispatcher.hpp"
-#include "core/IHandler.hpp"
 #include "core/VirtualServer.hpp"
 
 // todo: maybe have dispatcher as member to handle stay alive etc.
@@ -11,7 +11,7 @@ namespace core {
 	 * @class IOHandler
 	 * @brief ...
 	 */
-	class IOHandler : public IHandler {
+	class IOHandler : public AHandler {
 		public:
 			IOHandler(http::VirtualServer& vServer);
 			~IOHandler();

@@ -49,6 +49,12 @@ namespace shared {
 			}
 		}
 
+		std::string toString(int value) {
+			std::stringstream ss;
+			ss << value;
+			return ss.str();
+		}
+
 		/**
 		 * @brief Converts a hexadecimal string to an unsigned integer.
 		 *

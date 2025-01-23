@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <sys/epoll.h>
 
-#include "core/IHandler.hpp"
+#include "core/AHandler.hpp"
 
 #include <map>
 
@@ -18,7 +18,7 @@ namespace core {
 			Dispatcher();
 			~Dispatcher();
 
-			void registerHandler(int32_t fd, uint32_t events, IHandler* handler);
+			void registerHandler(int32_t fd, uint32_t events, AHandler* handler);
 			void unregisterHandler(int32_t fd);
 
 			void dispatch();
@@ -29,7 +29,7 @@ namespace core {
 			int32_t m_epoll_master_fd;
 			epoll_event m_events[MAX_EVENTS];
 
-			std::map<int32_t, IHandler*> m_handlers;
+			std::map<int32_t, AHandler*> m_handlers;
 	};
 
 } /* namespace core */
