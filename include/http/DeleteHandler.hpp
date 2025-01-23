@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IRequestHandler.hpp"
+#include "ARequestHandler.hpp"
 
 namespace http {
 
@@ -8,9 +8,9 @@ namespace http {
 	 * @class DeleteHandler
 	 * @brief ...
 	 */
-	class DeleteHandler : public IRequestHandler {
+	class DeleteHandler : public ARequestHandler {
 		public:
-			DeleteHandler();
+			DeleteHandler(const config::t_location& locations);
 			~DeleteHandler();
 
 			void handle(const Request& req, Response& res);

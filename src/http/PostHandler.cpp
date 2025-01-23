@@ -5,7 +5,8 @@ namespace http {
 	/**
 	 * @brief Constructs a new PostHandler object.
 	 */
-	PostHandler::PostHandler() {
+	PostHandler::PostHandler(const config::t_location& locations)
+		: ARequestHandler(locations) {
 	}
 
 	/**

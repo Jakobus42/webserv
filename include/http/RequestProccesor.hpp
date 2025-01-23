@@ -1,6 +1,7 @@
 #pragma once
 
-#include "http/IRequestHandler.hpp"
+#include "config/Parser.hpp"
+#include "http/ARequestHandler.hpp"
 #include "http/http.hpp"
 #include "shared/NonCopyable.hpp"
 
@@ -16,7 +17,7 @@ namespace http {
 	 */
 	class RequestProccesor : shared::NonCopyable {
 		public:
-			RequestProccesor();
+			RequestProccesor(const config::t_location& locations);
 			~RequestProccesor();
 
 			Response* process(const Request& req);
@@ -25,8 +26,9 @@ namespace http {
 			Response* releaseResponse();
 
 		private:
-			std::map<Method, IRequestHandler*> m_handlers;
+			std::map<Method, ARequestHandler*> m_handlers;
 			Response* m_res;
+			const config::t_location& m_locations;
 	};
 
 } /* namespace http */

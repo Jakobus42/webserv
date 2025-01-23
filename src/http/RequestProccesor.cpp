@@ -9,27 +9,28 @@ namespace http {
 	/**
 	 * @brief Constructs a new RequestProccesor object.
 	 */
-	RequestProccesor::RequestProccesor() {
-		m_handlers.insert(std::make_pair(GET, new GetHandler()));
-		m_handlers.insert(std::make_pair(POST, new PostHandler()));
-		m_handlers.insert(std::make_pair(DELETE, new DeleteHandler()));
+	RequestProccesor::RequestProccesor(const config::t_location& locations)
+		: m_locations(locations) {
+		m_handlers.insert(std::make_pair(GET, new GetHandler(locations)));
+		m_handlers.insert(std::make_pair(POST, new PostHandler(locations)));
+		m_handlers.insert(std::make_pair(DELETE, new DeleteHandler(locations)));
 	}
 
 	/**
 	 * @brief Destroys the RequestProccesor object.
 	 */
 	RequestProccesor::~RequestProccesor() {
-		for (std::map<Method, IRequestHandler*>::iterator it = m_handlers.begin(); it != m_handlers.end(); ++it) {
+		for (std::map<Method, ARequestHandler*>::iterator it = m_handlers.begin(); it != m_handlers.end(); ++it) {
 			delete it->second;
 		}
 		delete m_res;
 	}
 
+	// todo check if req was valid - if not send error response
+	// todo check for allowed methods
 	Response* RequestProccesor::process(const Request& req) {
 		m_res = new Response();
 		m_handlers[req.getMethod()]->handle(req, *m_res);
-		m_res->setHeader("Content-Length", "0");
-		m_res->setCode(NO_CONTENT);
 		return this->releaseResponse();
 	}
 

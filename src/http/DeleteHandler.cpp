@@ -5,7 +5,8 @@ namespace http {
 	/**
 	 * @brief Constructs a new DeleteHandler object.
 	 */
-	DeleteHandler::DeleteHandler() {
+	DeleteHandler::DeleteHandler(const config::t_location& locations)
+		: ARequestHandler(locations) {
 	}
 
 	/**

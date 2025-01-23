@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IRequestHandler.hpp"
+#include "ARequestHandler.hpp"
 
 namespace http {
 
@@ -8,9 +8,9 @@ namespace http {
 	 * @class PostHandler
 	 * @brief ...
 	 */
-	class PostHandler : public IRequestHandler {
+	class PostHandler : public ARequestHandler {
 		public:
-			PostHandler();
+			PostHandler(const config::t_location& locations);
 			~PostHandler();
 
 			void handle(const Request& req, Response& res);
