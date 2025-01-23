@@ -1,8 +1,10 @@
 #include "core/EventHandler.hpp"
 
+#include "core/VirtualServer.hpp"
 #include "http/Connection.hpp"
 #include "http/Request.hpp"
 #include "http/VirtualServer.hpp"
+#include "shared/Buffer.hpp"
 
 #include <cstring>
 
@@ -22,7 +24,12 @@ namespace core {
 	/**
 	 * @brief Destroys the EventHandler object.
 	 */
-	EventHandler::~EventHandler() {}
+	EventHandler::~EventHandler() {
+		while (!m_requests.empty()) {
+			delete m_requests.front();
+			m_requests.pop();
+		}
+	}
 
 	/**
 	 * @brief Copy constructor.
@@ -66,49 +73,36 @@ namespace core {
 	// otherwise, we would always wait until we get EPOLLOUT until we start building
 	// potentially wasting a lot of time while we're still in EPOLLIN
 	void EventHandler::handleRequest(void) {
-		char* buffer = m_connection.getByteBuffer();
-		http::Request& request = m_connection.getRequestBuffer(); // @TODO: ensure this always works on the right (foremost) request
+		shared::Buffer<BUFFER_SIZEE>& buff = m_reqParser.getWriteBuffer();
 
-		ssize_t bytesReceived = m_connection.getSocket().recv(buffer, BUFFER_SIZE - 1);
+		std::cout << "reading" << std::endl;
+		std::size_t available = buff.prepareWrite();
+		ssize_t bytesReceived = m_connection.getSocket().recv(buff.getWritePos(), available);
 		if (bytesReceived < 0) {
 			setState(FAILED);
-			std::cout << "Request FAILED somehow" << std::endl;
-			static int i = 0;
-			i++;
-			if (i >= 2)
-				throw std::runtime_error("recv failed twice on the same connection - this shouldn't happen");
-			return;
+			throw std::runtime_error("recv() failed");
 		}
 		if (bytesReceived == 0) {
-			setState(COMPLETED); // connection closed
-			std::cout << "Request COMPLETED after reading 0" << std::endl;
+			setState(COMPLETED);
 			return;
 		}
-		buffer[bytesReceived] = '\0';
-		std::cout << "Received " << bytesReceived << " bytes:" << std::endl;
-		if (!request.parse(buffer)) {
-			setState(FAILED);
-			// handle failure
-			std::cout << "Request FAILED" << std::endl;
-			return;
+		buff.advanceWriter(bytesReceived);
+
+		m_reqParser.process();
+		if (m_reqParser.isComplete()) {
+			m_requests.push(m_reqParser.releaseRequest());
+			m_reqParser.reset();
+			std::cout << "parsed: " << std::endl
+					  << m_requests.back()->toString() << std::endl;
 		}
-		if (request.getStatus() == http::PARSE_END) {
-			std::cout << "Request COMPLETED right after parsing" << std::endl;
-			m_requests.push(request);
-			request.reset();
-			setState(WAITING_FOR_WRITE);
-		} else
-			setState(PROCESSING);
-		// if request.done() then setState(COMPLETED);
-		std::cout << "m_responses now " << m_responses.size() << " long" << std::endl;
 	}
 
 	void EventHandler::buildResponse(void) {
 		if (m_requests.empty() || m_state > WRITING)
 			return;
-		const http::Request& currentRequest = m_requests.front();
+		const http::Request* currentRequest = m_requests.front();
 		http::Response& currentResponse = m_connection.getResponseBuffer();
-		currentResponse.doMagicToCalculateStatusCode(currentRequest);
+		currentResponse.doMagicToCalculateStatusCode(*currentRequest);
 
 		// set response type: CGI, error, or normal
 		// i.e. look for file and error if not found, otherwise build that
@@ -116,17 +110,18 @@ namespace core {
 
 		switch (currentResponse.getType()) {
 			case (http::IDK_NORMAL_I_GUESS):
-				currentResponse.buildFromRequest(currentRequest);
+				currentResponse.buildFromRequest(*currentRequest);
 				break;
 			case (http::CGI):
-				currentResponse.buildCGIResponse(currentRequest);
+				currentResponse.buildCGIResponse(*currentRequest);
 				break;
 			case (http::ERROR):
-				currentResponse.buildErrorResponse(currentRequest);
+				currentResponse.buildErrorResponse(*currentRequest);
 				break;
 		}
 		if (currentResponse.done()) {
 			m_responses.push(currentResponse);
+			delete currentRequest;
 			m_requests.pop();
 			setState(PENDING_SEND);
 			currentResponse.reset();

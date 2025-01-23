@@ -1,4 +1,4 @@
-#include "http/constants.hpp"
+#include "http/http.hpp"
 
 #include <cstdio>
 
@@ -52,7 +52,30 @@ namespace http {
 		return unknownStatus;
 	}
 
-	std::string generateErrorPage(StatusCode code) {
+	std::string getMethodString(Method method) {
+		switch (method) {
+			case GET:
+				return "GET";
+			case POST:
+				return "POST";
+			case DELETE:
+				return "DELETE";
+		}
+		throw http::exception(NOT_IMPLEMENTED, "method not implemented");
+	}
+
+	Method stringToMethod(const std::string& method) {
+		if (method == "GET") {
+			return GET;
+		} else if (method == "POST") {
+			return POST;
+		} else if (method == "DELETE") {
+			return DELETE;
+		}
+		throw http::exception(NOT_IMPLEMENTED, "method not implemented");
+	}
+
+	std::string getErrorPage(StatusCode code) {
 		static const char* errorPageTemplate =
 			"<!DOCTYPE html><html lang=\"en\"><head><title>%d %s</title><style>"
 			"body{background-color:#2b3042;justify-content: center;text-align: center;color:#d3dbeb;}"
@@ -65,6 +88,34 @@ namespace http {
 		snprintf(errorPage, sizeof(errorPage), errorPageTemplate, code, statusMessage, code, statusMessage);
 
 		return std::string(errorPage);
+	}
+
+	exception::exception(StatusCode code)
+		: std::runtime_error(buildErrorMessage(code, getStatusMessage(code)))
+		, m_code(code)
+		, m_message(getStatusMessage(code)) {
+	}
+
+	exception::exception(StatusCode code, const std::string& message)
+		: std::runtime_error(buildErrorMessage(code, message))
+		, m_code(code)
+		, m_message(message) {
+	}
+
+	exception::~exception() throw() {}
+
+	StatusCode exception::getCode() const {
+		return m_code;
+	}
+
+	const std::string& exception::getMessage() const {
+		return m_message;
+	}
+
+	std::string exception::buildErrorMessage(StatusCode code, const std::string& message) {
+		std::ostringstream oss;
+		oss << static_cast<int>(code) << " - " << message;
+		return oss.str(); // Only one construction of the string
 	}
 
 } // namespace http

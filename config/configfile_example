@@ -29,10 +29,6 @@ server
 	    # Executing CGI scripts for .php files
 	    location hi.php
 		{
-	        #include fastcgi_params;
-	        #fastcgi_pass 127.0.0.1:9000;  # Assuming PHP-FPM is running
-	        #fastcgi_index index.php;
-			#fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 			location /upload
 			{
 			}
@@ -40,8 +36,6 @@ server
 	    # Handle file uploads
 	    location /upload 
 		{
-	        #client_max_body_size 20M;  # Allow larger uploads
-	        #try_files $uri =404;  # Check if the directory exists
 	        root /tmp/uploads;  # Where to save uploads
 			location /upload
 			{
@@ -56,8 +50,6 @@ server
 	# Catch-all for other requests
 	location /other
 	{
-	    # Additional configurations for /other route
-	    # Accepts both POST and GET
 	    limit_except GET POST;
 	
 	    # Define the directory

@@ -1,5 +1,7 @@
 #include "shared/stringUtils.hpp"
 
+#include <cstring>
+
 namespace shared {
 
 	namespace string {
@@ -47,6 +49,12 @@ namespace shared {
 			} else {
 				str.clear();
 			}
+		}
+
+		std::string toString(int value) {
+			std::stringstream ss;
+			ss << value;
+			return ss.str();
 		}
 
 		/**
@@ -109,6 +117,7 @@ namespace shared {
 		bool isGreyspace(char c) {
 			return c == ' ' || c == '\t' || c == '\v' || c == '\f';
 		}
+
 	} // namespace string
 
 } // namespace shared
