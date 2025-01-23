@@ -151,7 +151,7 @@ namespace http {
 		}
 
 		char clientIP[INET_ADDRSTRLEN];
-		inet_ntop(AF_INET, &(clientAddr.sin_addr), clientIP, INET_ADDRSTRLEN);
+		inet_ntop(AF_INET, &(clientAddr.sin_addr), clientIP, INET_ADDRSTRLEN); // todo idk if allowed
 
 		int32_t clientPort = ntohs(clientAddr.sin_port);
 

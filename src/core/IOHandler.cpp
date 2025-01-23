@@ -11,7 +11,10 @@ namespace core {
 	 */
 	IOHandler::IOHandler(http::VirtualServer& vServer)
 		: m_vServer(vServer)
-		, m_responses() {
+		, m_reqParser()
+		, m_reqProccesor(vServer.getConfig().locations)
+		, m_responses()
+		, m_keepAlive(false) {
 	}
 
 	/**
@@ -51,23 +54,20 @@ namespace core {
 
 		ssize_t bytesRead = recv(fd, buff.getWritePos(), buff.availableSpace(), 0);
 		if (bytesRead == -1) {
-			if (errno == EAGAIN || errno == EWOULDBLOCK) {
-				return;
-			}
 			throw std::runtime_error("recv() failed");
 		}
 		if (bytesRead == 0) {
 			if (m_keepAlive == false) {
 				m_vServer.dropClient(fd);
 				return this->markDone();
-			}
+			} // todo maybe counter or handle with timeout
 		}
 		buff.advanceWriter(bytesRead);
 
 		m_reqParser.process();
 		if (m_reqParser.isComplete() || m_reqParser.hasError()) {
 			const http::Request& req = m_reqParser.getRequest();
-			m_keepAlive = req.keepAlive();
+			m_keepAlive = req.keepAlive(); // todo maybe dont do this at all
 
 			http::Response* res = m_reqProccesor.process(m_reqParser.getRequest());
 			res->serialize();
@@ -84,9 +84,6 @@ namespace core {
 		shared::Buffer<RESPONSE_BUFFER_SIZE>& buff = m_responses.front()->getData();
 		ssize_t bytesSent = send(fd, buff.getReadPos(), buff.size(), 0);
 		if (bytesSent == -1) {
-			if (errno == EAGAIN || errno == EWOULDBLOCK) {
-				return;
-			}
 			throw std::runtime_error("send() failed");
 		}
 
@@ -96,7 +93,7 @@ namespace core {
 			m_responses.pop_front();
 			if (m_keepAlive == false) {
 				m_vServer.dropClient(fd);
-				this->markDone();
+				return this->markDone();
 			}
 		}
 	}

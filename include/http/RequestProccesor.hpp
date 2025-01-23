@@ -17,7 +17,7 @@ namespace http {
 	 */
 	class RequestProccesor : shared::NonCopyable {
 		public:
-			RequestProccesor(const config::t_location& locations);
+			RequestProccesor(std::vector<config::t_location> locations);
 			~RequestProccesor();
 
 			Response* process(const Request& req);
@@ -28,7 +28,7 @@ namespace http {
 		private:
 			std::map<Method, ARequestHandler*> m_handlers;
 			Response* m_res;
-			const config::t_location& m_locations;
+			std::vector<config::t_location> m_locations;
 	};
 
 } /* namespace http */

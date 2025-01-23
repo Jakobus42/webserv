@@ -9,6 +9,7 @@ namespace http {
 
 	RequestParser::RequestParser()
 		: m_req()
+		, m_contentLength(0)
 		, m_state(START) {
 	}
 

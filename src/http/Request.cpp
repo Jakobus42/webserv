@@ -13,7 +13,8 @@ namespace http {
 	Request::Request()
 		: m_method(GET)
 		, m_uri("/")
-		, m_version(HTTP_VERSION) {
+		, m_version(HTTP_VERSION)
+		, m_code(OK) {
 	}
 
 	/**
@@ -59,7 +60,7 @@ namespace http {
 
 	bool Request::keepAlive() const { // todo lelelele this is shit
 		if (this->hasHeader("connection") == false) {
-			return false;
+			return true;
 		}
 		return m_headers.at("connection").at(0) == "keep-alive";
 	}

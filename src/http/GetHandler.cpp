@@ -15,8 +15,7 @@ namespace http {
 	GetHandler::~GetHandler() {
 	}
 
-	void GetHandler::handle(const Request& req, Response& res) {
-		std::string path = req.getUri(); // todo: to the guy who does uri stuff replace this with the path lol
+	void GetHandler::handle(const Request&, Response&) {
 	}
 
 } /* namespace http */

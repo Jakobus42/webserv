@@ -9,11 +9,13 @@ namespace http {
 	/**
 	 * @brief Constructs a new RequestProccesor object.
 	 */
-	RequestProccesor::RequestProccesor(const config::t_location& locations)
-		: m_locations(locations) {
-		m_handlers.insert(std::make_pair(GET, new GetHandler(locations)));
-		m_handlers.insert(std::make_pair(POST, new PostHandler(locations)));
-		m_handlers.insert(std::make_pair(DELETE, new DeleteHandler(locations)));
+	// todo figure out how to do this shit with locations
+	RequestProccesor::RequestProccesor(std::vector<config::t_location> locations)
+		: m_res(NULL)
+		, m_locations(locations) {
+		m_handlers.insert(std::make_pair(GET, new GetHandler(locations.at(0))));
+		m_handlers.insert(std::make_pair(POST, new PostHandler(locations.at(0))));
+		m_handlers.insert(std::make_pair(DELETE, new DeleteHandler(locations.at(0)))); // todo router or idk:c
 	}
 
 	/**

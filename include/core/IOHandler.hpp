@@ -31,7 +31,7 @@ namespace core {
 			http::RequestParser m_reqParser;
 			http::RequestProccesor m_reqProccesor;
 
-			std::deque<http::Response*> m_responses;
+			std::deque<http::Response*> m_responses; // todo que
 			bool m_keepAlive;
 	};
 

@@ -21,7 +21,7 @@ namespace http {
 			virtual void handle(const Request& req, Response& res) = 0;
 
 		private:
-			const config::t_location& m_locations;
+			config::t_location m_locations;
 	};
 
 } /* namespace http */
