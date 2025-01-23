@@ -1,3 +1,4 @@
+#include <iostream>
 #include <stdexcept>
 
 namespace shared {
@@ -17,32 +18,6 @@ namespace shared {
 	 */
 	template <std::size_t Capacity>
 	Buffer<Capacity>::~Buffer() {
-	}
-
-	/**
-	 * @brief Copy constructor.
-	 * @param other The other Buffer object to copy.
-	 */
-	template <std::size_t Capacity>
-	Buffer<Capacity>::Buffer(const Buffer& other)
-		: m_readPos(other.m_readPos)
-		, m_writePos(other.m_writePos) {
-		std::memcpy(m_data, other.m_data, Capacity);
-	}
-
-	/**
-	 * @brief Copy assignment operator.
-	 * @param other The other Buffer object to assign from.
-	 * @return A reference to the assigned Buffer object.
-	 */
-	template <std::size_t Capacity>
-	Buffer<Capacity>& Buffer<Capacity>::operator=(const Buffer& rhs) {
-		if (this != &rhs) {
-			m_readPos = rhs.m_readPos;
-			m_writePos = rhs.m_writePos;
-			std::memcpy(m_data, rhs.m_data, Capacity);
-		}
-		return *this;
 	}
 
 	template <std::size_t Capacity>

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "shared/NonCopyable.hpp"
+
 #include <cstring>
 
 namespace shared {
@@ -9,12 +11,10 @@ namespace shared {
 	 * @brief ...
 	 */
 	template <std::size_t Capacity>
-	class Buffer {
+	class Buffer : shared::NonCopyable {
 		public:
 			Buffer();
 			~Buffer();
-			Buffer(const Buffer& other);
-			Buffer& operator=(const Buffer& rhs);
 
 			void compact();
 			void append(const char* data, std::size_t size);

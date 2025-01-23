@@ -22,11 +22,21 @@ namespace http {
 		for (std::map<Method, IRequestHandler*>::iterator it = m_handlers.begin(); it != m_handlers.end(); ++it) {
 			delete it->second;
 		}
+		delete m_res;
 	}
 
-	Response* RequestProccesor::process(const Request&) {
-		std::cout << "processing" << std::endl;
-		return new Response();
+	Response* RequestProccesor::process(const Request& req) {
+		m_res = new Response();
+		m_handlers[req.getMethod()]->handle(req, *m_res);
+		m_res->setHeader("Content-Length", "0");
+		m_res->setCode(NO_CONTENT);
+		return this->releaseResponse();
+	}
+
+	Response* RequestProccesor::releaseResponse() {
+		Response* released = m_res;
+		m_res = NULL;
+		return released;
 	}
 
 } /* namespace http */

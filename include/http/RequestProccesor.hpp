@@ -21,9 +21,12 @@ namespace http {
 
 			Response* process(const Request& req);
 
+		private:
+			Response* releaseResponse();
 
 		private:
 			std::map<Method, IRequestHandler*> m_handlers;
+			Response* m_res;
 	};
 
 } /* namespace http */
