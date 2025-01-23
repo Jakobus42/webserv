@@ -11,6 +11,7 @@
 #include "http/constants.hpp"
 #include "shared/stringUtils.hpp"
 
+#include <algorithm>
 #include <cstring>
 #include <iostream>
 #include <string>
@@ -109,27 +110,29 @@ namespace http {
 		this->setNonBlocking(clientSocket);
 		m_clients.push_back(clientSocket);
 
-		char clientIP[INET_ADDRSTRLEN];
-		inet_ntop(AF_INET, &(clientAddr.sin_addr), clientIP, INET_ADDRSTRLEN); // todo probably cant use this
-		int32_t clientPort = ntohs(clientAddr.sin_port);
-		std::string clientInfo = "(IP: " + std::string(clientIP) + ", Port: " + shared::string::to_string(clientPort) + ")";
-		this->log("accepted new client " + clientInfo, shared::INFO);
+		this->log("accepted new client " + this->getClientInfo(clientSocket), shared::INFO);
 		return true;
 	}
 
 	void VirtualServer::shutDown() {
 		this->log("shutting down server", shared::INFO);
 		for (std::vector<int32_t>::iterator it = m_clients.begin(); it != m_clients.end(); ++it) {
-			int32_t fd = *it;
-			if (fd != -1) {
-				::close(*it);
-				*it = -1;
-			}
+			this->close(&(*it));
 		}
+		this->close(&m_listenSocket);
+	}
 
-		if (m_listenSocket != -1) {
-			::close(m_listenSocket);
-			m_listenSocket = -1;
+	void VirtualServer::dropClient(int32_t clientSocket) {
+		std::vector<int32_t>::iterator it = std::find(m_clients.begin(), m_clients.end(), clientSocket);
+
+		if (it != m_clients.end()) {
+			this->log("dropping client " + this->getClientInfo(*it), shared::INFO);
+
+			this->close(&(*it));
+
+			m_clients.erase(it);
+		} else {
+			this->log("attempting to drop unkown client ", shared::INFO);
 		}
 	}
 
@@ -138,9 +141,33 @@ namespace http {
 		m_logger.log(formatted, level);
 	}
 
+	std::string VirtualServer::getClientInfo(int32_t clientSocket) const {
+		sockaddr_in clientAddr;
+		socklen_t clientAddrLen = sizeof(clientAddr);
+
+		std::memset(&clientAddr, 0, clientAddrLen);
+		if (getpeername(clientSocket, reinterpret_cast<sockaddr*>(&clientAddr), &clientAddrLen) == -1) {
+			return "Unknown client (socket: " + shared::string::to_string(clientSocket) + ")";
+		}
+
+		char clientIP[INET_ADDRSTRLEN];
+		inet_ntop(AF_INET, &(clientAddr.sin_addr), clientIP, INET_ADDRSTRLEN);
+
+		int32_t clientPort = ntohs(clientAddr.sin_port);
+
+		return "(IP: " + std::string(clientIP) + ", Port: " + shared::string::to_string(clientPort) + ")";
+	}
+
 	void VirtualServer::setNonBlocking(int32_t socket) {
 		if (fcntl(socket, F_SETFL, O_NONBLOCK)) {
 			throw std::runtime_error("fcntl() failed to set non-blocking: " + std::string(strerror(errno)));
+		}
+	}
+
+	void VirtualServer::close(int32_t* fd) const {
+		if (*fd != -1) {
+			::close(*fd);
+			*fd = -1;
 		}
 	}
 

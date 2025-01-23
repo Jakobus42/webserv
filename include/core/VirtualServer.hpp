@@ -23,6 +23,7 @@ namespace http {
 
 			void init();
 			bool acceptClient();
+			void dropClient(int32_t clientSocket);
 			void shutDown();
 
 			void log(const std::string& msg, shared::LogLevel level = shared::DEBUG);
@@ -34,6 +35,9 @@ namespace http {
 
 		private:
 			void setNonBlocking(int32_t socket);
+			std::string getClientInfo(int32_t clientSocket) const;
+
+			void close(int32_t* fd) const;
 
 		private:
 			config::t_server& m_config;
