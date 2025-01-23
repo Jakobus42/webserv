@@ -11,8 +11,9 @@ namespace http {
  */
 class Router {
     public:
-		static int getLocation(const std::string& uri, std::vector<config::t_location>& locations, config::t_location* location);
-    private:  
+		static void printLocation(const config::t_location location, int detailed);
+		static int findLocation(const std::string& uri, std::vector<config::t_location>& locations, config::t_location& location);
+    private:
 		Router();
         ~Router();
         Router(const Router &other);

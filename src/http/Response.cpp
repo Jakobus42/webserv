@@ -135,13 +135,16 @@ namespace http {
 		if (m_type == ERROR) {
 			return;
 		}
-		config::t_location* location = NULL;
-		if (Router::getLocation(m_pathData.pure_path, locations, location) == 1) {
+		config::t_location location;
+		if (Router::findLocation(m_pathData.pure_path, locations, location) == 1) {
 			m_statusCode = NOT_FOUND;
 			m_type = ERROR;
 			return;
 		}
-		(void)location;
+		Router::printLocation(location, 1);
+/* 		if (location.index.back.substr(location.index.find_last_of('.') + 1) == "php") {
+			m_type = CGI;
+		}	 */
 	}
 
 	void Response::buildFromRequest(const Request& request) {
@@ -251,7 +254,7 @@ namespace http {
 	{
 		std::string authority;
 		std::string pure_path;
-		std::string query;
+		std::string query = "";
 		if (path.find('?') != std::string::npos) { // optional query part after the first question mark
 			query = path.substr(path.find('?') +1);	
 		}
