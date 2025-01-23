@@ -1,5 +1,7 @@
 #include "shared/stringUtils.hpp"
 
+#include <cstring>
+
 namespace shared {
 
 	namespace string {
@@ -115,6 +117,7 @@ namespace shared {
 		bool isGreyspace(char c) {
 			return c == ' ' || c == '\t' || c == '\v' || c == '\f';
 		}
+
 	} // namespace string
 
 } // namespace shared

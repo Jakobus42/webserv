@@ -8,7 +8,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
-#include "http/constants.hpp"
+#include "http/http.hpp"
 #include "shared/stringUtils.hpp"
 
 #include <algorithm>

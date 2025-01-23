@@ -2,6 +2,7 @@
 #include <sys/epoll.h>
 
 #include "http/Request.hpp"
+#include "http/RequestParser.hpp"
 #include "http/Response.hpp"
 
 #include <queue>
@@ -14,7 +15,7 @@ namespace http {
 
 namespace core {
 
-	typedef std::queue<http::Request> t_requests;
+	typedef std::queue<http::Request*> t_requests;
 	typedef std::queue<http::Response> t_responses;
 
 	enum HandlerState {
@@ -69,6 +70,7 @@ namespace core {
 			HandlerState m_state;
 			t_requests m_requests;
 			t_responses m_responses;
+			http::RequestParser m_reqParser;
 			http::Connection& m_connection;
 			http::VirtualServer& m_server;
 	};

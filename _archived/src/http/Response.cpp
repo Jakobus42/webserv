@@ -1,7 +1,7 @@
 #include "http/Response.hpp"
 
 #include "http/Request.hpp"
-#include "http/constants.hpp"
+#include "http/http.hpp"
 
 #include <ctime>
 #include <iomanip>
@@ -163,7 +163,7 @@ namespace http {
 	void Response::buildErrorResponse(const Request& request) {
 		(void)request;
 
-		this->m_body = generateErrorPage(m_statusCode);
+		this->m_body = getErrorPage(m_statusCode);
 
 		std::stringstream ss("");
 

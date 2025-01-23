@@ -5,7 +5,7 @@
 #include "core/AHandler.hpp"
 #include "core/Dispatcher.hpp"
 #include "core/VirtualServer.hpp"
-#include "http/constants.hpp"
+#include "http/http.hpp"
 #include "shared/NonCopyable.hpp"
 
 #include <map>
