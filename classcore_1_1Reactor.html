@@ -62,7 +62,6 @@ $(document).ready(function(){initNavTree('classcore_1_1Reactor.html',''); initRe
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
@@ -76,11 +75,26 @@ $(document).ready(function(){initNavTree('classcore_1_1Reactor.html',''); initRe
 
 <p><code>#include &lt;<a class="el" href="Reactor_8hpp_source.html">core/Reactor.hpp</a>&gt;</code></p>
 <div class="dynheader">
+Inheritance diagram for core::Reactor:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcore_1_1Reactor__inherit__graph.png" border="0" usemap="#acore_1_1Reactor_inherit__map" alt="Inheritance graph"/></div>
+<map name="acore_1_1Reactor_inherit__map" id="acore_1_1Reactor_inherit__map">
+<area shape="rect" title="..." alt="" coords="22,179,142,364"/>
+<area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="5,5,159,131"/>
+<area shape="poly" title=" " alt="" coords="85,145,85,178,79,178,79,145"/>
+</map>
+</div>
+<div class="dynheader">
 Collaboration diagram for core::Reactor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcore_1_1Reactor__coll__graph.png" border="0" usemap="#acore_1_1Reactor_coll__map" alt="Collaboration graph"/></div>
 <map name="acore_1_1Reactor_coll__map" id="acore_1_1Reactor_coll__map">
-<area shape="rect" title="..." alt="" coords="5,5,196,351"/>
+<area shape="rect" title="..." alt="" coords="27,448,147,613"/>
+<area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="5,5,159,131"/>
+<area shape="poly" title=" " alt="" coords="86,144,89,448,84,448,80,144"/>
+<area shape="rect" href="classcore_1_1Dispatcher.html" title="..." alt="" coords="104,180,260,385"/>
+<area shape="poly" title=" " alt="" coords="119,142,137,179,132,181,114,144"/>
+<area shape="poly" title=" " alt="" coords="145,387,127,433,122,432,140,385"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -97,25 +111,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3e4e9145e4a5623750c0604ee8015b35" id="r_a3e4e9145e4a5623750c0604ee8015b35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35">react</a> ()</td></tr>
 <tr class="separator:a3e4e9145e4a5623750c0604ee8015b35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:ad69dd070551bcd0cffa08471dcf8bd94" id="r_ad69dd070551bcd0cffa08471dcf8bd94"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#ad69dd070551bcd0cffa08471dcf8bd94">Reactor</a> (const <a class="el" href="classcore_1_1Reactor.html">Reactor</a> &amp;other)</td></tr>
-<tr class="memdesc:ad69dd070551bcd0cffa08471dcf8bd94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <br /></td></tr>
-<tr class="separator:ad69dd070551bcd0cffa08471dcf8bd94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0b7e9ad0a45f7a47f1c114b1e82ba12" id="r_ae0b7e9ad0a45f7a47f1c114b1e82ba12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcore_1_1Reactor.html">Reactor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#ae0b7e9ad0a45f7a47f1c114b1e82ba12">operator=</a> (const <a class="el" href="classcore_1_1Reactor.html">Reactor</a> &amp;other)</td></tr>
-<tr class="memdesc:ae0b7e9ad0a45f7a47f1c114b1e82ba12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assignment operator.  <br /></td></tr>
-<tr class="separator:ae0b7e9ad0a45f7a47f1c114b1e82ba12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a84da7bb8fc141a1233c0bd1ce164e8" id="r_a9a84da7bb8fc141a1233c0bd1ce164e8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#a9a84da7bb8fc141a1233c0bd1ce164e8">registerHandler</a> (<a class="el" href="classhttp_1_1VirtualServer.html">http::VirtualServer</a> &amp;vServer, <a class="el" href="classhttp_1_1Connection.html">http::Connection</a> &amp;connection, uint32_t events)</td></tr>
-<tr class="separator:a9a84da7bb8fc141a1233c0bd1ce164e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1804e0ff999d620cb670118403e4de7f" id="r_a1804e0ff999d620cb670118403e4de7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f">unregisterHandler</a> (int fd)</td></tr>
-<tr class="separator:a1804e0ff999d620cb670118403e4de7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a991302a5853c8ae892987d8673db2671" id="r_a991302a5853c8ae892987d8673db2671"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671">handleEvents</a> (<a class="el" href="namespacecore.html#a0b78aa55a6d88355f8be1feb0d20dad8">t_event</a> *events, int nEvents)</td></tr>
-<tr class="separator:a991302a5853c8ae892987d8673db2671"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e1c99b3c9a7c9c3ce63cb413a24f552" id="r_a6e1c99b3c9a7c9c3ce63cb413a24f552"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552">acceptNewConnections</a> ()</td></tr>
-<tr class="separator:a6e1c99b3c9a7c9c3ce63cb413a24f552"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6cceee1737c651d1ec1ae1f3b15ce547" id="r_a6cceee1737c651d1ec1ae1f3b15ce547"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#a6cceee1737c651d1ec1ae1f3b15ce547">pruneConnections</a> (<a class="el" href="namespacecore.html#a0b78aa55a6d88355f8be1feb0d20dad8">t_event</a> *events, int nEvents)</td></tr>
-<tr class="separator:a6cceee1737c651d1ec1ae1f3b15ce547"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
 <tr class="memitem:ad54fef7d5aa596da93d7e0e71f35ae45" id="r_ad54fef7d5aa596da93d7e0e71f35ae45"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#ad54fef7d5aa596da93d7e0e71f35ae45">handleSigint</a> (int)</td></tr>
@@ -123,25 +118,31 @@ Static Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a87514e5e0eb606a6923b805cb70a812d" id="r_a87514e5e0eb606a6923b805cb70a812d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a></td></tr>
-<tr class="separator:a87514e5e0eb606a6923b805cb70a812d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0468a522e06fd37653bf86dd8cee4568" id="r_a0468a522e06fd37653bf86dd8cee4568"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacecore.html#a67f4732639e9ae56728fe0440356e132">t_virtualServers</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#a0468a522e06fd37653bf86dd8cee4568">m_vServers</a></td></tr>
-<tr class="separator:a0468a522e06fd37653bf86dd8cee4568"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c2f66336f8e38f399575ffe6ad159ab" id="r_a0c2f66336f8e38f399575ffe6ad159ab"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, <a class="el" href="classcore_1_1EventHandler.html">EventHandler</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#a0c2f66336f8e38f399575ffe6ad159ab">m_eventHandlers</a></td></tr>
-<tr class="separator:a0c2f66336f8e38f399575ffe6ad159ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac39befe378eb1efd88fde093064d4086" id="r_ac39befe378eb1efd88fde093064d4086"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classcore_1_1Dispatcher.html">Dispatcher</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#ac39befe378eb1efd88fde093064d4086">m_dispatcher</a></td></tr>
+<tr class="separator:ac39befe378eb1efd88fde093064d4086"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ec2aade1fe15c8a13b06a7ac0d26469" id="r_a5ec2aade1fe15c8a13b06a7ac0d26469"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classhttp_1_1VirtualServer.html">http::VirtualServer</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#a5ec2aade1fe15c8a13b06a7ac0d26469">m_vServers</a></td></tr>
+<tr class="separator:a5ec2aade1fe15c8a13b06a7ac0d26469"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:a2d794de183f0153b8ec67be4739bd3d9" id="r_a2d794de183f0153b8ec67be4739bd3d9"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">m_reacting</a> = false</td></tr>
 <tr class="separator:a2d794de183f0153b8ec67be4739bd3d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_methods_classshared_1_1NonCopyable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classshared_1_1NonCopyable')"><img src="closed.png" alt="-"/>&#160;Private Member Functions inherited from <a class="el" href="classshared_1_1NonCopyable.html">shared::NonCopyable</a></td></tr>
+<tr class="memitem:a3adfa2d609d00e54a496b3daf937f03a inherit pub_methods_classshared_1_1NonCopyable" id="r_a3adfa2d609d00e54a496b3daf937f03a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classshared_1_1NonCopyable.html#a3adfa2d609d00e54a496b3daf937f03a">NonCopyable</a> ()</td></tr>
+<tr class="separator:a3adfa2d609d00e54a496b3daf937f03a inherit pub_methods_classshared_1_1NonCopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a504400ba5478abef7fa4d8aca511e24c inherit pub_methods_classshared_1_1NonCopyable" id="r_a504400ba5478abef7fa4d8aca511e24c"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classshared_1_1NonCopyable.html#a504400ba5478abef7fa4d8aca511e24c">~NonCopyable</a> ()</td></tr>
+<tr class="separator:a504400ba5478abef7fa4d8aca511e24c inherit pub_methods_classshared_1_1NonCopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>... </p>
 
-<p class="definition">Definition at line <a class="el" href="Reactor_8hpp_source.html#l00025">25</a> of file <a class="el" href="Reactor_8hpp_source.html">Reactor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Reactor_8hpp_source.html#l00020">20</a> of file <a class="el" href="Reactor_8hpp_source.html">Reactor.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af0d5f5709b94ddbb2584dc85a8c50ff3" name="af0d5f5709b94ddbb2584dc85a8c50ff3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0d5f5709b94ddbb2584dc85a8c50ff3">&#9670;&#160;</a></span>Reactor() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af0d5f5709b94ddbb2584dc85a8c50ff3">&#9670;&#160;</a></span>Reactor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -157,14 +158,12 @@ Static Private Attributes</h2></td></tr>
 
 <p>Constructs a new <a class="el" href="classcore_1_1Reactor.html" title="...">Reactor</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00020">20</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   21</span>        : <a class="code hl_variable" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a>(-1)</div>
-<div class="line"><span class="lineno">   22</span>        , <a class="code hl_variable" href="classcore_1_1Reactor.html#a0468a522e06fd37653bf86dd8cee4568">m_vServers</a>()</div>
-<div class="line"><span class="lineno">   23</span>        , <a class="code hl_variable" href="classcore_1_1Reactor.html#a0c2f66336f8e38f399575ffe6ad159ab">m_eventHandlers</a>() {</div>
+<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00021">21</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   22</span>        : <a class="code hl_variable" href="classcore_1_1Reactor.html#ac39befe378eb1efd88fde093064d4086">m_dispatcher</a>()</div>
+<div class="line"><span class="lineno">   23</span>        , <a class="code hl_variable" href="classcore_1_1Reactor.html#a5ec2aade1fe15c8a13b06a7ac0d26469">m_vServers</a>() {</div>
 <div class="line"><span class="lineno">   24</span>    }</div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_a0468a522e06fd37653bf86dd8cee4568"><div class="ttname"><a href="classcore_1_1Reactor.html#a0468a522e06fd37653bf86dd8cee4568">core::Reactor::m_vServers</a></div><div class="ttdeci">t_virtualServers m_vServers</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8hpp_source.html#l00050">Reactor.hpp:50</a></div></div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_a0c2f66336f8e38f399575ffe6ad159ab"><div class="ttname"><a href="classcore_1_1Reactor.html#a0c2f66336f8e38f399575ffe6ad159ab">core::Reactor::m_eventHandlers</a></div><div class="ttdeci">std::map&lt; int, EventHandler &gt; m_eventHandlers</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8hpp_source.html#l00051">Reactor.hpp:51</a></div></div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_a87514e5e0eb606a6923b805cb70a812d"><div class="ttname"><a href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">core::Reactor::m_epoll_master_fd</a></div><div class="ttdeci">int m_epoll_master_fd</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8hpp_source.html#l00048">Reactor.hpp:48</a></div></div>
+<div class="ttc" id="aclasscore_1_1Reactor_html_a5ec2aade1fe15c8a13b06a7ac0d26469"><div class="ttname"><a href="classcore_1_1Reactor.html#a5ec2aade1fe15c8a13b06a7ac0d26469">core::Reactor::m_vServers</a></div><div class="ttdeci">std::vector&lt; http::VirtualServer &gt; m_vServers</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8hpp_source.html#l00035">Reactor.hpp:35</a></div></div>
+<div class="ttc" id="aclasscore_1_1Reactor_html_ac39befe378eb1efd88fde093064d4086"><div class="ttname"><a href="classcore_1_1Reactor.html#ac39befe378eb1efd88fde093064d4086">core::Reactor::m_dispatcher</a></div><div class="ttdeci">Dispatcher m_dispatcher</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8hpp_source.html#l00034">Reactor.hpp:34</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -188,333 +187,11 @@ Static Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00030">30</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   30</span>                      {</div>
-<div class="line"><span class="lineno">   31</span>        <span class="keywordflow">for</span> (t_virtualServers::iterator server = <a class="code hl_variable" href="classcore_1_1Reactor.html#a0468a522e06fd37653bf86dd8cee4568">m_vServers</a>.begin(); server != <a class="code hl_variable" href="classcore_1_1Reactor.html#a0468a522e06fd37653bf86dd8cee4568">m_vServers</a>.end(); ++server) {</div>
-<div class="line"><span class="lineno">   32</span>            <span class="keywordflow">for</span> (http::t_connections::iterator connection = server-&gt;getConnections().begin(); connection != server-&gt;getConnections().end(); ++connection) {</div>
-<div class="line"><span class="lineno">   33</span>                connection-&gt;close();</div>
-<div class="line"><span class="lineno">   34</span>            }</div>
-<div class="line"><span class="lineno">   35</span>            server-&gt;getSocket().close();</div>
-<div class="line"><span class="lineno">   36</span>        }</div>
-<div class="line"><span class="lineno">   37</span>        close(<a class="code hl_variable" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a>);</div>
-<div class="line"><span class="lineno">   38</span>    }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ad69dd070551bcd0cffa08471dcf8bd94" name="ad69dd070551bcd0cffa08471dcf8bd94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad69dd070551bcd0cffa08471dcf8bd94">&#9670;&#160;</a></span>Reactor() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">core::Reactor::Reactor </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classcore_1_1Reactor.html">Reactor</a> &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Copy constructor. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">other</td><td>The other <a class="el" href="classcore_1_1Reactor.html" title="...">Reactor</a> object to copy. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00044">44</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   45</span>        : <a class="code hl_variable" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a>(other.m_epoll_master_fd)</div>
-<div class="line"><span class="lineno">   46</span>        , <a class="code hl_variable" href="classcore_1_1Reactor.html#a0468a522e06fd37653bf86dd8cee4568">m_vServers</a>(other.m_vServers)</div>
-<div class="line"><span class="lineno">   47</span>        , <a class="code hl_variable" href="classcore_1_1Reactor.html#a0c2f66336f8e38f399575ffe6ad159ab">m_eventHandlers</a>(other.m_eventHandlers) {</div>
-<div class="line"><span class="lineno">   48</span>    }</div>
+<div class="line"><span class="lineno">   31</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6e1c99b3c9a7c9c3ce63cb413a24f552" name="a6e1c99b3c9a7c9c3ce63cb413a24f552"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e1c99b3c9a7c9c3ce63cb413a24f552">&#9670;&#160;</a></span>acceptNewConnections()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core::Reactor::acceptNewConnections </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00120">120</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  120</span>                                       {</div>
-<div class="line"><span class="lineno">  121</span>        <span class="keywordflow">for</span> (t_virtualServers::iterator it = <a class="code hl_variable" href="classcore_1_1Reactor.html#a0468a522e06fd37653bf86dd8cee4568">m_vServers</a>.begin(); it != <a class="code hl_variable" href="classcore_1_1Reactor.html#a0468a522e06fd37653bf86dd8cee4568">m_vServers</a>.end(); ++it) {</div>
-<div class="line"><span class="lineno">  122</span>            <a class="code hl_class" href="classhttp_1_1VirtualServer.html">http::VirtualServer</a>&amp; vServer = *it;</div>
-<div class="line"><span class="lineno">  123</span> </div>
-<div class="line"><span class="lineno">  124</span>            <span class="keywordflow">while</span> (vServer.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#aba633077d4bc512dcb2caf15e6b035d4">addConnection</a>()) {</div>
-<div class="line"><span class="lineno">  125</span>                <a class="code hl_class" href="classhttp_1_1Connection.html">http::Connection</a>&amp; connection = vServer.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a9a2c96594ed7379e782a1fe266f9ebc9">getConnections</a>().back();</div>
-<div class="line"><span class="lineno">  126</span> </div>
-<div class="line"><span class="lineno">  127</span>                <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">  128</span>                    this-&gt;<a class="code hl_function" href="classcore_1_1Reactor.html#a9a84da7bb8fc141a1233c0bd1ce164e8">registerHandler</a>(vServer, connection, EPOLLIN | EPOLLOUT | EPOLLHUP);</div>
-<div class="line"><span class="lineno">  129</span>                } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
-<div class="line"><span class="lineno">  130</span>                    std::cerr &lt;&lt; <span class="stringliteral">&quot;acceptNewConnections: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  131</span>                }</div>
-<div class="line"><span class="lineno">  132</span>            }</div>
-<div class="line"><span class="lineno">  133</span>        }</div>
-<div class="line"><span class="lineno">  134</span>    }</div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_a9a84da7bb8fc141a1233c0bd1ce164e8"><div class="ttname"><a href="classcore_1_1Reactor.html#a9a84da7bb8fc141a1233c0bd1ce164e8">core::Reactor::registerHandler</a></div><div class="ttdeci">void registerHandler(http::VirtualServer &amp;vServer, http::Connection &amp;connection, uint32_t events)</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8cpp_source.html#l00101">Reactor.cpp:101</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html"><div class="ttname"><a href="classhttp_1_1Connection.html">http::Connection</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="Connection_8hpp_source.html#l00013">Connection.hpp:13</a></div></div>
-<div class="ttc" id="aclasshttp_1_1VirtualServer_html"><div class="ttname"><a href="classhttp_1_1VirtualServer.html">http::VirtualServer</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00023">VirtualServer.hpp:23</a></div></div>
-<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a9a2c96594ed7379e782a1fe266f9ebc9"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a9a2c96594ed7379e782a1fe266f9ebc9">http::VirtualServer::getConnections</a></div><div class="ttdeci">const t_connections &amp; getConnections(void) const</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00099">VirtualServer.cpp:99</a></div></div>
-<div class="ttc" id="aclasshttp_1_1VirtualServer_html_aba633077d4bc512dcb2caf15e6b035d4"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#aba633077d4bc512dcb2caf15e6b035d4">http::VirtualServer::addConnection</a></div><div class="ttdeci">bool addConnection(void)</div><div class="ttdoc">Accepts the next incoming connection in the VirtualServerSocket's queue.</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00114">VirtualServer.cpp:114</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classcore_1_1Reactor_a6e1c99b3c9a7c9c3ce63cb413a24f552_cgraph.png" border="0" usemap="#aclasscore_1_1Reactor_a6e1c99b3c9a7c9c3ce63cb413a24f552_cgraph" alt=""/></div>
-<map name="aclasscore_1_1Reactor_a6e1c99b3c9a7c9c3ce63cb413a24f552_cgraph" id="aclasscore_1_1Reactor_a6e1c99b3c9a7c9c3ce63cb413a24f552_cgraph">
-<area shape="rect" title=" " alt="" coords="5,86,193,126"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#aba633077d4bc512dcb2caf15e6b035d4" title="Accepts the next incoming connection in the VirtualServerSocket&#39;s queue." alt="" coords="279,22,421,62"/>
-<area shape="poly" title=" " alt="" coords="178,83,265,61,267,66,179,89"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a9a2c96594ed7379e782a1fe266f9ebc9" title=" " alt="" coords="279,86,421,126"/>
-<area shape="poly" title=" " alt="" coords="193,103,266,103,266,109,193,109"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a9a84da7bb8fc141a1233c0bd1ce164e8" title=" " alt="" coords="241,151,459,176"/>
-<area shape="poly" title=" " alt="" coords="188,123,281,145,280,150,187,129"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a86da59b5636f0d11d787304d7285ffc0" title="Accepts an incoming connection." alt="" coords="529,29,680,55"/>
-<area shape="poly" title=" " alt="" coords="421,39,516,39,516,45,421,45"/>
-<area shape="poly" title=" " alt="" coords="564,31,555,21,560,11,577,5,605,3,640,7,650,11,654,17,649,20,647,15,639,12,605,8,578,10,563,15,561,20,568,27"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a5ab3a33cfce8ea36e4a327d237c5857f" title="Sets the socket to non&#45;blocking mode." alt="" coords="751,29,960,55"/>
-<area shape="poly" title=" " alt="" coords="680,39,737,39,737,45,680,45"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a9691f8c60897ad4cc6dc0bc257b1f365" title="Closes the socket." alt="" coords="1008,29,1149,55"/>
-<area shape="poly" title=" " alt="" coords="961,39,994,39,994,45,961,45"/>
-<area shape="poly" title=" " alt="" coords="1043,31,1035,21,1039,11,1054,5,1079,3,1109,6,1122,15,1118,20,1107,11,1079,8,1055,10,1042,15,1040,20,1047,28"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597" title=" " alt="" coords="507,143,703,183"/>
-<area shape="poly" title=" " alt="" coords="459,161,493,161,493,166,459,166"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a616e1be23dbc676f5bd3f69407530907" title="Gets the socket file descriptor." alt="" coords="783,151,927,176"/>
-<area shape="poly" title=" " alt="" coords="703,161,769,161,769,166,703,166"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classcore_1_1Reactor_a6e1c99b3c9a7c9c3ce63cb413a24f552_icgraph.png" border="0" usemap="#aclasscore_1_1Reactor_a6e1c99b3c9a7c9c3ce63cb413a24f552_icgraph" alt=""/></div>
-<map name="aclasscore_1_1Reactor_a6e1c99b3c9a7c9c3ce63cb413a24f552_icgraph" id="aclasscore_1_1Reactor_a6e1c99b3c9a7c9c3ce63cb413a24f552_icgraph">
-<area shape="rect" title=" " alt="" coords="305,5,493,45"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
-<area shape="poly" title=" " alt="" coords="291,28,258,28,258,23,291,23"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a991302a5853c8ae892987d8673db2671" name="a991302a5853c8ae892987d8673db2671"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a991302a5853c8ae892987d8673db2671">&#9670;&#160;</a></span>handleEvents()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core::Reactor::handleEvents </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacecore.html#a0b78aa55a6d88355f8be1feb0d20dad8">t_event</a> *&#160;</td>
-          <td class="paramname"><em>events</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>nEvents</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00156">156</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  156</span>                                                           {</div>
-<div class="line"><span class="lineno">  157</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nEvents; ++i) {</div>
-<div class="line"><span class="lineno">  158</span>            <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">  159</span>                <a class="code hl_typedef" href="namespacecore.html#a0b78aa55a6d88355f8be1feb0d20dad8">t_event</a>&amp; <span class="keyword">event</span> = events[i];</div>
-<div class="line"><span class="lineno">  160</span>                EventHandler&amp; handler = <a class="code hl_variable" href="classcore_1_1Reactor.html#a0c2f66336f8e38f399575ffe6ad159ab">m_eventHandlers</a>.at(event.data.fd);</div>
-<div class="line"><span class="lineno">  161</span> </div>
-<div class="line"><span class="lineno">  162</span>                <span class="keywordflow">if</span> (event.events &amp; EPOLLHUP || event.events &amp; EPOLLERR) {</div>
-<div class="line"><span class="lineno">  163</span>                    handler.killSelf();</div>
-<div class="line"><span class="lineno">  164</span>                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (event.events &amp; EPOLLIN) {</div>
-<div class="line"><span class="lineno">  165</span>                    handler.handleRequest();</div>
-<div class="line"><span class="lineno">  166</span>                    handler.buildResponse();</div>
-<div class="line"><span class="lineno">  167</span>                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (event.events &amp; EPOLLOUT) {</div>
-<div class="line"><span class="lineno">  168</span>                    handler.sendResponse();</div>
-<div class="line"><span class="lineno">  169</span>                }</div>
-<div class="line"><span class="lineno">  170</span>            } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><span class="lineno">  171</span>                std::cerr &lt;&lt; <span class="stringliteral">&quot;handleEvents: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  172</span>            }</div>
-<div class="line"><span class="lineno">  173</span>        }</div>
-<div class="line"><span class="lineno">  174</span>    }</div>
-<div class="ttc" id="anamespacecore_html_a0b78aa55a6d88355f8be1feb0d20dad8"><div class="ttname"><a href="namespacecore.html#a0b78aa55a6d88355f8be1feb0d20dad8">core::t_event</a></div><div class="ttdeci">struct epoll_event t_event</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8hpp_source.html#l00019">Reactor.hpp:19</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classcore_1_1Reactor_a991302a5853c8ae892987d8673db2671_cgraph.png" border="0" usemap="#aclasscore_1_1Reactor_a991302a5853c8ae892987d8673db2671_cgraph" alt=""/></div>
-<map name="aclasscore_1_1Reactor_a991302a5853c8ae892987d8673db2671_cgraph" id="aclasscore_1_1Reactor_a991302a5853c8ae892987d8673db2671_cgraph">
-<area shape="rect" title=" " alt="" coords="5,751,209,777"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="257,256,404,296"/>
-<area shape="poly" title=" " alt="" coords="112,750,312,308,317,310,117,752"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#ab5616520f0084b2e893e5fb548b5385d" title=" " alt="" coords="257,692,404,732"/>
-<area shape="poly" title=" " alt="" coords="162,749,243,730,245,735,163,754"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a5d434426a474d7c9876837de7240f2fb" title=" " alt="" coords="257,959,404,999"/>
-<area shape="poly" title=" " alt="" coords="124,775,301,947,297,951,120,779"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1807c394423626629cff70026027a81f" title=" " alt="" coords="257,848,404,888"/>
-<area shape="poly" title=" " alt="" coords="137,774,275,839,273,844,135,779"/>
-<area shape="rect" href="classhttp_1_1Response.html#a9b46cf97a3ed97510778410591f5b460" title=" " alt="" coords="452,234,697,259"/>
-<area shape="poly" title=" " alt="" coords="404,265,455,258,456,264,405,270"/>
-<area shape="rect" href="classhttp_1_1Response.html#a52625989a3fb2bcc1e367b5bc13bd99e" title=" " alt="" coords="479,284,670,324"/>
-<area shape="poly" title=" " alt="" coords="405,282,466,289,465,294,404,287"/>
-<area shape="rect" href="classhttp_1_1Response.html#ae0efdf9f8df4b4ba5d173171ad868cc7" title=" " alt="" coords="479,5,671,45"/>
-<area shape="poly" title=" " alt="" coords="335,255,348,213,372,159,405,103,426,77,450,55,465,46,468,50,454,59,430,81,409,106,376,161,353,215,340,256"/>
-<area shape="rect" href="classhttp_1_1Response.html#ac923fe1857f3c3803e3cdc6b230e64f2" title=" " alt="" coords="477,348,673,388"/>
-<area shape="poly" title=" " alt="" coords="369,294,453,334,476,341,474,346,451,338,366,299"/>
-<area shape="rect" href="classhttp_1_1Response.html#a01c142188318790efefff94436580437" title=" " alt="" coords="495,70,654,95"/>
-<area shape="poly" title=" " alt="" coords="338,255,354,221,379,181,411,140,451,106,481,92,483,96,453,110,415,144,383,184,359,224,343,257"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a2e2e6883518370dd49f9fc23762a6c2d" title=" " alt="" coords="464,120,685,160"/>
-<area shape="poly" title=" " alt="" coords="348,254,392,211,420,189,451,170,466,163,468,167,453,174,423,193,395,215,352,258"/>
-<area shape="rect" href="classhttp_1_1Response.html#a5fb55b37425d748d5d1bf83e48a49826" title=" " alt="" coords="485,185,664,210"/>
-<area shape="poly" title=" " alt="" coords="369,253,451,219,481,211,482,216,453,224,371,258"/>
-<area shape="rect" href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364" title=" " alt="" coords="495,413,655,438"/>
-<area shape="poly" title=" " alt="" coords="348,295,391,347,420,375,453,398,482,410,480,415,451,402,417,379,387,351,344,298"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862" title=" " alt="" coords="501,692,648,732"/>
-<area shape="poly" title=" " alt="" coords="334,296,337,368,352,471,367,527,388,582,417,633,454,678,470,690,489,699,487,704,467,695,450,682,412,636,383,584,362,529,347,472,332,369,329,296"/>
-<area shape="rect" href="classhttp_1_1Response.html#a7122bb1e022880c9832e9e644a80397f" title=" " alt="" coords="773,193,967,218"/>
-<area shape="poly" title=" " alt="" coords="665,282,696,268,710,258,719,248,729,237,744,227,761,220,763,225,747,232,732,241,723,251,714,262,699,273,668,286"/>
-<area shape="rect" href="namespacehttp.html#ab99935c70c216969b7410a50c653cc58" title=" " alt="" coords="782,291,958,317"/>
-<area shape="poly" title=" " alt="" coords="670,301,768,301,768,307,670,307"/>
-<area shape="rect" href="classhttp_1_1Response.html#a7e9fb022362f77c3d9bfc19e76249977" title=" " alt="" coords="761,242,979,267"/>
-<area shape="poly" title=" " alt="" coords="670,285,779,267,780,272,671,291"/>
-<area shape="rect" href="classhttp_1_1Response.html#a637305890d24151f4d8b9dc4d13cdbb0" title=" " alt="" coords="767,46,973,71"/>
-<area shape="poly" title=" " alt="" coords="669,287,696,269,710,251,717,232,720,195,723,155,729,135,743,114,772,90,804,74,807,79,775,95,747,118,734,137,728,156,726,195,723,234,715,253,699,273,671,291"/>
-<area shape="rect" href="classhttp_1_1Response.html#a2d1e7ec002dfef0005ca5ef8f88d4567" title=" " alt="" coords="773,128,967,168"/>
-<area shape="poly" title=" " alt="" coords="669,284,696,269,712,247,719,225,725,201,744,178,759,168,762,172,747,182,730,203,724,226,717,250,699,273,672,289"/>
-<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="1055,181,1231,206"/>
-<area shape="poly" title=" " alt="" coords="951,289,994,276,1058,245,1112,212,1115,216,1061,250,996,281,953,294"/>
-<area shape="poly" title=" " alt="" coords="968,161,1053,176,1052,181,967,167"/>
-<area shape="poly" title=" " alt="" coords="672,38,699,55,712,71,720,87,724,119,728,150,734,164,747,178,762,188,759,192,744,182,730,167,723,151,718,119,714,88,708,74,696,59,669,43"/>
-<area shape="poly" title=" " alt="" coords="672,37,699,55,716,77,723,100,723,144,724,187,731,207,747,227,753,233,750,237,743,231,727,210,719,188,718,144,718,101,711,80,695,59,669,42"/>
-<area shape="poly" title=" " alt="" coords="671,34,753,43,753,48,671,39"/>
-<area shape="poly" title=" " alt="" coords="663,43,698,55,820,119,817,124,696,60,661,48"/>
-<area shape="rect" href="classhttp_1_1Response.html#a2e20040657655a595e84a9c1f1f9293a" title="Check if the request data is valid, and set the status code accordingly." alt="" coords="745,355,995,381"/>
-<area shape="poly" title=" " alt="" coords="673,365,732,365,732,371,673,371"/>
-<area shape="rect" href="classhttp_1_1Response.html#af757d6a96ba06dd76fab3ba48f8ee5a8" title="find request target form, check it and reconstruct it (RFC 9112 3.2)" alt="" coords="1048,363,1239,403"/>
-<area shape="poly" title=" " alt="" coords="995,372,1035,374,1034,380,995,377"/>
-<area shape="rect" href="classhttp_1_1Request.html#a5b597eb2a2ab75e361c2e26f81a2a578" title=" " alt="" coords="1597,391,1820,417"/>
-<area shape="poly" title=" " alt="" coords="924,353,1038,331,1193,312,1280,306,1369,306,1459,312,1546,327,1582,337,1618,352,1677,382,1675,387,1616,356,1581,342,1545,332,1458,318,1369,312,1280,312,1193,317,1039,336,925,358"/>
-<area shape="poly" title=" " alt="" coords="1197,400,1243,415,1292,425,1380,433,1469,432,1553,425,1624,416,1625,421,1553,431,1470,437,1380,438,1292,431,1242,420,1195,405"/>
-<area shape="rect" href="classhttp_1_1Response.html#af3ce515c1a3145598ce568ae27e681a4" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="1292,342,1545,367"/>
-<area shape="poly" title=" " alt="" coords="1239,370,1280,366,1281,371,1239,376"/>
-<area shape="rect" href="classhttp_1_1Response.html#a7ce94f17523ca26c67126fca5a7a67fb" title=" " alt="" coords="1301,391,1536,417"/>
-<area shape="poly" title=" " alt="" coords="1239,387,1288,391,1287,396,1239,393"/>
-<area shape="poly" title=" " alt="" coords="1536,401,1583,401,1583,407,1536,407"/>
-<area shape="poly" title=" " alt="" coords="404,709,487,709,487,715,404,715"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a71e0d84361ef9d7cdca612716dfe2bb3" title=" " alt="" coords="481,463,669,503"/>
-<area shape="poly" title=" " alt="" coords="336,691,351,653,375,604,408,555,428,532,450,513,466,503,469,507,454,517,432,536,412,558,379,607,356,655,341,693"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a06be1704cbc74d761ed349a082f81f4e" title=" " alt="" coords="469,577,680,617"/>
-<area shape="poly" title=" " alt="" coords="355,690,398,658,451,628,473,619,475,624,453,633,401,663,358,694"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ada9246a65fd8b6ed0176597e59cf539f" title=" " alt="" coords="1043,907,1244,933"/>
-<area shape="poly" title=" " alt="" coords="346,731,388,788,418,818,453,842,502,858,566,870,719,881,875,885,995,892,1062,902,1061,908,994,897,874,890,719,886,565,875,501,864,451,846,415,822,384,792,341,734"/>
-<area shape="rect" href="classhttp_1_1Request.html#a94b960f923e856df1cc565ebbac086c0" title=" " alt="" coords="485,642,664,667"/>
-<area shape="poly" title=" " alt="" coords="404,689,451,677,495,668,496,673,453,683,405,695"/>
-<area shape="rect" href="classhttp_1_1Request.html#a9080f26f273ea9257a4dbac3a9e7d9c1" title="Parses the request." alt="" coords="498,527,651,553"/>
-<area shape="poly" title=" " alt="" coords="340,690,382,627,414,592,451,563,484,549,486,554,453,568,417,596,387,630,345,693"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a0968f64c389c1544e65f7430f969abb2" title="Receives data from the socket." alt="" coords="507,757,642,782"/>
-<area shape="poly" title=" " alt="" coords="405,729,453,741,496,751,495,756,451,747,404,735"/>
-<area shape="rect" href="classhttp_1_1Request.html#a9f89032cd603dc018f0573e34cec49ed" title=" " alt="" coords="499,806,650,831"/>
-<area shape="poly" title=" " alt="" coords="357,730,400,763,453,792,487,803,485,808,451,797,397,767,353,734"/>
-<area shape="rect" href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4" title=" " alt="" coords="777,527,963,553"/>
-<area shape="poly" title=" " alt="" coords="651,537,763,537,763,543,651,543"/>
-<area shape="rect" href="classhttp_1_1Request.html#a8346c819a5b757937c3f50af058f70f7" title=" " alt="" coords="1315,513,1522,538"/>
-<area shape="poly" title=" " alt="" coords="647,525,745,512,885,501,994,497,1104,499,1244,505,1302,510,1302,515,1244,511,1104,504,994,503,885,507,746,517,648,530"/>
-<area shape="rect" href="classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac" title=" " alt="" coords="1325,562,1512,587"/>
-<area shape="poly" title=" " alt="" coords="652,550,746,561,900,571,1054,575,1312,575,1312,580,1054,581,899,576,745,567,651,555"/>
-<area shape="rect" href="classhttp_1_1Request.html#a8c6bb71ac8e08b4547c54f4ba662b135" title=" " alt="" coords="1050,520,1237,560"/>
-<area shape="poly" title=" " alt="" coords="963,537,1036,537,1036,543,963,543"/>
-<area shape="rect" href="classhttp_1_1Request.html#a9fa9ac30c7d21bb8531a71d06c200041" title=" " alt="" coords="1325,612,1512,652"/>
-<area shape="poly" title=" " alt="" coords="1192,558,1293,596,1324,606,1323,611,1291,601,1190,563"/>
-<area shape="poly" title=" " alt="" coords="1237,532,1302,529,1302,534,1237,538"/>
-<area shape="rect" href="classhttp_1_1Request.html#a4a1c007b045c1a6e3b1c2401ef783f63" title=" " alt="" coords="1593,562,1824,587"/>
-<area shape="poly" title=" " alt="" coords="1512,611,1629,587,1630,593,1513,616"/>
-<area shape="rect" href="classhttp_1_1Request.html#a163b25cf6a510113d9020c5acb03a46f" title=" " alt="" coords="1611,665,1806,705"/>
-<area shape="poly" title=" " alt="" coords="1513,646,1598,662,1598,668,1512,652"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a0f7b586737ab36eade3fc402c9abe0a7" title="Converts a hexadecimal string to an unsigned integer." alt="" coords="1623,615,1794,641"/>
-<area shape="poly" title=" " alt="" coords="1512,628,1609,627,1609,632,1512,633"/>
-<area shape="rect" href="namespacehttp.html#a351eaecda88fa2e6e0ec2f3154a56c64" title=" " alt="" coords="1877,673,2066,698"/>
-<area shape="poly" title=" " alt="" coords="1806,683,1863,683,1863,688,1806,688"/>
-<area shape="poly" title=" " alt="" coords="1494,535,1620,557,1619,562,1494,541"/>
-<area shape="rect" href="classhttp_1_1Request.html#a00503d511356e69b471a842f419f0bec" title=" " alt="" coords="1622,448,1795,488"/>
-<area shape="poly" title=" " alt="" coords="1483,510,1608,485,1609,490,1484,515"/>
-<area shape="rect" href="classhttp_1_1Request.html#a419c2262506e00fd2bb302a4a4451287" title=" " alt="" coords="1609,513,1809,538"/>
-<area shape="poly" title=" " alt="" coords="1522,523,1595,523,1595,528,1522,528"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3" title="checks if a character is a whitespace character exept for &#39; &#39; and &#39;\r&#39;" alt="" coords="1872,513,2071,538"/>
-<area shape="poly" title=" " alt="" coords="1809,523,1858,523,1858,528,1809,528"/>
-<area shape="poly" title=" " alt="" coords="1512,572,1579,572,1579,577,1512,577"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a43f961e40bece5869f1d53ec1da8bb9e" title=" " alt="" coords="498,1057,651,1097"/>
-<area shape="poly" title=" " alt="" coords="364,996,406,1020,453,1043,486,1054,484,1059,451,1048,403,1025,362,1001"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e" title=" " alt="" coords="785,1022,955,1047"/>
-<area shape="poly" title=" " alt="" coords="651,1064,770,1046,771,1052,652,1069"/>
-<area shape="poly" title=" " alt="" coords="900,1020,1098,936,1100,940,902,1024"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a9691f8c60897ad4cc6dc0bc257b1f365" title="Closes the socket." alt="" coords="1073,1022,1214,1047"/>
-<area shape="poly" title=" " alt="" coords="955,1032,1059,1032,1059,1037,955,1037"/>
-<area shape="poly" title=" " alt="" coords="1100,1024,1090,1014,1095,1004,1113,997,1143,995,1182,999,1193,1004,1197,1010,1192,1013,1189,1008,1181,1005,1143,1001,1114,1003,1098,1008,1095,1013,1103,1020"/>
-<area shape="poly" title=" " alt="" coords="345,846,374,800,401,743,412,699,415,659,408,587,406,553,410,519,423,484,450,449,464,437,480,429,483,434,467,442,454,453,428,487,415,520,411,553,413,586,420,659,418,700,407,745,379,803,349,849"/>
-<area shape="poly" title=" " alt="" coords="344,846,388,795,417,767,451,743,487,727,489,732,453,748,421,771,392,798,348,850"/>
-<area shape="poly" title=" " alt="" coords="405,879,452,885,609,899,765,908,1029,916,1029,922,765,913,608,904,452,891,404,884"/>
-<area shape="rect" href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d" title=" " alt="" coords="455,958,694,983"/>
-<area shape="poly" title=" " alt="" coords="362,886,404,912,453,936,500,952,498,957,451,941,402,916,359,890"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a445e1ca1e606c084411f5eac2dc6a7af" title="Sends data through the socket." alt="" coords="505,1007,644,1033"/>
-<area shape="poly" title=" " alt="" coords="352,887,453,994,493,1009,491,1014,451,998,349,890"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classcore_1_1Reactor_a991302a5853c8ae892987d8673db2671_icgraph.png" border="0" usemap="#aclasscore_1_1Reactor_a991302a5853c8ae892987d8673db2671_icgraph" alt=""/></div>
-<map name="aclasscore_1_1Reactor_a991302a5853c8ae892987d8673db2671_icgraph" id="aclasscore_1_1Reactor_a991302a5853c8ae892987d8673db2671_icgraph">
-<area shape="rect" title=" " alt="" coords="305,5,509,31"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,5,257,31"/>
-<area shape="poly" title=" " alt="" coords="291,21,258,21,258,15,291,15"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,31"/>
-<area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
-</map>
-</div>
-
-</div>
-</div>
 <a id="ad54fef7d5aa596da93d7e0e71f35ae45" name="ad54fef7d5aa596da93d7e0e71f35ae45"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad54fef7d5aa596da93d7e0e71f35ae45">&#9670;&#160;</a></span>handleSigint()</h2>
 
@@ -539,13 +216,13 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00176">176</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  176</span>                                         {</div>
-<div class="line"><span class="lineno">  177</span>        <span class="keywordflow">if</span> (signum == SIGINT) {</div>
-<div class="line"><span class="lineno">  178</span>            <a class="code hl_variable" href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">m_reacting</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  179</span>        }</div>
-<div class="line"><span class="lineno">  180</span>    }</div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_a2d794de183f0153b8ec67be4739bd3d9"><div class="ttname"><a href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">core::Reactor::m_reacting</a></div><div class="ttdeci">static bool m_reacting</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8hpp_source.html#l00047">Reactor.hpp:47</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00055">55</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   55</span>                                         {</div>
+<div class="line"><span class="lineno">   56</span>        <span class="keywordflow">if</span> (signum == SIGINT) {</div>
+<div class="line"><span class="lineno">   57</span>            <a class="code hl_variable" href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">m_reacting</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   58</span>        }</div>
+<div class="line"><span class="lineno">   59</span>    }</div>
+<div class="ttc" id="aclasscore_1_1Reactor_html_a2d794de183f0153b8ec67be4739bd3d9"><div class="ttname"><a href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">core::Reactor::m_reacting</a></div><div class="ttdeci">static bool m_reacting</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8hpp_source.html#l00032">Reactor.hpp:32</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -577,40 +254,45 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00065">65</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   65</span>                                                {</div>
-<div class="line"><span class="lineno">   66</span>        signal(SIGINT, <a class="code hl_function" href="classcore_1_1Reactor.html#ad54fef7d5aa596da93d7e0e71f35ae45">handleSigint</a>);</div>
-<div class="line"><span class="lineno">   67</span>        signal(SIGQUIT, SIG_IGN);</div>
-<div class="line"><span class="lineno">   68</span> </div>
-<div class="line"><span class="lineno">   69</span>        <a class="code hl_variable" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a> = epoll_create1(0);</div>
-<div class="line"><span class="lineno">   70</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a> &lt; 0) {</div>
-<div class="line"><span class="lineno">   71</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;epoll_create1() failed: &quot;</span> + std::string(strerror(errno)));</div>
-<div class="line"><span class="lineno">   72</span>        }</div>
-<div class="line"><span class="lineno">   73</span> </div>
-<div class="line"><span class="lineno">   74</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; conf.<a class="code hl_variable" href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">servers</a>.size(); ++i) {</div>
-<div class="line"><span class="lineno">   75</span>            <a class="code hl_class" href="classhttp_1_1VirtualServer.html">http::VirtualServer</a> server(conf.<a class="code hl_variable" href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">servers</a>.at(i));</div>
-<div class="line"><span class="lineno">   76</span>            server.listen();</div>
-<div class="line"><span class="lineno">   77</span>            <a class="code hl_variable" href="classcore_1_1Reactor.html#a0468a522e06fd37653bf86dd8cee4568">m_vServers</a>.push_back(server);</div>
-<div class="line"><span class="lineno">   78</span>        }</div>
-<div class="line"><span class="lineno">   79</span>    }</div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_ad54fef7d5aa596da93d7e0e71f35ae45"><div class="ttname"><a href="classcore_1_1Reactor.html#ad54fef7d5aa596da93d7e0e71f35ae45">core::Reactor::handleSigint</a></div><div class="ttdeci">static void handleSigint(int)</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8cpp_source.html#l00176">Reactor.cpp:176</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00033">33</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   33</span>                                                {</div>
+<div class="line"><span class="lineno">   34</span>        signal(SIGINT, <a class="code hl_function" href="classcore_1_1Reactor.html#ad54fef7d5aa596da93d7e0e71f35ae45">handleSigint</a>);</div>
+<div class="line"><span class="lineno">   35</span>        signal(SIGQUIT, SIG_IGN);</div>
+<div class="line"><span class="lineno">   36</span> </div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; conf.<a class="code hl_variable" href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">servers</a>.size(); ++i) {</div>
+<div class="line"><span class="lineno">   39</span>            <a class="code hl_variable" href="classcore_1_1Reactor.html#a5ec2aade1fe15c8a13b06a7ac0d26469">m_vServers</a>.push_back(<a class="code hl_class" href="classhttp_1_1VirtualServer.html">http::VirtualServer</a>(conf.<a class="code hl_variable" href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">servers</a>.at(i)));</div>
+<div class="line"><span class="lineno">   40</span>            <a class="code hl_class" href="classhttp_1_1VirtualServer.html">http::VirtualServer</a>&amp; vServer = <a class="code hl_variable" href="classcore_1_1Reactor.html#a5ec2aade1fe15c8a13b06a7ac0d26469">m_vServers</a>.back();</div>
+<div class="line"><span class="lineno">   41</span>            vServer.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#aaa6efa927f0a998eb33c7232b7bbfdd9">init</a>();</div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span>            AHandler* handler = <span class="keyword">new</span> AcceptHandler(vServer, <a class="code hl_variable" href="classcore_1_1Reactor.html#ac39befe378eb1efd88fde093064d4086">m_dispatcher</a>);</div>
+<div class="line"><span class="lineno">   44</span>            <a class="code hl_variable" href="classcore_1_1Reactor.html#ac39befe378eb1efd88fde093064d4086">m_dispatcher</a>.<a class="code hl_function" href="classcore_1_1Dispatcher.html#a9b09c97d8fe863c1fab9011186fb7170">registerHandler</a>(vServer.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a26dfa6f8cc8979b31d68c354cc89be14">getSocket</a>(), EPOLLIN, handler);</div>
+<div class="line"><span class="lineno">   45</span>        }</div>
+<div class="line"><span class="lineno">   46</span>    }</div>
+<div class="ttc" id="aclasscore_1_1Dispatcher_html_a9b09c97d8fe863c1fab9011186fb7170"><div class="ttname"><a href="classcore_1_1Dispatcher.html#a9b09c97d8fe863c1fab9011186fb7170">core::Dispatcher::registerHandler</a></div><div class="ttdeci">void registerHandler(int32_t fd, uint32_t events, AHandler *handler)</div><div class="ttdef"><b>Definition</b> <a href="Dispatcher_8cpp_source.html#l00037">Dispatcher.cpp:37</a></div></div>
+<div class="ttc" id="aclasscore_1_1Reactor_html_ad54fef7d5aa596da93d7e0e71f35ae45"><div class="ttname"><a href="classcore_1_1Reactor.html#ad54fef7d5aa596da93d7e0e71f35ae45">core::Reactor::handleSigint</a></div><div class="ttdeci">static void handleSigint(int)</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8cpp_source.html#l00055">Reactor.cpp:55</a></div></div>
+<div class="ttc" id="aclasshttp_1_1VirtualServer_html"><div class="ttname"><a href="classhttp_1_1VirtualServer.html">http::VirtualServer</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00017">VirtualServer.hpp:17</a></div></div>
+<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a26dfa6f8cc8979b31d68c354cc89be14"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a26dfa6f8cc8979b31d68c354cc89be14">http::VirtualServer::getSocket</a></div><div class="ttdeci">int32_t getSocket(void)</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00174">VirtualServer.cpp:174</a></div></div>
+<div class="ttc" id="aclasshttp_1_1VirtualServer_html_aaa6efa927f0a998eb33c7232b7bbfdd9"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#aaa6efa927f0a998eb33c7232b7bbfdd9">http::VirtualServer::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00068">VirtualServer.cpp:68</a></div></div>
 <div class="ttc" id="astructconfig_1_1s__config__data_html_aab30d42ac2d8d05f046afe671ed9a96c"><div class="ttname"><a href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">config::s_config_data::servers</a></div><div class="ttdeci">std::vector&lt; t_server &gt; servers</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00060">Parser.hpp:60</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcore_1_1Reactor_a8008b4a8a397826ea95b4a1cdb30c4b2_cgraph.png" border="0" usemap="#aclasscore_1_1Reactor_a8008b4a8a397826ea95b4a1cdb30c4b2_cgraph" alt=""/></div>
 <map name="aclasscore_1_1Reactor_a8008b4a8a397826ea95b4a1cdb30c4b2_cgraph" id="aclasscore_1_1Reactor_a8008b4a8a397826ea95b4a1cdb30c4b2_cgraph">
-<area shape="rect" title=" " alt="" coords="5,35,143,60"/>
-<area shape="rect" href="classcore_1_1Reactor.html#ad54fef7d5aa596da93d7e0e71f35ae45" title=" " alt="" coords="191,5,388,31"/>
-<area shape="poly" title=" " alt="" coords="143,35,182,30,183,35,144,41"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#ab5668e0bdf69dfe1de3a2c05ff93d852" title=" " alt="" coords="219,55,360,95"/>
-<area shape="poly" title=" " alt="" coords="144,54,206,62,205,67,143,59"/>
-<area shape="rect" href="classhttp_1_1Socket.html#afa3095cf8f2b53688bd57af904d52892" title="Starts listening for connections." alt="" coords="436,63,579,88"/>
-<area shape="poly" title=" " alt="" coords="361,73,422,73,422,78,361,78"/>
-<area shape="poly" title=" " alt="" coords="476,64,469,54,473,44,486,38,507,36,533,40,544,48,541,52,531,44,507,41,487,43,477,48,475,54,480,61"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a9691f8c60897ad4cc6dc0bc257b1f365" title="Closes the socket." alt="" coords="627,63,768,88"/>
-<area shape="poly" title=" " alt="" coords="579,73,613,73,613,78,579,78"/>
-<area shape="poly" title=" " alt="" coords="666,64,659,54,663,44,676,38,697,36,723,40,734,48,731,52,721,44,697,41,677,43,667,48,665,54,670,61"/>
+<area shape="rect" title=" " alt="" coords="5,99,143,125"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a26dfa6f8cc8979b31d68c354cc89be14" title=" " alt="" coords="219,5,360,45"/>
+<area shape="poly" title=" " alt="" coords="99,97,190,55,209,47,211,52,192,60,101,102"/>
+<area shape="rect" href="classcore_1_1Reactor.html#ad54fef7d5aa596da93d7e0e71f35ae45" title=" " alt="" coords="191,70,388,95"/>
+<area shape="poly" title=" " alt="" coords="143,100,182,95,183,100,144,105"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#aaa6efa927f0a998eb33c7232b7bbfdd9" title=" " alt="" coords="219,120,360,160"/>
+<area shape="poly" title=" " alt="" coords="144,118,206,126,205,132,143,124"/>
+<area shape="rect" href="classcore_1_1Dispatcher.html#a9b09c97d8fe863c1fab9011186fb7170" title=" " alt="" coords="196,184,383,224"/>
+<area shape="poly" title=" " alt="" coords="99,122,192,170,210,177,208,182,190,174,96,127"/>
+<area shape="rect" href="classshared_1_1Logger.html#a653439b6dc725f5e6492d3d50a4c1549" title=" " alt="" coords="436,99,605,125"/>
+<area shape="poly" title=" " alt="" coords="360,129,422,121,423,127,361,134"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a2412211f2db9413bd600b04a094e642e" title=" " alt="" coords="450,149,591,189"/>
+<area shape="poly" title=" " alt="" coords="361,146,437,156,436,161,360,152"/>
 </map>
 </div>
 <div class="dynheader">
@@ -619,152 +301,6 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classcore_1_1Reactor_a8008b4a8a397826ea95b4a1cdb30c4b2_icgraph.png" border="0" usemap="#aclasscore_1_1Reactor_a8008b4a8a397826ea95b4a1cdb30c4b2_icgraph" alt=""/></div>
 <map name="aclasscore_1_1Reactor_a8008b4a8a397826ea95b4a1cdb30c4b2_icgraph" id="aclasscore_1_1Reactor_a8008b4a8a397826ea95b4a1cdb30c4b2_icgraph">
 <area shape="rect" title=" " alt="" coords="108,5,245,31"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,31"/>
-<area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ae0b7e9ad0a45f7a47f1c114b1e82ba12" name="ae0b7e9ad0a45f7a47f1c114b1e82ba12"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0b7e9ad0a45f7a47f1c114b1e82ba12">&#9670;&#160;</a></span>operator=()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classcore_1_1Reactor.html">Reactor</a> &amp; core::Reactor::operator= </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classcore_1_1Reactor.html">Reactor</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Copy assignment operator. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">other</td><td>The other <a class="el" href="classcore_1_1Reactor.html" title="...">Reactor</a> object to assign from. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A reference to the assigned <a class="el" href="classcore_1_1Reactor.html" title="...">Reactor</a> object. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00055">55</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   55</span>                                                  {</div>
-<div class="line"><span class="lineno">   56</span>        <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs) {</div>
-<div class="line"><span class="lineno">   57</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">   58</span>        }</div>
-<div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>        <a class="code hl_variable" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a> = rhs.m_epoll_master_fd;</div>
-<div class="line"><span class="lineno">   61</span>        <a class="code hl_variable" href="classcore_1_1Reactor.html#a0468a522e06fd37653bf86dd8cee4568">m_vServers</a> = rhs.m_vServers;</div>
-<div class="line"><span class="lineno">   62</span>        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">   63</span>    }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a6cceee1737c651d1ec1ae1f3b15ce547" name="a6cceee1737c651d1ec1ae1f3b15ce547"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6cceee1737c651d1ec1ae1f3b15ce547">&#9670;&#160;</a></span>pruneConnections()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core::Reactor::pruneConnections </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacecore.html#a0b78aa55a6d88355f8be1feb0d20dad8">t_event</a> *&#160;</td>
-          <td class="paramname"><em>events</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>nEvents</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00136">136</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  136</span>                                                               {</div>
-<div class="line"><span class="lineno">  137</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nEvents; ++i) {</div>
-<div class="line"><span class="lineno">  138</span>            <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">  139</span>                <a class="code hl_typedef" href="namespacecore.html#a0b78aa55a6d88355f8be1feb0d20dad8">t_event</a>&amp; <span class="keyword">event</span> = events[i];</div>
-<div class="line"><span class="lineno">  140</span>                EventHandler&amp; handler = <a class="code hl_variable" href="classcore_1_1Reactor.html#a0c2f66336f8e38f399575ffe6ad159ab">m_eventHandlers</a>.at(event.data.fd);</div>
-<div class="line"><span class="lineno">  141</span> </div>
-<div class="line"><span class="lineno">  142</span>                <span class="keywordflow">if</span> (handler.shouldDrop()) {</div>
-<div class="line"><span class="lineno">  143</span>                    <a class="code hl_class" href="classhttp_1_1Connection.html">http::Connection</a>&amp; connection = handler.getConnection();</div>
-<div class="line"><span class="lineno">  144</span>                    <span class="keywordtype">int</span> fd = connection.<a class="code hl_function" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597">getClientSocketFd</a>();</div>
-<div class="line"><span class="lineno">  145</span> </div>
-<div class="line"><span class="lineno">  146</span>                    <a class="code hl_function" href="classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f">unregisterHandler</a>(fd);</div>
-<div class="line"><span class="lineno">  147</span>                    handler.getServer().removeConnection(connection);</div>
-<div class="line"><span class="lineno">  148</span>                    <a class="code hl_variable" href="classcore_1_1Reactor.html#a0c2f66336f8e38f399575ffe6ad159ab">m_eventHandlers</a>.erase(fd);</div>
-<div class="line"><span class="lineno">  149</span>                }</div>
-<div class="line"><span class="lineno">  150</span>            } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><span class="lineno">  151</span>                std::cerr &lt;&lt; <span class="stringliteral">&quot;pruneConnections: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  152</span>            }</div>
-<div class="line"><span class="lineno">  153</span>        }</div>
-<div class="line"><span class="lineno">  154</span>    }</div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_a1804e0ff999d620cb670118403e4de7f"><div class="ttname"><a href="classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f">core::Reactor::unregisterHandler</a></div><div class="ttdeci">void unregisterHandler(int fd)</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8cpp_source.html#l00114">Reactor.cpp:114</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Connection_html_a3bf8eb2db35a8030685b73971e3d8597"><div class="ttname"><a href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597">http::Connection::getClientSocketFd</a></div><div class="ttdeci">int getClientSocketFd(void) const</div><div class="ttdef"><b>Definition</b> <a href="Connection_8cpp_source.html#l00074">Connection.cpp:74</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classcore_1_1Reactor_a6cceee1737c651d1ec1ae1f3b15ce547_cgraph.png" border="0" usemap="#aclasscore_1_1Reactor_a6cceee1737c651d1ec1ae1f3b15ce547_cgraph" alt=""/></div>
-<map name="aclasscore_1_1Reactor_a6cceee1737c651d1ec1ae1f3b15ce547_cgraph" id="aclasscore_1_1Reactor_a6cceee1737c651d1ec1ae1f3b15ce547_cgraph">
-<area shape="rect" title=" " alt="" coords="5,173,239,198"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597" title=" " alt="" coords="287,5,483,45"/>
-<area shape="poly" title=" " alt="" coords="134,171,196,116,239,84,285,55,299,48,302,53,288,60,242,88,200,120,138,175"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#adc91c5985ff39da1c978f54921c032f7" title=" " alt="" coords="311,69,458,109"/>
-<area shape="poly" title=" " alt="" coords="153,170,286,119,307,111,309,116,288,124,155,175"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a6f104be35989c3d26400bffcaca07176" title=" " alt="" coords="311,133,458,173"/>
-<area shape="poly" title=" " alt="" coords="226,170,297,161,298,167,227,175"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a43f961e40bece5869f1d53ec1da8bb9e" title=" " alt="" coords="308,197,461,237"/>
-<area shape="poly" title=" " alt="" coords="227,195,295,204,294,209,226,201"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a3f46aa96a8811210f242f13822c77640" title=" " alt="" coords="311,261,458,301"/>
-<area shape="poly" title=" " alt="" coords="155,196,288,247,309,254,307,259,286,252,153,201"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f" title=" " alt="" coords="293,325,476,365"/>
-<area shape="poly" title=" " alt="" coords="138,196,200,251,242,283,288,311,302,318,299,322,285,316,239,287,196,255,134,200"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a616e1be23dbc676f5bd3f69407530907" title="Gets the socket file descriptor." alt="" coords="544,13,688,38"/>
-<area shape="poly" title=" " alt="" coords="483,23,531,23,531,28,483,28"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e" title=" " alt="" coords="531,205,701,230"/>
-<area shape="poly" title=" " alt="" coords="462,215,517,215,517,220,462,220"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a9691f8c60897ad4cc6dc0bc257b1f365" title="Closes the socket." alt="" coords="779,179,921,205"/>
-<area shape="poly" title=" " alt="" coords="701,205,765,198,766,204,702,211"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ada9246a65fd8b6ed0176597e59cf539f" title=" " alt="" coords="749,229,951,254"/>
-<area shape="poly" title=" " alt="" coords="702,223,736,227,735,232,701,229"/>
-<area shape="poly" title=" " alt="" coords="812,181,804,171,808,161,824,155,850,153,883,157,895,166,892,170,881,161,850,158,825,160,812,165,809,170,816,177"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classcore_1_1Reactor_a6cceee1737c651d1ec1ae1f3b15ce547_icgraph.png" border="0" usemap="#aclasscore_1_1Reactor_a6cceee1737c651d1ec1ae1f3b15ce547_icgraph" alt=""/></div>
-<map name="aclasscore_1_1Reactor_a6cceee1737c651d1ec1ae1f3b15ce547_icgraph" id="aclasscore_1_1Reactor_a6cceee1737c651d1ec1ae1f3b15ce547_icgraph">
-<area shape="rect" title=" " alt="" coords="305,5,539,31"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,5,257,31"/>
-<area shape="poly" title=" " alt="" coords="291,21,258,21,258,15,291,15"/>
 <area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,31"/>
 <area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
 </map>
@@ -787,149 +323,28 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00081">81</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   81</span>                        {</div>
-<div class="line"><span class="lineno">   82</span>        <a class="code hl_typedef" href="namespacecore.html#a0b78aa55a6d88355f8be1feb0d20dad8">t_event</a> events[<a class="code hl_define" href="Reactor_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>];</div>
-<div class="line"><span class="lineno">   83</span> </div>
-<div class="line"><span class="lineno">   84</span>        <a class="code hl_variable" href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">m_reacting</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   85</span>        <span class="keywordflow">while</span> (<a class="code hl_variable" href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">m_reacting</a>) {</div>
-<div class="line"><span class="lineno">   86</span>            <a class="code hl_function" href="classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552">acceptNewConnections</a>();</div>
-<div class="line"><span class="lineno">   87</span> </div>
-<div class="line"><span class="lineno">   88</span>            <span class="keywordtype">int</span> nEvents = epoll_wait(<a class="code hl_variable" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a>, events, <a class="code hl_define" href="Reactor_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a>, 60);</div>
-<div class="line"><span class="lineno">   89</span>            <span class="keywordflow">if</span> (nEvents &lt; 0) {</div>
-<div class="line"><span class="lineno">   90</span>                <span class="keywordflow">if</span> (errno == EINTR) {</div>
-<div class="line"><span class="lineno">   91</span>                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">   92</span>                }</div>
-<div class="line"><span class="lineno">   93</span>                <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;epoll_wait() failed: &quot;</span> + std::string(strerror(errno)));</div>
-<div class="line"><span class="lineno">   94</span>            }</div>
-<div class="line"><span class="lineno">   95</span> </div>
-<div class="line"><span class="lineno">   96</span>            <a class="code hl_function" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671">handleEvents</a>(events, nEvents);</div>
-<div class="line"><span class="lineno">   97</span>            <a class="code hl_function" href="classcore_1_1Reactor.html#a6cceee1737c651d1ec1ae1f3b15ce547">pruneConnections</a>(events, nEvents);</div>
-<div class="line"><span class="lineno">   98</span>        }</div>
-<div class="line"><span class="lineno">   99</span>    }</div>
-<div class="ttc" id="aReactor_8hpp_html_ae42954bb8545d24e3e9dcde5920c9a0b"><div class="ttname"><a href="Reactor_8hpp.html#ae42954bb8545d24e3e9dcde5920c9a0b">MAX_EVENTS</a></div><div class="ttdeci">#define MAX_EVENTS</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8hpp_source.html#l00014">Reactor.hpp:14</a></div></div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_a6cceee1737c651d1ec1ae1f3b15ce547"><div class="ttname"><a href="classcore_1_1Reactor.html#a6cceee1737c651d1ec1ae1f3b15ce547">core::Reactor::pruneConnections</a></div><div class="ttdeci">void pruneConnections(t_event *events, int nEvents)</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8cpp_source.html#l00136">Reactor.cpp:136</a></div></div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_a6e1c99b3c9a7c9c3ce63cb413a24f552"><div class="ttname"><a href="classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552">core::Reactor::acceptNewConnections</a></div><div class="ttdeci">void acceptNewConnections()</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8cpp_source.html#l00120">Reactor.cpp:120</a></div></div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_a991302a5853c8ae892987d8673db2671"><div class="ttname"><a href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671">core::Reactor::handleEvents</a></div><div class="ttdeci">void handleEvents(t_event *events, int nEvents)</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8cpp_source.html#l00156">Reactor.cpp:156</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00048">48</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>                        {</div>
+<div class="line"><span class="lineno">   49</span>        <a class="code hl_variable" href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">m_reacting</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">while</span> (<a class="code hl_variable" href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">m_reacting</a>) {</div>
+<div class="line"><span class="lineno">   51</span>            <a class="code hl_variable" href="classcore_1_1Reactor.html#ac39befe378eb1efd88fde093064d4086">m_dispatcher</a>.<a class="code hl_function" href="classcore_1_1Dispatcher.html#a0ee1bbfec5ad1e90e6e5efa84f70ace2">dispatch</a>();</div>
+<div class="line"><span class="lineno">   52</span>        }</div>
+<div class="line"><span class="lineno">   53</span>    }</div>
+<div class="ttc" id="aclasscore_1_1Dispatcher_html_a0ee1bbfec5ad1e90e6e5efa84f70ace2"><div class="ttname"><a href="classcore_1_1Dispatcher.html#a0ee1bbfec5ad1e90e6e5efa84f70ace2">core::Dispatcher::dispatch</a></div><div class="ttdeci">void dispatch()</div><div class="ttdef"><b>Definition</b> <a href="Dispatcher_8cpp_source.html#l00055">Dispatcher.cpp:55</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcore_1_1Reactor_a3e4e9145e4a5623750c0604ee8015b35_cgraph.png" border="0" usemap="#aclasscore_1_1Reactor_a3e4e9145e4a5623750c0604ee8015b35_cgraph" alt=""/></div>
 <map name="aclasscore_1_1Reactor_a3e4e9145e4a5623750c0604ee8015b35_cgraph" id="aclasscore_1_1Reactor_a3e4e9145e4a5623750c0604ee8015b35_cgraph">
-<area shape="rect" title=" " alt="" coords="5,1289,155,1315"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552" title=" " alt="" coords="211,1470,399,1510"/>
-<area shape="poly" title=" " alt="" coords="98,1313,271,1459,267,1463,95,1317"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="203,884,407,909"/>
-<area shape="poly" title=" " alt="" coords="86,1288,287,920,292,923,91,1290"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a6cceee1737c651d1ec1ae1f3b15ce547" title=" " alt="" coords="455,1289,688,1315"/>
-<area shape="poly" title=" " alt="" coords="155,1299,440,1299,440,1305,155,1305"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#aba633077d4bc512dcb2caf15e6b035d4" title="Accepts the next incoming connection in the VirtualServerSocket&#39;s queue." alt="" coords="501,1499,642,1539"/>
-<area shape="poly" title=" " alt="" coords="399,1498,487,1507,487,1513,398,1503"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a9a2c96594ed7379e782a1fe266f9ebc9" title=" " alt="" coords="501,1563,642,1603"/>
-<area shape="poly" title=" " alt="" coords="352,1508,456,1549,488,1559,486,1564,454,1554,350,1513"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a9a84da7bb8fc141a1233c0bd1ce164e8" title=" " alt="" coords="463,1449,680,1475"/>
-<area shape="poly" title=" " alt="" coords="398,1478,449,1472,449,1477,399,1483"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a86da59b5636f0d11d787304d7285ffc0" title="Accepts an incoming connection." alt="" coords="783,1531,934,1556"/>
-<area shape="poly" title=" " alt="" coords="643,1523,770,1533,769,1539,642,1528"/>
-<area shape="poly" title=" " alt="" coords="813,1533,803,1522,808,1512,827,1506,859,1504,900,1508,911,1513,915,1520,910,1522,907,1517,899,1513,859,1509,828,1511,811,1516,808,1522,817,1529"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a5ab3a33cfce8ea36e4a327d237c5857f" title="Sets the socket to non&#45;blocking mode." alt="" coords="1049,1515,1259,1540"/>
-<area shape="poly" title=" " alt="" coords="934,1537,1036,1531,1036,1536,934,1542"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a9691f8c60897ad4cc6dc0bc257b1f365" title="Closes the socket." alt="" coords="1357,1321,1498,1347"/>
-<area shape="poly" title=" " alt="" coords="1214,1512,1246,1501,1277,1485,1317,1455,1354,1420,1407,1356,1411,1359,1358,1424,1321,1459,1280,1490,1248,1506,1215,1517"/>
-<area shape="poly" title=" " alt="" coords="1384,1323,1374,1313,1379,1303,1397,1297,1427,1295,1466,1299,1477,1304,1481,1310,1476,1312,1473,1308,1465,1304,1427,1300,1398,1302,1382,1307,1379,1312,1387,1319"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597" title=" " alt="" coords="761,1442,957,1482"/>
-<area shape="poly" title=" " alt="" coords="680,1459,747,1459,747,1465,680,1465"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a616e1be23dbc676f5bd3f69407530907" title="Gets the socket file descriptor." alt="" coords="1082,1449,1226,1475"/>
-<area shape="poly" title=" " alt="" coords="957,1459,1068,1459,1068,1465,957,1465"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="498,345,645,385"/>
-<area shape="poly" title=" " alt="" coords="310,882,452,585,550,396,555,398,457,587,314,885"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#ab5616520f0084b2e893e5fb548b5385d" title=" " alt="" coords="498,877,645,917"/>
-<area shape="poly" title=" " alt="" coords="407,894,484,894,484,899,407,899"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a5d434426a474d7c9876837de7240f2fb" title=" " alt="" coords="498,1031,645,1071"/>
-<area shape="poly" title=" " alt="" coords="329,907,525,1022,523,1027,327,912"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1807c394423626629cff70026027a81f" title=" " alt="" coords="498,598,645,638"/>
-<area shape="poly" title=" " alt="" coords="316,882,540,646,544,650,320,886"/>
-<area shape="rect" href="classhttp_1_1Response.html#a9b46cf97a3ed97510778410591f5b460" title=" " alt="" coords="736,429,981,455"/>
-<area shape="poly" title=" " alt="" coords="632,382,737,414,778,424,777,429,735,419,630,387"/>
-<area shape="rect" href="classhttp_1_1Response.html#a52625989a3fb2bcc1e367b5bc13bd99e" title=" " alt="" coords="763,137,954,177"/>
-<area shape="poly" title=" " alt="" coords="584,343,608,309,643,266,685,223,735,186,749,179,752,183,737,191,689,227,646,270,612,312,588,346"/>
-<area shape="rect" href="classhttp_1_1Response.html#ae0efdf9f8df4b4ba5d173171ad868cc7" title=" " alt="" coords="763,73,955,113"/>
-<area shape="poly" title=" " alt="" coords="578,344,599,298,632,238,677,176,704,147,734,122,748,114,751,119,738,127,708,151,681,179,637,241,604,300,583,346"/>
-<area shape="rect" href="classhttp_1_1Response.html#ac923fe1857f3c3803e3cdc6b230e64f2" title=" " alt="" coords="761,201,957,241"/>
-<area shape="poly" title=" " alt="" coords="595,342,656,296,694,272,735,250,753,243,755,248,737,255,697,276,659,301,598,346"/>
-<area shape="rect" href="classhttp_1_1Response.html#a01c142188318790efefff94436580437" title=" " alt="" coords="779,265,938,291"/>
-<area shape="poly" title=" " alt="" coords="619,342,735,301,773,291,774,296,737,306,621,347"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a2e2e6883518370dd49f9fc23762a6c2d" title=" " alt="" coords="748,315,969,355"/>
-<area shape="poly" title=" " alt="" coords="645,355,734,345,734,351,645,360"/>
-<area shape="rect" href="classhttp_1_1Response.html#a5fb55b37425d748d5d1bf83e48a49826" title=" " alt="" coords="769,380,948,405"/>
-<area shape="poly" title=" " alt="" coords="645,369,756,380,755,385,645,374"/>
-<area shape="rect" href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364" title=" " alt="" coords="779,479,939,504"/>
-<area shape="poly" title=" " alt="" coords="600,383,661,424,698,445,737,464,766,473,764,478,735,468,696,450,658,429,597,387"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862" title=" " alt="" coords="785,679,932,719"/>
-<area shape="poly" title=" " alt="" coords="586,384,670,545,714,626,738,664,773,683,771,688,734,668,709,629,665,548,581,386"/>
-<area shape="rect" href="classhttp_1_1Response.html#a7122bb1e022880c9832e9e644a80397f" title=" " alt="" coords="1057,169,1251,195"/>
-<area shape="poly" title=" " alt="" coords="954,162,1044,170,1043,175,954,167"/>
-<area shape="rect" href="namespacehttp.html#ab99935c70c216969b7410a50c653cc58" title=" " alt="" coords="1066,219,1242,244"/>
-<area shape="poly" title=" " alt="" coords="941,174,982,186,1030,203,1069,213,1068,218,1029,209,981,191,940,179"/>
-<area shape="rect" href="classhttp_1_1Response.html#a7e9fb022362f77c3d9bfc19e76249977" title=" " alt="" coords="1045,5,1263,31"/>
-<area shape="poly" title=" " alt="" coords="953,138,980,123,996,103,1002,82,1010,60,1028,40,1036,35,1039,39,1031,44,1014,63,1008,84,1001,106,983,127,956,142"/>
-<area shape="rect" href="classhttp_1_1Response.html#a637305890d24151f4d8b9dc4d13cdbb0" title=" " alt="" coords="1051,55,1257,80"/>
-<area shape="poly" title=" " alt="" coords="949,134,980,122,1004,106,1028,90,1054,81,1056,86,1031,95,1007,111,983,127,951,139"/>
-<area shape="rect" href="classhttp_1_1Response.html#a2d1e7ec002dfef0005ca5ef8f88d4567" title=" " alt="" coords="1057,105,1251,145"/>
-<area shape="poly" title=" " alt="" coords="954,144,1043,134,1044,139,955,149"/>
-<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="1339,165,1515,191"/>
-<area shape="poly" title=" " alt="" coords="1219,216,1348,191,1349,196,1220,221"/>
-<area shape="poly" title=" " alt="" coords="1252,141,1349,160,1347,165,1251,146"/>
-<area shape="poly" title=" " alt="" coords="951,110,983,122,1007,139,1031,154,1056,163,1054,168,1028,159,1004,143,980,127,949,115"/>
-<area shape="poly" title=" " alt="" coords="921,70,1029,39,1067,31,1068,36,1030,45,922,75"/>
-<area shape="poly" title=" " alt="" coords="955,82,1037,75,1037,80,955,87"/>
-<area shape="poly" title=" " alt="" coords="955,100,1043,110,1043,115,955,106"/>
-<area shape="rect" href="classhttp_1_1Response.html#a2e20040657655a595e84a9c1f1f9293a" title="Check if the request data is valid, and set the status code accordingly." alt="" coords="1029,268,1279,293"/>
-<area shape="poly" title=" " alt="" coords="958,238,1078,263,1077,268,957,243"/>
-<area shape="poly" title=" " alt="" coords="585,875,644,803,687,763,735,729,771,713,773,718,737,734,690,767,648,807,589,878"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a71e0d84361ef9d7cdca612716dfe2bb3" title=" " alt="" coords="765,845,953,885"/>
-<area shape="poly" title=" " alt="" coords="645,886,751,874,751,879,645,891"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a06be1704cbc74d761ed349a082f81f4e" title=" " alt="" coords="753,909,964,949"/>
-<area shape="poly" title=" " alt="" coords="645,902,740,913,739,918,645,907"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ada9246a65fd8b6ed0176597e59cf539f" title=" " alt="" coords="1327,795,1528,820"/>
-<area shape="poly" title=" " alt="" coords="612,874,669,850,735,830,812,816,891,806,1048,796,1193,794,1313,797,1313,803,1193,799,1048,801,891,812,813,822,737,835,671,855,614,879"/>
-<area shape="rect" href="classhttp_1_1Request.html#a94b960f923e856df1cc565ebbac086c0" title=" " alt="" coords="769,973,948,999"/>
-<area shape="poly" title=" " alt="" coords="619,914,675,937,737,958,774,968,772,973,735,963,673,942,617,919"/>
-<area shape="rect" href="classhttp_1_1Request.html#a9080f26f273ea9257a4dbac3a9e7d9c1" title="Parses the request." alt="" coords="782,1023,935,1048"/>
-<area shape="poly" title=" " alt="" coords="597,915,658,962,696,987,737,1008,769,1019,768,1024,735,1012,694,991,655,966,594,919"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a0968f64c389c1544e65f7430f969abb2" title="Receives data from the socket." alt="" coords="791,1072,926,1097"/>
-<area shape="poly" title=" " alt="" coords="594,915,674,998,737,1057,779,1073,777,1078,735,1062,670,1002,590,919"/>
-<area shape="rect" href="classhttp_1_1Request.html#a9f89032cd603dc018f0573e34cec49ed" title=" " alt="" coords="783,744,934,769"/>
-<area shape="poly" title=" " alt="" coords="596,874,657,830,735,786,779,770,781,776,737,791,660,835,599,878"/>
-<area shape="rect" href="classhttp_1_1Request.html#a739141ad7c8494442039ff4b865020c4" title=" " alt="" coords="1061,1023,1247,1048"/>
-<area shape="poly" title=" " alt="" coords="935,1033,1047,1033,1047,1038,935,1038"/>
-<area shape="rect" href="classhttp_1_1Request.html#a7c94a929bf55670e716d50ac819ec8ac" title=" " alt="" coords="1061,1072,1247,1097"/>
-<area shape="poly" title=" " alt="" coords="936,1045,1064,1067,1063,1072,935,1051"/>
-<area shape="rect" href="classhttp_1_1Request.html#a8346c819a5b757937c3f50af058f70f7" title=" " alt="" coords="1051,973,1257,999"/>
-<area shape="poly" title=" " alt="" coords="935,1020,1063,998,1064,1004,936,1025"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a43f961e40bece5869f1d53ec1da8bb9e" title=" " alt="" coords="782,1122,935,1162"/>
-<area shape="poly" title=" " alt="" coords="628,1069,737,1106,769,1116,768,1121,735,1111,626,1074"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e" title=" " alt="" coords="1069,1129,1239,1155"/>
-<area shape="poly" title=" " alt="" coords="935,1139,1055,1139,1055,1145,935,1145"/>
-<area shape="poly" title=" " alt="" coords="1175,1153,1399,1311,1395,1316,1172,1157"/>
-<area shape="poly" title=" " alt="" coords="1239,1127,1259,1118,1277,1107,1308,1076,1335,1041,1357,1003,1376,965,1403,891,1418,833,1423,835,1408,892,1381,967,1362,1006,1339,1044,1312,1080,1280,1111,1261,1123,1241,1132"/>
-<area shape="poly" title=" " alt="" coords="601,595,661,558,735,521,782,505,784,510,737,526,664,563,604,600"/>
-<area shape="poly" title=" " alt="" coords="640,635,737,663,773,673,771,679,735,669,639,641"/>
-<area shape="poly" title=" " alt="" coords="622,595,676,578,736,565,805,554,859,549,914,551,982,565,1047,585,1111,610,1231,672,1331,735,1400,784,1397,788,1328,739,1228,677,1109,615,1045,590,981,570,913,556,860,554,805,559,736,570,678,583,624,601"/>
-<area shape="rect" href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d" title=" " alt="" coords="739,629,978,655"/>
-<area shape="poly" title=" " alt="" coords="645,621,726,628,725,634,645,627"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a445e1ca1e606c084411f5eac2dc6a7af" title="Sends data through the socket." alt="" coords="789,580,928,605"/>
-<area shape="poly" title=" " alt="" coords="645,609,775,597,776,603,645,614"/>
-<area shape="poly" title=" " alt="" coords="587,1313,648,1368,691,1400,737,1428,754,1435,751,1440,735,1432,688,1405,645,1373,584,1317"/>
-<area shape="poly" title=" " alt="" coords="584,1287,645,1231,688,1199,735,1172,768,1158,770,1163,737,1176,691,1204,648,1236,587,1291"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#adc91c5985ff39da1c978f54921c032f7" title=" " alt="" coords="785,1314,932,1354"/>
-<area shape="poly" title=" " alt="" coords="686,1312,772,1322,771,1327,685,1317"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a6f104be35989c3d26400bffcaca07176" title=" " alt="" coords="785,1378,932,1418"/>
-<area shape="poly" title=" " alt="" coords="603,1312,737,1363,773,1374,771,1379,735,1369,601,1317"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a3f46aa96a8811210f242f13822c77640" title=" " alt="" coords="785,1186,932,1226"/>
-<area shape="poly" title=" " alt="" coords="601,1287,735,1235,771,1225,773,1230,737,1241,603,1292"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f" title=" " alt="" coords="767,1250,950,1290"/>
-<area shape="poly" title=" " alt="" coords="685,1287,753,1279,754,1284,686,1292"/>
+<area shape="rect" title=" " alt="" coords="5,55,155,80"/>
+<area shape="rect" href="classcore_1_1Dispatcher.html#a0ee1bbfec5ad1e90e6e5efa84f70ace2" title=" " alt="" coords="203,55,393,80"/>
+<area shape="poly" title=" " alt="" coords="155,65,189,65,189,70,155,70"/>
+<area shape="rect" href="classcore_1_1AHandler.html#a552ef7a49c31de1f5c2aba42df0623cc" title=" " alt="" coords="457,5,628,31"/>
+<area shape="poly" title=" " alt="" coords="361,52,465,31,466,36,362,57"/>
+<area shape="rect" href="classcore_1_1AHandler.html#a463808ac67ba9aa6e4ae8d6ab88e7822" title=" " alt="" coords="457,55,628,80"/>
+<area shape="poly" title=" " alt="" coords="394,65,444,65,444,70,394,70"/>
+<area shape="rect" href="classcore_1_1Dispatcher.html#abb1779879479dc33addc41945ffd06f3" title=" " alt="" coords="441,105,644,145"/>
+<area shape="poly" title=" " alt="" coords="354,77,444,99,443,104,352,83"/>
 </map>
 </div>
 <div class="dynheader">
@@ -945,138 +360,9 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a9a84da7bb8fc141a1233c0bd1ce164e8" name="a9a84da7bb8fc141a1233c0bd1ce164e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a84da7bb8fc141a1233c0bd1ce164e8">&#9670;&#160;</a></span>registerHandler()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core::Reactor::registerHandler </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classhttp_1_1VirtualServer.html">http::VirtualServer</a> &amp;&#160;</td>
-          <td class="paramname"><em>vServer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classhttp_1_1Connection.html">http::Connection</a> &amp;&#160;</td>
-          <td class="paramname"><em>connection</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>events</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00101">101</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  101</span>                                                                                                         {</div>
-<div class="line"><span class="lineno">  102</span>        <a class="code hl_typedef" href="namespacecore.html#a0b78aa55a6d88355f8be1feb0d20dad8">t_event</a> event;</div>
-<div class="line"><span class="lineno">  103</span>        EventHandler handler(vServer, connection, events);</div>
-<div class="line"><span class="lineno">  104</span>        <span class="keywordtype">int</span> fd = connection.<a class="code hl_function" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597">getClientSocketFd</a>();</div>
-<div class="line"><span class="lineno">  105</span> </div>
-<div class="line"><span class="lineno">  106</span>        <span class="keyword">event</span>.events = events;</div>
-<div class="line"><span class="lineno">  107</span>        <span class="keyword">event</span>.data.fd = fd;</div>
-<div class="line"><span class="lineno">  108</span>        <span class="keywordflow">if</span> (epoll_ctl(<a class="code hl_variable" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a>, EPOLL_CTL_ADD, fd, &amp;event) &lt; 0) {</div>
-<div class="line"><span class="lineno">  109</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;epoll_ctl() failed: &quot;</span> + std::string(strerror(errno)));</div>
-<div class="line"><span class="lineno">  110</span>        }</div>
-<div class="line"><span class="lineno">  111</span>        <a class="code hl_variable" href="classcore_1_1Reactor.html#a0c2f66336f8e38f399575ffe6ad159ab">m_eventHandlers</a>.insert(std::make_pair(fd, handler));</div>
-<div class="line"><span class="lineno">  112</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classcore_1_1Reactor_a9a84da7bb8fc141a1233c0bd1ce164e8_cgraph.png" border="0" usemap="#aclasscore_1_1Reactor_a9a84da7bb8fc141a1233c0bd1ce164e8_cgraph" alt=""/></div>
-<map name="aclasscore_1_1Reactor_a9a84da7bb8fc141a1233c0bd1ce164e8_cgraph" id="aclasscore_1_1Reactor_a9a84da7bb8fc141a1233c0bd1ce164e8_cgraph">
-<area shape="rect" title=" " alt="" coords="5,13,223,38"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597" title=" " alt="" coords="271,5,467,45"/>
-<area shape="poly" title=" " alt="" coords="223,23,257,23,257,28,223,28"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a616e1be23dbc676f5bd3f69407530907" title="Gets the socket file descriptor." alt="" coords="515,13,659,38"/>
-<area shape="poly" title=" " alt="" coords="467,23,500,23,500,28,467,28"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classcore_1_1Reactor_a9a84da7bb8fc141a1233c0bd1ce164e8_icgraph.png" border="0" usemap="#aclasscore_1_1Reactor_a9a84da7bb8fc141a1233c0bd1ce164e8_icgraph" alt=""/></div>
-<map name="aclasscore_1_1Reactor_a9a84da7bb8fc141a1233c0bd1ce164e8_icgraph" id="aclasscore_1_1Reactor_a9a84da7bb8fc141a1233c0bd1ce164e8_icgraph">
-<area shape="rect" title=" " alt="" coords="541,13,759,38"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552" title=" " alt="" coords="305,5,493,45"/>
-<area shape="poly" title=" " alt="" coords="528,28,493,28,493,23,528,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
-<area shape="poly" title=" " alt="" coords="291,28,258,28,258,23,291,23"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a1804e0ff999d620cb670118403e4de7f" name="a1804e0ff999d620cb670118403e4de7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1804e0ff999d620cb670118403e4de7f">&#9670;&#160;</a></span>unregisterHandler()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void core::Reactor::unregisterHandler </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>fd</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00114">114</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  114</span>                                          {</div>
-<div class="line"><span class="lineno">  115</span>        <span class="keywordflow">if</span> (epoll_ctl(<a class="code hl_variable" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">m_epoll_master_fd</a>, EPOLL_CTL_DEL, fd, NULL) &lt; 0) {</div>
-<div class="line"><span class="lineno">  116</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;epoll_ctl() failed: &quot;</span> + std::string(strerror(errno)));</div>
-<div class="line"><span class="lineno">  117</span>        }</div>
-<div class="line"><span class="lineno">  118</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classcore_1_1Reactor_a1804e0ff999d620cb670118403e4de7f_icgraph.png" border="0" usemap="#aclasscore_1_1Reactor_a1804e0ff999d620cb670118403e4de7f_icgraph" alt=""/></div>
-<map name="aclasscore_1_1Reactor_a1804e0ff999d620cb670118403e4de7f_icgraph" id="aclasscore_1_1Reactor_a1804e0ff999d620cb670118403e4de7f_icgraph">
-<area shape="rect" title=" " alt="" coords="587,5,769,45"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a6cceee1737c651d1ec1ae1f3b15ce547" title=" " alt="" coords="305,13,539,38"/>
-<area shape="poly" title=" " alt="" coords="573,28,539,28,539,23,573,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
-<area shape="poly" title=" " alt="" coords="291,28,258,28,258,23,291,23"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
-</map>
-</div>
-
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a87514e5e0eb606a6923b805cb70a812d" name="a87514e5e0eb606a6923b805cb70a812d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87514e5e0eb606a6923b805cb70a812d">&#9670;&#160;</a></span>m_epoll_master_fd</h2>
+<a id="ac39befe378eb1efd88fde093064d4086" name="ac39befe378eb1efd88fde093064d4086"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac39befe378eb1efd88fde093064d4086">&#9670;&#160;</a></span>m_dispatcher</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1085,7 +371,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int core::Reactor::m_epoll_master_fd</td>
+          <td class="memname"><a class="el" href="classcore_1_1Dispatcher.html">Dispatcher</a> core::Reactor::m_dispatcher</td>
         </tr>
       </table>
   </td>
@@ -1095,31 +381,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Reactor_8hpp_source.html#l00048">48</a> of file <a class="el" href="Reactor_8hpp_source.html">Reactor.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a0c2f66336f8e38f399575ffe6ad159ab" name="a0c2f66336f8e38f399575ffe6ad159ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c2f66336f8e38f399575ffe6ad159ab">&#9670;&#160;</a></span>m_eventHandlers</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::map&lt;int, <a class="el" href="classcore_1_1EventHandler.html">EventHandler</a>&gt; core::Reactor::m_eventHandlers</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Reactor_8hpp_source.html#l00051">51</a> of file <a class="el" href="Reactor_8hpp_source.html">Reactor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Reactor_8hpp_source.html#l00034">34</a> of file <a class="el" href="Reactor_8hpp_source.html">Reactor.hpp</a>.</p>
 
 </div>
 </div>
@@ -1143,12 +405,12 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Reactor_8hpp_source.html#l00047">47</a> of file <a class="el" href="Reactor_8hpp_source.html">Reactor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Reactor_8hpp_source.html#l00032">32</a> of file <a class="el" href="Reactor_8hpp_source.html">Reactor.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a0468a522e06fd37653bf86dd8cee4568" name="a0468a522e06fd37653bf86dd8cee4568"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0468a522e06fd37653bf86dd8cee4568">&#9670;&#160;</a></span>m_vServers</h2>
+<a id="a5ec2aade1fe15c8a13b06a7ac0d26469" name="a5ec2aade1fe15c8a13b06a7ac0d26469"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ec2aade1fe15c8a13b06a7ac0d26469">&#9670;&#160;</a></span>m_vServers</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1157,7 +419,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacecore.html#a67f4732639e9ae56728fe0440356e132">t_virtualServers</a> core::Reactor::m_vServers</td>
+          <td class="memname">std::vector&lt;<a class="el" href="classhttp_1_1VirtualServer.html">http::VirtualServer</a>&gt; core::Reactor::m_vServers</td>
         </tr>
       </table>
   </td>
@@ -1167,7 +429,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Reactor_8hpp_source.html#l00050">50</a> of file <a class="el" href="Reactor_8hpp_source.html">Reactor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Reactor_8hpp_source.html#l00035">35</a> of file <a class="el" href="Reactor_8hpp_source.html">Reactor.hpp</a>.</p>
 
 </div>
 </div>

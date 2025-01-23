@@ -63,46 +63,51 @@ $(document).ready(function(){initNavTree('functions_m.html',''); initResizable()
 <div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
 
 <h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
-<li>m_body&#160;:&#160;<a class="el" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">http::Response</a></li>
-<li>m_builderStatus&#160;:&#160;<a class="el" href="classhttp_1_1Response.html#ab605df89bb0a7ac92cae038851286e78">http::Response</a></li>
-<li>m_byteBuffer&#160;:&#160;<a class="el" href="classhttp_1_1Connection.html#a505190923813445814a3d0b44f339e7f">http::Connection</a></li>
-<li>m_chunkedStatus&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#ab8dd2df0a3986e48f7ea3dd666f5eae1">http::Request</a></li>
-<li>m_client_max_body_size&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#abd0769730adc61c82811661110b574c4">http::VirtualServer</a></li>
-<li>m_clientSocket&#160;:&#160;<a class="el" href="classhttp_1_1Connection.html#acf26d8c417c579a3178534177d9c1bc7">http::Connection</a></li>
+<li>m_body&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840">http::Request</a>, <a class="el" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">http::Response</a></li>
+<li>m_buffer&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#a1b850f69c68f06a4c75bfcd3a8526bb1">http::RequestParser</a></li>
+<li>m_clients&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#a609d5421c1f68e9eb4f9a7be6370a136">http::VirtualServer</a></li>
+<li>m_code&#160;:&#160;<a class="el" href="classhttp_1_1exception.html#a3c82aeb1933c2e29918e16fdeb687306">http::exception</a>, <a class="el" href="classhttp_1_1Request.html#ab889a63cf65fa226a8de0325f13b3964">http::Request</a>, <a class="el" href="classhttp_1_1Response.html#aeb1cafeb91aee689123a0b361c0d2e47">http::Response</a></li>
+<li>m_config&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#a2179c9afe8cf3cea4d8c8672ea5d5a4c">http::VirtualServer</a></li>
 <li>m_configData&#160;:&#160;<a class="el" href="classconfig_1_1ConfigFileParser.html#a0c5e3a46b81944a6aaf484b597e3416e">config::ConfigFileParser</a></li>
-<li>m_connection&#160;:&#160;<a class="el" href="classcore_1_1EventHandler.html#ac76b53aa9035800888c546a5225d9ad9">core::EventHandler</a></li>
-<li>m_connections&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#a988cfdac3be2b003b0dc353959b2125f">http::VirtualServer</a></li>
-<li>m_contentLength&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#a8e26162ee32cb6f0e2e4e429e7a1dd76">http::Request</a></li>
-<li>m_epoll_master_fd&#160;:&#160;<a class="el" href="classcore_1_1Reactor.html#a87514e5e0eb606a6923b805cb70a812d">core::Reactor</a></li>
-<li>m_errorPages&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#a69f9dbe3c0a9c449ad81b64972ad620c">http::VirtualServer</a></li>
-<li>m_eventHandlers&#160;:&#160;<a class="el" href="classcore_1_1Reactor.html#a0c2f66336f8e38f399575ffe6ad159ab">core::Reactor</a></li>
-<li>m_events&#160;:&#160;<a class="el" href="classcore_1_1EventHandler.html#a77badb9ee990e9a661227bd2235be12e">core::EventHandler</a></li>
-<li>m_expectedBody&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#aa9e7fe64ab82b2384fb54a9ce9d13d4c">http::Request</a></li>
-<li>m_fd&#160;:&#160;<a class="el" href="classhttp_1_1Socket.html#a95642cc2ff48fff6ff15c82135cdaa29">http::Socket</a></li>
-<li>m_headerFields&#160;:&#160;<a class="el" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">http::Response</a></li>
+<li>m_contentLength&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#a7d98a07e4d93790df8a1126a2c41a0b0">http::RequestParser</a></li>
+<li>m_data&#160;:&#160;<a class="el" href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">http::Response</a>, <a class="el" href="classshared_1_1Buffer.html#a187b3f9291b5b1e6c379ab6bcdd230ef">shared::Buffer&lt; Capacity &gt;</a></li>
+<li>m_dispatcher&#160;:&#160;<a class="el" href="classcore_1_1AcceptHandler.html#a2be718a6a4dfb5a61e88865ac1b4ce00">core::AcceptHandler</a>, <a class="el" href="classcore_1_1Reactor.html#ac39befe378eb1efd88fde093064d4086">core::Reactor</a></li>
+<li>m_epoll_master_fd&#160;:&#160;<a class="el" href="classcore_1_1Dispatcher.html#ae3358923cf95122243edaecafff901d1">core::Dispatcher</a></li>
+<li>m_events&#160;:&#160;<a class="el" href="classcore_1_1Dispatcher.html#abfe2c81d53697c4c49251b5ca51de1cf">core::Dispatcher</a></li>
+<li>m_handlers&#160;:&#160;<a class="el" href="classcore_1_1Dispatcher.html#a1319290758b876fc0f0af9a8045e9ea1">core::Dispatcher</a>, <a class="el" href="classhttp_1_1RequestProccesor.html#ab75a7d191fc12f8c2ed31e9c9f36ecdf">http::RequestProccesor</a></li>
+<li>m_headers&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#a9bd2fbffae2ae25d159f2947bdac509a">http::Request</a>, <a class="el" href="classhttp_1_1Response.html#a495a8dd4ccc444a9787b46834937f258">http::Response</a></li>
+<li>m_isDone&#160;:&#160;<a class="el" href="classcore_1_1AHandler.html#ab262daace90ee13c752fb8a585baeb0c">core::AHandler</a></li>
 <li>m_isLoaded&#160;:&#160;<a class="el" href="classconfig_1_1ConfigFileParser.html#abeb1e6536a0095bc521d5ba717822b4c">config::ConfigFileParser</a></li>
-<li>m_listen_socket&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#a88071b0d725207200e413d810abb0674">http::VirtualServer</a></li>
-<li>m_locations&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#a386963a064571320f1b93fe8b5845dd5">http::VirtualServer</a></li>
-<li>m_names&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#a4a8050f6302efa3d71c92c0045f08b4f">http::VirtualServer</a></li>
-<li>m_pathData&#160;:&#160;<a class="el" href="classhttp_1_1Response.html#aad02e5ae325387fc0ddacdb30594dccd">http::Response</a></li>
-<li>m_rawResponse&#160;:&#160;<a class="el" href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">http::Response</a></li>
+<li>m_keepAlive&#160;:&#160;<a class="el" href="classcore_1_1IOHandler.html#a540b5fe282b527f7726c26cf32d0ea1b">core::IOHandler</a></li>
+<li>m_level&#160;:&#160;<a class="el" href="classshared_1_1Logger.html#a1dec4614e2400d61d2ffb89f9ac92ed3">shared::Logger</a></li>
+<li>m_listenSocket&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">http::VirtualServer</a></li>
+<li>m_locations&#160;:&#160;<a class="el" href="classhttp_1_1ARequestHandler.html#a3af43f72857eb41886992e3348c59d47">http::ARequestHandler</a>, <a class="el" href="classhttp_1_1RequestProccesor.html#a214ff0501705ac99956a29442fc19870">http::RequestProccesor</a></li>
+<li>m_logFile&#160;:&#160;<a class="el" href="classshared_1_1Logger.html#a5f7e011412c364d83460d1bbe7b11a1e">shared::Logger</a></li>
+<li>m_logger&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#ae899297922e2cce19b245093e85c599f">http::VirtualServer</a></li>
+<li>m_message&#160;:&#160;<a class="el" href="classhttp_1_1exception.html#a4ab60d6ffeca2b0a2126dec8045a0a87">http::exception</a></li>
+<li>m_method&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#a209f172cc311ccea1cce70bdfab6f5df">http::Request</a></li>
 <li>m_reacting&#160;:&#160;<a class="el" href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">core::Reactor</a></li>
-<li>m_receivedBytes&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#a26cda86e213aadc1010685e2d745b4c5">http::Request</a></li>
-<li>m_requestBuffer&#160;:&#160;<a class="el" href="classhttp_1_1Connection.html#a9c9c373b09d55ada25881733f793433a">http::Connection</a></li>
-<li>m_requestData&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#a9002d730df24c04a1e4c1fcd48a0f28f">http::Request</a></li>
-<li>m_requests&#160;:&#160;<a class="el" href="classcore_1_1EventHandler.html#aa1ec7a25a3befaf455b43e5a7bf2875a">core::EventHandler</a></li>
-<li>m_responseBuffer&#160;:&#160;<a class="el" href="classhttp_1_1Connection.html#a09417b9fca68e080997c1a26f7595838">http::Connection</a></li>
-<li>m_responses&#160;:&#160;<a class="el" href="classcore_1_1EventHandler.html#a3135d335cb48cb3cbaf06e6725624476">core::EventHandler</a></li>
-<li>m_restData&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#a1d6014b52596e2ea30717ffce6fcb27b">http::Request</a></li>
-<li>m_server&#160;:&#160;<a class="el" href="classcore_1_1EventHandler.html#a3d4b82dc5fd7df427588db5dc006e813">core::EventHandler</a></li>
-<li>m_sockAddr&#160;:&#160;<a class="el" href="classhttp_1_1Socket.html#a513ae41d902f614a63e88aabc0de27b4">http::Socket</a></li>
-<li>m_state&#160;:&#160;<a class="el" href="classcore_1_1EventHandler.html#addedacf1a0307399bfce1b669843d935">core::EventHandler</a></li>
-<li>m_status&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#a9174b2d46902c66064874f2e37c06660">http::Request</a></li>
-<li>m_statusCode&#160;:&#160;<a class="el" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">http::Response</a></li>
-<li>m_type&#160;:&#160;<a class="el" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">http::Response</a></li>
-<li>m_vServers&#160;:&#160;<a class="el" href="classcore_1_1Reactor.html#a0468a522e06fd37653bf86dd8cee4568">core::Reactor</a></li>
+<li>m_readPos&#160;:&#160;<a class="el" href="classshared_1_1Buffer.html#aa1c1c7e5c7525d3b18f6c4da073d4d2c">shared::Buffer&lt; Capacity &gt;</a></li>
+<li>m_req&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#a548d0bff24b550b2569fba6c7b6ae6e8">http::RequestParser</a></li>
+<li>m_reqParser&#160;:&#160;<a class="el" href="classcore_1_1IOHandler.html#ab4c76bc519875e49ad94f6959e07ed1d">core::IOHandler</a></li>
+<li>m_reqProccesor&#160;:&#160;<a class="el" href="classcore_1_1IOHandler.html#a5de51f5212b4a3c959c28274945a29fa">core::IOHandler</a></li>
+<li>m_res&#160;:&#160;<a class="el" href="classhttp_1_1RequestProccesor.html#a0dd339354b80e8f4835b7e8d6cbb5bd0">http::RequestProccesor</a></li>
+<li>m_responses&#160;:&#160;<a class="el" href="classcore_1_1IOHandler.html#aa5ac8c11036c5638b69e65fabfb0ef86">core::IOHandler</a></li>
+<li>m_state&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#a085c03526c534b088b51be604432e50d">http::RequestParser</a></li>
+<li>m_uri&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#a7fec83fd9500e50659804603b965aeaf">http::Request</a></li>
+<li>m_version&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#a5c7fd15cfda76de5406e5aecc42a272c">http::Request</a></li>
+<li>m_vServer&#160;:&#160;<a class="el" href="classcore_1_1AcceptHandler.html#a6381d9861b27184fcaaaf378d5635095">core::AcceptHandler</a>, <a class="el" href="classcore_1_1IOHandler.html#a1b6ab566aedd2c201c977fff4095718a">core::IOHandler</a></li>
+<li>m_vServers&#160;:&#160;<a class="el" href="classcore_1_1Reactor.html#a5ec2aade1fe15c8a13b06a7ac0d26469">core::Reactor</a></li>
+<li>m_writePos&#160;:&#160;<a class="el" href="classshared_1_1Buffer.html#afc9fd919c9c046949d17d89ecd998037">shared::Buffer&lt; Capacity &gt;</a></li>
+<li>markDone()&#160;:&#160;<a class="el" href="classcore_1_1AHandler.html#a2bf318df177af33d921c7755389a09a3">core::AHandler</a></li>
 <li>max_body_size&#160;:&#160;<a class="el" href="structconfig_1_1s__server.html#ade81d4fc8e4062f98956c64ea9d866cd">config::s_server</a></li>
-<li>method&#160;:&#160;<a class="el" href="structhttp_1_1s__requestData.html#abad9164bd968c0d77bc39b42e3f4569e">http::s_requestData</a></li>
+<li>MAX_BODY_SIZE&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#ab19887cfc70851f27ce2290dfdc76311">http::RequestParser</a></li>
+<li>MAX_EVENTS&#160;:&#160;<a class="el" href="classcore_1_1Dispatcher.html#a8358602e711ef8f17f4eb082d259c5d8">core::Dispatcher</a></li>
+<li>MAX_HEADER_COUNT&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#a99875b80a96d458bac587462908ac9fb">http::RequestParser</a></li>
+<li>MAX_HEADER_NAME_LENGTH&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#a756cd1c6409b2aade76f83c9a4a885e2">http::RequestParser</a></li>
+<li>MAX_HEADER_VALUE_COUNT&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#ae663154e938ecb97d3e370890629c551">http::RequestParser</a></li>
+<li>MAX_HEADER_VALUE_LENGTH&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#ac161ae89a4fb5668d06fd5c9da8e6048">http::RequestParser</a></li>
+<li>MAX_URI_LENGTH&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#aa35e63f66459760dd40c98a401ef2f20">http::RequestParser</a></li>
 <li>methods&#160;:&#160;<a class="el" href="structconfig_1_1s__location.html#a905db2d74ba67f5a0c096825c26a9b9e">config::s_location</a></li>
 </ul>
 </div><!-- contents -->

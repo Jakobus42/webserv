@@ -82,10 +82,13 @@ var NAVTREE =
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", null ],
+        [ "Enumerations", "functions_enum.html", null ],
+        [ "Enumerator", "functions_eval.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -93,7 +96,6 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -102,10 +104,10 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"Connection_8cpp.html",
-"classcore_1_1EventHandler.html#addedacf1a0307399bfce1b669843d935",
-"classhttp_1_1Socket.html#afa3095cf8f2b53688bd57af904d52892",
-"namespacehttp.html#a89e20f6091e8cac88b2d785d9bc5f3d7"
+"AHandler_8hpp.html",
+"classcore_1_1Reactor.html#a8008b4a8a397826ea95b4a1cdb30c4b2",
+"classhttp_1_1VirtualServer.html#a3d06a53896a3d67641f3dba82f1bd2b2",
+"md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2getting__started.html#autotoc_md30"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

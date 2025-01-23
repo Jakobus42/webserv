@@ -67,26 +67,29 @@ $(document).ready(function(){initNavTree('stringUtils_8cpp.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="stringUtils_8hpp_source.html">shared/stringUtils.hpp</a>&quot;</code><br />
+<code>#include &lt;cstring&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for stringUtils.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="stringUtils_8cpp__incl.png" border="0" usemap="#ashared_2stringUtils_8cpp" alt=""/></div>
 <map name="ashared_2stringUtils_8cpp" id="ashared_2stringUtils_8cpp">
-<area shape="rect" title=" " alt="" coords="384,5,548,31"/>
-<area shape="rect" href="stringUtils_8hpp.html" title=" " alt="" coords="383,79,549,104"/>
-<area shape="poly" title=" " alt="" coords="469,31,469,65,463,65,463,31"/>
+<area shape="rect" title=" " alt="" coords="435,5,599,31"/>
+<area shape="rect" href="stringUtils_8hpp.html" title=" " alt="" coords="365,79,530,104"/>
+<area shape="poly" title=" " alt="" coords="507,33,470,71,466,67,503,29"/>
+<area shape="rect" title=" " alt="" coords="554,79,621,104"/>
+<area shape="poly" title=" " alt="" coords="530,29,568,67,564,71,526,33"/>
 <area shape="rect" title=" " alt="" coords="5,225,76,251"/>
-<area shape="poly" title=" " alt="" coords="415,107,333,127,242,155,153,189,78,222,76,217,151,184,240,149,331,122,414,101"/>
-<area shape="rect" href="constants_8hpp.html" title=" " alt="" coords="252,152,395,177"/>
-<area shape="poly" title=" " alt="" coords="444,106,360,148,358,143,442,102"/>
+<area shape="poly" title=" " alt="" coords="409,107,259,155,82,223,80,218,257,149,407,102"/>
+<area shape="rect" href="http_8hpp.html" title=" " alt="" coords="270,152,377,177"/>
+<area shape="poly" title=" " alt="" coords="429,106,357,147,354,143,426,102"/>
 <area shape="rect" title=" " alt="" coords="522,225,602,251"/>
-<area shape="poly" title=" " alt="" coords="463,105,454,139,454,158,460,176,482,200,511,218,508,222,479,205,456,179,449,159,449,138,458,104"/>
-<area shape="rect" title=" " alt="" coords="470,152,529,177"/>
-<area shape="poly" title=" " alt="" coords="474,103,491,139,486,141,469,105"/>
-<area shape="rect" title=" " alt="" coords="553,152,611,177"/>
-<area shape="poly" title=" " alt="" coords="486,102,553,142,550,147,483,106"/>
-<area shape="rect" title=" " alt="" coords="636,152,699,177"/>
-<area shape="poly" title=" " alt="" coords="499,102,624,145,622,150,497,107"/>
+<area shape="poly" title=" " alt="" coords="445,105,435,139,435,158,442,176,452,186,471,197,517,218,515,223,468,202,449,191,437,179,430,159,430,138,440,103"/>
+<area shape="rect" title=" " alt="" coords="451,152,510,177"/>
+<area shape="poly" title=" " alt="" coords="455,103,472,139,467,141,450,105"/>
+<area shape="rect" title=" " alt="" coords="534,152,593,177"/>
+<area shape="poly" title=" " alt="" coords="467,102,534,142,531,147,465,106"/>
+<area shape="rect" title=" " alt="" coords="617,152,680,177"/>
+<area shape="poly" title=" " alt="" coords="481,102,605,145,604,150,479,107"/>
 <area shape="poly" title=" " alt="" coords="279,180,90,227,89,222,277,175"/>
 <area shape="rect" title=" " alt="" coords="101,225,197,251"/>
 <area shape="poly" title=" " alt="" coords="296,180,191,222,189,218,294,175"/>
@@ -111,16 +114,18 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa68d026861d0f4c81179e94efca2ed7c" id="r_aa68d026861d0f4c81179e94efca2ed7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#aa68d026861d0f4c81179e94efca2ed7c">shared::string::split</a> (const std::string &amp;str, std::vector&lt; std::string &gt; &amp;result, const std::string &amp;delimiters)</td></tr>
+<tr class="memitem:aa68d026861d0f4c81179e94efca2ed7c" id="r_aa68d026861d0f4c81179e94efca2ed7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#aa68d026861d0f4c81179e94efca2ed7c">shared::string::split</a> (<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">const</a> std::string &amp;<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">str</a>, std::vector&lt; std::string &gt; &amp;<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">result</a>, <a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">const</a> std::string &amp;<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">delimiters</a>)</td></tr>
 <tr class="memdesc:aa68d026861d0f4c81179e94efca2ed7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Splits the given string into tokens based on the specified delimiters.  <br /></td></tr>
 <tr class="separator:aa68d026861d0f4c81179e94efca2ed7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a548d2887496a48cb38f3ab46dd407c6b" id="r_a548d2887496a48cb38f3ab46dd407c6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a548d2887496a48cb38f3ab46dd407c6b">shared::string::trim</a> (std::string &amp;str, const std::string &amp;delimiters)</td></tr>
+<tr class="memitem:a548d2887496a48cb38f3ab46dd407c6b" id="r_a548d2887496a48cb38f3ab46dd407c6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a548d2887496a48cb38f3ab46dd407c6b">shared::string::trim</a> (std::string &amp;<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">str</a>, <a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">const</a> std::string &amp;<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">delimiters</a>)</td></tr>
 <tr class="memdesc:a548d2887496a48cb38f3ab46dd407c6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trims leading and trailing characters from the input string.  <br /></td></tr>
 <tr class="separator:a548d2887496a48cb38f3ab46dd407c6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f7b586737ab36eade3fc402c9abe0a7" id="r_a0f7b586737ab36eade3fc402c9abe0a7"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a0f7b586737ab36eade3fc402c9abe0a7">shared::string::StoiHex</a> (std::string &amp;str, int &amp;ret)</td></tr>
+<tr class="memitem:a3e43ed005d9012896461ede60cde0e33" id="r_a3e43ed005d9012896461ede60cde0e33"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a3e43ed005d9012896461ede60cde0e33">shared::string::toString</a> (<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">int</a> <a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">value</a>)</td></tr>
+<tr class="separator:a3e43ed005d9012896461ede60cde0e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f7b586737ab36eade3fc402c9abe0a7" id="r_a0f7b586737ab36eade3fc402c9abe0a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a0f7b586737ab36eade3fc402c9abe0a7">shared::string::StoiHex</a> (std::string &amp;<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">str</a>, <a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">int</a> &amp;<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">ret</a>)</td></tr>
 <tr class="memdesc:a0f7b586737ab36eade3fc402c9abe0a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a hexadecimal string to an unsigned integer.  <br /></td></tr>
 <tr class="separator:a0f7b586737ab36eade3fc402c9abe0a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c0ea281fde1150615baa77e6dcce5d3" id="r_a2c0ea281fde1150615baa77e6dcce5d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3">shared::string::isGreyspace</a> (char c)</td></tr>
+<tr class="memitem:a2c0ea281fde1150615baa77e6dcce5d3" id="r_a2c0ea281fde1150615baa77e6dcce5d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3">shared::string::isGreyspace</a> (<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">char</a> <a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">c</a>)</td></tr>
 <tr class="memdesc:a2c0ea281fde1150615baa77e6dcce5d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if a character is a whitespace character exept for '<br  />
 ' and '\r'  <br /></td></tr>
 <tr class="separator:a2c0ea281fde1150615baa77e6dcce5d3"><td class="memSeparator" colspan="2">&#160;</td></tr>

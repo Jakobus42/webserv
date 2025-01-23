@@ -67,97 +67,72 @@ $(document).ready(function(){initNavTree('main_8cpp.html',''); initResizable(); 
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="Parser_8hpp_source.html">config/Parser.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Reactor_8hpp_source.html">core/Reactor.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Logger_8hpp_source.html">shared/Logger.hpp</a>&quot;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#amain_8cpp" alt=""/></div>
 <map name="amain_8cpp" id="amain_8cpp">
-<area shape="rect" title=" " alt="" coords="511,5,593,31"/>
-<area shape="rect" href="Parser_8hpp.html" title=" " alt="" coords="182,372,314,397"/>
-<area shape="poly" title=" " alt="" coords="511,27,404,43,275,71,215,89,166,111,133,136,124,149,121,164,121,239,124,260,131,279,154,313,185,341,216,363,213,367,182,346,150,317,126,281,119,261,116,239,116,163,119,147,129,133,163,107,213,84,273,65,403,37,510,21"/>
-<area shape="rect" title=" " alt="" coords="681,519,761,544"/>
-<area shape="poly" title=" " alt="" coords="594,20,778,37,1026,67,1144,86,1244,108,1312,134,1331,148,1339,163,1339,313,1336,359,1328,379,1313,399,1296,414,1274,428,1216,452,1145,472,1066,489,904,514,775,528,775,523,904,509,1065,484,1143,467,1214,447,1271,423,1293,410,1309,396,1323,376,1331,358,1333,313,1333,164,1327,151,1310,138,1242,114,1143,91,1025,72,778,42,593,25"/>
-<area shape="rect" href="Reactor_8hpp.html" title=" " alt="" coords="487,79,617,104"/>
-<area shape="poly" title=" " alt="" coords="555,31,555,65,549,65,549,31"/>
-<area shape="poly" title=" " alt="" coords="290,369,324,371,336,376,341,385,337,392,329,397,304,401,303,396,327,392,333,389,335,385,332,380,323,376,290,375"/>
-<area shape="rect" title=" " alt="" coords="159,519,230,544"/>
-<area shape="poly" title=" " alt="" coords="244,399,222,446,204,506,199,504,218,444,239,396"/>
-<area shape="rect" href="constants_8hpp.html" title=" " alt="" coords="705,445,847,471"/>
-<area shape="poly" title=" " alt="" coords="315,392,691,443,690,448,314,398"/>
-<area shape="poly" title=" " alt="" coords="263,395,311,432,343,452,377,468,454,493,533,509,607,520,668,525,667,530,606,525,532,515,452,498,375,473,340,456,308,436,260,400"/>
-<area shape="rect" title=" " alt="" coords="860,519,911,544"/>
-<area shape="poly" title=" " alt="" coords="273,395,372,443,396,457,421,468,489,480,609,496,847,523,846,528,609,501,489,486,419,473,394,462,369,448,271,400"/>
-<area shape="rect" title=" " alt="" coords="5,519,80,544"/>
-<area shape="poly" title=" " alt="" coords="233,400,72,513,69,508,230,395"/>
-<area shape="rect" title=" " alt="" coords="233,445,306,471"/>
-<area shape="poly" title=" " alt="" coords="254,397,265,431,259,433,249,398"/>
-<area shape="rect" title=" " alt="" coords="433,445,495,471"/>
-<area shape="poly" title=" " alt="" coords="284,395,420,440,419,445,282,400"/>
-<area shape="poly" title=" " alt="" coords="704,471,244,527,243,521,704,465"/>
-<area shape="rect" title=" " alt="" coords="1092,519,1188,544"/>
-<area shape="poly" title=" " alt="" coords="835,468,1079,515,1078,521,834,473"/>
-<area shape="rect" title=" " alt="" coords="1291,519,1394,544"/>
-<area shape="poly" title=" " alt="" coords="848,466,1278,519,1277,525,847,471"/>
-<area shape="poly" title=" " alt="" coords="769,473,741,509,736,506,765,469"/>
-<area shape="poly" title=" " alt="" coords="795,468,857,509,854,513,792,473"/>
-<area shape="poly" title=" " alt="" coords="704,468,147,521,94,527,94,522,146,516,704,463"/>
-<area shape="poly" title=" " alt="" coords="618,101,711,120,814,147,862,164,905,182,938,202,960,224,972,257,968,290,954,322,930,352,901,379,869,404,811,441,808,436,866,399,898,375,926,348,949,319,963,289,966,258,955,227,935,206,902,187,861,169,812,152,709,125,617,106"/>
-<area shape="poly" title=" " alt="" coords="618,97,739,116,808,131,875,149,955,171,1027,186,1092,198,1152,212,1207,232,1259,262,1309,307,1357,371,1362,386,1358,401,1345,415,1327,428,1273,452,1204,473,1050,507,925,527,924,522,1049,502,1203,468,1271,447,1324,424,1342,411,1353,399,1357,386,1352,373,1305,311,1256,266,1205,237,1150,217,1091,203,1026,191,954,176,874,155,806,136,738,121,617,102"/>
-<area shape="poly" title=" " alt="" coords="487,102,350,122,287,136,244,154,225,169,213,184,197,226,194,238,197,249,294,325,439,435,436,439,291,330,192,252,189,238,192,225,208,181,221,165,241,150,285,131,349,116,486,97"/>
-<area shape="rect" title=" " alt="" coords="447,225,539,251"/>
-<area shape="poly" title=" " alt="" coords="561,103,572,137,574,158,569,178,552,202,530,220,526,216,548,198,564,176,569,158,567,139,556,105"/>
-<area shape="rect" href="EventHandler_8hpp.html" title=" " alt="" coords="275,152,445,177"/>
-<area shape="poly" title=" " alt="" coords="522,107,405,149,403,144,520,102"/>
-<area shape="rect" title=" " alt="" coords="207,225,270,251"/>
-<area shape="poly" title=" " alt="" coords="487,101,359,120,301,135,280,144,264,154,255,166,248,181,242,212,237,211,243,179,250,164,261,150,277,139,300,130,358,114,486,96"/>
-<area shape="rect" href="VirtualServer_8hpp.html" title=" " alt="" coords="631,152,795,177"/>
-<area shape="poly" title=" " alt="" coords="579,102,676,144,673,149,577,106"/>
-<area shape="rect" title=" " alt="" coords="469,152,555,177"/>
-<area shape="poly" title=" " alt="" coords="548,106,528,141,523,139,543,103"/>
-<area shape="poly" title=" " alt="" coords="353,179,324,214,283,253,252,274,224,288,171,306,146,316,123,328,100,347,77,373,60,406,50,441,44,505,39,504,45,440,55,404,72,371,96,343,120,324,144,311,169,301,222,283,250,269,280,249,320,210,349,176"/>
-<area shape="poly" title=" " alt="" coords="383,175,461,216,458,221,380,180"/>
-<area shape="rect" href="Request_8hpp.html" title=" " alt="" coords="464,299,597,324"/>
-<area shape="poly" title=" " alt="" coords="364,177,372,212,380,232,393,249,427,275,466,292,464,297,424,279,389,253,376,234,367,214,359,178"/>
-<area shape="rect" href="Response_8hpp.html" title=" " alt="" coords="1009,372,1151,397"/>
-<area shape="poly" title=" " alt="" coords="369,176,395,212,414,232,436,248,467,260,521,275,675,308,1000,367,999,372,674,313,520,280,465,265,433,253,411,236,391,216,364,179"/>
-<area shape="poly" title=" " alt="" coords="342,180,271,221,269,216,339,175"/>
-<area shape="poly" title=" " alt="" coords="464,316,384,321,296,330,219,347,190,359,171,374,162,388,158,405,159,441,169,476,183,505,178,508,164,478,153,441,152,404,157,386,167,370,187,355,217,342,295,325,383,315,464,311"/>
-<area shape="poly" title=" " alt="" coords="595,321,681,342,719,355,744,370,765,399,775,431,770,432,760,402,741,374,717,360,680,347,594,327"/>
-<area shape="poly" title=" " alt="" coords="598,318,683,337,728,351,772,370,823,399,841,418,861,444,876,474,884,504,879,506,871,476,856,447,837,421,819,404,769,374,727,356,682,342,597,324"/>
-<area shape="poly" title=" " alt="" coords="528,326,477,434,473,432,523,323"/>
-<area shape="rect" href="stringUtils_8hpp.html" title=" " alt="" coords="565,372,731,397"/>
-<area shape="poly" title=" " alt="" coords="551,322,618,362,616,367,548,326"/>
-<area shape="rect" title=" " alt="" coords="520,445,579,471"/>
-<area shape="poly" title=" " alt="" coords="535,324,549,431,543,432,530,325"/>
-<area shape="rect" title=" " alt="" coords="941,445,1000,471"/>
-<area shape="poly" title=" " alt="" coords="598,320,731,343,793,356,838,370,899,401,947,435,944,439,896,406,836,374,792,361,730,348,597,325"/>
-<area shape="poly" title=" " alt="" coords="646,399,627,436,612,456,592,473,564,486,526,497,431,513,329,524,244,530,243,525,329,519,430,508,525,491,562,481,589,468,608,453,623,433,641,396"/>
-<area shape="poly" title=" " alt="" coords="670,395,744,436,742,441,667,400"/>
-<area shape="poly" title=" " alt="" coords="656,397,712,505,707,507,652,399"/>
-<area shape="poly" title=" " alt="" coords="619,400,508,443,506,438,617,395"/>
-<area shape="poly" title=" " alt="" coords="634,400,578,439,575,435,631,395"/>
-<area shape="poly" title=" " alt="" coords="700,395,929,445,927,450,699,400"/>
-<area shape="poly" title=" " alt="" coords="1032,400,839,445,838,440,1031,395"/>
-<area shape="poly" title=" " alt="" coords="1098,396,1115,411,1131,430,1139,451,1138,462,1133,472,1119,484,1098,494,1042,511,980,522,925,529,924,524,979,517,1041,505,1096,489,1116,480,1129,469,1133,461,1134,452,1126,433,1111,415,1094,400"/>
-<area shape="poly" title=" " alt="" coords="1064,400,1002,440,999,435,1061,395"/>
-<area shape="rect" title=" " alt="" coords="1042,445,1118,471"/>
-<area shape="poly" title=" " alt="" coords="1083,398,1083,432,1077,432,1077,398"/>
-<area shape="poly" title=" " alt="" coords="702,180,658,216,597,253,546,272,503,279,461,286,409,301,338,334,279,367,277,362,336,329,407,296,460,281,502,274,544,267,595,248,655,211,699,176"/>
-<area shape="poly" title=" " alt="" coords="691,180,597,228,575,241,552,253,489,272,431,279,326,282,280,287,236,301,194,328,154,373,149,385,146,405,147,433,156,470,165,489,177,507,173,510,160,492,151,472,142,434,141,404,144,383,150,371,191,324,233,296,278,282,326,277,430,274,488,266,550,248,572,237,595,223,689,175"/>
-<area shape="poly" title=" " alt="" coords="708,179,680,216,660,236,637,253,610,265,584,270,536,269,514,268,493,272,473,281,454,300,445,315,440,332,439,367,446,402,456,432,451,434,440,404,434,368,435,331,440,313,450,297,470,277,492,267,514,263,536,263,584,265,609,260,635,248,657,232,676,212,704,176"/>
-<area shape="poly" title=" " alt="" coords="724,176,782,249,876,353,952,433,948,437,872,357,778,252,720,179"/>
-<area shape="rect" href="Connection_8hpp.html" title=" " alt="" coords="793,225,946,251"/>
-<area shape="poly" title=" " alt="" coords="739,175,832,217,830,222,737,180"/>
-<area shape="rect" href="Socket_8hpp.html" title=" " alt="" coords="1176,372,1299,397"/>
-<area shape="poly" title=" " alt="" coords="782,175,867,194,958,223,1032,256,1103,294,1211,362,1208,366,1100,299,1030,261,956,228,866,199,781,180"/>
-<area shape="poly" title=" " alt="" coords="815,253,599,298,598,293,814,248"/>
-<area shape="poly" title=" " alt="" coords="880,249,911,284,954,322,994,346,1036,365,1033,369,992,351,950,326,907,288,876,253"/>
-<area shape="poly" title=" " alt="" coords="886,249,936,285,1004,322,1085,350,1163,368,1162,373,1083,355,1002,326,933,289,883,253"/>
-<area shape="poly" title=" " alt="" coords="1176,398,1164,400,861,446,860,441,1164,395,1175,393"/>
-<area shape="poly" title=" " alt="" coords="1255,395,1272,410,1288,429,1297,450,1296,461,1292,472,1274,492,1251,507,1202,525,1201,520,1249,502,1270,488,1287,469,1291,460,1291,451,1283,432,1268,414,1252,399"/>
-<area shape="poly" title=" " alt="" coords="1258,395,1285,416,1311,444,1328,474,1339,504,1334,506,1323,476,1307,447,1282,420,1255,400"/>
-<area shape="poly" title=" " alt="" coords="1195,400,1014,448,1013,443,1194,395"/>
+<area shape="rect" title=" " alt="" coords="380,5,463,31"/>
+<area shape="rect" href="Parser_8hpp.html" title=" " alt="" coords="213,225,345,251"/>
+<area shape="poly" title=" " alt="" coords="414,32,375,84,328,153,293,214,289,211,323,151,371,81,410,29"/>
+<area shape="rect" title=" " alt="" coords="5,372,85,397"/>
+<area shape="poly" title=" " alt="" coords="380,29,287,47,177,77,126,96,85,117,58,140,50,151,48,164,48,239,48,358,43,358,43,239,43,163,46,149,54,136,82,112,124,91,175,72,286,42,379,24"/>
+<area shape="rect" href="Reactor_8hpp.html" title=" " alt="" coords="609,79,740,104"/>
+<area shape="poly" title=" " alt="" coords="463,28,621,72,620,77,461,33"/>
+<area shape="rect" href="Logger_8hpp.html" title=" " alt="" coords="577,225,719,251"/>
+<area shape="poly" title=" " alt="" coords="435,29,627,213,624,217,432,33"/>
+<area shape="poly" title=" " alt="" coords="321,223,355,224,366,229,371,238,368,246,360,251,335,254,334,249,358,246,364,242,366,238,363,233,353,229,321,228"/>
+<area shape="rect" title=" " alt="" coords="579,372,650,397"/>
+<area shape="poly" title=" " alt="" coords="289,250,318,286,338,305,361,322,413,345,468,361,520,372,566,378,565,383,519,377,466,367,411,350,359,326,335,309,314,289,285,253"/>
+<area shape="rect" href="http_8hpp.html" title=" " alt="" coords="184,299,291,324"/>
+<area shape="poly" title=" " alt="" coords="274,252,253,288,249,285,270,250"/>
+<area shape="poly" title=" " alt="" coords="251,253,205,274,155,301,109,333,70,365,67,361,106,329,152,296,202,269,249,248"/>
+<area shape="rect" title=" " alt="" coords="831,372,881,397"/>
+<area shape="poly" title=" " alt="" coords="295,249,352,290,405,322,487,341,603,358,817,378,817,383,603,363,486,347,403,326,349,294,292,253"/>
+<area shape="rect" title=" " alt="" coords="109,372,184,397"/>
+<area shape="poly" title=" " alt="" coords="245,253,207,272,189,285,174,300,159,329,152,359,147,357,154,327,170,297,186,281,205,267,243,248"/>
+<area shape="rect" title=" " alt="" coords="503,299,577,324"/>
+<area shape="poly" title=" " alt="" coords="321,248,491,294,489,299,320,253"/>
+<area shape="rect" title=" " alt="" coords="417,299,479,324"/>
+<area shape="poly" title=" " alt="" coords="307,248,409,291,407,296,305,253"/>
+<area shape="poly" title=" " alt="" coords="291,320,566,372,565,377,291,325"/>
+<area shape="rect" title=" " alt="" coords="208,372,304,397"/>
+<area shape="poly" title=" " alt="" coords="243,324,252,358,247,360,238,325"/>
+<area shape="rect" title=" " alt="" coords="329,372,431,397"/>
+<area shape="poly" title=" " alt="" coords="261,322,346,363,343,368,259,326"/>
+<area shape="poly" title=" " alt="" coords="207,327,91,369,89,364,206,322"/>
+<area shape="poly" title=" " alt="" coords="291,316,817,376,816,381,291,321"/>
+<area shape="poly" title=" " alt="" coords="224,326,174,365,171,361,221,322"/>
+<area shape="poly" title=" " alt="" coords="609,99,476,116,400,132,326,155,253,178,226,195,202,227,198,241,201,257,218,286,214,289,196,259,193,241,198,224,223,191,251,174,325,149,399,127,476,111,609,94"/>
+<area shape="poly" title=" " alt="" coords="741,94,931,114,1024,129,1062,139,1090,150,1118,164,1138,178,1154,197,1168,224,1174,245,1174,264,1169,282,1159,298,1127,324,1085,344,1035,360,984,371,896,383,895,378,984,366,1034,355,1083,339,1124,319,1155,294,1164,280,1169,264,1169,246,1163,226,1149,200,1134,182,1115,168,1088,154,1060,144,1023,135,930,119,740,100"/>
+<area shape="rect" title=" " alt="" coords="1061,225,1153,251"/>
+<area shape="poly" title=" " alt="" coords="741,93,824,99,918,110,1003,127,1037,137,1062,150,1076,163,1087,179,1102,211,1097,213,1083,181,1072,166,1058,154,1035,142,1002,132,917,116,824,105,740,99"/>
+<area shape="rect" href="AHandler_8hpp.html" title=" " alt="" coords="793,225,935,251"/>
+<area shape="poly" title=" " alt="" coords="660,106,642,121,625,139,617,158,618,167,622,176,646,192,684,206,780,225,779,230,683,211,643,197,618,179,613,168,612,157,621,136,638,117,656,102"/>
+<area shape="rect" href="NonCopyable_8hpp.html" title=" " alt="" coords="653,299,838,324"/>
+<area shape="poly" title=" " alt="" coords="692,102,714,123,733,151,745,186,750,223,751,285,745,285,745,223,739,187,728,153,710,127,689,106"/>
+<area shape="rect" href="Dispatcher_8hpp.html" title=" " alt="" coords="897,152,1047,177"/>
+<area shape="poly" title=" " alt="" coords="723,101,911,146,910,151,722,107"/>
+<area shape="rect" href="VirtualServer_8hpp.html" title=" " alt="" coords="338,152,505,177"/>
+<area shape="poly" title=" " alt="" coords="635,107,476,151,475,146,633,101"/>
+<area shape="rect" title=" " alt="" coords="631,152,718,177"/>
+<area shape="poly" title=" " alt="" coords="677,104,677,138,672,138,672,104"/>
+<area shape="poly" title=" " alt="" coords="868,251,869,287,864,308,853,326,821,345,771,360,664,380,663,375,770,355,818,340,849,322,859,306,863,286,863,251"/>
+<area shape="poly" title=" " alt="" coords="846,253,778,294,775,289,844,248"/>
+<area shape="poly" title=" " alt="" coords="973,178,965,212,949,252,919,296,901,311,876,326,822,350,765,367,711,377,664,383,663,378,710,372,764,362,820,345,873,322,898,307,915,292,944,249,960,211,968,177"/>
+<area shape="poly" title=" " alt="" coords="980,176,993,205,1004,243,1006,285,1002,306,993,325,973,347,948,363,896,380,894,375,946,358,970,343,988,323,997,305,1001,285,998,244,988,206,976,179"/>
+<area shape="poly" title=" " alt="" coords="995,175,1074,216,1071,221,992,180"/>
+<area shape="poly" title=" " alt="" coords="956,180,895,220,892,215,953,175"/>
+<area shape="poly" title=" " alt="" coords="400,180,315,221,313,217,397,175"/>
+<area shape="poly" title=" " alt="" coords="422,177,421,213,425,232,434,249,452,264,470,272,509,274,550,275,571,282,591,297,602,311,609,327,616,358,611,359,604,328,597,313,587,301,568,286,549,280,509,279,469,277,449,269,430,252,420,234,415,213,417,177"/>
+<area shape="poly" title=" " alt="" coords="456,175,489,194,505,208,517,224,521,244,513,262,499,279,482,293,479,289,495,275,509,260,516,243,512,226,501,211,486,198,453,180"/>
+<area shape="poly" title=" " alt="" coords="459,175,599,219,597,224,457,180"/>
+<area shape="rect" title=" " alt="" coords="444,225,503,251"/>
+<area shape="poly" title=" " alt="" coords="432,176,459,213,455,216,428,179"/>
+<area shape="poly" title=" " alt="" coords="632,253,571,293,568,289,629,248"/>
+<area shape="poly" title=" " alt="" coords="665,249,720,288,717,292,662,253"/>
 </map>
 </div>
 </div>
@@ -165,8 +140,6 @@ Include dependency graph for main.cpp:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a327b08380cbaacd2bd1f001845de4485" id="r_a327b08380cbaacd2bd1f001845de4485"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a327b08380cbaacd2bd1f001845de4485">signal_handler</a> (int signum)</td></tr>
-<tr class="separator:a327b08380cbaacd2bd1f001845de4485"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a172241e088a9da9dabf2cf839a73c865" id="r_a172241e088a9da9dabf2cf839a73c865"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865">main</a> (int argc, char **const argv)</td></tr>
 <tr class="separator:a172241e088a9da9dabf2cf839a73c865"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -197,176 +170,115 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00010">10</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   10</span>                                      {</div>
-<div class="line"><span class="lineno">   11</span> </div>
-<div class="line"><span class="lineno">   12</span>    <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">   13</span> </div>
-<div class="line"><span class="lineno">   14</span>        std::string configPath = argc &gt; 1 ? argv[1] : <span class="stringliteral">&quot;config/configfile_example&quot;</span>;</div>
-<div class="line"><span class="lineno">   15</span>        <a class="code hl_class" href="classconfig_1_1ConfigFileParser.html">config::ConfigFileParser</a> configFileParser;</div>
-<div class="line"><span class="lineno">   16</span>        <span class="keywordflow">if</span> (configFileParser.<a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a074868ef888a640498f54df02a8dd47e">loadConfigFile</a>(configPath) == 1)</div>
-<div class="line"><span class="lineno">   17</span>            <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">   18</span>        <a class="code hl_struct" href="structconfig_1_1s__config__data.html">config::t_config_data</a> configData = configFileParser.<a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ac1aa143b263ccf1e587402e01f612590">getConfigData</a>();</div>
-<div class="line"><span class="lineno">   19</span> </div>
-<div class="line"><span class="lineno">   20</span>        <a class="code hl_class" href="classcore_1_1Reactor.html">core::Reactor</a> reactor;</div>
-<div class="line"><span class="lineno">   21</span>        reactor.<a class="code hl_function" href="classcore_1_1Reactor.html#a8008b4a8a397826ea95b4a1cdb30c4b2">init</a>(configData);</div>
-<div class="line"><span class="lineno">   22</span>        reactor.<a class="code hl_function" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35">react</a>();</div>
-<div class="line"><span class="lineno">   23</span>    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><span class="lineno">   24</span>        std::cout &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   25</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Server died :(&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   26</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">   27</span>    }</div>
-<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">   29</span>}</div>
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00007">7</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    7</span>                                      {</div>
+<div class="line"><span class="lineno">    8</span> </div>
+<div class="line"><span class="lineno">    9</span>    <span class="keywordflow">try</span> {</div>
+<div class="line"><span class="lineno">   10</span>        std::string configPath = argc &gt; 1 ? argv[1] : <span class="stringliteral">&quot;config/configfile_example&quot;</span>;</div>
+<div class="line"><span class="lineno">   11</span>        <a class="code hl_class" href="classconfig_1_1ConfigFileParser.html">config::ConfigFileParser</a> configFileParser;</div>
+<div class="line"><span class="lineno">   12</span>        <span class="keywordflow">if</span> (configFileParser.<a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a074868ef888a640498f54df02a8dd47e">loadConfigFile</a>(configPath) == 1)</div>
+<div class="line"><span class="lineno">   13</span>            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">   14</span>        <a class="code hl_struct" href="structconfig_1_1s__config__data.html">config::t_config_data</a> configData = configFileParser.<a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ac1aa143b263ccf1e587402e01f612590">getConfigData</a>();</div>
+<div class="line"><span class="lineno">   15</span> </div>
+<div class="line"><span class="lineno">   16</span>        <a class="code hl_class" href="classcore_1_1Reactor.html">core::Reactor</a> reactor;</div>
+<div class="line"><span class="lineno">   17</span>        reactor.<a class="code hl_function" href="classcore_1_1Reactor.html#a8008b4a8a397826ea95b4a1cdb30c4b2">init</a>(configData);</div>
+<div class="line"><span class="lineno">   18</span>        reactor.<a class="code hl_function" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35">react</a>();</div>
+<div class="line"><span class="lineno">   19</span>    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line"><span class="lineno">   20</span>        std::cout &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   21</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Server died :(&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   22</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">   23</span>    }</div>
+<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">   25</span>}</div>
 <div class="ttc" id="aclassconfig_1_1ConfigFileParser_html"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html">config::ConfigFileParser</a></div><div class="ttdoc">This class is responsible for parsing the configuration file.</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00067">Parser.hpp:67</a></div></div>
 <div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_a074868ef888a640498f54df02a8dd47e"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#a074868ef888a640498f54df02a8dd47e">config::ConfigFileParser::loadConfigFile</a></div><div class="ttdeci">int loadConfigFile(std::string &amp;configFileName)</div><div class="ttdoc">Loads the configuration file, saving all the information.</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00179">Parser.cpp:179</a></div></div>
 <div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_ac1aa143b263ccf1e587402e01f612590"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#ac1aa143b263ccf1e587402e01f612590">config::ConfigFileParser::getConfigData</a></div><div class="ttdeci">t_config_data getConfigData() const</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00205">Parser.cpp:205</a></div></div>
-<div class="ttc" id="aclasscore_1_1Reactor_html"><div class="ttname"><a href="classcore_1_1Reactor.html">core::Reactor</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8hpp_source.html#l00025">Reactor.hpp:25</a></div></div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_a3e4e9145e4a5623750c0604ee8015b35"><div class="ttname"><a href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35">core::Reactor::react</a></div><div class="ttdeci">void react()</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8cpp_source.html#l00081">Reactor.cpp:81</a></div></div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_a8008b4a8a397826ea95b4a1cdb30c4b2"><div class="ttname"><a href="classcore_1_1Reactor.html#a8008b4a8a397826ea95b4a1cdb30c4b2">core::Reactor::init</a></div><div class="ttdeci">void init(config::t_config_data &amp;conf)</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8cpp_source.html#l00065">Reactor.cpp:65</a></div></div>
+<div class="ttc" id="aclasscore_1_1Reactor_html"><div class="ttname"><a href="classcore_1_1Reactor.html">core::Reactor</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8hpp_source.html#l00020">Reactor.hpp:20</a></div></div>
+<div class="ttc" id="aclasscore_1_1Reactor_html_a3e4e9145e4a5623750c0604ee8015b35"><div class="ttname"><a href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35">core::Reactor::react</a></div><div class="ttdeci">void react()</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8cpp_source.html#l00048">Reactor.cpp:48</a></div></div>
+<div class="ttc" id="aclasscore_1_1Reactor_html_a8008b4a8a397826ea95b4a1cdb30c4b2"><div class="ttname"><a href="classcore_1_1Reactor.html#a8008b4a8a397826ea95b4a1cdb30c4b2">core::Reactor::init</a></div><div class="ttdeci">void init(config::t_config_data &amp;conf)</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8cpp_source.html#l00033">Reactor.cpp:33</a></div></div>
 <div class="ttc" id="astructconfig_1_1s__config__data_html"><div class="ttname"><a href="structconfig_1_1s__config__data.html">config::s_config_data</a></div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00058">Parser.hpp:58</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8cpp_a172241e088a9da9dabf2cf839a73c865_cgraph.png" border="0" usemap="#amain_8cpp_a172241e088a9da9dabf2cf839a73c865_cgraph" alt=""/></div>
 <map name="amain_8cpp_a172241e088a9da9dabf2cf839a73c865_cgraph" id="amain_8cpp_a172241e088a9da9dabf2cf839a73c865_cgraph">
-<area shape="rect" title=" " alt="" coords="5,117,60,142"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ac1aa143b263ccf1e587402e01f612590" title=" " alt="" coords="108,23,281,63"/>
-<area shape="poly" title=" " alt="" coords="47,114,74,93,107,72,120,66,122,71,109,77,77,97,51,118"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a8008b4a8a397826ea95b4a1cdb30c4b2" title=" " alt="" coords="126,87,263,113"/>
-<area shape="poly" title=" " alt="" coords="60,122,112,112,113,117,61,127"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a074868ef888a640498f54df02a8dd47e" title="Loads the configuration file, saving all the information." alt="" coords="108,137,281,177"/>
-<area shape="poly" title=" " alt="" coords="61,131,95,137,94,142,60,136"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="120,377,269,402"/>
-<area shape="poly" title=" " alt="" coords="44,141,181,363,176,366,40,143"/>
-<area shape="rect" href="classcore_1_1Reactor.html#ad54fef7d5aa596da93d7e0e71f35ae45" title=" " alt="" coords="333,87,530,113"/>
-<area shape="poly" title=" " alt="" coords="264,97,319,97,319,103,264,103"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#ab5668e0bdf69dfe1de3a2c05ff93d852" title=" " alt="" coords="361,23,502,63"/>
-<area shape="poly" title=" " alt="" coords="247,85,347,60,348,65,249,90"/>
-<area shape="rect" href="classhttp_1_1Socket.html#afa3095cf8f2b53688bd57af904d52892" title="Starts listening for connections." alt="" coords="1170,194,1313,219"/>
-<area shape="poly" title=" " alt="" coords="502,26,621,10,696,5,776,3,860,7,946,17,1029,36,1109,65,1148,89,1181,120,1208,152,1227,180,1223,183,1203,155,1177,123,1144,93,1107,70,1028,41,945,22,860,12,776,8,696,10,622,15,503,31"/>
-<area shape="poly" title=" " alt="" coords="1204,196,1195,186,1200,176,1215,169,1241,167,1274,171,1286,180,1283,185,1272,176,1241,173,1216,175,1203,179,1201,185,1208,192"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a9691f8c60897ad4cc6dc0bc257b1f365" title="Closes the socket." alt="" coords="1405,333,1546,358"/>
-<area shape="poly" title=" " alt="" coords="1265,217,1442,323,1439,328,1263,222"/>
-<area shape="poly" title=" " alt="" coords="1438,334,1429,324,1434,314,1449,308,1475,306,1508,310,1520,319,1517,323,1506,315,1475,311,1450,313,1437,318,1435,323,1442,331"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#aa5ac9363ea9ba96a657a351b9b2f3219" title="Parses the configuration file." alt="" coords="345,225,518,265"/>
-<area shape="poly" title=" " alt="" coords="251,175,365,218,363,223,249,180"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#adcd94ec61a24121c76942f86999f72dd" title="Reads the configuration file." alt="" coords="345,137,518,177"/>
-<area shape="poly" title=" " alt="" coords="282,155,331,155,331,160,282,160"/>
-<area shape="poly" title=" " alt="" coords="388,226,385,215,392,206,408,201,431,199,459,201,474,209,471,213,457,207,431,204,409,206,395,211,390,217,393,224"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a0c3ffd6d214cb723d953db468e5ebb81" title="parses a line in the configuration file." alt="" coords="611,152,785,192"/>
-<area shape="poly" title=" " alt="" coords="504,223,611,193,612,198,506,228"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a2fc1f08065c566459a1543f1824e4eaa" title="Saves the configuration data." alt="" coords="899,80,1072,120"/>
-<area shape="poly" title=" " alt="" coords="778,149,891,121,892,126,779,154"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a6e1c99b3c9a7c9c3ce63cb413a24f552" title=" " alt="" coords="337,428,525,468"/>
-<area shape="poly" title=" " alt="" coords="247,399,338,422,336,427,246,405"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="329,702,533,727"/>
-<area shape="poly" title=" " alt="" coords="207,400,415,689,411,692,203,404"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a6cceee1737c651d1ec1ae1f3b15ce547" title=" " alt="" coords="581,343,815,369"/>
-<area shape="poly" title=" " alt="" coords="269,382,567,362,567,367,270,387"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#aba633077d4bc512dcb2caf15e6b035d4" title="Accepts the next incoming connection in the VirtualServerSocket&#39;s queue." alt="" coords="627,533,769,573"/>
-<area shape="poly" title=" " alt="" coords="481,465,582,507,631,526,630,531,580,512,479,470"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a9a2c96594ed7379e782a1fe266f9ebc9" title=" " alt="" coords="627,457,769,497"/>
-<area shape="poly" title=" " alt="" coords="526,456,614,465,613,471,525,461"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a9a84da7bb8fc141a1233c0bd1ce164e8" title=" " alt="" coords="589,407,807,433"/>
-<area shape="poly" title=" " alt="" coords="525,435,575,430,576,435,526,441"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a86da59b5636f0d11d787304d7285ffc0" title="Accepts an incoming connection." alt="" coords="910,553,1061,578"/>
-<area shape="poly" title=" " alt="" coords="769,553,896,559,896,564,769,559"/>
-<area shape="poly" title=" " alt="" coords="944,554,935,544,940,534,957,528,985,526,1021,530,1032,535,1036,540,1031,543,1028,539,1020,535,985,531,958,533,943,538,940,543,948,551"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a3bf8eb2db35a8030685b73971e3d8597" title=" " alt="" coords="887,400,1083,440"/>
-<area shape="poly" title=" " alt="" coords="807,417,874,417,874,423,807,423"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a616e1be23dbc676f5bd3f69407530907" title="Gets the socket file descriptor." alt="" coords="1169,407,1313,433"/>
-<area shape="poly" title=" " alt="" coords="1084,417,1156,417,1156,423,1084,423"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="625,939,771,979"/>
-<area shape="poly" title=" " alt="" coords="448,725,667,927,663,931,445,729"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#ab5616520f0084b2e893e5fb548b5385d" title=" " alt="" coords="625,1381,771,1421"/>
-<area shape="poly" title=" " alt="" coords="440,727,687,1368,682,1370,435,729"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a5d434426a474d7c9876837de7240f2fb" title=" " alt="" coords="625,608,771,648"/>
-<area shape="poly" title=" " alt="" coords="471,699,622,650,624,655,472,704"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1807c394423626629cff70026027a81f" title=" " alt="" coords="625,695,771,735"/>
-<area shape="poly" title=" " alt="" coords="534,712,611,712,611,717,534,717"/>
-<area shape="rect" href="classhttp_1_1Response.html#a9b46cf97a3ed97510778410591f5b460" title=" " alt="" coords="863,917,1108,942"/>
-<area shape="poly" title=" " alt="" coords="771,948,849,940,849,946,772,954"/>
-<area shape="rect" href="classhttp_1_1Response.html#a52625989a3fb2bcc1e367b5bc13bd99e" title=" " alt="" coords="890,967,1081,1007"/>
-<area shape="poly" title=" " alt="" coords="772,963,877,973,876,979,771,968"/>
-<area shape="rect" href="classhttp_1_1Response.html#ae0efdf9f8df4b4ba5d173171ad868cc7" title=" " alt="" coords="889,1095,1081,1135"/>
-<area shape="poly" title=" " alt="" coords="722,977,783,1028,822,1056,864,1080,880,1087,878,1092,861,1085,819,1061,780,1033,718,981"/>
-<area shape="rect" href="classhttp_1_1Response.html#ac923fe1857f3c3803e3cdc6b230e64f2" title=" " alt="" coords="887,1159,1083,1199"/>
-<area shape="poly" title=" " alt="" coords="714,978,737,1014,771,1059,814,1105,864,1144,876,1151,873,1155,861,1149,811,1109,767,1063,733,1017,709,981"/>
-<area shape="rect" href="classhttp_1_1Response.html#a01c142188318790efefff94436580437" title=" " alt="" coords="906,1223,1065,1249"/>
-<area shape="poly" title=" " alt="" coords="709,978,728,1026,761,1089,806,1154,833,1183,864,1208,894,1223,892,1228,861,1213,830,1187,802,1158,756,1092,723,1028,704,980"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a2e2e6883518370dd49f9fc23762a6c2d" title=" " alt="" coords="875,803,1096,843"/>
-<area shape="poly" title=" " alt="" coords="724,936,785,895,862,853,884,844,886,849,864,858,788,899,727,941"/>
-<area shape="rect" href="classhttp_1_1Response.html#a5fb55b37425d748d5d1bf83e48a49826" title=" " alt="" coords="896,867,1075,893"/>
-<area shape="poly" title=" " alt="" coords="755,936,862,903,902,893,904,898,863,908,756,941"/>
-<area shape="rect" href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364" title=" " alt="" coords="905,753,1065,778"/>
-<area shape="poly" title=" " alt="" coords="711,937,735,904,770,863,813,822,861,788,891,776,893,781,864,793,816,826,774,867,739,907,715,940"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a85a5119b2ca5045dde4da35e53e29862" title=" " alt="" coords="912,1031,1059,1071"/>
-<area shape="poly" title=" " alt="" coords="751,976,863,1016,899,1027,898,1032,862,1021,749,981"/>
-<area shape="poly" title=" " alt="" coords="701,1380,717,1321,748,1240,769,1197,795,1154,825,1115,861,1080,898,1061,900,1066,864,1085,829,1118,799,1157,774,1199,753,1242,722,1323,706,1382"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a71e0d84361ef9d7cdca612716dfe2bb3" title=" " alt="" coords="891,1587,1079,1627"/>
-<area shape="poly" title=" " alt="" coords="715,1420,739,1453,773,1495,816,1537,864,1572,880,1580,877,1585,861,1577,812,1541,769,1498,735,1456,710,1423"/>
-<area shape="rect" href="classhttp_1_1Connection.html#a06be1704cbc74d761ed349a082f81f4e" title=" " alt="" coords="880,1324,1091,1364"/>
-<area shape="poly" title=" " alt="" coords="771,1384,871,1364,872,1369,772,1389"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ada9246a65fd8b6ed0176597e59cf539f" title=" " alt="" coords="1375,702,1576,727"/>
-<area shape="poly" title=" " alt="" coords="729,1379,789,1343,862,1309,899,1299,932,1294,990,1293,1017,1292,1045,1287,1074,1277,1107,1259,1179,1201,1244,1132,1300,1058,1349,981,1389,907,1422,839,1462,739,1467,741,1427,841,1394,909,1353,984,1305,1061,1248,1136,1183,1205,1109,1263,1076,1282,1046,1293,1018,1297,990,1298,932,1299,900,1304,864,1314,791,1348,731,1383"/>
-<area shape="rect" href="classhttp_1_1Request.html#a94b960f923e856df1cc565ebbac086c0" title=" " alt="" coords="896,1389,1075,1414"/>
-<area shape="poly" title=" " alt="" coords="772,1399,882,1399,882,1404,772,1404"/>
-<area shape="rect" href="classhttp_1_1Request.html#a9080f26f273ea9257a4dbac3a9e7d9c1" title="Parses the request." alt="" coords="909,1438,1062,1463"/>
-<area shape="poly" title=" " alt="" coords="772,1411,898,1433,897,1438,771,1416"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a0968f64c389c1544e65f7430f969abb2" title="Receives data from the socket." alt="" coords="918,1487,1053,1513"/>
-<area shape="poly" title=" " alt="" coords="738,1419,796,1447,863,1473,905,1484,904,1489,862,1478,794,1452,735,1424"/>
-<area shape="rect" href="classhttp_1_1Request.html#a9f89032cd603dc018f0573e34cec49ed" title=" " alt="" coords="910,1537,1061,1562"/>
-<area shape="poly" title=" " alt="" coords="721,1419,782,1472,821,1500,864,1523,898,1534,896,1539,862,1528,819,1504,779,1476,718,1423"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a43f961e40bece5869f1d53ec1da8bb9e" title=" " alt="" coords="909,464,1062,504"/>
-<area shape="poly" title=" " alt="" coords="770,606,813,583,828,567,836,550,844,532,861,515,895,498,897,503,864,519,849,535,841,552,833,570,816,587,773,611"/>
-<area shape="rect" href="classhttp_1_1Connection.html#ab84f4a281cf14d914c045dd0487b386e" title=" " alt="" coords="1156,471,1327,497"/>
-<area shape="poly" title=" " alt="" coords="1062,481,1142,481,1142,487,1062,487"/>
-<area shape="poly" title=" " alt="" coords="1271,469,1325,442,1390,401,1444,364,1447,368,1393,406,1328,446,1273,474"/>
-<area shape="poly" title=" " alt="" coords="1257,495,1453,690,1449,694,1254,498"/>
-<area shape="poly" title=" " alt="" coords="772,725,899,747,898,753,771,730"/>
-<area shape="poly" title=" " alt="" coords="713,734,817,925,829,953,836,976,845,996,864,1016,900,1035,897,1040,861,1021,841,999,831,978,824,955,812,928,708,736"/>
-<area shape="poly" title=" " alt="" coords="772,712,1361,712,1361,717,772,717"/>
-<area shape="rect" href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d" title=" " alt="" coords="866,602,1105,627"/>
-<area shape="poly" title=" " alt="" coords="741,692,862,637,896,628,898,633,864,642,743,697"/>
-<area shape="rect" href="classhttp_1_1Socket.html#a445e1ca1e606c084411f5eac2dc6a7af" title="Sends data through the socket." alt="" coords="916,651,1055,677"/>
-<area shape="poly" title=" " alt="" coords="771,699,902,676,903,681,772,704"/>
-<area shape="poly" title=" " alt="" coords="756,366,882,394,881,399,755,371"/>
-<area shape="poly" title=" " alt="" coords="758,366,788,377,816,392,832,407,841,422,849,436,864,450,897,465,894,470,861,454,845,440,836,425,828,411,813,397,786,382,756,371"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#adc91c5985ff39da1c978f54921c032f7" title=" " alt="" coords="912,144,1059,184"/>
-<area shape="poly" title=" " alt="" coords="707,341,766,271,811,229,861,194,898,178,900,183,864,198,814,233,770,275,711,345"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a6f104be35989c3d26400bffcaca07176" title=" " alt="" coords="912,208,1059,248"/>
-<area shape="poly" title=" " alt="" coords="716,341,779,300,862,257,898,245,899,250,864,262,781,305,719,345"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a3f46aa96a8811210f242f13822c77640" title=" " alt="" coords="912,272,1059,312"/>
-<area shape="poly" title=" " alt="" coords="755,341,898,308,899,314,756,346"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a1804e0ff999d620cb670118403e4de7f" title=" " alt="" coords="894,336,1077,376"/>
-<area shape="poly" title=" " alt="" coords="815,353,880,353,880,359,815,359"/>
+<area shape="rect" title=" " alt="" coords="5,258,60,283"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ac1aa143b263ccf1e587402e01f612590" title=" " alt="" coords="108,129,281,169"/>
+<area shape="poly" title=" " alt="" coords="39,256,66,219,85,198,106,179,115,174,118,178,110,183,89,201,70,222,44,259"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a8008b4a8a397826ea95b4a1cdb30c4b2" title=" " alt="" coords="126,194,263,219"/>
+<area shape="poly" title=" " alt="" coords="59,258,148,222,150,227,61,263"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a074868ef888a640498f54df02a8dd47e" title="Loads the configuration file, saving all the information." alt="" coords="108,283,281,323"/>
+<area shape="poly" title=" " alt="" coords="61,273,95,280,94,285,60,279"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="120,391,269,417"/>
+<area shape="poly" title=" " alt="" coords="50,282,110,333,168,380,164,384,106,337,47,286"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a26dfa6f8cc8979b31d68c354cc89be14" title=" " alt="" coords="357,219,499,259"/>
+<area shape="poly" title=" " alt="" coords="264,213,344,225,343,230,263,219"/>
+<area shape="rect" href="classcore_1_1Reactor.html#ad54fef7d5aa596da93d7e0e71f35ae45" title=" " alt="" coords="329,41,527,66"/>
+<area shape="poly" title=" " alt="" coords="260,192,280,179,291,167,297,155,303,129,308,103,316,89,328,77,336,70,339,75,331,81,320,93,313,105,308,130,302,157,295,170,283,183,262,196"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#aaa6efa927f0a998eb33c7232b7bbfdd9" title=" " alt="" coords="357,91,499,131"/>
+<area shape="poly" title=" " alt="" coords="250,191,280,179,304,160,328,140,344,133,346,138,331,145,307,164,283,184,252,196"/>
+<area shape="rect" href="classcore_1_1Dispatcher.html#a9b09c97d8fe863c1fab9011186fb7170" title=" " alt="" coords="335,155,521,195"/>
+<area shape="poly" title=" " alt="" coords="263,195,321,187,321,192,264,200"/>
+<area shape="rect" href="classshared_1_1Logger.html#a653439b6dc725f5e6492d3d50a4c1549" title=" " alt="" coords="591,70,761,95"/>
+<area shape="poly" title=" " alt="" coords="499,100,577,91,578,96,499,105"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a2412211f2db9413bd600b04a094e642e" title=" " alt="" coords="605,120,747,160"/>
+<area shape="poly" title=" " alt="" coords="499,116,592,127,591,133,499,122"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#aa5ac9363ea9ba96a657a351b9b2f3219" title="Parses the configuration file." alt="" coords="341,371,515,411"/>
+<area shape="poly" title=" " alt="" coords="250,320,362,363,360,368,248,325"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#adcd94ec61a24121c76942f86999f72dd" title="Reads the configuration file." alt="" coords="341,283,515,323"/>
+<area shape="poly" title=" " alt="" coords="282,300,327,300,327,305,282,305"/>
+<area shape="poly" title=" " alt="" coords="385,371,382,361,389,352,404,346,428,344,455,347,470,354,467,359,454,352,428,349,406,351,392,356,387,362,390,370"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a0c3ffd6d214cb723d953db468e5ebb81" title="parses a line in the configuration file." alt="" coords="589,357,763,397"/>
+<area shape="poly" title=" " alt="" coords="515,383,575,380,576,385,515,389"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a2fc1f08065c566459a1543f1824e4eaa" title="Saves the configuration data." alt="" coords="825,357,999,397"/>
+<area shape="poly" title=" " alt="" coords="763,375,812,375,812,380,763,380"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#aae76c210ff9aae74d87a6b57feeb474e" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="1047,261,1220,301"/>
+<area shape="poly" title=" " alt="" coords="952,355,1046,311,1063,304,1065,309,1048,316,954,359"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a9201327984c6bb55a4ae4e9cb9f1afc9" title="sets the max body size for the server." alt="" coords="1047,5,1220,45"/>
+<area shape="poly" title=" " alt="" coords="914,356,925,298,948,218,966,175,987,132,1013,91,1045,55,1050,51,1053,55,1049,59,1018,94,992,134,971,177,953,220,930,299,919,357"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ab0873aafd871776227166466648adcff" title="sets the error pages for the server." alt="" coords="1047,69,1220,109"/>
+<area shape="poly" title=" " alt="" coords="916,356,931,309,957,246,994,178,1018,147,1045,119,1050,115,1054,119,1048,123,1022,151,999,181,961,248,936,311,921,358"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#af23de28a87beadfcc28c48021a066a14" title="Identifies the command in the configuration file. and returns the id of the command." alt="" coords="1047,197,1220,237"/>
+<area shape="poly" title=" " alt="" coords="928,355,977,302,1010,273,1045,247,1056,241,1059,245,1048,252,1013,277,981,306,932,359"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a7cc3cfe78fd8d52b3bf1f7272cf19de2" title="sets the index files for the location. (index.html by default)" alt="" coords="1047,325,1220,365"/>
+<area shape="poly" title=" " alt="" coords="999,362,1033,357,1034,362,1000,367"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a5c03d6d709d348eb69db590a9bed2529" title="sets the methods allowed for the location." alt="" coords="1047,389,1220,429"/>
+<area shape="poly" title=" " alt="" coords="1000,387,1034,392,1033,398,999,393"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a054df9e80c847c57ee4fcf634ec96512" title="Sets the port and ip address of the server." alt="" coords="1047,133,1220,173"/>
+<area shape="poly" title=" " alt="" coords="920,356,938,319,966,273,1002,225,1045,183,1053,178,1056,182,1048,187,1006,229,970,276,943,322,925,358"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a7c2637468e844f1a45ce90488e01affb" title="Creates a new location struct, initializes it and adds it to the config data." alt="" coords="1047,453,1220,493"/>
+<area shape="poly" title=" " alt="" coords="954,395,1048,439,1065,446,1063,451,1046,444,952,400"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae96980a09075f768b9b072297e2e25f6" title="redirects the user to a different url with a specific return code." alt="" coords="1047,517,1220,557"/>
+<area shape="poly" title=" " alt="" coords="932,396,981,449,1013,478,1048,503,1059,509,1056,514,1045,508,1010,482,977,452,928,400"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a488be040c87c81b95572fdae4d10b9e9" title="sets the root directory for the location." alt="" coords="1047,581,1220,621"/>
+<area shape="poly" title=" " alt="" coords="925,397,943,433,970,479,1006,526,1048,567,1056,572,1053,577,1045,571,1002,529,966,482,938,435,920,399"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a68a1194c8822b39ccdeaf2024f68e2df" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="1047,645,1220,685"/>
+<area shape="poly" title=" " alt="" coords="921,397,936,444,961,507,999,573,1022,604,1048,631,1054,636,1050,640,1045,635,1018,608,994,576,957,509,931,446,916,398"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ad660e1b92477502518971b41373ee60a" title="Sets the server name(s) of the server." alt="" coords="1047,709,1220,749"/>
+<area shape="poly" title=" " alt="" coords="919,397,930,455,953,535,971,578,992,620,1018,660,1049,695,1053,699,1050,703,1045,699,1013,663,987,623,966,580,948,537,925,456,914,398"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="1268,389,1441,429"/>
+<area shape="poly" title=" " alt="" coords="1195,299,1221,311,1275,344,1321,379,1318,383,1272,349,1219,316,1193,304"/>
+<area shape="rect" href="namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a" title="Converts a string to a positive integer." alt="" coords="1300,77,1409,102"/>
+<area shape="poly" title=" " alt="" coords="1204,43,1297,70,1296,75,1203,48"/>
+<area shape="poly" title=" " alt="" coords="1220,87,1286,87,1286,92,1220,92"/>
+<area shape="poly" title=" " alt="" coords="1204,363,1273,383,1271,388,1203,368"/>
+<area shape="poly" title=" " alt="" coords="1220,407,1254,407,1254,412,1220,412"/>
+<area shape="poly" title=" " alt="" coords="1203,131,1296,103,1297,108,1204,136"/>
+<area shape="rect" href="namespaceconfig.html#ab0ce9a159a3d72a05a0321e13dcdac80" title="Checks if a string is a number." alt="" coords="1286,141,1423,166"/>
+<area shape="poly" title=" " alt="" coords="1220,151,1272,151,1272,156,1220,156"/>
+<area shape="poly" title=" " alt="" coords="1193,515,1219,503,1272,470,1318,436,1321,440,1275,474,1221,508,1195,520"/>
+<area shape="poly" title=" " alt="" coords="1198,579,1218,567,1254,538,1285,504,1332,439,1336,443,1289,507,1257,541,1222,572,1201,584"/>
+<area shape="rect" href="classcore_1_1Dispatcher.html#a0ee1bbfec5ad1e90e6e5efa84f70ace2" title=" " alt="" coords="333,447,523,473"/>
+<area shape="poly" title=" " alt="" coords="249,414,362,441,360,447,248,419"/>
+<area shape="rect" href="classcore_1_1AHandler.html#a552ef7a49c31de1f5c2aba42df0623cc" title=" " alt="" coords="591,422,761,447"/>
+<area shape="poly" title=" " alt="" coords="523,448,577,442,577,447,524,453"/>
+<area shape="rect" href="classcore_1_1AHandler.html#a463808ac67ba9aa6e4ae8d6ab88e7822" title=" " alt="" coords="591,471,761,497"/>
+<area shape="poly" title=" " alt="" coords="524,467,577,472,577,477,523,472"/>
+<area shape="rect" href="classcore_1_1Dispatcher.html#abb1779879479dc33addc41945ffd06f3" title=" " alt="" coords="575,521,777,561"/>
+<area shape="poly" title=" " alt="" coords="467,470,576,507,599,514,597,519,574,512,465,475"/>
 </map>
 </div>
 
-</div>
-</div>
-<a id="a327b08380cbaacd2bd1f001845de4485" name="a327b08380cbaacd2bd1f001845de4485"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a327b08380cbaacd2bd1f001845de4485">&#9670;&#160;</a></span>signal_handler()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int signal_handler </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>signum</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00006">6</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    6</span>                               {</div>
-<div class="line"><span class="lineno">    7</span>    <span class="keywordflow">return</span> signum;</div>
-<div class="line"><span class="lineno">    8</span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

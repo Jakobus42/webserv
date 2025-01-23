@@ -1,13 +1,15 @@
 <map id="core::Reactor::init" name="core::Reactor::init">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,143,60"/>
-<area shape="rect" id="Node000002" href="$classcore_1_1Reactor.html#ad54fef7d5aa596da93d7e0e71f35ae45" title=" " alt="" coords="191,5,388,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,35,182,30,183,35,144,41"/>
-<area shape="rect" id="Node000003" href="$classhttp_1_1VirtualServer.html#ab5668e0bdf69dfe1de3a2c05ff93d852" title=" " alt="" coords="219,55,360,95"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="144,54,206,62,205,67,143,59"/>
-<area shape="rect" id="Node000004" href="$classhttp_1_1Socket.html#afa3095cf8f2b53688bd57af904d52892" title="Starts listening for connections." alt="" coords="436,63,579,88"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="361,73,422,73,422,78,361,78"/>
-<area shape="poly" id="edge6_Node000004_Node000004" title=" " alt="" coords="476,64,469,54,473,44,486,38,507,36,533,40,544,48,541,52,531,44,507,41,487,43,477,48,475,54,480,61"/>
-<area shape="rect" id="Node000005" href="$classhttp_1_1Socket.html#a9691f8c60897ad4cc6dc0bc257b1f365" title="Closes the socket." alt="" coords="627,63,768,88"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="579,73,613,73,613,78,579,78"/>
-<area shape="poly" id="edge5_Node000005_Node000005" title=" " alt="" coords="666,64,659,54,663,44,676,38,697,36,723,40,734,48,731,52,721,44,697,41,677,43,667,48,665,54,670,61"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,99,143,125"/>
+<area shape="rect" id="Node000002" href="$classhttp_1_1VirtualServer.html#a26dfa6f8cc8979b31d68c354cc89be14" title=" " alt="" coords="219,5,360,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,97,190,55,209,47,211,52,192,60,101,102"/>
+<area shape="rect" id="Node000003" href="$classcore_1_1Reactor.html#ad54fef7d5aa596da93d7e0e71f35ae45" title=" " alt="" coords="191,70,388,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="143,100,182,95,183,100,144,105"/>
+<area shape="rect" id="Node000004" href="$classhttp_1_1VirtualServer.html#aaa6efa927f0a998eb33c7232b7bbfdd9" title=" " alt="" coords="219,120,360,160"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="144,118,206,126,205,132,143,124"/>
+<area shape="rect" id="Node000007" href="$classcore_1_1Dispatcher.html#a9b09c97d8fe863c1fab9011186fb7170" title=" " alt="" coords="196,184,383,224"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="99,122,192,170,210,177,208,182,190,174,96,127"/>
+<area shape="rect" id="Node000005" href="$classshared_1_1Logger.html#a653439b6dc725f5e6492d3d50a4c1549" title=" " alt="" coords="436,99,605,125"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="360,129,422,121,423,127,361,134"/>
+<area shape="rect" id="Node000006" href="$classhttp_1_1VirtualServer.html#a2412211f2db9413bd600b04a094e642e" title=" " alt="" coords="450,149,591,189"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="361,146,437,156,436,161,360,152"/>
 </map>

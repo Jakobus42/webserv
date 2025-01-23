@@ -62,7 +62,6 @@ $(document).ready(function(){initNavTree('classhttp_1_1Response.html',''); initR
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classhttp_1_1Response-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">http::Response Class Reference</div></div>
@@ -74,13 +73,26 @@ $(document).ready(function(){initNavTree('classhttp_1_1Response.html',''); initR
 
 <p><code>#include &lt;<a class="el" href="Response_8hpp_source.html">http/Response.hpp</a>&gt;</code></p>
 <div class="dynheader">
+Inheritance diagram for http::Response:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1Response__inherit__graph.png" border="0" usemap="#ahttp_1_1Response_inherit__map" alt="Inheritance graph"/></div>
+<map name="ahttp_1_1Response_inherit__map" id="ahttp_1_1Response_inherit__map">
+<area shape="rect" title="..." alt="" coords="25,179,139,424"/>
+<area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="5,5,159,131"/>
+<area shape="poly" title=" " alt="" coords="85,145,85,178,79,178,79,145"/>
+</map>
+</div>
+<div class="dynheader">
 Collaboration diagram for http::Response:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Response__coll__graph.png" border="0" usemap="#ahttp_1_1Response_coll__map" alt="Collaboration graph"/></div>
 <map name="ahttp_1_1Response_coll__map" id="ahttp_1_1Response_coll__map">
-<area shape="rect" title="..." alt="" coords="5,193,215,653"/>
-<area shape="rect" href="structhttp_1_1s__PathData.html" title=" " alt="" coords="49,5,171,131"/>
-<area shape="poly" title=" " alt="" coords="113,131,113,177,107,177,107,131"/>
+<area shape="rect" title="..." alt="" coords="31,643,144,868"/>
+<area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="5,5,159,131"/>
+<area shape="poly" title=" " alt="" coords="85,144,89,643,84,643,80,144"/>
+<area shape="rect" href="classshared_1_1Buffer.html" title=" " alt="" coords="103,180,293,580"/>
+<area shape="poly" title=" " alt="" coords="112,142,126,179,121,181,107,144"/>
+<area shape="poly" title=" " alt="" coords="141,581,128,628,123,626,136,579"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -92,89 +104,43 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a37e583fa3e6770c75df3e53acfcda236" id="r_a37e583fa3e6770c75df3e53acfcda236"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a37e583fa3e6770c75df3e53acfcda236">~Response</a> ()</td></tr>
 <tr class="memdesc:a37e583fa3e6770c75df3e53acfcda236"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="classhttp_1_1Response.html" title="...">Response</a> object.  <br /></td></tr>
 <tr class="separator:a37e583fa3e6770c75df3e53acfcda236"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5126bd1f5bf0392d5e9ac3d9a474ad1" id="r_ac5126bd1f5bf0392d5e9ac3d9a474ad1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#ac5126bd1f5bf0392d5e9ac3d9a474ad1">Response</a> (const <a class="el" href="classhttp_1_1Response.html">Response</a> &amp;other)</td></tr>
-<tr class="memdesc:ac5126bd1f5bf0392d5e9ac3d9a474ad1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <br /></td></tr>
-<tr class="separator:ac5126bd1f5bf0392d5e9ac3d9a474ad1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b00fb80f823eba2d3b023eecc4d93ab" id="r_a1b00fb80f823eba2d3b023eecc4d93ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhttp_1_1Response.html">Response</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a1b00fb80f823eba2d3b023eecc4d93ab">operator=</a> (const <a class="el" href="classhttp_1_1Response.html">Response</a> &amp;rhs)</td></tr>
-<tr class="memdesc:a1b00fb80f823eba2d3b023eecc4d93ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy assignment operator.  <br /></td></tr>
-<tr class="separator:a1b00fb80f823eba2d3b023eecc4d93ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcf3e817ef9bc0d3c70329a51a6f668d" id="r_afcf3e817ef9bc0d3c70329a51a6f668d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1a">ResponseBuilderStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#afcf3e817ef9bc0d3c70329a51a6f668d">getBuilderStatus</a> (void) const</td></tr>
-<tr class="separator:afcf3e817ef9bc0d3c70329a51a6f668d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fb55b37425d748d5d1bf83e48a49826" id="r_a5fb55b37425d748d5d1bf83e48a49826"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9">ResponseType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a5fb55b37425d748d5d1bf83e48a49826">getType</a> (void) const</td></tr>
-<tr class="separator:a5fb55b37425d748d5d1bf83e48a49826"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67954e9b8cc54cebe557b5e4702fc94d" id="r_a67954e9b8cc54cebe557b5e4702fc94d"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d">getRawResponse</a> (void) const</td></tr>
-<tr class="separator:a67954e9b8cc54cebe557b5e4702fc94d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c573e4eaa628291ea54c4171512239c" id="r_a8c573e4eaa628291ea54c4171512239c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a8c573e4eaa628291ea54c4171512239c">getStatusCode</a> (void) const</td></tr>
-<tr class="separator:a8c573e4eaa628291ea54c4171512239c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2dc74e39a4102f222b08a4dea6b1c004" id="r_a2dc74e39a4102f222b08a4dea6b1c004"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacehttp.html#a5fc275abcbe27d3c4113fcf5e74b2a09">t_headerFields</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a2dc74e39a4102f222b08a4dea6b1c004">getHeaderFields</a> (void) const</td></tr>
-<tr class="separator:a2dc74e39a4102f222b08a4dea6b1c004"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8759895f45b47aa851c76d450753093" id="r_ae8759895f45b47aa851c76d450753093"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#ae8759895f45b47aa851c76d450753093">getBody</a> (void) const</td></tr>
-<tr class="separator:ae8759895f45b47aa851c76d450753093"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90cd1256503b513100bef046e3c2f748" id="r_a90cd1256503b513100bef046e3c2f748"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacehttp.html#a5596bfd6bd3cc3870c674bf38cd4a165">t_PathData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a90cd1256503b513100bef046e3c2f748">getPathData</a> (void) const</td></tr>
-<tr class="separator:a90cd1256503b513100bef046e3c2f748"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a269913ddc411476e598ec3e70fe3c652" id="r_a269913ddc411476e598ec3e70fe3c652"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a269913ddc411476e598ec3e70fe3c652">setRawResponse</a> (const std::string &amp;)</td></tr>
-<tr class="separator:a269913ddc411476e598ec3e70fe3c652"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac923fe1857f3c3803e3cdc6b230e64f2" id="r_ac923fe1857f3c3803e3cdc6b230e64f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#ac923fe1857f3c3803e3cdc6b230e64f2">doMagicToCalculateStatusCode</a> (const <a class="el" href="classhttp_1_1Request.html">Request</a> &amp;)</td></tr>
-<tr class="separator:ac923fe1857f3c3803e3cdc6b230e64f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e9fb022362f77c3d9bfc19e76249977" id="r_a7e9fb022362f77c3d9bfc19e76249977"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a7e9fb022362f77c3d9bfc19e76249977">headersString</a> (std::ostream &amp;o)</td></tr>
-<tr class="separator:a7e9fb022362f77c3d9bfc19e76249977"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d1e7ec002dfef0005ca5ef8f88d4567" id="r_a2d1e7ec002dfef0005ca5ef8f88d4567"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a2d1e7ec002dfef0005ca5ef8f88d4567">statusLineString</a> (std::ostream &amp;o)</td></tr>
-<tr class="separator:a2d1e7ec002dfef0005ca5ef8f88d4567"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7122bb1e022880c9832e9e644a80397f" id="r_a7122bb1e022880c9832e9e644a80397f"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a7122bb1e022880c9832e9e644a80397f">dateString</a> (std::ostream &amp;o)</td></tr>
-<tr class="separator:a7122bb1e022880c9832e9e644a80397f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a637305890d24151f4d8b9dc4d13cdbb0" id="r_a637305890d24151f4d8b9dc4d13cdbb0"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a637305890d24151f4d8b9dc4d13cdbb0">serverString</a> (std::ostream &amp;o)</td></tr>
-<tr class="separator:a637305890d24151f4d8b9dc4d13cdbb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0efdf9f8df4b4ba5d173171ad868cc7" id="r_ae0efdf9f8df4b4ba5d173171ad868cc7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#ae0efdf9f8df4b4ba5d173171ad868cc7">buildFromRequest</a> (const <a class="el" href="classhttp_1_1Request.html">http::Request</a> &amp;)</td></tr>
-<tr class="separator:ae0efdf9f8df4b4ba5d173171ad868cc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b46cf97a3ed97510778410591f5b460" id="r_a9b46cf97a3ed97510778410591f5b460"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a9b46cf97a3ed97510778410591f5b460">buildCGIResponse</a> (const <a class="el" href="classhttp_1_1Request.html">http::Request</a> &amp;)</td></tr>
-<tr class="separator:a9b46cf97a3ed97510778410591f5b460"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52625989a3fb2bcc1e367b5bc13bd99e" id="r_a52625989a3fb2bcc1e367b5bc13bd99e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a52625989a3fb2bcc1e367b5bc13bd99e">buildErrorResponse</a> (const <a class="el" href="classhttp_1_1Request.html">http::Request</a> &amp;)</td></tr>
-<tr class="separator:a52625989a3fb2bcc1e367b5bc13bd99e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01c142188318790efefff94436580437" id="r_a01c142188318790efefff94436580437"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a01c142188318790efefff94436580437">done</a> (void) const</td></tr>
-<tr class="separator:a01c142188318790efefff94436580437"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4eb56ec0c2d1c77b78241a8855c4d364" id="r_a4eb56ec0c2d1c77b78241a8855c4d364"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a4eb56ec0c2d1c77b78241a8855c4d364">reset</a> (void)</td></tr>
-<tr class="separator:a4eb56ec0c2d1c77b78241a8855c4d364"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7df178d1590622ac14b509e43d3d6235" id="r_a7df178d1590622ac14b509e43d3d6235"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a7df178d1590622ac14b509e43d3d6235">testParseURI</a> (const std::string &amp;uri, int mode)</td></tr>
-<tr class="separator:a7df178d1590622ac14b509e43d3d6235"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a2e20040657655a595e84a9c1f1f9293a" id="r_a2e20040657655a595e84a9c1f1f9293a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a2e20040657655a595e84a9c1f1f9293a">checkRequestData</a> (const <a class="el" href="classhttp_1_1Request.html">Request</a> &amp;request)</td></tr>
-<tr class="memdesc:a2e20040657655a595e84a9c1f1f9293a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the request data is valid, and set the status code accordingly.  <br /></td></tr>
-<tr class="separator:a2e20040657655a595e84a9c1f1f9293a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af757d6a96ba06dd76fab3ba48f8ee5a8" id="r_af757d6a96ba06dd76fab3ba48f8ee5a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#af757d6a96ba06dd76fab3ba48f8ee5a8">checkAndReconstructTargetUri</a> (const <a class="el" href="classhttp_1_1Request.html">Request</a> &amp;request)</td></tr>
-<tr class="memdesc:af757d6a96ba06dd76fab3ba48f8ee5a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">find request target form, check it and reconstruct it (RFC 9112 3.2)  <br /></td></tr>
-<tr class="separator:af757d6a96ba06dd76fab3ba48f8ee5a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3ce515c1a3145598ce568ae27e681a4" id="r_af3ce515c1a3145598ce568ae27e681a4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#af3ce515c1a3145598ce568ae27e681a4">parseAbsoluteForm</a> (const std::string &amp;path, const <a class="el" href="classhttp_1_1Request.html">Request</a> &amp;request, <a class="el" href="namespacehttp.html#a5596bfd6bd3cc3870c674bf38cd4a165">t_PathData</a> &amp;pathData)</td></tr>
-<tr class="memdesc:af3ce515c1a3145598ce568ae27e681a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses Absolute path and saves only the pure path in "m_truePath" src: (RFC 9112 3.2.2)  <br /></td></tr>
-<tr class="separator:af3ce515c1a3145598ce568ae27e681a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ce94f17523ca26c67126fca5a7a67fb" id="r_a7ce94f17523ca26c67126fca5a7a67fb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a7ce94f17523ca26c67126fca5a7a67fb">parseOriginForm</a> (const std::string &amp;path, const <a class="el" href="classhttp_1_1Request.html">Request</a> &amp;request, <a class="el" href="namespacehttp.html#a5596bfd6bd3cc3870c674bf38cd4a165">t_PathData</a> &amp;pathData)</td></tr>
-<tr class="separator:a7ce94f17523ca26c67126fca5a7a67fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef63e8fa85ae3fcfe421fe5270080583" id="r_aef63e8fa85ae3fcfe421fe5270080583"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#aef63e8fa85ae3fcfe421fe5270080583">serialize</a> ()</td></tr>
+<tr class="separator:aef63e8fa85ae3fcfe421fe5270080583"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f90125d4bac7b24081c66a7b990c503" id="r_a3f90125d4bac7b24081c66a7b990c503"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a3f90125d4bac7b24081c66a7b990c503">setCode</a> (<a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a> code)</td></tr>
+<tr class="separator:a3f90125d4bac7b24081c66a7b990c503"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac79941baf008165ba0c70903246d2374" id="r_ac79941baf008165ba0c70903246d2374"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#ac79941baf008165ba0c70903246d2374">setBody</a> (const std::string &amp;body)</td></tr>
+<tr class="separator:ac79941baf008165ba0c70903246d2374"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab52959eaac18026a4f1c4ce3006731ea" id="r_ab52959eaac18026a4f1c4ce3006731ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#ab52959eaac18026a4f1c4ce3006731ea">setHeader</a> (const std::string &amp;key, const std::string &amp;value)</td></tr>
+<tr class="separator:ab52959eaac18026a4f1c4ce3006731ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8396c8c9da160b0854b5cac7500a4d9c" id="r_a8396c8c9da160b0854b5cac7500a4d9c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classshared_1_1Buffer.html">shared::Buffer</a>&lt; <a class="el" href="Response_8hpp.html#a3d9d93e9a53461ba2177521472b761c4">RESPONSE_BUFFER_SIZE</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a8396c8c9da160b0854b5cac7500a4d9c">getData</a> ()</td></tr>
+<tr class="separator:a8396c8c9da160b0854b5cac7500a4d9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a70416589bb33f498006301c5092228e3" id="r_a70416589bb33f498006301c5092228e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9">ResponseType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a></td></tr>
-<tr class="separator:a70416589bb33f498006301c5092228e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22c59b91bdbb0ee6babb3e15018459be" id="r_a22c59b91bdbb0ee6babb3e15018459be"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">m_rawResponse</a></td></tr>
-<tr class="separator:a22c59b91bdbb0ee6babb3e15018459be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a175678f595cc5bda76c597afa9f35d2b" id="r_a175678f595cc5bda76c597afa9f35d2b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a></td></tr>
-<tr class="separator:a175678f595cc5bda76c597afa9f35d2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd017118999fa90f30f2c9b61f35878e" id="r_abd017118999fa90f30f2c9b61f35878e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacehttp.html#a5fc275abcbe27d3c4113fcf5e74b2a09">t_headerFields</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a></td></tr>
-<tr class="separator:abd017118999fa90f30f2c9b61f35878e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb1cafeb91aee689123a0b361c0d2e47" id="r_aeb1cafeb91aee689123a0b361c0d2e47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#aeb1cafeb91aee689123a0b361c0d2e47">m_code</a></td></tr>
+<tr class="separator:aeb1cafeb91aee689123a0b361c0d2e47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a495a8dd4ccc444a9787b46834937f258" id="r_a495a8dd4ccc444a9787b46834937f258"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::vector&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a495a8dd4ccc444a9787b46834937f258">m_headers</a></td></tr>
+<tr class="separator:a495a8dd4ccc444a9787b46834937f258"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00ffffb35cf49ec5be07221c0221c9fe" id="r_a00ffffb35cf49ec5be07221c0221c9fe"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a></td></tr>
 <tr class="separator:a00ffffb35cf49ec5be07221c0221c9fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad02e5ae325387fc0ddacdb30594dccd" id="r_aad02e5ae325387fc0ddacdb30594dccd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacehttp.html#a5596bfd6bd3cc3870c674bf38cd4a165">t_PathData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#aad02e5ae325387fc0ddacdb30594dccd">m_pathData</a></td></tr>
-<tr class="separator:aad02e5ae325387fc0ddacdb30594dccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab605df89bb0a7ac92cae038851286e78" id="r_ab605df89bb0a7ac92cae038851286e78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1a">ResponseBuilderStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#ab605df89bb0a7ac92cae038851286e78">m_builderStatus</a></td></tr>
-<tr class="separator:ab605df89bb0a7ac92cae038851286e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bf0bc50fa98445c51ea9c7e1ae7eef4" id="r_a3bf0bc50fa98445c51ea9c7e1ae7eef4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classshared_1_1Buffer.html">shared::Buffer</a>&lt; <a class="el" href="Response_8hpp.html#a3d9d93e9a53461ba2177521472b761c4">RESPONSE_BUFFER_SIZE</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">m_data</a></td></tr>
+<tr class="separator:a3bf0bc50fa98445c51ea9c7e1ae7eef4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_methods_classshared_1_1NonCopyable"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classshared_1_1NonCopyable')"><img src="closed.png" alt="-"/>&#160;Private Member Functions inherited from <a class="el" href="classshared_1_1NonCopyable.html">shared::NonCopyable</a></td></tr>
+<tr class="memitem:a3adfa2d609d00e54a496b3daf937f03a inherit pub_methods_classshared_1_1NonCopyable" id="r_a3adfa2d609d00e54a496b3daf937f03a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classshared_1_1NonCopyable.html#a3adfa2d609d00e54a496b3daf937f03a">NonCopyable</a> ()</td></tr>
+<tr class="separator:a3adfa2d609d00e54a496b3daf937f03a inherit pub_methods_classshared_1_1NonCopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a504400ba5478abef7fa4d8aca511e24c inherit pub_methods_classshared_1_1NonCopyable" id="r_a504400ba5478abef7fa4d8aca511e24c"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classshared_1_1NonCopyable.html#a504400ba5478abef7fa4d8aca511e24c">~NonCopyable</a> ()</td></tr>
+<tr class="separator:a504400ba5478abef7fa4d8aca511e24c inherit pub_methods_classshared_1_1NonCopyable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>... </p>
 
-<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00043">43</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00018">18</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aee5d4231503752a6144614bff6b654b7" name="aee5d4231503752a6144614bff6b654b7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee5d4231503752a6144614bff6b654b7">&#9670;&#160;</a></span>Response() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aee5d4231503752a6144614bff6b654b7">&#9670;&#160;</a></span>Response()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -190,24 +156,17 @@ Private Attributes</h2></td></tr>
 
 <p>Constructs a new <a class="el" href="classhttp_1_1Response.html" title="...">Response</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00014">14</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   15</span>        : <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a58a2ced46982e7ccdd9faf0541ae14d4">IDK_NORMAL_I_GUESS</a>)</div>
-<div class="line"><span class="lineno">   16</span>        , <a class="code hl_variable" href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">m_rawResponse</a>(<span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><span class="lineno">   17</span>        , <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ad9006f1cb7c0f5a565cba334dc8c78aa">UNKNWN</a>)</div>
-<div class="line"><span class="lineno">   18</span>        , <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>()</div>
-<div class="line"><span class="lineno">   19</span>        , <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a>()</div>
-<div class="line"><span class="lineno">   20</span>        , <a class="code hl_variable" href="classhttp_1_1Response.html#aad02e5ae325387fc0ddacdb30594dccd">m_pathData</a>()</div>
-<div class="line"><span class="lineno">   21</span>        , <a class="code hl_variable" href="classhttp_1_1Response.html#ab605df89bb0a7ac92cae038851286e78">m_builderStatus</a>(<a class="code hl_enumvalue" href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaf966f2e5a987b48464b2a8fad68c4011">PENDING_WRITE</a>) {}</div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a00ffffb35cf49ec5be07221c0221c9fe"><div class="ttname"><a href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">http::Response::m_body</a></div><div class="ttdeci">std::string m_body</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00080">Response.hpp:80</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a175678f595cc5bda76c597afa9f35d2b"><div class="ttname"><a href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">http::Response::m_statusCode</a></div><div class="ttdeci">StatusCode m_statusCode</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00078">Response.hpp:78</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a22c59b91bdbb0ee6babb3e15018459be"><div class="ttname"><a href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">http::Response::m_rawResponse</a></div><div class="ttdeci">std::string m_rawResponse</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00077">Response.hpp:77</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a70416589bb33f498006301c5092228e3"><div class="ttname"><a href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">http::Response::m_type</a></div><div class="ttdeci">ResponseType m_type</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00076">Response.hpp:76</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_aad02e5ae325387fc0ddacdb30594dccd"><div class="ttname"><a href="classhttp_1_1Response.html#aad02e5ae325387fc0ddacdb30594dccd">http::Response::m_pathData</a></div><div class="ttdeci">t_PathData m_pathData</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00081">Response.hpp:81</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_ab605df89bb0a7ac92cae038851286e78"><div class="ttname"><a href="classhttp_1_1Response.html#ab605df89bb0a7ac92cae038851286e78">http::Response::m_builderStatus</a></div><div class="ttdeci">ResponseBuilderStatus m_builderStatus</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00083">Response.hpp:83</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_abd017118999fa90f30f2c9b61f35878e"><div class="ttname"><a href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">http::Response::m_headerFields</a></div><div class="ttdeci">t_headerFields m_headerFields</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00079">Response.hpp:79</a></div></div>
-<div class="ttc" id="anamespacehttp_html_aba0c98b4a16a22ebfcf0867839c59d1aaf966f2e5a987b48464b2a8fad68c4011"><div class="ttname"><a href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaf966f2e5a987b48464b2a8fad68c4011">http::PENDING_WRITE</a></div><div class="ttdeci">@ PENDING_WRITE</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00027">Response.hpp:27</a></div></div>
-<div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762ad9006f1cb7c0f5a565cba334dc8c78aa"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ad9006f1cb7c0f5a565cba334dc8c78aa">http::UNKNWN</a></div><div class="ttdeci">@ UNKNWN</div><div class="ttdef"><b>Definition</b> <a href="constants_8hpp_source.html#l00021">constants.hpp:21</a></div></div>
-<div class="ttc" id="anamespacehttp_html_ac6e973c7de76304f6098773e22b209a9a58a2ced46982e7ccdd9faf0541ae14d4"><div class="ttname"><a href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a58a2ced46982e7ccdd9faf0541ae14d4">http::IDK_NORMAL_I_GUESS</a></div><div class="ttdeci">@ IDK_NORMAL_I_GUESS</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00034">Response.hpp:34</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00010">10</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   11</span>        : <a class="code hl_variable" href="classhttp_1_1Response.html#aeb1cafeb91aee689123a0b361c0d2e47">m_code</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc">OK</a>)</div>
+<div class="line"><span class="lineno">   12</span>        , <a class="code hl_variable" href="classhttp_1_1Response.html#a495a8dd4ccc444a9787b46834937f258">m_headers</a>()</div>
+<div class="line"><span class="lineno">   13</span>        , <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a>()</div>
+<div class="line"><span class="lineno">   14</span>        , <a class="code hl_variable" href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">m_data</a>() {</div>
+<div class="line"><span class="lineno">   15</span>    }</div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a00ffffb35cf49ec5be07221c0221c9fe"><div class="ttname"><a href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">http::Response::m_body</a></div><div class="ttdeci">std::string m_body</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00034">Response.hpp:34</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a3bf0bc50fa98445c51ea9c7e1ae7eef4"><div class="ttname"><a href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">http::Response::m_data</a></div><div class="ttdeci">shared::Buffer&lt; RESPONSE_BUFFER_SIZE &gt; m_data</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00036">Response.hpp:36</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a495a8dd4ccc444a9787b46834937f258"><div class="ttname"><a href="classhttp_1_1Response.html#a495a8dd4ccc444a9787b46834937f258">http::Response::m_headers</a></div><div class="ttdeci">std::map&lt; std::string, std::vector&lt; std::string &gt; &gt; m_headers</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00033">Response.hpp:33</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_aeb1cafeb91aee689123a0b361c0d2e47"><div class="ttname"><a href="classhttp_1_1Response.html#aeb1cafeb91aee689123a0b361c0d2e47">http::Response::m_code</a></div><div class="ttdeci">StatusCode m_code</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00032">Response.hpp:32</a></div></div>
+<div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc">http::OK</a></div><div class="ttdeci">@ OK</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00024">http.hpp:24</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -228,1399 +187,168 @@ Private Attributes</h2></td></tr>
 
 <p>Destroys the <a class="el" href="classhttp_1_1Response.html" title="...">Response</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00026">26</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   26</span>                        {</div>
-<div class="line"><span class="lineno">   27</span>    }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="ac5126bd1f5bf0392d5e9ac3d9a474ad1" name="ac5126bd1f5bf0392d5e9ac3d9a474ad1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5126bd1f5bf0392d5e9ac3d9a474ad1">&#9670;&#160;</a></span>Response() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">http::Response::Response </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classhttp_1_1Response.html">Response</a> &amp;&#160;</td>
-          <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Copy constructor. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">other</td><td>The other <a class="el" href="classhttp_1_1Response.html" title="...">Response</a> object to copy. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00033">33</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   34</span>        : <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a>(other.getType())</div>
-<div class="line"><span class="lineno">   35</span>        , <a class="code hl_variable" href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">m_rawResponse</a>(other.getRawResponse())</div>
-<div class="line"><span class="lineno">   36</span>        , <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a>(other.getStatusCode())</div>
-<div class="line"><span class="lineno">   37</span>        , <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>(other.getHeaderFields())</div>
-<div class="line"><span class="lineno">   38</span>        , <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a>(other.getBody())</div>
-<div class="line"><span class="lineno">   39</span>        , <a class="code hl_variable" href="classhttp_1_1Response.html#aad02e5ae325387fc0ddacdb30594dccd">m_pathData</a>(other.getPathData())</div>
-<div class="line"><span class="lineno">   40</span>        , <a class="code hl_variable" href="classhttp_1_1Response.html#ab605df89bb0a7ac92cae038851286e78">m_builderStatus</a>(other.getBuilderStatus()) {}</div>
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00020">20</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   20</span>                        {</div>
+<div class="line"><span class="lineno">   21</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9b46cf97a3ed97510778410591f5b460" name="a9b46cf97a3ed97510778410591f5b460"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b46cf97a3ed97510778410591f5b460">&#9670;&#160;</a></span>buildCGIResponse()</h2>
+<a id="a8396c8c9da160b0854b5cac7500a4d9c" name="a8396c8c9da160b0854b5cac7500a4d9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8396c8c9da160b0854b5cac7500a4d9c">&#9670;&#160;</a></span>getData()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void http::Response::buildCGIResponse </td>
+          <td class="memname"><a class="el" href="classshared_1_1Buffer.html">shared::Buffer</a>&lt; <a class="el" href="Response_8hpp.html#a3d9d93e9a53461ba2177521472b761c4">RESPONSE_BUFFER_SIZE</a> &gt; &amp; http::Response::getData </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classhttp_1_1Request.html">http::Request</a> &amp;&#160;</td>
-          <td class="paramname"><em>request</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00159">159</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  159</span>                                                          {</div>
-<div class="line"><span class="lineno">  160</span>        (void)request;</div>
-<div class="line"><span class="lineno">  161</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a9b46cf97a3ed97510778410591f5b460_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a9b46cf97a3ed97510778410591f5b460_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a9b46cf97a3ed97510778410591f5b460_icgraph" id="aclasshttp_1_1Response_a9b46cf97a3ed97510778410591f5b460_icgraph">
-<area shape="rect" title=" " alt="" coords="752,13,997,38"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="557,5,704,45"/>
-<area shape="poly" title=" " alt="" coords="738,28,705,28,705,23,738,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,13,509,38"/>
-<area shape="poly" title=" " alt="" coords="544,28,510,28,510,23,544,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
-<area shape="poly" title=" " alt="" coords="291,28,258,28,258,23,291,23"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a52625989a3fb2bcc1e367b5bc13bd99e" name="a52625989a3fb2bcc1e367b5bc13bd99e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52625989a3fb2bcc1e367b5bc13bd99e">&#9670;&#160;</a></span>buildErrorResponse()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void http::Response::buildErrorResponse </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classhttp_1_1Request.html">http::Request</a> &amp;&#160;</td>
-          <td class="paramname"><em>request</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00163">163</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  163</span>                                                            {</div>
-<div class="line"><span class="lineno">  164</span>        (void)request;</div>
-<div class="line"><span class="lineno">  165</span> </div>
-<div class="line"><span class="lineno">  166</span>        this-&gt;<a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a> = <a class="code hl_function" href="namespacehttp.html#ab99935c70c216969b7410a50c653cc58">generateErrorPage</a>(<a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a>);</div>
-<div class="line"><span class="lineno">  167</span> </div>
-<div class="line"><span class="lineno">  168</span>        std::stringstream ss(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">  169</span> </div>
-<div class="line"><span class="lineno">  170</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1Response.html#a2d1e7ec002dfef0005ca5ef8f88d4567">statusLineString</a>(ss);</div>
-<div class="line"><span class="lineno">  171</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1Response.html#a637305890d24151f4d8b9dc4d13cdbb0">serverString</a>(ss);</div>
-<div class="line"><span class="lineno">  172</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1Response.html#a7122bb1e022880c9832e9e644a80397f">dateString</a>(ss);</div>
-<div class="line"><span class="lineno">  173</span> </div>
-<div class="line"><span class="lineno">  174</span>        std::stringstream stupid;</div>
-<div class="line"><span class="lineno">  175</span>        stupid &lt;&lt; <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a>.length();</div>
-<div class="line"><span class="lineno">  176</span>        std::string stupider = stupid.str();</div>
-<div class="line"><span class="lineno">  177</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>.insert(std::make_pair(<span class="stringliteral">&quot;Content-Type&quot;</span>, <span class="stringliteral">&quot;text/html&quot;</span>));</div>
-<div class="line"><span class="lineno">  178</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>.insert(std::make_pair(<span class="stringliteral">&quot;Content-Length&quot;</span>, stupider.c_str()));</div>
-<div class="line"><span class="lineno">  179</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1Response.html#a7e9fb022362f77c3d9bfc19e76249977">headersString</a>(ss);</div>
-<div class="line"><span class="lineno">  180</span>        ss &lt;&lt; <a class="code hl_variable" href="Response_8hpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a>;</div>
-<div class="line"><span class="lineno">  181</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a>.empty()) {</div>
-<div class="line"><span class="lineno">  182</span>            ss &lt;&lt; <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a>;</div>
-<div class="line"><span class="lineno">  183</span>        }</div>
-<div class="line"><span class="lineno">  184</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">m_rawResponse</a> = ss.str();</div>
-<div class="line"><span class="lineno">  185</span>    }</div>
-<div class="ttc" id="aResponse_8hpp_html_a26894f5f61a3de2e81c8b9837517ee35"><div class="ttname"><a href="Response_8hpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a></div><div class="ttdeci">const std::string CRLF</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00011">Response.hpp:11</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a2d1e7ec002dfef0005ca5ef8f88d4567"><div class="ttname"><a href="classhttp_1_1Response.html#a2d1e7ec002dfef0005ca5ef8f88d4567">http::Response::statusLineString</a></div><div class="ttdeci">std::ostream &amp; statusLineString(std::ostream &amp;o)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00097">Response.cpp:97</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a637305890d24151f4d8b9dc4d13cdbb0"><div class="ttname"><a href="classhttp_1_1Response.html#a637305890d24151f4d8b9dc4d13cdbb0">http::Response::serverString</a></div><div class="ttdeci">std::ostream &amp; serverString(std::ostream &amp;o)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00117">Response.cpp:117</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a7122bb1e022880c9832e9e644a80397f"><div class="ttname"><a href="classhttp_1_1Response.html#a7122bb1e022880c9832e9e644a80397f">http::Response::dateString</a></div><div class="ttdeci">std::ostream &amp; dateString(std::ostream &amp;o)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00109">Response.cpp:109</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a7e9fb022362f77c3d9bfc19e76249977"><div class="ttname"><a href="classhttp_1_1Response.html#a7e9fb022362f77c3d9bfc19e76249977">http::Response::headersString</a></div><div class="ttdeci">std::ostream &amp; headersString(std::ostream &amp;o)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00122">Response.cpp:122</a></div></div>
-<div class="ttc" id="anamespacehttp_html_ab99935c70c216969b7410a50c653cc58"><div class="ttname"><a href="namespacehttp.html#ab99935c70c216969b7410a50c653cc58">http::generateErrorPage</a></div><div class="ttdeci">std::string generateErrorPage(StatusCode code)</div><div class="ttdef"><b>Definition</b> <a href="constants_8cpp_source.html#l00055">constants.cpp:55</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a52625989a3fb2bcc1e367b5bc13bd99e_cgraph.png" border="0" usemap="#aclasshttp_1_1Response_a52625989a3fb2bcc1e367b5bc13bd99e_cgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a52625989a3fb2bcc1e367b5bc13bd99e_cgraph" id="aclasshttp_1_1Response_a52625989a3fb2bcc1e367b5bc13bd99e_cgraph">
-<area shape="rect" title=" " alt="" coords="5,97,196,137"/>
-<area shape="rect" href="classhttp_1_1Response.html#a7122bb1e022880c9832e9e644a80397f" title=" " alt="" coords="255,5,450,31"/>
-<area shape="poly" title=" " alt="" coords="133,94,184,66,243,40,268,32,269,37,245,44,186,71,135,99"/>
-<area shape="rect" href="namespacehttp.html#ab99935c70c216969b7410a50c653cc58" title=" " alt="" coords="265,55,441,80"/>
-<area shape="poly" title=" " alt="" coords="196,95,273,80,274,85,197,101"/>
-<area shape="rect" href="classhttp_1_1Response.html#a7e9fb022362f77c3d9bfc19e76249977" title=" " alt="" coords="244,104,461,129"/>
-<area shape="poly" title=" " alt="" coords="196,114,231,114,231,119,196,119"/>
-<area shape="rect" href="classhttp_1_1Response.html#a637305890d24151f4d8b9dc4d13cdbb0" title=" " alt="" coords="249,153,456,179"/>
-<area shape="poly" title=" " alt="" coords="197,133,274,148,273,153,196,138"/>
-<area shape="rect" href="classhttp_1_1Response.html#a2d1e7ec002dfef0005ca5ef8f88d4567" title=" " alt="" coords="255,203,450,243"/>
-<area shape="poly" title=" " alt="" coords="138,134,188,161,245,188,269,196,267,201,243,192,186,166,136,139"/>
-<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="509,133,685,159"/>
-<area shape="poly" title=" " alt="" coords="420,78,462,89,557,125,555,130,461,94,418,83"/>
-<area shape="poly" title=" " alt="" coords="419,201,461,187,544,160,546,165,462,193,420,206"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a52625989a3fb2bcc1e367b5bc13bd99e_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a52625989a3fb2bcc1e367b5bc13bd99e_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a52625989a3fb2bcc1e367b5bc13bd99e_icgraph" id="aclasshttp_1_1Response_a52625989a3fb2bcc1e367b5bc13bd99e_icgraph">
-<area shape="rect" title=" " alt="" coords="752,5,943,45"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="557,5,704,45"/>
-<area shape="poly" title=" " alt="" coords="738,28,704,28,704,23,738,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,13,509,38"/>
-<area shape="poly" title=" " alt="" coords="544,28,510,28,510,23,544,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
-<area shape="poly" title=" " alt="" coords="291,28,258,28,258,23,291,23"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ae0efdf9f8df4b4ba5d173171ad868cc7" name="ae0efdf9f8df4b4ba5d173171ad868cc7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0efdf9f8df4b4ba5d173171ad868cc7">&#9670;&#160;</a></span>buildFromRequest()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void http::Response::buildFromRequest </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classhttp_1_1Request.html">http::Request</a> &amp;&#160;</td>
-          <td class="paramname"><em>request</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00138">138</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  138</span>                                                          {</div>
-<div class="line"><span class="lineno">  139</span>        std::stringstream ss(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">  140</span>        (void)request; <span class="comment">// process the request</span></div>
-<div class="line"><span class="lineno">  141</span> </div>
-<div class="line"><span class="lineno">  142</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>.insert(std::make_pair(<span class="stringliteral">&quot;Content-Type&quot;</span>, <span class="stringliteral">&quot;text/plain&quot;</span>));</div>
-<div class="line"><span class="lineno">  143</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>.insert(std::make_pair(<span class="stringliteral">&quot;Content-Length&quot;</span>, <span class="stringliteral">&quot;13&quot;</span>));</div>
-<div class="line"><span class="lineno">  144</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc">OK</a>;</div>
-<div class="line"><span class="lineno">  145</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a> = <span class="stringliteral">&quot;Hello, world!&quot;</span>;</div>
-<div class="line"><span class="lineno">  146</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1Response.html#a2d1e7ec002dfef0005ca5ef8f88d4567">statusLineString</a>(ss);</div>
-<div class="line"><span class="lineno">  147</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1Response.html#a637305890d24151f4d8b9dc4d13cdbb0">serverString</a>(ss);</div>
-<div class="line"><span class="lineno">  148</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1Response.html#a7122bb1e022880c9832e9e644a80397f">dateString</a>(ss);</div>
-<div class="line"><span class="lineno">  149</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;done&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  150</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1Response.html#a7e9fb022362f77c3d9bfc19e76249977">headersString</a>(ss);</div>
-<div class="line"><span class="lineno">  151</span>        ss &lt;&lt; <a class="code hl_variable" href="Response_8hpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a>;</div>
-<div class="line"><span class="lineno">  152</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a>.empty()) {</div>
-<div class="line"><span class="lineno">  153</span>            ss &lt;&lt; <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a>;</div>
-<div class="line"><span class="lineno">  154</span>        }</div>
-<div class="line"><span class="lineno">  155</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">m_rawResponse</a> = ss.str();</div>
-<div class="line"><span class="lineno">  156</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;buildFromRequest built: &quot;</span> &lt;&lt; <a class="code hl_variable" href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">m_rawResponse</a> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  157</span>    }</div>
-<div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc">http::OK</a></div><div class="ttdeci">@ OK</div><div class="ttdef"><b>Definition</b> <a href="constants_8hpp_source.html#l00022">constants.hpp:22</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_ae0efdf9f8df4b4ba5d173171ad868cc7_cgraph.png" border="0" usemap="#aclasshttp_1_1Response_ae0efdf9f8df4b4ba5d173171ad868cc7_cgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_ae0efdf9f8df4b4ba5d173171ad868cc7_cgraph" id="aclasshttp_1_1Response_ae0efdf9f8df4b4ba5d173171ad868cc7_cgraph">
-<area shape="rect" title=" " alt="" coords="5,73,197,113"/>
-<area shape="rect" href="classhttp_1_1Response.html#a7122bb1e022880c9832e9e644a80397f" title=" " alt="" coords="257,5,451,31"/>
-<area shape="poly" title=" " alt="" coords="154,70,245,39,276,31,277,36,246,45,155,75"/>
-<area shape="rect" href="classhttp_1_1Response.html#a7e9fb022362f77c3d9bfc19e76249977" title=" " alt="" coords="245,55,463,80"/>
-<area shape="poly" title=" " alt="" coords="197,80,232,77,232,82,198,86"/>
-<area shape="rect" href="classhttp_1_1Response.html#a637305890d24151f4d8b9dc4d13cdbb0" title=" " alt="" coords="251,104,457,129"/>
-<area shape="poly" title=" " alt="" coords="198,99,237,103,236,108,197,104"/>
-<area shape="rect" href="classhttp_1_1Response.html#a2d1e7ec002dfef0005ca5ef8f88d4567" title=" " alt="" coords="257,154,451,194"/>
-<area shape="poly" title=" " alt="" coords="162,110,246,138,275,147,273,152,245,143,160,115"/>
-<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="511,161,687,187"/>
-<area shape="poly" title=" " alt="" coords="452,171,497,171,497,177,452,177"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_ae0efdf9f8df4b4ba5d173171ad868cc7_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_ae0efdf9f8df4b4ba5d173171ad868cc7_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_ae0efdf9f8df4b4ba5d173171ad868cc7_icgraph" id="aclasshttp_1_1Response_ae0efdf9f8df4b4ba5d173171ad868cc7_icgraph">
-<area shape="rect" title=" " alt="" coords="752,5,944,45"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="557,5,704,45"/>
-<area shape="poly" title=" " alt="" coords="738,28,704,28,704,23,738,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,13,509,38"/>
-<area shape="poly" title=" " alt="" coords="544,28,510,28,510,23,544,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
-<area shape="poly" title=" " alt="" coords="291,28,258,28,258,23,291,23"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="af757d6a96ba06dd76fab3ba48f8ee5a8" name="af757d6a96ba06dd76fab3ba48f8ee5a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af757d6a96ba06dd76fab3ba48f8ee5a8">&#9670;&#160;</a></span>checkAndReconstructTargetUri()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void http::Response::checkAndReconstructTargetUri </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classhttp_1_1Request.html">Request</a> &amp;&#160;</td>
-          <td class="paramname"><em>request</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>find request target form, check it and reconstruct it (RFC 9112 3.2) </p>
-<p>has to be either "Origin-form" or "Absolute-form" (others only with unsupported methods) </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">request</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00282">282</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  283</span>    {</div>
-<div class="line"><span class="lineno">  284</span>        (void)request;</div>
-<div class="line"><span class="lineno">  285</span>        <span class="keywordtype">bool</span> ret = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  286</span>        <span class="keywordflow">if</span> (request.getRequestData().uri[0] == <span class="charliteral">&#39;/&#39;</span>) {</div>
-<div class="line"><span class="lineno">  287</span>            ret = <a class="code hl_function" href="classhttp_1_1Response.html#a7ce94f17523ca26c67126fca5a7a67fb">parseOriginForm</a>(request.getRequestData().uri, request, <a class="code hl_variable" href="classhttp_1_1Response.html#aad02e5ae325387fc0ddacdb30594dccd">m_pathData</a>);</div>
-<div class="line"><span class="lineno">  288</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  289</span>            ret = <a class="code hl_function" href="classhttp_1_1Response.html#af3ce515c1a3145598ce568ae27e681a4">parseAbsoluteForm</a>(request.getRequestData().uri, request, <a class="code hl_variable" href="classhttp_1_1Response.html#aad02e5ae325387fc0ddacdb30594dccd">m_pathData</a>);</div>
-<div class="line"><span class="lineno">  290</span>        }</div>
-<div class="line"><span class="lineno">  291</span>        <span class="keywordflow">if</span> (!ret) {</div>
-<div class="line"><span class="lineno">  292</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">BAD_REQUEST</a>;</div>
-<div class="line"><span class="lineno">  293</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">ERROR</a>;</div>
-<div class="line"><span class="lineno">  294</span>        }</div>
-<div class="line"><span class="lineno">  295</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a7ce94f17523ca26c67126fca5a7a67fb"><div class="ttname"><a href="classhttp_1_1Response.html#a7ce94f17523ca26c67126fca5a7a67fb">http::Response::parseOriginForm</a></div><div class="ttdeci">bool parseOriginForm(const std::string &amp;path, const Request &amp;request, t_PathData &amp;pathData)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00241">Response.cpp:241</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_af3ce515c1a3145598ce568ae27e681a4"><div class="ttname"><a href="classhttp_1_1Response.html#af3ce515c1a3145598ce568ae27e681a4">http::Response::parseAbsoluteForm</a></div><div class="ttdeci">bool parseAbsoluteForm(const std::string &amp;path, const Request &amp;request, t_PathData &amp;pathData)</div><div class="ttdoc">Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3....</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00202">Response.cpp:202</a></div></div>
-<div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">http::BAD_REQUEST</a></div><div class="ttdeci">@ BAD_REQUEST</div><div class="ttdef"><b>Definition</b> <a href="constants_8hpp_source.html#l00030">constants.hpp:30</a></div></div>
-<div class="ttc" id="anamespacehttp_html_ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612"><div class="ttname"><a href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">http::ERROR</a></div><div class="ttdeci">@ ERROR</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00037">Response.hpp:36</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_af757d6a96ba06dd76fab3ba48f8ee5a8_cgraph.png" border="0" usemap="#aclasshttp_1_1Response_af757d6a96ba06dd76fab3ba48f8ee5a8_cgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_af757d6a96ba06dd76fab3ba48f8ee5a8_cgraph" id="aclasshttp_1_1Response_af757d6a96ba06dd76fab3ba48f8ee5a8_cgraph">
-<area shape="rect" title="find request target form, check it and reconstruct it (RFC 9112 3.2)" alt="" coords="5,18,196,58"/>
-<area shape="rect" href="classhttp_1_1Request.html#a5b597eb2a2ab75e361c2e26f81a2a578" title=" " alt="" coords="545,25,768,51"/>
-<area shape="poly" title=" " alt="" coords="196,16,244,10,371,3,498,10,578,20,577,26,497,15,371,8,244,15,196,21"/>
-<area shape="rect" href="classhttp_1_1Response.html#af3ce515c1a3145598ce568ae27e681a4" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="244,25,497,51"/>
-<area shape="poly" title=" " alt="" coords="196,35,230,35,230,41,196,41"/>
-<area shape="rect" href="classhttp_1_1Response.html#a7ce94f17523ca26c67126fca5a7a67fb" title=" " alt="" coords="253,75,488,100"/>
-<area shape="poly" title=" " alt="" coords="197,53,287,69,286,75,196,58"/>
-<area shape="poly" title=" " alt="" coords="445,72,569,50,569,56,445,77"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_af757d6a96ba06dd76fab3ba48f8ee5a8_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_af757d6a96ba06dd76fab3ba48f8ee5a8_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_af757d6a96ba06dd76fab3ba48f8ee5a8_icgraph" id="aclasshttp_1_1Response_af757d6a96ba06dd76fab3ba48f8ee5a8_icgraph">
-<area shape="rect" title="find request target form, check it and reconstruct it (RFC 9112 3.2)" alt="" coords="1293,5,1484,45"/>
-<area shape="rect" href="classhttp_1_1Response.html#a2e20040657655a595e84a9c1f1f9293a" title="Check if the request data is valid, and set the status code accordingly." alt="" coords="996,13,1245,38"/>
-<area shape="poly" title=" " alt="" coords="1280,28,1246,28,1246,23,1280,23"/>
-<area shape="rect" href="classhttp_1_1Response.html#ac923fe1857f3c3803e3cdc6b230e64f2" title=" " alt="" coords="752,5,948,45"/>
-<area shape="poly" title=" " alt="" coords="982,28,948,28,948,23,982,23"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="557,5,704,45"/>
-<area shape="poly" title=" " alt="" coords="738,28,704,28,704,23,738,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,13,509,38"/>
-<area shape="poly" title=" " alt="" coords="544,28,510,28,510,23,544,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
-<area shape="poly" title=" " alt="" coords="291,28,258,28,258,23,291,23"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a2e20040657655a595e84a9c1f1f9293a" name="a2e20040657655a595e84a9c1f1f9293a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e20040657655a595e84a9c1f1f9293a">&#9670;&#160;</a></span>checkRequestData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void http::Response::checkRequestData </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classhttp_1_1Request.html">Request</a> &amp;&#160;</td>
-          <td class="paramname"><em>request</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Check if the request data is valid, and set the status code accordingly. </p>
-<p>Stuff being checked:</p><ul>
-<li>Method is GET, POST or DELETE</li>
-<li>Uri is valid, in the correct form and gets reconstructed</li>
-<li>Version is HTTP/1.1 <dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">request</td><td>The request to check </td></tr>
-  </table>
-  </dd>
-</dl>
-</li>
-</ul>
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00305">305</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  306</span>    {</div>
-<div class="line"><span class="lineno">  307</span>        <span class="keywordflow">if</span> (request.getRequestData().method != <span class="stringliteral">&quot;GET&quot;</span> &amp;&amp; request.getRequestData().method != <span class="stringliteral">&quot;POST&quot;</span> &amp;&amp; request.getRequestData().method != <span class="stringliteral">&quot;DELETE&quot;</span>) {</div>
-<div class="line"><span class="lineno">  308</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702">NOT_IMPLEMENTED</a>;</div>
-<div class="line"><span class="lineno">  309</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">ERROR</a>;</div>
-<div class="line"><span class="lineno">  310</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  311</span>        }</div>
-<div class="line"><span class="lineno">  312</span>        <span class="keywordflow">if</span> (request.getRequestData().uri.length() &gt; 8192) {</div>
-<div class="line"><span class="lineno">  313</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a873ca8ab2862e690356decb197a57b21">URI_TOO_LONG</a>;</div>
-<div class="line"><span class="lineno">  314</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">ERROR</a>;</div>
-<div class="line"><span class="lineno">  315</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  316</span>        }</div>
-<div class="line"><span class="lineno">  317</span>        <a class="code hl_function" href="classhttp_1_1Response.html#af757d6a96ba06dd76fab3ba48f8ee5a8">checkAndReconstructTargetUri</a>(request);</div>
-<div class="line"><span class="lineno">  318</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> == <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">ERROR</a>) {</div>
-<div class="line"><span class="lineno">  319</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  320</span>        }</div>
-<div class="line"><span class="lineno">  321</span>        <span class="keywordflow">if</span> (request.getRequestData().version != <span class="stringliteral">&quot;HTTP/1.1&quot;</span>) {</div>
-<div class="line"><span class="lineno">  322</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff">HTTP_VERSION_NOT_SUPPORTED</a>;</div>
-<div class="line"><span class="lineno">  323</span>            <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">ERROR</a>;</div>
-<div class="line"><span class="lineno">  324</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  325</span>        }</div>
-<div class="line"><span class="lineno">  326</span>        <span class="comment">// (RFC 9112 3.2)</span></div>
-<div class="line"><span class="lineno">  327</span><span class="comment">/*      if (request.getRequestData().headers.find(&quot;Host&quot;) == request.getRequestData().headers.end() </span></div>
-<div class="line"><span class="lineno">  328</span><span class="comment">            || request.getRequestData().headers.find(&quot;Host&quot;)-&gt;second.size() != 1) {</span></div>
-<div class="line"><span class="lineno">  329</span><span class="comment">            m_statusCode = BAD_REQUEST;</span></div>
-<div class="line"><span class="lineno">  330</span><span class="comment">            m_type = ERROR;</span></div>
-<div class="line"><span class="lineno">  331</span><span class="comment">            return;</span></div>
-<div class="line"><span class="lineno">  332</span><span class="comment">        } */</span></div>
-<div class="line"><span class="lineno">  333</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Response_html_af757d6a96ba06dd76fab3ba48f8ee5a8"><div class="ttname"><a href="classhttp_1_1Response.html#af757d6a96ba06dd76fab3ba48f8ee5a8">http::Response::checkAndReconstructTargetUri</a></div><div class="ttdeci">void checkAndReconstructTargetUri(const Request &amp;request)</div><div class="ttdoc">find request target form, check it and reconstruct it (RFC 9112 3.2)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00282">Response.cpp:282</a></div></div>
-<div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff">http::HTTP_VERSION_NOT_SUPPORTED</a></div><div class="ttdeci">@ HTTP_VERSION_NOT_SUPPORTED</div><div class="ttdef"><b>Definition</b> <a href="constants_8hpp_source.html#l00055">constants.hpp:54</a></div></div>
-<div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762a873ca8ab2862e690356decb197a57b21"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a873ca8ab2862e690356decb197a57b21">http::URI_TOO_LONG</a></div><div class="ttdeci">@ URI_TOO_LONG</div><div class="ttdef"><b>Definition</b> <a href="constants_8hpp_source.html#l00042">constants.hpp:42</a></div></div>
-<div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702">http::NOT_IMPLEMENTED</a></div><div class="ttdeci">@ NOT_IMPLEMENTED</div><div class="ttdef"><b>Definition</b> <a href="constants_8hpp_source.html#l00050">constants.hpp:50</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a2e20040657655a595e84a9c1f1f9293a_cgraph.png" border="0" usemap="#aclasshttp_1_1Response_a2e20040657655a595e84a9c1f1f9293a_cgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a2e20040657655a595e84a9c1f1f9293a_cgraph" id="aclasshttp_1_1Response_a2e20040657655a595e84a9c1f1f9293a_cgraph">
-<area shape="rect" title="Check if the request data is valid, and set the status code accordingly." alt="" coords="5,106,255,132"/>
-<area shape="rect" href="classhttp_1_1Response.html#af757d6a96ba06dd76fab3ba48f8ee5a8" title="find request target form, check it and reconstruct it (RFC 9112 3.2)" alt="" coords="303,48,493,88"/>
-<area shape="poly" title=" " alt="" coords="197,104,289,86,290,91,198,109"/>
-<area shape="rect" href="classhttp_1_1Request.html#a5b597eb2a2ab75e361c2e26f81a2a578" title=" " alt="" coords="843,84,1065,109"/>
-<area shape="poly" title=" " alt="" coords="255,123,505,129,650,127,794,119,875,109,875,114,795,124,650,132,504,134,255,128"/>
-<area shape="poly" title=" " alt="" coords="447,46,492,30,541,19,612,8,668,3,725,6,795,19,831,30,865,44,923,74,920,79,863,49,829,35,794,24,724,11,669,8,613,13,542,24,493,36,449,51"/>
-<area shape="rect" href="classhttp_1_1Response.html#af3ce515c1a3145598ce568ae27e681a4" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="541,34,795,60"/>
-<area shape="poly" title=" " alt="" coords="493,58,527,55,528,61,494,63"/>
-<area shape="rect" href="classhttp_1_1Response.html#a7ce94f17523ca26c67126fca5a7a67fb" title=" " alt="" coords="551,84,785,109"/>
-<area shape="poly" title=" " alt="" coords="494,76,537,80,537,85,493,81"/>
-<area shape="poly" title=" " alt="" coords="785,94,829,94,829,99,785,99"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a2e20040657655a595e84a9c1f1f9293a_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a2e20040657655a595e84a9c1f1f9293a_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a2e20040657655a595e84a9c1f1f9293a_icgraph" id="aclasshttp_1_1Response_a2e20040657655a595e84a9c1f1f9293a_icgraph">
-<area shape="rect" title="Check if the request data is valid, and set the status code accordingly." alt="" coords="996,13,1245,38"/>
-<area shape="rect" href="classhttp_1_1Response.html#ac923fe1857f3c3803e3cdc6b230e64f2" title=" " alt="" coords="752,5,948,45"/>
-<area shape="poly" title=" " alt="" coords="982,28,948,28,948,23,982,23"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="557,5,704,45"/>
-<area shape="poly" title=" " alt="" coords="738,28,704,28,704,23,738,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,13,509,38"/>
-<area shape="poly" title=" " alt="" coords="544,28,510,28,510,23,544,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
-<area shape="poly" title=" " alt="" coords="291,28,258,28,258,23,291,23"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a7122bb1e022880c9832e9e644a80397f" name="a7122bb1e022880c9832e9e644a80397f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7122bb1e022880c9832e9e644a80397f">&#9670;&#160;</a></span>dateString()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream &amp; http::Response::dateString </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>o</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00109">109</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  109</span>                                                         {</div>
-<div class="line"><span class="lineno">  110</span>        <span class="keywordtype">char</span> buffer[64] = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">  111</span>        std::time_t now = std::time(NULL);</div>
-<div class="line"><span class="lineno">  112</span>        std::tm* gmtTime = std::gmtime(&amp;now);</div>
-<div class="line"><span class="lineno">  113</span>        std::strftime(buffer, <span class="keyword">sizeof</span>(buffer), <span class="stringliteral">&quot;Date: %a, %d %b %Y %H:%M:%S GMT&quot;</span>, gmtTime);</div>
-<div class="line"><span class="lineno">  114</span>        <span class="keywordflow">return</span> o &lt;&lt; buffer &lt;&lt; <a class="code hl_variable" href="Response_8hpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a>;</div>
-<div class="line"><span class="lineno">  115</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a7122bb1e022880c9832e9e644a80397f_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a7122bb1e022880c9832e9e644a80397f_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a7122bb1e022880c9832e9e644a80397f_icgraph" id="aclasshttp_1_1Response_a7122bb1e022880c9832e9e644a80397f_icgraph">
-<area shape="rect" title=" " alt="" coords="992,45,1187,70"/>
-<area shape="rect" href="classhttp_1_1Response.html#a52625989a3fb2bcc1e367b5bc13bd99e" title=" " alt="" coords="753,5,943,45"/>
-<area shape="poly" title=" " alt="" coords="979,45,943,41,944,35,980,40"/>
-<area shape="rect" href="classhttp_1_1Response.html#ae0efdf9f8df4b4ba5d173171ad868cc7" title=" " alt="" coords="752,69,944,109"/>
-<area shape="poly" title=" " alt="" coords="980,74,945,79,944,74,980,69"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="557,37,704,77"/>
-<area shape="poly" title=" " alt="" coords="740,44,705,49,704,44,739,39"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,45,509,70"/>
-<area shape="poly" title=" " alt="" coords="544,60,510,60,510,55,544,55"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,45,257,70"/>
-<area shape="poly" title=" " alt="" coords="291,60,258,60,258,55,291,55"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,45,60,70"/>
-<area shape="poly" title=" " alt="" coords="94,60,60,60,60,55,94,55"/>
-<area shape="poly" title=" " alt="" coords="738,76,704,71,705,65,739,71"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ac923fe1857f3c3803e3cdc6b230e64f2" name="ac923fe1857f3c3803e3cdc6b230e64f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac923fe1857f3c3803e3cdc6b230e64f2">&#9670;&#160;</a></span>doMagicToCalculateStatusCode()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void http::Response::doMagicToCalculateStatusCode </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classhttp_1_1Request.html">Request</a> &amp;&#160;</td>
-          <td class="paramname"><em>request</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00129">129</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  129</span>                                                                      {</div>
-<div class="line"><span class="lineno">  130</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc">OK</a>;</div>
-<div class="line"><span class="lineno">  131</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a58a2ced46982e7ccdd9faf0541ae14d4">IDK_NORMAL_I_GUESS</a>;</div>
-<div class="line"><span class="lineno">  132</span>        <a class="code hl_function" href="classhttp_1_1Response.html#a2e20040657655a595e84a9c1f1f9293a">checkRequestData</a>(request);</div>
-<div class="line"><span class="lineno">  133</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> == <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a35031fab2b9c91fef7f51b151d845612">ERROR</a>) {</div>
-<div class="line"><span class="lineno">  134</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  135</span>        }</div>
-<div class="line"><span class="lineno">  136</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a2e20040657655a595e84a9c1f1f9293a"><div class="ttname"><a href="classhttp_1_1Response.html#a2e20040657655a595e84a9c1f1f9293a">http::Response::checkRequestData</a></div><div class="ttdeci">void checkRequestData(const Request &amp;request)</div><div class="ttdoc">Check if the request data is valid, and set the status code accordingly.</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00305">Response.cpp:305</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_ac923fe1857f3c3803e3cdc6b230e64f2_cgraph.png" border="0" usemap="#aclasshttp_1_1Response_ac923fe1857f3c3803e3cdc6b230e64f2_cgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_ac923fe1857f3c3803e3cdc6b230e64f2_cgraph" id="aclasshttp_1_1Response_ac923fe1857f3c3803e3cdc6b230e64f2_cgraph">
-<area shape="rect" title=" " alt="" coords="5,99,201,139"/>
-<area shape="rect" href="classhttp_1_1Response.html#a2e20040657655a595e84a9c1f1f9293a" title="Check if the request data is valid, and set the status code accordingly." alt="" coords="249,106,499,132"/>
-<area shape="poly" title=" " alt="" coords="201,116,235,116,235,122,201,122"/>
-<area shape="rect" href="classhttp_1_1Response.html#af757d6a96ba06dd76fab3ba48f8ee5a8" title="find request target form, check it and reconstruct it (RFC 9112 3.2)" alt="" coords="547,48,737,88"/>
-<area shape="poly" title=" " alt="" coords="441,104,533,86,534,91,442,109"/>
-<area shape="rect" href="classhttp_1_1Request.html#a5b597eb2a2ab75e361c2e26f81a2a578" title=" " alt="" coords="1087,84,1309,109"/>
-<area shape="poly" title=" " alt="" coords="499,123,749,129,894,127,1038,119,1119,109,1119,114,1039,124,894,132,748,134,499,128"/>
-<area shape="poly" title=" " alt="" coords="691,46,736,30,785,19,856,8,912,3,969,6,1039,19,1075,30,1109,44,1167,74,1164,79,1107,49,1073,35,1038,24,968,11,913,8,857,13,786,24,737,36,693,51"/>
-<area shape="rect" href="classhttp_1_1Response.html#af3ce515c1a3145598ce568ae27e681a4" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="785,34,1039,60"/>
-<area shape="poly" title=" " alt="" coords="737,58,771,55,772,61,738,63"/>
-<area shape="rect" href="classhttp_1_1Response.html#a7ce94f17523ca26c67126fca5a7a67fb" title=" " alt="" coords="795,84,1029,109"/>
-<area shape="poly" title=" " alt="" coords="738,76,781,80,781,85,737,81"/>
-<area shape="poly" title=" " alt="" coords="1029,94,1073,94,1073,99,1029,99"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_ac923fe1857f3c3803e3cdc6b230e64f2_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_ac923fe1857f3c3803e3cdc6b230e64f2_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_ac923fe1857f3c3803e3cdc6b230e64f2_icgraph" id="aclasshttp_1_1Response_ac923fe1857f3c3803e3cdc6b230e64f2_icgraph">
-<area shape="rect" title=" " alt="" coords="752,5,948,45"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="557,5,704,45"/>
-<area shape="poly" title=" " alt="" coords="738,28,704,28,704,23,738,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,13,509,38"/>
-<area shape="poly" title=" " alt="" coords="544,28,510,28,510,23,544,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
-<area shape="poly" title=" " alt="" coords="291,28,258,28,258,23,291,23"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a01c142188318790efefff94436580437" name="a01c142188318790efefff94436580437"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a01c142188318790efefff94436580437">&#9670;&#160;</a></span>done()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool http::Response::done </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00093">93</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   93</span>                                  {</div>
-<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   95</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a01c142188318790efefff94436580437_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a01c142188318790efefff94436580437_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a01c142188318790efefff94436580437_icgraph" id="aclasshttp_1_1Response_a01c142188318790efefff94436580437_icgraph">
-<area shape="rect" title=" " alt="" coords="752,13,911,38"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="557,5,704,45"/>
-<area shape="poly" title=" " alt="" coords="738,28,705,28,705,23,738,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,13,509,38"/>
-<area shape="poly" title=" " alt="" coords="544,28,510,28,510,23,544,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
-<area shape="poly" title=" " alt="" coords="291,28,258,28,258,23,291,23"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ae8759895f45b47aa851c76d450753093" name="ae8759895f45b47aa851c76d450753093"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8759895f45b47aa851c76d450753093">&#9670;&#160;</a></span>getBody()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const std::string &amp; http::Response::getBody </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00080">80</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   80</span>                                                 {</div>
-<div class="line"><span class="lineno">   81</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a>;</div>
-<div class="line"><span class="lineno">   82</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_ae8759895f45b47aa851c76d450753093_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_ae8759895f45b47aa851c76d450753093_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_ae8759895f45b47aa851c76d450753093_icgraph" id="aclasshttp_1_1Response_ae8759895f45b47aa851c76d450753093_icgraph">
-<area shape="rect" title=" " alt="" coords="247,5,428,31"/>
-<area shape="rect" href="classhttp_1_1Response.html#a1b00fb80f823eba2d3b023eecc4d93ab" title="Copy assignment operator." alt="" coords="5,5,199,31"/>
-<area shape="poly" title=" " alt="" coords="232,21,199,21,199,15,232,15"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="afcf3e817ef9bc0d3c70329a51a6f668d" name="afcf3e817ef9bc0d3c70329a51a6f668d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afcf3e817ef9bc0d3c70329a51a6f668d">&#9670;&#160;</a></span>getBuilderStatus()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1a">ResponseBuilderStatus</a> http::Response::getBuilderStatus </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00060">60</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   60</span>                                                               {</div>
-<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Response.html#ab605df89bb0a7ac92cae038851286e78">m_builderStatus</a>;</div>
-<div class="line"><span class="lineno">   62</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_afcf3e817ef9bc0d3c70329a51a6f668d_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_afcf3e817ef9bc0d3c70329a51a6f668d_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_afcf3e817ef9bc0d3c70329a51a6f668d_icgraph" id="aclasshttp_1_1Response_afcf3e817ef9bc0d3c70329a51a6f668d_icgraph">
-<area shape="rect" title=" " alt="" coords="247,5,441,45"/>
-<area shape="rect" href="classhttp_1_1Response.html#a1b00fb80f823eba2d3b023eecc4d93ab" title="Copy assignment operator." alt="" coords="5,13,199,38"/>
-<area shape="poly" title=" " alt="" coords="233,28,199,28,199,23,233,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a2dc74e39a4102f222b08a4dea6b1c004" name="a2dc74e39a4102f222b08a4dea6b1c004"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2dc74e39a4102f222b08a4dea6b1c004">&#9670;&#160;</a></span>getHeaderFields()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="namespacehttp.html#a5fc275abcbe27d3c4113fcf5e74b2a09">t_headerFields</a> &amp; http::Response::getHeaderFields </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00076">76</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   76</span>                                                              {</div>
-<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>;</div>
-<div class="line"><span class="lineno">   78</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a2dc74e39a4102f222b08a4dea6b1c004_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a2dc74e39a4102f222b08a4dea6b1c004_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a2dc74e39a4102f222b08a4dea6b1c004_icgraph" id="aclasshttp_1_1Response_a2dc74e39a4102f222b08a4dea6b1c004_icgraph">
-<area shape="rect" title=" " alt="" coords="247,5,441,45"/>
-<area shape="rect" href="classhttp_1_1Response.html#a1b00fb80f823eba2d3b023eecc4d93ab" title="Copy assignment operator." alt="" coords="5,13,199,38"/>
-<area shape="poly" title=" " alt="" coords="233,28,199,28,199,23,233,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a90cd1256503b513100bef046e3c2f748" name="a90cd1256503b513100bef046e3c2f748"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a90cd1256503b513100bef046e3c2f748">&#9670;&#160;</a></span>getPathData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="el" href="namespacehttp.html#a5596bfd6bd3cc3870c674bf38cd4a165">t_PathData</a> http::Response::getPathData </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00088">88</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   88</span>                                                     {</div>
-<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Response.html#aad02e5ae325387fc0ddacdb30594dccd">m_pathData</a>;</div>
-<div class="line"><span class="lineno">   90</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a90cd1256503b513100bef046e3c2f748_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a90cd1256503b513100bef046e3c2f748_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a90cd1256503b513100bef046e3c2f748_icgraph" id="aclasshttp_1_1Response_a90cd1256503b513100bef046e3c2f748_icgraph">
-<area shape="rect" title=" " alt="" coords="247,5,453,31"/>
-<area shape="rect" href="classhttp_1_1Response.html#a1b00fb80f823eba2d3b023eecc4d93ab" title="Copy assignment operator." alt="" coords="5,5,199,31"/>
-<area shape="poly" title=" " alt="" coords="233,21,199,21,199,15,233,15"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a67954e9b8cc54cebe557b5e4702fc94d" name="a67954e9b8cc54cebe557b5e4702fc94d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67954e9b8cc54cebe557b5e4702fc94d">&#9670;&#160;</a></span>getRawResponse()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const std::string &amp; http::Response::getRawResponse </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00068">68</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   68</span>                                                        {</div>
-<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">m_rawResponse</a>;</div>
-<div class="line"><span class="lineno">   70</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a67954e9b8cc54cebe557b5e4702fc94d_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a67954e9b8cc54cebe557b5e4702fc94d_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a67954e9b8cc54cebe557b5e4702fc94d_icgraph" id="aclasshttp_1_1Response_a67954e9b8cc54cebe557b5e4702fc94d_icgraph">
-<area shape="rect" title=" " alt="" coords="799,35,1037,60"/>
-<area shape="rect" href="classhttp_1_1Response.html#a1b00fb80f823eba2d3b023eecc4d93ab" title="Copy assignment operator." alt="" coords="557,5,751,31"/>
-<area shape="poly" title=" " alt="" coords="790,36,751,31,751,26,790,30"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1807c394423626629cff70026027a81f" title=" " alt="" coords="581,55,727,95"/>
-<area shape="poly" title=" " alt="" coords="785,64,728,70,727,65,785,59"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,63,509,88"/>
-<area shape="poly" title=" " alt="" coords="566,78,509,78,509,73,566,73"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,63,257,88"/>
-<area shape="poly" title=" " alt="" coords="291,78,258,78,258,73,291,73"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,63,60,88"/>
-<area shape="poly" title=" " alt="" coords="94,78,60,78,60,73,94,73"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a8c573e4eaa628291ea54c4171512239c" name="a8c573e4eaa628291ea54c4171512239c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c573e4eaa628291ea54c4171512239c">&#9670;&#160;</a></span>getStatusCode()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a> http::Response::getStatusCode </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00072">72</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   72</span>                                                 {</div>
-<div class="line"><span class="lineno">   73</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a>;</div>
-<div class="line"><span class="lineno">   74</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a8c573e4eaa628291ea54c4171512239c_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a8c573e4eaa628291ea54c4171512239c_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a8c573e4eaa628291ea54c4171512239c_icgraph" id="aclasshttp_1_1Response_a8c573e4eaa628291ea54c4171512239c_icgraph">
-<area shape="rect" title=" " alt="" coords="247,5,469,31"/>
-<area shape="rect" href="classhttp_1_1Response.html#a1b00fb80f823eba2d3b023eecc4d93ab" title="Copy assignment operator." alt="" coords="5,5,199,31"/>
-<area shape="poly" title=" " alt="" coords="233,21,199,21,199,15,233,15"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a5fb55b37425d748d5d1bf83e48a49826" name="a5fb55b37425d748d5d1bf83e48a49826"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5fb55b37425d748d5d1bf83e48a49826">&#9670;&#160;</a></span>getType()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9">ResponseType</a> http::Response::getType </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00064">64</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   64</span>                                             {</div>
-<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a>;</div>
-<div class="line"><span class="lineno">   66</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a5fb55b37425d748d5d1bf83e48a49826_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a5fb55b37425d748d5d1bf83e48a49826_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a5fb55b37425d748d5d1bf83e48a49826_icgraph" id="aclasshttp_1_1Response_a5fb55b37425d748d5d1bf83e48a49826_icgraph">
-<area shape="rect" title=" " alt="" coords="799,42,977,67"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="581,5,727,45"/>
-<area shape="poly" title=" " alt="" coords="785,44,727,37,728,32,786,39"/>
-<area shape="rect" href="classhttp_1_1Response.html#a1b00fb80f823eba2d3b023eecc4d93ab" title="Copy assignment operator." alt="" coords="557,70,751,95"/>
-<area shape="poly" title=" " alt="" coords="786,70,751,74,751,68,785,64"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,13,509,38"/>
-<area shape="poly" title=" " alt="" coords="566,28,509,28,509,23,566,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
-<area shape="poly" title=" " alt="" coords="291,28,258,28,258,23,291,23"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a7e9fb022362f77c3d9bfc19e76249977" name="a7e9fb022362f77c3d9bfc19e76249977"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e9fb022362f77c3d9bfc19e76249977">&#9670;&#160;</a></span>headersString()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream &amp; http::Response::headersString </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>o</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00122">122</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  122</span>                                                     {</div>
-<div class="line"><span class="lineno">  123</span>        <span class="keywordflow">for</span> (t_headerFields::iterator it = <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>.begin(); it != <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>.end(); ++it) {</div>
-<div class="line"><span class="lineno">  124</span>            o &lt;&lt; it-&gt;first &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; it-&gt;second &lt;&lt; <a class="code hl_variable" href="Response_8hpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a>;</div>
-<div class="line"><span class="lineno">  125</span>        }</div>
-<div class="line"><span class="lineno">  126</span>        <span class="keywordflow">return</span> o;</div>
-<div class="line"><span class="lineno">  127</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a7e9fb022362f77c3d9bfc19e76249977_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a7e9fb022362f77c3d9bfc19e76249977_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a7e9fb022362f77c3d9bfc19e76249977_icgraph" id="aclasshttp_1_1Response_a7e9fb022362f77c3d9bfc19e76249977_icgraph">
-<area shape="rect" title=" " alt="" coords="992,45,1209,70"/>
-<area shape="rect" href="classhttp_1_1Response.html#a52625989a3fb2bcc1e367b5bc13bd99e" title=" " alt="" coords="753,5,943,45"/>
-<area shape="poly" title=" " alt="" coords="987,46,943,40,944,35,987,40"/>
-<area shape="rect" href="classhttp_1_1Response.html#ae0efdf9f8df4b4ba5d173171ad868cc7" title=" " alt="" coords="752,69,944,109"/>
-<area shape="poly" title=" " alt="" coords="987,74,945,80,944,75,986,69"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="557,37,704,77"/>
-<area shape="poly" title=" " alt="" coords="740,44,705,49,704,44,739,39"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,45,509,70"/>
-<area shape="poly" title=" " alt="" coords="544,60,510,60,510,55,544,55"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,45,257,70"/>
-<area shape="poly" title=" " alt="" coords="291,60,258,60,258,55,291,55"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,45,60,70"/>
-<area shape="poly" title=" " alt="" coords="94,60,60,60,60,55,94,55"/>
-<area shape="poly" title=" " alt="" coords="738,76,704,71,705,65,739,71"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a1b00fb80f823eba2d3b023eecc4d93ab" name="a1b00fb80f823eba2d3b023eecc4d93ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b00fb80f823eba2d3b023eecc4d93ab">&#9670;&#160;</a></span>operator=()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classhttp_1_1Response.html">Response</a> &amp; http::Response::operator= </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classhttp_1_1Response.html">Response</a> &amp;&#160;</td>
-          <td class="paramname"><em>rhs</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Copy assignment operator. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">other</td><td>The other <a class="el" href="classhttp_1_1Response.html" title="...">Response</a> object to assign from. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A reference to the assigned <a class="el" href="classhttp_1_1Response.html" title="...">Response</a> object. </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00047">47</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   47</span>                                                     {</div>
-<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs)</div>
-<div class="line"><span class="lineno">   49</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">   50</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> = rhs.getType();</div>
-<div class="line"><span class="lineno">   51</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">m_rawResponse</a> = rhs.getRawResponse();</div>
-<div class="line"><span class="lineno">   52</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = rhs.getStatusCode();</div>
-<div class="line"><span class="lineno">   53</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a> = rhs.getHeaderFields();</div>
-<div class="line"><span class="lineno">   54</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a> = rhs.getBody();</div>
-<div class="line"><span class="lineno">   55</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#ab605df89bb0a7ac92cae038851286e78">m_builderStatus</a> = rhs.getBuilderStatus();</div>
-<div class="line"><span class="lineno">   56</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#aad02e5ae325387fc0ddacdb30594dccd">m_pathData</a> = rhs.getPathData();</div>
-<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">   58</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a1b00fb80f823eba2d3b023eecc4d93ab_cgraph.png" border="0" usemap="#aclasshttp_1_1Response_a1b00fb80f823eba2d3b023eecc4d93ab_cgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a1b00fb80f823eba2d3b023eecc4d93ab_cgraph" id="aclasshttp_1_1Response_a1b00fb80f823eba2d3b023eecc4d93ab_cgraph">
-<area shape="rect" title="Copy assignment operator." alt="" coords="5,184,199,209"/>
-<area shape="rect" href="classhttp_1_1Response.html#ae8759895f45b47aa851c76d450753093" title=" " alt="" coords="275,5,457,31"/>
-<area shape="poly" title=" " alt="" coords="109,182,160,114,199,74,245,41,262,33,264,38,248,46,203,78,164,118,113,186"/>
-<area shape="rect" href="classhttp_1_1Response.html#afcf3e817ef9bc0d3c70329a51a6f668d" title=" " alt="" coords="269,55,463,95"/>
-<area shape="poly" title=" " alt="" coords="119,182,173,144,246,105,265,97,267,102,248,110,176,149,122,186"/>
-<area shape="rect" href="classhttp_1_1Response.html#a2dc74e39a4102f222b08a4dea6b1c004" title=" " alt="" coords="269,119,463,159"/>
-<area shape="poly" title=" " alt="" coords="161,181,260,160,261,165,162,187"/>
-<area shape="rect" href="classhttp_1_1Response.html#a90cd1256503b513100bef046e3c2f748" title=" " alt="" coords="263,184,469,209"/>
-<area shape="poly" title=" " alt="" coords="199,194,249,194,249,199,199,199"/>
-<area shape="rect" href="classhttp_1_1Response.html#a67954e9b8cc54cebe557b5e4702fc94d" title=" " alt="" coords="247,233,485,259"/>
-<area shape="poly" title=" " alt="" coords="171,207,284,228,283,233,170,212"/>
-<area shape="rect" href="classhttp_1_1Response.html#a8c573e4eaa628291ea54c4171512239c" title=" " alt="" coords="255,283,477,308"/>
-<area shape="poly" title=" " alt="" coords="125,207,179,237,248,268,278,277,277,282,246,272,177,242,123,212"/>
-<area shape="rect" href="classhttp_1_1Response.html#a5fb55b37425d748d5d1bf83e48a49826" title=" " alt="" coords="277,332,455,357"/>
-<area shape="poly" title=" " alt="" coords="116,208,169,261,206,292,248,317,268,325,266,330,245,322,203,296,165,265,112,211"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="af3ce515c1a3145598ce568ae27e681a4" name="af3ce515c1a3145598ce568ae27e681a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3ce515c1a3145598ce568ae27e681a4">&#9670;&#160;</a></span>parseAbsoluteForm()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool http::Response::parseAbsoluteForm </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classhttp_1_1Request.html">Request</a> &amp;&#160;</td>
-          <td class="paramname"><em>request</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespacehttp.html#a5596bfd6bd3cc3870c674bf38cd4a165">t_PathData</a> &amp;&#160;</td>
-          <td class="paramname"><em>pathData</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Parses Absolute path and saves only the pure path in "m_truePath" src: (RFC 9112 3.2.2) </p>
-<p>absolute-URI = scheme ":" hier-part [ "?" query ] </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">path</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00202">202</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  203</span>    {</div>
-<div class="line"><span class="lineno">  204</span>        (void)request;</div>
-<div class="line"><span class="lineno">  205</span>        std::string scheme;</div>
-<div class="line"><span class="lineno">  206</span>        std::string query = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">  207</span>        std::string authority;</div>
-<div class="line"><span class="lineno">  208</span>        std::string pure_path;</div>
-<div class="line"><span class="lineno">  209</span>        <span class="keywordflow">if</span> (path.find(<span class="charliteral">&#39;:&#39;</span>) == std::string::npos) {</div>
-<div class="line"><span class="lineno">  210</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  211</span>        }</div>
-<div class="line"><span class="lineno">  212</span>        scheme = path.substr(0, path.find(<span class="stringliteral">&quot;:&quot;</span>)); <span class="comment">// scheme before the first colon</span></div>
-<div class="line"><span class="lineno">  213</span>        <span class="keywordflow">if</span> (scheme == <span class="stringliteral">&quot;&quot;</span> || std::isalpha(scheme[0]) == 0</div>
-<div class="line"><span class="lineno">  214</span>        || scheme.find_first_not_of(<span class="stringliteral">&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-.&quot;</span>) != std::string::npos) {</div>
-<div class="line"><span class="lineno">  215</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  216</span>        }</div>
-<div class="line"><span class="lineno">  217</span>        <span class="keywordflow">if</span> (path.find(<span class="charliteral">&#39;?&#39;</span>) != std::string::npos) { <span class="comment">// optional query part after the first question mark</span></div>
-<div class="line"><span class="lineno">  218</span>            query = path.substr(path.find(<span class="charliteral">&#39;?&#39;</span>) +1);</div>
-<div class="line"><span class="lineno">  219</span>        }</div>
-<div class="line"><span class="lineno">  220</span>        pure_path = path.substr(path.find(<span class="charliteral">&#39;:&#39;</span>) +1, path.find(<span class="charliteral">&#39;?&#39;</span>) - path.find(<span class="charliteral">&#39;:&#39;</span>) -1);</div>
-<div class="line"><span class="lineno">  221</span>        <span class="keywordflow">if</span> (pure_path[0] != <span class="charliteral">&#39;/&#39;</span> &amp;&amp; pure_path[1] != <span class="charliteral">&#39;/&#39;</span>) { <span class="comment">// authority part starts with two slashes</span></div>
-<div class="line"><span class="lineno">  222</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  223</span> </div>
-<div class="line"><span class="lineno">  224</span>        }</div>
-<div class="line"><span class="lineno">  225</span>        pure_path = pure_path.substr(2);</div>
-<div class="line"><span class="lineno">  226</span>        <span class="keywordflow">if</span> (pure_path.find(<span class="charliteral">&#39;/&#39;</span>) == std::string::npos) {</div>
-<div class="line"><span class="lineno">  227</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  228</span>        }</div>
-<div class="line"><span class="lineno">  229</span>        authority = pure_path.substr(0, pure_path.find(<span class="charliteral">&#39;/&#39;</span>));</div>
-<div class="line"><span class="lineno">  230</span>        <span class="keywordflow">if</span> (authority.empty()) {</div>
-<div class="line"><span class="lineno">  231</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  232</span>        }</div>
-<div class="line"><span class="lineno">  233</span>        pure_path = pure_path.substr(pure_path.find(<span class="charliteral">&#39;/&#39;</span>));</div>
-<div class="line"><span class="lineno">  234</span>        pathData.query = query;</div>
-<div class="line"><span class="lineno">  235</span>        pathData.pure_path = pure_path;</div>
-<div class="line"><span class="lineno">  236</span>        pathData.scheme = scheme;</div>
-<div class="line"><span class="lineno">  237</span>        pathData.authority = authority;</div>
-<div class="line"><span class="lineno">  238</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  239</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_af3ce515c1a3145598ce568ae27e681a4_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_af3ce515c1a3145598ce568ae27e681a4_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_af3ce515c1a3145598ce568ae27e681a4_icgraph" id="aclasshttp_1_1Response_af3ce515c1a3145598ce568ae27e681a4_icgraph">
-<area shape="rect" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="1552,42,1805,67"/>
-<area shape="rect" href="classhttp_1_1Response.html#af757d6a96ba06dd76fab3ba48f8ee5a8" title="find request target form, check it and reconstruct it (RFC 9112 3.2)" alt="" coords="1303,5,1494,45"/>
-<area shape="poly" title=" " alt="" coords="1544,43,1494,38,1495,33,1544,38"/>
-<area shape="rect" href="classhttp_1_1Response.html#a7df178d1590622ac14b509e43d3d6235" title=" " alt="" coords="1293,70,1504,95"/>
-<area shape="poly" title=" " alt="" coords="1538,71,1504,75,1504,70,1538,66"/>
-<area shape="rect" href="classhttp_1_1Response.html#a2e20040657655a595e84a9c1f1f9293a" title="Check if the request data is valid, and set the status code accordingly." alt="" coords="996,13,1245,38"/>
-<area shape="poly" title=" " alt="" coords="1289,28,1245,28,1245,23,1289,23"/>
-<area shape="rect" href="classhttp_1_1Response.html#ac923fe1857f3c3803e3cdc6b230e64f2" title=" " alt="" coords="752,5,948,45"/>
-<area shape="poly" title=" " alt="" coords="982,28,948,28,948,23,982,23"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="557,5,704,45"/>
-<area shape="poly" title=" " alt="" coords="738,28,704,28,704,23,738,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,13,509,38"/>
-<area shape="poly" title=" " alt="" coords="544,28,510,28,510,23,544,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
-<area shape="poly" title=" " alt="" coords="291,28,258,28,258,23,291,23"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a7ce94f17523ca26c67126fca5a7a67fb" name="a7ce94f17523ca26c67126fca5a7a67fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ce94f17523ca26c67126fca5a7a67fb">&#9670;&#160;</a></span>parseOriginForm()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool http::Response::parseOriginForm </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classhttp_1_1Request.html">Request</a> &amp;&#160;</td>
-          <td class="paramname"><em>request</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="namespacehttp.html#a5596bfd6bd3cc3870c674bf38cd4a165">t_PathData</a> &amp;&#160;</td>
-          <td class="paramname"><em>pathData</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00241">241</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  242</span>    {</div>
-<div class="line"><span class="lineno">  243</span>        std::string authority;</div>
-<div class="line"><span class="lineno">  244</span>        std::string pure_path;</div>
-<div class="line"><span class="lineno">  245</span>        std::string query;</div>
-<div class="line"><span class="lineno">  246</span>        <span class="keywordflow">if</span> (path.find(<span class="charliteral">&#39;?&#39;</span>) != std::string::npos) { <span class="comment">// optional query part after the first question mark</span></div>
-<div class="line"><span class="lineno">  247</span>            query = path.substr(path.find(<span class="charliteral">&#39;?&#39;</span>) +1); </div>
-<div class="line"><span class="lineno">  248</span>        }</div>
-<div class="line"><span class="lineno">  249</span>        pure_path = path.substr(0, path.find(<span class="charliteral">&#39;?&#39;</span>));</div>
-<div class="line"><span class="lineno">  250</span>        <span class="keywordflow">if</span> (pure_path[0] != <span class="charliteral">&#39;/&#39;</span>) {</div>
-<div class="line"><span class="lineno">  251</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  252</span>        }</div>
-<div class="line"><span class="lineno">  253</span>        <span class="keywordtype">int</span> found = 0;</div>
-<div class="line"><span class="lineno">  254</span>        <span class="keywordflow">for</span> (std::vector&lt;t_header&gt;::const_iterator it = request.getRequestData().headers.begin(); it != request.getRequestData().headers.end(); ++it)</div>
-<div class="line"><span class="lineno">  255</span>        {</div>
-<div class="line"><span class="lineno">  256</span>            <span class="keywordflow">if</span> (it-&gt;first == <span class="stringliteral">&quot;Host&quot;</span>) {</div>
-<div class="line"><span class="lineno">  257</span>                <span class="keywordflow">if</span> (found == 1) {</div>
-<div class="line"><span class="lineno">  258</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  259</span>                }</div>
-<div class="line"><span class="lineno">  260</span>                <span class="keywordflow">if</span> (it-&gt;second.size() != 1) {</div>
-<div class="line"><span class="lineno">  261</span>                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  262</span>                }</div>
-<div class="line"><span class="lineno">  263</span>                authority = it-&gt;second[0];</div>
-<div class="line"><span class="lineno">  264</span>                found = 1;</div>
-<div class="line"><span class="lineno">  265</span>            }</div>
-<div class="line"><span class="lineno">  266</span>        }</div>
-<div class="line"><span class="lineno">  267</span>        <span class="keywordflow">if</span> (found == 0) {</div>
-<div class="line"><span class="lineno">  268</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  269</span>        }</div>
-<div class="line"><span class="lineno">  270</span>        pathData.query = query;</div>
-<div class="line"><span class="lineno">  271</span>        pathData.pure_path = pure_path;</div>
-<div class="line"><span class="lineno">  272</span>        pathData.authority = authority;</div>
-<div class="line"><span class="lineno">  273</span>        pathData.scheme = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">  274</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  275</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a7ce94f17523ca26c67126fca5a7a67fb_cgraph.png" border="0" usemap="#aclasshttp_1_1Response_a7ce94f17523ca26c67126fca5a7a67fb_cgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a7ce94f17523ca26c67126fca5a7a67fb_cgraph" id="aclasshttp_1_1Response_a7ce94f17523ca26c67126fca5a7a67fb_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,240,31"/>
-<area shape="rect" href="classhttp_1_1Request.html#a5b597eb2a2ab75e361c2e26f81a2a578" title=" " alt="" coords="288,5,511,31"/>
-<area shape="poly" title=" " alt="" coords="240,15,274,15,274,21,240,21"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a7ce94f17523ca26c67126fca5a7a67fb_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a7ce94f17523ca26c67126fca5a7a67fb_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a7ce94f17523ca26c67126fca5a7a67fb_icgraph" id="aclasshttp_1_1Response_a7ce94f17523ca26c67126fca5a7a67fb_icgraph">
-<area shape="rect" title=" " alt="" coords="1552,42,1787,67"/>
-<area shape="rect" href="classhttp_1_1Response.html#af757d6a96ba06dd76fab3ba48f8ee5a8" title="find request target form, check it and reconstruct it (RFC 9112 3.2)" alt="" coords="1303,5,1494,45"/>
-<area shape="poly" title=" " alt="" coords="1538,43,1494,38,1495,33,1539,38"/>
-<area shape="rect" href="classhttp_1_1Response.html#a7df178d1590622ac14b509e43d3d6235" title=" " alt="" coords="1293,70,1504,95"/>
-<area shape="poly" title=" " alt="" coords="1538,71,1504,74,1504,69,1538,66"/>
-<area shape="rect" href="classhttp_1_1Response.html#a2e20040657655a595e84a9c1f1f9293a" title="Check if the request data is valid, and set the status code accordingly." alt="" coords="996,13,1245,38"/>
-<area shape="poly" title=" " alt="" coords="1289,28,1245,28,1245,23,1289,23"/>
-<area shape="rect" href="classhttp_1_1Response.html#ac923fe1857f3c3803e3cdc6b230e64f2" title=" " alt="" coords="752,5,948,45"/>
-<area shape="poly" title=" " alt="" coords="982,28,948,28,948,23,982,23"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="557,5,704,45"/>
-<area shape="poly" title=" " alt="" coords="738,28,704,28,704,23,738,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,13,509,38"/>
-<area shape="poly" title=" " alt="" coords="544,28,510,28,510,23,544,23"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
-<area shape="poly" title=" " alt="" coords="291,28,258,28,258,23,291,23"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a4eb56ec0c2d1c77b78241a8855c4d364" name="a4eb56ec0c2d1c77b78241a8855c4d364"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4eb56ec0c2d1c77b78241a8855c4d364">&#9670;&#160;</a></span>reset()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void http::Response::reset </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00187">187</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  187</span>                             {</div>
-<div class="line"><span class="lineno">  188</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a70416589bb33f498006301c5092228e3">m_type</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9a58a2ced46982e7ccdd9faf0541ae14d4">IDK_NORMAL_I_GUESS</a>;</div>
-<div class="line"><span class="lineno">  189</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">m_rawResponse</a>.clear();</div>
-<div class="line"><span class="lineno">  190</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ad9006f1cb7c0f5a565cba334dc8c78aa">UNKNWN</a>;</div>
-<div class="line"><span class="lineno">  191</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#abd017118999fa90f30f2c9b61f35878e">m_headerFields</a>.clear();</div>
-<div class="line"><span class="lineno">  192</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a>.clear();</div>
-<div class="line"><span class="lineno">  193</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#ab605df89bb0a7ac92cae038851286e78">m_builderStatus</a> = <a class="code hl_enumvalue" href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1aaf966f2e5a987b48464b2a8fad68c4011">PENDING_WRITE</a>;</div>
-<div class="line"><span class="lineno">  194</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a4eb56ec0c2d1c77b78241a8855c4d364_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a4eb56ec0c2d1c77b78241a8855c4d364_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a4eb56ec0c2d1c77b78241a8855c4d364_icgraph" id="aclasshttp_1_1Response_a4eb56ec0c2d1c77b78241a8855c4d364_icgraph">
-<area shape="rect" title=" " alt="" coords="752,45,912,70"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="557,5,704,45"/>
-<area shape="poly" title=" " alt="" coords="738,45,704,40,705,34,739,40"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1807c394423626629cff70026027a81f" title=" " alt="" coords="557,69,704,109"/>
-<area shape="poly" title=" " alt="" coords="739,75,705,80,704,75,738,70"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,45,509,70"/>
-<area shape="poly" title=" " alt="" coords="544,40,496,47,496,42,543,35"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,45,257,70"/>
-<area shape="poly" title=" " alt="" coords="291,60,258,60,258,55,291,55"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,45,60,70"/>
-<area shape="poly" title=" " alt="" coords="94,60,60,60,60,55,94,55"/>
-<area shape="poly" title=" " alt="" coords="543,80,496,73,496,67,544,74"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a637305890d24151f4d8b9dc4d13cdbb0" name="a637305890d24151f4d8b9dc4d13cdbb0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a637305890d24151f4d8b9dc4d13cdbb0">&#9670;&#160;</a></span>serverString()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream &amp; http::Response::serverString </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>o</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00117">117</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  117</span>                                                           {</div>
-<div class="line"><span class="lineno">  118</span>        <span class="keywordflow">return</span> o &lt;&lt; <span class="stringliteral">&quot;Server: Very Epic Gamer Server/0.1 (Powered by Hopes and Dreams)&quot;</span> &lt;&lt; <a class="code hl_variable" href="Response_8hpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a>;</div>
-<div class="line"><span class="lineno">  119</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a637305890d24151f4d8b9dc4d13cdbb0_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a637305890d24151f4d8b9dc4d13cdbb0_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a637305890d24151f4d8b9dc4d13cdbb0_icgraph" id="aclasshttp_1_1Response_a637305890d24151f4d8b9dc4d13cdbb0_icgraph">
-<area shape="rect" title=" " alt="" coords="992,45,1199,70"/>
-<area shape="rect" href="classhttp_1_1Response.html#a52625989a3fb2bcc1e367b5bc13bd99e" title=" " alt="" coords="753,5,943,45"/>
-<area shape="poly" title=" " alt="" coords="983,46,943,40,944,35,984,40"/>
-<area shape="rect" href="classhttp_1_1Response.html#ae0efdf9f8df4b4ba5d173171ad868cc7" title=" " alt="" coords="752,69,944,109"/>
-<area shape="poly" title=" " alt="" coords="984,74,945,80,944,74,983,69"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="557,37,704,77"/>
-<area shape="poly" title=" " alt="" coords="740,44,705,49,704,44,739,39"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,45,509,70"/>
-<area shape="poly" title=" " alt="" coords="544,60,510,60,510,55,544,55"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,45,257,70"/>
-<area shape="poly" title=" " alt="" coords="291,60,258,60,258,55,291,55"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,45,60,70"/>
-<area shape="poly" title=" " alt="" coords="94,60,60,60,60,55,94,55"/>
-<area shape="poly" title=" " alt="" coords="738,76,704,71,705,65,739,71"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a269913ddc411476e598ec3e70fe3c652" name="a269913ddc411476e598ec3e70fe3c652"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a269913ddc411476e598ec3e70fe3c652">&#9670;&#160;</a></span>setRawResponse()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void http::Response::setRawResponse </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>to</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00084">84</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   84</span>                                                     {</div>
-<div class="line"><span class="lineno">   85</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a22c59b91bdbb0ee6babb3e15018459be">m_rawResponse</a> = to;</div>
-<div class="line"><span class="lineno">   86</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00053">53</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   53</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">m_data</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a2d1e7ec002dfef0005ca5ef8f88d4567" name="a2d1e7ec002dfef0005ca5ef8f88d4567"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d1e7ec002dfef0005ca5ef8f88d4567">&#9670;&#160;</a></span>statusLineString()</h2>
+<a id="aef63e8fa85ae3fcfe421fe5270080583" name="aef63e8fa85ae3fcfe421fe5270080583"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef63e8fa85ae3fcfe421fe5270080583">&#9670;&#160;</a></span>serialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::ostream &amp; http::Response::statusLineString </td>
+          <td class="memname">void http::Response::serialize </td>
           <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>o</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00097">97</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   97</span>                                                               {</div>
-<div class="line"><span class="lineno">   98</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;creating status line string&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   99</span>        std::string message;</div>
-<div class="line"><span class="lineno">  100</span>        <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">  101</span>            message = <a class="code hl_function" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc">getStatusMessage</a>(<a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a>);</div>
-<div class="line"><span class="lineno">  102</span>        } <span class="keywordflow">catch</span> (std::exception&amp; e) {</div>
-<div class="line"><span class="lineno">  103</span>            std::cerr &lt;&lt; <span class="stringliteral">&quot;statusLineString failed: &quot;</span> &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  104</span>            message = <span class="stringliteral">&quot;fuck&quot;</span>;</div>
-<div class="line"><span class="lineno">  105</span>        }</div>
-<div class="line"><span class="lineno">  106</span>        <span class="keywordflow">return</span> o &lt;&lt; <a class="code hl_variable" href="Response_8hpp.html#aa8c7815fae449943e6cd7ef174516bdf">HTTP_NAME</a> &lt;&lt; <a class="code hl_variable" href="Response_8hpp.html#a8a93e7e3fdffc39a8ace86cea675acb1">ONE_DOT_ONE</a> &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a> &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; message &lt;&lt; <a class="code hl_variable" href="Response_8hpp.html#a26894f5f61a3de2e81c8b9837517ee35">CRLF</a>; <span class="comment">// &lt;&lt; statusMessage at the end</span></div>
-<div class="line"><span class="lineno">  107</span>    }</div>
-<div class="ttc" id="aResponse_8hpp_html_a8a93e7e3fdffc39a8ace86cea675acb1"><div class="ttname"><a href="Response_8hpp.html#a8a93e7e3fdffc39a8ace86cea675acb1">ONE_DOT_ONE</a></div><div class="ttdeci">const std::string ONE_DOT_ONE</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00010">Response.hpp:10</a></div></div>
-<div class="ttc" id="aResponse_8hpp_html_aa8c7815fae449943e6cd7ef174516bdf"><div class="ttname"><a href="Response_8hpp.html#aa8c7815fae449943e6cd7ef174516bdf">HTTP_NAME</a></div><div class="ttdeci">const std::string HTTP_NAME</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00009">Response.hpp:9</a></div></div>
-<div class="ttc" id="anamespacehttp_html_a6ffd27a10b72490009d84fe377d9d8fc"><div class="ttname"><a href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc">http::getStatusMessage</a></div><div class="ttdeci">const std::string &amp; getStatusMessage(StatusCode statusCode)</div><div class="ttdef"><b>Definition</b> <a href="constants_8cpp_source.html#l00007">constants.cpp:7</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00023">23</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   23</span>                             {</div>
+<div class="line"><span class="lineno">   24</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">m_data</a>.<a class="code hl_function" href="classshared_1_1Buffer.html#af1f3a12893e2a6d51d3372c5e5a962d0">reset</a>();</div>
+<div class="line"><span class="lineno">   25</span> </div>
+<div class="line"><span class="lineno">   26</span>        std::string statusLine = <a class="code hl_variable" href="namespacehttp.html#a347672eeddfedabd6c5a270b5b457577">HTTP_VERSION</a> + <span class="stringliteral">&quot; &quot;</span> +</div>
+<div class="line"><span class="lineno">   27</span>            <a class="code hl_function" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a>(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<a class="code hl_variable" href="classhttp_1_1Response.html#aeb1cafeb91aee689123a0b361c0d2e47">m_code</a>)) + <span class="stringliteral">&quot; &quot;</span> +</div>
+<div class="line"><span class="lineno">   28</span>            <a class="code hl_function" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc">getStatusMessage</a>(<a class="code hl_variable" href="classhttp_1_1Response.html#aeb1cafeb91aee689123a0b361c0d2e47">m_code</a>) + <a class="code hl_variable" href="namespacehttp.html#a95083d38512d4f49548403fa8bbbc020">CRLF</a>;</div>
+<div class="line"><span class="lineno">   29</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">m_data</a>.<a class="code hl_function" href="classshared_1_1Buffer.html#ae126d2e83e32ab5715d839cd0438ff78">append</a>(statusLine.c_str(), statusLine.length());</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>        std::map&lt;std::string, std::vector&lt;std::string&gt; &gt;::iterator it;</div>
+<div class="line"><span class="lineno">   32</span>        <span class="keywordflow">for</span> (it = <a class="code hl_variable" href="classhttp_1_1Response.html#a495a8dd4ccc444a9787b46834937f258">m_headers</a>.begin(); it != <a class="code hl_variable" href="classhttp_1_1Response.html#a495a8dd4ccc444a9787b46834937f258">m_headers</a>.end(); ++it) {</div>
+<div class="line"><span class="lineno">   33</span>            <span class="keyword">const</span> std::string&amp; key = it-&gt;first;</div>
+<div class="line"><span class="lineno">   34</span>            <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; values = it-&gt;second;</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>            std::vector&lt;std::string&gt;::const_iterator vit;</div>
+<div class="line"><span class="lineno">   37</span>            <span class="keywordflow">for</span> (vit = values.begin(); vit != values.end(); ++vit) {</div>
+<div class="line"><span class="lineno">   38</span>                std::string headerLine = key + <span class="stringliteral">&quot;: &quot;</span> + *vit + <a class="code hl_variable" href="namespacehttp.html#a95083d38512d4f49548403fa8bbbc020">CRLF</a>;</div>
+<div class="line"><span class="lineno">   39</span>                <a class="code hl_variable" href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">m_data</a>.<a class="code hl_function" href="classshared_1_1Buffer.html#ae126d2e83e32ab5715d839cd0438ff78">append</a>(headerLine.c_str(), headerLine.length());</div>
+<div class="line"><span class="lineno">   40</span>            }</div>
+<div class="line"><span class="lineno">   41</span>        }</div>
+<div class="line"><span class="lineno">   42</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">m_data</a>.<a class="code hl_function" href="classshared_1_1Buffer.html#ae126d2e83e32ab5715d839cd0438ff78">append</a>(<a class="code hl_variable" href="namespacehttp.html#a95083d38512d4f49548403fa8bbbc020">CRLF</a>.c_str(), <a class="code hl_variable" href="namespacehttp.html#a95083d38512d4f49548403fa8bbbc020">CRLF</a>.length());</div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span>        <a class="code hl_variable" href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">m_data</a>.<a class="code hl_function" href="classshared_1_1Buffer.html#ae126d2e83e32ab5715d839cd0438ff78">append</a>(<a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a>.c_str(), <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a>.length());</div>
+<div class="line"><span class="lineno">   45</span>    }</div>
+<div class="ttc" id="aclassshared_1_1Buffer_html_ae126d2e83e32ab5715d839cd0438ff78"><div class="ttname"><a href="classshared_1_1Buffer.html#ae126d2e83e32ab5715d839cd0438ff78">shared::Buffer::append</a></div><div class="ttdeci">void append(const char *data, std::size_t size)</div></div>
+<div class="ttc" id="aclassshared_1_1Buffer_html_af1f3a12893e2a6d51d3372c5e5a962d0"><div class="ttname"><a href="classshared_1_1Buffer.html#af1f3a12893e2a6d51d3372c5e5a962d0">shared::Buffer::reset</a></div><div class="ttdeci">void reset()</div></div>
+<div class="ttc" id="anamespacehttp_html_a347672eeddfedabd6c5a270b5b457577"><div class="ttname"><a href="namespacehttp.html#a347672eeddfedabd6c5a270b5b457577">http::HTTP_VERSION</a></div><div class="ttdeci">const std::string HTTP_VERSION</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00015">http.hpp:15</a></div></div>
+<div class="ttc" id="anamespacehttp_html_a6ffd27a10b72490009d84fe377d9d8fc"><div class="ttname"><a href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc">http::getStatusMessage</a></div><div class="ttdeci">const std::string &amp; getStatusMessage(StatusCode statusCode)</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00007">http.cpp:7</a></div></div>
+<div class="ttc" id="anamespacehttp_html_a95083d38512d4f49548403fa8bbbc020"><div class="ttname"><a href="namespacehttp.html#a95083d38512d4f49548403fa8bbbc020">http::CRLF</a></div><div class="ttdeci">const std::string CRLF</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00016">http.hpp:16</a></div></div>
+<div class="ttc" id="anamespaceshared_1_1string_html_a7498d7d25acc1a6d216ef30b3ccfa577"><div class="ttname"><a href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a></div><div class="ttdeci">std::string to_string(const T &amp;value)</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8hpp_source.html#l00043">stringUtils.hpp:43</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a2d1e7ec002dfef0005ca5ef8f88d4567_cgraph.png" border="0" usemap="#aclasshttp_1_1Response_a2d1e7ec002dfef0005ca5ef8f88d4567_cgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a2d1e7ec002dfef0005ca5ef8f88d4567_cgraph" id="aclasshttp_1_1Response_a2d1e7ec002dfef0005ca5ef8f88d4567_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,200,45"/>
-<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="248,13,424,38"/>
-<area shape="poly" title=" " alt="" coords="200,23,234,23,234,28,200,28"/>
+<div class="center"><img src="classhttp_1_1Response_aef63e8fa85ae3fcfe421fe5270080583_cgraph.png" border="0" usemap="#aclasshttp_1_1Response_aef63e8fa85ae3fcfe421fe5270080583_cgraph" alt=""/></div>
+<map name="aclasshttp_1_1Response_aef63e8fa85ae3fcfe421fe5270080583_cgraph" id="aclasshttp_1_1Response_aef63e8fa85ae3fcfe421fe5270080583_cgraph">
+<area shape="rect" title=" " alt="" coords="5,80,188,105"/>
+<area shape="rect" href="classshared_1_1Buffer.html#ae126d2e83e32ab5715d839cd0438ff78" title=" " alt="" coords="239,5,409,31"/>
+<area shape="poly" title=" " alt="" coords="130,77,235,39,260,32,262,37,237,45,132,82"/>
+<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="236,55,412,80"/>
+<area shape="poly" title=" " alt="" coords="188,80,222,76,223,81,188,85"/>
+<area shape="rect" href="classshared_1_1Buffer.html#af1f3a12893e2a6d51d3372c5e5a962d0" title=" " alt="" coords="247,104,401,129"/>
+<area shape="poly" title=" " alt="" coords="188,100,233,104,233,110,188,105"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="258,154,390,194"/>
+<area shape="poly" title=" " alt="" coords="134,103,256,147,254,152,132,108"/>
 </map>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a2d1e7ec002dfef0005ca5ef8f88d4567_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a2d1e7ec002dfef0005ca5ef8f88d4567_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a2d1e7ec002dfef0005ca5ef8f88d4567_icgraph" id="aclasshttp_1_1Response_a2d1e7ec002dfef0005ca5ef8f88d4567_icgraph">
-<area shape="rect" title=" " alt="" coords="992,37,1187,77"/>
-<area shape="rect" href="classhttp_1_1Response.html#a52625989a3fb2bcc1e367b5bc13bd99e" title=" " alt="" coords="753,5,943,45"/>
-<area shape="poly" title=" " alt="" coords="978,45,943,41,944,35,979,40"/>
-<area shape="rect" href="classhttp_1_1Response.html#ae0efdf9f8df4b4ba5d173171ad868cc7" title=" " alt="" coords="752,69,944,109"/>
-<area shape="poly" title=" " alt="" coords="979,75,944,79,944,74,978,69"/>
-<area shape="rect" href="classcore_1_1EventHandler.html#a1e36084c6c90216475b3ced2d5de9699" title=" " alt="" coords="557,37,704,77"/>
-<area shape="poly" title=" " alt="" coords="740,44,705,49,704,44,739,39"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a991302a5853c8ae892987d8673db2671" title=" " alt="" coords="305,45,509,70"/>
-<area shape="poly" title=" " alt="" coords="544,60,510,60,510,55,544,55"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,45,257,70"/>
-<area shape="poly" title=" " alt="" coords="291,60,258,60,258,55,291,55"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,45,60,70"/>
-<area shape="poly" title=" " alt="" coords="94,60,60,60,60,55,94,55"/>
-<area shape="poly" title=" " alt="" coords="738,76,704,71,705,65,739,71"/>
+<div class="center"><img src="classhttp_1_1Response_aef63e8fa85ae3fcfe421fe5270080583_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_aef63e8fa85ae3fcfe421fe5270080583_icgraph" alt=""/></div>
+<map name="aclasshttp_1_1Response_aef63e8fa85ae3fcfe421fe5270080583_icgraph" id="aclasshttp_1_1Response_aef63e8fa85ae3fcfe421fe5270080583_icgraph">
+<area shape="rect" title=" " alt="" coords="484,5,667,31"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="228,5,436,31"/>
+<area shape="poly" title=" " alt="" coords="470,21,436,21,436,15,470,15"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,5,180,31"/>
+<area shape="poly" title=" " alt="" coords="214,21,180,21,180,15,214,15"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a7df178d1590622ac14b509e43d3d6235" name="a7df178d1590622ac14b509e43d3d6235"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7df178d1590622ac14b509e43d3d6235">&#9670;&#160;</a></span>testParseURI()</h2>
+<a id="ac79941baf008165ba0c70903246d2374" name="ac79941baf008165ba0c70903246d2374"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac79941baf008165ba0c70903246d2374">&#9670;&#160;</a></span>setBody()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int http::Response::testParseURI </td>
+          <td class="memname">void http::Response::setBody </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>uri</em>, </td>
+          <td class="paramname"><em>body</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00049">49</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>{ <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a> = body; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3f90125d4bac7b24081c66a7b990c503" name="a3f90125d4bac7b24081c66a7b990c503"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f90125d4bac7b24081c66a7b990c503">&#9670;&#160;</a></span>setCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void http::Response::setCode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a>&#160;</td>
+          <td class="paramname"><em>code</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00047">47</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   47</span>{ <a class="code hl_variable" href="classhttp_1_1Response.html#aeb1cafeb91aee689123a0b361c0d2e47">m_code</a> = code; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab52959eaac18026a4f1c4ce3006731ea" name="ab52959eaac18026a4f1c4ce3006731ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab52959eaac18026a4f1c4ce3006731ea">&#9670;&#160;</a></span>setHeader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void http::Response::setHeader </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>mode</em>&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1630,57 +358,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00335">335</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  336</span>    {</div>
-<div class="line"><span class="lineno">  337</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;-----------------------------------&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  338</span>        <a class="code hl_typedef" href="namespacehttp.html#a5596bfd6bd3cc3870c674bf38cd4a165">t_PathData</a> pathData;</div>
-<div class="line"><span class="lineno">  339</span>        <span class="keywordflow">if</span> (mode == 0) {</div>
-<div class="line"><span class="lineno">  340</span>            Request req;</div>
-<div class="line"><span class="lineno">  341</span>            std::vector&lt;std::string&gt; host;</div>
-<div class="line"><span class="lineno">  342</span>            host.push_back(<span class="stringliteral">&quot;localhost&quot;</span>);</div>
-<div class="line"><span class="lineno">  343</span>            req.setHeader(<span class="stringliteral">&quot;Host&quot;</span>, host);</div>
-<div class="line"><span class="lineno">  344</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classhttp_1_1Response.html#a7ce94f17523ca26c67126fca5a7a67fb">parseOriginForm</a>(uri, req, pathData)) {</div>
-<div class="line"><span class="lineno">  345</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Origin form parsed successfully&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  346</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  347</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Origin form failed&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  348</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;-----------------------------------&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  349</span>                <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  350</span>            }</div>
-<div class="line"><span class="lineno">  351</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  352</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classhttp_1_1Response.html#af3ce515c1a3145598ce568ae27e681a4">parseAbsoluteForm</a>(uri, Request(), pathData)) {</div>
-<div class="line"><span class="lineno">  353</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Absolute form parsed successfully&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  354</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  355</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Absolute form failed&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  356</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;-----------------------------------&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  357</span>                <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  358</span>            }</div>
-<div class="line"><span class="lineno">  359</span>        }</div>
-<div class="line"><span class="lineno">  360</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Scheme: &quot;</span> &lt;&lt; pathData.<a class="code hl_variable" href="structhttp_1_1s__PathData.html#a86f2ec7cc99ae4c42cd86bc64c53903c">scheme</a> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  361</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Authority: &quot;</span> &lt;&lt; pathData.authority &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  362</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Pure path: &quot;</span> &lt;&lt; pathData.pure_path &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  363</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Query: &quot;</span> &lt;&lt; pathData.query &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  364</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;-----------------------------------&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  365</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  366</span>    }</div>
-<div class="ttc" id="anamespacehttp_html_a5596bfd6bd3cc3870c674bf38cd4a165"><div class="ttname"><a href="namespacehttp.html#a5596bfd6bd3cc3870c674bf38cd4a165">http::t_PathData</a></div><div class="ttdeci">struct http::s_PathData t_PathData</div></div>
-<div class="ttc" id="astructhttp_1_1s__PathData_html_a86f2ec7cc99ae4c42cd86bc64c53903c"><div class="ttname"><a href="structhttp_1_1s__PathData.html#a86f2ec7cc99ae4c42cd86bc64c53903c">http::s_PathData::scheme</a></div><div class="ttdeci">std::string scheme</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00020">Response.hpp:20</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1Response_a7df178d1590622ac14b509e43d3d6235_cgraph.png" border="0" usemap="#aclasshttp_1_1Response_a7df178d1590622ac14b509e43d3d6235_cgraph" alt=""/></div>
-<map name="aclasshttp_1_1Response_a7df178d1590622ac14b509e43d3d6235_cgraph" id="aclasshttp_1_1Response_a7df178d1590622ac14b509e43d3d6235_cgraph">
-<area shape="rect" title=" " alt="" coords="5,55,216,80"/>
-<area shape="rect" href="classhttp_1_1Response.html#af3ce515c1a3145598ce568ae27e681a4" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="264,5,517,31"/>
-<area shape="poly" title=" " alt="" coords="183,52,304,31,305,36,184,57"/>
-<area shape="rect" href="classhttp_1_1Response.html#a7ce94f17523ca26c67126fca5a7a67fb" title=" " alt="" coords="273,55,508,80"/>
-<area shape="poly" title=" " alt="" coords="216,65,260,65,260,70,216,70"/>
-<area shape="rect" href="classhttp_1_1Request.html#aa53cfe5217e6457a2f4b0f81b32939cf" title=" " alt="" coords="299,104,483,129"/>
-<area shape="poly" title=" " alt="" coords="184,77,305,99,304,104,183,83"/>
-<area shape="rect" href="classhttp_1_1Request.html#a5b597eb2a2ab75e361c2e26f81a2a578" title=" " alt="" coords="565,55,788,80"/>
-<area shape="poly" title=" " alt="" coords="508,65,551,65,551,70,508,70"/>
-</map>
-</div>
-
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00051">51</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>{ <a class="code hl_variable" href="classhttp_1_1Response.html#a495a8dd4ccc444a9787b46834937f258">m_headers</a>[key].push_back(value); }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -1704,12 +384,12 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00080">80</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00034">34</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ab605df89bb0a7ac92cae038851286e78" name="ab605df89bb0a7ac92cae038851286e78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab605df89bb0a7ac92cae038851286e78">&#9670;&#160;</a></span>m_builderStatus</h2>
+<a id="aeb1cafeb91aee689123a0b361c0d2e47" name="aeb1cafeb91aee689123a0b361c0d2e47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb1cafeb91aee689123a0b361c0d2e47">&#9670;&#160;</a></span>m_code</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1718,7 +398,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacehttp.html#aba0c98b4a16a22ebfcf0867839c59d1a">ResponseBuilderStatus</a> http::Response::m_builderStatus</td>
+          <td class="memname"><a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a> http::Response::m_code</td>
         </tr>
       </table>
   </td>
@@ -1728,12 +408,12 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00083">83</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00032">32</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
 
 </div>
 </div>
-<a id="abd017118999fa90f30f2c9b61f35878e" name="abd017118999fa90f30f2c9b61f35878e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd017118999fa90f30f2c9b61f35878e">&#9670;&#160;</a></span>m_headerFields</h2>
+<a id="a3bf0bc50fa98445c51ea9c7e1ae7eef4" name="a3bf0bc50fa98445c51ea9c7e1ae7eef4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bf0bc50fa98445c51ea9c7e1ae7eef4">&#9670;&#160;</a></span>m_data</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1742,7 +422,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacehttp.html#a5fc275abcbe27d3c4113fcf5e74b2a09">t_headerFields</a> http::Response::m_headerFields</td>
+          <td class="memname"><a class="el" href="classshared_1_1Buffer.html">shared::Buffer</a>&lt;<a class="el" href="Response_8hpp.html#a3d9d93e9a53461ba2177521472b761c4">RESPONSE_BUFFER_SIZE</a>&gt; http::Response::m_data</td>
         </tr>
       </table>
   </td>
@@ -1752,12 +432,12 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00079">79</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00036">36</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
 
 </div>
 </div>
-<a id="aad02e5ae325387fc0ddacdb30594dccd" name="aad02e5ae325387fc0ddacdb30594dccd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad02e5ae325387fc0ddacdb30594dccd">&#9670;&#160;</a></span>m_pathData</h2>
+<a id="a495a8dd4ccc444a9787b46834937f258" name="a495a8dd4ccc444a9787b46834937f258"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a495a8dd4ccc444a9787b46834937f258">&#9670;&#160;</a></span>m_headers</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1766,7 +446,7 @@ Here is the call graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacehttp.html#a5596bfd6bd3cc3870c674bf38cd4a165">t_PathData</a> http::Response::m_pathData</td>
+          <td class="memname">std::map&lt;std::string, std::vector&lt;std::string&gt; &gt; http::Response::m_headers</td>
         </tr>
       </table>
   </td>
@@ -1776,79 +456,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00081">81</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a22c59b91bdbb0ee6babb3e15018459be" name="a22c59b91bdbb0ee6babb3e15018459be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22c59b91bdbb0ee6babb3e15018459be">&#9670;&#160;</a></span>m_rawResponse</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string http::Response::m_rawResponse</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00077">77</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a175678f595cc5bda76c597afa9f35d2b" name="a175678f595cc5bda76c597afa9f35d2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a175678f595cc5bda76c597afa9f35d2b">&#9670;&#160;</a></span>m_statusCode</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a> http::Response::m_statusCode</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00078">78</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a70416589bb33f498006301c5092228e3" name="a70416589bb33f498006301c5092228e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a70416589bb33f498006301c5092228e3">&#9670;&#160;</a></span>m_type</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacehttp.html#ac6e973c7de76304f6098773e22b209a9">ResponseType</a> http::Response::m_type</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00076">76</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00033">33</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
 
 </div>
 </div>

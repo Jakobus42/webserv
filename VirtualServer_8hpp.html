@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Webserv: /home/runner/work/webserv/webserv/include/http/VirtualServer.hpp File Reference</title>
+<title>Webserv: /home/runner/work/webserv/webserv/include/core/VirtualServer.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,105 +62,82 @@ $(document).ready(function(){initNavTree('VirtualServer_8hpp.html',''); initResi
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle"><div class="title">VirtualServer.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="Parser_8hpp_source.html">config/Parser.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="Connection_8hpp_source.html">http/Connection.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="Socket_8hpp_source.html">http/Socket.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Logger_8hpp_source.html">shared/Logger.hpp</a>&quot;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for VirtualServer.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="VirtualServer_8hpp__incl.png" border="0" usemap="#a_2home_2runner_2work_2webserv_2webserv_2include_2http_2VirtualServer_8hpp" alt=""/></div>
-<map name="a_2home_2runner_2work_2webserv_2webserv_2include_2http_2VirtualServer_8hpp" id="a_2home_2runner_2work_2webserv_2webserv_2include_2http_2VirtualServer_8hpp">
-<area shape="rect" title=" " alt="" coords="457,5,735,45"/>
-<area shape="rect" title=" " alt="" coords="71,387,142,412"/>
-<area shape="poly" title=" " alt="" coords="457,37,313,53,237,64,166,79,103,98,53,121,34,134,20,147,11,162,8,178,8,254,15,291,34,324,58,353,82,376,78,380,54,357,29,327,10,293,3,254,3,178,6,160,15,144,30,129,50,116,101,93,165,74,236,59,312,47,456,32"/>
-<area shape="rect" href="Parser_8hpp.html" title=" " alt="" coords="214,240,346,265"/>
-<area shape="poly" title=" " alt="" coords="495,48,441,67,391,95,358,126,330,162,293,229,288,226,326,159,354,123,388,91,439,62,493,43"/>
-<area shape="rect" title=" " alt="" coords="395,313,458,339"/>
-<area shape="poly" title=" " alt="" coords="583,47,523,129,488,184,457,241,436,300,431,299,452,239,484,181,519,126,579,44"/>
-<area shape="rect" href="Connection_8hpp.html" title=" " alt="" coords="835,93,989,119"/>
-<area shape="poly" title=" " alt="" coords="672,43,853,87,852,93,671,48"/>
-<area shape="rect" title=" " alt="" coords="987,313,1045,339"/>
-<area shape="poly" title=" " alt="" coords="736,30,800,37,868,49,937,67,1002,91,1067,118,1116,145,1138,161,1157,181,1175,207,1193,239,1198,259,1192,276,1178,290,1158,301,1109,316,1060,324,1059,319,1108,311,1156,296,1175,286,1188,273,1193,259,1188,241,1171,209,1153,184,1134,165,1114,149,1064,123,1000,96,935,72,867,55,799,43,735,35"/>
-<area shape="rect" href="Socket_8hpp.html" title=" " alt="" coords="837,240,960,265"/>
-<area shape="poly" title=" " alt="" coords="623,43,874,230,871,234,620,48"/>
-<area shape="poly" title=" " alt="" coords="220,268,174,286,153,299,134,315,118,343,111,373,106,372,113,341,130,312,149,294,172,281,218,263"/>
-<area shape="poly" title=" " alt="" coords="322,237,356,239,368,244,373,253,369,260,361,265,336,269,335,264,359,260,365,257,367,253,364,248,355,244,322,243"/>
-<area shape="rect" href="constants_8hpp.html" title=" " alt="" coords="667,313,810,339"/>
-<area shape="poly" title=" " alt="" coords="347,262,654,309,654,314,346,267"/>
-<area shape="rect" title=" " alt="" coords="507,387,587,412"/>
-<area shape="poly" title=" " alt="" coords="287,264,307,300,322,320,340,337,377,358,417,373,494,390,493,395,416,378,375,362,337,341,318,324,303,303,283,267"/>
-<area shape="rect" title=" " alt="" coords="708,387,759,412"/>
-<area shape="poly" title=" " alt="" coords="292,264,331,300,357,320,385,336,445,354,530,370,694,391,694,397,530,375,444,359,383,341,354,325,327,304,288,267"/>
-<area shape="rect" title=" " alt="" coords="313,387,388,412"/>
-<area shape="poly" title=" " alt="" coords="281,266,281,299,284,319,290,337,305,359,324,376,320,380,301,362,286,340,279,320,276,300,276,266"/>
-<area shape="rect" title=" " alt="" coords="145,313,218,339"/>
-<area shape="poly" title=" " alt="" coords="266,268,210,307,207,303,263,263"/>
-<area shape="poly" title=" " alt="" coords="305,263,392,305,389,310,302,268"/>
-<area shape="poly" title=" " alt="" coords="668,340,655,341,157,396,156,390,654,336,667,334"/>
-<area shape="rect" title=" " alt="" coords="783,387,879,412"/>
-<area shape="poly" title=" " alt="" coords="755,337,807,376,803,380,752,341"/>
-<area shape="rect" title=" " alt="" coords="903,387,1006,412"/>
-<area shape="poly" title=" " alt="" coords="774,336,908,380,906,385,773,341"/>
-<area shape="poly" title=" " alt="" coords="709,341,592,384,590,379,707,336"/>
-<area shape="poly" title=" " alt="" coords="740,339,738,373,733,373,735,339"/>
-<area shape="poly" title=" " alt="" coords="677,341,402,391,401,386,676,336"/>
-<area shape="rect" href="Request_8hpp.html" title=" " alt="" coords="627,167,760,192"/>
-<area shape="poly" title=" " alt="" coords="878,121,743,165,741,160,876,116"/>
-<area shape="rect" href="Response_8hpp.html" title=" " alt="" coords="1035,240,1178,265"/>
-<area shape="poly" title=" " alt="" coords="929,117,1082,229,1078,234,926,121"/>
-<area shape="poly" title=" " alt="" coords="914,119,904,227,898,226,908,119"/>
-<area shape="poly" title=" " alt="" coords="627,187,399,205,284,221,237,231,202,242,172,256,149,269,131,287,114,314,106,344,106,373,100,373,101,343,110,312,127,284,146,265,170,251,200,238,236,226,283,216,398,200,626,181"/>
-<area shape="poly" title=" " alt="" coords="701,191,720,239,736,299,731,301,715,241,696,193"/>
-<area shape="poly" title=" " alt="" coords="713,190,740,210,772,238,802,272,825,312,829,326,825,340,802,367,772,386,770,381,798,363,820,337,824,326,820,314,798,275,768,241,737,214,710,194"/>
-<area shape="poly" title=" " alt="" coords="627,190,555,208,519,222,486,242,458,270,440,302,435,299,454,267,482,238,517,218,554,203,626,185"/>
-<area shape="rect" href="stringUtils_8hpp.html" title=" " alt="" coords="496,240,661,265"/>
-<area shape="poly" title=" " alt="" coords="676,194,610,235,608,230,674,190"/>
-<area shape="rect" title=" " alt="" coords="584,313,643,339"/>
-<area shape="poly" title=" " alt="" coords="695,193,690,227,676,267,660,288,641,307,638,303,656,285,671,264,685,226,690,192"/>
-<area shape="poly" title=" " alt="" coords="761,186,881,206,936,220,974,238,987,251,998,267,1012,299,1007,301,993,270,983,255,970,242,934,225,880,211,760,191"/>
-<area shape="poly" title=" " alt="" coords="570,268,529,305,502,325,472,341,388,370,301,387,221,397,156,400,156,395,220,391,300,382,386,365,470,336,499,320,526,300,566,264"/>
-<area shape="poly" title=" " alt="" coords="605,263,701,305,699,310,603,268"/>
-<area shape="poly" title=" " alt="" coords="579,266,555,374,550,373,573,265"/>
-<area shape="poly" title=" " alt="" coords="555,268,465,310,463,305,553,263"/>
-<area shape="poly" title=" " alt="" coords="587,264,604,300,599,302,582,267"/>
-<area shape="poly" title=" " alt="" coords="649,263,973,315,972,320,649,268"/>
-<area shape="poly" title=" " alt="" coords="1048,268,812,313,811,308,1047,263"/>
-<area shape="poly" title=" " alt="" coords="1106,267,1090,304,1077,324,1059,341,1022,362,988,375,956,381,924,382,856,381,817,383,772,390,772,384,817,378,856,376,924,377,955,376,987,370,1020,358,1056,337,1073,321,1086,301,1101,264"/>
-<area shape="poly" title=" " alt="" coords="1094,267,1043,307,1040,302,1090,263"/>
-<area shape="rect" title=" " alt="" coords="1121,313,1197,339"/>
-<area shape="poly" title=" " alt="" coords="1117,264,1144,301,1140,304,1113,267"/>
-<area shape="poly" title=" " alt="" coords="874,268,778,310,776,305,872,263"/>
-<area shape="poly" title=" " alt="" coords="897,267,869,340,848,376,844,374,864,338,892,265"/>
-<area shape="poly" title=" " alt="" coords="906,265,948,373,943,375,901,267"/>
-<area shape="poly" title=" " alt="" coords="919,263,986,304,984,308,916,268"/>
+<div class="center"><img src="VirtualServer_8hpp__incl.png" border="0" usemap="#a_2home_2runner_2work_2webserv_2webserv_2include_2core_2VirtualServer_8hpp" alt=""/></div>
+<map name="a_2home_2runner_2work_2webserv_2webserv_2include_2core_2VirtualServer_8hpp" id="a_2home_2runner_2work_2webserv_2webserv_2include_2core_2VirtualServer_8hpp">
+<area shape="rect" title=" " alt="" coords="318,5,598,45"/>
+<area shape="rect" title=" " alt="" coords="5,240,76,265"/>
+<area shape="poly" title=" " alt="" coords="377,48,316,67,247,92,178,126,114,169,83,199,59,230,54,227,79,196,111,165,175,122,245,88,314,61,376,43"/>
+<area shape="rect" href="Parser_8hpp.html" title=" " alt="" coords="264,93,396,119"/>
+<area shape="poly" title=" " alt="" coords="428,48,362,88,359,84,426,43"/>
+<area shape="rect" title=" " alt="" coords="427,167,489,192"/>
+<area shape="poly" title=" " alt="" coords="461,46,461,153,455,153,455,46"/>
+<area shape="rect" href="Logger_8hpp.html" title=" " alt="" coords="495,93,637,119"/>
+<area shape="poly" title=" " alt="" coords="486,43,540,83,537,87,483,48"/>
+<area shape="rect" title=" " alt="" coords="661,93,719,119"/>
+<area shape="poly" title=" " alt="" coords="514,43,648,88,647,93,513,48"/>
+<area shape="poly" title=" " alt="" coords="287,121,225,141,159,169,108,201,66,233,63,229,105,196,157,164,223,136,285,116"/>
+<area shape="poly" title=" " alt="" coords="372,91,406,92,418,97,423,106,419,114,411,119,386,122,385,117,409,114,415,110,417,106,414,101,405,97,372,96"/>
+<area shape="rect" href="http_8hpp.html" title=" " alt="" coords="194,167,301,192"/>
+<area shape="poly" title=" " alt="" coords="318,121,273,160,270,155,315,117"/>
+<area shape="rect" title=" " alt="" coords="447,240,527,265"/>
+<area shape="poly" title=" " alt="" coords="335,118,348,153,358,173,372,190,404,215,439,232,436,237,401,219,368,194,354,176,343,155,330,120"/>
+<area shape="rect" title=" " alt="" coords="551,240,602,265"/>
+<area shape="poly" title=" " alt="" coords="341,117,371,153,415,190,469,213,539,237,537,242,467,218,413,194,368,156,337,121"/>
+<area shape="rect" title=" " alt="" coords="101,240,175,265"/>
+<area shape="poly" title=" " alt="" coords="278,121,229,139,205,152,184,169,162,197,148,228,143,226,157,195,180,165,202,148,227,135,276,116"/>
+<area shape="rect" title=" " alt="" coords="513,167,587,192"/>
+<area shape="poly" title=" " alt="" coords="366,116,502,160,501,165,365,121"/>
+<area shape="poly" title=" " alt="" coords="352,116,426,157,424,162,349,121"/>
+<area shape="poly" title=" " alt="" coords="215,195,88,238,86,233,213,189"/>
+<area shape="rect" title=" " alt="" coords="199,240,295,265"/>
+<area shape="poly" title=" " alt="" coords="250,192,250,226,245,226,245,192"/>
+<area shape="rect" title=" " alt="" coords="320,240,423,265"/>
+<area shape="poly" title=" " alt="" coords="269,190,341,231,338,235,266,194"/>
+<area shape="poly" title=" " alt="" coords="287,189,436,233,434,239,285,195"/>
+<area shape="poly" title=" " alt="" coords="301,187,407,208,538,237,537,242,406,213,300,193"/>
+<area shape="poly" title=" " alt="" coords="231,194,169,235,166,230,228,190"/>
+<area shape="poly" title=" " alt="" coords="566,120,558,154,553,153,561,118"/>
+<area shape="rect" href="NonCopyable_8hpp.html" title=" " alt="" coords="611,167,796,192"/>
+<area shape="poly" title=" " alt="" coords="589,116,670,158,668,163,587,121"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="VirtualServer_8hpp__dep__incl.png" border="0" usemap="#a_2home_2runner_2work_2webserv_2webserv_2include_2http_2VirtualServer_8hppdep" alt=""/></div>
-<map name="a_2home_2runner_2work_2webserv_2webserv_2include_2http_2VirtualServer_8hppdep" id="a_2home_2runner_2work_2webserv_2webserv_2include_2http_2VirtualServer_8hppdep">
-<area shape="rect" title=" " alt="" coords="191,5,470,45"/>
-<area shape="rect" href="Reactor_8hpp.html" title=" " alt="" coords="93,93,339,133"/>
-<area shape="poly" title=" " alt="" coords="296,56,243,95,240,91,293,52"/>
-<area shape="rect" href="Reactor_8cpp.html" title=" " alt="" coords="5,181,136,207"/>
-<area shape="poly" title=" " alt="" coords="199,51,128,70,101,82,83,95,72,116,68,139,71,181,65,181,63,139,67,114,79,92,98,78,126,65,197,46"/>
-<area shape="rect" href="EventHandler_8cpp.html" title=" " alt="" coords="363,101,531,126"/>
-<area shape="poly" title=" " alt="" coords="369,52,433,98,429,103,366,56"/>
-<area shape="rect" href="VirtualServer_8cpp.html" title=" " alt="" coords="555,101,717,126"/>
-<area shape="poly" title=" " alt="" coords="411,46,596,98,595,103,410,52"/>
-<area shape="poly" title=" " alt="" coords="171,142,93,183,91,179,168,137"/>
-<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="175,181,257,207"/>
-<area shape="poly" title=" " alt="" coords="219,147,219,181,213,181,213,147"/>
+<div class="center"><img src="VirtualServer_8hpp__dep__incl.png" border="0" usemap="#a_2home_2runner_2work_2webserv_2webserv_2include_2core_2VirtualServer_8hppdep" alt=""/></div>
+<map name="a_2home_2runner_2work_2webserv_2webserv_2include_2core_2VirtualServer_8hppdep" id="a_2home_2runner_2work_2webserv_2webserv_2include_2core_2VirtualServer_8hppdep">
+<area shape="rect" title=" " alt="" coords="478,5,758,45"/>
+<area shape="rect" href="AcceptHandler_8hpp.html" title=" " alt="" coords="290,93,581,133"/>
+<area shape="poly" title=" " alt="" coords="567,54,476,96,474,91,564,49"/>
+<area shape="rect" href="Reactor_8cpp.html" title=" " alt="" coords="553,181,683,207"/>
+<area shape="poly" title=" " alt="" coords="621,59,621,181,615,181,615,59"/>
+<area shape="rect" href="IOHandler_8hpp.html" title=" " alt="" coords="5,93,265,133"/>
+<area shape="poly" title=" " alt="" coords="499,50,241,96,241,91,498,45"/>
+<area shape="rect" href="Reactor_8hpp.html" title=" " alt="" coords="655,93,901,133"/>
+<area shape="poly" title=" " alt="" coords="666,49,744,91,742,96,664,54"/>
+<area shape="rect" href="VirtualServer_8cpp.html" title=" " alt="" coords="925,101,1090,126"/>
+<area shape="poly" title=" " alt="" coords="717,46,956,98,955,103,716,51"/>
+<area shape="rect" href="AcceptHandler_8cpp.html" title=" " alt="" coords="291,181,465,207"/>
+<area shape="poly" title=" " alt="" coords="415,146,389,183,384,179,411,143"/>
+<area shape="poly" title=" " alt="" coords="492,136,592,179,590,184,490,141"/>
+<area shape="poly" title=" " alt="" coords="207,135,343,179,342,184,206,140"/>
+<area shape="rect" href="IOHandler_8cpp.html" title=" " alt="" coords="63,181,208,207"/>
+<area shape="poly" title=" " alt="" coords="138,147,138,181,133,181,133,147"/>
+<area shape="poly" title=" " alt="" coords="729,142,643,184,640,179,726,137"/>
+<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="737,181,819,207"/>
+<area shape="poly" title=" " alt="" coords="781,147,781,181,775,181,775,147"/>
 </map>
 </div>
 </div>
@@ -176,58 +153,13 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacehttp" id="r_namespacehttp"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html">http</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:aae4d4761b231a4321c08bd4bd18937e0" id="r_aae4d4761b231a4321c08bd4bd18937e0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VirtualServer_8hpp.html#aae4d4761b231a4321c08bd4bd18937e0">ONE_MEGABYTE</a>&#160;&#160;&#160;1048576UL</td></tr>
-<tr class="separator:aae4d4761b231a4321c08bd4bd18937e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a053b7859476cc9867ec62c49e68d3fa1" id="r_a053b7859476cc9867ec62c49e68d3fa1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="VirtualServer_8hpp.html#a053b7859476cc9867ec62c49e68d3fa1">MAX_CONNECTIONS</a>&#160;&#160;&#160;500</td></tr>
-<tr class="separator:a053b7859476cc9867ec62c49e68d3fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:aa3bcd24ae02414378f7cd9a8aafc784f" id="r_aa3bcd24ae02414378f7cd9a8aafc784f"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="classhttp_1_1Connection.html">Connection</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#aa3bcd24ae02414378f7cd9a8aafc784f">http::t_connections</a></td></tr>
-<tr class="separator:aa3bcd24ae02414378f7cd9a8aafc784f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a053b7859476cc9867ec62c49e68d3fa1" name="a053b7859476cc9867ec62c49e68d3fa1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a053b7859476cc9867ec62c49e68d3fa1">&#9670;&#160;</a></span>MAX_CONNECTIONS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_CONNECTIONS&#160;&#160;&#160;500</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8hpp_source.html#l00013">13</a> of file <a class="el" href="VirtualServer_8hpp_source.html">VirtualServer.hpp</a>.</p>
-
-</div>
-</div>
-<a id="aae4d4761b231a4321c08bd4bd18937e0" name="aae4d4761b231a4321c08bd4bd18937e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae4d4761b231a4321c08bd4bd18937e0">&#9670;&#160;</a></span>ONE_MEGABYTE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ONE_MEGABYTE&#160;&#160;&#160;1048576UL</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8hpp_source.html#l00012">12</a> of file <a class="el" href="VirtualServer_8hpp_source.html">VirtualServer.hpp</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_c0632c2c4769486d54d1bae76e6a432e.html">http</a></li><li class="navelem"><a class="el" href="VirtualServer_8hpp.html">VirtualServer.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_3d69f64eaf81436fe2b22361382717e5.html">core</a></li><li class="navelem"><a class="el" href="VirtualServer_8hpp.html">VirtualServer.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

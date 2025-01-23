@@ -62,56 +62,37 @@ $(document).ready(function(){initNavTree('Request_8hpp.html',''); initResizable(
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a>  </div>
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle"><div class="title">Request.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="constants_8hpp_source.html">http/constants.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="stringUtils_8hpp_source.html">shared/stringUtils.hpp</a>&quot;</code><br />
-<code>#include &lt;limits&gt;</code><br />
-<code>#include &lt;map&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="http_8hpp_source.html">http/http.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="NonCopyable_8hpp_source.html">shared/NonCopyable.hpp</a>&quot;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Request.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="Request_8hpp__incl.png" border="0" usemap="#a_2home_2runner_2work_2webserv_2webserv_2include_2http_2Request_8hpp" alt=""/></div>
 <map name="a_2home_2runner_2work_2webserv_2webserv_2include_2http_2Request_8hpp" id="a_2home_2runner_2work_2webserv_2webserv_2include_2http_2Request_8hpp">
-<area shape="rect" title=" " alt="" coords="372,5,619,45"/>
-<area shape="rect" title=" " alt="" coords="5,240,76,265"/>
-<area shape="poly" title=" " alt="" coords="410,48,345,67,272,92,198,126,129,169,92,200,62,232,58,228,88,196,126,165,195,122,270,88,343,61,409,43"/>
-<area shape="rect" href="constants_8hpp.html" title=" " alt="" coords="192,167,335,192"/>
-<area shape="poly" title=" " alt="" coords="373,44,324,64,302,78,283,95,274,108,269,123,265,153,259,152,264,121,269,106,279,92,299,73,321,59,371,39"/>
-<area shape="rect" title=" " alt="" coords="601,240,651,265"/>
-<area shape="poly" title=" " alt="" coords="532,43,563,64,598,92,630,126,654,166,657,182,656,199,644,229,639,227,651,198,652,182,649,168,626,129,594,96,560,68,529,48"/>
-<area shape="rect" href="stringUtils_8hpp.html" title=" " alt="" coords="293,93,458,119"/>
-<area shape="poly" title=" " alt="" coords="468,48,406,88,403,84,465,43"/>
-<area shape="rect" title=" " alt="" coords="410,167,469,192"/>
-<area shape="poly" title=" " alt="" coords="494,46,472,120,455,156,450,154,468,118,489,45"/>
-<area shape="rect" title=" " alt="" coords="493,167,551,192"/>
-<area shape="poly" title=" " alt="" coords="504,45,517,93,523,152,518,153,511,94,499,46"/>
-<area shape="rect" title=" " alt="" coords="576,167,639,192"/>
-<area shape="poly" title=" " alt="" coords="512,44,593,154,588,157,507,47"/>
-<area shape="poly" title=" " alt="" coords="228,195,90,238,88,233,227,189"/>
-<area shape="rect" title=" " alt="" coords="101,240,197,265"/>
-<area shape="poly" title=" " alt="" coords="246,194,180,235,178,230,244,190"/>
-<area shape="rect" title=" " alt="" coords="221,240,324,265"/>
-<area shape="poly" title=" " alt="" coords="268,192,272,226,267,227,262,193"/>
-<area shape="rect" title=" " alt="" coords="447,240,527,265"/>
-<area shape="poly" title=" " alt="" coords="300,189,439,233,437,238,299,195"/>
-<area shape="poly" title=" " alt="" coords="322,189,588,241,587,246,321,195"/>
-<area shape="rect" title=" " alt="" coords="349,240,423,265"/>
-<area shape="poly" title=" " alt="" coords="284,190,356,231,353,235,282,194"/>
-<area shape="poly" title=" " alt="" coords="326,121,256,141,180,169,120,201,69,234,66,230,117,197,178,164,254,136,325,116"/>
-<area shape="poly" title=" " alt="" coords="359,121,295,161,292,157,356,116"/>
-<area shape="poly" title=" " alt="" coords="379,118,384,153,390,172,400,190,423,214,450,231,447,236,420,218,396,194,385,175,379,154,373,119"/>
-<area shape="poly" title=" " alt="" coords="388,117,422,155,418,158,384,121"/>
-<area shape="poly" title=" " alt="" coords="400,116,487,158,485,163,398,121"/>
-<area shape="poly" title=" " alt="" coords="413,116,564,162,562,167,412,121"/>
+<area shape="rect" title=" " alt="" coords="377,5,623,45"/>
+<area shape="rect" href="http_8hpp.html" title=" " alt="" coords="276,93,383,119"/>
+<area shape="poly" title=" " alt="" coords="460,48,368,90,366,85,458,43"/>
+<area shape="rect" href="NonCopyable_8hpp.html" title=" " alt="" coords="407,93,593,119"/>
+<area shape="poly" title=" " alt="" coords="503,46,503,79,497,79,497,46"/>
+<area shape="rect" title=" " alt="" coords="617,93,679,119"/>
+<area shape="poly" title=" " alt="" coords="537,43,615,84,613,89,534,48"/>
+<area shape="rect" title=" " alt="" coords="5,167,101,192"/>
+<area shape="poly" title=" " alt="" coords="286,121,112,166,111,161,284,116"/>
+<area shape="rect" title=" " alt="" coords="126,167,197,192"/>
+<area shape="poly" title=" " alt="" coords="303,121,202,164,200,159,301,116"/>
+<area shape="rect" title=" " alt="" coords="221,167,323,192"/>
+<area shape="poly" title=" " alt="" coords="322,121,292,158,288,154,318,117"/>
+<area shape="rect" title=" " alt="" coords="348,167,428,192"/>
+<area shape="poly" title=" " alt="" coords="341,117,372,155,368,158,337,121"/>
+<area shape="rect" title=" " alt="" coords="452,167,503,192"/>
+<area shape="poly" title=" " alt="" coords="354,116,442,158,440,163,352,121"/>
+<area shape="rect" title=" " alt="" coords="527,167,601,192"/>
+<area shape="poly" title=" " alt="" coords="368,116,514,160,513,165,366,121"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -119,36 +100,42 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="Request_8hpp__dep__incl.png" border="0" usemap="#a_2home_2runner_2work_2webserv_2webserv_2include_2http_2Request_8hppdep" alt=""/></div>
 <map name="a_2home_2runner_2work_2webserv_2webserv_2include_2http_2Request_8hppdep" id="a_2home_2runner_2work_2webserv_2webserv_2include_2http_2Request_8hppdep">
-<area shape="rect" title=" " alt="" coords="333,5,579,45"/>
-<area shape="rect" href="EventHandler_8hpp.html" title=" " alt="" coords="24,181,307,221"/>
-<area shape="poly" title=" " alt="" coords="320,39,256,59,226,75,201,95,186,115,176,138,168,181,163,180,171,136,181,112,197,91,224,70,254,54,318,34"/>
-<area shape="rect" href="EventHandler_8cpp.html" title=" " alt="" coords="29,277,197,302"/>
-<area shape="poly" title=" " alt="" coords="320,33,236,47,192,58,150,73,109,93,73,117,40,147,14,183,8,201,14,220,28,238,45,253,83,274,80,279,42,257,24,242,10,223,3,201,10,180,36,144,69,113,107,88,148,68,191,53,234,41,319,28"/>
-<area shape="rect" href="Connection_8hpp.html" title=" " alt="" coords="211,93,477,133"/>
-<area shape="poly" title=" " alt="" coords="422,56,370,95,367,91,418,52"/>
-<area shape="rect" href="Request_8cpp.html" title=" " alt="" coords="502,101,634,126"/>
-<area shape="poly" title=" " alt="" coords="493,52,554,98,551,102,490,56"/>
-<area shape="rect" href="RequestParser_8cpp.html" title=" " alt="" coords="659,101,829,126"/>
-<area shape="poly" title=" " alt="" coords="533,47,706,98,705,103,531,52"/>
-<area shape="rect" href="Response_8cpp.html" title=" " alt="" coords="854,101,997,126"/>
-<area shape="poly" title=" " alt="" coords="586,45,842,91,877,98,876,103,841,96,585,50"/>
-<area shape="rect" href="Reactor_8hpp.html" title=" " alt="" coords="221,269,467,309"/>
-<area shape="poly" title=" " alt="" coords="218,225,306,267,304,272,216,230"/>
-<area shape="poly" title=" " alt="" coords="149,235,123,278,118,275,144,232"/>
-<area shape="rect" href="Reactor_8cpp.html" title=" " alt="" coords="517,357,648,383"/>
-<area shape="poly" title=" " alt="" coords="415,311,549,355,547,360,413,316"/>
-<area shape="rect" href="main_8cpp.html" title=" " alt="" coords="303,357,385,383"/>
-<area shape="poly" title=" " alt="" coords="347,323,347,357,341,357,341,323"/>
-<area shape="poly" title=" " alt="" coords="347,147,340,186,333,206,320,223,295,240,256,255,168,279,167,274,255,250,293,235,317,219,328,203,335,185,342,146"/>
-<area shape="rect" href="VirtualServer_8hpp.html" title=" " alt="" coords="382,181,661,221"/>
-<area shape="poly" title=" " alt="" coords="396,137,484,179,481,184,394,142"/>
-<area shape="rect" href="Connection_8cpp.html" title=" " alt="" coords="685,189,837,214"/>
-<area shape="poly" title=" " alt="" coords="452,133,674,179,708,186,707,191,673,184,451,139"/>
-<area shape="poly" title=" " alt="" coords="471,230,384,272,382,267,469,225"/>
-<area shape="poly" title=" " alt="" coords="615,225,644,243,668,268,675,289,668,311,657,327,642,340,611,360,609,355,639,336,652,323,663,308,669,289,663,271,641,247,612,229"/>
-<area shape="poly" title=" " alt="" coords="419,227,168,279,167,274,418,222"/>
-<area shape="rect" href="VirtualServer_8cpp.html" title=" " alt="" coords="491,277,653,302"/>
-<area shape="poly" title=" " alt="" coords="542,232,567,275,563,278,537,235"/>
+<area shape="rect" title=" " alt="" coords="1031,5,1277,45"/>
+<area shape="rect" href="ARequestHandler_8hpp.html" title=" " alt="" coords="629,93,857,148"/>
+<area shape="poly" title=" " alt="" coords="1058,51,858,96,857,91,1057,46"/>
+<area shape="rect" href="RequestParser_8hpp.html" title=" " alt="" coords="1011,101,1297,141"/>
+<area shape="poly" title=" " alt="" coords="1157,59,1157,101,1151,101,1151,59"/>
+<area shape="rect" href="Request_8cpp.html" title=" " alt="" coords="1321,108,1453,133"/>
+<area shape="poly" title=" " alt="" coords="1215,48,1360,105,1358,110,1213,53"/>
+<area shape="rect" href="DeleteHandler_8hpp.html" title=" " alt="" coords="5,196,292,236"/>
+<area shape="poly" title=" " alt="" coords="616,145,269,199,268,193,615,139"/>
+<area shape="rect" href="GetHandler_8hpp.html" title=" " alt="" coords="317,196,583,236"/>
+<area shape="poly" title=" " alt="" coords="648,155,510,199,508,193,647,150"/>
+<area shape="rect" href="PostHandler_8hpp.html" title=" " alt="" coords="607,196,879,236"/>
+<area shape="poly" title=" " alt="" coords="746,162,746,196,741,196,741,162"/>
+<area shape="rect" href="RequestProccesor_8hpp.html" title=" " alt="" coords="903,196,1213,236"/>
+<area shape="poly" title=" " alt="" coords="846,149,995,193,994,199,844,154"/>
+<area shape="rect" href="DeleteHandler_8cpp.html" title=" " alt="" coords="63,291,235,317"/>
+<area shape="poly" title=" " alt="" coords="151,250,151,291,146,291,146,250"/>
+<area shape="rect" href="RequestProccesor_8cpp.html" title=" " alt="" coords="486,291,681,317"/>
+<area shape="poly" title=" " alt="" coords="258,236,526,289,525,294,257,241"/>
+<area shape="poly" title=" " alt="" coords="492,241,567,289,564,293,489,246"/>
+<area shape="rect" href="GetHandler_8cpp.html" title=" " alt="" coords="310,291,462,317"/>
+<area shape="poly" title=" " alt="" coords="430,249,397,292,393,289,425,246"/>
+<area shape="poly" title=" " alt="" coords="697,245,606,294,603,289,695,240"/>
+<area shape="rect" href="PostHandler_8cpp.html" title=" " alt="" coords="705,291,862,317"/>
+<area shape="poly" title=" " alt="" coords="760,247,780,290,775,292,756,250"/>
+<area shape="poly" title=" " alt="" coords="941,241,647,294,646,289,940,236"/>
+<area shape="rect" href="IOHandler_8hpp.html" title=" " alt="" coords="1024,284,1284,324"/>
+<area shape="poly" title=" " alt="" coords="1091,243,1135,282,1131,286,1088,247"/>
+<area shape="rect" href="AcceptHandler_8cpp.html" title=" " alt="" coords="975,372,1149,397"/>
+<area shape="poly" title=" " alt="" coords="1123,335,1078,374,1074,370,1120,331"/>
+<area shape="rect" href="IOHandler_8cpp.html" title=" " alt="" coords="1173,372,1319,397"/>
+<area shape="poly" title=" " alt="" coords="1188,331,1234,370,1230,374,1185,335"/>
+<area shape="poly" title=" " alt="" coords="1127,152,1079,198,1076,194,1123,148"/>
+<area shape="poly" title=" " alt="" coords="1192,148,1212,169,1227,195,1232,216,1227,237,1209,265,1185,286,1182,282,1205,261,1222,235,1227,216,1222,197,1208,172,1188,151"/>
+<area shape="rect" href="RequestParser_8cpp.html" title=" " alt="" coords="1287,203,1458,229"/>
+<area shape="poly" title=" " alt="" coords="1212,144,1347,201,1345,206,1210,148"/>
 </map>
 </div>
 </div>
@@ -156,10 +143,6 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhttp_1_1s__chunkedExtension.html">http::s_chunkedExtension</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhttp_1_1s__requestData.html">http::s_requestData</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html">http::Request</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">...  <a href="classhttp_1_1Request.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,68 +151,7 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacehttp" id="r_namespacehttp"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html">http</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a6b20d41d6252e9871430c242cb1a56e7" id="r_a6b20d41d6252e9871430c242cb1a56e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Request_8hpp.html#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>&#160;&#160;&#160;256</td></tr>
-<tr class="separator:a6b20d41d6252e9871430c242cb1a56e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ab91509e22727b7e79820333b56687bcc" id="r_ab91509e22727b7e79820333b56687bcc"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structhttp_1_1s__chunkedExtension.html">http::s_chunkedExtension</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#ab91509e22727b7e79820333b56687bcc">http::t_chunkedExtension</a></td></tr>
-<tr class="separator:ab91509e22727b7e79820333b56687bcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89e20f6091e8cac88b2d785d9bc5f3d7" id="r_a89e20f6091e8cac88b2d785d9bc5f3d7"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="namespacehttp.html#ab91509e22727b7e79820333b56687bcc">t_chunkedExtension</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a89e20f6091e8cac88b2d785d9bc5f3d7">http::t_chunkedExtensions</a></td></tr>
-<tr class="separator:a89e20f6091e8cac88b2d785d9bc5f3d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36ec3553e3d17696212354d3b4010c4c" id="r_a36ec3553e3d17696212354d3b4010c4c"><td class="memItemLeft" align="right" valign="top">typedef std::pair&lt; std::string, std::vector&lt; std::string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a36ec3553e3d17696212354d3b4010c4c">http::t_header</a></td></tr>
-<tr class="separator:a36ec3553e3d17696212354d3b4010c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a344224153c4286273f922e54b792a50d" id="r_a344224153c4286273f922e54b792a50d"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structhttp_1_1s__requestData.html">http::s_requestData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a344224153c4286273f922e54b792a50d">http::t_requestData</a></td></tr>
-<tr class="separator:a344224153c4286273f922e54b792a50d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a65130a0278ed6baadd18c1f3594ccdb8" id="r_a65130a0278ed6baadd18c1f3594ccdb8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8">http::QuoteFlag</a> { <a class="el" href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8ab3b96bab0d8747049e4366de54c43db2">http::NO_QUOTE</a> = 0
-, <a class="el" href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8aecf6d91bbe6ec97eae702c654674fc5e">http::SINGLE_QUOTE</a> = 1
-, <a class="el" href="namespacehttp.html#a65130a0278ed6baadd18c1f3594ccdb8a54ca709140c11cb88c8c22ab0f925387">http::DOUBLE_QUOTE</a> = 2
- }</td></tr>
-<tr class="separator:a65130a0278ed6baadd18c1f3594ccdb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa30eeff7ce0e852dffe3ef46a55406f1" id="r_aa30eeff7ce0e852dffe3ef46a55406f1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1">http::ExpectedBody</a> { <a class="el" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a8eaf4a1b7a6cf303cfbdae8b0a8b32eb">http::NO_BODY</a> = 0
-, <a class="el" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a68569ee38513d8278c9a268641b6cfe5">http::CHUNKED</a> = 1
-, <a class="el" href="namespacehttp.html#aa30eeff7ce0e852dffe3ef46a55406f1a9c21a9fbb3e0b3b4602276b6ad85b7f3">http::CONTENT_LENGTH</a> = 2
- }</td></tr>
-<tr class="separator:aa30eeff7ce0e852dffe3ef46a55406f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55613d0fcbf92587a5c39431cc8fa437" id="r_a55613d0fcbf92587a5c39431cc8fa437"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437">http::ChunkedStatus</a> { <a class="el" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90506111c026d65b8775053ced1ca7a2">http::CHUNK_SIZE</a> = 0
-, <a class="el" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a4524451e5b885e5f0ba84ab20483b115">http::CHUNK_DATA</a> = 1
-, <a class="el" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a972da3acf199745ed9169a7d0728b0e8">http::CHUNK_DATA_END</a> = 2
-, <a class="el" href="namespacehttp.html#a55613d0fcbf92587a5c39431cc8fa437a90b8fb0cbdb7c2e0ec8f5e1c1d357895">http::CHUNK_END</a> = 3
- }</td></tr>
-<tr class="separator:a55613d0fcbf92587a5c39431cc8fa437"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c72fd539e7c768e0800949cda8716a6" id="r_a1c72fd539e7c768e0800949cda8716a6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a1c72fd539e7c768e0800949cda8716a6">http::HeaderType</a> { <a class="el" href="namespacehttp.html#a1c72fd539e7c768e0800949cda8716a6ac63def395b20ae89ed55534b0f7caf82">http::HEADER</a> = 0
-, <a class="el" href="namespacehttp.html#a1c72fd539e7c768e0800949cda8716a6adbbb0d56581c84173dc952aefb568471">http::TRAILING</a> = 1
- }</td></tr>
-<tr class="separator:a1c72fd539e7c768e0800949cda8716a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0325991cc9f3cebcf9ec0f3806355ebd" id="r_a0325991cc9f3cebcf9ec0f3806355ebd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebd">http::GetLineStatus</a> { <a class="el" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda2d2a69026169f0582bad6016bf779e7a">http::GET_LINE_OK</a> = 0
-, <a class="el" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebdad7f6e0544cd2c2347a7e973f6c73dec2">http::GET_LINE_END</a> = 1
-, <a class="el" href="namespacehttp.html#a0325991cc9f3cebcf9ec0f3806355ebda7df9bcb858d1de24281eb6d9d7415267">http::GET_LINE_ERROR</a> = 2
- }</td></tr>
-<tr class="separator:a0325991cc9f3cebcf9ec0f3806355ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a6b20d41d6252e9871430c242cb1a56e7" name="a6b20d41d6252e9871430c242cb1a56e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b20d41d6252e9871430c242cb1a56e7">&#9670;&#160;</a></span>BUFFER_SIZE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define BUFFER_SIZE&#160;&#160;&#160;256</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00013">13</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
