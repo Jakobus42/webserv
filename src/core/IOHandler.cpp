@@ -1,5 +1,9 @@
 #include "core/IOHandler.hpp"
 
+#include <sys/socket.h>
+
+#include "shared/stringUtils.hpp"
+
 namespace core {
 
 	/**
@@ -37,10 +41,50 @@ namespace core {
 		}
 	}
 
-	void IOHandler::handleRead(int32_t) {
+	void IOHandler::handleRead(int32_t fd) {
+		shared::Buffer<REQUEST_BUFFER_SIZE> buff = m_reqParser.getWriteBuffer();
+		buff.prepareWrite();
+
+		ssize_t bytesRead = recv(fd, buff.getWritePos(), buff.availableSpace(), 0);
+		if (bytesRead == -1) {
+			if (errno == EAGAIN || errno == EWOULDBLOCK) {
+				return;
+			}
+			throw std::runtime_error("recv() failed");
+		}
+		buff.advanceWriter(bytesRead);
+
+		m_reqParser.process();
+		if (m_reqParser.isComplete() || m_reqParser.hasError()) {
+			const http::Request& req = m_reqParser.getRequest();
+			m_keepAlive = req.keepAlive();
+
+			http::Response* res = m_reqProccesor.process(m_reqParser.getRequest());
+			m_responses.push_back(res);
+			m_reqParser.reset();
+		}
 	}
 
-	void IOHandler::handleWrite(int32_t) {
+	void IOHandler::handleWrite(int32_t fd) {
+		shared::Buffer<RESPONSE_BUFFER_SIZE> buff = m_responses.front()->getData();
+
+		ssize_t bytesSent = send(fd, buff.getReadPos(), buff.size(), 0);
+		if (bytesSent == -1) {
+			if (errno == EAGAIN || errno == EWOULDBLOCK) {
+				return;
+			}
+			throw std::runtime_error("send() failed");
+		}
+
+		buff.consume(bytesSent);
+		if (buff.size() == 0) {
+			delete m_responses.front();
+			m_responses.pop_front();
+			if (m_keepAlive == false) {
+				m_vServer.dropClient(fd);
+				this->markDone();
+			}
+		}
 	}
 
 } /* namespace core */

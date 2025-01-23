@@ -3,6 +3,9 @@
 #include "core/AHandler.hpp"
 #include "core/Dispatcher.hpp"
 #include "core/VirtualServer.hpp"
+#include "http/RequestParser.hpp"
+#include "http/RequestProccesor.hpp"
+#include "http/Response.hpp"
 
 // todo: maybe have dispatcher as member to handle stay alive etc.
 namespace core {
@@ -24,6 +27,12 @@ namespace core {
 
 		private:
 			http::VirtualServer& m_vServer;
+
+			http::RequestParser m_reqParser;
+			http::RequestProccesor m_reqProccesor;
+
+			std::deque<http::Response*> m_responses;
+			bool m_keepAlive;
 	};
 
 } /* namespace core */

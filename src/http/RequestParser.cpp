@@ -8,13 +8,11 @@ namespace http {
 	const char RequestParser::WHITESPACE[] = " \t";
 
 	RequestParser::RequestParser()
-		: m_req(new Request())
+		: m_req()
 		, m_state(START) {
 	}
 
-	RequestParser::~RequestParser() {
-		delete m_req;
-	}
+	RequestParser::~RequestParser() {}
 
 	void RequestParser::process() {
 		this->clearPendingState();
@@ -22,9 +20,11 @@ namespace http {
 		try {
 			this->parse();
 		} catch (const http::exception& e) {
-			throw e;
+			m_req.setStatusCode(e.getCode());
+			this->setState(ERROR);
 		} catch (const std::exception& e) {
-			throw http::exception(INTERNAL_SERVER_ERROR, e.what());
+			m_req.setStatusCode(INTERNAL_SERVER_ERROR);
+			this->setState(ERROR);
 		}
 	}
 
@@ -49,18 +49,18 @@ namespace http {
 		}
 
 		std::size_t size = std::strcspn(line, WHITESPACE);
-		m_req->setMethod(line, size);
+		m_req.setMethod(line, size);
 		line += size + 1;
 
 		size = std::strcspn(line, WHITESPACE);
 		if (size > MAX_URI_LENGTH) {
 			throw http::exception(URI_TOO_LONG, "URI too large");
 		}
-		m_req->setUri(line, size);
+		m_req.setUri(line, size);
 		line += size + 1;
 
 		size = std::strcspn(line, WHITESPACE);
-		m_req->setVersion(line, size);
+		m_req.setVersion(line, size);
 		line += size;
 
 		if (*line) {
@@ -81,17 +81,17 @@ namespace http {
 
 			Token key = this->extractHeaderKey(line);
 			if (!*line) {
-				m_req->setHeader(key.token, key.size, NULL, 0);
+				m_req.setHeader(key.token, key.size, NULL, 0);
 			}
 			std::size_t valCount = 0;
 			while (*line) {
 				Token value = this->extractHeaderValue(line);
-				m_req->setHeader(key.token, key.size, value.token, value.size);
+				m_req.setHeader(key.token, key.size, value.token, value.size);
 				if (++valCount > MAX_HEADER_VALUE_COUNT) {
 					throw http::exception(PAYLOAD_TOO_LARGE, "header value count too large");
 				}
 			}
-			if (m_req->getHeaders().size() > MAX_HEADER_COUNT) {
+			if (m_req.getHeaders().size() > MAX_HEADER_COUNT) {
 				throw http::exception(PAYLOAD_TOO_LARGE, "header count too large");
 			}
 		}
@@ -149,14 +149,14 @@ namespace http {
 	}
 
 	void RequestParser::interpretHeaders() {
-		if (m_req->hasHeader("content-length") && m_req->hasHeader("transfer-encoding")) {
+		if (m_req.hasHeader("content-length") && m_req.hasHeader("transfer-encoding")) {
 			throw http::exception(BAD_REQUEST, "invalid header combination: cant have content-length and transfer-encoding");
 		}
 
-		if (m_req->hasHeader("content-length")) {
+		if (m_req.hasHeader("content-length")) {
 			this->validateContentLength();
 			this->setState(m_contentLength == 0 ? COMPLETE : BODY);
-		} else if (m_req->hasHeader("transfer-encoding")) {
+		} else if (m_req.hasHeader("transfer-encoding")) {
 			this->validateTransferEncoding();
 			this->setState(CHUNK_SIZE);
 		} else {
@@ -172,8 +172,8 @@ namespace http {
 				return;
 			}
 
-			m_req->appendToBody(m_buffer.getReadPos(), available);
-			if (m_req->getBody().size() > MAX_BODY_SIZE) {
+			m_req.appendToBody(m_buffer.getReadPos(), available);
+			if (m_req.getBody().size() > MAX_BODY_SIZE) {
 				throw http::exception(PAYLOAD_TOO_LARGE, "body too large");
 			}
 			m_buffer.consume(available);
@@ -234,7 +234,7 @@ namespace http {
 	}
 
 	void RequestParser::validateContentLength() {
-		const std::vector<std::string>& contentLengthVec = m_req->getHeader("content-length");
+		const std::vector<std::string>& contentLengthVec = m_req.getHeader("content-length");
 		if (contentLengthVec.size() != 1) {
 			throw http::exception(BAD_REQUEST, "malformed content-length: expected exactly one value");
 		}
@@ -250,7 +250,7 @@ namespace http {
 	}
 
 	void RequestParser::validateTransferEncoding() {
-		const std::vector<std::string>& transferEncodingVec = m_req->getHeader("transfer-encoding");
+		const std::vector<std::string>& transferEncodingVec = m_req.getHeader("transfer-encoding");
 		if (transferEncodingVec.size() != 1) {
 			throw http::exception(BAD_REQUEST, "malformed transfer-encoding: expected exactly one value");
 		}
@@ -263,15 +263,11 @@ namespace http {
 
 	void RequestParser::reset() {
 		m_buffer.reset();
-		delete m_req;
-		m_req = new Request();
 		this->setState(START);
 	}
 
-	Request* RequestParser::releaseRequest() {
-		Request* released = m_req;
-		m_req = NULL;
-		return released;
+	const Request& RequestParser::getRequest() {
+		return m_req;
 	}
 
 	bool RequestParser::isComplete() const {
@@ -282,7 +278,11 @@ namespace http {
 		return m_state & PENDING_MASK;
 	}
 
-	shared::Buffer<BUFFER_SIZEE>& RequestParser::getWriteBuffer() {
+	bool RequestParser::hasError() const {
+		return m_state & ERROR;
+	}
+
+	shared::Buffer<REQUEST_BUFFER_SIZE>& RequestParser::getWriteBuffer() {
 		return m_buffer;
 	}
 

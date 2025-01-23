@@ -22,34 +22,6 @@ namespace http {
 	Request::~Request() {
 	}
 
-	/**
-	 * @brief Copy constructor.
-	 * @param other The other Request object to copy.
-	 */
-	Request::Request(const Request& other)
-		: m_method(other.m_method)
-		, m_uri(other.m_uri)
-		, m_version(other.m_version)
-		, m_headers(other.m_headers)
-		, m_body(other.m_body) {
-	}
-
-	/**
-	 * @brief Copy assignment operator.
-	 * @param other The other Request object to assign from.
-	 * @return A reference to the assigned Request object.
-	 */
-	Request& Request::operator=(const Request& rhs) {
-		if (this != &rhs) {
-			m_method = rhs.m_method;
-			m_uri = rhs.m_uri;
-			m_version = rhs.m_version;
-			m_body = rhs.m_body;
-			m_headers = rhs.m_headers;
-		}
-		return *this;
-	}
-
 	std::string Request::toString() const {
 		std::ostringstream oss;
 
@@ -85,9 +57,18 @@ namespace http {
 		return m_headers.find(key) != m_headers.end();
 	}
 
+	bool Request::keepAlive() const { // todo lelelele this is shit
+		if (this->hasHeader("connection") == false) {
+			return false;
+		}
+		return m_headers.at("connection").at(0) == "keep-alive";
+	}
+
 	void Request::appendToBody(const char* data, std::size_t len) {
 		m_body.append(data, len);
 	}
+
+	StatusCode Request::getStatusCode() const { return m_code; }
 
 	Method Request::getMethod() const { return m_method; }
 
@@ -121,6 +102,8 @@ namespace http {
 		this->validateHeader(key, keyLen, value, valueLen);
 		m_headers[std::string(key, keyLen)].push_back(std::string(value, valueLen));
 	}
+
+	void Request::setStatusCode(StatusCode code) { m_code = code; }
 
 	void Request::validateUri(const char* uri, std::size_t len) {
 		if (len == 0 || uri == NULL) {

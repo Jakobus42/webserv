@@ -1,6 +1,7 @@
 #pragma once
 
 #include "http/http.hpp"
+#include "shared/NonCopyable.hpp"
 
 #include <vector>
 
@@ -10,12 +11,10 @@ namespace http {
 	 * @class Request
 	 * @brief ...
 	 */
-	class Request {
+	class Request : shared::NonCopyable {
 		public:
 			Request();
 			~Request();
-			Request(const Request& other);
-			Request& operator=(const Request& rhs);
 
 			std::string toString() const;
 
@@ -25,14 +24,17 @@ namespace http {
 			const std::string& getBody() const;
 			const std::map<std::string, std::vector<std::string> >& getHeaders() const;
 			const std::vector<std::string>& getHeader(const std::string& key) const;
+			StatusCode getStatusCode() const;
 
 			void setMethod(const char* method, std::size_t len);
 			void setUri(const char* uri, std::size_t len);
 			void setVersion(const char* version, std::size_t len);
 			void setBody(const char* body, std::size_t len);
 			void setHeader(const char* key, std::size_t keyLen, const char* value, std::size_t valueLen);
+			void setStatusCode(StatusCode code);
 
 			bool hasHeader(const std::string& key) const;
+			bool keepAlive() const;
 
 			void appendToBody(const char* data, std::size_t len);
 
@@ -49,6 +51,8 @@ namespace http {
 			std::map<std::string, std::vector<std::string> > m_headers;
 
 			std::string m_body;
+
+			http::StatusCode m_code;
 	};
 
 } /* namespace http */

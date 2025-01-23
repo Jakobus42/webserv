@@ -1,37 +1,37 @@
 #pragma once
 
 #include "shared/Buffer.hpp"
+#include "shared/NonCopyable.hpp"
 
 #include <http/Request.hpp>
 
 namespace http {
 
-#define BUFFER_SIZEE 16 * 1024 // 16KB
+#define REQUEST_BUFFER_SIZE 16 * 1024 // 16KB
 
 	/**
 	 * @class RequestParser
 	 * @brief ...
 	 */
-	class RequestParser {
+	class RequestParser : shared::NonCopyable {
 		public:
 			RequestParser();
 			~RequestParser();
 
 			void process();
-			shared::Buffer<BUFFER_SIZEE>& getWriteBuffer();
+			shared::Buffer<REQUEST_BUFFER_SIZE>& getWriteBuffer();
 
 			void reset();
 
 			bool isComplete() const;
+			bool hasError() const;
 			bool isPending() const;
 
-			Request* releaseRequest();
+			const Request& getRequest();
 
 		private:
-			RequestParser(const RequestParser&);
-			RequestParser& operator=(const RequestParser&);
-
 			enum ParseState {
+				ERROR = 0x0,
 				START = 0x01,
 				HEADERS = 0x02,
 				BODY = 0x04,
@@ -83,9 +83,9 @@ namespace http {
 			static const std::size_t MAX_HEADER_VALUE_COUNT = 64;
 			static const std::size_t MAX_HEADER_NAME_LENGTH = 256;
 
-			Request* m_req;
+			Request m_req;
 
-			shared::Buffer<BUFFER_SIZEE> m_buffer;
+			shared::Buffer<REQUEST_BUFFER_SIZE> m_buffer;
 			std::size_t m_contentLength;
 			int m_state;
 	};
