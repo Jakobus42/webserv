@@ -136,15 +136,12 @@ namespace http {
 			return;
 		}
 		config::t_location location;
-		if (Router::findLocation(m_pathData.pure_path, locations, location) == 1) {
+		if (Router::findLocation(m_pathData.pure_path, locations, location, m_type) == 1) {
 			m_statusCode = NOT_FOUND;
 			m_type = ERROR;
 			return;
 		}
-		Router::printLocation(location, 1);
-/* 		if (location.index.back.substr(location.index.find_last_of('.') + 1) == "php") {
-			m_type = CGI;
-		}	 */
+		//Router::printLocation(location, 1);
 	}
 
 	void Response::buildFromRequest(const Request& request) {
