@@ -132,7 +132,7 @@ namespace http {
 			m_clients.erase(it);
 			this->close(&clientSocket);
 		} else {
-			this->log("Client socket " + shared::string::to_string(clientSocket) + " not found in the client map.", shared::WARNING);
+			this->log("Client socket " + this->getClientInfo(clientSocket) + " not found in the client map.", shared::WARNING);
 		}
 	}
 
@@ -146,7 +146,7 @@ namespace http {
 		std::vector<int32_t> toDrop;
 
 		for (std::map<int32_t, time_t>::iterator it = m_clients.begin(); it != m_clients.end(); ++it) {
-			if (now - it->second > CLIENT_TIMEOUT) { // todo macro
+			if (now - it->second > CLIENT_TIMEOUT) {
 				toDrop.push_back(it->first);
 			}
 		}
