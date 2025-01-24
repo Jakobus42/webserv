@@ -49,6 +49,10 @@ namespace core {
 		m_reacting = true;
 		while (m_reacting) {
 			m_dispatcher.dispatch();
+			for (std::vector<http::VirtualServer>::iterator it = m_vServers.begin(); it != m_vServers.end(); ++it) {
+				http::VirtualServer& vServer = *it;
+				vServer.dropIdleClients();
+			}
 		}
 	}
 

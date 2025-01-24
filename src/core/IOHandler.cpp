@@ -21,8 +21,9 @@ namespace core {
 	 * @brief Destroys the IOHandler object.
 	 */
 	IOHandler::~IOHandler() {
-		for (std::deque<http::Response*>::iterator it = m_responses.begin(); it != m_responses.end(); ++it) {
-			delete *it;
+		while (m_responses.size()) {
+			delete m_responses.front();
+			m_responses.pop();
 		}
 	}
 
@@ -32,7 +33,6 @@ namespace core {
 			m_vServer.dropClient(fd);
 			return this->markDone();
 		}
-
 		try {
 			if (events & EPOLLIN) {
 				this->handleRead(fd);
@@ -60,8 +60,11 @@ namespace core {
 			if (m_keepAlive == false) {
 				m_vServer.dropClient(fd);
 				return this->markDone();
-			} // todo maybe counter or handle with timeout
+			} else {
+				return;
+			}
 		}
+		m_vServer.updateClientActivity(fd);
 		buff.advanceWriter(bytesRead);
 
 		m_reqParser.process();
@@ -71,15 +74,17 @@ namespace core {
 
 			http::Response* res = m_reqProccesor.process(m_reqParser.getRequest());
 			res->serialize();
-			m_responses.push_back(res);
+			m_responses.push(res);
 			m_reqParser.reset();
 		}
 	}
 
 	void IOHandler::handleWrite(int32_t fd) {
-		if (m_responses.empty()) { // todo this is a dirty fix for EPOLLOUT being triggered twice if connection keep alive.
+		if (m_responses.empty()) {
 			return;
 		}
+
+		m_vServer.updateClientActivity(fd);
 
 		shared::Buffer<RESPONSE_BUFFER_SIZE>& buff = m_responses.front()->getData();
 		ssize_t bytesSent = send(fd, buff.getReadPos(), buff.size(), 0);
@@ -90,7 +95,7 @@ namespace core {
 		buff.consume(bytesSent);
 		if (buff.isEmpty()) {
 			delete m_responses.front();
-			m_responses.pop_front();
+			m_responses.pop();
 			if (m_keepAlive == false) {
 				m_vServer.dropClient(fd);
 				return this->markDone();

@@ -22,15 +22,17 @@ namespace http {
 			VirtualServer& operator=(const VirtualServer& other);
 
 			void init();
-			bool acceptClient();
+			int32_t acceptClient();
 			void dropClient(int32_t clientSocket);
+			void updateClientActivity(int32_t clientSocket);
+			void dropIdleClients();
 			void shutDown();
 
 			void log(const std::string& msg, shared::LogLevel level = shared::DEBUG);
 
 			int32_t getSocket(void);
-			const std::vector<int32_t>& getClients(void) const;
-			std::vector<int32_t>& getClients(void);
+			const std::map<int32_t, time_t>& getClients(void) const;
+			std::map<int32_t, time_t>& getClients(void);
 			const config::t_server& getConfig() const;
 
 		private:
@@ -40,8 +42,10 @@ namespace http {
 			void close(int32_t* fd) const;
 
 		private:
+			static const time_t CLIENT_TIMEOUT = 3;
+
 			config::t_server& m_config;
-			std::vector<int32_t> m_clients;
+			std::map<int32_t, time_t> m_clients; // first is client fd and second is last activity/
 			int32_t m_listenSocket;
 			shared::Logger m_logger;
 	};
