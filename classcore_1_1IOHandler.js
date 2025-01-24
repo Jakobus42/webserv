@@ -8,6 +8,6 @@ var classcore_1_1IOHandler =
     [ "m_keepAlive", "classcore_1_1IOHandler.html#a540b5fe282b527f7726c26cf32d0ea1b", null ],
     [ "m_reqParser", "classcore_1_1IOHandler.html#ab4c76bc519875e49ad94f6959e07ed1d", null ],
     [ "m_reqProccesor", "classcore_1_1IOHandler.html#a5de51f5212b4a3c959c28274945a29fa", null ],
-    [ "m_responses", "classcore_1_1IOHandler.html#aa5ac8c11036c5638b69e65fabfb0ef86", null ],
+    [ "m_responses", "classcore_1_1IOHandler.html#addd9a29dc5f409d213c16c993efa4407", null ],
     [ "m_vServer", "classcore_1_1IOHandler.html#a1b6ab566aedd2c201c977fff4095718a", null ]
 ];

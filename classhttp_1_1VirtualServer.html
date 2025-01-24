@@ -64,6 +64,7 @@ $(document).ready(function(){initNavTree('classhttp_1_1VirtualServer.html',''); 
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="classhttp_1_1VirtualServer-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">http::VirtualServer Class Reference</div></div>
 </div><!--header-->
@@ -78,11 +79,11 @@ Collaboration diagram for http::VirtualServer:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1VirtualServer__coll__graph.png" border="0" usemap="#ahttp_1_1VirtualServer_coll__map" alt="Collaboration graph"/></div>
 <map name="ahttp_1_1VirtualServer_coll__map" id="ahttp_1_1VirtualServer_coll__map">
-<area shape="rect" title="..." alt="" coords="49,508,190,893"/>
+<area shape="rect" title="..." alt="" coords="33,508,205,953"/>
 <area shape="rect" href="structconfig_1_1s__server.html" title=" " alt="" coords="5,230,135,395"/>
-<area shape="poly" title=" " alt="" coords="83,395,95,491,90,492,78,396"/>
+<area shape="poly" title=" " alt="" coords="82,395,94,492,88,492,77,396"/>
 <area shape="rect" href="classshared_1_1Logger.html" title="..." alt="" coords="159,180,293,445"/>
-<area shape="poly" title=" " alt="" coords="192,446,179,493,174,491,187,445"/>
+<area shape="poly" title=" " alt="" coords="195,446,183,492,178,491,190,445"/>
 <area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="149,5,303,131"/>
 <area shape="poly" title=" " alt="" coords="229,145,229,180,223,180,223,145"/>
 </map>
@@ -104,20 +105,24 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a94861a855f49f9780fca077fd12059f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa6efa927f0a998eb33c7232b7bbfdd9" id="r_aaa6efa927f0a998eb33c7232b7bbfdd9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#aaa6efa927f0a998eb33c7232b7bbfdd9">init</a> ()</td></tr>
 <tr class="separator:aaa6efa927f0a998eb33c7232b7bbfdd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d06a53896a3d67641f3dba82f1bd2b2" id="r_a3d06a53896a3d67641f3dba82f1bd2b2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#a3d06a53896a3d67641f3dba82f1bd2b2">acceptClient</a> ()</td></tr>
-<tr class="separator:a3d06a53896a3d67641f3dba82f1bd2b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1b629a8ddf347950773122150442829" id="r_af1b629a8ddf347950773122150442829"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#af1b629a8ddf347950773122150442829">acceptClient</a> ()</td></tr>
+<tr class="separator:af1b629a8ddf347950773122150442829"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9a6100fe0dc47c1d3e009b2f2a0a5a1" id="r_af9a6100fe0dc47c1d3e009b2f2a0a5a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#af9a6100fe0dc47c1d3e009b2f2a0a5a1">dropClient</a> (int32_t clientSocket)</td></tr>
 <tr class="separator:af9a6100fe0dc47c1d3e009b2f2a0a5a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fb848be6b479f9ac5857fd3cb2e5a9d" id="r_a0fb848be6b479f9ac5857fd3cb2e5a9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#a0fb848be6b479f9ac5857fd3cb2e5a9d">updateClientActivity</a> (int32_t clientSocket)</td></tr>
+<tr class="separator:a0fb848be6b479f9ac5857fd3cb2e5a9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76626d52a6ac3d2c1cbc16b0f1775f4a" id="r_a76626d52a6ac3d2c1cbc16b0f1775f4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#a76626d52a6ac3d2c1cbc16b0f1775f4a">dropIdleClients</a> ()</td></tr>
+<tr class="separator:a76626d52a6ac3d2c1cbc16b0f1775f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ffcf529ae88ec69f0af814dcbd74c4b" id="r_a0ffcf529ae88ec69f0af814dcbd74c4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#a0ffcf529ae88ec69f0af814dcbd74c4b">shutDown</a> ()</td></tr>
 <tr class="separator:a0ffcf529ae88ec69f0af814dcbd74c4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68a3e475430ed6fa45c9b5111b5ee195" id="r_a68a3e475430ed6fa45c9b5111b5ee195"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195">log</a> (const std::string &amp;msg, <a class="el" href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797c">shared::LogLevel</a> level=<a class="el" href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797ca6b4cf3a8eba9cdfbaa8f907f50c275c8">shared::DEBUG</a>)</td></tr>
 <tr class="separator:a68a3e475430ed6fa45c9b5111b5ee195"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26dfa6f8cc8979b31d68c354cc89be14" id="r_a26dfa6f8cc8979b31d68c354cc89be14"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#a26dfa6f8cc8979b31d68c354cc89be14">getSocket</a> (void)</td></tr>
 <tr class="separator:a26dfa6f8cc8979b31d68c354cc89be14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada81be75150dd5b9b55683105a389c36" id="r_ada81be75150dd5b9b55683105a389c36"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; int32_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#ada81be75150dd5b9b55683105a389c36">getClients</a> (void) const</td></tr>
-<tr class="separator:ada81be75150dd5b9b55683105a389c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab59a1074fe5dda2897099a9affd6a233" id="r_ab59a1074fe5dda2897099a9affd6a233"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int32_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#ab59a1074fe5dda2897099a9affd6a233">getClients</a> (void)</td></tr>
-<tr class="separator:ab59a1074fe5dda2897099a9affd6a233"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5bf84276085217ba28346f747b265c8" id="r_aa5bf84276085217ba28346f747b265c8"><td class="memItemLeft" align="right" valign="top">const std::map&lt; int32_t, time_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#aa5bf84276085217ba28346f747b265c8">getClients</a> (void) const</td></tr>
+<tr class="separator:aa5bf84276085217ba28346f747b265c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea8a4d50c35f0865b9c0694ac2956477" id="r_aea8a4d50c35f0865b9c0694ac2956477"><td class="memItemLeft" align="right" valign="top">std::map&lt; int32_t, time_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#aea8a4d50c35f0865b9c0694ac2956477">getClients</a> (void)</td></tr>
+<tr class="separator:aea8a4d50c35f0865b9c0694ac2956477"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0285678cdd50697cd2aa8dd2cdde7085" id="r_a0285678cdd50697cd2aa8dd2cdde7085"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespaceconfig.html#a8c27ddf595c5b22c961cb4aff2ae935d">config::t_server</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#a0285678cdd50697cd2aa8dd2cdde7085">getConfig</a> () const</td></tr>
 <tr class="separator:a0285678cdd50697cd2aa8dd2cdde7085"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -134,12 +139,17 @@ Private Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a2179c9afe8cf3cea4d8c8672ea5d5a4c" id="r_a2179c9afe8cf3cea4d8c8672ea5d5a4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceconfig.html#a8c27ddf595c5b22c961cb4aff2ae935d">config::t_server</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#a2179c9afe8cf3cea4d8c8672ea5d5a4c">m_config</a></td></tr>
 <tr class="separator:a2179c9afe8cf3cea4d8c8672ea5d5a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a609d5421c1f68e9eb4f9a7be6370a136" id="r_a609d5421c1f68e9eb4f9a7be6370a136"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#a609d5421c1f68e9eb4f9a7be6370a136">m_clients</a></td></tr>
-<tr class="separator:a609d5421c1f68e9eb4f9a7be6370a136"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab53352540672413483b62afd28ed36d7" id="r_ab53352540672413483b62afd28ed36d7"><td class="memItemLeft" align="right" valign="top">std::map&lt; int32_t, time_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a></td></tr>
+<tr class="separator:ab53352540672413483b62afd28ed36d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28f6e31ee3abf041f506a1fa2455b605" id="r_a28f6e31ee3abf041f506a1fa2455b605"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">m_listenSocket</a></td></tr>
 <tr class="separator:a28f6e31ee3abf041f506a1fa2455b605"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae899297922e2cce19b245093e85c599f" id="r_ae899297922e2cce19b245093e85c599f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classshared_1_1Logger.html">shared::Logger</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#ae899297922e2cce19b245093e85c599f">m_logger</a></td></tr>
 <tr class="separator:ae899297922e2cce19b245093e85c599f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:ad7436180516bb83163543094014a7ac7" id="r_ad7436180516bb83163543094014a7ac7"><td class="memItemLeft" align="right" valign="top">static const time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#ad7436180516bb83163543094014a7ac7">CLIENT_TIMEOUT</a> = 3</td></tr>
+<tr class="separator:ad7436180516bb83163543094014a7ac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>... </p>
@@ -166,14 +176,14 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00024">24</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   25</span>        : <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a2179c9afe8cf3cea4d8c8672ea5d5a4c">m_config</a>(conf)</div>
-<div class="line"><span class="lineno">   26</span>        , <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a609d5421c1f68e9eb4f9a7be6370a136">m_clients</a>()</div>
+<div class="line"><span class="lineno">   26</span>        , <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>()</div>
 <div class="line"><span class="lineno">   27</span>        , <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">m_listenSocket</a>(-1)</div>
 <div class="line"><span class="lineno">   28</span>        , <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ae899297922e2cce19b245093e85c599f">m_logger</a>() {</div>
 <div class="line"><span class="lineno">   29</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a2179c9afe8cf3cea4d8c8672ea5d5a4c"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a2179c9afe8cf3cea4d8c8672ea5d5a4c">http::VirtualServer::m_config</a></div><div class="ttdeci">config::t_server &amp; m_config</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00043">VirtualServer.hpp:43</a></div></div>
-<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a28f6e31ee3abf041f506a1fa2455b605"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">http::VirtualServer::m_listenSocket</a></div><div class="ttdeci">int32_t m_listenSocket</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00045">VirtualServer.hpp:45</a></div></div>
-<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a609d5421c1f68e9eb4f9a7be6370a136"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a609d5421c1f68e9eb4f9a7be6370a136">http::VirtualServer::m_clients</a></div><div class="ttdeci">std::vector&lt; int32_t &gt; m_clients</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00044">VirtualServer.hpp:44</a></div></div>
-<div class="ttc" id="aclasshttp_1_1VirtualServer_html_ae899297922e2cce19b245093e85c599f"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#ae899297922e2cce19b245093e85c599f">http::VirtualServer::m_logger</a></div><div class="ttdeci">shared::Logger m_logger</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00046">VirtualServer.hpp:46</a></div></div>
+<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a2179c9afe8cf3cea4d8c8672ea5d5a4c"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a2179c9afe8cf3cea4d8c8672ea5d5a4c">http::VirtualServer::m_config</a></div><div class="ttdeci">config::t_server &amp; m_config</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00047">VirtualServer.hpp:47</a></div></div>
+<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a28f6e31ee3abf041f506a1fa2455b605"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">http::VirtualServer::m_listenSocket</a></div><div class="ttdeci">int32_t m_listenSocket</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00049">VirtualServer.hpp:49</a></div></div>
+<div class="ttc" id="aclasshttp_1_1VirtualServer_html_ab53352540672413483b62afd28ed36d7"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">http::VirtualServer::m_clients</a></div><div class="ttdeci">std::map&lt; int32_t, time_t &gt; m_clients</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00048">VirtualServer.hpp:48</a></div></div>
+<div class="ttc" id="aclasshttp_1_1VirtualServer_html_ae899297922e2cce19b245093e85c599f"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#ae899297922e2cce19b245093e85c599f">http::VirtualServer::m_logger</a></div><div class="ttdeci">shared::Logger m_logger</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00050">VirtualServer.hpp:50</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -257,21 +267,21 @@ Here is the call graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00048">48</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   49</span>        : <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a2179c9afe8cf3cea4d8c8672ea5d5a4c">m_config</a>(other.m_config)</div>
-<div class="line"><span class="lineno">   50</span>        , <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a609d5421c1f68e9eb4f9a7be6370a136">m_clients</a>(other.m_clients)</div>
+<div class="line"><span class="lineno">   50</span>        , <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>(other.m_clients)</div>
 <div class="line"><span class="lineno">   51</span>        , <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">m_listenSocket</a>(other.m_listenSocket) {</div>
 <div class="line"><span class="lineno">   52</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3d06a53896a3d67641f3dba82f1bd2b2" name="a3d06a53896a3d67641f3dba82f1bd2b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d06a53896a3d67641f3dba82f1bd2b2">&#9670;&#160;</a></span>acceptClient()</h2>
+<a id="af1b629a8ddf347950773122150442829" name="af1b629a8ddf347950773122150442829"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1b629a8ddf347950773122150442829">&#9670;&#160;</a></span>acceptClient()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool http::VirtualServer::acceptClient </td>
+          <td class="memname">int32_t http::VirtualServer::acceptClient </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -280,7 +290,7 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00097">97</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   97</span>                                     {</div>
+<div class="fragment"><div class="line"><span class="lineno">   97</span>                                        {</div>
 <div class="line"><span class="lineno">   98</span>        sockaddr_in clientAddr;</div>
 <div class="line"><span class="lineno">   99</span>        socklen_t clientAddrLen = <span class="keyword">sizeof</span>(clientAddr);</div>
 <div class="line"><span class="lineno">  100</span> </div>
@@ -288,26 +298,26 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">  102</span>        int32_t clientSocket = ::accept(<a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">m_listenSocket</a>, <span class="keyword">reinterpret_cast&lt;</span>struct sockaddr*<span class="keyword">&gt;</span>(&amp;clientAddr), &amp;clientAddrLen);</div>
 <div class="line"><span class="lineno">  103</span>        <span class="keywordflow">if</span> (clientSocket == -1) {</div>
 <div class="line"><span class="lineno">  104</span>            <span class="keywordflow">if</span> (errno == EAGAIN || errno == EWOULDBLOCK) {</div>
-<div class="line"><span class="lineno">  105</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  105</span>                <span class="keywordflow">return</span> -1;</div>
 <div class="line"><span class="lineno">  106</span>            }</div>
 <div class="line"><span class="lineno">  107</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;accept() failed: &quot;</span> + std::string(strerror(errno)));</div>
 <div class="line"><span class="lineno">  108</span>        }</div>
 <div class="line"><span class="lineno">  109</span> </div>
 <div class="line"><span class="lineno">  110</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a2412211f2db9413bd600b04a094e642e">setNonBlocking</a>(clientSocket);</div>
-<div class="line"><span class="lineno">  111</span>        <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a609d5421c1f68e9eb4f9a7be6370a136">m_clients</a>.push_back(clientSocket);</div>
+<div class="line"><span class="lineno">  111</span>        <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>.insert(std::make_pair(clientSocket, time(NULL)));</div>
 <div class="line"><span class="lineno">  112</span> </div>
 <div class="line"><span class="lineno">  113</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195">log</a>(<span class="stringliteral">&quot;accepted new client &quot;</span> + this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39">getClientInfo</a>(clientSocket), <a class="code hl_enumvalue" href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797ca0825e7c7586812b70d7b56ca3d2d1d83">shared::INFO</a>);</div>
-<div class="line"><span class="lineno">  114</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  114</span>        <span class="keywordflow">return</span> clientSocket;</div>
 <div class="line"><span class="lineno">  115</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a2412211f2db9413bd600b04a094e642e"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a2412211f2db9413bd600b04a094e642e">http::VirtualServer::setNonBlocking</a></div><div class="ttdeci">void setNonBlocking(int32_t socket)</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00161">VirtualServer.cpp:161</a></div></div>
-<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a68a3e475430ed6fa45c9b5111b5ee195"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195">http::VirtualServer::log</a></div><div class="ttdeci">void log(const std::string &amp;msg, shared::LogLevel level=shared::DEBUG)</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00139">VirtualServer.cpp:139</a></div></div>
-<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a8ca6b0cac9495f72abb3359e5be56d39"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39">http::VirtualServer::getClientInfo</a></div><div class="ttdeci">std::string getClientInfo(int32_t clientSocket) const</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00144">VirtualServer.cpp:144</a></div></div>
+<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a2412211f2db9413bd600b04a094e642e"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a2412211f2db9413bd600b04a094e642e">http::VirtualServer::setNonBlocking</a></div><div class="ttdeci">void setNonBlocking(int32_t socket)</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00181">VirtualServer.cpp:181</a></div></div>
+<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a68a3e475430ed6fa45c9b5111b5ee195"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195">http::VirtualServer::log</a></div><div class="ttdeci">void log(const std::string &amp;msg, shared::LogLevel level=shared::DEBUG)</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00159">VirtualServer.cpp:159</a></div></div>
+<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a8ca6b0cac9495f72abb3359e5be56d39"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39">http::VirtualServer::getClientInfo</a></div><div class="ttdeci">std::string getClientInfo(int32_t clientSocket) const</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00164">VirtualServer.cpp:164</a></div></div>
 <div class="ttc" id="anamespaceshared_html_a9913ca32d439bf0b47a71e564c40797ca0825e7c7586812b70d7b56ca3d2d1d83"><div class="ttname"><a href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797ca0825e7c7586812b70d7b56ca3d2d1d83">shared::INFO</a></div><div class="ttdeci">@ INFO</div><div class="ttdef"><b>Definition</b> <a href="Logger_8hpp_source.html#l00012">Logger.hpp:12</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classhttp_1_1VirtualServer_a3d06a53896a3d67641f3dba82f1bd2b2_cgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_a3d06a53896a3d67641f3dba82f1bd2b2_cgraph" alt=""/></div>
-<map name="aclasshttp_1_1VirtualServer_a3d06a53896a3d67641f3dba82f1bd2b2_cgraph" id="aclasshttp_1_1VirtualServer_a3d06a53896a3d67641f3dba82f1bd2b2_cgraph">
+<div class="center"><img src="classhttp_1_1VirtualServer_af1b629a8ddf347950773122150442829_cgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_af1b629a8ddf347950773122150442829_cgraph" alt=""/></div>
+<map name="aclasshttp_1_1VirtualServer_af1b629a8ddf347950773122150442829_cgraph" id="aclasshttp_1_1VirtualServer_af1b629a8ddf347950773122150442829_cgraph">
 <area shape="rect" title=" " alt="" coords="5,63,147,103"/>
 <area shape="rect" href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39" title=" " alt="" coords="209,5,350,45"/>
 <area shape="poly" title=" " alt="" coords="146,60,194,46,196,52,148,65"/>
@@ -328,8 +338,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classhttp_1_1VirtualServer_a3d06a53896a3d67641f3dba82f1bd2b2_icgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_a3d06a53896a3d67641f3dba82f1bd2b2_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1VirtualServer_a3d06a53896a3d67641f3dba82f1bd2b2_icgraph" id="aclasshttp_1_1VirtualServer_a3d06a53896a3d67641f3dba82f1bd2b2_icgraph">
+<div class="center"><img src="classhttp_1_1VirtualServer_af1b629a8ddf347950773122150442829_icgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_af1b629a8ddf347950773122150442829_icgraph" alt=""/></div>
+<map name="aclasshttp_1_1VirtualServer_af1b629a8ddf347950773122150442829_icgraph" id="aclasshttp_1_1VirtualServer_af1b629a8ddf347950773122150442829_icgraph">
 <area shape="rect" title=" " alt="" coords="207,5,348,45"/>
 <area shape="rect" href="classcore_1_1AcceptHandler.html#a14238ec3d6956cf6f1f1fbe90105823d" title=" " alt="" coords="5,5,159,45"/>
 <area shape="poly" title=" " alt="" coords="193,28,159,28,159,23,193,23"/>
@@ -362,14 +372,14 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00167">167</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  167</span>                                               {</div>
-<div class="line"><span class="lineno">  168</span>        <span class="keywordflow">if</span> (*fd != -1) {</div>
-<div class="line"><span class="lineno">  169</span>            <a class="code hl_function" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c">::close</a>(*fd);</div>
-<div class="line"><span class="lineno">  170</span>            *fd = -1;</div>
-<div class="line"><span class="lineno">  171</span>        }</div>
-<div class="line"><span class="lineno">  172</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a9a984038527668306eb712f128ce1d0c"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c">http::VirtualServer::close</a></div><div class="ttdeci">void close(int32_t *fd) const</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00167">VirtualServer.cpp:167</a></div></div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00187">187</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  187</span>                                               {</div>
+<div class="line"><span class="lineno">  188</span>        <span class="keywordflow">if</span> (*fd != -1) {</div>
+<div class="line"><span class="lineno">  189</span>            <a class="code hl_function" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c">::close</a>(*fd);</div>
+<div class="line"><span class="lineno">  190</span>            *fd = -1;</div>
+<div class="line"><span class="lineno">  191</span>        }</div>
+<div class="line"><span class="lineno">  192</span>    }</div>
+<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a9a984038527668306eb712f128ce1d0c"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c">http::VirtualServer::close</a></div><div class="ttdeci">void close(int32_t *fd) const</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00187">VirtualServer.cpp:187</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -384,24 +394,30 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1VirtualServer_a9a984038527668306eb712f128ce1d0c_icgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_a9a984038527668306eb712f128ce1d0c_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1VirtualServer_a9a984038527668306eb712f128ce1d0c_icgraph" id="aclasshttp_1_1VirtualServer_a9a984038527668306eb712f128ce1d0c_icgraph">
-<area shape="rect" title=" " alt="" coords="676,94,817,134"/>
-<area shape="poly" title=" " alt="" coords="778,82,767,76,747,73,729,75,718,80,714,86,716,93,711,95,709,85,714,76,727,70,747,68,769,71,781,78"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#af9a6100fe0dc47c1d3e009b2f2a0a5a1" title=" " alt="" coords="487,41,628,81"/>
-<area shape="poly" title=" " alt="" coords="662,93,627,83,629,78,664,88"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a0ffcf529ae88ec69f0af814dcbd74c4b" title=" " alt="" coords="487,126,628,166"/>
-<area shape="poly" title=" " alt="" coords="663,131,629,137,628,132,662,126"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,27,180,52"/>
-<area shape="poly" title=" " alt="" coords="503,38,471,26,438,17,360,9,282,11,209,19,149,29,148,24,208,14,281,5,360,3,439,12,473,21,505,33"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="229,27,437,52"/>
-<area shape="poly" title=" " alt="" coords="473,56,437,52,438,47,473,50"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a0743b5e212838105fa3c5b2fdbbd346a" title=" " alt="" coords="228,76,439,102"/>
-<area shape="poly" title=" " alt="" coords="474,74,435,79,435,74,473,69"/>
-<area shape="poly" title=" " alt="" coords="216,42,180,42,180,37,216,37"/>
-<area shape="poly" title=" " alt="" coords="257,76,155,55,156,50,258,71"/>
-<area shape="rect" href="classcore_1_1AcceptHandler.html#a14238ec3d6956cf6f1f1fbe90105823d" title=" " alt="" coords="257,126,410,166"/>
-<area shape="poly" title=" " alt="" coords="473,149,410,149,410,144,473,144"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a9087762e937853061a5178078030280c" title="Destroys the VirtualServer object." alt="" coords="263,190,404,230"/>
-<area shape="poly" title=" " alt="" coords="474,173,405,193,403,188,473,168"/>
+<area shape="rect" title=" " alt="" coords="779,167,920,207"/>
+<area shape="poly" title=" " alt="" coords="881,155,870,148,849,145,831,147,821,152,817,158,819,166,813,167,811,157,817,148,830,142,849,140,872,143,884,150"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#af9a6100fe0dc47c1d3e009b2f2a0a5a1" title=" " alt="" coords="589,113,731,153"/>
+<area shape="poly" title=" " alt="" coords="765,166,730,156,732,151,766,161"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a0ffcf529ae88ec69f0af814dcbd74c4b" title=" " alt="" coords="589,220,731,260"/>
+<area shape="poly" title=" " alt="" coords="766,213,732,223,730,218,765,208"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a76626d52a6ac3d2c1cbc16b0f1775f4a" title=" " alt="" coords="365,5,507,45"/>
+<area shape="poly" title=" " alt="" coords="615,108,540,66,496,48,498,43,542,62,618,104"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="108,121,283,146"/>
+<area shape="poly" title=" " alt="" coords="575,116,541,111,436,104,331,111,252,123,251,118,330,105,436,98,542,105,576,110"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="332,121,540,146"/>
+<area shape="poly" title=" " alt="" coords="576,136,540,136,540,131,576,131"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a0743b5e212838105fa3c5b2fdbbd346a" title=" " alt="" coords="331,170,541,195"/>
+<area shape="poly" title=" " alt="" coords="577,154,495,173,494,167,576,149"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="121,13,270,38"/>
+<area shape="poly" title=" " alt="" coords="352,28,270,28,270,23,352,23"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
+<area shape="poly" title=" " alt="" coords="107,28,60,28,60,23,107,23"/>
+<area shape="poly" title=" " alt="" coords="318,136,283,136,283,131,318,131"/>
+<area shape="poly" title=" " alt="" coords="360,170,258,149,259,143,361,165"/>
+<area shape="rect" href="classcore_1_1AcceptHandler.html#a14238ec3d6956cf6f1f1fbe90105823d" title=" " alt="" coords="359,220,513,260"/>
+<area shape="poly" title=" " alt="" coords="575,243,513,243,513,237,575,237"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a9087762e937853061a5178078030280c" title="Destroys the VirtualServer object." alt="" coords="365,284,507,324"/>
+<area shape="poly" title=" " alt="" coords="577,266,507,287,506,281,575,261"/>
 </map>
 </div>
 
@@ -423,41 +439,42 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00125">125</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  125</span>                                                       {</div>
-<div class="line"><span class="lineno">  126</span>        std::vector&lt;int32_t&gt;::iterator it = std::find(<a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a609d5421c1f68e9eb4f9a7be6370a136">m_clients</a>.begin(), <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a609d5421c1f68e9eb4f9a7be6370a136">m_clients</a>.end(), clientSocket);</div>
-<div class="line"><span class="lineno">  127</span> </div>
-<div class="line"><span class="lineno">  128</span>        <span class="keywordflow">if</span> (it != <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a609d5421c1f68e9eb4f9a7be6370a136">m_clients</a>.end()) {</div>
-<div class="line"><span class="lineno">  129</span>            this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195">log</a>(<span class="stringliteral">&quot;dropping client &quot;</span> + this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39">getClientInfo</a>(*it), <a class="code hl_enumvalue" href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797ca0825e7c7586812b70d7b56ca3d2d1d83">shared::INFO</a>);</div>
-<div class="line"><span class="lineno">  130</span> </div>
-<div class="line"><span class="lineno">  131</span>            this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c">close</a>(&amp;(*it));</div>
-<div class="line"><span class="lineno">  132</span> </div>
-<div class="line"><span class="lineno">  133</span>            <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a609d5421c1f68e9eb4f9a7be6370a136">m_clients</a>.erase(it);</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00127">127</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  127</span>                                                       {</div>
+<div class="line"><span class="lineno">  128</span>        std::map&lt;int32_t, time_t&gt;::iterator it = <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>.find(clientSocket);</div>
+<div class="line"><span class="lineno">  129</span>        <span class="keywordflow">if</span> (it != <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>.end()) {</div>
+<div class="line"><span class="lineno">  130</span>            this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195">log</a>(<span class="stringliteral">&quot;dropping client &quot;</span> + this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39">getClientInfo</a>(clientSocket), <a class="code hl_enumvalue" href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797ca0825e7c7586812b70d7b56ca3d2d1d83">shared::INFO</a>);</div>
+<div class="line"><span class="lineno">  131</span> </div>
+<div class="line"><span class="lineno">  132</span>            <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>.erase(it);</div>
+<div class="line"><span class="lineno">  133</span>            this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c">close</a>(&amp;clientSocket);</div>
 <div class="line"><span class="lineno">  134</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  135</span>            this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195">log</a>(<span class="stringliteral">&quot;attempting to drop unkown client &quot;</span>, <a class="code hl_enumvalue" href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797ca0825e7c7586812b70d7b56ca3d2d1d83">shared::INFO</a>);</div>
+<div class="line"><span class="lineno">  135</span>            this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195">log</a>(<span class="stringliteral">&quot;Client socket &quot;</span> + <a class="code hl_function" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a>(clientSocket) + <span class="stringliteral">&quot; not found in the client map.&quot;</span>, <a class="code hl_enumvalue" href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797ca4866c6e7568b1ec213ab3b22a7188260">shared::WARNING</a>);</div>
 <div class="line"><span class="lineno">  136</span>        }</div>
 <div class="line"><span class="lineno">  137</span>    }</div>
+<div class="ttc" id="anamespaceshared_1_1string_html_a7498d7d25acc1a6d216ef30b3ccfa577"><div class="ttname"><a href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a></div><div class="ttdeci">std::string to_string(const T &amp;value)</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8hpp_source.html#l00043">stringUtils.hpp:43</a></div></div>
+<div class="ttc" id="anamespaceshared_html_a9913ca32d439bf0b47a71e564c40797ca4866c6e7568b1ec213ab3b22a7188260"><div class="ttname"><a href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797ca4866c6e7568b1ec213ab3b22a7188260">shared::WARNING</a></div><div class="ttdeci">@ WARNING</div><div class="ttdef"><b>Definition</b> <a href="Logger_8hpp_source.html#l00013">Logger.hpp:13</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1VirtualServer_af9a6100fe0dc47c1d3e009b2f2a0a5a1_cgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_af9a6100fe0dc47c1d3e009b2f2a0a5a1_cgraph" alt=""/></div>
 <map name="aclasshttp_1_1VirtualServer_af9a6100fe0dc47c1d3e009b2f2a0a5a1_cgraph" id="aclasshttp_1_1VirtualServer_af9a6100fe0dc47c1d3e009b2f2a0a5a1_cgraph">
-<area shape="rect" title=" " alt="" coords="5,93,147,133"/>
+<area shape="rect" title=" " alt="" coords="5,123,147,163"/>
 <area shape="rect" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c" title=" " alt="" coords="209,29,350,69"/>
-<area shape="poly" title=" " alt="" coords="139,91,201,71,203,76,141,96"/>
+<area shape="poly" title=" " alt="" coords="112,120,194,79,209,72,211,77,196,84,114,125"/>
 <area shape="rect" href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39" title=" " alt="" coords="209,93,350,133"/>
-<area shape="poly" title=" " alt="" coords="147,111,195,111,195,116,147,116"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195" title=" " alt="" coords="195,158,364,183"/>
-<area shape="poly" title=" " alt="" coords="148,131,221,152,220,157,146,136"/>
+<area shape="poly" title=" " alt="" coords="147,130,195,123,196,128,147,135"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="419,119,551,159"/>
+<area shape="poly" title=" " alt="" coords="147,142,195,143,364,143,405,141,406,146,364,148,195,148,147,147"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195" title=" " alt="" coords="195,209,364,234"/>
+<area shape="poly" title=" " alt="" coords="129,160,196,187,233,201,231,206,194,192,127,165"/>
 <area shape="poly" title=" " alt="" coords="241,30,239,20,245,11,259,5,279,3,303,6,316,13,313,18,301,11,279,8,260,10,248,15,244,21,246,28"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="419,93,551,133"/>
-<area shape="poly" title=" " alt="" coords="350,111,405,111,405,116,350,116"/>
-<area shape="rect" href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6" title=" " alt="" coords="412,158,559,183"/>
-<area shape="poly" title=" " alt="" coords="365,168,398,168,398,173,365,173"/>
-<area shape="rect" href="classshared_1_1Logger.html#afa95b6aabdf9018417243de3e904674e" title=" " alt="" coords="607,133,828,158"/>
-<area shape="poly" title=" " alt="" coords="559,160,593,156,593,162,560,165"/>
-<area shape="rect" href="classshared_1_1Logger.html#a59ccf733344c360fe7839dbc1a6ae6f5" title=" " alt="" coords="612,182,823,207"/>
-<area shape="poly" title=" " alt="" coords="560,176,599,180,598,185,559,181"/>
+<area shape="poly" title=" " alt="" coords="350,119,406,126,405,132,350,125"/>
+<area shape="rect" href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6" title=" " alt="" coords="412,209,559,234"/>
+<area shape="poly" title=" " alt="" coords="365,219,398,219,398,224,365,224"/>
+<area shape="rect" href="classshared_1_1Logger.html#afa95b6aabdf9018417243de3e904674e" title=" " alt="" coords="607,183,828,209"/>
+<area shape="poly" title=" " alt="" coords="559,211,593,207,593,212,560,216"/>
+<area shape="rect" href="classshared_1_1Logger.html#a59ccf733344c360fe7839dbc1a6ae6f5" title=" " alt="" coords="612,233,823,258"/>
+<area shape="poly" title=" " alt="" coords="560,226,599,230,598,236,559,232"/>
 </map>
 </div>
 <div class="dynheader">
@@ -465,15 +482,94 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1VirtualServer_af9a6100fe0dc47c1d3e009b2f2a0a5a1_icgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_af9a6100fe0dc47c1d3e009b2f2a0a5a1_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1VirtualServer_af9a6100fe0dc47c1d3e009b2f2a0a5a1_icgraph" id="aclasshttp_1_1VirtualServer_af9a6100fe0dc47c1d3e009b2f2a0a5a1_icgraph">
-<area shape="rect" title=" " alt="" coords="487,18,628,58"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,25,180,50"/>
-<area shape="poly" title=" " alt="" coords="473,20,438,15,333,8,228,15,149,28,148,23,228,10,333,3,439,10,473,15"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="229,25,437,50"/>
-<area shape="poly" title=" " alt="" coords="473,40,437,40,437,35,473,35"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a0743b5e212838105fa3c5b2fdbbd346a" title=" " alt="" coords="228,74,439,100"/>
-<area shape="poly" title=" " alt="" coords="474,59,392,77,391,72,473,54"/>
-<area shape="poly" title=" " alt="" coords="216,40,180,40,180,35,216,35"/>
-<area shape="poly" title=" " alt="" coords="257,74,155,53,156,48,258,69"/>
+<area shape="rect" title=" " alt="" coords="589,88,731,128"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a76626d52a6ac3d2c1cbc16b0f1775f4a" title=" " alt="" coords="365,5,507,45"/>
+<area shape="poly" title=" " alt="" coords="591,85,540,66,490,48,492,43,542,62,593,80"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="108,121,283,146"/>
+<area shape="poly" title=" " alt="" coords="575,106,459,105,331,111,252,123,251,118,330,105,459,99,575,101"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="332,121,540,146"/>
+<area shape="poly" title=" " alt="" coords="576,120,540,124,540,119,576,115"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a0743b5e212838105fa3c5b2fdbbd346a" title=" " alt="" coords="331,170,541,195"/>
+<area shape="poly" title=" " alt="" coords="606,136,542,161,502,172,500,167,540,156,604,131"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="121,13,270,38"/>
+<area shape="poly" title=" " alt="" coords="352,28,270,28,270,23,352,23"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
+<area shape="poly" title=" " alt="" coords="107,28,60,28,60,23,107,23"/>
+<area shape="poly" title=" " alt="" coords="318,136,283,136,283,131,318,131"/>
+<area shape="poly" title=" " alt="" coords="360,170,258,149,259,143,361,165"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a76626d52a6ac3d2c1cbc16b0f1775f4a" name="a76626d52a6ac3d2c1cbc16b0f1775f4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76626d52a6ac3d2c1cbc16b0f1775f4a">&#9670;&#160;</a></span>dropIdleClients()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void http::VirtualServer::dropIdleClients </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00144">144</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  144</span>                                        {</div>
+<div class="line"><span class="lineno">  145</span>        time_t now = time(NULL);</div>
+<div class="line"><span class="lineno">  146</span>        std::vector&lt;int32_t&gt; toDrop;</div>
+<div class="line"><span class="lineno">  147</span> </div>
+<div class="line"><span class="lineno">  148</span>        <span class="keywordflow">for</span> (std::map&lt;int32_t, time_t&gt;::iterator it = <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>.begin(); it != <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>.end(); ++it) {</div>
+<div class="line"><span class="lineno">  149</span>            <span class="keywordflow">if</span> (now - it-&gt;second &gt; <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ad7436180516bb83163543094014a7ac7">CLIENT_TIMEOUT</a>) { <span class="comment">// todo macro</span></div>
+<div class="line"><span class="lineno">  150</span>                toDrop.push_back(it-&gt;first);</div>
+<div class="line"><span class="lineno">  151</span>            }</div>
+<div class="line"><span class="lineno">  152</span>        }</div>
+<div class="line"><span class="lineno">  153</span> </div>
+<div class="line"><span class="lineno">  154</span>        <span class="keywordflow">for</span> (std::vector&lt;int32_t&gt;::iterator it = toDrop.begin(); it != toDrop.end(); ++it) {</div>
+<div class="line"><span class="lineno">  155</span>            <a class="code hl_function" href="classhttp_1_1VirtualServer.html#af9a6100fe0dc47c1d3e009b2f2a0a5a1">dropClient</a>(*it);</div>
+<div class="line"><span class="lineno">  156</span>        }</div>
+<div class="line"><span class="lineno">  157</span>    }</div>
+<div class="ttc" id="aclasshttp_1_1VirtualServer_html_ad7436180516bb83163543094014a7ac7"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#ad7436180516bb83163543094014a7ac7">http::VirtualServer::CLIENT_TIMEOUT</a></div><div class="ttdeci">static const time_t CLIENT_TIMEOUT</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00045">VirtualServer.hpp:45</a></div></div>
+<div class="ttc" id="aclasshttp_1_1VirtualServer_html_af9a6100fe0dc47c1d3e009b2f2a0a5a1"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#af9a6100fe0dc47c1d3e009b2f2a0a5a1">http::VirtualServer::dropClient</a></div><div class="ttdeci">void dropClient(int32_t clientSocket)</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00127">VirtualServer.cpp:127</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1VirtualServer_a76626d52a6ac3d2c1cbc16b0f1775f4a_cgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_a76626d52a6ac3d2c1cbc16b0f1775f4a_cgraph" alt=""/></div>
+<map name="aclasshttp_1_1VirtualServer_a76626d52a6ac3d2c1cbc16b0f1775f4a_cgraph" id="aclasshttp_1_1VirtualServer_a76626d52a6ac3d2c1cbc16b0f1775f4a_cgraph">
+<area shape="rect" title=" " alt="" coords="5,123,147,163"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#af9a6100fe0dc47c1d3e009b2f2a0a5a1" title=" " alt="" coords="195,123,336,163"/>
+<area shape="poly" title=" " alt="" coords="147,140,181,140,181,145,147,145"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c" title=" " alt="" coords="398,29,539,69"/>
+<area shape="poly" title=" " alt="" coords="301,120,383,79,399,72,401,77,385,84,304,125"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39" title=" " alt="" coords="398,93,539,133"/>
+<area shape="poly" title=" " alt="" coords="336,130,384,123,385,128,337,135"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="609,119,741,159"/>
+<area shape="poly" title=" " alt="" coords="336,142,384,143,553,143,595,141,595,146,553,148,384,148,336,147"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195" title=" " alt="" coords="384,209,553,234"/>
+<area shape="poly" title=" " alt="" coords="318,160,385,187,422,201,420,206,383,192,316,165"/>
+<area shape="poly" title=" " alt="" coords="430,30,428,20,434,11,448,5,469,3,492,6,505,13,503,18,491,11,469,8,449,10,438,15,433,21,436,28"/>
+<area shape="poly" title=" " alt="" coords="540,119,595,126,594,132,539,125"/>
+<area shape="rect" href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6" title=" " alt="" coords="601,209,748,234"/>
+<area shape="poly" title=" " alt="" coords="554,219,588,219,588,224,554,224"/>
+<area shape="rect" href="classshared_1_1Logger.html#afa95b6aabdf9018417243de3e904674e" title=" " alt="" coords="796,183,1017,209"/>
+<area shape="poly" title=" " alt="" coords="748,211,782,207,783,212,749,216"/>
+<area shape="rect" href="classshared_1_1Logger.html#a59ccf733344c360fe7839dbc1a6ae6f5" title=" " alt="" coords="801,233,1012,258"/>
+<area shape="poly" title=" " alt="" coords="749,226,788,230,787,236,748,232"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1VirtualServer_a76626d52a6ac3d2c1cbc16b0f1775f4a_icgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_a76626d52a6ac3d2c1cbc16b0f1775f4a_icgraph" alt=""/></div>
+<map name="aclasshttp_1_1VirtualServer_a76626d52a6ac3d2c1cbc16b0f1775f4a_icgraph" id="aclasshttp_1_1VirtualServer_a76626d52a6ac3d2c1cbc16b0f1775f4a_icgraph">
+<area shape="rect" title=" " alt="" coords="305,5,447,45"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="108,13,257,38"/>
+<area shape="poly" title=" " alt="" coords="292,28,257,28,257,23,292,23"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
+<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
 </map>
 </div>
 
@@ -503,24 +599,23 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00144">144</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  144</span>                                                                     {</div>
-<div class="line"><span class="lineno">  145</span>        sockaddr_in clientAddr;</div>
-<div class="line"><span class="lineno">  146</span>        socklen_t clientAddrLen = <span class="keyword">sizeof</span>(clientAddr);</div>
-<div class="line"><span class="lineno">  147</span> </div>
-<div class="line"><span class="lineno">  148</span>        std::memset(&amp;clientAddr, 0, clientAddrLen);</div>
-<div class="line"><span class="lineno">  149</span>        <span class="keywordflow">if</span> (getpeername(clientSocket, <span class="keyword">reinterpret_cast&lt;</span>sockaddr*<span class="keyword">&gt;</span>(&amp;clientAddr), &amp;clientAddrLen) == -1) {</div>
-<div class="line"><span class="lineno">  150</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;Unknown client (socket: &quot;</span> + <a class="code hl_function" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a>(clientSocket) + <span class="stringliteral">&quot;)&quot;</span>;</div>
-<div class="line"><span class="lineno">  151</span>        }</div>
-<div class="line"><span class="lineno">  152</span> </div>
-<div class="line"><span class="lineno">  153</span>        <span class="keywordtype">char</span> clientIP[INET_ADDRSTRLEN];</div>
-<div class="line"><span class="lineno">  154</span>        inet_ntop(AF_INET, &amp;(clientAddr.sin_addr), clientIP, INET_ADDRSTRLEN); <span class="comment">// todo idk if allowed</span></div>
-<div class="line"><span class="lineno">  155</span> </div>
-<div class="line"><span class="lineno">  156</span>        int32_t clientPort = ntohs(clientAddr.sin_port);</div>
-<div class="line"><span class="lineno">  157</span> </div>
-<div class="line"><span class="lineno">  158</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;(IP: &quot;</span> + std::string(clientIP) + <span class="stringliteral">&quot;, Port: &quot;</span> + <a class="code hl_function" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a>(clientPort) + <span class="stringliteral">&quot;)&quot;</span>;</div>
-<div class="line"><span class="lineno">  159</span>    }</div>
-<div class="ttc" id="anamespaceshared_1_1string_html_a7498d7d25acc1a6d216ef30b3ccfa577"><div class="ttname"><a href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a></div><div class="ttdeci">std::string to_string(const T &amp;value)</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8hpp_source.html#l00043">stringUtils.hpp:43</a></div></div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00164">164</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  164</span>                                                                     {</div>
+<div class="line"><span class="lineno">  165</span>        sockaddr_in clientAddr;</div>
+<div class="line"><span class="lineno">  166</span>        socklen_t clientAddrLen = <span class="keyword">sizeof</span>(clientAddr);</div>
+<div class="line"><span class="lineno">  167</span> </div>
+<div class="line"><span class="lineno">  168</span>        std::memset(&amp;clientAddr, 0, clientAddrLen);</div>
+<div class="line"><span class="lineno">  169</span>        <span class="keywordflow">if</span> (getpeername(clientSocket, <span class="keyword">reinterpret_cast&lt;</span>sockaddr*<span class="keyword">&gt;</span>(&amp;clientAddr), &amp;clientAddrLen) == -1) {</div>
+<div class="line"><span class="lineno">  170</span>            <span class="keywordflow">return</span> <span class="stringliteral">&quot;Unknown client (socket: &quot;</span> + <a class="code hl_function" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a>(clientSocket) + <span class="stringliteral">&quot;)&quot;</span>;</div>
+<div class="line"><span class="lineno">  171</span>        }</div>
+<div class="line"><span class="lineno">  172</span> </div>
+<div class="line"><span class="lineno">  173</span>        <span class="keywordtype">char</span> clientIP[INET_ADDRSTRLEN];</div>
+<div class="line"><span class="lineno">  174</span>        inet_ntop(AF_INET, &amp;(clientAddr.sin_addr), clientIP, INET_ADDRSTRLEN); <span class="comment">// todo idk if allowed</span></div>
+<div class="line"><span class="lineno">  175</span> </div>
+<div class="line"><span class="lineno">  176</span>        int32_t clientPort = ntohs(clientAddr.sin_port);</div>
+<div class="line"><span class="lineno">  177</span> </div>
+<div class="line"><span class="lineno">  178</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;(IP: &quot;</span> + std::string(clientIP) + <span class="stringliteral">&quot;, Port: &quot;</span> + <a class="code hl_function" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a>(clientPort) + <span class="stringliteral">&quot;)&quot;</span>;</div>
+<div class="line"><span class="lineno">  179</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -536,34 +631,44 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1VirtualServer_a8ca6b0cac9495f72abb3359e5be56d39_icgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_a8ca6b0cac9495f72abb3359e5be56d39_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1VirtualServer_a8ca6b0cac9495f72abb3359e5be56d39_icgraph" id="aclasshttp_1_1VirtualServer_a8ca6b0cac9495f72abb3359e5be56d39_icgraph">
-<area shape="rect" title=" " alt="" coords="676,60,817,100"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a3d06a53896a3d67641f3dba82f1bd2b2" title=" " alt="" coords="487,17,628,57"/>
-<area shape="poly" title=" " alt="" coords="662,64,628,56,629,51,663,58"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#af9a6100fe0dc47c1d3e009b2f2a0a5a1" title=" " alt="" coords="487,92,628,132"/>
-<area shape="poly" title=" " alt="" coords="663,97,629,103,628,97,662,92"/>
-<area shape="rect" href="classcore_1_1AcceptHandler.html#a14238ec3d6956cf6f1f1fbe90105823d" title=" " alt="" coords="257,5,410,45"/>
-<area shape="poly" title=" " alt="" coords="473,36,410,32,411,27,473,30"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,121,180,146"/>
-<area shape="poly" title=" " alt="" coords="473,111,439,111,333,107,228,111,149,123,148,118,228,105,333,101,439,105,473,106"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="229,121,437,146"/>
-<area shape="poly" title=" " alt="" coords="473,123,438,126,437,121,473,117"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a0743b5e212838105fa3c5b2fdbbd346a" title=" " alt="" coords="228,170,439,195"/>
-<area shape="poly" title=" " alt="" coords="499,140,439,161,397,173,396,167,438,156,497,135"/>
-<area shape="poly" title=" " alt="" coords="216,136,180,136,180,131,216,131"/>
-<area shape="poly" title=" " alt="" coords="257,170,155,149,156,143,258,165"/>
+<area shape="rect" title=" " alt="" coords="800,69,941,109"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#af1b629a8ddf347950773122150442829" title=" " alt="" coords="600,5,741,45"/>
+<area shape="poly" title=" " alt="" coords="794,68,733,48,734,43,795,63"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#af9a6100fe0dc47c1d3e009b2f2a0a5a1" title=" " alt="" coords="600,133,741,173"/>
+<area shape="poly" title=" " alt="" coords="795,116,734,136,733,131,794,111"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a0fb848be6b479f9ac5857fd3cb2e5a9d" title=" " alt="" coords="589,69,752,109"/>
+<area shape="poly" title=" " alt="" coords="786,92,752,92,752,87,786,87"/>
+<area shape="rect" href="classcore_1_1AcceptHandler.html#a14238ec3d6956cf6f1f1fbe90105823d" title=" " alt="" coords="359,5,513,45"/>
+<area shape="poly" title=" " alt="" coords="586,28,513,28,513,23,586,23"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a76626d52a6ac3d2c1cbc16b0f1775f4a" title=" " alt="" coords="365,223,507,263"/>
+<area shape="poly" title=" " alt="" coords="607,181,542,206,493,225,491,220,540,202,605,176"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="108,122,283,147"/>
+<area shape="poly" title=" " alt="" coords="587,163,465,167,330,163,251,150,252,145,331,157,465,162,586,158"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="332,73,540,98"/>
+<area shape="poly" title=" " alt="" coords="601,131,541,112,497,101,498,96,542,107,603,126"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a0743b5e212838105fa3c5b2fdbbd346a" title=" " alt="" coords="331,122,541,147"/>
+<area shape="poly" title=" " alt="" coords="586,149,541,146,542,140,586,144"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="121,230,270,255"/>
+<area shape="poly" title=" " alt="" coords="352,245,270,245,270,240,352,240"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,230,60,255"/>
+<area shape="poly" title=" " alt="" coords="107,245,60,245,60,240,107,240"/>
+<area shape="poly" title=" " alt="" coords="361,103,259,125,258,119,360,98"/>
+<area shape="poly" title=" " alt="" coords="317,137,283,137,283,132,317,132"/>
+<area shape="poly" title=" " alt="" coords="575,90,540,90,540,84,575,85"/>
+<area shape="poly" title=" " alt="" coords="576,110,503,125,502,119,575,105"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="ab59a1074fe5dda2897099a9affd6a233" name="ab59a1074fe5dda2897099a9affd6a233"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab59a1074fe5dda2897099a9affd6a233">&#9670;&#160;</a></span>getClients() <span class="overload">[1/2]</span></h2>
+<a id="aea8a4d50c35f0865b9c0694ac2956477" name="aea8a4d50c35f0865b9c0694ac2956477"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea8a4d50c35f0865b9c0694ac2956477">&#9670;&#160;</a></span>getClients() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; int32_t &gt; &amp; http::VirtualServer::getClients </td>
+          <td class="memname">std::map&lt; int32_t, time_t &gt; &amp; http::VirtualServer::getClients </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -572,19 +677,19 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00178">178</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  178</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a609d5421c1f68e9eb4f9a7be6370a136">m_clients</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00198">198</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  198</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ada81be75150dd5b9b55683105a389c36" name="ada81be75150dd5b9b55683105a389c36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada81be75150dd5b9b55683105a389c36">&#9670;&#160;</a></span>getClients() <span class="overload">[2/2]</span></h2>
+<a id="aa5bf84276085217ba28346f747b265c8" name="aa5bf84276085217ba28346f747b265c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5bf84276085217ba28346f747b265c8">&#9670;&#160;</a></span>getClients() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::vector&lt; int32_t &gt; &amp; http::VirtualServer::getClients </td>
+          <td class="memname">const std::map&lt; int32_t, time_t &gt; &amp; http::VirtualServer::getClients </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -593,19 +698,9 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00176">176</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  176</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a609d5421c1f68e9eb4f9a7be6370a136">m_clients</a>; }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhttp_1_1VirtualServer_ada81be75150dd5b9b55683105a389c36_icgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_ada81be75150dd5b9b55683105a389c36_icgraph" alt=""/></div>
-<map name="aclasshttp_1_1VirtualServer_ada81be75150dd5b9b55683105a389c36_icgraph" id="aclasshttp_1_1VirtualServer_ada81be75150dd5b9b55683105a389c36_icgraph">
-<area shape="rect" title=" " alt="" coords="207,5,348,45"/>
-<area shape="rect" href="classcore_1_1AcceptHandler.html#a14238ec3d6956cf6f1f1fbe90105823d" title=" " alt="" coords="5,5,159,45"/>
-<area shape="poly" title=" " alt="" coords="193,28,159,28,159,23,193,23"/>
-</map>
-</div>
-
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00196">196</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  196</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>; }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a0285678cdd50697cd2aa8dd2cdde7085" name="a0285678cdd50697cd2aa8dd2cdde7085"></a>
@@ -623,8 +718,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00180">180</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  180</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a2179c9afe8cf3cea4d8c8672ea5d5a4c">m_config</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00200">200</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  200</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a2179c9afe8cf3cea4d8c8672ea5d5a4c">m_config</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -644,8 +739,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00174">174</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  174</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">m_listenSocket</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00194">194</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  194</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">m_listenSocket</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -762,11 +857,11 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00139">139</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  139</span>                                                                      {</div>
-<div class="line"><span class="lineno">  140</span>        <span class="keyword">const</span> std::string formatted = <span class="stringliteral">&quot;[&quot;</span> + <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a2179c9afe8cf3cea4d8c8672ea5d5a4c">m_config</a>.<a class="code hl_variable" href="structconfig_1_1s__server.html#a6ba1db5f77107c9685987908a5681f8c">server_names</a>.at(0) + <span class="stringliteral">&quot;] &quot;</span> + msg;</div>
-<div class="line"><span class="lineno">  141</span>        <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ae899297922e2cce19b245093e85c599f">m_logger</a>.<a class="code hl_function" href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6">log</a>(formatted, level);</div>
-<div class="line"><span class="lineno">  142</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00159">159</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  159</span>                                                                      {</div>
+<div class="line"><span class="lineno">  160</span>        <span class="keyword">const</span> std::string formatted = <span class="stringliteral">&quot;[&quot;</span> + <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a2179c9afe8cf3cea4d8c8672ea5d5a4c">m_config</a>.<a class="code hl_variable" href="structconfig_1_1s__server.html#a6ba1db5f77107c9685987908a5681f8c">server_names</a>.at(0) + <span class="stringliteral">&quot;] &quot;</span> + msg;</div>
+<div class="line"><span class="lineno">  161</span>        <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ae899297922e2cce19b245093e85c599f">m_logger</a>.<a class="code hl_function" href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6">log</a>(formatted, level);</div>
+<div class="line"><span class="lineno">  162</span>    }</div>
 <div class="ttc" id="aclassshared_1_1Logger_html_aa25eae8290010444e62c9996ef88f8b6"><div class="ttname"><a href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6">shared::Logger::log</a></div><div class="ttdeci">void log(const std::string &amp;msg, LogLevel level=DEBUG)</div><div class="ttdef"><b>Definition</b> <a href="Logger_8cpp_source.html#l00022">Logger.cpp:22</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -787,28 +882,38 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1VirtualServer_a68a3e475430ed6fa45c9b5111b5ee195_icgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_a68a3e475430ed6fa45c9b5111b5ee195_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1VirtualServer_a68a3e475430ed6fa45c9b5111b5ee195_icgraph" id="aclasshttp_1_1VirtualServer_a68a3e475430ed6fa45c9b5111b5ee195_icgraph">
-<area shape="rect" title=" " alt="" coords="676,102,845,127"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a3d06a53896a3d67641f3dba82f1bd2b2" title=" " alt="" coords="487,30,628,70"/>
-<area shape="poly" title=" " alt="" coords="705,100,621,73,622,68,707,95"/>
-<area shape="rect" href="classcore_1_1AcceptHandler.html#a14238ec3d6956cf6f1f1fbe90105823d" title=" " alt="" coords="257,30,410,70"/>
-<area shape="poly" title=" " alt="" coords="736,94,689,54,659,35,627,21,597,13,566,9,503,11,444,20,392,33,391,28,442,15,503,5,566,4,598,8,629,16,662,30,692,49,739,90"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#af9a6100fe0dc47c1d3e009b2f2a0a5a1" title=" " alt="" coords="487,230,628,270"/>
-<area shape="poly" title=" " alt="" coords="731,137,590,233,587,228,728,133"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,235,180,260"/>
-<area shape="poly" title=" " alt="" coords="699,133,628,149,516,165,427,171,340,179,229,201,172,218,124,237,122,233,170,213,227,196,339,174,427,166,515,160,628,144,698,128"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a0ffcf529ae88ec69f0af814dcbd74c4b" title=" " alt="" coords="487,94,628,134"/>
-<area shape="poly" title=" " alt="" coords="662,117,628,117,628,112,662,112"/>
-<area shape="poly" title=" " alt="" coords="473,53,410,53,410,48,473,48"/>
-<area shape="poly" title=" " alt="" coords="473,253,180,251,180,246,473,247"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="229,311,437,336"/>
-<area shape="poly" title=" " alt="" coords="489,277,439,294,378,314,376,308,438,289,487,272"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a0743b5e212838105fa3c5b2fdbbd346a" title=" " alt="" coords="228,210,439,235"/>
-<area shape="poly" title=" " alt="" coords="473,243,435,238,435,232,474,237"/>
-<area shape="poly" title=" " alt="" coords="276,310,227,294,131,263,133,258,229,289,278,304"/>
-<area shape="poly" title=" " alt="" coords="215,238,180,241,180,236,214,232"/>
-<area shape="poly" title=" " alt="" coords="473,93,403,73,405,68,474,88"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a9087762e937853061a5178078030280c" title="Destroys the VirtualServer object." alt="" coords="263,94,404,134"/>
-<area shape="poly" title=" " alt="" coords="473,117,404,117,404,112,473,112"/>
+<area shape="rect" title=" " alt="" coords="800,166,969,191"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#af1b629a8ddf347950773122150442829" title=" " alt="" coords="600,63,741,103"/>
+<area shape="poly" title=" " alt="" coords="845,162,751,117,723,105,725,100,753,112,848,157"/>
+<area shape="rect" href="classcore_1_1AcceptHandler.html#a14238ec3d6956cf6f1f1fbe90105823d" title=" " alt="" coords="359,5,513,45"/>
+<area shape="poly" title=" " alt="" coords="865,156,818,102,787,75,751,53,691,33,628,22,567,19,513,20,513,15,567,14,629,17,692,28,753,48,790,70,822,98,869,153"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#af9a6100fe0dc47c1d3e009b2f2a0a5a1" title=" " alt="" coords="600,191,741,231"/>
+<area shape="poly" title=" " alt="" coords="787,196,742,203,741,197,786,191"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="108,273,283,298"/>
+<area shape="poly" title=" " alt="" coords="869,204,821,259,789,287,753,309,694,335,642,353,594,364,547,368,500,366,450,360,330,339,271,322,221,301,223,296,272,317,331,333,451,355,501,361,547,362,593,358,640,348,692,331,751,304,786,282,818,255,865,201"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a0ffcf529ae88ec69f0af814dcbd74c4b" title=" " alt="" coords="600,127,741,167"/>
+<area shape="poly" title=" " alt="" coords="786,167,741,160,742,155,787,161"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a0fb848be6b479f9ac5857fd3cb2e5a9d" title=" " alt="" coords="589,255,752,295"/>
+<area shape="poly" title=" " alt="" coords="848,200,753,245,725,257,723,252,751,240,845,195"/>
+<area shape="poly" title=" " alt="" coords="586,65,512,47,514,41,587,60"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a76626d52a6ac3d2c1cbc16b0f1775f4a" title=" " alt="" coords="365,133,507,173"/>
+<area shape="poly" title=" " alt="" coords="586,193,506,173,508,168,587,188"/>
+<area shape="poly" title=" " alt="" coords="587,214,465,221,398,228,331,240,275,256,226,275,224,270,273,251,330,235,397,223,465,215,586,208"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="332,298,540,323"/>
+<area shape="poly" title=" " alt="" coords="601,239,591,245,577,256,568,267,558,278,543,289,514,300,512,295,540,284,554,274,564,264,573,252,588,240,598,234"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a0743b5e212838105fa3c5b2fdbbd346a" title=" " alt="" coords="331,249,541,274"/>
+<area shape="poly" title=" " alt="" coords="587,231,496,251,495,246,586,226"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="121,141,270,166"/>
+<area shape="poly" title=" " alt="" coords="352,156,270,156,270,151,352,151"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,141,60,166"/>
+<area shape="poly" title=" " alt="" coords="107,156,60,156,60,151,107,151"/>
+<area shape="poly" title=" " alt="" coords="318,301,282,297,283,292,318,296"/>
+<area shape="poly" title=" " alt="" coords="317,276,283,279,282,274,317,271"/>
+<area shape="poly" title=" " alt="" coords="596,122,588,117,572,102,563,87,555,73,540,60,512,45,514,41,543,55,559,70,568,84,576,98,591,113,599,118"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a9087762e937853061a5178078030280c" title="Destroys the VirtualServer object." alt="" coords="365,69,507,109"/>
+<area shape="poly" title=" " alt="" coords="586,129,506,109,508,104,587,124"/>
+<area shape="poly" title=" " alt="" coords="576,292,520,301,519,295,575,287"/>
+<area shape="poly" title=" " alt="" coords="575,272,541,270,542,265,576,267"/>
 </map>
 </div>
 
@@ -844,7 +949,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   60</span>        <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rhs)</div>
 <div class="line"><span class="lineno">   61</span>            <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><span class="lineno">   62</span>        <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a2179c9afe8cf3cea4d8c8672ea5d5a4c">m_config</a> = rhs.m_config;</div>
-<div class="line"><span class="lineno">   63</span>        <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a609d5421c1f68e9eb4f9a7be6370a136">m_clients</a> = rhs.m_clients;</div>
+<div class="line"><span class="lineno">   63</span>        <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a> = rhs.m_clients;</div>
 <div class="line"><span class="lineno">   64</span>        <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">m_listenSocket</a> = rhs.m_listenSocket;</div>
 <div class="line"><span class="lineno">   65</span>        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><span class="lineno">   66</span>    }</div>
@@ -875,19 +980,19 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00161">161</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  161</span>                                                     {</div>
-<div class="line"><span class="lineno">  162</span>        <span class="keywordflow">if</span> (fcntl(socket, F_SETFL, O_NONBLOCK)) {</div>
-<div class="line"><span class="lineno">  163</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;fcntl() failed to set non-blocking: &quot;</span> + std::string(strerror(errno)));</div>
-<div class="line"><span class="lineno">  164</span>        }</div>
-<div class="line"><span class="lineno">  165</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00181">181</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  181</span>                                                     {</div>
+<div class="line"><span class="lineno">  182</span>        <span class="keywordflow">if</span> (fcntl(socket, F_SETFL, O_NONBLOCK)) {</div>
+<div class="line"><span class="lineno">  183</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;fcntl() failed to set non-blocking: &quot;</span> + std::string(strerror(errno)));</div>
+<div class="line"><span class="lineno">  184</span>        }</div>
+<div class="line"><span class="lineno">  185</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1VirtualServer_a2412211f2db9413bd600b04a094e642e_icgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_a2412211f2db9413bd600b04a094e642e_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1VirtualServer_a2412211f2db9413bd600b04a094e642e_icgraph" id="aclasshttp_1_1VirtualServer_a2412211f2db9413bd600b04a094e642e_icgraph">
 <area shape="rect" title=" " alt="" coords="499,37,640,77"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a3d06a53896a3d67641f3dba82f1bd2b2" title=" " alt="" coords="309,5,451,45"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#af1b629a8ddf347950773122150442829" title=" " alt="" coords="309,5,451,45"/>
 <area shape="poly" title=" " alt="" coords="485,46,450,40,451,35,486,41"/>
 <area shape="rect" href="classhttp_1_1VirtualServer.html#aaa6efa927f0a998eb33c7232b7bbfdd9" title=" " alt="" coords="309,69,451,109"/>
 <area shape="poly" title=" " alt="" coords="486,74,451,80,450,75,485,69"/>
@@ -920,11 +1025,13 @@ Here is the caller graph for this function:</div>
 <p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00117">117</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  117</span>                                 {</div>
 <div class="line"><span class="lineno">  118</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195">log</a>(<span class="stringliteral">&quot;shutting down server&quot;</span>, <a class="code hl_enumvalue" href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797ca0825e7c7586812b70d7b56ca3d2d1d83">shared::INFO</a>);</div>
-<div class="line"><span class="lineno">  119</span>        <span class="keywordflow">for</span> (std::vector&lt;int32_t&gt;::iterator it = <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a609d5421c1f68e9eb4f9a7be6370a136">m_clients</a>.begin(); it != <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a609d5421c1f68e9eb4f9a7be6370a136">m_clients</a>.end(); ++it) {</div>
-<div class="line"><span class="lineno">  120</span>            this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c">close</a>(&amp;(*it));</div>
-<div class="line"><span class="lineno">  121</span>        }</div>
-<div class="line"><span class="lineno">  122</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c">close</a>(&amp;<a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">m_listenSocket</a>);</div>
-<div class="line"><span class="lineno">  123</span>    }</div>
+<div class="line"><span class="lineno">  119</span>        <span class="keywordflow">for</span> (std::map&lt;int32_t, time_t&gt;::iterator it = <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>.begin(); it != <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>.end(); ++it) {</div>
+<div class="line"><span class="lineno">  120</span>            <span class="keywordtype">int</span>&amp; fd = <span class="keyword">const_cast&lt;</span><span class="keywordtype">int</span>&amp;<span class="keyword">&gt;</span>(it-&gt;first);</div>
+<div class="line"><span class="lineno">  121</span>            this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c">close</a>(&amp;fd);</div>
+<div class="line"><span class="lineno">  122</span>        }</div>
+<div class="line"><span class="lineno">  123</span>        <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>.clear();</div>
+<div class="line"><span class="lineno">  124</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c">close</a>(&amp;<a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">m_listenSocket</a>);</div>
+<div class="line"><span class="lineno">  125</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -959,9 +1066,68 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a0fb848be6b479f9ac5857fd3cb2e5a9d" name="a0fb848be6b479f9ac5857fd3cb2e5a9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fb848be6b479f9ac5857fd3cb2e5a9d">&#9670;&#160;</a></span>updateClientActivity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void http::VirtualServer::updateClientActivity </td>
+          <td>(</td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>clientSocket</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00139">139</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  139</span>                                                                 {</div>
+<div class="line"><span class="lineno">  140</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195">log</a>(<span class="stringliteral">&quot;updating client activity: &quot;</span> + this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39">getClientInfo</a>(clientSocket), <a class="code hl_enumvalue" href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797ca0825e7c7586812b70d7b56ca3d2d1d83">shared::INFO</a>);</div>
+<div class="line"><span class="lineno">  141</span>        <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>.at(clientSocket) = time(NULL);</div>
+<div class="line"><span class="lineno">  142</span>    }</div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1VirtualServer_a0fb848be6b479f9ac5857fd3cb2e5a9d_cgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_a0fb848be6b479f9ac5857fd3cb2e5a9d_cgraph" alt=""/></div>
+<map name="aclasshttp_1_1VirtualServer_a0fb848be6b479f9ac5857fd3cb2e5a9d_cgraph" id="aclasshttp_1_1VirtualServer_a0fb848be6b479f9ac5857fd3cb2e5a9d_cgraph">
+<area shape="rect" title=" " alt="" coords="5,35,168,75"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39" title=" " alt="" coords="230,5,371,45"/>
+<area shape="poly" title=" " alt="" coords="168,41,216,34,217,40,169,46"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195" title=" " alt="" coords="216,70,385,95"/>
+<area shape="poly" title=" " alt="" coords="169,63,203,67,202,72,168,68"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="441,5,573,45"/>
+<area shape="poly" title=" " alt="" coords="371,23,427,23,427,28,371,28"/>
+<area shape="rect" href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6" title=" " alt="" coords="433,70,580,95"/>
+<area shape="poly" title=" " alt="" coords="386,80,420,80,420,85,386,85"/>
+<area shape="rect" href="classshared_1_1Logger.html#afa95b6aabdf9018417243de3e904674e" title=" " alt="" coords="628,45,849,70"/>
+<area shape="poly" title=" " alt="" coords="580,72,614,68,615,74,581,77"/>
+<area shape="rect" href="classshared_1_1Logger.html#a59ccf733344c360fe7839dbc1a6ae6f5" title=" " alt="" coords="633,94,844,119"/>
+<area shape="poly" title=" " alt="" coords="581,88,620,92,619,97,580,93"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1VirtualServer_a0fb848be6b479f9ac5857fd3cb2e5a9d_icgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_a0fb848be6b479f9ac5857fd3cb2e5a9d_icgraph" alt=""/></div>
+<map name="aclasshttp_1_1VirtualServer_a0fb848be6b479f9ac5857fd3cb2e5a9d_icgraph" id="aclasshttp_1_1VirtualServer_a0fb848be6b479f9ac5857fd3cb2e5a9d_icgraph">
+<area shape="rect" title=" " alt="" coords="487,23,649,63"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="229,5,437,31"/>
+<area shape="poly" title=" " alt="" coords="472,36,437,32,438,27,473,30"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a0743b5e212838105fa3c5b2fdbbd346a" title=" " alt="" coords="228,55,439,80"/>
+<area shape="poly" title=" " alt="" coords="473,56,439,59,438,54,472,50"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,31,180,56"/>
+<area shape="poly" title=" " alt="" coords="216,33,180,37,180,32,215,28"/>
+<area shape="poly" title=" " alt="" coords="214,58,180,55,180,49,215,53"/>
+</map>
+</div>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a609d5421c1f68e9eb4f9a7be6370a136" name="a609d5421c1f68e9eb4f9a7be6370a136"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a609d5421c1f68e9eb4f9a7be6370a136">&#9670;&#160;</a></span>m_clients</h2>
+<a id="ad7436180516bb83163543094014a7ac7" name="ad7436180516bb83163543094014a7ac7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7436180516bb83163543094014a7ac7">&#9670;&#160;</a></span>CLIENT_TIMEOUT</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -970,7 +1136,31 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;int32_t&gt; http::VirtualServer::m_clients</td>
+          <td class="memname">const time_t http::VirtualServer::CLIENT_TIMEOUT = 3</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8hpp_source.html#l00045">45</a> of file <a class="el" href="VirtualServer_8hpp_source.html">VirtualServer.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab53352540672413483b62afd28ed36d7" name="ab53352540672413483b62afd28ed36d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab53352540672413483b62afd28ed36d7">&#9670;&#160;</a></span>m_clients</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;int32_t, time_t&gt; http::VirtualServer::m_clients</td>
         </tr>
       </table>
   </td>
@@ -980,7 +1170,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8hpp_source.html#l00044">44</a> of file <a class="el" href="VirtualServer_8hpp_source.html">VirtualServer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8hpp_source.html#l00048">48</a> of file <a class="el" href="VirtualServer_8hpp_source.html">VirtualServer.hpp</a>.</p>
 
 </div>
 </div>
@@ -1004,7 +1194,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8hpp_source.html#l00043">43</a> of file <a class="el" href="VirtualServer_8hpp_source.html">VirtualServer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8hpp_source.html#l00047">47</a> of file <a class="el" href="VirtualServer_8hpp_source.html">VirtualServer.hpp</a>.</p>
 
 </div>
 </div>
@@ -1028,7 +1218,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8hpp_source.html#l00045">45</a> of file <a class="el" href="VirtualServer_8hpp_source.html">VirtualServer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8hpp_source.html#l00049">49</a> of file <a class="el" href="VirtualServer_8hpp_source.html">VirtualServer.hpp</a>.</p>
 
 </div>
 </div>
@@ -1052,7 +1242,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="VirtualServer_8hpp_source.html#l00046">46</a> of file <a class="el" href="VirtualServer_8hpp_source.html">VirtualServer.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="VirtualServer_8hpp_source.html#l00050">50</a> of file <a class="el" href="VirtualServer_8hpp_source.html">VirtualServer.hpp</a>.</p>
 
 </div>
 </div>
