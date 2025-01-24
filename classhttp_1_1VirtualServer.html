@@ -448,33 +448,31 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  132</span>            <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>.erase(it);</div>
 <div class="line"><span class="lineno">  133</span>            this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c">close</a>(&amp;clientSocket);</div>
 <div class="line"><span class="lineno">  134</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  135</span>            this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195">log</a>(<span class="stringliteral">&quot;Client socket &quot;</span> + <a class="code hl_function" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a>(clientSocket) + <span class="stringliteral">&quot; not found in the client map.&quot;</span>, <a class="code hl_enumvalue" href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797ca4866c6e7568b1ec213ab3b22a7188260">shared::WARNING</a>);</div>
+<div class="line"><span class="lineno">  135</span>            this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195">log</a>(<span class="stringliteral">&quot;Client socket &quot;</span> + this-&gt;<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39">getClientInfo</a>(clientSocket) + <span class="stringliteral">&quot; not found in the client map.&quot;</span>, <a class="code hl_enumvalue" href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797ca4866c6e7568b1ec213ab3b22a7188260">shared::WARNING</a>);</div>
 <div class="line"><span class="lineno">  136</span>        }</div>
 <div class="line"><span class="lineno">  137</span>    }</div>
-<div class="ttc" id="anamespaceshared_1_1string_html_a7498d7d25acc1a6d216ef30b3ccfa577"><div class="ttname"><a href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a></div><div class="ttdeci">std::string to_string(const T &amp;value)</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8hpp_source.html#l00043">stringUtils.hpp:43</a></div></div>
 <div class="ttc" id="anamespaceshared_html_a9913ca32d439bf0b47a71e564c40797ca4866c6e7568b1ec213ab3b22a7188260"><div class="ttname"><a href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797ca4866c6e7568b1ec213ab3b22a7188260">shared::WARNING</a></div><div class="ttdeci">@ WARNING</div><div class="ttdef"><b>Definition</b> <a href="Logger_8hpp_source.html#l00013">Logger.hpp:13</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1VirtualServer_af9a6100fe0dc47c1d3e009b2f2a0a5a1_cgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_af9a6100fe0dc47c1d3e009b2f2a0a5a1_cgraph" alt=""/></div>
 <map name="aclasshttp_1_1VirtualServer_af9a6100fe0dc47c1d3e009b2f2a0a5a1_cgraph" id="aclasshttp_1_1VirtualServer_af9a6100fe0dc47c1d3e009b2f2a0a5a1_cgraph">
-<area shape="rect" title=" " alt="" coords="5,123,147,163"/>
+<area shape="rect" title=" " alt="" coords="5,93,147,133"/>
 <area shape="rect" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c" title=" " alt="" coords="209,29,350,69"/>
-<area shape="poly" title=" " alt="" coords="112,120,194,79,209,72,211,77,196,84,114,125"/>
+<area shape="poly" title=" " alt="" coords="139,91,201,71,203,76,141,96"/>
 <area shape="rect" href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39" title=" " alt="" coords="209,93,350,133"/>
-<area shape="poly" title=" " alt="" coords="147,130,195,123,196,128,147,135"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="419,119,551,159"/>
-<area shape="poly" title=" " alt="" coords="147,142,195,143,364,143,405,141,406,146,364,148,195,148,147,147"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195" title=" " alt="" coords="195,209,364,234"/>
-<area shape="poly" title=" " alt="" coords="129,160,196,187,233,201,231,206,194,192,127,165"/>
+<area shape="poly" title=" " alt="" coords="147,111,195,111,195,116,147,116"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195" title=" " alt="" coords="195,158,364,183"/>
+<area shape="poly" title=" " alt="" coords="148,131,221,152,220,157,146,136"/>
 <area shape="poly" title=" " alt="" coords="241,30,239,20,245,11,259,5,279,3,303,6,316,13,313,18,301,11,279,8,260,10,248,15,244,21,246,28"/>
-<area shape="poly" title=" " alt="" coords="350,119,406,126,405,132,350,125"/>
-<area shape="rect" href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6" title=" " alt="" coords="412,209,559,234"/>
-<area shape="poly" title=" " alt="" coords="365,219,398,219,398,224,365,224"/>
-<area shape="rect" href="classshared_1_1Logger.html#afa95b6aabdf9018417243de3e904674e" title=" " alt="" coords="607,183,828,209"/>
-<area shape="poly" title=" " alt="" coords="559,211,593,207,593,212,560,216"/>
-<area shape="rect" href="classshared_1_1Logger.html#a59ccf733344c360fe7839dbc1a6ae6f5" title=" " alt="" coords="612,233,823,258"/>
-<area shape="poly" title=" " alt="" coords="560,226,599,230,598,236,559,232"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="419,93,551,133"/>
+<area shape="poly" title=" " alt="" coords="350,111,405,111,405,116,350,116"/>
+<area shape="rect" href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6" title=" " alt="" coords="412,158,559,183"/>
+<area shape="poly" title=" " alt="" coords="365,168,398,168,398,173,365,173"/>
+<area shape="rect" href="classshared_1_1Logger.html#afa95b6aabdf9018417243de3e904674e" title=" " alt="" coords="607,133,828,158"/>
+<area shape="poly" title=" " alt="" coords="559,160,593,156,593,162,560,165"/>
+<area shape="rect" href="classshared_1_1Logger.html#a59ccf733344c360fe7839dbc1a6ae6f5" title=" " alt="" coords="612,182,823,207"/>
+<area shape="poly" title=" " alt="" coords="560,176,599,180,598,185,559,181"/>
 </map>
 </div>
 <div class="dynheader">
@@ -523,7 +521,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  146</span>        std::vector&lt;int32_t&gt; toDrop;</div>
 <div class="line"><span class="lineno">  147</span> </div>
 <div class="line"><span class="lineno">  148</span>        <span class="keywordflow">for</span> (std::map&lt;int32_t, time_t&gt;::iterator it = <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>.begin(); it != <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>.end(); ++it) {</div>
-<div class="line"><span class="lineno">  149</span>            <span class="keywordflow">if</span> (now - it-&gt;second &gt; <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ad7436180516bb83163543094014a7ac7">CLIENT_TIMEOUT</a>) { <span class="comment">// todo macro</span></div>
+<div class="line"><span class="lineno">  149</span>            <span class="keywordflow">if</span> (now - it-&gt;second &gt; <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ad7436180516bb83163543094014a7ac7">CLIENT_TIMEOUT</a>) {</div>
 <div class="line"><span class="lineno">  150</span>                toDrop.push_back(it-&gt;first);</div>
 <div class="line"><span class="lineno">  151</span>            }</div>
 <div class="line"><span class="lineno">  152</span>        }</div>
@@ -539,25 +537,24 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1VirtualServer_a76626d52a6ac3d2c1cbc16b0f1775f4a_cgraph.png" border="0" usemap="#aclasshttp_1_1VirtualServer_a76626d52a6ac3d2c1cbc16b0f1775f4a_cgraph" alt=""/></div>
 <map name="aclasshttp_1_1VirtualServer_a76626d52a6ac3d2c1cbc16b0f1775f4a_cgraph" id="aclasshttp_1_1VirtualServer_a76626d52a6ac3d2c1cbc16b0f1775f4a_cgraph">
-<area shape="rect" title=" " alt="" coords="5,123,147,163"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#af9a6100fe0dc47c1d3e009b2f2a0a5a1" title=" " alt="" coords="195,123,336,163"/>
-<area shape="poly" title=" " alt="" coords="147,140,181,140,181,145,147,145"/>
+<area shape="rect" title=" " alt="" coords="5,93,147,133"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#af9a6100fe0dc47c1d3e009b2f2a0a5a1" title=" " alt="" coords="195,93,336,133"/>
+<area shape="poly" title=" " alt="" coords="147,111,181,111,181,116,147,116"/>
 <area shape="rect" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c" title=" " alt="" coords="398,29,539,69"/>
-<area shape="poly" title=" " alt="" coords="301,120,383,79,399,72,401,77,385,84,304,125"/>
+<area shape="poly" title=" " alt="" coords="329,91,391,71,392,76,330,96"/>
 <area shape="rect" href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39" title=" " alt="" coords="398,93,539,133"/>
-<area shape="poly" title=" " alt="" coords="336,130,384,123,385,128,337,135"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="609,119,741,159"/>
-<area shape="poly" title=" " alt="" coords="336,142,384,143,553,143,595,141,595,146,553,148,384,148,336,147"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195" title=" " alt="" coords="384,209,553,234"/>
-<area shape="poly" title=" " alt="" coords="318,160,385,187,422,201,420,206,383,192,316,165"/>
+<area shape="poly" title=" " alt="" coords="336,111,384,111,384,116,336,116"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195" title=" " alt="" coords="384,158,553,183"/>
+<area shape="poly" title=" " alt="" coords="337,131,411,152,409,157,336,136"/>
 <area shape="poly" title=" " alt="" coords="430,30,428,20,434,11,448,5,469,3,492,6,505,13,503,18,491,11,469,8,449,10,438,15,433,21,436,28"/>
-<area shape="poly" title=" " alt="" coords="540,119,595,126,594,132,539,125"/>
-<area shape="rect" href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6" title=" " alt="" coords="601,209,748,234"/>
-<area shape="poly" title=" " alt="" coords="554,219,588,219,588,224,554,224"/>
-<area shape="rect" href="classshared_1_1Logger.html#afa95b6aabdf9018417243de3e904674e" title=" " alt="" coords="796,183,1017,209"/>
-<area shape="poly" title=" " alt="" coords="748,211,782,207,783,212,749,216"/>
-<area shape="rect" href="classshared_1_1Logger.html#a59ccf733344c360fe7839dbc1a6ae6f5" title=" " alt="" coords="801,233,1012,258"/>
-<area shape="poly" title=" " alt="" coords="749,226,788,230,787,236,748,232"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="609,93,741,133"/>
+<area shape="poly" title=" " alt="" coords="539,111,595,111,595,116,539,116"/>
+<area shape="rect" href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6" title=" " alt="" coords="601,158,748,183"/>
+<area shape="poly" title=" " alt="" coords="554,168,588,168,588,173,554,173"/>
+<area shape="rect" href="classshared_1_1Logger.html#afa95b6aabdf9018417243de3e904674e" title=" " alt="" coords="796,133,1017,158"/>
+<area shape="poly" title=" " alt="" coords="748,160,782,156,783,162,749,165"/>
+<area shape="rect" href="classshared_1_1Logger.html#a59ccf733344c360fe7839dbc1a6ae6f5" title=" " alt="" coords="801,182,1012,207"/>
+<area shape="poly" title=" " alt="" coords="749,176,788,180,787,185,748,181"/>
 </map>
 </div>
 <div class="dynheader">
@@ -616,6 +613,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  177</span> </div>
 <div class="line"><span class="lineno">  178</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;(IP: &quot;</span> + std::string(clientIP) + <span class="stringliteral">&quot;, Port: &quot;</span> + <a class="code hl_function" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a>(clientPort) + <span class="stringliteral">&quot;)&quot;</span>;</div>
 <div class="line"><span class="lineno">  179</span>    }</div>
+<div class="ttc" id="anamespaceshared_1_1string_html_a7498d7d25acc1a6d216ef30b3ccfa577"><div class="ttname"><a href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a></div><div class="ttdeci">std::string to_string(const T &amp;value)</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8hpp_source.html#l00043">stringUtils.hpp:43</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
