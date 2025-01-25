@@ -216,12 +216,12 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00059">59</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   59</span>                                         {</div>
-<div class="line"><span class="lineno">   60</span>        <span class="keywordflow">if</span> (signum == SIGINT) {</div>
-<div class="line"><span class="lineno">   61</span>            <a class="code hl_variable" href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">m_reacting</a> = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">   62</span>        }</div>
-<div class="line"><span class="lineno">   63</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00060">60</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>                                         {</div>
+<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">if</span> (signum == SIGINT) {</div>
+<div class="line"><span class="lineno">   62</span>            <a class="code hl_variable" href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">m_reacting</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   63</span>        }</div>
+<div class="line"><span class="lineno">   64</span>    }</div>
 <div class="ttc" id="aclasscore_1_1Reactor_html_a2d794de183f0153b8ec67be4739bd3d9"><div class="ttname"><a href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">core::Reactor::m_reacting</a></div><div class="ttdeci">static bool m_reacting</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8hpp_source.html#l00032">Reactor.hpp:32</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -270,7 +270,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   45</span>        }</div>
 <div class="line"><span class="lineno">   46</span>    }</div>
 <div class="ttc" id="aclasscore_1_1Dispatcher_html_a9b09c97d8fe863c1fab9011186fb7170"><div class="ttname"><a href="classcore_1_1Dispatcher.html#a9b09c97d8fe863c1fab9011186fb7170">core::Dispatcher::registerHandler</a></div><div class="ttdeci">void registerHandler(int32_t fd, uint32_t events, AHandler *handler)</div><div class="ttdef"><b>Definition</b> <a href="Dispatcher_8cpp_source.html#l00037">Dispatcher.cpp:37</a></div></div>
-<div class="ttc" id="aclasscore_1_1Reactor_html_ad54fef7d5aa596da93d7e0e71f35ae45"><div class="ttname"><a href="classcore_1_1Reactor.html#ad54fef7d5aa596da93d7e0e71f35ae45">core::Reactor::handleSigint</a></div><div class="ttdeci">static void handleSigint(int)</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8cpp_source.html#l00059">Reactor.cpp:59</a></div></div>
+<div class="ttc" id="aclasscore_1_1Reactor_html_ad54fef7d5aa596da93d7e0e71f35ae45"><div class="ttname"><a href="classcore_1_1Reactor.html#ad54fef7d5aa596da93d7e0e71f35ae45">core::Reactor::handleSigint</a></div><div class="ttdeci">static void handleSigint(int)</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8cpp_source.html#l00060">Reactor.cpp:60</a></div></div>
 <div class="ttc" id="aclasshttp_1_1VirtualServer_html"><div class="ttname"><a href="classhttp_1_1VirtualServer.html">http::VirtualServer</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00017">VirtualServer.hpp:17</a></div></div>
 <div class="ttc" id="aclasshttp_1_1VirtualServer_html_a26dfa6f8cc8979b31d68c354cc89be14"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a26dfa6f8cc8979b31d68c354cc89be14">http::VirtualServer::getSocket</a></div><div class="ttdeci">int32_t getSocket(void)</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00197">VirtualServer.cpp:197</a></div></div>
 <div class="ttc" id="aclasshttp_1_1VirtualServer_html_aaa6efa927f0a998eb33c7232b7bbfdd9"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#aaa6efa927f0a998eb33c7232b7bbfdd9">http::VirtualServer::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00068">VirtualServer.cpp:68</a></div></div>
@@ -326,14 +326,15 @@ Here is the caller graph for this function:</div>
 <p class="definition">Definition at line <a class="el" href="Reactor_8cpp_source.html#l00048">48</a> of file <a class="el" href="Reactor_8cpp_source.html">Reactor.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   48</span>                        {</div>
 <div class="line"><span class="lineno">   49</span>        <a class="code hl_variable" href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">m_reacting</a> = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">while</span> (<a class="code hl_variable" href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">m_reacting</a>) {</div>
-<div class="line"><span class="lineno">   51</span>            <a class="code hl_variable" href="classcore_1_1Reactor.html#ac39befe378eb1efd88fde093064d4086">m_dispatcher</a>.<a class="code hl_function" href="classcore_1_1Dispatcher.html#a0ee1bbfec5ad1e90e6e5efa84f70ace2">dispatch</a>();</div>
-<div class="line"><span class="lineno">   52</span>            <span class="keywordflow">for</span> (std::vector&lt;http::VirtualServer&gt;::iterator it = <a class="code hl_variable" href="classcore_1_1Reactor.html#a5ec2aade1fe15c8a13b06a7ac0d26469">m_vServers</a>.begin(); it != <a class="code hl_variable" href="classcore_1_1Reactor.html#a5ec2aade1fe15c8a13b06a7ac0d26469">m_vServers</a>.end(); ++it) {</div>
-<div class="line"><span class="lineno">   53</span>                <a class="code hl_class" href="classhttp_1_1VirtualServer.html">http::VirtualServer</a>&amp; vServer = *it;</div>
-<div class="line"><span class="lineno">   54</span>                vServer.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a76626d52a6ac3d2c1cbc16b0f1775f4a">dropIdleClients</a>();</div>
-<div class="line"><span class="lineno">   55</span>            }</div>
-<div class="line"><span class="lineno">   56</span>        }</div>
-<div class="line"><span class="lineno">   57</span>    }</div>
+<div class="line"><span class="lineno">   50</span>        <span class="comment">// cppcheck-suppress knownConditionTrueFalse</span></div>
+<div class="line"><span class="lineno">   51</span>        <span class="keywordflow">while</span> (<a class="code hl_variable" href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">m_reacting</a>) {</div>
+<div class="line"><span class="lineno">   52</span>            <a class="code hl_variable" href="classcore_1_1Reactor.html#ac39befe378eb1efd88fde093064d4086">m_dispatcher</a>.<a class="code hl_function" href="classcore_1_1Dispatcher.html#a0ee1bbfec5ad1e90e6e5efa84f70ace2">dispatch</a>();</div>
+<div class="line"><span class="lineno">   53</span>            <span class="keywordflow">for</span> (std::vector&lt;http::VirtualServer&gt;::iterator it = <a class="code hl_variable" href="classcore_1_1Reactor.html#a5ec2aade1fe15c8a13b06a7ac0d26469">m_vServers</a>.begin(); it != <a class="code hl_variable" href="classcore_1_1Reactor.html#a5ec2aade1fe15c8a13b06a7ac0d26469">m_vServers</a>.end(); ++it) {</div>
+<div class="line"><span class="lineno">   54</span>                <a class="code hl_class" href="classhttp_1_1VirtualServer.html">http::VirtualServer</a>&amp; vServer = *it;</div>
+<div class="line"><span class="lineno">   55</span>                vServer.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a76626d52a6ac3d2c1cbc16b0f1775f4a">dropIdleClients</a>();</div>
+<div class="line"><span class="lineno">   56</span>            }</div>
+<div class="line"><span class="lineno">   57</span>        }</div>
+<div class="line"><span class="lineno">   58</span>    }</div>
 <div class="ttc" id="aclasscore_1_1Dispatcher_html_a0ee1bbfec5ad1e90e6e5efa84f70ace2"><div class="ttname"><a href="classcore_1_1Dispatcher.html#a0ee1bbfec5ad1e90e6e5efa84f70ace2">core::Dispatcher::dispatch</a></div><div class="ttdeci">void dispatch()</div><div class="ttdef"><b>Definition</b> <a href="Dispatcher_8cpp_source.html#l00055">Dispatcher.cpp:55</a></div></div>
 <div class="ttc" id="aclasshttp_1_1VirtualServer_html_a76626d52a6ac3d2c1cbc16b0f1775f4a"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a76626d52a6ac3d2c1cbc16b0f1775f4a">http::VirtualServer::dropIdleClients</a></div><div class="ttdeci">void dropIdleClients()</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00142">VirtualServer.cpp:142</a></div></div>
 </div><!-- fragment --><div class="dynheader">
