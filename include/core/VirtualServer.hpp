@@ -28,7 +28,7 @@ namespace http {
 			void dropIdleClients();
 			void shutDown();
 
-			void log(const std::string& msg, shared::LogLevel level = shared::DEBUG);
+			void log(const std::string& msg, shared::LogLevel level = shared::DEBUG, int32_t clientSocket = -1);
 
 			int32_t getSocket(void);
 			const std::map<int32_t, time_t>& getClients(void) const;
