@@ -13,7 +13,7 @@ var classhttp_1_1VirtualServer =
     [ "getConfig", "classhttp_1_1VirtualServer.html#a0285678cdd50697cd2aa8dd2cdde7085", null ],
     [ "getSocket", "classhttp_1_1VirtualServer.html#a26dfa6f8cc8979b31d68c354cc89be14", null ],
     [ "init", "classhttp_1_1VirtualServer.html#aaa6efa927f0a998eb33c7232b7bbfdd9", null ],
-    [ "log", "classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195", null ],
+    [ "log", "classhttp_1_1VirtualServer.html#a64edecd5e51fa150804b9b5e31f25aef", null ],
     [ "operator=", "classhttp_1_1VirtualServer.html#a94861a855f49f9780fca077fd12059f4", null ],
     [ "setNonBlocking", "classhttp_1_1VirtualServer.html#a2412211f2db9413bd600b04a094e642e", null ],
     [ "shutDown", "classhttp_1_1VirtualServer.html#a0ffcf529ae88ec69f0af814dcbd74c4b", null ],

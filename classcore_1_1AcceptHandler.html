@@ -89,21 +89,21 @@ Collaboration diagram for core::AcceptHandler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcore_1_1AcceptHandler__coll__graph.png" border="0" usemap="#acore_1_1AcceptHandler_coll__map" alt="Collaboration graph"/></div>
 <map name="acore_1_1AcceptHandler_coll__map" id="acore_1_1AcceptHandler_coll__map">
-<area shape="rect" title="..." alt="" coords="108,1207,253,1312"/>
-<area shape="rect" href="classcore_1_1AHandler.html" title="..." alt="" coords="5,499,116,645"/>
-<area shape="poly" title=" " alt="" coords="78,658,174,1206,169,1207,73,659"/>
-<area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="111,5,264,131"/>
-<area shape="poly" title=" " alt="" coords="171,144,81,500,76,498,166,143"/>
-<area shape="rect" href="classshared_1_1Logger.html" title="..." alt="" coords="225,180,358,445"/>
-<area shape="poly" title=" " alt="" coords="222,142,237,179,232,181,217,144"/>
-<area shape="rect" href="classcore_1_1Dispatcher.html" title="..." alt="" coords="123,469,279,675"/>
-<area shape="poly" title=" " alt="" coords="192,144,201,469,195,469,187,144"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html" title="..." alt="" coords="303,699,475,1144"/>
-<area shape="poly" title=" " alt="" coords="305,1114,286,1146,246,1196,242,1192,281,1142,300,1112"/>
-<area shape="rect" href="structconfig_1_1s__server.html" title=" " alt="" coords="383,230,512,395"/>
-<area shape="poly" title=" " alt="" coords="442,396,414,682,409,682,437,395"/>
-<area shape="poly" title=" " alt="" coords="308,445,339,674,341,682,335,683,334,675,303,446"/>
-<area shape="poly" title=" " alt="" coords="198,675,197,699,184,1190,179,1190,191,699,192,675"/>
+<area shape="rect" title="..." alt="" coords="108,1347,253,1452"/>
+<area shape="rect" href="classcore_1_1AHandler.html" title="..." alt="" coords="5,639,116,785"/>
+<area shape="poly" title=" " alt="" coords="78,798,174,1346,169,1347,73,799"/>
+<area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="108,5,261,131"/>
+<area shape="poly" title=" " alt="" coords="173,144,77,640,72,639,168,143"/>
+<area shape="rect" href="classshared_1_1Logger.html" title="..." alt="" coords="223,180,368,585"/>
+<area shape="poly" title=" " alt="" coords="214,143,226,179,221,181,209,145"/>
+<area shape="rect" href="classcore_1_1Dispatcher.html" title="..." alt="" coords="123,609,279,815"/>
+<area shape="poly" title=" " alt="" coords="189,144,201,609,195,609,184,144"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html" title="..." alt="" coords="303,839,475,1284"/>
+<area shape="poly" title=" " alt="" coords="305,1254,286,1286,246,1336,242,1332,281,1282,300,1252"/>
+<area shape="rect" href="structconfig_1_1s__server.html" title=" " alt="" coords="392,300,521,465"/>
+<area shape="poly" title=" " alt="" coords="452,466,418,815,417,822,412,822,413,814,447,465"/>
+<area shape="poly" title=" " alt="" coords="315,585,342,814,343,822,338,823,337,815,309,586"/>
+<area shape="poly" title=" " alt="" coords="198,815,197,839,184,1330,179,1330,191,839,192,815"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -254,7 +254,7 @@ Additional Inherited Members</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="AcceptHandler_8cpp_source.html#l00016">16</a> of file <a class="el" href="AcceptHandler_8cpp_source.html">AcceptHandler.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   16</span>                                                       {</div>
 <div class="line"><span class="lineno">   17</span>        <span class="keywordflow">if</span> (events &amp; EPOLLHUP || events &amp; EPOLLERR) {</div>
-<div class="line"><span class="lineno">   18</span>            <a class="code hl_variable" href="classcore_1_1AcceptHandler.html#a6381d9861b27184fcaaaf378d5635095">m_vServer</a>.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195">log</a>(<span class="stringliteral">&quot;unexpected epoll event on listen socket&quot;</span>, <a class="code hl_enumvalue" href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797caae55babb9347163e19519294363bdc31">shared::ERROR</a>);</div>
+<div class="line"><span class="lineno">   18</span>            <a class="code hl_variable" href="classcore_1_1AcceptHandler.html#a6381d9861b27184fcaaaf378d5635095">m_vServer</a>.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a64edecd5e51fa150804b9b5e31f25aef">log</a>(<span class="stringliteral">&quot;unexpected epoll event on listen socket&quot;</span>, <a class="code hl_enumvalue" href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797caae55babb9347163e19519294363bdc31">shared::ERROR</a>);</div>
 <div class="line"><span class="lineno">   19</span>            <a class="code hl_variable" href="classcore_1_1AcceptHandler.html#a6381d9861b27184fcaaaf378d5635095">m_vServer</a>.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a0ffcf529ae88ec69f0af814dcbd74c4b">shutDown</a>();</div>
 <div class="line"><span class="lineno">   20</span>            <span class="keywordflow">return</span> this-&gt;<a class="code hl_function" href="classcore_1_1AHandler.html#a2bf318df177af33d921c7755389a09a3">markDone</a>();</div>
 <div class="line"><span class="lineno">   21</span>        }</div>
@@ -270,7 +270,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   31</span>                <a class="code hl_variable" href="classcore_1_1AcceptHandler.html#a2be718a6a4dfb5a61e88865ac1b4ce00">m_dispatcher</a>.<a class="code hl_function" href="classcore_1_1Dispatcher.html#a9b09c97d8fe863c1fab9011186fb7170">registerHandler</a>(clientSocket, EPOLLIN | EPOLLOUT, handler);</div>
 <div class="line"><span class="lineno">   32</span>            }</div>
 <div class="line"><span class="lineno">   33</span>        } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><span class="lineno">   34</span>            <a class="code hl_variable" href="classcore_1_1AcceptHandler.html#a6381d9861b27184fcaaaf378d5635095">m_vServer</a>.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195">log</a>(e.what(), <a class="code hl_enumvalue" href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797caae55babb9347163e19519294363bdc31">shared::ERROR</a>);</div>
+<div class="line"><span class="lineno">   34</span>            <a class="code hl_variable" href="classcore_1_1AcceptHandler.html#a6381d9861b27184fcaaaf378d5635095">m_vServer</a>.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a64edecd5e51fa150804b9b5e31f25aef">log</a>(e.what(), <a class="code hl_enumvalue" href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797caae55babb9347163e19519294363bdc31">shared::ERROR</a>);</div>
 <div class="line"><span class="lineno">   35</span>            <a class="code hl_variable" href="classcore_1_1AcceptHandler.html#a6381d9861b27184fcaaaf378d5635095">m_vServer</a>.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a0ffcf529ae88ec69f0af814dcbd74c4b">shutDown</a>();</div>
 <div class="line"><span class="lineno">   36</span>            <span class="keywordflow">return</span> this-&gt;<a class="code hl_function" href="classcore_1_1AHandler.html#a2bf318df177af33d921c7755389a09a3">markDone</a>();</div>
 <div class="line"><span class="lineno">   37</span>        }</div>
@@ -278,7 +278,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="ttc" id="aclasscore_1_1AHandler_html_a2bf318df177af33d921c7755389a09a3"><div class="ttname"><a href="classcore_1_1AHandler.html#a2bf318df177af33d921c7755389a09a3">core::AHandler::markDone</a></div><div class="ttdeci">void markDone()</div><div class="ttdef"><b>Definition</b> <a href="AHandler_8hpp_source.html#l00025">AHandler.hpp:25</a></div></div>
 <div class="ttc" id="aclasscore_1_1Dispatcher_html_a9b09c97d8fe863c1fab9011186fb7170"><div class="ttname"><a href="classcore_1_1Dispatcher.html#a9b09c97d8fe863c1fab9011186fb7170">core::Dispatcher::registerHandler</a></div><div class="ttdeci">void registerHandler(int32_t fd, uint32_t events, AHandler *handler)</div><div class="ttdef"><b>Definition</b> <a href="Dispatcher_8cpp_source.html#l00037">Dispatcher.cpp:37</a></div></div>
 <div class="ttc" id="aclasshttp_1_1VirtualServer_html_a0ffcf529ae88ec69f0af814dcbd74c4b"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a0ffcf529ae88ec69f0af814dcbd74c4b">http::VirtualServer::shutDown</a></div><div class="ttdeci">void shutDown()</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00117">VirtualServer.cpp:117</a></div></div>
-<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a68a3e475430ed6fa45c9b5111b5ee195"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195">http::VirtualServer::log</a></div><div class="ttdeci">void log(const std::string &amp;msg, shared::LogLevel level=shared::DEBUG)</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00159">VirtualServer.cpp:159</a></div></div>
+<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a64edecd5e51fa150804b9b5e31f25aef"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a64edecd5e51fa150804b9b5e31f25aef">http::VirtualServer::log</a></div><div class="ttdeci">void log(const std::string &amp;msg, shared::LogLevel level=shared::DEBUG, int32_t clientSocket=-1)</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00157">VirtualServer.cpp:157</a></div></div>
 <div class="ttc" id="aclasshttp_1_1VirtualServer_html_af1b629a8ddf347950773122150442829"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#af1b629a8ddf347950773122150442829">http::VirtualServer::acceptClient</a></div><div class="ttdeci">int32_t acceptClient()</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00097">VirtualServer.cpp:97</a></div></div>
 <div class="ttc" id="anamespaceshared_html_a9913ca32d439bf0b47a71e564c40797caae55babb9347163e19519294363bdc31"><div class="ttname"><a href="namespaceshared.html#a9913ca32d439bf0b47a71e564c40797caae55babb9347163e19519294363bdc31">shared::ERROR</a></div><div class="ttdeci">@ ERROR</div><div class="ttdef"><b>Definition</b> <a href="Logger_8hpp_source.html#l00014">Logger.hpp:14</a></div></div>
 </div><!-- fragment --><div class="dynheader">
@@ -286,34 +286,34 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classcore_1_1AcceptHandler_a14238ec3d6956cf6f1f1fbe90105823d_cgraph.png" border="0" usemap="#aclasscore_1_1AcceptHandler_a14238ec3d6956cf6f1f1fbe90105823d_cgraph" alt=""/></div>
 <map name="aclasscore_1_1AcceptHandler_a14238ec3d6956cf6f1f1fbe90105823d_cgraph" id="aclasscore_1_1AcceptHandler_a14238ec3d6956cf6f1f1fbe90105823d_cgraph">
-<area shape="rect" title=" " alt="" coords="5,177,159,217"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#af1b629a8ddf347950773122150442829" title=" " alt="" coords="233,69,375,109"/>
-<area shape="poly" title=" " alt="" coords="115,175,205,126,236,112,238,117,208,130,117,180"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a68a3e475430ed6fa45c9b5111b5ee195" title=" " alt="" coords="449,134,619,159"/>
-<area shape="poly" title=" " alt="" coords="158,178,206,169,325,156,436,148,436,154,326,162,207,175,159,183"/>
-<area shape="rect" href="classcore_1_1AHandler.html#a2bf318df177af33d921c7755389a09a3" title=" " alt="" coords="207,185,401,210"/>
-<area shape="poly" title=" " alt="" coords="159,195,193,195,193,200,159,200"/>
-<area shape="rect" href="classcore_1_1Dispatcher.html#a9b09c97d8fe863c1fab9011186fb7170" title=" " alt="" coords="211,235,397,275"/>
-<area shape="poly" title=" " alt="" coords="159,214,214,229,212,234,158,220"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a0ffcf529ae88ec69f0af814dcbd74c4b" title=" " alt="" coords="233,299,375,339"/>
-<area shape="poly" title=" " alt="" coords="108,215,153,250,208,284,222,291,220,296,205,289,150,254,105,220"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39" title=" " alt="" coords="463,5,605,45"/>
-<area shape="poly" title=" " alt="" coords="374,67,449,46,451,51,375,72"/>
-<area shape="poly" title=" " alt="" coords="375,104,470,128,469,133,374,109"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a2412211f2db9413bd600b04a094e642e" title=" " alt="" coords="463,69,605,109"/>
-<area shape="poly" title=" " alt="" coords="375,87,450,87,450,92,375,92"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="674,5,806,45"/>
-<area shape="poly" title=" " alt="" coords="605,23,660,23,660,28,605,28"/>
-<area shape="rect" href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6" title=" " alt="" coords="667,134,813,159"/>
-<area shape="poly" title=" " alt="" coords="619,144,653,144,653,149,619,149"/>
-<area shape="rect" href="classshared_1_1Logger.html#afa95b6aabdf9018417243de3e904674e" title=" " alt="" coords="861,109,1083,134"/>
-<area shape="poly" title=" " alt="" coords="814,136,847,132,848,138,814,141"/>
-<area shape="rect" href="classshared_1_1Logger.html#a59ccf733344c360fe7839dbc1a6ae6f5" title=" " alt="" coords="867,158,1077,183"/>
-<area shape="poly" title=" " alt="" coords="814,152,853,156,853,161,814,157"/>
-<area shape="poly" title=" " alt="" coords="374,298,400,284,435,258,467,227,514,169,518,172,471,230,439,262,403,289,376,302"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c" title=" " alt="" coords="463,299,605,339"/>
-<area shape="poly" title=" " alt="" coords="375,316,450,316,450,321,375,321"/>
-<area shape="poly" title=" " alt="" coords="495,299,493,289,499,280,513,274,534,272,558,275,571,282,569,287,556,280,534,277,514,279,503,284,498,290,500,298"/>
+<area shape="rect" title=" " alt="" coords="5,113,159,153"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#af1b629a8ddf347950773122150442829" title=" " alt="" coords="233,5,375,45"/>
+<area shape="poly" title=" " alt="" coords="115,111,205,62,236,48,238,53,208,66,117,116"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a64edecd5e51fa150804b9b5e31f25aef" title=" " alt="" coords="449,70,619,95"/>
+<area shape="poly" title=" " alt="" coords="158,114,206,105,325,92,436,84,436,90,326,98,207,111,159,119"/>
+<area shape="rect" href="classcore_1_1AHandler.html#a2bf318df177af33d921c7755389a09a3" title=" " alt="" coords="207,121,401,146"/>
+<area shape="poly" title=" " alt="" coords="159,131,193,131,193,136,159,136"/>
+<area shape="rect" href="classcore_1_1Dispatcher.html#a9b09c97d8fe863c1fab9011186fb7170" title=" " alt="" coords="211,171,397,211"/>
+<area shape="poly" title=" " alt="" coords="159,150,214,165,212,170,158,156"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a0ffcf529ae88ec69f0af814dcbd74c4b" title=" " alt="" coords="233,235,375,275"/>
+<area shape="poly" title=" " alt="" coords="108,151,153,186,208,220,222,227,220,232,205,225,150,190,105,156"/>
+<area shape="poly" title=" " alt="" coords="375,40,470,64,469,69,374,45"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a2412211f2db9413bd600b04a094e642e" title=" " alt="" coords="463,5,605,45"/>
+<area shape="poly" title=" " alt="" coords="375,23,450,23,450,28,375,28"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39" title=" " alt="" coords="669,33,811,73"/>
+<area shape="poly" title=" " alt="" coords="619,68,655,63,656,68,620,73"/>
+<area shape="rect" href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6" title=" " alt="" coords="667,98,813,123"/>
+<area shape="poly" title=" " alt="" coords="620,92,653,96,653,102,619,97"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="906,33,1038,73"/>
+<area shape="poly" title=" " alt="" coords="811,51,892,51,892,56,811,56"/>
+<area shape="rect" href="classshared_1_1Logger.html#afa95b6aabdf9018417243de3e904674e" title=" " alt="" coords="861,147,1083,173"/>
+<area shape="poly" title=" " alt="" coords="801,121,899,142,898,147,800,126"/>
+<area shape="rect" href="classshared_1_1Logger.html#a59ccf733344c360fe7839dbc1a6ae6f5" title=" " alt="" coords="867,98,1077,123"/>
+<area shape="poly" title=" " alt="" coords="814,108,853,108,853,113,814,113"/>
+<area shape="poly" title=" " alt="" coords="374,234,400,220,435,194,467,163,514,105,518,108,471,166,439,198,403,225,376,238"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c" title=" " alt="" coords="463,235,605,275"/>
+<area shape="poly" title=" " alt="" coords="375,252,450,252,450,257,375,257"/>
+<area shape="poly" title=" " alt="" coords="495,235,493,225,499,216,513,210,534,208,558,211,571,218,569,223,556,216,534,213,514,215,503,220,498,226,500,234"/>
 </map>
 </div>
 

@@ -217,19 +217,23 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   33</span>                                                          {</div>
 <div class="line"><span class="lineno">   34</span>        <a class="code hl_variable" href="classhttp_1_1RequestProccesor.html#a0dd339354b80e8f4835b7e8d6cbb5bd0">m_res</a> = <span class="keyword">new</span> Response();</div>
 <div class="line"><span class="lineno">   35</span>        <a class="code hl_variable" href="classhttp_1_1RequestProccesor.html#ab75a7d191fc12f8c2ed31e9c9f36ecdf">m_handlers</a>[req.getMethod()]-&gt;handle(req, *<a class="code hl_variable" href="classhttp_1_1RequestProccesor.html#a0dd339354b80e8f4835b7e8d6cbb5bd0">m_res</a>);</div>
-<div class="line"><span class="lineno">   36</span>        <span class="keywordflow">return</span> this-&gt;<a class="code hl_function" href="classhttp_1_1RequestProccesor.html#a0dbd037a17cf6adfe1f3582a5a2a07c8">releaseResponse</a>();</div>
-<div class="line"><span class="lineno">   37</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1RequestProccesor_html_a0dbd037a17cf6adfe1f3582a5a2a07c8"><div class="ttname"><a href="classhttp_1_1RequestProccesor.html#a0dbd037a17cf6adfe1f3582a5a2a07c8">http::RequestProccesor::releaseResponse</a></div><div class="ttdeci">Response * releaseResponse()</div><div class="ttdef"><b>Definition</b> <a href="RequestProccesor_8cpp_source.html#l00039">RequestProccesor.cpp:39</a></div></div>
+<div class="line"><span class="lineno">   36</span>        <a class="code hl_variable" href="classhttp_1_1RequestProccesor.html#a0dd339354b80e8f4835b7e8d6cbb5bd0">m_res</a>-&gt;<a class="code hl_function" href="classhttp_1_1Response.html#ac79941baf008165ba0c70903246d2374">setBody</a>(<span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
+<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">return</span> this-&gt;<a class="code hl_function" href="classhttp_1_1RequestProccesor.html#a0dbd037a17cf6adfe1f3582a5a2a07c8">releaseResponse</a>();</div>
+<div class="line"><span class="lineno">   38</span>    }</div>
+<div class="ttc" id="aclasshttp_1_1RequestProccesor_html_a0dbd037a17cf6adfe1f3582a5a2a07c8"><div class="ttname"><a href="classhttp_1_1RequestProccesor.html#a0dbd037a17cf6adfe1f3582a5a2a07c8">http::RequestProccesor::releaseResponse</a></div><div class="ttdeci">Response * releaseResponse()</div><div class="ttdef"><b>Definition</b> <a href="RequestProccesor_8cpp_source.html#l00040">RequestProccesor.cpp:40</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_ac79941baf008165ba0c70903246d2374"><div class="ttname"><a href="classhttp_1_1Response.html#ac79941baf008165ba0c70903246d2374">http::Response::setBody</a></div><div class="ttdeci">void setBody(const std::string &amp;body)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00049">Response.cpp:49</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1RequestProccesor_a1da84dd52328fd5d34c26f40bf2e1800_cgraph.png" border="0" usemap="#aclasshttp_1_1RequestProccesor_a1da84dd52328fd5d34c26f40bf2e1800_cgraph" alt=""/></div>
 <map name="aclasshttp_1_1RequestProccesor_a1da84dd52328fd5d34c26f40bf2e1800_cgraph" id="aclasshttp_1_1RequestProccesor_a1da84dd52328fd5d34c26f40bf2e1800_cgraph">
-<area shape="rect" title=" " alt="" coords="5,27,177,67"/>
+<area shape="rect" title=" " alt="" coords="5,55,177,95"/>
 <area shape="rect" href="classhttp_1_1Request.html#a8d7f2adb5a9e2717fe6b784160818aee" title=" " alt="" coords="225,5,412,31"/>
-<area shape="poly" title=" " alt="" coords="177,34,211,29,212,34,178,39"/>
+<area shape="poly" title=" " alt="" coords="171,53,254,31,255,37,172,58"/>
 <area shape="rect" href="classhttp_1_1RequestProccesor.html#a0dbd037a17cf6adfe1f3582a5a2a07c8" title=" " alt="" coords="233,55,405,95"/>
-<area shape="poly" title=" " alt="" coords="178,55,220,60,219,66,177,61"/>
+<area shape="poly" title=" " alt="" coords="178,73,219,73,219,78,178,78"/>
+<area shape="rect" href="classhttp_1_1Response.html#ac79941baf008165ba0c70903246d2374" title=" " alt="" coords="229,120,409,145"/>
+<area shape="poly" title=" " alt="" coords="172,93,255,114,254,119,171,98"/>
 </map>
 </div>
 <div class="dynheader">
@@ -270,12 +274,12 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RequestProccesor_8cpp_source.html#l00039">39</a> of file <a class="el" href="RequestProccesor_8cpp_source.html">RequestProccesor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   39</span>                                                {</div>
-<div class="line"><span class="lineno">   40</span>        Response* released = <a class="code hl_variable" href="classhttp_1_1RequestProccesor.html#a0dd339354b80e8f4835b7e8d6cbb5bd0">m_res</a>;</div>
-<div class="line"><span class="lineno">   41</span>        <a class="code hl_variable" href="classhttp_1_1RequestProccesor.html#a0dd339354b80e8f4835b7e8d6cbb5bd0">m_res</a> = NULL;</div>
-<div class="line"><span class="lineno">   42</span>        <span class="keywordflow">return</span> released;</div>
-<div class="line"><span class="lineno">   43</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="RequestProccesor_8cpp_source.html#l00040">40</a> of file <a class="el" href="RequestProccesor_8cpp_source.html">RequestProccesor.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>                                                {</div>
+<div class="line"><span class="lineno">   41</span>        Response* released = <a class="code hl_variable" href="classhttp_1_1RequestProccesor.html#a0dd339354b80e8f4835b7e8d6cbb5bd0">m_res</a>;</div>
+<div class="line"><span class="lineno">   42</span>        <a class="code hl_variable" href="classhttp_1_1RequestProccesor.html#a0dd339354b80e8f4835b7e8d6cbb5bd0">m_res</a> = NULL;</div>
+<div class="line"><span class="lineno">   43</span>        <span class="keywordflow">return</span> released;</div>
+<div class="line"><span class="lineno">   44</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
