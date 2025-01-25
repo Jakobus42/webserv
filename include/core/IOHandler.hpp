@@ -34,7 +34,6 @@ namespace core {
 			http::RequestProccesor m_reqProccesor;
 
 			std::queue<http::Response*> m_responses; // todo que
-			bool m_keepAlive;
 	};
 
 } /* namespace core */

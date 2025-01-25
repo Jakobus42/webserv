@@ -58,13 +58,6 @@ namespace http {
 		return m_headers.find(key) != m_headers.end();
 	}
 
-	bool Request::keepAlive() const { // todo lelelele this is shit
-		if (this->hasHeader("connection") == false) {
-			return true;
-		}
-		return m_headers.at("connection").at(0) == "keep-alive";
-	}
-
 	void Request::appendToBody(const char* data, std::size_t len) {
 		m_body.append(data, len);
 	}
