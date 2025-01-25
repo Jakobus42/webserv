@@ -110,7 +110,7 @@ namespace http {
 		this->setNonBlocking(clientSocket);
 		m_clients.insert(std::make_pair(clientSocket, time(NULL)));
 
-		this->log("accepted new client " + this->getClientInfo(clientSocket), shared::INFO);
+		this->log("accepted new client", shared::INFO, clientSocket);
 		return clientSocket;
 	}
 
@@ -127,17 +127,15 @@ namespace http {
 	void VirtualServer::dropClient(int32_t clientSocket) {
 		std::map<int32_t, time_t>::iterator it = m_clients.find(clientSocket);
 		if (it != m_clients.end()) {
-			this->log("dropping client " + this->getClientInfo(clientSocket), shared::INFO);
+			this->log("dropping client", shared::INFO, clientSocket);
 
 			m_clients.erase(it);
 			this->close(&clientSocket);
-		} else {
-			this->log("Client socket " + this->getClientInfo(clientSocket) + " not found in the client map.", shared::WARNING);
 		}
 	}
 
 	void VirtualServer::updateClientActivity(int32_t clientSocket) {
-		this->log("updating client activity: " + this->getClientInfo(clientSocket), shared::INFO);
+		this->log("updating client activity", shared::INFO, clientSocket);
 		m_clients.at(clientSocket) = time(NULL);
 	}
 
@@ -156,8 +154,13 @@ namespace http {
 		}
 	}
 
-	void VirtualServer::log(const std::string& msg, shared::LogLevel level) {
-		const std::string formatted = "[" + m_config.server_names.at(0) + "] " + msg;
+	void VirtualServer::log(const std::string& msg, shared::LogLevel level, int32_t clientSocket) {
+		std::string formatted = "[" + m_config.server_names.at(0) + "] ";
+		if (clientSocket != -1) {
+			formatted += "[Client: " + getClientInfo(clientSocket) + "] ";
+		}
+		formatted += msg;
+
 		m_logger.log(formatted, level);
 	}
 

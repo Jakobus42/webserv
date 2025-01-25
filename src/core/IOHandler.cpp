@@ -29,7 +29,7 @@ namespace core {
 
 	void IOHandler::handle(int32_t fd, uint32_t events) {
 		if (events & EPOLLERR || events & EPOLLHUP) {
-			m_vServer.log("epoll error or hangup detected on client socket", shared::ERROR); // todo maybe more detailed logs but idc rn lol
+			m_vServer.log("epoll error or hangup detected on client socket", shared::ERROR, fd);
 			m_vServer.dropClient(fd);
 			return this->markDone();
 		}
@@ -64,7 +64,7 @@ namespace core {
 				return;
 			}
 		}
-		m_vServer.updateClientActivity(fd);
+		m_vServer.log("received request from client:\n" + std::string(buff.getWritePos(), bytesRead), shared::INFO, fd);
 		buff.advanceWriter(bytesRead);
 
 		m_reqParser.process();
@@ -77,6 +77,8 @@ namespace core {
 			m_responses.push(res);
 			m_reqParser.reset();
 		}
+
+		m_vServer.updateClientActivity(fd);
 	}
 
 	void IOHandler::handleWrite(int32_t fd) {
@@ -84,13 +86,13 @@ namespace core {
 			return;
 		}
 
-		m_vServer.updateClientActivity(fd);
-
 		shared::Buffer<RESPONSE_BUFFER_SIZE>& buff = m_responses.front()->getData();
 		ssize_t bytesSent = send(fd, buff.getReadPos(), buff.size(), 0);
 		if (bytesSent == -1) {
 			throw std::runtime_error("send() failed");
 		}
+
+		m_vServer.log("sent response to client\n" + std::string(buff.getReadPos(), buff.getWritePos()), shared::INFO, fd);
 
 		buff.consume(bytesSent);
 		if (buff.isEmpty()) {
@@ -101,6 +103,8 @@ namespace core {
 				return this->markDone();
 			}
 		}
+
+		m_vServer.updateClientActivity(fd);
 	}
 
 } /* namespace core */
