@@ -34,7 +34,6 @@ namespace http {
 			void setStatusCode(StatusCode code);
 
 			bool hasHeader(const std::string& key) const;
-			bool keepAlive() const;
 
 			void appendToBody(const char* data, std::size_t len);
 

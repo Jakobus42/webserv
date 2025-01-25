@@ -13,8 +13,7 @@ namespace core {
 		: m_vServer(vServer)
 		, m_reqParser()
 		, m_reqProccesor(vServer.getConfig().locations)
-		, m_responses()
-		, m_keepAlive(false) {
+		, m_responses() {
 	}
 
 	/**
@@ -53,25 +52,20 @@ namespace core {
 		buff.prepareWrite();
 
 		ssize_t bytesRead = recv(fd, buff.getWritePos(), buff.availableSpace(), 0);
+		m_vServer.log("received " + shared::string::to_string(bytesRead) + " bytes.", shared::INFO, fd);
+
 		if (bytesRead == -1) {
 			throw std::runtime_error("recv() failed");
 		}
-		if (bytesRead == 0) {
-			if (m_keepAlive == false) {
-				m_vServer.dropClient(fd);
-				return this->markDone();
-			} else {
-				return;
-			}
+		if (bytesRead == 0) { // fuck keep alive
+			m_vServer.dropClient(fd);
+			return this->markDone();
 		}
 		m_vServer.log("received request from client:\n" + std::string(buff.getWritePos(), bytesRead), shared::INFO, fd);
 		buff.advanceWriter(bytesRead);
 
 		m_reqParser.process();
 		if (m_reqParser.isComplete() || m_reqParser.hasError()) {
-			const http::Request& req = m_reqParser.getRequest();
-			m_keepAlive = req.keepAlive(); // todo maybe dont do this at all
-
 			http::Response* res = m_reqProccesor.process(m_reqParser.getRequest());
 			res->serialize();
 			m_responses.push(res);
@@ -98,10 +92,9 @@ namespace core {
 		if (buff.isEmpty()) {
 			delete m_responses.front();
 			m_responses.pop();
-			if (m_keepAlive == false) {
-				m_vServer.dropClient(fd);
-				return this->markDone();
-			}
+
+			m_vServer.dropClient(fd);
+			return this->markDone();
 		}
 
 		m_vServer.updateClientActivity(fd);
