@@ -7,6 +7,8 @@
 #include "http/RequestProccesor.hpp"
 #include "http/Response.hpp"
 
+#include <queue>
+
 // todo: maybe have dispatcher as member to handle stay alive etc.
 namespace core {
 
@@ -31,8 +33,7 @@ namespace core {
 			http::RequestParser m_reqParser;
 			http::RequestProccesor m_reqProccesor;
 
-			std::deque<http::Response*> m_responses; // todo que
-			bool m_keepAlive;
+			std::queue<http::Response*> m_responses; // todo que
 	};
 
 } /* namespace core */

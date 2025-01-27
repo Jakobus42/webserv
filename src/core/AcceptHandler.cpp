@@ -21,8 +21,12 @@ namespace core {
 		}
 
 		try {
-			while (m_vServer.acceptClient()) {
-				int32_t clientSocket = m_vServer.getClients().back();
+			while (true) {
+				int32_t clientSocket = m_vServer.acceptClient();
+				if (clientSocket == -1) {
+					break;
+				}
+
 				AHandler* handler = new IOHandler(m_vServer);
 				m_dispatcher.registerHandler(clientSocket, EPOLLIN | EPOLLOUT, handler);
 			}

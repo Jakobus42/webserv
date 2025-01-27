@@ -94,7 +94,7 @@ namespace http {
 		m_logger.setFile(m_config.server_names.at(0) + ".log"); // todo: why are there multiple names?!
 	}
 
-	bool VirtualServer::acceptClient() {
+	int32_t VirtualServer::acceptClient() {
 		sockaddr_in clientAddr;
 		socklen_t clientAddrLen = sizeof(clientAddr);
 
@@ -102,42 +102,65 @@ namespace http {
 		int32_t clientSocket = ::accept(m_listenSocket, reinterpret_cast<struct sockaddr*>(&clientAddr), &clientAddrLen);
 		if (clientSocket == -1) {
 			if (errno == EAGAIN || errno == EWOULDBLOCK) {
-				return false;
+				return -1;
 			}
 			throw std::runtime_error("accept() failed: " + std::string(strerror(errno)));
 		}
 
 		this->setNonBlocking(clientSocket);
-		m_clients.push_back(clientSocket);
+		m_clients.insert(std::make_pair(clientSocket, time(NULL)));
 
-		this->log("accepted new client " + this->getClientInfo(clientSocket), shared::INFO);
-		return true;
+		this->log("accepted new client", shared::INFO, clientSocket);
+		return clientSocket;
 	}
 
 	void VirtualServer::shutDown() {
 		this->log("shutting down server", shared::INFO);
-		for (std::vector<int32_t>::iterator it = m_clients.begin(); it != m_clients.end(); ++it) {
-			this->close(&(*it));
+		for (std::map<int32_t, time_t>::iterator it = m_clients.begin(); it != m_clients.end(); ++it) {
+			int& fd = const_cast<int&>(it->first);
+			this->close(&fd);
 		}
+		m_clients.clear();
 		this->close(&m_listenSocket);
 	}
 
 	void VirtualServer::dropClient(int32_t clientSocket) {
-		std::vector<int32_t>::iterator it = std::find(m_clients.begin(), m_clients.end(), clientSocket);
-
+		std::map<int32_t, time_t>::iterator it = m_clients.find(clientSocket);
 		if (it != m_clients.end()) {
-			this->log("dropping client " + this->getClientInfo(*it), shared::INFO);
-
-			this->close(&(*it));
+			this->log("dropping client", shared::INFO, clientSocket);
 
 			m_clients.erase(it);
-		} else {
-			this->log("attempting to drop unkown client ", shared::INFO);
+			this->close(&clientSocket);
 		}
 	}
 
-	void VirtualServer::log(const std::string& msg, shared::LogLevel level) {
-		const std::string formatted = "[" + m_config.server_names.at(0) + "] " + msg;
+	void VirtualServer::updateClientActivity(int32_t clientSocket) {
+		this->log("updating client activity", shared::INFO, clientSocket);
+		m_clients.at(clientSocket) = time(NULL);
+	}
+
+	void VirtualServer::dropIdleClients() {
+		time_t now = time(NULL);
+		std::vector<int32_t> toDrop;
+
+		for (std::map<int32_t, time_t>::iterator it = m_clients.begin(); it != m_clients.end(); ++it) {
+			if (now - it->second > CLIENT_TIMEOUT) {
+				toDrop.push_back(it->first);
+			}
+		}
+
+		for (std::vector<int32_t>::iterator it = toDrop.begin(); it != toDrop.end(); ++it) {
+			dropClient(*it);
+		}
+	}
+
+	void VirtualServer::log(const std::string& msg, shared::LogLevel level, int32_t clientSocket) {
+		std::string formatted = "[" + m_config.server_names.at(0) + "] ";
+		if (clientSocket != -1) {
+			formatted += "[Client: " + getClientInfo(clientSocket) + "] ";
+		}
+		formatted += msg;
+
 		m_logger.log(formatted, level);
 	}
 
@@ -173,9 +196,9 @@ namespace http {
 
 	int32_t VirtualServer::getSocket(void) { return m_listenSocket; }
 
-	const std::vector<int32_t>& VirtualServer::getClients(void) const { return m_clients; }
+	const std::map<int32_t, time_t>& VirtualServer::getClients(void) const { return m_clients; }
 
-	std::vector<int32_t>& VirtualServer::getClients(void) { return m_clients; }
+	std::map<int32_t, time_t>& VirtualServer::getClients(void) { return m_clients; }
 
 	const config::t_server& VirtualServer::getConfig() const { return m_config; }
 

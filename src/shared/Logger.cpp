@@ -8,6 +8,14 @@
 
 namespace shared {
 
+	const std::string Logger::RESET = "\033[0m";
+	const std::string Logger::DEBUG_COLOR = "\033[31m";	  // Red
+	const std::string Logger::TRACE_COLOR = "\033[90m";	  // Grey
+	const std::string Logger::INFO_COLOR = "\033[93m";	  // Yellow
+	const std::string Logger::WARNING_COLOR = "\033[93m"; // Dark Yellow
+	const std::string Logger::ERROR_COLOR = "\033[91m";	  // Dark Red
+	const std::string Logger::FATAL_COLOR = "\033[35m";	  // Purple
+
 	Logger::Logger()
 		: m_level(DEBUG)
 		, m_logFile() {
@@ -60,12 +68,12 @@ namespace shared {
 
 	const std::string& Logger::levelToString(LogLevel level) const {
 		static const std::string levels[] = {
-			"DEBUG",
-			"TRACE",
-			"INFO",
-			"WARNING",
-			"ERROR",
-			"FATAL",
+			DEBUG_COLOR + "DEBUG" + RESET,
+			TRACE_COLOR + "TRACE" + RESET,
+			INFO_COLOR + "INFO" + RESET,
+			WARNING_COLOR + "WARNING" + RESET,
+			ERROR_COLOR + "ERROR" + RESET,
+			FATAL_COLOR + "FATAL" + RESET,
 		};
 		return levels[level];
 	}

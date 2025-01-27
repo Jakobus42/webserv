@@ -13,26 +13,25 @@ namespace core {
 		: m_vServer(vServer)
 		, m_reqParser()
 		, m_reqProccesor(vServer.getConfig().locations)
-		, m_responses()
-		, m_keepAlive(false) {
+		, m_responses() {
 	}
 
 	/**
 	 * @brief Destroys the IOHandler object.
 	 */
 	IOHandler::~IOHandler() {
-		for (std::deque<http::Response*>::iterator it = m_responses.begin(); it != m_responses.end(); ++it) {
-			delete *it;
+		while (m_responses.size()) {
+			delete m_responses.front();
+			m_responses.pop();
 		}
 	}
 
 	void IOHandler::handle(int32_t fd, uint32_t events) {
 		if (events & EPOLLERR || events & EPOLLHUP) {
-			m_vServer.log("epoll error or hangup detected on client socket", shared::ERROR); // todo maybe more detailed logs but idc rn lol
+			m_vServer.log("epoll error or hangup detected on client socket", shared::ERROR, fd);
 			m_vServer.dropClient(fd);
 			return this->markDone();
 		}
-
 		try {
 			if (events & EPOLLIN) {
 				this->handleRead(fd);
@@ -53,31 +52,31 @@ namespace core {
 		buff.prepareWrite();
 
 		ssize_t bytesRead = recv(fd, buff.getWritePos(), buff.availableSpace(), 0);
+		m_vServer.log("received " + shared::string::to_string(bytesRead) + " bytes.", shared::INFO, fd);
+
 		if (bytesRead == -1) {
 			throw std::runtime_error("recv() failed");
 		}
-		if (bytesRead == 0) {
-			if (m_keepAlive == false) {
-				m_vServer.dropClient(fd);
-				return this->markDone();
-			} // todo maybe counter or handle with timeout
+		if (bytesRead == 0) { // fuck keep alive
+			m_vServer.dropClient(fd);
+			return this->markDone();
 		}
+		m_vServer.log("received request from client:\n" + std::string(buff.getWritePos(), bytesRead), shared::INFO, fd);
 		buff.advanceWriter(bytesRead);
 
 		m_reqParser.process();
 		if (m_reqParser.isComplete() || m_reqParser.hasError()) {
-			const http::Request& req = m_reqParser.getRequest();
-			m_keepAlive = req.keepAlive(); // todo maybe dont do this at all
-
 			http::Response* res = m_reqProccesor.process(m_reqParser.getRequest());
 			res->serialize();
-			m_responses.push_back(res);
+			m_responses.push(res);
 			m_reqParser.reset();
 		}
+
+		m_vServer.updateClientActivity(fd);
 	}
 
 	void IOHandler::handleWrite(int32_t fd) {
-		if (m_responses.empty()) { // todo this is a dirty fix for EPOLLOUT being triggered twice if connection keep alive.
+		if (m_responses.empty()) {
 			return;
 		}
 
@@ -87,15 +86,18 @@ namespace core {
 			throw std::runtime_error("send() failed");
 		}
 
+		m_vServer.log("sent response to client\n" + std::string(buff.getReadPos(), buff.getWritePos()), shared::INFO, fd);
+
 		buff.consume(bytesSent);
 		if (buff.isEmpty()) {
 			delete m_responses.front();
-			m_responses.pop_front();
-			if (m_keepAlive == false) {
-				m_vServer.dropClient(fd);
-				return this->markDone();
-			}
+			m_responses.pop();
+
+			m_vServer.dropClient(fd);
+			return this->markDone();
 		}
+
+		m_vServer.updateClientActivity(fd);
 	}
 
 } /* namespace core */

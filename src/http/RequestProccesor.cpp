@@ -41,6 +41,7 @@ namespace http {
 		}
 		m_res = new Response();
 		m_handlers[req.getMethod()]->handle(req, *m_res);
+		m_res->setBody("Hello, World!");
 		return this->releaseResponse();
 	}
 
