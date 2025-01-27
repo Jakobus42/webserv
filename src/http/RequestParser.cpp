@@ -34,7 +34,7 @@ namespace http {
 	}
 
 	void RequestParser::parse() {
-		while (this->isComplete() != true && this->isPending() != true) {
+		while (this->isComplete() != true && this->isPending() != true && m_state != ERROR) {
 			if (m_state == START) {
 				this->parseRequestLine();
 			} else if (m_state == HEADERS || m_state == TRAILING_HEADERS) {
@@ -78,59 +78,76 @@ namespace http {
 
 	void RequestParser::parseUri() {
 		Uri& uri = m_req.getUri();
-		std::string& uriRaw = m_req.getUriRaw();
-		std::size_t questionMarks = std::count(uriRaw.begin(), uriRaw.end(), '?');
-		std::size_t hashSigns = std::count(uriRaw.begin(), uriRaw.end(), '#');
-		std::size_t ampersands = std::count(uriRaw.begin(), uriRaw.end(), '&');
-		std::size_t spaces = std::count(uriRaw.begin(), uriRaw.end(), ' ');
+		const std::string& uriRaw = m_req.getUriRaw();
+		const std::size_t questionMarks = std::count(uriRaw.begin(), uriRaw.end(), '?');
+		const std::size_t hashSigns = std::count(uriRaw.begin(), uriRaw.end(), '#');
+		const std::size_t ampersands = std::count(uriRaw.begin(), uriRaw.end(), '&');
+		const std::size_t spaces = std::count(uriRaw.begin(), uriRaw.end(), ' ');
+
+		std::size_t pathBeginIndex = 0;
+		std::size_t queryBeginIndex = uriRaw.find_first_of("#?");
 
 		if (questionMarks > 1 || hashSigns > 1 || ampersands > 1 || spaces > 0) {
 			m_req.setStatusCode(BAD_REQUEST);
 		}
-		if (uriRaw.find_first_of("/cgi-bin/") == 0) {
+		if (uriRaw.find("/cgi-bin/") == 0) {
 			m_req.setType(CGI);
+			pathBeginIndex = uriRaw.find_first_of("/#?", 9);
+			std::cout << "starting to read string at '" << pathBeginIndex << ": " << uriRaw.begin().base() + pathBeginIndex << "'"
+					  << ", queryBeginIndex is " << queryBeginIndex << std::endl;
+			uri.path = uriRaw.substr(0, pathBeginIndex);
+			uri.cgiPathInfo = decodePercentEncodedString(uriRaw.substr(pathBeginIndex, queryBeginIndex - pathBeginIndex));
+		} else {
+			uri.path = uriRaw.substr(pathBeginIndex, queryBeginIndex);
 		}
-
-		uri.path = uriRaw.substr(0, uriRaw.find_first_of("/"));
+		uri.path = decodePercentEncodedString(uri.path);
+		std::cout << "Parsed path: " << uri.path << std::endl;
+		std::cout << "CGI Path info: " << uri.cgiPathInfo << std::endl;
+		std::cout << "huh?" << std::endl;
 		uri.query = parseQuery();
 		std::cout << "Parsed query string: " << uri.query.size() << " found:" << std::endl;
 		for (std::map<std::string, std::string>::iterator it = uri.query.begin(); it != uri.query.end(); ++it) {
 			std::cout << it->first << ": " << it->second << std::endl;
 		}
-
-		if (m_req.getType() == FETCH) {
-			// parse as fetch
-		} else {
-			// otherwise parse as CGI
-		}
 	}
 
-	// char RequestParser::decodeCharacter(char*& sequence) {
-	// 	switch (sequence[0]) {
-	// 		case '2':
-	// 			switch (sequence[1]) {
-	// 				case '0':
-	// 					return ' ';
-	// 				case '3':
-	// 					return '#';
-	// 				case '6':
-	// 					return '&';
-	// 				case 'F':
-	// 					return '/';
-	//				case '5':
-	//					return '%';
-	// 				default:
-	// 					return '\0';
-	// 			}
-	// 		case '3':
-	// 			if (sequence[1] == 'F') {
-	// 				return '?';
-	// 			}
-	// 			return '\0';
-	// 		default:
-	// 			return '\0';
-	// 	}
-	// }
+	char RequestParser::decodeCharacterFromPercentEncoding(const std::string& hex) {
+		if (hex.length() != 2) {
+			throw std::invalid_argument("Invalid percent-encoded character length");
+		}
+
+		std::istringstream iss(hex);
+		int value;
+		iss >> std::hex >> value;
+
+		if (iss.fail() || !iss.eof()) {
+			throw std::invalid_argument("Invalid percent-encoded character hex value");
+		}
+		return static_cast<char>(value);
+	}
+
+	std::string RequestParser::decodePercentEncodedString(const std::string& encoded) {
+		std::string decoded;
+
+		std::cout << "decoding " << encoded << std::endl;
+		for (std::string::size_type i = 0; i < encoded.length(); ++i) {
+			if (encoded[i] == '%' && i + 2 < encoded.length()) {
+				try {
+					// Decode the next two characters as hex
+					decoded += decodeCharacterFromPercentEncoding(encoded.substr(i + 1, 2));
+					i += 2; // Skip over the percent and the two hex characters
+				} catch (const std::invalid_argument&) {
+					// If invalid, treat the % as a literal
+					decoded += '%';
+				}
+			} else {
+				// Copy regular characters directly
+				decoded += encoded[i];
+			}
+		}
+		std::cout << "returning decoded: '" << decoded << "'" << std::endl;
+		return decoded;
+	}
 
 	// parses query from a whole string
 	// look for '?', if found take the string afterwards and take from it key=value pairs
@@ -141,21 +158,29 @@ namespace http {
 		std::size_t currentPos = uriRaw.find_first_of('?');
 		std::size_t end = uriRaw.find_first_of('#');
 
-		if (currentPos == std::string::npos)
+		if (currentPos == std::string::npos) {
 			return queryParameters;
+		}
 
 		if (uriRaw[currentPos] == '?') {
 			currentPos++;
 		}
 
 		// abc?a=b&cde=fgh&jk=l&mnop=qrst
+		std::cout << "currentPos at the start is: " << currentPos << std::endl;
+		std::cout << "end at the start is: " << end << std::endl;
 		while (currentPos <= end) {
+			std::cout << "Fuck " << currentPos << " " << end << std::endl;
 			std::string currentKey = "";
 			std::string currentValue = "";
 
 			std::size_t nextDelimiter = uriRaw.find_first_of('=', currentPos);
 			currentKey = uriRaw.substr(currentPos, nextDelimiter - currentPos);
 			std::size_t nextAmpersand = uriRaw.find_first_of('&', currentPos);
+			if (nextAmpersand == std::string::npos && nextDelimiter == std::string::npos) {
+				// fuck this
+				break;
+			}
 			if (nextAmpersand <= nextDelimiter) {
 				// no equal sign
 				// ...&key&key&key=value
