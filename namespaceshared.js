@@ -3,7 +3,6 @@ var namespaceshared =
     [ "string", "namespaceshared_1_1string.html", [
       [ "isGreyspace", "namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3", null ],
       [ "split", "namespaceshared_1_1string.html#aa68d026861d0f4c81179e94efca2ed7c", null ],
-      [ "splitPath", "namespaceshared_1_1string.html#af85298827aba4985d2318526e69ee0d6", null ],
       [ "StoiHex", "namespaceshared_1_1string.html#a0f7b586737ab36eade3fc402c9abe0a7", null ],
       [ "to_string", "namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577", null ],
       [ "toNum", "namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958", null ],
