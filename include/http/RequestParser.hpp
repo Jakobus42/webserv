@@ -77,7 +77,6 @@ namespace http {
 		private:
 			static const char TCHAR[];
 			static const char WHITESPACE[];
-			static const char RESERVED[];
 
 			static const int PENDING_MASK = 0x1000;
 
