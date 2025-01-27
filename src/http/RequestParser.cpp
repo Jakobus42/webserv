@@ -8,7 +8,6 @@ namespace http {
 
 	const char RequestParser::TCHAR[256] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ' ', '!', 0, '#', '$', '%', '&', '\'', 0, 0, '*', '+', 0, '-', '.', 0, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 0, 0, 0, 0, 0, 0, 0, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 0, 0, 0, '^', '_', '`', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 0, '|', 0, '~', 0}; // the formatter is shit pardon me
 	const char RequestParser::WHITESPACE[] = " \t";
-	const char RequestParser::RESERVED[] = ";/?:@&=+$,[]";
 
 	// const char RequestParser::
 
@@ -95,7 +94,7 @@ namespace http {
 		uri.path = uriRaw.substr(0, uriRaw.find_first_of("/"));
 		uri.query = parseQuery();
 		std::cout << "Parsed query string: " << uri.query.size() << " found:" << std::endl;
-		for (std::map<std::string, std::string>::iterator it = uri.query.begin(); it != uri.query.end(); it++) {
+		for (std::map<std::string, std::string>::iterator it = uri.query.begin(); it != uri.query.end(); ++it) {
 			std::cout << it->first << ": " << it->second << std::endl;
 		}
 
@@ -118,6 +117,8 @@ namespace http {
 	// 					return '&';
 	// 				case 'F':
 	// 					return '/';
+	//				case '5':
+	//					return '%';
 	// 				default:
 	// 					return '\0';
 	// 			}
@@ -135,68 +136,69 @@ namespace http {
 	// look for '?', if found take the string afterwards and take from it key=value pairs
 	// separated by '&', put each in the map, if a duplicate key is found simply overwrite its value
 	std::map<std::string, std::string> RequestParser::parseQuery() {
-		std::map<std::string, std::string> map;
+		std::map<std::string, std::string> queryParameters;
 		const std::string& uriRaw = m_req.getUriRaw();
-		std::size_t pos = uriRaw.find_first_of('?');
+		std::size_t currentPos = uriRaw.find_first_of('?');
 		std::size_t end = uriRaw.find_first_of('#');
-		std::size_t i = 0;
 
-		if (pos == std::string::npos)
-			return map;
+		if (currentPos == std::string::npos)
+			return queryParameters;
 
-		const std::string queryString = uriRaw.substr(pos + 1, end);
-
-		if (uriRaw[pos] == '?') {
-			pos++;
+		if (uriRaw[currentPos] == '?') {
+			currentPos++;
 		}
 
 		// abc?a=b&cde=fgh&jk=l&mnop=qrst
-		std::cout << "End index is " << end << std::endl;
-		std::cout << "Whole uri: " << queryString << std::endl;
-		while (pos <= end) {
-			std::cout << "remaining query: " << uriRaw.substr(pos, end) << std::endl;
+		while (currentPos <= end) {
 			std::string currentKey = "";
 			std::string currentValue = "";
 
-			i = uriRaw.find_first_of('=', pos);
-			currentKey = uriRaw.substr(pos, i - pos);
+			std::size_t nextDelimiter = uriRaw.find_first_of('=', currentPos);
+			currentKey = uriRaw.substr(currentPos, nextDelimiter - currentPos);
+			std::size_t nextAmpersand = uriRaw.find_first_of('&', currentPos);
+			if (nextAmpersand <= nextDelimiter) {
+				// no equal sign
+				// ...&key&key&key=value
+				// or ...&key&key&key
+				// should advance to the next one
+				currentPos = nextAmpersand + 1;
+				continue;
+			}
 
-			std::cout << "currentKey = " << currentKey << std::endl;
-			std::cout << "pos and next = symbol: " << pos << ", " << i << std::endl;
-			std::cout << "pos and next = symbol: " << uriRaw.at(pos) << ", " << uriRaw.at(i) << std::endl;
-
-			if (i >= end) {
-				std::cout << "i >= end 1st one " << std::endl;
-				// no equal sign, bad value
+			if (nextDelimiter >= end) {
+				std::cout << "nextDelimiter >= end 1st one " << std::endl;
+				// no equal sign, no value gets inserted
 				// ...&key=value&key
+				// or ...&key=value&key#fragment
 				break;
 			}
-			pos = i + 1;
-			std::cout << "pos and i in middle are " << pos << ", " << i << std::endl;
-			if (pos >= end) {
-				std::cout << "pos >= end 1st one" << std::endl;
-				// no value, bad value
+			currentPos = nextDelimiter + 1;
+			if (currentPos >= end) {
+				// no value but equal sign, empty value gets inserted
 				// ...&key=value&key=
-				break;
+				// or ...&key=value&key=#fragment
+				// this should just work
 			}
-			i = uriRaw.find_first_of('&', pos);
-			std::cout << "i finding & is " << i << std::endl;
-			currentValue = uriRaw.substr(pos, i - pos);
-			std::cout << "currentValue " << currentValue << std::endl;
-			if (!currentKey.empty()) {
+			nextDelimiter = uriRaw.find_first_of('&', currentPos);
+			if (nextDelimiter >= end) {
+				// last parameter, delimited by a fragment
+				// ..&key=value#fragment
+				nextDelimiter = end;
+			}
+			currentValue = uriRaw.substr(currentPos, nextDelimiter - currentPos);
+			if (!currentKey.empty() && queryParameters.find(currentKey) == queryParameters.end()) {
 				std::cout << "inserting " << currentKey << " " << currentValue << std::endl;
-				map.insert(std::make_pair(currentKey, currentValue));
+				queryParameters.insert(std::make_pair(currentKey, currentValue));
 			}
-			std::cout << "ae" << std::endl;
-			if (i == std::string::npos) {
+			if (nextDelimiter == end) {
+				// reached end, exit loop
 				break;
 			}
-			pos = i + 1;
-			std::cout << "pos at end is " << pos << std::endl;
+			currentPos = nextDelimiter + 1;
 		}
 		std::cout << "Finished parsing query" << std::endl;
 
-		return map;
+		return queryParameters;
 	}
 
 	void RequestParser::parseHeaders() {
