@@ -80,21 +80,18 @@ namespace http {
 		Uri& uri = m_req.getUri();
 		const std::string& uriRaw = m_req.getUriRaw();
 		const std::size_t questionMarks = std::count(uriRaw.begin(), uriRaw.end(), '?');
-		const std::size_t hashSigns = std::count(uriRaw.begin(), uriRaw.end(), '#');
-		const std::size_t ampersands = std::count(uriRaw.begin(), uriRaw.end(), '&');
 		const std::size_t spaces = std::count(uriRaw.begin(), uriRaw.end(), ' ');
 
 		std::size_t pathBeginIndex = 0;
 		std::size_t queryBeginIndex = uriRaw.find_first_of("#?");
 
-		if (questionMarks > 1 || hashSigns > 1 || ampersands > 1 || spaces > 0) {
+		if (questionMarks > 1 || spaces > 0) {
 			m_req.setStatusCode(BAD_REQUEST);
+			return;
 		}
 		if (uriRaw.find("/cgi-bin/") == 0) {
 			m_req.setType(CGI);
 			pathBeginIndex = uriRaw.find_first_of("/#?", 9);
-			std::cout << "starting to read string at '" << pathBeginIndex << ": " << uriRaw.begin().base() + pathBeginIndex << "'"
-					  << ", queryBeginIndex is " << queryBeginIndex << std::endl;
 			uri.path = uriRaw.substr(0, pathBeginIndex);
 			uri.cgiPathInfo = decodePercentEncodedString(uriRaw.substr(pathBeginIndex, queryBeginIndex - pathBeginIndex));
 		} else {
@@ -103,8 +100,7 @@ namespace http {
 		uri.path = decodePercentEncodedString(uri.path);
 		std::cout << "Parsed path: " << uri.path << std::endl;
 		std::cout << "CGI Path info: " << uri.cgiPathInfo << std::endl;
-		std::cout << "huh?" << std::endl;
-		uri.query = parseQuery();
+		parseQuery();
 		std::cout << "Parsed query string: " << uri.query.size() << " found:" << std::endl;
 		for (std::map<std::string, std::string>::iterator it = uri.query.begin(); it != uri.query.end(); ++it) {
 			std::cout << it->first << ": " << it->second << std::endl;
@@ -116,13 +112,8 @@ namespace http {
 			throw std::invalid_argument("Invalid percent-encoded character length");
 		}
 
-		std::istringstream iss(hex);
-		int value;
-		iss >> std::hex >> value;
+		int value = shared::string::toNum<int>(hex, 16);
 
-		if (iss.fail() || !iss.eof()) {
-			throw std::invalid_argument("Invalid percent-encoded character hex value");
-		}
 		return static_cast<char>(value);
 	}
 
@@ -152,14 +143,14 @@ namespace http {
 	// parses query from a whole string
 	// look for '?', if found take the string afterwards and take from it key=value pairs
 	// separated by '&', put each in the map, if a duplicate key is found simply overwrite its value
-	std::map<std::string, std::string> RequestParser::parseQuery() {
-		std::map<std::string, std::string> queryParameters;
+	void RequestParser::parseQuery() {
+		std::map<std::string, std::string>& queryParameters = m_req.getUri().query;
 		const std::string& uriRaw = m_req.getUriRaw();
 		std::size_t currentPos = uriRaw.find_first_of('?');
 		std::size_t end = uriRaw.find_first_of('#');
 
 		if (currentPos == std::string::npos) {
-			return queryParameters;
+			return;
 		}
 
 		if (uriRaw[currentPos] == '?') {
@@ -167,10 +158,7 @@ namespace http {
 		}
 
 		// abc?a=b&cde=fgh&jk=l&mnop=qrst
-		std::cout << "currentPos at the start is: " << currentPos << std::endl;
-		std::cout << "end at the start is: " << end << std::endl;
 		while (currentPos <= end) {
-			std::cout << "Fuck " << currentPos << " " << end << std::endl;
 			std::string currentKey = "";
 			std::string currentValue = "";
 
@@ -191,7 +179,6 @@ namespace http {
 			}
 
 			if (nextDelimiter >= end) {
-				std::cout << "nextDelimiter >= end 1st one " << std::endl;
 				// no equal sign, no value gets inserted
 				// ...&key=value&key
 				// or ...&key=value&key#fragment
@@ -212,7 +199,6 @@ namespace http {
 			}
 			currentValue = uriRaw.substr(currentPos, nextDelimiter - currentPos);
 			if (!currentKey.empty() && queryParameters.find(currentKey) == queryParameters.end()) {
-				std::cout << "inserting " << currentKey << " " << currentValue << std::endl;
 				queryParameters.insert(std::make_pair(currentKey, currentValue));
 			}
 			if (nextDelimiter == end) {
@@ -221,9 +207,6 @@ namespace http {
 			}
 			currentPos = nextDelimiter + 1;
 		}
-		std::cout << "Finished parsing query" << std::endl;
-
-		return queryParameters;
 	}
 
 	void RequestParser::parseHeaders() {

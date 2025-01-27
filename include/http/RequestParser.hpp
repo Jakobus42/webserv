@@ -56,7 +56,7 @@ namespace http {
 			void parse();
 			void parseRequestLine();
 			void parseUri();
-			std::map<std::string, std::string> parseQuery();
+			void parseQuery();
 			void parseData();
 			void parseChunkSize();
 			void parseHeaders();
