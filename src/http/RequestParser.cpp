@@ -87,7 +87,7 @@ namespace http {
 
 		if (questionMarks > 1 || spaces > 0) {
 			m_req.setStatusCode(BAD_REQUEST);
-			return;
+			throw http::exception(BAD_REQUEST, "malformed request line: unexpected ' ' or '?'");
 		}
 		if (uriRaw.find("/cgi-bin/") == 0) {
 			m_req.setType(CGI);
