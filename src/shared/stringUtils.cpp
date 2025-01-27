@@ -118,7 +118,6 @@ namespace shared {
 			return c == ' ' || c == '\t' || c == '\v' || c == '\f';
 		}
 
-		
 		/**
 		 * @brief Splits a path into its components.
 		 *
@@ -141,8 +140,7 @@ namespace shared {
 			while (std::getline(ss, segment, '/')) {
 				if (!segment.empty()) {
 					tempResult.push_back(segment);
-				}
-				else {
+				} else {
 					return 1;
 				}
 			}

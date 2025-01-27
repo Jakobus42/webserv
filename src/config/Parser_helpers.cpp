@@ -123,7 +123,8 @@ namespace config {
 					std::cout << ".";
 			}
 			for (std::vector<std::string>::const_iterator it = locations[j].path.begin();
-				 it != locations[j].path.end(); ++it) {
+				 it != locations[j].path.end();
+				 ++it) {
 				std::cout << c << "/" << *it << std::endl;
 			}
 			std::cout << std::endl;

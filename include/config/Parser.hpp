@@ -28,6 +28,16 @@ namespace config {
 			std::vector<std::string> index;
 			// locations
 			std::vector<t_location> locations;
+
+			s_location()
+				: path()
+				, return_url()
+				, methods()
+				, autoindex(false)
+				, root()
+				, index()
+				, locations() {
+			}
 	} t_location;
 
 	enum CmdId {
@@ -85,9 +95,9 @@ namespace config {
 			void printConfigData(int detailed);
 			int testFunction(const std::string& key, std::vector<std::string>& args, int& lineCount);
 			void printLocations(const std::vector<config::t_location>& locations,
-						int layer,
-						int detailed,
-						std::vector<int> layer_num);
+								int layer,
+								int detailed,
+								std::vector<int> layer_num);
 			config::t_location* getLocation(int layer);
 
 		private:
