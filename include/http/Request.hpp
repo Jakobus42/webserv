@@ -25,6 +25,7 @@ namespace http {
 			const std::map<std::string, std::vector<std::string> >& getHeaders() const;
 			const std::vector<std::string>& getHeader(const std::string& key) const;
 			StatusCode getStatusCode() const;
+			//t_requestData getRequestData() const;
 
 			void setMethod(const char* method, std::size_t len);
 			void setUri(const char* uri, std::size_t len);
@@ -37,6 +38,8 @@ namespace http {
 			bool keepAlive() const;
 
 			void appendToBody(const char* data, std::size_t len);
+
+			void printRequestData() const;
 
 		private:
 			void validateUri(const char* uri, std::size_t len);

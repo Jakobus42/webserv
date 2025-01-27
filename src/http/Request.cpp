@@ -127,6 +127,26 @@ namespace http {
 		}
 	}
 
+	void Request::printRequestData() const {
+		std::cout << "Method: " << getMethodString(m_method) << std::endl;
+		std::cout << "URI: " << m_uri << std::endl;
+		std::cout << "Version: " << m_version << std::endl;
+		std::cout << "Headers: " << std::endl;
+		std::map<std::string, std::vector<std::string> >::const_iterator it;
+		for (it = m_headers.begin(); it != m_headers.end(); ++it) {
+			std::cout << it->first << ": ";
+			std::vector<std::string>::const_iterator innerIt;
+			for (innerIt = it->second.begin(); innerIt != it->second.end(); ++innerIt) {
+				std::cout << *innerIt;
+				if (innerIt + 1 != it->second.end()) {
+					std::cout << ", ";
+				}
+			}
+			std::cout << std::endl;
+		}
+		std::cout << "Body: " << m_body << std::endl;
+	}
+
 
 
 } /* namespace http */

@@ -4,6 +4,7 @@
 
 #include "config/Parser.hpp"
 #include "http/http.hpp"
+#include "shared/stringUtils.hpp"
 
 #include <fstream>
 #include <iostream>
@@ -17,7 +18,7 @@ namespace config {
 
 	typedef struct s_location {
 			// location name
-			std::string name;
+			std::vector<std::string> path;
 			// return
 			std::string return_url;
 			// configurations
@@ -83,6 +84,11 @@ namespace config {
 
 			void printConfigData(int detailed);
 			int testFunction(const std::string& key, std::vector<std::string>& args, int& lineCount);
+			void printLocations(const std::vector<config::t_location>& locations,
+						int layer,
+						int detailed,
+						std::vector<int> layer_num);
+			config::t_location* getLocation(int layer);
 
 		private:
 			ConfigFileParser(const ConfigFileParser& other);
@@ -92,7 +98,6 @@ namespace config {
 
 			int readConfigFile(std::string& configFileName, std::string& file);
 			int parseConfigFile(std::string& configFileName, int layer, unsigned long& i, int& lineCount);
-
 			int handleServer(std::string& line, unsigned long* i);
 			int handlePrompt(std::string& line, int layer, int& lineCount);
 			int SaveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, int& lineCount);
@@ -110,12 +115,6 @@ namespace config {
 			int root(std::vector<std::string>& args, int& lineCount, int layer);
 			int autoindex(std::vector<std::string>& args, int& lineCount, int layer);
 			int index(std::vector<std::string>& args, int& lineCount, int layer);
-
-			void printLocations(const std::vector<config::t_location>& locations,
-								int layer,
-								int detailed,
-								std::vector<int> layer_num);
-			config::t_location* getLocation(int layer);
 	};
 
 } // namespace config

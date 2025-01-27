@@ -94,7 +94,13 @@ namespace config {
 		// set default values
 		new_location.autoindex = false;
 		new_location.root = "";
-		new_location.name = args[1];
+		if (shared::string::splitPath(args[1], new_location.path) == 1)
+		{
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "Invalid location path"
+					  << std::endl;
+			return 1;
+		}
 		new_location.return_url = "";
 		new_location.index.push_back("index.html");
 		if (layer == 1) {
@@ -106,6 +112,28 @@ namespace config {
 			temp = &temp->locations.back();
 		}
 		temp->locations.push_back(new_location);
+		if (layer > 1)
+		{
+			unsigned long paths = 0;
+			if (temp->path.size() > new_location.path.size())
+			{
+				std::cout << "Configuration file (line " << lineCount << "): "
+						  << "Invalid location path, does not include previous location"
+						  << std::endl;
+				return 1;
+			}
+			while (paths < temp->path.size())
+			{
+				if (temp->path[paths] != new_location.path[paths])
+				{
+					std::cout << "Configuration file (line " << lineCount << "): "
+							  << "Invalid location path, does not include previous location"
+							  << std::endl;
+					return 1;
+				}
+				paths++;
+			}
+		}
 		return 0;
 	}
 

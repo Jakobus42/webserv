@@ -122,7 +122,11 @@ namespace config {
 				if (k != layer_num.size() - 1)
 					std::cout << ".";
 			}
-			std::cout << " name: " << locations[j].name << std::endl;
+			for (std::vector<std::string>::const_iterator it = locations[j].path.begin();
+				 it != locations[j].path.end(); ++it) {
+				std::cout << c << "/" << *it << std::endl;
+			}
+			std::cout << std::endl;
 			if (detailed) {
 				if (locations[j].root != "")
 					std::cout << c << "Root: " << locations[j].root << std::endl;
