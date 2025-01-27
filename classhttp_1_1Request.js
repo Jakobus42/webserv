@@ -11,6 +11,7 @@ var classhttp_1_1Request =
     [ "getUri", "classhttp_1_1Request.html#aaf4cfb77720f0ed03b6c999688f6f407", null ],
     [ "getVersion", "classhttp_1_1Request.html#a20114daf56febb1152c72237a8186bac", null ],
     [ "hasHeader", "classhttp_1_1Request.html#a064f8ec589e5191ecce6243fb46d21db", null ],
+    [ "printRequestData", "classhttp_1_1Request.html#a874bcf73aa90419178f56e479ba74a73", null ],
     [ "setBody", "classhttp_1_1Request.html#a0f04f9b9d17be86b87d5fefd266edcd4", null ],
     [ "setHeader", "classhttp_1_1Request.html#a01c2058c223a0044e01ebd5c327f2f67", null ],
     [ "setMethod", "classhttp_1_1Request.html#af3a5b5e97c9eddfc666a84a3ce6af4a1", null ],

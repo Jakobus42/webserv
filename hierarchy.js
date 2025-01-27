@@ -27,6 +27,7 @@ var hierarchy =
     ] ],
     [ "config::s_config_data", "structconfig_1_1s__config__data.html", null ],
     [ "config::s_location", "structconfig_1_1s__location.html", null ],
+    [ "http::s_PathData", "structhttp_1_1s__PathData.html", null ],
     [ "config::s_server", "structconfig_1_1s__server.html", null ],
     [ "http::RequestParser::Token", "structhttp_1_1RequestParser_1_1Token.html", null ],
     [ "http::VirtualServer", "classhttp_1_1VirtualServer.html", null ]

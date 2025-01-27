@@ -23,6 +23,7 @@ var annotated_dup =
       [ "RequestParser", "classhttp_1_1RequestParser.html", "classhttp_1_1RequestParser" ],
       [ "RequestProccesor", "classhttp_1_1RequestProccesor.html", "classhttp_1_1RequestProccesor" ],
       [ "Response", "classhttp_1_1Response.html", "classhttp_1_1Response" ],
+      [ "s_PathData", "structhttp_1_1s__PathData.html", "structhttp_1_1s__PathData" ],
       [ "VirtualServer", "classhttp_1_1VirtualServer.html", "classhttp_1_1VirtualServer" ]
     ] ],
     [ "shared", "namespaceshared.html", [

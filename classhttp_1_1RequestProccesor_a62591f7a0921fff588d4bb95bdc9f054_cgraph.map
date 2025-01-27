@@ -1,0 +1,18 @@
+<map id="http::RequestProccesor::checkRequestData" name="http::RequestProccesor::checkRequestData">
+<area shape="rect" id="Node000001" title="Check if the request data is valid, and set the status code accordingly." alt="" coords="5,85,177,125"/>
+<area shape="rect" id="Node000002" href="$classhttp_1_1RequestProccesor.html#a46a60ad4524bec4f5436d20dea81a557" title="find request target form, check it and reconstruct it (RFC 9112 3.2)" alt="" coords="225,55,455,95"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,92,211,88,212,93,178,97"/>
+<area shape="rect" id="Node000003" href="$classhttp_1_1Request.html#aaf4cfb77720f0ed03b6c999688f6f407" title=" " alt="" coords="510,5,667,31"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="126,82,172,60,225,41,295,27,367,18,496,13,496,18,367,23,296,32,226,46,174,65,128,87"/>
+<area shape="rect" id="Node000007" href="$classhttp_1_1Request.html#a8d7f2adb5a9e2717fe6b784160818aee" title=" " alt="" coords="247,120,433,145"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="178,112,233,118,233,123,177,117"/>
+<area shape="rect" id="Node000008" href="$classhttp_1_1Request.html#a20114daf56febb1152c72237a8186bac" title=" " alt="" coords="247,169,433,195"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="138,122,226,155,257,164,255,169,225,161,136,127"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="427,53,519,31,520,36,428,58"/>
+<area shape="rect" id="Node000004" href="$classhttp_1_1RequestProccesor.html#a7ba35777846aa63d0c4062504e542a9d" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="503,55,675,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="455,73,489,73,489,78,455,78"/>
+<area shape="rect" id="Node000005" href="$classhttp_1_1RequestProccesor.html#afe7b898b055211bdefcbce1b77e0961c" title=" " alt="" coords="503,119,675,159"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="419,93,498,113,497,119,418,98"/>
+<area shape="rect" id="Node000006" href="$classhttp_1_1Request.html#aecc1eb02fa630f3db380a33e1aee7eb7" title=" " alt="" coords="723,127,915,152"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="675,137,709,137,709,142,675,142"/>
+</map>

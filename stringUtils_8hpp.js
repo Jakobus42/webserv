@@ -2,6 +2,7 @@ var stringUtils_8hpp =
 [
     [ "isGreyspace", "stringUtils_8hpp.html#a2c0ea281fde1150615baa77e6dcce5d3", null ],
     [ "split", "stringUtils_8hpp.html#aa68d026861d0f4c81179e94efca2ed7c", null ],
+    [ "splitPath", "stringUtils_8hpp.html#af85298827aba4985d2318526e69ee0d6", null ],
     [ "StoiHex", "stringUtils_8hpp.html#a0f7b586737ab36eade3fc402c9abe0a7", null ],
     [ "to_string", "stringUtils_8hpp.html#a7498d7d25acc1a6d216ef30b3ccfa577", null ],
     [ "toNum", "stringUtils_8hpp.html#a1f29829f5af562af11efd2c7e6ce4958", null ],
