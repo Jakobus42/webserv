@@ -2,10 +2,15 @@
 
 #include "shared/stringUtils.hpp"
 
+#include <algorithm>
+
 namespace http {
 
 	const char RequestParser::TCHAR[256] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ' ', '!', 0, '#', '$', '%', '&', '\'', 0, 0, '*', '+', 0, '-', '.', 0, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 0, 0, 0, 0, 0, 0, 0, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 0, 0, 0, '^', '_', '`', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 0, '|', 0, '~', 0}; // the formatter is shit pardon me
 	const char RequestParser::WHITESPACE[] = " \t";
+	const char RequestParser::RESERVED[] = ";/?:@&=+$,[]";
+
+	// const char RequestParser::
 
 	RequestParser::RequestParser()
 		: m_req()
@@ -57,7 +62,8 @@ namespace http {
 		if (size > MAX_URI_LENGTH) {
 			throw http::exception(URI_TOO_LONG, "URI too large");
 		}
-		m_req.setUri(line, size);
+		m_req.setUriRaw(line, size);
+		this->parseUri();
 		line += size + 1;
 
 		size = std::strcspn(line, WHITESPACE);
@@ -69,6 +75,128 @@ namespace http {
 		}
 
 		m_state = HEADERS;
+	}
+
+	void RequestParser::parseUri() {
+		Uri& uri = m_req.getUri();
+		std::string& uriRaw = m_req.getUriRaw();
+		std::size_t questionMarks = std::count(uriRaw.begin(), uriRaw.end(), '?');
+		std::size_t hashSigns = std::count(uriRaw.begin(), uriRaw.end(), '#');
+		std::size_t ampersands = std::count(uriRaw.begin(), uriRaw.end(), '&');
+		std::size_t spaces = std::count(uriRaw.begin(), uriRaw.end(), ' ');
+
+		if (questionMarks > 1 || hashSigns > 1 || ampersands > 1 || spaces > 0) {
+			m_req.setStatusCode(BAD_REQUEST);
+		}
+		if (uriRaw.find_first_of("/cgi-bin/") == 0) {
+			m_req.setType(CGI);
+		}
+
+		uri.path = uriRaw.substr(0, uriRaw.find_first_of("/"));
+		uri.query = parseQuery();
+		std::cout << "Parsed query string: " << uri.query.size() << " found:" << std::endl;
+		for (std::map<std::string, std::string>::iterator it = uri.query.begin(); it != uri.query.end(); it++) {
+			std::cout << it->first << ": " << it->second << std::endl;
+		}
+
+		if (m_req.getType() == FETCH) {
+			// parse as fetch
+		} else {
+			// otherwise parse as CGI
+		}
+	}
+
+	// char RequestParser::decodeCharacter(char*& sequence) {
+	// 	switch (sequence[0]) {
+	// 		case '2':
+	// 			switch (sequence[1]) {
+	// 				case '0':
+	// 					return ' ';
+	// 				case '3':
+	// 					return '#';
+	// 				case '6':
+	// 					return '&';
+	// 				case 'F':
+	// 					return '/';
+	// 				default:
+	// 					return '\0';
+	// 			}
+	// 		case '3':
+	// 			if (sequence[1] == 'F') {
+	// 				return '?';
+	// 			}
+	// 			return '\0';
+	// 		default:
+	// 			return '\0';
+	// 	}
+	// }
+
+	// parses query from a whole string
+	// look for '?', if found take the string afterwards and take from it key=value pairs
+	// separated by '&', put each in the map, if a duplicate key is found simply overwrite its value
+	std::map<std::string, std::string> RequestParser::parseQuery() {
+		std::map<std::string, std::string> map;
+		const std::string& uriRaw = m_req.getUriRaw();
+		std::size_t pos = uriRaw.find_first_of('?');
+		std::size_t end = uriRaw.find_first_of('#');
+		std::size_t i = 0;
+
+		if (pos == std::string::npos)
+			return map;
+
+		const std::string queryString = uriRaw.substr(pos + 1, end);
+
+		if (uriRaw[pos] == '?') {
+			pos++;
+		}
+
+		// abc?a=b&cde=fgh&jk=l&mnop=qrst
+		std::cout << "End index is " << end << std::endl;
+		std::cout << "Whole uri: " << queryString << std::endl;
+		while (pos <= end) {
+			std::cout << "remaining query: " << uriRaw.substr(pos, end) << std::endl;
+			std::string currentKey = "";
+			std::string currentValue = "";
+
+			i = uriRaw.find_first_of('=', pos);
+			currentKey = uriRaw.substr(pos, i - pos);
+
+			std::cout << "currentKey = " << currentKey << std::endl;
+			std::cout << "pos and next = symbol: " << pos << ", " << i << std::endl;
+			std::cout << "pos and next = symbol: " << uriRaw.at(pos) << ", " << uriRaw.at(i) << std::endl;
+
+			if (i >= end) {
+				std::cout << "i >= end 1st one " << std::endl;
+				// no equal sign, bad value
+				// ...&key=value&key
+				break;
+			}
+			pos = i + 1;
+			std::cout << "pos and i in middle are " << pos << ", " << i << std::endl;
+			if (pos >= end) {
+				std::cout << "pos >= end 1st one" << std::endl;
+				// no value, bad value
+				// ...&key=value&key=
+				break;
+			}
+			i = uriRaw.find_first_of('&', pos);
+			std::cout << "i finding & is " << i << std::endl;
+			currentValue = uriRaw.substr(pos, i - pos);
+			std::cout << "currentValue " << currentValue << std::endl;
+			if (!currentKey.empty()) {
+				std::cout << "inserting " << currentKey << " " << currentValue << std::endl;
+				map.insert(std::make_pair(currentKey, currentValue));
+			}
+			std::cout << "ae" << std::endl;
+			if (i == std::string::npos) {
+				break;
+			}
+			pos = i + 1;
+			std::cout << "pos at end is " << pos << std::endl;
+		}
+		std::cout << "Finished parsing query" << std::endl;
+
+		return map;
 	}
 
 	void RequestParser::parseHeaders() {

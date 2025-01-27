@@ -4,6 +4,7 @@
 #include "shared/NonCopyable.hpp"
 
 #include <http/Request.hpp>
+#include <map>
 
 namespace http {
 
@@ -54,10 +55,13 @@ namespace http {
 
 			void parse();
 			void parseRequestLine();
+			void parseUri();
+			std::map<std::string, std::string> parseQuery();
 			void parseData();
 			void parseChunkSize();
 			void parseHeaders();
 
+			// char decodeCharacter(char*& sequence);
 			Token extractHeaderKey(char*& line);
 			Token extractHeaderValue(char*& line);
 			void interpretHeaders();
@@ -73,6 +77,7 @@ namespace http {
 		private:
 			static const char TCHAR[];
 			static const char WHITESPACE[];
+			static const char RESERVED[];
 
 			static const int PENDING_MASK = 0x1000;
 
