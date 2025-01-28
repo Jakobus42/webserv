@@ -20,6 +20,19 @@ namespace http {
 		CGI
 	};
 
+	struct PathData {
+			std::string scheme;
+			std::string authority;
+			std::string pure_path;
+			std::string query;
+
+			PathData()
+				: scheme()
+				, authority()
+				, pure_path()
+				, query() {}
+	};
+
 	/**
 	 * @class Request
 	 * @brief ...
@@ -40,6 +53,7 @@ namespace http {
 			const std::map<std::string, std::vector<std::string> >& getHeaders() const;
 			const std::vector<std::string>& getHeader(const std::string& key) const;
 			StatusCode getStatusCode() const;
+			PathData& getPathData();
 			// t_requestData getRequestData() const;
 
 			void setType(RequestType type);
@@ -73,6 +87,7 @@ namespace http {
 			std::string m_body;
 
 			http::StatusCode m_statusCode;
+			PathData m_pathData;
 	};
 
 } /* namespace http */

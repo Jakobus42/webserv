@@ -28,7 +28,7 @@ namespace http {
 			bool hasError() const;
 			bool isPending() const;
 
-			const Request& getRequest();
+			Request& getRequest();
 
 		private:
 			enum ParseState {

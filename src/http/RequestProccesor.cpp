@@ -30,13 +30,13 @@ namespace http {
 
 	// todo check if req was valid - if not send error response
 	// todo check for allowed methods
-	Response* RequestProccesor::process(const Request& req) {
+	Response* RequestProccesor::process(Request& req) {
 		m_res->setStatusCode(OK);
 		if (!checkRequestData(req)) {
 			// Create error page
 		}
 		config::t_location location;
-		if (findLocation(m_pathData.pure_path, m_locations, location) == 1) {
+		if (findLocation(req.getPathData().pure_path, m_locations, location) == 1) {
 			m_res->setStatusCode(NOT_FOUND);
 		}
 		m_res = new Response();
@@ -57,8 +57,7 @@ namespace http {
 	 * absolute-URI = scheme ":" hier-part [ "?" query ]
 	 * @param path
 	 */
-	bool RequestProccesor::parseAbsoluteForm(const std::string& path, const Request& request, t_PathData& pathData) {
-		(void)request;
+	bool RequestProccesor::parseAbsoluteForm(const std::string& path, Request& request) {
 		std::string scheme;
 		std::string query = "";
 		std::string authority;
@@ -86,6 +85,7 @@ namespace http {
 			return false;
 		}
 		pure_path = pure_path.substr(pure_path.find('/'));
+		http::PathData& pathData = request.getPathData();
 		pathData.query = query;
 		pathData.pure_path = pure_path;
 		pathData.scheme = scheme;
@@ -93,7 +93,7 @@ namespace http {
 		return true;
 	}
 
-	bool RequestProccesor::parseOriginForm(const std::string& path, const Request& request, t_PathData& pathData) {
+	bool RequestProccesor::parseOriginForm(const std::string& path, Request& request) {
 		std::string authority;
 		std::string pure_path;
 		std::string query;
@@ -120,6 +120,7 @@ namespace http {
 		if (found == 0) {
 			return false;
 		}
+		http::PathData& pathData = request.getPathData();
 		pathData.query = query;
 		pathData.pure_path = pure_path;
 		pathData.authority = authority;
@@ -132,15 +133,15 @@ namespace http {
 	 * @details has to be either "Origin-form" or "Absolute-form" (others only with unsupported methods)
 	 * @param request
 	 */
-	bool RequestProccesor::checkAndReconstructTargetUri(const Request& request) {
+	bool RequestProccesor::checkAndReconstructTargetUri(Request& request) {
 		if (request.getUriRaw()[0] == '/') {
-			if (!parseOriginForm(request.getUriRaw(), request, m_pathData)) {
+			if (!parseOriginForm(request.getUriRaw(), request)) {
 				m_res->setStatusCode(BAD_REQUEST);
 				return false;
 			}
 
 		} else {
-			if (!parseAbsoluteForm(request.getUriRaw(), request, m_pathData)) {
+			if (!parseAbsoluteForm(request.getUriRaw(), request)) {
 				m_res->setStatusCode(BAD_REQUEST);
 				return false;
 			}
@@ -156,7 +157,7 @@ namespace http {
 	 * - Version is HTTP/1.1
 	 * @param request The request to check
 	 */
-	bool RequestProccesor::checkRequestData(const Request& request) {
+	bool RequestProccesor::checkRequestData(Request& request) {
 		if (request.getMethod() != GET && request.getMethod() != POST && request.getMethod() != DELETE) {
 			m_res->setStatusCode(NOT_IMPLEMENTED);
 			return false;
@@ -184,13 +185,12 @@ namespace http {
 
 	int RequestProccesor::testParseURI(const std::string& uri, int mode) {
 		std::cout << "-----------------------------------" << std::endl;
-		t_PathData pathData;
+		Request req;
 		if (mode == 0) {
-			Request req;
 			std::vector<std::string> host;
 			host.push_back("localhost");
 			req.setHeader("Host", 4, "Localhost", 9);
-			if (parseOriginForm(uri, req, pathData)) {
+			if (parseOriginForm(uri, req)) {
 				std::cout << "Origin form parsed successfully" << std::endl;
 			} else {
 				std::cout << "Origin form failed" << std::endl;
@@ -198,7 +198,7 @@ namespace http {
 				return 1;
 			}
 		} else {
-			if (parseAbsoluteForm(uri, Request(), pathData)) {
+			if (parseAbsoluteForm(uri, req)) {
 				std::cout << "Absolute form parsed successfully" << std::endl;
 			} else {
 				std::cout << "Absolute form failed" << std::endl;
@@ -206,6 +206,7 @@ namespace http {
 				return 1;
 			}
 		}
+		const http::PathData& pathData = req.getPathData();
 		std::cout << "Scheme: " << pathData.scheme << std::endl;
 		std::cout << "Authority: " << pathData.authority << std::endl;
 		std::cout << "Pure path: " << pathData.pure_path << std::endl;

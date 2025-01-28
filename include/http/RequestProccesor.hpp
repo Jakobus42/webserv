@@ -11,13 +11,6 @@
 
 namespace http {
 
-	typedef struct s_PathData {
-			std::string scheme;
-			std::string authority;
-			std::string pure_path;
-			std::string query;
-	} t_PathData;
-
 	/**
 	 * @class RequestProccesor
 	 * @brief ...
@@ -27,7 +20,7 @@ namespace http {
 			RequestProccesor(std::vector<config::t_location> locations);
 			~RequestProccesor();
 
-			Response* process(const Request& req);
+			Response* process(Request& req);
 
 
 
@@ -42,14 +35,13 @@ namespace http {
 			Response* m_res;
 			std::map<Method, ARequestHandler*> m_handlers;
 			std::vector<config::t_location> m_locations;
-			t_PathData m_pathData;
 
 			int findLocation(const std::string& uri, const std::vector<config::t_location>& locations, config::t_location& location);
 
-			bool checkRequestData(const Request& request);
-			bool checkAndReconstructTargetUri(const Request& request);
-			bool parseAbsoluteForm(const std::string& path, const Request& request, t_PathData& pathData);
-			bool parseOriginForm(const std::string& path, const Request& request, t_PathData& pathData);
+			bool checkRequestData(Request& request);
+			bool checkAndReconstructTargetUri(Request& request);
+			bool parseAbsoluteForm(const std::string& path, Request& request);
+			bool parseOriginForm(const std::string& path, Request& request);
 	};
 
 } /* namespace http */

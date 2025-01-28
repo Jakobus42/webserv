@@ -405,7 +405,7 @@ namespace http {
 		this->setState(START);
 	}
 
-	const Request& RequestParser::getRequest() {
+	Request& RequestParser::getRequest() {
 		return m_req;
 	}
 
