@@ -144,6 +144,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a01c2058c223a0044e01ebd5c327f2f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c21ec82e0fbcc4685b24bfeeac48e42" id="r_a7c21ec82e0fbcc4685b24bfeeac48e42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#a7c21ec82e0fbcc4685b24bfeeac48e42">setStatusCode</a> (<a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a> statusCode)</td></tr>
 <tr class="separator:a7c21ec82e0fbcc4685b24bfeeac48e42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a298f417527eec65b6e750cfb4d3ba031" id="r_a298f417527eec65b6e750cfb4d3ba031"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#a298f417527eec65b6e750cfb4d3ba031">setError</a> ()</td></tr>
+<tr class="separator:a298f417527eec65b6e750cfb4d3ba031"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a064f8ec589e5191ecce6243fb46d21db" id="r_a064f8ec589e5191ecce6243fb46d21db"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#a064f8ec589e5191ecce6243fb46d21db">hasHeader</a> (const std::string &amp;key) const</td></tr>
 <tr class="separator:a064f8ec589e5191ecce6243fb46d21db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2586af637d92688c1bc9e6688042cb75" id="r_a2586af637d92688c1bc9e6688042cb75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Request.html#a2586af637d92688c1bc9e6688042cb75">appendToBody</a> (const char *data, std::size_t len)</td></tr>
@@ -217,17 +219,17 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   19</span>        , <a class="code hl_variable" href="classhttp_1_1Request.html#a53a217d1e3d51682e635c6cec7a26f3a">m_statusCode</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc">OK</a>)</div>
 <div class="line"><span class="lineno">   20</span>        , <a class="code hl_variable" href="classhttp_1_1Request.html#a2cd394875d2210b412b51469e3c6e477">m_pathData</a>() {</div>
 <div class="line"><span class="lineno">   21</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a209f172cc311ccea1cce70bdfab6f5df"><div class="ttname"><a href="classhttp_1_1Request.html#a209f172cc311ccea1cce70bdfab6f5df">http::Request::m_method</a></div><div class="ttdeci">Method m_method</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00080">Request.hpp:80</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a2cd394875d2210b412b51469e3c6e477"><div class="ttname"><a href="classhttp_1_1Request.html#a2cd394875d2210b412b51469e3c6e477">http::Request::m_pathData</a></div><div class="ttdeci">PathData m_pathData</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00090">Request.hpp:90</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a53a217d1e3d51682e635c6cec7a26f3a"><div class="ttname"><a href="classhttp_1_1Request.html#a53a217d1e3d51682e635c6cec7a26f3a">http::Request::m_statusCode</a></div><div class="ttdeci">http::StatusCode m_statusCode</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00089">Request.hpp:89</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a5c7fd15cfda76de5406e5aecc42a272c"><div class="ttname"><a href="classhttp_1_1Request.html#a5c7fd15cfda76de5406e5aecc42a272c">http::Request::m_version</a></div><div class="ttdeci">std::string m_version</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00083">Request.hpp:83</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_ae2bc3acc99e41fbaf25c7d3bbc3e910f"><div class="ttname"><a href="classhttp_1_1Request.html#ae2bc3acc99e41fbaf25c7d3bbc3e910f">http::Request::m_uriRaw</a></div><div class="ttdeci">std::string m_uriRaw</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00082">Request.hpp:82</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_afa4e89a8a256174a8881a529b3aea0ad"><div class="ttname"><a href="classhttp_1_1Request.html#afa4e89a8a256174a8881a529b3aea0ad">http::Request::m_type</a></div><div class="ttdeci">RequestType m_type</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00079">Request.hpp:79</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_afdb29a47910c0f99d07e60d6c2b64c05"><div class="ttname"><a href="classhttp_1_1Request.html#afdb29a47910c0f99d07e60d6c2b64c05">http::Request::m_uri</a></div><div class="ttdeci">Uri m_uri</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00081">Request.hpp:81</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a209f172cc311ccea1cce70bdfab6f5df"><div class="ttname"><a href="classhttp_1_1Request.html#a209f172cc311ccea1cce70bdfab6f5df">http::Request::m_method</a></div><div class="ttdeci">Method m_method</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00081">Request.hpp:81</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a2cd394875d2210b412b51469e3c6e477"><div class="ttname"><a href="classhttp_1_1Request.html#a2cd394875d2210b412b51469e3c6e477">http::Request::m_pathData</a></div><div class="ttdeci">PathData m_pathData</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00091">Request.hpp:91</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a53a217d1e3d51682e635c6cec7a26f3a"><div class="ttname"><a href="classhttp_1_1Request.html#a53a217d1e3d51682e635c6cec7a26f3a">http::Request::m_statusCode</a></div><div class="ttdeci">http::StatusCode m_statusCode</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00090">Request.hpp:90</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a5c7fd15cfda76de5406e5aecc42a272c"><div class="ttname"><a href="classhttp_1_1Request.html#a5c7fd15cfda76de5406e5aecc42a272c">http::Request::m_version</a></div><div class="ttdeci">std::string m_version</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00084">Request.hpp:84</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_ae2bc3acc99e41fbaf25c7d3bbc3e910f"><div class="ttname"><a href="classhttp_1_1Request.html#ae2bc3acc99e41fbaf25c7d3bbc3e910f">http::Request::m_uriRaw</a></div><div class="ttdeci">std::string m_uriRaw</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00083">Request.hpp:83</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_afa4e89a8a256174a8881a529b3aea0ad"><div class="ttname"><a href="classhttp_1_1Request.html#afa4e89a8a256174a8881a529b3aea0ad">http::Request::m_type</a></div><div class="ttdeci">RequestType m_type</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00080">Request.hpp:80</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_afdb29a47910c0f99d07e60d6c2b64c05"><div class="ttname"><a href="classhttp_1_1Request.html#afdb29a47910c0f99d07e60d6c2b64c05">http::Request::m_uri</a></div><div class="ttdeci">Uri m_uri</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00082">Request.hpp:82</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a347672eeddfedabd6c5a270b5b457577"><div class="ttname"><a href="namespacehttp.html#a347672eeddfedabd6c5a270b5b457577">http::HTTP_VERSION</a></div><div class="ttdeci">const std::string HTTP_VERSION</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00015">http.hpp:15</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a823474aaff0014c756dad2d3f8dc5414af1dfb59b43eb6ce5e9a246dfca2e879a"><div class="ttname"><a href="namespacehttp.html#a823474aaff0014c756dad2d3f8dc5414af1dfb59b43eb6ce5e9a246dfca2e879a">http::FETCH</a></div><div class="ttdeci">@ FETCH</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00019">Request.hpp:19</a></div></div>
-<div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc">http::OK</a></div><div class="ttdeci">@ OK</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00024">http.hpp:24</a></div></div>
-<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">http::GET</a></div><div class="ttdeci">@ GET</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00064">http.hpp:64</a></div></div>
+<div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc">http::OK</a></div><div class="ttdeci">@ OK</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00027">http.hpp:27</a></div></div>
+<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">http::GET</a></div><div class="ttdeci">@ GET</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00067">http.hpp:67</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -285,7 +287,7 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   64</span>                                                              {</div>
 <div class="line"><span class="lineno">   65</span>        <a class="code hl_variable" href="classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840">m_body</a>.append(data, len);</div>
 <div class="line"><span class="lineno">   66</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Request_html_aeeeb51221d331e67c9b68f26720d7840"><div class="ttname"><a href="classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840">http::Request::m_body</a></div><div class="ttdeci">std::string m_body</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00087">Request.hpp:87</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_aeeeb51221d331e67c9b68f26720d7840"><div class="ttname"><a href="classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840">http::Request::m_body</a></div><div class="ttdeci">std::string m_body</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00088">Request.hpp:88</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -363,7 +365,7 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00086">86</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   86</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Request.html#a9bd2fbffae2ae25d159f2947bdac509a">m_headers</a>.at(key); }</div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a9bd2fbffae2ae25d159f2947bdac509a"><div class="ttname"><a href="classhttp_1_1Request.html#a9bd2fbffae2ae25d159f2947bdac509a">http::Request::m_headers</a></div><div class="ttdeci">std::map&lt; std::string, std::vector&lt; std::string &gt; &gt; m_headers</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00085">Request.hpp:85</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a9bd2fbffae2ae25d159f2947bdac509a"><div class="ttname"><a href="classhttp_1_1Request.html#a9bd2fbffae2ae25d159f2947bdac509a">http::Request::m_headers</a></div><div class="ttdeci">std::map&lt; std::string, std::vector&lt; std::string &gt; &gt; m_headers</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00086">Request.hpp:86</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -493,8 +495,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00113">113</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  113</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Request.html#a2cd394875d2210b412b51469e3c6e477">m_pathData</a>; };</div>
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00115">115</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  115</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Request.html#a2cd394875d2210b412b51469e3c6e477">m_pathData</a>; };</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -543,7 +545,17 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00070">70</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   70</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Request.html#a53a217d1e3d51682e635c6cec7a26f3a">m_statusCode</a>; }</div>
-</div><!-- fragment -->
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1Request_afcc854dfd95d0b508b47712427e7f009_icgraph.png" border="0" usemap="#aclasshttp_1_1Request_afcc854dfd95d0b508b47712427e7f009_icgraph" alt=""/></div>
+<map name="aclasshttp_1_1Request_afcc854dfd95d0b508b47712427e7f009_icgraph" id="aclasshttp_1_1Request_afcc854dfd95d0b508b47712427e7f009_icgraph">
+<area shape="rect" title=" " alt="" coords="192,13,404,38"/>
+<area shape="rect" href="classhttp_1_1ErrorHandler.html#ab9ae26c3ebbde48a06b76cac100dd55b" title=" " alt="" coords="5,5,144,45"/>
+<area shape="poly" title=" " alt="" coords="178,28,144,28,144,23,178,23"/>
+</map>
+</div>
+
 </div>
 </div>
 <a id="aaa99956f2b1e64c9c55d12cbfcc383ab" name="aaa99956f2b1e64c9c55d12cbfcc383ab"></a>
@@ -774,26 +786,26 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00136">136</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  136</span>                                         {</div>
-<div class="line"><span class="lineno">  137</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Method: &quot;</span> &lt;&lt; <a class="code hl_function" href="namespacehttp.html#a1d02d0271977cac915906163e6cbca8c">getMethodString</a>(<a class="code hl_variable" href="classhttp_1_1Request.html#a209f172cc311ccea1cce70bdfab6f5df">m_method</a>) &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  138</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;URI: &quot;</span> &lt;&lt; <a class="code hl_variable" href="classhttp_1_1Request.html#ae2bc3acc99e41fbaf25c7d3bbc3e910f">m_uriRaw</a> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  139</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Version: &quot;</span> &lt;&lt; <a class="code hl_variable" href="classhttp_1_1Request.html#a5c7fd15cfda76de5406e5aecc42a272c">m_version</a> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  140</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Headers: &quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  141</span>        std::map&lt;std::string, std::vector&lt;std::string&gt; &gt;::const_iterator it;</div>
-<div class="line"><span class="lineno">  142</span>        <span class="keywordflow">for</span> (it = <a class="code hl_variable" href="classhttp_1_1Request.html#a9bd2fbffae2ae25d159f2947bdac509a">m_headers</a>.begin(); it != <a class="code hl_variable" href="classhttp_1_1Request.html#a9bd2fbffae2ae25d159f2947bdac509a">m_headers</a>.end(); ++it) {</div>
-<div class="line"><span class="lineno">  143</span>            std::cout &lt;&lt; it-&gt;first &lt;&lt; <span class="stringliteral">&quot;: &quot;</span>;</div>
-<div class="line"><span class="lineno">  144</span>            std::vector&lt;std::string&gt;::const_iterator innerIt;</div>
-<div class="line"><span class="lineno">  145</span>            <span class="keywordflow">for</span> (innerIt = it-&gt;second.begin(); innerIt != it-&gt;second.end(); ++innerIt) {</div>
-<div class="line"><span class="lineno">  146</span>                std::cout &lt;&lt; *innerIt;</div>
-<div class="line"><span class="lineno">  147</span>                <span class="keywordflow">if</span> (innerIt + 1 != it-&gt;second.end()) {</div>
-<div class="line"><span class="lineno">  148</span>                    std::cout &lt;&lt; <span class="stringliteral">&quot;, &quot;</span>;</div>
-<div class="line"><span class="lineno">  149</span>                }</div>
-<div class="line"><span class="lineno">  150</span>            }</div>
-<div class="line"><span class="lineno">  151</span>            std::cout &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  152</span>        }</div>
-<div class="line"><span class="lineno">  153</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Body: &quot;</span> &lt;&lt; <a class="code hl_variable" href="classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840">m_body</a> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  154</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00138">138</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  138</span>                                         {</div>
+<div class="line"><span class="lineno">  139</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Method: &quot;</span> &lt;&lt; <a class="code hl_function" href="namespacehttp.html#a1d02d0271977cac915906163e6cbca8c">getMethodString</a>(<a class="code hl_variable" href="classhttp_1_1Request.html#a209f172cc311ccea1cce70bdfab6f5df">m_method</a>) &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  140</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;URI: &quot;</span> &lt;&lt; <a class="code hl_variable" href="classhttp_1_1Request.html#ae2bc3acc99e41fbaf25c7d3bbc3e910f">m_uriRaw</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  141</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Version: &quot;</span> &lt;&lt; <a class="code hl_variable" href="classhttp_1_1Request.html#a5c7fd15cfda76de5406e5aecc42a272c">m_version</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  142</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Headers: &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  143</span>        std::map&lt;std::string, std::vector&lt;std::string&gt; &gt;::const_iterator it;</div>
+<div class="line"><span class="lineno">  144</span>        <span class="keywordflow">for</span> (it = <a class="code hl_variable" href="classhttp_1_1Request.html#a9bd2fbffae2ae25d159f2947bdac509a">m_headers</a>.begin(); it != <a class="code hl_variable" href="classhttp_1_1Request.html#a9bd2fbffae2ae25d159f2947bdac509a">m_headers</a>.end(); ++it) {</div>
+<div class="line"><span class="lineno">  145</span>            std::cout &lt;&lt; it-&gt;first &lt;&lt; <span class="stringliteral">&quot;: &quot;</span>;</div>
+<div class="line"><span class="lineno">  146</span>            std::vector&lt;std::string&gt;::const_iterator innerIt;</div>
+<div class="line"><span class="lineno">  147</span>            <span class="keywordflow">for</span> (innerIt = it-&gt;second.begin(); innerIt != it-&gt;second.end(); ++innerIt) {</div>
+<div class="line"><span class="lineno">  148</span>                std::cout &lt;&lt; *innerIt;</div>
+<div class="line"><span class="lineno">  149</span>                <span class="keywordflow">if</span> (innerIt + 1 != it-&gt;second.end()) {</div>
+<div class="line"><span class="lineno">  150</span>                    std::cout &lt;&lt; <span class="stringliteral">&quot;, &quot;</span>;</div>
+<div class="line"><span class="lineno">  151</span>                }</div>
+<div class="line"><span class="lineno">  152</span>            }</div>
+<div class="line"><span class="lineno">  153</span>            std::cout &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  154</span>        }</div>
+<div class="line"><span class="lineno">  155</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Body: &quot;</span> &lt;&lt; <a class="code hl_variable" href="classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840">m_body</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  156</span>    }</div>
 <div class="ttc" id="anamespacehttp_html_a1d02d0271977cac915906163e6cbca8c"><div class="ttname"><a href="namespacehttp.html#a1d02d0271977cac915906163e6cbca8c">http::getMethodString</a></div><div class="ttdeci">std::string getMethodString(Method method)</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00055">http.cpp:55</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -839,6 +851,41 @@ Here is the call graph for this function:</div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a298f417527eec65b6e750cfb4d3ba031" name="a298f417527eec65b6e750cfb4d3ba031"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a298f417527eec65b6e750cfb4d3ba031">&#9670;&#160;</a></span>setError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void http::Request::setError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00113">113</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  113</span>{ <a class="code hl_variable" href="classhttp_1_1Request.html#a209f172cc311ccea1cce70bdfab6f5df">m_method</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa6c01fa09f0e2f992d5a9de8d971eaacd">_ERROR</a>; }</div>
+<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfa6c01fa09f0e2f992d5a9de8d971eaacd"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa6c01fa09f0e2f992d5a9de8d971eaacd">http::_ERROR</a></div><div class="ttdeci">@ _ERROR</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00071">http.hpp:70</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1Request_a298f417527eec65b6e750cfb4d3ba031_icgraph.png" border="0" usemap="#aclasshttp_1_1Request_a298f417527eec65b6e750cfb4d3ba031_icgraph" alt=""/></div>
+<map name="aclasshttp_1_1Request_a298f417527eec65b6e750cfb4d3ba031_icgraph" id="aclasshttp_1_1Request_a298f417527eec65b6e750cfb4d3ba031_icgraph">
+<area shape="rect" title=" " alt="" coords="704,13,872,38"/>
+<area shape="rect" href="classhttp_1_1RequestProccesor.html#a60935bc49ba030766d2d2234f95a65af" title=" " alt="" coords="484,5,656,45"/>
+<area shape="poly" title=" " alt="" coords="690,28,656,28,656,23,690,23"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="228,13,436,38"/>
+<area shape="poly" title=" " alt="" coords="470,28,436,28,436,23,470,23"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,13,180,38"/>
+<area shape="poly" title=" " alt="" coords="214,28,180,28,180,23,214,23"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a01c2058c223a0044e01ebd5c327f2f67" name="a01c2058c223a0044e01ebd5c327f2f67"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a01c2058c223a0044e01ebd5c327f2f67">&#9670;&#160;</a></span>setHeader()</h2>
 
@@ -882,7 +929,7 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">  107</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1Request.html#a70d7e46f2bc187699ef312cc6a01cec7">validateHeader</a>(key, keyLen, value, valueLen);</div>
 <div class="line"><span class="lineno">  108</span>        <a class="code hl_variable" href="classhttp_1_1Request.html#a9bd2fbffae2ae25d159f2947bdac509a">m_headers</a>[std::string(key, keyLen)].push_back(std::string(value, valueLen));</div>
 <div class="line"><span class="lineno">  109</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a70d7e46f2bc187699ef312cc6a01cec7"><div class="ttname"><a href="classhttp_1_1Request.html#a70d7e46f2bc187699ef312cc6a01cec7">http::Request::validateHeader</a></div><div class="ttdeci">void validateHeader(const char *key, std::size_t keyLen, const char *value, std::size_t valueLen)</div><div class="ttdef"><b>Definition</b> <a href="Request_8cpp_source.html#l00130">Request.cpp:130</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a70d7e46f2bc187699ef312cc6a01cec7"><div class="ttname"><a href="classhttp_1_1Request.html#a70d7e46f2bc187699ef312cc6a01cec7">http::Request::validateHeader</a></div><div class="ttdeci">void validateHeader(const char *key, std::size_t keyLen, const char *value, std::size_t valueLen)</div><div class="ttdef"><b>Definition</b> <a href="Request_8cpp_source.html#l00132">Request.cpp:132</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -946,7 +993,7 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><span class="lineno">   90</span>                                                             {</div>
 <div class="line"><span class="lineno">   91</span>        <a class="code hl_variable" href="classhttp_1_1Request.html#a209f172cc311ccea1cce70bdfab6f5df">m_method</a> = <a class="code hl_function" href="namespacehttp.html#aff35f6b0992332ad3e28219095ddb385">stringToMethod</a>(std::string(method, len));</div>
 <div class="line"><span class="lineno">   92</span>    }</div>
-<div class="ttc" id="anamespacehttp_html_aff35f6b0992332ad3e28219095ddb385"><div class="ttname"><a href="namespacehttp.html#aff35f6b0992332ad3e28219095ddb385">http::stringToMethod</a></div><div class="ttdeci">Method stringToMethod(const std::string &amp;method)</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00067">http.cpp:67</a></div></div>
+<div class="ttc" id="anamespacehttp_html_aff35f6b0992332ad3e28219095ddb385"><div class="ttname"><a href="namespacehttp.html#aff35f6b0992332ad3e28219095ddb385">http::stringToMethod</a></div><div class="ttdeci">Method stringToMethod(const std::string &amp;method)</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00069">http.cpp:69</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1001,20 +1048,23 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Request_a7c21ec82e0fbcc4685b24bfeeac48e42_icgraph.png" border="0" usemap="#aclasshttp_1_1Request_a7c21ec82e0fbcc4685b24bfeeac48e42_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1Request_a7c21ec82e0fbcc4685b24bfeeac48e42_icgraph" id="aclasshttp_1_1Request_a7c21ec82e0fbcc4685b24bfeeac48e42_icgraph">
-<area shape="rect" title=" " alt="" coords="1273,42,1484,67"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#ac8f5e70c9b70ee29fe39e6823fa6f050" title=" " alt="" coords="1076,5,1225,45"/>
-<area shape="poly" title=" " alt="" coords="1266,43,1225,38,1226,32,1267,38"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#aa7770f7b9109b74b07d330fccf1661e4" title=" " alt="" coords="484,35,633,75"/>
-<area shape="poly" title=" " alt="" coords="1260,60,1225,60,681,60,634,59,634,54,681,55,1225,55,1260,54"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#a310284f6a6f4d45ecc79f3ec4f6e9650" title=" " alt="" coords="879,5,1028,45"/>
-<area shape="poly" title=" " alt="" coords="1062,28,1028,28,1028,23,1062,23"/>
+<area shape="rect" title=" " alt="" coords="1296,70,1507,95"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#ac8f5e70c9b70ee29fe39e6823fa6f050" title=" " alt="" coords="1099,5,1248,45"/>
+<area shape="poly" title=" " alt="" coords="1336,69,1247,47,1249,41,1338,64"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#aa7770f7b9109b74b07d330fccf1661e4" title=" " alt="" coords="484,63,633,103"/>
+<area shape="poly" title=" " alt="" coords="1282,85,633,85,633,80,1282,80"/>
+<area shape="rect" href="classhttp_1_1RequestProccesor.html#a60935bc49ba030766d2d2234f95a65af" title=" " alt="" coords="879,120,1051,160"/>
+<area shape="poly" title=" " alt="" coords="1290,100,1051,131,1050,126,1290,95"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#a310284f6a6f4d45ecc79f3ec4f6e9650" title=" " alt="" coords="890,5,1039,45"/>
+<area shape="poly" title=" " alt="" coords="1085,28,1040,28,1040,23,1085,23"/>
 <area shape="rect" href="classhttp_1_1RequestParser.html#abb2ccb0f5ef2c5cdc1904f879ae6b5b9" title=" " alt="" coords="681,5,831,45"/>
-<area shape="poly" title=" " alt="" coords="865,28,831,28,831,23,865,23"/>
-<area shape="poly" title=" " alt="" coords="668,41,634,46,633,41,667,36"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="228,42,436,67"/>
-<area shape="poly" title=" " alt="" coords="470,57,436,57,436,52,470,52"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,42,180,67"/>
-<area shape="poly" title=" " alt="" coords="214,57,180,57,180,52,214,52"/>
+<area shape="poly" title=" " alt="" coords="876,28,831,28,831,23,876,23"/>
+<area shape="poly" title=" " alt="" coords="674,52,629,65,628,60,673,47"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="228,99,436,125"/>
+<area shape="poly" title=" " alt="" coords="471,97,430,102,430,97,470,91"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,99,180,125"/>
+<area shape="poly" title=" " alt="" coords="214,115,180,115,180,109,214,109"/>
+<area shape="poly" title=" " alt="" coords="865,138,436,119,436,114,865,133"/>
 </map>
 </div>
 
@@ -1092,7 +1142,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   95</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1Request.html#a6f59201552bf937f9bb121c169c688b2">validateUriRaw</a>(uri, len);</div>
 <div class="line"><span class="lineno">   96</span>        <a class="code hl_variable" href="classhttp_1_1Request.html#ae2bc3acc99e41fbaf25c7d3bbc3e910f">m_uriRaw</a>.assign(uri, len);</div>
 <div class="line"><span class="lineno">   97</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a6f59201552bf937f9bb121c169c688b2"><div class="ttname"><a href="classhttp_1_1Request.html#a6f59201552bf937f9bb121c169c688b2">http::Request::validateUriRaw</a></div><div class="ttdeci">void validateUriRaw(const char *uri, std::size_t len)</div><div class="ttdef"><b>Definition</b> <a href="Request_8cpp_source.html#l00115">Request.cpp:115</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a6f59201552bf937f9bb121c169c688b2"><div class="ttname"><a href="classhttp_1_1Request.html#a6f59201552bf937f9bb121c169c688b2">http::Request::validateUriRaw</a></div><div class="ttdeci">void validateUriRaw(const char *uri, std::size_t len)</div><div class="ttdef"><b>Definition</b> <a href="Request_8cpp_source.html#l00117">Request.cpp:117</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1155,7 +1205,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  100</span>        this-&gt;<a class="code hl_function" href="classhttp_1_1Request.html#a3747401ac2ee19f9a4c5f72a35f1869b">validateVersion</a>(version, len);</div>
 <div class="line"><span class="lineno">  101</span>        <a class="code hl_variable" href="classhttp_1_1Request.html#a5c7fd15cfda76de5406e5aecc42a272c">m_version</a>.assign(version, len);</div>
 <div class="line"><span class="lineno">  102</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Request_html_a3747401ac2ee19f9a4c5f72a35f1869b"><div class="ttname"><a href="classhttp_1_1Request.html#a3747401ac2ee19f9a4c5f72a35f1869b">http::Request::validateVersion</a></div><div class="ttdeci">void validateVersion(const char *version, std::size_t len)</div><div class="ttdef"><b>Definition</b> <a href="Request_8cpp_source.html#l00124">Request.cpp:124</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a3747401ac2ee19f9a4c5f72a35f1869b"><div class="ttname"><a href="classhttp_1_1Request.html#a3747401ac2ee19f9a4c5f72a35f1869b">http::Request::validateVersion</a></div><div class="ttdeci">void validateVersion(const char *version, std::size_t len)</div><div class="ttdef"><b>Definition</b> <a href="Request_8cpp_source.html#l00126">Request.cpp:126</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1293,14 +1343,14 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00130">130</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  130</span>                                                                                          {</div>
-<div class="line"><span class="lineno">  131</span>        <span class="keywordflow">if</span> (key == NULL || keyLen == 0) {</div>
-<div class="line"><span class="lineno">  132</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">BAD_REQUEST</a>, <span class="stringliteral">&quot;header key can not be empty&quot;</span>);</div>
-<div class="line"><span class="lineno">  133</span>        }</div>
-<div class="line"><span class="lineno">  134</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1exception_html"><div class="ttname"><a href="classhttp_1_1exception.html">http::exception</a></div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00069">http.hpp:69</a></div></div>
-<div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">http::BAD_REQUEST</a></div><div class="ttdeci">@ BAD_REQUEST</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00032">http.hpp:32</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00132">132</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  132</span>                                                                                          {</div>
+<div class="line"><span class="lineno">  133</span>        <span class="keywordflow">if</span> (key == NULL || keyLen == 0) {</div>
+<div class="line"><span class="lineno">  134</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">BAD_REQUEST</a>, <span class="stringliteral">&quot;header key can not be empty&quot;</span>);</div>
+<div class="line"><span class="lineno">  135</span>        }</div>
+<div class="line"><span class="lineno">  136</span>    }</div>
+<div class="ttc" id="aclasshttp_1_1exception_html"><div class="ttname"><a href="classhttp_1_1exception.html">http::exception</a></div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00073">http.hpp:73</a></div></div>
+<div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">http::BAD_REQUEST</a></div><div class="ttdeci">@ BAD_REQUEST</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00035">http.hpp:35</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1360,15 +1410,15 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00115">115</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  115</span>                                                               {</div>
-<div class="line"><span class="lineno">  116</span>        <span class="keywordflow">if</span> (len == 0 || uri == NULL) {</div>
-<div class="line"><span class="lineno">  117</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">BAD_REQUEST</a>, <span class="stringliteral">&quot;URI can not be empty&quot;</span>);</div>
-<div class="line"><span class="lineno">  118</span>        }</div>
-<div class="line"><span class="lineno">  119</span>        <span class="keywordflow">if</span> (uri[0] != <span class="charliteral">&#39;/&#39;</span>) {</div>
-<div class="line"><span class="lineno">  120</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">BAD_REQUEST</a>, <span class="stringliteral">&quot;URI must start with &#39;/&#39;&quot;</span>);</div>
-<div class="line"><span class="lineno">  121</span>        }</div>
-<div class="line"><span class="lineno">  122</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00117">117</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  117</span>                                                               {</div>
+<div class="line"><span class="lineno">  118</span>        <span class="keywordflow">if</span> (len == 0 || uri == NULL) {</div>
+<div class="line"><span class="lineno">  119</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">BAD_REQUEST</a>, <span class="stringliteral">&quot;URI can not be empty&quot;</span>);</div>
+<div class="line"><span class="lineno">  120</span>        }</div>
+<div class="line"><span class="lineno">  121</span>        <span class="keywordflow">if</span> (uri[0] != <span class="charliteral">&#39;/&#39;</span>) {</div>
+<div class="line"><span class="lineno">  122</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">BAD_REQUEST</a>, <span class="stringliteral">&quot;URI must start with &#39;/&#39;&quot;</span>);</div>
+<div class="line"><span class="lineno">  123</span>        }</div>
+<div class="line"><span class="lineno">  124</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1426,13 +1476,13 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00124">124</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  124</span>                                                                    {</div>
-<div class="line"><span class="lineno">  125</span>        <span class="keywordflow">if</span> (version == NULL || len == 0 || std::strcmp(version, <a class="code hl_variable" href="namespacehttp.html#a347672eeddfedabd6c5a270b5b457577">HTTP_VERSION</a>.c_str())) {</div>
-<div class="line"><span class="lineno">  126</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702">NOT_IMPLEMENTED</a>, <span class="stringliteral">&quot;unsupported HTTP version: &quot;</span> + std::string(version, len));</div>
-<div class="line"><span class="lineno">  127</span>        }</div>
-<div class="line"><span class="lineno">  128</span>    }</div>
-<div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702">http::NOT_IMPLEMENTED</a></div><div class="ttdeci">@ NOT_IMPLEMENTED</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00052">http.hpp:52</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Request_8cpp_source.html#l00126">126</a> of file <a class="el" href="Request_8cpp_source.html">Request.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  126</span>                                                                    {</div>
+<div class="line"><span class="lineno">  127</span>        <span class="keywordflow">if</span> (version == NULL || len == 0 || std::strcmp(version, <a class="code hl_variable" href="namespacehttp.html#a347672eeddfedabd6c5a270b5b457577">HTTP_VERSION</a>.c_str())) {</div>
+<div class="line"><span class="lineno">  128</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702">NOT_IMPLEMENTED</a>, <span class="stringliteral">&quot;unsupported HTTP version: &quot;</span> + std::string(version, len));</div>
+<div class="line"><span class="lineno">  129</span>        }</div>
+<div class="line"><span class="lineno">  130</span>    }</div>
+<div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702">http::NOT_IMPLEMENTED</a></div><div class="ttdeci">@ NOT_IMPLEMENTED</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00055">http.hpp:55</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1477,7 +1527,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00087">87</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00088">88</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
 
 </div>
 </div>
@@ -1501,7 +1551,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00085">85</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00086">86</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
 
 </div>
 </div>
@@ -1525,7 +1575,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00080">80</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00081">81</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
 
 </div>
 </div>
@@ -1549,7 +1599,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00090">90</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00091">91</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
 
 </div>
 </div>
@@ -1573,7 +1623,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00089">89</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00090">90</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
 
 </div>
 </div>
@@ -1597,7 +1647,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00079">79</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00080">80</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
 
 </div>
 </div>
@@ -1621,7 +1671,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00081">81</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00082">82</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
 
 </div>
 </div>
@@ -1645,7 +1695,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00082">82</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00083">83</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
 
 </div>
 </div>
@@ -1669,7 +1719,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00083">83</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00084">84</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
 
 </div>
 </div>

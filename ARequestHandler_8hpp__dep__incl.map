@@ -1,28 +1,33 @@
 <map id="/home/runner/work/webserv/webserv/include/http/ARequestHandler.hpp" name="/home/runner/work/webserv/webserv/include/http/ARequestHandler.hpp">
-<area shape="rect" id="Node000001" title=" " alt="" coords="483,5,711,60"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="635,5,863,60"/>
 <area shape="rect" id="Node000002" href="$DeleteHandler_8hpp.html" title=" " alt="" coords="5,108,292,148"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="469,63,240,111,238,105,468,58"/>
-<area shape="rect" id="Node000005" href="$GetHandler_8hpp.html" title=" " alt="" coords="317,108,583,148"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="545,70,481,110,478,106,542,65"/>
-<area shape="rect" id="Node000007" href="$PostHandler_8hpp.html" title=" " alt="" coords="607,108,879,148"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="651,65,715,106,712,110,648,70"/>
-<area shape="rect" id="Node000009" href="$RequestProccesor_8hpp.html" title=" " alt="" coords="903,108,1213,148"/>
-<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="725,57,966,105,964,111,724,62"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="621,56,270,111,269,105,620,51"/>
+<area shape="rect" id="Node000005" href="$ErrorHandler_8hpp.html" title=" " alt="" coords="317,108,591,148"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="654,67,514,111,513,105,652,62"/>
+<area shape="rect" id="Node000007" href="$GetHandler_8hpp.html" title=" " alt="" coords="615,108,882,148"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="751,74,751,108,746,108,746,74"/>
+<area shape="rect" id="Node000009" href="$PostHandler_8hpp.html" title=" " alt="" coords="906,108,1178,148"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="845,62,984,105,982,111,844,67"/>
+<area shape="rect" id="Node000011" href="$RequestProccesor_8hpp.html" title=" " alt="" coords="1202,108,1511,148"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="876,51,1234,105,1233,111,876,56"/>
 <area shape="rect" id="Node000003" href="$DeleteHandler_8cpp.html" title=" " alt="" coords="63,203,235,229"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="151,162,151,203,146,203,146,162"/>
-<area shape="rect" id="Node000004" href="$RequestProccesor_8cpp.html" title=" " alt="" coords="486,203,681,229"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="258,148,526,201,525,206,257,153"/>
-<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="492,153,567,201,564,205,489,158"/>
-<area shape="rect" id="Node000006" href="$GetHandler_8cpp.html" title=" " alt="" coords="310,203,462,229"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="430,161,397,204,393,201,425,158"/>
-<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="697,157,606,206,603,201,695,152"/>
-<area shape="rect" id="Node000008" href="$PostHandler_8cpp.html" title=" " alt="" coords="705,203,862,229"/>
-<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="760,159,780,202,775,204,756,162"/>
-<area shape="poly" id="edge14_Node000009_Node000004" title=" " alt="" coords="941,153,647,206,646,201,940,148"/>
-<area shape="rect" id="Node000010" href="$IOHandler_8hpp.html" title=" " alt="" coords="928,196,1188,236"/>
-<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="1061,162,1061,196,1055,196,1055,162"/>
-<area shape="rect" id="Node000011" href="$AcceptHandler_8cpp.html" title=" " alt="" coords="879,284,1053,309"/>
-<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="1027,247,982,286,978,282,1024,243"/>
-<area shape="rect" id="Node000012" href="$IOHandler_8cpp.html" title=" " alt="" coords="1077,284,1223,309"/>
-<area shape="poly" id="edge13_Node000010_Node000012" title=" " alt="" coords="1092,243,1138,282,1134,286,1089,247"/>
+<area shape="rect" id="Node000004" href="$RequestProccesor_8cpp.html" title=" " alt="" coords="563,203,758,229"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="275,148,593,201,592,206,274,153"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="513,151,634,201,632,206,511,156"/>
+<area shape="rect" id="Node000006" href="$ErrorHandler_8cpp.html" title=" " alt="" coords="374,203,534,229"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="457,162,457,203,451,203,451,162"/>
+<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="721,160,675,205,671,201,717,156"/>
+<area shape="rect" id="Node000008" href="$GetHandler_8cpp.html" title=" " alt="" coords="782,203,934,229"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="785,154,845,201,841,205,782,159"/>
+<area shape="poly" id="edge12_Node000009_Node000004" title=" " alt="" coords="946,154,712,206,711,201,945,148"/>
+<area shape="rect" id="Node000010" href="$PostHandler_8cpp.html" title=" " alt="" coords="963,203,1121,229"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="1045,162,1045,203,1039,203,1039,162"/>
+<area shape="poly" id="edge17_Node000011_Node000004" title=" " alt="" coords="1189,151,770,199,724,206,723,201,770,193,1188,146"/>
+<area shape="rect" id="Node000012" href="$IOHandler_8hpp.html" title=" " alt="" coords="1227,196,1487,236"/>
+<area shape="poly" id="edge14_Node000011_Node000012" title=" " alt="" coords="1359,162,1359,196,1354,196,1354,162"/>
+<area shape="rect" id="Node000013" href="$AcceptHandler_8cpp.html" title=" " alt="" coords="1177,284,1352,309"/>
+<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="1326,247,1280,286,1277,282,1322,243"/>
+<area shape="rect" id="Node000014" href="$IOHandler_8cpp.html" title=" " alt="" coords="1376,284,1521,309"/>
+<area shape="poly" id="edge16_Node000012_Node000014" title=" " alt="" coords="1391,243,1437,282,1433,286,1388,247"/>
 </map>

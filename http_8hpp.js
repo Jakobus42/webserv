@@ -4,7 +4,8 @@ var http_8hpp =
     [ "Method", "http_8hpp.html#ad6f0ed7c44035f65821fa7509a03d4cf", [
       [ "GET", "http_8hpp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0", null ],
       [ "POST", "http_8hpp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab", null ],
-      [ "DELETE", "http_8hpp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30", null ]
+      [ "DELETE", "http_8hpp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30", null ],
+      [ "_ERROR", "http_8hpp.html#ad6f0ed7c44035f65821fa7509a03d4cfa6c01fa09f0e2f992d5a9de8d971eaacd", null ]
     ] ],
     [ "StatusCode", "http_8hpp.html#ac125d409f7c7b6034fe7e49d237b7762", [
       [ "UNKNWN", "http_8hpp.html#ac125d409f7c7b6034fe7e49d237b7762ad9006f1cb7c0f5a565cba334dc8c78aa", null ],
@@ -48,5 +49,6 @@ var http_8hpp =
     [ "stringToMethod", "http_8hpp.html#aff35f6b0992332ad3e28219095ddb385", null ],
     [ "CRLF", "http_8hpp.html#a95083d38512d4f49548403fa8bbbc020", null ],
     [ "HTTP_VERSION", "http_8hpp.html#a347672eeddfedabd6c5a270b5b457577", null ],
-    [ "LOCALHOST_ADDRESS", "http_8hpp.html#aca25a9fc3ae4f55904d8a48f1d18af63", null ]
+    [ "LOCALHOST_ADDRESS", "http_8hpp.html#aca25a9fc3ae4f55904d8a48f1d18af63", null ],
+    [ "TEXT_HTML", "http_8hpp.html#a9a0c25913622339c10b4fa85074d2fb9", null ]
 ];

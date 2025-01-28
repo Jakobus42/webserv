@@ -1,11 +1,10 @@
 var Parser_8hpp =
 [
-    [ "config::s_location", "structconfig_1_1s__location.html", "structconfig_1_1s__location" ],
+    [ "config::Location", "structconfig_1_1Location.html", "structconfig_1_1Location" ],
     [ "config::s_server", "structconfig_1_1s__server.html", "structconfig_1_1s__server" ],
     [ "config::s_config_data", "structconfig_1_1s__config__data.html", "structconfig_1_1s__config__data" ],
     [ "config::ConfigFileParser", "classconfig_1_1ConfigFileParser.html", "classconfig_1_1ConfigFileParser" ],
     [ "t_config_data", "Parser_8hpp.html#a5ad2df98cd114bd5b68424130848c0a0", null ],
-    [ "t_location", "Parser_8hpp.html#a92373d4ff5d1405bbbfa5e975ba089eb", null ],
     [ "t_server", "Parser_8hpp.html#a8c27ddf595c5b22c961cb4aff2ae935d", null ],
     [ "CmdId", "Parser_8hpp.html#abe79485846420aa44800c6b37c22bcc6", [
       [ "SERVER_ID", "Parser_8hpp.html#abe79485846420aa44800c6b37c22bcc6a2ffbcc2d585e034390f4abf8ca0061b4", null ],

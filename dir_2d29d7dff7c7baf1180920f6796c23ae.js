@@ -1,6 +1,7 @@
 var dir_2d29d7dff7c7baf1180920f6796c23ae =
 [
     [ "DeleteHandler.cpp", "DeleteHandler_8cpp.html", null ],
+    [ "ErrorHandler.cpp", "ErrorHandler_8cpp.html", null ],
     [ "GetHandler.cpp", "GetHandler_8cpp.html", null ],
     [ "http.cpp", "http_8cpp.html", "http_8cpp" ],
     [ "PostHandler.cpp", "PostHandler_8cpp.html", null ],

@@ -118,12 +118,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a79b633612d04a1d8f9044f66309449d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad5c5dbe59ce54bb7321f9b2a57b59f6" id="r_aad5c5dbe59ce54bb7321f9b2a57b59f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classconfig_1_1ConfigFileParser.html#aad5c5dbe59ce54bb7321f9b2a57b59f6">testFunction</a> (const std::string &amp;key, std::vector&lt; std::string &gt; &amp;args, int &amp;lineCount)</td></tr>
 <tr class="separator:aad5c5dbe59ce54bb7321f9b2a57b59f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3757703901a7e243b8d500aa9853bc7" id="r_ab3757703901a7e243b8d500aa9853bc7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classconfig_1_1ConfigFileParser.html#ab3757703901a7e243b8d500aa9853bc7">printLocations</a> (const std::vector&lt; <a class="el" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">config::t_location</a> &gt; &amp;locations, int layer, int detailed, std::vector&lt; int &gt; layer_num)</td></tr>
-<tr class="memdesc:ab3757703901a7e243b8d500aa9853bc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">prints the locations of the server.  <br /></td></tr>
-<tr class="separator:ab3757703901a7e243b8d500aa9853bc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0b230ea3d9469e19885dea44ff8fef7" id="r_ae0b230ea3d9469e19885dea44ff8fef7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">config::t_location</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">getLocation</a> (int layer)</td></tr>
-<tr class="memdesc:ae0b230ea3d9469e19885dea44ff8fef7"><td class="mdescLeft">&#160;</td><td class="mdescRight">finds the current location in the configuration file.  <br /></td></tr>
-<tr class="separator:ae0b230ea3d9469e19885dea44ff8fef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41c53f2726786fec056e8ec3872eb35e" id="r_a41c53f2726786fec056e8ec3872eb35e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classconfig_1_1ConfigFileParser.html#a41c53f2726786fec056e8ec3872eb35e">printLocations</a> (const std::vector&lt; <a class="el" href="structconfig_1_1Location.html">config::Location</a> &gt; &amp;locations, int layer, int detailed, std::vector&lt; int &gt; layer_num)</td></tr>
+<tr class="memdesc:a41c53f2726786fec056e8ec3872eb35e"><td class="mdescLeft">&#160;</td><td class="mdescRight">prints the locations of the server.  <br /></td></tr>
+<tr class="separator:a41c53f2726786fec056e8ec3872eb35e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09c229efdd868fb3bf7e2d3dd2833a4e" id="r_a09c229efdd868fb3bf7e2d3dd2833a4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structconfig_1_1Location.html">config::Location</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e">getLocation</a> (int layer)</td></tr>
+<tr class="memdesc:a09c229efdd868fb3bf7e2d3dd2833a4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">finds the current location in the configuration file.  <br /></td></tr>
+<tr class="separator:a09c229efdd868fb3bf7e2d3dd2833a4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -194,7 +194,7 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class is responsible for parsing the configuration file. </p>
 
-<p class="definition">Definition at line <a class="el" href="Parser_8hpp_source.html#l00104">104</a> of file <a class="el" href="Parser_8hpp_source.html">Parser.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Parser_8hpp_source.html#l00102">102</a> of file <a class="el" href="Parser_8hpp_source.html">Parser.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab79a3fdb72f8be15da321b11d2314107" name="ab79a3fdb72f8be15da321b11d2314107"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab79a3fdb72f8be15da321b11d2314107">&#9670;&#160;</a></span>ConfigFileParser() <span class="overload">[1/2]</span></h2>
@@ -217,7 +217,7 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">    8</span>                                       {</div>
 <div class="line"><span class="lineno">    9</span>        <a class="code hl_variable" href="classconfig_1_1ConfigFileParser.html#abeb1e6536a0095bc521d5ba717822b4c">m_isLoaded</a> = 0;</div>
 <div class="line"><span class="lineno">   10</span>    }</div>
-<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_abeb1e6536a0095bc521d5ba717822b4c"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#abeb1e6536a0095bc521d5ba717822b4c">config::ConfigFileParser::m_isLoaded</a></div><div class="ttdeci">int m_isLoaded</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00133">Parser.hpp:133</a></div></div>
+<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_abeb1e6536a0095bc521d5ba717822b4c"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#abeb1e6536a0095bc521d5ba717822b4c">config::ConfigFileParser::m_isLoaded</a></div><div class="ttdeci">int m_isLoaded</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00131">Parser.hpp:131</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -344,7 +344,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  430</span>                      &lt;&lt; <span class="stringliteral">&quot;Invalid number of arguments for autoindex&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">  431</span>            <span class="keywordflow">return</span> 1;</div>
 <div class="line"><span class="lineno">  432</span>        }</div>
-<div class="line"><span class="lineno">  433</span>        <a class="code hl_typedef" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a>* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">getLocation</a>(layer);</div>
+<div class="line"><span class="lineno">  433</span>        Location* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e">getLocation</a>(layer);</div>
 <div class="line"><span class="lineno">  434</span>        <span class="keywordflow">if</span> (args[1] == <span class="stringliteral">&quot;on&quot;</span>) {</div>
 <div class="line"><span class="lineno">  435</span>            current-&gt;autoindex = <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  436</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (args[1] == <span class="stringliteral">&quot;off&quot;</span>) {</div>
@@ -357,15 +357,14 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">  443</span>        }</div>
 <div class="line"><span class="lineno">  444</span>        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  445</span>    }</div>
-<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_ae0b230ea3d9469e19885dea44ff8fef7"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">config::ConfigFileParser::getLocation</a></div><div class="ttdeci">config::t_location * getLocation(int layer)</div><div class="ttdoc">finds the current location in the configuration file.</div><div class="ttdef"><b>Definition</b> <a href="Parser__helpers_8cpp_source.html#l00051">Parser_helpers.cpp:51</a></div></div>
-<div class="ttc" id="anamespaceconfig_html_a92373d4ff5d1405bbbfa5e975ba089eb"><div class="ttname"><a href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">config::t_location</a></div><div class="ttdeci">struct s_location t_location</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00017">Parser.hpp:17</a></div></div>
+<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_a09c229efdd868fb3bf7e2d3dd2833a4e"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e">config::ConfigFileParser::getLocation</a></div><div class="ttdeci">config::Location * getLocation(int layer)</div><div class="ttdoc">finds the current location in the configuration file.</div><div class="ttdef"><b>Definition</b> <a href="Parser__helpers_8cpp_source.html#l00051">Parser_helpers.cpp:51</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classconfig_1_1ConfigFileParser_aae76c210ff9aae74d87a6b57feeb474e_cgraph.png" border="0" usemap="#aclassconfig_1_1ConfigFileParser_aae76c210ff9aae74d87a6b57feeb474e_cgraph" alt=""/></div>
 <map name="aclassconfig_1_1ConfigFileParser_aae76c210ff9aae74d87a6b57feeb474e_cgraph" id="aclassconfig_1_1ConfigFileParser_aae76c210ff9aae74d87a6b57feeb474e_cgraph">
 <area shape="rect" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="5,5,179,45"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="227,5,400,45"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="227,5,400,45"/>
 <area shape="poly" title=" " alt="" coords="179,23,213,23,213,28,179,28"/>
 </map>
 </div>
@@ -375,7 +374,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classconfig_1_1ConfigFileParser_aae76c210ff9aae74d87a6b57feeb474e_icgraph.png" border="0" usemap="#aclassconfig_1_1ConfigFileParser_aae76c210ff9aae74d87a6b57feeb474e_icgraph" alt=""/></div>
 <map name="aclassconfig_1_1ConfigFileParser_aae76c210ff9aae74d87a6b57feeb474e_icgraph" id="aclassconfig_1_1ConfigFileParser_aae76c210ff9aae74d87a6b57feeb474e_icgraph">
 <area shape="rect" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="993,93,1167,133"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ab3757703901a7e243b8d500aa9853bc7" title="prints the locations of the server." alt="" coords="772,29,945,69"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a41c53f2726786fec056e8ec3872eb35e" title="prints the locations of the server." alt="" coords="772,29,945,69"/>
 <area shape="poly" title=" " alt="" coords="996,92,928,72,929,67,998,87"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a2fc1f08065c566459a1543f1824e4eaa" title="Saves the configuration data." alt="" coords="772,93,945,133"/>
 <area shape="poly" title=" " alt="" coords="979,116,946,116,946,111,979,111"/>
@@ -469,9 +468,9 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  308</span>        <a class="code hl_variable" href="classconfig_1_1ConfigFileParser.html#a0c5e3a46b81944a6aaf484b597e3416e">m_configData</a>.<a class="code hl_variable" href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">servers</a>.back().max_body_size = i;</div>
 <div class="line"><span class="lineno">  309</span>        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  310</span>    }</div>
-<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_a0c5e3a46b81944a6aaf484b597e3416e"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#a0c5e3a46b81944a6aaf484b597e3416e">config::ConfigFileParser::m_configData</a></div><div class="ttdeci">t_config_data m_configData</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00132">Parser.hpp:132</a></div></div>
+<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_a0c5e3a46b81944a6aaf484b597e3416e"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#a0c5e3a46b81944a6aaf484b597e3416e">config::ConfigFileParser::m_configData</a></div><div class="ttdeci">t_config_data m_configData</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00130">Parser.hpp:130</a></div></div>
 <div class="ttc" id="anamespaceconfig_html_ab6a9b31328ee165381cb8fe43c99f25a"><div class="ttname"><a href="namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a">config::ft_stoi</a></div><div class="ttdeci">int ft_stoi(std::string str)</div><div class="ttdoc">Converts a string to a positive integer.</div><div class="ttdef"><b>Definition</b> <a href="Parser__keywords_8cpp_source.html#l00012">Parser_keywords.cpp:12</a></div></div>
-<div class="ttc" id="astructconfig_1_1s__config__data_html_aab30d42ac2d8d05f046afe671ed9a96c"><div class="ttname"><a href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">config::s_config_data::servers</a></div><div class="ttdeci">std::vector&lt; t_server &gt; servers</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00097">Parser.hpp:97</a></div></div>
+<div class="ttc" id="astructconfig_1_1s__config__data_html_aab30d42ac2d8d05f046afe671ed9a96c"><div class="ttname"><a href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">config::s_config_data::servers</a></div><div class="ttdeci">std::vector&lt; t_server &gt; servers</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00095">Parser.hpp:95</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -682,7 +681,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,5,179,45"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a7cc3cfe78fd8d52b3bf1f7272cf19de2" title="sets the index files for the location. (index.html by default)" alt="" coords="227,5,400,45"/>
 <area shape="poly" title=" " alt="" coords="179,23,213,23,213,28,179,28"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="448,5,621,45"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="448,5,621,45"/>
 <area shape="poly" title=" " alt="" coords="400,23,434,23,434,28,400,28"/>
 </map>
 </div>
@@ -711,14 +710,14 @@ Here is the call graph for this function:</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ae0b230ea3d9469e19885dea44ff8fef7" name="ae0b230ea3d9469e19885dea44ff8fef7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0b230ea3d9469e19885dea44ff8fef7">&#9670;&#160;</a></span>getLocation()</h2>
+<a id="a09c229efdd868fb3bf7e2d3dd2833a4e" name="a09c229efdd868fb3bf7e2d3dd2833a4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09c229efdd868fb3bf7e2d3dd2833a4e">&#9670;&#160;</a></span>getLocation()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a> * config::ConfigFileParser::getLocation </td>
+          <td class="memname"><a class="el" href="structconfig_1_1Location.html">Location</a> * config::ConfigFileParser::getLocation </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>layer</em></td><td>)</td>
@@ -737,20 +736,20 @@ Here is the call graph for this function:</div>
 <dl class="section return"><dt>Returns</dt><dd>struct location* the current location. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="Parser__helpers_8cpp_source.html#l00051">51</a> of file <a class="el" href="Parser__helpers_8cpp_source.html">Parser_helpers.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   51</span>                                                       {</div>
-<div class="line"><span class="lineno">   52</span>        <a class="code hl_struct" href="structconfig_1_1s__location.html">config::t_location</a>* temp = &amp;<a class="code hl_variable" href="classconfig_1_1ConfigFileParser.html#a0c5e3a46b81944a6aaf484b597e3416e">m_configData</a>.<a class="code hl_variable" href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">servers</a>.back().locations.back();</div>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>                                                     {</div>
+<div class="line"><span class="lineno">   52</span>        <a class="code hl_struct" href="structconfig_1_1Location.html">config::Location</a>* temp = &amp;<a class="code hl_variable" href="classconfig_1_1ConfigFileParser.html#a0c5e3a46b81944a6aaf484b597e3416e">m_configData</a>.<a class="code hl_variable" href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">servers</a>.back().locations.back();</div>
 <div class="line"><span class="lineno">   53</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 2; i &lt; layer; i++) {</div>
-<div class="line"><span class="lineno">   54</span>            temp = &amp;temp-&gt;<a class="code hl_variable" href="structconfig_1_1s__location.html#aa287bd41942fd031185762114a6f5db4">locations</a>.back();</div>
+<div class="line"><span class="lineno">   54</span>            temp = &amp;temp-&gt;<a class="code hl_variable" href="structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f">locations</a>.back();</div>
 <div class="line"><span class="lineno">   55</span>        }</div>
 <div class="line"><span class="lineno">   56</span>        <span class="keywordflow">return</span> temp;</div>
 <div class="line"><span class="lineno">   57</span>    }</div>
-<div class="ttc" id="astructconfig_1_1s__location_html"><div class="ttname"><a href="structconfig_1_1s__location.html">config::s_location</a></div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00019">Parser.hpp:19</a></div></div>
-<div class="ttc" id="astructconfig_1_1s__location_html_aa287bd41942fd031185762114a6f5db4"><div class="ttname"><a href="structconfig_1_1s__location.html#aa287bd41942fd031185762114a6f5db4">config::s_location::locations</a></div><div class="ttdeci">std::vector&lt; t_location &gt; locations</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00030">Parser.hpp:30</a></div></div>
+<div class="ttc" id="astructconfig_1_1Location_html"><div class="ttname"><a href="structconfig_1_1Location.html">config::Location</a></div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00017">Parser.hpp:17</a></div></div>
+<div class="ttc" id="astructconfig_1_1Location_html_a9ce52f265254146e5cae2ee150d66f1f"><div class="ttname"><a href="structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f">config::Location::locations</a></div><div class="ttdeci">std::vector&lt; Location &gt; locations</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00028">Parser.hpp:28</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classconfig_1_1ConfigFileParser_ae0b230ea3d9469e19885dea44ff8fef7_icgraph.png" border="0" usemap="#aclassconfig_1_1ConfigFileParser_ae0b230ea3d9469e19885dea44ff8fef7_icgraph" alt=""/></div>
-<map name="aclassconfig_1_1ConfigFileParser_ae0b230ea3d9469e19885dea44ff8fef7_icgraph" id="aclassconfig_1_1ConfigFileParser_ae0b230ea3d9469e19885dea44ff8fef7_icgraph">
+<div class="center"><img src="classconfig_1_1ConfigFileParser_a09c229efdd868fb3bf7e2d3dd2833a4e_icgraph.png" border="0" usemap="#aclassconfig_1_1ConfigFileParser_a09c229efdd868fb3bf7e2d3dd2833a4e_icgraph" alt=""/></div>
+<map name="aclassconfig_1_1ConfigFileParser_a09c229efdd868fb3bf7e2d3dd2833a4e_icgraph" id="aclassconfig_1_1ConfigFileParser_a09c229efdd868fb3bf7e2d3dd2833a4e_icgraph">
 <area shape="rect" title="finds the current location in the configuration file." alt="" coords="1215,157,1388,197"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#aae76c210ff9aae74d87a6b57feeb474e" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="993,93,1167,133"/>
 <area shape="poly" title=" " alt="" coords="1218,156,1149,136,1150,131,1219,151"/>
@@ -762,7 +761,7 @@ Here is the caller graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="1201,180,1167,180,1167,175,1201,175"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a488be040c87c81b95572fdae4d10b9e9" title="sets the root directory for the location." alt="" coords="993,29,1167,69"/>
 <area shape="poly" title=" " alt="" coords="1264,151,1218,117,1165,84,1140,72,1142,67,1168,79,1221,112,1267,147"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ab3757703901a7e243b8d500aa9853bc7" title="prints the locations of the server." alt="" coords="772,29,945,69"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a41c53f2726786fec056e8ec3872eb35e" title="prints the locations of the server." alt="" coords="772,29,945,69"/>
 <area shape="poly" title=" " alt="" coords="996,92,928,72,929,67,998,87"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a2fc1f08065c566459a1543f1824e4eaa" title="Saves the configuration data." alt="" coords="772,157,945,197"/>
 <area shape="poly" title=" " alt="" coords="998,140,929,160,928,155,996,135"/>
@@ -835,7 +834,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,5,179,45"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a7cc3cfe78fd8d52b3bf1f7272cf19de2" title="sets the index files for the location. (index.html by default)" alt="" coords="227,5,400,45"/>
 <area shape="poly" title=" " alt="" coords="179,23,213,23,213,28,179,28"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="448,5,621,45"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="448,5,621,45"/>
 <area shape="poly" title=" " alt="" coords="400,23,434,23,434,28,400,28"/>
 </map>
 </div>
@@ -870,7 +869,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,5,179,45"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a7cc3cfe78fd8d52b3bf1f7272cf19de2" title="sets the index files for the location. (index.html by default)" alt="" coords="227,5,400,45"/>
 <area shape="poly" title=" " alt="" coords="179,23,213,23,213,28,179,28"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="448,5,621,45"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="448,5,621,45"/>
 <area shape="poly" title=" " alt="" coords="400,23,434,23,434,28,400,28"/>
 </map>
 </div>
@@ -905,7 +904,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,5,179,45"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a7cc3cfe78fd8d52b3bf1f7272cf19de2" title="sets the index files for the location. (index.html by default)" alt="" coords="227,5,400,45"/>
 <area shape="poly" title=" " alt="" coords="179,23,213,23,213,28,179,28"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="448,5,621,45"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="448,5,621,45"/>
 <area shape="poly" title=" " alt="" coords="400,23,434,23,434,28,400,28"/>
 </map>
 </div>
@@ -940,7 +939,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,5,179,45"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a7cc3cfe78fd8d52b3bf1f7272cf19de2" title="sets the index files for the location. (index.html by default)" alt="" coords="227,5,400,45"/>
 <area shape="poly" title=" " alt="" coords="179,23,213,23,213,28,179,28"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="448,5,621,45"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="448,5,621,45"/>
 <area shape="poly" title=" " alt="" coords="400,23,434,23,434,28,400,28"/>
 </map>
 </div>
@@ -975,7 +974,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,5,179,45"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a7cc3cfe78fd8d52b3bf1f7272cf19de2" title="sets the index files for the location. (index.html by default)" alt="" coords="227,5,400,45"/>
 <area shape="poly" title=" " alt="" coords="179,23,213,23,213,28,179,28"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="448,5,621,45"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="448,5,621,45"/>
 <area shape="poly" title=" " alt="" coords="400,23,434,23,434,28,400,28"/>
 </map>
 </div>
@@ -1120,7 +1119,7 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="322,397,337,444,363,507,400,573,423,604,450,631,455,636,452,640,446,635,419,608,396,576,358,509,332,446,317,398"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#ad660e1b92477502518971b41373ee60a" title="Sets the server name(s) of the server." alt="" coords="448,709,621,749"/>
 <area shape="poly" title=" " alt="" coords="320,397,331,455,355,535,372,578,393,620,419,660,450,695,454,699,451,703,446,699,415,663,389,623,367,580,350,537,326,456,315,398"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="670,133,843,173"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="670,133,843,173"/>
 <area shape="poly" title=" " alt="" coords="597,43,623,55,676,88,723,123,719,127,673,93,620,60,595,48"/>
 <area shape="rect" href="namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a" title="Converts a string to a positive integer." alt="" coords="702,397,811,422"/>
 <area shape="poly" title=" " alt="" coords="606,363,699,390,698,395,604,368"/>
@@ -1252,18 +1251,18 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  225</span>        <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  226</span>            <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6a27b40394c132dae0c00c73e1e5f17cd1">UNKNOWN_ID</a>;</div>
 <div class="line"><span class="lineno">  227</span>    }</div>
-<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6a27b40394c132dae0c00c73e1e5f17cd1"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6a27b40394c132dae0c00c73e1e5f17cd1">config::UNKNOWN_ID</a></div><div class="ttdeci">@ UNKNOWN_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00082">Parser.hpp:81</a></div></div>
-<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6a2fadfb9c9c61543672deac7b0b82259c"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6a2fadfb9c9c61543672deac7b0b82259c">config::ROOT_ID</a></div><div class="ttdeci">@ ROOT_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00078">Parser.hpp:78</a></div></div>
-<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6a2ffbcc2d585e034390f4abf8ca0061b4"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6a2ffbcc2d585e034390f4abf8ca0061b4">config::SERVER_ID</a></div><div class="ttdeci">@ SERVER_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00070">Parser.hpp:70</a></div></div>
-<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6a6814824c89eb8696cce0db016b714637"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6a6814824c89eb8696cce0db016b714637">config::LISTEN_ID</a></div><div class="ttdeci">@ LISTEN_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00071">Parser.hpp:71</a></div></div>
-<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6a706db5443c1e8366f9461e74bcb3739f"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6a706db5443c1e8366f9461e74bcb3739f">config::ERROR_PAGE_ID</a></div><div class="ttdeci">@ ERROR_PAGE_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00073">Parser.hpp:73</a></div></div>
-<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6a7bd87f21bbdf0eb7766244eece0570bc"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6a7bd87f21bbdf0eb7766244eece0570bc">config::LOCATION_ID</a></div><div class="ttdeci">@ LOCATION_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00075">Parser.hpp:75</a></div></div>
-<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6aacb2052f06d611e2d93259c8606144aa"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6aacb2052f06d611e2d93259c8606144aa">config::AUTOINDEX_ID</a></div><div class="ttdeci">@ AUTOINDEX_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00079">Parser.hpp:79</a></div></div>
-<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6aaf1a5690619552575038b8b9bbe48736"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6aaf1a5690619552575038b8b9bbe48736">config::INDEX_ID</a></div><div class="ttdeci">@ INDEX_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00080">Parser.hpp:80</a></div></div>
-<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6ac8e18dc5577165924313753b4b6e5683"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6ac8e18dc5577165924313753b4b6e5683">config::SERVER_NAME_ID</a></div><div class="ttdeci">@ SERVER_NAME_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00072">Parser.hpp:72</a></div></div>
-<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6acf94c7a267ce7418faaee1f044877649"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6acf94c7a267ce7418faaee1f044877649">config::LIMIT_EXCEPT_ID</a></div><div class="ttdeci">@ LIMIT_EXCEPT_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00076">Parser.hpp:76</a></div></div>
-<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6aec81e06bdc3cceb62e21cbfd5e04668d"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6aec81e06bdc3cceb62e21cbfd5e04668d">config::CLIENT_MAX_BODY_SIZE_ID</a></div><div class="ttdeci">@ CLIENT_MAX_BODY_SIZE_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00074">Parser.hpp:74</a></div></div>
-<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6aed56f7e4816af60bb140d3ea53ad6edb"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6aed56f7e4816af60bb140d3ea53ad6edb">config::RETURN_ID</a></div><div class="ttdeci">@ RETURN_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00077">Parser.hpp:77</a></div></div>
+<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6a27b40394c132dae0c00c73e1e5f17cd1"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6a27b40394c132dae0c00c73e1e5f17cd1">config::UNKNOWN_ID</a></div><div class="ttdeci">@ UNKNOWN_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00080">Parser.hpp:79</a></div></div>
+<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6a2fadfb9c9c61543672deac7b0b82259c"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6a2fadfb9c9c61543672deac7b0b82259c">config::ROOT_ID</a></div><div class="ttdeci">@ ROOT_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00076">Parser.hpp:76</a></div></div>
+<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6a2ffbcc2d585e034390f4abf8ca0061b4"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6a2ffbcc2d585e034390f4abf8ca0061b4">config::SERVER_ID</a></div><div class="ttdeci">@ SERVER_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00068">Parser.hpp:68</a></div></div>
+<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6a6814824c89eb8696cce0db016b714637"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6a6814824c89eb8696cce0db016b714637">config::LISTEN_ID</a></div><div class="ttdeci">@ LISTEN_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00069">Parser.hpp:69</a></div></div>
+<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6a706db5443c1e8366f9461e74bcb3739f"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6a706db5443c1e8366f9461e74bcb3739f">config::ERROR_PAGE_ID</a></div><div class="ttdeci">@ ERROR_PAGE_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00071">Parser.hpp:71</a></div></div>
+<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6a7bd87f21bbdf0eb7766244eece0570bc"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6a7bd87f21bbdf0eb7766244eece0570bc">config::LOCATION_ID</a></div><div class="ttdeci">@ LOCATION_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00073">Parser.hpp:73</a></div></div>
+<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6aacb2052f06d611e2d93259c8606144aa"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6aacb2052f06d611e2d93259c8606144aa">config::AUTOINDEX_ID</a></div><div class="ttdeci">@ AUTOINDEX_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00077">Parser.hpp:77</a></div></div>
+<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6aaf1a5690619552575038b8b9bbe48736"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6aaf1a5690619552575038b8b9bbe48736">config::INDEX_ID</a></div><div class="ttdeci">@ INDEX_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00078">Parser.hpp:78</a></div></div>
+<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6ac8e18dc5577165924313753b4b6e5683"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6ac8e18dc5577165924313753b4b6e5683">config::SERVER_NAME_ID</a></div><div class="ttdeci">@ SERVER_NAME_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00070">Parser.hpp:70</a></div></div>
+<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6acf94c7a267ce7418faaee1f044877649"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6acf94c7a267ce7418faaee1f044877649">config::LIMIT_EXCEPT_ID</a></div><div class="ttdeci">@ LIMIT_EXCEPT_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00074">Parser.hpp:74</a></div></div>
+<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6aec81e06bdc3cceb62e21cbfd5e04668d"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6aec81e06bdc3cceb62e21cbfd5e04668d">config::CLIENT_MAX_BODY_SIZE_ID</a></div><div class="ttdeci">@ CLIENT_MAX_BODY_SIZE_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00072">Parser.hpp:72</a></div></div>
+<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6aed56f7e4816af60bb140d3ea53ad6edb"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6aed56f7e4816af60bb140d3ea53ad6edb">config::RETURN_ID</a></div><div class="ttdeci">@ RETURN_ID</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00075">Parser.hpp:75</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1347,7 +1346,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  461</span>                      &lt;&lt; <span class="stringliteral">&quot;Invalid number of arguments for index&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">  462</span>            <span class="keywordflow">return</span> 1;</div>
 <div class="line"><span class="lineno">  463</span>        }</div>
-<div class="line"><span class="lineno">  464</span>        <a class="code hl_typedef" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a>* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">getLocation</a>(layer);</div>
+<div class="line"><span class="lineno">  464</span>        Location* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e">getLocation</a>(layer);</div>
 <div class="line"><span class="lineno">  465</span>        current-&gt;index.clear();</div>
 <div class="line"><span class="lineno">  466</span>        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> i = 1; i &lt; args.size(); i++) {</div>
 <div class="line"><span class="lineno">  467</span>            <span class="keywordflow">if</span> (args[i].length() &gt; 1000 || args[i].length() == 0) {</div>
@@ -1366,7 +1365,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classconfig_1_1ConfigFileParser_a7cc3cfe78fd8d52b3bf1f7272cf19de2_cgraph.png" border="0" usemap="#aclassconfig_1_1ConfigFileParser_a7cc3cfe78fd8d52b3bf1f7272cf19de2_cgraph" alt=""/></div>
 <map name="aclassconfig_1_1ConfigFileParser_a7cc3cfe78fd8d52b3bf1f7272cf19de2_cgraph" id="aclassconfig_1_1ConfigFileParser_a7cc3cfe78fd8d52b3bf1f7272cf19de2_cgraph">
 <area shape="rect" title="sets the index files for the location. (index.html by default)" alt="" coords="5,5,179,45"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="227,5,400,45"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="227,5,400,45"/>
 <area shape="poly" title=" " alt="" coords="179,23,213,23,213,28,179,28"/>
 </map>
 </div>
@@ -1388,7 +1387,7 @@ Here is the caller graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="979,284,946,284,946,279,979,279"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a7732b2dc5e105a20018e6d03657a78f8" title=" " alt="" coords="772,325,945,365"/>
 <area shape="poly" title=" " alt="" coords="998,308,929,328,928,323,996,303"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ab3757703901a7e243b8d500aa9853bc7" title="prints the locations of the server." alt="" coords="772,413,945,453"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a41c53f2726786fec056e8ec3872eb35e" title="prints the locations of the server." alt="" coords="772,413,945,453"/>
 <area shape="poly" title=" " alt="" coords="1042,312,947,380,893,415,890,411,944,375,1039,307"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a2fc1f08065c566459a1543f1824e4eaa" title="Saves the configuration data." alt="" coords="772,477,945,517"/>
 <area shape="poly" title=" " alt="" coords="1065,315,1019,391,986,432,947,467,927,479,925,475,944,463,982,428,1014,388,1061,312"/>
@@ -1497,7 +1496,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  353</span>                      &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">  354</span>            <span class="keywordflow">return</span> 1;</div>
 <div class="line"><span class="lineno">  355</span>        }</div>
-<div class="line"><span class="lineno">  356</span>        <a class="code hl_typedef" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a>* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">getLocation</a>(layer);</div>
+<div class="line"><span class="lineno">  356</span>        Location* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e">getLocation</a>(layer);</div>
 <div class="line"><span class="lineno">  357</span>        current-&gt;methods = allowed_methods;</div>
 <div class="line"><span class="lineno">  358</span>        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  359</span>    }</div>
@@ -1507,7 +1506,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classconfig_1_1ConfigFileParser_a5c03d6d709d348eb69db590a9bed2529_cgraph.png" border="0" usemap="#aclassconfig_1_1ConfigFileParser_a5c03d6d709d348eb69db590a9bed2529_cgraph" alt=""/></div>
 <map name="aclassconfig_1_1ConfigFileParser_a5c03d6d709d348eb69db590a9bed2529_cgraph" id="aclassconfig_1_1ConfigFileParser_a5c03d6d709d348eb69db590a9bed2529_cgraph">
 <area shape="rect" title="sets the methods allowed for the location." alt="" coords="5,5,179,45"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="227,5,400,45"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="227,5,400,45"/>
 <area shape="poly" title=" " alt="" coords="179,23,213,23,213,28,179,28"/>
 </map>
 </div>
@@ -1778,7 +1777,7 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="765,397,780,444,805,507,843,573,866,604,892,631,898,636,894,640,889,635,862,608,838,576,801,509,775,446,760,398"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#ad660e1b92477502518971b41373ee60a" title="Sets the server name(s) of the server." alt="" coords="891,709,1064,749"/>
 <area shape="poly" title=" " alt="" coords="763,397,774,455,797,535,815,578,836,620,862,660,893,695,897,699,894,703,889,699,857,663,831,623,810,580,792,537,769,456,758,398"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="1113,133,1286,173"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="1113,133,1286,173"/>
 <area shape="poly" title=" " alt="" coords="1039,43,1065,55,1119,88,1165,123,1162,127,1116,93,1063,60,1037,48"/>
 <area shape="rect" href="namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a" title="Converts a string to a positive integer." alt="" coords="1145,397,1254,422"/>
 <area shape="poly" title=" " alt="" coords="1048,363,1142,390,1140,395,1047,368"/>
@@ -1874,9 +1873,9 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   90</span>                      &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">   91</span>            <span class="keywordflow">return</span> 1;</div>
 <div class="line"><span class="lineno">   92</span>        }</div>
-<div class="line"><span class="lineno">   93</span>        <a class="code hl_typedef" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a> new_location;</div>
+<div class="line"><span class="lineno">   93</span>        Location new_location;</div>
 <div class="line"><span class="lineno">   94</span>        <span class="comment">// set default values</span></div>
-<div class="line"><span class="lineno">   95</span>        new_location.<a class="code hl_variable" href="structconfig_1_1s__location.html#a98b8df62a39e27051e069ed1dfa9ca68">autoindex</a> = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   95</span>        new_location.autoindex = <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   96</span>        new_location.root = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><span class="lineno">   97</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespaceshared_1_1string.html#af85298827aba4985d2318526e69ee0d6">shared::string::splitPath</a>(args[1], new_location.path) == 1) {</div>
 <div class="line"><span class="lineno">   98</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Configuration file (line &quot;</span> &lt;&lt; lineCount &lt;&lt; <span class="stringliteral">&quot;): &quot;</span></div>
@@ -1890,7 +1889,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  106</span>            <a class="code hl_variable" href="classconfig_1_1ConfigFileParser.html#a0c5e3a46b81944a6aaf484b597e3416e">m_configData</a>.<a class="code hl_variable" href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">servers</a>.back().locations.push_back(new_location);</div>
 <div class="line"><span class="lineno">  107</span>            <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  108</span>        }</div>
-<div class="line"><span class="lineno">  109</span>        <a class="code hl_typedef" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a>* temp = &amp;<a class="code hl_variable" href="classconfig_1_1ConfigFileParser.html#a0c5e3a46b81944a6aaf484b597e3416e">m_configData</a>.<a class="code hl_variable" href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">servers</a>.back().locations.back();</div>
+<div class="line"><span class="lineno">  109</span>        Location* temp = &amp;<a class="code hl_variable" href="classconfig_1_1ConfigFileParser.html#a0c5e3a46b81944a6aaf484b597e3416e">m_configData</a>.<a class="code hl_variable" href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">servers</a>.back().locations.back();</div>
 <div class="line"><span class="lineno">  110</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 2; i &lt; layer; i++) {</div>
 <div class="line"><span class="lineno">  111</span>            temp = &amp;temp-&gt;locations.back();</div>
 <div class="line"><span class="lineno">  112</span>        }</div>
@@ -1916,7 +1915,6 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  132</span>        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  133</span>    }</div>
 <div class="ttc" id="anamespaceshared_1_1string_html_af85298827aba4985d2318526e69ee0d6"><div class="ttname"><a href="namespaceshared_1_1string.html#af85298827aba4985d2318526e69ee0d6">shared::string::splitPath</a></div><div class="ttdeci">int splitPath(const std::string &amp;path, std::vector&lt; std::string &gt; &amp;result)</div><div class="ttdoc">Splits a path into its components.</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8cpp_source.html#l00132">stringUtils.cpp:132</a></div></div>
-<div class="ttc" id="astructconfig_1_1s__location_html_a98b8df62a39e27051e069ed1dfa9ca68"><div class="ttname"><a href="structconfig_1_1s__location.html#a98b8df62a39e27051e069ed1dfa9ca68">config::s_location::autoindex</a></div><div class="ttdeci">bool autoindex</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00026">Parser.hpp:26</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2172,7 +2170,7 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="544,397,558,444,584,507,621,573,645,604,671,631,676,636,673,640,668,635,641,608,617,576,579,509,553,446,539,398"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#ad660e1b92477502518971b41373ee60a" title="Sets the server name(s) of the server." alt="" coords="669,709,843,749"/>
 <area shape="poly" title=" " alt="" coords="541,397,553,455,576,535,593,578,614,620,640,660,671,695,676,699,672,703,667,699,636,663,610,623,588,580,571,537,548,456,536,398"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="891,133,1065,173"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="891,133,1065,173"/>
 <area shape="poly" title=" " alt="" coords="818,43,844,55,898,88,944,123,941,127,895,93,841,60,816,48"/>
 <area shape="rect" href="namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a" title="Converts a string to a positive integer." alt="" coords="923,397,1033,422"/>
 <area shape="poly" title=" " alt="" coords="827,363,921,390,919,395,825,368"/>
@@ -2264,17 +2262,17 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   94</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Locations: &quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><span class="lineno">   95</span>            }</div>
 <div class="line"><span class="lineno">   96</span>            std::vector&lt;int&gt; layer_num;</div>
-<div class="line"><span class="lineno">   97</span>            <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ab3757703901a7e243b8d500aa9853bc7">printLocations</a>(<a class="code hl_variable" href="classconfig_1_1ConfigFileParser.html#a0c5e3a46b81944a6aaf484b597e3416e">m_configData</a>.<a class="code hl_variable" href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">servers</a>[i].locations, 1, detailed, layer_num);</div>
+<div class="line"><span class="lineno">   97</span>            <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a41c53f2726786fec056e8ec3872eb35e">printLocations</a>(<a class="code hl_variable" href="classconfig_1_1ConfigFileParser.html#a0c5e3a46b81944a6aaf484b597e3416e">m_configData</a>.<a class="code hl_variable" href="structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c">servers</a>[i].locations, 1, detailed, layer_num);</div>
 <div class="line"><span class="lineno">   98</span>        }</div>
 <div class="line"><span class="lineno">   99</span>    }</div>
-<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_ab3757703901a7e243b8d500aa9853bc7"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#ab3757703901a7e243b8d500aa9853bc7">config::ConfigFileParser::printLocations</a></div><div class="ttdeci">void printLocations(const std::vector&lt; config::t_location &gt; &amp;locations, int layer, int detailed, std::vector&lt; int &gt; layer_num)</div><div class="ttdoc">prints the locations of the server.</div><div class="ttdef"><b>Definition</b> <a href="Parser__helpers_8cpp_source.html#l00109">Parser_helpers.cpp:109</a></div></div>
+<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_a41c53f2726786fec056e8ec3872eb35e"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#a41c53f2726786fec056e8ec3872eb35e">config::ConfigFileParser::printLocations</a></div><div class="ttdeci">void printLocations(const std::vector&lt; config::Location &gt; &amp;locations, int layer, int detailed, std::vector&lt; int &gt; layer_num)</div><div class="ttdoc">prints the locations of the server.</div><div class="ttdef"><b>Definition</b> <a href="Parser__helpers_8cpp_source.html#l00109">Parser_helpers.cpp:109</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classconfig_1_1ConfigFileParser_a79b633612d04a1d8f9044f66309449d6_cgraph.png" border="0" usemap="#aclassconfig_1_1ConfigFileParser_a79b633612d04a1d8f9044f66309449d6_cgraph" alt=""/></div>
 <map name="aclassconfig_1_1ConfigFileParser_a79b633612d04a1d8f9044f66309449d6_cgraph" id="aclassconfig_1_1ConfigFileParser_a79b633612d04a1d8f9044f66309449d6_cgraph">
 <area shape="rect" title="prints the configuration data." alt="" coords="5,69,179,109"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ab3757703901a7e243b8d500aa9853bc7" title="prints the locations of the server." alt="" coords="227,69,400,109"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a41c53f2726786fec056e8ec3872eb35e" title="prints the locations of the server." alt="" coords="227,69,400,109"/>
 <area shape="poly" title=" " alt="" coords="179,87,213,87,213,92,179,92"/>
 <area shape="poly" title=" " alt="" coords="272,70,269,60,276,50,291,45,313,43,339,46,353,53,351,58,338,51,313,48,292,50,279,55,275,61,277,68"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#aae76c210ff9aae74d87a6b57feeb474e" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="448,5,621,45"/>
@@ -2283,7 +2281,7 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="400,87,434,87,434,92,400,92"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a488be040c87c81b95572fdae4d10b9e9" title="sets the root directory for the location." alt="" coords="448,133,621,173"/>
 <area shape="poly" title=" " alt="" coords="384,107,453,127,451,132,383,112"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="669,69,843,109"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="669,69,843,109"/>
 <area shape="poly" title=" " alt="" coords="605,43,674,63,673,68,604,48"/>
 <area shape="poly" title=" " alt="" coords="622,87,655,87,655,92,622,92"/>
 <area shape="poly" title=" " alt="" coords="604,131,673,111,674,116,605,136"/>
@@ -2292,8 +2290,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="ab3757703901a7e243b8d500aa9853bc7" name="ab3757703901a7e243b8d500aa9853bc7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3757703901a7e243b8d500aa9853bc7">&#9670;&#160;</a></span>printLocations()</h2>
+<a id="a41c53f2726786fec056e8ec3872eb35e" name="a41c53f2726786fec056e8ec3872eb35e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41c53f2726786fec056e8ec3872eb35e">&#9670;&#160;</a></span>printLocations()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2301,7 +2299,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void config::ConfigFileParser::printLocations </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; <a class="el" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">config::t_location</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structconfig_1_1Location.html">config::Location</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>locations</em>, </td>
         </tr>
         <tr>
@@ -2342,7 +2340,7 @@ Here is the call graph for this function:</div>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="Parser__helpers_8cpp_source.html#l00109">109</a> of file <a class="el" href="Parser__helpers_8cpp_source.html">Parser_helpers.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  110</span>                                                                                                         {</div>
+<div class="fragment"><div class="line"><span class="lineno">  110</span>                                                                                                       {</div>
 <div class="line"><span class="lineno">  111</span>        std::string c = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><span class="lineno">  112</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; layer; i++) {</div>
 <div class="line"><span class="lineno">  113</span>            c += <span class="stringliteral">&quot;   &quot;</span>;</div>
@@ -2389,7 +2387,7 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">  154</span>            <span class="comment">// go one step deeper</span></div>
 <div class="line"><span class="lineno">  155</span>            <span class="keywordflow">if</span> (locations[j].locations.size() &gt; 0) {</div>
 <div class="line"><span class="lineno">  156</span>                <span class="comment">// layer_num.push_back(1);</span></div>
-<div class="line"><span class="lineno">  157</span>                <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ab3757703901a7e243b8d500aa9853bc7">printLocations</a>(locations[j].locations, layer + 1, detailed, layer_num);</div>
+<div class="line"><span class="lineno">  157</span>                <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a41c53f2726786fec056e8ec3872eb35e">printLocations</a>(locations[j].locations, layer + 1, detailed, layer_num);</div>
 <div class="line"><span class="lineno">  158</span>            }</div>
 <div class="line"><span class="lineno">  159</span>            layer_num.back()++;</div>
 <div class="line"><span class="lineno">  160</span>        }</div>
@@ -2399,8 +2397,8 @@ Here is the call graph for this function:</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classconfig_1_1ConfigFileParser_ab3757703901a7e243b8d500aa9853bc7_cgraph.png" border="0" usemap="#aclassconfig_1_1ConfigFileParser_ab3757703901a7e243b8d500aa9853bc7_cgraph" alt=""/></div>
-<map name="aclassconfig_1_1ConfigFileParser_ab3757703901a7e243b8d500aa9853bc7_cgraph" id="aclassconfig_1_1ConfigFileParser_ab3757703901a7e243b8d500aa9853bc7_cgraph">
+<div class="center"><img src="classconfig_1_1ConfigFileParser_a41c53f2726786fec056e8ec3872eb35e_cgraph.png" border="0" usemap="#aclassconfig_1_1ConfigFileParser_a41c53f2726786fec056e8ec3872eb35e_cgraph" alt=""/></div>
+<map name="aclassconfig_1_1ConfigFileParser_a41c53f2726786fec056e8ec3872eb35e_cgraph" id="aclassconfig_1_1ConfigFileParser_a41c53f2726786fec056e8ec3872eb35e_cgraph">
 <area shape="rect" title="prints the locations of the server." alt="" coords="5,69,179,109"/>
 <area shape="poly" title=" " alt="" coords="51,70,48,60,55,50,70,45,92,43,118,46,132,53,130,58,116,51,92,48,71,50,58,55,53,61,56,68"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#aae76c210ff9aae74d87a6b57feeb474e" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="227,5,400,45"/>
@@ -2409,7 +2407,7 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="179,87,213,87,213,92,179,92"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a488be040c87c81b95572fdae4d10b9e9" title="sets the root directory for the location." alt="" coords="227,133,400,173"/>
 <area shape="poly" title=" " alt="" coords="163,107,231,127,230,132,161,112"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="448,69,621,109"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="448,69,621,109"/>
 <area shape="poly" title=" " alt="" coords="384,43,453,63,451,68,383,48"/>
 <area shape="poly" title=" " alt="" coords="400,87,434,87,434,92,400,92"/>
 <area shape="poly" title=" " alt="" coords="383,131,451,111,453,116,384,136"/>
@@ -2418,8 +2416,8 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classconfig_1_1ConfigFileParser_ab3757703901a7e243b8d500aa9853bc7_icgraph.png" border="0" usemap="#aclassconfig_1_1ConfigFileParser_ab3757703901a7e243b8d500aa9853bc7_icgraph" alt=""/></div>
-<map name="aclassconfig_1_1ConfigFileParser_ab3757703901a7e243b8d500aa9853bc7_icgraph" id="aclassconfig_1_1ConfigFileParser_ab3757703901a7e243b8d500aa9853bc7_icgraph">
+<div class="center"><img src="classconfig_1_1ConfigFileParser_a41c53f2726786fec056e8ec3872eb35e_icgraph.png" border="0" usemap="#aclassconfig_1_1ConfigFileParser_a41c53f2726786fec056e8ec3872eb35e_icgraph" alt=""/></div>
+<map name="aclassconfig_1_1ConfigFileParser_a41c53f2726786fec056e8ec3872eb35e_icgraph" id="aclassconfig_1_1ConfigFileParser_a41c53f2726786fec056e8ec3872eb35e_icgraph">
 <area shape="rect" title="prints the locations of the server." alt="" coords="227,29,400,69"/>
 <area shape="poly" title=" " alt="" coords="351,18,338,11,313,8,292,10,279,15,275,21,277,28,272,30,269,20,276,10,291,5,313,3,339,6,353,13"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a79b633612d04a1d8f9044f66309449d6" title="prints the configuration data." alt="" coords="5,29,179,69"/>
@@ -2593,7 +2591,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  382</span>            <span class="keywordflow">return</span> 1;</div>
 <div class="line"><span class="lineno">  383</span>        }</div>
 <div class="line"><span class="lineno">  384</span>        <span class="comment">// TODO: check if valid url?</span></div>
-<div class="line"><span class="lineno">  385</span>        <a class="code hl_typedef" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a>* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">getLocation</a>(layer);</div>
+<div class="line"><span class="lineno">  385</span>        Location* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e">getLocation</a>(layer);</div>
 <div class="line"><span class="lineno">  386</span>        current-&gt;return_url = args[1];</div>
 <div class="line"><span class="lineno">  387</span>        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  388</span>    }</div>
@@ -2603,7 +2601,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classconfig_1_1ConfigFileParser_ae96980a09075f768b9b072297e2e25f6_cgraph.png" border="0" usemap="#aclassconfig_1_1ConfigFileParser_ae96980a09075f768b9b072297e2e25f6_cgraph" alt=""/></div>
 <map name="aclassconfig_1_1ConfigFileParser_ae96980a09075f768b9b072297e2e25f6_cgraph" id="aclassconfig_1_1ConfigFileParser_ae96980a09075f768b9b072297e2e25f6_cgraph">
 <area shape="rect" title="redirects the user to a different url with a specific return code." alt="" coords="5,5,179,45"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="227,5,400,45"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="227,5,400,45"/>
 <area shape="poly" title=" " alt="" coords="179,23,213,23,213,28,179,28"/>
 </map>
 </div>
@@ -2697,7 +2695,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  409</span>            <span class="keywordflow">return</span> 1;</div>
 <div class="line"><span class="lineno">  410</span>        }</div>
 <div class="line"><span class="lineno">  411</span>        <span class="comment">// TODO: check if path is valid</span></div>
-<div class="line"><span class="lineno">  412</span>        <a class="code hl_typedef" href="namespaceconfig.html#a92373d4ff5d1405bbbfa5e975ba089eb">t_location</a>* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7">getLocation</a>(layer);</div>
+<div class="line"><span class="lineno">  412</span>        Location* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e">getLocation</a>(layer);</div>
 <div class="line"><span class="lineno">  413</span>        current-&gt;root = args[1];</div>
 <div class="line"><span class="lineno">  414</span>        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  415</span>    }</div>
@@ -2707,7 +2705,7 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classconfig_1_1ConfigFileParser_a488be040c87c81b95572fdae4d10b9e9_cgraph.png" border="0" usemap="#aclassconfig_1_1ConfigFileParser_a488be040c87c81b95572fdae4d10b9e9_cgraph" alt=""/></div>
 <map name="aclassconfig_1_1ConfigFileParser_a488be040c87c81b95572fdae4d10b9e9_cgraph" id="aclassconfig_1_1ConfigFileParser_a488be040c87c81b95572fdae4d10b9e9_cgraph">
 <area shape="rect" title="sets the root directory for the location." alt="" coords="5,5,179,45"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="227,5,400,45"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="227,5,400,45"/>
 <area shape="poly" title=" " alt="" coords="179,23,213,23,213,28,179,28"/>
 </map>
 </div>
@@ -2717,7 +2715,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classconfig_1_1ConfigFileParser_a488be040c87c81b95572fdae4d10b9e9_icgraph.png" border="0" usemap="#aclassconfig_1_1ConfigFileParser_a488be040c87c81b95572fdae4d10b9e9_icgraph" alt=""/></div>
 <map name="aclassconfig_1_1ConfigFileParser_a488be040c87c81b95572fdae4d10b9e9_icgraph" id="aclassconfig_1_1ConfigFileParser_a488be040c87c81b95572fdae4d10b9e9_icgraph">
 <area shape="rect" title="sets the root directory for the location." alt="" coords="993,93,1167,133"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ab3757703901a7e243b8d500aa9853bc7" title="prints the locations of the server." alt="" coords="772,29,945,69"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a41c53f2726786fec056e8ec3872eb35e" title="prints the locations of the server." alt="" coords="772,29,945,69"/>
 <area shape="poly" title=" " alt="" coords="996,92,928,72,929,67,998,87"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a2fc1f08065c566459a1543f1824e4eaa" title="Saves the configuration data." alt="" coords="772,93,945,133"/>
 <area shape="poly" title=" " alt="" coords="979,116,946,116,946,111,979,111"/>
@@ -2903,7 +2901,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_ad660e1b92477502518971b41373ee60a"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#ad660e1b92477502518971b41373ee60a">config::ConfigFileParser::serverName</a></div><div class="ttdeci">int serverName(std::vector&lt; std::string &gt; &amp;args, int &amp;lineCount, int layer)</div><div class="ttdoc">Sets the server name(s) of the server.</div><div class="ttdef"><b>Definition</b> <a href="Parser__keywords_8cpp_source.html#l00218">Parser_keywords.cpp:218</a></div></div>
 <div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_ae96980a09075f768b9b072297e2e25f6"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#ae96980a09075f768b9b072297e2e25f6">config::ConfigFileParser::returnKeyword</a></div><div class="ttdeci">int returnKeyword(std::vector&lt; std::string &gt; &amp;args, const int &amp;lineCount, int layer)</div><div class="ttdoc">redirects the user to a different url with a specific return code.</div><div class="ttdef"><b>Definition</b> <a href="Parser__keywords_8cpp_source.html#l00369">Parser_keywords.cpp:369</a></div></div>
 <div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_af23de28a87beadfcc28c48021a066a14"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#af23de28a87beadfcc28c48021a066a14">config::ConfigFileParser::idCommand</a></div><div class="ttdeci">enum CmdId idCommand(const std::string &amp;command)</div><div class="ttdoc">Identifies the command in the configuration file. and returns the id of the command.</div><div class="ttdef"><b>Definition</b> <a href="Parser__helpers_8cpp_source.html#l00202">Parser_helpers.cpp:202</a></div></div>
-<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6">config::CmdId</a></div><div class="ttdeci">CmdId</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00069">Parser.hpp:69</a></div></div>
+<div class="ttc" id="anamespaceconfig_html_abe79485846420aa44800c6b37c22bcc6"><div class="ttname"><a href="namespaceconfig.html#abe79485846420aa44800c6b37c22bcc6">config::CmdId</a></div><div class="ttdeci">CmdId</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00067">Parser.hpp:67</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2934,7 +2932,7 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="101,397,116,444,141,507,179,573,202,604,228,631,234,636,230,640,225,635,198,608,174,576,137,509,111,446,96,398"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#ad660e1b92477502518971b41373ee60a" title="Sets the server name(s) of the server." alt="" coords="227,709,400,749"/>
 <area shape="poly" title=" " alt="" coords="99,397,110,455,133,535,151,578,172,620,198,660,229,695,233,699,230,703,225,699,193,663,167,623,146,580,128,537,105,456,94,398"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="449,133,622,173"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="449,133,622,173"/>
 <area shape="poly" title=" " alt="" coords="375,43,401,55,455,88,501,123,498,127,452,93,399,60,373,48"/>
 <area shape="rect" href="namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a" title="Converts a string to a positive integer." alt="" coords="481,397,590,422"/>
 <area shape="poly" title=" " alt="" coords="384,363,478,390,476,395,383,368"/>
@@ -3043,7 +3041,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   67</span>    }</div>
 <div class="ttc" id="anamespaceconfig_html_a8c27ddf595c5b22c961cb4aff2ae935d"><div class="ttname"><a href="namespaceconfig.html#a8c27ddf595c5b22c961cb4aff2ae935d">config::t_server</a></div><div class="ttdeci">struct config::s_server t_server</div></div>
 <div class="ttc" id="anamespacehttp_html_aca25a9fc3ae4f55904d8a48f1d18af63"><div class="ttname"><a href="namespacehttp.html#aca25a9fc3ae4f55904d8a48f1d18af63">http::LOCALHOST_ADDRESS</a></div><div class="ttdeci">const uint32_t LOCALHOST_ADDRESS</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00013">http.hpp:13</a></div></div>
-<div class="ttc" id="astructconfig_1_1s__server_html_a5aa5a677f8063439a30812833486cb89"><div class="ttname"><a href="structconfig_1_1s__server.html#a5aa5a677f8063439a30812833486cb89">config::s_server::port</a></div><div class="ttdeci">int port</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00086">Parser.hpp:86</a></div></div>
+<div class="ttc" id="astructconfig_1_1s__server_html_a5aa5a677f8063439a30812833486cb89"><div class="ttname"><a href="structconfig_1_1s__server.html#a5aa5a677f8063439a30812833486cb89">config::s_server::port</a></div><div class="ttdeci">int port</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00084">Parser.hpp:84</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -3258,7 +3256,7 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="103,365,119,407,146,461,182,518,204,544,228,567,235,572,231,576,225,571,200,548,178,521,141,464,114,409,98,367"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#ad660e1b92477502518971b41373ee60a" title="Sets the server name(s) of the server." alt="" coords="227,645,400,685"/>
 <area shape="poly" title=" " alt="" coords="100,365,113,418,137,489,175,565,200,600,229,631,233,635,230,639,225,635,196,604,171,568,132,491,108,419,95,366"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae0b230ea3d9469e19885dea44ff8fef7" title="finds the current location in the configuration file." alt="" coords="449,133,622,173"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="449,133,622,173"/>
 <area shape="poly" title=" " alt="" coords="375,43,401,55,455,88,501,123,498,127,452,93,399,60,373,48"/>
 <area shape="rect" href="namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a" title="Converts a string to a positive integer." alt="" coords="481,397,590,422"/>
 <area shape="poly" title=" " alt="" coords="384,363,478,390,476,395,383,368"/>
@@ -3300,7 +3298,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parser_8hpp_source.html#l00132">132</a> of file <a class="el" href="Parser_8hpp_source.html">Parser.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Parser_8hpp_source.html#l00130">130</a> of file <a class="el" href="Parser_8hpp_source.html">Parser.hpp</a>.</p>
 
 </div>
 </div>
@@ -3324,7 +3322,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parser_8hpp_source.html#l00133">133</a> of file <a class="el" href="Parser_8hpp_source.html">Parser.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Parser_8hpp_source.html#l00131">131</a> of file <a class="el" href="Parser_8hpp_source.html">Parser.hpp</a>.</p>
 
 </div>
 </div>

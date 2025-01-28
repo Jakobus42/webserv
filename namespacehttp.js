@@ -2,6 +2,7 @@ var namespacehttp =
 [
     [ "ARequestHandler", "classhttp_1_1ARequestHandler.html", "classhttp_1_1ARequestHandler" ],
     [ "DeleteHandler", "classhttp_1_1DeleteHandler.html", "classhttp_1_1DeleteHandler" ],
+    [ "ErrorHandler", "classhttp_1_1ErrorHandler.html", "classhttp_1_1ErrorHandler" ],
     [ "exception", "classhttp_1_1exception.html", "classhttp_1_1exception" ],
     [ "GetHandler", "classhttp_1_1GetHandler.html", "classhttp_1_1GetHandler" ],
     [ "PathData", "structhttp_1_1PathData.html", "structhttp_1_1PathData" ],
@@ -15,7 +16,8 @@ var namespacehttp =
     [ "Method", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cf", [
       [ "GET", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0", null ],
       [ "POST", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab", null ],
-      [ "DELETE", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30", null ]
+      [ "DELETE", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30", null ],
+      [ "_ERROR", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa6c01fa09f0e2f992d5a9de8d971eaacd", null ]
     ] ],
     [ "RequestType", "namespacehttp.html#a823474aaff0014c756dad2d3f8dc5414", [
       [ "FETCH", "namespacehttp.html#a823474aaff0014c756dad2d3f8dc5414af1dfb59b43eb6ce5e9a246dfca2e879a", null ],
@@ -64,5 +66,6 @@ var namespacehttp =
     [ "stringToMethod", "namespacehttp.html#aff35f6b0992332ad3e28219095ddb385", null ],
     [ "CRLF", "namespacehttp.html#a95083d38512d4f49548403fa8bbbc020", null ],
     [ "HTTP_VERSION", "namespacehttp.html#a347672eeddfedabd6c5a270b5b457577", null ],
-    [ "LOCALHOST_ADDRESS", "namespacehttp.html#aca25a9fc3ae4f55904d8a48f1d18af63", null ]
+    [ "LOCALHOST_ADDRESS", "namespacehttp.html#aca25a9fc3ae4f55904d8a48f1d18af63", null ],
+    [ "TEXT_HTML", "namespacehttp.html#a9a0c25913622339c10b4fa85074d2fb9", null ]
 ];

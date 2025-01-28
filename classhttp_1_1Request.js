@@ -17,6 +17,7 @@ var classhttp_1_1Request =
     [ "hasHeader", "classhttp_1_1Request.html#a064f8ec589e5191ecce6243fb46d21db", null ],
     [ "printRequestData", "classhttp_1_1Request.html#a874bcf73aa90419178f56e479ba74a73", null ],
     [ "setBody", "classhttp_1_1Request.html#a0f04f9b9d17be86b87d5fefd266edcd4", null ],
+    [ "setError", "classhttp_1_1Request.html#a298f417527eec65b6e750cfb4d3ba031", null ],
     [ "setHeader", "classhttp_1_1Request.html#a01c2058c223a0044e01ebd5c327f2f67", null ],
     [ "setMethod", "classhttp_1_1Request.html#af3a5b5e97c9eddfc666a84a3ce6af4a1", null ],
     [ "setStatusCode", "classhttp_1_1Request.html#a7c21ec82e0fbcc4685b24bfeeac48e42", null ],

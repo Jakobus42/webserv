@@ -1,5 +1,6 @@
 var stringUtils_8cpp =
 [
+    [ "fromNum", "stringUtils_8cpp.html#ae2138ded029ed6312cd2d6505efb8f75", null ],
     [ "isGreyspace", "stringUtils_8cpp.html#a2c0ea281fde1150615baa77e6dcce5d3", null ],
     [ "split", "stringUtils_8cpp.html#aa68d026861d0f4c81179e94efca2ed7c", null ],
     [ "splitPath", "stringUtils_8cpp.html#af85298827aba4985d2318526e69ee0d6", null ],
