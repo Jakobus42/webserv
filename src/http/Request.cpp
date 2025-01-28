@@ -74,6 +74,8 @@ namespace http {
 
 	std::string& Request::getUriRaw() { return m_uriRaw; }
 
+	const std::string& Request::getUriRaw() const { return m_uriRaw; }
+
 	const std::string& Request::getVersion() const { return m_version; }
 
 	const std::string& Request::getBody() const { return m_body; }
@@ -130,7 +132,7 @@ namespace http {
 
 	void Request::printRequestData() const {
 		std::cout << "Method: " << getMethodString(m_method) << std::endl;
-		std::cout << "URI: " << m_uri << std::endl;
+		std::cout << "URI: " << m_uriRaw << std::endl;
 		std::cout << "Version: " << m_version << std::endl;
 		std::cout << "Headers: " << std::endl;
 		std::map<std::string, std::vector<std::string> >::const_iterator it;

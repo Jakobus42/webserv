@@ -134,14 +134,14 @@ namespace http {
 	 * @param request
 	 */
 	bool RequestProccesor::checkAndReconstructTargetUri(const Request& request) {
-		if (request.getUri()[0] == '/') {
-			if (!parseOriginForm(request.getUri(), request, m_pathData)) {
+		if (request.getUriRaw()[0] == '/') {
+			if (!parseOriginForm(request.getUriRaw(), request, m_pathData)) {
 				m_statusCode = BAD_REQUEST;
 				return false;
 			}
 
 		} else {
-			if (!parseAbsoluteForm(request.getUri(), request, m_pathData)) {
+			if (!parseAbsoluteForm(request.getUriRaw(), request, m_pathData)) {
 				m_statusCode = BAD_REQUEST;
 				return false;
 			}
@@ -162,7 +162,7 @@ namespace http {
 			m_statusCode = NOT_IMPLEMENTED;
 			return false;
 		}
-		if (request.getUri().length() > 8192) {
+		if (request.getUriRaw().length() > 8192) {
 			m_statusCode = URI_TOO_LONG;
 			return false;
 		}

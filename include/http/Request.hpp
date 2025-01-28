@@ -34,6 +34,7 @@ namespace http {
 			Method getMethod() const;
 			Uri& getUri();
 			std::string& getUriRaw();
+			const std::string& getUriRaw() const;
 			const std::string& getVersion() const;
 			const std::string& getBody() const;
 			const std::map<std::string, std::vector<std::string> >& getHeaders() const;
