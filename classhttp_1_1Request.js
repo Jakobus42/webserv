@@ -13,6 +13,7 @@ var classhttp_1_1Request =
     [ "getUriRaw", "classhttp_1_1Request.html#a6cba672bca7a36a8164b42e30ac6919b", null ],
     [ "getVersion", "classhttp_1_1Request.html#a20114daf56febb1152c72237a8186bac", null ],
     [ "hasHeader", "classhttp_1_1Request.html#a064f8ec589e5191ecce6243fb46d21db", null ],
+    [ "printRequestData", "classhttp_1_1Request.html#a874bcf73aa90419178f56e479ba74a73", null ],
     [ "setBody", "classhttp_1_1Request.html#a0f04f9b9d17be86b87d5fefd266edcd4", null ],
     [ "setHeader", "classhttp_1_1Request.html#a01c2058c223a0044e01ebd5c327f2f67", null ],
     [ "setMethod", "classhttp_1_1Request.html#af3a5b5e97c9eddfc666a84a3ce6af4a1", null ],

@@ -9,8 +9,10 @@ var namespacehttp =
     [ "RequestParser", "classhttp_1_1RequestParser.html", "classhttp_1_1RequestParser" ],
     [ "RequestProccesor", "classhttp_1_1RequestProccesor.html", "classhttp_1_1RequestProccesor" ],
     [ "Response", "classhttp_1_1Response.html", "classhttp_1_1Response" ],
+    [ "s_PathData", "structhttp_1_1s__PathData.html", "structhttp_1_1s__PathData" ],
     [ "Uri", "structhttp_1_1Uri.html", "structhttp_1_1Uri" ],
     [ "VirtualServer", "classhttp_1_1VirtualServer.html", "classhttp_1_1VirtualServer" ],
+    [ "t_PathData", "namespacehttp.html#a5596bfd6bd3cc3870c674bf38cd4a165", null ],
     [ "Method", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cf", [
       [ "GET", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0", null ],
       [ "POST", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab", null ],
@@ -56,6 +58,7 @@ var namespacehttp =
       [ "GATEWAY_TIMEOUT", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a87353b86a06472ac0dea6f4580bf6683", null ],
       [ "HTTP_VERSION_NOT_SUPPORTED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff", null ]
     ] ],
+    [ "comparePaths", "namespacehttp.html#af53527dc191aa272273c082e52afefe8", null ],
     [ "getErrorPage", "namespacehttp.html#aea78c878546060f23a129eef66a446f7", null ],
     [ "getMethodString", "namespacehttp.html#a1d02d0271977cac915906163e6cbca8c", null ],
     [ "getStatusMessage", "namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc", null ],
