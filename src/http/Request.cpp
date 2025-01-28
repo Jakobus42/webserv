@@ -16,7 +16,7 @@ namespace http {
 		, m_uri()
 		, m_uriRaw("")
 		, m_version(HTTP_VERSION)
-		, m_code(OK) {
+		, m_statusCode(OK) {
 	}
 
 	/**
@@ -66,7 +66,7 @@ namespace http {
 
 	RequestType Request::getType() const { return m_type; }
 
-	StatusCode Request::getStatusCode() const { return m_code; }
+	StatusCode Request::getStatusCode() const { return m_statusCode; }
 
 	Method Request::getMethod() const { return m_method; }
 
@@ -107,7 +107,7 @@ namespace http {
 		m_headers[std::string(key, keyLen)].push_back(std::string(value, valueLen));
 	}
 
-	void Request::setStatusCode(StatusCode code) { m_code = code; }
+	void Request::setStatusCode(StatusCode statusCode) { m_statusCode = statusCode; }
 
 	void Request::validateUriRaw(const char* uri, std::size_t len) {
 		if (len == 0 || uri == NULL) {

@@ -40,7 +40,6 @@ namespace http {
 
 		private:
 			Response* m_res;
-			http::StatusCode m_statusCode;
 			std::map<Method, ARequestHandler*> m_handlers;
 			std::vector<config::t_location> m_locations;
 			t_PathData m_pathData;

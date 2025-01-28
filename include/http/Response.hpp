@@ -23,14 +23,14 @@ namespace http {
 
 			void serialize();
 
-			void setCode(StatusCode code);
+			void setStatusCode(StatusCode statusCode);
 			void setBody(const std::string& body);
 			void setHeader(const std::string& key, const std::string& value);
 
 			shared::Buffer<RESPONSE_BUFFER_SIZE>& getData();
 
 		private:
-			StatusCode m_code;
+			StatusCode m_statusCode;
 			std::map<std::string, std::vector<std::string> > m_headers;
 			std::string m_body;
 

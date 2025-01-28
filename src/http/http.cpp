@@ -75,7 +75,7 @@ namespace http {
 		throw http::exception(NOT_IMPLEMENTED, "method not implemented");
 	}
 
-	std::string getErrorPage(StatusCode code) {
+	std::string getErrorPage(StatusCode statusCode) {
 		static const char* errorPageTemplate =
 			"<!DOCTYPE html><html lang=\"en\"><head><title>%d %s</title><style>"
 			"body{background-color:#2b3042;justify-content: center;text-align: center;color:#d3dbeb;}"
@@ -84,37 +84,37 @@ namespace http {
 			"</head><body><h1>%d</h1><p>%s</p><a href=\"/home_directory\">Go Back to Home</a></body></html>";
 
 		char errorPage[1024];
-		const char* statusMessage = getStatusMessage(code).c_str();
-		snprintf(errorPage, sizeof(errorPage), errorPageTemplate, code, statusMessage, code, statusMessage);
+		const char* statusMessage = getStatusMessage(statusCode).c_str();
+		snprintf(errorPage, sizeof(errorPage), errorPageTemplate, statusCode, statusMessage, statusCode, statusMessage);
 
 		return std::string(errorPage);
 	}
 
-	exception::exception(StatusCode code)
-		: std::runtime_error(buildErrorMessage(code, getStatusMessage(code)))
-		, m_code(code)
-		, m_message(getStatusMessage(code)) {
+	exception::exception(StatusCode statusCode)
+		: std::runtime_error(buildErrorMessage(statusCode, getStatusMessage(statusCode)))
+		, m_statusCode(statusCode)
+		, m_message(getStatusMessage(statusCode)) {
 	}
 
-	exception::exception(StatusCode code, const std::string& message)
-		: std::runtime_error(buildErrorMessage(code, message))
-		, m_code(code)
+	exception::exception(StatusCode statusCode, const std::string& message)
+		: std::runtime_error(buildErrorMessage(statusCode, message))
+		, m_statusCode(statusCode)
 		, m_message(message) {
 	}
 
 	exception::~exception() throw() {}
 
 	StatusCode exception::getCode() const {
-		return m_code;
+		return m_statusCode;
 	}
 
 	const std::string& exception::getMessage() const {
 		return m_message;
 	}
 
-	std::string exception::buildErrorMessage(StatusCode code, const std::string& message) {
+	std::string exception::buildErrorMessage(StatusCode statusCode, const std::string& message) {
 		std::ostringstream oss;
-		oss << static_cast<int>(code) << " - " << message;
+		oss << static_cast<int>(statusCode) << " - " << message;
 		return oss.str(); // Only one construction of the string
 	}
 

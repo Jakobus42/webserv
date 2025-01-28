@@ -12,7 +12,6 @@ namespace http {
 	// todo figure out how to do this shit with locations
 	RequestProccesor::RequestProccesor(std::vector<config::t_location> locations)
 		: m_res(NULL)
-		, m_statusCode(UNKNWN)
 		, m_locations(locations) {
 		m_handlers.insert(std::make_pair(GET, new GetHandler(locations.at(0))));
 		m_handlers.insert(std::make_pair(POST, new PostHandler(locations.at(0))));
@@ -32,13 +31,13 @@ namespace http {
 	// todo check if req was valid - if not send error response
 	// todo check for allowed methods
 	Response* RequestProccesor::process(const Request& req) {
-		m_statusCode = OK;
+		m_res->setStatusCode(OK);
 		if (!checkRequestData(req)) {
 			// Create error page
 		}
 		config::t_location location;
 		if (findLocation(m_pathData.pure_path, m_locations, location) == 1) {
-			m_statusCode = NOT_FOUND;
+			m_res->setStatusCode(NOT_FOUND);
 		}
 		m_res = new Response();
 		m_handlers[req.getMethod()]->handle(req, *m_res);
@@ -136,13 +135,13 @@ namespace http {
 	bool RequestProccesor::checkAndReconstructTargetUri(const Request& request) {
 		if (request.getUriRaw()[0] == '/') {
 			if (!parseOriginForm(request.getUriRaw(), request, m_pathData)) {
-				m_statusCode = BAD_REQUEST;
+				m_res->setStatusCode(BAD_REQUEST);
 				return false;
 			}
 
 		} else {
 			if (!parseAbsoluteForm(request.getUriRaw(), request, m_pathData)) {
-				m_statusCode = BAD_REQUEST;
+				m_res->setStatusCode(BAD_REQUEST);
 				return false;
 			}
 		}
@@ -159,24 +158,24 @@ namespace http {
 	 */
 	bool RequestProccesor::checkRequestData(const Request& request) {
 		if (request.getMethod() != GET && request.getMethod() != POST && request.getMethod() != DELETE) {
-			m_statusCode = NOT_IMPLEMENTED;
+			m_res->setStatusCode(NOT_IMPLEMENTED);
 			return false;
 		}
 		if (request.getUriRaw().length() > 8192) {
-			m_statusCode = URI_TOO_LONG;
+			m_res->setStatusCode(URI_TOO_LONG);
 			return false;
 		}
 		if (!checkAndReconstructTargetUri(request)) {
 			return false;
 		}
 		if (request.getVersion() != "HTTP/1.1") {
-			m_statusCode = HTTP_VERSION_NOT_SUPPORTED;
+			m_res->setStatusCode(HTTP_VERSION_NOT_SUPPORTED);
 			return false;
 		}
 		// (RFC 9112 3.2)
 		/* 		if (request.getRequestData().headers.find("Host") == request.getRequestData().headers.end()
 					|| request.getRequestData().headers.find("Host")->second.size() != 1) {
-					m_statusCode = BAD_REQUEST;
+					m_res->setStatusCode(BAD_REQUEST);
 					m_type = ERROR;
 					return;
 				} */
@@ -237,7 +236,7 @@ namespace http {
 		std::vector<std::string> file;
 		std::vector<std::string> result;
 		std::string path = "";
-		//Split into file and path if file is present
+		// Split into file and path if file is present
 		if (uri[uri.size() - 1] != '/') {
 			int last = uri.find_last_of('/');
 			file.push_back(uri.substr(last + 1));
@@ -245,11 +244,11 @@ namespace http {
 		} else {
 			path = uri;
 		}
-		//Split path into vector
+		// Split path into vector
 		if (shared::string::splitPath(path, result) == 1) {
 			return 1;
 		}
-		//find the location
+		// find the location
 		config::t_location tempObj;
 		tempObj.locations = locations;
 		const config::t_location* temp = &tempObj;
@@ -274,7 +273,7 @@ namespace http {
 			deeper = true;
 		}
 		config::t_location temp2 = *temp;
-		//Set the file and root
+		// Set the file and root
 		if (!file.empty()) {
 			temp2.index = file;
 		}

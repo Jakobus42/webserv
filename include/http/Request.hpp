@@ -40,7 +40,7 @@ namespace http {
 			const std::map<std::string, std::vector<std::string> >& getHeaders() const;
 			const std::vector<std::string>& getHeader(const std::string& key) const;
 			StatusCode getStatusCode() const;
-			//t_requestData getRequestData() const;
+			// t_requestData getRequestData() const;
 
 			void setType(RequestType type);
 			void setMethod(const char* method, std::size_t len);
@@ -48,7 +48,7 @@ namespace http {
 			void setVersion(const char* version, std::size_t len);
 			void setBody(const char* body, std::size_t len);
 			void setHeader(const char* key, std::size_t keyLen, const char* value, std::size_t valueLen);
-			void setStatusCode(StatusCode code);
+			void setStatusCode(StatusCode statusCode);
 
 			bool hasHeader(const std::string& key) const;
 
@@ -72,7 +72,7 @@ namespace http {
 
 			std::string m_body;
 
-			http::StatusCode m_code;
+			http::StatusCode m_statusCode;
 	};
 
 } /* namespace http */
