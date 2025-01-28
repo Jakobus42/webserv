@@ -39,6 +39,7 @@ namespace http {
 			const std::map<std::string, std::vector<std::string> >& getHeaders() const;
 			const std::vector<std::string>& getHeader(const std::string& key) const;
 			StatusCode getStatusCode() const;
+			//t_requestData getRequestData() const;
 
 			void setType(RequestType type);
 			void setMethod(const char* method, std::size_t len);
@@ -51,6 +52,8 @@ namespace http {
 			bool hasHeader(const std::string& key) const;
 
 			void appendToBody(const char* data, std::size_t len);
+
+			void printRequestData() const;
 
 		private:
 			void validateUriRaw(const char* uri, std::size_t len);
