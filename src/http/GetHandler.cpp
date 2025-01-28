@@ -5,7 +5,7 @@ namespace http {
 	/**
 	 * @brief Constructs a new GetHandler object.
 	 */
-	GetHandler::GetHandler(const config::t_location& locations)
+	GetHandler::GetHandler(const config::Location& locations)
 		: ARequestHandler(locations) {
 	}
 

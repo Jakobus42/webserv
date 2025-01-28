@@ -1,6 +1,7 @@
 #include "http/RequestProccesor.hpp"
 
 #include "http/DeleteHandler.hpp"
+#include "http/ErrorHandler.hpp"
 #include "http/GetHandler.hpp"
 #include "http/PostHandler.hpp"
 
@@ -10,12 +11,13 @@ namespace http {
 	 * @brief Constructs a new RequestProccesor object.
 	 */
 	// todo figure out how to do this shit with locations
-	RequestProccesor::RequestProccesor(std::vector<config::t_location> locations)
+	RequestProccesor::RequestProccesor(std::vector<config::Location> locations)
 		: m_res(NULL)
 		, m_locations(locations) {
 		m_handlers.insert(std::make_pair(GET, new GetHandler(locations.at(0))));
 		m_handlers.insert(std::make_pair(POST, new PostHandler(locations.at(0))));
 		m_handlers.insert(std::make_pair(DELETE, new DeleteHandler(locations.at(0)))); // todo router or idk:c
+		m_handlers.insert(std::make_pair(_ERROR, new ErrorHandler(locations.at(0))));  // todo router or idk:c
 	}
 
 	/**
@@ -31,17 +33,21 @@ namespace http {
 	// todo check if req was valid - if not send error response
 	// todo check for allowed methods
 	Response* RequestProccesor::process(Request& req) {
-		m_res->setStatusCode(OK);
-		if (!checkRequestData(req)) {
-			// Create error page
-		}
-		config::t_location location;
-		if (findLocation(req.getPathData().pure_path, m_locations, location) == 1) {
-			m_res->setStatusCode(NOT_FOUND);
-		}
 		m_res = new Response();
+
+		if (!checkRequestData(req)) {
+			req.setError();
+		}
+
+		config::Location location;
+
+		if (findLocation(req.getPathData().pure_path, m_locations, location) == 1) { // @TODO: replace pure_path with uri.path
+			req.setStatusCode(NOT_FOUND);
+			req.setError();
+		}
+		req.setStatusCode(IM_A_TEAPOT); // temporary
+		req.setError();					// this too
 		m_handlers[req.getMethod()]->handle(req, *m_res);
-		m_res->setBody("Hello, World!");
 		return this->releaseResponse();
 	}
 
@@ -106,7 +112,7 @@ namespace http {
 		}
 		int found = 0;
 		for (std::map<std::string, std::vector<std::string> >::const_iterator it = request.getHeaders().begin(); it != request.getHeaders().end(); ++it) {
-			if (it->first == "host") {
+			if (it->first == "Host") {
 				if (found == 1) {
 					return false;
 				}
@@ -233,7 +239,7 @@ namespace http {
 		return 0;
 	}
 
-	int RequestProccesor::findLocation(const std::string& uri, const std::vector<config::t_location>& locations, config::t_location& location) {
+	int RequestProccesor::findLocation(const std::string& uri, const std::vector<config::Location>& locations, config::Location& location) {
 		std::vector<std::string> file;
 		std::vector<std::string> result;
 		std::string path = "";
@@ -250,14 +256,14 @@ namespace http {
 			return 1;
 		}
 		// find the location
-		config::t_location tempObj;
+		config::Location tempObj;
 		tempObj.locations = locations;
-		const config::t_location* temp = &tempObj;
+		const config::Location* temp = &tempObj;
 		bool deeper = false;
 		int len = 0;
 		while (!temp->locations.empty()) {
 			bool found = false;
-			for (std::vector<config::t_location>::const_iterator it = temp->locations.begin(); it != temp->locations.end(); ++it) {
+			for (std::vector<config::Location>::const_iterator it = temp->locations.begin(); it != temp->locations.end(); ++it) {
 				if (comparePaths(it->path, result, len) == 0) {
 					temp = &(*it);
 					found = true;
@@ -273,7 +279,7 @@ namespace http {
 			}
 			deeper = true;
 		}
-		config::t_location temp2 = *temp;
+		config::Location temp2 = *temp;
 		// Set the file and root
 		if (!file.empty()) {
 			temp2.index = file;
@@ -300,7 +306,7 @@ namespace http {
 	 * @param detailed toggles between detailed and simple output. (0 for simple, 1
 	 * for detailed)
 	 */
-	void RequestProccesor::printLocation(const config::t_location& location, int detailed) {
+	void RequestProccesor::printLocation(const config::Location& location, int detailed) {
 		std::cout << "--------------------------" << std::endl;
 		std::cout << "Location: ";
 		for (std::vector<std::string>::const_iterator it = location.path.begin();

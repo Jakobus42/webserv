@@ -14,9 +14,7 @@
 
 namespace config {
 
-	typedef struct s_location t_location;
-
-	typedef struct s_location {
+	struct Location {
 			// location name
 			std::vector<std::string> path;
 			// return
@@ -27,10 +25,10 @@ namespace config {
 			std::string root;
 			std::vector<std::string> index;
 			// locations
-			std::vector<t_location> locations;
+			std::vector<Location> locations;
 
 			// default constructor
-			s_location()
+			Location()
 				: path()
 				, return_url()
 				, methods()
@@ -41,7 +39,7 @@ namespace config {
 			}
 
 			// copy constructor
-			s_location(const s_location& other)
+			Location(const Location& other)
 				: path(other.path)
 				, return_url(other.return_url)
 				, methods(other.methods)
@@ -52,7 +50,7 @@ namespace config {
 			}
 
 			// assignment operator
-			s_location& operator=(const s_location& other) {
+			Location& operator=(const Location& other) {
 				if (this != &other) {
 					path = other.path;
 					return_url = other.return_url;
@@ -64,7 +62,7 @@ namespace config {
 				}
 				return *this;
 			}
-	} t_location;
+	};
 
 	enum CmdId {
 		SERVER_ID = 0,
@@ -89,7 +87,7 @@ namespace config {
 			std::map<int, std::string> errorPages;
 			unsigned long max_body_size;
 			// locations
-			std::vector<t_location> locations;
+			std::vector<Location> locations;
 	} t_server;
 
 	typedef struct s_config_data {
@@ -120,11 +118,11 @@ namespace config {
 
 			void printConfigData(int detailed);
 			int testFunction(const std::string& key, std::vector<std::string>& args, int& lineCount);
-			void printLocations(const std::vector<config::t_location>& locations,
+			void printLocations(const std::vector<config::Location>& locations,
 								int layer,
 								int detailed,
 								std::vector<int> layer_num);
-			config::t_location* getLocation(int layer);
+			config::Location* getLocation(int layer);
 
 		private:
 			ConfigFileParser(const ConfigFileParser& other);

@@ -148,6 +148,13 @@ namespace shared {
 			return 0;
 		}
 
+		std::string fromNum(int32_t number) {
+			std::stringstream ss;
+
+			ss << number;
+			return ss.str();
+		}
+
 	} // namespace string
 
 } // namespace shared

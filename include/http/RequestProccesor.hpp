@@ -17,7 +17,7 @@ namespace http {
 	 */
 	class RequestProccesor : shared::NonCopyable {
 		public:
-			RequestProccesor(std::vector<config::t_location> locations);
+			RequestProccesor(std::vector<config::Location> locations);
 			~RequestProccesor();
 
 			Response* process(Request& req);
@@ -25,7 +25,7 @@ namespace http {
 
 
 			// for testing purposes
-			void printLocation(const config::t_location& location, int detailed);
+			void printLocation(const config::Location& location, int detailed);
 			int testParseURI(const std::string& uri, int mode);
 
 		private:
@@ -34,9 +34,9 @@ namespace http {
 		private:
 			Response* m_res;
 			std::map<Method, ARequestHandler*> m_handlers;
-			std::vector<config::t_location> m_locations;
+			std::vector<config::Location> m_locations;
 
-			int findLocation(const std::string& uri, const std::vector<config::t_location>& locations, config::t_location& location);
+			int findLocation(const std::string& uri, const std::vector<config::Location>& locations, config::Location& location);
 
 			bool checkRequestData(Request& request);
 			bool checkAndReconstructTargetUri(Request& request);

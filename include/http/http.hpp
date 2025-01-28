@@ -15,6 +15,9 @@ namespace http {
 	const std::string HTTP_VERSION = "HTTP/1.1";
 	const std::string CRLF = "\r\n";
 
+	// Content-Type
+	const std::string TEXT_HTML = "text/html";
+
 	/**
 	 * @enum HttpStatusCode
 	 * @brief Represents the various standard HTTP status codes.
@@ -63,7 +66,8 @@ namespace http {
 	enum Method {
 		GET,
 		POST,
-		DELETE
+		DELETE,
+		_ERROR
 	};
 
 	class exception : public std::runtime_error {

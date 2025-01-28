@@ -63,6 +63,7 @@ namespace http {
 			void setBody(const char* body, std::size_t len);
 			void setHeader(const char* key, std::size_t keyLen, const char* value, std::size_t valueLen);
 			void setStatusCode(StatusCode statusCode);
+			void setError();
 
 			bool hasHeader(const std::string& key) const;
 

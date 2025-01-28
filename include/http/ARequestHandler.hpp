@@ -13,7 +13,7 @@ namespace http {
 	 */
 	class ARequestHandler : shared::NonCopyable {
 		public:
-			ARequestHandler(const config::t_location& locations)
+			ARequestHandler(const config::Location& locations)
 				: m_locations(locations) {}
 
 			virtual ~ARequestHandler() {}
@@ -21,7 +21,7 @@ namespace http {
 			virtual void handle(const Request& req, Response& res) = 0;
 
 		private:
-			config::t_location m_locations;
+			config::Location m_locations;
 	};
 
 } /* namespace http */

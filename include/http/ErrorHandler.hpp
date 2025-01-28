@@ -5,15 +5,17 @@
 namespace http {
 
 	/**
-	 * @class PostHandler
+	 * @class ErrorHandler
 	 * @brief ...
 	 */
-	class PostHandler : public ARequestHandler {
+	class ErrorHandler : public ARequestHandler {
 		public:
-			PostHandler(const config::Location& locations);
-			~PostHandler();
+			ErrorHandler(const config::Location& locations);
+			~ErrorHandler();
 
 			void handle(const Request& req, Response& res);
+
+		private:
 	};
 
 } /* namespace http */

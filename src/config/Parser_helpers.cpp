@@ -48,8 +48,8 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return struct location* the current location.
 	 */
-	t_location* ConfigFileParser::getLocation(int layer) {
-		config::t_location* temp = &m_configData.servers.back().locations.back();
+	Location* ConfigFileParser::getLocation(int layer) {
+		config::Location* temp = &m_configData.servers.back().locations.back();
 		for (int i = 2; i < layer; i++) {
 			temp = &temp->locations.back();
 		}
@@ -107,7 +107,7 @@ namespace config {
 	 * @param layer_num the current layer number.
 	 */
 	void ConfigFileParser::printLocations(
-		const std::vector<config::t_location>& locations, int layer, int detailed, std::vector<int> layer_num) {
+		const std::vector<config::Location>& locations, int layer, int detailed, std::vector<int> layer_num) {
 		std::string c = "";
 		for (int i = 0; i < layer; i++) {
 			c += "   ";

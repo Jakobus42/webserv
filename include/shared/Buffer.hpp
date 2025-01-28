@@ -3,6 +3,7 @@
 #include "shared/NonCopyable.hpp"
 
 #include <cstring>
+#include <iostream>
 
 namespace shared {
 
@@ -32,6 +33,7 @@ namespace shared {
 
 			char* getReadPos();
 			char* getWritePos();
+			const char* getData() const;
 
 		private:
 			char m_data[Capacity];

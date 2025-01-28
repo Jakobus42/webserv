@@ -10,7 +10,7 @@ namespace http {
 	 */
 	class GetHandler : public ARequestHandler {
 		public:
-			GetHandler(const config::t_location& locations);
+			GetHandler(const config::Location& locations);
 			~GetHandler();
 
 			void handle(const Request& req, Response& res);

@@ -60,6 +60,8 @@ namespace http {
 				return "POST";
 			case DELETE:
 				return "DELETE";
+			case _ERROR:
+				return "ERROR: You should not be seeing this";
 		}
 		throw http::exception(NOT_IMPLEMENTED, "method not implemented");
 	}
