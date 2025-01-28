@@ -237,6 +237,7 @@ namespace http {
 		std::vector<std::string> file;
 		std::vector<std::string> result;
 		std::string path = "";
+		//Split into file and path if file is present
 		if (uri[uri.size() - 1] != '/') {
 			int last = uri.find_last_of('/');
 			file.push_back(uri.substr(last + 1));
@@ -244,24 +245,27 @@ namespace http {
 		} else {
 			path = uri;
 		}
+		//Split path into vector
 		if (shared::string::splitPath(path, result) == 1) {
 			return 1;
 		}
-		config::t_location temp;
-		temp.locations = locations;
+		//find the location
+		config::t_location tempObj;
+		tempObj.locations = locations;
+		const config::t_location* temp = &tempObj;
 		bool deeper = false;
 		int len = 0;
-		while (temp.locations.size() > 0) {
+		while (!temp->locations.empty()) {
 			bool found = false;
-			for (std::vector<config::t_location>::const_iterator it = temp.locations.begin(); it != temp.locations.end(); ++it) {
+			for (std::vector<config::t_location>::const_iterator it = temp->locations.begin(); it != temp->locations.end(); ++it) {
 				if (comparePaths(it->path, result, len) == 0) {
-					temp = *it;
+					temp = &(*it);
 					found = true;
 					break;
 				}
 			}
-			if (found == false) {
-				if (deeper == false) {
+			if (!found) {
+				if (!deeper) {
 					return 1;
 				} else {
 					break;
@@ -269,27 +273,24 @@ namespace http {
 			}
 			deeper = true;
 		}
+		config::t_location temp2 = *temp;
+		//Set the file and root
 		if (!file.empty()) {
-			temp.index = file;
+			temp2.index = file;
 		}
-		if (temp.root != "") {
+		if (temp2.root != "") {
 			while (len > 0) {
 				result.erase(result.begin());
 				len--;
 			}
-			if (temp.root[temp.root.size() - 1] != '/') {
-				temp.root += "/";
+			if (temp2.root[temp2.root.size() - 1] != '/') {
+				temp2.root += "/";
 			}
 		}
 		for (std::vector<std::string>::const_iterator it = result.begin(); it != result.end(); ++it) {
-			temp.root += *it + "/";
+			temp2.root += *it + "/";
 		}
-		location = temp;
-		/* 	if (uri[uri.size() - 1] != '/')
-			{
-				if (file[0].substr(file[0].find_last_of('.') + 1) == "php")
-					m_type = CGI;
-			}*/
+		location = temp2;
 		return 0;
 	}
 
@@ -302,7 +303,6 @@ namespace http {
 	void RequestProccesor::printLocation(const config::t_location& location, int detailed) {
 		std::cout << "--------------------------" << std::endl;
 		std::cout << "Location: ";
-		// std::cout << " name: " << locations[j].name << std::endl;
 		for (std::vector<std::string>::const_iterator it = location.path.begin();
 			 it != location.path.end();
 			 ++it) {
@@ -334,7 +334,5 @@ namespace http {
 		}
 		std::cout << "--------------------------" << std::endl;
 	}
-
-
 
 } /* namespace http */

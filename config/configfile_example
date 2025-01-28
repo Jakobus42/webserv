@@ -11,11 +11,6 @@ server
 	client_max_body_size 10000000;
 
 	# Default server for unspecified routes
-	location / 
-	{
-		root /tmp/www;  # Default document root
-		index index.html index.htm;  # Default file for directories
-	}
 
 	    # Example of a route with multiple rules
 	location /kapouet 
@@ -29,6 +24,7 @@ server
 	    # Executing CGI scripts for .php files
 	    location /kapouet/hi
 		{
+			root /123/234;  # Base directory
 	        #include fastcgi_params;
 	        #fastcgi_pass 127.0.0.1:9000;  # Assuming PHP-FPM is running
 	        #fastcgi_index index.php;

@@ -29,6 +29,7 @@ namespace config {
 			// locations
 			std::vector<t_location> locations;
 
+			//default constructor
 			s_location()
 				: path()
 				, return_url()
@@ -37,6 +38,31 @@ namespace config {
 				, root()
 				, index()
 				, locations() {
+			}
+
+			//copy constructor
+			s_location(const s_location& other)
+				: path(other.path)
+				, return_url(other.return_url)
+				, methods(other.methods)
+				, autoindex(other.autoindex)
+				, root(other.root)
+				, index(other.index)
+				, locations(other.locations) {
+			}
+
+			//assignment operator
+			s_location& operator=(const s_location& other) {
+				if (this != &other) {
+					path = other.path;
+					return_url = other.return_url;
+					methods = other.methods;
+					autoindex = other.autoindex;
+					root = other.root;
+					index = other.index;
+					locations = other.locations;
+				}
+				return *this;
 			}
 	} t_location;
 
