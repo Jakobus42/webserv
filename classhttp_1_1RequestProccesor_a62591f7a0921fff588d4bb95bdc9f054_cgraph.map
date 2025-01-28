@@ -1,18 +1,21 @@
 <map id="http::RequestProccesor::checkRequestData" name="http::RequestProccesor::checkRequestData">
-<area shape="rect" id="Node000001" title="Check if the request data is valid, and set the status code accordingly." alt="" coords="5,85,177,125"/>
-<area shape="rect" id="Node000002" href="$classhttp_1_1RequestProccesor.html#a46a60ad4524bec4f5436d20dea81a557" title="find request target form, check it and reconstruct it (RFC 9112 3.2)" alt="" coords="225,55,455,95"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,92,211,88,212,93,178,97"/>
-<area shape="rect" id="Node000003" href="$classhttp_1_1Request.html#a6cba672bca7a36a8164b42e30ac6919b" title=" " alt="" coords="503,5,688,31"/>
-<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="126,82,172,60,225,41,292,27,361,18,489,12,489,18,362,24,293,32,226,46,174,64,128,87"/>
-<area shape="rect" id="Node000007" href="$classhttp_1_1Request.html#a8d7f2adb5a9e2717fe6b784160818aee" title=" " alt="" coords="247,120,433,145"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="178,112,233,118,233,123,177,117"/>
-<area shape="rect" id="Node000008" href="$classhttp_1_1Request.html#a20114daf56febb1152c72237a8186bac" title=" " alt="" coords="247,169,433,195"/>
-<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="138,122,226,155,257,164,255,169,225,161,136,127"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="429,53,524,31,526,36,430,58"/>
-<area shape="rect" id="Node000004" href="$classhttp_1_1RequestProccesor.html#a7ba35777846aa63d0c4062504e542a9d" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="509,55,681,95"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="455,73,495,73,495,78,455,78"/>
-<area shape="rect" id="Node000005" href="$classhttp_1_1RequestProccesor.html#afe7b898b055211bdefcbce1b77e0961c" title=" " alt="" coords="509,119,681,159"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="421,93,502,113,501,119,420,98"/>
-<area shape="rect" id="Node000006" href="$classhttp_1_1Request.html#aecc1eb02fa630f3db380a33e1aee7eb7" title=" " alt="" coords="736,127,928,152"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="682,137,722,137,722,142,682,142"/>
+<area shape="rect" id="Node000001" title="Check if the request data is valid, and set the status code accordingly." alt="" coords="5,161,177,201"/>
+<area shape="rect" id="Node000002" href="$classhttp_1_1RequestProccesor.html#a46a60ad4524bec4f5436d20dea81a557" title="find request target form, check it and reconstruct it (RFC 9112 3.2)" alt="" coords="225,103,455,143"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="177,158,239,144,240,149,178,163"/>
+<area shape="rect" id="Node000003" href="$classhttp_1_1Request.html#a6cba672bca7a36a8164b42e30ac6919b" title=" " alt="" coords="521,5,706,31"/>
+<area shape="poly" id="edge8_Node000001_Node000003" title=" " alt="" coords="115,158,163,122,224,89,296,64,370,46,506,24,507,29,371,51,297,69,226,94,166,127,118,162"/>
+<area shape="rect" id="Node000007" href="$classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8" title=" " alt="" coords="503,184,724,209"/>
+<area shape="poly" id="edge10_Node000001_Node000007" title=" " alt="" coords="178,181,489,190,488,196,178,186"/>
+<area shape="rect" id="Node000008" href="$classhttp_1_1Request.html#a8d7f2adb5a9e2717fe6b784160818aee" title=" " alt="" coords="247,219,433,244"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="178,196,264,213,263,218,177,201"/>
+<area shape="rect" id="Node000009" href="$classhttp_1_1Request.html#a20114daf56febb1152c72237a8186bac" title=" " alt="" coords="247,268,433,293"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="123,199,171,228,226,254,249,262,248,267,224,259,168,232,121,203"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="375,101,433,70,502,41,532,31,534,37,504,46,436,75,377,105"/>
+<area shape="rect" id="Node000004" href="$classhttp_1_1RequestProccesor.html#a7ba35777846aa63d0c4062504e542a9d" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="527,55,699,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="454,101,513,90,514,95,455,106"/>
+<area shape="rect" id="Node000005" href="$classhttp_1_1RequestProccesor.html#afe7b898b055211bdefcbce1b77e0961c" title=" " alt="" coords="527,119,699,159"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="455,127,514,131,513,136,455,133"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="406,141,503,169,542,178,540,183,502,174,405,146"/>
+<area shape="rect" id="Node000006" href="$classhttp_1_1Request.html#aecc1eb02fa630f3db380a33e1aee7eb7" title=" " alt="" coords="772,127,964,152"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="700,137,758,137,758,142,700,142"/>
 </map>

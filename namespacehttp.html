@@ -177,8 +177,8 @@ Functions</h2></td></tr>
 <tr class="separator:a1d02d0271977cac915906163e6cbca8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff35f6b0992332ad3e28219095ddb385" id="r_aff35f6b0992332ad3e28219095ddb385"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cf">Method</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#aff35f6b0992332ad3e28219095ddb385">stringToMethod</a> (const std::string &amp;method)</td></tr>
 <tr class="separator:aff35f6b0992332ad3e28219095ddb385"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea78c878546060f23a129eef66a446f7" id="r_aea78c878546060f23a129eef66a446f7"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#aea78c878546060f23a129eef66a446f7">getErrorPage</a> (<a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a> code)</td></tr>
-<tr class="separator:aea78c878546060f23a129eef66a446f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f88c738f00d5d4d10444e4d3bfd251d" id="r_a2f88c738f00d5d4d10444e4d3bfd251d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d">getErrorPage</a> (<a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a> statusCode)</td></tr>
+<tr class="separator:a2f88c738f00d5d4d10444e4d3bfd251d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af53527dc191aa272273c082e52afefe8" id="r_af53527dc191aa272273c082e52afefe8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#af53527dc191aa272273c082e52afefe8">comparePaths</a> (const std::vector&lt; std::string &gt; &amp;LocationPath, const std::vector&lt; std::string &gt; &amp;uriPath, int &amp;len)</td></tr>
 <tr class="separator:af53527dc191aa272273c082e52afefe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -417,24 +417,24 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RequestProccesor_8cpp_source.html#l00218">218</a> of file <a class="el" href="RequestProccesor_8cpp_source.html">RequestProccesor.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  218</span>                                                                                                              {</div>
-<div class="line"><span class="lineno">  219</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> paths = 0;</div>
-<div class="line"><span class="lineno">  220</span>        <span class="keywordflow">if</span> (LocationPath.size() &gt; uriPath.size()) {</div>
-<div class="line"><span class="lineno">  221</span>            <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  222</span>        }</div>
-<div class="line"><span class="lineno">  223</span>        <span class="keywordflow">if</span> (LocationPath.size() == 0 &amp;&amp; uriPath.size() != 0) {</div>
-<div class="line"><span class="lineno">  224</span>            <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  225</span>        }</div>
-<div class="line"><span class="lineno">  226</span>        <span class="keywordflow">for</span> (std::vector&lt;std::string&gt;::const_iterator it = LocationPath.begin(); it != LocationPath.end(); ++it) {</div>
-<div class="line"><span class="lineno">  227</span>            <span class="keywordflow">if</span> (*it != uriPath[paths]) {</div>
-<div class="line"><span class="lineno">  228</span>                <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  229</span>            }</div>
-<div class="line"><span class="lineno">  230</span>            paths++;</div>
-<div class="line"><span class="lineno">  231</span>        }</div>
-<div class="line"><span class="lineno">  232</span>        len = paths;</div>
-<div class="line"><span class="lineno">  233</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  234</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="RequestProccesor_8cpp_source.html#l00217">217</a> of file <a class="el" href="RequestProccesor_8cpp_source.html">RequestProccesor.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  217</span>                                                                                                              {</div>
+<div class="line"><span class="lineno">  218</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> paths = 0;</div>
+<div class="line"><span class="lineno">  219</span>        <span class="keywordflow">if</span> (LocationPath.size() &gt; uriPath.size()) {</div>
+<div class="line"><span class="lineno">  220</span>            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  221</span>        }</div>
+<div class="line"><span class="lineno">  222</span>        <span class="keywordflow">if</span> (LocationPath.size() == 0 &amp;&amp; uriPath.size() != 0) {</div>
+<div class="line"><span class="lineno">  223</span>            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  224</span>        }</div>
+<div class="line"><span class="lineno">  225</span>        <span class="keywordflow">for</span> (std::vector&lt;std::string&gt;::const_iterator it = LocationPath.begin(); it != LocationPath.end(); ++it) {</div>
+<div class="line"><span class="lineno">  226</span>            <span class="keywordflow">if</span> (*it != uriPath[paths]) {</div>
+<div class="line"><span class="lineno">  227</span>                <span class="keywordflow">return</span> 1;</div>
+<div class="line"><span class="lineno">  228</span>            }</div>
+<div class="line"><span class="lineno">  229</span>            paths++;</div>
+<div class="line"><span class="lineno">  230</span>        }</div>
+<div class="line"><span class="lineno">  231</span>        len = paths;</div>
+<div class="line"><span class="lineno">  232</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  233</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -454,8 +454,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="aea78c878546060f23a129eef66a446f7" name="aea78c878546060f23a129eef66a446f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea78c878546060f23a129eef66a446f7">&#9670;&#160;</a></span>getErrorPage()</h2>
+<a id="a2f88c738f00d5d4d10444e4d3bfd251d" name="a2f88c738f00d5d4d10444e4d3bfd251d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f88c738f00d5d4d10444e4d3bfd251d">&#9670;&#160;</a></span>getErrorPage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -464,14 +464,14 @@ Here is the caller graph for this function:</div>
           <td class="memname">std::string http::getErrorPage </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a>&#160;</td>
-          <td class="paramname"><em>code</em></td><td>)</td>
+          <td class="paramname"><em>statusCode</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00078">78</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   78</span>                                            {</div>
+<div class="fragment"><div class="line"><span class="lineno">   78</span>                                                  {</div>
 <div class="line"><span class="lineno">   79</span>        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* errorPageTemplate =</div>
 <div class="line"><span class="lineno">   80</span>            <span class="stringliteral">&quot;&lt;!DOCTYPE html&gt;&lt;html lang=\&quot;en\&quot;&gt;&lt;head&gt;&lt;title&gt;%d %s&lt;/title&gt;&lt;style&gt;&quot;</span></div>
 <div class="line"><span class="lineno">   81</span>            <span class="stringliteral">&quot;body{background-color:#2b3042;justify-content: center;text-align: center;color:#d3dbeb;}&quot;</span></div>
@@ -480,8 +480,8 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   84</span>            <span class="stringliteral">&quot;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;%d&lt;/h1&gt;&lt;p&gt;%s&lt;/p&gt;&lt;a href=\&quot;/home_directory\&quot;&gt;Go Back to Home&lt;/a&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>;</div>
 <div class="line"><span class="lineno">   85</span> </div>
 <div class="line"><span class="lineno">   86</span>        <span class="keywordtype">char</span> errorPage[1024];</div>
-<div class="line"><span class="lineno">   87</span>        <span class="keyword">const</span> <span class="keywordtype">char</span>* statusMessage = <a class="code hl_function" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc">getStatusMessage</a>(code).c_str();</div>
-<div class="line"><span class="lineno">   88</span>        snprintf(errorPage, <span class="keyword">sizeof</span>(errorPage), errorPageTemplate, code, statusMessage, code, statusMessage);</div>
+<div class="line"><span class="lineno">   87</span>        <span class="keyword">const</span> <span class="keywordtype">char</span>* statusMessage = <a class="code hl_function" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc">getStatusMessage</a>(statusCode).c_str();</div>
+<div class="line"><span class="lineno">   88</span>        snprintf(errorPage, <span class="keyword">sizeof</span>(errorPage), errorPageTemplate, statusCode, statusMessage, statusCode, statusMessage);</div>
 <div class="line"><span class="lineno">   89</span> </div>
 <div class="line"><span class="lineno">   90</span>        <span class="keywordflow">return</span> std::string(errorPage);</div>
 <div class="line"><span class="lineno">   91</span>    }</div>
@@ -489,8 +489,8 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="namespacehttp_aea78c878546060f23a129eef66a446f7_cgraph.png" border="0" usemap="#anamespacehttp_aea78c878546060f23a129eef66a446f7_cgraph" alt=""/></div>
-<map name="anamespacehttp_aea78c878546060f23a129eef66a446f7_cgraph" id="anamespacehttp_aea78c878546060f23a129eef66a446f7_cgraph">
+<div class="center"><img src="namespacehttp_a2f88c738f00d5d4d10444e4d3bfd251d_cgraph.png" border="0" usemap="#anamespacehttp_a2f88c738f00d5d4d10444e4d3bfd251d_cgraph" alt=""/></div>
+<map name="anamespacehttp_a2f88c738f00d5d4d10444e4d3bfd251d_cgraph" id="anamespacehttp_a2f88c738f00d5d4d10444e4d3bfd251d_cgraph">
 <area shape="rect" title=" " alt="" coords="5,5,144,31"/>
 <area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="192,5,368,31"/>
 <area shape="poly" title=" " alt="" coords="144,15,178,15,178,21,144,21"/>
@@ -613,7 +613,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="namespacehttp_a6ffd27a10b72490009d84fe377d9d8fc_icgraph.png" border="0" usemap="#anamespacehttp_a6ffd27a10b72490009d84fe377d9d8fc_icgraph" alt=""/></div>
 <map name="anamespacehttp_a6ffd27a10b72490009d84fe377d9d8fc_icgraph" id="anamespacehttp_a6ffd27a10b72490009d84fe377d9d8fc_icgraph">
 <area shape="rect" title=" " alt="" coords="715,31,891,56"/>
-<area shape="rect" href="namespacehttp.html#aea78c878546060f23a129eef66a446f7" title=" " alt="" coords="506,5,645,31"/>
+<area shape="rect" href="namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d" title=" " alt="" coords="506,5,645,31"/>
 <area shape="poly" title=" " alt="" coords="701,35,645,28,645,23,701,29"/>
 <area shape="rect" href="classhttp_1_1Response.html#aef63e8fa85ae3fcfe421fe5270080583" title=" " alt="" coords="484,55,667,80"/>
 <area shape="poly" title=" " alt="" coords="701,57,667,60,667,55,701,51"/>

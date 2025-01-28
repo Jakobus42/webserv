@@ -14,6 +14,5 @@ var classhttp_1_1RequestProccesor =
     [ "m_handlers", "classhttp_1_1RequestProccesor.html#ab75a7d191fc12f8c2ed31e9c9f36ecdf", null ],
     [ "m_locations", "classhttp_1_1RequestProccesor.html#aef833591da895a65fc914e3b82303396", null ],
     [ "m_pathData", "classhttp_1_1RequestProccesor.html#a922715731b0928562ee20952754642a0", null ],
-    [ "m_res", "classhttp_1_1RequestProccesor.html#a0dd339354b80e8f4835b7e8d6cbb5bd0", null ],
-    [ "m_statusCode", "classhttp_1_1RequestProccesor.html#a3ffa081971c72f1f7441c48d7392dc06", null ]
+    [ "m_res", "classhttp_1_1RequestProccesor.html#a0dd339354b80e8f4835b7e8d6cbb5bd0", null ]
 ];

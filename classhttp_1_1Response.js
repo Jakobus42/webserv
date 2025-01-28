@@ -5,10 +5,10 @@ var classhttp_1_1Response =
     [ "getData", "classhttp_1_1Response.html#a8396c8c9da160b0854b5cac7500a4d9c", null ],
     [ "serialize", "classhttp_1_1Response.html#aef63e8fa85ae3fcfe421fe5270080583", null ],
     [ "setBody", "classhttp_1_1Response.html#ac79941baf008165ba0c70903246d2374", null ],
-    [ "setCode", "classhttp_1_1Response.html#a3f90125d4bac7b24081c66a7b990c503", null ],
     [ "setHeader", "classhttp_1_1Response.html#ab52959eaac18026a4f1c4ce3006731ea", null ],
+    [ "setStatusCode", "classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8", null ],
     [ "m_body", "classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe", null ],
-    [ "m_code", "classhttp_1_1Response.html#aeb1cafeb91aee689123a0b361c0d2e47", null ],
     [ "m_data", "classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4", null ],
-    [ "m_headers", "classhttp_1_1Response.html#a495a8dd4ccc444a9787b46834937f258", null ]
+    [ "m_headers", "classhttp_1_1Response.html#a495a8dd4ccc444a9787b46834937f258", null ],
+    [ "m_statusCode", "classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b", null ]
 ];

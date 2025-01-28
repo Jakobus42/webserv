@@ -1124,7 +1124,7 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="571,911,911,891,911,896,571,916"/>
 <area shape="rect" href="classhttp_1_1RequestParser.html#a6f3eaf3dea06c9a65bdd024141f2b890" title=" " alt="" coords="675,841,824,881"/>
 <area shape="poly" title=" " alt="" coords="570,899,661,878,662,883,571,904"/>
-<area shape="rect" href="classhttp_1_1Request.html#ab946eb3d42e56407ff61ffee272735f1" title=" " alt="" coords="644,956,855,981"/>
+<area shape="rect" href="classhttp_1_1Request.html#a7c21ec82e0fbcc4685b24bfeeac48e42" title=" " alt="" coords="644,956,855,981"/>
 <area shape="poly" title=" " alt="" coords="571,930,672,951,671,956,570,935"/>
 <area shape="rect" href="classhttp_1_1Request.html#a4e737b293ae1b8a099e732df86eceb04" title=" " alt="" coords="666,1005,833,1031"/>
 <area shape="poly" title=" " alt="" coords="543,936,593,961,617,977,641,992,662,999,660,1004,639,996,614,982,591,966,541,940"/>
@@ -1682,7 +1682,7 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="371,198,708,179,709,184,371,203"/>
 <area shape="rect" href="classhttp_1_1RequestParser.html#a6f3eaf3dea06c9a65bdd024141f2b890" title=" " alt="" coords="472,127,621,167"/>
 <area shape="poly" title=" " alt="" coords="370,185,458,165,459,170,371,190"/>
-<area shape="rect" href="classhttp_1_1Request.html#ab946eb3d42e56407ff61ffee272735f1" title=" " alt="" coords="441,243,652,268"/>
+<area shape="rect" href="classhttp_1_1Request.html#a7c21ec82e0fbcc4685b24bfeeac48e42" title=" " alt="" coords="441,243,652,268"/>
 <area shape="poly" title=" " alt="" coords="371,217,470,237,469,243,370,222"/>
 <area shape="rect" href="classhttp_1_1Request.html#a4e737b293ae1b8a099e732df86eceb04" title=" " alt="" coords="463,292,630,317"/>
 <area shape="poly" title=" " alt="" coords="331,223,381,251,438,277,467,286,465,291,436,282,378,255,328,227"/>
@@ -1759,7 +1759,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   86</span>        std::size_t queryBeginIndex = uriRaw.find_first_of(<span class="stringliteral">&quot;#?&quot;</span>);</div>
 <div class="line"><span class="lineno">   87</span> </div>
 <div class="line"><span class="lineno">   88</span>        <span class="keywordflow">if</span> (questionMarks &gt; 1 || spaces &gt; 0) {</div>
-<div class="line"><span class="lineno">   89</span>            <a class="code hl_variable" href="classhttp_1_1RequestParser.html#a548d0bff24b550b2569fba6c7b6ae6e8">m_req</a>.<a class="code hl_function" href="classhttp_1_1Request.html#ab946eb3d42e56407ff61ffee272735f1">setStatusCode</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">BAD_REQUEST</a>);</div>
+<div class="line"><span class="lineno">   89</span>            <a class="code hl_variable" href="classhttp_1_1RequestParser.html#a548d0bff24b550b2569fba6c7b6ae6e8">m_req</a>.<a class="code hl_function" href="classhttp_1_1Request.html#a7c21ec82e0fbcc4685b24bfeeac48e42">setStatusCode</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">BAD_REQUEST</a>);</div>
 <div class="line"><span class="lineno">   90</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">BAD_REQUEST</a>, <span class="stringliteral">&quot;malformed request line: unexpected &#39; &#39; or &#39;?&#39;&quot;</span>);</div>
 <div class="line"><span class="lineno">   91</span>        }</div>
 <div class="line"><span class="lineno">   92</span>        <span class="keywordflow">if</span> (uriRaw.find(<span class="stringliteral">&quot;/cgi-bin/&quot;</span>) == 0) {</div>
@@ -1782,7 +1782,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aclasshttp_1_1RequestParser_html_a57048f1e557c2f9fdc8143d0c9c3555e"><div class="ttname"><a href="classhttp_1_1RequestParser.html#a57048f1e557c2f9fdc8143d0c9c3555e">http::RequestParser::decodePercentEncodedString</a></div><div class="ttdeci">std::string decodePercentEncodedString(const std::string &amp;encoded)</div><div class="ttdef"><b>Definition</b> <a href="RequestParser_8cpp_source.html#l00120">RequestParser.cpp:120</a></div></div>
 <div class="ttc" id="aclasshttp_1_1RequestParser_html_a6f3eaf3dea06c9a65bdd024141f2b890"><div class="ttname"><a href="classhttp_1_1RequestParser.html#a6f3eaf3dea06c9a65bdd024141f2b890">http::RequestParser::parseQuery</a></div><div class="ttdeci">void parseQuery()</div><div class="ttdef"><b>Definition</b> <a href="RequestParser_8cpp_source.html#l00146">RequestParser.cpp:146</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html_a4e737b293ae1b8a099e732df86eceb04"><div class="ttname"><a href="classhttp_1_1Request.html#a4e737b293ae1b8a099e732df86eceb04">http::Request::setType</a></div><div class="ttdeci">void setType(RequestType type)</div><div class="ttdef"><b>Definition</b> <a href="Request_8cpp_source.html#l00087">Request.cpp:87</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Request_html_ab946eb3d42e56407ff61ffee272735f1"><div class="ttname"><a href="classhttp_1_1Request.html#ab946eb3d42e56407ff61ffee272735f1">http::Request::setStatusCode</a></div><div class="ttdeci">void setStatusCode(StatusCode code)</div><div class="ttdef"><b>Definition</b> <a href="Request_8cpp_source.html#l00110">Request.cpp:110</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Request_html_a7c21ec82e0fbcc4685b24bfeeac48e42"><div class="ttname"><a href="classhttp_1_1Request.html#a7c21ec82e0fbcc4685b24bfeeac48e42">http::Request::setStatusCode</a></div><div class="ttdeci">void setStatusCode(StatusCode statusCode)</div><div class="ttdef"><b>Definition</b> <a href="Request_8cpp_source.html#l00110">Request.cpp:110</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a823474aaff0014c756dad2d3f8dc5414a9167933a319383a182cc8ac9213469e3"><div class="ttname"><a href="namespacehttp.html#a823474aaff0014c756dad2d3f8dc5414a9167933a319383a182cc8ac9213469e3">http::CGI</a></div><div class="ttdeci">@ CGI</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00021">Request.hpp:20</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1798,7 +1798,7 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="155,176,203,177,421,177,474,176,474,181,421,182,203,182,155,181"/>
 <area shape="rect" href="classhttp_1_1RequestParser.html#a6f3eaf3dea06c9a65bdd024141f2b890" title=" " alt="" coords="237,127,387,167"/>
 <area shape="poly" title=" " alt="" coords="155,165,223,156,224,161,155,170"/>
-<area shape="rect" href="classhttp_1_1Request.html#ab946eb3d42e56407ff61ffee272735f1" title=" " alt="" coords="207,243,417,268"/>
+<area shape="rect" href="classhttp_1_1Request.html#a7c21ec82e0fbcc4685b24bfeeac48e42" title=" " alt="" coords="207,243,417,268"/>
 <area shape="poly" title=" " alt="" coords="132,194,204,221,252,236,251,241,202,226,130,199"/>
 <area shape="rect" href="classhttp_1_1Request.html#a4e737b293ae1b8a099e732df86eceb04" title=" " alt="" coords="229,292,395,317"/>
 <area shape="poly" title=" " alt="" coords="101,195,145,238,173,260,204,278,220,285,218,290,201,283,170,264,141,242,97,199"/>
@@ -1853,10 +1853,10 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   25</span>        <span class="keywordflow">try</span> {</div>
 <div class="line"><span class="lineno">   26</span>            this-&gt;<a class="code hl_function" href="classhttp_1_1RequestParser.html#abb2ccb0f5ef2c5cdc1904f879ae6b5b9">parse</a>();</div>
 <div class="line"><span class="lineno">   27</span>        } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>&amp; e) {</div>
-<div class="line"><span class="lineno">   28</span>            <a class="code hl_variable" href="classhttp_1_1RequestParser.html#a548d0bff24b550b2569fba6c7b6ae6e8">m_req</a>.<a class="code hl_function" href="classhttp_1_1Request.html#ab946eb3d42e56407ff61ffee272735f1">setStatusCode</a>(e.<a class="code hl_function" href="classhttp_1_1exception.html#add7e0b357120f83926453dc287252b76">getCode</a>());</div>
+<div class="line"><span class="lineno">   28</span>            <a class="code hl_variable" href="classhttp_1_1RequestParser.html#a548d0bff24b550b2569fba6c7b6ae6e8">m_req</a>.<a class="code hl_function" href="classhttp_1_1Request.html#a7c21ec82e0fbcc4685b24bfeeac48e42">setStatusCode</a>(e.<a class="code hl_function" href="classhttp_1_1exception.html#add7e0b357120f83926453dc287252b76">getCode</a>());</div>
 <div class="line"><span class="lineno">   29</span>            this-&gt;<a class="code hl_function" href="classhttp_1_1RequestParser.html#a905ddb0198b0e5f9c9faaf3cb96d2cc5">setState</a>(<a class="code hl_enumvalue" href="classhttp_1_1RequestParser.html#a0982dcc259bae54722f613bbc56dc576a067b5ad68ca6519abbfcf1c38cdd662e">ERROR</a>);</div>
 <div class="line"><span class="lineno">   30</span>        } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><span class="lineno">   31</span>            <a class="code hl_variable" href="classhttp_1_1RequestParser.html#a548d0bff24b550b2569fba6c7b6ae6e8">m_req</a>.<a class="code hl_function" href="classhttp_1_1Request.html#ab946eb3d42e56407ff61ffee272735f1">setStatusCode</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a8bed57973a8cc88394fe713a7a4c2cba">INTERNAL_SERVER_ERROR</a>);</div>
+<div class="line"><span class="lineno">   31</span>            <a class="code hl_variable" href="classhttp_1_1RequestParser.html#a548d0bff24b550b2569fba6c7b6ae6e8">m_req</a>.<a class="code hl_function" href="classhttp_1_1Request.html#a7c21ec82e0fbcc4685b24bfeeac48e42">setStatusCode</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a8bed57973a8cc88394fe713a7a4c2cba">INTERNAL_SERVER_ERROR</a>);</div>
 <div class="line"><span class="lineno">   32</span>            this-&gt;<a class="code hl_function" href="classhttp_1_1RequestParser.html#a905ddb0198b0e5f9c9faaf3cb96d2cc5">setState</a>(<a class="code hl_enumvalue" href="classhttp_1_1RequestParser.html#a0982dcc259bae54722f613bbc56dc576a067b5ad68ca6519abbfcf1c38cdd662e">ERROR</a>);</div>
 <div class="line"><span class="lineno">   33</span>        }</div>
 <div class="line"><span class="lineno">   34</span>    }</div>
@@ -1878,7 +1878,7 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="101,364,267,551,264,555,97,368"/>
 <area shape="rect" href="classhttp_1_1RequestParser.html#a905ddb0198b0e5f9c9faaf3cb96d2cc5" title=" " alt="" coords="905,847,1055,887"/>
 <area shape="poly" title=" " alt="" coords="89,365,122,465,150,535,187,611,234,688,291,760,323,792,357,821,394,847,434,868,492,888,553,902,615,909,677,910,794,902,892,886,892,891,795,908,677,916,615,914,552,907,491,893,432,872,392,851,354,826,319,796,287,763,230,691,183,614,145,537,117,467,84,367"/>
-<area shape="rect" href="classhttp_1_1Request.html#ab946eb3d42e56407ff61ffee272735f1" title=" " alt="" coords="875,335,1085,360"/>
+<area shape="rect" href="classhttp_1_1Request.html#a7c21ec82e0fbcc4685b24bfeeac48e42" title=" " alt="" coords="875,335,1085,360"/>
 <area shape="poly" title=" " alt="" coords="155,343,861,344,861,350,155,349"/>
 <area shape="rect" href="classhttp_1_1RequestParser.html#a9568e7bb9e1d57ffd0722d708d9df136" title=" " alt="" coords="433,678,583,718"/>
 <area shape="poly" title=" " alt="" coords="333,601,435,657,458,669,455,674,432,662,330,606"/>
