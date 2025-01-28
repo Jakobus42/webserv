@@ -258,14 +258,14 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="RequestProccesor_8cpp_source.html#l00136">136</a> of file <a class="el" href="RequestProccesor_8cpp_source.html">RequestProccesor.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  136</span>                                                                              {</div>
-<div class="line"><span class="lineno">  137</span>        <span class="keywordflow">if</span> (request.getUri()[0] == <span class="charliteral">&#39;/&#39;</span>) {</div>
-<div class="line"><span class="lineno">  138</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="classhttp_1_1RequestProccesor.html#afe7b898b055211bdefcbce1b77e0961c">parseOriginForm</a>(request.getUri(), request, <a class="code hl_variable" href="classhttp_1_1RequestProccesor.html#a922715731b0928562ee20952754642a0">m_pathData</a>)) {</div>
+<div class="line"><span class="lineno">  137</span>        <span class="keywordflow">if</span> (request.getUriRaw()[0] == <span class="charliteral">&#39;/&#39;</span>) {</div>
+<div class="line"><span class="lineno">  138</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="classhttp_1_1RequestProccesor.html#afe7b898b055211bdefcbce1b77e0961c">parseOriginForm</a>(request.getUriRaw(), request, <a class="code hl_variable" href="classhttp_1_1RequestProccesor.html#a922715731b0928562ee20952754642a0">m_pathData</a>)) {</div>
 <div class="line"><span class="lineno">  139</span>                <a class="code hl_variable" href="classhttp_1_1RequestProccesor.html#a3ffa081971c72f1f7441c48d7392dc06">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">BAD_REQUEST</a>;</div>
 <div class="line"><span class="lineno">  140</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  141</span>            }</div>
 <div class="line"><span class="lineno">  142</span> </div>
 <div class="line"><span class="lineno">  143</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  144</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="classhttp_1_1RequestProccesor.html#a7ba35777846aa63d0c4062504e542a9d">parseAbsoluteForm</a>(request.getUri(), request, <a class="code hl_variable" href="classhttp_1_1RequestProccesor.html#a922715731b0928562ee20952754642a0">m_pathData</a>)) {</div>
+<div class="line"><span class="lineno">  144</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="classhttp_1_1RequestProccesor.html#a7ba35777846aa63d0c4062504e542a9d">parseAbsoluteForm</a>(request.getUriRaw(), request, <a class="code hl_variable" href="classhttp_1_1RequestProccesor.html#a922715731b0928562ee20952754642a0">m_pathData</a>)) {</div>
 <div class="line"><span class="lineno">  145</span>                <a class="code hl_variable" href="classhttp_1_1RequestProccesor.html#a3ffa081971c72f1f7441c48d7392dc06">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">BAD_REQUEST</a>;</div>
 <div class="line"><span class="lineno">  146</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  147</span>            }</div>
@@ -282,14 +282,14 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classhttp_1_1RequestProccesor_a46a60ad4524bec4f5436d20dea81a557_cgraph.png" border="0" usemap="#aclasshttp_1_1RequestProccesor_a46a60ad4524bec4f5436d20dea81a557_cgraph" alt=""/></div>
 <map name="aclasshttp_1_1RequestProccesor_a46a60ad4524bec4f5436d20dea81a557_cgraph" id="aclasshttp_1_1RequestProccesor_a46a60ad4524bec4f5436d20dea81a557_cgraph">
 <area shape="rect" title="find request target form, check it and reconstruct it (RFC 9112 3.2)" alt="" coords="5,55,235,95"/>
-<area shape="rect" href="classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="290,5,447,31"/>
-<area shape="poly" title=" " alt="" coords="207,53,299,31,300,36,208,58"/>
-<area shape="rect" href="classhttp_1_1RequestProccesor.html#a7ba35777846aa63d0c4062504e542a9d" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="283,55,455,95"/>
-<area shape="poly" title=" " alt="" coords="235,73,269,73,269,78,235,78"/>
-<area shape="rect" href="classhttp_1_1RequestProccesor.html#afe7b898b055211bdefcbce1b77e0961c" title=" " alt="" coords="283,119,455,159"/>
-<area shape="poly" title=" " alt="" coords="199,93,278,113,277,119,198,98"/>
-<area shape="rect" href="classhttp_1_1Request.html#aecc1eb02fa630f3db380a33e1aee7eb7" title=" " alt="" coords="503,127,695,152"/>
-<area shape="poly" title=" " alt="" coords="455,137,489,137,489,142,455,142"/>
+<area shape="rect" href="classhttp_1_1Request.html#a6cba672bca7a36a8164b42e30ac6919b" title=" " alt="" coords="283,5,468,31"/>
+<area shape="poly" title=" " alt="" coords="209,53,304,31,306,36,210,58"/>
+<area shape="rect" href="classhttp_1_1RequestProccesor.html#a7ba35777846aa63d0c4062504e542a9d" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="289,55,461,95"/>
+<area shape="poly" title=" " alt="" coords="235,73,275,73,275,78,235,78"/>
+<area shape="rect" href="classhttp_1_1RequestProccesor.html#afe7b898b055211bdefcbce1b77e0961c" title=" " alt="" coords="289,119,461,159"/>
+<area shape="poly" title=" " alt="" coords="201,93,282,113,281,119,200,98"/>
+<area shape="rect" href="classhttp_1_1Request.html#aecc1eb02fa630f3db380a33e1aee7eb7" title=" " alt="" coords="516,127,708,152"/>
+<area shape="poly" title=" " alt="" coords="462,137,502,137,502,142,462,142"/>
 </map>
 </div>
 <div class="dynheader">
@@ -354,7 +354,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  162</span>            <a class="code hl_variable" href="classhttp_1_1RequestProccesor.html#a3ffa081971c72f1f7441c48d7392dc06">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702">NOT_IMPLEMENTED</a>;</div>
 <div class="line"><span class="lineno">  163</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  164</span>        }</div>
-<div class="line"><span class="lineno">  165</span>        <span class="keywordflow">if</span> (request.getUri().length() &gt; 8192) {</div>
+<div class="line"><span class="lineno">  165</span>        <span class="keywordflow">if</span> (request.getUriRaw().length() &gt; 8192) {</div>
 <div class="line"><span class="lineno">  166</span>            <a class="code hl_variable" href="classhttp_1_1RequestProccesor.html#a3ffa081971c72f1f7441c48d7392dc06">m_statusCode</a> = <a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a873ca8ab2862e690356decb197a57b21">URI_TOO_LONG</a>;</div>
 <div class="line"><span class="lineno">  167</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">  168</span>        }</div>
@@ -386,19 +386,19 @@ Here is the call graph for this function:</div>
 <area shape="rect" title="Check if the request data is valid, and set the status code accordingly." alt="" coords="5,85,177,125"/>
 <area shape="rect" href="classhttp_1_1RequestProccesor.html#a46a60ad4524bec4f5436d20dea81a557" title="find request target form, check it and reconstruct it (RFC 9112 3.2)" alt="" coords="225,55,455,95"/>
 <area shape="poly" title=" " alt="" coords="177,92,211,88,212,93,178,97"/>
-<area shape="rect" href="classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="510,5,667,31"/>
-<area shape="poly" title=" " alt="" coords="126,82,172,60,225,41,295,27,367,18,496,13,496,18,367,23,296,32,226,46,174,65,128,87"/>
+<area shape="rect" href="classhttp_1_1Request.html#a6cba672bca7a36a8164b42e30ac6919b" title=" " alt="" coords="503,5,688,31"/>
+<area shape="poly" title=" " alt="" coords="126,82,172,60,225,41,292,27,361,18,489,12,489,18,362,24,293,32,226,46,174,64,128,87"/>
 <area shape="rect" href="classhttp_1_1Request.html#a8d7f2adb5a9e2717fe6b784160818aee" title=" " alt="" coords="247,120,433,145"/>
 <area shape="poly" title=" " alt="" coords="178,112,233,118,233,123,177,117"/>
 <area shape="rect" href="classhttp_1_1Request.html#a20114daf56febb1152c72237a8186bac" title=" " alt="" coords="247,169,433,195"/>
 <area shape="poly" title=" " alt="" coords="138,122,226,155,257,164,255,169,225,161,136,127"/>
-<area shape="poly" title=" " alt="" coords="427,53,519,31,520,36,428,58"/>
-<area shape="rect" href="classhttp_1_1RequestProccesor.html#a7ba35777846aa63d0c4062504e542a9d" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="503,55,675,95"/>
-<area shape="poly" title=" " alt="" coords="455,73,489,73,489,78,455,78"/>
-<area shape="rect" href="classhttp_1_1RequestProccesor.html#afe7b898b055211bdefcbce1b77e0961c" title=" " alt="" coords="503,119,675,159"/>
-<area shape="poly" title=" " alt="" coords="419,93,498,113,497,119,418,98"/>
-<area shape="rect" href="classhttp_1_1Request.html#aecc1eb02fa630f3db380a33e1aee7eb7" title=" " alt="" coords="723,127,915,152"/>
-<area shape="poly" title=" " alt="" coords="675,137,709,137,709,142,675,142"/>
+<area shape="poly" title=" " alt="" coords="429,53,524,31,526,36,430,58"/>
+<area shape="rect" href="classhttp_1_1RequestProccesor.html#a7ba35777846aa63d0c4062504e542a9d" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="509,55,681,95"/>
+<area shape="poly" title=" " alt="" coords="455,73,495,73,495,78,455,78"/>
+<area shape="rect" href="classhttp_1_1RequestProccesor.html#afe7b898b055211bdefcbce1b77e0961c" title=" " alt="" coords="509,119,681,159"/>
+<area shape="poly" title=" " alt="" coords="421,93,502,113,501,119,420,98"/>
+<area shape="rect" href="classhttp_1_1Request.html#aecc1eb02fa630f3db380a33e1aee7eb7" title=" " alt="" coords="736,127,928,152"/>
+<area shape="poly" title=" " alt="" coords="682,137,722,137,722,142,682,142"/>
 </map>
 </div>
 <div class="dynheader">
@@ -902,24 +902,24 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="117,258,166,296,227,333,246,341,244,346,224,338,163,300,114,262"/>
 <area shape="rect" href="classhttp_1_1RequestProccesor.html#a46a60ad4524bec4f5436d20dea81a557" title="find request target form, check it and reconstruct it (RFC 9112 3.2)" alt="" coords="453,55,683,95"/>
 <area shape="poly" title=" " alt="" coords="401,105,451,95,452,101,402,111"/>
-<area shape="rect" href="classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="738,5,895,31"/>
-<area shape="poly" title=" " alt="" coords="341,102,390,69,421,53,453,41,522,24,594,14,663,10,724,10,724,16,663,16,595,20,523,29,454,46,423,58,393,74,344,107"/>
+<area shape="rect" href="classhttp_1_1Request.html#a6cba672bca7a36a8164b42e30ac6919b" title=" " alt="" coords="731,5,916,31"/>
+<area shape="poly" title=" " alt="" coords="341,102,390,69,421,53,453,41,520,24,589,15,656,10,717,10,717,15,656,16,589,20,521,30,454,46,423,58,393,74,344,107"/>
 <area shape="poly" title=" " alt="" coords="398,142,454,155,492,164,491,169,453,161,397,147"/>
 <area shape="rect" href="classhttp_1_1Request.html#a20114daf56febb1152c72237a8186bac" title=" " alt="" coords="475,120,661,145"/>
 <area shape="poly" title=" " alt="" coords="402,125,461,127,461,132,402,130"/>
-<area shape="poly" title=" " alt="" coords="655,53,747,31,748,36,656,58"/>
-<area shape="rect" href="classhttp_1_1RequestProccesor.html#a7ba35777846aa63d0c4062504e542a9d" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="731,55,903,95"/>
-<area shape="poly" title=" " alt="" coords="683,73,717,73,717,78,683,78"/>
-<area shape="rect" href="classhttp_1_1RequestProccesor.html#afe7b898b055211bdefcbce1b77e0961c" title=" " alt="" coords="731,119,903,159"/>
-<area shape="poly" title=" " alt="" coords="647,93,726,113,725,119,646,98"/>
-<area shape="rect" href="classhttp_1_1Request.html#aecc1eb02fa630f3db380a33e1aee7eb7" title=" " alt="" coords="951,127,1143,152"/>
-<area shape="poly" title=" " alt="" coords="903,137,937,137,937,142,903,142"/>
+<area shape="poly" title=" " alt="" coords="657,53,752,31,754,36,658,58"/>
+<area shape="rect" href="classhttp_1_1RequestProccesor.html#a7ba35777846aa63d0c4062504e542a9d" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="737,55,909,95"/>
+<area shape="poly" title=" " alt="" coords="683,73,723,73,723,78,683,78"/>
+<area shape="rect" href="classhttp_1_1RequestProccesor.html#afe7b898b055211bdefcbce1b77e0961c" title=" " alt="" coords="737,119,909,159"/>
+<area shape="poly" title=" " alt="" coords="649,93,730,113,729,119,648,98"/>
+<area shape="rect" href="classhttp_1_1Request.html#aecc1eb02fa630f3db380a33e1aee7eb7" title=" " alt="" coords="964,127,1156,152"/>
+<area shape="poly" title=" " alt="" coords="910,137,950,137,950,142,910,142"/>
 <area shape="rect" href="namespacehttp.html#af53527dc191aa272273c082e52afefe8" title=" " alt="" coords="494,223,642,248"/>
 <area shape="poly" title=" " alt="" coords="402,235,480,234,480,239,402,241"/>
 <area shape="rect" href="namespaceshared_1_1string.html#af85298827aba4985d2318526e69ee0d6" title="Splits a path into its components." alt="" coords="481,272,655,297"/>
 <area shape="poly" title=" " alt="" coords="402,252,484,267,483,272,401,257"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="735,272,898,297"/>
-<area shape="poly" title=" " alt="" coords="655,282,722,282,722,287,655,287"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="742,272,905,297"/>
+<area shape="poly" title=" " alt="" coords="656,282,728,282,728,287,656,287"/>
 </map>
 </div>
 <div class="dynheader">
