@@ -4,6 +4,7 @@
 #include "shared/NonCopyable.hpp"
 
 #include <http/Request.hpp>
+#include <map>
 
 namespace http {
 
@@ -54,10 +55,15 @@ namespace http {
 
 			void parse();
 			void parseRequestLine();
+			void parseUri();
+			void parseQuery();
 			void parseData();
 			void parseChunkSize();
 			void parseHeaders();
 
+			// char decodeCharacter(char*& sequence);
+			char decodeCharacterFromPercentEncoding(const std::string& hex);
+			std::string decodePercentEncodedString(const std::string& encoded);
 			Token extractHeaderKey(char*& line);
 			Token extractHeaderValue(char*& line);
 			void interpretHeaders();

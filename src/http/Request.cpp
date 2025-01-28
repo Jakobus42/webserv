@@ -11,8 +11,10 @@ namespace http {
 	 * @brief Constructs a new Request object.
 	 */
 	Request::Request()
-		: m_method(GET)
-		, m_uri("/")
+		: m_type(FETCH)
+		, m_method(GET)
+		, m_uri()
+		, m_uriRaw("")
 		, m_version(HTTP_VERSION)
 		, m_code(OK) {
 	}
@@ -27,7 +29,7 @@ namespace http {
 		std::ostringstream oss;
 
 		oss << getMethodString(m_method) << " "
-			<< m_uri << " "
+			<< m_uriRaw << " "
 			<< m_version << CRLF;
 
 		std::map<std::string, std::vector<std::string> >::const_iterator it;
@@ -62,11 +64,15 @@ namespace http {
 		m_body.append(data, len);
 	}
 
+	RequestType Request::getType() const { return m_type; }
+
 	StatusCode Request::getStatusCode() const { return m_code; }
 
 	Method Request::getMethod() const { return m_method; }
 
-	const std::string& Request::getUri() const { return m_uri; }
+	Uri& Request::getUri() { return m_uri; }
+
+	std::string& Request::getUriRaw() { return m_uriRaw; }
 
 	const std::string& Request::getVersion() const { return m_version; }
 
@@ -76,13 +82,15 @@ namespace http {
 
 	const std::vector<std::string>& Request::getHeader(const std::string& key) const { return m_headers.at(key); }
 
+	void Request::setType(RequestType type) { m_type = type; }
+
 	void Request::setMethod(const char* method, std::size_t len) {
 		m_method = stringToMethod(std::string(method, len));
 	}
 
-	void Request::setUri(const char* uri, std::size_t len) {
-		this->validateUri(uri, len);
-		m_uri.assign(uri, len);
+	void Request::setUriRaw(const char* uri, std::size_t len) {
+		this->validateUriRaw(uri, len);
+		m_uriRaw.assign(uri, len);
 	}
 
 	void Request::setVersion(const char* version, std::size_t len) {
@@ -99,7 +107,7 @@ namespace http {
 
 	void Request::setStatusCode(StatusCode code) { m_code = code; }
 
-	void Request::validateUri(const char* uri, std::size_t len) {
+	void Request::validateUriRaw(const char* uri, std::size_t len) {
 		if (len == 0 || uri == NULL) {
 			throw http::exception(BAD_REQUEST, "URI can not be empty");
 		}

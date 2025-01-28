@@ -3,9 +3,22 @@
 #include "http/http.hpp"
 #include "shared/NonCopyable.hpp"
 
+#include <map>
+#include <string>
 #include <vector>
 
 namespace http {
+
+	struct Uri {
+			std::string path;						  // also used as cgi binary name
+			std::map<std::string, std::string> query; // also used for cgi parameters
+			std::string cgiPathInfo;
+	};
+
+	enum RequestType {
+		FETCH,
+		CGI
+	};
 
 	/**
 	 * @class Request
@@ -17,9 +30,10 @@ namespace http {
 			~Request();
 
 			std::string toString() const;
-
+			RequestType getType() const;
 			Method getMethod() const;
-			const std::string& getUri() const;
+			Uri& getUri();
+			std::string& getUriRaw();
 			const std::string& getVersion() const;
 			const std::string& getBody() const;
 			const std::map<std::string, std::vector<std::string> >& getHeaders() const;
@@ -27,8 +41,9 @@ namespace http {
 			StatusCode getStatusCode() const;
 			//t_requestData getRequestData() const;
 
+			void setType(RequestType type);
 			void setMethod(const char* method, std::size_t len);
-			void setUri(const char* uri, std::size_t len);
+			void setUriRaw(const char* uri, std::size_t len);
 			void setVersion(const char* version, std::size_t len);
 			void setBody(const char* body, std::size_t len);
 			void setHeader(const char* key, std::size_t keyLen, const char* value, std::size_t valueLen);
@@ -41,13 +56,15 @@ namespace http {
 			void printRequestData() const;
 
 		private:
-			void validateUri(const char* uri, std::size_t len);
+			void validateUriRaw(const char* uri, std::size_t len);
 			void validateVersion(const char* version, std::size_t len);
 			void validateHeader(const char* key, std::size_t keyLen, const char* value, std::size_t valueLen);
 
 		private:
+			RequestType m_type;
 			Method m_method;
-			std::string m_uri; // TODO: maybe make uri class
+			Uri m_uri;
+			std::string m_uriRaw;
 			std::string m_version;
 
 			std::map<std::string, std::vector<std::string> > m_headers;
