@@ -26,7 +26,7 @@ namespace http {
 		char buffer[64] = "";
 		std::time_t now = std::time(NULL);
 		std::tm* gmtTime = std::gmtime(&now);
-		std::strftime(buffer, sizeof(buffer), "Date: %a, %d %b %Y %H:%M:%S GMT", gmtTime);
+		std::strftime(buffer, sizeof(buffer), "%a, %d %b %Y %H:%M:%S GMT", gmtTime);
 		return std::string(buffer);
 	}
 
