@@ -102,36 +102,19 @@ namespace http {
 	}
 
 	bool RequestProcessor::parseOriginForm(const std::string& uri, Request& request) {
-		std::string authority;
-		std::string path;
-		std::string query;
-		if (uri.find('?') != std::string::npos) { // optional query part after the first question mark
-			query = uri.substr(uri.find('?') + 1);
+		std::map<std::string, std::vector<std::string> >::const_iterator hostHeader = request.getHeaders().find("host");
+		if (hostHeader == request.getHeaders().end() || hostHeader->second.size() != 1) {
+			throw http::exception(BAD_REQUEST, "Host header not present (or invalid) for origin form URI");
 		}
-		path = uri.substr(0, uri.find('?'));
-		if (path[0] != '/') {
-			return false;
-		}
-		int found = 0;
-		for (std::map<std::string, std::vector<std::string> >::const_iterator it = request.getHeaders().begin(); it != request.getHeaders().end(); ++it) {
-			if (it->first == "host") {
-				if (found == 1) {
-					return false;
-				}
-				if (it->second.size() != 1) {
-					return false;
-				}
-				authority = it->second[0];
-				found = 1;
-			}
-		}
-		if (found == 0) {
-			return false;
-		}
+
 		http::PathData& pathData = request.getPathData();
-		pathData.query = query;
-		pathData.path = path;
-		pathData.authority = authority;
+		if (uri.find('?') < uri.find('#')) { // optional query part after the first question mark
+			pathData.query = uri.substr(uri.find('?') + 1);
+		} else {
+			pathData.query = "";
+		}
+		pathData.path = uri.substr(0, uri.find_first_of("?#"));
+		pathData.authority = hostHeader->second[0];
 		pathData.scheme = "";
 		return true;
 	}
