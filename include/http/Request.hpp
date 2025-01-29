@@ -9,14 +9,6 @@
 
 namespace http {
 
-	struct UriOld {
-			std::string scheme;						  // probably unused
-			std::string authority;					  // probably unused
-			std::string path;						  // also used as cgi binary name
-			std::map<std::string, std::string> query; // also used for cgi parameters
-			std::string cgiPathInfo;
-	};
-
 	enum RequestType {
 		FETCH,
 		CGI
@@ -49,7 +41,6 @@ namespace http {
 			std::string toString() const;
 			RequestType getType() const;
 			Method getMethod() const;
-			UriOld& getUri();
 			std::string& getUriRaw();
 			const std::string& getUriRaw() const;
 			const std::string& getVersion() const;
@@ -57,7 +48,7 @@ namespace http {
 			const std::map<std::string, std::vector<std::string> >& getHeaders() const;
 			const std::vector<std::string>& getHeader(const std::string& key) const;
 			StatusCode getStatusCode() const;
-			Uri& getPathData();
+			Uri& getUri();
 			bool hasError() const;
 			// t_requestData getRequestData() const;
 
@@ -83,7 +74,6 @@ namespace http {
 		private:
 			RequestType m_type;
 			Method m_method;
-			UriOld m_uri;
 			std::string m_uriRaw;
 			std::string m_version;
 
@@ -92,7 +82,7 @@ namespace http {
 			std::string m_body;
 
 			http::StatusCode m_statusCode;
-			Uri m_pathData;
+			Uri m_uri;
 	};
 
 } /* namespace http */

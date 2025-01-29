@@ -13,11 +13,10 @@ namespace http {
 	Request::Request()
 		: m_type(FETCH)
 		, m_method(GET)
-		, m_uri()
 		, m_uriRaw("")
 		, m_version(HTTP_VERSION)
 		, m_statusCode(OK)
-		, m_pathData() {
+		, m_uri() {
 	}
 
 	/**
@@ -71,8 +70,6 @@ namespace http {
 
 	Method Request::getMethod() const { return m_method; }
 
-	UriOld& Request::getUri() { return m_uri; }
-
 	std::string& Request::getUriRaw() { return m_uriRaw; }
 
 	const std::string& Request::getUriRaw() const { return m_uriRaw; }
@@ -114,7 +111,7 @@ namespace http {
 
 	void Request::setStatusCode(StatusCode statusCode) { m_statusCode = statusCode; }
 
-	Uri& Request::getPathData() { return m_pathData; };
+	Uri& Request::getUri() { return m_uri; };
 
 	void Request::validateUriRaw(const char* uri, std::size_t len) {
 		if (len == 0 || uri == NULL) {

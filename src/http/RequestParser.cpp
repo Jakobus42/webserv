@@ -86,97 +86,93 @@ namespace http {
 		m_state = HEADERS;
 	}
 
-	void RequestParser::parseUri() {
-		const std::string& uriRaw = m_req.getUriRaw();
-		const std::size_t questionMarks = std::count(uriRaw.begin(), uriRaw.end(), '?');
-		const std::size_t spaces = std::count(uriRaw.begin(), uriRaw.end(), ' ');
+	// void RequestParser::parseUri() {
+	// 	const std::string& uriRaw = m_req.getUriRaw();
+	// 	const std::size_t questionMarks = std::count(uriRaw.begin(), uriRaw.end(), '?');
+	// 	const std::size_t spaces = std::count(uriRaw.begin(), uriRaw.end(), ' ');
 
-		if (questionMarks > 1 || spaces > 0) {
-			m_req.setStatusCode(BAD_REQUEST);
-			throw http::exception(BAD_REQUEST, "malformed request line: unexpected ' ' or '?'");
-		}
+	// 	if (questionMarks > 1 || spaces > 0) {
+	// 		m_req.setStatusCode(BAD_REQUEST);
+	// 		throw http::exception(BAD_REQUEST, "malformed request line: unexpected ' ' or '?'");
+	// 	}
 
-		std::size_t pathBeginIndex = 0;
-		std::size_t queryBeginIndex = uriRaw.find_first_of("#?");
-		UriOld& uri = m_req.getUri();
+	// 	std::size_t pathBeginIndex = 0;
+	// 	std::size_t queryBeginIndex = uriRaw.find_first_of("#?");
+	// 	Uri& uri = m_req.getUri();
 
-		if (uriRaw.find("/cgi-bin/") == 0) {
-			m_req.setType(CGI);
-			pathBeginIndex = uriRaw.find_first_of("/#?", 9);
-			uri.path = uriRaw.substr(0, pathBeginIndex);
-			uri.cgiPathInfo = decodePercentEncodedString(uriRaw.substr(pathBeginIndex, queryBeginIndex - pathBeginIndex));
-		} else {
-			uri.path = uriRaw.substr(pathBeginIndex, queryBeginIndex);
-		}
-		uri.path = decodePercentEncodedString(uri.path);
-		std::cout << "Parsed path: " << uri.path << std::endl;
-		std::cout << "CGI Path info: " << uri.cgiPathInfo << std::endl;
-		std::cout << "Parsed query string: " << uri.query.size() << " found:" << std::endl;
-		for (std::map<std::string, std::string>::iterator it = uri.query.begin(); it != uri.query.end(); ++it) {
-			std::cout << it->first << ": " << it->second << std::endl;
-		}
-	}
+	// 	if (uriRaw.find("/cgi-bin/") == 0) {
+	// 		m_req.setType(CGI);
+	// 		pathBeginIndex = uriRaw.find_first_of("/#?", 9);
+	// 		uri.path = uriRaw.substr(0, pathBeginIndex);
+	// 		uri.cgiPathInfo = decodePercentEncodedString(uriRaw.substr(pathBeginIndex, queryBeginIndex - pathBeginIndex));
+	// 	} else {
+	// 		uri.path = uriRaw.substr(pathBeginIndex, queryBeginIndex);
+	// 	}
+	// 	uri.path = decodePercentEncodedString(uri.path);
+	// 	std::cout << "Parsed path: " << uri.path << std::endl;
+	// 	std::cout << "CGI Path info: " << uri.cgiPathInfo << std::endl;
+	// }
 
-	char RequestParser::decodeCharacterFromPercentEncoding(const std::string& hex) {
-		if (hex.length() != 2) {
-			throw std::invalid_argument("Invalid percent-encoded character length");
-		}
+	// char RequestParser::decodeCharacterFromPercentEncoding(const std::string& hex) {
+	// 	if (hex.length() != 2) {
+	// 		throw std::invalid_argument("Invalid percent-encoded character length");
+	// 	}
 
-		int value = shared::string::toNum<int>(hex, 16);
+	// 	int value = shared::string::toNum<int>(hex, 16);
 
-		return static_cast<char>(value);
-	}
+	// 	return static_cast<char>(value);
+	// }
 
-	std::string RequestParser::decodePercentEncodedString(const std::string& encoded) {
-		std::string decoded;
+	// std::string RequestParser::decodePercentEncodedString(const std::string& encoded) {
+	// 	std::string decoded;
 
-		std::cout << "decoding " << encoded << std::endl;
-		for (std::string::size_type i = 0; i < encoded.length(); ++i) {
-			if (encoded[i] == '%' && i + 2 < encoded.length()) {
-				try {
-					decoded += decodeCharacterFromPercentEncoding(encoded.substr(i + 1, 2));
-					i += 2; // Skip over the percent and the two hex characters
-				} catch (const std::invalid_argument&) {
-					decoded += '%';
-				}
-			} else {
-				decoded += encoded[i];
-			}
-		}
-		std::cout << "returning decoded: '" << decoded << "'" << std::endl;
-		return decoded;
-	}
+	// 	std::cout << "decoding " << encoded << std::endl;
+	// 	for (std::string::size_type i = 0; i < encoded.length(); ++i) {
+	// 		if (encoded[i] == '%' && i + 2 < encoded.length()) {
+	// 			try {
+	// 				decoded += decodeCharacterFromPercentEncoding(encoded.substr(i + 1, 2));
+	// 				i += 2; // Skip over the percent and the two hex characters
+	// 			} catch (const std::invalid_argument&) {
+	// 				decoded += '%';
+	// 			}
+	// 		} else {
+	// 			decoded += encoded[i];
+	// 		}
+	// 	}
+	// 	std::cout << "returning decoded: '" << decoded << "'" << std::endl;
+	// 	return decoded;
+	// }
 
 	void RequestParser::parseUriOriginForm() {
 		std::map<std::string, std::vector<std::string> >::const_iterator hostHeader = m_req.getHeaders().find("host");
-		const std::string& uri = m_req.getUriRaw();
+		const std::string& uriRaw = m_req.getUriRaw();
 		if (hostHeader == m_req.getHeaders().end() || hostHeader->second.size() != 1) {
 			throw http::exception(BAD_REQUEST, "Host header not present (or invalid) for origin form URI");
 		}
 
-		http::Uri& pathData = m_req.getPathData();
-		if (uri.find('?') < uri.find('#')) { // optional query part after the first question mark
-			pathData.query = uri.substr(uri.find('?') + 1);
+		http::Uri& uri = m_req.getUri();
+		if (uriRaw.find('?') < uriRaw.find('#')) { // optional query part after the first question mark
+			uri.query = uriRaw.substr(uriRaw.find('?') + 1);
 		} else {
-			pathData.query = "";
+			uri.query = "";
 		}
-		pathData.path = uri.substr(0, uri.find_first_of("?#"));
-		pathData.scheme = "";
-		pathData.authority = hostHeader->second[0];
+		uri.path = uriRaw.substr(0, uriRaw.find_first_of("?#"));
+		uri.scheme = "";
+		uri.authority = hostHeader->second[0];
 		parsePath();
 	}
 
 	// parse CGI if the path starts with /cgi-bin/
 	void RequestParser::parsePath() {
-		Uri& pathData = m_req.getPathData();
-		if (pathData.path.find("/cgi-bin/") == 0) {
+		Uri& uri = m_req.getUri();
+		if (uri.path.find("/cgi-bin/") == 0) {
 			m_req.setType(CGI);
-			pathData.cgiPathInfo = pathData.path.substr(pathData.path.find_first_of("/#?", 9));
-			pathData.path = pathData.path.substr(0, pathData.path.find_first_of("/#?", 9));
+			uri.cgiPathInfo = uri.path.substr(uri.path.find_first_of("/#?", 9));
+			uri.path = uri.path.substr(0, uri.path.find_first_of("/#?", 9));
 			// TODO: should never receive # or ? but idk bro
 			// I'm just a silly little guy, writing my silly little code
 		} else {
-			pathData.cgiPathInfo = ""; // should never be read in this case
+			uri.cgiPathInfo = ""; // should never be read in this case
 		}
 		// TODO: should we parse this at all?
 		// also, should we check if we accept the script here?
@@ -193,17 +189,17 @@ namespace http {
 		std::string authority;
 		std::string path;
 
-		http::Uri& pathData = m_req.getPathData();
-		const std::string& uri = m_req.getUriRaw();
+		http::Uri& uri = m_req.getUri();
+		const std::string& uriRaw = m_req.getUriRaw();
 
-		if (uri.find(':') == std::string::npos) {
+		if (uriRaw.find(':') == std::string::npos) {
 			throw http::exception(BAD_REQUEST, "Invalid URI");
 		}
-		scheme = uri.substr(0, uri.find(":")); // scheme before the first colon
+		scheme = uriRaw.substr(0, uriRaw.find(":")); // scheme before the first colon
 		if (scheme.empty() || std::isalpha(scheme[0]) == 0 || scheme.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-.") != std::string::npos) {
 			throw http::exception(BAD_REQUEST, "Invalid URI");
 		}
-		path = uri.substr(uri.find(':') + 1, uri.find('?') - uri.find(':') - 1);
+		path = uriRaw.substr(uriRaw.find(':') + 1, uriRaw.find('?') - uriRaw.find(':') - 1);
 		if (path[0] != '/' && path[1] != '/') { // authority part starts with two slashes
 			throw http::exception(BAD_REQUEST, "Invalid URI");
 		}
@@ -215,14 +211,14 @@ namespace http {
 		if (authority.empty()) {
 			throw http::exception(BAD_REQUEST, "Invalid URI");
 		}
-		if (uri.find('?') != std::string::npos) { // optional query part after the first question mark
-			pathData.query = uri.substr(uri.find('?') + 1);
+		if (uriRaw.find('?') != std::string::npos) { // optional query part after the first question mark
+			uri.query = uriRaw.substr(uriRaw.find('?') + 1);
 		} else {
-			pathData.query = "";
+			uri.query = "";
 		}
-		pathData.path = path.substr(path.find('/'));
-		pathData.scheme = scheme;
-		pathData.authority = authority;
+		uri.path = path.substr(path.find('/'));
+		uri.scheme = scheme;
+		uri.authority = authority;
 		parsePath();
 	}
 
