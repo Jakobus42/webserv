@@ -57,6 +57,9 @@ namespace http {
 			void parseRequestLine();
 			void parseUri();
 			void parseQuery();
+			void parseQueryButBetter();
+			void parseOriginForm();
+			void parseAbsoluteForm();
 			void parseData();
 			void parseChunkSize();
 			void parseHeaders();

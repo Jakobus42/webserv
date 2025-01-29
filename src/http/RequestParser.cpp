@@ -112,7 +112,7 @@ namespace http {
 		uri.path = decodePercentEncodedString(uri.path);
 		std::cout << "Parsed path: " << uri.path << std::endl;
 		std::cout << "CGI Path info: " << uri.cgiPathInfo << std::endl;
-		parseQuery();
+		parseQueryButBetter();
 		std::cout << "Parsed query string: " << uri.query.size() << " found:" << std::endl;
 		for (std::map<std::string, std::string>::iterator it = uri.query.begin(); it != uri.query.end(); ++it) {
 			std::cout << it->first << ": " << it->second << std::endl;
@@ -152,74 +152,155 @@ namespace http {
 		return decoded;
 	}
 
+	void RequestParser::parseOriginForm() {
+		std::map<std::string, std::vector<std::string> >::const_iterator hostHeader = m_req.getHeaders().find("host");
+		const std::string& uri = m_req.getUriRaw();
+		if (hostHeader == m_req.getHeaders().end() || hostHeader->second.size() != 1) {
+			throw http::exception(BAD_REQUEST, "Host header not present (or invalid) for origin form URI");
+		}
+
+		http::PathData& pathData = m_req.getPathData();
+		if (uri.find('?') < uri.find('#')) { // optional query part after the first question mark
+			pathData.query = uri.substr(uri.find('?') + 1);
+		} else {
+			pathData.query = "";
+		}
+		pathData.path = uri.substr(0, uri.find_first_of("?#"));
+		pathData.authority = hostHeader->second[0];
+		pathData.scheme = "";
+	}
+
+	/**
+	 * @brief Parses Absolute path and saves only the pure path in "m_truePath" src: (RFC 9112 3.2.2)
+	 * @details
+	 * absolute-URI = scheme ":" hier-part [ "?" query ]
+	 * @param path
+	 */
+	void RequestParser::parseAbsoluteForm() {
+		std::string scheme;
+		std::string authority;
+		std::string path;
+		http::PathData& pathData = m_req.getPathData();
+		const std::string& uri = m_req.getUriRaw();
+
+		if (uri.find(':') == std::string::npos) {
+			throw http::exception(BAD_REQUEST, "Invalid URI");
+		}
+		scheme = uri.substr(0, uri.find(":")); // scheme before the first colon
+		if (scheme.empty() || std::isalpha(scheme[0]) == 0 || scheme.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-.") != std::string::npos) {
+			throw http::exception(BAD_REQUEST, "Invalid URI");
+		}
+		path = uri.substr(uri.find(':') + 1, uri.find('?') - uri.find(':') - 1);
+		if (path[0] != '/' && path[1] != '/') { // authority part starts with two slashes
+			throw http::exception(BAD_REQUEST, "Invalid URI");
+		}
+		path = path.substr(2);
+		if (path.find('/') == std::string::npos) {
+			throw http::exception(BAD_REQUEST, "Invalid URI");
+		}
+		authority = path.substr(0, path.find('/'));
+		if (authority.empty()) {
+			throw http::exception(BAD_REQUEST, "Invalid URI");
+		}
+		if (uri.find('?') != std::string::npos) { // optional query part after the first question mark
+			pathData.query = uri.substr(uri.find('?') + 1);
+		} else {
+			pathData.query = "";
+		}
+		pathData.path = path.substr(path.find('/'));
+		pathData.scheme = scheme;
+		pathData.authority = authority;
+	}
+
+	/**
+	 * @brief find request target form, check it and reconstruct it (RFC 9112 3.2)
+	 * @details has to be either "Origin-form" or "Absolute-form" (others only with unsupported methods)
+	 * @param request
+	 * @todo move all this to RequestParser.cpp
+	 */
+	void RequestParser::parseQueryButBetter() {
+		if (m_req.getUriRaw()[0] == '/') {
+			parseOriginForm();
+		} else {
+			parseAbsoluteForm();
+		}
+		// (RFC 9112 3.2)
+		/* 		if (request.getRequestData().headers.find("Host") == request.getRequestData().headers.end()
+					|| request.getRequestData().headers.find("Host")->second.size() != 1) {
+					m_res->setStatusCode(BAD_REQUEST);
+					m_type = ERROR;
+					return;
+				} */
+	}
+
 	// parses query from a whole string
 	// look for '?', if found take the string afterwards and take from it key=value pairs
 	// separated by '&', put each in the map, if a duplicate key is found simply overwrite its value
-	void RequestParser::parseQuery() {
-		std::map<std::string, std::string>& queryParameters = m_req.getUri().query;
-		const std::string& uriRaw = m_req.getUriRaw();
-		std::size_t currentPos = uriRaw.find_first_of('?');
-		std::size_t end = uriRaw.find_first_of('#');
+	// void RequestParser::parseQuery() {
+	// 	std::map<std::string, std::string>& queryParameters = m_req.getUri().query;
+	// 	const std::string& uriRaw = m_req.getUriRaw();
+	// 	std::size_t currentPos = uriRaw.find_first_of('?');
+	// 	std::size_t end = uriRaw.find_first_of('#');
 
-		if (currentPos == std::string::npos) {
-			return;
-		}
+	// 	if (currentPos == std::string::npos) {
+	// 		return;
+	// 	}
 
-		if (uriRaw[currentPos] == '?') {
-			currentPos++;
-		}
+	// 	if (uriRaw[currentPos] == '?') {
+	// 		currentPos++;
+	// 	}
 
-		// abc?a=b&cde=fgh&jk=l&mnop=qrst
-		while (currentPos <= end) {
-			std::string currentKey = "";
-			std::string currentValue = "";
+	// 	// abc?a=b&cde=fgh&jk=l&mnop=qrst
+	// 	while (currentPos <= end) {
+	// 		std::string currentKey = "";
+	// 		std::string currentValue = "";
 
-			std::size_t nextDelimiter = uriRaw.find_first_of('=', currentPos);
-			currentKey = uriRaw.substr(currentPos, nextDelimiter - currentPos);
-			std::size_t nextAmpersand = uriRaw.find_first_of('&', currentPos);
-			if (nextAmpersand == std::string::npos && nextDelimiter == std::string::npos) {
-				// fuck this
-				break;
-			}
-			if (nextAmpersand <= nextDelimiter) {
-				// no equal sign
-				// ...&key&key&key=value
-				// or ...&key&key&key
-				// should advance to the next one
-				currentPos = nextAmpersand + 1;
-				continue;
-			}
+	// 		std::size_t nextDelimiter = uriRaw.find_first_of('=', currentPos);
+	// 		currentKey = uriRaw.substr(currentPos, nextDelimiter - currentPos);
+	// 		std::size_t nextAmpersand = uriRaw.find_first_of('&', currentPos);
+	// 		if (nextAmpersand == std::string::npos && nextDelimiter == std::string::npos) {
+	// 			// fuck this
+	// 			break;
+	// 		}
+	// 		if (nextAmpersand <= nextDelimiter) {
+	// 			// no equal sign
+	// 			// ...&key&key&key=value
+	// 			// or ...&key&key&key
+	// 			// should advance to the next one
+	// 			currentPos = nextAmpersand + 1;
+	// 			continue;
+	// 		}
 
-			if (nextDelimiter >= end) {
-				// no equal sign, no value gets inserted
-				// ...&key=value&key
-				// or ...&key=value&key#fragment
-				break;
-			}
-			currentPos = nextDelimiter + 1;
-			if (currentPos >= end) {
-				// no value but equal sign, empty value gets inserted
-				// ...&key=value&key=
-				// or ...&key=value&key=#fragment
-				// this should just work
-			}
-			nextDelimiter = uriRaw.find_first_of('&', currentPos);
-			if (nextDelimiter >= end) {
-				// last parameter, delimited by a fragment
-				// ..&key=value#fragment
-				nextDelimiter = end;
-			}
-			currentValue = uriRaw.substr(currentPos, nextDelimiter - currentPos);
-			if (!currentKey.empty() && queryParameters.find(currentKey) == queryParameters.end()) {
-				queryParameters.insert(std::make_pair(currentKey, currentValue));
-			}
-			if (nextDelimiter == end) {
-				// reached end, exit loop
-				break;
-			}
-			currentPos = nextDelimiter + 1;
-		}
-	}
+	// 		if (nextDelimiter >= end) {
+	// 			// no equal sign, no value gets inserted
+	// 			// ...&key=value&key
+	// 			// or ...&key=value&key#fragment
+	// 			break;
+	// 		}
+	// 		currentPos = nextDelimiter + 1;
+	// 		if (currentPos >= end) {
+	// 			// no value but equal sign, empty value gets inserted
+	// 			// ...&key=value&key=
+	// 			// or ...&key=value&key=#fragment
+	// 			// this should just work
+	// 		}
+	// 		nextDelimiter = uriRaw.find_first_of('&', currentPos);
+	// 		if (nextDelimiter >= end) {
+	// 			// last parameter, delimited by a fragment
+	// 			// ..&key=value#fragment
+	// 			nextDelimiter = end;
+	// 		}
+	// 		currentValue = uriRaw.substr(currentPos, nextDelimiter - currentPos);
+	// 		if (!currentKey.empty() && queryParameters.find(currentKey) == queryParameters.end()) {
+	// 			queryParameters.insert(std::make_pair(currentKey, currentValue));
+	// 		}
+	// 		if (nextDelimiter == end) {
+	// 			// reached end, exit loop
+	// 			break;
+	// 		}
+	// 		currentPos = nextDelimiter + 1;
+	// 	}
+	// }
 
 	void RequestParser::parseHeaders() {
 		while (true) {

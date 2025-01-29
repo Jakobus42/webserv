@@ -37,10 +37,6 @@ namespace http {
 			std::vector<config::Location> m_locations;
 
 			int findLocation(const std::string& uri, const std::vector<config::Location>& locations, config::Location& location);
-
-			bool checkAndReconstructTargetUri(Request& request);
-			bool parseAbsoluteForm(const std::string& path, Request& request);
-			bool parseOriginForm(const std::string& path, Request& request);
 	};
 
 } /* namespace http */

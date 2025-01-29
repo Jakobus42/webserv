@@ -40,10 +40,6 @@ namespace http {
 			m_handlers[_ERROR]->handle(req, *m_res);
 			return this->releaseResponse();
 		}
-		if (checkAndReconstructTargetUri(req) == false) {
-			std::cout << "CheckRequestData failed; bruh moment" << std::endl;
-			req.setError();
-		}
 		if (req.getMethod() < _ERROR && findLocation(req.getPathData().path, m_locations, location) == 1) { // @TODO: replace path with uri.path
 			std::cout << "FindLocation failed; Location not found :(" << std::endl;
 			req.setStatusCode(NOT_FOUND);
@@ -57,127 +53,6 @@ namespace http {
 		Response* released = m_res;
 		m_res = NULL;
 		return released;
-	}
-
-	/**
-	 * @brief Parses Absolute path and saves only the pure path in "m_truePath" src: (RFC 9112 3.2.2)
-	 * @details
-	 * absolute-URI = scheme ":" hier-part [ "?" query ]
-	 * @param path
-	 */
-	bool RequestProcessor::parseAbsoluteForm(const std::string& uri, Request& request) {
-		std::string scheme;
-		std::string query = "";
-		std::string authority;
-		std::string path;
-		if (uri.find(':') == std::string::npos) {
-			return false;
-		}
-		scheme = uri.substr(0, uri.find(":")); // scheme before the first colon
-		if (scheme == "" || std::isalpha(scheme[0]) == 0 || scheme.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-.") != std::string::npos) {
-			return false;
-		}
-		if (uri.find('?') != std::string::npos) { // optional query part after the first question mark
-			query = uri.substr(uri.find('?') + 1);
-		}
-		path = uri.substr(uri.find(':') + 1, uri.find('?') - uri.find(':') - 1);
-		if (path[0] != '/' && path[1] != '/') { // authority part starts with two slashes
-			return false;
-		}
-		path = path.substr(2);
-		if (path.find('/') == std::string::npos) {
-			return false;
-		}
-		authority = path.substr(0, path.find('/'));
-		if (authority.empty()) {
-			return false;
-		}
-		path = path.substr(path.find('/'));
-		http::PathData& pathData = request.getPathData();
-		pathData.query = query;
-		pathData.path = path;
-		pathData.scheme = scheme;
-		pathData.authority = authority;
-		return true;
-	}
-
-	bool RequestProcessor::parseOriginForm(const std::string& uri, Request& request) {
-		std::map<std::string, std::vector<std::string> >::const_iterator hostHeader = request.getHeaders().find("host");
-		if (hostHeader == request.getHeaders().end() || hostHeader->second.size() != 1) {
-			throw http::exception(BAD_REQUEST, "Host header not present (or invalid) for origin form URI");
-		}
-
-		http::PathData& pathData = request.getPathData();
-		if (uri.find('?') < uri.find('#')) { // optional query part after the first question mark
-			pathData.query = uri.substr(uri.find('?') + 1);
-		} else {
-			pathData.query = "";
-		}
-		pathData.path = uri.substr(0, uri.find_first_of("?#"));
-		pathData.authority = hostHeader->second[0];
-		pathData.scheme = "";
-		return true;
-	}
-
-	/**
-	 * @brief find request target form, check it and reconstruct it (RFC 9112 3.2)
-	 * @details has to be either "Origin-form" or "Absolute-form" (others only with unsupported methods)
-	 * @param request
-	 * @todo move all this to RequestParser.cpp
-	 */
-	bool RequestProcessor::checkAndReconstructTargetUri(Request& request) {
-		if (request.getUriRaw()[0] == '/') {
-			if (!parseOriginForm(request.getUriRaw(), request)) {
-				request.setStatusCode(BAD_REQUEST);
-				return false;
-			}
-
-		} else {
-			if (!parseAbsoluteForm(request.getUriRaw(), request)) {
-				request.setStatusCode(BAD_REQUEST);
-				return false;
-			}
-		}
-		// (RFC 9112 3.2)
-		/* 		if (request.getRequestData().headers.find("Host") == request.getRequestData().headers.end()
-					|| request.getRequestData().headers.find("Host")->second.size() != 1) {
-					m_res->setStatusCode(BAD_REQUEST);
-					m_type = ERROR;
-					return;
-				} */
-		return true;
-	}
-
-	int RequestProcessor::testParseURI(const std::string& uri, int mode) {
-		std::cout << "-----------------------------------" << std::endl;
-		Request req;
-		if (mode == 0) {
-			std::vector<std::string> host;
-			host.push_back("localhost");
-			req.setHeader("Host", 4, "Localhost", 9);
-			if (parseOriginForm(uri, req)) {
-				std::cout << "Origin form parsed successfully" << std::endl;
-			} else {
-				std::cout << "Origin form failed" << std::endl;
-				std::cout << "-----------------------------------" << std::endl;
-				return 1;
-			}
-		} else {
-			if (parseAbsoluteForm(uri, req)) {
-				std::cout << "Absolute form parsed successfully" << std::endl;
-			} else {
-				std::cout << "Absolute form failed" << std::endl;
-				std::cout << "-----------------------------------" << std::endl;
-				return 1;
-			}
-		}
-		const http::PathData& pathData = req.getPathData();
-		std::cout << "Scheme: " << pathData.scheme << std::endl;
-		std::cout << "Authority: " << pathData.authority << std::endl;
-		std::cout << "Pure path: " << pathData.path << std::endl;
-		std::cout << "Query: " << pathData.query << std::endl;
-		std::cout << "-----------------------------------" << std::endl;
-		return 0;
 	}
 
 	int comparePaths(const std::vector<std::string>& LocationPath, const std::vector<std::string>& uriPath, int& len) {
