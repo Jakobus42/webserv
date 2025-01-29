@@ -24,7 +24,6 @@ var hierarchy =
       [ "shared::Buffer< Capacity >", "classshared_1_1Buffer.html", null ],
       [ "shared::Logger", "classshared_1_1Logger.html", null ]
     ] ],
-    [ "http::PathData", "structhttp_1_1PathData.html", null ],
     [ "std::runtime_error", null, [
       [ "http::exception", "classhttp_1_1exception.html", null ]
     ] ],

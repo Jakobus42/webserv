@@ -19,7 +19,6 @@ var annotated_dup =
       [ "ErrorHandler", "classhttp_1_1ErrorHandler.html", "classhttp_1_1ErrorHandler" ],
       [ "exception", "classhttp_1_1exception.html", "classhttp_1_1exception" ],
       [ "GetHandler", "classhttp_1_1GetHandler.html", "classhttp_1_1GetHandler" ],
-      [ "PathData", "structhttp_1_1PathData.html", "structhttp_1_1PathData" ],
       [ "PostHandler", "classhttp_1_1PostHandler.html", "classhttp_1_1PostHandler" ],
       [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
       [ "RequestParser", "classhttp_1_1RequestParser.html", "classhttp_1_1RequestParser" ],
