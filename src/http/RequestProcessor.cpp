@@ -39,11 +39,10 @@ namespace http {
 		if (req.hasError()) {
 			m_handlers[_ERROR]->handle(req, *m_res);
 			return this->releaseResponse();
-		}
-		if (req.getMethod() < _ERROR && findLocation(req.getPathData().path, m_locations, location) == 1) { // @TODO: replace path with uri.path
+		}																									// TODO: make this not shitty
+		if (req.getMethod() < _ERROR && findLocation(req.getPathData().path, m_locations, location) == 1) { // TODO: replace path with uri.path
 			std::cout << "FindLocation failed; Location not found :(" << std::endl;
 			req.setStatusCode(NOT_FOUND);
-			req.setError();
 		}
 		m_handlers[req.getMethod()]->handle(req, *m_res);
 		return this->releaseResponse();

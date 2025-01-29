@@ -43,7 +43,6 @@ namespace core {
 		} catch (const std::exception& e) {
 			m_vServer.log(e.what(), shared::ERROR);
 			m_vServer.dropClient(fd);
-			m_reqParser.getRequest().setError();
 			m_reqParser.getRequest().setStatusCode(http::INTERNAL_SERVER_ERROR);
 			return this->markDone();
 		}

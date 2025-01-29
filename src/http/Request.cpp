@@ -114,8 +114,6 @@ namespace http {
 
 	void Request::setStatusCode(StatusCode statusCode) { m_statusCode = statusCode; }
 
-	void Request::setError() { m_method = _ERROR; }
-
 	PathData& Request::getPathData() { return m_pathData; };
 
 	void Request::validateUriRaw(const char* uri, std::size_t len) {
