@@ -85,6 +85,10 @@ namespace http {
 
 	const std::vector<std::string>& Request::getHeader(const std::string& key) const { return m_headers.at(key); }
 
+	bool Request::hasError() const {
+		return m_statusCode >= 400;
+	}
+
 	void Request::setType(RequestType type) { m_type = type; }
 
 	void Request::setMethod(const char* method, std::size_t len) {
@@ -124,8 +128,11 @@ namespace http {
 	}
 
 	void Request::validateVersion(const char* version, std::size_t len) {
-		if (version == NULL || len == 0 || std::strcmp(version, HTTP_VERSION.c_str())) {
-			throw http::exception(NOT_IMPLEMENTED, "unsupported HTTP version: " + std::string(version, len));
+		if (version == NULL || len == 0) {
+			throw http::exception(BAD_REQUEST, "malformed HTTP version: " + std::string(version, len));
+		}
+		if (std::strcmp(version, HTTP_VERSION.c_str())) {
+			throw http::exception(HTTP_VERSION_NOT_SUPPORTED, "unsupported HTTP version: " + std::string(version, len));
 		}
 	}
 

@@ -10,6 +10,8 @@
 namespace http {
 
 	struct Uri {
+			std::string scheme;						  // probably unused
+			std::string authority;					  // probably unused
 			std::string path;						  // also used as cgi binary name
 			std::map<std::string, std::string> query; // also used for cgi parameters
 			std::string cgiPathInfo;
@@ -23,13 +25,13 @@ namespace http {
 	struct PathData {
 			std::string scheme;
 			std::string authority;
-			std::string pure_path;
+			std::string path;
 			std::string query;
 
 			PathData()
 				: scheme()
 				, authority()
-				, pure_path()
+				, path()
 				, query() {}
 	};
 
@@ -54,6 +56,7 @@ namespace http {
 			const std::vector<std::string>& getHeader(const std::string& key) const;
 			StatusCode getStatusCode() const;
 			PathData& getPathData();
+			bool hasError() const;
 			// t_requestData getRequestData() const;
 
 			void setType(RequestType type);

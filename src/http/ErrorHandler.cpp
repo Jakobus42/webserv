@@ -16,7 +16,6 @@ namespace http {
 	}
 
 	void ErrorHandler::handle(const Request& request, Response& response) {
-		response.setStatusCode(IM_A_TEAPOT);
 		response.setBody(getErrorPage(request.getStatusCode()));
 		response.setHeader("Content-Length", shared::string::fromNum(response.getBody().length()));
 		response.setHeader("Content-Type", TEXT_HTML);

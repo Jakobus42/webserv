@@ -1,17 +1,16 @@
-#include "http/RequestProccesor.hpp"
-
 #include "http/DeleteHandler.hpp"
 #include "http/ErrorHandler.hpp"
 #include "http/GetHandler.hpp"
 #include "http/PostHandler.hpp"
+#include "http/RequestProcessor.hpp"
 
 namespace http {
 
 	/**
-	 * @brief Constructs a new RequestProccesor object.
+	 * @brief Constructs a new RequestProcessor object.
 	 */
 	// todo figure out how to do this shit with locations
-	RequestProccesor::RequestProccesor(std::vector<config::Location> locations)
+	RequestProcessor::RequestProcessor(std::vector<config::Location> locations)
 		: m_res(NULL)
 		, m_locations(locations) {
 		m_handlers.insert(std::make_pair(GET, new GetHandler(locations.at(0))));
@@ -21,9 +20,9 @@ namespace http {
 	}
 
 	/**
-	 * @brief Destroys the RequestProccesor object.
+	 * @brief Destroys the RequestProcessor object.
 	 */
-	RequestProccesor::~RequestProccesor() {
+	RequestProcessor::~RequestProcessor() {
 		for (std::map<Method, ARequestHandler*>::iterator it = m_handlers.begin(); it != m_handlers.end(); ++it) {
 			delete it->second;
 		}
@@ -32,26 +31,28 @@ namespace http {
 
 	// todo check if req was valid - if not send error response
 	// todo check for allowed methods
-	Response* RequestProccesor::process(Request& req) {
+	Response* RequestProcessor::process(Request& req) {
+		config::Location location;
 		m_res = new Response();
 
-		if (!checkRequestData(req)) {
+		if (req.hasError()) {
+			m_handlers[_ERROR]->handle(req, *m_res);
+			return this->releaseResponse();
+		}
+		if (checkRequestData(req) == false) {
+			std::cout << "CheckRequestData failed; bruh moment" << std::endl;
 			req.setError();
 		}
-
-		config::Location location;
-
-		if (findLocation(req.getPathData().pure_path, m_locations, location) == 1) { // @TODO: replace pure_path with uri.path
+		if (req.getMethod() < _ERROR && findLocation(req.getPathData().path, m_locations, location) == 1) { // @TODO: replace path with uri.path
+			std::cout << "FindLocation failed; Location not found :(" << std::endl;
 			req.setStatusCode(NOT_FOUND);
 			req.setError();
 		}
-		req.setStatusCode(IM_A_TEAPOT); // temporary
-		req.setError();					// this too
 		m_handlers[req.getMethod()]->handle(req, *m_res);
 		return this->releaseResponse();
 	}
 
-	Response* RequestProccesor::releaseResponse() {
+	Response* RequestProcessor::releaseResponse() {
 		Response* released = m_res;
 		m_res = NULL;
 		return released;
@@ -63,56 +64,56 @@ namespace http {
 	 * absolute-URI = scheme ":" hier-part [ "?" query ]
 	 * @param path
 	 */
-	bool RequestProccesor::parseAbsoluteForm(const std::string& path, Request& request) {
+	bool RequestProcessor::parseAbsoluteForm(const std::string& uri, Request& request) {
 		std::string scheme;
 		std::string query = "";
 		std::string authority;
-		std::string pure_path;
-		if (path.find(':') == std::string::npos) {
+		std::string path;
+		if (uri.find(':') == std::string::npos) {
 			return false;
 		}
-		scheme = path.substr(0, path.find(":")); // scheme before the first colon
+		scheme = uri.substr(0, uri.find(":")); // scheme before the first colon
 		if (scheme == "" || std::isalpha(scheme[0]) == 0 || scheme.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-.") != std::string::npos) {
 			return false;
 		}
-		if (path.find('?') != std::string::npos) { // optional query part after the first question mark
-			query = path.substr(path.find('?') + 1);
+		if (uri.find('?') != std::string::npos) { // optional query part after the first question mark
+			query = uri.substr(uri.find('?') + 1);
 		}
-		pure_path = path.substr(path.find(':') + 1, path.find('?') - path.find(':') - 1);
-		if (pure_path[0] != '/' && pure_path[1] != '/') { // authority part starts with two slashes
+		path = uri.substr(uri.find(':') + 1, uri.find('?') - uri.find(':') - 1);
+		if (path[0] != '/' && path[1] != '/') { // authority part starts with two slashes
 			return false;
 		}
-		pure_path = pure_path.substr(2);
-		if (pure_path.find('/') == std::string::npos) {
+		path = path.substr(2);
+		if (path.find('/') == std::string::npos) {
 			return false;
 		}
-		authority = pure_path.substr(0, pure_path.find('/'));
+		authority = path.substr(0, path.find('/'));
 		if (authority.empty()) {
 			return false;
 		}
-		pure_path = pure_path.substr(pure_path.find('/'));
+		path = path.substr(path.find('/'));
 		http::PathData& pathData = request.getPathData();
 		pathData.query = query;
-		pathData.pure_path = pure_path;
+		pathData.path = path;
 		pathData.scheme = scheme;
 		pathData.authority = authority;
 		return true;
 	}
 
-	bool RequestProccesor::parseOriginForm(const std::string& path, Request& request) {
+	bool RequestProcessor::parseOriginForm(const std::string& uri, Request& request) {
 		std::string authority;
-		std::string pure_path;
+		std::string path;
 		std::string query;
-		if (path.find('?') != std::string::npos) { // optional query part after the first question mark
-			query = path.substr(path.find('?') + 1);
+		if (uri.find('?') != std::string::npos) { // optional query part after the first question mark
+			query = uri.substr(uri.find('?') + 1);
 		}
-		pure_path = path.substr(0, path.find('?'));
-		if (pure_path[0] != '/') {
+		path = uri.substr(0, uri.find('?'));
+		if (path[0] != '/') {
 			return false;
 		}
 		int found = 0;
 		for (std::map<std::string, std::vector<std::string> >::const_iterator it = request.getHeaders().begin(); it != request.getHeaders().end(); ++it) {
-			if (it->first == "Host") {
+			if (it->first == "host") {
 				if (found == 1) {
 					return false;
 				}
@@ -128,7 +129,7 @@ namespace http {
 		}
 		http::PathData& pathData = request.getPathData();
 		pathData.query = query;
-		pathData.pure_path = pure_path;
+		pathData.path = path;
 		pathData.authority = authority;
 		pathData.scheme = "";
 		return true;
@@ -138,17 +139,22 @@ namespace http {
 	 * @brief find request target form, check it and reconstruct it (RFC 9112 3.2)
 	 * @details has to be either "Origin-form" or "Absolute-form" (others only with unsupported methods)
 	 * @param request
+	 * @todo move all this to RequestParser.cpp
 	 */
-	bool RequestProccesor::checkAndReconstructTargetUri(Request& request) {
+	bool RequestProcessor::checkAndReconstructTargetUri(Request& request) {
+		if (request.getUriRaw().length() == 0) {
+			request.setStatusCode(NOT_FOUND);
+			return false;
+		}
 		if (request.getUriRaw()[0] == '/') {
 			if (!parseOriginForm(request.getUriRaw(), request)) {
-				m_res->setStatusCode(BAD_REQUEST);
+				request.setStatusCode(BAD_REQUEST);
 				return false;
 			}
 
 		} else {
 			if (!parseAbsoluteForm(request.getUriRaw(), request)) {
-				m_res->setStatusCode(BAD_REQUEST);
+				request.setStatusCode(BAD_REQUEST);
 				return false;
 			}
 		}
@@ -162,21 +168,10 @@ namespace http {
 	 * - Uri is valid, in the correct form and gets reconstructed
 	 * - Version is HTTP/1.1
 	 * @param request The request to check
+	 * @todo move all of this to RequestParser.cpp
 	 */
-	bool RequestProccesor::checkRequestData(Request& request) {
-		if (request.getMethod() != GET && request.getMethod() != POST && request.getMethod() != DELETE) {
-			m_res->setStatusCode(NOT_IMPLEMENTED);
-			return false;
-		}
-		if (request.getUriRaw().length() > 8192) {
-			m_res->setStatusCode(URI_TOO_LONG);
-			return false;
-		}
+	bool RequestProcessor::checkRequestData(Request& request) {
 		if (!checkAndReconstructTargetUri(request)) {
-			return false;
-		}
-		if (request.getVersion() != "HTTP/1.1") {
-			m_res->setStatusCode(HTTP_VERSION_NOT_SUPPORTED);
 			return false;
 		}
 		// (RFC 9112 3.2)
@@ -189,7 +184,7 @@ namespace http {
 		return true;
 	}
 
-	int RequestProccesor::testParseURI(const std::string& uri, int mode) {
+	int RequestProcessor::testParseURI(const std::string& uri, int mode) {
 		std::cout << "-----------------------------------" << std::endl;
 		Request req;
 		if (mode == 0) {
@@ -215,7 +210,7 @@ namespace http {
 		const http::PathData& pathData = req.getPathData();
 		std::cout << "Scheme: " << pathData.scheme << std::endl;
 		std::cout << "Authority: " << pathData.authority << std::endl;
-		std::cout << "Pure path: " << pathData.pure_path << std::endl;
+		std::cout << "Pure path: " << pathData.path << std::endl;
 		std::cout << "Query: " << pathData.query << std::endl;
 		std::cout << "-----------------------------------" << std::endl;
 		return 0;
@@ -239,11 +234,14 @@ namespace http {
 		return 0;
 	}
 
-	int RequestProccesor::findLocation(const std::string& uri, const std::vector<config::Location>& locations, config::Location& location) {
+	int RequestProcessor::findLocation(const std::string& uri, const std::vector<config::Location>& locations, config::Location& location) {
 		std::vector<std::string> file;
 		std::vector<std::string> result;
 		std::string path = "";
 		// Split into file and path if file is present
+		if (uri.length() == 0) {
+			return 1;
+		}
 		if (uri[uri.size() - 1] != '/') {
 			int last = uri.find_last_of('/');
 			file.push_back(uri.substr(last + 1));
@@ -306,7 +304,7 @@ namespace http {
 	 * @param detailed toggles between detailed and simple output. (0 for simple, 1
 	 * for detailed)
 	 */
-	void RequestProccesor::printLocation(const config::Location& location, int detailed) {
+	void RequestProcessor::printLocation(const config::Location& location, int detailed) {
 		std::cout << "--------------------------" << std::endl;
 		std::cout << "Location: ";
 		for (std::vector<std::string>::const_iterator it = location.path.begin();

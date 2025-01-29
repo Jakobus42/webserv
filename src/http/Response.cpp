@@ -22,7 +22,7 @@ namespace http {
 	Response::~Response() {
 	}
 
-	inline std::string Response::getDateString() {
+	std::string Response::getDateString() {
 		char buffer[64] = "";
 		std::time_t now = std::time(NULL);
 		std::tm* gmtTime = std::gmtime(&now);

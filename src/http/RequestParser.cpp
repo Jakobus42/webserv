@@ -27,9 +27,11 @@ namespace http {
 		} catch (const http::exception& e) {
 			m_req.setStatusCode(e.getCode());
 			this->setState(ERROR);
+			m_req.setError();
 		} catch (const std::exception& e) {
 			m_req.setStatusCode(INTERNAL_SERVER_ERROR);
 			this->setState(ERROR);
+			m_req.setError();
 		}
 	}
 

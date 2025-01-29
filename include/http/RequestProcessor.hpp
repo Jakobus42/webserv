@@ -12,13 +12,13 @@
 namespace http {
 
 	/**
-	 * @class RequestProccesor
+	 * @class RequestProcessor
 	 * @brief ...
 	 */
-	class RequestProccesor : shared::NonCopyable {
+	class RequestProcessor : shared::NonCopyable {
 		public:
-			RequestProccesor(std::vector<config::Location> locations);
-			~RequestProccesor();
+			RequestProcessor(std::vector<config::Location> locations);
+			~RequestProcessor();
 
 			Response* process(Request& req);
 
