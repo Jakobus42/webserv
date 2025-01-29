@@ -63,6 +63,9 @@ namespace http {
 		if (size > MAX_URI_LENGTH) {
 			throw http::exception(URI_TOO_LONG, "URI too large");
 		}
+		if (size == 0) {
+			throw http::exception(NOT_FOUND, "URI is empty");
+		}
 		m_req.setUriRaw(line, size);
 		this->parseUri();
 		line += size + 1;
@@ -79,18 +82,25 @@ namespace http {
 	}
 
 	void RequestParser::parseUri() {
-		Uri& uri = m_req.getUri();
 		const std::string& uriRaw = m_req.getUriRaw();
 		const std::size_t questionMarks = std::count(uriRaw.begin(), uriRaw.end(), '?');
 		const std::size_t spaces = std::count(uriRaw.begin(), uriRaw.end(), ' ');
-
-		std::size_t pathBeginIndex = 0;
-		std::size_t queryBeginIndex = uriRaw.find_first_of("#?");
 
 		if (questionMarks > 1 || spaces > 0) {
 			m_req.setStatusCode(BAD_REQUEST);
 			throw http::exception(BAD_REQUEST, "malformed request line: unexpected ' ' or '?'");
 		}
+
+		std::size_t pathBeginIndex = 0;
+		std::size_t queryBeginIndex = uriRaw.find_first_of("#?");
+		Uri& uri = m_req.getUri();
+
+		if (uriRaw.at(0) == '/') {
+			// parse origin form
+		} else {
+			// parse absolute form
+		}
+
 		if (uriRaw.find("/cgi-bin/") == 0) {
 			m_req.setType(CGI);
 			pathBeginIndex = uriRaw.find_first_of("/#?", 9);

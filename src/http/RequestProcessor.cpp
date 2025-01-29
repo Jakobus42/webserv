@@ -1,8 +1,9 @@
+#include "http/RequestProcessor.hpp"
+
 #include "http/DeleteHandler.hpp"
 #include "http/ErrorHandler.hpp"
 #include "http/GetHandler.hpp"
 #include "http/PostHandler.hpp"
-#include "http/RequestProcessor.hpp"
 
 namespace http {
 
@@ -39,7 +40,7 @@ namespace http {
 			m_handlers[_ERROR]->handle(req, *m_res);
 			return this->releaseResponse();
 		}
-		if (checkRequestData(req) == false) {
+		if (checkAndReconstructTargetUri(req) == false) {
 			std::cout << "CheckRequestData failed; bruh moment" << std::endl;
 			req.setError();
 		}
@@ -142,10 +143,6 @@ namespace http {
 	 * @todo move all this to RequestParser.cpp
 	 */
 	bool RequestProcessor::checkAndReconstructTargetUri(Request& request) {
-		if (request.getUriRaw().length() == 0) {
-			request.setStatusCode(NOT_FOUND);
-			return false;
-		}
 		if (request.getUriRaw()[0] == '/') {
 			if (!parseOriginForm(request.getUriRaw(), request)) {
 				request.setStatusCode(BAD_REQUEST);
@@ -157,22 +154,6 @@ namespace http {
 				request.setStatusCode(BAD_REQUEST);
 				return false;
 			}
-		}
-		return true;
-	}
-
-	/**
-	 * @brief Check if the request data is valid, and set the status code accordingly
-	 * @details Stuff being checked:
-	 * - Method is GET, POST or DELETE
-	 * - Uri is valid, in the correct form and gets reconstructed
-	 * - Version is HTTP/1.1
-	 * @param request The request to check
-	 * @todo move all of this to RequestParser.cpp
-	 */
-	bool RequestProcessor::checkRequestData(Request& request) {
-		if (!checkAndReconstructTargetUri(request)) {
-			return false;
 		}
 		// (RFC 9112 3.2)
 		/* 		if (request.getRequestData().headers.find("Host") == request.getRequestData().headers.end()
