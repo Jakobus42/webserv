@@ -8,6 +8,6 @@ var dir_c0632c2c4769486d54d1bae76e6a432e =
     [ "PostHandler.hpp", "PostHandler_8hpp.html", "PostHandler_8hpp" ],
     [ "Request.hpp", "Request_8hpp.html", "Request_8hpp" ],
     [ "RequestParser.hpp", "RequestParser_8hpp.html", "RequestParser_8hpp" ],
-    [ "RequestProccesor.hpp", "RequestProccesor_8hpp.html", "RequestProccesor_8hpp" ],
+    [ "RequestProcessor.hpp", "RequestProcessor_8hpp.html", "RequestProcessor_8hpp" ],
     [ "Response.hpp", "Response_8hpp.html", "Response_8hpp" ]
 ];

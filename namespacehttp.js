@@ -9,7 +9,7 @@ var namespacehttp =
     [ "PostHandler", "classhttp_1_1PostHandler.html", "classhttp_1_1PostHandler" ],
     [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
     [ "RequestParser", "classhttp_1_1RequestParser.html", "classhttp_1_1RequestParser" ],
-    [ "RequestProccesor", "classhttp_1_1RequestProccesor.html", "classhttp_1_1RequestProccesor" ],
+    [ "RequestProcessor", "classhttp_1_1RequestProcessor.html", "classhttp_1_1RequestProcessor" ],
     [ "Response", "classhttp_1_1Response.html", "classhttp_1_1Response" ],
     [ "Uri", "structhttp_1_1Uri.html", "structhttp_1_1Uri" ],
     [ "VirtualServer", "classhttp_1_1VirtualServer.html", "classhttp_1_1VirtualServer" ],

@@ -19,7 +19,7 @@ var hierarchy =
       ] ],
       [ "http::Request", "classhttp_1_1Request.html", null ],
       [ "http::RequestParser", "classhttp_1_1RequestParser.html", null ],
-      [ "http::RequestProccesor", "classhttp_1_1RequestProccesor.html", null ],
+      [ "http::RequestProcessor", "classhttp_1_1RequestProcessor.html", null ],
       [ "http::Response", "classhttp_1_1Response.html", null ],
       [ "shared::Buffer< Capacity >", "classshared_1_1Buffer.html", null ],
       [ "shared::Logger", "classshared_1_1Logger.html", null ]

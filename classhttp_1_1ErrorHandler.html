@@ -206,39 +206,35 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ErrorHandler_8cpp_source.html#l00018">18</a> of file <a class="el" href="ErrorHandler_8cpp_source.html">ErrorHandler.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   18</span>                                                                        {</div>
-<div class="line"><span class="lineno">   19</span>        response.setStatusCode(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aac28ecf126a5f02c8a8e5c6aede2532c">IM_A_TEAPOT</a>);</div>
-<div class="line"><span class="lineno">   20</span>        response.setBody(<a class="code hl_function" href="namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d">getErrorPage</a>(request.getStatusCode()));</div>
-<div class="line"><span class="lineno">   21</span>        response.setHeader(<span class="stringliteral">&quot;Content-Length&quot;</span>, <a class="code hl_function" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a>(response.getBody().length()));</div>
-<div class="line"><span class="lineno">   22</span>        response.setHeader(<span class="stringliteral">&quot;Content-Type&quot;</span>, <a class="code hl_variable" href="namespacehttp.html#a9a0c25913622339c10b4fa85074d2fb9">TEXT_HTML</a>);</div>
-<div class="line"><span class="lineno">   23</span>    }</div>
+<div class="line"><span class="lineno">   19</span>        response.setBody(<a class="code hl_function" href="namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d">getErrorPage</a>(request.getStatusCode()));</div>
+<div class="line"><span class="lineno">   20</span>        response.setHeader(<span class="stringliteral">&quot;Content-Length&quot;</span>, <a class="code hl_function" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a>(response.getBody().length()));</div>
+<div class="line"><span class="lineno">   21</span>        response.setHeader(<span class="stringliteral">&quot;Content-Type&quot;</span>, <a class="code hl_variable" href="namespacehttp.html#a9a0c25913622339c10b4fa85074d2fb9">TEXT_HTML</a>);</div>
+<div class="line"><span class="lineno">   22</span>    }</div>
 <div class="ttc" id="anamespacehttp_html_a2f88c738f00d5d4d10444e4d3bfd251d"><div class="ttname"><a href="namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d">http::getErrorPage</a></div><div class="ttdeci">std::string getErrorPage(StatusCode statusCode)</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00080">http.cpp:80</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a9a0c25913622339c10b4fa85074d2fb9"><div class="ttname"><a href="namespacehttp.html#a9a0c25913622339c10b4fa85074d2fb9">http::TEXT_HTML</a></div><div class="ttdeci">const std::string TEXT_HTML</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00019">http.hpp:19</a></div></div>
-<div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762aac28ecf126a5f02c8a8e5c6aede2532c"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aac28ecf126a5f02c8a8e5c6aede2532c">http::IM_A_TEAPOT</a></div><div class="ttdeci">@ IM_A_TEAPOT</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00051">http.hpp:51</a></div></div>
 <div class="ttc" id="anamespaceshared_1_1string_html_ae2138ded029ed6312cd2d6505efb8f75"><div class="ttname"><a href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a></div><div class="ttdeci">std::string fromNum(int32_t number)</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8cpp_source.html#l00151">stringUtils.cpp:151</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1ErrorHandler_ab9ae26c3ebbde48a06b76cac100dd55b_cgraph.png" border="0" usemap="#aclasshttp_1_1ErrorHandler_ab9ae26c3ebbde48a06b76cac100dd55b_cgraph" alt=""/></div>
 <map name="aclasshttp_1_1ErrorHandler_ab9ae26c3ebbde48a06b76cac100dd55b_cgraph" id="aclasshttp_1_1ErrorHandler_ab9ae26c3ebbde48a06b76cac100dd55b_cgraph">
-<area shape="rect" title=" " alt="" coords="5,146,144,186"/>
-<area shape="rect" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75" title=" " alt="" coords="212,5,393,31"/>
-<area shape="poly" title=" " alt="" coords="87,144,129,91,158,63,191,40,204,33,206,38,193,44,161,67,133,95,91,147"/>
-<area shape="rect" href="classhttp_1_1Response.html#a4ade0256d440a548f4dfd7f4bc08ffb4" title=" " alt="" coords="212,55,393,80"/>
-<area shape="poly" title=" " alt="" coords="100,144,141,115,191,89,212,81,214,86,193,94,144,120,103,148"/>
-<area shape="rect" href="namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d" title=" " alt="" coords="233,104,372,129"/>
-<area shape="poly" title=" " alt="" coords="144,148,230,130,231,135,145,154"/>
-<area shape="rect" href="classhttp_1_1Request.html#afcc854dfd95d0b508b47712427e7f009" title=" " alt="" coords="197,153,409,179"/>
-<area shape="poly" title=" " alt="" coords="144,163,183,163,183,169,144,169"/>
-<area shape="rect" href="classhttp_1_1Response.html#ac79941baf008165ba0c70903246d2374" title=" " alt="" coords="213,203,393,228"/>
-<area shape="poly" title=" " alt="" coords="145,178,231,197,230,202,144,184"/>
-<area shape="rect" href="classhttp_1_1Response.html#ab52959eaac18026a4f1c4ce3006731ea" title=" " alt="" coords="205,252,400,277"/>
-<area shape="poly" title=" " alt="" coords="104,184,145,212,193,237,218,246,216,251,191,242,142,216,101,188"/>
-<area shape="rect" href="classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8" title=" " alt="" coords="192,301,413,327"/>
-<area shape="poly" title=" " alt="" coords="92,185,133,236,161,264,193,286,210,294,207,299,191,291,158,268,129,240,87,188"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="468,5,631,31"/>
-<area shape="poly" title=" " alt="" coords="393,15,454,15,454,21,393,21"/>
-<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="461,104,637,129"/>
-<area shape="poly" title=" " alt="" coords="373,114,448,114,448,119,373,119"/>
+<area shape="rect" title=" " alt="" coords="5,122,144,162"/>
+<area shape="rect" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75" title=" " alt="" coords="207,5,389,31"/>
+<area shape="poly" title=" " alt="" coords="92,120,134,79,161,58,191,40,207,33,209,38,193,44,164,62,137,83,95,124"/>
+<area shape="rect" href="classhttp_1_1Response.html#a4ade0256d440a548f4dfd7f4bc08ffb4" title=" " alt="" coords="207,55,389,80"/>
+<area shape="poly" title=" " alt="" coords="116,119,191,89,218,81,220,86,193,94,118,124"/>
+<area shape="rect" href="namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d" title=" " alt="" coords="229,104,367,129"/>
+<area shape="poly" title=" " alt="" coords="144,132,215,123,215,129,144,137"/>
+<area shape="rect" href="classhttp_1_1Request.html#afcc854dfd95d0b508b47712427e7f009" title=" " alt="" coords="192,153,404,179"/>
+<area shape="poly" title=" " alt="" coords="144,147,179,151,178,156,144,152"/>
+<area shape="rect" href="classhttp_1_1Response.html#ac79941baf008165ba0c70903246d2374" title=" " alt="" coords="208,203,388,228"/>
+<area shape="poly" title=" " alt="" coords="121,160,193,187,225,197,223,202,191,193,119,165"/>
+<area shape="rect" href="classhttp_1_1Response.html#ab52959eaac18026a4f1c4ce3006731ea" title=" " alt="" coords="201,252,395,277"/>
+<area shape="poly" title=" " alt="" coords="96,160,138,200,165,220,193,237,213,245,211,250,191,242,162,224,135,204,93,164"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="459,5,621,31"/>
+<area shape="poly" title=" " alt="" coords="389,15,445,15,445,21,389,21"/>
+<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="452,104,628,129"/>
+<area shape="poly" title=" " alt="" coords="368,114,438,114,438,119,368,119"/>
 </map>
 </div>
 

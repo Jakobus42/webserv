@@ -106,9 +106,9 @@ var NAVTREEINDEX =
 [
 "AHandler_8hpp.html",
 "classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35",
-"classhttp_1_1RequestProccesor.html#a6a631b19cf1f41fc6f286eae86930156",
-"functions_p.html",
-"structconfig_1_1s__config__data.html#aab30d42ac2d8d05f046afe671ed9a96c"
+"classhttp_1_1RequestProcessor.html#a7a5397bca8feea8fbf93060bd0ec8334",
+"functions_r.html",
+"structconfig_1_1s__server.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

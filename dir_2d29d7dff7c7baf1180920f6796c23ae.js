@@ -7,6 +7,6 @@ var dir_2d29d7dff7c7baf1180920f6796c23ae =
     [ "PostHandler.cpp", "PostHandler_8cpp.html", null ],
     [ "Request.cpp", "Request_8cpp.html", null ],
     [ "RequestParser.cpp", "RequestParser_8cpp.html", null ],
-    [ "RequestProccesor.cpp", "RequestProccesor_8cpp.html", "RequestProccesor_8cpp" ],
+    [ "RequestProcessor.cpp", "RequestProcessor_8cpp.html", "RequestProcessor_8cpp" ],
     [ "Response.cpp", "Response_8cpp.html", null ]
 ];
