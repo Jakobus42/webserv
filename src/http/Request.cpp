@@ -71,7 +71,7 @@ namespace http {
 
 	Method Request::getMethod() const { return m_method; }
 
-	Uri& Request::getUri() { return m_uri; }
+	UriOld& Request::getUri() { return m_uri; }
 
 	std::string& Request::getUriRaw() { return m_uriRaw; }
 
@@ -114,7 +114,7 @@ namespace http {
 
 	void Request::setStatusCode(StatusCode statusCode) { m_statusCode = statusCode; }
 
-	PathData& Request::getPathData() { return m_pathData; };
+	Uri& Request::getPathData() { return m_pathData; };
 
 	void Request::validateUriRaw(const char* uri, std::size_t len) {
 		if (len == 0 || uri == NULL) {

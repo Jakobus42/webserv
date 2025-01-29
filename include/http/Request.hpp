@@ -9,7 +9,7 @@
 
 namespace http {
 
-	struct Uri {
+	struct UriOld {
 			std::string scheme;						  // probably unused
 			std::string authority;					  // probably unused
 			std::string path;						  // also used as cgi binary name
@@ -22,17 +22,19 @@ namespace http {
 		CGI
 	};
 
-	struct PathData {
+	struct Uri {
 			std::string scheme;
 			std::string authority;
 			std::string path;
 			std::string query;
+			std::string cgiPathInfo;
 
-			PathData()
+			Uri()
 				: scheme()
 				, authority()
 				, path()
-				, query() {}
+				, query()
+				, cgiPathInfo() {}
 	};
 
 	/**
@@ -47,7 +49,7 @@ namespace http {
 			std::string toString() const;
 			RequestType getType() const;
 			Method getMethod() const;
-			Uri& getUri();
+			UriOld& getUri();
 			std::string& getUriRaw();
 			const std::string& getUriRaw() const;
 			const std::string& getVersion() const;
@@ -55,7 +57,7 @@ namespace http {
 			const std::map<std::string, std::vector<std::string> >& getHeaders() const;
 			const std::vector<std::string>& getHeader(const std::string& key) const;
 			StatusCode getStatusCode() const;
-			PathData& getPathData();
+			Uri& getPathData();
 			bool hasError() const;
 			// t_requestData getRequestData() const;
 
@@ -81,7 +83,7 @@ namespace http {
 		private:
 			RequestType m_type;
 			Method m_method;
-			Uri m_uri;
+			UriOld m_uri;
 			std::string m_uriRaw;
 			std::string m_version;
 
@@ -90,7 +92,7 @@ namespace http {
 			std::string m_body;
 
 			http::StatusCode m_statusCode;
-			PathData m_pathData;
+			Uri m_pathData;
 	};
 
 } /* namespace http */

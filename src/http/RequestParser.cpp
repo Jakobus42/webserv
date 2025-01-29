@@ -65,7 +65,14 @@ namespace http {
 			throw http::exception(NOT_FOUND, "URI is empty");
 		}
 		m_req.setUriRaw(line, size);
-		this->parseUri();
+
+		// parse the URI
+		if (m_req.getUriRaw()[0] == '/') {
+			parseUriOriginForm();
+		} else {
+			parseUriAbsoluteForm();
+		}
+
 		line += size + 1;
 
 		size = std::strcspn(line, WHITESPACE);
@@ -91,13 +98,7 @@ namespace http {
 
 		std::size_t pathBeginIndex = 0;
 		std::size_t queryBeginIndex = uriRaw.find_first_of("#?");
-		Uri& uri = m_req.getUri();
-
-		if (uriRaw.at(0) == '/') {
-			// parse origin form
-		} else {
-			// parse absolute form
-		}
+		UriOld& uri = m_req.getUri();
 
 		if (uriRaw.find("/cgi-bin/") == 0) {
 			m_req.setType(CGI);
@@ -110,7 +111,6 @@ namespace http {
 		uri.path = decodePercentEncodedString(uri.path);
 		std::cout << "Parsed path: " << uri.path << std::endl;
 		std::cout << "CGI Path info: " << uri.cgiPathInfo << std::endl;
-		parseQueryButBetter();
 		std::cout << "Parsed query string: " << uri.query.size() << " found:" << std::endl;
 		for (std::map<std::string, std::string>::iterator it = uri.query.begin(); it != uri.query.end(); ++it) {
 			std::cout << it->first << ": " << it->second << std::endl;
@@ -134,15 +134,12 @@ namespace http {
 		for (std::string::size_type i = 0; i < encoded.length(); ++i) {
 			if (encoded[i] == '%' && i + 2 < encoded.length()) {
 				try {
-					// Decode the next two characters as hex
 					decoded += decodeCharacterFromPercentEncoding(encoded.substr(i + 1, 2));
 					i += 2; // Skip over the percent and the two hex characters
 				} catch (const std::invalid_argument&) {
-					// If invalid, treat the % as a literal
 					decoded += '%';
 				}
 			} else {
-				// Copy regular characters directly
 				decoded += encoded[i];
 			}
 		}
@@ -150,22 +147,39 @@ namespace http {
 		return decoded;
 	}
 
-	void RequestParser::parseOriginForm() {
+	void RequestParser::parseUriOriginForm() {
 		std::map<std::string, std::vector<std::string> >::const_iterator hostHeader = m_req.getHeaders().find("host");
 		const std::string& uri = m_req.getUriRaw();
 		if (hostHeader == m_req.getHeaders().end() || hostHeader->second.size() != 1) {
 			throw http::exception(BAD_REQUEST, "Host header not present (or invalid) for origin form URI");
 		}
 
-		http::PathData& pathData = m_req.getPathData();
+		http::Uri& pathData = m_req.getPathData();
 		if (uri.find('?') < uri.find('#')) { // optional query part after the first question mark
 			pathData.query = uri.substr(uri.find('?') + 1);
 		} else {
 			pathData.query = "";
 		}
 		pathData.path = uri.substr(0, uri.find_first_of("?#"));
-		pathData.authority = hostHeader->second[0];
 		pathData.scheme = "";
+		pathData.authority = hostHeader->second[0];
+		parsePath();
+	}
+
+	// parse CGI if the path starts with /cgi-bin/
+	void RequestParser::parsePath() {
+		Uri& pathData = m_req.getPathData();
+		if (pathData.path.find("/cgi-bin/") == 0) {
+			m_req.setType(CGI);
+			pathData.cgiPathInfo = pathData.path.substr(pathData.path.find_first_of("/#?", 9));
+			pathData.path = pathData.path.substr(0, pathData.path.find_first_of("/#?", 9));
+			// TODO: should never receive # or ? but idk bro
+			// I'm just a silly little guy, writing my silly little code
+		} else {
+			pathData.cgiPathInfo = ""; // should never be read in this case
+		}
+		// TODO: should we parse this at all?
+		// also, should we check if we accept the script here?
 	}
 
 	/**
@@ -174,11 +188,12 @@ namespace http {
 	 * absolute-URI = scheme ":" hier-part [ "?" query ]
 	 * @param path
 	 */
-	void RequestParser::parseAbsoluteForm() {
+	void RequestParser::parseUriAbsoluteForm() {
 		std::string scheme;
 		std::string authority;
 		std::string path;
-		http::PathData& pathData = m_req.getPathData();
+
+		http::Uri& pathData = m_req.getPathData();
 		const std::string& uri = m_req.getUriRaw();
 
 		if (uri.find(':') == std::string::npos) {
@@ -208,97 +223,8 @@ namespace http {
 		pathData.path = path.substr(path.find('/'));
 		pathData.scheme = scheme;
 		pathData.authority = authority;
+		parsePath();
 	}
-
-	/**
-	 * @brief find request target form, check it and reconstruct it (RFC 9112 3.2)
-	 * @details has to be either "Origin-form" or "Absolute-form" (others only with unsupported methods)
-	 * @param request
-	 * @todo move all this to RequestParser.cpp
-	 */
-	void RequestParser::parseQueryButBetter() {
-		if (m_req.getUriRaw()[0] == '/') {
-			parseOriginForm();
-		} else {
-			parseAbsoluteForm();
-		}
-		// (RFC 9112 3.2)
-		/* 		if (request.getRequestData().headers.find("Host") == request.getRequestData().headers.end()
-					|| request.getRequestData().headers.find("Host")->second.size() != 1) {
-					m_res->setStatusCode(BAD_REQUEST);
-					m_type = ERROR;
-					return;
-				} */
-	}
-
-	// parses query from a whole string
-	// look for '?', if found take the string afterwards and take from it key=value pairs
-	// separated by '&', put each in the map, if a duplicate key is found simply overwrite its value
-	// void RequestParser::parseQuery() {
-	// 	std::map<std::string, std::string>& queryParameters = m_req.getUri().query;
-	// 	const std::string& uriRaw = m_req.getUriRaw();
-	// 	std::size_t currentPos = uriRaw.find_first_of('?');
-	// 	std::size_t end = uriRaw.find_first_of('#');
-
-	// 	if (currentPos == std::string::npos) {
-	// 		return;
-	// 	}
-
-	// 	if (uriRaw[currentPos] == '?') {
-	// 		currentPos++;
-	// 	}
-
-	// 	// abc?a=b&cde=fgh&jk=l&mnop=qrst
-	// 	while (currentPos <= end) {
-	// 		std::string currentKey = "";
-	// 		std::string currentValue = "";
-
-	// 		std::size_t nextDelimiter = uriRaw.find_first_of('=', currentPos);
-	// 		currentKey = uriRaw.substr(currentPos, nextDelimiter - currentPos);
-	// 		std::size_t nextAmpersand = uriRaw.find_first_of('&', currentPos);
-	// 		if (nextAmpersand == std::string::npos && nextDelimiter == std::string::npos) {
-	// 			// fuck this
-	// 			break;
-	// 		}
-	// 		if (nextAmpersand <= nextDelimiter) {
-	// 			// no equal sign
-	// 			// ...&key&key&key=value
-	// 			// or ...&key&key&key
-	// 			// should advance to the next one
-	// 			currentPos = nextAmpersand + 1;
-	// 			continue;
-	// 		}
-
-	// 		if (nextDelimiter >= end) {
-	// 			// no equal sign, no value gets inserted
-	// 			// ...&key=value&key
-	// 			// or ...&key=value&key#fragment
-	// 			break;
-	// 		}
-	// 		currentPos = nextDelimiter + 1;
-	// 		if (currentPos >= end) {
-	// 			// no value but equal sign, empty value gets inserted
-	// 			// ...&key=value&key=
-	// 			// or ...&key=value&key=#fragment
-	// 			// this should just work
-	// 		}
-	// 		nextDelimiter = uriRaw.find_first_of('&', currentPos);
-	// 		if (nextDelimiter >= end) {
-	// 			// last parameter, delimited by a fragment
-	// 			// ..&key=value#fragment
-	// 			nextDelimiter = end;
-	// 		}
-	// 		currentValue = uriRaw.substr(currentPos, nextDelimiter - currentPos);
-	// 		if (!currentKey.empty() && queryParameters.find(currentKey) == queryParameters.end()) {
-	// 			queryParameters.insert(std::make_pair(currentKey, currentValue));
-	// 		}
-	// 		if (nextDelimiter == end) {
-	// 			// reached end, exit loop
-	// 			break;
-	// 		}
-	// 		currentPos = nextDelimiter + 1;
-	// 	}
-	// }
 
 	void RequestParser::parseHeaders() {
 		while (true) {
@@ -413,7 +339,6 @@ namespace http {
 				return;
 			}
 		}
-
 
 		if (m_state == BODY) {
 			this->setState(COMPLETE);
