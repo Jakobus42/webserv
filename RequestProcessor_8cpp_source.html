@@ -187,73 +187,72 @@ $(document).ready(function(){initNavTree('RequestProcessor_8cpp_source.html','')
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            }</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <span class="keywordflow">if</span> (!found) {</div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                <span class="keywordflow">if</span> (!deeper) {</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                }</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            }</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            deeper = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        }</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <a class="code hl_struct" href="structconfig_1_1Location.html">config::Location</a> temp2 = *temp;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="comment">// Set the file and root</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">if</span> (!file.empty()) {</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            temp2.<a class="code hl_variable" href="structconfig_1_1Location.html#a6642d1c720c4787ada56486eed59558d">index</a> = file;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        }</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="keywordflow">if</span> (temp2.<a class="code hl_variable" href="structconfig_1_1Location.html#a2b164ee5fe8776426e7ac1503cb6d94e">root</a> != <span class="stringliteral">&quot;&quot;</span>) {</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            <span class="keywordflow">while</span> (len &gt; 0) {</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                result.erase(result.begin());</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                len--;</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            }</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>            <span class="keywordflow">if</span> (temp2.<a class="code hl_variable" href="structconfig_1_1Location.html#a2b164ee5fe8776426e7ac1503cb6d94e">root</a>[temp2.<a class="code hl_variable" href="structconfig_1_1Location.html#a2b164ee5fe8776426e7ac1503cb6d94e">root</a>.size() - 1] != <span class="charliteral">&#39;/&#39;</span>) {</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                temp2.<a class="code hl_variable" href="structconfig_1_1Location.html#a2b164ee5fe8776426e7ac1503cb6d94e">root</a> += <span class="stringliteral">&quot;/&quot;</span>;</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>            }</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        }</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="keywordflow">for</span> (std::vector&lt;std::string&gt;::const_iterator it = result.begin(); it != result.end(); ++it) {</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>            temp2.<a class="code hl_variable" href="structconfig_1_1Location.html#a2b164ee5fe8776426e7ac1503cb6d94e">root</a> += *it + <span class="stringliteral">&quot;/&quot;</span>;</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        }</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        location = temp2;</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    }</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>                    temp = &amp;(*temp-&gt;<a class="code hl_variable" href="structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f">locations</a>.begin());</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                }</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            }</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>            deeper = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        }</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <a class="code hl_struct" href="structconfig_1_1Location.html">config::Location</a> temp2 = *temp;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="comment">// Set the file and root</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keywordflow">if</span> (!file.empty()) {</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            temp2.<a class="code hl_variable" href="structconfig_1_1Location.html#a6642d1c720c4787ada56486eed59558d">index</a> = file;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        }</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keywordflow">if</span> (temp2.<a class="code hl_variable" href="structconfig_1_1Location.html#a2b164ee5fe8776426e7ac1503cb6d94e">root</a> != <span class="stringliteral">&quot;&quot;</span>) {</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            <span class="keywordflow">while</span> (len &gt; 0) {</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                result.erase(result.begin());</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                len--;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            }</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            <span class="keywordflow">if</span> (temp2.<a class="code hl_variable" href="structconfig_1_1Location.html#a2b164ee5fe8776426e7ac1503cb6d94e">root</a>[temp2.<a class="code hl_variable" href="structconfig_1_1Location.html#a2b164ee5fe8776426e7ac1503cb6d94e">root</a>.size() - 1] != <span class="charliteral">&#39;/&#39;</span>) {</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>                temp2.<a class="code hl_variable" href="structconfig_1_1Location.html#a2b164ee5fe8776426e7ac1503cb6d94e">root</a> += <span class="stringliteral">&quot;/&quot;</span>;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            }</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        }</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="keywordflow">for</span> (std::vector&lt;std::string&gt;::const_iterator it = result.begin(); it != result.end(); ++it) {</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>            temp2.<a class="code hl_variable" href="structconfig_1_1Location.html#a2b164ee5fe8776426e7ac1503cb6d94e">root</a> += *it + <span class="stringliteral">&quot;/&quot;</span>;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        }</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        location = temp2;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    }</div>
 </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
-<div class="foldopen" id="foldopen00149" data-start="{" data-end="}">
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="classhttp_1_1RequestProcessor.html#ac50f4f1fa4ef21bf75cfc05c3f6e9914">  149</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classhttp_1_1RequestProcessor.html#ac50f4f1fa4ef21bf75cfc05c3f6e9914">RequestProcessor::printLocation</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structconfig_1_1Location.html">config::Location</a>&amp; location, <span class="keywordtype">int</span> detailed) {</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;--------------------------&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Location: &quot;</span>;</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keywordflow">for</span> (std::vector&lt;std::string&gt;::const_iterator it = location.<a class="code hl_variable" href="structconfig_1_1Location.html#aa442f3548fcb10d18046520882642d55">path</a>.begin();</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>             it != location.<a class="code hl_variable" href="structconfig_1_1Location.html#aa442f3548fcb10d18046520882642d55">path</a>.end();</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>             ++it) {</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            std::cout &lt;&lt; *it &lt;&lt; <span class="stringliteral">&quot;/&quot;</span>;</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        }</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        std::cout &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="keywordflow">if</span> (detailed) {</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>            <span class="keywordflow">if</span> (location.<a class="code hl_variable" href="structconfig_1_1Location.html#a2b164ee5fe8776426e7ac1503cb6d94e">root</a> != <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Root: &quot;</span> &lt;&lt; location.<a class="code hl_variable" href="structconfig_1_1Location.html#a2b164ee5fe8776426e7ac1503cb6d94e">root</a> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>            <span class="keywordflow">if</span> (location.<a class="code hl_variable" href="structconfig_1_1Location.html#a7dcc19d544f0c21f8e29657406ddd5bd">autoindex</a>)</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Autoindex: on&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Autoindex: off&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>            <span class="keywordflow">if</span> (location.<a class="code hl_variable" href="structconfig_1_1Location.html#a48c05fb093314f674c39b1e247861f1d">methods</a>.size() &gt; 0) {</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Methods: &quot;</span>;</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> k = 0; k &lt; location.<a class="code hl_variable" href="structconfig_1_1Location.html#a48c05fb093314f674c39b1e247861f1d">methods</a>.size();</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>                     k++) {</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                    std::cout &lt;&lt; location.<a class="code hl_variable" href="structconfig_1_1Location.html#a48c05fb093314f674c39b1e247861f1d">methods</a>[k] &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                }</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>                std::cout &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>            }</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>            <span class="keywordflow">if</span> (location.<a class="code hl_variable" href="structconfig_1_1Location.html#a6642d1c720c4787ada56486eed59558d">index</a>.size() &gt; 0) {</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Index: &quot;</span>;</div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> k = 0; k &lt; location.<a class="code hl_variable" href="structconfig_1_1Location.html#a6642d1c720c4787ada56486eed59558d">index</a>.size(); k++) {</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                    std::cout &lt;&lt; location.<a class="code hl_variable" href="structconfig_1_1Location.html#a6642d1c720c4787ada56486eed59558d">index</a>[k] &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                }</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                std::cout &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>            }</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        }</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;--------------------------&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    }</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="foldopen" id="foldopen00148" data-start="{" data-end="}">
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="classhttp_1_1RequestProcessor.html#ac50f4f1fa4ef21bf75cfc05c3f6e9914">  148</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classhttp_1_1RequestProcessor.html#ac50f4f1fa4ef21bf75cfc05c3f6e9914">RequestProcessor::printLocation</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structconfig_1_1Location.html">config::Location</a>&amp; location, <span class="keywordtype">int</span> detailed) {</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;--------------------------&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Location: &quot;</span>;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keywordflow">for</span> (std::vector&lt;std::string&gt;::const_iterator it = location.<a class="code hl_variable" href="structconfig_1_1Location.html#aa442f3548fcb10d18046520882642d55">path</a>.begin();</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>             it != location.<a class="code hl_variable" href="structconfig_1_1Location.html#aa442f3548fcb10d18046520882642d55">path</a>.end();</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>             ++it) {</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            std::cout &lt;&lt; *it &lt;&lt; <span class="stringliteral">&quot;/&quot;</span>;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        }</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        std::cout &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="keywordflow">if</span> (detailed) {</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            <span class="keywordflow">if</span> (location.<a class="code hl_variable" href="structconfig_1_1Location.html#a2b164ee5fe8776426e7ac1503cb6d94e">root</a> != <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Root: &quot;</span> &lt;&lt; location.<a class="code hl_variable" href="structconfig_1_1Location.html#a2b164ee5fe8776426e7ac1503cb6d94e">root</a> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>            <span class="keywordflow">if</span> (location.<a class="code hl_variable" href="structconfig_1_1Location.html#a7dcc19d544f0c21f8e29657406ddd5bd">autoindex</a>)</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Autoindex: on&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Autoindex: off&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>            <span class="keywordflow">if</span> (location.<a class="code hl_variable" href="structconfig_1_1Location.html#a48c05fb093314f674c39b1e247861f1d">methods</a>.size() &gt; 0) {</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Methods: &quot;</span>;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> k = 0; k &lt; location.<a class="code hl_variable" href="structconfig_1_1Location.html#a48c05fb093314f674c39b1e247861f1d">methods</a>.size();</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>                     k++) {</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>                    std::cout &lt;&lt; location.<a class="code hl_variable" href="structconfig_1_1Location.html#a48c05fb093314f674c39b1e247861f1d">methods</a>[k] &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                }</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                std::cout &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>            }</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>            <span class="keywordflow">if</span> (location.<a class="code hl_variable" href="structconfig_1_1Location.html#a6642d1c720c4787ada56486eed59558d">index</a>.size() &gt; 0) {</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Index: &quot;</span>;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> k = 0; k &lt; location.<a class="code hl_variable" href="structconfig_1_1Location.html#a6642d1c720c4787ada56486eed59558d">index</a>.size(); k++) {</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>                    std::cout &lt;&lt; location.<a class="code hl_variable" href="structconfig_1_1Location.html#a6642d1c720c4787ada56486eed59558d">index</a>[k] &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                }</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                std::cout &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>            }</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        }</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;--------------------------&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    }</div>
 </div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>} <span class="comment">/* namespace http */</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>} <span class="comment">/* namespace http */</span></div>
 <div class="ttc" id="aDeleteHandler_8hpp_html"><div class="ttname"><a href="DeleteHandler_8hpp.html">DeleteHandler.hpp</a></div></div>
 <div class="ttc" id="aErrorHandler_8hpp_html"><div class="ttname"><a href="ErrorHandler_8hpp.html">ErrorHandler.hpp</a></div></div>
 <div class="ttc" id="aGetHandler_8hpp_html"><div class="ttname"><a href="GetHandler_8hpp.html">GetHandler.hpp</a></div></div>
@@ -269,7 +268,7 @@ $(document).ready(function(){initNavTree('RequestProcessor_8cpp_source.html','')
 <div class="ttc" id="aclasshttp_1_1RequestProcessor_html_a7a5397bca8feea8fbf93060bd0ec8334"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#a7a5397bca8feea8fbf93060bd0ec8334">http::RequestProcessor::RequestProcessor</a></div><div class="ttdeci">RequestProcessor(std::vector&lt; config::Location &gt; locations)</div><div class="ttdoc">Constructs a new RequestProcessor object.</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8cpp_source.html#l00014">RequestProcessor.cpp:14</a></div></div>
 <div class="ttc" id="aclasshttp_1_1RequestProcessor_html_aa1305349363eb0d1e3d3c5e2ee0c82b8"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#aa1305349363eb0d1e3d3c5e2ee0c82b8">http::RequestProcessor::~RequestProcessor</a></div><div class="ttdeci">~RequestProcessor()</div><div class="ttdoc">Destroys the RequestProcessor object.</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8cpp_source.html#l00026">RequestProcessor.cpp:26</a></div></div>
 <div class="ttc" id="aclasshttp_1_1RequestProcessor_html_ac0b215c1ae55a39d30ad932cf44155d5"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#ac0b215c1ae55a39d30ad932cf44155d5">http::RequestProcessor::m_locations</a></div><div class="ttdeci">std::vector&lt; config::Location &gt; m_locations</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8hpp_source.html#l00037">RequestProcessor.hpp:37</a></div></div>
-<div class="ttc" id="aclasshttp_1_1RequestProcessor_html_ac50f4f1fa4ef21bf75cfc05c3f6e9914"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#ac50f4f1fa4ef21bf75cfc05c3f6e9914">http::RequestProcessor::printLocation</a></div><div class="ttdeci">void printLocation(const config::Location &amp;location, int detailed)</div><div class="ttdoc">prints a location.</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8cpp_source.html#l00149">RequestProcessor.cpp:149</a></div></div>
+<div class="ttc" id="aclasshttp_1_1RequestProcessor_html_ac50f4f1fa4ef21bf75cfc05c3f6e9914"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#ac50f4f1fa4ef21bf75cfc05c3f6e9914">http::RequestProcessor::printLocation</a></div><div class="ttdeci">void printLocation(const config::Location &amp;location, int detailed)</div><div class="ttdoc">prints a location.</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8cpp_source.html#l00148">RequestProcessor.cpp:148</a></div></div>
 <div class="ttc" id="aclasshttp_1_1RequestProcessor_html_ae06d06d606262ec6eece9a46b01a7e28"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#ae06d06d606262ec6eece9a46b01a7e28">http::RequestProcessor::m_handlers</a></div><div class="ttdeci">std::map&lt; Method, ARequestHandler * &gt; m_handlers</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8hpp_source.html#l00036">RequestProcessor.hpp:36</a></div></div>
 <div class="ttc" id="aclasshttp_1_1RequestProcessor_html_afa1fa3f55d0398a8a18ee79ca7668f1f"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#afa1fa3f55d0398a8a18ee79ca7668f1f">http::RequestProcessor::findLocation</a></div><div class="ttdeci">int findLocation(const std::string &amp;uri, const std::vector&lt; config::Location &gt; &amp;locations, config::Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8cpp_source.html#l00079">RequestProcessor.cpp:79</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Request_html"><div class="ttname"><a href="classhttp_1_1Request.html">http::Request</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00040">Request.hpp:40</a></div></div>
