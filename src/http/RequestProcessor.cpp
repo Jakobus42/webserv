@@ -1,7 +1,6 @@
 #include "http/RequestProcessor.hpp"
 
 #include "http/DeleteHandler.hpp"
-#include "http/ErrorHandler.hpp"
 #include "http/GetHandler.hpp"
 #include "http/PostHandler.hpp"
 
@@ -17,7 +16,6 @@ namespace http {
 		m_handlers.insert(std::make_pair(GET, new GetHandler(locations.at(0))));
 		m_handlers.insert(std::make_pair(POST, new PostHandler(locations.at(0))));
 		m_handlers.insert(std::make_pair(DELETE, new DeleteHandler(locations.at(0)))); // todo router or idk:c
-		m_handlers.insert(std::make_pair(_ERROR, new ErrorHandler(locations.at(0))));  // todo router or idk:c
 	}
 
 	/**
@@ -36,19 +34,15 @@ namespace http {
 		config::Location location;
 		m_res = new Response();
 
-		if (req.hasError()) {
-			m_handlers[_ERROR]->handle(req, *m_res);
-			return this->releaseResponse();
-		}																							   // TODO: make this not shitty
-		if (req.getMethod() < _ERROR && findLocation(req.getUri().path, m_locations, location) == 1) { // TODO: replace path with uri.path
+		if (!req.hasError() && findLocation(req.getUri().path, m_locations, location) == 1) { // TODO: replace path with uri.path
 			std::cout << "FindLocation failed; Location not found :(" << std::endl;
 			req.setStatusCode(NOT_FOUND);
 		}
 		if (req.hasError()) {
-			m_handlers[_ERROR]->handle(req, *m_res);
-			return this->releaseResponse();
-		} // TODO: make this not shitty
-		m_handlers[req.getMethod()]->handle(req, *m_res);
+			m_handlers[req.getMethod()]->handleError(req, *m_res);
+		} else {
+			m_handlers[req.getMethod()]->handle(req, *m_res);
+		}
 		return this->releaseResponse();
 	}
 
@@ -76,6 +70,13 @@ namespace http {
 		return 0;
 	}
 
+	// really, this function needs to:
+	// - figure out if the path is a file (should only be GET) or location
+	// - figure out if that location exists
+	// - if POSTing a file, if that location is writeable
+	// - if GETing or DELETEing a file, if that file exists and is accessible
+	// - treat server root (<serverLocation>/www/) as global root
+	// - block '../' escaping the global root directory
 	int RequestProcessor::findLocation(const std::string& uri, const std::vector<config::Location>& locations, config::Location& location) {
 		std::vector<std::string> file;
 		std::vector<std::string> result;
@@ -85,6 +86,7 @@ namespace http {
 			return 1;
 		}
 		if (uri[uri.size() - 1] != '/') {
+			// expect a file
 			int last = uri.find_last_of('/');
 			file.push_back(uri.substr(last + 1));
 			path = uri.substr(0, last + 1);

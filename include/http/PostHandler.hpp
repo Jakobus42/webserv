@@ -12,8 +12,9 @@ namespace http {
 		public:
 			PostHandler(const config::Location& locations);
 			~PostHandler();
+			std::string getFilePath(const std::string& path);
 
-			void handle(const Request& req, Response& res);
+			void handle(const Request& request, Response& response);
 	};
 
 } /* namespace http */

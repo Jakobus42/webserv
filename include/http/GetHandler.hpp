@@ -13,7 +13,7 @@ namespace http {
 			GetHandler(const config::Location& locations);
 			~GetHandler();
 
-			void handle(const Request& req, Response& res);
+			void handle(const Request& request, Response& response);
 
 		private:
 	};

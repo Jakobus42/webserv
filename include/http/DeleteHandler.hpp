@@ -13,7 +13,7 @@ namespace http {
 			DeleteHandler(const config::Location& locations);
 			~DeleteHandler();
 
-			void handle(const Request& req, Response& res);
+			void handle(const Request& request, Response& response);
 
 		private:
 	};

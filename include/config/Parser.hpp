@@ -15,17 +15,13 @@
 namespace config {
 
 	struct Location {
-			// location name
-			std::vector<std::string> path;
-			// return
-			std::string return_url;
-			// configurations
-			std::vector<std::string> methods;
+			std::vector<std::string> path;	  // location name
+			std::string return_url;			  // return
+			std::vector<std::string> methods; // configurations
 			bool autoindex;
 			std::string root;
 			std::vector<std::string> index;
-			// locations
-			std::vector<Location> locations;
+			std::vector<Location> locations; // locations
 
 			// default constructor
 			Location()

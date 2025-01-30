@@ -45,6 +45,8 @@ namespace http {
 			std::string toString() const;
 			RequestType getType() const;
 			Method getMethod() const;
+			Uri& getUri();
+			const Uri& getUri() const;
 			std::string& getUriRaw();
 			const std::string& getUriRaw() const;
 			const std::string& getVersion() const;
@@ -52,7 +54,6 @@ namespace http {
 			const std::map<std::string, std::vector<std::string> >& getHeaders() const;
 			const std::vector<std::string>& getHeader(const std::string& key) const;
 			StatusCode getStatusCode() const;
-			Uri& getUri();
 			bool hasError() const;
 			// t_requestData getRequestData() const;
 

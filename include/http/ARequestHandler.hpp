@@ -18,7 +18,13 @@ namespace http {
 
 			virtual ~ARequestHandler() {}
 
-			virtual void handle(const Request& req, Response& res) = 0;
+			virtual void handle(const Request& request, Response& response) = 0;
+
+			void handleError(const Request& request, Response& response) {
+				response.setBody(getErrorPage(request.getStatusCode()));
+				response.setHeader("Content-Length", shared::string::fromNum(response.getBody().length()));
+				response.setHeader("Content-Type", TEXT_HTML);
+			}
 
 		private:
 			config::Location m_locations;

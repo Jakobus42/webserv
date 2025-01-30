@@ -15,7 +15,21 @@ namespace http {
 	GetHandler::~GetHandler() {
 	}
 
-	void GetHandler::handle(const Request&, Response&) {
+	void GetHandler::handle(const Request& request, Response& response) {
+
+		// if (!canOpenFile)
+		if (false) {
+			response.setBody(getErrorPage(NOT_FOUND)); // or FORBIDDEN, or maybe something else...
+			return handleError(request, response);
+		} else {
+			std::ifstream inFile(request.getUri().path.c_str());
+			std::stringstream buffer;
+
+			buffer << inFile.rdbuf();
+			response.setBody(buffer.str());
+			response.setHeader("Content-Length", shared::string::to_string(buffer.str().length()));
+			response.setStatusCode(FOUND);
+		}
 	}
 
 } /* namespace http */

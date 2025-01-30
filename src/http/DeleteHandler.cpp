@@ -15,7 +15,9 @@ namespace http {
 	DeleteHandler::~DeleteHandler() {
 	}
 
-	void DeleteHandler::handle(const Request&, Response&) {
+	void DeleteHandler::handle(const Request& request, Response& response) {
+		(void)request;
+		(void)response;
 	}
 
 } /* namespace http */
