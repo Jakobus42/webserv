@@ -9,15 +9,28 @@
 
 namespace http {
 
-	struct Uri {
-			std::string path;						  // also used as cgi binary name
-			std::map<std::string, std::string> query; // also used for cgi parameters
-			std::string cgiPathInfo;
-	};
-
 	enum RequestType {
 		FETCH,
 		CGI
+	};
+
+	struct Uri {
+			std::string scheme;
+			std::string authority;
+			std::string path;
+			std::string query;
+			std::string cgiPathInfo;
+
+			Uri()
+				: scheme()
+				, authority()
+				, path()
+				, query()
+				, cgiPathInfo() {}
+
+			bool isAbsoluteForm() {
+				return path.length() > 0 ? path[0] != '/' : false;
+			}
 	};
 
 	/**
@@ -32,13 +45,16 @@ namespace http {
 			std::string toString() const;
 			RequestType getType() const;
 			Method getMethod() const;
-			Uri& getUri();
 			std::string& getUriRaw();
+			const std::string& getUriRaw() const;
 			const std::string& getVersion() const;
 			const std::string& getBody() const;
 			const std::map<std::string, std::vector<std::string> >& getHeaders() const;
 			const std::vector<std::string>& getHeader(const std::string& key) const;
 			StatusCode getStatusCode() const;
+			Uri& getUri();
+			bool hasError() const;
+			// t_requestData getRequestData() const;
 
 			void setType(RequestType type);
 			void setMethod(const char* method, std::size_t len);
@@ -46,11 +62,13 @@ namespace http {
 			void setVersion(const char* version, std::size_t len);
 			void setBody(const char* body, std::size_t len);
 			void setHeader(const char* key, std::size_t keyLen, const char* value, std::size_t valueLen);
-			void setStatusCode(StatusCode code);
+			void setStatusCode(StatusCode statusCode);
 
 			bool hasHeader(const std::string& key) const;
 
 			void appendToBody(const char* data, std::size_t len);
+
+			void printRequestData() const;
 
 		private:
 			void validateUriRaw(const char* uri, std::size_t len);
@@ -60,7 +78,6 @@ namespace http {
 		private:
 			RequestType m_type;
 			Method m_method;
-			Uri m_uri;
 			std::string m_uriRaw;
 			std::string m_version;
 
@@ -68,7 +85,8 @@ namespace http {
 
 			std::string m_body;
 
-			http::StatusCode m_code;
+			http::StatusCode m_statusCode;
+			Uri m_uri;
 	};
 
 } /* namespace http */

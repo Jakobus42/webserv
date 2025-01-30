@@ -11,13 +11,18 @@ server
 	client_max_body_size 10000000;
 
 	# Default server for unspecified routes
-	location / 
+
+	# Example of a route with multiple rules 
+	location /default
 	{
-		root /tmp/www;  # Default document root
-		index index.html index.htm;  # Default file for directories
+		# Accepted HTTP methods
+	    limit_except GET POST;
+	    # Directory configuration
+	    root /tmp/www;  # Base directory
+	    autoindex on;  # Enable directory listing
+	    index default.html;  # Default file in directory		
 	}
 
-	    # Example of a route with multiple rules
 	location /kapouet 
 	{
 	    # Accepted HTTP methods
@@ -27,18 +32,27 @@ server
 	    autoindex on;  # Enable directory listing
 	    index default.html;  # Default file in directory   
 	    # Executing CGI scripts for .php files
-	    location hi.php
+	    location /kapouet/hi
 		{
-			location /upload
+			root /123/234;  # Base directory
+	        #include fastcgi_params;
+	        #fastcgi_pass 127.0.0.1:9000;  # Assuming PHP-FPM is running
+	        #fastcgi_index index.php;
+			#fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+			location /kapouet/hi/hi2
 			{
+				root /123/234/345;
 			}
 	    }
 	    # Handle file uploads
-	    location /upload 
+	    location /kapouet/upload
 		{
+	        #client_max_body_size 20M;  # Allow larger uploads
+	        #try_files $uri =404;  # Check if the directory exists
 	        root /tmp/uploads;  # Where to save uploads
-			location /upload
+			location /kapouet/upload/hi
 			{
+
 			}
 	    }
 	}

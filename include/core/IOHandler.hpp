@@ -4,7 +4,7 @@
 #include "core/Dispatcher.hpp"
 #include "core/VirtualServer.hpp"
 #include "http/RequestParser.hpp"
-#include "http/RequestProccesor.hpp"
+#include "http/RequestProcessor.hpp"
 #include "http/Response.hpp"
 
 #include <queue>
@@ -31,7 +31,7 @@ namespace core {
 			http::VirtualServer& m_vServer;
 
 			http::RequestParser m_reqParser;
-			http::RequestProccesor m_reqProccesor;
+			http::RequestProcessor m_reqProcessor;
 
 			std::queue<http::Response*> m_responses; // todo que
 	};

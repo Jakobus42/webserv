@@ -2,13 +2,15 @@
 
 #include "shared/stringUtils.hpp"
 
+#include <ctime>
+
 namespace http {
 
 	/**
 	 * @brief Constructs a new Response object.
 	 */
 	Response::Response()
-		: m_code(OK)
+		: m_statusCode(OK)
 		, m_headers()
 		, m_body()
 		, m_data() {
@@ -20,13 +22,23 @@ namespace http {
 	Response::~Response() {
 	}
 
+	std::string Response::getDateString() {
+		char buffer[64] = "";
+		std::time_t now = std::time(NULL);
+		std::tm* gmtTime = std::gmtime(&now);
+		std::strftime(buffer, sizeof(buffer), "%a, %d %b %Y %H:%M:%S GMT", gmtTime);
+		return std::string(buffer);
+	}
+
 	void Response::serialize() {
 		m_data.reset();
 
 		std::string statusLine = HTTP_VERSION + " " +
-			shared::string::to_string(static_cast<int>(m_code)) + " " +
-			getStatusMessage(m_code) + CRLF;
+			shared::string::to_string(static_cast<int>(m_statusCode)) + " " +
+			getStatusMessage(m_statusCode) + CRLF;
 		m_data.append(statusLine.c_str(), statusLine.length());
+
+		setHeader("Date", getDateString());
 
 		std::map<std::string, std::vector<std::string> >::iterator it;
 		for (it = m_headers.begin(); it != m_headers.end(); ++it) {
@@ -44,13 +56,17 @@ namespace http {
 		m_data.append(m_body.c_str(), m_body.length());
 	}
 
-	void Response::setCode(StatusCode code) { m_code = code; }
+	void Response::setStatusCode(StatusCode statusCode) { m_statusCode = statusCode; }
 
 	void Response::setBody(const std::string& body) { m_body = body; }
 
 	void Response::setHeader(const std::string& key, const std::string& value) { m_headers[key].push_back(value); }
 
 	shared::Buffer<RESPONSE_BUFFER_SIZE>& Response::getData() { return m_data; }
+
+	StatusCode Response::getStatusCode() const { return m_statusCode; }
+
+	const std::string& Response::getBody() const { return m_body; }
 
 
 } /* namespace http */

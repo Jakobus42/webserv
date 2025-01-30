@@ -90,22 +90,45 @@ namespace config {
 					  << std::endl;
 			return 1;
 		}
-		t_location new_location;
+		Location new_location;
 		// set default values
 		new_location.autoindex = false;
 		new_location.root = "";
-		new_location.name = args[1];
+		if (shared::string::splitPath(args[1], new_location.path) == 1) {
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "Invalid location path"
+					  << std::endl;
+			return 1;
+		}
 		new_location.return_url = "";
 		new_location.index.push_back("index.html");
 		if (layer == 1) {
 			m_configData.servers.back().locations.push_back(new_location);
 			return 0;
 		}
-		t_location* temp = &m_configData.servers.back().locations.back();
+		Location* temp = &m_configData.servers.back().locations.back();
 		for (int i = 2; i < layer; i++) {
 			temp = &temp->locations.back();
 		}
 		temp->locations.push_back(new_location);
+		if (layer > 1) {
+			unsigned long paths = 0;
+			if (temp->path.size() >= new_location.path.size()) {
+				std::cout << "Configuration file (line " << lineCount << "): "
+						  << "Invalid location path, does not include previous location"
+						  << std::endl;
+				return 1;
+			}
+			while (paths < temp->path.size()) {
+				if (temp->path[paths] != new_location.path[paths]) {
+					std::cout << "Configuration file (line " << lineCount << "): "
+							  << "Invalid location path, does not include previous location"
+							  << std::endl;
+					return 1;
+				}
+				paths++;
+			}
+		}
 		return 0;
 	}
 
@@ -330,7 +353,7 @@ namespace config {
 					  << std::endl;
 			return 1;
 		}
-		t_location* current = getLocation(layer);
+		Location* current = getLocation(layer);
 		current->methods = allowed_methods;
 		return 0;
 	}
@@ -359,7 +382,7 @@ namespace config {
 			return 1;
 		}
 		// TODO: check if valid url?
-		t_location* current = getLocation(layer);
+		Location* current = getLocation(layer);
 		current->return_url = args[1];
 		return 0;
 	}
@@ -386,7 +409,7 @@ namespace config {
 			return 1;
 		}
 		// TODO: check if path is valid
-		t_location* current = getLocation(layer);
+		Location* current = getLocation(layer);
 		current->root = args[1];
 		return 0;
 	}
@@ -407,7 +430,7 @@ namespace config {
 					  << "Invalid number of arguments for autoindex" << std::endl;
 			return 1;
 		}
-		t_location* current = getLocation(layer);
+		Location* current = getLocation(layer);
 		if (args[1] == "on") {
 			current->autoindex = true;
 		} else if (args[1] == "off") {
@@ -438,7 +461,7 @@ namespace config {
 					  << "Invalid number of arguments for index" << std::endl;
 			return 1;
 		}
-		t_location* current = getLocation(layer);
+		Location* current = getLocation(layer);
 		current->index.clear();
 		for (unsigned long i = 1; i < args.size(); i++) {
 			if (args[i].length() > 1000 || args[i].length() == 0) {

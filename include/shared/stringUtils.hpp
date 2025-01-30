@@ -38,6 +38,8 @@ namespace shared {
 		}
 
 		bool isGreyspace(char c);
+		int splitPath(const std::string& path, std::vector<std::string>& result);
+		std::string fromNum(int32_t number);
 
 		template <typename T>
 		std::string to_string(const T& value) {

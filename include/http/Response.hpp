@@ -1,5 +1,6 @@
 #pragma once
 
+#include "config/Parser.hpp"
 #include "http/http.hpp"
 #include "shared/Buffer.hpp"
 #include "shared/NonCopyable.hpp"
@@ -21,15 +22,18 @@ namespace http {
 			~Response();
 
 			void serialize();
+			inline std::string getDateString();
 
-			void setCode(StatusCode code);
+			void setStatusCode(StatusCode statusCode);
 			void setBody(const std::string& body);
 			void setHeader(const std::string& key, const std::string& value);
 
 			shared::Buffer<RESPONSE_BUFFER_SIZE>& getData();
+			StatusCode getStatusCode() const;
+			const std::string& getBody() const;
 
 		private:
-			StatusCode m_code;
+			StatusCode m_statusCode;
 			std::map<std::string, std::vector<std::string> > m_headers;
 			std::string m_body;
 

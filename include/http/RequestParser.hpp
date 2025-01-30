@@ -28,7 +28,7 @@ namespace http {
 			bool hasError() const;
 			bool isPending() const;
 
-			const Request& getRequest();
+			Request& getRequest();
 
 		private:
 			enum ParseState {
@@ -55,15 +55,17 @@ namespace http {
 
 			void parse();
 			void parseRequestLine();
-			void parseUri();
-			void parseQuery();
+			// void parseUri();
+			void parsePath();
+			void parseUriOriginForm();
+			void parseUriAbsoluteForm();
 			void parseData();
 			void parseChunkSize();
 			void parseHeaders();
 
 			// char decodeCharacter(char*& sequence);
-			char decodeCharacterFromPercentEncoding(const std::string& hex);
-			std::string decodePercentEncodedString(const std::string& encoded);
+			// char decodeCharacterFromPercentEncoding(const std::string& hex);
+			// std::string decodePercentEncodedString(const std::string& encoded);
 			Token extractHeaderKey(char*& line);
 			Token extractHeaderValue(char*& line);
 			void interpretHeaders();

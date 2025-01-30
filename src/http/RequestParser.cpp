@@ -61,8 +61,18 @@ namespace http {
 		if (size > MAX_URI_LENGTH) {
 			throw http::exception(URI_TOO_LONG, "URI too large");
 		}
+		if (size == 0) {
+			throw http::exception(NOT_FOUND, "URI is empty");
+		}
 		m_req.setUriRaw(line, size);
-		this->parseUri();
+
+		// parse the URI
+		if (m_req.getUriRaw()[0] == '/') {
+			parseUriOriginForm();
+		} else {
+			parseUriAbsoluteForm();
+		}
+
 		line += size + 1;
 
 		size = std::strcspn(line, WHITESPACE);
@@ -76,137 +86,135 @@ namespace http {
 		m_state = HEADERS;
 	}
 
-	void RequestParser::parseUri() {
-		Uri& uri = m_req.getUri();
+	// void RequestParser::parseUri() {
+	// 	const std::string& uriRaw = m_req.getUriRaw();
+	// 	const std::size_t questionMarks = std::count(uriRaw.begin(), uriRaw.end(), '?');
+	// 	const std::size_t spaces = std::count(uriRaw.begin(), uriRaw.end(), ' ');
+
+	// 	if (questionMarks > 1 || spaces > 0) {
+	// 		m_req.setStatusCode(BAD_REQUEST);
+	// 		throw http::exception(BAD_REQUEST, "malformed request line: unexpected ' ' or '?'");
+	// 	}
+
+	// 	std::size_t pathBeginIndex = 0;
+	// 	std::size_t queryBeginIndex = uriRaw.find_first_of("#?");
+	// 	Uri& uri = m_req.getUri();
+
+	// 	if (uriRaw.find("/cgi-bin/") == 0) {
+	// 		m_req.setType(CGI);
+	// 		pathBeginIndex = uriRaw.find_first_of("/#?", 9);
+	// 		uri.path = uriRaw.substr(0, pathBeginIndex);
+	// 		uri.cgiPathInfo = decodePercentEncodedString(uriRaw.substr(pathBeginIndex, queryBeginIndex - pathBeginIndex));
+	// 	} else {
+	// 		uri.path = uriRaw.substr(pathBeginIndex, queryBeginIndex);
+	// 	}
+	// 	uri.path = decodePercentEncodedString(uri.path);
+	// 	std::cout << "Parsed path: " << uri.path << std::endl;
+	// 	std::cout << "CGI Path info: " << uri.cgiPathInfo << std::endl;
+	// }
+
+	// char RequestParser::decodeCharacterFromPercentEncoding(const std::string& hex) {
+	// 	if (hex.length() != 2) {
+	// 		throw std::invalid_argument("Invalid percent-encoded character length");
+	// 	}
+
+	// 	int value = shared::string::toNum<int>(hex, 16);
+
+	// 	return static_cast<char>(value);
+	// }
+
+	// std::string RequestParser::decodePercentEncodedString(const std::string& encoded) {
+	// 	std::string decoded;
+
+	// 	std::cout << "decoding " << encoded << std::endl;
+	// 	for (std::string::size_type i = 0; i < encoded.length(); ++i) {
+	// 		if (encoded[i] == '%' && i + 2 < encoded.length()) {
+	// 			try {
+	// 				decoded += decodeCharacterFromPercentEncoding(encoded.substr(i + 1, 2));
+	// 				i += 2; // Skip over the percent and the two hex characters
+	// 			} catch (const std::invalid_argument&) {
+	// 				decoded += '%';
+	// 			}
+	// 		} else {
+	// 			decoded += encoded[i];
+	// 		}
+	// 	}
+	// 	std::cout << "returning decoded: '" << decoded << "'" << std::endl;
+	// 	return decoded;
+	// }
+
+	void RequestParser::parseUriOriginForm() {
 		const std::string& uriRaw = m_req.getUriRaw();
-		const std::size_t questionMarks = std::count(uriRaw.begin(), uriRaw.end(), '?');
-		const std::size_t spaces = std::count(uriRaw.begin(), uriRaw.end(), ' ');
 
-		std::size_t pathBeginIndex = 0;
-		std::size_t queryBeginIndex = uriRaw.find_first_of("#?");
-
-		if (questionMarks > 1 || spaces > 0) {
-			m_req.setStatusCode(BAD_REQUEST);
-			throw http::exception(BAD_REQUEST, "malformed request line: unexpected ' ' or '?'");
-		}
-		if (uriRaw.find("/cgi-bin/") == 0) {
-			m_req.setType(CGI);
-			pathBeginIndex = uriRaw.find_first_of("/#?", 9);
-			uri.path = uriRaw.substr(0, pathBeginIndex);
-			uri.cgiPathInfo = decodePercentEncodedString(uriRaw.substr(pathBeginIndex, queryBeginIndex - pathBeginIndex));
+		http::Uri& uri = m_req.getUri();
+		if (uriRaw.find('?') < uriRaw.find('#')) { // optional query part after the first question mark
+			uri.query = uriRaw.substr(uriRaw.find('?') + 1);
 		} else {
-			uri.path = uriRaw.substr(pathBeginIndex, queryBeginIndex);
+			uri.query = "";
 		}
-		uri.path = decodePercentEncodedString(uri.path);
-		std::cout << "Parsed path: " << uri.path << std::endl;
-		std::cout << "CGI Path info: " << uri.cgiPathInfo << std::endl;
-		parseQuery();
-		std::cout << "Parsed query string: " << uri.query.size() << " found:" << std::endl;
-		for (std::map<std::string, std::string>::iterator it = uri.query.begin(); it != uri.query.end(); ++it) {
-			std::cout << it->first << ": " << it->second << std::endl;
-		}
+		uri.path = uriRaw.substr(0, uriRaw.find_first_of("?#"));
+		uri.scheme = "";
+		parsePath();
 	}
 
-	char RequestParser::decodeCharacterFromPercentEncoding(const std::string& hex) {
-		if (hex.length() != 2) {
-			throw std::invalid_argument("Invalid percent-encoded character length");
+	// parse CGI if the path starts with /cgi-bin/
+	void RequestParser::parsePath() {
+		Uri& uri = m_req.getUri();
+		if (uri.path.find("/cgi-bin/") == 0) {
+			m_req.setType(CGI);
+			uri.cgiPathInfo = uri.path.substr(uri.path.find_first_of("/#?", 9));
+			uri.path = uri.path.substr(0, uri.path.find_first_of("/#?", 9));
+			// TODO: should never receive # or ? but idk bro
+			// I'm just a silly little guy, writing my silly little code
+		} else {
+			uri.cgiPathInfo = ""; // should never be read in this case
 		}
-
-		int value = shared::string::toNum<int>(hex, 16);
-
-		return static_cast<char>(value);
+		// TODO: should we parse this at all?
+		// also, should we check if we accept the script here?
 	}
 
-	std::string RequestParser::decodePercentEncodedString(const std::string& encoded) {
-		std::string decoded;
+	/**
+	 * @brief Parses Absolute path and saves only the pure path in "m_truePath" src: (RFC 9112 3.2.2)
+	 * @details
+	 * absolute-URI = scheme ":" hier-part [ "?" query ]
+	 * @param path
+	 */
+	void RequestParser::parseUriAbsoluteForm() {
+		std::string scheme;
+		std::string authority;
+		std::string path;
 
-		std::cout << "decoding " << encoded << std::endl;
-		for (std::string::size_type i = 0; i < encoded.length(); ++i) {
-			if (encoded[i] == '%' && i + 2 < encoded.length()) {
-				try {
-					// Decode the next two characters as hex
-					decoded += decodeCharacterFromPercentEncoding(encoded.substr(i + 1, 2));
-					i += 2; // Skip over the percent and the two hex characters
-				} catch (const std::invalid_argument&) {
-					// If invalid, treat the % as a literal
-					decoded += '%';
-				}
-			} else {
-				// Copy regular characters directly
-				decoded += encoded[i];
-			}
-		}
-		std::cout << "returning decoded: '" << decoded << "'" << std::endl;
-		return decoded;
-	}
-
-	// parses query from a whole string
-	// look for '?', if found take the string afterwards and take from it key=value pairs
-	// separated by '&', put each in the map, if a duplicate key is found simply overwrite its value
-	void RequestParser::parseQuery() {
-		std::map<std::string, std::string>& queryParameters = m_req.getUri().query;
+		http::Uri& uri = m_req.getUri();
 		const std::string& uriRaw = m_req.getUriRaw();
-		std::size_t currentPos = uriRaw.find_first_of('?');
-		std::size_t end = uriRaw.find_first_of('#');
 
-		if (currentPos == std::string::npos) {
-			return;
+		if (uriRaw.find(':') == std::string::npos) {
+			throw http::exception(BAD_REQUEST, "Invalid URI");
 		}
-
-		if (uriRaw[currentPos] == '?') {
-			currentPos++;
+		scheme = uriRaw.substr(0, uriRaw.find(":")); // scheme before the first colon
+		if (scheme.empty() || std::isalpha(scheme[0]) == 0 || scheme.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-.") != std::string::npos) {
+			throw http::exception(BAD_REQUEST, "Invalid URI");
 		}
-
-		// abc?a=b&cde=fgh&jk=l&mnop=qrst
-		while (currentPos <= end) {
-			std::string currentKey = "";
-			std::string currentValue = "";
-
-			std::size_t nextDelimiter = uriRaw.find_first_of('=', currentPos);
-			currentKey = uriRaw.substr(currentPos, nextDelimiter - currentPos);
-			std::size_t nextAmpersand = uriRaw.find_first_of('&', currentPos);
-			if (nextAmpersand == std::string::npos && nextDelimiter == std::string::npos) {
-				// fuck this
-				break;
-			}
-			if (nextAmpersand <= nextDelimiter) {
-				// no equal sign
-				// ...&key&key&key=value
-				// or ...&key&key&key
-				// should advance to the next one
-				currentPos = nextAmpersand + 1;
-				continue;
-			}
-
-			if (nextDelimiter >= end) {
-				// no equal sign, no value gets inserted
-				// ...&key=value&key
-				// or ...&key=value&key#fragment
-				break;
-			}
-			currentPos = nextDelimiter + 1;
-			if (currentPos >= end) {
-				// no value but equal sign, empty value gets inserted
-				// ...&key=value&key=
-				// or ...&key=value&key=#fragment
-				// this should just work
-			}
-			nextDelimiter = uriRaw.find_first_of('&', currentPos);
-			if (nextDelimiter >= end) {
-				// last parameter, delimited by a fragment
-				// ..&key=value#fragment
-				nextDelimiter = end;
-			}
-			currentValue = uriRaw.substr(currentPos, nextDelimiter - currentPos);
-			if (!currentKey.empty() && queryParameters.find(currentKey) == queryParameters.end()) {
-				queryParameters.insert(std::make_pair(currentKey, currentValue));
-			}
-			if (nextDelimiter == end) {
-				// reached end, exit loop
-				break;
-			}
-			currentPos = nextDelimiter + 1;
+		path = uriRaw.substr(uriRaw.find(':') + 1, uriRaw.find('?') - uriRaw.find(':') - 1);
+		if (path[0] != '/' && path[1] != '/') { // authority part starts with two slashes
+			throw http::exception(BAD_REQUEST, "Invalid URI");
 		}
+		path = path.substr(2);
+		if (path.find('/') == std::string::npos) {
+			throw http::exception(BAD_REQUEST, "Invalid URI");
+		}
+		authority = path.substr(0, path.find('/'));
+		if (authority.empty()) {
+			throw http::exception(BAD_REQUEST, "Invalid URI");
+		}
+		if (uriRaw.find('?') != std::string::npos) { // optional query part after the first question mark
+			uri.query = uriRaw.substr(uriRaw.find('?') + 1);
+		} else {
+			uri.query = "";
+		}
+		uri.path = path.substr(path.find('/'));
+		uri.scheme = scheme;
+		uri.authority = authority;
+		parsePath();
 	}
 
 	void RequestParser::parseHeaders() {
@@ -287,11 +295,29 @@ namespace http {
 		return Token(value, size);
 	}
 
+	// Host header HAS to match the authority component in absolute form
+	// HTTP/1.1 mandates that Host is ALWAYS present, ALWAYS only one word long
+	// and that, if the absolute form is present, the authority in it matches the host header's content
 	void RequestParser::interpretHeaders() {
+		if (!m_req.hasHeader("host")) {
+			throw http::exception(BAD_REQUEST, "Host header is missing");
+		}
+
+		const std::vector<std::string>& hostHeader = m_req.getHeader("host");
+		if (hostHeader.size() != 1) {
+			throw http::exception(BAD_REQUEST, "Host header is malformed");
+		}
+
+		Uri& uri = m_req.getUri();
+		if (uri.isAbsoluteForm() && hostHeader[0] != uri.authority) {
+			throw http::exception(BAD_REQUEST, "Host header does not match authority specified in absolute form URI");
+		}
+		if (!uri.isAbsoluteForm()) { // shitty - put this somewhere else but check for only one host
+			uri.authority = hostHeader[0];
+		}
 		if (m_req.hasHeader("content-length") && m_req.hasHeader("transfer-encoding")) {
 			throw http::exception(BAD_REQUEST, "invalid header combination: cant have content-length and transfer-encoding");
 		}
-
 		if (m_req.hasHeader("content-length")) {
 			this->validateContentLength();
 			this->setState(m_contentLength == 0 ? COMPLETE : BODY);
@@ -322,7 +348,6 @@ namespace http {
 				return;
 			}
 		}
-
 
 		if (m_state == BODY) {
 			this->setState(COMPLETE);
@@ -405,7 +430,7 @@ namespace http {
 		this->setState(START);
 	}
 
-	const Request& RequestParser::getRequest() {
+	Request& RequestParser::getRequest() {
 		return m_req;
 	}
 

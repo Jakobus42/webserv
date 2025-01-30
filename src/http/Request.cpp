@@ -13,10 +13,10 @@ namespace http {
 	Request::Request()
 		: m_type(FETCH)
 		, m_method(GET)
-		, m_uri()
 		, m_uriRaw("")
 		, m_version(HTTP_VERSION)
-		, m_code(OK) {
+		, m_statusCode(OK)
+		, m_uri() {
 	}
 
 	/**
@@ -66,13 +66,13 @@ namespace http {
 
 	RequestType Request::getType() const { return m_type; }
 
-	StatusCode Request::getStatusCode() const { return m_code; }
+	StatusCode Request::getStatusCode() const { return m_statusCode; }
 
 	Method Request::getMethod() const { return m_method; }
 
-	Uri& Request::getUri() { return m_uri; }
-
 	std::string& Request::getUriRaw() { return m_uriRaw; }
+
+	const std::string& Request::getUriRaw() const { return m_uriRaw; }
 
 	const std::string& Request::getVersion() const { return m_version; }
 
@@ -81,6 +81,10 @@ namespace http {
 	const std::map<std::string, std::vector<std::string> >& Request::getHeaders() const { return m_headers; }
 
 	const std::vector<std::string>& Request::getHeader(const std::string& key) const { return m_headers.at(key); }
+
+	bool Request::hasError() const {
+		return m_statusCode >= 400;
+	}
 
 	void Request::setType(RequestType type) { m_type = type; }
 
@@ -105,7 +109,9 @@ namespace http {
 		m_headers[std::string(key, keyLen)].push_back(std::string(value, valueLen));
 	}
 
-	void Request::setStatusCode(StatusCode code) { m_code = code; }
+	void Request::setStatusCode(StatusCode statusCode) { m_statusCode = statusCode; }
+
+	Uri& Request::getUri() { return m_uri; };
 
 	void Request::validateUriRaw(const char* uri, std::size_t len) {
 		if (len == 0 || uri == NULL) {
@@ -117,8 +123,11 @@ namespace http {
 	}
 
 	void Request::validateVersion(const char* version, std::size_t len) {
-		if (version == NULL || len == 0 || std::strcmp(version, HTTP_VERSION.c_str())) {
-			throw http::exception(NOT_IMPLEMENTED, "unsupported HTTP version: " + std::string(version, len));
+		if (version == NULL || len == 0) {
+			throw http::exception(BAD_REQUEST, "malformed HTTP version: " + std::string(version, len));
+		}
+		if (std::strcmp(version, HTTP_VERSION.c_str())) {
+			throw http::exception(HTTP_VERSION_NOT_SUPPORTED, "unsupported HTTP version: " + std::string(version, len));
 		}
 	}
 
@@ -126,6 +135,26 @@ namespace http {
 		if (key == NULL || keyLen == 0) {
 			throw http::exception(BAD_REQUEST, "header key can not be empty");
 		}
+	}
+
+	void Request::printRequestData() const {
+		std::cout << "Method: " << getMethodString(m_method) << std::endl;
+		std::cout << "URI: " << m_uriRaw << std::endl;
+		std::cout << "Version: " << m_version << std::endl;
+		std::cout << "Headers: " << std::endl;
+		std::map<std::string, std::vector<std::string> >::const_iterator it;
+		for (it = m_headers.begin(); it != m_headers.end(); ++it) {
+			std::cout << it->first << ": ";
+			std::vector<std::string>::const_iterator innerIt;
+			for (innerIt = it->second.begin(); innerIt != it->second.end(); ++innerIt) {
+				std::cout << *innerIt;
+				if (innerIt + 1 != it->second.end()) {
+					std::cout << ", ";
+				}
+			}
+			std::cout << std::endl;
+		}
+		std::cout << "Body: " << m_body << std::endl;
 	}
 
 

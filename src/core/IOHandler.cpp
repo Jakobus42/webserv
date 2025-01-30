@@ -12,7 +12,7 @@ namespace core {
 	IOHandler::IOHandler(http::VirtualServer& vServer)
 		: m_vServer(vServer)
 		, m_reqParser()
-		, m_reqProccesor(vServer.getConfig().locations)
+		, m_reqProcessor(vServer.getConfig().locations)
 		, m_responses() {
 	}
 
@@ -43,6 +43,7 @@ namespace core {
 		} catch (const std::exception& e) {
 			m_vServer.log(e.what(), shared::ERROR);
 			m_vServer.dropClient(fd);
+			m_reqParser.getRequest().setStatusCode(http::INTERNAL_SERVER_ERROR);
 			return this->markDone();
 		}
 	}
@@ -66,7 +67,7 @@ namespace core {
 
 		m_reqParser.process();
 		if (m_reqParser.isComplete() || m_reqParser.hasError()) {
-			http::Response* res = m_reqProccesor.process(m_reqParser.getRequest());
+			http::Response* res = m_reqProcessor.process(m_reqParser.getRequest());
 			res->serialize();
 			m_responses.push(res);
 			m_reqParser.reset();

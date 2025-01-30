@@ -15,6 +15,9 @@ namespace http {
 	const std::string HTTP_VERSION = "HTTP/1.1";
 	const std::string CRLF = "\r\n";
 
+	// Content-Type
+	const std::string TEXT_HTML = "text/html";
+
 	/**
 	 * @enum HttpStatusCode
 	 * @brief Represents the various standard HTTP status codes.
@@ -63,28 +66,29 @@ namespace http {
 	enum Method {
 		GET,
 		POST,
-		DELETE
+		DELETE,
+		_ERROR
 	};
 
 	class exception : public std::runtime_error {
 		public:
-			explicit exception(StatusCode code);
-			exception(StatusCode code, const std::string& message);
+			explicit exception(StatusCode statusCode);
+			exception(StatusCode statusCode, const std::string& message);
 			virtual ~exception() throw();
 
 			StatusCode getCode() const;
 			const std::string& getMessage() const;
 
 		private:
-			std::string buildErrorMessage(StatusCode code, const std::string& message);
+			std::string buildErrorMessage(StatusCode statusCode, const std::string& message);
 
 		private:
-			StatusCode m_code;
+			StatusCode m_statusCode;
 			std::string m_message;
 	};
 
 	const std::string& getStatusMessage(StatusCode statusCode);
-	std::string getErrorPage(StatusCode code);
+	std::string getErrorPage(StatusCode statusCode);
 	std::string getMethodString(Method method);
 	Method stringToMethod(const std::string& method);
 

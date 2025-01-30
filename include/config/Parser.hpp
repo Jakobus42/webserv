@@ -4,6 +4,7 @@
 
 #include "config/Parser.hpp"
 #include "http/http.hpp"
+#include "shared/stringUtils.hpp"
 
 #include <fstream>
 #include <iostream>
@@ -13,11 +14,9 @@
 
 namespace config {
 
-	typedef struct s_location t_location;
-
-	typedef struct s_location {
+	struct Location {
 			// location name
-			std::string name;
+			std::vector<std::string> path;
 			// return
 			std::string return_url;
 			// configurations
@@ -26,8 +25,44 @@ namespace config {
 			std::string root;
 			std::vector<std::string> index;
 			// locations
-			std::vector<t_location> locations;
-	} t_location;
+			std::vector<Location> locations;
+
+			// default constructor
+			Location()
+				: path()
+				, return_url()
+				, methods()
+				, autoindex(false)
+				, root()
+				, index()
+				, locations() {
+			}
+
+			// copy constructor
+			Location(const Location& other)
+				: path(other.path)
+				, return_url(other.return_url)
+				, methods(other.methods)
+				, autoindex(other.autoindex)
+				, root(other.root)
+				, index(other.index)
+				, locations(other.locations) {
+			}
+
+			// assignment operator
+			Location& operator=(const Location& other) {
+				if (this != &other) {
+					path = other.path;
+					return_url = other.return_url;
+					methods = other.methods;
+					autoindex = other.autoindex;
+					root = other.root;
+					index = other.index;
+					locations = other.locations;
+				}
+				return *this;
+			}
+	};
 
 	enum CmdId {
 		SERVER_ID = 0,
@@ -52,7 +87,7 @@ namespace config {
 			std::map<int, std::string> errorPages;
 			unsigned long max_body_size;
 			// locations
-			std::vector<t_location> locations;
+			std::vector<Location> locations;
 	} t_server;
 
 	typedef struct s_config_data {
@@ -83,6 +118,11 @@ namespace config {
 
 			void printConfigData(int detailed);
 			int testFunction(const std::string& key, std::vector<std::string>& args, int& lineCount);
+			void printLocations(const std::vector<config::Location>& locations,
+								int layer,
+								int detailed,
+								std::vector<int> layer_num);
+			config::Location* getLocation(int layer);
 
 		private:
 			ConfigFileParser(const ConfigFileParser& other);
@@ -92,7 +132,6 @@ namespace config {
 
 			int readConfigFile(std::string& configFileName, std::string& file);
 			int parseConfigFile(std::string& configFileName, int layer, unsigned long& i, int& lineCount);
-
 			int handleServer(std::string& line, unsigned long* i);
 			int handlePrompt(std::string& line, int layer, int& lineCount);
 			int SaveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, int& lineCount);
@@ -110,12 +149,6 @@ namespace config {
 			int root(std::vector<std::string>& args, int& lineCount, int layer);
 			int autoindex(std::vector<std::string>& args, int& lineCount, int layer);
 			int index(std::vector<std::string>& args, int& lineCount, int layer);
-
-			void printLocations(const std::vector<config::t_location>& locations,
-								int layer,
-								int detailed,
-								std::vector<int> layer_num);
-			config::t_location* getLocation(int layer);
 	};
 
 } // namespace config

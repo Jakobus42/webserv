@@ -10,7 +10,7 @@ namespace http {
 	 */
 	class DeleteHandler : public ARequestHandler {
 		public:
-			DeleteHandler(const config::t_location& locations);
+			DeleteHandler(const config::Location& locations);
 			~DeleteHandler();
 
 			void handle(const Request& req, Response& res);

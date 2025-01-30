@@ -3,6 +3,7 @@
 #include "shared/NonCopyable.hpp"
 
 #include <cstring>
+#include <iostream>
 
 namespace shared {
 
