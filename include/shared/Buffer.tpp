@@ -104,7 +104,4 @@ namespace shared {
 
 	template <std::size_t Capacity>
 	char* Buffer<Capacity>::getWritePos() { return m_data + m_writePos; }
-
-	template <std::size_t Capacity>
-	const char* Buffer<Capacity>::getData() const { return m_data; }
 } /* namespace shared */

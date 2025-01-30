@@ -33,7 +33,6 @@ namespace shared {
 
 			char* getReadPos();
 			char* getWritePos();
-			const char* getData() const;
 
 		private:
 			char m_data[Capacity];
