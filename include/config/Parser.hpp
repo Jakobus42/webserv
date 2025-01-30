@@ -6,6 +6,7 @@
 #include "http/http.hpp"
 #include "shared/stringUtils.hpp"
 
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -16,7 +17,7 @@ namespace config {
 
 	struct Location {
 			std::vector<std::string> path;	  // location name
-			std::string return_url;			  // return
+			std::string redirectUrl;		  // return
 			std::vector<std::string> methods; // configurations
 			bool autoindex;
 			std::string root;
@@ -26,7 +27,7 @@ namespace config {
 			// default constructor
 			Location()
 				: path()
-				, return_url()
+				, redirectUrl()
 				, methods()
 				, autoindex(false)
 				, root()
@@ -37,7 +38,7 @@ namespace config {
 			// copy constructor
 			Location(const Location& other)
 				: path(other.path)
-				, return_url(other.return_url)
+				, redirectUrl(other.redirectUrl)
 				, methods(other.methods)
 				, autoindex(other.autoindex)
 				, root(other.root)
@@ -49,7 +50,7 @@ namespace config {
 			Location& operator=(const Location& other) {
 				if (this != &other) {
 					path = other.path;
-					return_url = other.return_url;
+					redirectUrl = other.redirectUrl;
 					methods = other.methods;
 					autoindex = other.autoindex;
 					root = other.root;
@@ -57,6 +58,10 @@ namespace config {
 					locations = other.locations;
 				}
 				return *this;
+			}
+
+			bool acceptsFileUpload() const {
+				return std::find(methods.begin(), methods.end(), "POST") != methods.end(); // TODO: check whether find actually returns end on fail xd
 			}
 	};
 

@@ -1,5 +1,7 @@
 #include "http/GetHandler.hpp"
 
+#include "http/Router.hpp"
+
 namespace http {
 
 	/**
@@ -16,20 +18,24 @@ namespace http {
 	}
 
 	void GetHandler::handle(const Request& request, Response& response) {
+		const std::string& filePath = request.getUri().path;
 
-		// if (!canOpenFile)
-		if (false) {
-			response.setBody(getErrorPage(NOT_FOUND)); // or FORBIDDEN, or maybe something else...
+		if (Router::fileExists(filePath)) {
+			response.setStatusCode(NOT_FOUND); // or FORBIDDEN, or maybe something else...
 			return handleError(request, response);
-		} else {
-			std::ifstream inFile(request.getUri().path.c_str());
-			std::stringstream buffer;
-
-			buffer << inFile.rdbuf();
-			response.setBody(buffer.str());
-			response.setHeader("Content-Length", shared::string::to_string(buffer.str().length()));
-			response.setStatusCode(FOUND);
 		}
+
+		std::ifstream inFile(filePath.c_str(), std::ios::binary);
+		if (!inFile.is_open()) {
+			response.setStatusCode(FORBIDDEN);
+			return handleError(request, response);
+		}
+
+		std::stringstream buffer;
+		buffer << inFile.rdbuf();
+		response.setBody(buffer.str());
+		response.setHeader("Content-Length", shared::string::to_string(buffer.str().size()));
+		response.setStatusCode(OK);
 	}
 
 } /* namespace http */

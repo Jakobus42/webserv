@@ -1,5 +1,7 @@
 #include "http/DeleteHandler.hpp"
 
+#include "http/Router.hpp"
+
 #include <cstdio>
 
 namespace http {
@@ -18,15 +20,21 @@ namespace http {
 	}
 
 	void DeleteHandler::handle(const Request& request, Response& response) {
-		if (false) {								   // if (fileCantBeFound() || fileCantBeDeleted())
-			response.setBody(getErrorPage(NOT_FOUND)); // or FORBIDDEN, or maybe something else...
+		const std::string& filePath = request.getUri().path;
+
+		if (!Router::fileExists(filePath)) {   // if (fileCantBeFound() || fileCantBeDeleted())
+			response.setStatusCode(NOT_FOUND); // currently hard coded
 			return handleError(request, response);
 		} else {
-			std::remove(request.getUri().path.c_str()); // unlink the file
+			if (std::remove(filePath.c_str()) != 0) { // unlink the file
+				response.setStatusCode(FORBIDDEN);
+				return handleError(request, response);
+			}
 			// either return 204 No Content when there is no body
 			// or return 200 OK if there's information in the body
 			// i.e. a html page saying "file /foo/bar.baz was deleted"
-			response.setStatusCode(OK);
+			response.setStatusCode(NO_CONTENT);
+			response.setHeader("Content-Length", "0");
 		}
 	}
 

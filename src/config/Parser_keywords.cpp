@@ -100,7 +100,7 @@ namespace config {
 					  << std::endl;
 			return 1;
 		}
-		new_location.return_url = "";
+		new_location.redirectUrl = "";
 		new_location.index.push_back("index.html");
 		if (layer == 1) {
 			m_configData.servers.back().locations.push_back(new_location);
@@ -383,7 +383,7 @@ namespace config {
 		}
 		// TODO: check if valid url?
 		Location* current = getLocation(layer);
-		current->return_url = args[1];
+		current->redirectUrl = args[1];
 		return 0;
 	}
 

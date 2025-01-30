@@ -34,7 +34,7 @@ namespace http {
 		config::Location location;
 		m_res = new Response();
 
-		if (!req.hasError() && findLocation(req.getUri().path, m_locations, location) == 1) { // TODO: replace path with uri.path
+		if (!req.hasError() && findLocation(req.getUri().path, m_locations, location) == 1) {
 			std::cout << "FindLocation failed; Location not found :(" << std::endl;
 			req.setStatusCode(NOT_FOUND);
 		}
@@ -70,6 +70,104 @@ namespace http {
 		return 0;
 	}
 
+	int splitPath(const std::string& path, std::vector<std::string>& result) {
+		// Return 1 if the path is invalid in your context
+		// For example, you may require that the path always starts with '/'
+		if (path.empty() || path[0] != '/') {
+			return 1;
+		}
+
+		std::stringstream ss(path.substr(1));
+		std::string segment;
+		while (std::getline(ss, segment, '/')) {
+			// You can decide to allow empty segments or treat them as invalid
+			if (!segment.empty()) {
+				result.push_back(segment);
+			}
+		}
+		return 0;
+	}
+
+	/**
+	 * @brief Recursively finds the deepest matching location for a normalized path.
+	 *        You could store nested locations in config::Location::children or similar.
+	 */
+	const config::Location* locateDeepestMatch(const std::string& normUri,
+											   const std::vector<config::Location>& locs) {
+		// Convert the normalized URI to tokens
+		std::vector<std::string> uriTokens;
+		if (splitPath(normUri, uriTokens) != 0) {
+			return NULL;
+		}
+
+		const config::Location* bestLocation = NULL;
+		size_t bestMatchLength = 0;
+
+		// For each location, see how many tokens match
+		for (std::vector<config::Location>::const_iterator it = locs.begin(); it != locs.end(); ++it) {
+			// Combine it->path into a string to compare with uriTokens
+			// or directly compare the location path tokens if they're stored in a vector
+			std::vector<std::string> locTokens = it->path; // e.g. /foo/bar => {"foo","bar"}
+			size_t matchedCount = 0;
+
+			// Compare token by token
+			while (matchedCount < locTokens.size() && matchedCount < uriTokens.size() && locTokens[matchedCount] == uriTokens[matchedCount]) {
+				matchedCount++;
+			}
+
+			// If full location path was matched and it’s the deepest match so far
+			if (matchedCount == locTokens.size() && matchedCount > bestMatchLength) {
+				// Check if there are nested children that match deeper
+				if (!it->locations.empty()) {
+					// Rebuild sub-URI from the unmatched tail
+					std::string subUri = "/";
+					for (size_t j = matchedCount; j < uriTokens.size(); j++) {
+						subUri += uriTokens[j] + "/";
+					}
+					// Recurse into children
+					std::cout << "locating at: " << subUri << std::endl;
+					const config::Location* deeperLoc = locateDeepestMatch(subUri, it->locations);
+					if (deeperLoc) {
+						bestLocation = deeperLoc;
+						bestMatchLength = matchedCount + deeperLoc->path.size();
+						continue;
+					}
+				}
+				bestLocation = &(*it);
+				bestMatchLength = matchedCount;
+			}
+		}
+		return bestLocation;
+	}
+
+	/**
+	 * @brief Builds the final absolute path, preventing escape from root.
+	 */
+	std::string buildFinalPath(const std::string& baseRoot, const std::string& normUri) {
+		// Merge baseRoot and normUri while ensuring we never go above baseRoot
+		// First normalize the baseRoot
+		if (baseRoot.empty() || baseRoot[0] != '/') {
+			return "/";
+		}
+		// Combine baseRoot and normUri
+		std::string combined = baseRoot;
+		if (combined[combined.size() - 1] == '/') {
+			combined.resize(combined.size() - 1);
+		}
+		// normUri is already normalized, so just append
+		combined += normUri;
+
+		// Now split combined to ensure no leftover ".." escapes
+		std::vector<std::string> tokens;
+		splitPath(combined, tokens); // reuse your splitPath
+		// Rebuild path from tokens
+		std::string safePath = "/";
+		for (size_t i = 0; i < tokens.size(); i++) {
+			safePath += tokens[i] + "/";
+		}
+		return safePath;
+	}
+
 	// really, this function needs to:
 	// - figure out if the path is a file (should only be GET) or location
 	// - figure out if that location exists
@@ -77,67 +175,42 @@ namespace http {
 	// - if GETing or DELETEing a file, if that file exists and is accessible
 	// - treat server root (<serverLocation>/www/) as global root
 	// - block '../' escaping the global root directory
-	int RequestProcessor::findLocation(const std::string& uri, const std::vector<config::Location>& locations, config::Location& location) {
-		std::vector<std::string> file;
-		std::vector<std::string> result;
-		std::string path = "";
-		// Split into file and path if file is present
-		if (uri.length() == 0) {
-			return 1;
-		}
-		if (uri[uri.size() - 1] != '/') {
-			// expect a file
-			int last = uri.find_last_of('/');
-			file.push_back(uri.substr(last + 1));
-			path = uri.substr(0, last + 1);
-		} else {
-			path = uri;
-		}
-		// Split path into vector
-		if (shared::string::splitPath(path, result) == 1) {
-			return 1;
-		}
-		// find the location
-		config::Location tempObj;
-		tempObj.locations = locations;
-		const config::Location* temp = &tempObj;
-		bool deeper = false;
-		int len = 0;
-		while (!temp->locations.empty()) {
-			bool found = false;
-			for (std::vector<config::Location>::const_iterator it = temp->locations.begin(); it != temp->locations.end(); ++it) {
-				if (comparePaths(it->path, result, len) == 0) {
-					temp = &(*it);
-					found = true;
-					break;
+	std::string normalizePath(const std::string& uriPath) {
+		std::vector<std::string> tokens;
+		splitPath(uriPath, tokens); // handle empty tokens, etc.
+		std::vector<std::string> normalized;
+
+		for (size_t i = 0; i < tokens.size(); i++) {
+			if (tokens[i] == "..") {
+				if (!normalized.empty()) {
+					normalized.pop_back();
 				}
-			}
-			if (!found) {
-				if (!deeper) {
-					temp = &(*temp->locations.begin());
-				}
-				break;
-			}
-			deeper = true;
-		}
-		config::Location temp2 = *temp;
-		// Set the file and root
-		if (!file.empty()) {
-			temp2.index = file;
-		}
-		if (temp2.root != "") {
-			while (len > 0) {
-				result.erase(result.begin());
-				len--;
-			}
-			if (temp2.root[temp2.root.size() - 1] != '/') {
-				temp2.root += "/";
+			} else if (!tokens[i].empty() && tokens[i] != ".") {
+				normalized.push_back(tokens[i]);
 			}
 		}
-		for (std::vector<std::string>::const_iterator it = result.begin(); it != result.end(); ++it) {
-			temp2.root += *it + "/";
+		// Rebuild path
+		std::string result = "/";
+		for (size_t i = 0; i < normalized.size(); i++) {
+			result += normalized[i] + "/";
 		}
-		location = temp2;
+		return result;
+	}
+
+	int RequestProcessor::findLocation(const std::string& uri, const std::vector<config::Location>& locs, config::Location& location) {
+		std::string normUri = normalizePath(uri);
+
+		const config::Location* bestMatch = locateDeepestMatch(normUri, locs);
+		if (!bestMatch) {
+			return 1;
+		} // No matching location.
+
+		config::Location chosen = *bestMatch;
+		// 3) Append whatever path remains after location matching,
+		// ensuring we stay within the final root.
+		chosen.root = buildFinalPath(chosen.root, normUri);
+
+		location = chosen;
 		return 0;
 	}
 
