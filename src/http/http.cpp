@@ -133,19 +133,15 @@ namespace http {
 		std::string bodyTemp;
 		
 		bodyTemp = DlTemplate;
-		std::vector<std::pair<std::string, std::string> > files;
 		DIR* dir;
 		std::string rootPath;
 		getRootPath(rootPath);
-		std::cout << "ServerRootPath: " << rootPath << std::endl;
 /* 		if (rootPath[rootPath.size() - 1] != '/') {
 			rootPath += "/";
 		} */
 		rootPath += path;
-		struct dirent* ent;
-		std::cout << "Root: " << rootPath << std::endl;
-		std::cout << "Path: " << path << std::endl;
 		if ((dir = opendir(rootPath.c_str())) != NULL) {
+			struct dirent* ent;
 			while ((ent = readdir(dir)) != NULL) {
 				if (std::string(ent->d_name) == ".") {
 					continue;
@@ -181,7 +177,6 @@ namespace http {
 			return true;
 		}
 		DIR* dir;
-		struct dirent* ent;
 		//get current directory
 		char buffer[1024]; 
 		if (getcwd(buffer, 1024) == NULL) {
@@ -191,6 +186,7 @@ namespace http {
 		bool foundWWW = false;
 		/* bool foundCGI = false; */
 		if ((dir = opendir(buffer)) != NULL) {
+			struct dirent* ent;
 			while ((ent = readdir(dir)) != NULL) {
 				if (std::string(ent->d_name) == "www")
 				{
