@@ -34,10 +34,15 @@ namespace http {
 		config::Location location;
 		m_res = new Response();
 
-		if (!req.hasError() && findLocation(req.getUri().path, m_locations, location) == 1) {
-			std::cout << "FindLocation failed; Location not found :(" << std::endl;
-			req.setStatusCode(NOT_FOUND);
+		if (!req.hasError()) {
+			try {
+				findLocation(req.getUri().path, m_locations, location);
+			} catch (const http::exception& e) {
+				req.setStatusCode(e.getCode());
+				std::cout << "FindLocation failed; Location not found :(" << std::endl;
+			}
 		}
+
 		if (req.hasError()) {
 			m_handlers[req.getMethod()]->handleError(req, *m_res);
 		} else {
@@ -73,8 +78,11 @@ namespace http {
 	int splitPath(const std::string& path, std::vector<std::string>& result) {
 		// Return 1 if the path is invalid in your context
 		// For example, you may require that the path always starts with '/'
-		if (path.empty() || path[0] != '/') {
-			return 1;
+		if (path.empty()) {
+			throw http::exception(NOT_FOUND, "Path is empty");
+		}
+		if (path[0] != '/') {
+			throw http::exception(BAD_REQUEST, "Path doesn't begin with '/'");
 		}
 
 		std::stringstream ss(path.substr(1));
@@ -92,8 +100,7 @@ namespace http {
 	 * @brief Recursively finds the deepest matching location for a normalized path.
 	 *        You could store nested locations in config::Location::children or similar.
 	 */
-	const config::Location* locateDeepestMatch(const std::string& normUri,
-											   const std::vector<config::Location>& locs) {
+	const config::Location* locateDeepestMatch(const std::string& normUri, const std::vector<config::Location>& locs) {
 		// Convert the normalized URI to tokens
 		std::vector<std::string> uriTokens;
 		if (splitPath(normUri, uriTokens) != 0) {
@@ -175,7 +182,7 @@ namespace http {
 	// - if GETing or DELETEing a file, if that file exists and is accessible
 	// - treat server root (<serverLocation>/www/) as global root
 	// - block '../' escaping the global root directory
-	std::string normalizePath(const std::string& uriPath) {
+	std::string RequestProcessor::normalizePath(const std::string& uriPath) {
 		std::vector<std::string> tokens;
 		splitPath(uriPath, tokens); // handle empty tokens, etc.
 		std::vector<std::string> normalized;

@@ -7,11 +7,14 @@
 #include "shared/stringUtils.hpp"
 
 #include <algorithm>
+#include <cstring>
 #include <fstream>
 #include <iostream>
 #include <map>
 #include <sstream>
 #include <vector>
+
+#define PATH_MAX 8192
 
 namespace config {
 
@@ -62,6 +65,10 @@ namespace config {
 
 			bool acceptsFileUpload() const {
 				return std::find(methods.begin(), methods.end(), "POST") != methods.end(); // TODO: check whether find actually returns end on fail xd
+			}
+
+			bool hasRedirect() const {
+				return !redirectUrl.empty();
 			}
 	};
 

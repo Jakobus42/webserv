@@ -41,6 +41,7 @@ namespace http {
 			statusMessages[SERVICE_UNAVAILABLE] = "Service Unavailable";
 			statusMessages[GATEWAY_TIMEOUT] = "Gateway Timeout";
 			statusMessages[HTTP_VERSION_NOT_SUPPORTED] = "HTTP Version Not Supported";
+			statusMessages[LOOP_DETECTED] = "Loop Detected";
 		}
 
 		std::map<StatusCode, std::string>::const_iterator it = statusMessages.find(statusCode);

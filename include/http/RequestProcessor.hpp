@@ -27,6 +27,7 @@ namespace http {
 			// for testing purposes
 			void printLocation(const config::Location& location, int detailed);
 			int testParseURI(const std::string& uri, int mode);
+			static std::string normalizePath(const std::string& uriPath);
 
 		private:
 			Response* releaseResponse();
