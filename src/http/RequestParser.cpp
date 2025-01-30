@@ -144,11 +144,7 @@ namespace http {
 	// }
 
 	void RequestParser::parseUriOriginForm() {
-		std::map<std::string, std::vector<std::string> >::const_iterator hostHeader = m_req.getHeaders().find("host");
 		const std::string& uriRaw = m_req.getUriRaw();
-		if (hostHeader == m_req.getHeaders().end() || hostHeader->second.size() != 1) {
-			throw http::exception(BAD_REQUEST, "Host header not present (or invalid) for origin form URI");
-		}
 
 		http::Uri& uri = m_req.getUri();
 		if (uriRaw.find('?') < uriRaw.find('#')) { // optional query part after the first question mark
@@ -158,7 +154,6 @@ namespace http {
 		}
 		uri.path = uriRaw.substr(0, uriRaw.find_first_of("?#"));
 		uri.scheme = "";
-		uri.authority = hostHeader->second[0];
 		parsePath();
 	}
 
@@ -300,11 +295,29 @@ namespace http {
 		return Token(value, size);
 	}
 
+	// Host header HAS to match the authority component in absolute form
+	// HTTP/1.1 mandates that Host is ALWAYS present, ALWAYS only one word long
+	// and that, if the absolute form is present, the authority in it matches the host header's content
 	void RequestParser::interpretHeaders() {
+		if (!m_req.hasHeader("host")) {
+			throw http::exception(BAD_REQUEST, "Host header is missing");
+		}
+
+		const std::vector<std::string>& hostHeader = m_req.getHeader("host");
+		if (hostHeader.size() != 1) {
+			throw http::exception(BAD_REQUEST, "Host header is malformed");
+		}
+
+		Uri& uri = m_req.getUri();
+		if (uri.isAbsoluteForm() && hostHeader[0] != uri.authority) {
+			throw http::exception(BAD_REQUEST, "Host header does not match authority specified in absolute form URI");
+		}
+		if (!uri.isAbsoluteForm()) { // shitty - put this somewhere else but check for only one host
+			uri.authority = hostHeader[0];
+		}
 		if (m_req.hasHeader("content-length") && m_req.hasHeader("transfer-encoding")) {
 			throw http::exception(BAD_REQUEST, "invalid header combination: cant have content-length and transfer-encoding");
 		}
-
 		if (m_req.hasHeader("content-length")) {
 			this->validateContentLength();
 			this->setState(m_contentLength == 0 ? COMPLETE : BODY);

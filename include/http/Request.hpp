@@ -27,6 +27,10 @@ namespace http {
 				, path()
 				, query()
 				, cgiPathInfo() {}
+
+			bool isAbsoluteForm() {
+				return path.length() > 0 ? path[0] != '/' : false;
+			}
 	};
 
 	/**
