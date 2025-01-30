@@ -74,7 +74,7 @@ Collaboration diagram for http::Uri:</div>
 <div class="dyncontent">
 <div class="center"><img src="structhttp_1_1Uri__coll__graph.png" border="0" usemap="#ahttp_1_1Uri_coll__map" alt="Collaboration graph"/></div>
 <map name="ahttp_1_1Uri_coll__map" id="ahttp_1_1Uri_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,107,151"/>
+<area shape="rect" title=" " alt="" coords="5,5,145,171"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -82,6 +82,8 @@ Collaboration diagram for http::Uri:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a820339afa75fb3c957b92a5e83ccde84" id="r_a820339afa75fb3c957b92a5e83ccde84"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhttp_1_1Uri.html#a820339afa75fb3c957b92a5e83ccde84">Uri</a> ()</td></tr>
 <tr class="separator:a820339afa75fb3c957b92a5e83ccde84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86eca83f2d3b3ead61a30ae74ad30dc3" id="r_a86eca83f2d3b3ead61a30ae74ad30dc3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhttp_1_1Uri.html#a86eca83f2d3b3ead61a30ae74ad30dc3">isAbsoluteForm</a> ()</td></tr>
+<tr class="separator:a86eca83f2d3b3ead61a30ae74ad30dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -135,6 +137,57 @@ Public Attributes</h2></td></tr>
 <div class="ttc" id="astructhttp_1_1Uri_html_ae7676902f6d0670d9d9fcfd991e98b1d"><div class="ttname"><a href="structhttp_1_1Uri.html#ae7676902f6d0670d9d9fcfd991e98b1d">http::Uri::cgiPathInfo</a></div><div class="ttdeci">std::string cgiPathInfo</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00022">Request.hpp:22</a></div></div>
 <div class="ttc" id="astructhttp_1_1Uri_html_afe218a80e49b77a1f9803ee082ca4a62"><div class="ttname"><a href="structhttp_1_1Uri.html#afe218a80e49b77a1f9803ee082ca4a62">http::Uri::query</a></div><div class="ttdeci">std::string query</div><div class="ttdef"><b>Definition</b> <a href="Request_8hpp_source.html#l00021">Request.hpp:21</a></div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a86eca83f2d3b3ead61a30ae74ad30dc3" name="a86eca83f2d3b3ead61a30ae74ad30dc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86eca83f2d3b3ead61a30ae74ad30dc3">&#9670;&#160;</a></span>isAbsoluteForm()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool http::Uri::isAbsoluteForm </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Request_8hpp_source.html#l00031">31</a> of file <a class="el" href="Request_8hpp_source.html">Request.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   31</span>                                  {</div>
+<div class="line"><span class="lineno">   32</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="structhttp_1_1Uri.html#a93dd3593845ffb7acff77c621e8562d0">path</a>.length() &gt; 0 ? <a class="code hl_variable" href="structhttp_1_1Uri.html#a93dd3593845ffb7acff77c621e8562d0">path</a>[0] != <span class="charliteral">&#39;/&#39;</span> : <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   33</span>            }</div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="structhttp_1_1Uri_a86eca83f2d3b3ead61a30ae74ad30dc3_icgraph.png" border="0" usemap="#astructhttp_1_1Uri_a86eca83f2d3b3ead61a30ae74ad30dc3_icgraph" alt=""/></div>
+<map name="astructhttp_1_1Uri_a86eca83f2d3b3ead61a30ae74ad30dc3_icgraph" id="astructhttp_1_1Uri_a86eca83f2d3b3ead61a30ae74ad30dc3_icgraph">
+<area shape="rect" title=" " alt="" coords="1273,13,1457,38"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#aad1144f368d4ae3dc3a031f5158501a9" title=" " alt="" coords="1076,5,1225,45"/>
+<area shape="poly" title=" " alt="" coords="1259,28,1226,28,1226,23,1259,23"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#ad6c1c5f8254fb53cccf21c94b16b4217" title=" " alt="" coords="879,5,1028,45"/>
+<area shape="poly" title=" " alt="" coords="1062,28,1028,28,1028,23,1062,23"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#abb2ccb0f5ef2c5cdc1904f879ae6b5b9" title=" " alt="" coords="681,5,831,45"/>
+<area shape="poly" title=" " alt="" coords="865,28,831,28,831,23,865,23"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#aa7770f7b9109b74b07d330fccf1661e4" title=" " alt="" coords="484,5,633,45"/>
+<area shape="poly" title=" " alt="" coords="667,28,634,28,634,23,667,23"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="228,13,436,38"/>
+<area shape="poly" title=" " alt="" coords="470,28,436,28,436,23,470,23"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,13,180,38"/>
+<area shape="poly" title=" " alt="" coords="214,28,180,28,180,23,214,23"/>
+</map>
+</div>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
