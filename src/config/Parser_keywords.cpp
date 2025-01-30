@@ -113,7 +113,7 @@ namespace config {
 		temp->locations.push_back(new_location);
 		if (layer > 1) {
 			unsigned long paths = 0;
-			if (temp->path.size() > new_location.path.size()) {
+			if (temp->path.size() >= new_location.path.size()) {
 				std::cout << "Configuration file (line " << lineCount << "): "
 						  << "Invalid location path, does not include previous location"
 						  << std::endl;

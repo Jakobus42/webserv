@@ -112,10 +112,9 @@ namespace http {
 			}
 			if (!found) {
 				if (!deeper) {
-					return 1;
-				} else {
-					break;
+					temp = &(*temp->locations.begin());
 				}
+				break;
 			}
 			deeper = true;
 		}

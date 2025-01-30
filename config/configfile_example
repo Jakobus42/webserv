@@ -12,7 +12,17 @@ server
 
 	# Default server for unspecified routes
 
-	    # Example of a route with multiple rules
+	# Example of a route with multiple rules 
+	location /default
+	{
+		# Accepted HTTP methods
+	    limit_except GET POST;
+	    # Directory configuration
+	    root /tmp/www;  # Base directory
+	    autoindex on;  # Enable directory listing
+	    index default.html;  # Default file in directory		
+	}
+
 	location /kapouet 
 	{
 	    # Accepted HTTP methods
@@ -31,9 +41,7 @@ server
 			#fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 			location /kapouet/hi/hi2
 			{
-				location /kapouet/hi/hi2/
-				{
-				}
+				root /123/234/345;
 			}
 	    }
 	    # Handle file uploads
@@ -43,7 +51,10 @@ server
 	        #try_files $uri =404;  # Check if the directory exists
 	        root /tmp/uploads;  # Where to save uploads
 			location /kapouet/upload/hi
-		}
+			{
+
+			}
+	    }
 	}
 	# HTTP redirection example
 	location /old-route

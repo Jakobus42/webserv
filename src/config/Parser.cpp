@@ -117,6 +117,13 @@ namespace config {
 								  << lineCount << "): "
 								  << "Unexpected closing bracket found" << std::endl;
 						return 1;
+					}
+					if (findQuotesFlag == 1) {
+						std::cout << "Configuration file (line "
+								  << lineCount << "): "
+								  << "Missing semicolon at the end of line"
+								  << std::endl;
+						return 1;
 					} else {
 						return 0;
 					}
