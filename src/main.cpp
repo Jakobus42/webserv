@@ -7,6 +7,9 @@
 int main(int argc, char** const argv) {
 
 	try {
+		std::string basePath;
+		if (!http::getRootPath(basePath))
+			return 1;
 		std::string configPath = argc > 1 ? argv[1] : "config/configfile_example";
 		config::ConfigFileParser configFileParser;
 		if (configFileParser.loadConfigFile(configPath) == 1)

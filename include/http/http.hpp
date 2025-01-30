@@ -9,6 +9,10 @@
 #include <iostream>
 #include <map>
 #include <sstream>
+#include <vector>
+#include <dirent.h>
+#include <unistd.h>
+#include <shared/Logger.hpp>
 
 namespace http {
 
@@ -41,5 +45,7 @@ namespace http {
 	std::string getErrorPage(StatusCode statusCode);
 	std::string getMethodString(Method method);
 	Method stringToMethod(const std::string& method);
+	bool getDirectoryListing(const std::string& path, std::string& body);
+	bool getRootPath(std::string& rootPath);
 
 } // namespace http
