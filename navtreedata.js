@@ -108,7 +108,7 @@ var NAVTREEINDEX =
 "classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35",
 "classhttp_1_1RequestProcessor.html#afa1fa3f55d0398a8a18ee79ca7668f1f",
 "http_8cpp.html#a2f88c738f00d5d4d10444e4d3bfd251d",
-"structhttp_1_1RequestParser_1_1Token.html"
+"structconfig_1_1s__server.html#ab4389d9c1ee45bf2a1a0706df9671dc0"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
