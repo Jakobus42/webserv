@@ -8,7 +8,6 @@ var classshared_1_1Buffer =
     [ "capacity", "classshared_1_1Buffer.html#abc714ba35ebeb706bb4e21669307a709", null ],
     [ "compact", "classshared_1_1Buffer.html#ab6e266bfcc8d55b5b5e9e4d089e7f22e", null ],
     [ "consume", "classshared_1_1Buffer.html#a28fbf4dee35ac1c9ad97973d9b58ae1f", null ],
-    [ "getData", "classshared_1_1Buffer.html#a8bb30233ff5fedeb69db1a10aeb0f77b", null ],
     [ "getReadPos", "classshared_1_1Buffer.html#a4c16cd4b4dae4d1261cfb978d8bd712b", null ],
     [ "getWritePos", "classshared_1_1Buffer.html#a38cbf6d8ef2592950281d42db5fbab2b", null ],
     [ "isEmpty", "classshared_1_1Buffer.html#a4d5dfe7133b086cdbf825e8c98d1c4f9", null ],
