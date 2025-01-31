@@ -48,7 +48,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::server(std::vector<std::string>& args, int& lineCount, int layer) {
+	int ConfigFileParser::server(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() != 1) {
 			std::cout << "Configuration file (line "
@@ -75,9 +75,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::location(std::vector<std::string>& args,
-								   const int& lineCount,
-								   int layer) {
+	int ConfigFileParser::location(std::vector<std::string>& args, const int& lineCount, int layer) {
 		if (args.size() != 2) {
 			std::cout << "Configuration file (line "
 					  << lineCount << "): "
@@ -140,7 +138,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::listen(std::vector<std::string>& args, int& lineCount, int layer) {
+	int ConfigFileParser::listen(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() != 2) {
 			std::cout << "Configuration file (line "
@@ -215,7 +213,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::serverName(std::vector<std::string>& args, int& lineCount, int layer) {
+	int ConfigFileParser::serverName(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() < 2) {
 			std::cout << "Configuration file (line "
@@ -249,7 +247,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::errorPage(std::vector<std::string>& args, int& lineCount, int layer) {
+	int ConfigFileParser::errorPage(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() < 3 || args.size() > 1001) {
 			std::cout << "Configuration file (line "
@@ -287,9 +285,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::clientMaxBodySize(std::vector<std::string>& args,
-											int& lineCount,
-											int layer) {
+	int ConfigFileParser::clientMaxBodySize(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() != 2) {
 			std::cout << "Configuration file (line "
@@ -317,9 +313,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::limitExcept(std::vector<std::string>& args,
-									  int& lineCount,
-									  int layer) {
+	int ConfigFileParser::limitExcept(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() < 2 || args.size() > 15) {
 			std::cout << "Configuration file (line "
@@ -366,9 +360,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::returnKeyword(std::vector<std::string>& args,
-										const int& lineCount,
-										int layer) {
+	int ConfigFileParser::returnKeyword(std::vector<std::string>& args, const int& lineCount, int layer) {
 		if (args.size() != 2) {
 			std::cout << "Configuration file (line "
 					  << lineCount << "): "
@@ -395,7 +387,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::root(std::vector<std::string>& args, int& lineCount, int layer) {
+	int ConfigFileParser::root(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() != 2) {
 			std::cout << "Configuration file (line "
@@ -422,7 +414,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::autoindex(std::vector<std::string>& args, int& lineCount, int layer) {
+	int ConfigFileParser::autoindex(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() != 2) {
 			std::cout << "Configuration file (line "
@@ -452,7 +444,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::index(std::vector<std::string>& args, int& lineCount, int layer) {
+	int ConfigFileParser::index(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 
 		if (args.size() < 2 || args.size() > 1001) {
@@ -475,7 +467,7 @@ namespace config {
 		return 0;
 	}
 
-	int ConfigFileParser::globalRoot(std::vector<std::string>& args, int& lineCount, int layer) {
+	int ConfigFileParser::globalRoot(std::vector<std::string>& args, const int& lineCount, int layer) {
 		if (layer != 1) {
 			std::cout << "Configuration file (line " << lineCount << "): "
 					  << "'global_root' is only allowed in server blocks" << std::endl;
@@ -515,9 +507,11 @@ namespace config {
 		}
 
 		// TODO: validate if we can access global root path?
-		// TODO: probably should not start unless it is
+		// TODO: probably should not start the server unless it is
 
-		server.globalRoot = args[1];
+		server.globalRoot.root = args[1]; // TODO: Location.root or Location.path?
+		server.globalRoot.methods.clear();
+		// server.globalRoot.path = args[1] + "/www"; // TODO: set server.globalRoot.path to <globalRoot.root>/www (or another subfolder in globalRoot)
 		return 0;
 	}
 

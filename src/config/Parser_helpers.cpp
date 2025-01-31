@@ -10,7 +10,7 @@ namespace config {
 	 * @param lineCount the current line number.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::handlePrompt(std::string& line, int layer, int& lineCount) {
+	int ConfigFileParser::handlePrompt(std::string& line, int layer, const int& lineCount) {
 		// return 0 if successful and semicolon is found, 1 if semicolon is not
 		// found, 2 if error cut off trailing and starting spaces
 		int qouteFlag = 1;
@@ -160,9 +160,7 @@ namespace config {
 		}
 	}
 
-	int ConfigFileParser::testFunction(const std::string& key,
-									   std::vector<std::string>& args,
-									   int& lineCount) {
+	int ConfigFileParser::testFunction(const std::string& key, std::vector<std::string>& args, const int& lineCount) {
 		int i;
 		if (key == "server")
 			i = server(args, lineCount, 0);
@@ -237,7 +235,7 @@ namespace config {
 	 * @param lineCount The current line number.
 	 * @return 0 if successful, 1 if error.
 	 */
-	int ConfigFileParser::saveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, int& lineCount) {
+	int ConfigFileParser::saveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, const int& lineCount) {
 		enum CmdId command_id = idCommand(args[0]);
 		if (command_id == UNKNOWN_ID) {
 			std::cout << "Configuration file (line " << lineCount << "): "
@@ -276,6 +274,9 @@ namespace config {
 						return 1;
 				} else if (command_id == CLIENT_MAX_BODY_SIZE_ID) {
 					if (clientMaxBodySize(args, lineCount, layer) == 1)
+						return 1;
+				} else if (command_id == GLOBAL_ROOT_ID) {
+					if (globalRoot(args, lineCount, layer) == 1)
 						return 1;
 				} else {
 					std::cout << "Configuration file (line " << lineCount << "): "

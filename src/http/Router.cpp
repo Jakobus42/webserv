@@ -9,7 +9,7 @@ namespace http {
 	/**
 	 * @brief Constructs a new Router object.
 	 */
-	Router::Router(const std::vector<config::Location>& locations, const std::string& globalRoot)
+	Router::Router(const std::vector<config::Location>& locations, const config::Location& globalRoot)
 		: m_locations(locations)
 		, m_globalRoot(globalRoot) {}
 
@@ -122,12 +122,13 @@ namespace http {
 	 * @throws http::exception If the path escapes the base root or is invalid.
 	 */
 	std::string Router::getBaseRoot(const Uri& uri) {
-		try {
-			const config::Location& location = getLocation(uri);
-			return m_globalRoot + "/" + location.root; // returned path should not have '/' at the end
-		} catch (const http::exception& e) {		   // also, globalRoot should not have '/' at the end (validate during parsing)
-			return m_globalRoot;					   // there should not be double '/' anywhere in the path
+		const config::Location& location = getLocation(uri);
+		if (location.root == m_globalRoot.root) {
+			return location.root;
 		}
+		return m_globalRoot.root + "/www" + location.root; // returned path should not have '/' at the end
+														   // TODO: ensure location.root always starts with '/',
+														   // never ends with '/' and never contains double '/'s
 	}
 
 	/**
@@ -193,6 +194,7 @@ namespace http {
 	// - if GETing or DELETEing a file, if that file exists and is accessible
 	// - treat server root (<serverLocation>/www/) as global root
 	// - block '../' escaping the global root directory
+	// TODO: ensure /cgi-bin/<script.cgi> path is also normalized so cgi-bin/ can't be escaped
 	std::string Router::normalizePath(const std::string& uriPath) {
 		std::vector<std::string> tokens;
 		splitPath(uriPath, tokens); // handle empty tokens, etc.
@@ -243,14 +245,14 @@ namespace http {
 			}
 			currentLocation = locateDeepestMatch(normPath, m_locations);
 			if (currentLocation == NULL) {
-				throw std::exception();
-				// return m_globalRoot; // TODO: return a default location somehow... ugh
-				//       probably should be the location for <global_root>/www/<subroute>
-				//       which should always exist and be accessible
-				// 	  meaning localhost:8080/foo/bar would attempt to locate
-				// 	  <global_root>/www/foo/bar
-				//       alternatively, always throw 404/500 if no locations are defined
-				//       or rather, if no global_root is defined
+				return m_globalRoot;
+				// TODO: return a default location somehow... ugh
+				// probably should be the location for <global_root>/www/<subroute>
+				// which should always exist and be accessible
+				// meaning localhost:8080/foo/bar would attempt to locate
+				// <global_root>/www/foo/bar
+				// alternatively, always throw 404/500 if no locations are defined
+				// or rather, if no global_root is defined
 			}
 			if (currentLocation->hasRedirect()) {
 				std::string redirectPath = currentLocation->redirectUrl;

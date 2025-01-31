@@ -50,6 +50,7 @@ namespace http {
 		: m_config(other.m_config)
 		, m_clients(other.m_clients)
 		, m_listenSocket(other.m_listenSocket)
+		, m_logger()
 		, m_router(other.m_router) {
 	}
 

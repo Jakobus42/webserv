@@ -102,7 +102,7 @@ namespace config {
 			unsigned long max_body_size;
 			// locations
 			std::vector<Location> locations;
-			std::string globalRoot; // empty string is invalid
+			Location globalRoot; // empty string as globalRoot.root is invalid
 
 			ServerConfig()
 				: port(8080)
@@ -111,7 +111,7 @@ namespace config {
 				, errorPages()
 				, max_body_size(1000000)
 				, locations()
-				, globalRoot("") {}
+				, globalRoot() {}
 
 			ServerConfig(const ServerConfig& other)
 				: port(other.port)
@@ -136,8 +136,8 @@ namespace config {
 				return *this;
 			}
 
-			bool hasGlobalRoot() const {
-				return !globalRoot.empty();
+			bool hasGlobalRoot() const { // TODO: should always be true...
+				return !globalRoot.root.empty();
 			}
 	};
 
@@ -163,11 +163,8 @@ namespace config {
 			ServerConfig* getServerConfig(int index);
 
 			void printServerConfigs(int detailed);
-			int testFunction(const std::string& key, std::vector<std::string>& args, int& lineCount);
-			void printLocations(const std::vector<config::Location>& locations,
-								int layer,
-								int detailed,
-								std::vector<int> layer_num);
+			int testFunction(const std::string& key, std::vector<std::string>& args, const int& lineCount);
+			void printLocations(const std::vector<config::Location>& locations, int layer, int detailed, std::vector<int> layer_num);
 			config::Location* getLocation(int layer);
 
 		private:
@@ -179,23 +176,23 @@ namespace config {
 			int readConfigFile(std::string& configFileName, std::string& file);
 			int parseConfigFile(std::string& configFileName, int layer, unsigned long& i, int& lineCount);
 			int handleServer(std::string& line, unsigned long* i);
-			int handlePrompt(std::string& line, int layer, int& lineCount);
-			int saveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, int& lineCount);
+			int handlePrompt(std::string& line, int layer, const int& lineCount);
+			int saveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, const int& lineCount);
 			enum CmdId idCommand(const std::string& command);
 
-			int server(std::vector<std::string>& args, int& lineCount, int layer);
+			int server(std::vector<std::string>& args, const int& lineCount, int layer);
 			int location(std::vector<std::string>& args, const int& lineCount, int layer);
 
-			int listen(std::vector<std::string>& args, int& lineCount, int layer);
-			int serverName(std::vector<std::string>& args, int& lineCount, int layer);
-			int errorPage(std::vector<std::string>& args, int& lineCount, int layer);
-			int clientMaxBodySize(std::vector<std::string>& args, int& lineCount, int layer);
-			int limitExcept(std::vector<std::string>& args, int& lineCount, int layer);
+			int listen(std::vector<std::string>& args, const int& lineCount, int layer);
+			int serverName(std::vector<std::string>& args, const int& lineCount, int layer);
+			int errorPage(std::vector<std::string>& args, const int& lineCount, int layer);
+			int clientMaxBodySize(std::vector<std::string>& args, const int& lineCount, int layer);
+			int limitExcept(std::vector<std::string>& args, const int& lineCount, int layer);
 			int returnKeyword(std::vector<std::string>& args, const int& lineCount, int layer);
-			int root(std::vector<std::string>& args, int& lineCount, int layer);
-			int autoindex(std::vector<std::string>& args, int& lineCount, int layer);
-			int index(std::vector<std::string>& args, int& lineCount, int layer);
-			int globalRoot(std::vector<std::string>& args, int& lineCount, int layer);
+			int root(std::vector<std::string>& args, const int& lineCount, int layer);
+			int autoindex(std::vector<std::string>& args, const int& lineCount, int layer);
+			int index(std::vector<std::string>& args, const int& lineCount, int layer);
+			int globalRoot(std::vector<std::string>& args, const int& lineCount, int layer);
 	};
 
 } // namespace config

@@ -10,12 +10,15 @@ server
 	# Limit client body size
 	client_max_body_size 10000000;
 
-	global_root /path/to/server/root # TODO: this is mandatory
+	global_root /path/to/server/root; # TODO: this is mandatory
 	# global_root directory must exist and be accessible, otherwise exit with an error code
 	# it is also where the server binary, cgi-bin/ and www/ directories must be located
 	# each of these directories should probably also be checked for existence & access permissions
 	# TODO: ensure this and other paths can't be relative
 	# TODO: alternatively, ensure that relative paths are valid and accessible
+	# TODO: figure out if we should actually store global_root + /www
+	# probably not, since cgi-bin/ and www/ are both in this folder
+	# TODO: make fetch routing
 
 	# Default server for unspecified routes
 

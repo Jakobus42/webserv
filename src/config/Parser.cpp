@@ -201,9 +201,9 @@ namespace config {
 					  << "No servers found in configuration file" << std::endl;
 			return 1;
 		}
-		for (std::size_t i = 0; i < m_serverConfigs.size(); ++i) {
-			if (!m_serverConfigs[i].hasGlobalRoot()) {
-				std::cout << "Configuration error: Server block " << i + 1
+		for (std::size_t index = 0; index < m_serverConfigs.size(); ++index) {
+			if (!m_serverConfigs[index].hasGlobalRoot()) {
+				std::cout << "Configuration error: Server block " << index + 1
 						  << " missing mandatory global_root directive" << std::endl;
 				return 1;
 			}
