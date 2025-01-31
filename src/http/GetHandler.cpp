@@ -27,7 +27,7 @@ namespace http {
 
 			std::ifstream inFile(safePath.c_str(), std::ios::binary);
 			if (!inFile.is_open()) {
-				throw http::exception(FORBIDDEN, "GET: File isn't accessible");
+				throw http::exception(FORBIDDEN, "GET: File isn't accessible"); // TODO: also happens if path doesn't exist, should be NOT_FOUND in that case
 			}
 
 			std::stringstream buffer;

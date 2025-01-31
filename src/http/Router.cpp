@@ -146,6 +146,8 @@ namespace http {
 	std::string Router::getSafePath(const Uri& uri) {
 		const std::string& baseRoot = getBaseRoot(uri); // getBaseRoot(const Uri& uri) -> returns <global_root>/<uri.root>
 		const std::string& normalizedUri = normalizePath(uri.path);
+		const bool isFile = uri.path.length() > 0 ? uri.path.at(uri.path.size() - 1) != '/' : false; // TODO: this sucks
+
 		// Merge baseRoot and normUri while ensuring we never go above baseRoot
 		// First normalize the baseRoot
 		if (baseRoot.empty() || baseRoot[0] != '/') {
@@ -157,9 +159,7 @@ namespace http {
 		if (combined.at(combined.size() - 1) == '/') {
 			combined.erase(combined.end() - 1);
 		}
-		// normUri is already normalized, so just append
 
-		// Now split combined to ensure no leftover ".." escapes
 		// Ensure normUri starts with '/'
 		std::string adjustedNormUri = normalizedUri;
 		if (adjustedNormUri.empty() || adjustedNormUri[0] != '/') {
@@ -168,28 +168,43 @@ namespace http {
 
 		combined += adjustedNormUri;
 
-		// Resolve the combined path to an absolute path
-		char real_combined[PATH_MAX];
-		if (realpath(combined.c_str(), real_combined) == NULL) {
-			throw http::exception(BAD_REQUEST, "Invalid path: " + combined + " - " + std::strerror(errno));
+		// Split the combined path into components
+		std::vector<std::string> components;
+		shared::string::splitPath(combined, components);
+
+		// Resolve the path components
+		std::vector<std::string> resolvedComponents;
+		for (std::vector<std::string>::iterator it = components.begin(); it != components.end(); ++it) {
+			if (*it == "..") {
+				if (!resolvedComponents.empty()) {
+					resolvedComponents.pop_back();
+				}
+			} else if (*it != "." && !it->empty()) {
+				resolvedComponents.push_back(*it);
+			}
 		}
 
-		// Resolve the base root to an absolute path
-		char real_root[PATH_MAX];
-		if (realpath(baseRoot.c_str(), real_root) == NULL) {
-			throw http::exception(INTERNAL_SERVER_ERROR, "Invalid base root: " + baseRoot + " - " + std::strerror(errno));
+		// Rebuild the resolved path
+		std::string resolvedPath = "/";
+		for (std::vector<std::string>::iterator it = resolvedComponents.begin(); it != resolvedComponents.end(); ++it) {
+			resolvedPath += *it + "/";
 		}
 
-		std::string s_real_combined(real_combined);
-		std::string s_real_root(real_root);
+		// Ensure the final path does not end with a slash if it's a file
+		if (isFile) {
+			std::cout << "path isn't dir?" << std::endl;
+			if (resolvedPath.at(resolvedPath.size() - 1) == '/') {
+				resolvedPath.erase(resolvedPath.end() - 1);
+			}
+		}
 
 		// Ensure the final path is within the base root
-		if (s_real_combined.find(s_real_root) != 0) {
-			throw http::exception(FORBIDDEN, "Path escapes the base root: " + s_real_combined);
+		if (resolvedPath.find(baseRoot) != 0) {
+			throw http::exception(FORBIDDEN, "Path escapes the base root: " + resolvedPath);
 		}
 
-		std::cout << "getSafePath returned: " << s_real_combined << std::endl;
-		return s_real_combined;
+		std::cout << "getSafePath returned: " << resolvedPath << std::endl;
+		return resolvedPath;
 	}
 
 	// really, this function needs to:
