@@ -21,7 +21,7 @@ namespace http {
 			int findLocation(const std::string& uri, config::Location& location); // currently not implemented
 			StatusCode fileExists(const std::string& absoluteFilePath);
 			void printLocation(const config::Location& location, int detailed); // replace with operator<< overload?
-
+			std::string getSafePath(const std::string& baseRoot, const std::string& normalizedUri);
 
 		private:
 			Router();
@@ -29,7 +29,6 @@ namespace http {
 			void splitPath(const std::string& path, std::vector<std::string>& tokens);
 			std::string normalizePath(const std::string& uriPath);
 			const config::Location* locateDeepestMatch(const std::string& normUri, const std::vector<config::Location>& locs);
-			std::string buildFinalPath(const std::string& baseRoot, const std::string& normUri);
 
 		private:
 			std::vector<config::Location> m_locations;

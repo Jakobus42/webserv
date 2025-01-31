@@ -119,7 +119,7 @@ namespace http {
 	 * @return std::string The final absolute file path.
 	 * @throws http::exception If the path escapes the base root or is invalid.
 	 */
-	std::string Router::buildFinalPath(const std::string& baseRoot, const std::string& normUri) {
+	std::string Router::getSafePath(const std::string& baseRoot, const std::string& normalizedUri) {
 		// Merge baseRoot and normUri while ensuring we never go above baseRoot
 		// First normalize the baseRoot
 		if (baseRoot.empty() || baseRoot[0] != '/') {
@@ -135,7 +135,7 @@ namespace http {
 
 		// Now split combined to ensure no leftover ".." escapes
 		// Ensure normUri starts with '/'
-		std::string adjustedNormUri = normUri;
+		std::string adjustedNormUri = normalizedUri;
 		if (adjustedNormUri.empty() || adjustedNormUri[0] != '/') {
 			adjustedNormUri = "/" + adjustedNormUri;
 		}
