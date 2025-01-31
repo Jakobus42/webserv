@@ -11,32 +11,37 @@ namespace http {
 	 * @brief Constructs a new PostHandler object.
 	 */
 	PostHandler::PostHandler(Router& router)
-		: ARequestHandler(router) {
-	}
+		: ARequestHandler(router) {}
 
 	/**
 	 * @brief Destroys the PostHandler object.
 	 */
-	PostHandler::~PostHandler() {
-	}
+	PostHandler::~PostHandler() {}
 
-	// join uri.path and fileName
-	// TODO: unused
-	std::string PostHandler::getFilePath(const std::string& path) {
-		(void)path;
-		return "/foo/bar/baz";
-	}
-
+	// in POST, there should be no file name in the path
 	void PostHandler::handle(const Request& request, Response& response) {
-		const config::Location& location = m_router.getLocation(request.getUri()); // TODO: implement
-		if (!location.acceptsFileUpload()) {
-			response.setStatusCode(FORBIDDEN);
+		std::string fullPath = "";
+		std::string uploadDir = "";
+		std::string filename = "";
+
+		try {
+			const config::Location& location = m_router.getLocation(request.getUri()); // TODO: implement
+			// location should probably be called deepestMatchingLocation
+			// we somehow need to both get:
+			// - deepest matching Location & its absolute root path
+			// - subdirectory path
+			// -> concatenate the two to get the overall absolute target path (including fileName)
+			if (!location.acceptsFileUpload()) {
+				throw http::exception(FORBIDDEN, "Location does not accept file uploads (no POST)");
+			}
+			uploadDir = location.root;
+		} catch (const http::exception& e) {
+			response.setStatusCode(e.getCode());
 			return handleError(request, response);
 		}
 
-		std::string uploadDir = location.root;
-		std::string filename = "uploaded.dat";
-		std::string fullPath = uploadDir + "/" + filename;
+		filename = "uploaded.dat";
+		fullPath = uploadDir + "/" + filename;
 
 		std::ofstream outFile(fullPath.c_str(), std::ios::binary);
 		if (!outFile.is_open()) {

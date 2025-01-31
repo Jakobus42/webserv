@@ -19,6 +19,7 @@ namespace http {
 	DeleteHandler::~DeleteHandler() {
 	}
 
+	// in GET, there should be a file name in the path
 	void DeleteHandler::handle(const Request& request, Response& response) {
 		const std::string& filePath = request.getUri().path;
 

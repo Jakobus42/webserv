@@ -69,11 +69,7 @@ namespace http {
 	const config::Location* Router::locateDeepestMatch(const std::string& normUri, const std::vector<config::Location>& locs) {
 		// Convert the normalized URI to tokens
 		std::vector<std::string> uriTokens;
-		try {
-			splitPath(normUri, uriTokens);
-		} catch (...) {
-			return NULL;
-		}
+		splitPath(normUri, uriTokens); // throws http::exception if path isn't valid
 
 		const config::Location* bestLocation = NULL;
 		size_t bestMatchLength = 0;
@@ -227,7 +223,7 @@ namespace http {
 			currentLocation = locateDeepestMatch(normPath, m_locations);
 			if (currentLocation == NULL) {
 				return m_globalRoot; // TODO: return a default location somehow... ugh
-									 //       probably should be the location for <global_root>/www/
+									 //       probably should be the location for <global_root>/www/<subroute>
 									 //       which should always exist and be accessible
 									 // 	  meaning localhost:8080/foo/bar would attempt to locate
 									 // 	  <global_root>/www/foo/bar

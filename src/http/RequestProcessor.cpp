@@ -59,6 +59,7 @@ namespace http {
 		return released;
 	}
 
+	// TODO: unused
 	int comparePaths(const std::vector<std::string>& LocationPath, const std::vector<std::string>& uriPath, int& len) {
 		unsigned long paths = 0;
 		if (LocationPath.size() > uriPath.size()) {
@@ -77,6 +78,7 @@ namespace http {
 		return 0;
 	}
 
+	// TODO: delete this
 	// /**
 	//  * @brief Builds the final absolute path, preventing escape from root.
 	//  */
@@ -105,7 +107,6 @@ namespace http {
 	// 	return safePath;
 	// }
 
-	// TODO: delete this
 	// int RequestProcessor::findLocation(const std::string& uri, const std::vector<config::Location>& locs, config::Location& location) {
 	// 	std::string normUri = normalizePath(uri);
 
