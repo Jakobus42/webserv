@@ -222,6 +222,8 @@ namespace config {
 			return AUTOINDEX_ID;
 		else if (key == "index")
 			return INDEX_ID;
+		else if (key == "global_root")
+			return GLOBAL_ROOT_ID;
 		else
 			return UNKNOWN_ID;
 	}

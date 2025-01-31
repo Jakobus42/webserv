@@ -475,4 +475,36 @@ namespace config {
 		return 0;
 	}
 
+	int ConfigFileParser::globalRoot(std::vector<std::string>& args, int& lineCount, int layer) {
+		if (layer != 1) {
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "'global_root' is only allowed in server blocks" << std::endl;
+			return 1;
+		}
+		if (args.size() != 2) {
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "Invalid number of arguments for global_root" << std::endl;
+			return 1;
+		}
+
+		if (args[1].empty() || args[1].length() > 1000) {
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "global_root path length invalid" << std::endl;
+			return 1;
+		}
+
+		ServerConfig& server = m_serverConfigs.back();
+		if (server.hasGlobalRoot()) {
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "Duplicate global_root directive" << std::endl;
+			return 1;
+		}
+
+		// TODO: validate if we can access global root path?
+		// TODO: probably should not start unless it is
+
+		server.globalRoot = args[1];
+		return 0;
+	}
+
 } // namespace config

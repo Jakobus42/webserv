@@ -10,6 +10,11 @@ server
 	# Limit client body size
 	client_max_body_size 10000000;
 
+	global_root /path/to/server/root # TODO: this is mandatory
+	# global_root directory must exist and be accessible, otherwise exit with an error code
+	# it is also where the server binary, cgi-bin/ and www/ directories must be located
+	# each of these directories should probably also be checked for existence & access permissions
+
 	# Default server for unspecified routes
 
 	# Example of a route with multiple rules 

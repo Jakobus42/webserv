@@ -195,11 +195,18 @@ namespace config {
 			m_serverConfigs.clear();
 			return 1;
 		}
-		if (m_serverConfigs.size() == 0) {
+		if (m_serverConfigs.empty()) {
 			std::cout << "Configuration file (line "
 					  << lineCount << "): "
 					  << "No servers found in configuration file" << std::endl;
 			return 1;
+		}
+		for (std::size_t i = 0; i < m_serverConfigs.size(); ++i) {
+			if (!m_serverConfigs[i].hasGlobalRoot()) {
+				std::cout << "Configuration error: Server block " << i + 1
+						  << " missing mandatory global_root directive" << std::endl;
+				return 1;
+			}
 		}
 		m_isLoaded = 1;
 		return 0;

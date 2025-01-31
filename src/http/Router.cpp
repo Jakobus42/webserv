@@ -9,8 +9,9 @@ namespace http {
 	/**
 	 * @brief Constructs a new Router object.
 	 */
-	Router::Router(const std::vector<config::Location>& locations)
-		: m_locations(locations) {} // TODO: doesn't yet initialize defaultLocation
+	Router::Router(const std::vector<config::Location>& locations, const std::string& globalRoot)
+		: m_locations(locations)
+		, m_globalRoot(globalRoot) {}
 
 	/**
 	 * @brief Destroys the Router object.
@@ -19,14 +20,14 @@ namespace http {
 
 	Router::Router(const Router& other)
 		: m_locations(other.m_locations)
-		, m_defaultLocation(other.m_defaultLocation) {}
+		, m_globalRoot(other.m_globalRoot) {}
 
 	const Router& Router::operator=(const Router& rhs) {
 		if (this == &rhs) {
 			return *this;
 		}
 		m_locations = rhs.m_locations;
-		m_defaultLocation = rhs.m_defaultLocation;
+		m_globalRoot = rhs.m_globalRoot;
 		return *this;
 	}
 
@@ -38,6 +39,8 @@ namespace http {
 	 * @return int 0 on success, 1 on failure.
 	 */
 	void Router::splitPath(const std::string& path, std::vector<std::string>& tokens) {
+		// Return 1 if the path is invalid in the current context
+		// For example, we may require that the path always starts with '/'
 		if (path.empty()) {
 			throw http::exception(NOT_FOUND, "Path is empty");
 		}
@@ -166,6 +169,35 @@ namespace http {
 		return s_real_combined;
 	}
 
+	// really, this function needs to:
+	// - figure out if the path is a file (should only be GET) or location
+	// - figure out if that location exists
+	// - if POSTing a file, if that location is writeable
+	// - if GETing or DELETEing a file, if that file exists and is accessible
+	// - treat server root (<serverLocation>/www/) as global root
+	// - block '../' escaping the global root directory
+	std::string Router::normalizePath(const std::string& uriPath) {
+		std::vector<std::string> tokens;
+		splitPath(uriPath, tokens); // handle empty tokens, etc.
+		std::vector<std::string> normalized;
+
+		for (size_t i = 0; i < tokens.size(); i++) {
+			if (tokens[i] == "..") {
+				if (!normalized.empty()) {
+					normalized.pop_back();
+				}
+			} else if (!tokens[i].empty() && tokens[i] != ".") {
+				normalized.push_back(tokens[i]);
+			}
+		}
+		// Rebuild path
+		std::string result = "/";
+		for (size_t i = 0; i < normalized.size(); i++) {
+			result += normalized[i] + "/";
+		}
+		return result;
+	}
+
 	// TODO: route and return location
 	// or throw error, maybe should reuse that pattern
 	// NOTE: I would expect this to:
@@ -188,13 +220,19 @@ namespace http {
 		const config::Location* currentLocation = NULL;
 
 		while (redirectCount < MAX_REDIRECTS) {
-			std::string normPath = RequestProcessor::normalizePath(currentUri.path);
+			std::string normPath = normalizePath(currentUri.path);
 			if (normPath.empty()) {
 				throw http::exception(FORBIDDEN, "Invalid normalized path"); // maybe bad request instead
 			}
 			currentLocation = locateDeepestMatch(normPath, m_locations);
 			if (currentLocation == NULL) {
-				return m_defaultLocation;
+				return m_globalRoot; // TODO: return a default location somehow... ugh
+									 //       probably should be the location for <global_root>/www/
+									 //       which should always exist and be accessible
+									 // 	  meaning localhost:8080/foo/bar would attempt to locate
+									 // 	  <global_root>/www/foo/bar
+									 //       alternatively, always throw 404/500 if no locations are defined
+									 //       or rather, if no global_root is defined
 			}
 			if (currentLocation->hasRedirect()) {
 				std::string redirectPath = currentLocation->redirectUrl;

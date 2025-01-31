@@ -23,12 +23,8 @@ namespace http {
 
 			Response* process(Request& req);
 
-
-
-			// for testing purposes
-			void printLocation(const config::Location& location, int detailed);
+			// TODO: remove testing function
 			int testParseURI(const std::string& uri, int mode);
-			static std::string normalizePath(const std::string& uriPath);
 
 		private:
 			Response* releaseResponse();

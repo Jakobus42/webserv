@@ -27,6 +27,11 @@ namespace config {
 			std::vector<std::string> index;
 			std::vector<Location> locations; // locations
 
+			// globalRoot should always have path <global_root>/www/
+			// what about defaults for accepted methods?
+			// should globalRoot even be a Location?
+			// or just a string that's used as a base for all routes?
+
 			// default constructor
 			Location()
 				: path()
@@ -84,6 +89,7 @@ namespace config {
 		ROOT_ID = 8,
 		AUTOINDEX_ID = 9,
 		INDEX_ID = 10,
+		GLOBAL_ROOT_ID = 11,
 		UNKNOWN_ID = 404
 	};
 
@@ -96,14 +102,16 @@ namespace config {
 			unsigned long max_body_size;
 			// locations
 			std::vector<Location> locations;
+			std::string globalRoot; // empty string is invalid
 
 			ServerConfig()
-				: port()
-				, ip_address()
+				: port(8080)
+				, ip_address(http::LOCALHOST_ADDRESS)
 				, server_names()
 				, errorPages()
-				, max_body_size()
-				, locations() {}
+				, max_body_size(1000000)
+				, locations()
+				, globalRoot("") {}
 
 			ServerConfig(const ServerConfig& other)
 				: port(other.port)
@@ -111,7 +119,8 @@ namespace config {
 				, server_names(other.server_names)
 				, errorPages(other.errorPages)
 				, max_body_size(other.max_body_size)
-				, locations(other.locations) {}
+				, locations(other.locations)
+				, globalRoot(other.globalRoot) {}
 
 			const ServerConfig& operator=(const ServerConfig& rhs) {
 				if (this == &rhs) {
@@ -123,7 +132,12 @@ namespace config {
 				errorPages = rhs.errorPages;
 				max_body_size = rhs.max_body_size;
 				locations = rhs.locations;
+				globalRoot = rhs.globalRoot;
 				return *this;
+			}
+
+			bool hasGlobalRoot() const {
+				return !globalRoot.empty();
 			}
 	};
 
@@ -181,6 +195,7 @@ namespace config {
 			int root(std::vector<std::string>& args, int& lineCount, int layer);
 			int autoindex(std::vector<std::string>& args, int& lineCount, int layer);
 			int index(std::vector<std::string>& args, int& lineCount, int layer);
+			int globalRoot(std::vector<std::string>& args, int& lineCount, int layer);
 	};
 
 } // namespace config

@@ -26,7 +26,7 @@ namespace http {
 		, m_clients()
 		, m_listenSocket(-1)
 		, m_logger()
-		, m_router(conf.locations) {
+		, m_router(conf.locations, conf.globalRoot) {
 	}
 
 	/**

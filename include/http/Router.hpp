@@ -11,7 +11,7 @@ namespace http {
 	 */
 	class Router {
 		public:
-			Router(const std::vector<config::Location>& locations);
+			Router(const std::vector<config::Location>& locations, const std::string& globalRoot);
 			~Router();
 			Router(const Router& other);
 			const Router& operator=(const Router& rhs);
@@ -27,12 +27,13 @@ namespace http {
 			Router();
 
 			void splitPath(const std::string& path, std::vector<std::string>& tokens);
+			std::string normalizePath(const std::string& uriPath);
 			const config::Location* locateDeepestMatch(const std::string& normUri, const std::vector<config::Location>& locs);
 			std::string buildFinalPath(const std::string& baseRoot, const std::string& normUri);
 
 		private:
 			std::vector<config::Location> m_locations;
-			config::Location m_defaultLocation;
+			std::string m_globalRoot;
 			static const int MAX_REDIRECTS = 32;
 	};
 
