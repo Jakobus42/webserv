@@ -14,6 +14,8 @@ server
 	# global_root directory must exist and be accessible, otherwise exit with an error code
 	# it is also where the server binary, cgi-bin/ and www/ directories must be located
 	# each of these directories should probably also be checked for existence & access permissions
+	# TODO: ensure this and other paths can't be relative
+	# TODO: alternatively, ensure that relative paths are valid and accessible
 
 	# Default server for unspecified routes
 

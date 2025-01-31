@@ -20,22 +20,25 @@ namespace http {
 	}
 
 	// in GET, there should be a file name in the path
+	// on success: either return 204 No Content when there is no body
+	// or return 200 OK if there's information in the body
+	// i.e. a html page saying "file /foo/bar.baz was deleted"
 	void DeleteHandler::handle(const Request& request, Response& response) {
-		const std::string& filePath = request.getUri().path;
+		try {
+			std::string safePath = m_router.getSafePath(request.getUri()); // should be the absolute path to the requested file
 
-		if (!m_router.fileExists(filePath)) {  // if (fileCantBeFound() || fileCantBeDeleted())
-			response.setStatusCode(NOT_FOUND); // currently hard coded
-			return handleError(request, response);
-		} else {
-			if (std::remove(filePath.c_str()) != 0) { // unlink the file
-				response.setStatusCode(FORBIDDEN);
-				return handleError(request, response);
+			if (!m_router.fileExists(safePath + "/" + "file.dat")) { // TODO: replace with actual file name
+				throw http::exception(NOT_FOUND, "DELETE: File doesn't exist");
 			}
-			// either return 204 No Content when there is no body
-			// or return 200 OK if there's information in the body
-			// i.e. a html page saying "file /foo/bar.baz was deleted"
+
+			if (std::remove(safePath.c_str()) != 0) { // unlink the file
+				throw http::exception(FORBIDDEN, "DELETE: File could not be removed");
+			}
 			response.setStatusCode(NO_CONTENT);
 			response.setHeader("Content-Length", "0");
+		} catch (const http::exception& e) {
+			response.setStatusCode(e.getCode());
+			return handleError(request, response);
 		}
 	}
 

@@ -112,6 +112,25 @@ namespace http {
 	}
 
 	/**
+	 * @brief Builds the absolute base root for the uri.
+	 *
+	 * @param uri The target uri.
+	 * @return std::string The absolute path to the best-matching Location's root.
+	 * i.e. if global_root is /var/foo, uri.path is /bar/baz and there's a location /bar/baz with root /qux/quux
+	 * it should return "/var/foo/qux/quux"
+	 * If there is no route match at all, it should simply return global_root
+	 * @throws http::exception If the path escapes the base root or is invalid.
+	 */
+	std::string Router::getBaseRoot(const Uri& uri) {
+		try {
+			const config::Location& location = getLocation(uri);
+			return m_globalRoot + "/" + location.root; // returned path should not have '/' at the end
+		} catch (const http::exception& e) {		   // also, globalRoot should not have '/' at the end (validate during parsing)
+			return m_globalRoot;					   // there should not be double '/' anywhere in the path
+		}
+	}
+
+	/**
 	 * @brief Builds the final absolute path, ensuring it does not escape the base root.
 	 *
 	 * @param baseRoot The base root directory.
@@ -119,7 +138,9 @@ namespace http {
 	 * @return std::string The final absolute file path.
 	 * @throws http::exception If the path escapes the base root or is invalid.
 	 */
-	std::string Router::getSafePath(const std::string& baseRoot, const std::string& normalizedUri) {
+	std::string Router::getSafePath(const Uri& uri) {
+		const std::string& baseRoot = getBaseRoot(uri); // getBaseRoot(const Uri& uri) -> returns <global_root>/<uri.root>
+		const std::string& normalizedUri = normalizePath(uri.path);
 		// Merge baseRoot and normUri while ensuring we never go above baseRoot
 		// First normalize the baseRoot
 		if (baseRoot.empty() || baseRoot[0] != '/') {
@@ -222,13 +243,14 @@ namespace http {
 			}
 			currentLocation = locateDeepestMatch(normPath, m_locations);
 			if (currentLocation == NULL) {
-				return m_globalRoot; // TODO: return a default location somehow... ugh
-									 //       probably should be the location for <global_root>/www/<subroute>
-									 //       which should always exist and be accessible
-									 // 	  meaning localhost:8080/foo/bar would attempt to locate
-									 // 	  <global_root>/www/foo/bar
-									 //       alternatively, always throw 404/500 if no locations are defined
-									 //       or rather, if no global_root is defined
+				throw std::exception();
+				// return m_globalRoot; // TODO: return a default location somehow... ugh
+				//       probably should be the location for <global_root>/www/<subroute>
+				//       which should always exist and be accessible
+				// 	  meaning localhost:8080/foo/bar would attempt to locate
+				// 	  <global_root>/www/foo/bar
+				//       alternatively, always throw 404/500 if no locations are defined
+				//       or rather, if no global_root is defined
 			}
 			if (currentLocation->hasRedirect()) {
 				std::string redirectPath = currentLocation->redirectUrl;

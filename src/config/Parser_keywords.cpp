@@ -486,10 +486,24 @@ namespace config {
 					  << "Invalid number of arguments for global_root" << std::endl;
 			return 1;
 		}
-
 		if (args[1].empty() || args[1].length() > 1000) {
 			std::cout << "Configuration file (line " << lineCount << "): "
 					  << "global_root path length invalid" << std::endl;
+			return 1;
+		}
+		if (args[1][0] != '/') {
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "global_root path invalid, doesn't start with '/'" << std::endl;
+			return 1;
+		}
+		if (args[1].find("//") != std::string::npos) {
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "global_root path invalid, duplicate '/'" << std::endl;
+			return 1;
+		}
+		if (args[1][args[1].size() - 1] == '/') {
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "global_root path invalid, ends with '/'" << std::endl;
 			return 1;
 		}
 

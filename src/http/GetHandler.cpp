@@ -19,14 +19,17 @@ namespace http {
 	void GetHandler::handle(const Request& request, Response& response) {
 		// const std::string& filePath = request.getUri().path; // is this already the absolute path?
 		try {
-			std::string safePath = m_router.getSafePath();			 // should be the absolute path to the requested file
+			std::string safePath = m_router.getSafePath(request.getUri()); // should be the absolute path to the requested file
+
 			if (!m_router.fileExists(safePath + "/" + "file.dat")) { // TODO: replace with actual file name
 				throw http::exception(NOT_FOUND, "GET: File doesn't exist");
 			}
+
 			std::ifstream inFile(safePath.c_str(), std::ios::binary);
 			if (!inFile.is_open()) {
 				throw http::exception(FORBIDDEN, "GET: File isn't accessible");
 			}
+
 			std::stringstream buffer;
 			buffer << inFile.rdbuf();
 			response.setBody(buffer.str());
