@@ -19,14 +19,14 @@ namespace http {
 		public:
 			const config::Location& getLocation(const http::Uri& uri);
 			int findLocation(const std::string& uri, config::Location& location); // currently not implemented
-			StatusCode fileExists(const std::string& filePath);
+			StatusCode fileExists(const std::string& absoluteFilePath);
 			void printLocation(const config::Location& location, int detailed); // replace with operator<< overload?
 
 
 		private:
 			Router();
 
-			bool splitPath(const std::string& path, std::vector<std::string>& tokens);
+			void splitPath(const std::string& path, std::vector<std::string>& tokens);
 			const config::Location* locateDeepestMatch(const std::string& normUri, const std::vector<config::Location>& locs);
 			std::string buildFinalPath(const std::string& baseRoot, const std::string& normUri);
 

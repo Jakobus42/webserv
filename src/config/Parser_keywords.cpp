@@ -56,7 +56,7 @@ namespace config {
 					  << "Invalid number of arguments for server" << std::endl;
 			return 1;
 		}
-		t_server new_server;
+		ServerConfig new_server;
 		// set default values
 		new_server.port = 80;
 		new_server.ip_address = http::LOCALHOST_ADDRESS;

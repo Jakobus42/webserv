@@ -30,7 +30,7 @@ namespace core {
 	Reactor::~Reactor() {
 	}
 
-	void Reactor::init(config::t_config_data& conf) {
+	void Reactor::init(config::ConfigData& conf) {
 		signal(SIGINT, handleSigint);
 		signal(SIGQUIT, SIG_IGN);
 

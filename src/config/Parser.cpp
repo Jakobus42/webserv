@@ -209,7 +209,7 @@ namespace config {
 		return m_isLoaded;
 	}
 
-	t_config_data ConfigFileParser::getConfigData() const {
+	ConfigData ConfigFileParser::getConfigData() const {
 		return m_configData;
 	}
 
@@ -237,7 +237,7 @@ namespace config {
 		return m_configData.servers[index].max_body_size;
 	}
 
-	t_server* ConfigFileParser::getServer(int index) {
+	ServerConfig* ConfigFileParser::getServerConfig(int index) {
 		return &m_configData.servers[index];
 	}
 

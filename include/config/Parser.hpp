@@ -87,7 +87,7 @@ namespace config {
 		UNKNOWN_ID = 404
 	};
 
-	typedef struct s_server {
+	struct ServerConfig {
 			// configurations
 			int port;
 			uint32_t ip_address;
@@ -96,12 +96,12 @@ namespace config {
 			unsigned long max_body_size;
 			// locations
 			std::vector<Location> locations;
-	} t_server;
+	};
 
-	typedef struct s_config_data {
+	struct ConfigData {
 			// servers
-			std::vector<t_server> servers;
-	} t_config_data;
+			std::vector<ServerConfig> servers;
+	};
 
 	/**
 	 * @class ConfigFileParser
@@ -115,14 +115,14 @@ namespace config {
 			int loadConfigFile(std::string& configFileName);
 
 			int getIsLoaded() const;
-			t_config_data getConfigData() const;
+			ConfigData getConfigData() const;
 			int getServerSize() const;
 			int getServerPort(int index) const;
 			uint32_t getServerIp(int index) const;
 			std::vector<std::string> getServerNames(int index) const;
 			std::map<int, std::string> getErrorPages(int index) const;
 			unsigned long getMaxBodySize(int index) const;
-			t_server* getServer(int index);
+			ServerConfig* getServerConfig(int index);
 
 			void printConfigData(int detailed);
 			int testFunction(const std::string& key, std::vector<std::string>& args, int& lineCount);
@@ -135,7 +135,7 @@ namespace config {
 		private:
 			ConfigFileParser(const ConfigFileParser& other);
 			ConfigFileParser& operator=(const ConfigFileParser& other);
-			t_config_data m_configData;
+			ConfigData m_configData;
 			int m_isLoaded;
 
 			int readConfigFile(std::string& configFileName, std::string& file);

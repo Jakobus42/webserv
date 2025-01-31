@@ -21,7 +21,7 @@ namespace http {
 	/**
 	 * @brief Constructs a new VirtualServer object.
 	 */
-	VirtualServer::VirtualServer(config::t_server& conf)
+	VirtualServer::VirtualServer(config::ServerConfig& conf)
 		: m_config(conf)
 		, m_clients()
 		, m_listenSocket(-1)
@@ -203,7 +203,7 @@ namespace http {
 
 	std::map<int32_t, time_t>& VirtualServer::getClients(void) { return m_clients; }
 
-	const config::t_server& VirtualServer::getConfig() const { return m_config; }
+	const config::ServerConfig& VirtualServer::getConfig() const { return m_config; }
 
 	Router& VirtualServer::getRouter() { return m_router; }
 

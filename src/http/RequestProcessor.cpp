@@ -37,6 +37,7 @@ namespace http {
 			try {
 				// m_router.findLocation(req.getUri().path, location); // currently not implemented, probably replaced with getLocation()? TODO: verify
 				const config::Location& location = m_router.getLocation(req.getUri());
+				(void)location;
 				// do something with the location????? xd
 			} catch (const http::exception& e) {
 				req.setStatusCode(e.getCode());

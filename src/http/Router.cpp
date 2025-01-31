@@ -10,18 +10,16 @@ namespace http {
 	 * @brief Constructs a new Router object.
 	 */
 	Router::Router(const std::vector<config::Location>& locations)
-		: m_locations(locations) {
-	}
+		: m_locations(locations) {} // TODO: doesn't yet initialize defaultLocation
 
 	/**
 	 * @brief Destroys the Router object.
 	 */
 	Router::~Router() {}
 
-	Router::Router(const Router& other) {
-		m_locations = other.m_locations;
-		m_defaultLocation = other.m_defaultLocation;
-	}
+	Router::Router(const Router& other)
+		: m_locations(other.m_locations)
+		, m_defaultLocation(other.m_defaultLocation) {}
 
 	const Router& Router::operator=(const Router& rhs) {
 		if (this == &rhs) {
@@ -39,13 +37,11 @@ namespace http {
 	 * @param tokens Vector to store the split tokens.
 	 * @return int 0 on success, 1 on failure.
 	 */
-	bool Router::splitPath(const std::string& path, std::vector<std::string>& tokens) {
+	void Router::splitPath(const std::string& path, std::vector<std::string>& tokens) {
 		if (path.empty()) {
-			return false; // Invalid path
 			throw http::exception(NOT_FOUND, "Path is empty");
 		}
 		if (path[0] != '/') {
-			return false;
 			throw http::exception(BAD_REQUEST, "Path doesn't begin with '/'");
 		}
 
@@ -58,7 +54,6 @@ namespace http {
 				tokens.push_back(segment);
 			}
 		}
-		return true;
 	}
 
 	/**
@@ -71,7 +66,9 @@ namespace http {
 	const config::Location* Router::locateDeepestMatch(const std::string& normUri, const std::vector<config::Location>& locs) {
 		// Convert the normalized URI to tokens
 		std::vector<std::string> uriTokens;
-		if (splitPath(normUri, uriTokens) == false) {
+		try {
+			splitPath(normUri, uriTokens);
+		} catch (...) {
 			return NULL;
 		}
 
@@ -217,6 +214,7 @@ namespace http {
 		if (redirectCount >= MAX_REDIRECTS) {
 			throw http::exception(LOOP_DETECTED, "Too many redirects");
 		}
+		// TODO: actually detect loops by keeping track of routes traversed?
 		return *(currentLocation);
 	}
 
@@ -229,9 +227,9 @@ namespace http {
 	 * @param filePath The path to the file.
 	 * @return StatusCode Status indicating if the file exists (OK) or not (NOT_FOUND).
 	 */
-	StatusCode Router::fileExists(const std::string& filePath) {
+	StatusCode Router::fileExists(const std::string& absoluteFilePath) {
 		struct stat st;
-		if (stat(filePath.c_str(), &st) == 0 && S_ISREG(st.st_mode)) {
+		if (stat(absoluteFilePath.c_str(), &st) == 0 && S_ISREG(st.st_mode)) {
 			return OK;
 		}
 		return NOT_FOUND;
