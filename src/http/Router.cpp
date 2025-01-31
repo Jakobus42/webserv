@@ -9,9 +9,10 @@ namespace http {
 	/**
 	 * @brief Constructs a new Router object.
 	 */
-	Router::Router(const std::vector<config::Location>& locations, const config::Location& globalRoot)
+	Router::Router(const std::vector<config::Location>& locations, const config::Location& globalRoot, const std::string& dataDir)
 		: m_locations(locations)
-		, m_globalRoot(globalRoot) {}
+		, m_globalRoot(globalRoot)
+		, m_dataDir(dataDir) {}
 
 	/**
 	 * @brief Destroys the Router object.
@@ -20,7 +21,8 @@ namespace http {
 
 	Router::Router(const Router& other)
 		: m_locations(other.m_locations)
-		, m_globalRoot(other.m_globalRoot) {}
+		, m_globalRoot(other.m_globalRoot)
+		, m_dataDir(other.m_dataDir) {}
 
 	const Router& Router::operator=(const Router& rhs) {
 		if (this == &rhs) {
@@ -28,6 +30,7 @@ namespace http {
 		}
 		m_locations = rhs.m_locations;
 		m_globalRoot = rhs.m_globalRoot;
+		m_dataDir = rhs.m_dataDir;
 		return *this;
 	}
 
@@ -116,19 +119,20 @@ namespace http {
 	 *
 	 * @param uri The target uri.
 	 * @return std::string The absolute path to the best-matching Location's root.
-	 * i.e. if global_root is /var/foo, uri.path is /bar/baz and there's a location /bar/baz with root /qux/quux
-	 * it should return "/var/foo/qux/quux"
+	 * i.e. if global_root is /var/foo, data_directory is /www, uri.path is /bar/baz and there's a location /bar/baz with root /qux/quux
+	 * it should return "/var/foo/www/qux/quux"
 	 * If there is no route match at all, it should simply return global_root
 	 * @throws http::exception If the path escapes the base root or is invalid.
 	 */
 	std::string Router::getBaseRoot(const Uri& uri) {
 		const config::Location& location = getLocation(uri);
 		if (location.root == m_globalRoot.root) {
-			return location.root;
+			return location.root + m_dataDir;
 		}
-		return m_globalRoot.root + "/www" + location.root; // returned path should not have '/' at the end
-														   // TODO: ensure location.root always starts with '/',
-														   // never ends with '/' and never contains double '/'s
+		return m_globalRoot.root + m_dataDir + location.root; // returned path should not have '/' at the end
+															  // TODO: ensure location.root always starts with '/',
+															  // never ends with '/' and never contains double '/'s
+															  // TODO: ensure the same for dataDir and globalRoot
 	}
 
 	/**
@@ -184,6 +188,7 @@ namespace http {
 			throw http::exception(FORBIDDEN, "Path escapes the base root: " + s_real_combined);
 		}
 
+		std::cout << "getSafePath returned: " << s_real_combined << std::endl;
 		return s_real_combined;
 	}
 
@@ -192,7 +197,7 @@ namespace http {
 	// - figure out if that location exists
 	// - if POSTing a file, if that location is writeable
 	// - if GETing or DELETEing a file, if that file exists and is accessible
-	// - treat server root (<serverLocation>/www/) as global root
+	// - treat server root (<serverLocation>/<data_dir>) as global root // server root must be defined, as we can't use getcwd()
 	// - block '../' escaping the global root directory
 	// TODO: ensure /cgi-bin/<script.cgi> path is also normalized so cgi-bin/ can't be escaped
 	std::string Router::normalizePath(const std::string& uriPath) {

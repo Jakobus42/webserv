@@ -43,8 +43,9 @@ namespace http {
 			response.setStatusCode(CREATED);
 			response.setHeader("Content-Length", "0");
 		} catch (const http::exception& e) {
+			std::cout << "DANG, " << e.getMessage() << std::endl;
 			response.setStatusCode(e.getCode());
-			return handleError(request, response);
+			return handleError(response);
 		}
 		// 	uploadPath = request.getUri().path; // TODO: shouldn't contain file name, path probably does
 		// body should already be there & checked for validity

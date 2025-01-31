@@ -88,7 +88,8 @@ namespace http {
 
 		char errorPage[1024];
 		const char* statusMessage = getStatusMessage(statusCode).c_str();
-		snprintf(errorPage, sizeof(errorPage), errorPageTemplate, statusCode, statusMessage, statusCode, statusMessage);
+		std::cout << "getErrorPage writing: " << statusCode << " " << statusMessage << std::endl;
+		snprintf(errorPage, sizeof(errorPage), errorPageTemplate, statusCode, statusMessage, statusCode, statusMessage); // TODO: replace this with a legal function
 
 		return std::string(errorPage);
 	}

@@ -21,8 +21,8 @@ namespace http {
 
 			virtual void handle(const Request& request, Response& response) = 0;
 
-			void handleError(const Request& request, Response& response) {
-				response.setBody(getErrorPage(request.getStatusCode()));
+			void handleError(Response& response) {
+				response.setBody(getErrorPage(response.getStatusCode()));
 				response.setHeader("Content-Length", shared::string::fromNum(response.getBody().length()));
 				response.setHeader("Content-Type", TEXT_HTML);
 			}

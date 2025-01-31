@@ -207,6 +207,11 @@ namespace config {
 						  << " missing mandatory global_root directive" << std::endl;
 				return 1;
 			}
+			if (!m_serverConfigs[index].hasDataDir()) {
+				std::cout << "Configuration error: Server block " << index + 1
+						  << " missing mandatory data_dir directive" << std::endl;
+				return 1;
+			}
 		}
 		m_isLoaded = 1;
 		return 0;

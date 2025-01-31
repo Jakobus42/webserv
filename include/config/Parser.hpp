@@ -27,7 +27,7 @@ namespace config {
 			std::vector<std::string> index;
 			std::vector<Location> locations; // locations
 
-			// globalRoot should always have path <global_root>/www/
+			// globalRoot should always have path <global_root>/<data_dir>/
 			// what about defaults for accepted methods?
 			// should globalRoot even be a Location?
 			// or just a string that's used as a base for all routes?
@@ -90,6 +90,7 @@ namespace config {
 		AUTOINDEX_ID = 9,
 		INDEX_ID = 10,
 		GLOBAL_ROOT_ID = 11,
+		DATA_DIR_ID = 12,
 		UNKNOWN_ID = 404
 	};
 
@@ -103,6 +104,7 @@ namespace config {
 			// locations
 			std::vector<Location> locations;
 			Location globalRoot; // empty string as globalRoot.root is invalid
+			std::string dataDir;
 
 			ServerConfig()
 				: port(8080)
@@ -111,7 +113,8 @@ namespace config {
 				, errorPages()
 				, max_body_size(1000000)
 				, locations()
-				, globalRoot() {}
+				, globalRoot()
+				, dataDir() {}
 
 			ServerConfig(const ServerConfig& other)
 				: port(other.port)
@@ -120,7 +123,8 @@ namespace config {
 				, errorPages(other.errorPages)
 				, max_body_size(other.max_body_size)
 				, locations(other.locations)
-				, globalRoot(other.globalRoot) {}
+				, globalRoot(other.globalRoot)
+				, dataDir(other.dataDir) {}
 
 			const ServerConfig& operator=(const ServerConfig& rhs) {
 				if (this == &rhs) {
@@ -133,11 +137,16 @@ namespace config {
 				max_body_size = rhs.max_body_size;
 				locations = rhs.locations;
 				globalRoot = rhs.globalRoot;
+				dataDir = rhs.dataDir;
 				return *this;
 			}
 
 			bool hasGlobalRoot() const { // TODO: should always be true...
 				return !globalRoot.root.empty();
+			}
+
+			bool hasDataDir() const { // TODO: should always be true...
+				return !dataDir.empty();
 			}
 	};
 
@@ -193,6 +202,7 @@ namespace config {
 			int autoindex(std::vector<std::string>& args, const int& lineCount, int layer);
 			int index(std::vector<std::string>& args, const int& lineCount, int layer);
 			int globalRoot(std::vector<std::string>& args, const int& lineCount, int layer);
+			int dataDir(std::vector<std::string>& args, const int& lineCount, int layer);
 	};
 
 } // namespace config

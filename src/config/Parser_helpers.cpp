@@ -222,6 +222,8 @@ namespace config {
 			return INDEX_ID;
 		else if (key == "global_root")
 			return GLOBAL_ROOT_ID;
+		else if (key == "data_dir")
+			return DATA_DIR_ID;
 		else
 			return UNKNOWN_ID;
 	}
@@ -277,6 +279,9 @@ namespace config {
 						return 1;
 				} else if (command_id == GLOBAL_ROOT_ID) {
 					if (globalRoot(args, lineCount, layer) == 1)
+						return 1;
+				} else if (command_id == DATA_DIR_ID) {
+					if (dataDir(args, lineCount, layer) == 1)
 						return 1;
 				} else {
 					std::cout << "Configuration file (line " << lineCount << "): "

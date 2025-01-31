@@ -40,13 +40,15 @@ namespace http {
 				(void)location;
 				// do something with the location????? xd
 			} catch (const http::exception& e) {
+				std::cout << "CRUD, " << e.getMessage() << std::endl;
 				req.setStatusCode(e.getCode());
-				std::cout << "FindLocation failed; Location not found :(" << std::endl;
+				// std::cout << "FindLocation failed; Location not found :(" << std::endl;
 			}
 		}
 
 		if (req.hasError()) {
-			m_handlers[req.getMethod()]->handleError(req, *m_res);
+			m_res->setStatusCode(req.getStatusCode());
+			m_handlers[req.getMethod()]->handleError(*m_res);
 		} else {
 			m_handlers[req.getMethod()]->handle(req, *m_res);
 		}

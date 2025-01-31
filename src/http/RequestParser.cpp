@@ -25,6 +25,7 @@ namespace http {
 		try {
 			this->parse();
 		} catch (const http::exception& e) {
+			std::cout << "SHIT, " << e.getMessage() << std::endl;
 			m_req.setStatusCode(e.getCode());
 			this->setState(ERROR);
 		} catch (const std::exception& e) {

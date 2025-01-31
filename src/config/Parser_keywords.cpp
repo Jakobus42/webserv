@@ -511,6 +511,62 @@ namespace config {
 
 		server.globalRoot.root = args[1]; // TODO: Location.root or Location.path?
 		server.globalRoot.methods.clear();
+		if (server.hasDataDir()) {
+			// server.globalRoot.path.push_back(server.globalRoot.root + server.dataDir);
+			// TODO: concatenate and then split up globalRoot.root and server.dataDir;
+		}
+		// server.globalRoot.path = args[1] + "/www"; // TODO: set server.globalRoot.path to <globalRoot.root>/www (or another subfolder in globalRoot)
+		return 0;
+	}
+
+	int ConfigFileParser::dataDir(std::vector<std::string>& args, const int& lineCount, int layer) {
+		if (layer != 1) {
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "'data_dir' is only allowed in server blocks" << std::endl;
+			return 1;
+		}
+		if (args.size() != 2) {
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "Invalid number of arguments for data_dir" << std::endl;
+			return 1;
+		}
+		if (args[1].empty() || args[1].length() > 1000) {
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "data_dir path length invalid" << std::endl;
+			return 1;
+		}
+		if (args[1][0] != '/') {
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "data_dir path invalid, doesn't start with '/'" << std::endl;
+			return 1;
+		}
+		if (args[1].find("//") != std::string::npos) {
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "data_dir path invalid, duplicate '/'" << std::endl;
+			return 1;
+		}
+		if (args[1][args[1].size() - 1] == '/') {
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "data_dir path invalid, ends with '/'" << std::endl;
+			return 1;
+		}
+
+		ServerConfig& server = m_serverConfigs.back();
+		if (server.hasDataDir()) {
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "Duplicate data_dir directive" << std::endl;
+			return 1;
+		}
+
+		// TODO: validate if we can access global root path?
+		// TODO: probably should not start the server unless it is
+
+		server.dataDir = args[1];
+		if (server.hasGlobalRoot()) {
+			// server.globalRoot.path.push_back(server.globalRoot.root + server.dataDir);
+			// TODO: concatenate and then split up globalRoot.root and server.dataDir;
+		}
+
 		// server.globalRoot.path = args[1] + "/www"; // TODO: set server.globalRoot.path to <globalRoot.root>/www (or another subfolder in globalRoot)
 		return 0;
 	}

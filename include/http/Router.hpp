@@ -11,7 +11,7 @@ namespace http {
 	 */
 	class Router {
 		public:
-			Router(const std::vector<config::Location>& locations, const config::Location& globalRoot);
+			Router(const std::vector<config::Location>& locations, const config::Location& globalRoot, const std::string& dataDir);
 			~Router();
 			Router(const Router& other);
 			const Router& operator=(const Router& rhs);
@@ -34,6 +34,7 @@ namespace http {
 		private:
 			std::vector<config::Location> m_locations;
 			config::Location m_globalRoot;
+			std::string m_dataDir;
 			static const int MAX_REDIRECTS = 32;
 	};
 

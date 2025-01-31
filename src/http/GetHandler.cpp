@@ -21,7 +21,7 @@ namespace http {
 		try {
 			std::string safePath = m_router.getSafePath(request.getUri()); // should be the absolute path to the requested file
 
-			if (!m_router.fileExists(safePath + "/" + "file.dat")) { // TODO: replace with actual file name
+			if (!m_router.fileExists(safePath)) { // TODO: replace with actual file name
 				throw http::exception(NOT_FOUND, "GET: File doesn't exist");
 			}
 
@@ -36,8 +36,9 @@ namespace http {
 			response.setHeader("Content-Length", shared::string::to_string(buffer.str().size()));
 			response.setStatusCode(OK);
 		} catch (const http::exception& e) {
+			std::cout << "CRAP, " << e.getMessage() << "; " << e.getCode() << std::endl;
 			response.setStatusCode(e.getCode());
-			return handleError(request, response);
+			return handleError(response);
 		}
 	}
 
