@@ -17,10 +17,10 @@ namespace http {
 	 */
 	class VirtualServer {
 		public:
-			VirtualServer(config::ServerConfig& conf);
+			VirtualServer(const config::ServerConfig& conf);
 			~VirtualServer();
 			VirtualServer(const VirtualServer& other);
-			VirtualServer& operator=(const VirtualServer& other);
+			const VirtualServer& operator=(const VirtualServer& other);
 
 			void init();
 			int32_t acceptClient();
@@ -46,7 +46,7 @@ namespace http {
 		private:
 			static const time_t CLIENT_TIMEOUT = 3;
 
-			config::ServerConfig& m_config;
+			config::ServerConfig m_config;
 			std::map<int32_t, time_t> m_clients; // first is client fd and second is last activity/
 			int32_t m_listenSocket;
 			shared::Logger m_logger;

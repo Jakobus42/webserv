@@ -36,7 +36,7 @@ namespace config {
 		while (getline(stream, key, ' ')) {
 			args.push_back(key);
 		}
-		if (SaveConfigData(args, layer, qouteFlag, lineCount) == 1) {
+		if (saveConfigData(args, layer, qouteFlag, lineCount) == 1) {
 			return 2;
 		}
 		return qouteFlag;
@@ -49,7 +49,7 @@ namespace config {
 	 * @return struct location* the current location.
 	 */
 	Location* ConfigFileParser::getLocation(int layer) {
-		config::Location* temp = &m_configData.servers.back().locations.back();
+		config::Location* temp = &m_serverConfigs.back().locations.back();
 		for (int i = 2; i < layer; i++) {
 			temp = &temp->locations.back();
 		}
@@ -61,40 +61,40 @@ namespace config {
 	 * @param detailed toggles between detailed and simple output. (0 for simple, 1
 	 * for detailed)
 	 */
-	void ConfigFileParser::printConfigData(int detailed) {
+	void ConfigFileParser::printServerConfigs(int detailed) {
 		if (m_isLoaded == 0) {
 			std::cout << "No configuration file loaded" << std::endl;
 			return;
 		}
-		for (unsigned long i = 0; i < m_configData.servers.size(); i++) {
+		for (unsigned long i = 0; i < m_serverConfigs.size(); i++) {
 			std::cout << "--------------------------" << std::endl;
 			std::cout << "Server: " << i + 1 << std::endl;
 			if (detailed) {
-				std::cout << "Port: " << m_configData.servers[i].port << std::endl;
+				std::cout << "Port: " << m_serverConfigs[i].port << std::endl;
 				std::cout << "IP address: ";
-				std::cout << m_configData.servers[i].ip_address << std::endl;
+				std::cout << m_serverConfigs[i].ip_address << std::endl;
 				std::cout << std::endl;
 				std::cout << "Server names: ";
 				for (unsigned long j = 0;
-					 j < m_configData.servers[i].server_names.size();
+					 j < m_serverConfigs[i].server_names.size();
 					 j++) {
-					std::cout << m_configData.servers[i].server_names[j] << " ";
+					std::cout << m_serverConfigs[i].server_names[j] << " ";
 				}
 				std::cout << std::endl;
 				std::cout << "Error pages: ";
 				for (std::map<int, std::string>::iterator it =
-						 m_configData.servers[i].errorPages.begin();
-					 it != m_configData.servers[i].errorPages.end();
+						 m_serverConfigs[i].errorPages.begin();
+					 it != m_serverConfigs[i].errorPages.end();
 					 ++it) {
 					std::cout << it->first << " " << it->second << " ";
 				}
 				std::cout << std::endl;
 				std::cout << "Max body size: "
-						  << m_configData.servers[i].max_body_size << std::endl;
+						  << m_serverConfigs[i].max_body_size << std::endl;
 				std::cout << "Locations: " << std::endl;
 			}
 			std::vector<int> layer_num;
-			printLocations(m_configData.servers[i].locations, 1, detailed, layer_num);
+			printLocations(m_serverConfigs[i].locations, 1, detailed, layer_num);
 		}
 	}
 
@@ -235,7 +235,7 @@ namespace config {
 	 * @param lineCount The current line number.
 	 * @return 0 if successful, 1 if error.
 	 */
-	int ConfigFileParser::SaveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, int& lineCount) {
+	int ConfigFileParser::saveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, int& lineCount) {
 		enum CmdId command_id = idCommand(args[0]);
 		if (command_id == UNKNOWN_ID) {
 			std::cout << "Configuration file (line " << lineCount << "): "

@@ -96,11 +96,35 @@ namespace config {
 			unsigned long max_body_size;
 			// locations
 			std::vector<Location> locations;
-	};
 
-	struct ConfigData {
-			// servers
-			std::vector<ServerConfig> servers;
+			ServerConfig()
+				: port()
+				, ip_address()
+				, server_names()
+				, errorPages()
+				, max_body_size()
+				, locations() {}
+
+			ServerConfig(const ServerConfig& other)
+				: port(other.port)
+				, ip_address(other.ip_address)
+				, server_names(other.server_names)
+				, errorPages(other.errorPages)
+				, max_body_size(other.max_body_size)
+				, locations(other.locations) {}
+
+			const ServerConfig& operator=(const ServerConfig& rhs) {
+				if (this == &rhs) {
+					return *this;
+				}
+				port = rhs.port;
+				ip_address = rhs.ip_address;
+				server_names = rhs.server_names;
+				errorPages = rhs.errorPages;
+				max_body_size = rhs.max_body_size;
+				locations = rhs.locations;
+				return *this;
+			}
 	};
 
 	/**
@@ -115,7 +139,7 @@ namespace config {
 			int loadConfigFile(std::string& configFileName);
 
 			int getIsLoaded() const;
-			ConfigData getConfigData() const;
+			const std::vector<ServerConfig>& getServerConfigs() const;
 			int getServerSize() const;
 			int getServerPort(int index) const;
 			uint32_t getServerIp(int index) const;
@@ -124,7 +148,7 @@ namespace config {
 			unsigned long getMaxBodySize(int index) const;
 			ServerConfig* getServerConfig(int index);
 
-			void printConfigData(int detailed);
+			void printServerConfigs(int detailed);
 			int testFunction(const std::string& key, std::vector<std::string>& args, int& lineCount);
 			void printLocations(const std::vector<config::Location>& locations,
 								int layer,
@@ -135,14 +159,14 @@ namespace config {
 		private:
 			ConfigFileParser(const ConfigFileParser& other);
 			ConfigFileParser& operator=(const ConfigFileParser& other);
-			ConfigData m_configData;
+			std::vector<ServerConfig> m_serverConfigs;
 			int m_isLoaded;
 
 			int readConfigFile(std::string& configFileName, std::string& file);
 			int parseConfigFile(std::string& configFileName, int layer, unsigned long& i, int& lineCount);
 			int handleServer(std::string& line, unsigned long* i);
 			int handlePrompt(std::string& line, int layer, int& lineCount);
-			int SaveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, int& lineCount);
+			int saveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, int& lineCount);
 			enum CmdId idCommand(const std::string& command);
 
 			int server(std::vector<std::string>& args, int& lineCount, int layer);

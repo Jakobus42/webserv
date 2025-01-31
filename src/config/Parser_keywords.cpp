@@ -61,7 +61,7 @@ namespace config {
 		new_server.port = 80;
 		new_server.ip_address = http::LOCALHOST_ADDRESS;
 		new_server.max_body_size = 1000000;
-		m_configData.servers.push_back(new_server);
+		m_serverConfigs.push_back(new_server);
 		// TODO: Load default Error pages if none are provided
 		return 0;
 	}
@@ -103,10 +103,10 @@ namespace config {
 		new_location.redirectUrl = "";
 		new_location.index.push_back("index.html");
 		if (layer == 1) {
-			m_configData.servers.back().locations.push_back(new_location);
+			m_serverConfigs.back().locations.push_back(new_location);
 			return 0;
 		}
-		Location* temp = &m_configData.servers.back().locations.back();
+		Location* temp = &m_serverConfigs.back().locations.back();
 		for (int i = 2; i < layer; i++) {
 			temp = &temp->locations.back();
 		}
@@ -156,9 +156,9 @@ namespace config {
 						  << std::endl;
 				return 1;
 			}
-			m_configData.servers.back().port = i;
+			m_serverConfigs.back().port = i;
 		} else {
-			m_configData.servers.back().ip_address = 0;
+			m_serverConfigs.back().ip_address = 0;
 			for (unsigned long i = 0; i < 4; i++) {
 				std::size_t iter;
 				if (i == 3) {
@@ -171,7 +171,7 @@ namespace config {
 									  << "Invalid number for listen" << std::endl;
 							return 1;
 						}
-						m_configData.servers.back().port = i;
+						m_serverConfigs.back().port = i;
 					}
 				} else {
 					iter = args[1].find('.');
@@ -190,7 +190,7 @@ namespace config {
 							  << std::endl;
 					return 1;
 				}
-				m_configData.servers.back().ip_address += j << (8 * (3 - i));
+				m_serverConfigs.back().ip_address += j << (8 * (3 - i));
 				args[1] = args[1].substr(iter + 1);
 			}
 			if (args[1].size() != 0) {
@@ -201,7 +201,7 @@ namespace config {
 							  << std::endl;
 					return 1;
 				}
-				m_configData.servers.back().port = i;
+				m_serverConfigs.back().port = i;
 			}
 		}
 		return 0;
@@ -230,7 +230,7 @@ namespace config {
 						  << std::endl;
 				return 1;
 			}
-			m_configData.servers.back().server_names.push_back(args[i]);
+			m_serverConfigs.back().server_names.push_back(args[i]);
 			if (i > 1000) {
 				std::cout << "Configuration file (line " << lineCount << "): "
 						  << "Too many server names"
@@ -274,7 +274,7 @@ namespace config {
 						  << std::endl;
 				return 1;
 			}
-			m_configData.servers.back().errorPages[j] = last;
+			m_serverConfigs.back().errorPages[j] = last;
 		}
 		return 0;
 	}
@@ -305,7 +305,7 @@ namespace config {
 					  << "Invalid number for client_max_body_size" << std::endl;
 			return 1;
 		}
-		m_configData.servers.back().max_body_size = i;
+		m_serverConfigs.back().max_body_size = i;
 		return 0;
 	}
 

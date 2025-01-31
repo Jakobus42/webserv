@@ -21,7 +21,7 @@ namespace http {
 	/**
 	 * @brief Constructs a new VirtualServer object.
 	 */
-	VirtualServer::VirtualServer(config::ServerConfig& conf)
+	VirtualServer::VirtualServer(const config::ServerConfig& conf)
 		: m_config(conf)
 		, m_clients()
 		, m_listenSocket(-1)
@@ -58,7 +58,7 @@ namespace http {
 	 * @param other The other VirtualServer object to assign from.
 	 * @return A reference to the assigned VirtualServer object.
 	 */
-	VirtualServer& VirtualServer::operator=(const VirtualServer& rhs) {
+	const VirtualServer& VirtualServer::operator=(const VirtualServer& rhs) {
 		if (this == &rhs)
 			return *this;
 		m_config = rhs.m_config;

@@ -192,10 +192,10 @@ namespace config {
 		unsigned long i = 0;
 		int lineCount = 0;
 		if (parseConfigFile(file, 0, i, lineCount) == 1) {
-			m_configData.servers.clear();
+			m_serverConfigs.clear();
 			return 1;
 		}
-		if (m_configData.servers.size() == 0) {
+		if (m_serverConfigs.size() == 0) {
 			std::cout << "Configuration file (line "
 					  << lineCount << "): "
 					  << "No servers found in configuration file" << std::endl;
@@ -209,36 +209,36 @@ namespace config {
 		return m_isLoaded;
 	}
 
-	ConfigData ConfigFileParser::getConfigData() const {
-		return m_configData;
+	const std::vector<config::ServerConfig>& ConfigFileParser::getServerConfigs() const {
+		return m_serverConfigs;
 	}
 
 	int ConfigFileParser::getServerSize() const {
-		return m_configData.servers.size();
+		return m_serverConfigs.size();
 	}
 
 	int ConfigFileParser::getServerPort(int index) const {
-		return m_configData.servers[index].port;
+		return m_serverConfigs[index].port;
 	}
 
 	uint32_t ConfigFileParser::getServerIp(int index) const {
-		return m_configData.servers[index].ip_address;
+		return m_serverConfigs[index].ip_address;
 	}
 
 	std::vector<std::string> ConfigFileParser::getServerNames(int index) const {
-		return m_configData.servers[index].server_names;
+		return m_serverConfigs[index].server_names;
 	}
 
 	std::map<int, std::string> ConfigFileParser::getErrorPages(int index) const {
-		return m_configData.servers[index].errorPages;
+		return m_serverConfigs[index].errorPages;
 	}
 
 	unsigned long ConfigFileParser::getMaxBodySize(int index) const {
-		return m_configData.servers[index].max_body_size;
+		return m_serverConfigs[index].max_body_size;
 	}
 
 	ServerConfig* ConfigFileParser::getServerConfig(int index) {
-		return &m_configData.servers[index];
+		return &m_serverConfigs[index];
 	}
 
 } // namespace config
