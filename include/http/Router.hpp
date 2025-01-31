@@ -9,25 +9,31 @@ namespace http {
 	 * @class Router
 	 * @brief ...
 	 */
-	class Router : public shared::NonCopyable {
+	class Router {
 		public:
-			Router();
+			Router(const std::vector<config::Location>& locations);
 			~Router();
+			Router(const Router& other);
+			const Router& operator=(const Router& rhs);
 
-			static const config::Location& getLocation(const http::Uri& uri);
-
-			static StatusCode fileExists(const std::string& filePath);
-
-			static bool splitPath(const std::string& path, std::vector<std::string>& tokens);
-
-			static std::string buildFinalPath(const std::string& baseRoot, const std::string& normUri);
-
-			static const config::Location* locateDeepestMatch(const std::string& normUri, const std::vector<config::Location>& locs);
+		public:
+			const config::Location& getLocation(const http::Uri& uri);
+			int findLocation(const std::string& uri, config::Location& location); // currently not implemented
+			StatusCode fileExists(const std::string& filePath);
+			void printLocation(const config::Location& location, int detailed); // replace with operator<< overload?
 
 
 		private:
-			static std::vector<config::Location> m_locations;
-			static config::Location m_defaultLocation;
+			Router();
+
+			bool splitPath(const std::string& path, std::vector<std::string>& tokens);
+			const config::Location* locateDeepestMatch(const std::string& normUri, const std::vector<config::Location>& locs);
+			std::string buildFinalPath(const std::string& baseRoot, const std::string& normUri);
+
+		private:
+			std::vector<config::Location> m_locations;
+			config::Location m_defaultLocation;
+			static const int MAX_REDIRECTS = 32;
 	};
 
 } /* namespace http */

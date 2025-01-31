@@ -10,8 +10,8 @@ namespace http {
 	/**
 	 * @brief Constructs a new PostHandler object.
 	 */
-	PostHandler::PostHandler(const config::Location& locations)
-		: ARequestHandler(locations) {
+	PostHandler::PostHandler(Router& router)
+		: ARequestHandler(router) {
 	}
 
 	/**
@@ -21,13 +21,14 @@ namespace http {
 	}
 
 	// join uri.path and fileName
+	// TODO: unused
 	std::string PostHandler::getFilePath(const std::string& path) {
 		(void)path;
 		return "/foo/bar/baz";
 	}
 
 	void PostHandler::handle(const Request& request, Response& response) {
-		const config::Location& location = Router::getLocation(request.getUri()); // TODO: implement
+		const config::Location& location = m_router.getLocation(request.getUri()); // TODO: implement
 		if (!location.acceptsFileUpload()) {
 			response.setStatusCode(FORBIDDEN);
 			return handleError(request, response);

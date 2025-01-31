@@ -25,7 +25,8 @@ namespace http {
 		: m_config(conf)
 		, m_clients()
 		, m_listenSocket(-1)
-		, m_logger() {
+		, m_logger()
+		, m_router(conf.locations) {
 	}
 
 	/**
@@ -48,7 +49,8 @@ namespace http {
 	VirtualServer::VirtualServer(const VirtualServer& other)
 		: m_config(other.m_config)
 		, m_clients(other.m_clients)
-		, m_listenSocket(other.m_listenSocket) {
+		, m_listenSocket(other.m_listenSocket)
+		, m_router(other.m_router) {
 	}
 
 	/**
@@ -62,6 +64,7 @@ namespace http {
 		m_config = rhs.m_config;
 		m_clients = rhs.m_clients;
 		m_listenSocket = rhs.m_listenSocket;
+		m_router = rhs.m_router;
 		return *this;
 	}
 
@@ -201,5 +204,7 @@ namespace http {
 	std::map<int32_t, time_t>& VirtualServer::getClients(void) { return m_clients; }
 
 	const config::t_server& VirtualServer::getConfig() const { return m_config; }
+
+	Router& VirtualServer::getRouter() { return m_router; }
 
 } // namespace http

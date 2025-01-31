@@ -9,8 +9,8 @@ namespace http {
 	/**
 	 * @brief Constructs a new DeleteHandler object.
 	 */
-	DeleteHandler::DeleteHandler(const config::Location& locations)
-		: ARequestHandler(locations) {
+	DeleteHandler::DeleteHandler(Router& router)
+		: ARequestHandler(router) {
 	}
 
 	/**
@@ -22,7 +22,7 @@ namespace http {
 	void DeleteHandler::handle(const Request& request, Response& response) {
 		const std::string& filePath = request.getUri().path;
 
-		if (!Router::fileExists(filePath)) {   // if (fileCantBeFound() || fileCantBeDeleted())
+		if (!m_router.fileExists(filePath)) {  // if (fileCantBeFound() || fileCantBeDeleted())
 			response.setStatusCode(NOT_FOUND); // currently hard coded
 			return handleError(request, response);
 		} else {

@@ -12,7 +12,7 @@ namespace core {
 	IOHandler::IOHandler(http::VirtualServer& vServer)
 		: m_vServer(vServer)
 		, m_reqParser()
-		, m_reqProcessor(vServer.getConfig().locations)
+		, m_reqProcessor(vServer.getRouter())
 		, m_responses() {
 	}
 

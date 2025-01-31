@@ -10,12 +10,12 @@ namespace http {
 	 * @brief Constructs a new RequestProcessor object.
 	 */
 	// todo figure out how to do this shit with locations
-	RequestProcessor::RequestProcessor(std::vector<config::Location> locations)
+	RequestProcessor::RequestProcessor(Router& router)
 		: m_res(NULL)
-		, m_locations(locations) {
-		m_handlers.insert(std::make_pair(GET, new GetHandler(locations.at(0))));
-		m_handlers.insert(std::make_pair(POST, new PostHandler(locations.at(0))));
-		m_handlers.insert(std::make_pair(DELETE, new DeleteHandler(locations.at(0)))); // todo router or idk:c
+		, m_router(router) {
+		m_handlers.insert(std::make_pair(GET, new GetHandler(m_router)));
+		m_handlers.insert(std::make_pair(POST, new PostHandler(m_router)));
+		m_handlers.insert(std::make_pair(DELETE, new DeleteHandler(m_router))); // todo router or idk:c
 	}
 
 	/**
@@ -31,12 +31,13 @@ namespace http {
 	// todo check if req was valid - if not send error response
 	// todo check for allowed methods
 	Response* RequestProcessor::process(Request& req) {
-		config::Location location;
 		m_res = new Response();
 
 		if (!req.hasError()) {
 			try {
-				findLocation(req.getUri().path, m_locations, location);
+				// m_router.findLocation(req.getUri().path, location); // currently not implemented, probably replaced with getLocation()? TODO: verify
+				const config::Location& location = m_router.getLocation(req.getUri());
+				// do something with the location????? xd
 			} catch (const http::exception& e) {
 				req.setStatusCode(e.getCode());
 				std::cout << "FindLocation failed; Location not found :(" << std::endl;
@@ -88,7 +89,6 @@ namespace http {
 		std::stringstream ss(path.substr(1));
 		std::string segment;
 		while (std::getline(ss, segment, '/')) {
-			// You can decide to allow empty segments or treat them as invalid
 			if (!segment.empty()) {
 				result.push_back(segment);
 			}
@@ -101,7 +101,6 @@ namespace http {
 	 *        You could store nested locations in config::Location::children or similar.
 	 */
 	const config::Location* locateDeepestMatch(const std::string& normUri, const std::vector<config::Location>& locs) {
-		// Convert the normalized URI to tokens
 		std::vector<std::string> uriTokens;
 		if (splitPath(normUri, uriTokens) != 0) {
 			return NULL;
@@ -117,14 +116,11 @@ namespace http {
 			std::vector<std::string> locTokens = it->path; // e.g. /foo/bar => {"foo","bar"}
 			size_t matchedCount = 0;
 
-			// Compare token by token
 			while (matchedCount < locTokens.size() && matchedCount < uriTokens.size() && locTokens[matchedCount] == uriTokens[matchedCount]) {
 				matchedCount++;
 			}
 
-			// If full location path was matched and it’s the deepest match so far
 			if (matchedCount == locTokens.size() && matchedCount > bestMatchLength) {
-				// Check if there are nested children that match deeper
 				if (!it->locations.empty()) {
 					// Rebuild sub-URI from the unmatched tail
 					std::string subUri = "/";
@@ -204,62 +200,22 @@ namespace http {
 		return result;
 	}
 
-	int RequestProcessor::findLocation(const std::string& uri, const std::vector<config::Location>& locs, config::Location& location) {
-		std::string normUri = normalizePath(uri);
+	// int RequestProcessor::findLocation(const std::string& uri, const std::vector<config::Location>& locs, config::Location& location) {
+	// 	std::string normUri = normalizePath(uri);
 
-		const config::Location* bestMatch = locateDeepestMatch(normUri, locs);
-		if (!bestMatch) {
-			return 1;
-		} // No matching location.
+	// 	const config::Location* bestMatch = locateDeepestMatch(normUri, locs);
+	// 	if (!bestMatch) {
+	// 		return 1;
+	// 	} // No matching location.
 
-		config::Location chosen = *bestMatch;
-		// 3) Append whatever path remains after location matching,
-		// ensuring we stay within the final root.
-		chosen.root = buildFinalPath(chosen.root, normUri);
+	// 	config::Location chosen = *bestMatch;
+	// 	// 3) Append whatever path remains after location matching,
+	// 	// ensuring we stay within the final root.
+	// 	chosen.root = buildFinalPath(chosen.root, normUri);
+	// 	std::cout << "BUILT PATH: " << chosen.root << std::endl;
 
-		location = chosen;
-		return 0;
-	}
-
-	/**
-	 * @brief prints a location.
-	 * @param locations the locations to print.
-	 * @param detailed toggles between detailed and simple output. (0 for simple, 1
-	 * for detailed)
-	 */
-	void RequestProcessor::printLocation(const config::Location& location, int detailed) {
-		std::cout << "--------------------------" << std::endl;
-		std::cout << "Location: ";
-		for (std::vector<std::string>::const_iterator it = location.path.begin();
-			 it != location.path.end();
-			 ++it) {
-			std::cout << *it << "/";
-		}
-		std::cout << std::endl;
-		if (detailed) {
-			if (location.root != "")
-				std::cout << "Root: " << location.root << std::endl;
-			if (location.autoindex)
-				std::cout << "Autoindex: on" << std::endl;
-			else
-				std::cout << "Autoindex: off" << std::endl;
-			if (location.methods.size() > 0) {
-				std::cout << "Methods: ";
-				for (unsigned long k = 0; k < location.methods.size();
-					 k++) {
-					std::cout << location.methods[k] << " ";
-				}
-				std::cout << std::endl;
-			}
-			if (location.index.size() > 0) {
-				std::cout << "Index: ";
-				for (unsigned long k = 0; k < location.index.size(); k++) {
-					std::cout << location.index[k] << " ";
-				}
-				std::cout << std::endl;
-			}
-		}
-		std::cout << "--------------------------" << std::endl;
-	}
+	// 	location = chosen;
+	// 	return 0;
+	// }
 
 } /* namespace http */

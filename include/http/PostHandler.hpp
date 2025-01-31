@@ -10,9 +10,9 @@ namespace http {
 	 */
 	class PostHandler : public ARequestHandler {
 		public:
-			PostHandler(const config::Location& locations);
+			PostHandler(Router& router);
 			~PostHandler();
-			std::string getFilePath(const std::string& path);
+			std::string getFilePath(const std::string& path); // TODO: unused
 
 			void handle(const Request& request, Response& response);
 	};

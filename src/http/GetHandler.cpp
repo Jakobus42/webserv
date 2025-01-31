@@ -7,8 +7,8 @@ namespace http {
 	/**
 	 * @brief Constructs a new GetHandler object.
 	 */
-	GetHandler::GetHandler(const config::Location& locations)
-		: ARequestHandler(locations) {
+	GetHandler::GetHandler(Router& router)
+		: ARequestHandler(router) {
 	}
 
 	/**
@@ -20,7 +20,7 @@ namespace http {
 	void GetHandler::handle(const Request& request, Response& response) {
 		const std::string& filePath = request.getUri().path;
 
-		if (Router::fileExists(filePath)) {
+		if (m_router.fileExists(filePath)) {   // not absolute path? uhh
 			response.setStatusCode(NOT_FOUND); // or FORBIDDEN, or maybe something else...
 			return handleError(request, response);
 		}
