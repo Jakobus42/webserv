@@ -44,6 +44,7 @@ namespace http {
 	void Router::splitPath(const std::string& path, std::vector<std::string>& tokens) {
 		// Return 1 if the path is invalid in the current context
 		// For example, we may require that the path always starts with '/'
+		std::cout << "Splitting path: " << path << std::endl;
 		if (path.empty()) {
 			throw http::exception(NOT_FOUND, "Path is empty");
 		}
@@ -54,10 +55,9 @@ namespace http {
 		std::stringstream ss(path.substr(1)); // Remove leading '/'
 		std::string segment;
 		while (std::getline(ss, segment, '/')) {
-			// TODO: decide to allow empty segments or treat them as invalid
-			// probably just accept it / normalize it away
 			if (!segment.empty()) {
 				tokens.push_back(segment);
+				std::cout << "splitPath added token: " << segment << std::endl;
 			}
 		}
 	}
@@ -69,35 +69,37 @@ namespace http {
 	 * @param locs The current level's locations.
 	 * @return const config::Location* The deepest matching location or NULL if none found.
 	 */
+	// TODO: currently this adds the uri path to the file system path (root path + subfolder) to the path
+	// TODO: ensure it does not. example: /kapouet with its root being set to /qux/quux results in qux/quux/kapouet or smth like that
 	const config::Location* Router::locateDeepestMatch(const std::string& normUri, const std::vector<config::Location>& locs) {
 		// Convert the normalized URI to tokens
 		std::vector<std::string> uriTokens;
 		splitPath(normUri, uriTokens); // throws http::exception if path isn't valid
+		std::cout << "SplitPath split tokens into: ";
+		for (std::vector<std::string>::iterator it = uriTokens.begin(); it != uriTokens.end(); ++it) {
+			std::cout << *it << "; ";
+		}
+		std::cout << std::endl;
 
 		const config::Location* bestLocation = NULL;
 		size_t bestMatchLength = 0;
-
 		for (std::vector<config::Location>::const_iterator it = locs.begin(); it != locs.end(); ++it) {
-			// Combine it->path into a string to compare with uriTokens
-			// or directly compare the location path tokens if they're stored in a vector
 			const std::vector<std::string>& locTokens = it->path;
+			std::cout << "Matching against:" << std::endl;
+			for (std::vector<std::string>::const_iterator iit = locTokens.begin(); iit != locTokens.end(); ++iit) {
+				std::cout << *iit << "; ";
+			}
+			std::cout << std::endl;
 			size_t matchedCount = 0;
-
-			// Compare tokens
 			while (matchedCount < locTokens.size() && matchedCount < uriTokens.size() && locTokens[matchedCount] == uriTokens[matchedCount]) {
 				matchedCount++;
 			}
-
-			// If full location path was matched and it’s the deepest match so far
 			if (matchedCount == locTokens.size() && matchedCount > bestMatchLength) {
-				// Check if there are nested children that match deeper
 				if (!it->locations.empty()) {
 					std::string subUri = "/";
 					for (size_t j = matchedCount; j < uriTokens.size(); j++) {
 						subUri += uriTokens[j] + "/";
 					}
-					// recurse into children
-					std::cout << "locating at: " << subUri << std::endl;
 					const config::Location* deeperLoc = locateDeepestMatch(subUri, it->locations);
 					if (deeperLoc) {
 						bestLocation = deeperLoc;
@@ -335,18 +337,18 @@ namespace http {
 				std::cout << "Autoindex: on" << std::endl;
 			else
 				std::cout << "Autoindex: off" << std::endl;
-			if (location.methods.size() > 0) {
-				std::cout << "Methods: ";
-				for (unsigned long k = 0; k < location.methods.size();
-					 k++) {
-					std::cout << location.methods[k] << " ";
-				}
-				std::cout << std::endl;
-			}
-			if (location.index.size() > 0) {
+			// if (location.methods.size() > 0) {
+			// 	std::cout << "Methods: ";
+			// 	// for (unsigned long k = 0; k < location.methods.size();
+			// 	// 	 k++) {
+			// 	// 	std::cout << location.methods[k] << " ";
+			// 	}
+			// 	std::cout << std::endl;
+			// }
+			if (location.indexFile.size() > 0) {
 				std::cout << "Index: ";
-				for (unsigned long k = 0; k < location.index.size(); k++) {
-					std::cout << location.index[k] << " ";
+				for (unsigned long k = 0; k < location.indexFile.size(); k++) {
+					std::cout << location.indexFile[k] << " ";
 				}
 				std::cout << std::endl;
 			}

@@ -135,18 +135,18 @@ namespace config {
 					std::cout << c << "Autoindex: on" << std::endl;
 				else
 					std::cout << c << "Autoindex: off" << std::endl;
-				if (locations[j].methods.size() > 0) {
-					std::cout << c << "Methods: ";
-					for (unsigned long k = 0; k < locations[j].methods.size();
-						 k++) {
-						std::cout << locations[j].methods[k] << " ";
-					}
-					std::cout << std::endl;
+				if (locations[j].allowedMethods.size() > 0) {
+					// std::cout << c << "Methods: ";
+					// for (unsigned long k = 0; k < locations[j].methods.size();
+					// 	 k++) {
+					// 	std::cout << locations[j].methods. << " ";
+					// }
+					// std::cout << std::endl;
 				}
-				if (locations[j].index.size() > 0) {
+				if (locations[j].indexFile.size() > 0) {
 					std::cout << c << "Index: ";
-					for (unsigned long k = 0; k < locations[j].index.size(); k++) {
-						std::cout << locations[j].index[k] << " ";
+					for (unsigned long k = 0; k < locations[j].indexFile.size(); k++) {
+						std::cout << locations[j].indexFile[k] << " ";
 					}
 					std::cout << std::endl;
 				}
@@ -194,7 +194,7 @@ namespace config {
 	 * of the command.
 	 * @param key The key to identify.
 	 * @return The id of the command. (1 if listen, 2 if server_name, 3 if
-	 * error_page, 4 if client_max_body_size, 5 if location, 6 if limit_exept, 7 if
+	 * error_page, 4 if client_max_body_size, 5 if location, 6 if limit_except, 7 if
 	 * return, 8 if root, 9 if autoindex, 10 if index, 404 if not found.)
 	 */
 	enum CmdId ConfigFileParser::idCommand(const std::string& key) {

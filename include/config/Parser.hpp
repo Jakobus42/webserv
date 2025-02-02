@@ -11,6 +11,7 @@
 #include <fstream>
 #include <iostream>
 #include <map>
+#include <set>
 #include <sstream>
 #include <vector>
 
@@ -19,12 +20,12 @@
 namespace config {
 
 	struct Location {
-			std::vector<std::string> path;	  // location name
-			std::string redirectUrl;		  // return
-			std::vector<std::string> methods; // configurations
+			std::vector<std::string> path;		   // location name
+			std::string redirectUrl;			   // return
+			std::set<http::Method> allowedMethods; // allowed HTTP methods
 			bool autoindex;
 			std::string root;
-			std::vector<std::string> index;
+			std::vector<std::string> indexFile;
 			std::vector<Location> locations; // locations
 
 			// globalRoot should always have path <global_root>/<data_dir>/
@@ -36,10 +37,10 @@ namespace config {
 			Location()
 				: path()
 				, redirectUrl()
-				, methods()
+				, allowedMethods()
 				, autoindex(false)
 				, root()
-				, index()
+				, indexFile()
 				, locations() {
 			}
 
@@ -47,10 +48,10 @@ namespace config {
 			Location(const Location& other)
 				: path(other.path)
 				, redirectUrl(other.redirectUrl)
-				, methods(other.methods)
+				, allowedMethods(other.allowedMethods)
 				, autoindex(other.autoindex)
 				, root(other.root)
-				, index(other.index)
+				, indexFile(other.indexFile)
 				, locations(other.locations) {
 			}
 
@@ -59,17 +60,17 @@ namespace config {
 				if (this != &other) {
 					path = other.path;
 					redirectUrl = other.redirectUrl;
-					methods = other.methods;
+					allowedMethods = other.allowedMethods;
 					autoindex = other.autoindex;
 					root = other.root;
-					index = other.index;
+					indexFile = other.indexFile;
 					locations = other.locations;
 				}
 				return *this;
 			}
 
 			bool acceptsFileUpload() const {
-				return std::find(methods.begin(), methods.end(), "POST") != methods.end(); // TODO: check whether find actually returns end on fail xd
+				return allowedMethods.find(http::POST) != allowedMethods.end(); // TODO: check whether find actually returns end on fail xd
 			}
 
 			bool hasRedirect() const {

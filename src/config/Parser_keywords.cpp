@@ -1,6 +1,8 @@
 #include "config/Parser.hpp"
 #include "http/http.hpp"
 
+#include <set>
+
 namespace config {
 
 	/**
@@ -99,7 +101,7 @@ namespace config {
 			return 1;
 		}
 		new_location.redirectUrl = "";
-		new_location.index.push_back("index.html");
+		new_location.indexFile.push_back("index.html");
 		if (layer == 1) {
 			m_serverConfigs.back().locations.push_back(new_location);
 			return 0;
@@ -321,34 +323,34 @@ namespace config {
 					  << "Invalid number of arguments for limit_except" << std::endl;
 			return 1;
 		}
-		std::vector<std::string> methods;
-		methods.push_back("GET");
-		methods.push_back("POST");
-		methods.push_back("DELETE");
-		std::vector<std::string> allowed_methods;
+		std::map<std::string, http::Method> methods;
+		std::set<http::Method> foundMethods;
+		methods.insert(std::make_pair("GET", http::GET));
+		methods.insert(std::make_pair("POST", http::POST));
+		methods.insert(std::make_pair("DELETE", http::DELETE));
+
 		for (unsigned long i = 1; i < args.size(); i++) {
-			for (unsigned long j = 0; j < methods.size(); j++) {
-				if (args[i] == methods[j]) {
-					allowed_methods.push_back(args[i]);
-					methods.erase(methods.begin() + j);
-					break;
-				}
-				if (j == methods.size() - 1) {
-					std::cout << "Configuration file (line "
-							  << lineCount << "): "
-							  << "Invalid method for limit_except" << std::endl;
-					return 1;
-				}
+			std::map<std::string, http::Method>::iterator it = methods.find(args[i]);
+			if (it != methods.end() && foundMethods.find(it->second) == foundMethods.end()) {
+				foundMethods.insert(it->second);
+				std::cout << "Found method: " << it->first << ": " << it->second << std::endl;
+				std::cout << *foundMethods.find(it->second);
+				methods.erase(methods.find(args[i]));
+			} else {
+				std::cout << "Configuration file (line "
+						  << lineCount << "): "
+						  << "Invalid method for limit_except" << std::endl;
+				return 1;
 			}
 		}
-		if (allowed_methods.size() == 0) {
+		if (foundMethods.empty()) {
 			std::cout << "Configuration file (line " << lineCount << "): "
 					  << "No methods found for limit_except"
 					  << std::endl;
 			return 1;
 		}
 		Location* current = getLocation(layer);
-		current->methods = allowed_methods;
+		current->allowedMethods = foundMethods;
 		return 0;
 	}
 
@@ -454,7 +456,7 @@ namespace config {
 			return 1;
 		}
 		Location* current = getLocation(layer);
-		current->index.clear();
+		current->indexFile.clear();
 		for (unsigned long i = 1; i < args.size(); i++) {
 			if (args[i].length() > 1000 || args[i].length() == 0) {
 				std::cout << "Configuration file (line " << lineCount << "): "
@@ -462,7 +464,7 @@ namespace config {
 						  << std::endl;
 				return 1;
 			}
-			current->index.push_back(args[i]);
+			current->indexFile.push_back(args[i]);
 		}
 		return 0;
 	}
@@ -510,7 +512,7 @@ namespace config {
 		// TODO: probably should not start the server unless it is
 
 		server.globalRoot.root = args[1]; // TODO: Location.root or Location.path?
-		server.globalRoot.methods.clear();
+		server.globalRoot.allowedMethods.clear();
 		if (server.hasDataDir()) {
 			// server.globalRoot.path.push_back(server.globalRoot.root + server.dataDir);
 			// TODO: concatenate and then split up globalRoot.root and server.dataDir;

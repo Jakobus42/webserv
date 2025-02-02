@@ -4,6 +4,8 @@
 #include "http/GetHandler.hpp"
 #include "http/PostHandler.hpp"
 
+#include <algorithm>
+
 namespace http {
 
 	/**
@@ -29,22 +31,28 @@ namespace http {
 	}
 
 	// todo check if req was valid - if not send error response
-	// todo check for allowed methods
+	// TODO: check for allowed methods
 	Response* RequestProcessor::process(Request& req) {
-		m_res = new Response();
 
 		if (!req.hasError()) {
 			try {
-				// m_router.findLocation(req.getUri().path, location); // currently not implemented, probably replaced with getLocation()? TODO: verify
 				const config::Location& location = m_router.getLocation(req.getUri());
-				(void)location;
-				// do something with the location????? xd
+				std::cout << "Looking for request method " << req.getMethod() << " (root " << location.root << ")" << std::endl;
+				std::cout << "Allowed methods (" << location.allowedMethods.size() << "): ";
+				for (std::set<Method>::iterator it = location.allowedMethods.begin(); it != location.allowedMethods.end(); ++it) {
+					std::cout << *it << " ";
+				}
+				std::cout << std::endl;
+				if (location.allowedMethods.find(req.getMethod()) == location.allowedMethods.end()) {
+					throw http::exception(METHOD_NOT_ALLOWED, "HTTP method not allowed for this route");
+				}
 			} catch (const http::exception& e) {
 				std::cout << "CRUD, " << e.getMessage() << std::endl;
 				req.setStatusCode(e.getCode());
-				// std::cout << "FindLocation failed; Location not found :(" << std::endl;
 			}
 		}
+
+		m_res = new Response();
 
 		if (req.hasError()) {
 			m_res->setStatusCode(req.getStatusCode());
