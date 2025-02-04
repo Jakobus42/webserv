@@ -106,8 +106,7 @@ namespace config {
 	 * for detailed)
 	 * @param layer_num the current layer number.
 	 */
-	void ConfigFileParser::printLocations(
-		const std::vector<config::Location>& locations, int layer, int detailed, std::vector<int> layer_num) {
+	void ConfigFileParser::printLocations(const std::vector<config::Location>& locations, int layer, int detailed, std::vector<int> layer_num) {
 		std::string c = "";
 		for (int i = 0; i < layer; i++) {
 			c += "   ";
@@ -122,6 +121,7 @@ namespace config {
 				if (k != layer_num.size() - 1)
 					std::cout << ".";
 			}
+			std::cout << std::endl;
 			for (std::vector<std::string>::const_iterator it = locations[j].path.begin();
 				 it != locations[j].path.end();
 				 ++it) {
@@ -132,7 +132,7 @@ namespace config {
 				if (!locations[j].root.empty()) {
 					std::cout << c << "Root: ";
 					for (std::vector<std::string>::const_iterator it = locations[j].root.begin(); it != locations[j].root.end(); ++it) {
-						std::cout << *it << " ";
+						std::cout << "/" << *it;
 					}
 				}
 				std::cout << std::endl;

@@ -10,7 +10,7 @@ namespace http {
 	 */
 	class PostHandler : public ARequestHandler {
 		public:
-			PostHandler(Router& router);
+			PostHandler(GoodRouter& router);
 			~PostHandler();
 
 			void handle(const Request& request, Response& response);

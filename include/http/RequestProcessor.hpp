@@ -2,8 +2,8 @@
 
 #include "config/Parser.hpp"
 #include "http/ARequestHandler.hpp"
+#include "http/GoodRouter.hpp"
 #include "http/RequestParser.hpp"
-#include "http/Router.hpp"
 #include "http/http.hpp"
 #include "shared/NonCopyable.hpp"
 
@@ -18,7 +18,7 @@ namespace http {
 	 */
 	class RequestProcessor : shared::NonCopyable {
 		public:
-			RequestProcessor(Router& router);
+			RequestProcessor(GoodRouter& router);
 			~RequestProcessor();
 
 			Response* process(Request& req);
@@ -32,7 +32,7 @@ namespace http {
 		private:
 			Response* m_res;
 			std::map<Method, ARequestHandler*> m_handlers;
-			Router& m_router;
+			GoodRouter& m_router;
 	};
 
 } /* namespace http */

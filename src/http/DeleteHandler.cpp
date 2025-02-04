@@ -1,7 +1,5 @@
 #include "http/DeleteHandler.hpp"
 
-#include "http/Router.hpp"
-
 #include <cstdio>
 
 namespace http {
@@ -9,7 +7,7 @@ namespace http {
 	/**
 	 * @brief Constructs a new DeleteHandler object.
 	 */
-	DeleteHandler::DeleteHandler(Router& router)
+	DeleteHandler::DeleteHandler(GoodRouter& router)
 		: ARequestHandler(router) {
 	}
 

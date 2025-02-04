@@ -30,9 +30,13 @@ namespace http {
 		return *this;
 	}
 
+	const config::Location& GoodRouter::getGlobalRoot() const {
+		return m_globalRoot;
+	}
+
 	//
 
-	FileType checkFileType(const std::string& absolutePath) {
+	FileType GoodRouter::checkFileType(const std::string& absolutePath) {
 		struct stat statBuf;
 		if (stat(absolutePath.c_str(), &statBuf) != 0) {
 			return _NOT_FOUND; // Path does not exist
@@ -66,10 +70,10 @@ namespace http {
 	}
 
 	std::string GoodRouter::joinPath(const std::vector<std::string>& pathComponents) {
-		std::string joined = "/";
+		std::string joined = "";
 		for (std::vector<std::string>::const_iterator it = pathComponents.begin(); it != pathComponents.end(); ++it) {
-			joined += *it;
 			joined += "/";
+			joined += *it;
 		}
 		return joined;
 	}
@@ -106,8 +110,7 @@ namespace http {
 	 * 	}
 	 * }
 	 ************************/
-	std::string GoodRouter::routeToPath(
-		// const Uri& uri, // TODO: don't need the whole uri, pathSegments is enough
+	std::pair<std::string, const config::Location*> GoodRouter::routeToPath(
 		const std::vector<std::string>& uriPath,		 // the requests' path that we're traversing
 		const config::Location& currentLocation,		 // Location we're currently inside of, default should be m_globalRoot
 		const std::vector<std::string>& currentRootPath, // nearest 'root', default should be m_globalRoot.path
@@ -120,22 +123,35 @@ namespace http {
 			throw http::exception(LOOP_DETECTED, "Redirects exceeded MAX_REDIRECTS");
 		}
 		if (currentLocation.hasRedirect()) {
+			std::cout << "Redirect hit!" << std::endl;
 			return routeToPath(currentLocation.redirectUriTokens, m_globalRoot, m_globalRoot.path, redirects + 1); // TODO: invalid, this would then always return globalRoot's route
 		}																										   // TODO: how the frick do we solve this?; TODO: doesn't currently count redirects
 		if (uriPath.size() <= depth) {
-			return joinPath(currentRootPath); // TODO: I think this doesn't set the root path properly yet, does it?
+			return std::make_pair(joinPath(currentRootPath), &currentLocation); // TODO: I think this doesn't set the root path properly yet, does it?
 		}
 		for (std::vector<config::Location>::const_iterator loc = currentLocation.locations.begin(); loc != currentLocation.locations.end(); ++loc) {
+			std::cout << "Checking whether " << loc->path[0] << " and " << uriPath.at(depth) << " are equal..." << std::endl;
 			if (loc->path[0] == uriPath.at(depth)) {
+				std::cout << "Location matched: " << loc->path[0] << std::endl;
 				const std::vector<std::string>& nextRootPath = !loc->root.empty() ? loc->root : currentRootPath; // TODO: assign inherited rootPath during parsing
 				return routeToPath(uriPath, *loc, nextRootPath, redirects, depth + 1);							 // use nearest parent
 			}
 		}
 		std::vector<std::string> subDirectory(uriPath.begin() + depth, uriPath.end()); // TODO: scary pointer math, ensure this never breaks
+		std::cout << "Looking for subdirectory: ";
+		for (std::vector<std::string>::iterator it = subDirectory.begin(); it != subDirectory.end(); ++it) {
+			std::cout << "/" << *it;
+		}
+		std::cout << std::endl;
+
+		std::cout << "currentRootPath is: " << joinPath(currentRootPath) << std::endl;
+		std::cout << "currentLocation.root is: " << joinPath(currentLocation.root) << std::endl;
 		if (currentLocation.root.empty()) {
-			return joinPath(currentRootPath) + joinPath(subDirectory);
+			std::cout << "currentLocation.root empty!" << std::endl;
+			return std::make_pair(joinPath(m_globalRoot.root) + joinPath(currentRootPath) + joinPath(subDirectory), &currentLocation);
 		} else {
-			return joinPath(currentRootPath) + joinPath(currentLocation.root) + joinPath(subDirectory);
+			std::cout << "currentLocation.root not empty!" << std::endl;
+			return std::make_pair(joinPath(m_globalRoot.root) + joinPath(currentLocation.root) + joinPath(subDirectory), &currentLocation);
 		}
 	}
 } // namespace http

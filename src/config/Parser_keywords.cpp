@@ -413,7 +413,7 @@ namespace config {
 		}
 		// TODO: check if path is valid
 		Location* current = getLocation(layer);
-		current->root.push_back(args[1]);
+		current->root = http::GoodRouter::splitPath(args[1]);
 		return 0;
 	}
 
@@ -520,9 +520,11 @@ namespace config {
 		// TODO: validate if we can access global root path?
 		// TODO: probably should not start the server unless it is
 
-		server.globalRoot.root.push_back(args[1]); // TODO: Location.root or Location.path?
+		server.globalRoot.root = http::GoodRouter::splitPath(args[1]); // TODO: Location.root or Location.path?
 		server.globalRoot.allowedMethods.clear();
 		if (server.hasDataDir()) {
+			std::vector<std::string> dataDir = http::GoodRouter::splitPath(server.dataDir);
+			server.globalRoot.root.insert(server.globalRoot.root.end(), dataDir.begin(), dataDir.end());
 			// server.globalRoot.path.push_back(server.globalRoot.root + server.dataDir);
 			// TODO: concatenate and then split up globalRoot.root and server.dataDir;
 		}
@@ -574,6 +576,8 @@ namespace config {
 
 		server.dataDir = args[1];
 		if (server.hasGlobalRoot()) {
+			std::vector<std::string> dataDir = http::GoodRouter::splitPath(server.dataDir);
+			server.globalRoot.root.insert(server.globalRoot.root.end(), dataDir.begin(), dataDir.end());
 			// server.globalRoot.path.push_back(server.globalRoot.root + server.dataDir);
 			// TODO: concatenate and then split up globalRoot.root and server.dataDir;
 		}

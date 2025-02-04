@@ -3,14 +3,12 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-#include "http/Router.hpp"
-
 namespace http {
 
 	/**
 	 * @brief Constructs a new PostHandler object.
 	 */
-	PostHandler::PostHandler(Router& router)
+	PostHandler::PostHandler(GoodRouter& router)
 		: ARequestHandler(router) {}
 
 	/**
@@ -33,7 +31,7 @@ namespace http {
 
 			// should only return the path to the directory
 			// we then concatenate on the file name
-			std::string absoluteFilePath = request.getUri().safeAbsolutePath + "/" + "uploaded.dat"; // TODO: replace with actual file name
+			std::string absoluteFilePath = request.getUri().safeAbsolutePath + "/uploaded.dat"; // TODO: replace with actual file name
 			std::ofstream outFile(absoluteFilePath.c_str(), std::ios::binary);
 			if (!outFile.is_open()) {
 				throw http::exception(FORBIDDEN, "POST: File couldn't be opened");

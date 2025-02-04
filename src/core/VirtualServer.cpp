@@ -26,7 +26,7 @@ namespace http {
 		, m_clients()
 		, m_listenSocket(-1)
 		, m_logger()
-		, m_router(conf.locations, conf.globalRoot, conf.dataDir) {
+		, m_router(conf.locations, conf.globalRoot) {
 	}
 
 	/**
@@ -206,6 +206,6 @@ namespace http {
 
 	const config::ServerConfig& VirtualServer::getConfig() const { return m_config; }
 
-	Router& VirtualServer::getRouter() { return m_router; }
+	GoodRouter& VirtualServer::getRouter() { return m_router; }
 
 } // namespace http

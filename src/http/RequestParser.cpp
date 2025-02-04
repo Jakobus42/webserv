@@ -171,6 +171,7 @@ namespace http {
 		} else {
 			uri.cgiPathInfo = ""; // should never be read in this case
 		}
+		uri.pathSegments = GoodRouter::splitPath(uri.path);
 		// TODO: should we parse this at all?
 		// also, should we check if we accept the script here?
 	}
@@ -214,7 +215,6 @@ namespace http {
 			uri.query = "";
 		}
 		uri.path = path.substr(path.find('/'));
-		uri.pathSegments = GoodRouter::splitPath(uri.path);
 		uri.scheme = scheme;	   // likely unused
 		uri.authority = authority; // likely unused
 		parsePath();

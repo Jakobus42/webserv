@@ -212,6 +212,7 @@ namespace config {
 						  << " missing mandatory data_dir directive" << std::endl;
 				return 1;
 			}
+			m_serverConfigs[index].globalRoot.locations = m_serverConfigs[index].locations;
 		}
 		m_isLoaded = 1;
 		return 0;

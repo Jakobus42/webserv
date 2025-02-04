@@ -12,7 +12,7 @@ namespace http {
 	 * @brief Constructs a new RequestProcessor object.
 	 */
 	// todo figure out how to do this shit with locations
-	RequestProcessor::RequestProcessor(Router& router)
+	RequestProcessor::RequestProcessor(GoodRouter& router)
 		: m_res(NULL)
 		, m_router(router) {
 		m_handlers.insert(std::make_pair(GET, new GetHandler(m_router)));
@@ -37,17 +37,24 @@ namespace http {
 
 		if (!req.hasError()) {
 			try {
-				const config::Location& location = m_router.getLocation(req.getUri());
-				// std::cout << "Looking for request method " << req.getMethod() << " (root " << location.root << ")" << std::endl;
-				std::cout << "Allowed methods (" << location.allowedMethods.size() << "): ";
-				for (std::set<Method>::iterator it = location.allowedMethods.begin(); it != location.allowedMethods.end(); ++it) {
+				const config::Location& globalRoot = m_router.getGlobalRoot();
+				std::cout << "PathSegments: " << std::endl;
+				for (std::vector<std::string>::iterator it = req.getUri().pathSegments.begin(); it != req.getUri().pathSegments.end(); ++it) {
 					std::cout << *it << " ";
 				}
 				std::cout << std::endl;
-				if (location.allowedMethods.find(req.getMethod()) == location.allowedMethods.end()) {
+				std::pair<std::string, const config::Location*> location = m_router.routeToPath(req.getUri().pathSegments, globalRoot, globalRoot.root);
+				// std::cout << "Looking for request method " << req.getMethod() << " (root " << location.root << ")" << std::endl;
+				std::cout << "Allowed methods (" << location.second->allowedMethods.size() << "): ";
+				for (std::set<Method>::iterator it = location.second->allowedMethods.begin(); it != location.second->allowedMethods.end(); ++it) {
+					std::cout << *it << " ";
+				}
+				std::cout << std::endl;
+				std::cout << "path returned: " << location.first << std::endl;
+				if (location.second->allowedMethods.find(req.getMethod()) == location.second->allowedMethods.end()) {
 					throw http::exception(METHOD_NOT_ALLOWED, "HTTP method not allowed for this route");
 				}
-				req.getUri().safeAbsolutePath = m_router.getSafePath(req.getUri(), location);
+				req.getUri().safeAbsolutePath = location.first;
 				std::cout << "safePath in RequestProcessor: " << safePath << std::endl;
 			} catch (const http::exception& e) {
 				std::cout << "CRUD, " << e.getMessage() << std::endl;

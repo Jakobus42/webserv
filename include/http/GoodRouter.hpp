@@ -13,6 +13,7 @@ namespace http {
 			~GoodRouter();
 			GoodRouter(const GoodRouter& other);
 			const GoodRouter& operator=(const GoodRouter& rhs);
+			const config::Location& getGlobalRoot() const;
 
 		public:
 			/**
@@ -69,7 +70,7 @@ namespace http {
 			 * @return std::string The absolute, normalized path to a file or directory
 			 * @throws http::exception upon any issues encountered during routing
 			 */
-			std::string routeToPath(const std::vector<std::string>& uriPath, const config::Location& currentLocation, const std::vector<std::string>& currentRootPath, std::size_t redirects = 0, std::size_t depth = 0) throw(http::exception);
+			std::pair<std::string, const config::Location*> routeToPath(const std::vector<std::string>& uriPath, const config::Location& currentLocation, const std::vector<std::string>& currentRootPath, std::size_t redirects = 0, std::size_t depth = 0) throw(http::exception);
 
 			/**
 			 * Router needs to:

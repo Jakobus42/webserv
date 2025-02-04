@@ -39,19 +39,19 @@ server
 	    # Accepted HTTP methods
 	    limit_except GET POST DELETE;
 	    # Directory configuration
-	    root /foo;  # Base directory
+	    root /kapobasedir;  # Base directory
 	    autoindex on;  # Enable directory listing
 	    index default.html;  # Default file in directory   
 	    # Executing CGI scripts for .php files
 	    location /hi
 		{
-			root /foo/bar;  # Base directory
+			root /kapohibasedir/secondpartofbasedir;  # Base directory
 			limit_except GET POST;
 	        #include fastcgi_params;
 	        #fastcgi_pass 127.0.0.1:9000;  # Assuming PHP-FPM is running
 	        #fastcgi_index index.php;
 			#fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-			location /kapouet/hi/hi2
+			location /hi2
 			{
 				root /123/234/345;
 			}

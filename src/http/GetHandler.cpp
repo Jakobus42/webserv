@@ -1,13 +1,11 @@
 #include "http/GetHandler.hpp"
 
-#include "http/Router.hpp"
-
 namespace http {
 
 	/**
 	 * @brief Constructs a new GetHandler object.
 	 */
-	GetHandler::GetHandler(Router& router)
+	GetHandler::GetHandler(GoodRouter& router)
 		: ARequestHandler(router) {}
 
 	/**
