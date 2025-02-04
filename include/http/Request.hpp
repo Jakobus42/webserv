@@ -1,6 +1,7 @@
 #pragma once
 
 #include "http/http.hpp"
+#include "http/types.hpp"
 #include "shared/NonCopyable.hpp"
 
 #include <map>
@@ -8,30 +9,6 @@
 #include <vector>
 
 namespace http {
-
-	enum RequestType {
-		FETCH,
-		CGI
-	};
-
-	struct Uri {
-			std::string scheme;
-			std::string authority;
-			std::string path;
-			std::string query;
-			std::string cgiPathInfo;
-
-			Uri()
-				: scheme()
-				, authority()
-				, path()
-				, query()
-				, cgiPathInfo() {}
-
-			bool isAbsoluteForm() {
-				return path.length() > 0 ? path[0] != '/' : false;
-			}
-	};
 
 	/**
 	 * @class Request

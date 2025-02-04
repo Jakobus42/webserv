@@ -2,8 +2,8 @@
 
 #include <stdint.h>
 
-#include "config/Parser.hpp"
-#include "http/http.hpp"
+#include "config/Location.hpp"
+#include "config/types.hpp"
 #include "shared/stringUtils.hpp"
 
 #include <algorithm>
@@ -19,81 +19,6 @@
 
 namespace config {
 
-	struct Location {
-			std::vector<std::string> path;		   // location name
-			std::string redirectUrl;			   // return
-			std::set<http::Method> allowedMethods; // allowed HTTP methods
-			bool autoindex;
-			std::string root;
-			std::vector<std::string> indexFile;
-			std::vector<Location> locations; // locations
-
-			// globalRoot should always have path <global_root>/<data_dir>/
-			// what about defaults for accepted methods?
-			// should globalRoot even be a Location?
-			// or just a string that's used as a base for all routes?
-
-			// default constructor
-			Location()
-				: path()
-				, redirectUrl()
-				, allowedMethods()
-				, autoindex(false)
-				, root()
-				, indexFile()
-				, locations() {
-			}
-
-			// copy constructor
-			Location(const Location& other)
-				: path(other.path)
-				, redirectUrl(other.redirectUrl)
-				, allowedMethods(other.allowedMethods)
-				, autoindex(other.autoindex)
-				, root(other.root)
-				, indexFile(other.indexFile)
-				, locations(other.locations) {
-			}
-
-			// assignment operator
-			Location& operator=(const Location& other) {
-				if (this != &other) {
-					path = other.path;
-					redirectUrl = other.redirectUrl;
-					allowedMethods = other.allowedMethods;
-					autoindex = other.autoindex;
-					root = other.root;
-					indexFile = other.indexFile;
-					locations = other.locations;
-				}
-				return *this;
-			}
-
-			bool acceptsFileUpload() const {
-				return allowedMethods.find(http::POST) != allowedMethods.end(); // TODO: check whether find actually returns end on fail xd
-			}
-
-			bool hasRedirect() const {
-				return !redirectUrl.empty();
-			}
-	};
-
-	enum CmdId {
-		SERVER_ID = 0,
-		LISTEN_ID = 1,
-		SERVER_NAME_ID = 2,
-		ERROR_PAGE_ID = 3,
-		CLIENT_MAX_BODY_SIZE_ID = 4,
-		LOCATION_ID = 5,
-		LIMIT_EXCEPT_ID = 6,
-		RETURN_ID = 7,
-		ROOT_ID = 8,
-		AUTOINDEX_ID = 9,
-		INDEX_ID = 10,
-		GLOBAL_ROOT_ID = 11,
-		DATA_DIR_ID = 12,
-		UNKNOWN_ID = 404
-	};
 
 	struct ServerConfig {
 			// configurations

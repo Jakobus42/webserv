@@ -129,8 +129,13 @@ namespace config {
 			}
 			std::cout << std::endl;
 			if (detailed) {
-				if (locations[j].root != "")
-					std::cout << c << "Root: " << locations[j].root << std::endl;
+				if (!locations[j].root.empty()) {
+					std::cout << c << "Root: ";
+					for (std::vector<std::string>::const_iterator it = locations[j].root.begin(); it != locations[j].root.end(); ++it) {
+						std::cout << *it << " ";
+					}
+				}
+				std::cout << std::endl;
 				if (locations[j].autoindex)
 					std::cout << c << "Autoindex: on" << std::endl;
 				else

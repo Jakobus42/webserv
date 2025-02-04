@@ -1,5 +1,6 @@
 #include "http/RequestParser.hpp"
 
+#include "http/GoodRouter.hpp"
 #include "shared/stringUtils.hpp"
 
 #include <algorithm>
@@ -213,8 +214,9 @@ namespace http {
 			uri.query = "";
 		}
 		uri.path = path.substr(path.find('/'));
-		uri.scheme = scheme;
-		uri.authority = authority;
+		uri.pathSegments = GoodRouter::splitPath(uri.path);
+		uri.scheme = scheme;	   // likely unused
+		uri.authority = authority; // likely unused
 		parsePath();
 	}
 

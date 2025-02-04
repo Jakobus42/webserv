@@ -25,13 +25,12 @@ namespace http {
 	// i.e. a html page saying "file /foo/bar.baz was deleted"
 	void DeleteHandler::handle(const Request& request, Response& response) {
 		try {
-			std::string safePath = m_router.getSafePath(request.getUri()); // should be the absolute path to the requested file
-
-			if (!m_router.fileExists(safePath + "/" + "file.dat")) { // TODO: replace with actual file name
+			FileType fileType = m_router.checkFileType(request.getUri().safeAbsolutePath);
+			if (fileType == _NOT_FOUND) { // TODO: replace with actual file name
 				throw http::exception(NOT_FOUND, "DELETE: File doesn't exist");
 			}
 
-			if (std::remove(safePath.c_str()) != 0) { // unlink the file
+			if (std::remove(request.getUri().safeAbsolutePath.c_str()) != 0) { // unlink the file
 				throw http::exception(FORBIDDEN, "DELETE: File could not be removed");
 			}
 			response.setStatusCode(NO_CONTENT);

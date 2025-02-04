@@ -5,6 +5,8 @@
 
 #include "http/RequestProcessor.hpp"
 
+#include <vector>
+
 namespace http {
 	/**
 	 * @brief Constructs a new Router object.
@@ -57,9 +59,101 @@ namespace http {
 		while (std::getline(ss, segment, '/')) {
 			if (!segment.empty()) {
 				tokens.push_back(segment);
-				std::cout << "splitPath added token: " << segment << std::endl;
 			}
 		}
+	}
+
+	// really, this function needs to:
+	// - figure out if the path is a file (should only be GET) or location
+	// - figure out if that location exists
+	// - if POSTing a file, if that location is writeable
+	// - if GETing or DELETEing a file, if that file exists and is accessible
+	// - treat server root (<serverLocation>/<data_dir>) as global root // server root must be defined, as we can't use getcwd()
+	// - block '../' escaping the global root directory
+	// TODO: ensure /cgi-bin/<script.cgi> path is also normalized so cgi-bin/ can't be escaped
+	// TODO: on second thought, cgi-bin should probably not even be handled by this
+	std::string Router::normalizePath(const std::string& uriPath) {
+		std::vector<std::string> tokens;
+		splitPath(uriPath, tokens); // handle empty tokens, etc.
+		std::vector<std::string> normalized;
+
+		for (size_t i = 0; i < tokens.size(); i++) {
+			if (tokens[i] == "..") {
+				if (!normalized.empty()) {
+					normalized.pop_back();
+				}
+			} else if (!tokens[i].empty() && tokens[i] != ".") {
+				normalized.push_back(tokens[i]);
+			}
+		}
+		// Rebuild path
+		std::string result = "/";
+		for (size_t i = 0; i < normalized.size(); i++) {
+			result += normalized[i] + "/";
+		}
+		return result;
+	}
+
+	/**
+	 * @brief Builds the absolute base root for the uri.
+	 *
+	 * @param uri The target uri.
+	 * @return std::string The absolute path to the best-matching Location's root.
+	 * i.e. if global_root is /var/foo, data_directory is /www, uri.path is /bar/baz and there's a location /bar/baz with root /qux/quux
+	 * it should return "/var/foo/www/qux/quux"
+	 * If there is no route match at all, it should simply return global_root
+	 * @throws http::exception If the path escapes the base root or is invalid.
+	 */
+	std::string Router::getBaseRoot(const Uri& uri) {
+		const config::Location& location = getLocation(uri);
+		std::string root = "/";
+		if (location.root == m_globalRoot.root) {
+
+			for (std::vector<std::string>::const_iterator it = location.root.begin(); it != location.root.end(); ++it) {
+				root += *it;
+				root += "/";
+			}
+			return root + m_dataDir;
+		}
+
+		for (std::vector<std::string>::const_iterator it = m_globalRoot.root.begin(); it != m_globalRoot.root.end(); ++it) {
+			root += *it;
+			root += "/";
+		}
+
+		root += m_dataDir;
+
+		for (std::vector<std::string>::const_iterator it = location.root.begin(); it != location.root.end(); ++it) {
+			root += *it;
+			root += "/";
+		}
+		return root; // returned path should not have '/' at the end
+					 // TODO: ensure location.root always starts with '/',
+					 // never ends with '/' and never contains double '/'s
+					 // TODO: ensure the same for dataDir and globalRoot
+	}
+
+	// TODO: route (perhaps using getLocation?) and confirm whether file exists
+	// TODO: alternatively return a StatusCode for OK, FORBIDDEN, NOT_FOUND, etc.
+	// TODO: or just throw?
+	/**
+	 * @brief Checks if a file exists and is a regular file.
+	 *
+	 * @param filePath The path to the file.
+	 * @return FileType Status indicating if path is a file (IS_FILE), a directory (IS_DIR)
+	 * 		   or whether the path doesn't exist (FILE_NOT_FOUND)
+	 */
+	FileType Router::checkFileType(const std::string& absoluteFilePath) {
+		struct stat stat_buf;
+		if (stat(absoluteFilePath.c_str(), &stat_buf) != 0) {
+			return _NOT_FOUND; // Path does not exist
+		}
+		if (S_ISDIR(stat_buf.st_mode)) {
+			return DIRECTORY;
+		} else if (S_ISREG(stat_buf.st_mode)) {
+			return FILE;
+		}
+		return _NOT_FOUND; // Other types (not file/dir)
 	}
 
 	/**
@@ -72,7 +166,6 @@ namespace http {
 	// TODO: currently this adds the uri path to the file system path (root path + subfolder) to the path
 	// TODO: ensure it does not. example: /kapouet with its root being set to /qux/quux results in qux/quux/kapouet or smth like that
 	const config::Location* Router::locateDeepestMatch(const std::string& normUri, const std::vector<config::Location>& locs) {
-		// Convert the normalized URI to tokens
 		std::vector<std::string> uriTokens;
 		splitPath(normUri, uriTokens); // throws http::exception if path isn't valid
 		std::cout << "SplitPath split tokens into: ";
@@ -94,14 +187,17 @@ namespace http {
 			while (matchedCount < locTokens.size() && matchedCount < uriTokens.size() && locTokens[matchedCount] == uriTokens[matchedCount]) {
 				matchedCount++;
 			}
+			std::cout << "Matched " << matchedCount << std::endl;
 			if (matchedCount == locTokens.size() && matchedCount > bestMatchLength) {
 				if (!it->locations.empty()) {
 					std::string subUri = "/";
-					for (size_t j = matchedCount; j < uriTokens.size(); j++) {
+					for (size_t j = matchedCount; j < uriTokens.size(); ++j) {
 						subUri += uriTokens[j] + "/";
 					}
+					std::cout << "Built subUri: " << subUri << std::endl;
 					const config::Location* deeperLoc = locateDeepestMatch(subUri, it->locations);
 					if (deeperLoc) {
+						std::cout << "Found a deeper location" << std::endl;
 						bestLocation = deeperLoc;
 						bestMatchLength = matchedCount + deeperLoc->path.size();
 						continue;
@@ -117,27 +213,6 @@ namespace http {
 	}
 
 	/**
-	 * @brief Builds the absolute base root for the uri.
-	 *
-	 * @param uri The target uri.
-	 * @return std::string The absolute path to the best-matching Location's root.
-	 * i.e. if global_root is /var/foo, data_directory is /www, uri.path is /bar/baz and there's a location /bar/baz with root /qux/quux
-	 * it should return "/var/foo/www/qux/quux"
-	 * If there is no route match at all, it should simply return global_root
-	 * @throws http::exception If the path escapes the base root or is invalid.
-	 */
-	std::string Router::getBaseRoot(const Uri& uri) {
-		const config::Location& location = getLocation(uri);
-		if (location.root == m_globalRoot.root) {
-			return location.root + m_dataDir;
-		}
-		return m_globalRoot.root + m_dataDir + location.root; // returned path should not have '/' at the end
-															  // TODO: ensure location.root always starts with '/',
-															  // never ends with '/' and never contains double '/'s
-															  // TODO: ensure the same for dataDir and globalRoot
-	}
-
-	/**
 	 * @brief Builds the final absolute path, ensuring it does not escape the base root.
 	 *
 	 * @param baseRoot The base root directory.
@@ -145,9 +220,12 @@ namespace http {
 	 * @return std::string The final absolute file path.
 	 * @throws http::exception If the path escapes the base root or is invalid.
 	 */
-	std::string Router::getSafePath(const Uri& uri) {
+	std::string Router::getSafePath(const Uri& uri, const config::Location& matchedLocation) {
+		(void)matchedLocation;							// TODO: use
 		const std::string& baseRoot = getBaseRoot(uri); // getBaseRoot(const Uri& uri) -> returns <global_root>/<uri.root>
+		std::cout << "getSafePath: baseRoot is: " << baseRoot << std::endl;
 		const std::string& normalizedUri = normalizePath(uri.path);
+		std::cout << "getSafePath: normalizedUri is: " << normalizedUri << std::endl;
 		const bool isFile = uri.path.length() > 0 ? uri.path.at(uri.path.size() - 1) != '/' : false; // TODO: this sucks
 
 		// Merge baseRoot and normUri while ensuring we never go above baseRoot
@@ -161,14 +239,30 @@ namespace http {
 		if (combined.at(combined.size() - 1) == '/') {
 			combined.erase(combined.end() - 1);
 		}
+		std::cout << "combined (0): " << combined << std::endl;
 
+		// Ensure normUri starts with '/'
+		// std::string adjustedNormUri = normalizedUri; // TODO: normalizedUri still contains parts of the uri that should have been "matched away"
+		// 											 // this should somehow happen either here or before (pass modified uri as param instead)
+		// if (adjustedNormUri.empty() || adjustedNormUri[0] != '/') {
+		// 	adjustedNormUri = "/" + adjustedNormUri;
+		// }
+		//
+		// combined += adjustedNormUri;
 		// Ensure normUri starts with '/'
 		std::string adjustedNormUri = normalizedUri;
 		if (adjustedNormUri.empty() || adjustedNormUri[0] != '/') {
 			adjustedNormUri = "/" + adjustedNormUri;
 		}
-
+		// Remove the matched location prefix from the URI before combining
+		// if (!matchedLocation.path.empty() && adjustedNormUri.find(matchedLocation.path) == 0) { // TODO: implement
+		// 	adjustedNormUri = adjustedNormUri.substr(matchedLocation.path.size());
+		// 	if (adjustedNormUri.empty() || adjustedNormUri[0] != '/') {
+		// 		adjustedNormUri = "/" + adjustedNormUri;
+		// 	}
+		// }
 		combined += adjustedNormUri;
+		std::cout << "combined (1): " << combined << std::endl;
 
 		// Split the combined path into components
 		std::vector<std::string> components;
@@ -185,6 +279,7 @@ namespace http {
 				resolvedComponents.push_back(*it);
 			}
 		}
+		std::cout << "combined (2): " << combined << std::endl;
 
 		// Rebuild the resolved path
 		std::string resolvedPath = "/";
@@ -207,36 +302,6 @@ namespace http {
 
 		std::cout << "getSafePath returned: " << resolvedPath << std::endl;
 		return resolvedPath;
-	}
-
-	// really, this function needs to:
-	// - figure out if the path is a file (should only be GET) or location
-	// - figure out if that location exists
-	// - if POSTing a file, if that location is writeable
-	// - if GETing or DELETEing a file, if that file exists and is accessible
-	// - treat server root (<serverLocation>/<data_dir>) as global root // server root must be defined, as we can't use getcwd()
-	// - block '../' escaping the global root directory
-	// TODO: ensure /cgi-bin/<script.cgi> path is also normalized so cgi-bin/ can't be escaped
-	std::string Router::normalizePath(const std::string& uriPath) {
-		std::vector<std::string> tokens;
-		splitPath(uriPath, tokens); // handle empty tokens, etc.
-		std::vector<std::string> normalized;
-
-		for (size_t i = 0; i < tokens.size(); i++) {
-			if (tokens[i] == "..") {
-				if (!normalized.empty()) {
-					normalized.pop_back();
-				}
-			} else if (!tokens[i].empty() && tokens[i] != ".") {
-				normalized.push_back(tokens[i]);
-			}
-		}
-		// Rebuild path
-		std::string result = "/";
-		for (size_t i = 0; i < normalized.size(); i++) {
-			result += normalized[i] + "/";
-		}
-		return result;
 	}
 
 	// TODO: route and return location
@@ -277,7 +342,7 @@ namespace http {
 				// or rather, if no global_root is defined
 			}
 			if (currentLocation->hasRedirect()) {
-				std::string redirectPath = currentLocation->redirectUrl;
+				std::string redirectPath = currentLocation->redirectUri;
 				// Validate redirect path
 				// TODO: maybe do this during parsing instead? idk
 				if (redirectPath.empty() || redirectPath[0] != '/') {
@@ -298,23 +363,6 @@ namespace http {
 		return *(currentLocation);
 	}
 
-	// TODO: route (perhaps using getLocation?) and confirm whether file exists
-	// TODO: alternatively return a StatusCode for OK, FORBIDDEN, NOT_FOUND, etc.
-	// TODO: or just throw?
-	/**
-	 * @brief Checks if a file exists and is a regular file.
-	 *
-	 * @param filePath The path to the file.
-	 * @return StatusCode Status indicating if the file exists (OK) or not (NOT_FOUND).
-	 */
-	StatusCode Router::fileExists(const std::string& absoluteFilePath) {
-		struct stat st;
-		if (stat(absoluteFilePath.c_str(), &st) == 0 && S_ISREG(st.st_mode)) {
-			return OK;
-		}
-		return NOT_FOUND;
-	}
-
 	/**
 	 * @brief prints a location.
 	 * @param locations the locations to print.
@@ -331,8 +379,12 @@ namespace http {
 		}
 		std::cout << std::endl;
 		if (detailed) {
-			if (location.root != "")
-				std::cout << "Root: " << location.root << std::endl;
+			if (!location.root.empty()) {
+				std::cout << "Root: ";
+				for (std::vector<std::string>::const_iterator it = location.root.begin(); it != location.root.end(); ++it) {
+					std::cout << *it << " ";
+				}
+			}
 			if (location.autoindex)
 				std::cout << "Autoindex: on" << std::endl;
 			else

@@ -19,13 +19,16 @@ namespace http {
 	void GetHandler::handle(const Request& request, Response& response) {
 		// const std::string& filePath = request.getUri().path; // is this already the absolute path?
 		try {
-			std::string safePath = m_router.getSafePath(request.getUri()); // should be the absolute path to the requested file
-
-			if (!m_router.fileExists(safePath)) { // TODO: replace with actual file name
+			FileType fileType = m_router.checkFileType(request.getUri().safeAbsolutePath);
+			if (fileType == _NOT_FOUND) { // TODO: replace with actual file name
 				throw http::exception(NOT_FOUND, "GET: File doesn't exist");
 			}
+			// TODO: implement
+			// if (fileType == IS_DIRECTORY) {
+			//	// autoindex or look for index.html
+			// }
 
-			std::ifstream inFile(safePath.c_str(), std::ios::binary);
+			std::ifstream inFile(request.getUri().safeAbsolutePath.c_str(), std::ios::binary);
 			if (!inFile.is_open()) {
 				throw http::exception(FORBIDDEN, "GET: File isn't accessible"); // TODO: also happens if path doesn't exist, should be NOT_FOUND in that case
 			}

@@ -1,4 +1,6 @@
+#include "config/Location.hpp"
 #include "config/Parser.hpp"
+#include "http/GoodRouter.hpp"
 #include "http/http.hpp"
 
 #include <set>
@@ -93,14 +95,14 @@ namespace config {
 		Location new_location;
 		// set default values
 		new_location.autoindex = false;
-		new_location.root = "";
+		new_location.root.clear();
 		if (shared::string::splitPath(args[1], new_location.path) == 1) {
 			std::cout << "Configuration file (line " << lineCount << "): "
 					  << "Invalid location path"
 					  << std::endl;
 			return 1;
 		}
-		new_location.redirectUrl = "";
+		new_location.redirectUri = "";
 		new_location.indexFile.push_back("index.html");
 		if (layer == 1) {
 			m_serverConfigs.back().locations.push_back(new_location);
@@ -111,24 +113,24 @@ namespace config {
 			temp = &temp->locations.back();
 		}
 		temp->locations.push_back(new_location);
-		if (layer > 1) {
-			unsigned long paths = 0;
-			if (temp->path.size() >= new_location.path.size()) {
-				std::cout << "Configuration file (line " << lineCount << "): "
-						  << "Invalid location path, does not include previous location"
-						  << std::endl;
-				return 1;
-			}
-			while (paths < temp->path.size()) {
-				if (temp->path[paths] != new_location.path[paths]) {
-					std::cout << "Configuration file (line " << lineCount << "): "
-							  << "Invalid location path, does not include previous location"
-							  << std::endl;
-					return 1;
-				}
-				paths++;
-			}
-		}
+		// if (layer > 1) {
+		// 	unsigned long paths = 0;
+		// 	if (temp->path.size() >= new_location.path.size()) {
+		// 		std::cout << "Configuration file (line " << lineCount << "): "
+		// 				  << "Invalid location path, does not include previous location"
+		// 				  << std::endl;
+		// 		return 1;
+		// 	}
+		// 	while (paths < temp->path.size()) {
+		// 		if (temp->path[paths] != new_location.path[paths]) {
+		// 			std::cout << "Configuration file (line " << lineCount << "): "
+		// 					  << "Invalid location path, does not include previous location"
+		// 					  << std::endl;
+		// 			return 1;
+		// 		}
+		// 		paths++;
+		// 	}
+		// }
 		return 0;
 	}
 
@@ -375,9 +377,16 @@ namespace config {
 					  << std::endl;
 			return 1;
 		}
+		if (args[1][0] != '/') {
+			std::cout << "Configuration file (line " << lineCount << "): "
+					  << "Return url doesn't start with '/'"
+					  << std::endl;
+			return 1;
+		}
 		// TODO: check if valid url?
 		Location* current = getLocation(layer);
-		current->redirectUrl = args[1];
+		current->redirectUri = args[1];
+		current->redirectUriTokens = http::GoodRouter::splitPath(current->redirectUri);
 		return 0;
 	}
 
@@ -404,7 +413,7 @@ namespace config {
 		}
 		// TODO: check if path is valid
 		Location* current = getLocation(layer);
-		current->root = args[1];
+		current->root.push_back(args[1]);
 		return 0;
 	}
 
@@ -511,7 +520,7 @@ namespace config {
 		// TODO: validate if we can access global root path?
 		// TODO: probably should not start the server unless it is
 
-		server.globalRoot.root = args[1]; // TODO: Location.root or Location.path?
+		server.globalRoot.root.push_back(args[1]); // TODO: Location.root or Location.path?
 		server.globalRoot.allowedMethods.clear();
 		if (server.hasDataDir()) {
 			// server.globalRoot.path.push_back(server.globalRoot.root + server.dataDir);

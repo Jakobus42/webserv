@@ -31,9 +31,9 @@ namespace http {
 			// 	throw http::exception(FORBIDDEN, "Location does not accept file uploads (no POST)");
 			// }
 
-			std::string safePath = m_router.getSafePath(request.getUri());	// should only return the path to the directory
-																			// we then concatenate on the file name
-			std::string absoluteFilePath = safePath + "/" + "uploaded.dat"; // TODO: replace with actual file name
+			// should only return the path to the directory
+			// we then concatenate on the file name
+			std::string absoluteFilePath = request.getUri().safeAbsolutePath + "/" + "uploaded.dat"; // TODO: replace with actual file name
 			std::ofstream outFile(absoluteFilePath.c_str(), std::ios::binary);
 			if (!outFile.is_open()) {
 				throw http::exception(FORBIDDEN, "POST: File couldn't be opened");

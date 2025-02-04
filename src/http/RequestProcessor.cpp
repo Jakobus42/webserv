@@ -33,11 +33,12 @@ namespace http {
 	// todo check if req was valid - if not send error response
 	// TODO: check for allowed methods
 	Response* RequestProcessor::process(Request& req) {
+		std::string safePath = "";
 
 		if (!req.hasError()) {
 			try {
 				const config::Location& location = m_router.getLocation(req.getUri());
-				std::cout << "Looking for request method " << req.getMethod() << " (root " << location.root << ")" << std::endl;
+				// std::cout << "Looking for request method " << req.getMethod() << " (root " << location.root << ")" << std::endl;
 				std::cout << "Allowed methods (" << location.allowedMethods.size() << "): ";
 				for (std::set<Method>::iterator it = location.allowedMethods.begin(); it != location.allowedMethods.end(); ++it) {
 					std::cout << *it << " ";
@@ -46,6 +47,8 @@ namespace http {
 				if (location.allowedMethods.find(req.getMethod()) == location.allowedMethods.end()) {
 					throw http::exception(METHOD_NOT_ALLOWED, "HTTP method not allowed for this route");
 				}
+				req.getUri().safeAbsolutePath = m_router.getSafePath(req.getUri(), location);
+				std::cout << "safePath in RequestProcessor: " << safePath << std::endl;
 			} catch (const http::exception& e) {
 				std::cout << "CRUD, " << e.getMessage() << std::endl;
 				req.setStatusCode(e.getCode());
@@ -115,24 +118,6 @@ namespace http {
 	// 		safePath += tokens[i] + "/";
 	// 	}
 	// 	return safePath;
-	// }
-
-	// int RequestProcessor::findLocation(const std::string& uri, const std::vector<config::Location>& locs, config::Location& location) {
-	// 	std::string normUri = normalizePath(uri);
-
-	// 	const config::Location* bestMatch = locateDeepestMatch(normUri, locs);
-	// 	if (!bestMatch) {
-	// 		return 1;
-	// 	} // No matching location.
-
-	// 	config::Location chosen = *bestMatch;
-	// 	// 3) Append whatever path remains after location matching,
-	// 	// ensuring we stay within the final root.
-	// 	chosen.root = buildFinalPath(chosen.root, normUri);
-	// 	std::cout << "BUILT PATH: " << chosen.root << std::endl;
-
-	// 	location = chosen;
-	// 	return 0;
 	// }
 
 } /* namespace http */

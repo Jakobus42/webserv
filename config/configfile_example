@@ -43,7 +43,7 @@ server
 	    autoindex on;  # Enable directory listing
 	    index default.html;  # Default file in directory   
 	    # Executing CGI scripts for .php files
-	    location /kapouet/hi
+	    location /hi
 		{
 			root /foo/bar;  # Base directory
 			limit_except GET POST;
@@ -57,12 +57,12 @@ server
 			}
 	    }
 	    # Handle file uploads
-	    location /kapouet/upload
+	    location /upload
 		{
 	        #client_max_body_size 20M;  # Allow larger uploads
 	        #try_files $uri =404;  # Check if the directory exists
 	        root /tmp/uploads;  # Where to save uploads
-			location /kapouet/upload/hi
+			location /hi
 			{
 
 			}

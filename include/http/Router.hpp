@@ -2,6 +2,7 @@
 
 #include "config/Parser.hpp"
 #include "http/Request.hpp"
+#include "http/types.hpp"
 
 namespace http {
 
@@ -18,10 +19,9 @@ namespace http {
 
 		public:
 			const config::Location& getLocation(const http::Uri& uri);
-			int findLocation(const std::string& uri, config::Location& location); // currently not implemented
-			StatusCode fileExists(const std::string& absoluteFilePath);
+			std::string getSafePath(const Uri& uri, const config::Location& matchedLocation);
+			FileType checkFileType(const std::string& absoluteFilePath);
 			void printLocation(const config::Location& location, int detailed); // replace with operator<< overload?
-			std::string getSafePath(const Uri& uri);
 
 		private:
 			Router();
@@ -32,10 +32,11 @@ namespace http {
 			const config::Location* locateDeepestMatch(const std::string& normUri, const std::vector<config::Location>& locs);
 
 		private:
+			static const int MAX_REDIRECTS = 32;
+
 			std::vector<config::Location> m_locations;
 			config::Location m_globalRoot;
 			std::string m_dataDir;
-			static const int MAX_REDIRECTS = 32;
 	};
 
 } /* namespace http */
