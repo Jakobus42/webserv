@@ -19,6 +19,14 @@ namespace http {
 	// in POST, there should be no file name in the path
 	void PostHandler::handle(const Request& request, Response& response) {
 		try {
+			const config::Location& location = *request.getLocation();
+			FileType fileType = m_router.checkFileType(request.getUri().safeAbsolutePath);
+			if (fileType == _NOT_FOUND) {
+				throw http::exception(FORBIDDEN, "POST: Directory could not be found");
+			}
+			if (fileType == FILE) {
+				throw http::exception(FORBIDDEN, "POST: Expected directory; received file");
+			}
 			// const config::Location& location = m_router.getLocation(request.getUri()); // TODO: implement
 			// location should probably be called deepestMatchingLocation
 			// we somehow need to both get:

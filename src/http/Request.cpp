@@ -16,7 +16,8 @@ namespace http {
 		, m_uriRaw("")
 		, m_version(HTTP_VERSION)
 		, m_statusCode(OK)
-		, m_uri() {
+		, m_uri()
+		, m_requestedLocation(NULL) {
 	}
 
 	/**
@@ -86,6 +87,8 @@ namespace http {
 
 	const std::vector<std::string>& Request::getHeader(const std::string& key) const { return m_headers.at(key); }
 
+	const config::Location* Request::getLocation() const { return m_requestedLocation; }
+
 	bool Request::hasError() const {
 		return m_statusCode >= 400;
 	}
@@ -114,6 +117,8 @@ namespace http {
 	}
 
 	void Request::setStatusCode(StatusCode statusCode) { m_statusCode = statusCode; }
+
+	void Request::setLocation(const config::Location* location) { m_requestedLocation = location; }
 
 	void Request::validateUriRaw(const char* uri, std::size_t len) {
 		if (len == 0 || uri == NULL) {

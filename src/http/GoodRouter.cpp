@@ -37,6 +37,7 @@ namespace http {
 	//
 
 	FileType GoodRouter::checkFileType(const std::string& absolutePath) {
+		std::cout << "Checking FileType for path: " << absolutePath << std::endl;
 		struct stat statBuf;
 		if (stat(absolutePath.c_str(), &statBuf) != 0) {
 			return _NOT_FOUND; // Path does not exist
@@ -111,6 +112,12 @@ namespace http {
 	 * }
 	 ************************/
 	// TODO: handle autoindex somewhere
+	// TODO: currently doesn't handle locations with more than one path segment, i.e. location /foo/bar
+	// TODO: probably just disallow this in the parser
+	//       apparently NGINX requires it but I don't want to implement this
+	// TODO: if indexFile is defined when a route has finished matching, immediately look for that indexFile, read and respond with it
+	// TODO: if no indexFile is defined, but autoindex is on, generate and return a directory listing
+	// TODO: if no indexFile is defined and autoindex is off, return a 403 forbidden response
 	std::pair<std::string, const config::Location*> GoodRouter::routeToPath(
 		const std::vector<std::string>& uriPath,		 // the requests' path that we're traversing
 		const config::Location& currentLocation,		 // Location we're currently inside of, default should be m_globalRoot
@@ -124,14 +131,15 @@ namespace http {
 			throw http::exception(LOOP_DETECTED, "Redirects exceeded MAX_REDIRECTS");
 		}
 		if (currentLocation.hasRedirect()) {
-			std::cout << "Redirect hit!" << std::endl;
 			return routeToPath(currentLocation.redirectUriTokens, m_globalRoot, m_globalRoot.path, redirects + 1); // TODO: invalid, this would then always return globalRoot's route
 		}																										   // TODO: how the frick do we solve this?
 		if (uriPath.size() <= depth) {
+			if (currentRootPath == m_globalRoot.root) {
+				return std::make_pair(joinPath(currentRootPath), &currentLocation);
+			}
 			return std::make_pair(joinPath(m_globalRoot.root) + joinPath(currentRootPath), &currentLocation); // TODO: I think this doesn't set the root path properly yet, does it?
 		}
 		for (std::vector<config::Location>::const_iterator loc = currentLocation.locations.begin(); loc != currentLocation.locations.end(); ++loc) {
-			std::cout << "Checking whether " << loc->path[0] << " and " << uriPath.at(depth) << " are equal..." << std::endl;
 			if (loc->path[0] == uriPath.at(depth)) {
 				std::cout << "Location matched: " << loc->path[0] << std::endl;
 				const std::vector<std::string>& nextRootPath = !loc->root.empty() ? loc->root : currentRootPath; // TODO: assign inherited rootPath during parsing

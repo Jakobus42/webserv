@@ -1,5 +1,6 @@
 #pragma once
 
+#include "config/Location.hpp"
 #include "http/http.hpp"
 #include "http/types.hpp"
 #include "shared/NonCopyable.hpp"
@@ -32,7 +33,7 @@ namespace http {
 			const std::vector<std::string>& getHeader(const std::string& key) const;
 			StatusCode getStatusCode() const;
 			bool hasError() const;
-			// t_requestData getRequestData() const;
+			const config::Location* getLocation() const;
 
 			void setType(RequestType type);
 			void setMethod(const char* method, std::size_t len);
@@ -41,6 +42,7 @@ namespace http {
 			void setBody(const char* body, std::size_t len);
 			void setHeader(const char* key, std::size_t keyLen, const char* value, std::size_t valueLen);
 			void setStatusCode(StatusCode statusCode);
+			void setLocation(const config::Location* location);
 
 			bool hasHeader(const std::string& key) const;
 
@@ -65,6 +67,7 @@ namespace http {
 
 			http::StatusCode m_statusCode;
 			Uri m_uri;
+			const config::Location* m_requestedLocation;
 	};
 
 } /* namespace http */
