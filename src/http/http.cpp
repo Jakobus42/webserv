@@ -124,21 +124,21 @@ namespace http {
 
 	bool getDirectoryListing(const std::string& path, std::string& body) {
 		static const char* DlTemplate = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\""
-		"content=\"width=device-width, initial-scale=1.0\"><title>Directory Listing</title><style>body{font-family:Arial,sans-serif;"
-		"margin:0;padding:0;background-color:#f8f9fa;}.container{max-width:800px;margin:50px auto;padding:20px;background:#fff;box-shadow:0 "
-		"4px 6px rgba(0,0,0,0.1);border-radius:8px;}h1{font-size:1.8rem;color:#333;text-align:center;}ul{list-style-type:none;padding:0;}"
-		"li{padding:8px 10px;border-bottom:1px solid #e0e0e0;}li a{text-decoration:none;color:#007bff;transition:color 0.3s;}"
-		"li a:hover{color:#0056b3;}</style></head><body><div class=\"container\"><h1>Directory Listing</h1><ul>";
+										"content=\"width=device-width, initial-scale=1.0\"><title>Directory Listing</title><style>body{font-family:Arial,sans-serif;"
+										"margin:0;padding:0;background-color:#f8f9fa;}.container{max-width:800px;margin:50px auto;padding:20px;background:#fff;box-shadow:0 "
+										"4px 6px rgba(0,0,0,0.1);border-radius:8px;}h1{font-size:1.8rem;color:#333;text-align:center;}ul{list-style-type:none;padding:0;}"
+										"li{padding:8px 10px;border-bottom:1px solid #e0e0e0;}li a{text-decoration:none;color:#007bff;transition:color 0.3s;}"
+										"li a:hover{color:#0056b3;}</style></head><body><div class=\"container\"><h1>Directory Listing</h1><ul>";
 		static const char* DlTemplateEnd = "</ul></div></body></html>";
 		std::string bodyTemp;
-		
+
 		bodyTemp = DlTemplate;
 		DIR* dir;
 		std::string rootPath;
 		getRootPath(rootPath);
-/* 		if (rootPath[rootPath.size() - 1] != '/') {
-			rootPath += "/";
-		} */
+		/* 		if (rootPath[rootPath.size() - 1] != '/') {
+					rootPath += "/";
+				} */
 		rootPath += path;
 		if ((dir = opendir(rootPath.c_str())) != NULL) {
 			struct dirent* ent;
@@ -146,17 +146,15 @@ namespace http {
 				if (std::string(ent->d_name) == ".") {
 					continue;
 				}
-				if (std::string(ent->d_name) == "..")
-				{
-					if (path == "/" || path == "")
-					{
+				if (std::string(ent->d_name) == "..") {
+					if (path == "/" || path == "") {
 						continue;
 					}
 				}
 				if (ent->d_type == DT_DIR) {
 					std::string link = "<a href=\"" + std::string(ent->d_name) + "/" + "\">" + std::string(ent->d_name) + "/</a>";
 					bodyTemp += "<li>" + link + "</li>";
-					//std::cout << "Dir: " << ent->d_name << std::endl;
+					// std::cout << "Dir: " << ent->d_name << std::endl;
 				} else {
 					std::string link = "<a href=\"" + std::string(ent->d_name) + "\">" + std::string(ent->d_name) + "</a>";
 					bodyTemp += "<li>" + link + "</li>";
@@ -177,8 +175,8 @@ namespace http {
 			return true;
 		}
 		DIR* dir;
-		//get current directory
-		char buffer[1024]; 
+		// get current directory
+		char buffer[1024];
 		if (getcwd(buffer, 1024) == NULL) {
 			LOG("Error getting current directory", shared::FATAL);
 			return false;
@@ -188,15 +186,14 @@ namespace http {
 		if ((dir = opendir(buffer)) != NULL) {
 			struct dirent* ent;
 			while ((ent = readdir(dir)) != NULL) {
-				if (std::string(ent->d_name) == "www")
-				{
+				if (std::string(ent->d_name) == "www") {
 					rootPath = std::string(buffer) + "/www";
 					foundWWW = true;
 				}
-/* 				if (std::string(ent->d_name) == ".cgi")
-				{
-					foundCGI = true;
-				} */
+				/* 				if (std::string(ent->d_name) == ".cgi")
+								{
+									foundCGI = true;
+								} */
 			}
 			closedir(dir);
 		} else {

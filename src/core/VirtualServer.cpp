@@ -91,6 +91,7 @@ namespace http {
 			throw std::runtime_error("bind() failed: " + std::string(strerror(errno)));
 		}
 
+		m_logger.log("Attempting to listen on port " + shared::string::fromNum(m_config.port), shared::INFO);
 		if (::listen(m_listenSocket, SOMAXCONN)) {
 			throw std::runtime_error("listen() failed: " + std::string(strerror(errno)));
 		}

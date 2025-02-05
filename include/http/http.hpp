@@ -1,18 +1,18 @@
 #pragma once
 
+#include <dirent.h>
 #include <netinet/in.h>
 #include <stdint.h>
 #include <sys/socket.h>
+#include <unistd.h>
 
 #include "http/types.hpp"
+#include "shared/Logger.hpp"
 
 #include <iostream>
 #include <map>
 #include <sstream>
 #include <vector>
-#include <dirent.h>
-#include <unistd.h>
-#include <shared/Logger.hpp>
 
 namespace http {
 

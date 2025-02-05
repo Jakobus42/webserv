@@ -15,12 +15,12 @@
 #include <sstream>
 #include <vector>
 
-#define PATH_MAX 8192
-
 namespace config {
 
 
 	struct ServerConfig {
+			static const std::size_t PATH_MAX_LEN = 8192; // TODO: unused
+
 			// configurations
 			int port;
 			uint32_t ip_address;

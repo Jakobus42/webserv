@@ -1,7 +1,7 @@
+#include "http/Router.hpp"
+
 #include <sys/stat.h>
 #include <unistd.h>
-
-#include "http/Router.hpp"
 
 namespace http {
 
