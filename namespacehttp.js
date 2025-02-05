@@ -64,8 +64,10 @@ var namespacehttp =
       [ "HTTP_VERSION_NOT_SUPPORTED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff", null ],
       [ "LOOP_DETECTED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af821caf2cfdc4a65b948ad4862cadaf8", null ]
     ] ],
+    [ "getDirectoryListing", "namespacehttp.html#a53e0ccf4cd226a7993e3ba0f0eb29a32", null ],
     [ "getErrorPage", "namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d", null ],
     [ "getMethodString", "namespacehttp.html#a1d02d0271977cac915906163e6cbca8c", null ],
+    [ "getRootPath", "namespacehttp.html#a9b53d13032eeed179016db458db9bf07", null ],
     [ "getStatusMessage", "namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc", null ],
     [ "stringToMethod", "namespacehttp.html#aff35f6b0992332ad3e28219095ddb385", null ],
     [ "CRLF", "namespacehttp.html#a95083d38512d4f49548403fa8bbbc020", null ],
