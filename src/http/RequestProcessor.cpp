@@ -51,6 +51,10 @@ namespace http {
 				}
 				std::cout << std::endl;
 				std::cout << "path returned: " << location.first << std::endl;
+				FileType fileType = GoodRouter::checkFileType(location.first);
+				if (fileType == _NOT_FOUND) {
+					throw http::exception(NOT_FOUND, "File or directory not found");
+				}
 				if (location.second->allowedMethods.find(req.getMethod()) == location.second->allowedMethods.end()) {
 					throw http::exception(METHOD_NOT_ALLOWED, "HTTP method not allowed for this route");
 				}

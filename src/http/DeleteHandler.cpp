@@ -27,7 +27,6 @@ namespace http {
 			if (fileType == _NOT_FOUND) { // TODO: replace with actual file name
 				throw http::exception(NOT_FOUND, "DELETE: File doesn't exist");
 			}
-
 			if (std::remove(request.getUri().safeAbsolutePath.c_str()) != 0) { // unlink the file
 				throw http::exception(FORBIDDEN, "DELETE: File could not be removed");
 			}

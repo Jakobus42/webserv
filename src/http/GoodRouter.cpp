@@ -110,6 +110,7 @@ namespace http {
 	 * 	}
 	 * }
 	 ************************/
+	// TODO: handle autoindex somewhere
 	std::pair<std::string, const config::Location*> GoodRouter::routeToPath(
 		const std::vector<std::string>& uriPath,		 // the requests' path that we're traversing
 		const config::Location& currentLocation,		 // Location we're currently inside of, default should be m_globalRoot
@@ -125,9 +126,9 @@ namespace http {
 		if (currentLocation.hasRedirect()) {
 			std::cout << "Redirect hit!" << std::endl;
 			return routeToPath(currentLocation.redirectUriTokens, m_globalRoot, m_globalRoot.path, redirects + 1); // TODO: invalid, this would then always return globalRoot's route
-		}																										   // TODO: how the frick do we solve this?; TODO: doesn't currently count redirects
+		}																										   // TODO: how the frick do we solve this?
 		if (uriPath.size() <= depth) {
-			return std::make_pair(joinPath(currentRootPath), &currentLocation); // TODO: I think this doesn't set the root path properly yet, does it?
+			return std::make_pair(joinPath(m_globalRoot.root) + joinPath(currentRootPath), &currentLocation); // TODO: I think this doesn't set the root path properly yet, does it?
 		}
 		for (std::vector<config::Location>::const_iterator loc = currentLocation.locations.begin(); loc != currentLocation.locations.end(); ++loc) {
 			std::cout << "Checking whether " << loc->path[0] << " and " << uriPath.at(depth) << " are equal..." << std::endl;
@@ -137,20 +138,18 @@ namespace http {
 				return routeToPath(uriPath, *loc, nextRootPath, redirects, depth + 1);							 // use nearest parent
 			}
 		}
-		std::vector<std::string> subDirectory(uriPath.begin() + depth, uriPath.end()); // TODO: scary pointer math, ensure this never breaks
-		std::cout << "Looking for subdirectory: ";
-		for (std::vector<std::string>::iterator it = subDirectory.begin(); it != subDirectory.end(); ++it) {
-			std::cout << "/" << *it;
-		}
-		std::cout << std::endl;
-
+		std::vector<std::string> subDirectory(uriPath.begin() + depth, uriPath.end());
 		std::cout << "currentRootPath is: " << joinPath(currentRootPath) << std::endl;
 		std::cout << "currentLocation.root is: " << joinPath(currentLocation.root) << std::endl;
 		if (currentLocation.root.empty()) {
-			std::cout << "currentLocation.root empty!" << std::endl;
+			if (currentRootPath == m_globalRoot.root) { // TODO: alternatively, give each location its predefined absolute path after parsing
+				return std::make_pair(joinPath(currentRootPath) + joinPath(subDirectory), &currentLocation);
+			}
 			return std::make_pair(joinPath(m_globalRoot.root) + joinPath(currentRootPath) + joinPath(subDirectory), &currentLocation);
 		} else {
-			std::cout << "currentLocation.root not empty!" << std::endl;
+			if (currentLocation.root == m_globalRoot.root) {
+				return std::make_pair(joinPath(currentLocation.root) + joinPath(subDirectory), &currentLocation);
+			}
 			return std::make_pair(joinPath(m_globalRoot.root) + joinPath(currentLocation.root) + joinPath(subDirectory), &currentLocation);
 		}
 	}
