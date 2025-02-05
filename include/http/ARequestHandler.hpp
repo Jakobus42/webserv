@@ -1,9 +1,9 @@
 #pragma once
 
 #include "config/Parser.hpp"
-#include "http/GoodRouter.hpp"
 #include "http/Request.hpp"
 #include "http/Response.hpp"
+#include "http/Router.hpp"
 #include "shared/NonCopyable.hpp"
 
 namespace http {
@@ -14,7 +14,7 @@ namespace http {
 	 */
 	class ARequestHandler : shared::NonCopyable {
 		public:
-			ARequestHandler(GoodRouter& router)
+			ARequestHandler(Router& router)
 				: m_router(router) {}
 
 			virtual ~ARequestHandler() {}
@@ -28,7 +28,7 @@ namespace http {
 			}
 
 		protected:
-			GoodRouter& m_router;
+			Router& m_router;
 	};
 
 } /* namespace http */

@@ -206,6 +206,6 @@ namespace http {
 
 	const config::ServerConfig& VirtualServer::getConfig() const { return m_config; }
 
-	GoodRouter& VirtualServer::getRouter() { return m_router; }
+	Router& VirtualServer::getRouter() { return m_router; }
 
 } // namespace http

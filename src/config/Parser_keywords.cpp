@@ -1,6 +1,6 @@
 #include "config/Location.hpp"
 #include "config/Parser.hpp"
-#include "http/GoodRouter.hpp"
+#include "http/Router.hpp"
 #include "http/http.hpp"
 
 #include <set>
@@ -386,7 +386,7 @@ namespace config {
 		// TODO: check if valid url?
 		Location* current = getLocation(layer);
 		current->redirectUri = args[1];
-		current->redirectUriTokens = http::GoodRouter::splitPath(current->redirectUri);
+		current->redirectUriTokens = http::Router::splitPath(current->redirectUri);
 		return 0;
 	}
 
@@ -413,7 +413,7 @@ namespace config {
 		}
 		// TODO: check if path is valid
 		Location* current = getLocation(layer);
-		current->root = http::GoodRouter::splitPath(args[1]);
+		current->root = http::Router::splitPath(args[1]);
 		return 0;
 	}
 
@@ -520,10 +520,10 @@ namespace config {
 		// TODO: validate if we can access global root path?
 		// TODO: probably should not start the server unless it is
 
-		server.globalRoot.root = http::GoodRouter::splitPath(args[1]); // TODO: Location.root or Location.path?
+		server.globalRoot.root = http::Router::splitPath(args[1]); // TODO: Location.root or Location.path?
 		server.globalRoot.allowedMethods.clear();
 		if (server.hasDataDir()) {
-			std::vector<std::string> dataDir = http::GoodRouter::splitPath(server.dataDir);
+			std::vector<std::string> dataDir = http::Router::splitPath(server.dataDir);
 			server.globalRoot.root.insert(server.globalRoot.root.end(), dataDir.begin(), dataDir.end());
 			// server.globalRoot.path.push_back(server.globalRoot.root + server.dataDir);
 			// TODO: concatenate and then split up globalRoot.root and server.dataDir;
@@ -576,7 +576,7 @@ namespace config {
 
 		server.dataDir = args[1];
 		if (server.hasGlobalRoot()) {
-			std::vector<std::string> dataDir = http::GoodRouter::splitPath(server.dataDir);
+			std::vector<std::string> dataDir = http::Router::splitPath(server.dataDir);
 			server.globalRoot.root.insert(server.globalRoot.root.end(), dataDir.begin(), dataDir.end());
 			// server.globalRoot.path.push_back(server.globalRoot.root + server.dataDir);
 			// TODO: concatenate and then split up globalRoot.root and server.dataDir;

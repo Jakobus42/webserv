@@ -1,27 +1,27 @@
-#include "http/GoodRouter.hpp"
-
 #include <sys/stat.h>
 #include <unistd.h>
+
+#include "http/Router.hpp"
 
 namespace http {
 
 	/**
-	 * @brief Constructs a new GoodRouter object.
+	 * @brief Constructs a new Router object.
 	 */
-	GoodRouter::GoodRouter(const std::vector<config::Location>& locations, const config::Location& globalRoot)
+	Router::Router(const std::vector<config::Location>& locations, const config::Location& globalRoot)
 		: m_locations(locations)
 		, m_globalRoot(globalRoot) {}
 
 	/**
-	 * @brief Destroys the GoodRouter object.
+	 * @brief Destroys the Router object.
 	 */
-	GoodRouter::~GoodRouter() {}
+	Router::~Router() {}
 
-	GoodRouter::GoodRouter(const GoodRouter& other)
+	Router::Router(const Router& other)
 		: m_locations(other.m_locations)
 		, m_globalRoot(other.m_globalRoot) {}
 
-	const GoodRouter& GoodRouter::operator=(const GoodRouter& rhs) {
+	const Router& Router::operator=(const Router& rhs) {
 		if (this == &rhs) {
 			return *this;
 		}
@@ -30,13 +30,13 @@ namespace http {
 		return *this;
 	}
 
-	const config::Location& GoodRouter::getGlobalRoot() const {
+	const config::Location& Router::getGlobalRoot() const {
 		return m_globalRoot;
 	}
 
 	//
 
-	FileType GoodRouter::checkFileType(const std::string& absolutePath) {
+	FileType Router::checkFileType(const std::string& absolutePath) {
 		std::cout << "Checking FileType for path: " << absolutePath << std::endl;
 		struct stat statBuf;
 		if (stat(absolutePath.c_str(), &statBuf) != 0) {
@@ -50,7 +50,7 @@ namespace http {
 		return _NOT_FOUND; // Other types (not file/dir)
 	}
 
-	std::vector<std::string> GoodRouter::splitPath(const std::string& path) throw(http::exception) {
+	std::vector<std::string> Router::splitPath(const std::string& path) throw(http::exception) {
 		std::vector<std::string> tokens;
 		std::cout << "Splitting path: " << path << std::endl;
 		if (path.empty()) {
@@ -70,7 +70,7 @@ namespace http {
 		return tokens;
 	}
 
-	std::string GoodRouter::joinPath(const std::vector<std::string>& pathComponents) {
+	std::string Router::joinPath(const std::vector<std::string>& pathComponents) {
 		std::string joined = "";
 		for (std::vector<std::string>::const_iterator it = pathComponents.begin(); it != pathComponents.end(); ++it) {
 			joined += "/";
@@ -79,7 +79,7 @@ namespace http {
 		return joined;
 	}
 
-	std::vector<std::string> GoodRouter::normalizePath(const std::vector<std::string>& path) {
+	std::vector<std::string> Router::normalizePath(const std::vector<std::string>& path) {
 		std::vector<std::string> normalized;
 
 		for (std::vector<std::string>::const_iterator it = path.begin(); it != path.end(); ++it) {
@@ -94,7 +94,7 @@ namespace http {
 		return normalized;
 	}
 
-	std::string GoodRouter::findAbsolutePath(const config::Location& location, const std::string& subPath) {
+	std::string Router::findAbsolutePath(const config::Location& location, const std::string& subPath) {
 		std::string absolutePath = joinPath(m_globalRoot.root) + joinPath(location.root);
 		return absolutePath + subPath;
 	}
@@ -118,7 +118,7 @@ namespace http {
 	// TODO: if indexFile is defined when a route has finished matching, immediately look for that indexFile, read and respond with it
 	// TODO: if no indexFile is defined, but autoindex is on, generate and return a directory listing
 	// TODO: if no indexFile is defined and autoindex is off, return a 403 forbidden response
-	std::pair<std::string, const config::Location*> GoodRouter::routeToPath(
+	std::pair<std::string, const config::Location*> Router::routeToPath(
 		const std::vector<std::string>& uriPath,		 // the requests' path that we're traversing
 		const config::Location& currentLocation,		 // Location we're currently inside of, default should be m_globalRoot
 		const std::vector<std::string>& currentRootPath, // nearest 'root', default should be m_globalRoot.path

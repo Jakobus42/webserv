@@ -1,6 +1,6 @@
 #include "http/RequestParser.hpp"
 
-#include "http/GoodRouter.hpp"
+#include "http/Router.hpp"
 #include "shared/stringUtils.hpp"
 
 #include <algorithm>
@@ -171,7 +171,7 @@ namespace http {
 		} else {
 			uri.cgiPathInfo = ""; // should never be read in this case
 		}
-		uri.pathSegments = GoodRouter::splitPath(uri.path);
+		uri.pathSegments = Router::splitPath(uri.path);
 		// TODO: should we parse this at all?
 		// also, should we check if we accept the script here?
 	}

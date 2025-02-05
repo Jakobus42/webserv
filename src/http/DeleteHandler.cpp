@@ -7,7 +7,7 @@ namespace http {
 	/**
 	 * @brief Constructs a new DeleteHandler object.
 	 */
-	DeleteHandler::DeleteHandler(GoodRouter& router)
+	DeleteHandler::DeleteHandler(Router& router)
 		: ARequestHandler(router) {
 	}
 
@@ -23,7 +23,8 @@ namespace http {
 	// i.e. a html page saying "file /foo/bar.baz was deleted"
 	void DeleteHandler::handle(const Request& request, Response& response) {
 		try {
-			const config::Location& location = *request.getLocation();
+			// const config::Location& location = *request.getLocation();
+			// (void)location;
 			FileType fileType = m_router.checkFileType(request.getUri().safeAbsolutePath);
 			if (fileType == _NOT_FOUND) { // TODO: replace with actual file name
 				throw http::exception(NOT_FOUND, "DELETE: File doesn't exist");

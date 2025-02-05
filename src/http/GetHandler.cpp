@@ -5,7 +5,7 @@ namespace http {
 	/**
 	 * @brief Constructs a new GetHandler object.
 	 */
-	GetHandler::GetHandler(GoodRouter& router)
+	GetHandler::GetHandler(Router& router)
 		: ARequestHandler(router) {}
 
 	/**

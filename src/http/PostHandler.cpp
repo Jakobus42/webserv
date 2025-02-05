@@ -8,7 +8,7 @@ namespace http {
 	/**
 	 * @brief Constructs a new PostHandler object.
 	 */
-	PostHandler::PostHandler(GoodRouter& router)
+	PostHandler::PostHandler(Router& router)
 		: ARequestHandler(router) {}
 
 	/**
@@ -19,7 +19,8 @@ namespace http {
 	// in POST, there should be no file name in the path
 	void PostHandler::handle(const Request& request, Response& response) {
 		try {
-			const config::Location& location = *request.getLocation();
+			// const config::Location& location = *request.getLocation();
+			// (void)location;
 			FileType fileType = m_router.checkFileType(request.getUri().safeAbsolutePath);
 			if (fileType == _NOT_FOUND) {
 				throw http::exception(FORBIDDEN, "POST: Directory could not be found");

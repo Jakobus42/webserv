@@ -7,12 +7,12 @@
 #include <vector>
 
 namespace http {
-	class GoodRouter {
+	class Router {
 		public:
-			GoodRouter(const std::vector<config::Location>& locations, const config::Location& globalRoot);
-			~GoodRouter();
-			GoodRouter(const GoodRouter& other);
-			const GoodRouter& operator=(const GoodRouter& rhs);
+			Router(const std::vector<config::Location>& locations, const config::Location& globalRoot);
+			~Router();
+			Router(const Router& other);
+			const Router& operator=(const Router& rhs);
 			const config::Location& getGlobalRoot() const;
 
 		public:

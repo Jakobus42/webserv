@@ -3,7 +3,7 @@
 #include <stdint.h>
 
 #include "config/Parser.hpp"
-#include "http/GoodRouter.hpp"
+#include "http/Router.hpp"
 #include "shared/Logger.hpp"
 
 #include <string>
@@ -35,7 +35,7 @@ namespace http {
 			const std::map<int32_t, time_t>& getClients(void) const;
 			std::map<int32_t, time_t>& getClients(void);
 			const config::ServerConfig& getConfig() const;
-			GoodRouter& getRouter();
+			Router& getRouter();
 
 		private:
 			void setNonBlocking(int32_t socket);
@@ -50,7 +50,7 @@ namespace http {
 			std::map<int32_t, time_t> m_clients; // first is client fd and second is last activity/
 			int32_t m_listenSocket;
 			shared::Logger m_logger;
-			GoodRouter m_router;
+			Router m_router;
 	};
 
 } // namespace http
