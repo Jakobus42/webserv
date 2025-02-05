@@ -84,7 +84,7 @@ Collaboration diagram for http::VirtualServer:</div>
 <area shape="poly" title=" " alt="" coords="130,688,175,805,170,807,125,690"/>
 <area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="105,5,263,291"/>
 <area shape="poly" title=" " alt="" coords="130,292,123,315,102,408,96,406,117,314,125,290"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html" title=" " alt="" coords="174,413,322,699"/>
+<area shape="rect" href="classhttp_1_1Router.html" title=" " alt="" coords="174,413,322,699"/>
 <area shape="poly" title=" " alt="" coords="209,291,226,397,221,398,204,292"/>
 <area shape="rect" href="classshared_1_1Logger.html" title="..." alt="" coords="346,353,491,759"/>
 <area shape="poly" title=" " alt="" coords="348,748,326,807,321,805,343,747"/>
@@ -130,8 +130,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aea8a4d50c35f0865b9c0694ac2956477"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a6821f203a638a78c888808d134c640" id="r_a6a6821f203a638a78c888808d134c640"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structconfig_1_1ServerConfig.html">config::ServerConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#a6a6821f203a638a78c888808d134c640">getConfig</a> () const</td></tr>
 <tr class="separator:a6a6821f203a638a78c888808d134c640"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4911a5ad9c695da56eac3322a56b1874" id="r_a4911a5ad9c695da56eac3322a56b1874"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhttp_1_1GoodRouter.html">GoodRouter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#a4911a5ad9c695da56eac3322a56b1874">getRouter</a> ()</td></tr>
-<tr class="separator:a4911a5ad9c695da56eac3322a56b1874"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abda56b96c6ea54948fa504af80e2515a" id="r_abda56b96c6ea54948fa504af80e2515a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhttp_1_1Router.html">Router</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#abda56b96c6ea54948fa504af80e2515a">getRouter</a> ()</td></tr>
+<tr class="separator:abda56b96c6ea54948fa504af80e2515a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -152,8 +152,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a28f6e31ee3abf041f506a1fa2455b605"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae899297922e2cce19b245093e85c599f" id="r_ae899297922e2cce19b245093e85c599f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classshared_1_1Logger.html">shared::Logger</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#ae899297922e2cce19b245093e85c599f">m_logger</a></td></tr>
 <tr class="separator:ae899297922e2cce19b245093e85c599f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a781f2ced6dd4d6622c3c82c78299bc6c" id="r_a781f2ced6dd4d6622c3c82c78299bc6c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhttp_1_1GoodRouter.html">GoodRouter</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#a781f2ced6dd4d6622c3c82c78299bc6c">m_router</a></td></tr>
-<tr class="separator:a781f2ced6dd4d6622c3c82c78299bc6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d4a7df9186ec54619327b0397e16e43" id="r_a4d4a7df9186ec54619327b0397e16e43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhttp_1_1Router.html">Router</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1VirtualServer.html#a4d4a7df9186ec54619327b0397e16e43">m_router</a></td></tr>
+<tr class="separator:a4d4a7df9186ec54619327b0397e16e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -188,10 +188,10 @@ Static Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   26</span>        , <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>()</div>
 <div class="line"><span class="lineno">   27</span>        , <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">m_listenSocket</a>(-1)</div>
 <div class="line"><span class="lineno">   28</span>        , <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ae899297922e2cce19b245093e85c599f">m_logger</a>()</div>
-<div class="line"><span class="lineno">   29</span>        , <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a781f2ced6dd4d6622c3c82c78299bc6c">m_router</a>(conf.<a class="code hl_variable" href="structconfig_1_1ServerConfig.html#a061ce1d2e07af7741aea4653dd035a49">locations</a>, conf.<a class="code hl_variable" href="structconfig_1_1ServerConfig.html#a3ae3a6c8e7d6daf09483d73c2a3d8593">globalRoot</a>) {</div>
+<div class="line"><span class="lineno">   29</span>        , <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a4d4a7df9186ec54619327b0397e16e43">m_router</a>(conf.<a class="code hl_variable" href="structconfig_1_1ServerConfig.html#a061ce1d2e07af7741aea4653dd035a49">locations</a>, conf.<a class="code hl_variable" href="structconfig_1_1ServerConfig.html#a3ae3a6c8e7d6daf09483d73c2a3d8593">globalRoot</a>) {</div>
 <div class="line"><span class="lineno">   30</span>    }</div>
 <div class="ttc" id="aclasshttp_1_1VirtualServer_html_a28f6e31ee3abf041f506a1fa2455b605"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">http::VirtualServer::m_listenSocket</a></div><div class="ttdeci">int32_t m_listenSocket</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00051">VirtualServer.hpp:51</a></div></div>
-<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a781f2ced6dd4d6622c3c82c78299bc6c"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a781f2ced6dd4d6622c3c82c78299bc6c">http::VirtualServer::m_router</a></div><div class="ttdeci">GoodRouter m_router</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00053">VirtualServer.hpp:53</a></div></div>
+<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a4d4a7df9186ec54619327b0397e16e43"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a4d4a7df9186ec54619327b0397e16e43">http::VirtualServer::m_router</a></div><div class="ttdeci">Router m_router</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00053">VirtualServer.hpp:53</a></div></div>
 <div class="ttc" id="aclasshttp_1_1VirtualServer_html_a939251c61141089758ff26196db21a15"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a939251c61141089758ff26196db21a15">http::VirtualServer::m_config</a></div><div class="ttdeci">config::ServerConfig m_config</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00049">VirtualServer.hpp:49</a></div></div>
 <div class="ttc" id="aclasshttp_1_1VirtualServer_html_ab53352540672413483b62afd28ed36d7"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">http::VirtualServer::m_clients</a></div><div class="ttdeci">std::map&lt; int32_t, time_t &gt; m_clients</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00050">VirtualServer.hpp:50</a></div></div>
 <div class="ttc" id="aclasshttp_1_1VirtualServer_html_ae899297922e2cce19b245093e85c599f"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#ae899297922e2cce19b245093e85c599f">http::VirtualServer::m_logger</a></div><div class="ttdeci">shared::Logger m_logger</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00052">VirtualServer.hpp:52</a></div></div>
@@ -287,7 +287,7 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">   51</span>        , <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a>(other.m_clients)</div>
 <div class="line"><span class="lineno">   52</span>        , <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">m_listenSocket</a>(other.m_listenSocket)</div>
 <div class="line"><span class="lineno">   53</span>        , <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ae899297922e2cce19b245093e85c599f">m_logger</a>()</div>
-<div class="line"><span class="lineno">   54</span>        , <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a781f2ced6dd4d6622c3c82c78299bc6c">m_router</a>(other.m_router) {</div>
+<div class="line"><span class="lineno">   54</span>        , <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a4d4a7df9186ec54619327b0397e16e43">m_router</a>(other.m_router) {</div>
 <div class="line"><span class="lineno">   55</span>    }</div>
 </div><!-- fragment -->
 </div>
@@ -747,14 +747,14 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a4911a5ad9c695da56eac3322a56b1874" name="a4911a5ad9c695da56eac3322a56b1874"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4911a5ad9c695da56eac3322a56b1874">&#9670;&#160;</a></span>getRouter()</h2>
+<a id="abda56b96c6ea54948fa504af80e2515a" name="abda56b96c6ea54948fa504af80e2515a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abda56b96c6ea54948fa504af80e2515a">&#9670;&#160;</a></span>getRouter()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classhttp_1_1GoodRouter.html">GoodRouter</a> &amp; http::VirtualServer::getRouter </td>
+          <td class="memname"><a class="el" href="classhttp_1_1Router.html">Router</a> &amp; http::VirtualServer::getRouter </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -763,7 +763,7 @@ Here is the caller graph for this function:</div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="VirtualServer_8cpp_source.html#l00209">209</a> of file <a class="el" href="VirtualServer_8cpp_source.html">VirtualServer.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  209</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a781f2ced6dd4d6622c3c82c78299bc6c">m_router</a>; }</div>
+<div class="fragment"><div class="line"><span class="lineno">  209</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a4d4a7df9186ec54619327b0397e16e43">m_router</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1013,7 +1013,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   65</span>        <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a939251c61141089758ff26196db21a15">m_config</a> = rhs.m_config;</div>
 <div class="line"><span class="lineno">   66</span>        <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">m_clients</a> = rhs.m_clients;</div>
 <div class="line"><span class="lineno">   67</span>        <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">m_listenSocket</a> = rhs.m_listenSocket;</div>
-<div class="line"><span class="lineno">   68</span>        <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a781f2ced6dd4d6622c3c82c78299bc6c">m_router</a> = rhs.m_router;</div>
+<div class="line"><span class="lineno">   68</span>        <a class="code hl_variable" href="classhttp_1_1VirtualServer.html#a4d4a7df9186ec54619327b0397e16e43">m_router</a> = rhs.m_router;</div>
 <div class="line"><span class="lineno">   69</span>        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><span class="lineno">   70</span>    }</div>
 </div><!-- fragment -->
@@ -1313,8 +1313,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a781f2ced6dd4d6622c3c82c78299bc6c" name="a781f2ced6dd4d6622c3c82c78299bc6c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a781f2ced6dd4d6622c3c82c78299bc6c">&#9670;&#160;</a></span>m_router</h2>
+<a id="a4d4a7df9186ec54619327b0397e16e43" name="a4d4a7df9186ec54619327b0397e16e43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d4a7df9186ec54619327b0397e16e43">&#9670;&#160;</a></span>m_router</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1323,7 +1323,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classhttp_1_1GoodRouter.html">GoodRouter</a> http::VirtualServer::m_router</td>
+          <td class="memname"><a class="el" href="classhttp_1_1Router.html">Router</a> http::VirtualServer::m_router</td>
         </tr>
       </table>
   </td>

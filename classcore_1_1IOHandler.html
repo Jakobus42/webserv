@@ -115,7 +115,7 @@ Collaboration diagram for core::IOHandler:</div>
 <area shape="poly" title=" " alt="" coords="1243,710,1144,1117,1139,1116,1238,708"/>
 <area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="1042,5,1199,291"/>
 <area shape="poly" title=" " alt="" coords="1202,272,1220,314,1239,370,1253,427,1248,428,1234,371,1216,316,1197,275"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html" title=" " alt="" coords="1028,433,1176,719"/>
+<area shape="rect" href="classhttp_1_1Router.html" title=" " alt="" coords="1028,433,1176,719"/>
 <area shape="poly" title=" " alt="" coords="1117,291,1112,417,1106,417,1112,291"/>
 <area shape="poly" title=" " alt="" coords="1044,211,997,259,977,286,960,316,951,339,946,337,956,314,972,284,993,255,1040,207"/>
 <area shape="poly" title=" " alt="" coords="842,774,854,797,885,853,914,894,943,935,975,991,1029,1115,1024,1118,970,993,939,938,910,897,881,856,849,800,838,776"/>
@@ -205,14 +205,14 @@ Additional Inherited Members</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="IOHandler_8cpp_source.html#l00012">12</a> of file <a class="el" href="IOHandler_8cpp_source.html">IOHandler.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   13</span>        : <a class="code hl_variable" href="classcore_1_1IOHandler.html#a1b6ab566aedd2c201c977fff4095718a">m_vServer</a>(vServer)</div>
 <div class="line"><span class="lineno">   14</span>        , <a class="code hl_variable" href="classcore_1_1IOHandler.html#ab4c76bc519875e49ad94f6959e07ed1d">m_reqParser</a>()</div>
-<div class="line"><span class="lineno">   15</span>        , <a class="code hl_variable" href="classcore_1_1IOHandler.html#a1bae2cc1fb76b4bc19eca5474576fb79">m_reqProcessor</a>(vServer.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#a4911a5ad9c695da56eac3322a56b1874">getRouter</a>())</div>
+<div class="line"><span class="lineno">   15</span>        , <a class="code hl_variable" href="classcore_1_1IOHandler.html#a1bae2cc1fb76b4bc19eca5474576fb79">m_reqProcessor</a>(vServer.<a class="code hl_function" href="classhttp_1_1VirtualServer.html#abda56b96c6ea54948fa504af80e2515a">getRouter</a>())</div>
 <div class="line"><span class="lineno">   16</span>        , <a class="code hl_variable" href="classcore_1_1IOHandler.html#addd9a29dc5f409d213c16c993efa4407">m_responses</a>() {</div>
 <div class="line"><span class="lineno">   17</span>    }</div>
 <div class="ttc" id="aclasscore_1_1IOHandler_html_a1b6ab566aedd2c201c977fff4095718a"><div class="ttname"><a href="classcore_1_1IOHandler.html#a1b6ab566aedd2c201c977fff4095718a">core::IOHandler::m_vServer</a></div><div class="ttdeci">http::VirtualServer &amp; m_vServer</div><div class="ttdef"><b>Definition</b> <a href="IOHandler_8hpp_source.html#l00031">IOHandler.hpp:31</a></div></div>
 <div class="ttc" id="aclasscore_1_1IOHandler_html_a1bae2cc1fb76b4bc19eca5474576fb79"><div class="ttname"><a href="classcore_1_1IOHandler.html#a1bae2cc1fb76b4bc19eca5474576fb79">core::IOHandler::m_reqProcessor</a></div><div class="ttdeci">http::RequestProcessor m_reqProcessor</div><div class="ttdef"><b>Definition</b> <a href="IOHandler_8hpp_source.html#l00034">IOHandler.hpp:34</a></div></div>
 <div class="ttc" id="aclasscore_1_1IOHandler_html_ab4c76bc519875e49ad94f6959e07ed1d"><div class="ttname"><a href="classcore_1_1IOHandler.html#ab4c76bc519875e49ad94f6959e07ed1d">core::IOHandler::m_reqParser</a></div><div class="ttdeci">http::RequestParser m_reqParser</div><div class="ttdef"><b>Definition</b> <a href="IOHandler_8hpp_source.html#l00033">IOHandler.hpp:33</a></div></div>
 <div class="ttc" id="aclasscore_1_1IOHandler_html_addd9a29dc5f409d213c16c993efa4407"><div class="ttname"><a href="classcore_1_1IOHandler.html#addd9a29dc5f409d213c16c993efa4407">core::IOHandler::m_responses</a></div><div class="ttdeci">std::queue&lt; http::Response * &gt; m_responses</div><div class="ttdef"><b>Definition</b> <a href="IOHandler_8hpp_source.html#l00036">IOHandler.hpp:36</a></div></div>
-<div class="ttc" id="aclasshttp_1_1VirtualServer_html_a4911a5ad9c695da56eac3322a56b1874"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a4911a5ad9c695da56eac3322a56b1874">http::VirtualServer::getRouter</a></div><div class="ttdeci">GoodRouter &amp; getRouter()</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00209">VirtualServer.cpp:209</a></div></div>
+<div class="ttc" id="aclasshttp_1_1VirtualServer_html_abda56b96c6ea54948fa504af80e2515a"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#abda56b96c6ea54948fa504af80e2515a">http::VirtualServer::getRouter</a></div><div class="ttdeci">Router &amp; getRouter()</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8cpp_source.html#l00209">VirtualServer.cpp:209</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -319,35 +319,35 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,1029,180,1054"/>
 <area shape="rect" href="classhttp_1_1VirtualServer.html#af9a6100fe0dc47c1d3e009b2f2a0a5a1" title=" " alt="" coords="524,1021,665,1061"/>
 <area shape="poly" title=" " alt="" coords="180,1039,510,1039,510,1044,180,1044"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a64edecd5e51fa150804b9b5e31f25aef" title=" " alt="" coords="783,1410,953,1435"/>
-<area shape="poly" title=" " alt="" coords="103,1053,148,1128,185,1182,231,1240,284,1299,346,1354,414,1401,450,1420,488,1435,529,1446,571,1453,657,1455,738,1448,805,1436,806,1441,738,1453,657,1460,571,1458,527,1451,486,1440,448,1425,411,1405,342,1358,281,1303,227,1244,181,1185,144,1131,99,1056"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a64edecd5e51fa150804b9b5e31f25aef" title=" " alt="" coords="777,1410,946,1435"/>
+<area shape="poly" title=" " alt="" coords="103,1053,148,1128,185,1182,231,1240,284,1299,346,1354,414,1401,450,1420,488,1435,528,1446,569,1452,653,1455,732,1447,798,1436,799,1441,733,1453,654,1460,569,1458,527,1451,486,1440,448,1425,411,1405,342,1358,281,1303,227,1244,181,1185,144,1131,99,1056"/>
 <area shape="rect" href="classhttp_1_1RequestParser.html#ab94442fc9aa5a49c0ec5bce486fe4772" title=" " alt="" coords="520,5,669,45"/>
 <area shape="poly" title=" " alt="" coords="95,1028,142,862,181,741,225,616,257,528,279,449,317,314,340,252,373,191,420,128,485,62,506,47,509,52,488,66,424,132,378,194,345,254,322,315,284,451,262,529,231,618,186,742,147,864,100,1029"/>
 <area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="229,630,437,655"/>
 <area shape="poly" title=" " alt="" coords="97,1027,146,921,183,847,226,775,269,714,310,664,314,668,273,717,230,777,188,850,151,923,102,1029"/>
 <area shape="rect" href="classcore_1_1AHandler.html#a2bf318df177af33d921c7755389a09a3" title=" " alt="" coords="497,1150,692,1175"/>
 <area shape="poly" title=" " alt="" coords="146,1051,487,1135,527,1144,526,1149,486,1140,145,1057"/>
-<area shape="rect" href="classhttp_1_1Request.html#a7c21ec82e0fbcc4685b24bfeeac48e42" title=" " alt="" coords="763,663,973,689"/>
+<area shape="rect" href="classhttp_1_1Request.html#a7c21ec82e0fbcc4685b24bfeeac48e42" title=" " alt="" coords="756,663,967,689"/>
 <area shape="poly" title=" " alt="" coords="116,1026,270,946,486,842,548,819,598,805,646,788,701,755,715,741,724,726,733,712,749,698,761,691,764,696,752,702,737,715,728,729,720,744,704,759,648,793,599,810,549,824,488,846,273,951,119,1031"/>
 <area shape="rect" href="classcore_1_1IOHandler.html#a0743b5e212838105fa3c5b2fdbbd346a" title=" " alt="" coords="228,1201,439,1226"/>
 <area shape="poly" title=" " alt="" coords="111,1052,230,1144,301,1191,298,1196,226,1149,108,1056"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c" title=" " alt="" coords="797,1345,939,1385"/>
-<area shape="poly" title=" " alt="" coords="666,1048,687,1057,705,1072,725,1101,734,1131,735,1160,732,1189,729,1218,728,1247,735,1276,753,1306,770,1323,790,1337,787,1341,766,1327,749,1310,730,1278,723,1247,723,1217,727,1188,730,1160,729,1132,720,1104,701,1075,684,1062,664,1053"/>
-<area shape="poly" title=" " alt="" coords="667,1048,687,1057,705,1072,720,1093,731,1114,739,1155,736,1197,728,1237,720,1277,717,1317,726,1356,737,1376,753,1395,772,1410,769,1414,749,1399,733,1379,721,1358,712,1318,714,1277,723,1236,731,1196,734,1156,725,1115,716,1095,701,1075,684,1062,665,1052"/>
-<area shape="poly" title=" " alt="" coords="823,1346,821,1336,828,1326,844,1321,868,1319,896,1322,911,1329,909,1334,894,1327,868,1324,845,1326,831,1331,826,1337,828,1344"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39" title=" " alt="" coords="1037,944,1179,984"/>
-<area shape="poly" title=" " alt="" coords="952,1414,969,1406,983,1395,1004,1367,1024,1323,1058,1210,1083,1090,1099,997,1104,998,1089,1091,1063,1212,1029,1325,1009,1369,987,1399,971,1411,954,1418"/>
-<area shape="rect" href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6" title=" " alt="" coords="1035,1410,1181,1435"/>
-<area shape="poly" title=" " alt="" coords="953,1420,1021,1420,1021,1425,953,1425"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="1275,312,1407,352"/>
-<area shape="poly" title=" " alt="" coords="1114,943,1325,364,1330,366,1119,945"/>
-<area shape="rect" href="classshared_1_1Logger.html#afa95b6aabdf9018417243de3e904674e" title=" " alt="" coords="1231,1385,1452,1410"/>
-<area shape="poly" title=" " alt="" coords="1181,1412,1216,1408,1217,1414,1182,1417"/>
-<area shape="rect" href="classshared_1_1Logger.html#a59ccf733344c360fe7839dbc1a6ae6f5" title=" " alt="" coords="1236,1434,1447,1459"/>
-<area shape="poly" title=" " alt="" coords="1182,1428,1223,1432,1222,1437,1181,1433"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c" title=" " alt="" coords="791,1345,932,1385"/>
+<area shape="poly" title=" " alt="" coords="666,1048,687,1057,705,1072,725,1101,734,1131,735,1160,732,1189,729,1217,729,1246,736,1276,753,1306,769,1323,789,1337,786,1341,766,1327,749,1310,731,1278,724,1247,724,1217,727,1188,730,1160,729,1132,720,1104,701,1075,684,1062,664,1053"/>
+<area shape="poly" title=" " alt="" coords="667,1048,687,1057,705,1072,720,1093,731,1114,739,1155,736,1196,728,1237,720,1277,718,1317,727,1356,737,1376,753,1395,766,1406,763,1411,749,1399,733,1379,722,1358,712,1317,715,1276,723,1236,731,1196,734,1156,726,1115,716,1095,701,1075,684,1062,665,1052"/>
+<area shape="poly" title=" " alt="" coords="818,1346,815,1336,822,1326,838,1321,861,1319,888,1322,903,1329,901,1334,887,1327,861,1324,839,1326,826,1331,821,1337,823,1344"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39" title=" " alt="" coords="1024,944,1165,984"/>
+<area shape="poly" title=" " alt="" coords="945,1411,970,1395,991,1366,1011,1323,1044,1210,1070,1090,1086,997,1091,998,1075,1091,1050,1211,1016,1325,996,1369,974,1399,948,1416"/>
+<area shape="rect" href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6" title=" " alt="" coords="1021,1410,1168,1435"/>
+<area shape="poly" title=" " alt="" coords="947,1420,1008,1420,1008,1425,947,1425"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="1262,312,1394,352"/>
+<area shape="poly" title=" " alt="" coords="1101,943,1312,364,1317,366,1106,945"/>
+<area shape="rect" href="classshared_1_1Logger.html#afa95b6aabdf9018417243de3e904674e" title=" " alt="" coords="1217,1385,1439,1410"/>
+<area shape="poly" title=" " alt="" coords="1168,1412,1203,1408,1204,1414,1169,1417"/>
+<area shape="rect" href="classshared_1_1Logger.html#a59ccf733344c360fe7839dbc1a6ae6f5" title=" " alt="" coords="1223,1434,1433,1459"/>
+<area shape="poly" title=" " alt="" coords="1169,1428,1209,1432,1209,1437,1168,1433"/>
 <area shape="poly" title=" " alt="" coords="339,655,349,718,374,812,394,864,419,916,450,964,488,1006,513,1022,510,1026,485,1010,446,967,414,918,389,866,369,814,344,719,333,656"/>
-<area shape="poly" title=" " alt="" coords="341,655,356,703,385,771,405,808,429,844,456,877,488,906,517,922,545,928,600,925,626,923,653,925,679,935,705,957,725,985,739,1013,747,1041,749,1069,743,1124,729,1179,715,1234,709,1288,711,1315,719,1342,732,1369,753,1395,772,1410,769,1415,749,1399,728,1371,714,1344,706,1316,703,1288,710,1233,724,1178,738,1123,744,1069,742,1042,734,1015,721,988,701,960,677,940,652,930,626,928,600,930,544,933,515,927,485,910,453,881,424,847,400,811,380,774,351,705,336,656"/>
-<area shape="poly" title=" " alt="" coords="429,628,437,621,455,597,468,574,476,551,479,528,477,482,467,435,456,386,450,337,452,312,458,286,468,260,484,233,513,198,540,172,569,153,599,140,666,123,750,105,816,92,869,86,921,90,986,105,1036,123,1085,145,1176,198,1253,254,1310,301,1306,305,1250,258,1173,203,1082,150,1034,128,985,111,920,95,869,91,817,97,751,111,667,128,600,145,571,158,544,176,517,202,489,236,473,262,463,287,457,312,456,337,461,386,472,433,482,481,485,528,481,552,473,576,460,600,441,625,432,632"/>
+<area shape="poly" title=" " alt="" coords="341,655,356,703,385,771,405,808,429,844,456,877,488,906,517,922,545,928,600,925,626,923,653,925,679,935,705,957,725,985,739,1013,747,1041,749,1069,743,1124,729,1179,715,1233,709,1288,712,1314,719,1341,732,1368,753,1396,766,1407,762,1411,749,1399,728,1371,714,1343,706,1315,704,1288,710,1232,724,1177,738,1123,744,1069,742,1042,734,1015,721,988,701,960,677,940,652,930,626,928,600,930,544,933,515,927,485,910,453,881,424,847,400,811,380,774,351,705,336,656"/>
+<area shape="poly" title=" " alt="" coords="429,628,437,621,455,597,468,574,476,551,479,528,477,482,467,435,456,386,450,337,452,312,458,286,468,260,484,233,513,198,540,172,569,153,599,140,666,123,750,105,812,92,862,87,911,91,973,105,1023,123,1072,145,1163,198,1240,254,1296,301,1293,305,1237,258,1160,203,1069,150,1021,128,971,111,911,96,862,92,813,98,751,111,667,128,600,145,571,158,544,176,517,202,489,236,473,262,463,287,457,312,456,337,461,386,472,433,482,481,485,528,481,552,473,576,460,600,441,625,432,632"/>
 <area shape="poly" title=" " alt="" coords="337,629,381,502,436,314,443,276,445,241,443,180,444,152,449,123,462,94,485,62,506,45,510,49,489,66,467,96,455,125,449,153,448,180,450,241,448,276,441,315,386,503,342,631"/>
 <area shape="rect" href="classshared_1_1Buffer.html#a86a6535819a878efe0e1f258c83f06fe" title=" " alt="" coords="487,362,703,387"/>
 <area shape="poly" title=" " alt="" coords="336,629,353,584,383,521,427,455,454,424,485,398,497,391,499,395,488,402,458,428,431,458,388,524,358,586,341,631"/>
@@ -359,8 +359,8 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="340,655,353,709,381,789,401,832,425,875,454,915,488,950,510,964,507,968,485,954,450,919,420,878,396,835,376,791,348,711,335,656"/>
 <area shape="rect" href="classhttp_1_1RequestParser.html#a54ef0e3917a1db991b7555b64108a687" title=" " alt="" coords="520,540,669,580"/>
 <area shape="poly" title=" " alt="" coords="374,627,517,582,518,587,375,632"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#a9568e7bb9e1d57ffd0722d708d9df136" title=" " alt="" coords="1033,507,1183,547"/>
-<area shape="poly" title=" " alt="" coords="437,635,588,620,655,607,701,590,717,574,724,556,731,537,749,520,782,506,811,499,838,498,864,501,918,513,986,520,1020,521,1019,526,985,525,917,518,863,507,838,504,812,505,784,511,752,525,736,540,729,557,721,577,704,594,657,612,589,625,438,640"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#a9568e7bb9e1d57ffd0722d708d9df136" title=" " alt="" coords="1020,507,1169,547"/>
+<area shape="poly" title=" " alt="" coords="437,635,588,620,655,607,701,590,717,574,724,556,731,537,749,520,780,507,808,501,833,500,858,502,909,513,972,520,1006,521,1006,526,972,525,908,518,857,508,833,505,809,506,782,512,752,525,736,540,729,557,721,577,704,594,657,612,589,625,438,640"/>
 <area shape="poly" title=" " alt="" coords="337,656,340,738,346,799,357,868,376,940,403,1011,440,1078,463,1108,488,1135,495,1141,491,1145,485,1139,458,1111,435,1081,398,1014,371,941,352,869,340,800,334,738,332,656"/>
 <area shape="rect" href="classshared_1_1Buffer.html#a03089c1ff6836a90493355eecadb9f30" title=" " alt="" coords="491,655,698,681"/>
 <area shape="poly" title=" " alt="" coords="438,650,478,654,478,659,437,655"/>
@@ -374,57 +374,57 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="333,629,344,567,368,473,388,422,414,371,446,324,485,283,494,277,497,281,488,287,450,327,418,374,393,424,374,475,349,568,339,630"/>
 <area shape="rect" href="classhttp_1_1VirtualServer.html#a0fb848be6b479f9ac5857fd3cb2e5a9d" title=" " alt="" coords="513,1085,676,1125"/>
 <area shape="poly" title=" " alt="" coords="338,655,345,727,353,780,366,839,386,902,412,963,446,1021,488,1071,503,1082,500,1086,485,1075,441,1024,407,966,381,903,361,841,348,781,339,728,333,656"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#a59b78532200ac52920ae63f0a9522a2b" title=" " alt="" coords="793,599,943,639"/>
-<area shape="poly" title=" " alt="" coords="668,704,701,690,715,680,725,669,734,659,749,648,779,636,781,640,752,653,738,663,729,673,719,684,704,694,670,709"/>
-<area shape="rect" href="classhttp_1_1exception.html#add7e0b357120f83926453dc287252b76" title=" " alt="" coords="777,713,959,738"/>
-<area shape="poly" title=" " alt="" coords="670,723,763,723,763,728,670,728"/>
-<area shape="rect" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10" title=" " alt="" coords="765,762,971,787"/>
-<area shape="poly" title=" " alt="" coords="670,736,784,757,783,762,669,741"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#abb2ccb0f5ef2c5cdc1904f879ae6b5b9" title=" " alt="" coords="793,535,943,575"/>
-<area shape="poly" title=" " alt="" coords="668,709,701,690,712,678,718,665,724,639,730,612,737,598,749,585,779,567,782,571,752,589,741,601,735,613,729,640,723,667,716,681,704,694,671,714"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#a905ddb0198b0e5f9c9faaf3cb96d2cc5" title=" " alt="" coords="793,420,943,460"/>
-<area shape="poly" title=" " alt="" coords="669,710,686,702,701,690,716,670,724,650,728,610,729,568,735,545,749,521,778,490,812,465,815,470,781,494,753,524,740,547,734,569,733,610,729,652,721,673,705,694,689,706,671,715"/>
-<area shape="poly" title=" " alt="" coords="669,709,783,689,784,694,670,715"/>
-<area shape="poly" title=" " alt="" coords="943,543,1020,534,1020,540,943,549"/>
-<area shape="poly" title=" " alt="" coords="637,854,670,835,701,811,715,795,723,778,732,762,749,747,762,740,765,745,752,752,736,766,728,781,719,797,705,815,673,839,640,858"/>
-<area shape="poly" title=" " alt="" coords="629,854,685,825,750,797,782,788,783,793,752,803,687,830,632,858"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#a59b78532200ac52920ae63f0a9522a2b" title=" " alt="" coords="787,599,936,639"/>
+<area shape="poly" title=" " alt="" coords="668,704,701,690,715,680,725,669,734,659,749,648,773,638,775,642,752,653,738,663,729,673,719,684,704,694,670,709"/>
+<area shape="rect" href="classhttp_1_1exception.html#add7e0b357120f83926453dc287252b76" title=" " alt="" coords="770,713,953,738"/>
+<area shape="poly" title=" " alt="" coords="670,723,756,723,756,728,670,728"/>
+<area shape="rect" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10" title=" " alt="" coords="758,762,965,787"/>
+<area shape="poly" title=" " alt="" coords="670,736,779,757,778,762,669,742"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#abb2ccb0f5ef2c5cdc1904f879ae6b5b9" title=" " alt="" coords="787,535,936,575"/>
+<area shape="poly" title=" " alt="" coords="668,709,701,690,712,678,718,665,724,639,730,612,737,598,749,585,772,570,775,574,752,589,741,601,735,613,729,640,723,667,716,681,704,694,671,714"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#a905ddb0198b0e5f9c9faaf3cb96d2cc5" title=" " alt="" coords="787,420,936,460"/>
+<area shape="poly" title=" " alt="" coords="669,710,686,702,701,690,716,670,724,650,728,610,730,568,736,545,748,521,777,490,809,465,812,470,780,494,753,524,741,547,735,569,733,611,730,652,721,673,705,694,689,706,671,715"/>
+<area shape="poly" title=" " alt="" coords="669,709,778,689,779,694,670,714"/>
+<area shape="poly" title=" " alt="" coords="936,543,1006,535,1007,540,937,548"/>
+<area shape="poly" title=" " alt="" coords="637,854,670,835,701,811,715,795,723,778,732,762,749,747,760,741,762,746,752,751,736,766,728,781,719,798,705,815,673,839,640,858"/>
+<area shape="poly" title=" " alt="" coords="630,853,685,825,750,797,780,788,782,793,752,803,688,830,632,858"/>
 <area shape="poly" title=" " alt="" coords="643,854,673,835,701,812,711,797,717,782,722,754,728,726,736,712,749,698,755,694,758,698,752,702,740,715,733,728,727,755,722,784,716,799,705,815,677,840,646,858"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html#ace64d16e3f05349062093bbcca1afcd5" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="752,1025,984,1050"/>
-<area shape="poly" title=" " alt="" coords="675,894,704,913,716,925,722,938,728,964,735,988,741,999,752,1010,761,1016,758,1021,749,1014,737,1002,730,990,723,965,717,940,711,928,701,917,673,898"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html#a372720d37adef97ac72432f3d9548900" title=" " alt="" coords="751,1074,985,1099"/>
-<area shape="poly" title=" " alt="" coords="679,894,705,913,719,932,726,951,728,989,731,1025,738,1042,753,1059,760,1065,756,1069,749,1063,734,1045,726,1027,723,989,721,952,714,934,701,917,676,898"/>
-<area shape="rect" href="classhttp_1_1Request.html#a8d7f2adb5a9e2717fe6b784160818aee" title=" " alt="" coords="775,1123,961,1149"/>
-<area shape="poly" title=" " alt="" coords="680,894,705,913,722,939,729,964,730,990,728,1014,726,1039,727,1062,735,1086,753,1109,764,1118,760,1122,749,1113,730,1088,722,1064,720,1039,722,1014,725,989,724,965,717,941,701,916,677,898"/>
-<area shape="rect" href="classhttp_1_1Request.html#afcc854dfd95d0b508b47712427e7f009" title=" " alt="" coords="762,1173,974,1198"/>
-<area shape="poly" title=" " alt="" coords="681,894,705,913,725,945,732,977,732,1009,727,1040,723,1070,723,1100,732,1129,753,1158,758,1163,754,1167,749,1162,727,1131,718,1100,718,1070,722,1039,726,1008,727,978,720,947,701,916,678,898"/>
-<area shape="rect" href="classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="789,1222,947,1247"/>
-<area shape="poly" title=" " alt="" coords="682,894,705,913,728,952,736,990,734,1028,727,1065,720,1101,719,1137,728,1172,753,1207,777,1224,774,1228,749,1211,723,1174,714,1137,715,1100,722,1064,728,1027,730,990,723,954,701,916,678,898"/>
-<area shape="rect" href="classhttp_1_1Request.html#a7efc4f2b18d136dff526975a50643f43" title=" " alt="" coords="783,1271,953,1297"/>
-<area shape="poly" title=" " alt="" coords="682,894,705,913,720,936,731,958,739,1003,736,1047,726,1090,718,1132,715,1174,725,1215,736,1236,753,1257,771,1271,768,1275,749,1261,732,1239,720,1217,710,1174,712,1131,721,1089,730,1046,734,1003,726,960,716,938,701,916,679,898"/>
-<area shape="rect" href="classhttp_1_1RequestProcessor.html#a06a6ac810295ff2b1f4aaf52376a8733" title=" " alt="" coords="782,812,954,852"/>
-<area shape="poly" title=" " alt="" coords="680,860,768,845,769,851,681,865"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html#ab19bc7bb681bb9a47b7c288e00669c65" title="Traverses m_locations according to a Request&#39;s Uri, respecting redirections while avoiding redirect l..." alt="" coords="759,877,977,902"/>
-<area shape="poly" title=" " alt="" coords="681,878,746,881,746,886,681,883"/>
-<area shape="rect" href="classhttp_1_1Request.html#a8b07466b813b2a50d8fad8e8efd843e3" title=" " alt="" coords="772,926,964,951"/>
-<area shape="poly" title=" " alt="" coords="678,894,751,911,794,920,793,926,750,916,677,899"/>
-<area shape="rect" href="classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8" title=" " alt="" coords="757,975,979,1001"/>
+<area shape="rect" href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="762,1025,961,1050"/>
+<area shape="poly" title=" " alt="" coords="675,894,704,913,716,925,723,938,729,964,735,988,741,999,752,1010,761,1016,758,1020,749,1014,737,1002,730,990,723,965,718,940,711,928,701,917,673,898"/>
+<area shape="rect" href="classhttp_1_1Router.html#af5a2093850f5d1b1079d0e6f014f304c" title=" " alt="" coords="761,1074,961,1099"/>
+<area shape="poly" title=" " alt="" coords="679,894,705,913,719,932,726,951,728,989,731,1025,738,1042,753,1059,760,1065,756,1069,749,1063,734,1045,726,1026,723,989,721,952,714,934,701,917,676,898"/>
+<area shape="rect" href="classhttp_1_1Request.html#a8d7f2adb5a9e2717fe6b784160818aee" title=" " alt="" coords="768,1123,955,1149"/>
+<area shape="poly" title=" " alt="" coords="680,894,705,913,722,939,729,964,730,989,728,1014,726,1039,727,1062,735,1086,753,1109,759,1114,755,1118,749,1112,730,1088,722,1063,721,1039,723,1014,725,989,724,965,717,941,701,916,677,898"/>
+<area shape="rect" href="classhttp_1_1Request.html#afcc854dfd95d0b508b47712427e7f009" title=" " alt="" coords="755,1173,967,1198"/>
+<area shape="poly" title=" " alt="" coords="681,894,705,913,725,945,732,977,732,1009,727,1039,723,1070,723,1099,732,1129,753,1158,758,1163,754,1167,749,1162,727,1131,718,1100,718,1069,722,1039,727,1008,727,978,720,947,701,916,678,898"/>
+<area shape="rect" href="classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="783,1222,940,1247"/>
+<area shape="poly" title=" " alt="" coords="682,894,705,913,728,952,736,990,734,1028,727,1064,721,1101,719,1136,728,1172,753,1207,771,1221,768,1226,749,1211,724,1174,714,1137,715,1100,722,1064,729,1027,730,990,723,954,701,916,678,898"/>
+<area shape="rect" href="classhttp_1_1Request.html#a7efc4f2b18d136dff526975a50643f43" title=" " alt="" coords="776,1271,947,1297"/>
+<area shape="poly" title=" " alt="" coords="682,894,705,913,720,936,731,958,739,1003,736,1047,727,1089,718,1132,716,1174,725,1215,736,1236,753,1257,766,1268,762,1272,749,1261,732,1239,720,1217,710,1174,713,1131,721,1088,730,1046,734,1003,726,960,716,938,701,916,679,898"/>
+<area shape="rect" href="classhttp_1_1RequestProcessor.html#a06a6ac810295ff2b1f4aaf52376a8733" title=" " alt="" coords="775,812,947,852"/>
+<area shape="poly" title=" " alt="" coords="681,859,761,846,762,851,681,864"/>
+<area shape="rect" href="classhttp_1_1Router.html#ad6e4a793ff5dfda59239fa8394f4c64a" title="Traverses m_locations according to a Request&#39;s Uri, respecting redirections while avoiding redirect l..." alt="" coords="770,877,953,902"/>
+<area shape="poly" title=" " alt="" coords="681,878,756,881,756,887,681,883"/>
+<area shape="rect" href="classhttp_1_1Request.html#a8b07466b813b2a50d8fad8e8efd843e3" title=" " alt="" coords="765,926,957,951"/>
+<area shape="poly" title=" " alt="" coords="679,894,751,911,792,920,791,925,750,916,678,899"/>
+<area shape="rect" href="classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8" title=" " alt="" coords="751,975,972,1001"/>
 <area shape="poly" title=" " alt="" coords="666,894,704,912,719,925,728,938,737,949,752,960,769,968,767,973,749,965,734,953,724,941,715,929,701,917,664,898"/>
-<area shape="poly" title=" " alt="" coords="671,331,704,347,720,362,729,377,737,391,752,404,782,419,779,424,749,409,733,394,724,379,716,365,701,352,669,336"/>
-<area shape="rect" href="classshared_1_1Buffer.html#af1f3a12893e2a6d51d3372c5e5a962d0" title=" " alt="" coords="791,370,945,395"/>
-<area shape="poly" title=" " alt="" coords="670,333,802,364,800,369,669,338"/>
-<area shape="poly" title=" " alt="" coords="658,270,704,283,727,294,751,303,820,316,890,325,1031,336,1159,337,1261,334,1262,340,1159,343,1030,341,890,331,819,321,750,308,725,299,702,288,657,275"/>
-<area shape="poly" title=" " alt="" coords="678,270,704,283,721,300,729,317,737,333,752,349,780,363,778,368,749,353,733,336,724,319,717,303,701,288,676,275"/>
-<area shape="rect" href="classshared_1_1Buffer.html#ae126d2e83e32ab5715d839cd0438ff78" title=" " alt="" coords="783,269,953,294"/>
-<area shape="poly" title=" " alt="" coords="686,264,770,271,770,276,686,270"/>
-<area shape="rect" href="classhttp_1_1Response.html#a8c41b4c74914e062f304693d58fb41df" title=" " alt="" coords="759,121,977,146"/>
-<area shape="poly" title=" " alt="" coords="609,245,668,201,708,176,750,155,771,147,773,152,752,160,710,180,671,205,613,249"/>
-<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="780,170,956,195"/>
-<area shape="poly" title=" " alt="" coords="628,245,750,204,784,196,785,201,751,209,630,250"/>
-<area shape="rect" href="classhttp_1_1Response.html#ab52959eaac18026a4f1c4ce3006731ea" title=" " alt="" coords="771,219,965,245"/>
-<area shape="poly" title=" " alt="" coords="686,248,756,241,757,246,686,253"/>
-<area shape="poly" title=" " alt="" coords="678,1116,705,1135,726,1169,734,1203,733,1236,728,1269,723,1301,722,1333,731,1364,753,1395,772,1409,769,1414,749,1399,726,1367,717,1334,718,1301,723,1268,728,1236,729,1203,721,1171,701,1139,675,1121"/>
+<area shape="poly" title=" " alt="" coords="671,331,704,347,720,362,729,377,737,391,752,404,775,417,772,421,749,409,733,394,724,379,716,365,701,352,669,336"/>
+<area shape="rect" href="classshared_1_1Buffer.html#af1f3a12893e2a6d51d3372c5e5a962d0" title=" " alt="" coords="784,370,939,395"/>
+<area shape="poly" title=" " alt="" coords="670,333,796,364,795,369,669,338"/>
+<area shape="poly" title=" " alt="" coords="658,270,704,283,727,294,751,303,887,325,1023,335,1148,337,1248,334,1248,340,1148,342,1023,340,886,330,750,308,725,299,702,288,657,275"/>
+<area shape="poly" title=" " alt="" coords="678,270,704,283,721,299,729,317,737,333,752,349,779,363,777,367,749,353,733,336,724,319,717,303,701,288,676,275"/>
+<area shape="rect" href="classshared_1_1Buffer.html#ae126d2e83e32ab5715d839cd0438ff78" title=" " alt="" coords="777,269,946,294"/>
+<area shape="poly" title=" " alt="" coords="686,265,763,271,763,276,686,270"/>
+<area shape="rect" href="classhttp_1_1Response.html#a8c41b4c74914e062f304693d58fb41df" title=" " alt="" coords="753,121,970,146"/>
+<area shape="poly" title=" " alt="" coords="610,245,668,201,708,176,750,155,770,147,772,152,752,160,710,181,671,205,613,249"/>
+<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="773,170,949,195"/>
+<area shape="poly" title=" " alt="" coords="629,245,750,204,782,196,784,201,751,209,630,250"/>
+<area shape="rect" href="classhttp_1_1Response.html#ab52959eaac18026a4f1c4ce3006731ea" title=" " alt="" coords="764,219,959,245"/>
+<area shape="poly" title=" " alt="" coords="686,248,750,241,750,246,686,253"/>
+<area shape="poly" title=" " alt="" coords="678,1116,705,1135,726,1169,734,1203,734,1236,728,1269,723,1301,723,1333,731,1364,753,1396,766,1406,763,1410,749,1399,726,1366,717,1333,718,1301,723,1268,728,1235,729,1203,721,1171,701,1139,675,1121"/>
 <area shape="poly" title=" " alt="" coords="343,1199,399,1138,440,1102,485,1071,510,1059,512,1064,488,1076,443,1106,403,1142,347,1202"/>
-<area shape="poly" title=" " alt="" coords="439,1205,514,1204,592,1208,659,1218,685,1226,704,1237,721,1255,729,1275,731,1316,731,1357,738,1377,752,1395,772,1408,769,1413,749,1399,733,1379,726,1358,725,1317,724,1276,717,1258,701,1241,683,1231,657,1223,591,1213,514,1210,439,1210"/>
+<area shape="poly" title=" " alt="" coords="439,1205,514,1204,592,1208,659,1218,685,1226,704,1237,721,1255,730,1275,731,1316,731,1357,738,1377,753,1395,766,1405,763,1410,749,1399,733,1379,726,1358,725,1316,724,1276,717,1258,701,1241,683,1231,657,1223,591,1213,514,1210,439,1210"/>
 <area shape="poly" title=" " alt="" coords="338,1199,357,1161,389,1109,432,1054,457,1029,485,1007,498,1000,501,1004,488,1012,461,1033,436,1057,393,1112,362,1164,343,1202"/>
 <area shape="poly" title=" " alt="" coords="399,1198,515,1175,516,1181,400,1203"/>
 <area shape="poly" title=" " alt="" coords="356,1198,414,1167,486,1135,507,1127,509,1132,488,1140,416,1172,359,1203"/>
@@ -521,10 +521,10 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="109,483,118,417,142,315,161,259,186,203,219,151,259,105,265,101,269,105,263,109,223,154,191,206,166,261,147,317,123,418,114,484"/>
 <area shape="rect" href="classhttp_1_1VirtualServer.html#af9a6100fe0dc47c1d3e009b2f2a0a5a1" title=" " alt="" coords="299,119,440,159"/>
 <area shape="poly" title=" " alt="" coords="110,483,123,426,149,342,169,295,194,250,224,207,260,169,284,154,287,159,263,173,228,210,198,252,174,298,154,344,128,428,115,484"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a64edecd5e51fa150804b9b5e31f25aef" title=" " alt="" coords="558,220,727,245"/>
-<area shape="poly" title=" " alt="" coords="113,483,131,443,161,388,204,331,231,305,260,284,311,265,384,251,544,235,545,240,384,256,312,270,263,288,234,309,208,334,166,391,136,445,118,485"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="1050,534,1182,574"/>
-<area shape="poly" title=" " alt="" coords="160,507,262,526,481,545,699,554,891,556,1036,554,1036,559,891,561,698,559,481,551,261,531,159,512"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a64edecd5e51fa150804b9b5e31f25aef" title=" " alt="" coords="551,220,721,245"/>
+<area shape="poly" title=" " alt="" coords="113,483,131,443,161,388,204,331,231,305,260,284,309,265,380,252,537,235,538,241,381,257,311,270,263,288,234,309,208,334,166,391,136,445,118,485"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="1037,534,1169,574"/>
+<area shape="poly" title=" " alt="" coords="160,507,262,526,477,545,691,554,880,555,1023,554,1023,559,880,561,691,559,477,550,261,531,159,512"/>
 <area shape="rect" href="classhttp_1_1RequestParser.html#ab94442fc9aa5a49c0ec5bce486fe4772" title=" " alt="" coords="295,298,444,338"/>
 <area shape="poly" title=" " alt="" coords="118,482,173,418,214,381,260,348,280,338,283,342,263,352,217,385,177,422,122,486"/>
 <area shape="rect" href="classhttp_1_1RequestParser.html#a97ed7a05e2b05c9cb224892923c5ee1d" title=" " alt="" coords="295,362,444,402"/>
@@ -533,8 +533,8 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="167,481,297,452,298,458,168,487"/>
 <area shape="rect" href="classhttp_1_1RequestParser.html#a54ef0e3917a1db991b7555b64108a687" title=" " alt="" coords="295,477,444,517"/>
 <area shape="poly" title=" " alt="" coords="213,494,281,494,281,499,213,499"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#a9568e7bb9e1d57ffd0722d708d9df136" title=" " alt="" coords="808,591,957,631"/>
-<area shape="poly" title=" " alt="" coords="119,508,137,545,168,593,210,641,235,661,262,677,320,699,368,704,417,696,476,677,491,669,499,658,509,647,524,637,593,616,664,605,733,600,794,601,794,606,733,606,665,610,594,621,526,642,512,651,504,661,494,673,478,682,418,701,368,710,318,704,260,682,232,665,207,644,164,596,133,547,114,511"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#a9568e7bb9e1d57ffd0722d708d9df136" title=" " alt="" coords="795,591,944,631"/>
+<area shape="poly" title=" " alt="" coords="119,508,137,545,168,593,210,641,235,661,262,677,320,699,368,704,417,696,476,677,491,669,499,658,509,647,524,637,589,617,657,606,723,601,781,602,781,607,723,607,658,611,591,622,526,642,512,651,504,661,494,673,478,682,418,701,368,710,318,704,260,682,232,665,207,644,164,596,133,547,114,511"/>
 <area shape="rect" href="classcore_1_1AHandler.html#a2bf318df177af33d921c7755389a09a3" title=" " alt="" coords="272,592,467,617"/>
 <area shape="poly" title=" " alt="" coords="134,507,192,538,262,570,307,586,305,591,260,575,189,543,132,512"/>
 <area shape="rect" href="classshared_1_1Buffer.html#a03089c1ff6836a90493355eecadb9f30" title=" " alt="" coords="266,641,473,667"/>
@@ -549,86 +549,86 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="114,510,128,687,158,988,178,1152,203,1306,232,1438,247,1491,264,1533,280,1562,301,1588,343,1631,340,1634,297,1592,276,1565,259,1535,242,1492,226,1439,198,1307,173,1152,152,989,123,687,109,510"/>
 <area shape="rect" href="classhttp_1_1VirtualServer.html#a0fb848be6b479f9ac5857fd3cb2e5a9d" title=" " alt="" coords="288,183,451,223"/>
 <area shape="poly" title=" " alt="" coords="112,483,129,437,159,372,203,302,229,269,260,240,278,227,281,232,263,244,233,273,207,305,164,375,134,439,117,484"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c" title=" " alt="" coords="572,119,713,159"/>
-<area shape="poly" title=" " alt="" coords="440,137,558,137,558,142,440,142"/>
-<area shape="poly" title=" " alt="" coords="441,157,478,169,597,212,595,217,476,174,439,162"/>
-<area shape="poly" title=" " alt="" coords="598,120,595,110,602,100,618,95,643,93,671,96,686,103,684,108,669,101,643,98,619,100,606,105,600,111,603,118"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39" title=" " alt="" coords="812,359,953,399"/>
-<area shape="poly" title=" " alt="" coords="666,243,838,350,835,354,663,248"/>
-<area shape="rect" href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6" title=" " alt="" coords="809,220,956,245"/>
-<area shape="poly" title=" " alt="" coords="727,230,796,230,796,235,727,235"/>
-<area shape="poly" title=" " alt="" coords="912,397,1079,523,1075,528,909,401"/>
-<area shape="rect" href="classshared_1_1Logger.html#afa95b6aabdf9018417243de3e904674e" title=" " alt="" coords="1005,245,1227,271"/>
-<area shape="poly" title=" " alt="" coords="957,238,992,242,991,247,956,243"/>
-<area shape="rect" href="classshared_1_1Logger.html#a59ccf733344c360fe7839dbc1a6ae6f5" title=" " alt="" coords="1011,196,1221,221"/>
-<area shape="poly" title=" " alt="" coords="956,222,997,218,997,224,957,228"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#a59b78532200ac52920ae63f0a9522a2b" title=" " alt="" coords="568,651,717,691"/>
-<area shape="poly" title=" " alt="" coords="399,770,456,735,524,701,554,690,556,695,526,706,458,740,402,775"/>
-<area shape="rect" href="classhttp_1_1exception.html#add7e0b357120f83926453dc287252b76" title=" " alt="" coords="551,929,734,955"/>
-<area shape="poly" title=" " alt="" coords="391,811,448,864,486,892,527,916,544,923,542,928,524,920,483,897,445,868,387,815"/>
-<area shape="rect" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10" title=" " alt="" coords="539,831,746,856"/>
-<area shape="poly" title=" " alt="" coords="445,804,561,826,560,831,444,809"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#abb2ccb0f5ef2c5cdc1904f879ae6b5b9" title=" " alt="" coords="568,715,717,755"/>
-<area shape="poly" title=" " alt="" coords="444,774,554,751,555,756,445,780"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#a905ddb0198b0e5f9c9faaf3cb96d2cc5" title=" " alt="" coords="1041,962,1191,1002"/>
-<area shape="poly" title=" " alt="" coords="444,785,529,782,622,784,706,795,738,804,762,817,781,841,789,866,789,892,786,918,783,944,783,968,791,991,810,1012,838,1029,870,1039,903,1042,938,1040,1005,1026,1062,1005,1064,1010,1006,1031,938,1046,903,1047,869,1044,836,1034,806,1016,786,994,778,969,777,943,781,917,784,891,784,867,776,843,758,821,736,809,705,800,622,790,529,788,444,790"/>
-<area shape="rect" href="classhttp_1_1Request.html#a7c21ec82e0fbcc4685b24bfeeac48e42" title=" " alt="" coords="537,880,748,905"/>
-<area shape="poly" title=" " alt="" coords="406,810,462,839,526,866,553,874,552,879,524,871,460,844,404,815"/>
-<area shape="poly" title=" " alt="" coords="716,720,759,701,774,687,782,673,791,657,806,641,814,636,817,640,810,645,795,660,787,675,778,691,761,706,719,725"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#a385e00b5aab31f2951a8f41582fbf4d8" title=" " alt="" coords="808,719,957,759"/>
-<area shape="poly" title=" " alt="" coords="718,734,795,735,795,741,718,739"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#af5032ff829b5ec593dd1d2f347ea890a" title=" " alt="" coords="808,834,957,874"/>
-<area shape="poly" title=" " alt="" coords="715,753,761,772,806,797,845,823,842,828,803,801,759,776,713,758"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#ad617ecc926049629f4b1ad1b6864cd93" title=" " alt="" coords="808,962,957,1002"/>
-<area shape="poly" title=" " alt="" coords="719,746,742,756,762,772,778,795,786,817,788,861,789,904,795,926,810,948,813,951,809,955,806,952,791,928,783,905,782,861,781,818,774,797,758,776,739,761,717,750"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#ad6c1c5f8254fb53cccf21c94b16b4217" title=" " alt="" coords="808,898,957,938"/>
-<area shape="poly" title=" " alt="" coords="719,747,742,758,762,772,774,786,781,801,787,829,793,857,799,870,810,884,814,888,811,892,806,888,794,873,787,858,782,830,776,802,770,789,758,776,739,762,717,752"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#a310284f6a6f4d45ecc79f3ec4f6e9650" title=" " alt="" coords="808,655,957,695"/>
-<area shape="poly" title=" " alt="" coords="717,714,794,695,796,700,718,719"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#a862376b3a729ba8e5b31c3311dde2f80" title=" " alt="" coords="1041,834,1191,874"/>
-<area shape="poly" title=" " alt="" coords="958,851,1028,851,1028,857,958,857"/>
-<area shape="poly" title=" " alt="" coords="934,872,959,884,1075,952,1072,957,956,888,931,876"/>
-<area shape="poly" title=" " alt="" coords="958,979,1028,979,1028,985,958,985"/>
-<area shape="poly" title=" " alt="" coords="956,895,1029,875,1030,880,957,900"/>
-<area shape="poly" title=" " alt="" coords="957,936,1030,956,1029,961,956,941"/>
-<area shape="poly" title=" " alt="" coords="937,693,959,705,997,733,1033,764,1090,822,1086,825,1029,768,993,737,956,710,935,698"/>
-<area shape="poly" title=" " alt="" coords="383,1097,440,1031,479,995,524,965,542,957,544,962,527,970,483,999,443,1035,387,1101"/>
-<area shape="poly" title=" " alt="" coords="374,1098,393,1050,423,987,467,922,493,892,524,866,535,859,538,864,527,871,497,896,471,925,428,990,397,1052,379,1100"/>
-<area shape="poly" title=" " alt="" coords="378,1098,399,1058,431,1009,473,958,497,935,524,916,538,908,541,913,527,920,501,939,477,962,435,1012,403,1061,383,1100"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html#ace64d16e3f05349062093bbcca1afcd5" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="527,1340,759,1365"/>
-<area shape="poly" title=" " alt="" coords="382,1139,402,1179,434,1231,476,1283,500,1306,527,1326,537,1332,534,1337,524,1331,497,1311,472,1287,430,1234,398,1182,377,1141"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html#a372720d37adef97ac72432f3d9548900" title=" " alt="" coords="525,1389,760,1415"/>
-<area shape="poly" title=" " alt="" coords="379,1138,396,1188,426,1253,470,1320,496,1350,527,1376,535,1381,533,1386,524,1380,493,1354,465,1323,422,1255,391,1190,374,1140"/>
-<area shape="rect" href="classhttp_1_1Request.html#a8d7f2adb5a9e2717fe6b784160818aee" title=" " alt="" coords="549,1439,736,1464"/>
-<area shape="poly" title=" " alt="" coords="377,1139,392,1196,420,1275,440,1316,464,1357,493,1394,527,1425,538,1433,535,1437,524,1429,489,1397,459,1360,435,1319,415,1277,386,1198,372,1140"/>
-<area shape="rect" href="classhttp_1_1Request.html#afcc854dfd95d0b508b47712427e7f009" title=" " alt="" coords="537,979,749,1004"/>
-<area shape="poly" title=" " alt="" coords="393,1097,451,1055,487,1033,524,1014,550,1005,552,1010,526,1019,489,1038,454,1059,396,1101"/>
-<area shape="rect" href="classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="564,1028,721,1053"/>
-<area shape="poly" title=" " alt="" coords="423,1097,525,1063,563,1054,564,1059,526,1069,425,1102"/>
-<area shape="rect" href="classhttp_1_1Request.html#a7efc4f2b18d136dff526975a50643f43" title=" " alt="" coords="557,1077,728,1103"/>
-<area shape="poly" title=" " alt="" coords="455,1107,543,1098,544,1103,456,1113"/>
-<area shape="rect" href="classhttp_1_1RequestProcessor.html#a06a6ac810295ff2b1f4aaf52376a8733" title=" " alt="" coords="557,1127,729,1167"/>
-<area shape="poly" title=" " alt="" coords="456,1125,543,1134,543,1140,455,1131"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html#ab19bc7bb681bb9a47b7c288e00669c65" title="Traverses m_locations according to a Request&#39;s Uri, respecting redirections while avoiding redirect l..." alt="" coords="534,1192,751,1217"/>
-<area shape="poly" title=" " alt="" coords="418,1137,526,1177,562,1186,561,1192,525,1182,416,1142"/>
-<area shape="rect" href="classhttp_1_1Request.html#a8b07466b813b2a50d8fad8e8efd843e3" title=" " alt="" coords="547,1241,739,1267"/>
-<area shape="poly" title=" " alt="" coords="394,1137,451,1183,488,1207,526,1228,546,1235,544,1240,524,1232,485,1212,448,1188,391,1142"/>
-<area shape="rect" href="classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8" title=" " alt="" coords="532,1291,753,1316"/>
-<area shape="poly" title=" " alt="" coords="386,1138,442,1208,481,1246,527,1277,540,1283,538,1288,524,1282,478,1250,438,1211,382,1141"/>
-<area shape="poly" title=" " alt="" coords="445,1512,515,1519,596,1518,680,1505,721,1492,759,1474,827,1428,888,1371,942,1306,988,1239,1027,1173,1059,1110,1100,1014,1105,1016,1064,1113,1032,1175,993,1242,946,1310,892,1374,830,1432,761,1479,723,1497,681,1510,596,1523,515,1524,444,1518"/>
-<area shape="rect" href="classshared_1_1Buffer.html#af1f3a12893e2a6d51d3372c5e5a962d0" title=" " alt="" coords="565,1540,720,1565"/>
-<area shape="poly" title=" " alt="" coords="445,1513,561,1535,560,1540,444,1518"/>
-<area shape="poly" title=" " alt="" coords="448,1639,641,1604,722,1588,758,1576,775,1549,787,1514,794,1472,797,1425,794,1319,785,1203,774,1087,770,979,772,930,779,887,789,850,806,820,823,803,841,794,877,789,916,786,935,781,956,769,1003,726,1042,677,1074,627,1097,586,1102,588,1079,630,1047,680,1007,730,959,773,938,786,917,792,878,794,842,799,826,808,810,824,794,852,784,888,778,931,776,979,780,1086,790,1202,800,1318,803,1425,800,1473,792,1515,780,1551,762,1580,723,1593,642,1610,449,1644"/>
-<area shape="poly" title=" " alt="" coords="395,1639,453,1611,524,1582,575,1566,577,1571,526,1587,455,1616,397,1644"/>
-<area shape="rect" href="classshared_1_1Buffer.html#ae126d2e83e32ab5715d839cd0438ff78" title=" " alt="" coords="558,1740,727,1765"/>
-<area shape="poly" title=" " alt="" coords="394,1665,453,1695,526,1726,554,1734,553,1739,524,1731,451,1700,392,1669"/>
-<area shape="rect" href="classhttp_1_1Response.html#a8c41b4c74914e062f304693d58fb41df" title=" " alt="" coords="534,1789,751,1815"/>
-<area shape="poly" title=" " alt="" coords="384,1665,442,1719,482,1750,527,1776,544,1783,542,1788,524,1780,479,1754,438,1723,381,1669"/>
-<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="555,1641,731,1667"/>
-<area shape="poly" title=" " alt="" coords="461,1651,541,1651,541,1657,461,1657"/>
-<area shape="rect" href="classhttp_1_1Response.html#ab52959eaac18026a4f1c4ce3006731ea" title=" " alt="" coords="545,1691,740,1716"/>
-<area shape="poly" title=" " alt="" coords="441,1664,558,1685,557,1691,440,1669"/>
-<area shape="poly" title=" " alt="" coords="451,209,545,219,544,225,450,215"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a9a984038527668306eb712f128ce1d0c" title=" " alt="" coords="565,119,707,159"/>
+<area shape="poly" title=" " alt="" coords="440,137,552,137,552,142,440,142"/>
+<area shape="poly" title=" " alt="" coords="441,157,478,169,592,212,591,217,476,174,440,162"/>
+<area shape="poly" title=" " alt="" coords="593,120,590,110,597,100,612,95,636,93,663,96,678,103,675,108,662,101,636,98,614,100,600,105,595,111,598,118"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#a8ca6b0cac9495f72abb3359e5be56d39" title=" " alt="" coords="799,359,940,399"/>
+<area shape="poly" title=" " alt="" coords="659,243,826,350,823,354,656,248"/>
+<area shape="rect" href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6" title=" " alt="" coords="796,220,943,245"/>
+<area shape="poly" title=" " alt="" coords="721,230,782,230,782,235,721,235"/>
+<area shape="poly" title=" " alt="" coords="899,397,1065,523,1062,528,896,401"/>
+<area shape="rect" href="classshared_1_1Logger.html#afa95b6aabdf9018417243de3e904674e" title=" " alt="" coords="992,245,1213,271"/>
+<area shape="poly" title=" " alt="" coords="943,238,978,242,978,247,943,243"/>
+<area shape="rect" href="classshared_1_1Logger.html#a59ccf733344c360fe7839dbc1a6ae6f5" title=" " alt="" coords="997,196,1208,221"/>
+<area shape="poly" title=" " alt="" coords="943,222,984,218,984,224,943,228"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#a59b78532200ac52920ae63f0a9522a2b" title=" " alt="" coords="561,651,711,691"/>
+<area shape="poly" title=" " alt="" coords="399,770,456,736,524,701,547,692,549,697,526,706,458,740,402,775"/>
+<area shape="rect" href="classhttp_1_1exception.html#add7e0b357120f83926453dc287252b76" title=" " alt="" coords="545,929,727,955"/>
+<area shape="poly" title=" " alt="" coords="391,811,449,864,486,892,527,916,543,923,541,928,524,920,483,897,445,868,388,815"/>
+<area shape="rect" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10" title=" " alt="" coords="533,831,739,856"/>
+<area shape="poly" title=" " alt="" coords="445,804,556,825,555,831,444,809"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#abb2ccb0f5ef2c5cdc1904f879ae6b5b9" title=" " alt="" coords="561,715,711,755"/>
+<area shape="poly" title=" " alt="" coords="444,774,547,752,549,757,445,779"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#a905ddb0198b0e5f9c9faaf3cb96d2cc5" title=" " alt="" coords="1028,962,1177,1002"/>
+<area shape="poly" title=" " alt="" coords="444,785,526,783,615,785,695,796,726,805,748,817,768,841,776,866,776,892,773,918,769,944,770,968,778,991,796,1012,825,1029,857,1039,890,1042,924,1040,991,1026,1049,1005,1050,1010,993,1031,925,1046,890,1047,856,1044,823,1034,793,1016,773,994,765,969,764,943,767,917,771,892,770,867,763,843,745,821,724,810,694,801,615,791,526,788,444,791"/>
+<area shape="rect" href="classhttp_1_1Request.html#a7c21ec82e0fbcc4685b24bfeeac48e42" title=" " alt="" coords="531,880,741,905"/>
+<area shape="poly" title=" " alt="" coords="406,810,462,839,526,866,552,874,551,879,524,871,460,844,404,815"/>
+<area shape="poly" title=" " alt="" coords="710,718,745,701,760,687,769,673,778,657,793,641,801,636,804,640,796,645,782,660,773,675,764,691,748,706,712,723"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#a385e00b5aab31f2951a8f41582fbf4d8" title=" " alt="" coords="795,719,944,759"/>
+<area shape="poly" title=" " alt="" coords="711,734,781,735,781,740,711,739"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#af5032ff829b5ec593dd1d2f347ea890a" title=" " alt="" coords="795,834,944,874"/>
+<area shape="poly" title=" " alt="" coords="704,753,748,772,792,797,832,823,829,828,789,801,745,776,702,758"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#ad617ecc926049629f4b1ad1b6864cd93" title=" " alt="" coords="795,962,944,1002"/>
+<area shape="poly" title=" " alt="" coords="712,748,732,758,749,772,765,795,773,817,774,861,775,905,782,926,797,948,800,951,796,955,793,952,777,928,770,905,769,861,767,818,760,797,745,776,729,763,710,753"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#ad6c1c5f8254fb53cccf21c94b16b4217" title=" " alt="" coords="795,898,944,938"/>
+<area shape="poly" title=" " alt="" coords="712,749,731,759,748,772,761,786,768,801,774,829,779,857,786,870,797,884,801,888,797,892,793,888,781,873,774,858,769,830,763,803,756,789,745,776,728,764,710,754"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#a310284f6a6f4d45ecc79f3ec4f6e9650" title=" " alt="" coords="795,655,944,695"/>
+<area shape="poly" title=" " alt="" coords="710,714,780,695,782,701,712,719"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#a862376b3a729ba8e5b31c3311dde2f80" title=" " alt="" coords="1028,834,1177,874"/>
+<area shape="poly" title=" " alt="" coords="944,851,1014,851,1014,857,944,857"/>
+<area shape="poly" title=" " alt="" coords="920,872,945,884,1061,952,1059,957,943,888,918,876"/>
+<area shape="poly" title=" " alt="" coords="944,979,1014,979,1014,985,944,985"/>
+<area shape="poly" title=" " alt="" coords="942,895,1015,875,1017,880,944,900"/>
+<area shape="poly" title=" " alt="" coords="944,936,1017,956,1015,961,942,941"/>
+<area shape="poly" title=" " alt="" coords="924,693,945,705,983,733,1019,764,1076,822,1073,825,1016,768,980,737,943,710,921,698"/>
+<area shape="poly" title=" " alt="" coords="383,1097,440,1032,479,995,524,965,542,957,544,962,527,970,483,1000,444,1035,387,1101"/>
+<area shape="poly" title=" " alt="" coords="375,1098,393,1050,423,987,467,922,494,892,524,867,535,859,538,864,527,871,497,896,471,925,428,990,398,1052,380,1100"/>
+<area shape="poly" title=" " alt="" coords="378,1098,399,1059,431,1009,473,958,497,935,524,916,538,908,540,913,527,920,501,940,477,962,435,1012,404,1061,383,1100"/>
+<area shape="rect" href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="537,1340,735,1365"/>
+<area shape="poly" title=" " alt="" coords="382,1139,403,1179,434,1231,476,1283,500,1306,527,1326,537,1332,534,1337,524,1331,497,1310,472,1287,430,1234,398,1182,377,1141"/>
+<area shape="rect" href="classhttp_1_1Router.html#af5a2093850f5d1b1079d0e6f014f304c" title=" " alt="" coords="536,1389,736,1415"/>
+<area shape="poly" title=" " alt="" coords="379,1139,397,1188,427,1253,470,1320,497,1350,527,1376,535,1381,532,1385,524,1380,493,1354,466,1323,422,1255,392,1190,374,1141"/>
+<area shape="rect" href="classhttp_1_1Request.html#a8d7f2adb5a9e2717fe6b784160818aee" title=" " alt="" coords="543,1439,729,1464"/>
+<area shape="poly" title=" " alt="" coords="377,1139,392,1197,420,1275,440,1316,464,1356,493,1394,527,1425,534,1430,531,1434,524,1429,489,1397,460,1360,435,1319,415,1277,387,1198,372,1140"/>
+<area shape="rect" href="classhttp_1_1Request.html#afcc854dfd95d0b508b47712427e7f009" title=" " alt="" coords="530,979,742,1004"/>
+<area shape="poly" title=" " alt="" coords="393,1097,451,1055,487,1033,524,1014,549,1005,551,1010,526,1019,489,1038,454,1060,396,1101"/>
+<area shape="rect" href="classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="557,1028,715,1053"/>
+<area shape="poly" title=" " alt="" coords="423,1097,525,1063,561,1054,562,1059,526,1069,425,1102"/>
+<area shape="rect" href="classhttp_1_1Request.html#a7efc4f2b18d136dff526975a50643f43" title=" " alt="" coords="551,1077,721,1103"/>
+<area shape="poly" title=" " alt="" coords="455,1107,537,1098,537,1104,456,1113"/>
+<area shape="rect" href="classhttp_1_1RequestProcessor.html#a06a6ac810295ff2b1f4aaf52376a8733" title=" " alt="" coords="550,1127,722,1167"/>
+<area shape="poly" title=" " alt="" coords="456,1126,537,1134,536,1140,455,1131"/>
+<area shape="rect" href="classhttp_1_1Router.html#ad6e4a793ff5dfda59239fa8394f4c64a" title="Traverses m_locations according to a Request&#39;s Uri, respecting redirections while avoiding redirect l..." alt="" coords="545,1192,727,1217"/>
+<area shape="poly" title=" " alt="" coords="418,1137,526,1177,561,1186,559,1191,525,1182,416,1142"/>
+<area shape="rect" href="classhttp_1_1Request.html#a8b07466b813b2a50d8fad8e8efd843e3" title=" " alt="" coords="540,1241,732,1267"/>
+<area shape="poly" title=" " alt="" coords="394,1137,452,1183,488,1207,526,1228,546,1235,544,1240,524,1232,485,1212,448,1188,391,1141"/>
+<area shape="rect" href="classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8" title=" " alt="" coords="525,1291,747,1316"/>
+<area shape="poly" title=" " alt="" coords="386,1138,442,1207,482,1245,527,1277,540,1283,538,1288,524,1282,478,1249,438,1211,382,1141"/>
+<area shape="poly" title=" " alt="" coords="444,1512,512,1518,590,1516,670,1504,709,1491,745,1474,814,1428,875,1371,928,1306,975,1239,1014,1172,1045,1110,1087,1014,1092,1016,1050,1113,1018,1175,979,1242,933,1310,878,1374,817,1432,748,1479,711,1496,671,1509,590,1522,512,1523,444,1517"/>
+<area shape="rect" href="classshared_1_1Buffer.html#af1f3a12893e2a6d51d3372c5e5a962d0" title=" " alt="" coords="559,1540,713,1565"/>
+<area shape="poly" title=" " alt="" coords="445,1513,556,1535,555,1540,444,1519"/>
+<area shape="poly" title=" " alt="" coords="445,1639,632,1604,710,1588,745,1576,762,1549,774,1514,781,1472,784,1425,781,1318,771,1203,761,1087,757,979,759,930,765,887,776,850,793,820,809,803,827,794,864,789,902,786,922,781,942,769,989,726,1029,677,1061,627,1083,586,1088,588,1065,630,1033,680,993,730,946,773,924,786,903,792,864,794,829,799,813,808,797,824,781,852,770,888,764,931,762,979,766,1086,776,1202,786,1318,789,1425,786,1473,779,1515,767,1551,748,1580,711,1593,633,1610,446,1644"/>
+<area shape="poly" title=" " alt="" coords="395,1639,454,1611,524,1582,572,1567,574,1572,526,1587,456,1616,398,1644"/>
+<area shape="rect" href="classshared_1_1Buffer.html#ae126d2e83e32ab5715d839cd0438ff78" title=" " alt="" coords="551,1740,721,1765"/>
+<area shape="poly" title=" " alt="" coords="394,1664,453,1695,526,1726,553,1734,551,1739,524,1731,451,1700,392,1669"/>
+<area shape="rect" href="classhttp_1_1Response.html#a8c41b4c74914e062f304693d58fb41df" title=" " alt="" coords="527,1789,745,1815"/>
+<area shape="poly" title=" " alt="" coords="384,1665,442,1719,482,1750,527,1776,543,1783,541,1788,524,1780,479,1754,439,1723,381,1669"/>
+<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="548,1641,724,1667"/>
+<area shape="poly" title=" " alt="" coords="461,1651,534,1651,534,1657,461,1657"/>
+<area shape="rect" href="classhttp_1_1Response.html#ab52959eaac18026a4f1c4ce3006731ea" title=" " alt="" coords="539,1691,733,1716"/>
+<area shape="poly" title=" " alt="" coords="439,1664,554,1685,553,1691,438,1669"/>
+<area shape="poly" title=" " alt="" coords="451,210,538,219,537,225,451,215"/>
 </map>
 </div>
 <div class="dynheader">

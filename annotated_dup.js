@@ -17,12 +17,12 @@ var annotated_dup =
       [ "DeleteHandler", "classhttp_1_1DeleteHandler.html", "classhttp_1_1DeleteHandler" ],
       [ "exception", "classhttp_1_1exception.html", "classhttp_1_1exception" ],
       [ "GetHandler", "classhttp_1_1GetHandler.html", "classhttp_1_1GetHandler" ],
-      [ "GoodRouter", "classhttp_1_1GoodRouter.html", "classhttp_1_1GoodRouter" ],
       [ "PostHandler", "classhttp_1_1PostHandler.html", "classhttp_1_1PostHandler" ],
       [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
       [ "RequestParser", "classhttp_1_1RequestParser.html", "classhttp_1_1RequestParser" ],
       [ "RequestProcessor", "classhttp_1_1RequestProcessor.html", "classhttp_1_1RequestProcessor" ],
       [ "Response", "classhttp_1_1Response.html", "classhttp_1_1Response" ],
+      [ "Router", "classhttp_1_1Router.html", "classhttp_1_1Router" ],
       [ "Uri", "structhttp_1_1Uri.html", "structhttp_1_1Uri" ],
       [ "VirtualServer", "classhttp_1_1VirtualServer.html", "classhttp_1_1VirtualServer" ]
     ] ],

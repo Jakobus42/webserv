@@ -11,7 +11,7 @@ var classhttp_1_1VirtualServer =
     [ "getClients", "classhttp_1_1VirtualServer.html#aea8a4d50c35f0865b9c0694ac2956477", null ],
     [ "getClients", "classhttp_1_1VirtualServer.html#aa5bf84276085217ba28346f747b265c8", null ],
     [ "getConfig", "classhttp_1_1VirtualServer.html#a6a6821f203a638a78c888808d134c640", null ],
-    [ "getRouter", "classhttp_1_1VirtualServer.html#a4911a5ad9c695da56eac3322a56b1874", null ],
+    [ "getRouter", "classhttp_1_1VirtualServer.html#abda56b96c6ea54948fa504af80e2515a", null ],
     [ "getSocket", "classhttp_1_1VirtualServer.html#a26dfa6f8cc8979b31d68c354cc89be14", null ],
     [ "init", "classhttp_1_1VirtualServer.html#aaa6efa927f0a998eb33c7232b7bbfdd9", null ],
     [ "log", "classhttp_1_1VirtualServer.html#a64edecd5e51fa150804b9b5e31f25aef", null ],
@@ -24,5 +24,5 @@ var classhttp_1_1VirtualServer =
     [ "m_config", "classhttp_1_1VirtualServer.html#a939251c61141089758ff26196db21a15", null ],
     [ "m_listenSocket", "classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605", null ],
     [ "m_logger", "classhttp_1_1VirtualServer.html#ae899297922e2cce19b245093e85c599f", null ],
-    [ "m_router", "classhttp_1_1VirtualServer.html#a781f2ced6dd4d6622c3c82c78299bc6c", null ]
+    [ "m_router", "classhttp_1_1VirtualServer.html#a4d4a7df9186ec54619327b0397e16e43", null ]
 ];

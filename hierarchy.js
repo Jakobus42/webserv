@@ -1,7 +1,6 @@
 var hierarchy =
 [
     [ "config::ConfigFileParser", "classconfig_1_1ConfigFileParser.html", null ],
-    [ "http::GoodRouter", "classhttp_1_1GoodRouter.html", null ],
     [ "config::Location", "structconfig_1_1Location.html", null ],
     [ "shared::NonCopyable", "classshared_1_1NonCopyable.html", [
       [ "shared::Buffer< REQUEST_BUFFER_SIZE >", "classshared_1_1Buffer.html", null ],
@@ -24,6 +23,7 @@ var hierarchy =
       [ "shared::Buffer< Capacity >", "classshared_1_1Buffer.html", null ],
       [ "shared::Logger", "classshared_1_1Logger.html", null ]
     ] ],
+    [ "http::Router", "classhttp_1_1Router.html", null ],
     [ "std::runtime_error", null, [
       [ "http::exception", "classhttp_1_1exception.html", null ]
     ] ],

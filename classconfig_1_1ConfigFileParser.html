@@ -591,7 +591,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  576</span> </div>
 <div class="line"><span class="lineno">  577</span>        <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731">server</a>.dataDir = args[1];</div>
 <div class="line"><span class="lineno">  578</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731">server</a>.hasGlobalRoot()) {</div>
-<div class="line"><span class="lineno">  579</span>            std::vector&lt;std::string&gt; <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a674379abdea408c05bce1117c37ddc58">dataDir</a> = <a class="code hl_function" href="classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28">http::GoodRouter::splitPath</a>(<a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731">server</a>.dataDir);</div>
+<div class="line"><span class="lineno">  579</span>            std::vector&lt;std::string&gt; <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a674379abdea408c05bce1117c37ddc58">dataDir</a> = <a class="code hl_function" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209">http::Router::splitPath</a>(<a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731">server</a>.dataDir);</div>
 <div class="line"><span class="lineno">  580</span>            <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731">server</a>.globalRoot.root.insert(<a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731">server</a>.globalRoot.root.end(), <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a674379abdea408c05bce1117c37ddc58">dataDir</a>.begin(), <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a674379abdea408c05bce1117c37ddc58">dataDir</a>.end());</div>
 <div class="line"><span class="lineno">  581</span>            <span class="comment">// server.globalRoot.path.push_back(server.globalRoot.root + server.dataDir);</span></div>
 <div class="line"><span class="lineno">  582</span>            <span class="comment">// TODO: concatenate and then split up globalRoot.root and server.dataDir;</span></div>
@@ -602,18 +602,18 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  587</span>    }</div>
 <div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_a674379abdea408c05bce1117c37ddc58"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#a674379abdea408c05bce1117c37ddc58">config::ConfigFileParser::dataDir</a></div><div class="ttdeci">int dataDir(std::vector&lt; std::string &gt; &amp;args, const int &amp;lineCount, int layer)</div><div class="ttdef"><b>Definition</b> <a href="Parser__keywords_8cpp_source.html#l00535">Parser_keywords.cpp:535</a></div></div>
 <div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_a968caa89dd9cc3085ffbd1fa93660731"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731">config::ConfigFileParser::server</a></div><div class="ttdeci">int server(std::vector&lt; std::string &gt; &amp;args, const int &amp;lineCount, int layer)</div><div class="ttdoc">Creates a new server struct, initializes it and adds it to the config data.</div><div class="ttdef"><b>Definition</b> <a href="Parser__keywords_8cpp_source.html#l00055">Parser_keywords.cpp:55</a></div></div>
-<div class="ttc" id="aclasshttp_1_1GoodRouter_html_a23d64565011203cda75e208ad27dfa28"><div class="ttname"><a href="classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28">http::GoodRouter::splitPath</a></div><div class="ttdeci">static std::vector&lt; std::string &gt; splitPath(const std::string &amp;path)</div><div class="ttdoc">Splits a path into its components, delimited by '/'.</div><div class="ttdef"><b>Definition</b> <a href="GoodRouter_8cpp_source.html#l00053">GoodRouter.cpp:53</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Router_html_a984b170d146002ebe8fc701e7d0d7209"><div class="ttname"><a href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209">http::Router::splitPath</a></div><div class="ttdeci">static std::vector&lt; std::string &gt; splitPath(const std::string &amp;path)</div><div class="ttdoc">Splits a path into its components, delimited by '/'.</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00053">Router.cpp:53</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classconfig_1_1ConfigFileParser_a674379abdea408c05bce1117c37ddc58_cgraph.png" border="0" usemap="#aclassconfig_1_1ConfigFileParser_a674379abdea408c05bce1117c37ddc58_cgraph" alt=""/></div>
 <map name="aclassconfig_1_1ConfigFileParser_a674379abdea408c05bce1117c37ddc58_cgraph" id="aclassconfig_1_1ConfigFileParser_a674379abdea408c05bce1117c37ddc58_cgraph">
 <area shape="rect" title=" " alt="" coords="5,35,179,75"/>
-<area shape="poly" title=" " alt="" coords="49,35,46,25,53,16,68,10,92,8,119,11,134,18,131,23,118,16,92,13,70,15,56,20,51,26,54,34"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="239,5,412,45"/>
-<area shape="poly" title=" " alt="" coords="179,41,225,35,225,41,180,46"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="227,70,424,95"/>
-<area shape="poly" title=" " alt="" coords="180,62,213,67,213,72,179,68"/>
+<area shape="poly" title=" " alt="" coords="51,35,48,25,55,16,70,10,92,8,118,11,132,18,130,23,116,16,92,13,71,15,58,20,53,26,56,34"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="227,5,400,45"/>
+<area shape="poly" title=" " alt="" coords="179,41,213,36,214,41,179,46"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="232,70,395,95"/>
+<area shape="poly" title=" " alt="" coords="179,63,219,68,218,73,179,68"/>
 </map>
 </div>
 <div class="dynheader">
@@ -1223,10 +1223,10 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">  520</span>        <span class="comment">// TODO: validate if we can access global root path?</span></div>
 <div class="line"><span class="lineno">  521</span>        <span class="comment">// TODO: probably should not start the server unless it is</span></div>
 <div class="line"><span class="lineno">  522</span> </div>
-<div class="line"><span class="lineno">  523</span>        <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731">server</a>.globalRoot.root = <a class="code hl_function" href="classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28">http::GoodRouter::splitPath</a>(args[1]); <span class="comment">// TODO: Location.root or Location.path?</span></div>
+<div class="line"><span class="lineno">  523</span>        <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731">server</a>.globalRoot.root = <a class="code hl_function" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209">http::Router::splitPath</a>(args[1]); <span class="comment">// TODO: Location.root or Location.path?</span></div>
 <div class="line"><span class="lineno">  524</span>        <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731">server</a>.globalRoot.allowedMethods.clear();</div>
 <div class="line"><span class="lineno">  525</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731">server</a>.hasDataDir()) {</div>
-<div class="line"><span class="lineno">  526</span>            std::vector&lt;std::string&gt; <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a674379abdea408c05bce1117c37ddc58">dataDir</a> = <a class="code hl_function" href="classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28">http::GoodRouter::splitPath</a>(<a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731">server</a>.dataDir);</div>
+<div class="line"><span class="lineno">  526</span>            std::vector&lt;std::string&gt; <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a674379abdea408c05bce1117c37ddc58">dataDir</a> = <a class="code hl_function" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209">http::Router::splitPath</a>(<a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731">server</a>.dataDir);</div>
 <div class="line"><span class="lineno">  527</span>            <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731">server</a>.globalRoot.root.insert(<a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731">server</a>.globalRoot.root.end(), <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a674379abdea408c05bce1117c37ddc58">dataDir</a>.begin(), <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a674379abdea408c05bce1117c37ddc58">dataDir</a>.end());</div>
 <div class="line"><span class="lineno">  528</span>            <span class="comment">// server.globalRoot.path.push_back(server.globalRoot.root + server.dataDir);</span></div>
 <div class="line"><span class="lineno">  529</span>            <span class="comment">// TODO: concatenate and then split up globalRoot.root and server.dataDir;</span></div>
@@ -1242,13 +1242,13 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,60,179,100"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a674379abdea408c05bce1117c37ddc58" title=" " alt="" coords="227,60,400,100"/>
 <area shape="poly" title=" " alt="" coords="179,77,213,77,213,83,179,83"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="460,5,633,45"/>
-<area shape="poly" title=" " alt="" coords="129,57,174,37,226,21,282,13,340,10,446,12,446,17,340,15,283,18,227,27,176,42,131,62"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="448,97,645,122"/>
-<area shape="poly" title=" " alt="" coords="164,97,227,109,333,116,434,114,434,120,333,121,226,115,163,103"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="448,5,621,45"/>
+<area shape="poly" title=" " alt="" coords="129,57,174,37,226,21,279,14,333,10,434,12,434,18,334,15,280,19,227,27,176,42,131,62"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="453,97,616,122"/>
+<area shape="poly" title=" " alt="" coords="164,97,227,109,337,116,439,114,440,119,337,121,226,115,163,103"/>
 <area shape="poly" title=" " alt="" coords="272,60,269,50,276,41,291,35,313,33,339,36,353,44,351,48,338,41,313,39,292,41,279,45,275,51,277,59"/>
-<area shape="poly" title=" " alt="" coords="399,57,447,46,448,51,400,63"/>
-<area shape="poly" title=" " alt="" coords="401,88,435,93,434,98,400,94"/>
+<area shape="poly" title=" " alt="" coords="394,57,439,46,441,51,395,63"/>
+<area shape="poly" title=" " alt="" coords="401,89,440,94,439,99,400,94"/>
 </map>
 </div>
 <div class="dynheader">
@@ -1371,8 +1371,8 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="314,394,323,330,345,240,362,191,384,142,412,96,446,55,451,51,454,55,450,59,416,99,389,145,367,193,350,241,328,331,319,395"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a674379abdea408c05bce1117c37ddc58" title=" " alt="" coords="670,373,843,413"/>
 <area shape="poly" title=" " alt="" coords="345,392,392,368,447,348,496,339,534,337,622,348,692,366,691,371,621,353,534,342,496,344,449,353,394,372,347,397"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="904,241,1077,281"/>
-<area shape="poly" title=" " alt="" coords="320,393,337,356,364,311,400,268,422,249,447,234,507,210,571,197,636,191,701,193,763,200,822,210,920,235,918,240,821,215,763,205,700,198,636,197,572,202,509,215,449,238,426,253,404,271,368,315,342,359,325,395"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="892,241,1065,281"/>
+<area shape="poly" title=" " alt="" coords="320,393,337,356,364,311,400,268,422,249,447,234,506,211,568,197,631,192,694,194,755,200,812,210,908,235,907,240,811,216,754,206,694,199,631,198,568,203,507,216,449,238,426,253,404,271,368,315,342,359,325,395"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a8c643807e65854fdb795b28022594d79" title="sets the error pages for the server." alt="" coords="448,69,621,109"/>
 <area shape="poly" title=" " alt="" coords="316,394,329,340,353,267,391,188,417,152,446,119,451,115,454,119,450,123,421,155,396,191,358,269,334,341,321,395"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a8367c60ca0e5b3f09652b089f15b1e8c" title=" " alt="" coords="448,248,621,288"/>
@@ -1398,13 +1398,13 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a" title="Converts a string to a positive integer." alt="" coords="702,77,811,102"/>
 <area shape="poly" title=" " alt="" coords="606,43,699,70,698,75,604,48"/>
 <area shape="poly" title=" " alt="" coords="715,374,713,364,719,354,734,349,757,347,783,350,797,357,794,362,781,355,757,352,735,354,723,359,718,365,720,372"/>
-<area shape="poly" title=" " alt="" coords="792,371,941,286,944,290,794,376"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="892,410,1089,435"/>
-<area shape="poly" title=" " alt="" coords="844,402,878,406,878,411,843,407"/>
+<area shape="poly" title=" " alt="" coords="790,371,931,286,934,291,793,376"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="897,410,1060,435"/>
+<area shape="poly" title=" " alt="" coords="844,402,884,408,884,413,843,407"/>
 <area shape="poly" title=" " alt="" coords="621,87,688,87,688,92,621,92"/>
 <area shape="poly" title=" " alt="" coords="585,286,623,304,717,363,714,368,620,309,582,290"/>
-<area shape="poly" title=" " alt="" coords="622,264,890,260,890,265,622,269"/>
-<area shape="poly" title=" " alt="" coords="622,277,730,299,788,315,845,335,909,367,962,400,959,405,907,371,843,340,787,320,729,304,621,283"/>
+<area shape="poly" title=" " alt="" coords="622,264,878,260,878,265,622,269"/>
+<area shape="poly" title=" " alt="" coords="622,276,730,298,789,314,845,335,904,366,952,399,949,404,901,371,843,340,787,320,729,303,621,282"/>
 <area shape="poly" title=" " alt="" coords="606,528,674,548,673,553,604,533"/>
 <area shape="poly" title=" " alt="" coords="621,572,656,572,656,577,621,577"/>
 <area shape="poly" title=" " alt="" coords="604,131,698,103,699,108,606,136"/>
@@ -1412,12 +1412,12 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="621,151,674,151,674,156,621,156"/>
 <area shape="rect" href="namespaceshared_1_1string.html#af85298827aba4985d2318526e69ee0d6" title="Splits a path into its components." alt="" coords="669,754,844,779"/>
 <area shape="poly" title=" " alt="" coords="621,764,656,764,656,769,621,769"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="909,754,1072,779"/>
-<area shape="poly" title=" " alt="" coords="844,764,896,764,896,769,844,769"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="897,754,1060,779"/>
+<area shape="poly" title=" " alt="" coords="844,764,884,764,884,769,844,769"/>
 <area shape="poly" title=" " alt="" coords="595,680,620,668,673,635,719,601,723,605,676,640,623,673,597,685"/>
-<area shape="poly" title=" " alt="" coords="621,688,674,676,731,658,789,635,842,604,886,567,923,524,953,481,974,446,979,449,957,484,927,527,890,571,846,609,791,640,733,663,675,681,622,693"/>
+<area shape="poly" title=" " alt="" coords="621,688,674,677,732,660,789,636,842,605,883,568,917,525,944,482,963,447,968,449,949,485,922,528,887,571,846,609,792,641,734,665,675,682,622,694"/>
 <area shape="poly" title=" " alt="" coords="597,464,623,476,676,510,723,544,719,548,673,514,620,481,595,469"/>
-<area shape="poly" title=" " alt="" coords="622,439,878,426,878,431,622,445"/>
+<area shape="poly" title=" " alt="" coords="621,439,883,425,884,430,622,445"/>
 </map>
 </div>
 <div class="dynheader">
@@ -2065,8 +2065,8 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="843,407,877,407,877,412,843,412"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a674379abdea408c05bce1117c37ddc58" title=" " alt="" coords="1113,632,1286,672"/>
 <area shape="poly" title=" " alt="" coords="765,429,779,473,805,529,842,586,865,611,892,631,941,653,994,665,1048,668,1099,666,1099,671,1048,673,994,670,940,658,889,636,862,615,838,590,800,532,774,475,760,430"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="1347,632,1520,672"/>
-<area shape="poly" title=" " alt="" coords="763,429,775,481,798,549,815,584,836,618,862,648,892,672,950,701,1013,718,1078,724,1144,723,1208,715,1268,703,1367,674,1369,679,1269,708,1209,720,1144,728,1078,730,1012,723,948,706,889,677,858,652,832,621,810,587,793,551,770,482,758,430"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="1335,632,1508,672"/>
+<area shape="poly" title=" " alt="" coords="763,429,775,481,798,549,815,584,836,618,862,648,892,672,949,700,1010,717,1073,723,1137,722,1200,714,1258,702,1355,674,1357,679,1259,707,1201,719,1138,727,1073,729,1009,722,947,705,889,677,858,652,832,621,810,587,793,551,770,482,758,430"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a8c643807e65854fdb795b28022594d79" title="sets the error pages for the server." alt="" coords="891,453,1064,493"/>
 <area shape="poly" title=" " alt="" coords="827,427,895,447,894,452,825,432"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a8367c60ca0e5b3f09652b089f15b1e8c" title=" " alt="" coords="891,581,1064,621"/>
@@ -2089,25 +2089,25 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a" title="Converts a string to a positive integer." alt="" coords="1145,407,1254,433"/>
 <area shape="poly" title=" " alt="" coords="1064,411,1131,414,1131,419,1064,416"/>
 <area shape="poly" title=" " alt="" coords="1158,632,1155,622,1162,613,1177,607,1199,605,1225,608,1239,616,1237,620,1224,613,1199,611,1178,613,1165,617,1161,623,1163,631"/>
-<area shape="poly" title=" " alt="" coords="1286,649,1333,649,1333,655,1286,655"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="1335,426,1532,451"/>
-<area shape="poly" title=" " alt="" coords="1221,630,1406,459,1410,463,1224,634"/>
+<area shape="poly" title=" " alt="" coords="1286,649,1321,649,1321,655,1286,655"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="1340,426,1503,451"/>
+<area shape="poly" title=" " alt="" coords="1219,630,1395,459,1399,463,1223,634"/>
 <area shape="poly" title=" " alt="" coords="1060,451,1132,433,1133,439,1062,456"/>
 <area shape="poly" title=" " alt="" coords="1065,618,1100,627,1099,632,1063,624"/>
-<area shape="poly" title=" " alt="" coords="1064,588,1171,583,1230,586,1287,593,1336,606,1381,624,1379,629,1334,612,1286,599,1229,591,1171,589,1065,593"/>
-<area shape="poly" title=" " alt="" coords="1038,579,1286,492,1386,454,1388,459,1288,497,1039,584"/>
+<area shape="poly" title=" " alt="" coords="1064,587,1171,583,1230,585,1287,593,1331,606,1372,623,1370,628,1330,611,1286,599,1229,591,1171,588,1065,593"/>
+<area shape="poly" title=" " alt="" coords="1040,579,1286,492,1378,454,1380,459,1288,497,1041,584"/>
 <area shape="poly" title=" " alt="" coords="1064,215,1099,215,1099,220,1064,220"/>
 <area shape="poly" title=" " alt="" coords="1042,515,1062,503,1077,489,1085,474,1094,458,1110,443,1130,433,1133,437,1114,448,1099,462,1090,476,1081,492,1066,507,1045,520"/>
 <area shape="rect" href="namespaceconfig.html#ab0ce9a159a3d72a05a0321e13dcdac80" title="Checks if a string is a number." alt="" coords="1131,457,1268,482"/>
 <area shape="poly" title=" " alt="" coords="1042,515,1143,484,1144,489,1044,520"/>
 <area shape="rect" href="namespaceshared_1_1string.html#af85298827aba4985d2318526e69ee0d6" title="Splits a path into its components." alt="" coords="1112,818,1287,843"/>
 <area shape="poly" title=" " alt="" coords="1064,828,1098,828,1098,833,1064,833"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="1352,818,1515,843"/>
-<area shape="poly" title=" " alt="" coords="1287,828,1338,828,1338,833,1287,833"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="1340,818,1503,843"/>
+<area shape="poly" title=" " alt="" coords="1287,828,1326,828,1326,833,1287,833"/>
 <area shape="poly" title=" " alt="" coords="1047,259,1116,239,1117,244,1048,264"/>
-<area shape="poly" title=" " alt="" coords="1065,295,1172,321,1288,359,1349,387,1401,416,1399,421,1346,392,1286,364,1171,327,1063,300"/>
+<area shape="poly" title=" " alt="" coords="1065,294,1173,319,1231,337,1288,358,1344,386,1392,416,1389,420,1342,391,1286,362,1229,342,1171,324,1064,299"/>
 <area shape="poly" title=" " alt="" coords="1037,323,1063,311,1116,278,1162,244,1165,248,1119,282,1065,316,1039,328"/>
-<area shape="poly" title=" " alt="" coords="1065,354,1171,371,1287,393,1381,419,1380,424,1286,399,1170,376,1064,359"/>
+<area shape="poly" title=" " alt="" coords="1065,353,1171,370,1287,393,1373,419,1371,424,1286,399,1170,375,1064,359"/>
 </map>
 </div>
 <div class="dynheader">
@@ -2474,8 +2474,8 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="535,394,544,330,566,240,584,191,606,142,633,96,667,55,672,51,676,55,671,59,638,99,610,145,588,193,571,241,550,331,540,395"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a674379abdea408c05bce1117c37ddc58" title=" " alt="" coords="891,373,1065,413"/>
 <area shape="poly" title=" " alt="" coords="566,392,613,368,669,348,717,339,756,337,843,348,913,366,912,371,842,353,756,342,718,344,670,353,615,372,569,397"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="1125,241,1299,281"/>
-<area shape="poly" title=" " alt="" coords="541,393,559,356,585,311,622,268,644,249,668,234,728,210,792,197,857,191,922,193,985,200,1043,210,1141,235,1140,240,1042,215,984,205,922,198,857,197,793,202,730,215,671,238,647,253,626,271,590,315,563,359,546,395"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="1113,241,1287,281"/>
+<area shape="poly" title=" " alt="" coords="541,393,559,356,585,311,622,268,644,249,668,234,727,211,789,197,852,192,916,194,977,200,1034,210,1129,235,1128,240,1033,216,976,206,915,199,853,198,790,203,728,216,671,238,647,253,626,271,590,315,563,359,546,395"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a8c643807e65854fdb795b28022594d79" title="sets the error pages for the server." alt="" coords="669,69,843,109"/>
 <area shape="poly" title=" " alt="" coords="537,394,550,340,574,267,613,188,638,152,667,119,672,115,676,119,671,123,642,155,617,191,579,269,555,341,542,395"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a8367c60ca0e5b3f09652b089f15b1e8c" title=" " alt="" coords="669,248,843,288"/>
@@ -2501,13 +2501,13 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a" title="Converts a string to a positive integer." alt="" coords="923,77,1033,102"/>
 <area shape="poly" title=" " alt="" coords="827,43,921,70,919,75,825,48"/>
 <area shape="poly" title=" " alt="" coords="937,374,934,364,941,354,956,349,978,347,1004,350,1018,357,1016,362,1002,355,978,352,957,354,944,359,939,365,942,372"/>
-<area shape="poly" title=" " alt="" coords="1013,371,1162,286,1165,290,1016,376"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="1113,410,1311,435"/>
-<area shape="poly" title=" " alt="" coords="1065,402,1100,406,1099,411,1064,407"/>
+<area shape="poly" title=" " alt="" coords="1011,371,1152,286,1155,291,1014,376"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="1119,410,1281,435"/>
+<area shape="poly" title=" " alt="" coords="1065,402,1106,408,1105,413,1064,407"/>
 <area shape="poly" title=" " alt="" coords="843,87,909,87,909,92,843,92"/>
 <area shape="poly" title=" " alt="" coords="806,286,844,304,938,363,935,368,841,309,804,290"/>
-<area shape="poly" title=" " alt="" coords="843,264,1112,260,1112,265,843,269"/>
-<area shape="poly" title=" " alt="" coords="844,277,951,299,1010,315,1066,335,1131,367,1184,400,1181,405,1128,371,1064,340,1008,320,950,304,843,283"/>
+<area shape="poly" title=" " alt="" coords="843,264,1100,260,1100,265,843,269"/>
+<area shape="poly" title=" " alt="" coords="843,276,951,298,1010,314,1066,335,1125,366,1174,399,1171,404,1123,371,1064,340,1008,320,950,303,842,282"/>
 <area shape="poly" title=" " alt="" coords="827,528,896,548,894,553,825,533"/>
 <area shape="poly" title=" " alt="" coords="843,572,878,572,878,577,843,577"/>
 <area shape="poly" title=" " alt="" coords="825,131,919,103,921,108,827,136"/>
@@ -2515,12 +2515,12 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="843,151,896,151,896,156,843,156"/>
 <area shape="rect" href="namespaceshared_1_1string.html#af85298827aba4985d2318526e69ee0d6" title="Splits a path into its components." alt="" coords="891,754,1065,779"/>
 <area shape="poly" title=" " alt="" coords="843,764,877,764,877,769,843,769"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="1131,754,1293,779"/>
-<area shape="poly" title=" " alt="" coords="1065,764,1117,764,1117,769,1065,769"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="1119,754,1281,779"/>
+<area shape="poly" title=" " alt="" coords="1065,764,1105,764,1105,769,1065,769"/>
 <area shape="poly" title=" " alt="" coords="816,680,841,668,895,635,941,601,944,605,898,640,844,673,818,685"/>
-<area shape="poly" title=" " alt="" coords="842,688,895,676,953,658,1010,635,1064,604,1107,567,1144,524,1174,481,1195,446,1200,449,1179,484,1149,527,1111,571,1067,609,1013,640,954,663,896,681,843,693"/>
+<area shape="poly" title=" " alt="" coords="842,688,895,677,953,660,1011,636,1064,605,1105,568,1139,525,1166,482,1185,447,1189,449,1170,485,1143,528,1108,571,1067,609,1013,641,955,665,897,682,844,694"/>
 <area shape="poly" title=" " alt="" coords="818,464,844,476,898,510,944,544,941,548,895,514,841,481,816,469"/>
-<area shape="poly" title=" " alt="" coords="843,439,1099,426,1100,431,843,445"/>
+<area shape="poly" title=" " alt="" coords="843,439,1105,425,1105,430,843,445"/>
 </map>
 </div>
 <div class="dynheader">
@@ -2661,11 +2661,11 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="179,42,213,37,214,42,180,47"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a3859e7628a017d5fa780676c8d53fd62" title="sets the root directory for the location." alt="" coords="227,69,400,109"/>
 <area shape="poly" title=" " alt="" coords="180,67,214,72,213,78,179,73"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="460,9,633,49"/>
-<area shape="poly" title=" " alt="" coords="401,24,446,25,446,30,401,29"/>
-<area shape="poly" title=" " alt="" coords="391,67,454,50,455,55,393,72"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="448,77,645,102"/>
-<area shape="poly" title=" " alt="" coords="401,87,434,87,434,92,401,92"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="448,9,621,49"/>
+<area shape="poly" title=" " alt="" coords="401,24,434,25,434,30,400,30"/>
+<area shape="poly" title=" " alt="" coords="387,67,446,50,448,56,389,72"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="453,77,616,102"/>
+<area shape="poly" title=" " alt="" coords="400,87,440,87,440,92,400,92"/>
 </map>
 </div>
 <div class="dynheader">
@@ -2756,11 +2756,11 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="400,42,434,37,435,42,401,47"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a3859e7628a017d5fa780676c8d53fd62" title="sets the root directory for the location." alt="" coords="448,69,621,109"/>
 <area shape="poly" title=" " alt="" coords="401,67,435,72,434,78,400,73"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="681,9,855,49"/>
-<area shape="poly" title=" " alt="" coords="622,24,667,25,667,30,622,29"/>
-<area shape="poly" title=" " alt="" coords="613,67,675,50,677,55,614,72"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="669,77,867,102"/>
-<area shape="poly" title=" " alt="" coords="622,87,655,87,655,92,622,92"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="669,9,843,49"/>
+<area shape="poly" title=" " alt="" coords="622,24,656,25,655,30,622,30"/>
+<area shape="poly" title=" " alt="" coords="609,67,667,50,669,56,610,72"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="675,77,837,102"/>
+<area shape="poly" title=" " alt="" coords="622,87,661,87,661,92,622,92"/>
 </map>
 </div>
 
@@ -2938,7 +2938,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  386</span>        <span class="comment">// TODO: check if valid url?</span></div>
 <div class="line"><span class="lineno">  387</span>        Location* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e">getLocation</a>(layer);</div>
 <div class="line"><span class="lineno">  388</span>        current-&gt;redirectUri = args[1];</div>
-<div class="line"><span class="lineno">  389</span>        current-&gt;redirectUriTokens = <a class="code hl_function" href="classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28">http::GoodRouter::splitPath</a>(current-&gt;redirectUri);</div>
+<div class="line"><span class="lineno">  389</span>        current-&gt;redirectUriTokens = <a class="code hl_function" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209">http::Router::splitPath</a>(current-&gt;redirectUri);</div>
 <div class="line"><span class="lineno">  390</span>        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  391</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
@@ -2947,10 +2947,10 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classconfig_1_1ConfigFileParser_ae96980a09075f768b9b072297e2e25f6_cgraph.png" border="0" usemap="#aclassconfig_1_1ConfigFileParser_ae96980a09075f768b9b072297e2e25f6_cgraph" alt=""/></div>
 <map name="aclassconfig_1_1ConfigFileParser_ae96980a09075f768b9b072297e2e25f6_cgraph" id="aclassconfig_1_1ConfigFileParser_ae96980a09075f768b9b072297e2e25f6_cgraph">
 <area shape="rect" title="redirects the user to a different url with a specific return code." alt="" coords="5,35,179,75"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="239,5,412,45"/>
-<area shape="poly" title=" " alt="" coords="179,41,225,35,225,41,180,46"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="227,70,424,95"/>
-<area shape="poly" title=" " alt="" coords="180,62,213,67,213,72,179,68"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="227,5,400,45"/>
+<area shape="poly" title=" " alt="" coords="179,41,213,36,214,41,179,46"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="232,70,395,95"/>
+<area shape="poly" title=" " alt="" coords="179,63,219,68,218,73,179,68"/>
 </map>
 </div>
 <div class="dynheader">
@@ -3044,7 +3044,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  413</span>        }</div>
 <div class="line"><span class="lineno">  414</span>        <span class="comment">// TODO: check if path is valid</span></div>
 <div class="line"><span class="lineno">  415</span>        Location* current = <a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e">getLocation</a>(layer);</div>
-<div class="line"><span class="lineno">  416</span>        current-&gt;root = <a class="code hl_function" href="classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28">http::GoodRouter::splitPath</a>(args[1]);</div>
+<div class="line"><span class="lineno">  416</span>        current-&gt;root = <a class="code hl_function" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209">http::Router::splitPath</a>(args[1]);</div>
 <div class="line"><span class="lineno">  417</span>        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="lineno">  418</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
@@ -3053,10 +3053,10 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classconfig_1_1ConfigFileParser_a3859e7628a017d5fa780676c8d53fd62_cgraph.png" border="0" usemap="#aclassconfig_1_1ConfigFileParser_a3859e7628a017d5fa780676c8d53fd62_cgraph" alt=""/></div>
 <map name="aclassconfig_1_1ConfigFileParser_a3859e7628a017d5fa780676c8d53fd62_cgraph" id="aclassconfig_1_1ConfigFileParser_a3859e7628a017d5fa780676c8d53fd62_cgraph">
 <area shape="rect" title="sets the root directory for the location." alt="" coords="5,35,179,75"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="239,5,412,45"/>
-<area shape="poly" title=" " alt="" coords="179,41,225,35,225,41,180,46"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="227,70,424,95"/>
-<area shape="poly" title=" " alt="" coords="180,62,213,67,213,72,179,68"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="227,5,400,45"/>
+<area shape="poly" title=" " alt="" coords="179,41,213,36,214,41,179,46"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="232,70,395,95"/>
+<area shape="poly" title=" " alt="" coords="179,63,219,68,218,73,179,68"/>
 </map>
 </div>
 <div class="dynheader">
@@ -3270,8 +3270,8 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="92,394,102,330,124,240,141,191,163,142,191,96,225,55,229,51,233,55,229,59,195,99,168,145,146,193,129,241,107,331,98,395"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a674379abdea408c05bce1117c37ddc58" title=" " alt="" coords="449,373,622,413"/>
 <area shape="poly" title=" " alt="" coords="123,392,171,368,226,348,274,339,313,337,400,348,471,366,469,371,400,353,313,342,275,344,227,353,173,372,126,397"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="683,241,856,281"/>
-<area shape="poly" title=" " alt="" coords="99,393,116,356,143,311,179,268,201,249,225,234,286,210,349,197,415,191,479,193,542,200,601,210,698,235,697,240,600,215,541,205,479,198,415,197,350,202,287,215,228,238,204,253,183,271,147,315,121,359,104,395"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="671,241,844,281"/>
+<area shape="poly" title=" " alt="" coords="99,393,116,356,143,311,179,268,201,249,225,234,284,211,346,197,410,192,473,194,534,200,591,210,687,235,685,240,590,216,533,206,472,199,410,198,347,203,286,216,228,238,204,253,183,271,147,315,121,359,104,395"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a8c643807e65854fdb795b28022594d79" title="sets the error pages for the server." alt="" coords="227,69,400,109"/>
 <area shape="poly" title=" " alt="" coords="94,394,107,340,132,267,170,188,195,152,225,119,230,115,233,119,229,123,199,155,175,191,137,269,112,341,100,395"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#a8367c60ca0e5b3f09652b089f15b1e8c" title=" " alt="" coords="227,248,400,288"/>
@@ -3297,13 +3297,13 @@ Here is the call graph for this function:</div>
 <area shape="rect" href="namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a" title="Converts a string to a positive integer." alt="" coords="481,77,590,102"/>
 <area shape="poly" title=" " alt="" coords="384,43,478,70,476,75,383,48"/>
 <area shape="poly" title=" " alt="" coords="494,374,491,364,498,354,513,349,535,347,561,350,575,357,573,362,560,355,535,352,514,354,501,359,497,365,499,372"/>
-<area shape="poly" title=" " alt="" coords="570,371,720,286,722,290,573,376"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="671,410,868,435"/>
-<area shape="poly" title=" " alt="" coords="622,402,657,406,656,411,622,407"/>
+<area shape="poly" title=" " alt="" coords="569,371,710,286,712,291,571,376"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="676,410,839,435"/>
+<area shape="poly" title=" " alt="" coords="622,402,663,408,662,413,622,407"/>
 <area shape="poly" title=" " alt="" coords="400,87,467,87,467,92,400,92"/>
 <area shape="poly" title=" " alt="" coords="363,286,401,304,496,363,493,368,399,309,361,290"/>
-<area shape="poly" title=" " alt="" coords="400,264,669,260,669,265,401,269"/>
-<area shape="poly" title=" " alt="" coords="401,277,509,299,567,315,624,335,688,367,741,400,738,405,685,371,622,340,565,320,507,304,400,283"/>
+<area shape="poly" title=" " alt="" coords="400,264,657,260,657,265,400,269"/>
+<area shape="poly" title=" " alt="" coords="401,276,509,298,567,314,624,335,683,366,731,399,728,404,680,371,622,340,566,320,507,303,400,282"/>
 <area shape="poly" title=" " alt="" coords="384,528,453,548,452,553,383,533"/>
 <area shape="poly" title=" " alt="" coords="400,572,435,572,435,577,400,577"/>
 <area shape="poly" title=" " alt="" coords="383,131,476,103,478,108,384,136"/>
@@ -3311,12 +3311,12 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="400,151,453,151,453,156,400,156"/>
 <area shape="rect" href="namespaceshared_1_1string.html#af85298827aba4985d2318526e69ee0d6" title="Splits a path into its components." alt="" coords="448,754,623,779"/>
 <area shape="poly" title=" " alt="" coords="400,764,434,764,434,769,400,769"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="688,754,851,779"/>
-<area shape="poly" title=" " alt="" coords="623,764,674,764,674,769,623,769"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="676,754,839,779"/>
+<area shape="poly" title=" " alt="" coords="623,764,662,764,662,769,623,769"/>
 <area shape="poly" title=" " alt="" coords="373,680,399,668,452,635,498,601,501,605,455,640,401,673,375,685"/>
-<area shape="poly" title=" " alt="" coords="399,688,452,676,510,658,568,635,621,604,665,567,702,524,732,481,753,446,757,449,736,484,706,527,668,571,624,609,570,640,512,663,454,681,401,693"/>
+<area shape="poly" title=" " alt="" coords="400,688,453,677,510,660,568,636,621,605,662,568,696,525,723,482,742,447,747,449,728,485,701,528,666,571,624,609,570,641,512,665,454,682,401,694"/>
 <area shape="poly" title=" " alt="" coords="375,464,401,476,455,510,501,544,498,548,452,514,399,481,373,469"/>
-<area shape="poly" title=" " alt="" coords="400,439,657,426,657,431,401,445"/>
+<area shape="poly" title=" " alt="" coords="400,439,662,425,662,430,400,445"/>
 </map>
 </div>
 <div class="dynheader">
@@ -3631,25 +3631,25 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="103,365,119,407,146,461,182,518,204,544,228,567,235,572,231,576,225,571,200,548,178,521,141,464,114,409,98,367"/>
 <area shape="rect" href="classconfig_1_1ConfigFileParser.html#aaba5579c9dd7524e698f3d4c05e0378d" title="Sets the server name(s) of the server." alt="" coords="227,645,400,685"/>
 <area shape="poly" title=" " alt="" coords="100,365,113,418,137,489,175,565,200,600,229,631,233,635,230,639,225,635,196,604,171,568,132,491,108,419,95,366"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="460,133,633,173"/>
-<area shape="poly" title=" " alt="" coords="375,43,401,55,459,89,509,123,506,127,456,93,399,60,373,48"/>
-<area shape="rect" href="namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a" title="Converts a string to a positive integer." alt="" coords="492,397,601,422"/>
-<area shape="poly" title=" " alt="" coords="401,407,478,407,478,412,401,412"/>
-<area shape="poly" title=" " alt="" coords="388,363,487,390,486,396,386,368"/>
-<area shape="poly" title=" " alt="" coords="388,107,461,127,459,132,386,112"/>
-<area shape="poly" title=" " alt="" coords="401,151,446,151,446,156,401,156"/>
-<area shape="poly" title=" " alt="" coords="386,451,486,423,487,428,388,456"/>
-<area shape="rect" href="namespaceconfig.html#ab0ce9a159a3d72a05a0321e13dcdac80" title="Checks if a string is a number." alt="" coords="478,461,615,486"/>
-<area shape="poly" title=" " alt="" coords="401,471,464,471,464,476,401,476"/>
-<area shape="rect" href="namespaceshared_1_1string.html#af85298827aba4985d2318526e69ee0d6" title="Splits a path into its components." alt="" coords="459,525,634,550"/>
-<area shape="poly" title=" " alt="" coords="401,535,445,535,445,540,401,540"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="693,525,856,550"/>
-<area shape="poly" title=" " alt="" coords="634,535,679,535,679,540,634,540"/>
-<area shape="poly" title=" " alt="" coords="373,259,399,247,456,214,506,180,509,184,459,218,401,252,375,264"/>
-<area shape="rect" href="classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="448,237,645,262"/>
-<area shape="poly" title=" " alt="" coords="400,267,440,261,441,266,401,272"/>
-<area shape="poly" title=" " alt="" coords="386,195,459,174,461,180,388,200"/>
-<area shape="poly" title=" " alt="" coords="401,227,441,232,440,237,400,232"/>
+<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="449,133,622,173"/>
+<area shape="poly" title=" " alt="" coords="375,43,401,55,455,88,501,123,498,127,452,93,399,60,373,48"/>
+<area shape="rect" href="namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a" title="Converts a string to a positive integer." alt="" coords="481,397,590,422"/>
+<area shape="poly" title=" " alt="" coords="400,407,467,407,467,412,400,412"/>
+<area shape="poly" title=" " alt="" coords="384,363,478,390,476,395,383,368"/>
+<area shape="poly" title=" " alt="" coords="384,107,453,127,452,132,383,112"/>
+<area shape="poly" title=" " alt="" coords="400,151,435,151,435,156,400,156"/>
+<area shape="poly" title=" " alt="" coords="383,451,476,423,478,428,384,456"/>
+<area shape="rect" href="namespaceconfig.html#ab0ce9a159a3d72a05a0321e13dcdac80" title="Checks if a string is a number." alt="" coords="467,461,604,486"/>
+<area shape="poly" title=" " alt="" coords="400,471,453,471,453,476,400,476"/>
+<area shape="rect" href="namespaceshared_1_1string.html#af85298827aba4985d2318526e69ee0d6" title="Splits a path into its components." alt="" coords="448,525,623,550"/>
+<area shape="poly" title=" " alt="" coords="400,535,434,535,434,540,400,540"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="671,525,833,550"/>
+<area shape="poly" title=" " alt="" coords="623,535,657,535,657,540,623,540"/>
+<area shape="poly" title=" " alt="" coords="373,259,399,247,452,214,498,180,501,184,455,218,401,252,375,264"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="454,237,617,262"/>
+<area shape="poly" title=" " alt="" coords="400,266,440,260,441,266,400,272"/>
+<area shape="poly" title=" " alt="" coords="383,195,452,175,453,180,384,200"/>
+<area shape="poly" title=" " alt="" coords="400,227,441,233,440,238,400,232"/>
 </map>
 </div>
 
