@@ -3,6 +3,7 @@
 #include "config/Parser.hpp"
 #include "http/Request.hpp"
 #include "http/Response.hpp"
+#include "http/Router.hpp"
 #include "shared/NonCopyable.hpp"
 
 namespace http {
@@ -13,15 +14,21 @@ namespace http {
 	 */
 	class ARequestHandler : shared::NonCopyable {
 		public:
-			ARequestHandler(const config::Location& locations)
-				: m_locations(locations) {}
+			ARequestHandler(Router& router)
+				: m_router(router) {}
 
 			virtual ~ARequestHandler() {}
 
-			virtual void handle(const Request& req, Response& res) = 0;
+			virtual void handle(const Request& request, Response& response) = 0;
 
-		private:
-			config::Location m_locations;
+			void handleError(Response& response) {
+				response.setBody(getErrorPage(response.getStatusCode()));
+				response.setHeader("Content-Length", shared::string::fromNum(response.getBody().length()));
+				response.setHeader("Content-Type", TEXT_HTML);
+			}
+
+		protected:
+			Router& m_router;
 	};
 
 } /* namespace http */

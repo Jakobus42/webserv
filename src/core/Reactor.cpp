@@ -30,13 +30,13 @@ namespace core {
 	Reactor::~Reactor() {
 	}
 
-	void Reactor::init(config::t_config_data& conf) {
+	void Reactor::init(const std::vector<config::ServerConfig>& serverConfigs) {
 		signal(SIGINT, handleSigint);
 		signal(SIGQUIT, SIG_IGN);
 
 
-		for (size_t i = 0; i < conf.servers.size(); ++i) {
-			m_vServers.push_back(http::VirtualServer(conf.servers.at(i)));
+		for (size_t i = 0; i < serverConfigs.size(); ++i) {
+			m_vServers.push_back(http::VirtualServer(serverConfigs.at(i)));
 			http::VirtualServer& vServer = m_vServers.back();
 			vServer.init();
 

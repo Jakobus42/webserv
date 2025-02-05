@@ -2,11 +2,12 @@
 
 #include "config/Parser.hpp"
 #include "http/ARequestHandler.hpp"
+#include "http/RequestParser.hpp"
+#include "http/Router.hpp"
 #include "http/http.hpp"
 #include "shared/NonCopyable.hpp"
 
 #include <deque>
-#include <http/RequestParser.hpp>
 #include <map>
 
 namespace http {
@@ -17,15 +18,12 @@ namespace http {
 	 */
 	class RequestProcessor : shared::NonCopyable {
 		public:
-			RequestProcessor(std::vector<config::Location> locations);
+			RequestProcessor(Router& router);
 			~RequestProcessor();
 
 			Response* process(Request& req);
 
-
-
-			// for testing purposes
-			void printLocation(const config::Location& location, int detailed);
+			// TODO: remove testing function
 			int testParseURI(const std::string& uri, int mode);
 
 		private:
@@ -34,9 +32,7 @@ namespace http {
 		private:
 			Response* m_res;
 			std::map<Method, ARequestHandler*> m_handlers;
-			std::vector<config::Location> m_locations;
-
-			int findLocation(const std::string& uri, const std::vector<config::Location>& locations, config::Location& location);
+			Router& m_router;
 	};
 
 } /* namespace http */

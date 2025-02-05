@@ -41,6 +41,7 @@ namespace http {
 			statusMessages[SERVICE_UNAVAILABLE] = "Service Unavailable";
 			statusMessages[GATEWAY_TIMEOUT] = "Gateway Timeout";
 			statusMessages[HTTP_VERSION_NOT_SUPPORTED] = "HTTP Version Not Supported";
+			statusMessages[LOOP_DETECTED] = "Loop Detected";
 		}
 
 		std::map<StatusCode, std::string>::const_iterator it = statusMessages.find(statusCode);
@@ -87,7 +88,8 @@ namespace http {
 
 		char errorPage[1024];
 		const char* statusMessage = getStatusMessage(statusCode).c_str();
-		snprintf(errorPage, sizeof(errorPage), errorPageTemplate, statusCode, statusMessage, statusCode, statusMessage);
+		std::cout << "getErrorPage writing: " << statusCode << " " << statusMessage << std::endl;
+		snprintf(errorPage, sizeof(errorPage), errorPageTemplate, statusCode, statusMessage, statusCode, statusMessage); // TODO: replace this with a legal function
 
 		return std::string(errorPage);
 	}

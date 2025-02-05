@@ -10,12 +10,10 @@ namespace http {
 	 */
 	class GetHandler : public ARequestHandler {
 		public:
-			GetHandler(const config::Location& locations);
+			GetHandler(Router& router);
 			~GetHandler();
 
-			void handle(const Request& req, Response& res);
-
-		private:
+			void handle(const Request& request, Response& response);
 	};
 
 } /* namespace http */

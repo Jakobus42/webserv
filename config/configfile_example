@@ -10,6 +10,17 @@ server
 	# Limit client body size
 	client_max_body_size 10000000;
 
+	global_root /workspaces/webserv; # TODO: this is mandatory, verify
+	data_dir /www; # TODO: this is also mandatory, verify
+	# global_root directory must exist and be accessible, otherwise exit with an error code
+	# it is also where the server binary, cgi-bin/ and www/ directories must be located
+	# each of these directories should probably also be checked for existence & access permissions
+	# TODO: ensure this and other paths can't be relative
+	# TODO: alternatively, ensure that relative paths are valid and accessible
+	# TODO: figure out if we should actually store global_root + /www
+	# probably not, since cgi-bin/ and www/ are both in this folder
+	# TODO: make fetch routing
+
 	# Default server for unspecified routes
 
 	# Example of a route with multiple rules 
@@ -28,29 +39,31 @@ server
 	    # Accepted HTTP methods
 	    limit_except GET POST DELETE;
 	    # Directory configuration
-	    root /tmp/www;  # Base directory
+	    root /foo;  # Base directory
 	    autoindex on;  # Enable directory listing
 	    index default.html;  # Default file in directory   
 	    # Executing CGI scripts for .php files
-	    location /kapouet/hi
+	    location /hi
 		{
-			root /123/234;  # Base directory
+			root /foo/bar;  # Base directory
+			limit_except GET POST;
 	        #include fastcgi_params;
 	        #fastcgi_pass 127.0.0.1:9000;  # Assuming PHP-FPM is running
 	        #fastcgi_index index.php;
 			#fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-			location /kapouet/hi/hi2
+			location /hi2
 			{
+				return /kapouet/upload;
 				root /123/234/345;
 			}
 	    }
 	    # Handle file uploads
-	    location /kapouet/upload
+	    location /upload
 		{
 	        #client_max_body_size 20M;  # Allow larger uploads
 	        #try_files $uri =404;  # Check if the directory exists
 	        root /tmp/uploads;  # Where to save uploads
-			location /kapouet/upload/hi
+			location /hi
 			{
 
 			}

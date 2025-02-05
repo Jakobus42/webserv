@@ -10,10 +10,10 @@ namespace http {
 	 */
 	class PostHandler : public ARequestHandler {
 		public:
-			PostHandler(const config::Location& locations);
+			PostHandler(Router& router);
 			~PostHandler();
 
-			void handle(const Request& req, Response& res);
+			void handle(const Request& request, Response& response);
 	};
 
 } /* namespace http */

@@ -11,10 +11,10 @@ int main(int argc, char** const argv) {
 		config::ConfigFileParser configFileParser;
 		if (configFileParser.loadConfigFile(configPath) == 1)
 			return 1;
-		config::t_config_data configData = configFileParser.getConfigData();
+		const std::vector<config::ServerConfig>& serverConfigs = configFileParser.getServerConfigs();
 
 		core::Reactor reactor;
-		reactor.init(configData);
+		reactor.init(serverConfigs);
 		reactor.react();
 	} catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;

@@ -21,11 +21,12 @@ namespace http {
 	/**
 	 * @brief Constructs a new VirtualServer object.
 	 */
-	VirtualServer::VirtualServer(config::t_server& conf)
+	VirtualServer::VirtualServer(const config::ServerConfig& conf)
 		: m_config(conf)
 		, m_clients()
 		, m_listenSocket(-1)
-		, m_logger() {
+		, m_logger()
+		, m_router(conf.locations, conf.globalRoot) {
 	}
 
 	/**
@@ -48,7 +49,9 @@ namespace http {
 	VirtualServer::VirtualServer(const VirtualServer& other)
 		: m_config(other.m_config)
 		, m_clients(other.m_clients)
-		, m_listenSocket(other.m_listenSocket) {
+		, m_listenSocket(other.m_listenSocket)
+		, m_logger()
+		, m_router(other.m_router) {
 	}
 
 	/**
@@ -56,12 +59,13 @@ namespace http {
 	 * @param other The other VirtualServer object to assign from.
 	 * @return A reference to the assigned VirtualServer object.
 	 */
-	VirtualServer& VirtualServer::operator=(const VirtualServer& rhs) {
+	const VirtualServer& VirtualServer::operator=(const VirtualServer& rhs) {
 		if (this == &rhs)
 			return *this;
 		m_config = rhs.m_config;
 		m_clients = rhs.m_clients;
 		m_listenSocket = rhs.m_listenSocket;
+		m_router = rhs.m_router;
 		return *this;
 	}
 
@@ -200,6 +204,8 @@ namespace http {
 
 	std::map<int32_t, time_t>& VirtualServer::getClients(void) { return m_clients; }
 
-	const config::t_server& VirtualServer::getConfig() const { return m_config; }
+	const config::ServerConfig& VirtualServer::getConfig() const { return m_config; }
+
+	Router& VirtualServer::getRouter() { return m_router; }
 
 } // namespace http

@@ -1,6 +1,8 @@
 #pragma once
 
+#include "config/Location.hpp"
 #include "http/http.hpp"
+#include "http/types.hpp"
 #include "shared/NonCopyable.hpp"
 
 #include <map>
@@ -8,30 +10,6 @@
 #include <vector>
 
 namespace http {
-
-	enum RequestType {
-		FETCH,
-		CGI
-	};
-
-	struct Uri {
-			std::string scheme;
-			std::string authority;
-			std::string path;
-			std::string query;
-			std::string cgiPathInfo;
-
-			Uri()
-				: scheme()
-				, authority()
-				, path()
-				, query()
-				, cgiPathInfo() {}
-
-			bool isAbsoluteForm() {
-				return path.length() > 0 ? path[0] != '/' : false;
-			}
-	};
 
 	/**
 	 * @class Request
@@ -45,6 +23,8 @@ namespace http {
 			std::string toString() const;
 			RequestType getType() const;
 			Method getMethod() const;
+			Uri& getUri();
+			const Uri& getUri() const;
 			std::string& getUriRaw();
 			const std::string& getUriRaw() const;
 			const std::string& getVersion() const;
@@ -52,9 +32,8 @@ namespace http {
 			const std::map<std::string, std::vector<std::string> >& getHeaders() const;
 			const std::vector<std::string>& getHeader(const std::string& key) const;
 			StatusCode getStatusCode() const;
-			Uri& getUri();
 			bool hasError() const;
-			// t_requestData getRequestData() const;
+			const config::Location* getLocation() const;
 
 			void setType(RequestType type);
 			void setMethod(const char* method, std::size_t len);
@@ -63,6 +42,7 @@ namespace http {
 			void setBody(const char* body, std::size_t len);
 			void setHeader(const char* key, std::size_t keyLen, const char* value, std::size_t valueLen);
 			void setStatusCode(StatusCode statusCode);
+			void setLocation(const config::Location* location);
 
 			bool hasHeader(const std::string& key) const;
 
@@ -87,6 +67,7 @@ namespace http {
 
 			http::StatusCode m_statusCode;
 			Uri m_uri;
+			const config::Location* m_requestedLocation;
 	};
 
 } /* namespace http */

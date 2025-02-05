@@ -3,6 +3,7 @@
 #include <stdint.h>
 
 #include "config/Parser.hpp"
+#include "http/Router.hpp"
 #include "shared/Logger.hpp"
 
 #include <string>
@@ -16,10 +17,10 @@ namespace http {
 	 */
 	class VirtualServer {
 		public:
-			VirtualServer(config::t_server& conf);
+			VirtualServer(const config::ServerConfig& conf);
 			~VirtualServer();
 			VirtualServer(const VirtualServer& other);
-			VirtualServer& operator=(const VirtualServer& other);
+			const VirtualServer& operator=(const VirtualServer& other);
 
 			void init();
 			int32_t acceptClient();
@@ -33,7 +34,8 @@ namespace http {
 			int32_t getSocket(void);
 			const std::map<int32_t, time_t>& getClients(void) const;
 			std::map<int32_t, time_t>& getClients(void);
-			const config::t_server& getConfig() const;
+			const config::ServerConfig& getConfig() const;
+			Router& getRouter();
 
 		private:
 			void setNonBlocking(int32_t socket);
@@ -44,10 +46,11 @@ namespace http {
 		private:
 			static const time_t CLIENT_TIMEOUT = 3;
 
-			config::t_server& m_config;
+			config::ServerConfig m_config;
 			std::map<int32_t, time_t> m_clients; // first is client fd and second is last activity/
 			int32_t m_listenSocket;
 			shared::Logger m_logger;
+			Router m_router;
 	};
 
 } // namespace http

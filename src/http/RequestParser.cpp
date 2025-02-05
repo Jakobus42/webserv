@@ -1,5 +1,6 @@
 #include "http/RequestParser.hpp"
 
+#include "http/Router.hpp"
 #include "shared/stringUtils.hpp"
 
 #include <algorithm>
@@ -25,6 +26,7 @@ namespace http {
 		try {
 			this->parse();
 		} catch (const http::exception& e) {
+			std::cout << "SHIT, " << e.getMessage() << std::endl;
 			m_req.setStatusCode(e.getCode());
 			this->setState(ERROR);
 		} catch (const std::exception& e) {
@@ -169,6 +171,7 @@ namespace http {
 		} else {
 			uri.cgiPathInfo = ""; // should never be read in this case
 		}
+		uri.pathSegments = Router::splitPath(uri.path);
 		// TODO: should we parse this at all?
 		// also, should we check if we accept the script here?
 	}
@@ -212,8 +215,8 @@ namespace http {
 			uri.query = "";
 		}
 		uri.path = path.substr(path.find('/'));
-		uri.scheme = scheme;
-		uri.authority = authority;
+		uri.scheme = scheme;	   // likely unused
+		uri.authority = authority; // likely unused
 		parsePath();
 	}
 

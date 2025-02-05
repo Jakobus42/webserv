@@ -10,12 +10,10 @@ namespace http {
 	 */
 	class DeleteHandler : public ARequestHandler {
 		public:
-			DeleteHandler(const config::Location& locations);
+			DeleteHandler(Router& router);
 			~DeleteHandler();
 
-			void handle(const Request& req, Response& res);
-
-		private:
+			void handle(const Request& request, Response& response);
 	};
 
 } /* namespace http */

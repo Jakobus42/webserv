@@ -192,14 +192,27 @@ namespace config {
 		unsigned long i = 0;
 		int lineCount = 0;
 		if (parseConfigFile(file, 0, i, lineCount) == 1) {
-			m_configData.servers.clear();
+			m_serverConfigs.clear();
 			return 1;
 		}
-		if (m_configData.servers.size() == 0) {
+		if (m_serverConfigs.empty()) {
 			std::cout << "Configuration file (line "
 					  << lineCount << "): "
 					  << "No servers found in configuration file" << std::endl;
 			return 1;
+		}
+		for (std::size_t index = 0; index < m_serverConfigs.size(); ++index) {
+			if (!m_serverConfigs[index].hasGlobalRoot()) {
+				std::cout << "Configuration error: Server block " << index + 1
+						  << " missing mandatory global_root directive" << std::endl;
+				return 1;
+			}
+			if (!m_serverConfigs[index].hasDataDir()) {
+				std::cout << "Configuration error: Server block " << index + 1
+						  << " missing mandatory data_dir directive" << std::endl;
+				return 1;
+			}
+			m_serverConfigs[index].globalRoot.locations = m_serverConfigs[index].locations;
 		}
 		m_isLoaded = 1;
 		return 0;
@@ -209,36 +222,36 @@ namespace config {
 		return m_isLoaded;
 	}
 
-	t_config_data ConfigFileParser::getConfigData() const {
-		return m_configData;
+	const std::vector<config::ServerConfig>& ConfigFileParser::getServerConfigs() const {
+		return m_serverConfigs;
 	}
 
 	int ConfigFileParser::getServerSize() const {
-		return m_configData.servers.size();
+		return m_serverConfigs.size();
 	}
 
 	int ConfigFileParser::getServerPort(int index) const {
-		return m_configData.servers[index].port;
+		return m_serverConfigs[index].port;
 	}
 
 	uint32_t ConfigFileParser::getServerIp(int index) const {
-		return m_configData.servers[index].ip_address;
+		return m_serverConfigs[index].ip_address;
 	}
 
 	std::vector<std::string> ConfigFileParser::getServerNames(int index) const {
-		return m_configData.servers[index].server_names;
+		return m_serverConfigs[index].server_names;
 	}
 
 	std::map<int, std::string> ConfigFileParser::getErrorPages(int index) const {
-		return m_configData.servers[index].errorPages;
+		return m_serverConfigs[index].errorPages;
 	}
 
 	unsigned long ConfigFileParser::getMaxBodySize(int index) const {
-		return m_configData.servers[index].max_body_size;
+		return m_serverConfigs[index].max_body_size;
 	}
 
-	t_server* ConfigFileParser::getServer(int index) {
-		return &m_configData.servers[index];
+	ServerConfig* ConfigFileParser::getServerConfig(int index) {
+		return &m_serverConfigs[index];
 	}
 
 } // namespace config
