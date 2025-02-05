@@ -3,8 +3,7 @@ var annotated_dup =
     [ "config", "namespaceconfig.html", [
       [ "ConfigFileParser", "classconfig_1_1ConfigFileParser.html", "classconfig_1_1ConfigFileParser" ],
       [ "Location", "structconfig_1_1Location.html", "structconfig_1_1Location" ],
-      [ "s_config_data", "structconfig_1_1s__config__data.html", "structconfig_1_1s__config__data" ],
-      [ "s_server", "structconfig_1_1s__server.html", "structconfig_1_1s__server" ]
+      [ "ServerConfig", "structconfig_1_1ServerConfig.html", "structconfig_1_1ServerConfig" ]
     ] ],
     [ "core", "namespacecore.html", [
       [ "AcceptHandler", "classcore_1_1AcceptHandler.html", "classcore_1_1AcceptHandler" ],
@@ -16,9 +15,9 @@ var annotated_dup =
     [ "http", "namespacehttp.html", [
       [ "ARequestHandler", "classhttp_1_1ARequestHandler.html", "classhttp_1_1ARequestHandler" ],
       [ "DeleteHandler", "classhttp_1_1DeleteHandler.html", "classhttp_1_1DeleteHandler" ],
-      [ "ErrorHandler", "classhttp_1_1ErrorHandler.html", "classhttp_1_1ErrorHandler" ],
       [ "exception", "classhttp_1_1exception.html", "classhttp_1_1exception" ],
       [ "GetHandler", "classhttp_1_1GetHandler.html", "classhttp_1_1GetHandler" ],
+      [ "GoodRouter", "classhttp_1_1GoodRouter.html", "classhttp_1_1GoodRouter" ],
       [ "PostHandler", "classhttp_1_1PostHandler.html", "classhttp_1_1PostHandler" ],
       [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
       [ "RequestParser", "classhttp_1_1RequestParser.html", "classhttp_1_1RequestParser" ],

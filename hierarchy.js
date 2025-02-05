@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "config::ConfigFileParser", "classconfig_1_1ConfigFileParser.html", null ],
+    [ "http::GoodRouter", "classhttp_1_1GoodRouter.html", null ],
     [ "config::Location", "structconfig_1_1Location.html", null ],
     [ "shared::NonCopyable", "classshared_1_1NonCopyable.html", [
       [ "shared::Buffer< REQUEST_BUFFER_SIZE >", "classshared_1_1Buffer.html", null ],
@@ -13,7 +14,6 @@ var hierarchy =
       [ "core::Reactor", "classcore_1_1Reactor.html", null ],
       [ "http::ARequestHandler", "classhttp_1_1ARequestHandler.html", [
         [ "http::DeleteHandler", "classhttp_1_1DeleteHandler.html", null ],
-        [ "http::ErrorHandler", "classhttp_1_1ErrorHandler.html", null ],
         [ "http::GetHandler", "classhttp_1_1GetHandler.html", null ],
         [ "http::PostHandler", "classhttp_1_1PostHandler.html", null ]
       ] ],
@@ -27,8 +27,7 @@ var hierarchy =
     [ "std::runtime_error", null, [
       [ "http::exception", "classhttp_1_1exception.html", null ]
     ] ],
-    [ "config::s_config_data", "structconfig_1_1s__config__data.html", null ],
-    [ "config::s_server", "structconfig_1_1s__server.html", null ],
+    [ "config::ServerConfig", "structconfig_1_1ServerConfig.html", null ],
     [ "http::RequestParser::Token", "structhttp_1_1RequestParser_1_1Token.html", null ],
     [ "http::Uri", "structhttp_1_1Uri.html", null ],
     [ "http::VirtualServer", "classhttp_1_1VirtualServer.html", null ]

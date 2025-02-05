@@ -1,12 +1,14 @@
 <map id="http::RequestParser::parseUriAbsoluteForm" name="http::RequestParser::parseUriAbsoluteForm">
-<area shape="rect" id="Node000001" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="5,19,180,59"/>
-<area shape="rect" id="Node000002" href="$classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="466,5,623,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,18,228,11,344,6,452,9,452,14,345,12,228,17,181,23"/>
-<area shape="rect" id="Node000003" href="$classhttp_1_1Request.html#a6cba672bca7a36a8164b42e30ac6919b" title=" " alt="" coords="228,27,413,52"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="180,37,214,37,214,42,180,42"/>
-<area shape="rect" id="Node000004" href="$classhttp_1_1RequestParser.html#a80446234d3c666253d3d485c2ce8e46c" title=" " alt="" coords="246,77,395,117"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="173,57,233,72,232,77,172,62"/>
-<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="379,74,412,62,495,33,496,38,414,67,380,79"/>
-<area shape="rect" id="Node000005" href="$classhttp_1_1Request.html#a4e737b293ae1b8a099e732df86eceb04" title=" " alt="" coords="461,84,628,109"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="396,94,447,94,447,99,396,99"/>
+<area shape="rect" id="Node000001" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="5,31,180,71"/>
+<area shape="rect" id="Node000002" href="$classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="481,5,639,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,30,228,23,353,15,468,14,468,19,353,20,228,29,181,36"/>
+<area shape="rect" id="Node000003" href="$classhttp_1_1Request.html#a6cba672bca7a36a8164b42e30ac6919b" title=" " alt="" coords="228,39,413,64"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="180,49,214,49,214,54,180,54"/>
+<area shape="rect" id="Node000004" href="$classhttp_1_1RequestParser.html#a80446234d3c666253d3d485c2ce8e46c" title=" " alt="" coords="246,89,395,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="173,69,233,84,232,89,172,74"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="380,86,412,74,515,33,517,38,414,79,382,91"/>
+<area shape="rect" id="Node000005" href="$classhttp_1_1Request.html#a4e737b293ae1b8a099e732df86eceb04" title=" " alt="" coords="477,71,643,96"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="395,98,462,91,463,96,396,103"/>
+<area shape="rect" id="Node000006" href="$classhttp_1_1GoodRouter.html#a23d64565011203cda75e208ad27dfa28" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="461,120,659,145"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="396,113,448,119,447,124,395,119"/>
 </map>

@@ -2,9 +2,9 @@ var namespacehttp =
 [
     [ "ARequestHandler", "classhttp_1_1ARequestHandler.html", "classhttp_1_1ARequestHandler" ],
     [ "DeleteHandler", "classhttp_1_1DeleteHandler.html", "classhttp_1_1DeleteHandler" ],
-    [ "ErrorHandler", "classhttp_1_1ErrorHandler.html", "classhttp_1_1ErrorHandler" ],
     [ "exception", "classhttp_1_1exception.html", "classhttp_1_1exception" ],
     [ "GetHandler", "classhttp_1_1GetHandler.html", "classhttp_1_1GetHandler" ],
+    [ "GoodRouter", "classhttp_1_1GoodRouter.html", "classhttp_1_1GoodRouter" ],
     [ "PostHandler", "classhttp_1_1PostHandler.html", "classhttp_1_1PostHandler" ],
     [ "Request", "classhttp_1_1Request.html", "classhttp_1_1Request" ],
     [ "RequestParser", "classhttp_1_1RequestParser.html", "classhttp_1_1RequestParser" ],
@@ -12,6 +12,11 @@ var namespacehttp =
     [ "Response", "classhttp_1_1Response.html", "classhttp_1_1Response" ],
     [ "Uri", "structhttp_1_1Uri.html", "structhttp_1_1Uri" ],
     [ "VirtualServer", "classhttp_1_1VirtualServer.html", "classhttp_1_1VirtualServer" ],
+    [ "FileType", "namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfa", [
+      [ "FILE", "namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaf588e02f8d0cc2fa280d47d9beb900db", null ],
+      [ "DIRECTORY", "namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaa0612c5b78b5641671e6de05d375881d0", null ],
+      [ "_NOT_FOUND", "namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d", null ]
+    ] ],
     [ "Method", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cf", [
       [ "GET", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0", null ],
       [ "POST", "namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab", null ],
@@ -56,13 +61,11 @@ var namespacehttp =
       [ "BAD_GATEWAY", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a28f37481a1370680536f38437874e5a7", null ],
       [ "SERVICE_UNAVAILABLE", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a884dcbd834ba0952d75e6418b7dad03c", null ],
       [ "GATEWAY_TIMEOUT", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a87353b86a06472ac0dea6f4580bf6683", null ],
-      [ "HTTP_VERSION_NOT_SUPPORTED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff", null ]
+      [ "HTTP_VERSION_NOT_SUPPORTED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff", null ],
+      [ "LOOP_DETECTED", "namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af821caf2cfdc4a65b948ad4862cadaf8", null ]
     ] ],
-    [ "comparePaths", "namespacehttp.html#af53527dc191aa272273c082e52afefe8", null ],
-    [ "getDirectoryListing", "namespacehttp.html#a53e0ccf4cd226a7993e3ba0f0eb29a32", null ],
     [ "getErrorPage", "namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d", null ],
     [ "getMethodString", "namespacehttp.html#a1d02d0271977cac915906163e6cbca8c", null ],
-    [ "getRootPath", "namespacehttp.html#a9b53d13032eeed179016db458db9bf07", null ],
     [ "getStatusMessage", "namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc", null ],
     [ "stringToMethod", "namespacehttp.html#aff35f6b0992332ad3e28219095ddb385", null ],
     [ "CRLF", "namespacehttp.html#a95083d38512d4f49548403fa8bbbc020", null ],
