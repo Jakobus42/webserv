@@ -45,7 +45,7 @@ namespace http {
 	std::string getErrorPage(StatusCode statusCode);
 	std::string getMethodString(Method method);
 	Method stringToMethod(const std::string& method);
-	bool getDirectoryListing(const std::string& path, std::string& body);
+	bool getDirectoryListing(const std::string& path, std::string& body, const std::string& root);
 	bool getRootPath(std::string& rootPath);
 
 } // namespace http

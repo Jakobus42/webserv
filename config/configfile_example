@@ -39,7 +39,7 @@ server
 	    # Accepted HTTP methods
 	    limit_except GET POST DELETE;
 	    # Directory configuration
-	    root /foo;  # Base directory
+	    root /;  # Base directory
 	    autoindex on;  # Enable directory listing
 	    index default.html;  # Default file in directory   
 	    # Executing CGI scripts for .php files

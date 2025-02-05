@@ -122,90 +122,87 @@ namespace http {
 		return oss.str(); // Only one construction of the string
 	}
 
-	bool getDirectoryListing(const std::string& path, std::string& body) {
-		static const char* DlTemplate = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\""
-										"content=\"width=device-width, initial-scale=1.0\"><title>Directory Listing</title><style>body{font-family:Arial,sans-serif;"
-										"margin:0;padding:0;background-color:#f8f9fa;}.container{max-width:800px;margin:50px auto;padding:20px;background:#fff;box-shadow:0 "
-										"4px 6px rgba(0,0,0,0.1);border-radius:8px;}h1{font-size:1.8rem;color:#333;text-align:center;}ul{list-style-type:none;padding:0;}"
-										"li{padding:8px 10px;border-bottom:1px solid #e0e0e0;}li a{text-decoration:none;color:#007bff;transition:color 0.3s;}"
-										"li a:hover{color:#0056b3;}</style></head><body><div class=\"container\"><h1>Directory Listing</h1><ul>";
-		static const char* DlTemplateEnd = "</ul></div></body></html>";
-		std::string bodyTemp;
-
-		bodyTemp = DlTemplate;
+	bool getDirectoryListing(const std::string& path, std::string& body, const std::string& root) { // temporarily pass root path as parameter
+		static const char* DL_TEMPLATE = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\""
+										 "content=\"width=device-width, initial-scale=1.0\"><title>Directory Listing</title><style>body{font-family:Arial,sans-serif;"
+										 "margin:0;padding:0;background-color:#f8f9fa;}.container{max-width:800px;margin:50px auto;padding:20px;background:#fff;box-shadow:0 "
+										 "4px 6px rgba(0,0,0,0.1);border-radius:8px;}h1{font-size:1.8rem;color:#333;text-align:center;}ul{list-style-type:none;padding:0;}"
+										 "li{padding:8px 10px;border-bottom:1px solid #e0e0e0;}li a{text-decoration:none;color:#007bff;transition:color 0.3s;}"
+										 "li a:hover{color:#0056b3;}</style></head><body><div class=\"container\"><h1>Directory Listing</h1><ul>";
+		static const char* DL_TEMPLATE_END = "</ul></div></body></html>";
+		std::string bodyTemp = DL_TEMPLATE;
+		std::string rootPath = root;
 		DIR* dir;
-		std::string rootPath;
-		getRootPath(rootPath);
+
+		std::cout << "Path in getDirListing: " << path << std::endl;
+		std::cout << "Root in getDirListing: " << root << std::endl;
 		/* 		if (rootPath[rootPath.size() - 1] != '/') {
 					rootPath += "/";
 				} */
-		rootPath += path;
-		if ((dir = opendir(rootPath.c_str())) != NULL) {
-			struct dirent* ent;
-			while ((ent = readdir(dir)) != NULL) {
-				if (std::string(ent->d_name) == ".") {
-					continue;
-				}
-				if (std::string(ent->d_name) == "..") {
-					if (path == "/" || path == "") {
-						continue;
-					}
-				}
-				if (ent->d_type == DT_DIR) {
-					std::string link = "<a href=\"" + std::string(ent->d_name) + "/" + "\">" + std::string(ent->d_name) + "/</a>";
-					bodyTemp += "<li>" + link + "</li>";
-					// std::cout << "Dir: " << ent->d_name << std::endl;
-				} else {
-					std::string link = "<a href=\"" + std::string(ent->d_name) + "\">" + std::string(ent->d_name) + "</a>";
-					bodyTemp += "<li>" + link + "</li>";
-				}
-			}
-			closedir(dir);
-		} else {
+		rootPath += path; // TODO: should be relative path, i.e. without leading /root/dataDir, currently breaks
+		if ((dir = opendir(rootPath.c_str())) == NULL) {
 			return false;
 		}
-		body = bodyTemp + DlTemplateEnd;
+		struct dirent* ent;
+		while ((ent = readdir(dir)) != NULL) {
+			std::string dirName(ent->d_name);
+			std::cout << "Found dir: " << dirName << std::endl;
+
+			if (dirName == ".") {
+				continue;
+			}
+			if (dirName == ".." && (path == "/" || path == "")) {
+				continue;
+			}
+			std::string link;
+			if (ent->d_type == DT_DIR) {
+				link = "<a href=\"" + dirName + "/" + "\">" + dirName + "/</a>";
+			} else {
+				link = "<a href=\"" + dirName + "\">" + dirName + "</a>";
+			}
+			bodyTemp += "<li>" + link + "</li>"; // TODO: links to directories and routes still break
+			std::cout << "Setting url to: " << link << std::endl;
+		}
+		closedir(dir);
+		body = bodyTemp + DL_TEMPLATE_END;
 		return true;
 	}
 
-	bool getRootPath(std::string& path) {
-		static std::string rootPath;
-		if (!rootPath.empty()) {
-			path = rootPath;
-			return true;
-		}
-		DIR* dir;
-		// get current directory
-		char buffer[1024];
-		if (getcwd(buffer, 1024) == NULL) {
-			LOG("Error getting current directory", shared::FATAL);
-			return false;
-		}
-		bool foundWWW = false;
-		/* bool foundCGI = false; */
-		if ((dir = opendir(buffer)) != NULL) {
-			struct dirent* ent;
-			while ((ent = readdir(dir)) != NULL) {
-				if (std::string(ent->d_name) == "www") {
-					rootPath = std::string(buffer) + "/www";
-					foundWWW = true;
-				}
-				/* 				if (std::string(ent->d_name) == ".cgi")
-								{
-									foundCGI = true;
-								} */
-			}
-			closedir(dir);
-		} else {
-			LOG("Error opening current directory", shared::FATAL);
-			return false;
-		}
-		if (foundWWW) // && foundCGI)
-		{
-			return true;
-		}
-		LOG("Error finding www and .cgi directory", shared::FATAL);
-		return false;
-	}
+	// bool getRootPath(std::string& path) {
+	// 	static std::string rootPath;
+	// 	if (!rootPath.empty()) {
+	// 		path = rootPath;
+	// 		return true;
+	// 	}
+	// 	DIR* dir;
+	// 	// get current directory
+	// 	char buffer[1024];
+	// 	if (getcwd(buffer, 1024) == NULL) {
+	// 		LOG("Error getting current directory", shared::FATAL);
+	// 		return false;
+	// 	}
+	// 	bool foundWWW = false;
+	// 	/* bool foundCGI = false; */
+	// 	if ((dir = opendir(buffer)) == NULL) {
+	// 		LOG("Error opening current directory", shared::FATAL);
+	// 		return false;
+	// 	}
+	// 	struct dirent* ent;
+	// 	while ((ent = readdir(dir)) != NULL) {
+	// 		if (std::string(ent->d_name) == "www") {
+	// 			rootPath = std::string(buffer) + "/www";
+	// 			foundWWW = true;
+	// 		}
+	// 		/* 				if (std::string(ent->d_name) == ".cgi") {
+	// 							foundCGI = true;
+	// 						} */
+	// 	}
+	// 	closedir(dir);
+	// 	if (foundWWW) { // && foundCGI)
+	// 		return true;
+	// 	}
+	// 	LOG("Error finding www and .cgi directory", shared::FATAL);
+	// 	return false;
+	// }
 
 } // namespace http
