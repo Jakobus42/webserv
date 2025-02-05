@@ -11,6 +11,7 @@ var structconfig_1_1ServerConfig =
     [ "ip_address", "structconfig_1_1ServerConfig.html#a5bbc3a33a999cfff71061c9a592f4780", null ],
     [ "locations", "structconfig_1_1ServerConfig.html#a061ce1d2e07af7741aea4653dd035a49", null ],
     [ "max_body_size", "structconfig_1_1ServerConfig.html#a4bda60d4e93080a39348872afd68c604", null ],
+    [ "PATH_MAX_LEN", "structconfig_1_1ServerConfig.html#a87d3745fca5ddd95b13129bcbdbd7118", null ],
     [ "port", "structconfig_1_1ServerConfig.html#a6b6ff3a3b9caa186ebc71a82a020a22d", null ],
     [ "server_names", "structconfig_1_1ServerConfig.html#aaab5048e574d3977aa45833350e95215", null ]
 ];
