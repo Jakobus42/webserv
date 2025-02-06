@@ -39,14 +39,14 @@ namespace http {
 				if (fileType == _NOT_FOUND) {
 					throw http::exception(NOT_FOUND, "File or directory not found");
 				}
-				if (location.second->allowedMethods.find(req.getMethod()) == location.second->allowedMethods.end()) { // TODO: probably shouldn't check this here, causes files that
-					throw http::exception(METHOD_NOT_ALLOWED, "HTTP method not allowed for this route");			  //       access root or its subdirectories to always return 405
-				}																									  // TODO: also double-check whether allowed methods should cascade
+				if (!location.second->allowedMethods.empty() && location.second->allowedMethods.find(req.getMethod()) == location.second->allowedMethods.end()) { // TODO: probably shouldn't check this here, causes files that
+					throw http::exception(METHOD_NOT_ALLOWED, "HTTP method not allowed for this route");														  //       access root or its subdirectories to always return 405
+				}																																				  // TODO: also double-check whether allowed methods should cascade
 				req.getUri().safeAbsolutePath = location.first;
 				req.setLocation(location.second);
 			} catch (const http::exception& e) {
 				std::cout << "CRUD, " << e.getMessage() << std::endl;
-				req.setStatusCode(e.getCode());
+				req.setStatusCode(e.getStatusCode());
 			}
 		}
 
@@ -58,7 +58,7 @@ namespace http {
 			try {
 				m_handlers[req.getMethod()]->handle(req, *m_res); // might throw a http::exception
 			} catch (const http::exception& e) {
-				req.setStatusCode(e.getCode());
+				req.setStatusCode(e.getStatusCode());
 			}
 		}
 		if (req.hasError()) {

@@ -13,19 +13,16 @@ namespace http {
 	 */
 	GetHandler::~GetHandler() {}
 
-	bool GetHandler::getFilePath(const config::Location& location, const std::string& filePath, std::string& target) {
-		if (!location.indexFile.empty()) {
-			for (std::vector<std::string>::const_iterator file = location.indexFile.begin(); file != location.indexFile.end(); ++file) {
-				std::string tmpFilePath = filePath + "/" + *file;
-				FileType tmpFileType = m_router.checkFileType(tmpFilePath);
-				if (tmpFileType == FILE) { // return path to first file in index that exists and isn't a directory
-					std::cout << "getFilePath found file!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
-					target.assign(tmpFilePath);
-					return true;
-				}
+	void GetHandler::getFilePath(const config::Location& location, const std::string& filePath, std::string& target) {
+		for (std::vector<std::string>::const_iterator file = location.indexFile.begin(); file != location.indexFile.end(); ++file) {
+			std::string tmpFilePath = filePath + "/" + *file;
+			FileType tmpFileType = m_router.checkFileType(tmpFilePath);
+			if (tmpFileType == FILE) { // return path to first file in index that exists and isn't a directory
+				std::cout << "getFilePath found file!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
+				target.assign(tmpFilePath);
+				return;
 			}
 		}
-		return false;
 	}
 
 	// in GET, there should be a file name in the path
@@ -37,7 +34,7 @@ namespace http {
 				throw http::exception(NOT_FOUND, "GET: File doesn't exist");
 			}
 			std::string filePath = "";
-			std::string body = "";
+			std::string autoindexBody = "";
 			if (fileType == FILE) {
 				filePath = request.getUri().safeAbsolutePath;
 			}
@@ -45,18 +42,18 @@ namespace http {
 				if (!location.indexFile.empty()) {
 					getFilePath(location, request.getUri().safeAbsolutePath, filePath); // returns true only if filePath isn't still ""
 				}
-				if (filePath.empty() && location.autoindex == true) { // TODO: pretty sus, verify that this works
-					if (getDirectoryListing(filePath, body, Router::joinPath(m_router.getGlobalRoot().root)) == false) {
-						throw http::exception(INTERNAL_SERVER_ERROR, "getDirectoryListing broke during autoindex");
+				if (filePath.empty()) {
+					if (location.autoindex == true) { // TODO: pretty sus, verify that this works
+						autoindexBody = getDirectoryListing(filePath, Router::joinPath(m_router.getGlobalRoot().root));
+					} else {
+						throw http::exception(FORBIDDEN, "GET: Requested location does not have an index");
 					}
-					// we now have HTML body for autoindex
-				} else {
-					throw http::exception(FORBIDDEN, "GET: Requested location does not have an index");
 				}
 			}
+			// if we didn't throw, we now have filePath, or filePath is empty and we have the HTML body for autoindex
 			std::stringstream buffer;
 			if (filePath.empty()) {
-				response.setBody(body);
+				response.setBody(autoindexBody);
 			} else {
 				std::ifstream inFile(filePath.c_str(), std::ios::binary);
 				if (!inFile.is_open()) {
@@ -68,8 +65,8 @@ namespace http {
 			response.setHeader("Content-Length", shared::string::to_string(response.getBody().size()));
 			response.setStatusCode(OK);
 		} catch (const http::exception& e) {
-			std::cout << "CRAP, " << e.getMessage() << "; " << e.getCode() << std::endl;
-			response.setStatusCode(e.getCode());
+			std::cout << "CRAP, " << e.getMessage() << "; " << e.getStatusCode() << std::endl;
+			response.setStatusCode(e.getStatusCode());
 			return handleError(response);
 		}
 	}

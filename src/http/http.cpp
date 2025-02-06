@@ -108,13 +108,9 @@ namespace http {
 
 	exception::~exception() throw() {}
 
-	StatusCode exception::getCode() const {
-		return m_statusCode;
-	}
+	StatusCode exception::getStatusCode() const { return m_statusCode; }
 
-	const std::string& exception::getMessage() const {
-		return m_message;
-	}
+	const std::string& exception::getMessage() const { return m_message; }
 
 	std::string exception::buildErrorMessage(StatusCode statusCode, const std::string& message) {
 		std::ostringstream oss;
@@ -122,7 +118,7 @@ namespace http {
 		return oss.str(); // Only one construction of the string
 	}
 
-	bool getDirectoryListing(const std::string& path, std::string& body, const std::string& root) { // temporarily pass root path as parameter
+	std::string getDirectoryListing(const std::string& path, const std::string& root) { // temporarily pass root path as parameter
 		static const char* DL_TEMPLATE = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\""
 										 "content=\"width=device-width, initial-scale=1.0\"><title>Directory Listing</title><style>body{font-family:Arial,sans-serif;"
 										 "margin:0;padding:0;background-color:#f8f9fa;}.container{max-width:800px;margin:50px auto;padding:20px;background:#fff;box-shadow:0 "
@@ -141,7 +137,7 @@ namespace http {
 				} */
 		rootPath += path; // TODO: should be relative path, i.e. without leading /root/dataDir, currently breaks
 		if ((dir = opendir(rootPath.c_str())) == NULL) {
-			return false;
+			throw http::exception(INTERNAL_SERVER_ERROR, "getDirectoryListing: Couldn't open directory");
 		}
 		struct dirent* ent;
 		while ((ent = readdir(dir)) != NULL) {
@@ -164,8 +160,7 @@ namespace http {
 			std::cout << "Setting url to: " << link << std::endl;
 		}
 		closedir(dir);
-		body = bodyTemp + DL_TEMPLATE_END;
-		return true;
+		return bodyTemp + DL_TEMPLATE_END;
 	}
 
 	// bool getRootPath(std::string& path) {

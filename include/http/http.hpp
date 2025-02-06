@@ -12,6 +12,7 @@
 #include <iostream>
 #include <map>
 #include <sstream>
+#include <string>
 #include <vector>
 
 namespace http {
@@ -30,7 +31,7 @@ namespace http {
 			exception(StatusCode statusCode, const std::string& message);
 			virtual ~exception() throw();
 
-			StatusCode getCode() const;
+			StatusCode getStatusCode() const;
 			const std::string& getMessage() const;
 
 		private:
@@ -45,7 +46,7 @@ namespace http {
 	std::string getErrorPage(StatusCode statusCode);
 	std::string getMethodString(Method method);
 	Method stringToMethod(const std::string& method);
-	bool getDirectoryListing(const std::string& path, std::string& body, const std::string& root);
+	std::string getDirectoryListing(const std::string& path, const std::string& root);
 	bool getRootPath(std::string& rootPath);
 
 } // namespace http
