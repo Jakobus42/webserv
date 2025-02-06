@@ -102,6 +102,10 @@ namespace config {
 			void printLocations(const std::vector<config::Location>& locations, int layer, int detailed, std::vector<int> layer_num);
 			config::Location* getLocation(int layer);
 
+			static int unexpectedCommandError(int lineCount);
+			static int unknownCommandError(int lineCount);
+			static int genericError(int lineCount, const std::string& message);
+
 		private:
 			ConfigFileParser(const ConfigFileParser& other);
 			ConfigFileParser& operator=(const ConfigFileParser& other);
@@ -125,7 +129,7 @@ namespace config {
 			int limitExcept(std::vector<std::string>& args, const int& lineCount, int layer);
 			int returnKeyword(std::vector<std::string>& args, const int& lineCount, int layer);
 			int root(std::vector<std::string>& args, const int& lineCount, int layer);
-			int autoindex(std::vector<std::string>& args, const int& lineCount, int layer);
+			int autoindex(const std::vector<std::string>& args, const int& lineCount, int layer);
 			int index(std::vector<std::string>& args, const int& lineCount, int layer);
 			int globalRoot(std::vector<std::string>& args, const int& lineCount, int layer);
 			int dataDir(std::vector<std::string>& args, const int& lineCount, int layer);

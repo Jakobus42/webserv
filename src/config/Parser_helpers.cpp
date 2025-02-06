@@ -166,32 +166,29 @@ namespace config {
 	}
 
 	int ConfigFileParser::testFunction(const std::string& key, std::vector<std::string>& args, const int& lineCount) {
-		int i;
 		if (key == "server")
-			i = server(args, lineCount, 0);
-		else if (key == "listen")
-			i = listen(args, lineCount, 1);
-		else if (key == "server_name")
-			i = serverName(args, lineCount, 1);
-		else if (key == "error_page")
-			i = errorPage(args, lineCount, 1);
-		else if (key == "client_max_body_size")
-			i = clientMaxBodySize(args, lineCount, 1);
-		else if (key == "location")
-			i = location(args, lineCount, 1);
-		else if (key == "limit_except")
-			i = limitExcept(args, lineCount, 2);
-		else if (key == "return")
-			i = returnKeyword(args, lineCount, 2);
-		else if (key == "root")
-			i = root(args, lineCount, 2);
-		else if (key == "autoindex")
-			i = autoindex(args, lineCount, 2);
-		else if (key == "index")
-			i = index(args, lineCount, 2);
-		else
-			return 2;
-		return i;
+			return server(args, lineCount, 0);
+		if (key == "listen")
+			return listen(args, lineCount, 1);
+		if (key == "server_name")
+			return serverName(args, lineCount, 1);
+		if (key == "error_page")
+			return errorPage(args, lineCount, 1);
+		if (key == "client_max_body_size")
+			return clientMaxBodySize(args, lineCount, 1);
+		if (key == "location")
+			return location(args, lineCount, 1);
+		if (key == "limit_except")
+			return limitExcept(args, lineCount, 2);
+		if (key == "return")
+			return returnKeyword(args, lineCount, 2);
+		if (key == "root")
+			return root(args, lineCount, 2);
+		if (key == "autoindex")
+			return autoindex(args, lineCount, 2);
+		if (key == "index")
+			return index(args, lineCount, 2);
+		return 2;
 	}
 
 	/**
@@ -233,6 +230,24 @@ namespace config {
 			return UNKNOWN_ID;
 	}
 
+	int ConfigFileParser::genericError(int lineCount, const std::string& message) {
+		std::cout << "Configuration file (line " << lineCount << "): "
+				  << message << std::endl;
+		return 1;
+	}
+
+	int ConfigFileParser::unexpectedCommandError(int lineCount) {
+		std::cout << "Configuration file (line " << lineCount << "): "
+				  << "Unexpected command found" << std::endl;
+		return 1;
+	}
+
+	int ConfigFileParser::unknownCommandError(int lineCount) {
+		std::cout << "Configuration file (line " << lineCount << "): "
+				  << "Unknown command found" << std::endl;
+		return 1;
+	}
+
 	/**
 	 * @brief Saves the configuration data.
 	 * @param args The arguments to save.
@@ -245,100 +260,55 @@ namespace config {
 	int ConfigFileParser::saveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, const int& lineCount) {
 		enum CmdId command_id = idCommand(args[0]);
 		if (command_id == UNKNOWN_ID) {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "Unknown command found" << std::endl;
-			return 1;
+			return unknownCommandError(lineCount);
 		}
-		if (layer == 0) // global
-		{
-			if (qoute_flag == 0) {
-				std::cout << "Configuration file (line " << lineCount << "): "
-						  << "Unexpected command found"
-						  << std::endl;
-				return 1;
-			} else {
-				if (command_id == SERVER_ID) {
-					if (server(args, lineCount, layer) == 1)
-						return 1;
-				} else {
-					std::cout << "Configuration file (line " << lineCount << "): "
-							  << "Unexpected command found"
-							  << std::endl;
-					return 1;
-				}
+		if ((layer == 0 && qoute_flag == 0) || (layer == 0 && command_id != SERVER_ID) || (layer > 0 && qoute_flag != 0 && command_id != LOCATION_ID)) {
+			return unexpectedCommandError(lineCount);
+		}
+
+		if (layer == 0) { // global
+			return server(args, lineCount, layer);
+		}
+		if (layer == 1) { // server
+			if (qoute_flag != 0) {
+				return location(args, lineCount, layer);
 			}
-		} else if (layer == 1) // server
-		{
-			if (qoute_flag == 0) {
-				if (command_id == LISTEN_ID) {
-					if (listen(args, lineCount, layer) == 1)
-						return 1;
-				} else if (command_id == SERVER_NAME_ID) {
-					if (serverName(args, lineCount, layer) == 1)
-						return 1;
-				} else if (command_id == ERROR_PAGE_ID) {
-					if (errorPage(args, lineCount, layer) == 1)
-						return 1;
-				} else if (command_id == CLIENT_MAX_BODY_SIZE_ID) {
-					if (clientMaxBodySize(args, lineCount, layer) == 1)
-						return 1;
-				} else if (command_id == GLOBAL_ROOT_ID) {
-					if (globalRoot(args, lineCount, layer) == 1)
-						return 1;
-				} else if (command_id == DATA_DIR_ID) {
-					if (dataDir(args, lineCount, layer) == 1)
-						return 1;
-				} else {
-					std::cout << "Configuration file (line " << lineCount << "): "
-							  << "Unexpected command found"
-							  << std::endl;
-					return 1;
-				}
-			} else {
-				if (command_id == LOCATION_ID) {
-					if (location(args, lineCount, layer) == 1)
-						return 1;
-				} else {
-					std::cout << "Configuration file (line " << lineCount << "): "
-							  << "Unexpected command found"
-							  << std::endl;
-					return 1;
-				}
+			switch (command_id) {
+				case LISTEN_ID:
+					return listen(args, lineCount, layer);
+				case SERVER_NAME_ID:
+					return serverName(args, lineCount, layer);
+				case ERROR_PAGE_ID:
+					return errorPage(args, lineCount, layer);
+				case CLIENT_MAX_BODY_SIZE_ID:
+					return clientMaxBodySize(args, lineCount, layer);
+				case GLOBAL_ROOT_ID:
+					return globalRoot(args, lineCount, layer);
+				case DATA_DIR_ID:
+					return dataDir(args, lineCount, layer);
+				case INDEX_ID:
+					return index(args, lineCount, layer);
+				default:
+					return unexpectedCommandError(lineCount);
 			}
-		} else if (layer > 1) // location
-		{
-			if (qoute_flag == 0) {
-				if (command_id == LIMIT_EXCEPT_ID) {
-					if (limitExcept(args, lineCount, layer) == 1)
-						return 1;
-				} else if (command_id == RETURN_ID) {
-					if (returnKeyword(args, lineCount, layer) == 1)
-						return 1;
-				} else if (command_id == ROOT_ID) {
-					if (root(args, lineCount, layer) == 1)
-						return 1;
-				} else if (command_id == AUTOINDEX_ID) {
-					if (autoindex(args, lineCount, layer) == 1)
-						return 1;
-				} else if (command_id == INDEX_ID) {
-					if (index(args, lineCount, layer) == 1)
-						return 1;
-				} else {
-					std::cout << "Configuration file (line " << lineCount << "): "
-							  << "Unexpected command found"
-							  << std::endl;
-					return 1;
-				}
-			} else {
-				if (command_id == LOCATION_ID) {
-					if (location(args, lineCount, layer) == 1)
-						return 1;
-				} else {
-					std::cout << "Configuration file (line " << lineCount << "): "
-							  << "Unexpected command found"
-							  << std::endl;
-					return 1;
-				}
+		}
+		if (layer > 1) { // location
+			if (qoute_flag != 0) {
+				return location(args, lineCount, layer);
+			}
+			switch (command_id) {
+				case LIMIT_EXCEPT_ID:
+					return limitExcept(args, lineCount, layer);
+				case RETURN_ID:
+					return returnKeyword(args, lineCount, layer);
+				case ROOT_ID:
+					return root(args, lineCount, layer);
+				case AUTOINDEX_ID:
+					return autoindex(args, lineCount, layer);
+				case INDEX_ID:
+					return index(args, lineCount, layer);
+				default:
+					return unexpectedCommandError(lineCount);
 			}
 		}
 		return 0;

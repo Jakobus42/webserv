@@ -17,11 +17,6 @@ namespace config {
 			std::vector<std::string> indexFile;			// file to load when GETting a directory
 			std::vector<Location> locations;			// registered locations // TODO: maybe rename to 'children'
 
-			// globalRoot should always have path <global_root>/<data_dir>/
-			// what about defaults for accepted methods?
-			// should globalRoot even be a Location?
-			// or just a string that's used as a base for all routes?
-
 			// default constructor
 			Location()
 				: path()

@@ -55,10 +55,7 @@ namespace config {
 	int ConfigFileParser::server(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() != 1) {
-			std::cout << "Configuration file (line "
-					  << lineCount << "): "
-					  << "Invalid number of arguments for server" << std::endl;
-			return 1;
+			return genericError(lineCount, "Invalid number of arguments for server");
 		}
 		ServerConfig new_server;
 		// set default values
@@ -81,26 +78,17 @@ namespace config {
 	 */
 	int ConfigFileParser::location(std::vector<std::string>& args, const int& lineCount, int layer) {
 		if (args.size() != 2) {
-			std::cout << "Configuration file (line "
-					  << lineCount << "): "
-					  << "Invalid number of arguments for location" << std::endl;
-			return 1;
+			return genericError(lineCount, "Invalid number of arguments for location");
 		}
 		if (args[1].length() > 1000 || args[1].length() == 0) {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "Location name length invalid"
-					  << std::endl;
-			return 1;
+			return genericError(lineCount, "Location name length invalid");
 		}
 		Location new_location;
 		// set default values
 		new_location.autoindex = false;
 		new_location.root.clear();
 		if (shared::string::splitPath(args[1], new_location.path) == 1) {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "Invalid location path"
-					  << std::endl;
-			return 1;
+			return genericError(lineCount, "Invalid location path");
 		}
 		new_location.redirectUri = "";
 		new_location.indexFile.push_back("index.html");
@@ -145,18 +133,12 @@ namespace config {
 	int ConfigFileParser::listen(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() != 2) {
-			std::cout << "Configuration file (line "
-					  << lineCount << "): "
-					  << "Invalid number of arguments for listen" << std::endl;
-			return 1;
+			return genericError(lineCount, "Invalid number of arguments for listen");
 		}
 		if (is_number(args[1])) {
 			int i = ft_stoi(args[1]);
 			if (i < 0 || i > 65535) {
-				std::cout << "Configuration file (line " << lineCount << "): "
-						  << "Invalid number for listen"
-						  << std::endl;
-				return 1;
+				return genericError(lineCount, "Invalid number for listen");
 			}
 			m_serverConfigs.back().port = i;
 		} else {
@@ -168,29 +150,20 @@ namespace config {
 					if (iter != std::string::npos) {
 						int j = ft_stoi(args[1].substr(iter + 1));
 						if (j < 0 || j > 65535) {
-							std::cout << "Configuration file (line "
-									  << lineCount << "): "
-									  << "Invalid number for listen" << std::endl;
-							return 1;
+							return genericError(lineCount, "Invalid number for listen");
 						}
 						m_serverConfigs.back().port = i;
 					}
 				} else {
 					iter = args[1].find('.');
 					if (iter == std::string::npos) {
-						std::cout << "Configuration file (line "
-								  << lineCount << "): "
-								  << "Invalid number for listen" << std::endl;
-						return 1;
+						return genericError(lineCount, "Invalid number for listen");
 					}
 				}
 				std::string temp = args[1].substr(0, iter);
 				int j = ft_stoi(temp);
 				if (j < 0 || j > 255) {
-					std::cout << "Configuration file (line " << lineCount << "): "
-							  << "Invalid number for listen"
-							  << std::endl;
-					return 1;
+					return genericError(lineCount, "Invalid number for listen");
 				}
 				m_serverConfigs.back().ip_address += j << (8 * (3 - i));
 				args[1] = args[1].substr(iter + 1);
@@ -198,10 +171,7 @@ namespace config {
 			if (args[1].size() != 0) {
 				int i = ft_stoi(args[1]);
 				if (i < 0 || i > 65535) {
-					std::cout << "Configuration file (line " << lineCount << "): "
-							  << "Invalid number for listen"
-							  << std::endl;
-					return 1;
+					return genericError(lineCount, "Invalid number for listen");
 				}
 				m_serverConfigs.back().port = i;
 			}
@@ -220,24 +190,15 @@ namespace config {
 	int ConfigFileParser::serverName(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() < 2) {
-			std::cout << "Configuration file (line "
-					  << lineCount << "): "
-					  << "Invalid number of arguments for server_name" << std::endl;
-			return 1;
+			return genericError(lineCount, "Invalid number of arguments for server_name");
 		}
 		for (unsigned long i = 1; i < args.size(); i++) {
 			if (args[i].length() > 1000 || args[i].length() == 0) {
-				std::cout << "Configuration file (line " << lineCount << "): "
-						  << "Server name length invalid"
-						  << std::endl;
-				return 1;
+				return genericError(lineCount, "Server name length invalid");
 			}
 			m_serverConfigs.back().server_names.push_back(args[i]);
 			if (i > 1000) {
-				std::cout << "Configuration file (line " << lineCount << "): "
-						  << "Too many server names"
-						  << std::endl;
-				return 1;
+				return genericError(lineCount, "Too many server names");
 			}
 		}
 		return 0;
@@ -254,27 +215,18 @@ namespace config {
 	int ConfigFileParser::errorPage(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() < 3 || args.size() > 1001) {
-			std::cout << "Configuration file (line "
-					  << lineCount << "): "
-					  << "Invalid number of arguments for error_page" << std::endl;
-			return 1;
+			return genericError(lineCount, "Invalid number of arguments for error_page");
 		}
 		std::string last = args.back();
 		if (last.length() > 1000 || last.length() == 0) {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "Error page length invalid"
-					  << std::endl;
-			return 1;
+			return genericError(lineCount, "Error page length invalid");
 		}
 		// TODO: check if last is a valid path?
 		args.pop_back();
 		for (unsigned long i = 1; i < args.size(); i++) {
 			int j = ft_stoi(args[i]);
 			if (j < 100 || j > 599) {
-				std::cout << "Configuration file (line " << lineCount << "): "
-						  << "Invalid number for error_page"
-						  << std::endl;
-				return 1;
+				return genericError(lineCount, "Invalid number for error_page");
 			}
 			m_serverConfigs.back().errorPages[j] = last;
 		}
@@ -292,18 +244,11 @@ namespace config {
 	int ConfigFileParser::clientMaxBodySize(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() != 2) {
-			std::cout << "Configuration file (line "
-					  << lineCount << "): "
-					  << "Invalid number of arguments for client_max_body_size"
-					  << std::endl;
-			return 1;
+			return genericError(lineCount, "Invalid number of arguments for client_max_body_size");
 		}
 		int i = ft_stoi(args[1]);
 		if (i < 0) {
-			std::cout << "Configuration file (line "
-					  << lineCount << "): "
-					  << "Invalid number for client_max_body_size" << std::endl;
-			return 1;
+			return genericError(lineCount, "Invalid number for client_max_body_size");
 		}
 		m_serverConfigs.back().max_body_size = i;
 		return 0;
@@ -320,10 +265,7 @@ namespace config {
 	int ConfigFileParser::limitExcept(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() < 2 || args.size() > 15) {
-			std::cout << "Configuration file (line "
-					  << lineCount << "): "
-					  << "Invalid number of arguments for limit_except" << std::endl;
-			return 1;
+			return genericError(lineCount, "Invalid number of arguments for limit_except");
 		}
 		std::map<std::string, http::Method> methods;
 		std::set<http::Method> foundMethods;
@@ -339,17 +281,11 @@ namespace config {
 				std::cout << *foundMethods.find(it->second);
 				methods.erase(methods.find(args[i]));
 			} else {
-				std::cout << "Configuration file (line "
-						  << lineCount << "): "
-						  << "Invalid method for limit_except" << std::endl;
-				return 1;
+				return genericError(lineCount, "Invalid method for limit_except");
 			}
 		}
 		if (foundMethods.empty()) {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "No methods found for limit_except"
-					  << std::endl;
-			return 1;
+			return genericError(lineCount, "No methods found for limit_except");
 		}
 		Location* current = getLocation(layer);
 		current->allowedMethods = foundMethods;
@@ -366,22 +302,13 @@ namespace config {
 	 */
 	int ConfigFileParser::returnKeyword(std::vector<std::string>& args, const int& lineCount, int layer) {
 		if (args.size() != 2) {
-			std::cout << "Configuration file (line "
-					  << lineCount << "): "
-					  << "Invalid number of arguments for return" << std::endl;
-			return 1;
+			return genericError(lineCount, "Invalid number of arguments for return");
 		}
 		if (args[1].length() > 1000 || args[1].length() == 0) {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "Return url length invalid"
-					  << std::endl;
-			return 1;
+			return genericError(lineCount, "Return url length invalid");
 		}
 		if (args[1][0] != '/') {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "Return url doesn't start with '/'"
-					  << std::endl;
-			return 1;
+			return genericError(lineCount, "Return url doesn't start with '/'");
 		}
 		// TODO: check if valid url?
 		Location* current = getLocation(layer);
@@ -399,17 +326,11 @@ namespace config {
 	 * @return int 0 if successful, 1 if not.
 	 */
 	int ConfigFileParser::root(std::vector<std::string>& args, const int& lineCount, int layer) {
-		(void)layer;
 		if (args.size() != 2) {
-			std::cout << "Configuration file (line "
-					  << lineCount << "): "
-					  << "Invalid number of arguments for root" << std::endl;
-			return 1;
+			return genericError(lineCount, "Invalid number of arguments for root");
 		}
 		if (args[1].length() > 1000 || args[1].length() == 0) {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "Root length invalid" << std::endl;
-			return 1;
+			return genericError(lineCount, "Root length invalid");
 		}
 		// TODO: check if path is valid
 		Location* current = getLocation(layer);
@@ -425,13 +346,9 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::autoindex(std::vector<std::string>& args, const int& lineCount, int layer) {
-		(void)layer;
+	int ConfigFileParser::autoindex(const std::vector<std::string>& args, const int& lineCount, int layer) {
 		if (args.size() != 2) {
-			std::cout << "Configuration file (line "
-					  << lineCount << "): "
-					  << "Invalid number of arguments for autoindex" << std::endl;
-			return 1;
+			return genericError(lineCount, "Invalid number of arguments for autoindex");
 		}
 		Location* current = getLocation(layer);
 		if (args[1] == "on") {
@@ -439,10 +356,7 @@ namespace config {
 		} else if (args[1] == "off") {
 			current->autoindex = false;
 		} else {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "Invalid argument for autoindex"
-					  << std::endl;
-			return 1;
+			return genericError(lineCount, "Invalid argument for autoindex");
 		}
 		return 0;
 	}
@@ -459,19 +373,19 @@ namespace config {
 		(void)layer;
 
 		if (args.size() < 2 || args.size() > 1001) {
-			std::cout << "Configuration file (line "
-					  << lineCount << "): "
-					  << "Invalid number of arguments for index" << std::endl;
-			return 1;
+			return genericError(lineCount, "Invalid number of arguments for index");
 		}
-		Location* current = getLocation(layer);
+		Location* current = NULL;
+		if (layer == 0) {
+			ServerConfig& server = m_serverConfigs.back();
+			current = &server.globalRoot; // current is globalRootLocation
+		} else {
+			current = getLocation(layer);
+		}
 		current->indexFile.clear();
 		for (unsigned long i = 1; i < args.size(); i++) {
 			if (args[i].length() > 1000 || args[i].length() == 0) {
-				std::cout << "Configuration file (line " << lineCount << "): "
-						  << "Index file length invalid"
-						  << std::endl;
-				return 1;
+				return genericError(lineCount, "Index file length invalid");
 			}
 			current->indexFile.push_back(args[i]);
 		}
@@ -480,41 +394,27 @@ namespace config {
 
 	int ConfigFileParser::globalRoot(std::vector<std::string>& args, const int& lineCount, int layer) {
 		if (layer != 1) {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "'global_root' is only allowed in server blocks" << std::endl;
-			return 1;
+			return genericError(lineCount, "'global_root' is only allowed in server blocks");
 		}
 		if (args.size() != 2) {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "Invalid number of arguments for global_root" << std::endl;
-			return 1;
+			return genericError(lineCount, "Invalid number of arguments for global_root");
 		}
 		if (args[1].empty() || args[1].length() > 1000) {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "global_root path length invalid" << std::endl;
-			return 1;
+			return genericError(lineCount, "global_root path length invalid");
 		}
 		if (args[1][0] != '/') {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "global_root path invalid, doesn't start with '/'" << std::endl;
-			return 1;
+			return genericError(lineCount, "global_root path invalid, doesn't start with '/'");
 		}
 		if (args[1].find("//") != std::string::npos) {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "global_root path invalid, duplicate '/'" << std::endl;
-			return 1;
+			return genericError(lineCount, "global_root path invalid, duplicate '/'");
 		}
 		if (args[1][args[1].size() - 1] == '/') {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "global_root path invalid, ends with '/'" << std::endl;
-			return 1;
+			return genericError(lineCount, "global_root path invalid, ends with '/'");
 		}
 
 		ServerConfig& server = m_serverConfigs.back();
 		if (server.hasGlobalRoot()) {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "Duplicate global_root directive" << std::endl;
-			return 1;
+			return genericError(lineCount, "Duplicate global_root directive");
 		}
 
 		// TODO: validate if we can access global root path?
@@ -534,41 +434,27 @@ namespace config {
 
 	int ConfigFileParser::dataDir(std::vector<std::string>& args, const int& lineCount, int layer) {
 		if (layer != 1) {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "'data_dir' is only allowed in server blocks" << std::endl;
-			return 1;
+			return genericError(lineCount, "'data_dir' is only allowed in server blocks");
 		}
 		if (args.size() != 2) {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "Invalid number of arguments for data_dir" << std::endl;
-			return 1;
+			return genericError(lineCount, "Invalid number of arguments for data_dir");
 		}
 		if (args[1].empty() || args[1].length() > 1000) {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "data_dir path length invalid" << std::endl;
-			return 1;
+			return genericError(lineCount, "data_dir path length invalid");
 		}
 		if (args[1][0] != '/') {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "data_dir path invalid, doesn't start with '/'" << std::endl;
-			return 1;
+			return genericError(lineCount, "data_dir path invalid, doesn't start with '/'");
 		}
 		if (args[1].find("//") != std::string::npos) {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "data_dir path invalid, duplicate '/'" << std::endl;
-			return 1;
+			return genericError(lineCount, "data_dir path invalid, duplicate '/'");
 		}
 		if (args[1][args[1].size() - 1] == '/') {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "data_dir path invalid, ends with '/'" << std::endl;
-			return 1;
+			return genericError(lineCount, "data_dir path invalid, ends with '/'");
 		}
 
 		ServerConfig& server = m_serverConfigs.back();
 		if (server.hasDataDir()) {
-			std::cout << "Configuration file (line " << lineCount << "): "
-					  << "Duplicate data_dir directive" << std::endl;
-			return 1;
+			return genericError(lineCount, "Duplicate data_dir directive");
 		}
 
 		// TODO: validate if we can access global root path?
@@ -581,8 +467,6 @@ namespace config {
 			// server.globalRoot.path.push_back(server.globalRoot.root + server.dataDir);
 			// TODO: concatenate and then split up globalRoot.root and server.dataDir;
 		}
-
-		// server.globalRoot.path = args[1] + "/www"; // TODO: set server.globalRoot.path to <globalRoot.root>/www (or another subfolder in globalRoot)
 		return 0;
 	}
 

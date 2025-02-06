@@ -96,73 +96,40 @@ namespace config {
 				if (line.empty() || line.find_first_not_of(' ') == std::string::npos) { // empty line
 					line.clear();
 					continue;
-				} else if (line.find('}') !=
-						   std::string::npos) { // closing bracket
+				}
+				if (line.find('}') != std::string::npos) { // closing bracket
 					if (line.find_first_not_of(" }") != std::string::npos) {
-						std::cout << "Configuration file (line "
-								  << lineCount << "): "
-								  << "Quotes must be in an otherwise empty line"
-								  << std::endl;
-						return 1;
+						return genericError(lineCount, "Quotes must be in an otherwise empty line");
 					}
 					if (line.find('}') != line.find_last_of('}')) {
-						std::cout << "Configuration file (line "
-								  << lineCount << "): "
-								  << "Multiple brackets on the same line"
-								  << std::endl;
-						return 1;
+						return genericError(lineCount, "Multiple brackets on the same line");
 					}
 					if (layer == 0) {
-						std::cout << "Configuration file (line "
-								  << lineCount << "): "
-								  << "Unexpected closing bracket found" << std::endl;
-						return 1;
+						return genericError(lineCount, "Unexpected closing bracket found");
 					}
 					if (findQuotesFlag == 1) {
-						std::cout << "Configuration file (line "
-								  << lineCount << "): "
-								  << "Missing semicolon at the end of line"
-								  << std::endl;
-						return 1;
-					} else {
-						return 0;
+						return genericError(lineCount, "Missing semicolon at the end of line");
 					}
-				} else if (line.find('{') !=
-						   std::string::npos) { // opening bracket
+					return 0;
+				}
+				if (line.find('{') != std::string::npos) { // opening bracket
 					if (line.find_first_not_of(" {") != std::string::npos) {
-						std::cout << "Configuration file (line "
-								  << lineCount << "): "
-								  << "Quotes must be in an otherwise empty line"
-								  << std::endl;
-						return 1;
+						return genericError(lineCount, "Quotes must be in an otherwise empty line");
 					}
 					if (line.find('{') != line.find_last_of('{')) {
-						std::cout << "Configuration file (line "
-								  << lineCount << "): "
-								  << "Multiple brackets on the same line"
-								  << std::endl;
-						return 1;
+						return genericError(lineCount, "Multiple brackets on the same line");
 					}
 					if (findQuotesFlag == 0) {
-						std::cout << "Configuration file (line "
-								  << lineCount << "): "
-								  << "Quotes not expected at this point in file"
-								  << std::endl;
-						return 1;
-					} else {
-						findQuotesFlag = 0;
+						return genericError(lineCount, "Quotes not expected at this point in file");
 					}
+					findQuotesFlag = 0;
 					i++;
 					if (parseConfigFile(str, layer + 1, i, lineCount) == 1) {
 						return 1;
 					}
 				} else { // prompt
 					if (findQuotesFlag == 1) {
-						std::cout << "Configuration file (line "
-								  << lineCount << "): "
-								  << "Missing semicolon at the end of line"
-								  << std::endl;
-						return 1;
+						return genericError(lineCount, "Missing semicolon at the end of line");
 					}
 					int ret = handlePrompt(line, layer, lineCount);
 					if (ret == 2) {
@@ -196,10 +163,7 @@ namespace config {
 			return 1;
 		}
 		if (m_serverConfigs.empty()) {
-			std::cout << "Configuration file (line "
-					  << lineCount << "): "
-					  << "No servers found in configuration file" << std::endl;
-			return 1;
+			return genericError(lineCount, "No servers found in configuration file");
 		}
 		for (std::size_t index = 0; index < m_serverConfigs.size(); ++index) {
 			if (!m_serverConfigs[index].hasGlobalRoot()) {
