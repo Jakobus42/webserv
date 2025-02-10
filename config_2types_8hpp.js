@@ -14,6 +14,7 @@ var config_2types_8hpp =
       [ "INDEX_ID", "config_2types_8hpp.html#ae6f8eb975213634b138cd9114b143567ad915584f228a0d36db6a09f2eb1d90cb", null ],
       [ "GLOBAL_ROOT_ID", "config_2types_8hpp.html#ae6f8eb975213634b138cd9114b143567a566431bfd015a4711a02e7b885234360", null ],
       [ "DATA_DIR_ID", "config_2types_8hpp.html#ae6f8eb975213634b138cd9114b143567a5223b1a9f1c5c4369a1304d84c98a3da", null ],
+      [ "UPLOAD_DIR_ID", "config_2types_8hpp.html#ae6f8eb975213634b138cd9114b143567a06206ac0dc2fdc9afa5a2c4bbf5f4385", null ],
       [ "UNKNOWN_ID", "config_2types_8hpp.html#ae6f8eb975213634b138cd9114b143567a04bb72b0787252447c122b828b96b2b2", null ]
     ] ]
 ];

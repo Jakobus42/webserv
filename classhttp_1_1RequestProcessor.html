@@ -99,8 +99,8 @@ Collaboration diagram for http::RequestProcessor:</div>
 <area shape="poly" title=" " alt="" coords="197,581,192,627,187,626,192,580"/>
 <area shape="rect" href="classhttp_1_1Router.html" title=" " alt="" coords="301,643,449,928"/>
 <area shape="poly" title=" " alt="" coords="303,890,238,979,234,976,299,886"/>
-<area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="333,237,490,523"/>
-<area shape="poly" title=" " alt="" coords="401,523,392,627,387,626,396,522"/>
+<area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="333,227,490,533"/>
+<area shape="poly" title=" " alt="" coords="400,533,392,627,387,626,395,533"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -230,14 +230,14 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   39</span>                <span class="keywordflow">if</span> (fileType == <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d">_NOT_FOUND</a>) {</div>
 <div class="line"><span class="lineno">   40</span>                    <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a144f7cef2e3efe6d823debdf4e62b10c">NOT_FOUND</a>, <span class="stringliteral">&quot;File or directory not found&quot;</span>);</div>
 <div class="line"><span class="lineno">   41</span>                }</div>
-<div class="line"><span class="lineno">   42</span>                <span class="keywordflow">if</span> (location.second-&gt;allowedMethods.find(req.getMethod()) == location.second-&gt;allowedMethods.end()) { <span class="comment">// TODO: probably shouldn&#39;t check this here, causes files that</span></div>
-<div class="line"><span class="lineno">   43</span>                    <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a951e17c8b8b27ee06ced2f743295c2ad">METHOD_NOT_ALLOWED</a>, <span class="stringliteral">&quot;HTTP method not allowed for this route&quot;</span>);              <span class="comment">//       access root or its subdirectories to always return 405</span></div>
-<div class="line"><span class="lineno">   44</span>                }                                                                                                     <span class="comment">// TODO: also double-check whether allowed methods should cascade</span></div>
+<div class="line"><span class="lineno">   42</span>                <span class="keywordflow">if</span> (!location.second-&gt;allowedMethods.empty() &amp;&amp; location.second-&gt;allowedMethods.find(req.getMethod()) == location.second-&gt;allowedMethods.end()) { <span class="comment">// TODO: probably shouldn&#39;t check this here, causes files that</span></div>
+<div class="line"><span class="lineno">   43</span>                    <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a951e17c8b8b27ee06ced2f743295c2ad">METHOD_NOT_ALLOWED</a>, <span class="stringliteral">&quot;HTTP method not allowed for this route&quot;</span>);                                                          <span class="comment">//       access root or its subdirectories to always return 405</span></div>
+<div class="line"><span class="lineno">   44</span>                }                                                                                                                                                 <span class="comment">// TODO: also double-check whether allowed methods should cascade</span></div>
 <div class="line"><span class="lineno">   45</span>                req.getUri().safeAbsolutePath = location.first;</div>
 <div class="line"><span class="lineno">   46</span>                req.setLocation(location.second);</div>
 <div class="line"><span class="lineno">   47</span>            } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>&amp; e) {</div>
 <div class="line"><span class="lineno">   48</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;CRUD, &quot;</span> &lt;&lt; e.<a class="code hl_function" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10">getMessage</a>() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   49</span>                req.setStatusCode(e.<a class="code hl_function" href="classhttp_1_1exception.html#add7e0b357120f83926453dc287252b76">getCode</a>());</div>
+<div class="line"><span class="lineno">   49</span>                req.setStatusCode(e.<a class="code hl_function" href="classhttp_1_1exception.html#a4cda45520c85f41e29b07c9b2896b1b4">getStatusCode</a>());</div>
 <div class="line"><span class="lineno">   50</span>            }</div>
 <div class="line"><span class="lineno">   51</span>        }</div>
 <div class="line"><span class="lineno">   52</span> </div>
@@ -249,7 +249,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   58</span>            <span class="keywordflow">try</span> {</div>
 <div class="line"><span class="lineno">   59</span>                <a class="code hl_variable" href="classhttp_1_1RequestProcessor.html#ae06d06d606262ec6eece9a46b01a7e28">m_handlers</a>[req.getMethod()]-&gt;handle(req, *<a class="code hl_variable" href="classhttp_1_1RequestProcessor.html#a4b6192fb3742f1fc6382dae1bd69ff73">m_res</a>); <span class="comment">// might throw a http::exception</span></div>
 <div class="line"><span class="lineno">   60</span>            } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>&amp; e) {</div>
-<div class="line"><span class="lineno">   61</span>                req.setStatusCode(e.<a class="code hl_function" href="classhttp_1_1exception.html#add7e0b357120f83926453dc287252b76">getCode</a>());</div>
+<div class="line"><span class="lineno">   61</span>                req.setStatusCode(e.<a class="code hl_function" href="classhttp_1_1exception.html#a4cda45520c85f41e29b07c9b2896b1b4">getStatusCode</a>());</div>
 <div class="line"><span class="lineno">   62</span>            }</div>
 <div class="line"><span class="lineno">   63</span>        }</div>
 <div class="line"><span class="lineno">   64</span>        <span class="keywordflow">if</span> (req.hasError()) {</div>
@@ -263,9 +263,9 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="aclasshttp_1_1Router_html_ad6e4a793ff5dfda59239fa8394f4c64a"><div class="ttname"><a href="classhttp_1_1Router.html#ad6e4a793ff5dfda59239fa8394f4c64a">http::Router::routeToPath</a></div><div class="ttdeci">std::pair&lt; std::string, const config::Location * &gt; routeToPath(const std::vector&lt; std::string &gt; &amp;uriPath, const config::Location &amp;currentLocation, const std::vector&lt; std::string &gt; &amp;currentRootPath, std::size_t redirects=0, std::size_t depth=0)</div><div class="ttdoc">Traverses m_locations according to a Request's Uri, respecting redirections while avoiding redirect l...</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00121">Router.cpp:121</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Router_html_adc2958c32ba4e5e222a993ddba2f715c"><div class="ttname"><a href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c">http::Router::checkFileType</a></div><div class="ttdeci">static FileType checkFileType(const std::string &amp;absolutePath)</div><div class="ttdoc">Checks whether a path exists in the file system, and whether it is a file or directory.</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00039">Router.cpp:39</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Router_html_af5a2093850f5d1b1079d0e6f014f304c"><div class="ttname"><a href="classhttp_1_1Router.html#af5a2093850f5d1b1079d0e6f014f304c">http::Router::getGlobalRoot</a></div><div class="ttdeci">const config::Location &amp; getGlobalRoot() const</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00033">Router.cpp:33</a></div></div>
-<div class="ttc" id="aclasshttp_1_1exception_html"><div class="ttname"><a href="classhttp_1_1exception.html">http::exception</a></div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00027">http.hpp:27</a></div></div>
-<div class="ttc" id="aclasshttp_1_1exception_html_a1fc13601675b1ac1fde21ee2dc1f4b10"><div class="ttname"><a href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10">http::exception::getMessage</a></div><div class="ttdeci">const std::string &amp; getMessage() const</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00115">http.cpp:115</a></div></div>
-<div class="ttc" id="aclasshttp_1_1exception_html_add7e0b357120f83926453dc287252b76"><div class="ttname"><a href="classhttp_1_1exception.html#add7e0b357120f83926453dc287252b76">http::exception::getCode</a></div><div class="ttdeci">StatusCode getCode() const</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00111">http.cpp:111</a></div></div>
+<div class="ttc" id="aclasshttp_1_1exception_html"><div class="ttname"><a href="classhttp_1_1exception.html">http::exception</a></div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00028">http.hpp:28</a></div></div>
+<div class="ttc" id="aclasshttp_1_1exception_html_a1fc13601675b1ac1fde21ee2dc1f4b10"><div class="ttname"><a href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10">http::exception::getMessage</a></div><div class="ttdeci">const std::string &amp; getMessage() const</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00113">http.cpp:113</a></div></div>
+<div class="ttc" id="aclasshttp_1_1exception_html_a4cda45520c85f41e29b07c9b2896b1b4"><div class="ttname"><a href="classhttp_1_1exception.html#a4cda45520c85f41e29b07c9b2896b1b4">http::exception::getStatusCode</a></div><div class="ttdeci">StatusCode getStatusCode() const</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00111">http.cpp:111</a></div></div>
 <div class="ttc" id="anamespacehttp_html_aa05465f9f5daa64d3a9ba64a34e92cfa"><div class="ttname"><a href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfa">http::FileType</a></div><div class="ttdeci">FileType</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00065">types.hpp:65</a></div></div>
 <div class="ttc" id="anamespacehttp_html_aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d"><div class="ttname"><a href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d">http::_NOT_FOUND</a></div><div class="ttdeci">@ _NOT_FOUND</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00069">types.hpp:68</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762a144f7cef2e3efe6d823debdf4e62b10c"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a144f7cef2e3efe6d823debdf4e62b10c">http::NOT_FOUND</a></div><div class="ttdeci">@ NOT_FOUND</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00024">types.hpp:24</a></div></div>
@@ -278,32 +278,32 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classhttp_1_1RequestProcessor_a63639dad340ee5eb69b23a06711e859b_cgraph.png" border="0" usemap="#aclasshttp_1_1RequestProcessor_a63639dad340ee5eb69b23a06711e859b_cgraph" alt=""/></div>
 <map name="aclasshttp_1_1RequestProcessor_a63639dad340ee5eb69b23a06711e859b_cgraph" id="aclasshttp_1_1RequestProcessor_a63639dad340ee5eb69b23a06711e859b_cgraph">
 <area shape="rect" title=" " alt="" coords="5,294,177,334"/>
-<area shape="rect" href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="237,5,435,31"/>
-<area shape="poly" title=" " alt="" coords="94,293,106,242,130,173,148,136,169,101,194,68,224,40,230,35,233,39,227,44,198,72,173,104,152,139,135,175,111,243,99,294"/>
-<area shape="rect" href="classhttp_1_1exception.html#add7e0b357120f83926453dc287252b76" title=" " alt="" coords="245,55,427,80"/>
-<area shape="poly" title=" " alt="" coords="96,293,112,250,138,194,175,137,198,111,224,89,232,84,235,88,227,93,201,115,179,141,142,197,117,252,101,295"/>
-<area shape="rect" href="classhttp_1_1Router.html#af5a2093850f5d1b1079d0e6f014f304c" title=" " alt="" coords="236,104,436,129"/>
-<area shape="poly" title=" " alt="" coords="100,292,118,258,146,216,181,174,224,138,235,132,238,137,227,143,185,178,150,220,123,261,105,295"/>
-<area shape="rect" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10" title=" " alt="" coords="233,153,439,179"/>
+<area shape="rect" href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="237,5,436,31"/>
+<area shape="poly" title=" " alt="" coords="94,293,106,242,130,173,148,136,169,101,194,68,224,40,230,35,234,39,227,44,198,72,173,104,152,139,135,175,111,243,99,294"/>
+<area shape="rect" href="classhttp_1_1Router.html#af5a2093850f5d1b1079d0e6f014f304c" title=" " alt="" coords="237,55,437,80"/>
+<area shape="poly" title=" " alt="" coords="96,293,112,250,138,194,175,137,198,111,224,89,233,84,235,88,227,93,201,115,179,141,142,197,117,252,101,295"/>
+<area shape="rect" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10" title=" " alt="" coords="233,104,440,129"/>
+<area shape="poly" title=" " alt="" coords="100,292,118,258,146,216,181,174,224,138,234,133,237,137,227,143,185,178,150,220,123,261,105,295"/>
+<area shape="rect" href="classhttp_1_1Request.html#a8d7f2adb5a9e2717fe6b784160818aee" title=" " alt="" coords="243,153,430,179"/>
 <area shape="poly" title=" " alt="" coords="106,292,155,239,188,211,224,188,239,181,241,186,227,192,191,215,159,243,110,296"/>
-<area shape="rect" href="classhttp_1_1Request.html#a8d7f2adb5a9e2717fe6b784160818aee" title=" " alt="" coords="243,203,429,228"/>
-<area shape="poly" title=" " alt="" coords="121,292,168,263,224,237,248,229,249,234,226,242,171,268,124,296"/>
-<area shape="rect" href="classhttp_1_1Request.html#afcc854dfd95d0b508b47712427e7f009" title=" " alt="" coords="230,252,442,277"/>
+<area shape="rect" href="classhttp_1_1exception.html#a4cda45520c85f41e29b07c9b2896b1b4" title=" " alt="" coords="225,203,448,228"/>
+<area shape="poly" title=" " alt="" coords="121,291,168,263,224,237,248,229,250,234,226,242,171,268,124,296"/>
+<area shape="rect" href="classhttp_1_1Request.html#afcc854dfd95d0b508b47712427e7f009" title=" " alt="" coords="231,252,443,277"/>
 <area shape="poly" title=" " alt="" coords="177,294,259,277,260,283,178,299"/>
-<area shape="rect" href="classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="257,301,415,327"/>
-<area shape="poly" title=" " alt="" coords="178,311,243,311,243,317,178,317"/>
-<area shape="rect" href="classhttp_1_1Request.html#a7efc4f2b18d136dff526975a50643f43" title=" " alt="" coords="251,351,421,376"/>
+<area shape="rect" href="classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="258,301,415,327"/>
+<area shape="poly" title=" " alt="" coords="178,311,244,311,244,317,178,317"/>
+<area shape="rect" href="classhttp_1_1Request.html#a7efc4f2b18d136dff526975a50643f43" title=" " alt="" coords="251,351,422,376"/>
 <area shape="poly" title=" " alt="" coords="178,329,260,345,259,351,177,334"/>
-<area shape="rect" href="classhttp_1_1RequestProcessor.html#a06a6ac810295ff2b1f4aaf52376a8733" title=" " alt="" coords="250,401,422,441"/>
+<area shape="rect" href="classhttp_1_1RequestProcessor.html#a06a6ac810295ff2b1f4aaf52376a8733" title=" " alt="" coords="251,401,423,441"/>
 <area shape="poly" title=" " alt="" coords="126,332,173,359,226,385,249,394,247,399,224,390,170,363,123,336"/>
-<area shape="rect" href="classhttp_1_1Router.html#ad6e4a793ff5dfda59239fa8394f4c64a" title="Traverses m_locations according to a Request&#39;s Uri, respecting redirections while avoiding redirect l..." alt="" coords="245,465,427,491"/>
+<area shape="rect" href="classhttp_1_1Router.html#ad6e4a793ff5dfda59239fa8394f4c64a" title="Traverses m_locations according to a Request&#39;s Uri, respecting redirections while avoiding redirect l..." alt="" coords="245,465,428,491"/>
 <area shape="poly" title=" " alt="" coords="108,332,156,392,189,424,227,450,243,458,241,463,224,455,186,428,152,395,104,336"/>
-<area shape="rect" href="classhttp_1_1Request.html#a8b07466b813b2a50d8fad8e8efd843e3" title=" " alt="" coords="240,515,432,540"/>
+<area shape="rect" href="classhttp_1_1Request.html#a8b07466b813b2a50d8fad8e8efd843e3" title=" " alt="" coords="241,515,433,540"/>
 <area shape="poly" title=" " alt="" coords="103,333,121,369,148,415,183,461,227,500,239,507,236,511,224,504,179,465,143,418,116,372,99,335"/>
-<area shape="rect" href="classhttp_1_1Request.html#a7c21ec82e0fbcc4685b24bfeeac48e42" title=" " alt="" coords="231,564,441,589"/>
+<area shape="rect" href="classhttp_1_1Request.html#a7c21ec82e0fbcc4685b24bfeeac48e42" title=" " alt="" coords="231,564,442,589"/>
 <area shape="poly" title=" " alt="" coords="100,333,115,379,140,438,177,498,201,526,227,549,237,556,234,560,224,553,197,529,173,501,136,440,110,381,95,335"/>
-<area shape="rect" href="classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8" title=" " alt="" coords="225,613,447,639"/>
-<area shape="poly" title=" " alt="" coords="98,334,110,388,134,460,151,498,172,535,197,569,227,599,236,605,233,609,224,603,193,573,167,538,146,500,129,462,105,389,93,335"/>
+<area shape="rect" href="classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8" title=" " alt="" coords="226,613,447,639"/>
+<area shape="poly" title=" " alt="" coords="98,333,110,387,134,459,151,498,172,535,197,569,227,599,235,605,232,609,224,603,193,573,167,538,146,500,129,461,105,388,93,335"/>
 </map>
 </div>
 <div class="dynheader">

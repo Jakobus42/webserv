@@ -1,44 +1,57 @@
 <map id="config::ConfigFileParser::testFunction" name="config::ConfigFileParser::testFunction">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,325,179,365"/>
-<area shape="rect" id="Node000002" href="$classconfig_1_1ConfigFileParser.html#ae192e6bd6c5ba65c6d57a4a238383eda" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="227,5,400,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,324,108,271,132,200,171,123,196,87,225,55,230,51,233,55,229,59,200,90,175,126,137,202,113,273,100,326"/>
-<area shape="rect" id="Node000004" href="$classconfig_1_1ConfigFileParser.html#a1536f2814c3302f6cd46f61b9cc81822" title="sets the max body size for the server." alt="" coords="227,389,400,429"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="163,363,231,383,230,388,161,368"/>
-<area shape="rect" id="Node000006" href="$classconfig_1_1ConfigFileParser.html#a8c643807e65854fdb795b28022594d79" title="sets the error pages for the server." alt="" coords="227,325,400,365"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="179,343,213,343,213,348,179,348"/>
-<area shape="rect" id="Node000007" href="$classconfig_1_1ConfigFileParser.html#acfe2845946cdb151016d1e59ce6930fa" title="sets the index files for the location. (index.html by default)" alt="" coords="227,69,400,109"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="98,324,114,282,141,227,178,170,200,143,225,119,231,114,235,119,228,123,204,147,182,173,146,230,119,284,103,326"/>
-<area shape="rect" id="Node000008" href="$classconfig_1_1ConfigFileParser.html#a77c038f2c381909f4d6bcf87aee74d49" title="sets the methods allowed for the location." alt="" coords="227,133,400,173"/>
-<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="103,324,151,256,185,217,225,183,234,178,237,182,228,187,189,221,155,259,107,327"/>
-<area shape="rect" id="Node000009" href="$classconfig_1_1ConfigFileParser.html#a4df406312005d3fa0ec248ad48eebc80" title="Sets the port and ip address of the server." alt="" coords="227,453,400,493"/>
-<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="119,363,168,401,228,439,241,446,239,450,225,444,165,405,115,368"/>
-<area shape="rect" id="Node000011" href="$classconfig_1_1ConfigFileParser.html#a7c2637468e844f1a45ce90488e01affb" title="Creates a new location struct, initializes it and adds it to the config data." alt="" coords="227,517,400,557"/>
-<area shape="poly" id="edge14_Node000001_Node000011" title=" " alt="" coords="107,364,155,432,189,470,228,503,237,509,234,513,225,507,185,474,151,435,103,367"/>
-<area shape="rect" id="Node000014" href="$classconfig_1_1ConfigFileParser.html#ae96980a09075f768b9b072297e2e25f6" title="redirects the user to a different url with a specific return code." alt="" coords="227,261,400,301"/>
-<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="161,323,230,303,231,308,163,328"/>
-<area shape="rect" id="Node000016" href="$classconfig_1_1ConfigFileParser.html#a3859e7628a017d5fa780676c8d53fd62" title="sets the root directory for the location." alt="" coords="227,197,400,237"/>
-<area shape="poly" id="edge20_Node000001_Node000016" title=" " alt="" coords="115,323,165,285,225,247,239,240,241,245,228,252,168,290,119,327"/>
-<area shape="rect" id="Node000017" href="$classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="227,581,400,621"/>
-<area shape="poly" id="edge23_Node000001_Node000017" title=" " alt="" coords="103,365,119,407,146,461,182,518,204,544,228,567,235,572,231,576,225,571,200,548,178,521,141,464,114,409,98,367"/>
-<area shape="rect" id="Node000018" href="$classconfig_1_1ConfigFileParser.html#aaba5579c9dd7524e698f3d4c05e0378d" title="Sets the server name(s) of the server." alt="" coords="227,645,400,685"/>
-<area shape="poly" id="edge24_Node000001_Node000018" title=" " alt="" coords="100,365,113,418,137,489,175,565,200,600,229,631,233,635,230,639,225,635,196,604,171,568,132,491,108,419,95,366"/>
-<area shape="rect" id="Node000003" href="$classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="449,133,622,173"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="375,43,401,55,455,88,501,123,498,127,452,93,399,60,373,48"/>
-<area shape="rect" id="Node000005" href="$namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a" title="Converts a string to a positive integer." alt="" coords="481,397,590,422"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="400,407,467,407,467,412,400,412"/>
-<area shape="poly" id="edge6_Node000006_Node000005" title=" " alt="" coords="384,363,478,390,476,395,383,368"/>
-<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="384,107,453,127,452,132,383,112"/>
-<area shape="poly" id="edge10_Node000008_Node000003" title=" " alt="" coords="400,151,435,151,435,156,400,156"/>
-<area shape="poly" id="edge12_Node000009_Node000005" title=" " alt="" coords="383,451,476,423,478,428,384,456"/>
-<area shape="rect" id="Node000010" href="$namespaceconfig.html#ab0ce9a159a3d72a05a0321e13dcdac80" title="Checks if a string is a number." alt="" coords="467,461,604,486"/>
-<area shape="poly" id="edge13_Node000009_Node000010" title=" " alt="" coords="400,471,453,471,453,476,400,476"/>
-<area shape="rect" id="Node000012" href="$namespaceshared_1_1string.html#af85298827aba4985d2318526e69ee0d6" title="Splits a path into its components." alt="" coords="448,525,623,550"/>
-<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="400,535,434,535,434,540,400,540"/>
-<area shape="rect" id="Node000013" href="$namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="671,525,833,550"/>
-<area shape="poly" id="edge16_Node000012_Node000013" title=" " alt="" coords="623,535,657,535,657,540,623,540"/>
-<area shape="poly" id="edge18_Node000014_Node000003" title=" " alt="" coords="373,259,399,247,452,214,498,180,501,184,455,218,401,252,375,264"/>
-<area shape="rect" id="Node000015" href="$classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="454,237,617,262"/>
-<area shape="poly" id="edge19_Node000014_Node000015" title=" " alt="" coords="400,266,440,260,441,266,400,272"/>
-<area shape="poly" id="edge21_Node000016_Node000003" title=" " alt="" coords="383,195,452,175,453,180,384,200"/>
-<area shape="poly" id="edge22_Node000016_Node000015" title=" " alt="" coords="400,227,441,233,440,238,400,232"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,407,179,447"/>
+<area shape="rect" id="Node000002" href="$classconfig_1_1ConfigFileParser.html#a999b8a52cdf0ecd8898e1d543f080a3e" title="turns the autoindex on or off for the location. (off by default)" alt="" coords="227,471,400,511"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,445,231,465,230,470,161,450"/>
+<area shape="rect" id="Node000005" href="$classconfig_1_1ConfigFileParser.html#a1536f2814c3302f6cd46f61b9cc81822" title="sets the max body size for the server." alt="" coords="227,134,400,174"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="97,406,112,361,139,301,176,239,199,210,225,184,231,179,234,183,228,188,203,213,180,242,143,304,117,363,102,408"/>
+<area shape="rect" id="Node000007" href="$classconfig_1_1ConfigFileParser.html#a8c643807e65854fdb795b28022594d79" title="sets the error pages for the server." alt="" coords="227,198,400,238"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="105,405,154,340,188,302,225,266,259,243,262,247,228,270,192,305,158,343,109,408"/>
+<area shape="rect" id="Node000008" href="$classconfig_1_1ConfigFileParser.html#acfe2845946cdb151016d1e59ce6930fa" title="sets the index files for the location. (index.html by default)" alt="" coords="227,611,400,651"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="109,446,157,512,191,550,228,585,254,602,251,606,225,589,187,554,153,515,104,449"/>
+<area shape="rect" id="Node000009" href="$classconfig_1_1ConfigFileParser.html#a968caa89dd9cc3085ffbd1fa93660731" title="Creates a new server struct, initializes it and adds it to the config data." alt="" coords="449,680,622,720"/>
+<area shape="poly" id="edge34_Node000001_Node000009" title=" " alt="" coords="101,446,115,492,140,552,177,612,201,639,228,661,277,685,330,700,384,706,435,707,435,713,384,712,329,705,275,690,225,665,197,642,173,615,135,554,110,494,96,448"/>
+<area shape="rect" id="Node000010" href="$classconfig_1_1ConfigFileParser.html#a77c038f2c381909f4d6bcf87aee74d49" title="sets the methods allowed for the location." alt="" coords="227,535,400,575"/>
+<area shape="poly" id="edge15_Node000001_Node000010" title=" " alt="" coords="119,445,168,483,228,521,241,527,239,532,225,525,165,487,115,449"/>
+<area shape="rect" id="Node000011" href="$classconfig_1_1ConfigFileParser.html#a4df406312005d3fa0ec248ad48eebc80" title="Sets the port and ip address of the server." alt="" coords="227,51,400,91"/>
+<area shape="poly" id="edge18_Node000001_Node000011" title=" " alt="" coords="95,406,109,352,135,277,173,195,197,156,225,120,253,96,256,100,229,124,201,159,177,198,140,279,114,353,100,407"/>
+<area shape="rect" id="Node000013" href="$classconfig_1_1ConfigFileParser.html#a7c2637468e844f1a45ce90488e01affb" title="Creates a new location struct, initializes it and adds it to the config data." alt="" coords="227,738,400,778"/>
+<area shape="poly" id="edge22_Node000001_Node000013" title=" " alt="" coords="100,447,115,498,140,568,178,644,201,679,229,712,250,729,246,733,225,716,197,683,173,646,135,570,110,500,95,448"/>
+<area shape="rect" id="Node000016" href="$classconfig_1_1ConfigFileParser.html#ae96980a09075f768b9b072297e2e25f6" title="redirects the user to a different url with a specific return code." alt="" coords="227,343,400,383"/>
+<area shape="poly" id="edge26_Node000001_Node000016" title=" " alt="" coords="161,404,230,384,231,389,163,409"/>
+<area shape="rect" id="Node000018" href="$classconfig_1_1ConfigFileParser.html#a3859e7628a017d5fa780676c8d53fd62" title="sets the root directory for the location." alt="" coords="227,407,400,447"/>
+<area shape="poly" id="edge30_Node000001_Node000018" title=" " alt="" coords="179,424,213,424,213,430,179,430"/>
+<area shape="rect" id="Node000019" href="$classconfig_1_1ConfigFileParser.html#aaba5579c9dd7524e698f3d4c05e0378d" title="Sets the server name(s) of the server." alt="" coords="449,248,622,288"/>
+<area shape="poly" id="edge35_Node000001_Node000019" title=" " alt="" coords="113,405,162,366,193,345,226,329,278,309,332,294,434,275,435,280,333,299,279,314,228,333,196,350,166,370,117,409"/>
+<area shape="rect" id="Node000003" href="$classconfig_1_1ConfigFileParser.html#a8707e2706131b170aaf3998efe1d8370" title=" " alt="" coords="671,407,844,447"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="400,476,657,439,657,444,401,481"/>
+<area shape="rect" id="Node000004" href="$classconfig_1_1ConfigFileParser.html#a09c229efdd868fb3bf7e2d3dd2833a4e" title="finds the current location in the configuration file." alt="" coords="449,515,622,555"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="401,506,436,513,435,518,400,511"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="364,131,421,115,489,104,524,104,559,108,593,117,624,133,656,158,682,189,703,224,720,261,743,334,755,393,750,394,738,335,715,263,699,227,678,192,652,162,621,137,591,122,558,113,524,109,489,110,422,120,366,136"/>
+<area shape="rect" id="Node000006" href="$namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a" title="Converts a string to a positive integer." alt="" coords="481,148,590,173"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="400,154,467,156,467,161,400,159"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="400,201,453,198,511,201,569,212,624,234,647,249,667,268,702,310,728,354,746,393,741,395,723,357,698,313,663,271,643,253,621,239,568,217,510,206,453,203,400,206"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="391,195,471,174,473,179,392,200"/>
+<area shape="poly" id="edge11_Node000008_Node000003" title=" " alt="" coords="400,635,452,634,510,628,567,614,621,591,660,563,692,528,719,491,738,458,742,461,723,494,696,531,663,567,624,596,569,619,511,633,453,639,400,640"/>
+<area shape="poly" id="edge12_Node000008_Node000004" title=" " alt="" coords="360,608,475,558,477,563,362,613"/>
+<area shape="poly" id="edge13_Node000008_Node000009" title=" " alt="" coords="379,649,459,674,457,679,377,654"/>
+<area shape="poly" id="edge14_Node000009_Node000003" title=" " alt="" coords="593,678,621,660,664,611,698,556,725,503,742,459,747,461,729,505,703,559,668,614,624,664,596,683"/>
+<area shape="poly" id="edge16_Node000010_Node000003" title=" " alt="" coords="389,572,442,581,501,586,563,581,622,565,657,543,689,516,715,485,735,457,739,460,719,489,692,519,661,548,624,569,564,586,502,591,441,587,388,578"/>
+<area shape="poly" id="edge17_Node000010_Node000004" title=" " alt="" coords="400,545,435,541,435,547,400,550"/>
+<area shape="poly" id="edge20_Node000011_Node000003" title=" " alt="" coords="352,48,410,25,481,7,518,3,556,5,591,14,624,31,664,68,696,113,719,163,736,215,748,267,755,315,759,393,754,393,749,316,742,268,731,216,714,165,691,116,660,72,621,36,589,19,555,10,518,8,482,12,411,30,354,53"/>
+<area shape="poly" id="edge19_Node000011_Node000006" title=" " alt="" coords="365,89,491,140,489,145,363,94"/>
+<area shape="rect" id="Node000012" href="$namespaceconfig.html#ab0ce9a159a3d72a05a0321e13dcdac80" title="Checks if a string is a number." alt="" coords="467,46,604,72"/>
+<area shape="poly" id="edge21_Node000011_Node000012" title=" " alt="" coords="400,64,453,61,453,66,400,69"/>
+<area shape="poly" id="edge23_Node000013_Node000003" title=" " alt="" coords="400,770,454,773,512,770,569,756,596,745,621,730,652,703,678,670,699,634,716,595,739,521,750,460,755,461,744,522,721,597,704,636,682,673,656,706,624,734,599,750,571,761,513,775,454,778,400,775"/>
+<area shape="rect" id="Node000014" href="$namespaceshared_1_1string.html#af85298827aba4985d2318526e69ee0d6" title="Splits a path into its components." alt="" coords="448,796,623,821"/>
+<area shape="poly" id="edge24_Node000013_Node000014" title=" " alt="" coords="401,775,466,790,465,795,399,780"/>
+<area shape="rect" id="Node000015" href="$namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="676,796,839,821"/>
+<area shape="poly" id="edge25_Node000014_Node000015" title=" " alt="" coords="623,806,662,806,662,811,623,811"/>
+<area shape="poly" id="edge27_Node000016_Node000003" title=" " alt="" coords="400,344,451,338,508,335,566,338,623,348,676,370,721,397,718,401,673,374,622,354,566,343,508,341,452,343,401,349"/>
+<area shape="poly" id="edge28_Node000016_Node000004" title=" " alt="" coords="380,381,401,393,435,418,465,447,513,502,509,506,461,451,431,422,399,397,377,385"/>
+<area shape="rect" id="Node000017" href="$classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="454,364,617,389"/>
+<area shape="poly" id="edge29_Node000016_Node000017" title=" " alt="" coords="400,366,440,368,440,373,400,371"/>
+<area shape="poly" id="edge31_Node000018_Node000003" title=" " alt="" coords="400,424,657,424,657,430,400,430"/>
+<area shape="poly" id="edge32_Node000018_Node000004" title=" " alt="" coords="373,445,401,457,491,505,489,510,399,461,371,450"/>
+<area shape="poly" id="edge33_Node000018_Node000017" title=" " alt="" coords="399,405,465,390,466,395,401,410"/>
+<area shape="poly" id="edge36_Node000019_Node000003" title=" " alt="" coords="590,286,624,305,682,350,730,395,726,399,679,354,621,309,587,291"/>
 </map>

@@ -88,15 +88,15 @@ Collaboration diagram for http::DeleteHandler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1DeleteHandler__coll__graph.png" border="0" usemap="#ahttp_1_1DeleteHandler_coll__map" alt="Collaboration graph"/></div>
 <map name="ahttp_1_1DeleteHandler_coll__map" id="ahttp_1_1DeleteHandler_coll__map">
-<area shape="rect" title="..." alt="" coords="65,876,209,981"/>
-<area shape="rect" href="classhttp_1_1ARequestHandler.html" title="..." alt="" coords="55,701,218,827"/>
-<area shape="poly" title=" " alt="" coords="139,840,139,876,134,876,134,840"/>
-<area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="5,433,159,559"/>
-<area shape="poly" title=" " alt="" coords="100,572,127,700,121,702,95,573"/>
-<area shape="rect" href="classhttp_1_1Router.html" title=" " alt="" coords="183,353,331,639"/>
-<area shape="poly" title=" " alt="" coords="195,640,174,687,169,685,190,638"/>
-<area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="178,5,335,291"/>
-<area shape="poly" title=" " alt="" coords="259,291,259,336,254,336,254,291"/>
+<area shape="rect" title="..." alt="" coords="65,896,209,1001"/>
+<area shape="rect" href="classhttp_1_1ARequestHandler.html" title="..." alt="" coords="55,721,218,847"/>
+<area shape="poly" title=" " alt="" coords="139,860,139,896,134,896,134,860"/>
+<area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="5,453,159,579"/>
+<area shape="poly" title=" " alt="" coords="100,592,127,720,121,722,95,593"/>
+<area shape="rect" href="classhttp_1_1Router.html" title=" " alt="" coords="183,373,331,659"/>
+<area shape="poly" title=" " alt="" coords="195,660,174,707,169,705,190,658"/>
+<area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="178,5,335,311"/>
+<area shape="poly" title=" " alt="" coords="259,311,259,357,254,357,254,311"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -233,16 +233,16 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   39</span>            response.setHeader(<span class="stringliteral">&quot;Content-Length&quot;</span>, <span class="stringliteral">&quot;0&quot;</span>);</div>
 <div class="line"><span class="lineno">   40</span>        } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>&amp; e) {</div>
 <div class="line"><span class="lineno">   41</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;FUCK, &quot;</span> &lt;&lt; e.<a class="code hl_function" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10">getMessage</a>() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   42</span>            response.setStatusCode(e.<a class="code hl_function" href="classhttp_1_1exception.html#add7e0b357120f83926453dc287252b76">getCode</a>());</div>
+<div class="line"><span class="lineno">   42</span>            response.setStatusCode(e.<a class="code hl_function" href="classhttp_1_1exception.html#a4cda45520c85f41e29b07c9b2896b1b4">getStatusCode</a>());</div>
 <div class="line"><span class="lineno">   43</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65">handleError</a>(response);</div>
 <div class="line"><span class="lineno">   44</span>        }</div>
 <div class="line"><span class="lineno">   45</span>    }</div>
 <div class="ttc" id="aclasshttp_1_1ARequestHandler_html_a0fc49eed89135bbf5abbdf10479fda65"><div class="ttname"><a href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65">http::ARequestHandler::handleError</a></div><div class="ttdeci">void handleError(Response &amp;response)</div><div class="ttdef"><b>Definition</b> <a href="ARequestHandler_8hpp_source.html#l00024">ARequestHandler.hpp:24</a></div></div>
 <div class="ttc" id="aclasshttp_1_1ARequestHandler_html_af70584de4f90018bf756bedc26b8a239"><div class="ttname"><a href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">http::ARequestHandler::m_router</a></div><div class="ttdeci">Router &amp; m_router</div><div class="ttdef"><b>Definition</b> <a href="ARequestHandler_8hpp_source.html#l00031">ARequestHandler.hpp:31</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Router_html_adc2958c32ba4e5e222a993ddba2f715c"><div class="ttname"><a href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c">http::Router::checkFileType</a></div><div class="ttdeci">static FileType checkFileType(const std::string &amp;absolutePath)</div><div class="ttdoc">Checks whether a path exists in the file system, and whether it is a file or directory.</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00039">Router.cpp:39</a></div></div>
-<div class="ttc" id="aclasshttp_1_1exception_html"><div class="ttname"><a href="classhttp_1_1exception.html">http::exception</a></div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00027">http.hpp:27</a></div></div>
-<div class="ttc" id="aclasshttp_1_1exception_html_a1fc13601675b1ac1fde21ee2dc1f4b10"><div class="ttname"><a href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10">http::exception::getMessage</a></div><div class="ttdeci">const std::string &amp; getMessage() const</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00115">http.cpp:115</a></div></div>
-<div class="ttc" id="aclasshttp_1_1exception_html_add7e0b357120f83926453dc287252b76"><div class="ttname"><a href="classhttp_1_1exception.html#add7e0b357120f83926453dc287252b76">http::exception::getCode</a></div><div class="ttdeci">StatusCode getCode() const</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00111">http.cpp:111</a></div></div>
+<div class="ttc" id="aclasshttp_1_1exception_html"><div class="ttname"><a href="classhttp_1_1exception.html">http::exception</a></div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00028">http.hpp:28</a></div></div>
+<div class="ttc" id="aclasshttp_1_1exception_html_a1fc13601675b1ac1fde21ee2dc1f4b10"><div class="ttname"><a href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10">http::exception::getMessage</a></div><div class="ttdeci">const std::string &amp; getMessage() const</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00113">http.cpp:113</a></div></div>
+<div class="ttc" id="aclasshttp_1_1exception_html_a4cda45520c85f41e29b07c9b2896b1b4"><div class="ttname"><a href="classhttp_1_1exception.html#a4cda45520c85f41e29b07c9b2896b1b4">http::exception::getStatusCode</a></div><div class="ttdeci">StatusCode getStatusCode() const</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00111">http.cpp:111</a></div></div>
 <div class="ttc" id="anamespacehttp_html_aa05465f9f5daa64d3a9ba64a34e92cfa"><div class="ttname"><a href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfa">http::FileType</a></div><div class="ttdeci">FileType</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00065">types.hpp:65</a></div></div>
 <div class="ttc" id="anamespacehttp_html_aa05465f9f5daa64d3a9ba64a34e92cfaa0612c5b78b5641671e6de05d375881d0"><div class="ttname"><a href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaa0612c5b78b5641671e6de05d375881d0">http::DIRECTORY</a></div><div class="ttdeci">@ DIRECTORY</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00067">types.hpp:67</a></div></div>
 <div class="ttc" id="anamespacehttp_html_aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d"><div class="ttname"><a href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d">http::_NOT_FOUND</a></div><div class="ttdeci">@ _NOT_FOUND</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00069">types.hpp:68</a></div></div>
@@ -255,35 +255,35 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classhttp_1_1DeleteHandler_a06a40a6ec5165137810115a58fd8411d_cgraph.png" border="0" usemap="#aclasshttp_1_1DeleteHandler_a06a40a6ec5165137810115a58fd8411d_cgraph" alt=""/></div>
 <map name="aclasshttp_1_1DeleteHandler_a06a40a6ec5165137810115a58fd8411d_cgraph" id="aclasshttp_1_1DeleteHandler_a06a40a6ec5165137810115a58fd8411d_cgraph">
 <area shape="rect" title=" " alt="" coords="5,146,156,186"/>
-<area shape="rect" href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="215,5,414,31"/>
-<area shape="poly" title=" " alt="" coords="94,144,138,91,168,63,203,40,216,33,219,38,205,44,172,67,142,95,98,147"/>
-<area shape="rect" href="classhttp_1_1exception.html#add7e0b357120f83926453dc287252b76" title=" " alt="" coords="223,55,406,80"/>
+<area shape="rect" href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="216,5,415,31"/>
+<area shape="poly" title=" " alt="" coords="94,144,138,91,168,63,203,40,217,33,219,38,205,44,172,67,142,95,98,147"/>
+<area shape="rect" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10" title=" " alt="" coords="212,55,419,80"/>
 <area shape="poly" title=" " alt="" coords="108,143,151,115,203,89,226,81,227,86,205,94,154,120,111,148"/>
-<area shape="rect" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10" title=" " alt="" coords="211,104,418,129"/>
-<area shape="poly" title=" " alt="" coords="156,148,240,130,241,135,157,153"/>
-<area shape="rect" href="classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="236,153,393,179"/>
-<area shape="poly" title=" " alt="" coords="156,163,222,163,222,169,156,169"/>
-<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="230,203,399,243"/>
-<area shape="poly" title=" " alt="" coords="157,182,220,197,218,203,156,187"/>
-<area shape="rect" href="classhttp_1_1Response.html#ab52959eaac18026a4f1c4ce3006731ea" title=" " alt="" coords="487,309,682,335"/>
-<area shape="poly" title=" " alt="" coords="105,184,149,220,176,238,205,253,254,268,322,282,474,306,473,311,321,287,252,273,203,258,173,243,146,224,101,188"/>
-<area shape="rect" href="classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8" title=" " alt="" coords="204,319,425,344"/>
-<area shape="poly" title=" " alt="" coords="97,185,141,241,171,271,205,297,237,312,234,317,203,302,168,275,137,244,93,188"/>
-<area shape="rect" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75" title=" " alt="" coords="494,63,675,88"/>
-<area shape="poly" title=" " alt="" coords="398,204,424,189,440,167,446,144,453,120,460,108,472,97,480,91,483,96,475,101,464,112,458,122,452,146,445,170,427,193,401,209"/>
-<area shape="rect" href="classhttp_1_1Response.html#a4ade0256d440a548f4dfd7f4bc08ffb4" title=" " alt="" coords="494,112,675,137"/>
-<area shape="poly" title=" " alt="" coords="398,201,424,189,438,179,447,168,457,157,472,146,488,139,490,144,475,151,460,161,451,171,442,183,427,194,400,206"/>
-<area shape="rect" href="namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d" title=" " alt="" coords="515,161,654,187"/>
-<area shape="poly" title=" " alt="" coords="399,205,502,186,503,192,400,211"/>
-<area shape="rect" href="classhttp_1_1Response.html#a64b5a9e52e86a1e5758e763ad797ca12" title=" " alt="" coords="473,211,696,236"/>
-<area shape="poly" title=" " alt="" coords="399,221,460,221,460,226,399,226"/>
-<area shape="rect" href="classhttp_1_1Response.html#ac79941baf008165ba0c70903246d2374" title=" " alt="" coords="495,260,675,285"/>
-<area shape="poly" title=" " alt="" coords="400,236,501,255,500,260,399,241"/>
-<area shape="poly" title=" " alt="" coords="384,241,427,260,451,278,475,296,493,303,491,308,472,300,447,283,424,264,382,246"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="751,63,913,88"/>
-<area shape="poly" title=" " alt="" coords="675,73,737,73,737,78,675,78"/>
-<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="744,161,920,187"/>
-<area shape="poly" title=" " alt="" coords="654,171,730,171,730,177,654,177"/>
+<area shape="rect" href="classhttp_1_1exception.html#a4cda45520c85f41e29b07c9b2896b1b4" title=" " alt="" coords="204,104,427,129"/>
+<area shape="poly" title=" " alt="" coords="155,148,240,130,241,135,157,153"/>
+<area shape="rect" href="classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="237,153,394,179"/>
+<area shape="poly" title=" " alt="" coords="156,163,223,163,223,169,156,169"/>
+<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="231,203,400,243"/>
+<area shape="poly" title=" " alt="" coords="157,182,221,197,219,203,155,187"/>
+<area shape="rect" href="classhttp_1_1Response.html#ab52959eaac18026a4f1c4ce3006731ea" title=" " alt="" coords="489,309,683,335"/>
+<area shape="poly" title=" " alt="" coords="105,184,149,220,176,238,205,253,254,268,322,282,475,306,475,311,321,287,252,273,203,258,173,243,146,224,101,188"/>
+<area shape="rect" href="classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8" title=" " alt="" coords="205,319,426,344"/>
+<area shape="poly" title=" " alt="" coords="97,185,141,241,171,271,205,297,236,312,234,317,203,302,168,275,137,244,93,188"/>
+<area shape="rect" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75" title=" " alt="" coords="495,63,677,88"/>
+<area shape="poly" title=" " alt="" coords="399,205,425,189,442,167,448,144,454,120,461,108,473,97,482,91,485,96,476,101,466,112,459,122,453,146,446,170,428,193,402,209"/>
+<area shape="rect" href="classhttp_1_1Response.html#a4ade0256d440a548f4dfd7f4bc08ffb4" title=" " alt="" coords="495,112,677,137"/>
+<area shape="poly" title=" " alt="" coords="399,201,425,189,439,179,448,168,458,157,473,146,489,139,491,144,476,151,462,161,453,171,443,183,428,194,402,206"/>
+<area shape="rect" href="namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d" title=" " alt="" coords="517,161,655,187"/>
+<area shape="poly" title=" " alt="" coords="400,205,503,186,504,192,401,211"/>
+<area shape="rect" href="classhttp_1_1Response.html#a64b5a9e52e86a1e5758e763ad797ca12" title=" " alt="" coords="475,211,697,236"/>
+<area shape="poly" title=" " alt="" coords="400,221,461,221,461,226,400,226"/>
+<area shape="rect" href="classhttp_1_1Response.html#ac79941baf008165ba0c70903246d2374" title=" " alt="" coords="496,260,676,285"/>
+<area shape="poly" title=" " alt="" coords="401,236,502,255,502,260,400,241"/>
+<area shape="poly" title=" " alt="" coords="385,241,428,260,452,278,476,296,494,303,492,308,473,300,449,283,425,264,383,246"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="752,63,915,88"/>
+<area shape="poly" title=" " alt="" coords="677,73,738,73,738,78,677,78"/>
+<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="745,161,921,187"/>
+<area shape="poly" title=" " alt="" coords="655,171,731,171,731,177,655,177"/>
 </map>
 </div>
 

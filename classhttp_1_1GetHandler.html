@@ -62,6 +62,7 @@ $(document).ready(function(){initNavTree('classhttp_1_1GetHandler.html',''); ini
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="classhttp_1_1GetHandler-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">http::GetHandler Class Reference</div></div>
 </div><!--header-->
@@ -76,7 +77,7 @@ Inheritance diagram for http::GetHandler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1GetHandler__inherit__graph.png" border="0" usemap="#ahttp_1_1GetHandler_inherit__map" alt="Inheritance graph"/></div>
 <map name="ahttp_1_1GetHandler_inherit__map" id="ahttp_1_1GetHandler_inherit__map">
-<area shape="rect" title="..." alt="" coords="25,352,149,457"/>
+<area shape="rect" title="..." alt="" coords="25,352,149,477"/>
 <area shape="rect" href="classhttp_1_1ARequestHandler.html" title="..." alt="" coords="5,179,168,304"/>
 <area shape="poly" title=" " alt="" coords="89,318,89,352,84,352,84,318"/>
 <area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="10,5,163,131"/>
@@ -88,15 +89,15 @@ Collaboration diagram for http::GetHandler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1GetHandler__coll__graph.png" border="0" usemap="#ahttp_1_1GetHandler_coll__map" alt="Collaboration graph"/></div>
 <map name="ahttp_1_1GetHandler_coll__map" id="ahttp_1_1GetHandler_coll__map">
-<area shape="rect" title="..." alt="" coords="75,876,199,981"/>
-<area shape="rect" href="classhttp_1_1ARequestHandler.html" title="..." alt="" coords="55,701,218,827"/>
-<area shape="poly" title=" " alt="" coords="139,840,139,876,134,876,134,840"/>
-<area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="5,433,159,559"/>
-<area shape="poly" title=" " alt="" coords="100,572,127,700,121,702,95,573"/>
-<area shape="rect" href="classhttp_1_1Router.html" title=" " alt="" coords="183,353,331,639"/>
-<area shape="poly" title=" " alt="" coords="195,640,174,687,169,685,190,638"/>
-<area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="178,5,335,291"/>
-<area shape="poly" title=" " alt="" coords="259,291,259,336,254,336,254,291"/>
+<area shape="rect" title="..." alt="" coords="75,896,199,1021"/>
+<area shape="rect" href="classhttp_1_1ARequestHandler.html" title="..." alt="" coords="55,721,218,847"/>
+<area shape="poly" title=" " alt="" coords="139,861,139,896,134,896,134,861"/>
+<area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="5,453,159,579"/>
+<area shape="poly" title=" " alt="" coords="100,592,127,720,121,722,95,593"/>
+<area shape="rect" href="classhttp_1_1Router.html" title=" " alt="" coords="183,373,331,659"/>
+<area shape="poly" title=" " alt="" coords="195,660,174,707,169,705,190,658"/>
+<area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="178,5,335,311"/>
+<area shape="poly" title=" " alt="" coords="259,311,259,357,254,357,254,311"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -117,6 +118,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aac149b0f531f1a1482418a6c5098e1e1 inherit pub_methods_classhttp_1_1ARequestHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fc49eed89135bbf5abbdf10479fda65 inherit pub_methods_classhttp_1_1ARequestHandler" id="r_a0fc49eed89135bbf5abbdf10479fda65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65">handleError</a> (<a class="el" href="classhttp_1_1Response.html">Response</a> &amp;response)</td></tr>
 <tr class="separator:a0fc49eed89135bbf5abbdf10479fda65 inherit pub_methods_classhttp_1_1ARequestHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a1d39cf89034ec73fb9c80fa66cbbc4cc" id="r_a1d39cf89034ec73fb9c80fa66cbbc4cc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1GetHandler.html#a1d39cf89034ec73fb9c80fa66cbbc4cc">getFilePath</a> (const <a class="el" href="structconfig_1_1Location.html">config::Location</a> &amp;location, const std::string &amp;filePath, std::string &amp;target)</td></tr>
+<tr class="separator:a1d39cf89034ec73fb9c80fa66cbbc4cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -176,6 +182,86 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1d39cf89034ec73fb9c80fa66cbbc4cc" name="a1d39cf89034ec73fb9c80fa66cbbc4cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d39cf89034ec73fb9c80fa66cbbc4cc">&#9670;&#160;</a></span>getFilePath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void http::GetHandler::getFilePath </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structconfig_1_1Location.html">config::Location</a> &amp;&#160;</td>
+          <td class="paramname"><em>location</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filePath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>target</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="GetHandler_8cpp_source.html#l00016">16</a> of file <a class="el" href="GetHandler_8cpp_source.html">GetHandler.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   16</span>                                                                                                             {</div>
+<div class="line"><span class="lineno">   17</span>        <span class="keywordflow">for</span> (std::vector&lt;std::string&gt;::const_iterator file = location.<a class="code hl_variable" href="structconfig_1_1Location.html#ad07d3238b441c27aefa83d6a75ff2aad">indexFile</a>.begin(); file != location.<a class="code hl_variable" href="structconfig_1_1Location.html#ad07d3238b441c27aefa83d6a75ff2aad">indexFile</a>.end(); ++file) {</div>
+<div class="line"><span class="lineno">   18</span>            std::string tmpFilePath = filePath + <span class="stringliteral">&quot;/&quot;</span> + *file;</div>
+<div class="line"><span class="lineno">   19</span>            <a class="code hl_enumeration" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfa">FileType</a> tmpFileType = <a class="code hl_variable" href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">m_router</a>.<a class="code hl_function" href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c">checkFileType</a>(tmpFilePath);</div>
+<div class="line"><span class="lineno">   20</span>            <span class="keywordflow">if</span> (tmpFileType == <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaf588e02f8d0cc2fa280d47d9beb900db">FILE</a>) { <span class="comment">// return path to first file in index that exists and isn&#39;t a directory</span></div>
+<div class="line"><span class="lineno">   21</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;getFilePath found file!!!!!!!!!!!!!!!!!!!!!!!!!!!!!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   22</span>                target.assign(tmpFilePath);</div>
+<div class="line"><span class="lineno">   23</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   24</span>            }</div>
+<div class="line"><span class="lineno">   25</span>        }</div>
+<div class="line"><span class="lineno">   26</span>    }</div>
+<div class="ttc" id="aclasshttp_1_1ARequestHandler_html_af70584de4f90018bf756bedc26b8a239"><div class="ttname"><a href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">http::ARequestHandler::m_router</a></div><div class="ttdeci">Router &amp; m_router</div><div class="ttdef"><b>Definition</b> <a href="ARequestHandler_8hpp_source.html#l00031">ARequestHandler.hpp:31</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Router_html_adc2958c32ba4e5e222a993ddba2f715c"><div class="ttname"><a href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c">http::Router::checkFileType</a></div><div class="ttdeci">static FileType checkFileType(const std::string &amp;absolutePath)</div><div class="ttdoc">Checks whether a path exists in the file system, and whether it is a file or directory.</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00039">Router.cpp:39</a></div></div>
+<div class="ttc" id="anamespacehttp_html_aa05465f9f5daa64d3a9ba64a34e92cfa"><div class="ttname"><a href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfa">http::FileType</a></div><div class="ttdeci">FileType</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00065">types.hpp:65</a></div></div>
+<div class="ttc" id="anamespacehttp_html_aa05465f9f5daa64d3a9ba64a34e92cfaaf588e02f8d0cc2fa280d47d9beb900db"><div class="ttname"><a href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaf588e02f8d0cc2fa280d47d9beb900db">http::FILE</a></div><div class="ttdeci">@ FILE</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00066">types.hpp:66</a></div></div>
+<div class="ttc" id="astructconfig_1_1Location_html_ad07d3238b441c27aefa83d6a75ff2aad"><div class="ttname"><a href="structconfig_1_1Location.html#ad07d3238b441c27aefa83d6a75ff2aad">config::Location::indexFile</a></div><div class="ttdeci">std::vector&lt; std::string &gt; indexFile</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00018">Location.hpp:18</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1GetHandler_a1d39cf89034ec73fb9c80fa66cbbc4cc_cgraph.png" border="0" usemap="#aclasshttp_1_1GetHandler_a1d39cf89034ec73fb9c80fa66cbbc4cc_cgraph" alt=""/></div>
+<map name="aclasshttp_1_1GetHandler_a1d39cf89034ec73fb9c80fa66cbbc4cc_cgraph" id="aclasshttp_1_1GetHandler_a1d39cf89034ec73fb9c80fa66cbbc4cc_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,216,31"/>
+<area shape="rect" href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="264,5,463,31"/>
+<area shape="poly" title=" " alt="" coords="216,15,251,15,251,21,216,21"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1GetHandler_a1d39cf89034ec73fb9c80fa66cbbc4cc_icgraph.png" border="0" usemap="#aclasshttp_1_1GetHandler_a1d39cf89034ec73fb9c80fa66cbbc4cc_icgraph" alt=""/></div>
+<map name="aclasshttp_1_1GetHandler_a1d39cf89034ec73fb9c80fa66cbbc4cc_icgraph" id="aclasshttp_1_1GetHandler_a1d39cf89034ec73fb9c80fa66cbbc4cc_icgraph">
+<area shape="rect" title=" " alt="" coords="236,5,447,31"/>
+<area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="5,5,188,31"/>
+<area shape="poly" title=" " alt="" coords="222,21,188,21,188,15,222,15"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="af56131f653540bb9121e3c508466823f" name="af56131f653540bb9121e3c508466823f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af56131f653540bb9121e3c508466823f">&#9670;&#160;</a></span>handle()</h2>
 
@@ -212,106 +298,118 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classhttp_1_1ARequestHandler.html#a28c092d38a9351a3e24cb992f4c46dde">http::ARequestHandler</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="GetHandler_8cpp_source.html#l00017">17</a> of file <a class="el" href="GetHandler_8cpp_source.html">GetHandler.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   17</span>                                                                      {</div>
-<div class="line"><span class="lineno">   18</span>        <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">   19</span>            <span class="keyword">const</span> <a class="code hl_struct" href="structconfig_1_1Location.html">config::Location</a>&amp; location = *request.getLocation();</div>
-<div class="line"><span class="lineno">   20</span>            <a class="code hl_enumeration" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfa">FileType</a> fileType = <a class="code hl_variable" href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">m_router</a>.<a class="code hl_function" href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c">checkFileType</a>(request.getUri().safeAbsolutePath);</div>
-<div class="line"><span class="lineno">   21</span>            <span class="keywordflow">if</span> (fileType == <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d">_NOT_FOUND</a>) { <span class="comment">// TODO: replace with actual file name</span></div>
-<div class="line"><span class="lineno">   22</span>                <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a144f7cef2e3efe6d823debdf4e62b10c">NOT_FOUND</a>, <span class="stringliteral">&quot;GET: File doesn&#39;t exist&quot;</span>);</div>
-<div class="line"><span class="lineno">   23</span>            }</div>
-<div class="line"><span class="lineno">   24</span>            std::string filePath = request.getUri().safeAbsolutePath;</div>
-<div class="line"><span class="lineno">   25</span>            <span class="keywordflow">if</span> (fileType == <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaa0612c5b78b5641671e6de05d375881d0">DIRECTORY</a>) {</div>
-<div class="line"><span class="lineno">   26</span>                <span class="keywordflow">if</span> (!location.<a class="code hl_variable" href="structconfig_1_1Location.html#ad07d3238b441c27aefa83d6a75ff2aad">indexFile</a>.empty()) {</div>
-<div class="line"><span class="lineno">   27</span>                    <span class="comment">// TODO: if no index files exist / are valid, fall back on autoindex</span></div>
-<div class="line"><span class="lineno">   28</span>                    <span class="comment">//       if autoindex is then false, return 403 as usual</span></div>
-<div class="line"><span class="lineno">   29</span>                    <span class="keywordflow">for</span> (std::vector&lt;std::string&gt;::const_iterator file = location.<a class="code hl_variable" href="structconfig_1_1Location.html#ad07d3238b441c27aefa83d6a75ff2aad">indexFile</a>.begin(); file != location.<a class="code hl_variable" href="structconfig_1_1Location.html#ad07d3238b441c27aefa83d6a75ff2aad">indexFile</a>.end(); ++file) {</div>
-<div class="line"><span class="lineno">   30</span>                        std::string tmpFilePath = filePath + <span class="stringliteral">&quot;/&quot;</span> + *file;</div>
-<div class="line"><span class="lineno">   31</span>                        <a class="code hl_enumeration" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfa">FileType</a> tmpFileType = <a class="code hl_variable" href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">m_router</a>.<a class="code hl_function" href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c">checkFileType</a>(tmpFilePath);</div>
-<div class="line"><span class="lineno">   32</span>                        <span class="keywordflow">if</span> (tmpFileType == <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaf588e02f8d0cc2fa280d47d9beb900db">FILE</a>) {</div>
-<div class="line"><span class="lineno">   33</span>                            filePath = tmpFilePath;</div>
-<div class="line"><span class="lineno">   34</span>                            <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">   35</span>                        }</div>
-<div class="line"><span class="lineno">   36</span>                    }</div>
-<div class="line"><span class="lineno">   37</span>                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (location.<a class="code hl_variable" href="structconfig_1_1Location.html#a7dcc19d544f0c21f8e29657406ddd5bd">autoindex</a> == <span class="keyword">true</span>) { <span class="comment">// TODO: should also happen if location.indexFile isn&#39;t empty, but no indexFile is found at the location</span></div>
-<div class="line"><span class="lineno">   38</span>                                                         <span class="comment">// return autoindex</span></div>
-<div class="line"><span class="lineno">   39</span>                } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">   40</span>                    <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">FORBIDDEN</a>, <span class="stringliteral">&quot;Requested location does not have an index&quot;</span>);</div>
-<div class="line"><span class="lineno">   41</span>                }</div>
-<div class="line"><span class="lineno">   42</span>            }</div>
-<div class="line"><span class="lineno">   43</span>            std::ifstream inFile(filePath.c_str(), std::ios::binary);</div>
-<div class="line"><span class="lineno">   44</span>            <span class="keywordflow">if</span> (!inFile.is_open()) {</div>
-<div class="line"><span class="lineno">   45</span>                <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">FORBIDDEN</a>, <span class="stringliteral">&quot;GET: File could not be opened&quot;</span>); <span class="comment">// TODO: also happens if path doesn&#39;t exist, should be NOT_FOUND in that case</span></div>
-<div class="line"><span class="lineno">   46</span>            }</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>            std::stringstream buffer;</div>
-<div class="line"><span class="lineno">   49</span>            buffer &lt;&lt; inFile.rdbuf();</div>
-<div class="line"><span class="lineno">   50</span>            response.setBody(buffer.str());</div>
-<div class="line"><span class="lineno">   51</span>            response.setHeader(<span class="stringliteral">&quot;Content-Length&quot;</span>, <a class="code hl_function" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a>(buffer.str().size()));</div>
-<div class="line"><span class="lineno">   52</span>            response.setStatusCode(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc">OK</a>);</div>
-<div class="line"><span class="lineno">   53</span>        } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>&amp; e) {</div>
-<div class="line"><span class="lineno">   54</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;CRAP, &quot;</span> &lt;&lt; e.<a class="code hl_function" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10">getMessage</a>() &lt;&lt; <span class="stringliteral">&quot;; &quot;</span> &lt;&lt; e.<a class="code hl_function" href="classhttp_1_1exception.html#add7e0b357120f83926453dc287252b76">getCode</a>() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   55</span>            response.setStatusCode(e.<a class="code hl_function" href="classhttp_1_1exception.html#add7e0b357120f83926453dc287252b76">getCode</a>());</div>
-<div class="line"><span class="lineno">   56</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65">handleError</a>(response);</div>
-<div class="line"><span class="lineno">   57</span>        }</div>
-<div class="line"><span class="lineno">   58</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="GetHandler_8cpp_source.html#l00029">29</a> of file <a class="el" href="GetHandler_8cpp_source.html">GetHandler.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   29</span>                                                                      {</div>
+<div class="line"><span class="lineno">   30</span>        <span class="keywordflow">try</span> {</div>
+<div class="line"><span class="lineno">   31</span>            <span class="keyword">const</span> <a class="code hl_struct" href="structconfig_1_1Location.html">config::Location</a>&amp; location = *request.getLocation();</div>
+<div class="line"><span class="lineno">   32</span>            <a class="code hl_enumeration" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfa">FileType</a> fileType = <a class="code hl_variable" href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">m_router</a>.<a class="code hl_function" href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c">checkFileType</a>(request.getUri().safeAbsolutePath);</div>
+<div class="line"><span class="lineno">   33</span>            <span class="keywordflow">if</span> (fileType == <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d">_NOT_FOUND</a>) {</div>
+<div class="line"><span class="lineno">   34</span>                <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a144f7cef2e3efe6d823debdf4e62b10c">NOT_FOUND</a>, <span class="stringliteral">&quot;GET: File doesn&#39;t exist&quot;</span>);</div>
+<div class="line"><span class="lineno">   35</span>            }</div>
+<div class="line"><span class="lineno">   36</span>            std::string filePath = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">   37</span>            std::string autoindexBody = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">   38</span>            <span class="keywordflow">if</span> (fileType == <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaf588e02f8d0cc2fa280d47d9beb900db">FILE</a>) {</div>
+<div class="line"><span class="lineno">   39</span>                filePath = request.getUri().safeAbsolutePath;</div>
+<div class="line"><span class="lineno">   40</span>            }</div>
+<div class="line"><span class="lineno">   41</span>            <span class="keywordflow">if</span> (fileType == <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaa0612c5b78b5641671e6de05d375881d0">DIRECTORY</a>) {</div>
+<div class="line"><span class="lineno">   42</span>                <span class="keywordflow">if</span> (!location.<a class="code hl_variable" href="structconfig_1_1Location.html#ad07d3238b441c27aefa83d6a75ff2aad">indexFile</a>.empty()) {</div>
+<div class="line"><span class="lineno">   43</span>                    <a class="code hl_function" href="classhttp_1_1GetHandler.html#a1d39cf89034ec73fb9c80fa66cbbc4cc">getFilePath</a>(location, request.getUri().safeAbsolutePath, filePath); <span class="comment">// returns true only if filePath isn&#39;t still &quot;&quot;</span></div>
+<div class="line"><span class="lineno">   44</span>                }</div>
+<div class="line"><span class="lineno">   45</span>                <span class="keywordflow">if</span> (filePath.empty()) {</div>
+<div class="line"><span class="lineno">   46</span>                    <span class="keywordflow">if</span> (location.<a class="code hl_variable" href="structconfig_1_1Location.html#a7dcc19d544f0c21f8e29657406ddd5bd">autoindex</a> == <span class="keyword">true</span>) { <span class="comment">// TODO: pretty sus, verify that this works</span></div>
+<div class="line"><span class="lineno">   47</span>                        autoindexBody = <a class="code hl_function" href="namespacehttp.html#a1873f0c3392cd24902c5b773b0f28f6f">getDirectoryListing</a>(filePath, <a class="code hl_function" href="classhttp_1_1Router.html#a4be6420bb10ab5c7bdabefab8c07c0b2">Router::joinPath</a>(<a class="code hl_variable" href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">m_router</a>.<a class="code hl_function" href="classhttp_1_1Router.html#af5a2093850f5d1b1079d0e6f014f304c">getGlobalRoot</a>().<a class="code hl_variable" href="structconfig_1_1Location.html#acd840cd528eacb701e56b8d1e9526b35">root</a>));</div>
+<div class="line"><span class="lineno">   48</span>                    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   49</span>                        <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">FORBIDDEN</a>, <span class="stringliteral">&quot;GET: Requested location does not have an index&quot;</span>);</div>
+<div class="line"><span class="lineno">   50</span>                    }</div>
+<div class="line"><span class="lineno">   51</span>                }</div>
+<div class="line"><span class="lineno">   52</span>            }</div>
+<div class="line"><span class="lineno">   53</span>            <span class="comment">// if we didn&#39;t throw, we now have filePath, or filePath is empty and we have the HTML body for autoindex</span></div>
+<div class="line"><span class="lineno">   54</span>            std::stringstream buffer;</div>
+<div class="line"><span class="lineno">   55</span>            <span class="keywordflow">if</span> (filePath.empty()) {</div>
+<div class="line"><span class="lineno">   56</span>                response.setBody(autoindexBody);</div>
+<div class="line"><span class="lineno">   57</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   58</span>                std::ifstream inFile(filePath.c_str(), std::ios::binary);</div>
+<div class="line"><span class="lineno">   59</span>                <span class="keywordflow">if</span> (!inFile.is_open()) {</div>
+<div class="line"><span class="lineno">   60</span>                    <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">FORBIDDEN</a>, <span class="stringliteral">&quot;GET: File could not be opened&quot;</span>); <span class="comment">// TODO: also happens if path doesn&#39;t exist, should be NOT_FOUND in that case</span></div>
+<div class="line"><span class="lineno">   61</span>                }</div>
+<div class="line"><span class="lineno">   62</span>                buffer &lt;&lt; inFile.rdbuf();</div>
+<div class="line"><span class="lineno">   63</span>                response.setBody(buffer.str());</div>
+<div class="line"><span class="lineno">   64</span>            }</div>
+<div class="line"><span class="lineno">   65</span>            response.setHeader(<span class="stringliteral">&quot;Content-Length&quot;</span>, <a class="code hl_function" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a>(response.getBody().size()));</div>
+<div class="line"><span class="lineno">   66</span>            response.setStatusCode(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc">OK</a>);</div>
+<div class="line"><span class="lineno">   67</span>        } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>&amp; e) {</div>
+<div class="line"><span class="lineno">   68</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;CRAP, &quot;</span> &lt;&lt; e.<a class="code hl_function" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10">getMessage</a>() &lt;&lt; <span class="stringliteral">&quot;; &quot;</span> &lt;&lt; e.<a class="code hl_function" href="classhttp_1_1exception.html#a4cda45520c85f41e29b07c9b2896b1b4">getStatusCode</a>() &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   69</span>            response.setStatusCode(e.<a class="code hl_function" href="classhttp_1_1exception.html#a4cda45520c85f41e29b07c9b2896b1b4">getStatusCode</a>());</div>
+<div class="line"><span class="lineno">   70</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65">handleError</a>(response);</div>
+<div class="line"><span class="lineno">   71</span>        }</div>
+<div class="line"><span class="lineno">   72</span>    }</div>
 <div class="ttc" id="aclasshttp_1_1ARequestHandler_html_a0fc49eed89135bbf5abbdf10479fda65"><div class="ttname"><a href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65">http::ARequestHandler::handleError</a></div><div class="ttdeci">void handleError(Response &amp;response)</div><div class="ttdef"><b>Definition</b> <a href="ARequestHandler_8hpp_source.html#l00024">ARequestHandler.hpp:24</a></div></div>
-<div class="ttc" id="aclasshttp_1_1ARequestHandler_html_af70584de4f90018bf756bedc26b8a239"><div class="ttname"><a href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">http::ARequestHandler::m_router</a></div><div class="ttdeci">Router &amp; m_router</div><div class="ttdef"><b>Definition</b> <a href="ARequestHandler_8hpp_source.html#l00031">ARequestHandler.hpp:31</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Router_html_adc2958c32ba4e5e222a993ddba2f715c"><div class="ttname"><a href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c">http::Router::checkFileType</a></div><div class="ttdeci">static FileType checkFileType(const std::string &amp;absolutePath)</div><div class="ttdoc">Checks whether a path exists in the file system, and whether it is a file or directory.</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00039">Router.cpp:39</a></div></div>
-<div class="ttc" id="aclasshttp_1_1exception_html"><div class="ttname"><a href="classhttp_1_1exception.html">http::exception</a></div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00027">http.hpp:27</a></div></div>
-<div class="ttc" id="aclasshttp_1_1exception_html_a1fc13601675b1ac1fde21ee2dc1f4b10"><div class="ttname"><a href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10">http::exception::getMessage</a></div><div class="ttdeci">const std::string &amp; getMessage() const</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00115">http.cpp:115</a></div></div>
-<div class="ttc" id="aclasshttp_1_1exception_html_add7e0b357120f83926453dc287252b76"><div class="ttname"><a href="classhttp_1_1exception.html#add7e0b357120f83926453dc287252b76">http::exception::getCode</a></div><div class="ttdeci">StatusCode getCode() const</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00111">http.cpp:111</a></div></div>
-<div class="ttc" id="anamespacehttp_html_aa05465f9f5daa64d3a9ba64a34e92cfa"><div class="ttname"><a href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfa">http::FileType</a></div><div class="ttdeci">FileType</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00065">types.hpp:65</a></div></div>
+<div class="ttc" id="aclasshttp_1_1GetHandler_html_a1d39cf89034ec73fb9c80fa66cbbc4cc"><div class="ttname"><a href="classhttp_1_1GetHandler.html#a1d39cf89034ec73fb9c80fa66cbbc4cc">http::GetHandler::getFilePath</a></div><div class="ttdeci">void getFilePath(const config::Location &amp;location, const std::string &amp;filePath, std::string &amp;target)</div><div class="ttdef"><b>Definition</b> <a href="GetHandler_8cpp_source.html#l00016">GetHandler.cpp:16</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Router_html_a4be6420bb10ab5c7bdabefab8c07c0b2"><div class="ttname"><a href="classhttp_1_1Router.html#a4be6420bb10ab5c7bdabefab8c07c0b2">http::Router::joinPath</a></div><div class="ttdeci">static std::string joinPath(const std::vector&lt; std::string &gt; &amp;pathComponents)</div><div class="ttdoc">Joins a split path into a string, delimited by '/' Should never receive broken data.</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00073">Router.cpp:73</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Router_html_af5a2093850f5d1b1079d0e6f014f304c"><div class="ttname"><a href="classhttp_1_1Router.html#af5a2093850f5d1b1079d0e6f014f304c">http::Router::getGlobalRoot</a></div><div class="ttdeci">const config::Location &amp; getGlobalRoot() const</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00033">Router.cpp:33</a></div></div>
+<div class="ttc" id="aclasshttp_1_1exception_html"><div class="ttname"><a href="classhttp_1_1exception.html">http::exception</a></div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00028">http.hpp:28</a></div></div>
+<div class="ttc" id="aclasshttp_1_1exception_html_a1fc13601675b1ac1fde21ee2dc1f4b10"><div class="ttname"><a href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10">http::exception::getMessage</a></div><div class="ttdeci">const std::string &amp; getMessage() const</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00113">http.cpp:113</a></div></div>
+<div class="ttc" id="aclasshttp_1_1exception_html_a4cda45520c85f41e29b07c9b2896b1b4"><div class="ttname"><a href="classhttp_1_1exception.html#a4cda45520c85f41e29b07c9b2896b1b4">http::exception::getStatusCode</a></div><div class="ttdeci">StatusCode getStatusCode() const</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00111">http.cpp:111</a></div></div>
+<div class="ttc" id="anamespacehttp_html_a1873f0c3392cd24902c5b773b0f28f6f"><div class="ttname"><a href="namespacehttp.html#a1873f0c3392cd24902c5b773b0f28f6f">http::getDirectoryListing</a></div><div class="ttdeci">std::string getDirectoryListing(const std::string &amp;path, const std::string &amp;root)</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00121">http.cpp:121</a></div></div>
 <div class="ttc" id="anamespacehttp_html_aa05465f9f5daa64d3a9ba64a34e92cfaa0612c5b78b5641671e6de05d375881d0"><div class="ttname"><a href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaa0612c5b78b5641671e6de05d375881d0">http::DIRECTORY</a></div><div class="ttdeci">@ DIRECTORY</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00067">types.hpp:67</a></div></div>
 <div class="ttc" id="anamespacehttp_html_aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d"><div class="ttname"><a href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d">http::_NOT_FOUND</a></div><div class="ttdeci">@ _NOT_FOUND</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00069">types.hpp:68</a></div></div>
-<div class="ttc" id="anamespacehttp_html_aa05465f9f5daa64d3a9ba64a34e92cfaaf588e02f8d0cc2fa280d47d9beb900db"><div class="ttname"><a href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaf588e02f8d0cc2fa280d47d9beb900db">http::FILE</a></div><div class="ttdeci">@ FILE</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00066">types.hpp:66</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762a144f7cef2e3efe6d823debdf4e62b10c"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a144f7cef2e3efe6d823debdf4e62b10c">http::NOT_FOUND</a></div><div class="ttdeci">@ NOT_FOUND</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00024">types.hpp:24</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">http::FORBIDDEN</a></div><div class="ttdeci">@ FORBIDDEN</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00023">types.hpp:23</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc">http::OK</a></div><div class="ttdeci">@ OK</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00013">types.hpp:13</a></div></div>
 <div class="ttc" id="anamespaceshared_1_1string_html_a7498d7d25acc1a6d216ef30b3ccfa577"><div class="ttname"><a href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a></div><div class="ttdeci">std::string to_string(const T &amp;value)</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8hpp_source.html#l00045">stringUtils.hpp:45</a></div></div>
 <div class="ttc" id="astructconfig_1_1Location_html"><div class="ttname"><a href="structconfig_1_1Location.html">config::Location</a></div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00010">Location.hpp:10</a></div></div>
-<div class="ttc" id="astructconfig_1_1Location_html_a7dcc19d544f0c21f8e29657406ddd5bd"><div class="ttname"><a href="structconfig_1_1Location.html#a7dcc19d544f0c21f8e29657406ddd5bd">config::Location::autoindex</a></div><div class="ttdeci">bool autoindex</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00016">Location.hpp:16</a></div></div>
-<div class="ttc" id="astructconfig_1_1Location_html_ad07d3238b441c27aefa83d6a75ff2aad"><div class="ttname"><a href="structconfig_1_1Location.html#ad07d3238b441c27aefa83d6a75ff2aad">config::Location::indexFile</a></div><div class="ttdeci">std::vector&lt; std::string &gt; indexFile</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00017">Location.hpp:17</a></div></div>
+<div class="ttc" id="astructconfig_1_1Location_html_a7dcc19d544f0c21f8e29657406ddd5bd"><div class="ttname"><a href="structconfig_1_1Location.html#a7dcc19d544f0c21f8e29657406ddd5bd">config::Location::autoindex</a></div><div class="ttdeci">bool autoindex</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00017">Location.hpp:17</a></div></div>
+<div class="ttc" id="astructconfig_1_1Location_html_acd840cd528eacb701e56b8d1e9526b35"><div class="ttname"><a href="structconfig_1_1Location.html#acd840cd528eacb701e56b8d1e9526b35">config::Location::root</a></div><div class="ttdeci">std::vector&lt; std::string &gt; root</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00012">Location.hpp:12</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1GetHandler_af56131f653540bb9121e3c508466823f_cgraph.png" border="0" usemap="#aclasshttp_1_1GetHandler_af56131f653540bb9121e3c508466823f_cgraph" alt=""/></div>
 <map name="aclasshttp_1_1GetHandler_af56131f653540bb9121e3c508466823f_cgraph" id="aclasshttp_1_1GetHandler_af56131f653540bb9121e3c508466823f_cgraph">
-<area shape="rect" title=" " alt="" coords="5,232,188,257"/>
-<area shape="rect" href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="247,5,446,31"/>
-<area shape="poly" title=" " alt="" coords="100,231,117,193,145,141,184,86,208,61,234,40,244,34,247,39,238,44,211,65,188,89,149,143,122,195,105,233"/>
-<area shape="rect" href="classhttp_1_1exception.html#add7e0b357120f83926453dc287252b76" title=" " alt="" coords="255,55,438,80"/>
-<area shape="poly" title=" " alt="" coords="103,230,152,162,190,122,235,89,248,83,250,87,237,94,194,126,156,166,108,233"/>
-<area shape="rect" href="classhttp_1_1Request.html#abbfb6ceb0a5e79f5ec0aa2591f325a20" title=" " alt="" coords="250,104,443,129"/>
-<area shape="poly" title=" " alt="" coords="109,230,161,185,197,160,235,138,253,131,255,136,237,143,199,164,164,189,113,234"/>
-<area shape="rect" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10" title=" " alt="" coords="243,153,450,179"/>
-<area shape="poly" title=" " alt="" coords="125,230,176,208,235,187,265,179,266,184,237,193,178,213,127,234"/>
-<area shape="rect" href="classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="268,203,425,228"/>
-<area shape="poly" title=" " alt="" coords="188,231,254,223,255,229,189,237"/>
-<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="262,253,431,293"/>
-<area shape="poly" title=" " alt="" coords="189,252,249,259,248,264,188,258"/>
-<area shape="rect" href="classhttp_1_1Response.html#ac79941baf008165ba0c70903246d2374" title=" " alt="" coords="527,319,707,344"/>
-<area shape="poly" title=" " alt="" coords="122,255,173,280,237,302,308,316,380,325,513,331,513,336,380,330,307,321,235,307,171,285,119,260"/>
-<area shape="rect" href="classhttp_1_1Response.html#ab52959eaac18026a4f1c4ce3006731ea" title=" " alt="" coords="519,368,714,393"/>
-<area shape="poly" title=" " alt="" coords="114,256,165,296,200,318,237,336,305,356,375,369,443,376,506,379,505,385,443,381,374,374,303,361,235,340,197,323,162,301,110,260"/>
-<area shape="rect" href="classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8" title=" " alt="" coords="236,419,457,444"/>
-<area shape="poly" title=" " alt="" coords="108,256,157,323,194,363,237,397,268,412,266,417,235,402,191,367,153,327,104,259"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="281,469,413,509"/>
-<area shape="poly" title=" " alt="" coords="105,256,121,295,149,349,188,406,211,432,238,454,269,471,266,476,234,459,208,436,184,409,144,352,116,297,100,258"/>
-<area shape="rect" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75" title=" " alt="" coords="526,220,707,245"/>
-<area shape="poly" title=" " alt="" coords="431,258,517,245,518,250,432,263"/>
-<area shape="rect" href="classhttp_1_1Response.html#a4ade0256d440a548f4dfd7f4bc08ffb4" title=" " alt="" coords="526,269,707,295"/>
-<area shape="poly" title=" " alt="" coords="432,273,513,276,512,281,431,278"/>
-<area shape="rect" href="namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d" title=" " alt="" coords="547,121,686,147"/>
-<area shape="poly" title=" " alt="" coords="431,252,456,237,472,218,478,197,486,176,504,156,533,141,535,146,507,160,490,179,483,199,476,220,459,241,433,257"/>
-<area shape="rect" href="classhttp_1_1Response.html#a64b5a9e52e86a1e5758e763ad797ca12" title=" " alt="" coords="505,171,728,196"/>
-<area shape="poly" title=" " alt="" coords="423,250,456,237,480,221,504,205,525,197,527,202,507,210,483,225,459,242,425,255"/>
-<area shape="poly" title=" " alt="" coords="432,288,545,313,543,318,431,294"/>
-<area shape="poly" title=" " alt="" coords="381,290,438,323,506,354,531,362,529,367,504,359,435,328,378,295"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="783,220,945,245"/>
-<area shape="poly" title=" " alt="" coords="707,230,769,230,769,235,707,235"/>
-<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="776,121,952,147"/>
-<area shape="poly" title=" " alt="" coords="686,131,762,131,762,137,686,137"/>
+<area shape="rect" title=" " alt="" coords="5,372,188,397"/>
+<area shape="rect" href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="519,5,717,31"/>
+<area shape="poly" title=" " alt="" coords="98,371,109,320,134,246,152,206,175,167,202,131,235,100,276,84,352,65,529,30,531,36,353,70,278,89,237,104,206,134,179,170,157,209,139,248,115,321,103,372"/>
+<area shape="rect" href="classhttp_1_1Response.html#a4ade0256d440a548f4dfd7f4bc08ffb4" title=" " alt="" coords="527,55,709,80"/>
+<area shape="poly" title=" " alt="" coords="99,371,113,327,139,264,179,198,205,168,235,142,275,128,348,111,523,80,524,85,349,116,277,133,237,147,209,172,184,201,144,267,118,328,104,373"/>
+<area shape="rect" href="namespacehttp.html#a1873f0c3392cd24902c5b773b0f28f6f" title=" " alt="" coords="257,323,437,348"/>
+<area shape="poly" title=" " alt="" coords="161,369,268,348,269,353,162,375"/>
+<area shape="rect" href="classhttp_1_1GetHandler.html#a1d39cf89034ec73fb9c80fa66cbbc4cc" title=" " alt="" coords="242,5,453,31"/>
+<area shape="poly" title=" " alt="" coords="97,371,106,313,129,226,147,178,170,131,199,87,234,48,255,34,258,39,238,52,203,90,174,134,152,180,134,228,111,314,102,372"/>
+<area shape="rect" href="classhttp_1_1Router.html#af5a2093850f5d1b1079d0e6f014f304c" title=" " alt="" coords="247,372,447,397"/>
+<area shape="poly" title=" " alt="" coords="188,382,233,382,233,387,188,387"/>
+<area shape="rect" href="classhttp_1_1Request.html#abbfb6ceb0a5e79f5ec0aa2591f325a20" title=" " alt="" coords="251,421,444,447"/>
+<area shape="poly" title=" " alt="" coords="162,395,269,416,268,421,161,400"/>
+<area shape="rect" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10" title=" " alt="" coords="244,471,451,496"/>
+<area shape="poly" title=" " alt="" coords="119,395,171,426,237,457,261,465,260,470,235,462,168,431,116,400"/>
+<area shape="rect" href="classhttp_1_1exception.html#a4cda45520c85f41e29b07c9b2896b1b4" title=" " alt="" coords="236,520,459,545"/>
+<area shape="poly" title=" " alt="" coords="110,396,161,450,197,481,237,506,253,513,251,518,235,511,194,485,157,454,106,399"/>
+<area shape="rect" href="classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="269,569,426,595"/>
+<area shape="poly" title=" " alt="" coords="107,396,125,429,153,473,191,518,237,556,256,565,254,570,235,560,188,522,149,476,120,432,102,399"/>
+<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="263,157,432,197"/>
+<area shape="poly" title=" " alt="" coords="103,370,152,297,190,252,234,213,257,200,260,205,238,218,193,256,156,300,107,373"/>
+<area shape="rect" href="classhttp_1_1Response.html#ac79941baf008165ba0c70903246d2374" title=" " alt="" coords="528,252,708,277"/>
+<area shape="poly" title=" " alt="" coords="108,370,160,324,196,300,235,281,306,262,379,252,450,250,514,251,514,257,450,255,380,258,307,267,237,286,198,304,163,328,112,374"/>
+<area shape="rect" href="classhttp_1_1Response.html#ab52959eaac18026a4f1c4ce3006731ea" title=" " alt="" coords="521,301,715,327"/>
+<area shape="poly" title=" " alt="" coords="114,370,166,337,200,321,235,309,308,296,382,291,453,292,517,297,516,303,453,298,382,297,308,301,237,314,202,326,169,342,117,374"/>
+<area shape="rect" href="classhttp_1_1Router.html#a4be6420bb10ab5c7bdabefab8c07c0b2" title="Joins a split path into a string, delimited by &#39;/&#39; Should never receive broken data." alt="" coords="268,619,427,644"/>
+<area shape="poly" title=" " alt="" coords="105,397,120,438,147,495,186,555,210,582,238,605,256,615,253,620,234,610,206,586,182,558,142,498,115,440,100,399"/>
+<area shape="rect" href="classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8" title=" " alt="" coords="237,668,458,693"/>
+<area shape="poly" title=" " alt="" coords="103,397,115,446,140,516,158,554,180,591,207,625,238,655,245,660,242,664,234,659,203,629,176,594,153,557,135,518,110,447,98,398"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="281,718,413,758"/>
+<area shape="poly" title=" " alt="" coords="102,397,112,453,135,536,153,581,176,626,204,668,238,704,270,723,267,727,234,708,200,671,171,629,148,583,130,537,107,454,97,398"/>
+<area shape="poly" title=" " alt="" coords="453,15,505,15,505,21,453,21"/>
+<area shape="poly" title=" " alt="" coords="419,154,457,136,471,124,480,112,490,100,505,89,520,82,522,87,508,94,494,104,484,116,475,128,460,140,422,159"/>
+<area shape="rect" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75" title=" " alt="" coords="527,104,709,129"/>
+<area shape="poly" title=" " alt="" coords="432,155,506,138,544,130,545,135,507,143,433,160"/>
+<area shape="rect" href="namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d" title=" " alt="" coords="549,153,687,179"/>
+<area shape="poly" title=" " alt="" coords="432,171,535,167,535,172,432,176"/>
+<area shape="rect" href="classhttp_1_1Response.html#a64b5a9e52e86a1e5758e763ad797ca12" title=" " alt="" coords="507,203,729,228"/>
+<area shape="poly" title=" " alt="" coords="433,186,516,198,515,203,432,191"/>
+<area shape="poly" title=" " alt="" coords="411,194,460,213,484,225,508,237,537,246,536,251,506,242,481,230,458,218,409,199"/>
+<area shape="poly" title=" " alt="" coords="372,195,431,242,468,267,508,288,527,295,525,300,506,292,465,271,428,246,369,199"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="784,104,947,129"/>
+<area shape="poly" title=" " alt="" coords="709,114,770,114,770,119,709,119"/>
+<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="777,153,953,179"/>
+<area shape="poly" title=" " alt="" coords="687,163,763,163,763,169,687,169"/>
 </map>
 </div>
 
