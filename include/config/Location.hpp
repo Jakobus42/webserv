@@ -13,6 +13,7 @@ namespace config {
 			std::string redirectUri;					// return route (references other locations)
 			std::vector<std::string> redirectUriTokens; // return route split into tokens
 			std::set<http::Method> allowedMethods;		// allowed HTTP methods
+			std::string uploadSubdirectory;				// subdirectory for uploads
 			bool autoindex;								//
 			std::vector<std::string> indexFile;			// file to load when GETting a directory
 			std::vector<Location> locations;			// registered locations // TODO: maybe rename to 'children'
@@ -24,6 +25,7 @@ namespace config {
 				, redirectUri()
 				, redirectUriTokens()
 				, allowedMethods()
+				, uploadSubdirectory()
 				, autoindex(false)
 				, indexFile()
 				, locations() {
@@ -36,6 +38,7 @@ namespace config {
 				, redirectUri(other.redirectUri)
 				, redirectUriTokens(other.redirectUriTokens)
 				, allowedMethods(other.allowedMethods)
+				, uploadSubdirectory(other.uploadSubdirectory)
 				, autoindex(other.autoindex)
 				, indexFile(other.indexFile)
 				, locations(other.locations) {
@@ -49,6 +52,7 @@ namespace config {
 					redirectUri = other.redirectUri;
 					redirectUriTokens = other.redirectUriTokens;
 					allowedMethods = other.allowedMethods;
+					uploadSubdirectory = other.uploadSubdirectory;
 					autoindex = other.autoindex;
 					indexFile = other.indexFile;
 					locations = other.locations;
@@ -57,7 +61,7 @@ namespace config {
 			}
 
 			bool acceptsFileUpload() const {
-				return allowedMethods.find(http::POST) != allowedMethods.end();
+				return !uploadSubdirectory.empty() && allowedMethods.find(http::POST) != allowedMethods.end();
 			}
 
 			bool hasRedirect() const {

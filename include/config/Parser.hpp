@@ -133,6 +133,7 @@ namespace config {
 			int index(std::vector<std::string>& args, const int& lineCount, int layer);
 			int globalRoot(std::vector<std::string>& args, const int& lineCount, int layer);
 			int dataDir(std::vector<std::string>& args, const int& lineCount, int layer);
+			int uploadDir(std::vector<std::string>& args, const int& lineCount, int layer);
 	};
 
 } // namespace config

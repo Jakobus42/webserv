@@ -432,6 +432,7 @@ namespace config {
 		return 0;
 	}
 
+	// global data directory, only in server block
 	int ConfigFileParser::dataDir(std::vector<std::string>& args, const int& lineCount, int layer) {
 		if (layer != 1) {
 			return genericError(lineCount, "'data_dir' is only allowed in server blocks");
@@ -470,4 +471,31 @@ namespace config {
 		return 0;
 	}
 
+	int ConfigFileParser::uploadDir(std::vector<std::string>& args, const int& lineCount, int layer) {
+		if (layer < 1) {
+			return genericError(lineCount, "'upload_dir' is only allowed in server or location blocks");
+		}
+		if (args.size() != 2) {
+			return genericError(lineCount, "Invalid number of arguments for upload_dir");
+		}
+		if (args[1].empty() || args[1].length() > 1000) {
+			return genericError(lineCount, "upload_dir path length invalid");
+		}
+		if (args[1][0] != '/') {
+			return genericError(lineCount, "upload_dir path invalid, doesn't start with '/'");
+		}
+		if (args[1].find("//") != std::string::npos) {
+			return genericError(lineCount, "upload_dir path invalid, duplicate '/'");
+		}
+		if (args[1][args[1].size() - 1] == '/') {
+			return genericError(lineCount, "upload_dir path invalid, ends with '/'");
+		}
+
+		if (layer == 1) {
+			m_serverConfigs.back().globalRoot.uploadSubdirectory = args[1];
+		} else {
+			getLocation(layer)->uploadSubdirectory = args[1];
+		}
+		return 0;
+	}
 } // namespace config

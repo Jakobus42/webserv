@@ -200,34 +200,29 @@ namespace config {
 	 * return, 8 if root, 9 if autoindex, 10 if index, 404 if not found.)
 	 */
 	enum CmdId ConfigFileParser::idCommand(const std::string& key) {
-		if (key == "server")
-			return SERVER_ID;
-		else if (key == "listen")
-			return LISTEN_ID;
-		else if (key == "server_name")
-			return SERVER_NAME_ID;
-		else if (key == "error_page")
-			return ERROR_PAGE_ID;
-		else if (key == "client_max_body_size")
-			return CLIENT_MAX_BODY_SIZE_ID;
-		else if (key == "location")
-			return LOCATION_ID;
-		else if (key == "limit_except")
-			return LIMIT_EXCEPT_ID;
-		else if (key == "return")
-			return RETURN_ID;
-		else if (key == "root")
-			return ROOT_ID;
-		else if (key == "autoindex")
-			return AUTOINDEX_ID;
-		else if (key == "index")
-			return INDEX_ID;
-		else if (key == "global_root")
-			return GLOBAL_ROOT_ID;
-		else if (key == "data_dir")
-			return DATA_DIR_ID;
-		else
-			return UNKNOWN_ID;
+		static std::map<std::string, enum CmdId> cmdIds;
+
+		if (cmdIds.empty()) {
+			cmdIds.insert(std::make_pair("server", SERVER_ID));
+			cmdIds.insert(std::make_pair("listen", LISTEN_ID));
+			cmdIds.insert(std::make_pair("server_name", SERVER_NAME_ID));
+			cmdIds.insert(std::make_pair("error_page", ERROR_PAGE_ID));
+			cmdIds.insert(std::make_pair("client_max_body_size", CLIENT_MAX_BODY_SIZE_ID));
+			cmdIds.insert(std::make_pair("location", LOCATION_ID));
+			cmdIds.insert(std::make_pair("limit_except", LIMIT_EXCEPT_ID));
+			cmdIds.insert(std::make_pair("return", RETURN_ID));
+			cmdIds.insert(std::make_pair("root", ROOT_ID));
+			cmdIds.insert(std::make_pair("autoindex", AUTOINDEX_ID));
+			cmdIds.insert(std::make_pair("index", INDEX_ID));
+			cmdIds.insert(std::make_pair("global_root", GLOBAL_ROOT_ID));
+			cmdIds.insert(std::make_pair("data_dir", DATA_DIR_ID));
+			cmdIds.insert(std::make_pair("upload_dir", UPLOAD_DIR_ID));
+		}
+		std::map<std::string, enum CmdId>::const_iterator id = cmdIds.find(key);
+		if (id != cmdIds.end()) {
+			return cmdIds.at(key);
+		}
+		return UNKNOWN_ID;
 	}
 
 	int ConfigFileParser::genericError(int lineCount, const std::string& message) {
@@ -286,6 +281,8 @@ namespace config {
 					return globalRoot(args, lineCount, layer);
 				case DATA_DIR_ID:
 					return dataDir(args, lineCount, layer);
+				case UPLOAD_DIR_ID:
+					return uploadDir(args, lineCount, layer);
 				case INDEX_ID:
 					return index(args, lineCount, layer);
 				default:
@@ -305,6 +302,8 @@ namespace config {
 					return root(args, lineCount, layer);
 				case AUTOINDEX_ID:
 					return autoindex(args, lineCount, layer);
+				case UPLOAD_DIR_ID:
+					return uploadDir(args, lineCount, layer);
 				case INDEX_ID:
 					return index(args, lineCount, layer);
 				default:
