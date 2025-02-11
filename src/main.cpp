@@ -11,10 +11,10 @@ int main(int argc, char** const argv) {
 		// if (!http::getRootPath(basePath))
 		// 	return 1;
 		std::string configPath = argc > 1 ? argv[1] : "config/configfile_example";
-		config::ConfigFileParser configFileParser;
-		if (configFileParser.loadConfigFile(configPath) == 1)
+		config::Parser configParser;
+		if (configParser.loadConfig(configPath) == 1)
 			return 1;
-		const std::vector<config::ServerConfig>& serverConfigs = configFileParser.getServerConfigs();
+		const std::vector<config::ServerConfig>& serverConfigs = configParser.getServerConfigs();
 
 		core::Reactor reactor;
 		reactor.init(serverConfigs);

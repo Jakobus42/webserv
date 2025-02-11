@@ -52,7 +52,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::server(std::vector<std::string>& args, const int& lineCount, int layer) {
+	int Parser::server(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() != 1) {
 			return genericError(lineCount, "Invalid number of arguments for server");
@@ -76,7 +76,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::location(std::vector<std::string>& args, const int& lineCount, int layer) {
+	int Parser::location(std::vector<std::string>& args, const int& lineCount, int layer) {
 		if (args.size() != 2) {
 			return genericError(lineCount, "Invalid number of arguments for location");
 		}
@@ -130,7 +130,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::listen(std::vector<std::string>& args, const int& lineCount, int layer) {
+	int Parser::listen(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() != 2) {
 			return genericError(lineCount, "Invalid number of arguments for listen");
@@ -187,7 +187,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::serverName(std::vector<std::string>& args, const int& lineCount, int layer) {
+	int Parser::serverName(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() < 2) {
 			return genericError(lineCount, "Invalid number of arguments for server_name");
@@ -212,7 +212,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::errorPage(std::vector<std::string>& args, const int& lineCount, int layer) {
+	int Parser::errorPage(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() < 3 || args.size() > 1001) {
 			return genericError(lineCount, "Invalid number of arguments for error_page");
@@ -241,7 +241,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::clientMaxBodySize(std::vector<std::string>& args, const int& lineCount, int layer) {
+	int Parser::clientMaxBodySize(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() != 2) {
 			return genericError(lineCount, "Invalid number of arguments for client_max_body_size");
@@ -262,7 +262,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::limitExcept(std::vector<std::string>& args, const int& lineCount, int layer) {
+	int Parser::limitExcept(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 		if (args.size() < 2 || args.size() > 15) {
 			return genericError(lineCount, "Invalid number of arguments for limit_except");
@@ -300,7 +300,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::returnKeyword(std::vector<std::string>& args, const int& lineCount, int layer) {
+	int Parser::returnKeyword(std::vector<std::string>& args, const int& lineCount, int layer) {
 		if (args.size() != 2) {
 			return genericError(lineCount, "Invalid number of arguments for return");
 		}
@@ -325,7 +325,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::root(std::vector<std::string>& args, const int& lineCount, int layer) {
+	int Parser::root(std::vector<std::string>& args, const int& lineCount, int layer) {
 		if (args.size() != 2) {
 			return genericError(lineCount, "Invalid number of arguments for root");
 		}
@@ -346,7 +346,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::autoindex(const std::vector<std::string>& args, const int& lineCount, int layer) {
+	int Parser::autoindex(const std::vector<std::string>& args, const int& lineCount, int layer) {
 		if (args.size() != 2) {
 			return genericError(lineCount, "Invalid number of arguments for autoindex");
 		}
@@ -369,7 +369,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::index(std::vector<std::string>& args, const int& lineCount, int layer) {
+	int Parser::index(std::vector<std::string>& args, const int& lineCount, int layer) {
 		(void)layer;
 
 		if (args.size() < 2 || args.size() > 1001) {
@@ -392,7 +392,7 @@ namespace config {
 		return 0;
 	}
 
-	int ConfigFileParser::globalRoot(std::vector<std::string>& args, const int& lineCount, int layer) {
+	int Parser::globalRoot(std::vector<std::string>& args, const int& lineCount, int layer) {
 		if (layer != 1) {
 			return genericError(lineCount, "'global_root' is only allowed in server blocks");
 		}
@@ -433,7 +433,7 @@ namespace config {
 	}
 
 	// global data directory, only in server block
-	int ConfigFileParser::dataDir(std::vector<std::string>& args, const int& lineCount, int layer) {
+	int Parser::dataDir(std::vector<std::string>& args, const int& lineCount, int layer) {
 		if (layer != 1) {
 			return genericError(lineCount, "'data_dir' is only allowed in server blocks");
 		}
@@ -471,7 +471,7 @@ namespace config {
 		return 0;
 	}
 
-	int ConfigFileParser::uploadDir(std::vector<std::string>& args, const int& lineCount, int layer) {
+	int Parser::uploadDir(std::vector<std::string>& args, const int& lineCount, int layer) {
 		if (layer < 1) {
 			return genericError(lineCount, "'upload_dir' is only allowed in server or location blocks");
 		}

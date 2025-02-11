@@ -3,49 +3,49 @@
 namespace config {
 
 	/**
-	 * @brief Constructs a new ConfigFileParser object.
+	 * @brief Constructs a new Parser object.
 	 */
-	ConfigFileParser::ConfigFileParser() {
+	Parser::Parser() {
 		m_isLoaded = 0;
 	}
 
 	/**
-	 * @brief Destroys the ConfigFileParser object.
+	 * @brief Destroys the Parser object.
 	 */
-	ConfigFileParser::~ConfigFileParser() {
+	Parser::~Parser() {
 	}
 
 	/**
 	 * @brief Copy constructor.
-	 * @param other The other ConfigFileParser object to copy.
+	 * @param other The other Parser object to copy.
 	 */
-	ConfigFileParser::ConfigFileParser(const ConfigFileParser&) {
+	Parser::Parser(const Parser&) {
 		m_isLoaded = 0;
 	}
 
 	/**
 	 * @brief Copy assignment operator.
-	 * @param other The other ConfigFileParser object to assign from.
-	 * @return A reference to the assigned ConfigFileParser object.
+	 * @param other The other Parser object to assign from.
+	 * @return A reference to the assigned Parser object.
 	 */
-	ConfigFileParser& ConfigFileParser::operator=(const ConfigFileParser&) {
+	Parser& Parser::operator=(const Parser&) {
 		m_isLoaded = 0;
 		return *this;
 	}
 
 	/**
 	 * @brief Reads the configuration file.
-	 * @param configFileName The name of the configuration file.
+	 * @param fileName The name of the configuration file.
 	 * @param line the location where the configuration file is stored by the read.
 	 */
-	int ConfigFileParser::readConfigFile(std::string& configFileName,
-										 std::string& line) {
-		if (configFileName.empty()) {
+	int Parser::readFile(std::string& fileName,
+						 std::string& line) {
+		if (fileName.empty()) {
 			std::cout << "Configuration file name is empty." << std::endl;
 			return 1;
 		}
 		std::ifstream infile;
-		infile.open(configFileName.c_str());
+		infile.open(fileName.c_str());
 		char c;
 		if (!infile.is_open()) {
 			std::cout << "Could not open configuration file." << std::endl;
@@ -87,7 +87,7 @@ namespace config {
 	 * @param lineCount The current line number.
 	 * @return 0 if successful, 1 if error.
 	 */
-	int ConfigFileParser::parseConfigFile(std::string& str, int layer, unsigned long& i, int& lineCount) {
+	int Parser::parseFile(std::string& str, int layer, unsigned long& i, int& lineCount) {
 		std::string line;
 		int findQuotesFlag = 0;
 		for (; i < str.size(); i++) {
@@ -124,7 +124,7 @@ namespace config {
 					}
 					findQuotesFlag = 0;
 					i++;
-					if (parseConfigFile(str, layer + 1, i, lineCount) == 1) {
+					if (parseFile(str, layer + 1, i, lineCount) == 1) {
 						return 1;
 					}
 				} else { // prompt
@@ -147,18 +147,18 @@ namespace config {
 
 	/**
 	 * @brief Loads the configuration file, saving all the information.
-	 * @param configFileName The name of the configuration file.
+	 * @param fileName The name of the configuration file.
 	 * @return 0 if successful, 1 if error.
 	 */
-	int ConfigFileParser::loadConfigFile(std::string& configFileName) {
+	int Parser::loadConfig(std::string& fileName) {
 		std::string file;
-		readConfigFile(configFileName, file);
+		readFile(fileName, file);
 		if (file.empty()) {
 			return 1;
 		}
 		unsigned long i = 0;
 		int lineCount = 0;
-		if (parseConfigFile(file, 0, i, lineCount) == 1) {
+		if (parseFile(file, 0, i, lineCount) == 1) {
 			m_serverConfigs.clear();
 			return 1;
 		}
@@ -182,39 +182,39 @@ namespace config {
 		return 0;
 	}
 
-	int ConfigFileParser::getIsLoaded() const {
+	int Parser::getIsLoaded() const {
 		return m_isLoaded;
 	}
 
-	const std::vector<config::ServerConfig>& ConfigFileParser::getServerConfigs() const {
+	const std::vector<config::ServerConfig>& Parser::getServerConfigs() const {
 		return m_serverConfigs;
 	}
 
-	int ConfigFileParser::getServerSize() const {
+	int Parser::getServerSize() const {
 		return m_serverConfigs.size();
 	}
 
-	int ConfigFileParser::getServerPort(int index) const {
+	int Parser::getServerPort(int index) const {
 		return m_serverConfigs[index].port;
 	}
 
-	uint32_t ConfigFileParser::getServerIp(int index) const {
+	uint32_t Parser::getServerIp(int index) const {
 		return m_serverConfigs[index].ip_address;
 	}
 
-	std::vector<std::string> ConfigFileParser::getServerNames(int index) const {
+	std::vector<std::string> Parser::getServerNames(int index) const {
 		return m_serverConfigs[index].server_names;
 	}
 
-	std::map<int, std::string> ConfigFileParser::getErrorPages(int index) const {
+	std::map<int, std::string> Parser::getErrorPages(int index) const {
 		return m_serverConfigs[index].errorPages;
 	}
 
-	unsigned long ConfigFileParser::getMaxBodySize(int index) const {
+	unsigned long Parser::getMaxBodySize(int index) const {
 		return m_serverConfigs[index].max_body_size;
 	}
 
-	ServerConfig* ConfigFileParser::getServerConfig(int index) {
+	ServerConfig* Parser::getServerConfig(int index) {
 		return &m_serverConfigs[index];
 	}
 

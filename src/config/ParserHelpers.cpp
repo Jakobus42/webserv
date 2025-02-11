@@ -10,7 +10,7 @@ namespace config {
 	 * @param lineCount the current line number.
 	 * @return int 0 if successful, 1 if not.
 	 */
-	int ConfigFileParser::handlePrompt(std::string& line, int layer, const int& lineCount) {
+	int Parser::handlePrompt(std::string& line, int layer, const int& lineCount) {
 		// return 0 if successful and semicolon is found, 1 if semicolon is not
 		// found, 2 if error cut off trailing and starting spaces
 		int qouteFlag = 1;
@@ -48,7 +48,7 @@ namespace config {
 	 * @param layer the current layer of the configuration file.
 	 * @return struct location* the current location.
 	 */
-	Location* ConfigFileParser::getLocation(int layer) {
+	Location* Parser::getLocation(int layer) {
 		config::Location* temp = &m_serverConfigs.back().locations.back();
 		for (int i = 2; i < layer; i++) {
 			temp = &temp->locations.back();
@@ -61,7 +61,7 @@ namespace config {
 	 * @param detailed toggles between detailed and simple output. (0 for simple, 1
 	 * for detailed)
 	 */
-	void ConfigFileParser::printServerConfigs(int detailed) {
+	void Parser::printServerConfigs(int detailed) {
 		if (m_isLoaded == 0) {
 			std::cout << "No configuration file loaded" << std::endl;
 			return;
@@ -106,7 +106,7 @@ namespace config {
 	 * for detailed)
 	 * @param layer_num the current layer number.
 	 */
-	void ConfigFileParser::printLocations(const std::vector<config::Location>& locations, int layer, int detailed, std::vector<int> layer_num) {
+	void Parser::printLocations(const std::vector<config::Location>& locations, int layer, int detailed, std::vector<int> layer_num) {
 		std::string c = "";
 		for (int i = 0; i < layer; i++) {
 			c += "   ";
@@ -165,32 +165,6 @@ namespace config {
 		}
 	}
 
-	int ConfigFileParser::testFunction(const std::string& key, std::vector<std::string>& args, const int& lineCount) {
-		if (key == "server")
-			return server(args, lineCount, 0);
-		if (key == "listen")
-			return listen(args, lineCount, 1);
-		if (key == "server_name")
-			return serverName(args, lineCount, 1);
-		if (key == "error_page")
-			return errorPage(args, lineCount, 1);
-		if (key == "client_max_body_size")
-			return clientMaxBodySize(args, lineCount, 1);
-		if (key == "location")
-			return location(args, lineCount, 1);
-		if (key == "limit_except")
-			return limitExcept(args, lineCount, 2);
-		if (key == "return")
-			return returnKeyword(args, lineCount, 2);
-		if (key == "root")
-			return root(args, lineCount, 2);
-		if (key == "autoindex")
-			return autoindex(args, lineCount, 2);
-		if (key == "index")
-			return index(args, lineCount, 2);
-		return 2;
-	}
-
 	/**
 	 * @brief Identifies the command in the configuration file. and returns the id
 	 * of the command.
@@ -199,7 +173,7 @@ namespace config {
 	 * error_page, 4 if client_max_body_size, 5 if location, 6 if limit_except, 7 if
 	 * return, 8 if root, 9 if autoindex, 10 if index, 404 if not found.)
 	 */
-	enum CmdId ConfigFileParser::idCommand(const std::string& key) {
+	enum CmdId Parser::idCommand(const std::string& key) {
 		static std::map<std::string, enum CmdId> cmdIds;
 
 		if (cmdIds.empty()) {
@@ -225,19 +199,19 @@ namespace config {
 		return UNKNOWN_ID;
 	}
 
-	int ConfigFileParser::genericError(int lineCount, const std::string& message) {
+	int Parser::genericError(int lineCount, const std::string& message) {
 		std::cout << "Configuration file (line " << lineCount << "): "
 				  << message << std::endl;
 		return 1;
 	}
 
-	int ConfigFileParser::unexpectedCommandError(int lineCount) {
+	int Parser::unexpectedCommandError(int lineCount) {
 		std::cout << "Configuration file (line " << lineCount << "): "
 				  << "Unexpected command found" << std::endl;
 		return 1;
 	}
 
-	int ConfigFileParser::unknownCommandError(int lineCount) {
+	int Parser::unknownCommandError(int lineCount) {
 		std::cout << "Configuration file (line " << lineCount << "): "
 				  << "Unknown command found" << std::endl;
 		return 1;
@@ -252,7 +226,7 @@ namespace config {
 	 * @param lineCount The current line number.
 	 * @return 0 if successful, 1 if error.
 	 */
-	int ConfigFileParser::saveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, const int& lineCount) {
+	int Parser::saveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, const int& lineCount) {
 		enum CmdId command_id = idCommand(args[0]);
 		if (command_id == UNKNOWN_ID) {
 			return unknownCommandError(lineCount);

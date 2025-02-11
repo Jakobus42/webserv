@@ -77,15 +77,15 @@ namespace config {
 	};
 
 	/**
-	 * @class ConfigFileParser
+	 * @class Parser
 	 * @brief This class is responsible for parsing the configuration file
 	 */
-	class ConfigFileParser {
+	class Parser {
 		public:
-			ConfigFileParser();
-			~ConfigFileParser();
+			Parser();
+			~Parser();
 
-			int loadConfigFile(std::string& configFileName);
+			int loadConfig(std::string& fileName);
 
 			int getIsLoaded() const;
 			const std::vector<ServerConfig>& getServerConfigs() const;
@@ -98,7 +98,6 @@ namespace config {
 			ServerConfig* getServerConfig(int index);
 
 			void printServerConfigs(int detailed);
-			int testFunction(const std::string& key, std::vector<std::string>& args, const int& lineCount);
 			void printLocations(const std::vector<config::Location>& locations, int layer, int detailed, std::vector<int> layer_num);
 			config::Location* getLocation(int layer);
 
@@ -107,13 +106,13 @@ namespace config {
 			static int genericError(int lineCount, const std::string& message);
 
 		private:
-			ConfigFileParser(const ConfigFileParser& other);
-			ConfigFileParser& operator=(const ConfigFileParser& other);
+			Parser(const Parser& other);
+			Parser& operator=(const Parser& other);
 			std::vector<ServerConfig> m_serverConfigs;
 			int m_isLoaded;
 
-			int readConfigFile(std::string& configFileName, std::string& file);
-			int parseConfigFile(std::string& configFileName, int layer, unsigned long& i, int& lineCount);
+			int readFile(std::string& fileName, std::string& file);
+			int parseFile(std::string& fileName, int layer, unsigned long& i, int& lineCount);
 			int handleServer(std::string& line, unsigned long* i);
 			int handlePrompt(std::string& line, int layer, const int& lineCount);
 			int saveConfigData(std::vector<std::string>& args, int layer, int qoute_flag, const int& lineCount);
