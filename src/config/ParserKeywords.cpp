@@ -83,6 +83,9 @@ namespace config {
 		if (args[1].length() > 1000 || args[1].length() == 0) {
 			return genericError(lineCount, "Location name length invalid");
 		}
+		if (args[1] == "/") {
+			return genericError(lineCount, "Location name cannot be '/'");
+		}
 		Location new_location;
 		// set default values
 		new_location.autoindex = false;
