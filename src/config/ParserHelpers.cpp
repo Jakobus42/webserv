@@ -49,7 +49,11 @@ namespace config {
 	 * @return struct location* the current location.
 	 */
 	Location* Parser::getLocation(int layer) {
-		config::Location* temp = &m_serverConfigs.back().locations.back();
+		config::ServerConfig& server = m_serverConfigs.back();
+		if (server.locations.empty()) {
+			return NULL;
+		}
+		config::Location* temp = &server.locations.back();
 		for (int i = 2; i < layer; i++) {
 			temp = &temp->locations.back();
 		}

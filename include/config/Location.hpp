@@ -67,5 +67,17 @@ namespace config {
 			bool hasRedirect() const {
 				return !redirectUri.empty();
 			}
+
+			// void reset() {
+			// 	path.clear();
+			// 	root.clear();
+			// 	redirectUri.clear();
+			// 	redirectUriTokens.clear();
+			// 	allowedMethods.clear();
+			// 	uploadSubdirectory.clear();
+			// 	autoindex = false;
+			// 	indexFile.clear();
+			// 	locations.clear();
+			// }
 	};
 } // namespace config

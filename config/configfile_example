@@ -19,10 +19,13 @@ server
 	# TODO: alternatively, ensure that relative paths are valid and accessible
 	# TODO: figure out if we should actually store global_root + /www
 	# probably not, since cgi-bin/ and www/ are both in this folder
-	# TODO: make fetch routing
 
-	# Default server for unspecified routes
-
+	# server is also a location
+	# TODO: adjust shit for this to be the way (swap data_dir and root, don't separate root and global_root)
+	# index index.html;
+	# limit_except GET;
+	# data_dir /workspaces/webserv
+	# root /www
 	# Example of a route with multiple rules 
 	location /default
 	{
@@ -45,16 +48,15 @@ server
 	    # Executing CGI scripts for .php files
 	    location /hi
 		{
-			root /foo/bar;  # Base directory
 			limit_except GET POST;
+			upload_dir /upload;
 	        #include fastcgi_params;
 	        #fastcgi_pass 127.0.0.1:9000;  # Assuming PHP-FPM is running
 	        #fastcgi_index index.php;
 			#fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-			location /hi2
+			location /ho
 			{
 				return /kapouet/upload;
-				root /123/234/345;
 			}
 	    }
 	    # Handle file uploads
