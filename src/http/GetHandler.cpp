@@ -14,8 +14,8 @@ namespace http {
 	GetHandler::~GetHandler() {}
 
 	void GetHandler::getFilePath(const config::Location& location, const std::string& filePath, std::string& target) {
-		for (std::vector<std::string>::const_iterator file = location.indexFile.begin(); file != location.indexFile.end(); ++file) {
-			std::string tmpFilePath = filePath + "/" + *file;
+		for (std::vector<std::string>::const_iterator fileName = location.indexFile.begin(); fileName != location.indexFile.end(); ++fileName) {
+			std::string tmpFilePath = filePath + "/" + *fileName;
 			FileType tmpFileType = m_router.checkFileType(tmpFilePath);
 			if (tmpFileType == FILE) { // return path to first file in index that exists and isn't a directory
 				std::cout << "getFilePath found file!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
@@ -44,7 +44,7 @@ namespace http {
 				}
 				if (filePath.empty()) {
 					if (location.autoindex == true) { // TODO: pretty sus, verify that this works
-						autoindexBody = getDirectoryListing(filePath, Router::joinPath(m_router.getGlobalRoot().root));
+						autoindexBody = getDirectoryListing(request.getUri(), location, Router::joinPath(m_router.getGlobalRoot().root));
 					} else {
 						throw http::exception(FORBIDDEN, "GET: Requested location does not have an index");
 					}

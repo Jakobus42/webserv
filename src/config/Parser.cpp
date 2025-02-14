@@ -38,8 +38,7 @@ namespace config {
 	 * @param fileName The name of the configuration file.
 	 * @param line the location where the configuration file is stored by the read.
 	 */
-	int Parser::readFile(std::string& fileName,
-						 std::string& line) {
+	int Parser::readFile(std::string& fileName, std::string& line) {
 		if (fileName.empty()) {
 			std::cout << "Configuration file name is empty." << std::endl;
 			return 1;
@@ -90,8 +89,11 @@ namespace config {
 	int Parser::parseFile(std::string& str, int layer, unsigned long& i, int& lineCount) {
 		std::string line;
 		int findQuotesFlag = 0;
+
 		for (; i < str.size(); i++) {
-			if (str[i] == '\n') {
+			if (str[i] != '\n') {
+				line += str[i];
+			} else {
 				lineCount++;
 				if (line.empty() || line.find_first_not_of(' ') == std::string::npos) { // empty line
 					line.clear();
@@ -138,8 +140,6 @@ namespace config {
 					findQuotesFlag = ret;
 				}
 				line.clear();
-			} else {
-				line += str[i];
 			}
 		}
 		return 0;

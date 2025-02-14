@@ -1,5 +1,7 @@
 #include "http/http.hpp"
 
+#include "config/Location.hpp"
+
 #include <cstdio>
 
 namespace http {
@@ -84,7 +86,7 @@ namespace http {
 			"body{background-color:#2b3042;justify-content: center;text-align: center;color:#d3dbeb;}"
 			"h1{font-size:5rem;}p{font-size: 1.5rem;padding-bottom: 10px;}a{"
 			"text-decoration: none;color: #d3dbeb;padding: 10px;border: 3px solid #d3dbeb;font-weight: bold;}</style>"
-			"</head><body><h1>%d</h1><p>%s</p><a href=\"/home_directory\">Go Back to Home</a></body></html>";
+			"</head><body><h1>%d</h1><p>%s</p><a href=\"/\">Go Back to Home</a></body></html>";
 
 		char errorPage[1024];
 		const char* statusMessage = getStatusMessage(statusCode).c_str();
@@ -118,7 +120,16 @@ namespace http {
 		return oss.str(); // Only one construction of the string
 	}
 
-	std::string getDirectoryListing(const std::string& path, const std::string& root) { // temporarily pass root path as parameter
+	/**
+	 * @brief Generate the Directory Listing HTML for the passed uri
+	 *
+	 * @param uri
+	 * @param root
+	 * @return std::string the rendered HTML for the directory.
+	 * @note In case of a location's root having a subdirectory that shares the name of a sublocation, the location takes precedence during routing.
+	 * This means upon autoindex, clicking the directory foo/ routes to a nested location named /foo, and foo/ is inaccessible. This is by design.
+	 */
+	std::string getDirectoryListing(const Uri& uri, const config::Location& location, const std::string& root) { // temporarily pass root path as parameter
 		static const char* DL_TEMPLATE = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\""
 										 "content=\"width=device-width, initial-scale=1.0\"><title>Directory Listing</title><style>body{font-family:Arial,sans-serif;"
 										 "margin:0;padding:0;background-color:#f8f9fa;}.container{max-width:800px;margin:50px auto;padding:20px;background:#fff;box-shadow:0 "
@@ -128,14 +139,15 @@ namespace http {
 		static const char* DL_TEMPLATE_END = "</ul></div></body></html>";
 		std::string bodyTemp = DL_TEMPLATE;
 		std::string rootPath = root;
+		// TODO: root path should only be appended for file links; not directories
+		// TODO: directories should be prefixed with the full URI instead
 		DIR* dir;
+		(void)location;
 
-		std::cout << "Path in getDirListing: " << path << std::endl;
+		std::cout << "Uri safeAbsolutePath in getDirListing:" << uri.safeAbsolutePath << std::endl;
+		std::cout << "UriPath in getDirListing: " << uri.path << std::endl;
 		std::cout << "Root in getDirListing: " << root << std::endl;
-		/* 		if (rootPath[rootPath.size() - 1] != '/') {
-					rootPath += "/";
-				} */
-		rootPath += path; // TODO: should be relative path, i.e. without leading /root/dataDir, currently breaks
+		// rootPath += path; // TODO: should be relative path, i.e. without leading /root/dataDir, currently breaks
 		if ((dir = opendir(rootPath.c_str())) == NULL) {
 			throw http::exception(INTERNAL_SERVER_ERROR, "getDirectoryListing: Couldn't open directory");
 		}
@@ -147,14 +159,14 @@ namespace http {
 			if (dirName == ".") {
 				continue;
 			}
-			if (dirName == ".." && (path == "/" || path == "")) {
+			if (dirName == ".." && (uri.path == "/" || uri.path == "")) {
 				continue;
 			}
 			std::string link;
 			if (ent->d_type == DT_DIR) {
-				link = "<a href=\"" + dirName + "/" + "\">" + dirName + "/</a>";
+				link = "<a href=\"" + uri.path + "/" + dirName + "\">" + dirName + "/</a>"; // don't append the whole uri.path unless we're actually that deep into locations
 			} else {
-				link = "<a href=\"" + dirName + "\">" + dirName + "</a>";
+				link = "<a href=\"" + uri.path + "/" + dirName + "\">" + dirName + "</a>";
 			}
 			bodyTemp += "<li>" + link + "</li>"; // TODO: links to directories and routes still break
 			std::cout << "Setting url to: " << link << std::endl;

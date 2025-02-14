@@ -9,7 +9,7 @@
 namespace config {
 	struct Location {
 			std::vector<std::string> path;				// location name split into tokens
-			std::vector<std::string> root;				// root split into tokens
+			std::vector<std::string> root;				// root split into tokens // TODO: maybe actually assign root to parent root in parser, if not specified in config? might make things easier
 			std::string redirectUri;					// return route (references other locations)
 			std::vector<std::string> redirectUriTokens; // return route split into tokens
 			std::set<http::Method> allowedMethods;		// allowed HTTP methods

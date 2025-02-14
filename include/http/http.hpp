@@ -6,6 +6,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
+#include "config/Location.hpp"
 #include "http/types.hpp"
 #include "shared/Logger.hpp"
 
@@ -46,7 +47,7 @@ namespace http {
 	std::string getErrorPage(StatusCode statusCode);
 	std::string getMethodString(Method method);
 	Method stringToMethod(const std::string& method);
-	std::string getDirectoryListing(const std::string& path, const std::string& root);
+	std::string getDirectoryListing(const Uri& uri, const config::Location& location, const std::string& root);
 	bool getRootPath(std::string& rootPath);
 
 } // namespace http
