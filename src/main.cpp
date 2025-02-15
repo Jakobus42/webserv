@@ -17,6 +17,8 @@ int main(int argc, char** const argv) {
 		if (!parser.parseFile(configPath)) {
 			return 69;
 		}
+		std::cout << "Success!" << std::endl;
+		return 42;
 		if (configParser.loadConfig(configPath) == 1)
 			return 1;
 		const std::vector<config::ServerConfig>& serverConfigs = configParser.getServerConfigs();

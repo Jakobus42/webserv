@@ -31,6 +31,7 @@ namespace config {
 		D_LIMIT_EXCEPT,
 		D_UPLOAD_DIR,
 		D_INDEX,
+		D_AUTOINDEX,
 		D_LOCATION
 	};
 

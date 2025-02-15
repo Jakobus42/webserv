@@ -5,7 +5,7 @@
 
 namespace config {
 
-	const std::string GoodParser::WHITESPACE = "\t\r\v\f";
+	const std::string GoodParser::WHITESPACE = "\t\r\v\f ";
 
 	parse_exception::parse_exception(std::size_t line)
 		: std::runtime_error("Line " + shared::string::fromNum(line) + ": Parsing failed, good luck finding out why")
@@ -64,15 +64,12 @@ namespace config {
 	// ------------------------  utility  ----------------------------------- //
 
 	void GoodParser::skipWhitespace() {
-		std::cout << "skipWhitespace()" << std::endl;
 		while (m_readPos < m_data.size()) {
 			char c = m_data[m_readPos];
 			if (c == '\n') {
 				++m_lineIndex; // if char is newline, increment lineIndex
 				++m_readPos;   // then skip it
-				std::cout << "Newline!" << std::endl;
 			} else if (WHITESPACE.find(c) != std::string::npos) {
-				std::cout << "'" << c << "' is whitespace!" << std::endl;
 				++m_readPos; // if char is whitespace, skip it
 			} else {
 				break; // no more whitespace
@@ -91,11 +88,9 @@ namespace config {
 
 	// CONSUMES IF MATCHED
 	bool GoodParser::matchToken(const std::string& token) {
-		std::cout << "matchToken()" << std::endl;
 		skipWhitespace();
 		if (m_data.compare(m_readPos, token.size(), token) == 0) {
 			consume(token.size());
-			std::cout << "matched " << token << "!" << std::endl;
 			return true;
 		}
 		return false;
@@ -107,7 +102,6 @@ namespace config {
 
 	// DOES NOT CONSUME
 	std::string GoodParser::readToken() {
-		std::cout << "readToken()" << std::endl;
 		std::string token = "";
 		std::size_t i = 0;
 		skipWhitespace();
@@ -115,7 +109,6 @@ namespace config {
 			token.push_back(m_data[m_readPos + i]);
 			i++;
 		}
-		std::cout << "read " << token << "!" << std::endl;
 		return token;
 	}
 
@@ -128,32 +121,26 @@ namespace config {
 	// expecting semicolons at the end of each value is probably sensible though
 	// CONSUMES WHAT IT READS
 	std::string GoodParser::readValue() {
-		std::cout << "readValue()" << std::endl;
 		std::string value = "";
 		std::cout << m_data[m_readPos] << std::endl;
 		skipWhitespace();
 		while (m_readPos < m_data.size() && shouldReadValue(m_data[m_readPos])) {
-			std::cout << m_data[m_readPos];
 			value.push_back(m_data[m_readPos]);
 			consume(1);
 		}
-		std::cout << std::endl;
 		if (m_readPos >= m_data.size() || m_data[m_readPos] != ';') {
 			throw parse_exception(m_lineIndex, "Expected semicolon after value");
 		}
-		std::cout << "read " << value << "!" << std::endl;
 		consume(1);
 		return value;
 	}
 
 	CommandType GoodParser::matchDirective(const std::string& token, const std::map<std::string, CommandType>& expectedDirectives) {
-		std::cout << "matchDirective()" << std::endl;
 		std::map<std::string, CommandType>::const_iterator matchedDirective = expectedDirectives.find(token);
 		if (matchedDirective == expectedDirectives.end()) {
 			return _D_NOT_VALID;
 		}
 		m_readPos += token.size();
-		std::cout << "matched directive " << token << "!" << std::endl;
 		return matchedDirective->second;
 	}
 
@@ -166,6 +153,7 @@ namespace config {
 			allowedDirectives["limit_except"] = D_LIMIT_EXCEPT;
 			allowedDirectives["upload_dir"] = D_UPLOAD_DIR;
 			allowedDirectives["index"] = D_INDEX;
+			allowedDirectives["autoindex"] = D_AUTOINDEX;
 			allowedDirectives["location"] = D_LOCATION;
 		}
 		return allowedDirectives;
@@ -185,6 +173,7 @@ namespace config {
 			allowedDirectives["limit_except"] = D_LIMIT_EXCEPT;
 			allowedDirectives["upload_dir"] = D_UPLOAD_DIR;
 			allowedDirectives["index"] = D_INDEX;
+			allowedDirectives["autoindex"] = D_AUTOINDEX;
 			allowedDirectives["location"] = D_LOCATION;
 		}
 		return allowedDirectives;
@@ -225,10 +214,8 @@ namespace config {
 		// parse out comments
 		// std::string currentLine;
 		while (m_readPos < m_data.size()) {
-			std::cout << "expecting server block..." << std::endl;
 			skipWhitespace();
 			expectServerBlock();
-			std::cout << "readPos now " << m_readPos << std::endl;
 		}
 		// for (std::string::const_iterator c = m_data.begin(); c != m_data.end(); ++c) {
 		// 	if (*c == '\n') {
@@ -272,7 +259,6 @@ namespace config {
 		Server thisServer;
 
 		while (m_readPos < m_data.size()) {
-			std::cout << "exServBlock loop" << std::endl;
 			skipWhitespace();
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '}') {
 				consume(1); // consume '}'
@@ -336,7 +322,6 @@ namespace config {
 
 		thisLocation.path = http::Router::splitPath(path);
 		while (m_readPos <= m_data.size()) {
-			std::cout << "exLocBlock loop" << std::endl;
 			skipWhitespace();
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '}') {
 				consume(1); // consume '}'
