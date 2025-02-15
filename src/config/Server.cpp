@@ -11,7 +11,6 @@ namespace config {
 		, maxBodySize(ONE_MEGABYTE)
 		, dataDirectory("")
 		, serverNames()
-		, errorPages()
 		, location() {}
 
 	/**
@@ -29,7 +28,6 @@ namespace config {
 		, maxBodySize(other.maxBodySize)
 		, dataDirectory(other.dataDirectory)
 		, serverNames(other.serverNames)
-		, errorPages(other.errorPages)
 		, location(other.location) {}
 
 	/**
@@ -46,7 +44,6 @@ namespace config {
 		maxBodySize = rhs.maxBodySize;
 		dataDirectory = rhs.dataDirectory;
 		serverNames = rhs.serverNames;
-		errorPages = rhs.errorPages;
 		location = rhs.location;
 		return *this;
 	}

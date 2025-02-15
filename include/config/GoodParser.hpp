@@ -29,15 +29,25 @@ namespace config {
 			bool parseFile(const std::string& fileName);
 
 		private:
+			std::string m_data;
 			std::vector<Server> m_configs;
 			std::size_t m_depth;
+			std::size_t m_lineIndex;
+			std::size_t m_writePos;
 
 		private:
 			GoodParser(const GoodParser& other);
 			GoodParser& operator=(const GoodParser& rhs);
 
-			void parseFromString(const std::string& fileContent) throw(config::parse_exception);
-			void parseLine(const std::string& line, std::size_t lineIndex) throw(config::parse_exception);
-	};
+			void consume(std::size_t amount);
+			bool matchToken(const std::string& token);
+			std::string readToken();
+			void skipWhitespace();
 
+			void parseFromData() throw(config::parse_exception);
+			void parseLine(const std::string& line) throw(config::parse_exception);
+
+			void expectServerBlock() throw(parse_exception);
+			void expectLocationBlock(Location& parentLocation) throw(parse_exception);
+	};
 } /* namespace config */

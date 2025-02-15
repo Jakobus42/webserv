@@ -22,10 +22,10 @@ namespace config {
 			unsigned long maxBodySize;
 			std::string dataDirectory;
 			std::vector<std::string> serverNames;
-			std::map<http::StatusCode, std::string> errorPages;
 			Location location;
 
 			Server();
+			~Server();
 			Server(const Server& other);
 			const Server& operator=(const Server& rhs);
 
