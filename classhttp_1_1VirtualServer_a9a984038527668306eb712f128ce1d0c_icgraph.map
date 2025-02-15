@@ -1,26 +1,24 @@
 <map id="http::VirtualServer::close" name="http::VirtualServer::close">
-<area shape="rect" id="Node000001" title=" " alt="" coords="779,167,920,207"/>
-<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="881,155,870,148,849,145,831,147,821,152,817,158,819,166,813,167,811,157,817,148,830,142,849,140,872,143,884,150"/>
-<area shape="rect" id="Node000002" href="$classhttp_1_1VirtualServer.html#af9a6100fe0dc47c1d3e009b2f2a0a5a1" title=" " alt="" coords="589,113,731,153"/>
-<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="765,166,730,156,732,151,766,161"/>
-<area shape="rect" id="Node000009" href="$classhttp_1_1VirtualServer.html#a0ffcf529ae88ec69f0af814dcbd74c4b" title=" " alt="" coords="589,220,731,260"/>
-<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="766,213,732,223,730,218,765,208"/>
-<area shape="rect" id="Node000003" href="$classhttp_1_1VirtualServer.html#a76626d52a6ac3d2c1cbc16b0f1775f4a" title=" " alt="" coords="365,5,507,45"/>
-<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="615,108,540,66,496,48,498,43,542,62,618,104"/>
-<area shape="rect" id="Node000006" href="$classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="108,121,283,146"/>
-<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="575,116,541,111,436,104,331,111,252,123,251,118,330,105,436,98,542,105,576,110"/>
-<area shape="rect" id="Node000007" href="$classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="332,121,540,146"/>
-<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="576,136,540,136,540,131,576,131"/>
-<area shape="rect" id="Node000008" href="$classcore_1_1IOHandler.html#a0743b5e212838105fa3c5b2fdbbd346a" title=" " alt="" coords="331,170,541,195"/>
-<area shape="poly" id="edge9_Node000002_Node000008" title=" " alt="" coords="577,154,495,173,494,167,576,149"/>
-<area shape="rect" id="Node000004" href="$classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="121,13,270,38"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="352,28,270,28,270,23,352,23"/>
-<area shape="rect" id="Node000005" href="$main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="107,28,60,28,60,23,107,23"/>
-<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="318,136,283,136,283,131,318,131"/>
-<area shape="poly" id="edge10_Node000008_Node000006" title=" " alt="" coords="360,170,258,149,259,143,361,165"/>
-<area shape="rect" id="Node000010" href="$classcore_1_1AcceptHandler.html#a14238ec3d6956cf6f1f1fbe90105823d" title=" " alt="" coords="359,220,513,260"/>
-<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="575,243,513,243,513,237,575,237"/>
-<area shape="rect" id="Node000011" href="$classhttp_1_1VirtualServer.html#a9087762e937853061a5178078030280c" title="Destroys the VirtualServer object." alt="" coords="365,284,507,324"/>
-<area shape="poly" id="edge13_Node000009_Node000011" title=" " alt="" coords="577,266,507,287,506,281,575,261"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="676,167,817,207"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="778,155,767,148,747,145,729,147,718,152,714,158,716,166,711,167,709,157,714,148,727,142,747,140,769,143,781,150"/>
+<area shape="rect" id="Node000002" href="$classhttp_1_1VirtualServer.html#af9a6100fe0dc47c1d3e009b2f2a0a5a1" title=" " alt="" coords="487,113,628,153"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="662,166,627,156,629,151,664,161"/>
+<area shape="rect" id="Node000008" href="$classhttp_1_1VirtualServer.html#a0ffcf529ae88ec69f0af814dcbd74c4b" title=" " alt="" coords="487,220,628,260"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="664,213,629,223,627,218,662,208"/>
+<area shape="rect" id="Node000003" href="$classhttp_1_1VirtualServer.html#a76626d52a6ac3d2c1cbc16b0f1775f4a" title=" " alt="" coords="263,5,404,45"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="513,108,438,66,393,48,395,43,440,62,515,104"/>
+<area shape="rect" id="Node000005" href="$classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,121,180,146"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="473,116,438,111,333,104,228,111,149,123,148,118,228,105,333,98,439,105,473,110"/>
+<area shape="rect" id="Node000006" href="$classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="229,121,437,146"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="473,136,437,136,437,131,473,131"/>
+<area shape="rect" id="Node000007" href="$classcore_1_1IOHandler.html#a0743b5e212838105fa3c5b2fdbbd346a" title=" " alt="" coords="228,170,439,195"/>
+<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="474,154,392,173,391,167,473,149"/>
+<area shape="rect" id="Node000004" href="$classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35" title=" " alt="" coords="18,13,167,38"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="249,28,168,28,168,23,249,23"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="216,136,180,136,180,131,216,131"/>
+<area shape="poly" id="edge9_Node000007_Node000005" title=" " alt="" coords="257,170,155,149,156,143,258,165"/>
+<area shape="rect" id="Node000009" href="$classcore_1_1AcceptHandler.html#a14238ec3d6956cf6f1f1fbe90105823d" title=" " alt="" coords="257,220,410,260"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="473,243,410,243,410,237,473,237"/>
+<area shape="rect" id="Node000010" href="$classhttp_1_1VirtualServer.html#a9087762e937853061a5178078030280c" title="Destroys the VirtualServer object." alt="" coords="263,284,404,324"/>
+<area shape="poly" id="edge12_Node000008_Node000010" title=" " alt="" coords="474,266,405,287,403,281,473,261"/>
 </map>

@@ -1,7 +1,5 @@
 var NAVTREEINDEX4 =
 {
-"md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2config__file__basics.html#autotoc_md7":[1,2,2],
-"md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2config__file__basics.html#autotoc_md8":[1,3],
 "md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2config__file__basics.html#autotoc_md9":[1,3,0],
 "md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2getting__started.html":[2],
 "md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2getting__started.html#autotoc_md12":[2,0],
@@ -249,5 +247,7 @@ var NAVTREEINDEX4 =
 "structhttp_1_1RequestParser_1_1Token.html":[4,0,2,6,0],
 "structhttp_1_1RequestParser_1_1Token.html#a10990b6067ba7a6a359ae8021b1a7534":[4,0,2,6,0,0],
 "structhttp_1_1RequestParser_1_1Token.html#a10990b6067ba7a6a359ae8021b1a7534":[5,0,2,6,0,0],
-"structhttp_1_1RequestParser_1_1Token.html#a2c462eec50f148ea7d8a35b25fbca699":[4,0,2,6,0,2]
+"structhttp_1_1RequestParser_1_1Token.html#a2c462eec50f148ea7d8a35b25fbca699":[4,0,2,6,0,2],
+"structhttp_1_1RequestParser_1_1Token.html#a2c462eec50f148ea7d8a35b25fbca699":[5,0,2,6,0,2],
+"structhttp_1_1RequestParser_1_1Token.html#a9dab2bf9fedb2d61aa4b0f8d4e648a3d":[4,0,2,6,0,1]
 };

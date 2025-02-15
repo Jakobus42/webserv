@@ -157,8 +157,6 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:af3d89e54013c7bd338abb9ea9f4b42c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85905295638d9b3baff6968f68ef76c1" id="r_a85905295638d9b3baff6968f68ef76c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classconfig_1_1GoodParser.html#a85905295638d9b3baff6968f68ef76c1">parseAutoindex</a> (const std::string &amp;value, <a class="el" href="structconfig_1_1Location.html">Location</a> &amp;location)</td></tr>
 <tr class="separator:a85905295638d9b3baff6968f68ef76c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cb2ee7f837f70a8250bcd1425942357" id="r_a9cb2ee7f837f70a8250bcd1425942357"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classconfig_1_1GoodParser.html#a9cb2ee7f837f70a8250bcd1425942357">parseLocation</a> (const std::string &amp;value, <a class="el" href="structconfig_1_1Location.html">Location</a> &amp;location)</td></tr>
-<tr class="separator:a9cb2ee7f837f70a8250bcd1425942357"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
@@ -487,7 +485,7 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aclassconfig_1_1GoodParser_html_a92c643f7604c55e14ad7df9ac6230e33"><div class="ttname"><a href="classconfig_1_1GoodParser.html#a92c643f7604c55e14ad7df9ac6230e33">config::GoodParser::matchToken</a></div><div class="ttdeci">bool matchToken(const std::string &amp;token)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00094">GoodParser.cpp:94</a></div></div>
 <div class="ttc" id="aclassconfig_1_1GoodParser_html_ac088fea9f3e6daf0e2c92024160e4e8c"><div class="ttname"><a href="classconfig_1_1GoodParser.html#ac088fea9f3e6daf0e2c92024160e4e8c">config::GoodParser::expectLocationBlock</a></div><div class="ttdeci">void expectLocationBlock(Location &amp;parentLocation)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00298">GoodParser.cpp:298</a></div></div>
 <div class="ttc" id="aclassconfig_1_1GoodParser_html_ace3030963cdafdf882bc85cc5a8a5573"><div class="ttname"><a href="classconfig_1_1GoodParser.html#ace3030963cdafdf882bc85cc5a8a5573">config::GoodParser::skipWhitespace</a></div><div class="ttdeci">void skipWhitespace()</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00070">GoodParser.cpp:70</a></div></div>
-<div class="ttc" id="aclassconfig_1_1GoodParser_html_ad4ab6effe4c118767e4e9e7d1ed9e06c"><div class="ttname"><a href="classconfig_1_1GoodParser.html#ad4ab6effe4c118767e4e9e7d1ed9e06c">config::GoodParser::setLocationValue</a></div><div class="ttdeci">void setLocationValue(const std::string &amp;value, CommandType type, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00365">GoodParser.cpp:365</a></div></div>
+<div class="ttc" id="aclassconfig_1_1GoodParser_html_ad4ab6effe4c118767e4e9e7d1ed9e06c"><div class="ttname"><a href="classconfig_1_1GoodParser.html#ad4ab6effe4c118767e4e9e7d1ed9e06c">config::GoodParser::setLocationValue</a></div><div class="ttdeci">void setLocationValue(const std::string &amp;value, CommandType type, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00366">GoodParser.cpp:366</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Router_html_a984b170d146002ebe8fc701e7d0d7209"><div class="ttname"><a href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209">http::Router::splitPath</a></div><div class="ttdeci">static std::vector&lt; std::string &gt; splitPath(const std::string &amp;path)</div><div class="ttdoc">Splits a path into its components, delimited by '/'.</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00053">Router.cpp:53</a></div></div>
 <div class="ttc" id="anamespaceconfig_html_a562b6854cd3e6748aa72f90553305021"><div class="ttname"><a href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">config::isValidPath</a></div><div class="ttdeci">static bool isValidPath(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00284">GoodParser.cpp:284</a></div></div>
 <div class="ttc" id="anamespaceconfig_html_aee8549161116ce4e258c23d4d7c3b510"><div class="ttname"><a href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510">config::CommandType</a></div><div class="ttdeci">CommandType</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8hpp_source.html#l00023">GoodParser.hpp:23</a></div></div>
@@ -618,68 +616,72 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classconfig_1_1GoodParser_a0e82e0e5d04aef7803c8c5f58cfe3674_cgraph.png" border="0" usemap="#aclassconfig_1_1GoodParser_a0e82e0e5d04aef7803c8c5f58cfe3674_cgraph" alt=""/></div>
 <map name="aclassconfig_1_1GoodParser_a0e82e0e5d04aef7803c8c5f58cfe3674_cgraph" id="aclassconfig_1_1GoodParser_a0e82e0e5d04aef7803c8c5f58cfe3674_cgraph">
-<area shape="rect" title=" " alt="" coords="5,267,157,307"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a2d143104d3629eabced6b1ddd33d42aa" title=" " alt="" coords="450,63,593,103"/>
-<area shape="poly" title=" " alt="" coords="87,265,103,229,127,185,161,141,181,122,204,106,261,82,322,69,382,66,437,68,436,73,382,71,322,75,262,87,207,110,185,126,165,144,132,188,108,231,92,267"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#ac088fea9f3e6daf0e2c92024160e4e8c" title=" " alt="" coords="209,299,374,339"/>
-<area shape="poly" title=" " alt="" coords="158,296,195,301,195,307,157,301"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a2edf338e28aec34972844d615c41d1cd" title=" " alt="" coords="220,363,363,403"/>
-<area shape="poly" title=" " alt="" coords="120,304,206,348,222,355,220,360,204,353,117,309"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a92c643f7604c55e14ad7df9ac6230e33" title=" " alt="" coords="220,120,363,160"/>
-<area shape="poly" title=" " alt="" coords="100,264,146,221,204,176,226,164,229,168,207,181,149,226,104,268"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#ace3030963cdafdf882bc85cc5a8a5573" title=" " alt="" coords="450,131,593,171"/>
-<area shape="poly" title=" " alt="" coords="114,264,156,241,204,220,325,184,436,161,437,166,326,190,206,225,159,246,117,269"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a4463c816277db24b7006aace99f7c16e" title=" " alt="" coords="220,235,363,275"/>
-<area shape="poly" title=" " alt="" coords="157,272,206,265,207,270,158,278"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a6080fd98a38e20a993eebfc5821fe3d2" title=" " alt="" coords="220,5,363,45"/>
-<area shape="poly" title=" " alt="" coords="87,265,102,224,126,170,160,113,204,62,219,50,223,54,207,66,164,116,131,172,107,226,92,267"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#ab2a0665d469dda5c7385ea4f99097235" title=" " alt="" coords="220,427,363,467"/>
-<area shape="poly" title=" " alt="" coords="100,305,144,358,174,387,207,412,216,418,213,423,204,417,171,391,140,362,95,309"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a19b98d1bb6cb469ba7856155e8a7439d" title=" " alt="" coords="220,511,363,551"/>
-<area shape="poly" title=" " alt="" coords="94,305,137,385,169,433,207,477,239,501,236,506,204,481,165,436,132,388,89,308"/>
-<area shape="rect" href="structconfig_1_1Server.html#a5bff502a23e2fcb5d174261a7b40bc2f" title="Validate the server, ensuring it has all mandatory keys and that nothing else fucky wucky is going on..." alt="" coords="205,575,377,601"/>
-<area shape="poly" title=" " alt="" coords="88,306,99,357,121,426,137,463,156,498,179,532,207,561,215,567,212,571,204,565,175,535,152,501,132,465,116,428,94,359,83,307"/>
-<area shape="rect" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021" title=" " alt="" coords="451,253,591,278"/>
-<area shape="poly" title=" " alt="" coords="373,297,452,279,453,284,375,302"/>
-<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="440,302,603,327"/>
-<area shape="poly" title=" " alt="" coords="374,315,426,314,426,319,374,320"/>
-<area shape="rect" href="structconfig_1_1Location.html#ad24b20b529d6c74965641e023ed734c0" title="Validate the Location." alt="" coords="429,351,614,377"/>
-<area shape="poly" title=" " alt="" coords="375,332,443,346,442,351,374,338"/>
-<area shape="poly" title=" " alt="" coords="362,120,436,101,437,106,363,125"/>
-<area shape="poly" title=" " alt="" coords="363,141,436,144,436,149,363,146"/>
-<area shape="poly" title=" " alt="" coords="337,232,376,214,424,188,456,174,459,179,427,193,379,218,339,237"/>
-<area shape="rect" href="namespaceconfig.html#a74567cb58e62cf836a46307f098740bc" title=" " alt="" coords="430,203,613,229"/>
-<area shape="poly" title=" " alt="" coords="362,240,432,228,433,234,363,245"/>
-<area shape="poly" title=" " alt="" coords="363,40,437,59,436,64,362,46"/>
-<area shape="poly" title=" " alt="" coords="320,43,368,77,427,112,450,123,447,128,424,117,365,82,317,48"/>
-<area shape="rect" href="namespaceconfig.html#ae83eb84b4926b8acd8098438021b536e" title=" " alt="" coords="431,13,612,38"/>
-<area shape="poly" title=" " alt="" coords="363,23,417,23,417,28,363,28"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#aee904af9f8ed12548a067c646e84abd8" title=" " alt="" coords="425,593,617,633"/>
-<area shape="poly" title=" " alt="" coords="347,548,378,560,426,579,447,586,446,591,424,584,376,565,345,553"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#affad4aae9d819c97322a2952c53dd027" title=" " alt="" coords="450,657,593,697"/>
-<area shape="poly" title=" " alt="" coords="361,549,379,561,396,582,404,603,411,624,427,643,439,652,436,656,424,647,406,626,399,605,392,585,376,565,358,553"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a6f1f4b28cfa4ed0d49b8f7e2e69c59ed" title=" " alt="" coords="450,721,593,761"/>
-<area shape="poly" title=" " alt="" coords="364,549,379,561,393,580,401,599,404,636,407,672,414,690,427,707,440,717,436,722,423,711,409,692,402,673,398,637,395,600,389,582,375,565,361,553"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a02b3a3527f82046838ce2481f84c4e27" title=" " alt="" coords="450,401,593,441"/>
-<area shape="poly" title=" " alt="" coords="324,508,424,451,441,444,443,449,427,456,327,513"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a471b2ee3a1bcca880e5ff6dc6009719a" title=" " alt="" coords="448,465,595,505"/>
-<area shape="poly" title=" " alt="" coords="362,514,434,500,435,505,363,519"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#ad4ab6effe4c118767e4e9e7d1ed9e06c" title=" " alt="" coords="450,529,593,569"/>
-<area shape="poly" title=" " alt="" coords="363,534,436,540,436,545,363,539"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a85905295638d9b3baff6968f68ef76c1" title=" " alt="" coords="665,337,808,377"/>
-<area shape="poly" title=" " alt="" coords="591,531,616,515,628,500,635,485,640,454,644,421,651,405,663,388,667,384,671,388,667,391,655,407,649,423,645,455,640,487,632,503,619,519,594,536"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#af3d89e54013c7bd338abb9ea9f4b42c7" title=" " alt="" coords="665,401,808,441"/>
-<area shape="poly" title=" " alt="" coords="591,529,616,515,631,500,639,485,648,468,664,451,670,446,673,451,667,455,652,471,644,487,635,503,619,519,594,533"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a25d8bda55c1a7c4b98507306a45db2d2" title=" " alt="" coords="665,465,808,505"/>
-<area shape="poly" title=" " alt="" coords="589,527,655,507,656,512,590,532"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a9cb2ee7f837f70a8250bcd1425942357" title=" " alt="" coords="665,529,808,569"/>
-<area shape="poly" title=" " alt="" coords="593,547,651,547,651,552,593,552"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a6e0d9d721c4fd44896f9122657e03e05" title=" " alt="" coords="665,593,808,633"/>
-<area shape="poly" title=" " alt="" coords="590,567,656,587,655,592,589,572"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#af1367fa187f39ffa85e68980ca001ccb" title=" " alt="" coords="665,657,808,697"/>
-<area shape="poly" title=" " alt="" coords="594,565,619,579,635,595,644,612,652,627,667,643,673,648,670,652,664,647,648,630,639,614,631,599,616,583,591,570"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a8af78e45347274127a070dde9fa81d37" title=" " alt="" coords="665,721,808,761"/>
-<area shape="poly" title=" " alt="" coords="594,563,619,579,632,596,640,612,645,644,649,676,655,692,667,708,671,711,667,715,663,711,651,694,644,677,640,645,635,614,628,599,616,583,591,567"/>
+<area shape="rect" title=" " alt="" coords="5,323,157,363"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a2d143104d3629eabced6b1ddd33d42aa" title=" " alt="" coords="450,55,593,95"/>
+<area shape="poly" title=" " alt="" coords="86,322,100,281,123,229,158,175,179,151,204,130,245,113,304,99,436,80,436,85,305,104,246,118,207,135,183,155,162,178,128,231,105,283,91,324"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#ac088fea9f3e6daf0e2c92024160e4e8c" title=" " alt="" coords="665,765,831,805"/>
+<area shape="poly" title=" " alt="" coords="113,361,230,443,379,552,427,591,543,677,596,711,667,750,679,757,677,761,664,755,593,716,540,681,424,595,376,556,227,448,110,366"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a2edf338e28aec34972844d615c41d1cd" title=" " alt="" coords="220,566,363,606"/>
+<area shape="poly" title=" " alt="" coords="92,362,109,400,133,449,166,500,207,545,223,557,220,561,204,549,162,503,129,452,104,403,88,364"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a92c643f7604c55e14ad7df9ac6230e33" title=" " alt="" coords="220,145,363,185"/>
+<area shape="poly" title=" " alt="" coords="94,322,139,264,169,231,204,201,223,189,226,193,207,205,173,235,143,267,98,325"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#ace3030963cdafdf882bc85cc5a8a5573" title=" " alt="" coords="450,119,593,159"/>
+<area shape="poly" title=" " alt="" coords="101,321,146,283,204,245,251,226,290,217,329,210,376,194,424,169,442,162,444,167,426,174,378,199,330,215,291,222,253,231,207,250,150,287,105,325"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a4463c816277db24b7006aace99f7c16e" title=" " alt="" coords="220,259,363,299"/>
+<area shape="poly" title=" " alt="" coords="147,321,211,301,213,306,148,326"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a6080fd98a38e20a993eebfc5821fe3d2" title=" " alt="" coords="220,30,363,70"/>
+<area shape="poly" title=" " alt="" coords="85,322,98,275,122,213,156,146,178,115,203,87,218,75,221,79,207,91,183,118,161,149,127,215,103,277,90,324"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#ab2a0665d469dda5c7385ea4f99097235" title=" " alt="" coords="220,630,363,670"/>
+<area shape="poly" title=" " alt="" coords="89,363,101,414,123,481,158,553,180,586,207,616,212,620,208,624,203,620,176,590,153,556,118,483,95,415,84,364"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a19b98d1bb6cb469ba7856155e8a7439d" title=" " alt="" coords="220,362,363,402"/>
+<area shape="poly" title=" " alt="" coords="158,355,207,364,206,369,157,360"/>
+<area shape="rect" href="structconfig_1_1Server.html#a5bff502a23e2fcb5d174261a7b40bc2f" title="Validate the server, ensuring it has all mandatory keys and that nothing else fucky wucky is going on..." alt="" coords="205,695,377,720"/>
+<area shape="poly" title=" " alt="" coords="87,363,94,425,113,510,129,556,149,601,175,643,207,680,214,686,211,690,203,684,171,646,144,604,124,558,108,511,89,426,81,364"/>
+<area shape="rect" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021" title=" " alt="" coords="901,452,1041,477"/>
+<area shape="poly" title=" " alt="" coords="813,762,829,751,857,721,881,687,920,614,946,544,962,490,967,492,951,546,925,616,886,690,861,724,832,755,816,767"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="890,708,1053,733"/>
+<area shape="poly" title=" " alt="" coords="818,762,912,735,914,740,819,767"/>
+<area shape="rect" href="structconfig_1_1Location.html#ad24b20b529d6c74965641e023ed734c0" title="Validate the Location." alt="" coords="879,772,1064,797"/>
+<area shape="poly" title=" " alt="" coords="831,782,865,782,865,787,831,787"/>
+<area shape="poly" title=" " alt="" coords="335,142,424,105,444,97,446,102,426,110,338,147"/>
+<area shape="poly" title=" " alt="" coords="362,154,436,146,436,151,363,160"/>
+<area shape="poly" title=" " alt="" coords="347,257,376,239,391,221,398,204,407,187,424,169,436,161,439,166,427,173,411,190,403,207,395,224,379,243,349,262"/>
+<area shape="rect" href="namespaceconfig.html#a74567cb58e62cf836a46307f098740bc" title=" " alt="" coords="430,184,613,209"/>
+<area shape="poly" title=" " alt="" coords="336,257,424,219,453,210,455,216,426,225,339,262"/>
+<area shape="poly" title=" " alt="" coords="363,55,436,63,436,69,362,60"/>
+<area shape="poly" title=" " alt="" coords="338,68,426,105,446,112,444,117,424,110,335,72"/>
+<area shape="rect" href="namespaceconfig.html#ae83eb84b4926b8acd8098438021b536e" title=" " alt="" coords="431,5,612,31"/>
+<area shape="poly" title=" " alt="" coords="362,37,417,30,418,35,363,43"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#aee904af9f8ed12548a067c646e84abd8" title=" " alt="" coords="425,234,617,274"/>
+<area shape="poly" title=" " alt="" coords="314,360,363,322,424,284,439,277,441,282,427,288,366,326,317,364"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#affad4aae9d819c97322a2952c53dd027" title=" " alt="" coords="677,317,819,357"/>
+<area shape="poly" title=" " alt="" coords="314,400,362,441,393,461,426,476,480,493,525,503,546,503,568,499,591,490,616,476,629,465,636,453,641,426,645,396,652,381,663,367,668,363,672,367,667,371,656,384,651,398,646,427,641,455,633,468,619,480,593,495,569,504,547,508,525,508,479,498,424,480,390,466,359,445,310,404"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a6f1f4b28cfa4ed0d49b8f7e2e69c59ed" title=" " alt="" coords="450,298,593,338"/>
+<area shape="poly" title=" " alt="" coords="362,360,436,339,438,344,363,365"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a02b3a3527f82046838ce2481f84c4e27" title=" " alt="" coords="450,362,593,402"/>
+<area shape="poly" title=" " alt="" coords="363,379,436,379,436,385,363,385"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a471b2ee3a1bcca880e5ff6dc6009719a" title=" " alt="" coords="448,426,595,466"/>
+<area shape="poly" title=" " alt="" coords="363,399,436,420,435,425,362,404"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#ad4ab6effe4c118767e4e9e7d1ed9e06c" title=" " alt="" coords="450,541,593,581"/>
+<area shape="poly" title=" " alt="" coords="309,400,358,459,391,491,427,520,449,533,446,537,424,524,387,495,354,462,305,404"/>
+<area shape="poly" title=" " alt="" coords="806,354,832,366,894,404,945,441,942,446,891,409,829,371,804,359"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a85905295638d9b3baff6968f68ef76c1" title=" " alt="" coords="677,509,819,549"/>
+<area shape="poly" title=" " alt="" coords="593,548,663,538,664,543,593,553"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#af3d89e54013c7bd338abb9ea9f4b42c7" title=" " alt="" coords="677,573,819,613"/>
+<area shape="poly" title=" " alt="" coords="593,568,664,578,663,583,593,573"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a25d8bda55c1a7c4b98507306a45db2d2" title=" " alt="" coords="677,637,819,677"/>
+<area shape="poly" title=" " alt="" coords="576,578,618,597,666,622,681,629,679,634,664,627,616,602,574,583"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a6e0d9d721c4fd44896f9122657e03e05" title=" " alt="" coords="677,701,819,741"/>
+<area shape="poly" title=" " alt="" coords="590,578,619,597,637,621,644,643,651,665,667,687,673,691,669,695,663,691,646,668,639,645,632,623,616,601,587,583"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#af1367fa187f39ffa85e68980ca001ccb" title=" " alt="" coords="677,445,819,485"/>
+<area shape="poly" title=" " alt="" coords="574,538,616,520,664,494,679,488,681,493,666,499,618,524,576,543"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a8af78e45347274127a070dde9fa81d37" title=" " alt="" coords="677,381,819,421"/>
+<area shape="poly" title=" " alt="" coords="587,538,616,520,632,498,639,476,646,454,663,431,669,426,673,430,667,435,651,456,644,478,637,501,619,524,590,543"/>
+<area shape="poly" title=" " alt="" coords="811,698,829,687,875,639,911,584,939,532,958,489,963,491,944,534,916,587,879,642,832,691,814,703"/>
+<area shape="poly" title=" " alt="" coords="820,718,876,718,876,723,820,723"/>
+<area shape="poly" title=" " alt="" coords="820,462,887,462,887,467,820,467"/>
+<area shape="poly" title=" " alt="" coords="814,482,832,495,879,543,916,598,944,651,963,694,958,696,939,654,911,601,875,546,829,499,811,487"/>
+<area shape="poly" title=" " alt="" coords="819,418,914,446,912,451,818,423"/>
 </map>
 </div>
 <div class="dynheader">
@@ -954,13 +956,31 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00455">455</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  455</span>                                                                              {</div>
-<div class="line"><span class="lineno">  456</span> </div>
-<div class="line"><span class="lineno">  457</span>        (void)value;</div>
-<div class="line"><span class="lineno">  458</span>        (void)location;</div>
-<div class="line"><span class="lineno">  459</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;parseAutoindex parsing: &quot;</span> &lt;&lt; value &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  460</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00473">473</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  473</span>                                                                              {</div>
+<div class="line"><span class="lineno">  474</span>        <span class="keyword">static</span> std::set&lt;std::string&gt; allowedValues;</div>
+<div class="line"><span class="lineno">  475</span> </div>
+<div class="line"><span class="lineno">  476</span>        <span class="keywordflow">if</span> (allowedValues.empty()) {</div>
+<div class="line"><span class="lineno">  477</span>            allowedValues.insert(<span class="stringliteral">&quot;on&quot;</span>);</div>
+<div class="line"><span class="lineno">  478</span>            allowedValues.insert(<span class="stringliteral">&quot;off&quot;</span>);</div>
+<div class="line"><span class="lineno">  479</span>        }</div>
+<div class="line"><span class="lineno">  480</span>        <span class="comment">// can only be &quot;on&quot; or &quot;off&quot;, everything else is invalid</span></div>
+<div class="line"><span class="lineno">  481</span>        std::stringstream ss(value);</div>
+<div class="line"><span class="lineno">  482</span>        std::string token;</div>
+<div class="line"><span class="lineno">  483</span> </div>
+<div class="line"><span class="lineno">  484</span>        ss &gt;&gt; token;</div>
+<div class="line"><span class="lineno">  485</span>        <span class="keywordflow">if</span> (allowedValues.find(token) == allowedValues.end()) {</div>
+<div class="line"><span class="lineno">  486</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1GoodParser.html#ae9699a78b55539ab159a554fdb12c1d2">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected value for autoindex: &quot;</span> + value);</div>
+<div class="line"><span class="lineno">  487</span>        }</div>
+<div class="line"><span class="lineno">  488</span>        <span class="keywordflow">if</span> (token == <span class="stringliteral">&quot;on&quot;</span>) {</div>
+<div class="line"><span class="lineno">  489</span>            location.autoindex = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  490</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (token == <span class="stringliteral">&quot;off&quot;</span>) {</div>
+<div class="line"><span class="lineno">  491</span>            location.autoindex = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  492</span>        }</div>
+<div class="line"><span class="lineno">  493</span>        <span class="keywordflow">if</span> (ss &gt;&gt; token &amp;&amp; !token.empty()) {</div>
+<div class="line"><span class="lineno">  494</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1GoodParser.html#ae9699a78b55539ab159a554fdb12c1d2">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected token in autoindex: &quot;</span> + token);</div>
+<div class="line"><span class="lineno">  495</span>        }</div>
+<div class="line"><span class="lineno">  496</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1018,13 +1038,11 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00398">398</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  398</span>                                                                                  {</div>
-<div class="line"><span class="lineno">  399</span> </div>
-<div class="line"><span class="lineno">  400</span>        (void)value;</div>
-<div class="line"><span class="lineno">  401</span>        (void)server;</div>
-<div class="line"><span class="lineno">  402</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;parseClientMaxBodySize parsing: &quot;</span> &lt;&lt; value &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  403</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00394">394</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  394</span>                                                                                  {</div>
+<div class="line"><span class="lineno">  395</span>        (void)value;</div>
+<div class="line"><span class="lineno">  396</span>        (void)server;</div>
+<div class="line"><span class="lineno">  397</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1080,14 +1098,24 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00405">405</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  405</span>                                                                        {</div>
-<div class="line"><span class="lineno">  406</span> </div>
-<div class="line"><span class="lineno">  407</span>        (void)value;</div>
-<div class="line"><span class="lineno">  408</span>        (void)server;</div>
-<div class="line"><span class="lineno">  409</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;parseDataDir parsing: &quot;</span> &lt;&lt; value &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  410</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00399">399</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  399</span>                                                                        {</div>
+<div class="line"><span class="lineno">  400</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(value)) {</div>
+<div class="line"><span class="lineno">  401</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1GoodParser.html#ae9699a78b55539ab159a554fdb12c1d2">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid path for data_dir: &quot;</span> + value);</div>
+<div class="line"><span class="lineno">  402</span>        }</div>
+<div class="line"><span class="lineno">  403</span>        server.dataDirectory = value; <span class="comment">// check whether this needs to be stripped of whitespace</span></div>
+<div class="line"><span class="lineno">  404</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classconfig_1_1GoodParser_affad4aae9d819c97322a2952c53dd027_cgraph.png" border="0" usemap="#aclassconfig_1_1GoodParser_affad4aae9d819c97322a2952c53dd027_cgraph" alt=""/></div>
+<map name="aclassconfig_1_1GoodParser_affad4aae9d819c97322a2952c53dd027_cgraph" id="aclassconfig_1_1GoodParser_affad4aae9d819c97322a2952c53dd027_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,148,45"/>
+<area shape="rect" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021" title=" " alt="" coords="196,13,336,38"/>
+<area shape="poly" title=" " alt="" coords="148,23,182,23,182,28,148,28"/>
+</map>
+</div>
+<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classconfig_1_1GoodParser_affad4aae9d819c97322a2952c53dd027_icgraph.png" border="0" usemap="#aclassconfig_1_1GoodParser_affad4aae9d819c97322a2952c53dd027_icgraph" alt=""/></div>
@@ -1158,75 +1186,79 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classconfig_1_1GoodParser_a028eb45e6f8611817af6a186f0e29dd0_cgraph.png" border="0" usemap="#aclassconfig_1_1GoodParser_a028eb45e6f8611817af6a186f0e29dd0_cgraph" alt=""/></div>
 <map name="aclassconfig_1_1GoodParser_a028eb45e6f8611817af6a186f0e29dd0_cgraph" id="aclassconfig_1_1GoodParser_a028eb45e6f8611817af6a186f0e29dd0_cgraph">
-<area shape="rect" title=" " alt="" coords="5,860,148,900"/>
-<area shape="rect" href="classconfig_1_1parse__exception.html#a0c8ea815c458cac4927747c5b5af17d2" title=" " alt="" coords="196,828,372,868"/>
-<area shape="poly" title=" " alt="" coords="148,866,182,861,183,866,149,872"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#af48ca6f60d5a5f41e35e19e55ddf78d3" title=" " alt="" coords="213,892,355,932"/>
-<area shape="poly" title=" " alt="" coords="149,888,200,896,199,902,148,894"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a0e82e0e5d04aef7803c8c5f58cfe3674" title=" " alt="" coords="420,745,572,785"/>
-<area shape="poly" title=" " alt="" coords="348,890,371,878,424,837,466,794,470,798,427,841,373,882,350,894"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#ace3030963cdafdf882bc85cc5a8a5573" title=" " alt="" coords="865,924,1007,964"/>
-<area shape="poly" title=" " alt="" coords="327,930,456,984,537,1011,621,1031,708,1048,746,1046,791,1031,806,1020,815,1006,823,990,838,975,851,968,854,972,842,979,827,994,819,1008,810,1023,793,1036,747,1051,708,1053,619,1036,536,1016,454,989,325,935"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a2d143104d3629eabced6b1ddd33d42aa" title=" " alt="" coords="865,745,1007,785"/>
-<area shape="poly" title=" " alt="" coords="572,763,851,763,851,768,572,768"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#ac088fea9f3e6daf0e2c92024160e4e8c" title=" " alt="" coords="623,560,789,600"/>
-<area shape="poly" title=" " alt="" coords="506,744,550,679,582,642,618,610,627,604,630,609,622,614,586,646,554,682,511,747"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a2edf338e28aec34972844d615c41d1cd" title=" " alt="" coords="635,688,777,728"/>
-<area shape="poly" title=" " alt="" coords="569,743,621,728,622,734,571,748"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a92c643f7604c55e14ad7df9ac6230e33" title=" " alt="" coords="635,803,777,843"/>
-<area shape="poly" title=" " alt="" coords="571,783,622,797,621,802,569,788"/>
-<area shape="poly" title=" " alt="" coords="509,784,526,815,551,852,583,888,621,916,678,938,738,950,797,954,851,952,851,957,797,959,737,955,676,943,619,921,579,892,546,855,521,818,504,787"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a4463c816277db24b7006aace99f7c16e" title=" " alt="" coords="635,981,777,1021"/>
-<area shape="poly" title=" " alt="" coords="508,784,524,821,549,868,582,917,622,961,638,972,635,977,618,965,577,920,544,871,519,823,503,786"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a6080fd98a38e20a993eebfc5821fe3d2" title=" " alt="" coords="635,624,777,664"/>
-<area shape="poly" title=" " alt="" coords="519,743,564,709,619,674,632,667,634,672,621,678,567,713,523,747"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#ab2a0665d469dda5c7385ea4f99097235" title=" " alt="" coords="635,867,777,907"/>
-<area shape="poly" title=" " alt="" coords="523,783,567,818,621,852,634,859,632,863,619,857,564,822,519,788"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a19b98d1bb6cb469ba7856155e8a7439d" title=" " alt="" coords="635,325,777,365"/>
-<area shape="poly" title=" " alt="" coords="504,744,551,638,618,497,684,376,689,378,622,500,556,640,509,746"/>
-<area shape="rect" href="structconfig_1_1Server.html#a5bff502a23e2fcb5d174261a7b40bc2f" title="Validate the server, ensuring it has all mandatory keys and that nothing else fucky wucky is going on..." alt="" coords="620,510,792,535"/>
-<area shape="poly" title=" " alt="" coords="501,744,515,703,539,649,573,594,594,568,618,546,628,539,631,544,622,550,598,572,577,597,544,652,520,705,506,746"/>
-<area shape="rect" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021" title=" " alt="" coords="866,617,1006,642"/>
-<area shape="poly" title=" " alt="" coords="789,595,863,611,862,616,788,600"/>
-<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="855,518,1017,543"/>
-<area shape="poly" title=" " alt="" coords="788,560,862,544,863,549,789,565"/>
-<area shape="rect" href="structconfig_1_1Location.html#ad24b20b529d6c74965641e023ed734c0" title="Validate the Location." alt="" coords="843,567,1029,593"/>
-<area shape="poly" title=" " alt="" coords="789,577,829,577,829,583,789,583"/>
-<area shape="poly" title=" " alt="" coords="777,802,851,784,852,789,778,808"/>
-<area shape="poly" title=" " alt="" coords="766,840,793,852,848,883,896,914,893,918,845,887,791,857,764,845"/>
-<area shape="poly" title=" " alt="" coords="777,981,851,962,852,968,778,986"/>
-<area shape="rect" href="namespaceconfig.html#a74567cb58e62cf836a46307f098740bc" title=" " alt="" coords="845,989,1027,1014"/>
-<area shape="poly" title=" " alt="" coords="777,999,831,999,831,1004,777,1004"/>
-<area shape="poly" title=" " alt="" coords="766,662,793,674,894,736,892,740,791,678,764,666"/>
-<area shape="poly" title=" " alt="" coords="778,662,794,674,816,704,824,732,830,762,842,796,879,858,914,911,910,914,874,861,838,798,825,763,819,733,811,706,790,678,775,666"/>
-<area shape="rect" href="namespaceconfig.html#ae83eb84b4926b8acd8098438021b536e" title=" " alt="" coords="845,666,1027,691"/>
-<area shape="poly" title=" " alt="" coords="778,652,838,661,838,667,777,657"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#aee904af9f8ed12548a067c646e84abd8" title=" " alt="" coords="840,261,1032,301"/>
-<area shape="poly" title=" " alt="" coords="777,323,849,303,851,308,778,328"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#affad4aae9d819c97322a2952c53dd027" title=" " alt="" coords="865,325,1007,365"/>
-<area shape="poly" title=" " alt="" coords="777,343,851,343,851,348,777,348"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a6f1f4b28cfa4ed0d49b8f7e2e69c59ed" title=" " alt="" coords="865,389,1007,429"/>
-<area shape="poly" title=" " alt="" coords="778,362,852,383,851,388,777,368"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a02b3a3527f82046838ce2481f84c4e27" title=" " alt="" coords="865,453,1007,493"/>
-<area shape="poly" title=" " alt="" coords="732,363,781,401,841,439,856,446,853,451,839,444,778,405,729,367"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a471b2ee3a1bcca880e5ff6dc6009719a" title=" " alt="" coords="863,133,1009,173"/>
-<area shape="poly" title=" " alt="" coords="717,324,764,255,799,217,838,183,849,177,851,181,842,187,802,220,768,259,721,327"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#ad4ab6effe4c118767e4e9e7d1ed9e06c" title=" " alt="" coords="865,197,1007,237"/>
-<area shape="poly" title=" " alt="" coords="729,323,778,285,839,247,853,240,856,245,841,252,781,290,732,327"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a85905295638d9b3baff6968f68ef76c1" title=" " alt="" coords="1080,5,1223,45"/>
-<area shape="poly" title=" " alt="" coords="1006,199,1030,183,1043,168,1050,153,1054,122,1059,89,1066,73,1078,56,1082,52,1086,56,1082,59,1070,75,1064,91,1059,123,1055,155,1047,171,1034,187,1009,204"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#af3d89e54013c7bd338abb9ea9f4b42c7" title=" " alt="" coords="1080,69,1223,109"/>
-<area shape="poly" title=" " alt="" coords="1006,197,1030,183,1046,168,1054,153,1063,136,1078,119,1085,114,1088,119,1082,123,1067,139,1059,155,1050,171,1034,187,1009,201"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a25d8bda55c1a7c4b98507306a45db2d2" title=" " alt="" coords="1080,133,1223,173"/>
-<area shape="poly" title=" " alt="" coords="1003,195,1069,175,1071,180,1005,200"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a9cb2ee7f837f70a8250bcd1425942357" title=" " alt="" coords="1080,197,1223,237"/>
-<area shape="poly" title=" " alt="" coords="1008,215,1066,215,1066,220,1008,220"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a6e0d9d721c4fd44896f9122657e03e05" title=" " alt="" coords="1080,261,1223,301"/>
-<area shape="poly" title=" " alt="" coords="1005,235,1071,255,1069,260,1003,240"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#af1367fa187f39ffa85e68980ca001ccb" title=" " alt="" coords="1080,325,1223,365"/>
-<area shape="poly" title=" " alt="" coords="1009,233,1034,247,1050,263,1059,280,1067,295,1082,311,1088,316,1085,320,1078,315,1063,298,1054,282,1046,267,1030,251,1006,238"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a8af78e45347274127a070dde9fa81d37" title=" " alt="" coords="1080,389,1223,429"/>
-<area shape="poly" title=" " alt="" coords="1009,231,1034,247,1047,264,1055,280,1059,312,1064,344,1070,360,1082,376,1086,379,1082,383,1078,379,1066,362,1059,345,1054,313,1050,282,1043,267,1030,251,1006,235"/>
+<area shape="rect" title=" " alt="" coords="5,175,148,215"/>
+<area shape="rect" href="classconfig_1_1parse__exception.html#a0c8ea815c458cac4927747c5b5af17d2" title=" " alt="" coords="196,143,372,183"/>
+<area shape="poly" title=" " alt="" coords="148,181,182,176,183,181,149,186"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#af48ca6f60d5a5f41e35e19e55ddf78d3" title=" " alt="" coords="213,207,355,247"/>
+<area shape="poly" title=" " alt="" coords="149,203,200,211,199,216,148,208"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a0e82e0e5d04aef7803c8c5f58cfe3674" title=" " alt="" coords="420,299,572,339"/>
+<area shape="poly" title=" " alt="" coords="332,244,438,291,435,296,330,249"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#ace3030963cdafdf882bc85cc5a8a5573" title=" " alt="" coords="865,171,1007,211"/>
+<area shape="poly" title=" " alt="" coords="354,204,441,183,551,164,671,153,732,152,792,156,852,166,851,171,792,161,732,157,671,158,551,169,442,188,355,209"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a2d143104d3629eabced6b1ddd33d42aa" title=" " alt="" coords="865,63,1007,103"/>
+<area shape="poly" title=" " alt="" coords="505,297,522,266,547,228,580,189,619,156,675,127,736,106,796,93,851,85,851,90,797,98,737,112,677,132,621,161,583,193,552,231,527,268,509,300"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#ac088fea9f3e6daf0e2c92024160e4e8c" title=" " alt="" coords="1080,899,1245,939"/>
+<area shape="poly" title=" " alt="" coords="505,338,520,385,544,447,578,515,622,578,679,640,731,688,780,727,830,758,940,815,1081,884,1094,891,1092,895,1079,889,938,819,827,763,777,731,727,693,675,644,618,582,573,518,539,449,515,386,500,340"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a2edf338e28aec34972844d615c41d1cd" title=" " alt="" coords="635,235,777,275"/>
+<area shape="poly" title=" " alt="" coords="562,296,626,276,628,281,563,301"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a92c643f7604c55e14ad7df9ac6230e33" title=" " alt="" coords="635,171,777,211"/>
+<area shape="poly" title=" " alt="" coords="517,296,562,259,619,220,631,214,633,219,621,225,565,263,521,300"/>
+<area shape="poly" title=" " alt="" coords="520,337,565,370,592,386,621,397,669,412,709,421,747,417,791,398,811,379,819,357,825,332,838,304,871,258,905,219,909,223,875,262,842,307,830,334,824,359,815,382,793,402,749,423,709,426,668,418,619,403,590,391,562,375,517,341"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a4463c816277db24b7006aace99f7c16e" title=" " alt="" coords="635,464,777,504"/>
+<area shape="poly" title=" " alt="" coords="515,337,560,389,590,417,622,443,642,455,639,460,618,448,586,421,556,392,511,341"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a6080fd98a38e20a993eebfc5821fe3d2" title=" " alt="" coords="635,5,777,45"/>
+<area shape="poly" title=" " alt="" coords="499,298,513,251,537,188,571,122,593,90,618,62,633,50,636,55,622,66,597,94,576,125,541,191,518,252,505,299"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#ab2a0665d469dda5c7385ea4f99097235" title=" " alt="" coords="635,299,777,339"/>
+<area shape="poly" title=" " alt="" coords="572,316,621,316,621,321,572,321"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a19b98d1bb6cb469ba7856155e8a7439d" title=" " alt="" coords="635,528,777,568"/>
+<area shape="poly" title=" " alt="" coords="507,338,523,375,548,422,581,471,622,514,628,519,625,523,618,518,577,475,543,425,518,378,502,340"/>
+<area shape="rect" href="structconfig_1_1Server.html#a5bff502a23e2fcb5d174261a7b40bc2f" title="Validate the server, ensuring it has all mandatory keys and that nothing else fucky wucky is going on..." alt="" coords="620,363,792,389"/>
+<area shape="poly" title=" " alt="" coords="571,336,646,357,644,362,569,341"/>
+<area shape="rect" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021" title=" " alt="" coords="1316,586,1456,611"/>
+<area shape="poly" title=" " alt="" coords="1227,896,1244,885,1272,855,1296,821,1335,748,1361,678,1376,624,1381,626,1366,680,1340,750,1301,824,1276,858,1247,889,1230,901"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="1305,842,1467,867"/>
+<area shape="poly" title=" " alt="" coords="1232,896,1327,869,1328,874,1234,901"/>
+<area shape="rect" href="structconfig_1_1Location.html#ad24b20b529d6c74965641e023ed734c0" title="Validate the Location." alt="" coords="1293,906,1479,931"/>
+<area shape="poly" title=" " alt="" coords="1246,916,1280,916,1280,921,1246,921"/>
+<area shape="poly" title=" " alt="" coords="748,168,879,106,881,111,751,173"/>
+<area shape="poly" title=" " alt="" coords="777,188,851,188,851,193,777,193"/>
+<area shape="poly" title=" " alt="" coords="766,462,790,443,803,426,811,410,818,378,823,344,838,304,869,258,902,219,907,223,873,261,842,307,828,345,823,379,816,412,808,429,794,447,770,466"/>
+<area shape="rect" href="namespaceconfig.html#a74567cb58e62cf836a46307f098740bc" title=" " alt="" coords="845,318,1027,343"/>
+<area shape="poly" title=" " alt="" coords="763,462,790,443,806,421,813,399,820,376,838,354,848,347,851,352,842,358,825,379,818,400,811,423,794,447,766,466"/>
+<area shape="poly" title=" " alt="" coords="778,40,852,59,851,64,777,46"/>
+<area shape="poly" title=" " alt="" coords="737,43,898,160,894,165,734,48"/>
+<area shape="rect" href="namespaceconfig.html#ae83eb84b4926b8acd8098438021b536e" title=" " alt="" coords="845,13,1027,38"/>
+<area shape="poly" title=" " alt="" coords="777,23,831,23,831,28,777,28"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#aee904af9f8ed12548a067c646e84abd8" title=" " alt="" coords="840,368,1032,408"/>
+<area shape="poly" title=" " alt="" coords="774,526,790,514,807,491,813,467,820,443,838,418,844,413,847,418,842,422,825,445,818,468,812,493,794,518,777,530"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#affad4aae9d819c97322a2952c53dd027" title=" " alt="" coords="1091,451,1234,491"/>
+<area shape="poly" title=" " alt="" coords="740,566,799,597,874,624,915,632,955,633,994,627,1031,610,1043,599,1050,587,1056,560,1060,530,1066,515,1078,501,1083,497,1086,501,1082,505,1071,518,1065,532,1061,561,1055,589,1047,602,1033,614,996,632,956,639,914,637,873,629,796,601,738,571"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a6f1f4b28cfa4ed0d49b8f7e2e69c59ed" title=" " alt="" coords="865,432,1007,472"/>
+<area shape="poly" title=" " alt="" coords="765,525,791,514,814,498,839,482,854,475,857,479,841,486,817,502,793,518,767,530"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a02b3a3527f82046838ce2481f84c4e27" title=" " alt="" coords="865,496,1007,536"/>
+<area shape="poly" title=" " alt="" coords="777,535,851,525,852,530,778,541"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a471b2ee3a1bcca880e5ff6dc6009719a" title=" " alt="" coords="863,560,1009,600"/>
+<area shape="poly" title=" " alt="" coords="778,555,849,565,848,571,777,561"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#ad4ab6effe4c118767e4e9e7d1ed9e06c" title=" " alt="" coords="865,675,1007,715"/>
+<area shape="poly" title=" " alt="" coords="730,566,779,609,841,654,866,667,864,671,839,658,775,613,726,570"/>
+<area shape="poly" title=" " alt="" coords="1221,488,1247,500,1309,538,1360,575,1357,580,1306,543,1244,505,1219,493"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a85905295638d9b3baff6968f68ef76c1" title=" " alt="" coords="1091,643,1234,683"/>
+<area shape="poly" title=" " alt="" coords="1007,682,1078,672,1078,677,1008,687"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#af3d89e54013c7bd338abb9ea9f4b42c7" title=" " alt="" coords="1091,707,1234,747"/>
+<area shape="poly" title=" " alt="" coords="1008,702,1078,712,1078,717,1007,707"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a25d8bda55c1a7c4b98507306a45db2d2" title=" " alt="" coords="1091,771,1234,811"/>
+<area shape="poly" title=" " alt="" coords="982,712,1081,756,1098,763,1096,768,1079,761,980,717"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a6e0d9d721c4fd44896f9122657e03e05" title=" " alt="" coords="1091,835,1234,875"/>
+<area shape="poly" title=" " alt="" coords="957,713,1010,766,1045,795,1081,820,1092,826,1089,831,1079,825,1041,799,1007,769,954,717"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#af1367fa187f39ffa85e68980ca001ccb" title=" " alt="" coords="1091,579,1234,619"/>
+<area shape="poly" title=" " alt="" coords="988,672,1031,654,1079,628,1094,622,1096,627,1081,633,1033,658,990,677"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a8af78e45347274127a070dde9fa81d37" title=" " alt="" coords="1091,515,1234,555"/>
+<area shape="poly" title=" " alt="" coords="1002,672,1030,654,1047,632,1053,610,1061,588,1078,565,1084,560,1087,564,1082,569,1065,590,1058,612,1051,635,1034,658,1005,677"/>
+<area shape="poly" title=" " alt="" coords="1226,832,1244,821,1289,773,1326,718,1354,666,1373,623,1378,625,1359,668,1331,721,1293,776,1247,825,1229,837"/>
+<area shape="poly" title=" " alt="" coords="1234,852,1291,852,1291,857,1234,857"/>
+<area shape="poly" title=" " alt="" coords="1234,596,1302,596,1302,601,1234,601"/>
+<area shape="poly" title=" " alt="" coords="1229,616,1247,629,1293,677,1331,732,1359,785,1378,828,1373,830,1354,788,1326,735,1289,680,1244,633,1226,621"/>
+<area shape="poly" title=" " alt="" coords="1234,552,1328,580,1327,585,1232,557"/>
 </map>
 </div>
 <div class="dynheader">
@@ -1284,71 +1316,75 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classconfig_1_1GoodParser_af48ca6f60d5a5f41e35e19e55ddf78d3_cgraph.png" border="0" usemap="#aclassconfig_1_1GoodParser_af48ca6f60d5a5f41e35e19e55ddf78d3_cgraph" alt=""/></div>
 <map name="aclassconfig_1_1GoodParser_af48ca6f60d5a5f41e35e19e55ddf78d3_cgraph" id="aclassconfig_1_1GoodParser_af48ca6f60d5a5f41e35e19e55ddf78d3_cgraph">
-<area shape="rect" title=" " alt="" coords="5,892,148,932"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a0e82e0e5d04aef7803c8c5f58cfe3674" title=" " alt="" coords="196,745,348,785"/>
-<area shape="poly" title=" " alt="" coords="103,890,231,792,235,796,106,894"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#ace3030963cdafdf882bc85cc5a8a5573" title=" " alt="" coords="641,924,783,964"/>
-<area shape="poly" title=" " alt="" coords="118,930,240,984,317,1011,397,1031,484,1048,522,1046,567,1031,582,1020,591,1006,599,990,614,975,627,968,630,972,618,979,603,994,595,1008,586,1023,569,1036,523,1051,484,1053,395,1036,315,1016,238,989,116,935"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a2d143104d3629eabced6b1ddd33d42aa" title=" " alt="" coords="641,745,783,785"/>
-<area shape="poly" title=" " alt="" coords="348,763,627,763,627,768,348,768"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#ac088fea9f3e6daf0e2c92024160e4e8c" title=" " alt="" coords="399,560,565,600"/>
-<area shape="poly" title=" " alt="" coords="282,744,326,679,358,642,394,610,403,604,406,609,398,614,362,646,330,682,287,747"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a2edf338e28aec34972844d615c41d1cd" title=" " alt="" coords="411,688,553,728"/>
-<area shape="poly" title=" " alt="" coords="345,743,397,728,398,734,347,748"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a92c643f7604c55e14ad7df9ac6230e33" title=" " alt="" coords="411,803,553,843"/>
-<area shape="poly" title=" " alt="" coords="347,783,398,797,397,802,345,788"/>
-<area shape="poly" title=" " alt="" coords="285,784,302,815,327,852,359,888,397,916,454,938,514,950,573,954,627,952,627,957,573,959,513,955,452,943,395,921,355,892,322,855,297,818,280,787"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a4463c816277db24b7006aace99f7c16e" title=" " alt="" coords="411,981,553,1021"/>
-<area shape="poly" title=" " alt="" coords="284,784,300,821,325,868,358,917,398,961,414,972,411,977,394,965,353,920,320,871,295,823,279,786"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a6080fd98a38e20a993eebfc5821fe3d2" title=" " alt="" coords="411,624,553,664"/>
-<area shape="poly" title=" " alt="" coords="295,743,340,709,395,674,408,667,410,672,397,678,343,713,299,747"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#ab2a0665d469dda5c7385ea4f99097235" title=" " alt="" coords="411,867,553,907"/>
-<area shape="poly" title=" " alt="" coords="299,783,343,818,397,852,410,859,408,863,395,857,340,822,295,788"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a19b98d1bb6cb469ba7856155e8a7439d" title=" " alt="" coords="411,325,553,365"/>
-<area shape="poly" title=" " alt="" coords="280,744,327,638,394,497,460,376,465,378,398,500,332,640,285,746"/>
-<area shape="rect" href="structconfig_1_1Server.html#a5bff502a23e2fcb5d174261a7b40bc2f" title="Validate the server, ensuring it has all mandatory keys and that nothing else fucky wucky is going on..." alt="" coords="396,510,568,535"/>
-<area shape="poly" title=" " alt="" coords="277,744,291,703,315,649,349,594,370,568,394,546,404,539,407,544,398,550,374,572,353,597,320,652,296,705,282,746"/>
-<area shape="rect" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021" title=" " alt="" coords="642,617,782,642"/>
-<area shape="poly" title=" " alt="" coords="565,595,639,611,638,616,564,600"/>
-<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="631,518,793,543"/>
-<area shape="poly" title=" " alt="" coords="564,560,638,544,639,549,565,565"/>
-<area shape="rect" href="structconfig_1_1Location.html#ad24b20b529d6c74965641e023ed734c0" title="Validate the Location." alt="" coords="619,567,805,593"/>
-<area shape="poly" title=" " alt="" coords="565,577,605,577,605,583,565,583"/>
-<area shape="poly" title=" " alt="" coords="553,802,627,784,628,789,554,808"/>
-<area shape="poly" title=" " alt="" coords="542,840,569,852,624,883,672,914,669,918,621,887,567,857,540,845"/>
-<area shape="poly" title=" " alt="" coords="553,981,627,962,628,968,554,986"/>
-<area shape="rect" href="namespaceconfig.html#a74567cb58e62cf836a46307f098740bc" title=" " alt="" coords="621,989,803,1014"/>
-<area shape="poly" title=" " alt="" coords="553,999,607,999,607,1004,553,1004"/>
-<area shape="poly" title=" " alt="" coords="542,662,569,674,670,736,668,740,567,678,540,666"/>
-<area shape="poly" title=" " alt="" coords="554,662,570,674,592,704,600,732,606,762,618,796,655,858,690,911,686,914,650,861,614,798,601,763,595,733,587,706,566,678,551,666"/>
-<area shape="rect" href="namespaceconfig.html#ae83eb84b4926b8acd8098438021b536e" title=" " alt="" coords="621,666,803,691"/>
-<area shape="poly" title=" " alt="" coords="554,652,614,661,614,667,553,657"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#aee904af9f8ed12548a067c646e84abd8" title=" " alt="" coords="616,261,808,301"/>
-<area shape="poly" title=" " alt="" coords="553,323,625,303,627,308,554,328"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#affad4aae9d819c97322a2952c53dd027" title=" " alt="" coords="641,325,783,365"/>
-<area shape="poly" title=" " alt="" coords="553,343,627,343,627,348,553,348"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a6f1f4b28cfa4ed0d49b8f7e2e69c59ed" title=" " alt="" coords="641,389,783,429"/>
-<area shape="poly" title=" " alt="" coords="554,362,628,383,627,388,553,368"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a02b3a3527f82046838ce2481f84c4e27" title=" " alt="" coords="641,453,783,493"/>
-<area shape="poly" title=" " alt="" coords="508,363,557,401,617,439,632,446,629,451,615,444,554,405,505,367"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a471b2ee3a1bcca880e5ff6dc6009719a" title=" " alt="" coords="639,133,785,173"/>
-<area shape="poly" title=" " alt="" coords="493,324,540,255,575,217,614,183,625,177,627,181,618,187,578,220,544,259,497,327"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#ad4ab6effe4c118767e4e9e7d1ed9e06c" title=" " alt="" coords="641,197,783,237"/>
-<area shape="poly" title=" " alt="" coords="505,323,554,285,615,247,629,240,632,245,617,252,557,290,508,327"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a85905295638d9b3baff6968f68ef76c1" title=" " alt="" coords="856,5,999,45"/>
-<area shape="poly" title=" " alt="" coords="782,199,806,183,819,168,826,153,830,122,835,89,842,73,854,56,858,52,862,56,858,59,846,75,840,91,835,123,831,155,823,171,810,187,785,204"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#af3d89e54013c7bd338abb9ea9f4b42c7" title=" " alt="" coords="856,69,999,109"/>
-<area shape="poly" title=" " alt="" coords="782,197,806,183,822,168,830,153,839,136,854,119,861,114,864,119,858,123,843,139,835,155,826,171,810,187,785,201"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a25d8bda55c1a7c4b98507306a45db2d2" title=" " alt="" coords="856,133,999,173"/>
-<area shape="poly" title=" " alt="" coords="779,195,845,175,847,180,781,200"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a9cb2ee7f837f70a8250bcd1425942357" title=" " alt="" coords="856,197,999,237"/>
-<area shape="poly" title=" " alt="" coords="784,215,842,215,842,220,784,220"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a6e0d9d721c4fd44896f9122657e03e05" title=" " alt="" coords="856,261,999,301"/>
-<area shape="poly" title=" " alt="" coords="781,235,847,255,845,260,779,240"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#af1367fa187f39ffa85e68980ca001ccb" title=" " alt="" coords="856,325,999,365"/>
-<area shape="poly" title=" " alt="" coords="785,233,810,247,826,263,835,280,843,295,858,311,864,316,861,320,854,315,839,298,830,282,822,267,806,251,782,238"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a8af78e45347274127a070dde9fa81d37" title=" " alt="" coords="856,389,999,429"/>
-<area shape="poly" title=" " alt="" coords="785,231,810,247,823,264,831,280,835,312,840,344,846,360,858,376,862,379,858,383,854,379,842,362,835,345,830,313,826,282,819,267,806,251,782,235"/>
+<area shape="rect" title=" " alt="" coords="5,207,148,247"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a0e82e0e5d04aef7803c8c5f58cfe3674" title=" " alt="" coords="196,299,348,339"/>
+<area shape="poly" title=" " alt="" coords="121,244,217,290,215,295,119,249"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#ace3030963cdafdf882bc85cc5a8a5573" title=" " alt="" coords="641,171,783,211"/>
+<area shape="poly" title=" " alt="" coords="147,205,263,178,396,156,482,150,568,156,628,166,627,171,568,161,482,155,396,161,264,183,149,210"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a2d143104d3629eabced6b1ddd33d42aa" title=" " alt="" coords="641,63,783,103"/>
+<area shape="poly" title=" " alt="" coords="281,297,298,266,323,228,356,189,395,156,451,127,512,106,572,93,627,85,627,90,573,98,513,112,453,132,397,161,359,193,328,231,303,268,285,300"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#ac088fea9f3e6daf0e2c92024160e4e8c" title=" " alt="" coords="856,899,1021,939"/>
+<area shape="poly" title=" " alt="" coords="281,338,296,385,320,447,354,515,398,578,455,640,507,688,556,727,606,758,716,815,857,884,870,891,868,895,855,889,714,819,603,763,553,731,503,693,451,644,394,582,349,518,315,449,291,386,276,340"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a2edf338e28aec34972844d615c41d1cd" title=" " alt="" coords="411,235,553,275"/>
+<area shape="poly" title=" " alt="" coords="338,296,402,276,404,281,339,301"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a92c643f7604c55e14ad7df9ac6230e33" title=" " alt="" coords="411,171,553,211"/>
+<area shape="poly" title=" " alt="" coords="293,296,338,259,395,220,407,214,409,219,397,225,341,263,297,300"/>
+<area shape="poly" title=" " alt="" coords="296,337,341,370,368,386,397,397,445,412,485,421,523,417,567,398,587,379,595,357,601,332,614,304,647,258,681,219,685,223,651,262,618,307,606,334,600,359,591,382,569,402,525,423,485,426,444,418,395,403,366,391,338,375,293,341"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a4463c816277db24b7006aace99f7c16e" title=" " alt="" coords="411,464,553,504"/>
+<area shape="poly" title=" " alt="" coords="291,337,336,389,366,417,398,443,418,455,415,460,394,448,362,421,332,392,287,341"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a6080fd98a38e20a993eebfc5821fe3d2" title=" " alt="" coords="411,5,553,45"/>
+<area shape="poly" title=" " alt="" coords="275,298,289,251,313,188,347,122,369,90,394,62,409,50,412,55,398,66,373,94,352,125,317,191,294,252,281,299"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#ab2a0665d469dda5c7385ea4f99097235" title=" " alt="" coords="411,299,553,339"/>
+<area shape="poly" title=" " alt="" coords="348,316,397,316,397,321,348,321"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a19b98d1bb6cb469ba7856155e8a7439d" title=" " alt="" coords="411,528,553,568"/>
+<area shape="poly" title=" " alt="" coords="283,338,299,375,324,422,357,471,398,514,404,519,401,523,394,518,353,475,319,425,294,378,278,340"/>
+<area shape="rect" href="structconfig_1_1Server.html#a5bff502a23e2fcb5d174261a7b40bc2f" title="Validate the server, ensuring it has all mandatory keys and that nothing else fucky wucky is going on..." alt="" coords="396,363,568,389"/>
+<area shape="poly" title=" " alt="" coords="347,336,422,357,420,362,345,341"/>
+<area shape="rect" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021" title=" " alt="" coords="1092,586,1232,611"/>
+<area shape="poly" title=" " alt="" coords="1003,896,1020,885,1048,855,1072,821,1111,748,1137,678,1152,624,1157,626,1142,680,1116,750,1077,824,1052,858,1023,889,1006,901"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="1081,842,1243,867"/>
+<area shape="poly" title=" " alt="" coords="1008,896,1103,869,1104,874,1010,901"/>
+<area shape="rect" href="structconfig_1_1Location.html#ad24b20b529d6c74965641e023ed734c0" title="Validate the Location." alt="" coords="1069,906,1255,931"/>
+<area shape="poly" title=" " alt="" coords="1022,916,1056,916,1056,921,1022,921"/>
+<area shape="poly" title=" " alt="" coords="524,168,655,106,657,111,527,173"/>
+<area shape="poly" title=" " alt="" coords="553,188,627,188,627,193,553,193"/>
+<area shape="poly" title=" " alt="" coords="542,462,566,443,579,426,587,410,594,378,599,344,614,304,645,258,678,219,683,223,649,261,618,307,604,345,599,379,592,412,584,429,570,447,546,466"/>
+<area shape="rect" href="namespaceconfig.html#a74567cb58e62cf836a46307f098740bc" title=" " alt="" coords="621,318,803,343"/>
+<area shape="poly" title=" " alt="" coords="539,462,566,443,582,421,589,399,596,376,614,354,624,347,627,352,618,358,601,379,594,400,587,423,570,447,542,466"/>
+<area shape="poly" title=" " alt="" coords="554,40,628,59,627,64,553,46"/>
+<area shape="poly" title=" " alt="" coords="513,43,674,160,670,165,510,48"/>
+<area shape="rect" href="namespaceconfig.html#ae83eb84b4926b8acd8098438021b536e" title=" " alt="" coords="621,13,803,38"/>
+<area shape="poly" title=" " alt="" coords="553,23,607,23,607,28,553,28"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#aee904af9f8ed12548a067c646e84abd8" title=" " alt="" coords="616,368,808,408"/>
+<area shape="poly" title=" " alt="" coords="550,526,566,514,583,491,589,467,596,443,614,418,620,413,623,418,618,422,601,445,594,468,588,493,570,518,553,530"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#affad4aae9d819c97322a2952c53dd027" title=" " alt="" coords="867,451,1010,491"/>
+<area shape="poly" title=" " alt="" coords="516,566,575,597,650,624,691,632,731,633,770,627,807,610,819,599,826,587,832,560,836,530,842,515,854,501,859,497,862,501,858,505,847,518,841,532,837,561,831,589,823,602,809,614,772,632,732,639,690,637,649,629,572,601,514,571"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a6f1f4b28cfa4ed0d49b8f7e2e69c59ed" title=" " alt="" coords="641,432,783,472"/>
+<area shape="poly" title=" " alt="" coords="541,525,567,514,590,498,615,482,630,475,633,479,617,486,593,502,569,518,543,530"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a02b3a3527f82046838ce2481f84c4e27" title=" " alt="" coords="641,496,783,536"/>
+<area shape="poly" title=" " alt="" coords="553,535,627,525,628,530,554,541"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a471b2ee3a1bcca880e5ff6dc6009719a" title=" " alt="" coords="639,560,785,600"/>
+<area shape="poly" title=" " alt="" coords="554,555,625,565,624,571,553,561"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#ad4ab6effe4c118767e4e9e7d1ed9e06c" title=" " alt="" coords="641,675,783,715"/>
+<area shape="poly" title=" " alt="" coords="506,566,555,609,617,654,642,667,640,671,615,658,551,613,502,570"/>
+<area shape="poly" title=" " alt="" coords="997,488,1023,500,1085,538,1136,575,1133,580,1082,543,1020,505,995,493"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a85905295638d9b3baff6968f68ef76c1" title=" " alt="" coords="867,643,1010,683"/>
+<area shape="poly" title=" " alt="" coords="783,682,854,672,854,677,784,687"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#af3d89e54013c7bd338abb9ea9f4b42c7" title=" " alt="" coords="867,707,1010,747"/>
+<area shape="poly" title=" " alt="" coords="784,702,854,712,854,717,783,707"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a25d8bda55c1a7c4b98507306a45db2d2" title=" " alt="" coords="867,771,1010,811"/>
+<area shape="poly" title=" " alt="" coords="758,712,857,756,874,763,872,768,855,761,756,717"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a6e0d9d721c4fd44896f9122657e03e05" title=" " alt="" coords="867,835,1010,875"/>
+<area shape="poly" title=" " alt="" coords="733,713,786,766,821,795,857,820,868,826,865,831,855,825,817,799,783,769,730,717"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#af1367fa187f39ffa85e68980ca001ccb" title=" " alt="" coords="867,579,1010,619"/>
+<area shape="poly" title=" " alt="" coords="764,672,807,654,855,628,870,622,872,627,857,633,809,658,766,677"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a8af78e45347274127a070dde9fa81d37" title=" " alt="" coords="867,515,1010,555"/>
+<area shape="poly" title=" " alt="" coords="778,672,806,654,823,632,829,610,837,588,854,565,860,560,863,564,858,569,841,590,834,612,827,635,810,658,781,677"/>
+<area shape="poly" title=" " alt="" coords="1002,832,1020,821,1065,773,1102,718,1130,666,1149,623,1154,625,1135,668,1107,721,1069,776,1023,825,1005,837"/>
+<area shape="poly" title=" " alt="" coords="1010,852,1067,852,1067,857,1010,857"/>
+<area shape="poly" title=" " alt="" coords="1010,596,1078,596,1078,601,1010,601"/>
+<area shape="poly" title=" " alt="" coords="1005,616,1023,629,1069,677,1107,732,1135,785,1154,828,1149,830,1130,788,1102,735,1065,680,1020,633,1002,621"/>
+<area shape="poly" title=" " alt="" coords="1010,552,1104,580,1103,585,1008,557"/>
 </map>
 </div>
 <div class="dynheader">
@@ -1400,13 +1436,12 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00448">448</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  448</span>                                                                          {</div>
-<div class="line"><span class="lineno">  449</span> </div>
-<div class="line"><span class="lineno">  450</span>        (void)value;</div>
-<div class="line"><span class="lineno">  451</span>        (void)location;</div>
-<div class="line"><span class="lineno">  452</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;parseIndex parsing: &quot;</span> &lt;&lt; value &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  453</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00467">467</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  467</span>                                                                          {</div>
+<div class="line"><span class="lineno">  468</span>        (void)value;</div>
+<div class="line"><span class="lineno">  469</span>        (void)location;</div>
+<div class="line"><span class="lineno">  470</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;parseIndex parsing: &quot;</span> &lt;&lt; value &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  471</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1464,13 +1499,42 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00434">434</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  434</span>                                                                                {</div>
+<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00427">427</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  427</span>                                                                                {</div>
+<div class="line"><span class="lineno">  428</span>        <span class="keyword">static</span> std::map&lt;std::string, http::Method&gt; implementedMethods;</div>
+<div class="line"><span class="lineno">  429</span> </div>
+<div class="line"><span class="lineno">  430</span>        <span class="keywordflow">if</span> (implementedMethods.empty()) {</div>
+<div class="line"><span class="lineno">  431</span>            implementedMethods[<span class="stringliteral">&quot;GET&quot;</span>] = <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">http::GET</a>;</div>
+<div class="line"><span class="lineno">  432</span>            implementedMethods[<span class="stringliteral">&quot;POST&quot;</span>] = <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab">http::POST</a>;</div>
+<div class="line"><span class="lineno">  433</span>            implementedMethods[<span class="stringliteral">&quot;DELETE&quot;</span>] = <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30">http::DELETE</a>;</div>
+<div class="line"><span class="lineno">  434</span>        }</div>
 <div class="line"><span class="lineno">  435</span> </div>
-<div class="line"><span class="lineno">  436</span>        (void)value;</div>
-<div class="line"><span class="lineno">  437</span>        (void)location;</div>
-<div class="line"><span class="lineno">  438</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;parseLimitExcept parsing: &quot;</span> &lt;&lt; value &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  439</span>    }</div>
+<div class="line"><span class="lineno">  436</span>        std::stringstream ss(value);</div>
+<div class="line"><span class="lineno">  437</span>        std::set&lt;http::Method&gt; allowedMethods;</div>
+<div class="line"><span class="lineno">  438</span>        std::string token;</div>
+<div class="line"><span class="lineno">  439</span> </div>
+<div class="line"><span class="lineno">  440</span>        <span class="keywordflow">while</span> (ss &gt;&gt; token) {</div>
+<div class="line"><span class="lineno">  441</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Found: &quot;</span> &lt;&lt; token &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  442</span>            <span class="comment">// match tokens to implementedMethods keys and push</span></div>
+<div class="line"><span class="lineno">  443</span>            <span class="comment">// then overwrite location.allowedMethods with this vector</span></div>
+<div class="line"><span class="lineno">  444</span>            <span class="comment">// if no limit_except is present, default initialization</span></div>
+<div class="line"><span class="lineno">  445</span>            <span class="comment">// for locations should permit all methods; GET POST and DELETE</span></div>
+<div class="line"><span class="lineno">  446</span>            <span class="keywordflow">if</span> (implementedMethods.find(token) == implementedMethods.end()) {</div>
+<div class="line"><span class="lineno">  447</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1GoodParser.html#ae9699a78b55539ab159a554fdb12c1d2">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected method for limit_except: &quot;</span> + token);</div>
+<div class="line"><span class="lineno">  448</span>            }</div>
+<div class="line"><span class="lineno">  449</span>            <span class="keywordflow">if</span> (allowedMethods.find(implementedMethods[token]) != allowedMethods.end()) {</div>
+<div class="line"><span class="lineno">  450</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1GoodParser.html#ae9699a78b55539ab159a554fdb12c1d2">m_lineIndex</a>, <span class="stringliteral">&quot;Duplicte method for limit_except: &quot;</span> + token);</div>
+<div class="line"><span class="lineno">  451</span>            }</div>
+<div class="line"><span class="lineno">  452</span>            allowedMethods.insert(implementedMethods[token]);</div>
+<div class="line"><span class="lineno">  453</span>        }</div>
+<div class="line"><span class="lineno">  454</span>        <span class="keywordflow">if</span> (allowedMethods.empty()) {</div>
+<div class="line"><span class="lineno">  455</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1GoodParser.html#ae9699a78b55539ab159a554fdb12c1d2">m_lineIndex</a>, <span class="stringliteral">&quot;Value expected for limit_except&quot;</span>);</div>
+<div class="line"><span class="lineno">  456</span>        }</div>
+<div class="line"><span class="lineno">  457</span>        location.allowedMethods = allowedMethods;</div>
+<div class="line"><span class="lineno">  458</span>    }</div>
+<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30">http::DELETE</a></div><div class="ttdeci">@ DELETE</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00056">types.hpp:56</a></div></div>
+<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab">http::POST</a></div><div class="ttdeci">@ POST</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00055">types.hpp:55</a></div></div>
+<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">http::GET</a></div><div class="ttdeci">@ GET</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00054">types.hpp:54</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1560,83 +1624,17 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00391">391</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  391</span>                                                                       {</div>
-<div class="line"><span class="lineno">  392</span> </div>
-<div class="line"><span class="lineno">  393</span>        (void)value;</div>
-<div class="line"><span class="lineno">  394</span>        (void)server;</div>
-<div class="line"><span class="lineno">  395</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;parseListen parsing: &quot;</span> &lt;&lt; value &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  396</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00389">389</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  389</span>                                                                       {</div>
+<div class="line"><span class="lineno">  390</span>        (void)value;</div>
+<div class="line"><span class="lineno">  391</span>        (void)server;</div>
+<div class="line"><span class="lineno">  392</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classconfig_1_1GoodParser_a6f1f4b28cfa4ed0d49b8f7e2e69c59ed_icgraph.png" border="0" usemap="#aclassconfig_1_1GoodParser_a6f1f4b28cfa4ed0d49b8f7e2e69c59ed_icgraph" alt=""/></div>
 <map name="aclassconfig_1_1GoodParser_a6f1f4b28cfa4ed0d49b8f7e2e69c59ed_icgraph" id="aclassconfig_1_1GoodParser_a6f1f4b28cfa4ed0d49b8f7e2e69c59ed_icgraph">
 <area shape="rect" title=" " alt="" coords="880,5,1023,45"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a19b98d1bb6cb469ba7856155e8a7439d" title=" " alt="" coords="689,5,832,45"/>
-<area shape="poly" title=" " alt="" coords="867,28,832,28,832,23,867,23"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a0e82e0e5d04aef7803c8c5f58cfe3674" title=" " alt="" coords="489,5,641,45"/>
-<area shape="poly" title=" " alt="" coords="676,28,642,28,642,23,676,23"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#af48ca6f60d5a5f41e35e19e55ddf78d3" title=" " alt="" coords="299,5,441,45"/>
-<area shape="poly" title=" " alt="" coords="476,28,441,28,441,23,476,23"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a028eb45e6f8611817af6a186f0e29dd0" title=" " alt="" coords="108,5,251,45"/>
-<area shape="poly" title=" " alt="" coords="285,28,251,28,251,23,285,23"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,13,60,38"/>
-<area shape="poly" title=" " alt="" coords="94,28,60,28,60,23,94,23"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a9cb2ee7f837f70a8250bcd1425942357" name="a9cb2ee7f837f70a8250bcd1425942357"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9cb2ee7f837f70a8250bcd1425942357">&#9670;&#160;</a></span>parseLocation()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void config::GoodParser::parseLocation </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>value</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structconfig_1_1Location.html">Location</a> &amp;&#160;</td>
-          <td class="paramname"><em>location</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00462">462</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  462</span>                                                                             {</div>
-<div class="line"><span class="lineno">  463</span> </div>
-<div class="line"><span class="lineno">  464</span>        (void)value;</div>
-<div class="line"><span class="lineno">  465</span>        (void)location;</div>
-<div class="line"><span class="lineno">  466</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;parseLocation parsing: &quot;</span> &lt;&lt; value &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  467</span>    }</div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classconfig_1_1GoodParser_a9cb2ee7f837f70a8250bcd1425942357_icgraph.png" border="0" usemap="#aclassconfig_1_1GoodParser_a9cb2ee7f837f70a8250bcd1425942357_icgraph" alt=""/></div>
-<map name="aclassconfig_1_1GoodParser_a9cb2ee7f837f70a8250bcd1425942357_icgraph" id="aclassconfig_1_1GoodParser_a9cb2ee7f837f70a8250bcd1425942357_icgraph">
-<area shape="rect" title=" " alt="" coords="1071,5,1213,45"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#ad4ab6effe4c118767e4e9e7d1ed9e06c" title=" " alt="" coords="880,5,1023,45"/>
-<area shape="poly" title=" " alt="" coords="1057,28,1023,28,1023,23,1057,23"/>
 <area shape="rect" href="classconfig_1_1GoodParser.html#a19b98d1bb6cb469ba7856155e8a7439d" title=" " alt="" coords="689,5,832,45"/>
 <area shape="poly" title=" " alt="" coords="867,28,832,28,832,23,867,23"/>
 <area shape="rect" href="classconfig_1_1GoodParser.html#a0e82e0e5d04aef7803c8c5f58cfe3674" title=" " alt="" coords="489,5,641,45"/>
@@ -1686,12 +1684,11 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00385">385</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  385</span>                                                                     {</div>
-<div class="line"><span class="lineno">  386</span>        (void)value;</div>
-<div class="line"><span class="lineno">  387</span>        (void)server;</div>
-<div class="line"><span class="lineno">  388</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;parsePort parsing: &quot;</span> &lt;&lt; value &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  389</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00384">384</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  384</span>                                                                     {</div>
+<div class="line"><span class="lineno">  385</span>        (void)value;</div>
+<div class="line"><span class="lineno">  386</span>        (void)server;</div>
+<div class="line"><span class="lineno">  387</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1747,14 +1744,26 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00427">427</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  427</span>                                                                           {</div>
-<div class="line"><span class="lineno">  428</span> </div>
-<div class="line"><span class="lineno">  429</span>        (void)value;</div>
-<div class="line"><span class="lineno">  430</span>        (void)location;</div>
-<div class="line"><span class="lineno">  431</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;parseReturn parsing: &quot;</span> &lt;&lt; value &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  432</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00420">420</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  420</span>                                                                           {</div>
+<div class="line"><span class="lineno">  421</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(value)) {</div>
+<div class="line"><span class="lineno">  422</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1GoodParser.html#ae9699a78b55539ab159a554fdb12c1d2">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid path for return: &quot;</span> + value);</div>
+<div class="line"><span class="lineno">  423</span>        }</div>
+<div class="line"><span class="lineno">  424</span>        location.path = <a class="code hl_function" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209">http::Router::splitPath</a>(value); <span class="comment">// ensure this won&#39;t throw</span></div>
+<div class="line"><span class="lineno">  425</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classconfig_1_1GoodParser_a6e0d9d721c4fd44896f9122657e03e05_cgraph.png" border="0" usemap="#aclassconfig_1_1GoodParser_a6e0d9d721c4fd44896f9122657e03e05_cgraph" alt=""/></div>
+<map name="aclassconfig_1_1GoodParser_a6e0d9d721c4fd44896f9122657e03e05_cgraph" id="aclassconfig_1_1GoodParser_a6e0d9d721c4fd44896f9122657e03e05_cgraph">
+<area shape="rect" title=" " alt="" coords="5,23,148,63"/>
+<area shape="rect" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021" title=" " alt="" coords="207,5,347,31"/>
+<area shape="poly" title=" " alt="" coords="148,32,193,26,194,31,149,37"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="196,55,359,80"/>
+<area shape="poly" title=" " alt="" coords="149,49,183,53,182,59,148,55"/>
+</map>
+</div>
+<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classconfig_1_1GoodParser_a6e0d9d721c4fd44896f9122657e03e05_icgraph.png" border="0" usemap="#aclassconfig_1_1GoodParser_a6e0d9d721c4fd44896f9122657e03e05_icgraph" alt=""/></div>
@@ -1811,14 +1820,26 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00420">420</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  420</span>                                                                         {</div>
-<div class="line"><span class="lineno">  421</span> </div>
-<div class="line"><span class="lineno">  422</span>        (void)value;</div>
-<div class="line"><span class="lineno">  423</span>        (void)location;</div>
-<div class="line"><span class="lineno">  424</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;parseRoot parsing: &quot;</span> &lt;&lt; value &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  425</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00413">413</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  413</span>                                                                         {</div>
+<div class="line"><span class="lineno">  414</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(value)) {</div>
+<div class="line"><span class="lineno">  415</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1GoodParser.html#ae9699a78b55539ab159a554fdb12c1d2">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid path for root: &quot;</span> + value);</div>
+<div class="line"><span class="lineno">  416</span>        }</div>
+<div class="line"><span class="lineno">  417</span>        location.root = <a class="code hl_function" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209">http::Router::splitPath</a>(value);</div>
+<div class="line"><span class="lineno">  418</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classconfig_1_1GoodParser_af1367fa187f39ffa85e68980ca001ccb_cgraph.png" border="0" usemap="#aclassconfig_1_1GoodParser_af1367fa187f39ffa85e68980ca001ccb_cgraph" alt=""/></div>
+<map name="aclassconfig_1_1GoodParser_af1367fa187f39ffa85e68980ca001ccb_cgraph" id="aclassconfig_1_1GoodParser_af1367fa187f39ffa85e68980ca001ccb_cgraph">
+<area shape="rect" title=" " alt="" coords="5,23,148,63"/>
+<area shape="rect" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021" title=" " alt="" coords="207,5,347,31"/>
+<area shape="poly" title=" " alt="" coords="148,32,193,26,194,31,149,37"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="196,55,359,80"/>
+<area shape="poly" title=" " alt="" coords="149,49,183,53,182,59,148,55"/>
+</map>
+</div>
+<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classconfig_1_1GoodParser_af1367fa187f39ffa85e68980ca001ccb_icgraph.png" border="0" usemap="#aclassconfig_1_1GoodParser_af1367fa187f39ffa85e68980ca001ccb_icgraph" alt=""/></div>
@@ -1875,13 +1896,11 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00412">412</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  412</span>                                                                           {</div>
-<div class="line"><span class="lineno">  413</span> </div>
-<div class="line"><span class="lineno">  414</span>        (void)value;</div>
-<div class="line"><span class="lineno">  415</span>        (void)server;</div>
-<div class="line"><span class="lineno">  416</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;parseServerName parsing: &quot;</span> &lt;&lt; value &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  417</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00406">406</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  406</span>                                                                           {</div>
+<div class="line"><span class="lineno">  407</span>        (void)value;</div>
+<div class="line"><span class="lineno">  408</span>        (void)server;</div>
+<div class="line"><span class="lineno">  409</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1937,14 +1956,24 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00441">441</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  441</span>                                                                              {</div>
-<div class="line"><span class="lineno">  442</span> </div>
-<div class="line"><span class="lineno">  443</span>        (void)value;</div>
-<div class="line"><span class="lineno">  444</span>        (void)location;</div>
-<div class="line"><span class="lineno">  445</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;parseUploadDir parsing: &quot;</span> &lt;&lt; value &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  446</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00460">460</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  460</span>                                                                              {</div>
+<div class="line"><span class="lineno">  461</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(value)) {</div>
+<div class="line"><span class="lineno">  462</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1GoodParser.html#ae9699a78b55539ab159a554fdb12c1d2">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid path for upload_dir: &quot;</span> + value);</div>
+<div class="line"><span class="lineno">  463</span>        }</div>
+<div class="line"><span class="lineno">  464</span>        location.uploadSubdirectory = value; <span class="comment">// strip this of whitespace if that doesn&#39;t happen yet</span></div>
+<div class="line"><span class="lineno">  465</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classconfig_1_1GoodParser_a8af78e45347274127a070dde9fa81d37_cgraph.png" border="0" usemap="#aclassconfig_1_1GoodParser_a8af78e45347274127a070dde9fa81d37_cgraph" alt=""/></div>
+<map name="aclassconfig_1_1GoodParser_a8af78e45347274127a070dde9fa81d37_cgraph" id="aclassconfig_1_1GoodParser_a8af78e45347274127a070dde9fa81d37_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,148,45"/>
+<area shape="rect" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021" title=" " alt="" coords="196,13,336,38"/>
+<area shape="poly" title=" " alt="" coords="148,23,182,23,182,28,148,28"/>
+</map>
+</div>
+<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classconfig_1_1GoodParser_a8af78e45347274127a070dde9fa81d37_icgraph.png" border="0" usemap="#aclassconfig_1_1GoodParser_a8af78e45347274127a070dde9fa81d37_icgraph" alt=""/></div>
@@ -2212,49 +2241,53 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00365">365</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  365</span>                                                                                                  {</div>
-<div class="line"><span class="lineno">  366</span>        <span class="keyword">static</span> std::map&lt;CommandType, LocationTokenParser&gt; tokenParsers;</div>
-<div class="line"><span class="lineno">  367</span> </div>
-<div class="line"><span class="lineno">  368</span>        <span class="keywordflow">if</span> (tokenParsers.empty()) {</div>
-<div class="line"><span class="lineno">  369</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ae5ad47cb3820185e2c3d180bf4526590">D_ROOT</a>] = &amp;<a class="code hl_function" href="classconfig_1_1GoodParser.html#af1367fa187f39ffa85e68980ca001ccb">config::GoodParser::parseRoot</a>;</div>
-<div class="line"><span class="lineno">  370</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ad235a3161c77a616db3f9b9cac689986">D_RETURN</a>] = &amp;<a class="code hl_function" href="classconfig_1_1GoodParser.html#a6e0d9d721c4fd44896f9122657e03e05">config::GoodParser::parseReturn</a>;</div>
-<div class="line"><span class="lineno">  371</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a6bcfc2608af44df7211b7e35ba8724ec">D_LIMIT_EXCEPT</a>] = &amp;<a class="code hl_function" href="classconfig_1_1GoodParser.html#a25d8bda55c1a7c4b98507306a45db2d2">config::GoodParser::parseLimitExcept</a>;</div>
-<div class="line"><span class="lineno">  372</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a030d6f86b11b598e89c56fba7852d5db">D_UPLOAD_DIR</a>] = &amp;<a class="code hl_function" href="classconfig_1_1GoodParser.html#a8af78e45347274127a070dde9fa81d37">config::GoodParser::parseUploadDir</a>;</div>
-<div class="line"><span class="lineno">  373</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510aff6a3be8d2e740a92586e6df2038c498">D_INDEX</a>] = &amp;<a class="code hl_function" href="classconfig_1_1GoodParser.html#af3d89e54013c7bd338abb9ea9f4b42c7">config::GoodParser::parseIndex</a>;</div>
-<div class="line"><span class="lineno">  374</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510acf7fc1b46f032b3cce871abf15d760b9">D_AUTOINDEX</a>] = &amp;<a class="code hl_function" href="classconfig_1_1GoodParser.html#a85905295638d9b3baff6968f68ef76c1">config::GoodParser::parseAutoindex</a>;</div>
-<div class="line"><span class="lineno">  375</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ad52403f6ed7f28d41ee4ac439cb87370">D_LOCATION</a>] = &amp;<a class="code hl_function" href="classconfig_1_1GoodParser.html#a9cb2ee7f837f70a8250bcd1425942357">config::GoodParser::parseLocation</a>;</div>
-<div class="line"><span class="lineno">  376</span>        }</div>
-<div class="line"><span class="lineno">  377</span> </div>
-<div class="line"><span class="lineno">  378</span>        (this-&gt;*(tokenParsers[type]))(value, location);</div>
-<div class="line"><span class="lineno">  379</span>    }</div>
-<div class="ttc" id="aclassconfig_1_1GoodParser_html_a25d8bda55c1a7c4b98507306a45db2d2"><div class="ttname"><a href="classconfig_1_1GoodParser.html#a25d8bda55c1a7c4b98507306a45db2d2">config::GoodParser::parseLimitExcept</a></div><div class="ttdeci">void parseLimitExcept(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00434">GoodParser.cpp:434</a></div></div>
-<div class="ttc" id="aclassconfig_1_1GoodParser_html_a6e0d9d721c4fd44896f9122657e03e05"><div class="ttname"><a href="classconfig_1_1GoodParser.html#a6e0d9d721c4fd44896f9122657e03e05">config::GoodParser::parseReturn</a></div><div class="ttdeci">void parseReturn(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00427">GoodParser.cpp:427</a></div></div>
-<div class="ttc" id="aclassconfig_1_1GoodParser_html_a85905295638d9b3baff6968f68ef76c1"><div class="ttname"><a href="classconfig_1_1GoodParser.html#a85905295638d9b3baff6968f68ef76c1">config::GoodParser::parseAutoindex</a></div><div class="ttdeci">void parseAutoindex(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00455">GoodParser.cpp:455</a></div></div>
-<div class="ttc" id="aclassconfig_1_1GoodParser_html_a8af78e45347274127a070dde9fa81d37"><div class="ttname"><a href="classconfig_1_1GoodParser.html#a8af78e45347274127a070dde9fa81d37">config::GoodParser::parseUploadDir</a></div><div class="ttdeci">void parseUploadDir(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00441">GoodParser.cpp:441</a></div></div>
-<div class="ttc" id="aclassconfig_1_1GoodParser_html_a9cb2ee7f837f70a8250bcd1425942357"><div class="ttname"><a href="classconfig_1_1GoodParser.html#a9cb2ee7f837f70a8250bcd1425942357">config::GoodParser::parseLocation</a></div><div class="ttdeci">void parseLocation(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00462">GoodParser.cpp:462</a></div></div>
-<div class="ttc" id="aclassconfig_1_1GoodParser_html_af1367fa187f39ffa85e68980ca001ccb"><div class="ttname"><a href="classconfig_1_1GoodParser.html#af1367fa187f39ffa85e68980ca001ccb">config::GoodParser::parseRoot</a></div><div class="ttdeci">void parseRoot(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00420">GoodParser.cpp:420</a></div></div>
-<div class="ttc" id="aclassconfig_1_1GoodParser_html_af3d89e54013c7bd338abb9ea9f4b42c7"><div class="ttname"><a href="classconfig_1_1GoodParser.html#af3d89e54013c7bd338abb9ea9f4b42c7">config::GoodParser::parseIndex</a></div><div class="ttdeci">void parseIndex(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00448">GoodParser.cpp:448</a></div></div>
+<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00366">366</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  366</span>                                                                                                  {</div>
+<div class="line"><span class="lineno">  367</span>        <span class="keyword">static</span> std::map&lt;CommandType, LocationTokenParser&gt; tokenParsers;</div>
+<div class="line"><span class="lineno">  368</span> </div>
+<div class="line"><span class="lineno">  369</span>        <span class="keywordflow">if</span> (tokenParsers.empty()) {</div>
+<div class="line"><span class="lineno">  370</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ae5ad47cb3820185e2c3d180bf4526590">D_ROOT</a>] = &amp;<a class="code hl_function" href="classconfig_1_1GoodParser.html#af1367fa187f39ffa85e68980ca001ccb">config::GoodParser::parseRoot</a>;</div>
+<div class="line"><span class="lineno">  371</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ad235a3161c77a616db3f9b9cac689986">D_RETURN</a>] = &amp;<a class="code hl_function" href="classconfig_1_1GoodParser.html#a6e0d9d721c4fd44896f9122657e03e05">config::GoodParser::parseReturn</a>;</div>
+<div class="line"><span class="lineno">  372</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a6bcfc2608af44df7211b7e35ba8724ec">D_LIMIT_EXCEPT</a>] = &amp;<a class="code hl_function" href="classconfig_1_1GoodParser.html#a25d8bda55c1a7c4b98507306a45db2d2">config::GoodParser::parseLimitExcept</a>;</div>
+<div class="line"><span class="lineno">  373</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a030d6f86b11b598e89c56fba7852d5db">D_UPLOAD_DIR</a>] = &amp;<a class="code hl_function" href="classconfig_1_1GoodParser.html#a8af78e45347274127a070dde9fa81d37">config::GoodParser::parseUploadDir</a>;</div>
+<div class="line"><span class="lineno">  374</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510aff6a3be8d2e740a92586e6df2038c498">D_INDEX</a>] = &amp;<a class="code hl_function" href="classconfig_1_1GoodParser.html#af3d89e54013c7bd338abb9ea9f4b42c7">config::GoodParser::parseIndex</a>;</div>
+<div class="line"><span class="lineno">  375</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510acf7fc1b46f032b3cce871abf15d760b9">D_AUTOINDEX</a>] = &amp;<a class="code hl_function" href="classconfig_1_1GoodParser.html#a85905295638d9b3baff6968f68ef76c1">config::GoodParser::parseAutoindex</a>;</div>
+<div class="line"><span class="lineno">  376</span>            <span class="comment">// tokenParsers[D_LOCATION] = &amp;config::GoodParser::parseLocation;</span></div>
+<div class="line"><span class="lineno">  377</span>        }</div>
+<div class="line"><span class="lineno">  378</span> </div>
+<div class="line"><span class="lineno">  379</span>        (this-&gt;*(tokenParsers[type]))(value, location);</div>
+<div class="line"><span class="lineno">  380</span>    }</div>
+<div class="ttc" id="aclassconfig_1_1GoodParser_html_a25d8bda55c1a7c4b98507306a45db2d2"><div class="ttname"><a href="classconfig_1_1GoodParser.html#a25d8bda55c1a7c4b98507306a45db2d2">config::GoodParser::parseLimitExcept</a></div><div class="ttdeci">void parseLimitExcept(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00427">GoodParser.cpp:427</a></div></div>
+<div class="ttc" id="aclassconfig_1_1GoodParser_html_a6e0d9d721c4fd44896f9122657e03e05"><div class="ttname"><a href="classconfig_1_1GoodParser.html#a6e0d9d721c4fd44896f9122657e03e05">config::GoodParser::parseReturn</a></div><div class="ttdeci">void parseReturn(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00420">GoodParser.cpp:420</a></div></div>
+<div class="ttc" id="aclassconfig_1_1GoodParser_html_a85905295638d9b3baff6968f68ef76c1"><div class="ttname"><a href="classconfig_1_1GoodParser.html#a85905295638d9b3baff6968f68ef76c1">config::GoodParser::parseAutoindex</a></div><div class="ttdeci">void parseAutoindex(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00473">GoodParser.cpp:473</a></div></div>
+<div class="ttc" id="aclassconfig_1_1GoodParser_html_a8af78e45347274127a070dde9fa81d37"><div class="ttname"><a href="classconfig_1_1GoodParser.html#a8af78e45347274127a070dde9fa81d37">config::GoodParser::parseUploadDir</a></div><div class="ttdeci">void parseUploadDir(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00460">GoodParser.cpp:460</a></div></div>
+<div class="ttc" id="aclassconfig_1_1GoodParser_html_af1367fa187f39ffa85e68980ca001ccb"><div class="ttname"><a href="classconfig_1_1GoodParser.html#af1367fa187f39ffa85e68980ca001ccb">config::GoodParser::parseRoot</a></div><div class="ttdeci">void parseRoot(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00413">GoodParser.cpp:413</a></div></div>
+<div class="ttc" id="aclassconfig_1_1GoodParser_html_af3d89e54013c7bd338abb9ea9f4b42c7"><div class="ttname"><a href="classconfig_1_1GoodParser.html#af3d89e54013c7bd338abb9ea9f4b42c7">config::GoodParser::parseIndex</a></div><div class="ttdeci">void parseIndex(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00467">GoodParser.cpp:467</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classconfig_1_1GoodParser_ad4ab6effe4c118767e4e9e7d1ed9e06c_cgraph.png" border="0" usemap="#aclassconfig_1_1GoodParser_ad4ab6effe4c118767e4e9e7d1ed9e06c_cgraph" alt=""/></div>
 <map name="aclassconfig_1_1GoodParser_ad4ab6effe4c118767e4e9e7d1ed9e06c_cgraph" id="aclassconfig_1_1GoodParser_ad4ab6effe4c118767e4e9e7d1ed9e06c_cgraph">
-<area shape="rect" title=" " alt="" coords="5,197,148,237"/>
+<area shape="rect" title=" " alt="" coords="5,165,148,205"/>
 <area shape="rect" href="classconfig_1_1GoodParser.html#a85905295638d9b3baff6968f68ef76c1" title=" " alt="" coords="196,5,339,45"/>
-<area shape="poly" title=" " alt="" coords="86,196,128,128,159,90,194,55,201,50,204,55,198,59,163,93,132,131,91,198"/>
+<area shape="poly" title=" " alt="" coords="90,164,134,111,163,82,194,55,202,50,205,54,198,59,166,86,138,115,94,167"/>
 <area shape="rect" href="classconfig_1_1GoodParser.html#af3d89e54013c7bd338abb9ea9f4b42c7" title=" " alt="" coords="196,69,339,109"/>
-<area shape="poly" title=" " alt="" coords="98,195,141,158,195,119,204,113,207,118,197,124,144,162,101,199"/>
+<area shape="poly" title=" " alt="" coords="113,163,195,119,208,113,210,118,197,124,115,167"/>
 <area shape="rect" href="classconfig_1_1GoodParser.html#a25d8bda55c1a7c4b98507306a45db2d2" title=" " alt="" coords="196,133,339,173"/>
-<area shape="poly" title=" " alt="" coords="136,195,194,175,195,180,138,200"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a9cb2ee7f837f70a8250bcd1425942357" title=" " alt="" coords="196,197,339,237"/>
-<area shape="poly" title=" " alt="" coords="148,215,183,215,183,220,148,220"/>
+<area shape="poly" title=" " alt="" coords="148,171,182,165,183,170,148,176"/>
 <area shape="rect" href="classconfig_1_1GoodParser.html#a6e0d9d721c4fd44896f9122657e03e05" title=" " alt="" coords="196,261,339,301"/>
-<area shape="poly" title=" " alt="" coords="138,235,195,254,194,259,136,240"/>
+<area shape="poly" title=" " alt="" coords="115,203,197,247,210,253,208,258,195,252,113,208"/>
 <area shape="rect" href="classconfig_1_1GoodParser.html#af1367fa187f39ffa85e68980ca001ccb" title=" " alt="" coords="196,325,339,365"/>
-<area shape="poly" title=" " alt="" coords="101,236,144,273,197,311,207,317,204,321,195,316,141,277,98,240"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a8af78e45347274127a070dde9fa81d37" title=" " alt="" coords="196,389,339,429"/>
-<area shape="poly" title=" " alt="" coords="91,236,132,303,163,341,198,375,204,380,201,384,194,379,159,345,128,306,86,239"/>
+<area shape="poly" title=" " alt="" coords="94,204,138,256,166,285,198,311,205,316,202,321,194,315,163,289,134,260,90,207"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a8af78e45347274127a070dde9fa81d37" title=" " alt="" coords="196,197,339,237"/>
+<area shape="poly" title=" " alt="" coords="148,195,183,200,182,206,148,200"/>
+<area shape="rect" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021" title=" " alt="" coords="398,269,538,294"/>
+<area shape="poly" title=" " alt="" coords="339,279,384,279,384,284,339,284"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="387,326,549,351"/>
+<area shape="poly" title=" " alt="" coords="339,299,410,319,408,325,337,304"/>
+<area shape="poly" title=" " alt="" coords="330,323,414,296,415,301,332,328"/>
+<area shape="poly" title=" " alt="" coords="339,340,373,339,373,344,339,346"/>
+<area shape="poly" title=" " alt="" coords="332,235,415,262,414,267,330,240"/>
 </map>
 </div>
 <div class="dynheader">
@@ -2335,44 +2368,50 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  361</span> </div>
 <div class="line"><span class="lineno">  362</span>        (this-&gt;*(tokenParsers[type]))(value, server);</div>
 <div class="line"><span class="lineno">  363</span>    }</div>
-<div class="ttc" id="aclassconfig_1_1GoodParser_html_a02b3a3527f82046838ce2481f84c4e27"><div class="ttname"><a href="classconfig_1_1GoodParser.html#a02b3a3527f82046838ce2481f84c4e27">config::GoodParser::parsePort</a></div><div class="ttdeci">void parsePort(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00385">GoodParser.cpp:385</a></div></div>
-<div class="ttc" id="aclassconfig_1_1GoodParser_html_a471b2ee3a1bcca880e5ff6dc6009719a"><div class="ttname"><a href="classconfig_1_1GoodParser.html#a471b2ee3a1bcca880e5ff6dc6009719a">config::GoodParser::parseServerName</a></div><div class="ttdeci">void parseServerName(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00412">GoodParser.cpp:412</a></div></div>
-<div class="ttc" id="aclassconfig_1_1GoodParser_html_a6f1f4b28cfa4ed0d49b8f7e2e69c59ed"><div class="ttname"><a href="classconfig_1_1GoodParser.html#a6f1f4b28cfa4ed0d49b8f7e2e69c59ed">config::GoodParser::parseListen</a></div><div class="ttdeci">void parseListen(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00391">GoodParser.cpp:391</a></div></div>
-<div class="ttc" id="aclassconfig_1_1GoodParser_html_aee904af9f8ed12548a067c646e84abd8"><div class="ttname"><a href="classconfig_1_1GoodParser.html#aee904af9f8ed12548a067c646e84abd8">config::GoodParser::parseClientMaxBodySize</a></div><div class="ttdeci">void parseClientMaxBodySize(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00398">GoodParser.cpp:398</a></div></div>
-<div class="ttc" id="aclassconfig_1_1GoodParser_html_affad4aae9d819c97322a2952c53dd027"><div class="ttname"><a href="classconfig_1_1GoodParser.html#affad4aae9d819c97322a2952c53dd027">config::GoodParser::parseDataDir</a></div><div class="ttdeci">void parseDataDir(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00405">GoodParser.cpp:405</a></div></div>
+<div class="ttc" id="aclassconfig_1_1GoodParser_html_a02b3a3527f82046838ce2481f84c4e27"><div class="ttname"><a href="classconfig_1_1GoodParser.html#a02b3a3527f82046838ce2481f84c4e27">config::GoodParser::parsePort</a></div><div class="ttdeci">void parsePort(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00384">GoodParser.cpp:384</a></div></div>
+<div class="ttc" id="aclassconfig_1_1GoodParser_html_a471b2ee3a1bcca880e5ff6dc6009719a"><div class="ttname"><a href="classconfig_1_1GoodParser.html#a471b2ee3a1bcca880e5ff6dc6009719a">config::GoodParser::parseServerName</a></div><div class="ttdeci">void parseServerName(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00406">GoodParser.cpp:406</a></div></div>
+<div class="ttc" id="aclassconfig_1_1GoodParser_html_a6f1f4b28cfa4ed0d49b8f7e2e69c59ed"><div class="ttname"><a href="classconfig_1_1GoodParser.html#a6f1f4b28cfa4ed0d49b8f7e2e69c59ed">config::GoodParser::parseListen</a></div><div class="ttdeci">void parseListen(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00389">GoodParser.cpp:389</a></div></div>
+<div class="ttc" id="aclassconfig_1_1GoodParser_html_aee904af9f8ed12548a067c646e84abd8"><div class="ttname"><a href="classconfig_1_1GoodParser.html#aee904af9f8ed12548a067c646e84abd8">config::GoodParser::parseClientMaxBodySize</a></div><div class="ttdeci">void parseClientMaxBodySize(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00394">GoodParser.cpp:394</a></div></div>
+<div class="ttc" id="aclassconfig_1_1GoodParser_html_affad4aae9d819c97322a2952c53dd027"><div class="ttname"><a href="classconfig_1_1GoodParser.html#affad4aae9d819c97322a2952c53dd027">config::GoodParser::parseDataDir</a></div><div class="ttdeci">void parseDataDir(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00399">GoodParser.cpp:399</a></div></div>
 <div class="ttc" id="anamespaceconfig_html_aee8549161116ce4e258c23d4d7c3b510a7243d0b4f279565a2f210582618147ed"><div class="ttname"><a href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a7243d0b4f279565a2f210582618147ed">config::_D_SERVER_TYPES</a></div><div class="ttdeci">@ _D_SERVER_TYPES</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8hpp_source.html#l00030">GoodParser.hpp:30</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classconfig_1_1GoodParser_a19b98d1bb6cb469ba7856155e8a7439d_cgraph.png" border="0" usemap="#aclassconfig_1_1GoodParser_a19b98d1bb6cb469ba7856155e8a7439d_cgraph" alt=""/></div>
 <map name="aclassconfig_1_1GoodParser_a19b98d1bb6cb469ba7856155e8a7439d_cgraph" id="aclassconfig_1_1GoodParser_a19b98d1bb6cb469ba7856155e8a7439d_cgraph">
-<area shape="rect" title=" " alt="" coords="5,165,148,205"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#aee904af9f8ed12548a067c646e84abd8" title=" " alt="" coords="196,5,388,45"/>
-<area shape="poly" title=" " alt="" coords="90,163,132,110,162,81,195,55,205,49,208,54,197,60,165,85,136,113,94,167"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#affad4aae9d819c97322a2952c53dd027" title=" " alt="" coords="221,69,363,109"/>
-<area shape="poly" title=" " alt="" coords="110,163,195,119,213,112,215,117,197,124,113,168"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a6f1f4b28cfa4ed0d49b8f7e2e69c59ed" title=" " alt="" coords="221,133,363,173"/>
-<area shape="poly" title=" " alt="" coords="148,172,207,163,208,169,149,177"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a02b3a3527f82046838ce2481f84c4e27" title=" " alt="" coords="221,197,363,237"/>
-<area shape="poly" title=" " alt="" coords="149,193,208,202,207,207,148,199"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a471b2ee3a1bcca880e5ff6dc6009719a" title=" " alt="" coords="219,261,365,301"/>
-<area shape="poly" title=" " alt="" coords="113,203,197,247,215,254,213,259,195,252,110,208"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#ad4ab6effe4c118767e4e9e7d1ed9e06c" title=" " alt="" coords="221,325,363,365"/>
-<area shape="poly" title=" " alt="" coords="94,204,136,257,165,286,197,311,210,318,207,323,195,316,162,290,132,261,90,207"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a85905295638d9b3baff6968f68ef76c1" title=" " alt="" coords="436,133,579,173"/>
-<area shape="poly" title=" " alt="" coords="362,327,386,311,399,296,406,281,410,250,415,217,422,201,434,184,438,180,442,184,438,187,426,203,420,219,415,251,411,283,403,299,390,315,365,332"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#af3d89e54013c7bd338abb9ea9f4b42c7" title=" " alt="" coords="436,197,579,237"/>
-<area shape="poly" title=" " alt="" coords="362,325,386,311,402,296,410,281,419,264,434,247,441,242,444,247,438,251,423,267,415,283,406,299,390,315,365,329"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a25d8bda55c1a7c4b98507306a45db2d2" title=" " alt="" coords="436,261,579,301"/>
-<area shape="poly" title=" " alt="" coords="359,323,425,303,427,308,361,328"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a9cb2ee7f837f70a8250bcd1425942357" title=" " alt="" coords="436,325,579,365"/>
-<area shape="poly" title=" " alt="" coords="364,343,422,343,422,348,364,348"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a6e0d9d721c4fd44896f9122657e03e05" title=" " alt="" coords="436,389,579,429"/>
-<area shape="poly" title=" " alt="" coords="361,363,427,383,425,388,359,368"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#af1367fa187f39ffa85e68980ca001ccb" title=" " alt="" coords="436,453,579,493"/>
-<area shape="poly" title=" " alt="" coords="322,363,374,400,437,439,448,445,446,450,435,444,372,404,319,368"/>
-<area shape="rect" href="classconfig_1_1GoodParser.html#a8af78e45347274127a070dde9fa81d37" title=" " alt="" coords="436,517,579,557"/>
-<area shape="poly" title=" " alt="" coords="309,364,361,431,397,469,438,503,445,508,442,513,434,507,394,473,357,434,305,367"/>
+<area shape="rect" title=" " alt="" coords="5,198,148,238"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#aee904af9f8ed12548a067c646e84abd8" title=" " alt="" coords="196,38,388,78"/>
+<area shape="poly" title=" " alt="" coords="90,196,132,143,162,114,195,88,205,82,208,87,197,93,165,118,136,146,94,200"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#affad4aae9d819c97322a2952c53dd027" title=" " alt="" coords="221,102,363,142"/>
+<area shape="poly" title=" " alt="" coords="110,196,195,152,213,145,215,149,197,157,113,201"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a6f1f4b28cfa4ed0d49b8f7e2e69c59ed" title=" " alt="" coords="221,230,363,270"/>
+<area shape="poly" title=" " alt="" coords="149,226,208,235,207,240,148,232"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a02b3a3527f82046838ce2481f84c4e27" title=" " alt="" coords="221,294,363,334"/>
+<area shape="poly" title=" " alt="" coords="113,236,197,280,215,287,213,292,195,285,110,241"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a471b2ee3a1bcca880e5ff6dc6009719a" title=" " alt="" coords="219,358,365,398"/>
+<area shape="poly" title=" " alt="" coords="94,237,136,290,165,319,197,344,208,350,205,355,195,349,162,323,132,294,90,240"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#ad4ab6effe4c118767e4e9e7d1ed9e06c" title=" " alt="" coords="221,166,363,206"/>
+<area shape="poly" title=" " alt="" coords="148,205,207,196,208,202,149,210"/>
+<area shape="rect" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021" title=" " alt="" coords="638,174,778,199"/>
+<area shape="poly" title=" " alt="" coords="362,102,386,88,401,72,408,55,417,38,435,24,473,8,507,3,541,8,580,24,621,52,654,89,680,127,698,160,693,163,676,130,650,92,617,56,577,29,540,13,507,8,475,13,437,29,421,42,413,58,405,75,390,92,365,106"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a85905295638d9b3baff6968f68ef76c1" title=" " alt="" coords="436,102,579,142"/>
+<area shape="poly" title=" " alt="" coords="359,164,425,144,427,149,361,169"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#af3d89e54013c7bd338abb9ea9f4b42c7" title=" " alt="" coords="436,166,579,206"/>
+<area shape="poly" title=" " alt="" coords="364,184,422,184,422,189,364,189"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a25d8bda55c1a7c4b98507306a45db2d2" title=" " alt="" coords="436,230,579,270"/>
+<area shape="poly" title=" " alt="" coords="361,204,427,224,425,229,359,209"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a6e0d9d721c4fd44896f9122657e03e05" title=" " alt="" coords="436,358,579,398"/>
+<area shape="poly" title=" " alt="" coords="365,200,390,216,403,233,411,249,415,281,420,313,426,328,438,345,442,348,438,352,434,348,422,331,415,314,410,282,406,251,399,236,386,220,362,204"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#af1367fa187f39ffa85e68980ca001ccb" title=" " alt="" coords="436,294,579,334"/>
+<area shape="poly" title=" " alt="" coords="365,202,390,216,406,232,415,249,423,264,438,280,444,285,441,289,434,284,419,267,410,251,402,236,386,220,362,207"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a8af78e45347274127a070dde9fa81d37" title=" " alt="" coords="436,38,579,78"/>
+<area shape="poly" title=" " alt="" coords="362,166,386,152,402,137,410,122,419,105,434,88,441,83,444,88,438,92,423,108,415,124,406,140,390,156,365,170"/>
+<area shape="poly" title=" " alt="" coords="559,356,577,344,613,312,644,275,690,209,694,212,648,278,616,315,580,348,561,361"/>
+<area shape="rect" href="classhttp_1_1Router.html#a984b170d146002ebe8fc701e7d0d7209" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="627,359,789,384"/>
+<area shape="poly" title=" " alt="" coords="579,373,613,372,613,377,579,379"/>
+<area shape="poly" title=" " alt="" coords="555,292,577,280,633,242,680,206,683,210,636,247,580,285,558,297"/>
+<area shape="poly" title=" " alt="" coords="579,332,650,352,648,358,577,337"/>
+<area shape="poly" title=" " alt="" coords="558,76,580,88,636,126,683,163,680,167,633,130,577,93,555,81"/>
 </map>
 </div>
 <div class="dynheader">

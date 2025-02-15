@@ -1,7 +1,5 @@
 var NAVTREEINDEX5 =
 {
-"structhttp_1_1RequestParser_1_1Token.html#a2c462eec50f148ea7d8a35b25fbca699":[5,0,2,6,0,2],
-"structhttp_1_1RequestParser_1_1Token.html#a9dab2bf9fedb2d61aa4b0f8d4e648a3d":[4,0,2,6,0,1],
 "structhttp_1_1RequestParser_1_1Token.html#a9dab2bf9fedb2d61aa4b0f8d4e648a3d":[5,0,2,6,0,1],
 "structhttp_1_1Uri.html":[4,0,2,10],
 "structhttp_1_1Uri.html":[5,0,2,10],

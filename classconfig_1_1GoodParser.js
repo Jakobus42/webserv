@@ -21,7 +21,6 @@ var classconfig_1_1GoodParser =
     [ "parseLimitExcept", "classconfig_1_1GoodParser.html#a25d8bda55c1a7c4b98507306a45db2d2", null ],
     [ "parseLine", "classconfig_1_1GoodParser.html#a3f6cf28ea6ab0eee075f773f5a1ae041", null ],
     [ "parseListen", "classconfig_1_1GoodParser.html#a6f1f4b28cfa4ed0d49b8f7e2e69c59ed", null ],
-    [ "parseLocation", "classconfig_1_1GoodParser.html#a9cb2ee7f837f70a8250bcd1425942357", null ],
     [ "parsePort", "classconfig_1_1GoodParser.html#a02b3a3527f82046838ce2481f84c4e27", null ],
     [ "parseReturn", "classconfig_1_1GoodParser.html#a6e0d9d721c4fd44896f9122657e03e05", null ],
     [ "parseRoot", "classconfig_1_1GoodParser.html#af1367fa187f39ffa85e68980ca001ccb", null ],

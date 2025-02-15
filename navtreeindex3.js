@@ -1,7 +1,5 @@
 var NAVTREEINDEX3 =
 {
-"classshared_1_1Buffer.html#a0d5c900c1f099445ddd2249b2d7735e2":[4,0,3,1,0],
-"classshared_1_1Buffer.html#a187b3f9291b5b1e6c379ab6bcdd230ef":[4,0,3,1,15],
 "classshared_1_1Buffer.html#a187b3f9291b5b1e6c379ab6bcdd230ef":[5,0,3,0,15],
 "classshared_1_1Buffer.html#a28fbf4dee35ac1c9ad97973d9b58ae1f":[4,0,3,1,7],
 "classshared_1_1Buffer.html#a28fbf4dee35ac1c9ad97973d9b58ae1f":[5,0,3,0,7],
@@ -249,5 +247,7 @@ var NAVTREEINDEX3 =
 "md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2config__file__basics.html#autotoc_md3":[1,1],
 "md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2config__file__basics.html#autotoc_md4":[1,2],
 "md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2config__file__basics.html#autotoc_md5":[1,2,0],
-"md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2config__file__basics.html#autotoc_md6":[1,2,1]
+"md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2config__file__basics.html#autotoc_md6":[1,2,1],
+"md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2config__file__basics.html#autotoc_md7":[1,2,2],
+"md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2config__file__basics.html#autotoc_md8":[1,3]
 };
