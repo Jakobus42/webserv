@@ -180,8 +180,9 @@ Functions</h2></td></tr>
 <tr class="separator:aff35f6b0992332ad3e28219095ddb385"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f88c738f00d5d4d10444e4d3bfd251d" id="r_a2f88c738f00d5d4d10444e4d3bfd251d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d">getErrorPage</a> (<a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a> statusCode)</td></tr>
 <tr class="separator:a2f88c738f00d5d4d10444e4d3bfd251d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1873f0c3392cd24902c5b773b0f28f6f" id="r_a1873f0c3392cd24902c5b773b0f28f6f"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a1873f0c3392cd24902c5b773b0f28f6f">getDirectoryListing</a> (const std::string &amp;path, const std::string &amp;root)</td></tr>
-<tr class="separator:a1873f0c3392cd24902c5b773b0f28f6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ab12f205ef403b73e4a0e9f93d15291" id="r_a1ab12f205ef403b73e4a0e9f93d15291"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a1ab12f205ef403b73e4a0e9f93d15291">getDirectoryListing</a> (const <a class="el" href="structhttp_1_1Uri.html">Uri</a> &amp;uri, const <a class="el" href="structconfig_1_1Location.html">config::Location</a> &amp;location, const std::string &amp;root)</td></tr>
+<tr class="memdesc:a1ab12f205ef403b73e4a0e9f93d15291"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate the Directory Listing HTML for the passed uri.  <br /></td></tr>
+<tr class="separator:a1ab12f205ef403b73e4a0e9f93d15291"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f74f239713c11cf1db02951110b8613" id="r_a7f74f239713c11cf1db02951110b8613"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehttp.html#a7f74f239713c11cf1db02951110b8613">getRootPath</a> (std::string &amp;rootPath)</td></tr>
 <tr class="separator:a7f74f239713c11cf1db02951110b8613"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -410,8 +411,8 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a1873f0c3392cd24902c5b773b0f28f6f" name="a1873f0c3392cd24902c5b773b0f28f6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1873f0c3392cd24902c5b773b0f28f6f">&#9670;&#160;</a></span>getDirectoryListing()</h2>
+<a id="a1ab12f205ef403b73e4a0e9f93d15291" name="a1ab12f205ef403b73e4a0e9f93d15291"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ab12f205ef403b73e4a0e9f93d15291">&#9670;&#160;</a></span>getDirectoryListing()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -419,8 +420,14 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">std::string http::getDirectoryListing </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
+          <td class="paramtype">const <a class="el" href="structhttp_1_1Uri.html">Uri</a> &amp;&#160;</td>
+          <td class="paramname"><em>uri</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structconfig_1_1Location.html">config::Location</a> &amp;&#160;</td>
+          <td class="paramname"><em>location</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -436,58 +443,72 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00121">121</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  121</span>                                                                                { <span class="comment">// temporarily pass root path as parameter</span></div>
-<div class="line"><span class="lineno">  122</span>        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* DL_TEMPLATE = <span class="stringliteral">&quot;&lt;!DOCTYPE html&gt;&lt;html lang=\&quot;en\&quot;&gt;&lt;head&gt;&lt;meta charset=\&quot;UTF-8\&quot;&gt;&lt;meta name=\&quot;viewport\&quot;&quot;</span></div>
-<div class="line"><span class="lineno">  123</span>                                         <span class="stringliteral">&quot;content=\&quot;width=device-width, initial-scale=1.0\&quot;&gt;&lt;title&gt;Directory Listing&lt;/title&gt;&lt;style&gt;body{font-family:Arial,sans-serif;&quot;</span></div>
-<div class="line"><span class="lineno">  124</span>                                         <span class="stringliteral">&quot;margin:0;padding:0;background-color:#f8f9fa;}.container{max-width:800px;margin:50px auto;padding:20px;background:#fff;box-shadow:0 &quot;</span></div>
-<div class="line"><span class="lineno">  125</span>                                         <span class="stringliteral">&quot;4px 6px rgba(0,0,0,0.1);border-radius:8px;}h1{font-size:1.8rem;color:#333;text-align:center;}ul{list-style-type:none;padding:0;}&quot;</span></div>
-<div class="line"><span class="lineno">  126</span>                                         <span class="stringliteral">&quot;li{padding:8px 10px;border-bottom:1px solid #e0e0e0;}li a{text-decoration:none;color:#007bff;transition:color 0.3s;}&quot;</span></div>
-<div class="line"><span class="lineno">  127</span>                                         <span class="stringliteral">&quot;li a:hover{color:#0056b3;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=\&quot;container\&quot;&gt;&lt;h1&gt;Directory Listing&lt;/h1&gt;&lt;ul&gt;&quot;</span>;</div>
-<div class="line"><span class="lineno">  128</span>        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* DL_TEMPLATE_END = <span class="stringliteral">&quot;&lt;/ul&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>;</div>
-<div class="line"><span class="lineno">  129</span>        std::string bodyTemp = DL_TEMPLATE;</div>
-<div class="line"><span class="lineno">  130</span>        std::string rootPath = root;</div>
-<div class="line"><span class="lineno">  131</span>        DIR* dir;</div>
-<div class="line"><span class="lineno">  132</span> </div>
-<div class="line"><span class="lineno">  133</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Path in getDirListing: &quot;</span> &lt;&lt; path &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  134</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Root in getDirListing: &quot;</span> &lt;&lt; root &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  135</span>        <span class="comment">/*      if (rootPath[rootPath.size() - 1] != &#39;/&#39;) {</span></div>
-<div class="line"><span class="lineno">  136</span><span class="comment">                    rootPath += &quot;/&quot;;</span></div>
-<div class="line"><span class="lineno">  137</span><span class="comment">                } */</span></div>
-<div class="line"><span class="lineno">  138</span>        rootPath += path; <span class="comment">// TODO: should be relative path, i.e. without leading /root/dataDir, currently breaks</span></div>
-<div class="line"><span class="lineno">  139</span>        <span class="keywordflow">if</span> ((dir = opendir(rootPath.c_str())) == NULL) {</div>
-<div class="line"><span class="lineno">  140</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(INTERNAL_SERVER_ERROR, <span class="stringliteral">&quot;getDirectoryListing: Couldn&#39;t open directory&quot;</span>);</div>
-<div class="line"><span class="lineno">  141</span>        }</div>
-<div class="line"><span class="lineno">  142</span>        <span class="keyword">struct </span>dirent* ent;</div>
-<div class="line"><span class="lineno">  143</span>        <span class="keywordflow">while</span> ((ent = readdir(dir)) != NULL) {</div>
-<div class="line"><span class="lineno">  144</span>            std::string dirName(ent-&gt;d_name);</div>
-<div class="line"><span class="lineno">  145</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Found dir: &quot;</span> &lt;&lt; dirName &lt;&lt; std::endl;</div>
+<p>Generate the Directory Listing HTML for the passed uri. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uri</td><td></td></tr>
+    <tr><td class="paramname">root</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::string the rendered HTML for the directory. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>In case of a location's root having a subdirectory that shares the name of a sublocation, the location takes precedence during routing. This means upon autoindex, clicking the directory foo/ routes to a nested location named /foo, and foo/ is inaccessible. This is by design. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00132">132</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  132</span>                                                                                                         { <span class="comment">// temporarily pass root path as parameter</span></div>
+<div class="line"><span class="lineno">  133</span>        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* DL_TEMPLATE = <span class="stringliteral">&quot;&lt;!DOCTYPE html&gt;&lt;html lang=\&quot;en\&quot;&gt;&lt;head&gt;&lt;meta charset=\&quot;UTF-8\&quot;&gt;&lt;meta name=\&quot;viewport\&quot;&quot;</span></div>
+<div class="line"><span class="lineno">  134</span>                                         <span class="stringliteral">&quot;content=\&quot;width=device-width, initial-scale=1.0\&quot;&gt;&lt;title&gt;Directory Listing&lt;/title&gt;&lt;style&gt;body{font-family:Arial,sans-serif;&quot;</span></div>
+<div class="line"><span class="lineno">  135</span>                                         <span class="stringliteral">&quot;margin:0;padding:0;background-color:#f8f9fa;}.container{max-width:800px;margin:50px auto;padding:20px;background:#fff;box-shadow:0 &quot;</span></div>
+<div class="line"><span class="lineno">  136</span>                                         <span class="stringliteral">&quot;4px 6px rgba(0,0,0,0.1);border-radius:8px;}h1{font-size:1.8rem;color:#333;text-align:center;}ul{list-style-type:none;padding:0;}&quot;</span></div>
+<div class="line"><span class="lineno">  137</span>                                         <span class="stringliteral">&quot;li{padding:8px 10px;border-bottom:1px solid #e0e0e0;}li a{text-decoration:none;color:#007bff;transition:color 0.3s;}&quot;</span></div>
+<div class="line"><span class="lineno">  138</span>                                         <span class="stringliteral">&quot;li a:hover{color:#0056b3;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=\&quot;container\&quot;&gt;&lt;h1&gt;Directory Listing&lt;/h1&gt;&lt;ul&gt;&quot;</span>;</div>
+<div class="line"><span class="lineno">  139</span>        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* DL_TEMPLATE_END = <span class="stringliteral">&quot;&lt;/ul&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>;</div>
+<div class="line"><span class="lineno">  140</span>        std::string bodyTemp = DL_TEMPLATE;</div>
+<div class="line"><span class="lineno">  141</span>        std::string rootPath = root;</div>
+<div class="line"><span class="lineno">  142</span>        <span class="comment">// TODO: root path should only be appended for file links; not directories</span></div>
+<div class="line"><span class="lineno">  143</span>        <span class="comment">// TODO: directories should be prefixed with the full URI instead</span></div>
+<div class="line"><span class="lineno">  144</span>        DIR* dir;</div>
+<div class="line"><span class="lineno">  145</span>        (void)location;</div>
 <div class="line"><span class="lineno">  146</span> </div>
-<div class="line"><span class="lineno">  147</span>            <span class="keywordflow">if</span> (dirName == <span class="stringliteral">&quot;.&quot;</span>) {</div>
-<div class="line"><span class="lineno">  148</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  149</span>            }</div>
-<div class="line"><span class="lineno">  150</span>            <span class="keywordflow">if</span> (dirName == <span class="stringliteral">&quot;..&quot;</span> &amp;&amp; (path == <span class="stringliteral">&quot;/&quot;</span> || path == <span class="stringliteral">&quot;&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  151</span>                <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  152</span>            }</div>
-<div class="line"><span class="lineno">  153</span>            std::string link;</div>
-<div class="line"><span class="lineno">  154</span>            <span class="keywordflow">if</span> (ent-&gt;d_type == DT_DIR) {</div>
-<div class="line"><span class="lineno">  155</span>                link = <span class="stringliteral">&quot;&lt;a href=\&quot;&quot;</span> + dirName + <span class="stringliteral">&quot;/&quot;</span> + <span class="stringliteral">&quot;\&quot;&gt;&quot;</span> + dirName + <span class="stringliteral">&quot;/&lt;/a&gt;&quot;</span>;</div>
-<div class="line"><span class="lineno">  156</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  157</span>                link = <span class="stringliteral">&quot;&lt;a href=\&quot;&quot;</span> + dirName + <span class="stringliteral">&quot;\&quot;&gt;&quot;</span> + dirName + <span class="stringliteral">&quot;&lt;/a&gt;&quot;</span>;</div>
-<div class="line"><span class="lineno">  158</span>            }</div>
-<div class="line"><span class="lineno">  159</span>            bodyTemp += <span class="stringliteral">&quot;&lt;li&gt;&quot;</span> + link + <span class="stringliteral">&quot;&lt;/li&gt;&quot;</span>; <span class="comment">// TODO: links to directories and routes still break</span></div>
-<div class="line"><span class="lineno">  160</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Setting url to: &quot;</span> &lt;&lt; link &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  161</span>        }</div>
-<div class="line"><span class="lineno">  162</span>        closedir(dir);</div>
-<div class="line"><span class="lineno">  163</span>        <span class="keywordflow">return</span> bodyTemp + DL_TEMPLATE_END;</div>
-<div class="line"><span class="lineno">  164</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1exception_html"><div class="ttname"><a href="classhttp_1_1exception.html">http::exception</a></div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00028">http.hpp:28</a></div></div>
+<div class="line"><span class="lineno">  147</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Uri safeAbsolutePath in getDirListing:&quot;</span> &lt;&lt; uri.<a class="code hl_variable" href="structhttp_1_1Uri.html#ac06c347ef500866e9a09e8b62dcebfae">safeAbsolutePath</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  148</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;UriPath in getDirListing: &quot;</span> &lt;&lt; uri.<a class="code hl_variable" href="structhttp_1_1Uri.html#a93dd3593845ffb7acff77c621e8562d0">path</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  149</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Root in getDirListing: &quot;</span> &lt;&lt; root &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  150</span>        <span class="comment">// rootPath += path; // TODO: should be relative path, i.e. without leading /root/dataDir, currently breaks</span></div>
+<div class="line"><span class="lineno">  151</span>        <span class="keywordflow">if</span> ((dir = opendir(rootPath.c_str())) == NULL) {</div>
+<div class="line"><span class="lineno">  152</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(INTERNAL_SERVER_ERROR, <span class="stringliteral">&quot;getDirectoryListing: Couldn&#39;t open directory&quot;</span>);</div>
+<div class="line"><span class="lineno">  153</span>        }</div>
+<div class="line"><span class="lineno">  154</span>        <span class="keyword">struct </span>dirent* ent;</div>
+<div class="line"><span class="lineno">  155</span>        <span class="keywordflow">while</span> ((ent = readdir(dir)) != NULL) {</div>
+<div class="line"><span class="lineno">  156</span>            std::string dirName(ent-&gt;d_name);</div>
+<div class="line"><span class="lineno">  157</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Found dir: &quot;</span> &lt;&lt; dirName &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  158</span> </div>
+<div class="line"><span class="lineno">  159</span>            <span class="keywordflow">if</span> (dirName == <span class="stringliteral">&quot;.&quot;</span>) {</div>
+<div class="line"><span class="lineno">  160</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  161</span>            }</div>
+<div class="line"><span class="lineno">  162</span>            <span class="keywordflow">if</span> (dirName == <span class="stringliteral">&quot;..&quot;</span> &amp;&amp; (uri.<a class="code hl_variable" href="structhttp_1_1Uri.html#a93dd3593845ffb7acff77c621e8562d0">path</a> == <span class="stringliteral">&quot;/&quot;</span> || uri.<a class="code hl_variable" href="structhttp_1_1Uri.html#a93dd3593845ffb7acff77c621e8562d0">path</a> == <span class="stringliteral">&quot;&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  163</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  164</span>            }</div>
+<div class="line"><span class="lineno">  165</span>            std::string link;</div>
+<div class="line"><span class="lineno">  166</span>            <span class="keywordflow">if</span> (ent-&gt;d_type == DT_DIR) {</div>
+<div class="line"><span class="lineno">  167</span>                link = <span class="stringliteral">&quot;&lt;a href=\&quot;&quot;</span> + uri.<a class="code hl_variable" href="structhttp_1_1Uri.html#a93dd3593845ffb7acff77c621e8562d0">path</a> + <span class="stringliteral">&quot;/&quot;</span> + dirName + <span class="stringliteral">&quot;\&quot;&gt;&quot;</span> + dirName + <span class="stringliteral">&quot;/&lt;/a&gt;&quot;</span>; <span class="comment">// don&#39;t append the whole uri.path unless we&#39;re actually that deep into locations</span></div>
+<div class="line"><span class="lineno">  168</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  169</span>                link = <span class="stringliteral">&quot;&lt;a href=\&quot;&quot;</span> + uri.<a class="code hl_variable" href="structhttp_1_1Uri.html#a93dd3593845ffb7acff77c621e8562d0">path</a> + <span class="stringliteral">&quot;/&quot;</span> + dirName + <span class="stringliteral">&quot;\&quot;&gt;&quot;</span> + dirName + <span class="stringliteral">&quot;&lt;/a&gt;&quot;</span>;</div>
+<div class="line"><span class="lineno">  170</span>            }</div>
+<div class="line"><span class="lineno">  171</span>            bodyTemp += <span class="stringliteral">&quot;&lt;li&gt;&quot;</span> + link + <span class="stringliteral">&quot;&lt;/li&gt;&quot;</span>; <span class="comment">// TODO: links to directories and routes still break</span></div>
+<div class="line"><span class="lineno">  172</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Setting url to: &quot;</span> &lt;&lt; link &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  173</span>        }</div>
+<div class="line"><span class="lineno">  174</span>        closedir(dir);</div>
+<div class="line"><span class="lineno">  175</span>        <span class="keywordflow">return</span> bodyTemp + DL_TEMPLATE_END;</div>
+<div class="line"><span class="lineno">  176</span>    }</div>
+<div class="ttc" id="aclasshttp_1_1exception_html"><div class="ttname"><a href="classhttp_1_1exception.html">http::exception</a></div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00029">http.hpp:29</a></div></div>
+<div class="ttc" id="astructhttp_1_1Uri_html_a93dd3593845ffb7acff77c621e8562d0"><div class="ttname"><a href="structhttp_1_1Uri.html#a93dd3593845ffb7acff77c621e8562d0">http::Uri::path</a></div><div class="ttdeci">std::string path</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00074">types.hpp:74</a></div></div>
+<div class="ttc" id="astructhttp_1_1Uri_html_ac06c347ef500866e9a09e8b62dcebfae"><div class="ttname"><a href="structhttp_1_1Uri.html#ac06c347ef500866e9a09e8b62dcebfae">http::Uri::safeAbsolutePath</a></div><div class="ttdeci">std::string safeAbsolutePath</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00076">types.hpp:76</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="namespacehttp_a1873f0c3392cd24902c5b773b0f28f6f_icgraph.png" border="0" usemap="#anamespacehttp_a1873f0c3392cd24902c5b773b0f28f6f_icgraph" alt=""/></div>
-<map name="anamespacehttp_a1873f0c3392cd24902c5b773b0f28f6f_icgraph" id="anamespacehttp_a1873f0c3392cd24902c5b773b0f28f6f_icgraph">
-<area shape="rect" title=" " alt="" coords="236,5,416,31"/>
+<div class="center"><img src="namespacehttp_a1ab12f205ef403b73e4a0e9f93d15291_icgraph.png" border="0" usemap="#anamespacehttp_a1ab12f205ef403b73e4a0e9f93d15291_icgraph" alt=""/></div>
+<map name="anamespacehttp_a1ab12f205ef403b73e4a0e9f93d15291_icgraph" id="anamespacehttp_a1ab12f205ef403b73e4a0e9f93d15291_icgraph">
+<area shape="rect" title="Generate the Directory Listing HTML for the passed uri." alt="" coords="236,5,416,31"/>
 <area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="5,5,188,31"/>
 <area shape="poly" title=" " alt="" coords="222,21,188,21,188,15,222,15"/>
 </map>
@@ -511,23 +532,23 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00081">81</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   81</span>                                                  {</div>
-<div class="line"><span class="lineno">   82</span>        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* errorPageTemplate =</div>
-<div class="line"><span class="lineno">   83</span>            <span class="stringliteral">&quot;&lt;!DOCTYPE html&gt;&lt;html lang=\&quot;en\&quot;&gt;&lt;head&gt;&lt;title&gt;%d %s&lt;/title&gt;&lt;style&gt;&quot;</span></div>
-<div class="line"><span class="lineno">   84</span>            <span class="stringliteral">&quot;body{background-color:#2b3042;justify-content: center;text-align: center;color:#d3dbeb;}&quot;</span></div>
-<div class="line"><span class="lineno">   85</span>            <span class="stringliteral">&quot;h1{font-size:5rem;}p{font-size: 1.5rem;padding-bottom: 10px;}a{&quot;</span></div>
-<div class="line"><span class="lineno">   86</span>            <span class="stringliteral">&quot;text-decoration: none;color: #d3dbeb;padding: 10px;border: 3px solid #d3dbeb;font-weight: bold;}&lt;/style&gt;&quot;</span></div>
-<div class="line"><span class="lineno">   87</span>            <span class="stringliteral">&quot;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;%d&lt;/h1&gt;&lt;p&gt;%s&lt;/p&gt;&lt;a href=\&quot;/home_directory\&quot;&gt;Go Back to Home&lt;/a&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>;</div>
-<div class="line"><span class="lineno">   88</span> </div>
-<div class="line"><span class="lineno">   89</span>        <span class="keywordtype">char</span> errorPage[1024];</div>
-<div class="line"><span class="lineno">   90</span>        <span class="keyword">const</span> <span class="keywordtype">char</span>* statusMessage = <a class="code hl_function" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc">getStatusMessage</a>(statusCode).c_str();</div>
-<div class="line"><span class="lineno">   91</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;getErrorPage writing: &quot;</span> &lt;&lt; statusCode &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; statusMessage &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   92</span>        snprintf(errorPage, <span class="keyword">sizeof</span>(errorPage), errorPageTemplate, statusCode, statusMessage, statusCode, statusMessage); <span class="comment">// TODO: replace this with a legal function</span></div>
-<div class="line"><span class="lineno">   93</span> </div>
-<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">return</span> std::string(errorPage);</div>
-<div class="line"><span class="lineno">   95</span>    }</div>
-<div class="ttc" id="anamespacehttp_html_a6ffd27a10b72490009d84fe377d9d8fc"><div class="ttname"><a href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc">http::getStatusMessage</a></div><div class="ttdeci">const std::string &amp; getStatusMessage(StatusCode statusCode)</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00007">http.cpp:7</a></div></div>
+<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00083">83</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   83</span>                                                  {</div>
+<div class="line"><span class="lineno">   84</span>        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* errorPageTemplate =</div>
+<div class="line"><span class="lineno">   85</span>            <span class="stringliteral">&quot;&lt;!DOCTYPE html&gt;&lt;html lang=\&quot;en\&quot;&gt;&lt;head&gt;&lt;title&gt;%d %s&lt;/title&gt;&lt;style&gt;&quot;</span></div>
+<div class="line"><span class="lineno">   86</span>            <span class="stringliteral">&quot;body{background-color:#2b3042;justify-content: center;text-align: center;color:#d3dbeb;}&quot;</span></div>
+<div class="line"><span class="lineno">   87</span>            <span class="stringliteral">&quot;h1{font-size:5rem;}p{font-size: 1.5rem;padding-bottom: 10px;}a{&quot;</span></div>
+<div class="line"><span class="lineno">   88</span>            <span class="stringliteral">&quot;text-decoration: none;color: #d3dbeb;padding: 10px;border: 3px solid #d3dbeb;font-weight: bold;}&lt;/style&gt;&quot;</span></div>
+<div class="line"><span class="lineno">   89</span>            <span class="stringliteral">&quot;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;%d&lt;/h1&gt;&lt;p&gt;%s&lt;/p&gt;&lt;a href=\&quot;/\&quot;&gt;Go Back to Home&lt;/a&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>;</div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span>        <span class="keywordtype">char</span> errorPage[1024];</div>
+<div class="line"><span class="lineno">   92</span>        <span class="keyword">const</span> <span class="keywordtype">char</span>* statusMessage = <a class="code hl_function" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc">getStatusMessage</a>(statusCode).c_str();</div>
+<div class="line"><span class="lineno">   93</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;getErrorPage writing: &quot;</span> &lt;&lt; statusCode &lt;&lt; <span class="stringliteral">&quot; &quot;</span> &lt;&lt; statusMessage &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   94</span>        snprintf(errorPage, <span class="keyword">sizeof</span>(errorPage), errorPageTemplate, statusCode, statusMessage, statusCode, statusMessage); <span class="comment">// TODO: replace this with a legal function</span></div>
+<div class="line"><span class="lineno">   95</span> </div>
+<div class="line"><span class="lineno">   96</span>        <span class="keywordflow">return</span> std::string(errorPage);</div>
+<div class="line"><span class="lineno">   97</span>    }</div>
+<div class="ttc" id="anamespacehttp_html_a6ffd27a10b72490009d84fe377d9d8fc"><div class="ttname"><a href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc">http::getStatusMessage</a></div><div class="ttdeci">const std::string &amp; getStatusMessage(StatusCode statusCode)</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00009">http.cpp:9</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -573,20 +594,20 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00056">56</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   56</span>                                             {</div>
-<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">switch</span> (method) {</div>
-<div class="line"><span class="lineno">   58</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">GET</a>:</div>
-<div class="line"><span class="lineno">   59</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GET&quot;</span>;</div>
-<div class="line"><span class="lineno">   60</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab">POST</a>:</div>
-<div class="line"><span class="lineno">   61</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;POST&quot;</span>;</div>
-<div class="line"><span class="lineno">   62</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30">DELETE</a>:</div>
-<div class="line"><span class="lineno">   63</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;DELETE&quot;</span>;</div>
-<div class="line"><span class="lineno">   64</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa6c01fa09f0e2f992d5a9de8d971eaacd">_ERROR</a>:</div>
-<div class="line"><span class="lineno">   65</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;ERROR: You should not be seeing this&quot;</span>;</div>
-<div class="line"><span class="lineno">   66</span>        }</div>
-<div class="line"><span class="lineno">   67</span>        <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(NOT_IMPLEMENTED, <span class="stringliteral">&quot;method not implemented&quot;</span>);</div>
-<div class="line"><span class="lineno">   68</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00058">58</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>                                             {</div>
+<div class="line"><span class="lineno">   59</span>        <span class="keywordflow">switch</span> (method) {</div>
+<div class="line"><span class="lineno">   60</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">GET</a>:</div>
+<div class="line"><span class="lineno">   61</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;GET&quot;</span>;</div>
+<div class="line"><span class="lineno">   62</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab">POST</a>:</div>
+<div class="line"><span class="lineno">   63</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;POST&quot;</span>;</div>
+<div class="line"><span class="lineno">   64</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30">DELETE</a>:</div>
+<div class="line"><span class="lineno">   65</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;DELETE&quot;</span>;</div>
+<div class="line"><span class="lineno">   66</span>            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa6c01fa09f0e2f992d5a9de8d971eaacd">_ERROR</a>:</div>
+<div class="line"><span class="lineno">   67</span>                <span class="keywordflow">return</span> <span class="stringliteral">&quot;ERROR: You should not be seeing this&quot;</span>;</div>
+<div class="line"><span class="lineno">   68</span>        }</div>
+<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(NOT_IMPLEMENTED, <span class="stringliteral">&quot;method not implemented&quot;</span>);</div>
+<div class="line"><span class="lineno">   70</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -636,55 +657,55 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00007">7</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    7</span>                                                             {</div>
-<div class="line"><span class="lineno">    8</span>        <span class="keyword">static</span> std::map&lt;StatusCode, std::string&gt; statusMessages;</div>
-<div class="line"><span class="lineno">    9</span>        <span class="keywordflow">if</span> (statusMessages.empty()) {</div>
-<div class="line"><span class="lineno">   10</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ad9006f1cb7c0f5a565cba334dc8c78aa">UNKNWN</a>] = <span class="stringliteral">&quot;Unknown Status Code, Whoopsie&quot;</span>;</div>
-<div class="line"><span class="lineno">   11</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc">OK</a>] = <span class="stringliteral">&quot;OK&quot;</span>;</div>
-<div class="line"><span class="lineno">   12</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a55ec2403fcca929391dbb044ffed5e85">CREATED</a>] = <span class="stringliteral">&quot;Created&quot;</span>;</div>
-<div class="line"><span class="lineno">   13</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ada040cfaa65857ae3be3676c276fc87a">ACCEPTED</a>] = <span class="stringliteral">&quot;Accepted&quot;</span>;</div>
-<div class="line"><span class="lineno">   14</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a1f8808bf48e47d5ded8dd2093dc6401a">NO_CONTENT</a>] = <span class="stringliteral">&quot;No Content&quot;</span>;</div>
-<div class="line"><span class="lineno">   15</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af48f28793b2b2cf55236a361684fe374">MOVED_PERMANENTLY</a>] = <span class="stringliteral">&quot;Moved Permanently&quot;</span>;</div>
-<div class="line"><span class="lineno">   16</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a664deb693ad9829d972110894872ba8d">FOUND</a>] = <span class="stringliteral">&quot;Found&quot;</span>;</div>
-<div class="line"><span class="lineno">   17</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a5717ca1f9dcd04dba55487f8210aa9f3">SEE_OTHER</a>] = <span class="stringliteral">&quot;See Other&quot;</span>;</div>
-<div class="line"><span class="lineno">   18</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ad2025c2f62630fe5349c620f6c19b68a">NOT_MODIFIED</a>] = <span class="stringliteral">&quot;Not Modified&quot;</span>;</div>
-<div class="line"><span class="lineno">   19</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">BAD_REQUEST</a>] = <span class="stringliteral">&quot;Bad Request&quot;</span>;</div>
-<div class="line"><span class="lineno">   20</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3d7d9fa1fdefebf6853cb2a1bdb7ed45">UNAUTHORIZED</a>] = <span class="stringliteral">&quot;Unauthorized&quot;</span>;</div>
-<div class="line"><span class="lineno">   21</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">FORBIDDEN</a>] = <span class="stringliteral">&quot;Forbidden&quot;</span>;</div>
-<div class="line"><span class="lineno">   22</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a144f7cef2e3efe6d823debdf4e62b10c">NOT_FOUND</a>] = <span class="stringliteral">&quot;Not Found&quot;</span>;</div>
-<div class="line"><span class="lineno">   23</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a951e17c8b8b27ee06ced2f743295c2ad">METHOD_NOT_ALLOWED</a>] = <span class="stringliteral">&quot;Method Not Allowed&quot;</span>;</div>
-<div class="line"><span class="lineno">   24</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af02e26d07c2c0b6609ef53180fa5501b">NOT_ACCEPTABLE</a>] = <span class="stringliteral">&quot;Not Acceptable&quot;</span>;</div>
-<div class="line"><span class="lineno">   25</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762abfd170331bc52230235a1a5a3b8855b1">REQUEST_TIMEOUT</a>] = <span class="stringliteral">&quot;Request Timeout&quot;</span>;</div>
-<div class="line"><span class="lineno">   26</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a0102681b664612b47f268b7b25b455f3">CONFLICT</a>] = <span class="stringliteral">&quot;Conflict&quot;</span>;</div>
-<div class="line"><span class="lineno">   27</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a6a57adb9b4b8e48c83ffd31803861c90">GONE</a>] = <span class="stringliteral">&quot;Gone&quot;</span>;</div>
-<div class="line"><span class="lineno">   28</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a99433d071bad8a0f316f89d915e3a65f">LENGTH_REQUIRED</a>] = <span class="stringliteral">&quot;Length Required&quot;</span>;</div>
-<div class="line"><span class="lineno">   29</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a60a8bf8892fa4895d1fdabe169243458">PRECONDITION_FAILED</a>] = <span class="stringliteral">&quot;Precondition Failed&quot;</span>;</div>
-<div class="line"><span class="lineno">   30</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ae0967dfd6179bfd162129b973a2acf8a">PAYLOAD_TOO_LARGE</a>] = <span class="stringliteral">&quot;Payload Too Large&quot;</span>;</div>
-<div class="line"><span class="lineno">   31</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a873ca8ab2862e690356decb197a57b21">URI_TOO_LONG</a>] = <span class="stringliteral">&quot;URI Too Long&quot;</span>;</div>
-<div class="line"><span class="lineno">   32</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a032b28c11dba5740005c00c42e23ee9b">UNSUPPORTED_MEDIA_TYPE</a>] = <span class="stringliteral">&quot;Unsupported Media Type&quot;</span>;</div>
-<div class="line"><span class="lineno">   33</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762adf7a10453ad32b7ddaf6ea0cc390ecfd">RANGE_NOT_SATISFIABLE</a>] = <span class="stringliteral">&quot;Range Not Satisfiable&quot;</span>;</div>
-<div class="line"><span class="lineno">   34</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a61bc4fa7ffe014a95f2fbf6afdc4e10c">EXPECTATION_FAILED</a>] = <span class="stringliteral">&quot;Expectation Failed&quot;</span>;</div>
-<div class="line"><span class="lineno">   35</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aac28ecf126a5f02c8a8e5c6aede2532c">IM_A_TEAPOT</a>] = <span class="stringliteral">&quot;I&#39;m a teapot&quot;</span>;</div>
-<div class="line"><span class="lineno">   36</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a6476fc983abd2f32a9978d54caf9a3f1">MISDIRECTED_REQUEST</a>] = <span class="stringliteral">&quot;Misdirected Request&quot;</span>;</div>
-<div class="line"><span class="lineno">   37</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ac2025fee956f6968ae972ba1490e46a7">UPGRADE_REQUIRED</a>] = <span class="stringliteral">&quot;Upgrade Required&quot;</span>;</div>
-<div class="line"><span class="lineno">   38</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a8bed57973a8cc88394fe713a7a4c2cba">INTERNAL_SERVER_ERROR</a>] = <span class="stringliteral">&quot;Internal Server Error&quot;</span>;</div>
-<div class="line"><span class="lineno">   39</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702">NOT_IMPLEMENTED</a>] = <span class="stringliteral">&quot;Not Implemented&quot;</span>;</div>
-<div class="line"><span class="lineno">   40</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a28f37481a1370680536f38437874e5a7">BAD_GATEWAY</a>] = <span class="stringliteral">&quot;Bad Gateway&quot;</span>;</div>
-<div class="line"><span class="lineno">   41</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a884dcbd834ba0952d75e6418b7dad03c">SERVICE_UNAVAILABLE</a>] = <span class="stringliteral">&quot;Service Unavailable&quot;</span>;</div>
-<div class="line"><span class="lineno">   42</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a87353b86a06472ac0dea6f4580bf6683">GATEWAY_TIMEOUT</a>] = <span class="stringliteral">&quot;Gateway Timeout&quot;</span>;</div>
-<div class="line"><span class="lineno">   43</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff">HTTP_VERSION_NOT_SUPPORTED</a>] = <span class="stringliteral">&quot;HTTP Version Not Supported&quot;</span>;</div>
-<div class="line"><span class="lineno">   44</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af821caf2cfdc4a65b948ad4862cadaf8">LOOP_DETECTED</a>] = <span class="stringliteral">&quot;Loop Detected&quot;</span>;</div>
-<div class="line"><span class="lineno">   45</span>        }</div>
-<div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>        std::map&lt;StatusCode, std::string&gt;::const_iterator it = statusMessages.find(statusCode);</div>
-<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">if</span> (it != statusMessages.end()) {</div>
-<div class="line"><span class="lineno">   49</span>            <span class="keywordflow">return</span> it-&gt;second;</div>
-<div class="line"><span class="lineno">   50</span>        }</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>        <span class="keyword">static</span> <span class="keyword">const</span> std::string unknownStatus = <span class="stringliteral">&quot;Unknown Status Code, Whoopsie&quot;</span>;</div>
-<div class="line"><span class="lineno">   53</span>        <span class="keywordflow">return</span> unknownStatus;</div>
-<div class="line"><span class="lineno">   54</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00009">9</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    9</span>                                                             {</div>
+<div class="line"><span class="lineno">   10</span>        <span class="keyword">static</span> std::map&lt;StatusCode, std::string&gt; statusMessages;</div>
+<div class="line"><span class="lineno">   11</span>        <span class="keywordflow">if</span> (statusMessages.empty()) {</div>
+<div class="line"><span class="lineno">   12</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ad9006f1cb7c0f5a565cba334dc8c78aa">UNKNWN</a>] = <span class="stringliteral">&quot;Unknown Status Code, Whoopsie&quot;</span>;</div>
+<div class="line"><span class="lineno">   13</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc">OK</a>] = <span class="stringliteral">&quot;OK&quot;</span>;</div>
+<div class="line"><span class="lineno">   14</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a55ec2403fcca929391dbb044ffed5e85">CREATED</a>] = <span class="stringliteral">&quot;Created&quot;</span>;</div>
+<div class="line"><span class="lineno">   15</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ada040cfaa65857ae3be3676c276fc87a">ACCEPTED</a>] = <span class="stringliteral">&quot;Accepted&quot;</span>;</div>
+<div class="line"><span class="lineno">   16</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a1f8808bf48e47d5ded8dd2093dc6401a">NO_CONTENT</a>] = <span class="stringliteral">&quot;No Content&quot;</span>;</div>
+<div class="line"><span class="lineno">   17</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af48f28793b2b2cf55236a361684fe374">MOVED_PERMANENTLY</a>] = <span class="stringliteral">&quot;Moved Permanently&quot;</span>;</div>
+<div class="line"><span class="lineno">   18</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a664deb693ad9829d972110894872ba8d">FOUND</a>] = <span class="stringliteral">&quot;Found&quot;</span>;</div>
+<div class="line"><span class="lineno">   19</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a5717ca1f9dcd04dba55487f8210aa9f3">SEE_OTHER</a>] = <span class="stringliteral">&quot;See Other&quot;</span>;</div>
+<div class="line"><span class="lineno">   20</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ad2025c2f62630fe5349c620f6c19b68a">NOT_MODIFIED</a>] = <span class="stringliteral">&quot;Not Modified&quot;</span>;</div>
+<div class="line"><span class="lineno">   21</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">BAD_REQUEST</a>] = <span class="stringliteral">&quot;Bad Request&quot;</span>;</div>
+<div class="line"><span class="lineno">   22</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3d7d9fa1fdefebf6853cb2a1bdb7ed45">UNAUTHORIZED</a>] = <span class="stringliteral">&quot;Unauthorized&quot;</span>;</div>
+<div class="line"><span class="lineno">   23</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">FORBIDDEN</a>] = <span class="stringliteral">&quot;Forbidden&quot;</span>;</div>
+<div class="line"><span class="lineno">   24</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a144f7cef2e3efe6d823debdf4e62b10c">NOT_FOUND</a>] = <span class="stringliteral">&quot;Not Found&quot;</span>;</div>
+<div class="line"><span class="lineno">   25</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a951e17c8b8b27ee06ced2f743295c2ad">METHOD_NOT_ALLOWED</a>] = <span class="stringliteral">&quot;Method Not Allowed&quot;</span>;</div>
+<div class="line"><span class="lineno">   26</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af02e26d07c2c0b6609ef53180fa5501b">NOT_ACCEPTABLE</a>] = <span class="stringliteral">&quot;Not Acceptable&quot;</span>;</div>
+<div class="line"><span class="lineno">   27</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762abfd170331bc52230235a1a5a3b8855b1">REQUEST_TIMEOUT</a>] = <span class="stringliteral">&quot;Request Timeout&quot;</span>;</div>
+<div class="line"><span class="lineno">   28</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a0102681b664612b47f268b7b25b455f3">CONFLICT</a>] = <span class="stringliteral">&quot;Conflict&quot;</span>;</div>
+<div class="line"><span class="lineno">   29</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a6a57adb9b4b8e48c83ffd31803861c90">GONE</a>] = <span class="stringliteral">&quot;Gone&quot;</span>;</div>
+<div class="line"><span class="lineno">   30</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a99433d071bad8a0f316f89d915e3a65f">LENGTH_REQUIRED</a>] = <span class="stringliteral">&quot;Length Required&quot;</span>;</div>
+<div class="line"><span class="lineno">   31</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a60a8bf8892fa4895d1fdabe169243458">PRECONDITION_FAILED</a>] = <span class="stringliteral">&quot;Precondition Failed&quot;</span>;</div>
+<div class="line"><span class="lineno">   32</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ae0967dfd6179bfd162129b973a2acf8a">PAYLOAD_TOO_LARGE</a>] = <span class="stringliteral">&quot;Payload Too Large&quot;</span>;</div>
+<div class="line"><span class="lineno">   33</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a873ca8ab2862e690356decb197a57b21">URI_TOO_LONG</a>] = <span class="stringliteral">&quot;URI Too Long&quot;</span>;</div>
+<div class="line"><span class="lineno">   34</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a032b28c11dba5740005c00c42e23ee9b">UNSUPPORTED_MEDIA_TYPE</a>] = <span class="stringliteral">&quot;Unsupported Media Type&quot;</span>;</div>
+<div class="line"><span class="lineno">   35</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762adf7a10453ad32b7ddaf6ea0cc390ecfd">RANGE_NOT_SATISFIABLE</a>] = <span class="stringliteral">&quot;Range Not Satisfiable&quot;</span>;</div>
+<div class="line"><span class="lineno">   36</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a61bc4fa7ffe014a95f2fbf6afdc4e10c">EXPECTATION_FAILED</a>] = <span class="stringliteral">&quot;Expectation Failed&quot;</span>;</div>
+<div class="line"><span class="lineno">   37</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aac28ecf126a5f02c8a8e5c6aede2532c">IM_A_TEAPOT</a>] = <span class="stringliteral">&quot;I&#39;m a teapot&quot;</span>;</div>
+<div class="line"><span class="lineno">   38</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a6476fc983abd2f32a9978d54caf9a3f1">MISDIRECTED_REQUEST</a>] = <span class="stringliteral">&quot;Misdirected Request&quot;</span>;</div>
+<div class="line"><span class="lineno">   39</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ac2025fee956f6968ae972ba1490e46a7">UPGRADE_REQUIRED</a>] = <span class="stringliteral">&quot;Upgrade Required&quot;</span>;</div>
+<div class="line"><span class="lineno">   40</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a8bed57973a8cc88394fe713a7a4c2cba">INTERNAL_SERVER_ERROR</a>] = <span class="stringliteral">&quot;Internal Server Error&quot;</span>;</div>
+<div class="line"><span class="lineno">   41</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762afbf6e492480c6d18842a60c27cb04702">NOT_IMPLEMENTED</a>] = <span class="stringliteral">&quot;Not Implemented&quot;</span>;</div>
+<div class="line"><span class="lineno">   42</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a28f37481a1370680536f38437874e5a7">BAD_GATEWAY</a>] = <span class="stringliteral">&quot;Bad Gateway&quot;</span>;</div>
+<div class="line"><span class="lineno">   43</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a884dcbd834ba0952d75e6418b7dad03c">SERVICE_UNAVAILABLE</a>] = <span class="stringliteral">&quot;Service Unavailable&quot;</span>;</div>
+<div class="line"><span class="lineno">   44</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a87353b86a06472ac0dea6f4580bf6683">GATEWAY_TIMEOUT</a>] = <span class="stringliteral">&quot;Gateway Timeout&quot;</span>;</div>
+<div class="line"><span class="lineno">   45</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a7cfc6eae012c8486c4d8f5e33f030aff">HTTP_VERSION_NOT_SUPPORTED</a>] = <span class="stringliteral">&quot;HTTP Version Not Supported&quot;</span>;</div>
+<div class="line"><span class="lineno">   46</span>            statusMessages[<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af821caf2cfdc4a65b948ad4862cadaf8">LOOP_DETECTED</a>] = <span class="stringliteral">&quot;Loop Detected&quot;</span>;</div>
+<div class="line"><span class="lineno">   47</span>        }</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>        std::map&lt;StatusCode, std::string&gt;::const_iterator it = statusMessages.find(statusCode);</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">if</span> (it != statusMessages.end()) {</div>
+<div class="line"><span class="lineno">   51</span>            <span class="keywordflow">return</span> it-&gt;second;</div>
+<div class="line"><span class="lineno">   52</span>        }</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>        <span class="keyword">static</span> <span class="keyword">const</span> std::string unknownStatus = <span class="stringliteral">&quot;Unknown Status Code, Whoopsie&quot;</span>;</div>
+<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">return</span> unknownStatus;</div>
+<div class="line"><span class="lineno">   56</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -728,17 +749,17 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00070">70</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   70</span>                                                   {</div>
-<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">if</span> (method == <span class="stringliteral">&quot;GET&quot;</span>) {</div>
-<div class="line"><span class="lineno">   72</span>            <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">GET</a>;</div>
-<div class="line"><span class="lineno">   73</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (method == <span class="stringliteral">&quot;POST&quot;</span>) {</div>
-<div class="line"><span class="lineno">   74</span>            <span class="keywordflow">return</span> POST;</div>
-<div class="line"><span class="lineno">   75</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (method == <span class="stringliteral">&quot;DELETE&quot;</span>) {</div>
-<div class="line"><span class="lineno">   76</span>            <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30">DELETE</a>;</div>
-<div class="line"><span class="lineno">   77</span>        }</div>
-<div class="line"><span class="lineno">   78</span>        <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(NOT_IMPLEMENTED, <span class="stringliteral">&quot;method not implemented&quot;</span>);</div>
-<div class="line"><span class="lineno">   79</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00072">72</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>                                                   {</div>
+<div class="line"><span class="lineno">   73</span>        <span class="keywordflow">if</span> (method == <span class="stringliteral">&quot;GET&quot;</span>) {</div>
+<div class="line"><span class="lineno">   74</span>            <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">GET</a>;</div>
+<div class="line"><span class="lineno">   75</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (method == <span class="stringliteral">&quot;POST&quot;</span>) {</div>
+<div class="line"><span class="lineno">   76</span>            <span class="keywordflow">return</span> POST;</div>
+<div class="line"><span class="lineno">   77</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (method == <span class="stringliteral">&quot;DELETE&quot;</span>) {</div>
+<div class="line"><span class="lineno">   78</span>            <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30">DELETE</a>;</div>
+<div class="line"><span class="lineno">   79</span>        }</div>
+<div class="line"><span class="lineno">   80</span>        <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(NOT_IMPLEMENTED, <span class="stringliteral">&quot;method not implemented&quot;</span>);</div>
+<div class="line"><span class="lineno">   81</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -775,7 +796,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="http_8hpp_source.html#l00023">23</a> of file <a class="el" href="http_8hpp_source.html">http.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="http_8hpp_source.html#l00024">24</a> of file <a class="el" href="http_8hpp_source.html">http.hpp</a>.</p>
 
 </div>
 </div>
@@ -791,7 +812,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="http_8hpp_source.html#l00022">22</a> of file <a class="el" href="http_8hpp_source.html">http.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="http_8hpp_source.html#l00023">23</a> of file <a class="el" href="http_8hpp_source.html">http.hpp</a>.</p>
 
 </div>
 </div>
@@ -807,7 +828,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="http_8hpp_source.html#l00020">20</a> of file <a class="el" href="http_8hpp_source.html">http.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="http_8hpp_source.html#l00021">21</a> of file <a class="el" href="http_8hpp_source.html">http.hpp</a>.</p>
 
 </div>
 </div>
@@ -823,7 +844,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="http_8hpp_source.html#l00026">26</a> of file <a class="el" href="http_8hpp_source.html">http.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="http_8hpp_source.html#l00027">27</a> of file <a class="el" href="http_8hpp_source.html">http.hpp</a>.</p>
 
 </div>
 </div>

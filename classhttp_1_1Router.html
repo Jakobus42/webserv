@@ -76,9 +76,9 @@ Collaboration diagram for http::Router:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Router__coll__graph.png" border="0" usemap="#ahttp_1_1Router_coll__map" alt="Collaboration graph"/></div>
 <map name="ahttp_1_1Router_coll__map" id="ahttp_1_1Router_coll__map">
-<area shape="rect" title=" " alt="" coords="10,373,158,659"/>
-<area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="5,5,163,311"/>
-<area shape="poly" title=" " alt="" coords="87,311,87,357,81,357,81,311"/>
+<area shape="rect" title=" " alt="" coords="10,393,158,679"/>
+<area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="5,5,163,331"/>
+<area shape="poly" title=" " alt="" coords="87,331,87,377,81,377,81,331"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -605,8 +605,8 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  140</span>            <span class="keywordflow">return</span> std::make_pair(<a class="code hl_function" href="classhttp_1_1Router.html#a4be6420bb10ab5c7bdabefab8c07c0b2">joinPath</a>(<a class="code hl_variable" href="classhttp_1_1Router.html#a83526faf128d1feb47f9757d0e3daca1">m_globalRoot</a>.<a class="code hl_variable" href="structconfig_1_1Location.html#acd840cd528eacb701e56b8d1e9526b35">root</a>) + <a class="code hl_function" href="classhttp_1_1Router.html#a4be6420bb10ab5c7bdabefab8c07c0b2">joinPath</a>(currentRootPath), &amp;currentLocation); <span class="comment">// TODO: I think this doesn&#39;t set the root path properly yet, does it?</span></div>
 <div class="line"><span class="lineno">  141</span>        }</div>
 <div class="line"><span class="lineno">  142</span>        <span class="keywordflow">for</span> (std::vector&lt;config::Location&gt;::const_iterator loc = currentLocation.<a class="code hl_variable" href="structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f">locations</a>.begin(); loc != currentLocation.<a class="code hl_variable" href="structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f">locations</a>.end(); ++loc) {</div>
-<div class="line"><span class="lineno">  143</span>            <span class="keywordflow">if</span> (loc-&gt;path[0] == uriPath.at(depth)) {</div>
-<div class="line"><span class="lineno">  144</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Location matched: &quot;</span> &lt;&lt; loc-&gt;path[0] &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  143</span>            <span class="keywordflow">if</span> (!loc-&gt;path.empty() &amp;&amp; loc-&gt;path[0] == uriPath.at(depth)) {                                       <span class="comment">// TODO: breaks if location is &#39;/&#39; -&gt; check if (!loc-&gt;path.empty())</span></div>
+<div class="line"><span class="lineno">  144</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Location matched: &quot;</span> &lt;&lt; loc-&gt;path[0] &lt;&lt; std::endl;                                  <span class="comment">// TODO: check the codebase for other possibly unsafe garbage when a vector&lt;string&gt; is empty</span></div>
 <div class="line"><span class="lineno">  145</span>                <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; nextRootPath = !loc-&gt;root.empty() ? loc-&gt;root : currentRootPath; <span class="comment">// TODO: assign inherited rootPath during parsing</span></div>
 <div class="line"><span class="lineno">  146</span>                <span class="keywordflow">return</span> <a class="code hl_function" href="classhttp_1_1Router.html#ad6e4a793ff5dfda59239fa8394f4c64a">routeToPath</a>(uriPath, *loc, nextRootPath, redirects, depth + 1);                           <span class="comment">// use nearest parent</span></div>
 <div class="line"><span class="lineno">  147</span>            }</div>
@@ -628,7 +628,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  163</span>    }</div>
 <div class="ttc" id="aclasshttp_1_1Router_html_ad6e4a793ff5dfda59239fa8394f4c64a"><div class="ttname"><a href="classhttp_1_1Router.html#ad6e4a793ff5dfda59239fa8394f4c64a">http::Router::routeToPath</a></div><div class="ttdeci">std::pair&lt; std::string, const config::Location * &gt; routeToPath(const std::vector&lt; std::string &gt; &amp;uriPath, const config::Location &amp;currentLocation, const std::vector&lt; std::string &gt; &amp;currentRootPath, std::size_t redirects=0, std::size_t depth=0)</div><div class="ttdoc">Traverses m_locations according to a Request's Uri, respecting redirections while avoiding redirect l...</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00121">Router.cpp:121</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Router_html_ae806663a58c54da78a19cb22827ca53e"><div class="ttname"><a href="classhttp_1_1Router.html#ae806663a58c54da78a19cb22827ca53e">http::Router::MAX_REDIRECTS</a></div><div class="ttdeci">static const std::size_t MAX_REDIRECTS</div><div class="ttdef"><b>Definition</b> <a href="Router_8hpp_source.html#l00121">Router.hpp:121</a></div></div>
-<div class="ttc" id="aclasshttp_1_1exception_html"><div class="ttname"><a href="classhttp_1_1exception.html">http::exception</a></div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00028">http.hpp:28</a></div></div>
+<div class="ttc" id="aclasshttp_1_1exception_html"><div class="ttname"><a href="classhttp_1_1exception.html">http::exception</a></div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00029">http.hpp:29</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762af821caf2cfdc4a65b948ad4862cadaf8"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af821caf2cfdc4a65b948ad4862cadaf8">http::LOOP_DETECTED</a></div><div class="ttdeci">@ LOOP_DETECTED</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00047">types.hpp:46</a></div></div>
 <div class="ttc" id="astructconfig_1_1Location_html_a08fc4cccff64cc1e84bbfc9d78c1b896"><div class="ttname"><a href="structconfig_1_1Location.html#a08fc4cccff64cc1e84bbfc9d78c1b896">config::Location::hasRedirect</a></div><div class="ttdeci">bool hasRedirect() const</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00067">Location.hpp:67</a></div></div>
 <div class="ttc" id="astructconfig_1_1Location_html_a0c50bb58649046d471627c13925af3c5"><div class="ttname"><a href="structconfig_1_1Location.html#a0c50bb58649046d471627c13925af3c5">config::Location::redirectUriTokens</a></div><div class="ttdeci">std::vector&lt; std::string &gt; redirectUriTokens</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00014">Location.hpp:14</a></div></div>
@@ -723,56 +723,62 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Router_a984b170d146002ebe8fc701e7d0d7209_icgraph.png" border="0" usemap="#aclasshttp_1_1Router_a984b170d146002ebe8fc701e7d0d7209_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1Router_a984b170d146002ebe8fc701e7d0d7209_icgraph" id="aclasshttp_1_1Router_a984b170d146002ebe8fc701e7d0d7209_icgraph">
-<area shape="rect" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="1592,165,1755,190"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a674379abdea408c05bce1117c37ddc58" title=" " alt="" coords="1371,87,1544,127"/>
-<area shape="poly" title=" " alt="" coords="1620,163,1518,129,1520,124,1621,158"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a8367c60ca0e5b3f09652b089f15b1e8c" title=" " alt="" coords="1149,5,1322,45"/>
-<area shape="poly" title=" " alt="" coords="1654,155,1608,101,1578,74,1543,53,1488,34,1431,24,1374,19,1322,20,1322,14,1374,14,1431,18,1490,29,1545,48,1581,70,1612,97,1658,152"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#a80446234d3c666253d3d485c2ce8e46c" title=" " alt="" coords="1383,373,1532,413"/>
-<area shape="poly" title=" " alt="" coords="1652,202,1480,375,1477,371,1648,198"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#ae96980a09075f768b9b072297e2e25f6" title="redirects the user to a different url with a specific return code." alt="" coords="1371,157,1544,197"/>
-<area shape="poly" title=" " alt="" coords="1578,180,1544,180,1544,175,1578,175"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a3859e7628a017d5fa780676c8d53fd62" title="sets the root directory for the location." alt="" coords="1371,225,1544,265"/>
-<area shape="poly" title=" " alt="" coords="1620,197,1522,228,1521,223,1618,192"/>
-<area shape="poly" title=" " alt="" coords="1494,75,1481,68,1457,65,1437,67,1424,72,1420,78,1422,86,1417,87,1414,77,1421,68,1435,62,1457,60,1483,63,1496,70"/>
-<area shape="poly" title=" " alt="" coords="1388,84,1290,48,1292,43,1390,79"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a8c812450f29f28878fa8ab34d5934f2b" title="Saves the configuration data." alt="" coords="927,88,1100,128"/>
-<area shape="poly" title=" " alt="" coords="1357,110,1100,110,1100,105,1357,104"/>
-<area shape="poly" title=" " alt="" coords="1169,53,1069,90,1067,85,1167,48"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#acd8918fd916c45c633f04ff87e7c96ae" title="parses a line in the configuration file." alt="" coords="705,88,879,128"/>
-<area shape="poly" title=" " alt="" coords="913,111,879,111,879,105,913,105"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#aa5ac9363ea9ba96a657a351b9b2f3219" title="Parses the configuration file." alt="" coords="484,88,657,128"/>
-<area shape="poly" title=" " alt="" coords="691,111,658,111,658,105,691,105"/>
-<area shape="poly" title=" " alt="" coords="608,76,595,69,571,67,549,69,537,73,532,79,534,87,529,88,527,78,533,69,548,63,571,61,597,64,611,72"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a074868ef888a640498f54df02a8dd47e" title="Loads the configuration file, saving all the information." alt="" coords="245,88,419,128"/>
-<area shape="poly" title=" " alt="" coords="470,111,419,111,419,105,470,105"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="65,95,120,121"/>
-<area shape="poly" title=" " alt="" coords="232,111,120,111,120,105,232,105"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#ad17d535f4799a7aff46c311e6c3c6c06" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="1148,373,1323,413"/>
-<area shape="poly" title=" " alt="" coords="1369,396,1323,396,1323,391,1369,391"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#ab24dbcb89887e3f95f50534849ad8f8f" title=" " alt="" coords="1157,437,1314,477"/>
-<area shape="poly" title=" " alt="" coords="1375,420,1306,440,1304,435,1373,415"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#a310284f6a6f4d45ecc79f3ec4f6e9650" title=" " alt="" coords="939,405,1088,445"/>
-<area shape="poly" title=" " alt="" coords="1135,411,1088,417,1088,412,1134,405"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#abb2ccb0f5ef2c5cdc1904f879ae6b5b9" title=" " alt="" coords="717,405,867,445"/>
-<area shape="poly" title=" " alt="" coords="925,428,867,428,867,423,925,423"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#aa7770f7b9109b74b07d330fccf1661e4" title=" " alt="" coords="496,405,645,445"/>
-<area shape="poly" title=" " alt="" coords="703,428,646,428,646,423,703,423"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="228,413,436,438"/>
-<area shape="poly" title=" " alt="" coords="482,428,436,428,436,423,482,423"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,413,180,438"/>
-<area shape="poly" title=" " alt="" coords="214,428,180,428,180,423,214,423"/>
-<area shape="poly" title=" " alt="" coords="1142,447,1088,439,1089,433,1143,441"/>
-<area shape="poly" title=" " alt="" coords="1356,164,1100,124,1100,119,1357,159"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#af8ee337a03707c2c738a1149a18edc46" title=" " alt="" coords="1149,171,1322,211"/>
-<area shape="poly" title=" " alt="" coords="1357,186,1322,188,1322,183,1357,181"/>
-<area shape="poly" title=" " alt="" coords="1357,256,1307,256,1254,252,1199,242,1147,225,1110,205,1077,180,1029,130,1033,126,1081,176,1113,201,1149,220,1200,237,1254,246,1307,250,1357,251"/>
-<area shape="poly" title=" " alt="" coords="1362,225,1316,213,1318,208,1363,219"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a41c53f2726786fec056e8ec3872eb35e" title="prints the locations of the server." alt="" coords="1149,309,1322,349"/>
-<area shape="poly" title=" " alt="" coords="1392,273,1290,312,1288,307,1390,268"/>
-<area shape="poly" title=" " alt="" coords="1273,298,1260,291,1235,288,1214,290,1201,295,1197,301,1199,308,1194,310,1191,300,1198,290,1213,285,1235,283,1261,286,1275,293"/>
-<area shape="rect" href="classconfig_1_1ConfigFileParser.html#a792d50a5a52e80afa8412c26d03d0a07" title="prints the configuration data." alt="" coords="927,309,1100,349"/>
-<area shape="poly" title=" " alt="" coords="1135,332,1100,332,1100,327,1135,327"/>
+<area shape="rect" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="1749,150,1912,175"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a3ba66683724de83d316cbc0e4ae25db4" title=" " alt="" coords="1513,75,1678,100"/>
+<area shape="poly" title=" " alt="" coords="1787,147,1701,114,1658,103,1660,98,1702,109,1789,142"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a3316584441edea972e6e4060f51ef463" title=" " alt="" coords="1243,11,1430,36"/>
+<area shape="poly" title=" " alt="" coords="1811,140,1766,87,1735,61,1700,41,1665,28,1629,19,1554,10,1482,9,1419,14,1418,8,1482,4,1555,4,1630,14,1667,23,1702,36,1738,56,1770,83,1815,137"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#ac088fea9f3e6daf0e2c92024160e4e8c" title=" " alt="" coords="1513,261,1678,301"/>
+<area shape="poly" title=" " alt="" coords="1793,184,1637,263,1635,258,1791,179"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#a80446234d3c666253d3d485c2ce8e46c" title=" " alt="" coords="1521,352,1670,392"/>
+<area shape="poly" title=" " alt="" coords="1815,188,1768,249,1737,283,1703,315,1673,336,1642,354,1639,349,1670,332,1700,311,1733,280,1764,246,1811,185"/>
+<area shape="rect" href="classconfig_1_1Parser.html#ad6cfd50b2131632abc4971882e948bb3" title="redirects the user to a different url with a specific return code." alt="" coords="1489,124,1701,150"/>
+<area shape="poly" title=" " alt="" coords="1735,155,1701,151,1702,146,1736,149"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a638d661383fafd3e47698baad0af83c4" title="sets the root directory for the location." alt="" coords="1524,174,1667,199"/>
+<area shape="poly" title=" " alt="" coords="1736,175,1667,182,1667,176,1736,169"/>
+<area shape="poly" title=" " alt="" coords="1638,66,1626,57,1595,54,1570,56,1557,61,1554,66,1561,73,1557,77,1549,67,1553,57,1569,50,1595,48,1628,52,1641,62"/>
+<area shape="poly" title=" " alt="" coords="1529,74,1388,39,1390,34,1530,69"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a97fd721958c040d886ef3c6883680612" title="Saves the configuration data." alt="" coords="964,112,1184,138"/>
+<area shape="poly" title=" " alt="" coords="1499,97,1232,116,1184,119,1184,114,1232,110,1498,91"/>
+<area shape="poly" title=" " alt="" coords="1278,43,1233,58,1103,115,1100,110,1231,53,1277,38"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a09956d300111224407a859e13cb643ca" title="parses a line in the configuration file." alt="" coords="708,120,916,146"/>
+<area shape="poly" title=" " alt="" coords="950,131,916,132,916,127,950,126"/>
+<area shape="rect" href="classconfig_1_1Parser.html#af5b7ff58efd3154c3527707e922f0383" title="Parses the configuration file." alt="" coords="484,136,660,162"/>
+<area shape="poly" title=" " alt="" coords="695,143,660,146,660,140,694,138"/>
+<area shape="poly" title=" " alt="" coords="615,127,604,118,572,115,546,117,533,122,530,127,537,134,533,138,525,128,529,118,545,112,572,110,606,114,619,123"/>
+<area shape="rect" href="classconfig_1_1Parser.html#ae789708cd15489e2b0e032c1f15d8ab7" title="Loads the configuration file, saving all the information." alt="" coords="239,170,425,195"/>
+<area shape="poly" title=" " alt="" coords="471,166,424,172,423,167,470,160"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="65,196,120,222"/>
+<area shape="poly" title=" " alt="" coords="225,197,120,209,120,203,225,192"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a0e82e0e5d04aef7803c8c5f58cfe3674" title=" " alt="" coords="1261,288,1413,328"/>
+<area shape="poly" title=" " alt="" coords="1500,293,1413,302,1413,297,1499,288"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#af48ca6f60d5a5f41e35e19e55ddf78d3" title=" " alt="" coords="1003,288,1145,328"/>
+<area shape="poly" title=" " alt="" coords="1247,310,1146,310,1146,305,1247,305"/>
+<area shape="rect" href="classconfig_1_1GoodParser.html#a028eb45e6f8611817af6a186f0e29dd0" title=" " alt="" coords="501,249,643,289"/>
+<area shape="poly" title=" " alt="" coords="988,304,643,277,644,272,989,298"/>
+<area shape="poly" title=" " alt="" coords="487,261,120,215,120,210,487,256"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#ad17d535f4799a7aff46c311e6c3c6c06" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="1249,352,1424,392"/>
+<area shape="poly" title=" " alt="" coords="1507,374,1424,374,1424,369,1507,369"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#ab24dbcb89887e3f95f50534849ad8f8f" title=" " alt="" coords="1258,416,1415,456"/>
+<area shape="poly" title=" " alt="" coords="1508,396,1416,419,1415,414,1507,391"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#a310284f6a6f4d45ecc79f3ec4f6e9650" title=" " alt="" coords="999,384,1149,424"/>
+<area shape="poly" title=" " alt="" coords="1236,387,1149,397,1148,392,1235,381"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#abb2ccb0f5ef2c5cdc1904f879ae6b5b9" title=" " alt="" coords="737,384,887,424"/>
+<area shape="poly" title=" " alt="" coords="986,406,887,406,887,401,986,401"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#aa7770f7b9109b74b07d330fccf1661e4" title=" " alt="" coords="497,384,647,424"/>
+<area shape="poly" title=" " alt="" coords="723,406,647,406,647,401,723,401"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="228,391,436,416"/>
+<area shape="poly" title=" " alt="" coords="483,406,436,406,436,401,483,401"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,391,180,416"/>
+<area shape="poly" title=" " alt="" coords="214,406,180,406,180,401,214,401"/>
+<area shape="poly" title=" " alt="" coords="1244,427,1149,415,1149,410,1244,422"/>
+<area shape="poly" title=" " alt="" coords="1475,137,1184,130,1184,125,1475,132"/>
+<area shape="poly" title=" " alt="" coords="1510,179,1182,140,1183,135,1511,174"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a7844b95e699f469947387fb76625be67" title="prints the locations of the server." alt="" coords="1232,238,1441,263"/>
+<area shape="poly" title=" " alt="" coords="1530,205,1390,240,1388,235,1529,200"/>
+<area shape="poly" title=" " alt="" coords="1383,228,1380,224,1372,220,1337,216,1309,218,1294,223,1291,229,1299,236,1295,239,1286,229,1290,219,1308,213,1337,211,1373,215,1383,220,1387,225"/>
+<area shape="rect" href="classconfig_1_1Parser.html#aaf706bdfa5db0ede6c94dec7d622c873" title="prints the configuration data." alt="" coords="979,224,1169,264"/>
+<area shape="poly" title=" " alt="" coords="1218,250,1169,249,1169,243,1218,245"/>
 </map>
 </div>
 

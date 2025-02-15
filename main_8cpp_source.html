@@ -68,46 +68,56 @@ $(document).ready(function(){initNavTree('main_8cpp_source.html',''); initResiza
   <div class="headertitle"><div class="title">main.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="main_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="Parser_8hpp.html">config/Parser.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="Reactor_8hpp.html">core/Reactor.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="Logger_8hpp.html">shared/Logger.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="foldopen" id="foldopen00007" data-start="{" data-end="}">
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865">    7</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** <span class="keyword">const</span> argv) {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keywordflow">try</span> {</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        <span class="comment">// std::string basePath;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <span class="comment">// if (!http::getRootPath(basePath))</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="comment">//  return 1;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        std::string configPath = argc &gt; 1 ? argv[1] : <span class="stringliteral">&quot;config/configfile_example&quot;</span>;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <a class="code hl_class" href="classconfig_1_1ConfigFileParser.html">config::ConfigFileParser</a> configFileParser;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keywordflow">if</span> (configFileParser.<a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a074868ef888a640498f54df02a8dd47e">loadConfigFile</a>(configPath) == 1)</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keyword">const</span> std::vector&lt;config::ServerConfig&gt;&amp; serverConfigs = configFileParser.<a class="code hl_function" href="classconfig_1_1ConfigFileParser.html#a74a9317bcd3ecace69e730c7a443e478">getServerConfigs</a>();</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_class" href="classcore_1_1Reactor.html">core::Reactor</a> reactor;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        reactor.<a class="code hl_function" href="classcore_1_1Reactor.html#a22680f00ebdff615ab22dd553f3d52ea">init</a>(serverConfigs);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        reactor.<a class="code hl_function" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35">react</a>();</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        std::cout &lt;&lt; e.what() &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Server died :(&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
+<a href="main_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="GoodParser_8hpp.html">config/GoodParser.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="Parser_8hpp.html">config/Parser.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="Reactor_8hpp.html">core/Reactor.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="Logger_8hpp.html">shared/Logger.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="foldopen" id="foldopen00008" data-start="{" data-end="}">
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865">    8</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** <span class="keyword">const</span> argv) {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <span class="comment">// std::string basePath;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="comment">// if (!http::getRootPath(basePath))</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="comment">//  return 1;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        std::string configPath = argc &gt; 1 ? argv[1] : <span class="stringliteral">&quot;config/configfile_example&quot;</span>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <a class="code hl_class" href="classconfig_1_1Parser.html">config::Parser</a> configParser;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <a class="code hl_class" href="classconfig_1_1GoodParser.html">config::GoodParser</a> parser;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keywordflow">if</span> (!parser.<a class="code hl_function" href="classconfig_1_1GoodParser.html#a028eb45e6f8611817af6a186f0e29dd0">parseFile</a>(configPath)) {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <span class="keywordflow">return</span> 69;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        }</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Success!&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keywordflow">return</span> 42;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keywordflow">if</span> (configParser.<a class="code hl_function" href="classconfig_1_1Parser.html#ae789708cd15489e2b0e032c1f15d8ab7">loadConfig</a>(configPath) == 1)</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keyword">const</span> std::vector&lt;config::ServerConfig&gt;&amp; serverConfigs = configParser.<a class="code hl_function" href="classconfig_1_1Parser.html#adc1a6856ffa980607457b1833ebdef47">getServerConfigs</a>();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <a class="code hl_class" href="classcore_1_1Reactor.html">core::Reactor</a> reactor;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        reactor.<a class="code hl_function" href="classcore_1_1Reactor.html#a22680f00ebdff615ab22dd553f3d52ea">init</a>(serverConfigs);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        reactor.<a class="code hl_function" href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35">react</a>();</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        std::cout &lt;&lt; e.what() &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Server died :(&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
 </div>
+<div class="ttc" id="aGoodParser_8hpp_html"><div class="ttname"><a href="GoodParser_8hpp.html">GoodParser.hpp</a></div></div>
 <div class="ttc" id="aLogger_8hpp_html"><div class="ttname"><a href="Logger_8hpp.html">Logger.hpp</a></div></div>
 <div class="ttc" id="aParser_8hpp_html"><div class="ttname"><a href="Parser_8hpp.html">Parser.hpp</a></div></div>
 <div class="ttc" id="aReactor_8hpp_html"><div class="ttname"><a href="Reactor_8hpp.html">Reactor.hpp</a></div></div>
-<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html">config::ConfigFileParser</a></div><div class="ttdoc">This class is responsible for parsing the configuration file.</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00083">Parser.hpp:83</a></div></div>
-<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_a074868ef888a640498f54df02a8dd47e"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#a074868ef888a640498f54df02a8dd47e">config::ConfigFileParser::loadConfigFile</a></div><div class="ttdeci">int loadConfigFile(std::string &amp;configFileName)</div><div class="ttdoc">Loads the configuration file, saving all the information.</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00153">Parser.cpp:153</a></div></div>
-<div class="ttc" id="aclassconfig_1_1ConfigFileParser_html_a74a9317bcd3ecace69e730c7a443e478"><div class="ttname"><a href="classconfig_1_1ConfigFileParser.html#a74a9317bcd3ecace69e730c7a443e478">config::ConfigFileParser::getServerConfigs</a></div><div class="ttdeci">const std::vector&lt; ServerConfig &gt; &amp; getServerConfigs() const</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00189">Parser.cpp:189</a></div></div>
+<div class="ttc" id="aclassconfig_1_1GoodParser_html"><div class="ttname"><a href="classconfig_1_1GoodParser.html">config::GoodParser</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8hpp_source.html#l00042">GoodParser.hpp:42</a></div></div>
+<div class="ttc" id="aclassconfig_1_1GoodParser_html_a028eb45e6f8611817af6a186f0e29dd0"><div class="ttname"><a href="classconfig_1_1GoodParser.html#a028eb45e6f8611817af6a186f0e29dd0">config::GoodParser::parseFile</a></div><div class="ttdeci">bool parseFile(const std::string &amp;fileName)</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8cpp_source.html#l00184">GoodParser.cpp:184</a></div></div>
+<div class="ttc" id="aclassconfig_1_1Parser_html"><div class="ttname"><a href="classconfig_1_1Parser.html">config::Parser</a></div><div class="ttdoc">This class is responsible for parsing the configuration file.</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00083">Parser.hpp:83</a></div></div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_adc1a6856ffa980607457b1833ebdef47"><div class="ttname"><a href="classconfig_1_1Parser.html#adc1a6856ffa980607457b1833ebdef47">config::Parser::getServerConfigs</a></div><div class="ttdeci">const std::vector&lt; ServerConfig &gt; &amp; getServerConfigs() const</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00189">Parser.cpp:189</a></div></div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_ae789708cd15489e2b0e032c1f15d8ab7"><div class="ttname"><a href="classconfig_1_1Parser.html#ae789708cd15489e2b0e032c1f15d8ab7">config::Parser::loadConfig</a></div><div class="ttdeci">int loadConfig(std::string &amp;fileName)</div><div class="ttdoc">Loads the configuration file, saving all the information.</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00153">Parser.cpp:153</a></div></div>
 <div class="ttc" id="aclasscore_1_1Reactor_html"><div class="ttname"><a href="classcore_1_1Reactor.html">core::Reactor</a></div><div class="ttdoc">...</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8hpp_source.html#l00020">Reactor.hpp:20</a></div></div>
 <div class="ttc" id="aclasscore_1_1Reactor_html_a22680f00ebdff615ab22dd553f3d52ea"><div class="ttname"><a href="classcore_1_1Reactor.html#a22680f00ebdff615ab22dd553f3d52ea">core::Reactor::init</a></div><div class="ttdeci">void init(const std::vector&lt; config::ServerConfig &gt; &amp;serverConfigs)</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8cpp_source.html#l00033">Reactor.cpp:33</a></div></div>
 <div class="ttc" id="aclasscore_1_1Reactor_html_a3e4e9145e4a5623750c0604ee8015b35"><div class="ttname"><a href="classcore_1_1Reactor.html#a3e4e9145e4a5623750c0604ee8015b35">core::Reactor::react</a></div><div class="ttdeci">void react()</div><div class="ttdef"><b>Definition</b> <a href="Reactor_8cpp_source.html#l00048">Reactor.cpp:48</a></div></div>
-<div class="ttc" id="amain_8cpp_html_a172241e088a9da9dabf2cf839a73c865"><div class="ttname"><a href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865">main</a></div><div class="ttdeci">int main(int argc, char **const argv)</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00007">main.cpp:7</a></div></div>
+<div class="ttc" id="amain_8cpp_html_a172241e088a9da9dabf2cf839a73c865"><div class="ttname"><a href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865">main</a></div><div class="ttdeci">int main(int argc, char **const argv)</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00008">main.cpp:8</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -77,6 +77,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 
 <h3><a id="index_d" name="index_d"></a>- d -</h3><ul>
 <li>dataDir&#160;:&#160;<a class="el" href="structconfig_1_1ServerConfig.html#a66baff4b7f5df9003d3158772598c04f">config::ServerConfig</a></li>
+<li>dataDirectory&#160;:&#160;<a class="el" href="structconfig_1_1Server.html#a90c673a54f892b3234088cb8cbe8297e">config::Server</a></li>
 <li>DEBUG_COLOR&#160;:&#160;<a class="el" href="classshared_1_1Logger.html#a947b4b9408d2972aed42756ea186afc1">shared::Logger</a></li>
 </ul>
 
@@ -101,10 +102,12 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>indexFile&#160;:&#160;<a class="el" href="structconfig_1_1Location.html#ad07d3238b441c27aefa83d6a75ff2aad">config::Location</a></li>
 <li>INFO_COLOR&#160;:&#160;<a class="el" href="classshared_1_1Logger.html#a3dac45f61eb63b7ff1ebfb5ccc6b27bc">shared::Logger</a></li>
 <li>ip_address&#160;:&#160;<a class="el" href="structconfig_1_1ServerConfig.html#a5bbc3a33a999cfff71061c9a592f4780">config::ServerConfig</a></li>
+<li>ipAddress&#160;:&#160;<a class="el" href="structconfig_1_1Server.html#ab6c2dbe85e39cf0a9b85a8b062714e0f">config::Server</a></li>
 </ul>
 
 
 <h3><a id="index_l" name="index_l"></a>- l -</h3><ul>
+<li>location&#160;:&#160;<a class="el" href="structconfig_1_1Server.html#a6b92598157154bee56285dba9c26bfbd">config::Server</a></li>
 <li>locations&#160;:&#160;<a class="el" href="structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f">config::Location</a>, <a class="el" href="structconfig_1_1ServerConfig.html#a061ce1d2e07af7741aea4653dd035a49">config::ServerConfig</a></li>
 </ul>
 
@@ -114,8 +117,10 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>m_buffer&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#a1b850f69c68f06a4c75bfcd3a8526bb1">http::RequestParser</a></li>
 <li>m_clients&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">http::VirtualServer</a></li>
 <li>m_config&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#a939251c61141089758ff26196db21a15">http::VirtualServer</a></li>
+<li>m_configs&#160;:&#160;<a class="el" href="classconfig_1_1GoodParser.html#ac95af61c58f48d84495874f7830a87a3">config::GoodParser</a></li>
 <li>m_contentLength&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#a7d98a07e4d93790df8a1126a2c41a0b0">http::RequestParser</a></li>
-<li>m_data&#160;:&#160;<a class="el" href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">http::Response</a>, <a class="el" href="classshared_1_1Buffer.html#a187b3f9291b5b1e6c379ab6bcdd230ef">shared::Buffer&lt; Capacity &gt;</a></li>
+<li>m_data&#160;:&#160;<a class="el" href="classconfig_1_1GoodParser.html#a04a169cd1578c3a4e0017a60b156f7d2">config::GoodParser</a>, <a class="el" href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">http::Response</a>, <a class="el" href="classshared_1_1Buffer.html#a187b3f9291b5b1e6c379ab6bcdd230ef">shared::Buffer&lt; Capacity &gt;</a></li>
+<li>m_depth&#160;:&#160;<a class="el" href="classconfig_1_1GoodParser.html#a13d479dfd7b148d1f86c57b2536108d8">config::GoodParser</a></li>
 <li>m_dispatcher&#160;:&#160;<a class="el" href="classcore_1_1AcceptHandler.html#a2be718a6a4dfb5a61e88865ac1b4ce00">core::AcceptHandler</a>, <a class="el" href="classcore_1_1Reactor.html#ac39befe378eb1efd88fde093064d4086">core::Reactor</a></li>
 <li>m_epoll_master_fd&#160;:&#160;<a class="el" href="classcore_1_1Dispatcher.html#ae3358923cf95122243edaecafff901d1">core::Dispatcher</a></li>
 <li>m_events&#160;:&#160;<a class="el" href="classcore_1_1Dispatcher.html#abfe2c81d53697c4c49251b5ca51de1cf">core::Dispatcher</a></li>
@@ -123,16 +128,17 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>m_handlers&#160;:&#160;<a class="el" href="classcore_1_1Dispatcher.html#a1319290758b876fc0f0af9a8045e9ea1">core::Dispatcher</a>, <a class="el" href="classhttp_1_1RequestProcessor.html#ae06d06d606262ec6eece9a46b01a7e28">http::RequestProcessor</a></li>
 <li>m_headers&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#a9bd2fbffae2ae25d159f2947bdac509a">http::Request</a>, <a class="el" href="classhttp_1_1Response.html#a495a8dd4ccc444a9787b46834937f258">http::Response</a></li>
 <li>m_isDone&#160;:&#160;<a class="el" href="classcore_1_1AHandler.html#ab262daace90ee13c752fb8a585baeb0c">core::AHandler</a></li>
-<li>m_isLoaded&#160;:&#160;<a class="el" href="classconfig_1_1ConfigFileParser.html#abeb1e6536a0095bc521d5ba717822b4c">config::ConfigFileParser</a></li>
+<li>m_isLoaded&#160;:&#160;<a class="el" href="classconfig_1_1Parser.html#a74493a717b4cd603cc4095c18d8a0c54">config::Parser</a></li>
 <li>m_level&#160;:&#160;<a class="el" href="classshared_1_1Logger.html#a1dec4614e2400d61d2ffb89f9ac92ed3">shared::Logger</a></li>
+<li>m_lineIndex&#160;:&#160;<a class="el" href="classconfig_1_1GoodParser.html#ae9699a78b55539ab159a554fdb12c1d2">config::GoodParser</a></li>
 <li>m_listenSocket&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">http::VirtualServer</a></li>
 <li>m_locations&#160;:&#160;<a class="el" href="classhttp_1_1Router.html#abfa71dd8826ca9f5b350d4b8f093c44e">http::Router</a></li>
 <li>m_logFile&#160;:&#160;<a class="el" href="classshared_1_1Logger.html#a5f7e011412c364d83460d1bbe7b11a1e">shared::Logger</a></li>
 <li>m_logger&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#ae899297922e2cce19b245093e85c599f">http::VirtualServer</a></li>
-<li>m_message&#160;:&#160;<a class="el" href="classhttp_1_1exception.html#a4ab60d6ffeca2b0a2126dec8045a0a87">http::exception</a></li>
+<li>m_message&#160;:&#160;<a class="el" href="classconfig_1_1parse__exception.html#a6ca97f11c246b5a2d1c9c9379c554c02">config::parse_exception</a>, <a class="el" href="classhttp_1_1exception.html#a4ab60d6ffeca2b0a2126dec8045a0a87">http::exception</a></li>
 <li>m_method&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#a209f172cc311ccea1cce70bdfab6f5df">http::Request</a></li>
 <li>m_reacting&#160;:&#160;<a class="el" href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">core::Reactor</a></li>
-<li>m_readPos&#160;:&#160;<a class="el" href="classshared_1_1Buffer.html#aa1c1c7e5c7525d3b18f6c4da073d4d2c">shared::Buffer&lt; Capacity &gt;</a></li>
+<li>m_readPos&#160;:&#160;<a class="el" href="classconfig_1_1GoodParser.html#a11aaa31cf7410c4ba41a3a935233aa5a">config::GoodParser</a>, <a class="el" href="classshared_1_1Buffer.html#aa1c1c7e5c7525d3b18f6c4da073d4d2c">shared::Buffer&lt; Capacity &gt;</a></li>
 <li>m_req&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#a548d0bff24b550b2569fba6c7b6ae6e8">http::RequestParser</a></li>
 <li>m_reqParser&#160;:&#160;<a class="el" href="classcore_1_1IOHandler.html#ab4c76bc519875e49ad94f6959e07ed1d">core::IOHandler</a></li>
 <li>m_reqProcessor&#160;:&#160;<a class="el" href="classcore_1_1IOHandler.html#a1bae2cc1fb76b4bc19eca5474576fb79">core::IOHandler</a></li>
@@ -140,7 +146,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>m_res&#160;:&#160;<a class="el" href="classhttp_1_1RequestProcessor.html#a4b6192fb3742f1fc6382dae1bd69ff73">http::RequestProcessor</a></li>
 <li>m_responses&#160;:&#160;<a class="el" href="classcore_1_1IOHandler.html#addd9a29dc5f409d213c16c993efa4407">core::IOHandler</a></li>
 <li>m_router&#160;:&#160;<a class="el" href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">http::ARequestHandler</a>, <a class="el" href="classhttp_1_1RequestProcessor.html#a3b44f9f1bdd6cf94f314c8ab273987a2">http::RequestProcessor</a>, <a class="el" href="classhttp_1_1VirtualServer.html#a4d4a7df9186ec54619327b0397e16e43">http::VirtualServer</a></li>
-<li>m_serverConfigs&#160;:&#160;<a class="el" href="classconfig_1_1ConfigFileParser.html#ab547c2495de3c465cfbb34ff3bf7a6ec">config::ConfigFileParser</a></li>
+<li>m_serverConfigs&#160;:&#160;<a class="el" href="classconfig_1_1Parser.html#ac2e94a44663b3da9e55d3e1df22ec20a">config::Parser</a></li>
 <li>m_state&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#a085c03526c534b088b51be604432e50d">http::RequestParser</a></li>
 <li>m_statusCode&#160;:&#160;<a class="el" href="classhttp_1_1exception.html#ad06858341d115210a8830089291a29bf">http::exception</a>, <a class="el" href="classhttp_1_1Request.html#a53a217d1e3d51682e635c6cec7a26f3a">http::Request</a>, <a class="el" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">http::Response</a></li>
 <li>m_type&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#afa4e89a8a256174a8881a529b3aea0ad">http::Request</a></li>
@@ -159,6 +165,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>MAX_HEADER_VALUE_LENGTH&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#ac161ae89a4fb5668d06fd5c9da8e6048">http::RequestParser</a></li>
 <li>MAX_REDIRECTS&#160;:&#160;<a class="el" href="classhttp_1_1Router.html#ae806663a58c54da78a19cb22827ca53e">http::Router</a></li>
 <li>MAX_URI_LENGTH&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#aa35e63f66459760dd40c98a401ef2f20">http::RequestParser</a></li>
+<li>maxBodySize&#160;:&#160;<a class="el" href="structconfig_1_1Server.html#a5e4f00bad29cb511cbb2deea9a472e02">config::Server</a></li>
 </ul>
 
 
@@ -167,7 +174,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>PATH_MAX_LEN&#160;:&#160;<a class="el" href="structconfig_1_1ServerConfig.html#a87d3745fca5ddd95b13129bcbdbd7118">config::ServerConfig</a></li>
 <li>pathSegments&#160;:&#160;<a class="el" href="structhttp_1_1Uri.html#a687e5a995c30ff13225fcbe3fc4ea72f">http::Uri</a></li>
 <li>PENDING_MASK&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#a64b47fa553b931955e0ecd391775cbf8">http::RequestParser</a></li>
-<li>port&#160;:&#160;<a class="el" href="structconfig_1_1ServerConfig.html#a6b6ff3a3b9caa186ebc71a82a020a22d">config::ServerConfig</a></li>
+<li>port&#160;:&#160;<a class="el" href="structconfig_1_1Server.html#a20a4258033228bf14e8ac4498e847366">config::Server</a>, <a class="el" href="structconfig_1_1ServerConfig.html#a6b6ff3a3b9caa186ebc71a82a020a22d">config::ServerConfig</a></li>
 </ul>
 
 
@@ -188,6 +195,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>safeAbsolutePath&#160;:&#160;<a class="el" href="structhttp_1_1Uri.html#ac06c347ef500866e9a09e8b62dcebfae">http::Uri</a></li>
 <li>scheme&#160;:&#160;<a class="el" href="structhttp_1_1Uri.html#a0e35e029e5a72b354b70cbb5b145eff0">http::Uri</a></li>
 <li>server_names&#160;:&#160;<a class="el" href="structconfig_1_1ServerConfig.html#aaab5048e574d3977aa45833350e95215">config::ServerConfig</a></li>
+<li>serverNames&#160;:&#160;<a class="el" href="structconfig_1_1Server.html#a828b1bc6ae91c5998f9d6dc6ec412387">config::Server</a></li>
 <li>size&#160;:&#160;<a class="el" href="structhttp_1_1RequestParser_1_1Token.html#a9dab2bf9fedb2d61aa4b0f8d4e648a3d">http::RequestParser::Token</a></li>
 </ul>
 
@@ -206,7 +214,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 
 <h3><a id="index_w" name="index_w"></a>- w -</h3><ul>
 <li>WARNING_COLOR&#160;:&#160;<a class="el" href="classshared_1_1Logger.html#ad4f4432e1df0c4416db4183961e030c9">shared::Logger</a></li>
-<li>WHITESPACE&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#a66080247b589e3b608cadeb4ae617592">http::RequestParser</a></li>
+<li>WHITESPACE&#160;:&#160;<a class="el" href="classconfig_1_1GoodParser.html#a4c636041d2a88611c9f39685038be1c5">config::GoodParser</a>, <a class="el" href="classhttp_1_1RequestParser.html#a66080247b589e3b608cadeb4ae617592">http::RequestParser</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

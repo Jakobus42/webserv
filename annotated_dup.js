@@ -1,8 +1,11 @@
 var annotated_dup =
 [
     [ "config", "namespaceconfig.html", [
-      [ "ConfigFileParser", "classconfig_1_1ConfigFileParser.html", "classconfig_1_1ConfigFileParser" ],
+      [ "GoodParser", "classconfig_1_1GoodParser.html", "classconfig_1_1GoodParser" ],
       [ "Location", "structconfig_1_1Location.html", "structconfig_1_1Location" ],
+      [ "parse_exception", "classconfig_1_1parse__exception.html", "classconfig_1_1parse__exception" ],
+      [ "Parser", "classconfig_1_1Parser.html", "classconfig_1_1Parser" ],
+      [ "Server", "structconfig_1_1Server.html", "structconfig_1_1Server" ],
       [ "ServerConfig", "structconfig_1_1ServerConfig.html", "structconfig_1_1ServerConfig" ]
     ] ],
     [ "core", "namespacecore.html", [
