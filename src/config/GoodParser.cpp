@@ -25,7 +25,7 @@ namespace config {
 		, m_configs()
 		, m_depth(0)
 		, m_lineIndex(1)
-		, m_writePos(0) {}
+		, m_readPos(0) {}
 
 	/**
 	 * @brief Destroys the GoodParser object.
@@ -41,7 +41,7 @@ namespace config {
 		, m_configs(other.m_configs)
 		, m_depth(other.m_depth)
 		, m_lineIndex(other.m_lineIndex)
-		, m_writePos(other.m_writePos) {}
+		, m_readPos(other.m_readPos) {}
 
 	/**
 	 * @brief Copy assignment operator.
@@ -55,20 +55,20 @@ namespace config {
 		m_configs = rhs.m_configs;
 		m_depth = rhs.m_depth;
 		m_lineIndex = rhs.m_lineIndex;
-		m_writePos = rhs.m_writePos;
+		m_readPos = rhs.m_readPos;
 		return *this;
 	}
 
 	// ------------------------  utility  ----------------------------------- //
 
 	void GoodParser::skipWhitespace() {
-		while (m_writePos < m_data.size()) {
-			char c = m_data[m_writePos];
+		while (m_readPos < m_data.size()) {
+			char c = m_data[m_readPos];
 			if (c == '\n') {
 				++m_lineIndex; // if char is newline, increment lineIndex
-				++m_writePos;  // then skip it
+				++m_readPos;   // then skip it
 			} else if (WHITESPACE.find(c) != std::string::npos) {
-				++m_writePos; // if char is whitespace, skip it
+				++m_readPos; // if char is whitespace, skip it
 			} else {
 				break; // no more whitespace
 			}
@@ -76,10 +76,10 @@ namespace config {
 	}
 
 	void GoodParser::consume(std::size_t amount) {
-		if (amount > m_writePos + m_data.size()) {
+		if (amount > m_readPos + m_data.size()) {
 			throw std::runtime_error("GoodParser: Cannot consume more data than available");
 		}
-		m_writePos += amount;
+		m_readPos += amount;
 	}
 
 	// ------------------------  tokens and stuff  -------------------------- //
@@ -87,7 +87,7 @@ namespace config {
 	// CONSUMES IF MATCHED
 	bool GoodParser::matchToken(const std::string& token) {
 		skipWhitespace();
-		if (m_data.compare(m_writePos, token.size(), token) == 0) {
+		if (m_data.compare(m_readPos, token.size(), token) == 0) {
 			consume(token.size());
 			return true;
 		}
@@ -102,8 +102,8 @@ namespace config {
 	std::string GoodParser::readToken() {
 		std::string token = "";
 		skipWhitespace();
-		while (m_writePos < m_data.size() && shouldReadToken(m_data[m_writePos])) {
-			token.push_back(m_data[m_writePos]);
+		while (m_readPos < m_data.size() && shouldReadToken(m_data[m_readPos])) {
+			token.push_back(m_data[m_readPos]);
 		}
 		return token;
 	}
@@ -118,17 +118,26 @@ namespace config {
 	std::string GoodParser::readValue() {
 		std::string value = "";
 		skipWhitespace();
-		while (m_writePos < m_data.size() && shouldReadValue(m_data[m_writePos])) {
-			value.push_back(m_data[m_writePos]);
+		while (m_readPos < m_data.size() && shouldReadValue(m_data[m_readPos])) {
+			value.push_back(m_data[m_readPos]);
 			consume(1);
 		}
-		if (m_writePos >= m_data.size() || m_data[m_writePos] != ';') {
+		if (m_readPos >= m_data.size() || m_data[m_readPos] != ';') {
 			throw parse_exception(m_lineIndex, "Expected semicolon after value");
 		}
 		return value;
 	}
 
-	const std::map<std::string, CommandType>& locationDirectives() {
+	CommandType GoodParser::matchDirective(const std::string& token, const std::map<std::string, CommandType>& expectedDirectives) {
+		std::map<std::string, CommandType>::const_iterator matchedDirective = expectedDirectives.find(token);
+		if (matchedDirective == expectedDirectives.end()) {
+			return _D_NOT_VALID;
+		}
+		m_readPos += token.size();
+		return matchedDirective->second;
+	}
+
+	const std::map<std::string, CommandType>& GoodParser::locationDirectives() {
 		static std::map<std::string, CommandType> allowedDirectives;
 
 		if (allowedDirectives.empty()) {
@@ -142,7 +151,7 @@ namespace config {
 		return allowedDirectives;
 	}
 
-	const std::map<std::string, CommandType>& serverDirectives() {
+	const std::map<std::string, CommandType>& GoodParser::serverDirectives() {
 		static std::map<std::string, CommandType> allowedDirectives;
 
 		if (allowedDirectives.empty()) {
@@ -188,7 +197,7 @@ namespace config {
 
 	void GoodParser::parseFromData() throw(config::parse_exception) {
 		// std::string currentLine;
-		while (m_writePos < m_data.size()) {
+		while (m_readPos < m_data.size()) {
 			expectServerBlock();
 		}
 		// for (std::string::const_iterator c = m_data.begin(); c != m_data.end(); ++c) {
@@ -204,12 +213,27 @@ namespace config {
 
 	// ------------------------  block parsing ------------------------------ //
 
+	/**
+	 * Possible Server directives are:
+	 * - port
+	 * - listen (ipAddress)
+	 * - client_max_body_size (maxBodySize)
+	 * - data_dir (dataDirectory)
+	 * - server_name (serverNames)
+	 *
+	 * - root (location.root)
+	 * - return (location.redirectUri)
+	 * - limit_except (location.allowedMethods)
+	 * - upload_dir (location.uploadSubdirectory)
+	 * - index (location.indexFile)
+	 * - location (location.locations) (can exist more than once)
+	 */
 	void GoodParser::expectServerBlock() throw(parse_exception) {
 		if (!matchToken("server")) {
 			throw parse_exception(m_lineIndex, "Expected 'server' keyword");
 		}
 		skipWhitespace();
-		if (m_writePos >= m_data.size() || m_data[m_writePos] != '{') {
+		if (m_readPos >= m_data.size() || m_data[m_readPos] != '{') {
 			throw parse_exception(m_lineIndex, "Expected opening brace after Server");
 		}
 		consume(1); // consume '{'
@@ -217,9 +241,9 @@ namespace config {
 
 		Server thisServer;
 
-		while (m_writePos < m_data.size()) {
+		while (m_readPos < m_data.size()) {
 			skipWhitespace();
-			if (m_writePos < m_data.size() && m_data[m_writePos] == '}') {
+			if (m_readPos < m_data.size() && m_data[m_readPos] == '}') {
 				consume(1); // consume '}'
 				m_depth--;
 				// validate server for mandatory keys
@@ -233,24 +257,14 @@ namespace config {
 			if (matchToken("location")) {
 				expectLocationBlock(thisServer.location);
 			} else if (!token.empty()) {
+				CommandType type = matchDirective(token, serverDirectives());
+				if (type == _D_NOT_VALID) {
+					throw parse_exception(m_lineIndex, "Unexpected directive in Server block: " + token);
+				}
+				std::string value = readValue();
 				// process server directives
 				// if the token doesn't match any expected directives,
 				// throw exception
-				/**
-				 * Possible Server directives are:
-				 * - port
-				 * - listen (ipAddress)
-				 * - client_max_body_size (maxBodySize)
-				 * - data_dir (dataDirectory)
-				 * - server_name (serverNames)
-				 *
-				 * - root (location.root)
-				 * - return (location.redirectUri)
-				 * - limit_except (location.allowedMethods)
-				 * - upload_dir (location.uploadSubdirectory)
-				 * - index (location.indexFile)
-				 * - location (location.locations) (can exist more than once)
-				 */
 			}
 		}
 		throw parse_exception(m_lineIndex, "Server block not closed with '}'");
@@ -271,7 +285,7 @@ namespace config {
 		}
 		consume(path.length());
 		skipWhitespace();
-		if (m_writePos >= m_data.size() || m_data[m_writePos] != '{') {
+		if (m_readPos >= m_data.size() || m_data[m_readPos] != '{') {
 			throw parse_exception(m_lineIndex, "Expected '{' after location path");
 		}
 		consume(1); // consume '{'
@@ -280,9 +294,9 @@ namespace config {
 		Location thisLocation;
 
 		thisLocation.path = http::Router::splitPath(path);
-		while (m_writePos <= m_data.size()) {
+		while (m_readPos <= m_data.size()) {
 			skipWhitespace();
-			if (m_writePos < m_data.size() && m_data[m_writePos] == '}') {
+			if (m_readPos < m_data.size() && m_data[m_readPos] == '}') {
 				consume(1); // consume '}'
 				m_depth--;
 				thisLocation.validate();
@@ -297,6 +311,11 @@ namespace config {
 				expectLocationBlock(thisLocation);
 			} else if (!token.empty()) {
 				// process location directives
+				CommandType type = matchDirective(token, locationDirectives());
+				if (type == _D_NOT_VALID) {
+					throw parse_exception(m_lineIndex, "Unexpected directive in Location block: " + token);
+				}
+				std::string value = readValue();
 				/**
 				 * Possible Location directives are:
 				 * - root

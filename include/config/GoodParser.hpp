@@ -2,6 +2,7 @@
 
 #include "config/Server.hpp"
 
+#include <map>
 #include <vector>
 
 namespace config {
@@ -19,6 +20,7 @@ namespace config {
 	};
 
 	enum CommandType {
+		_D_NOT_VALID,
 		D_PORT,
 		D_LISTEN,
 		D_CLIENT_MAX_BODY_SIZE,
@@ -47,7 +49,7 @@ namespace config {
 			std::vector<Server> m_configs;
 			std::size_t m_depth;
 			std::size_t m_lineIndex;
-			std::size_t m_writePos;
+			std::size_t m_readPos;
 
 			static const std::string WHITESPACE;
 
@@ -60,6 +62,7 @@ namespace config {
 			std::string readToken();
 			std::string readValue();
 			void skipWhitespace();
+			CommandType matchDirective(const std::string& token, const std::map<std::string, CommandType>& expectedDirectives);
 
 			void parseFromData() throw(config::parse_exception);
 			void parseLine(const std::string& line) throw(config::parse_exception);
