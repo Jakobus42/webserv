@@ -29,6 +29,9 @@ namespace config {
 				, autoindex(false)
 				, indexFile()
 				, locations() {
+				allowedMethods.insert(http::GET);
+				allowedMethods.insert(http::POST);
+				allowedMethods.insert(http::DELETE);
 			}
 
 			// copy constructor

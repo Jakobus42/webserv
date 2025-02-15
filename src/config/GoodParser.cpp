@@ -167,7 +167,6 @@ namespace config {
 		static std::map<std::string, CommandType> allowedDirectives;
 
 		if (allowedDirectives.empty()) {
-			allowedDirectives["port"] = D_PORT;
 			allowedDirectives["listen"] = D_LISTEN;
 			allowedDirectives["client_max_body_size"] = D_CLIENT_MAX_BODY_SIZE;
 			allowedDirectives["data_dir"] = D_DATA_DIR;
@@ -259,10 +258,7 @@ namespace config {
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '}') {
 				consume(1); // consume '}'
 				m_depth--;
-				// validate server for mandatory keys
 				thisServer.validate();
-				// if valid, push to server configs
-				// then, move on to parsing the next one
 				m_configs.push_back(thisServer);
 				return;
 			}
@@ -282,7 +278,7 @@ namespace config {
 	}
 
 	static bool isValidPath(const std::string& path) {
-		return path.at(0) == '/';
+		return !path.empty() && path.at(0) == '/' && path.size() <= PATH_MAX;
 	}
 
 	/**
@@ -352,7 +348,6 @@ namespace config {
 			return setLocationValue(value, type, server.location);
 		}
 		if (tokenParsers.empty()) {
-			tokenParsers[D_PORT] = &config::GoodParser::parsePort;
 			tokenParsers[D_LISTEN] = &config::GoodParser::parseListen;
 			tokenParsers[D_CLIENT_MAX_BODY_SIZE] = &config::GoodParser::parseClientMaxBodySize;
 			tokenParsers[D_DATA_DIR] = &config::GoodParser::parseDataDir;
@@ -381,19 +376,21 @@ namespace config {
 
 	// ------------------------  server parsers  ---------------------------- //
 
-	void GoodParser::parsePort(const std::string& value, Server& server) {
-		(void)value;
-		(void)server;
-	}
-
 	void GoodParser::parseListen(const std::string& value, Server& server) {
 		(void)value;
 		(void)server;
 	}
 
 	void GoodParser::parseClientMaxBodySize(const std::string& value, Server& server) {
-		(void)value;
-		(void)server;
+		std::stringstream ss(value);
+		std::string token;
+
+		if (!(ss >> server.maxBodySize)) {
+			throw parse_exception(m_lineIndex, "Invalid value for client_max_body_size");
+		}
+		if (ss >> token) {
+			throw parse_exception(m_lineIndex, "Unexpected token in client_max_body_size: " + token);
+		}
 	}
 
 	void GoodParser::parseDataDir(const std::string& value, Server& server) {
@@ -404,8 +401,17 @@ namespace config {
 	}
 
 	void GoodParser::parseServerName(const std::string& value, Server& server) {
-		(void)value;
-		(void)server;
+		std::vector<std::string> splitNames;
+		std::stringstream ss(value);
+		std::string name;
+
+		while (ss >> name) {
+			splitNames.push_back(name);
+		}
+		if (splitNames.empty()) {
+			throw parse_exception(m_lineIndex, "Expected value for server_name");
+		}
+		server.serverNames = splitNames;
 	}
 
 	// ------------------------  location parsers  -------------------------- //
@@ -424,6 +430,8 @@ namespace config {
 		location.path = http::Router::splitPath(value); // ensure this won't throw
 	}
 
+	// if no limit_except is present, default initialization
+	// for locations should permit all methods; GET POST and DELETE
 	void GoodParser::parseLimitExcept(const std::string& value, Location& location) {
 		static std::map<std::string, http::Method> implementedMethods;
 
@@ -433,16 +441,11 @@ namespace config {
 			implementedMethods["DELETE"] = http::DELETE;
 		}
 
-		std::stringstream ss(value);
 		std::set<http::Method> allowedMethods;
+		std::stringstream ss(value);
 		std::string token;
 
 		while (ss >> token) {
-			std::cout << "Found: " << token << std::endl;
-			// match tokens to implementedMethods keys and push
-			// then overwrite location.allowedMethods with this vector
-			// if no limit_except is present, default initialization
-			// for locations should permit all methods; GET POST and DELETE
 			if (implementedMethods.find(token) == implementedMethods.end()) {
 				throw parse_exception(m_lineIndex, "Unexpected method for limit_except: " + token);
 			}
@@ -452,7 +455,7 @@ namespace config {
 			allowedMethods.insert(implementedMethods[token]);
 		}
 		if (allowedMethods.empty()) {
-			throw parse_exception(m_lineIndex, "Value expected for limit_except");
+			throw parse_exception(m_lineIndex, "Expected value for limit_except");
 		}
 		location.allowedMethods = allowedMethods;
 	}
@@ -465,9 +468,18 @@ namespace config {
 	}
 
 	void GoodParser::parseIndex(const std::string& value, Location& location) {
-		(void)value;
-		(void)location;
+		std::vector<std::string> indexFiles;
+		std::stringstream ss(value);
+		std::string token;
+
+		while (ss >> token) {
+			indexFiles.push_back(token);
+		}
 		std::cout << "parseIndex parsing: " << value << std::endl;
+		if (indexFiles.empty()) {
+			throw parse_exception(m_lineIndex, "Expected value for index");
+		}
+		location.indexFile = indexFiles;
 	}
 
 	void GoodParser::parseAutoindex(const std::string& value, Location& location) {

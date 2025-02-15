@@ -22,7 +22,6 @@ namespace config {
 
 	enum CommandType {
 		_D_NOT_VALID,
-		D_PORT,
 		D_LISTEN,
 		D_CLIENT_MAX_BODY_SIZE,
 		D_DATA_DIR,
