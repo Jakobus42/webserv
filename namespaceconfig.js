@@ -8,7 +8,6 @@ var namespaceconfig =
     [ "ServerConfig", "structconfig_1_1ServerConfig.html", "structconfig_1_1ServerConfig" ],
     [ "CommandType", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510", [
       [ "_D_NOT_VALID", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a984068cd778bcc4ab5e9d7b22c2aff6d", null ],
-      [ "D_PORT", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a71a069e205346e6c3d57f95c0f2ab9b4", null ],
       [ "D_LISTEN", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510aa90181f28d339faf54b4bc6d7650f585", null ],
       [ "D_CLIENT_MAX_BODY_SIZE", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510aa787eb713d65bcfa9d092409bc9175e9", null ],
       [ "D_DATA_DIR", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ae3d8583faa5dfad9c59c533c488c2eca", null ],

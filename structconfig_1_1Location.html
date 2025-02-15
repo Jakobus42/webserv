@@ -152,7 +152,13 @@ Public Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   29</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#a7dcc19d544f0c21f8e29657406ddd5bd">autoindex</a>(<span class="keyword">false</span>)</div>
 <div class="line"><span class="lineno">   30</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#ad07d3238b441c27aefa83d6a75ff2aad">indexFile</a>()</div>
 <div class="line"><span class="lineno">   31</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f">locations</a>() {</div>
-<div class="line"><span class="lineno">   32</span>            }</div>
+<div class="line"><span class="lineno">   32</span>                <a class="code hl_variable" href="structconfig_1_1Location.html#acaa3a528534f8eb8c5fac6d2e688eaa4">allowedMethods</a>.insert(<a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">http::GET</a>);</div>
+<div class="line"><span class="lineno">   33</span>                <a class="code hl_variable" href="structconfig_1_1Location.html#acaa3a528534f8eb8c5fac6d2e688eaa4">allowedMethods</a>.insert(<a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab">http::POST</a>);</div>
+<div class="line"><span class="lineno">   34</span>                <a class="code hl_variable" href="structconfig_1_1Location.html#acaa3a528534f8eb8c5fac6d2e688eaa4">allowedMethods</a>.insert(<a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30">http::DELETE</a>);</div>
+<div class="line"><span class="lineno">   35</span>            }</div>
+<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30">http::DELETE</a></div><div class="ttdeci">@ DELETE</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00056">types.hpp:56</a></div></div>
+<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab">http::POST</a></div><div class="ttdeci">@ POST</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00055">types.hpp:55</a></div></div>
+<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">http::GET</a></div><div class="ttdeci">@ GET</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00054">types.hpp:54</a></div></div>
 <div class="ttc" id="astructconfig_1_1Location_html_a0c50bb58649046d471627c13925af3c5"><div class="ttname"><a href="structconfig_1_1Location.html#a0c50bb58649046d471627c13925af3c5">config::Location::redirectUriTokens</a></div><div class="ttdeci">std::vector&lt; std::string &gt; redirectUriTokens</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00014">Location.hpp:14</a></div></div>
 <div class="ttc" id="astructconfig_1_1Location_html_a6782bb25ddf1bf9f2c084a7f0aef482e"><div class="ttname"><a href="structconfig_1_1Location.html#a6782bb25ddf1bf9f2c084a7f0aef482e">config::Location::uploadSubdirectory</a></div><div class="ttdeci">std::string uploadSubdirectory</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00016">Location.hpp:16</a></div></div>
 <div class="ttc" id="astructconfig_1_1Location_html_a7dcc19d544f0c21f8e29657406ddd5bd"><div class="ttname"><a href="structconfig_1_1Location.html#a7dcc19d544f0c21f8e29657406ddd5bd">config::Location::autoindex</a></div><div class="ttdeci">bool autoindex</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00017">Location.hpp:17</a></div></div>
@@ -189,17 +195,17 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Location_8hpp_source.html#l00035">35</a> of file <a class="el" href="Location_8hpp_source.html">Location.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   36</span>                : <a class="code hl_variable" href="structconfig_1_1Location.html#aa442f3548fcb10d18046520882642d55">path</a>(other.path)</div>
-<div class="line"><span class="lineno">   37</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#acd840cd528eacb701e56b8d1e9526b35">root</a>(other.root)</div>
-<div class="line"><span class="lineno">   38</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#af07f8a41a8ab3e137cb4b4cd2e6f6d05">redirectUri</a>(other.redirectUri)</div>
-<div class="line"><span class="lineno">   39</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#a0c50bb58649046d471627c13925af3c5">redirectUriTokens</a>(other.redirectUriTokens)</div>
-<div class="line"><span class="lineno">   40</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#acaa3a528534f8eb8c5fac6d2e688eaa4">allowedMethods</a>(other.allowedMethods)</div>
-<div class="line"><span class="lineno">   41</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#a6782bb25ddf1bf9f2c084a7f0aef482e">uploadSubdirectory</a>(other.uploadSubdirectory)</div>
-<div class="line"><span class="lineno">   42</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#a7dcc19d544f0c21f8e29657406ddd5bd">autoindex</a>(other.autoindex)</div>
-<div class="line"><span class="lineno">   43</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#ad07d3238b441c27aefa83d6a75ff2aad">indexFile</a>(other.indexFile)</div>
-<div class="line"><span class="lineno">   44</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f">locations</a>(other.locations) {</div>
-<div class="line"><span class="lineno">   45</span>            }</div>
+<p class="definition">Definition at line <a class="el" href="Location_8hpp_source.html#l00038">38</a> of file <a class="el" href="Location_8hpp_source.html">Location.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   39</span>                : <a class="code hl_variable" href="structconfig_1_1Location.html#aa442f3548fcb10d18046520882642d55">path</a>(other.path)</div>
+<div class="line"><span class="lineno">   40</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#acd840cd528eacb701e56b8d1e9526b35">root</a>(other.root)</div>
+<div class="line"><span class="lineno">   41</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#af07f8a41a8ab3e137cb4b4cd2e6f6d05">redirectUri</a>(other.redirectUri)</div>
+<div class="line"><span class="lineno">   42</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#a0c50bb58649046d471627c13925af3c5">redirectUriTokens</a>(other.redirectUriTokens)</div>
+<div class="line"><span class="lineno">   43</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#acaa3a528534f8eb8c5fac6d2e688eaa4">allowedMethods</a>(other.allowedMethods)</div>
+<div class="line"><span class="lineno">   44</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#a6782bb25ddf1bf9f2c084a7f0aef482e">uploadSubdirectory</a>(other.uploadSubdirectory)</div>
+<div class="line"><span class="lineno">   45</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#a7dcc19d544f0c21f8e29657406ddd5bd">autoindex</a>(other.autoindex)</div>
+<div class="line"><span class="lineno">   46</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#ad07d3238b441c27aefa83d6a75ff2aad">indexFile</a>(other.indexFile)</div>
+<div class="line"><span class="lineno">   47</span>                , <a class="code hl_variable" href="structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f">locations</a>(other.locations) {</div>
+<div class="line"><span class="lineno">   48</span>            }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -227,11 +233,10 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Location_8hpp_source.html#l00063">63</a> of file <a class="el" href="Location_8hpp_source.html">Location.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   63</span>                                           {</div>
-<div class="line"><span class="lineno">   64</span>                <span class="keywordflow">return</span> !<a class="code hl_variable" href="structconfig_1_1Location.html#a6782bb25ddf1bf9f2c084a7f0aef482e">uploadSubdirectory</a>.empty() &amp;&amp; <a class="code hl_variable" href="structconfig_1_1Location.html#acaa3a528534f8eb8c5fac6d2e688eaa4">allowedMethods</a>.find(<a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab">http::POST</a>) != <a class="code hl_variable" href="structconfig_1_1Location.html#acaa3a528534f8eb8c5fac6d2e688eaa4">allowedMethods</a>.end();</div>
-<div class="line"><span class="lineno">   65</span>            }</div>
-<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab">http::POST</a></div><div class="ttdeci">@ POST</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00055">types.hpp:55</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Location_8hpp_source.html#l00066">66</a> of file <a class="el" href="Location_8hpp_source.html">Location.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   66</span>                                           {</div>
+<div class="line"><span class="lineno">   67</span>                <span class="keywordflow">return</span> !<a class="code hl_variable" href="structconfig_1_1Location.html#a6782bb25ddf1bf9f2c084a7f0aef482e">uploadSubdirectory</a>.empty() &amp;&amp; <a class="code hl_variable" href="structconfig_1_1Location.html#acaa3a528534f8eb8c5fac6d2e688eaa4">allowedMethods</a>.find(<a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab">http::POST</a>) != <a class="code hl_variable" href="structconfig_1_1Location.html#acaa3a528534f8eb8c5fac6d2e688eaa4">allowedMethods</a>.end();</div>
+<div class="line"><span class="lineno">   68</span>            }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -258,10 +263,10 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Location_8hpp_source.html#l00067">67</a> of file <a class="el" href="Location_8hpp_source.html">Location.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   67</span>                                     {</div>
-<div class="line"><span class="lineno">   68</span>                <span class="keywordflow">return</span> !<a class="code hl_variable" href="structconfig_1_1Location.html#af07f8a41a8ab3e137cb4b4cd2e6f6d05">redirectUri</a>.empty();</div>
-<div class="line"><span class="lineno">   69</span>            }</div>
+<p class="definition">Definition at line <a class="el" href="Location_8hpp_source.html#l00070">70</a> of file <a class="el" href="Location_8hpp_source.html">Location.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   70</span>                                     {</div>
+<div class="line"><span class="lineno">   71</span>                <span class="keywordflow">return</span> !<a class="code hl_variable" href="structconfig_1_1Location.html#af07f8a41a8ab3e137cb4b4cd2e6f6d05">redirectUri</a>.empty();</div>
+<div class="line"><span class="lineno">   72</span>            }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -289,21 +294,21 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Location_8hpp_source.html#l00048">48</a> of file <a class="el" href="Location_8hpp_source.html">Location.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   48</span>                                                       {</div>
-<div class="line"><span class="lineno">   49</span>                <span class="keywordflow">if</span> (<span class="keyword">this</span> != &amp;other) {</div>
-<div class="line"><span class="lineno">   50</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#aa442f3548fcb10d18046520882642d55">path</a> = other.path;</div>
-<div class="line"><span class="lineno">   51</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#acd840cd528eacb701e56b8d1e9526b35">root</a> = other.root;</div>
-<div class="line"><span class="lineno">   52</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#af07f8a41a8ab3e137cb4b4cd2e6f6d05">redirectUri</a> = other.redirectUri;</div>
-<div class="line"><span class="lineno">   53</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#a0c50bb58649046d471627c13925af3c5">redirectUriTokens</a> = other.redirectUriTokens;</div>
-<div class="line"><span class="lineno">   54</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#acaa3a528534f8eb8c5fac6d2e688eaa4">allowedMethods</a> = other.allowedMethods;</div>
-<div class="line"><span class="lineno">   55</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#a6782bb25ddf1bf9f2c084a7f0aef482e">uploadSubdirectory</a> = other.uploadSubdirectory;</div>
-<div class="line"><span class="lineno">   56</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#a7dcc19d544f0c21f8e29657406ddd5bd">autoindex</a> = other.autoindex;</div>
-<div class="line"><span class="lineno">   57</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#ad07d3238b441c27aefa83d6a75ff2aad">indexFile</a> = other.indexFile;</div>
-<div class="line"><span class="lineno">   58</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f">locations</a> = other.locations;</div>
-<div class="line"><span class="lineno">   59</span>                }</div>
-<div class="line"><span class="lineno">   60</span>                <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">   61</span>            }</div>
+<p class="definition">Definition at line <a class="el" href="Location_8hpp_source.html#l00051">51</a> of file <a class="el" href="Location_8hpp_source.html">Location.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>                                                       {</div>
+<div class="line"><span class="lineno">   52</span>                <span class="keywordflow">if</span> (<span class="keyword">this</span> != &amp;other) {</div>
+<div class="line"><span class="lineno">   53</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#aa442f3548fcb10d18046520882642d55">path</a> = other.path;</div>
+<div class="line"><span class="lineno">   54</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#acd840cd528eacb701e56b8d1e9526b35">root</a> = other.root;</div>
+<div class="line"><span class="lineno">   55</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#af07f8a41a8ab3e137cb4b4cd2e6f6d05">redirectUri</a> = other.redirectUri;</div>
+<div class="line"><span class="lineno">   56</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#a0c50bb58649046d471627c13925af3c5">redirectUriTokens</a> = other.redirectUriTokens;</div>
+<div class="line"><span class="lineno">   57</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#acaa3a528534f8eb8c5fac6d2e688eaa4">allowedMethods</a> = other.allowedMethods;</div>
+<div class="line"><span class="lineno">   58</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#a6782bb25ddf1bf9f2c084a7f0aef482e">uploadSubdirectory</a> = other.uploadSubdirectory;</div>
+<div class="line"><span class="lineno">   59</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#a7dcc19d544f0c21f8e29657406ddd5bd">autoindex</a> = other.autoindex;</div>
+<div class="line"><span class="lineno">   60</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#ad07d3238b441c27aefa83d6a75ff2aad">indexFile</a> = other.indexFile;</div>
+<div class="line"><span class="lineno">   61</span>                    <a class="code hl_variable" href="structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f">locations</a> = other.locations;</div>
+<div class="line"><span class="lineno">   62</span>                }</div>
+<div class="line"><span class="lineno">   63</span>                <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">   64</span>            }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -332,10 +337,10 @@ Public Attributes</h2></td></tr>
 
 <p>Validate the <a class="el" href="structconfig_1_1Location.html">Location</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="Location_8hpp_source.html#l00074">74</a> of file <a class="el" href="Location_8hpp_source.html">Location.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   74</span>                                  {</div>
-<div class="line"><span class="lineno">   75</span>                <span class="comment">// throw config::parse_exception(1, &quot;consarnit&quot;);</span></div>
-<div class="line"><span class="lineno">   76</span>            }</div>
+<p class="definition">Definition at line <a class="el" href="Location_8hpp_source.html#l00077">77</a> of file <a class="el" href="Location_8hpp_source.html">Location.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   77</span>                                  {</div>
+<div class="line"><span class="lineno">   78</span>                <span class="comment">// throw config::parse_exception(1, &quot;consarnit&quot;);</span></div>
+<div class="line"><span class="lineno">   79</span>            }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
