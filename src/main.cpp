@@ -1,3 +1,4 @@
+#include "config/GoodParser.hpp"
 #include "config/Parser.hpp"
 #include "core/Reactor.hpp"
 #include "shared/Logger.hpp"
@@ -12,6 +13,10 @@ int main(int argc, char** const argv) {
 		// 	return 1;
 		std::string configPath = argc > 1 ? argv[1] : "config/configfile_example";
 		config::Parser configParser;
+		config::GoodParser parser;
+		if (!parser.parseFile(configPath)) {
+			return 69;
+		}
 		if (configParser.loadConfig(configPath) == 1)
 			return 1;
 		const std::vector<config::ServerConfig>& serverConfigs = configParser.getServerConfigs();

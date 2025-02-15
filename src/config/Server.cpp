@@ -60,7 +60,7 @@ namespace config {
 	 *
 	 */
 	void Server::validate() const {
-		throw parse_exception(1, "fuck");
+		// throw parse_exception(1, "fuck");
 	}
 
 } /* namespace config */
