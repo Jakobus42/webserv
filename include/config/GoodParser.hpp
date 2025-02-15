@@ -97,6 +97,6 @@ namespace config {
 			void parseUploadDir(const std::string& value, Location& location);
 			void parseIndex(const std::string& value, Location& location);
 			void parseAutoindex(const std::string& value, Location& location);
-			void parseLocation(const std::string& value, Location& location);
+			// void parseLocation(const std::string& value, Location& location);
 	};
 } /* namespace config */

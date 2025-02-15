@@ -362,6 +362,7 @@ namespace config {
 		(this->*(tokenParsers[type]))(value, server);
 	}
 
+	// cppcheck-suppress constParameter
 	void GoodParser::setLocationValue(const std::string& value, CommandType type, Location& location) {
 		static std::map<CommandType, LocationTokenParser> tokenParsers;
 
@@ -372,98 +373,133 @@ namespace config {
 			tokenParsers[D_UPLOAD_DIR] = &config::GoodParser::parseUploadDir;
 			tokenParsers[D_INDEX] = &config::GoodParser::parseIndex;
 			tokenParsers[D_AUTOINDEX] = &config::GoodParser::parseAutoindex;
-			tokenParsers[D_LOCATION] = &config::GoodParser::parseLocation;
+			// tokenParsers[D_LOCATION] = &config::GoodParser::parseLocation;
 		}
 
 		(this->*(tokenParsers[type]))(value, location);
 	}
 
-	// ------------------------  token parsers  ----------------------------- //
+	// ------------------------  server parsers  ---------------------------- //
 
-
-	// ------------------------  server parsers  -------------------- //
 	void GoodParser::parsePort(const std::string& value, Server& server) {
 		(void)value;
 		(void)server;
-		std::cout << "parsePort parsing: " << value << std::endl;
 	}
 
 	void GoodParser::parseListen(const std::string& value, Server& server) {
-
 		(void)value;
 		(void)server;
-		std::cout << "parseListen parsing: " << value << std::endl;
 	}
 
 	void GoodParser::parseClientMaxBodySize(const std::string& value, Server& server) {
-
 		(void)value;
 		(void)server;
-		std::cout << "parseClientMaxBodySize parsing: " << value << std::endl;
 	}
 
 	void GoodParser::parseDataDir(const std::string& value, Server& server) {
-
-		(void)value;
-		(void)server;
-		std::cout << "parseDataDir parsing: " << value << std::endl;
+		if (!isValidPath(value)) {
+			throw parse_exception(m_lineIndex, "Invalid path for data_dir: " + value);
+		}
+		server.dataDirectory = value; // check whether this needs to be stripped of whitespace
 	}
 
 	void GoodParser::parseServerName(const std::string& value, Server& server) {
-
 		(void)value;
 		(void)server;
-		std::cout << "parseServerName parsing: " << value << std::endl;
 	}
 
-	// ------------------------  location parsers  ------------------ //
-	void GoodParser::parseRoot(const std::string& value, Location& location) {
+	// ------------------------  location parsers  -------------------------- //
 
-		(void)value;
-		(void)location;
-		std::cout << "parseRoot parsing: " << value << std::endl;
+	void GoodParser::parseRoot(const std::string& value, Location& location) {
+		if (!isValidPath(value)) {
+			throw parse_exception(m_lineIndex, "Invalid path for root: " + value);
+		}
+		location.root = http::Router::splitPath(value);
 	}
 
 	void GoodParser::parseReturn(const std::string& value, Location& location) {
-
-		(void)value;
-		(void)location;
-		std::cout << "parseReturn parsing: " << value << std::endl;
+		if (!isValidPath(value)) {
+			throw parse_exception(m_lineIndex, "Invalid path for return: " + value);
+		}
+		location.path = http::Router::splitPath(value); // ensure this won't throw
 	}
 
 	void GoodParser::parseLimitExcept(const std::string& value, Location& location) {
+		static std::map<std::string, http::Method> implementedMethods;
 
-		(void)value;
-		(void)location;
-		std::cout << "parseLimitExcept parsing: " << value << std::endl;
+		if (implementedMethods.empty()) {
+			implementedMethods["GET"] = http::GET;
+			implementedMethods["POST"] = http::POST;
+			implementedMethods["DELETE"] = http::DELETE;
+		}
+
+		std::stringstream ss(value);
+		std::set<http::Method> allowedMethods;
+		std::string token;
+
+		while (ss >> token) {
+			std::cout << "Found: " << token << std::endl;
+			// match tokens to implementedMethods keys and push
+			// then overwrite location.allowedMethods with this vector
+			// if no limit_except is present, default initialization
+			// for locations should permit all methods; GET POST and DELETE
+			if (implementedMethods.find(token) == implementedMethods.end()) {
+				throw parse_exception(m_lineIndex, "Unexpected method for limit_except: " + token);
+			}
+			if (allowedMethods.find(implementedMethods[token]) != allowedMethods.end()) {
+				throw parse_exception(m_lineIndex, "Duplicte method for limit_except: " + token);
+			}
+			allowedMethods.insert(implementedMethods[token]);
+		}
+		if (allowedMethods.empty()) {
+			throw parse_exception(m_lineIndex, "Value expected for limit_except");
+		}
+		location.allowedMethods = allowedMethods;
 	}
 
 	void GoodParser::parseUploadDir(const std::string& value, Location& location) {
-
-		(void)value;
-		(void)location;
-		std::cout << "parseUploadDir parsing: " << value << std::endl;
+		if (!isValidPath(value)) {
+			throw parse_exception(m_lineIndex, "Invalid path for upload_dir: " + value);
+		}
+		location.uploadSubdirectory = value; // strip this of whitespace if that doesn't happen yet
 	}
 
 	void GoodParser::parseIndex(const std::string& value, Location& location) {
-
 		(void)value;
 		(void)location;
 		std::cout << "parseIndex parsing: " << value << std::endl;
 	}
 
 	void GoodParser::parseAutoindex(const std::string& value, Location& location) {
+		static std::set<std::string> allowedValues;
 
-		(void)value;
-		(void)location;
-		std::cout << "parseAutoindex parsing: " << value << std::endl;
+		if (allowedValues.empty()) {
+			allowedValues.insert("on");
+			allowedValues.insert("off");
+		}
+		// can only be "on" or "off", everything else is invalid
+		std::stringstream ss(value);
+		std::string token;
+
+		ss >> token;
+		if (allowedValues.find(token) == allowedValues.end()) {
+			throw parse_exception(m_lineIndex, "Unexpected value for autoindex: " + value);
+		}
+		if (token == "on") {
+			location.autoindex = true;
+		} else if (token == "off") {
+			location.autoindex = false;
+		}
+		if (ss >> token && !token.empty()) {
+			throw parse_exception(m_lineIndex, "Unexpected token in autoindex: " + token);
+		}
 	}
 
-	void GoodParser::parseLocation(const std::string& value, Location& location) {
+	// void GoodParser::parseLocation(const std::string& value, Location& location) {
 
-		(void)value;
-		(void)location;
-		std::cout << "parseLocation parsing: " << value << std::endl;
-	}
+	// 	(void)value;
+	// 	(void)location;
+	// 	std::cout << "parseLocation parsing: " << value << std::endl;
+	// }
 
 } /* namespace config */

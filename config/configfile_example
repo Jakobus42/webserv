@@ -23,7 +23,7 @@ server
 	# server is also a location
 	# TODO: adjust shit for this to be the way (swap data_dir and root, don't separate root and global_root)
 	# index index.html;
-	# limit_except GET;
+	limit_except GET POST;
 	# data_dir /workspaces/webserv
 	# root /www
 	# Example of a route with multiple rules 
