@@ -6,7 +6,7 @@ var structconfig_1_1Server =
     [ "hasDataDir", "structconfig_1_1Server.html#a05f20d5b9326ce6bf77a3873bfef6a94", null ],
     [ "hasGlobalRoot", "structconfig_1_1Server.html#a9b78971dea8c4e1b308106f252a9c762", null ],
     [ "operator=", "structconfig_1_1Server.html#ad4b7f76d6c4f43002440879d4447bf7c", null ],
-    [ "reset", "structconfig_1_1Server.html#a992447872b96e4c1bd161a20f2129024", null ],
+    [ "print", "structconfig_1_1Server.html#a8649fd4c692d99d8564b563c0f0e58a9", null ],
     [ "validate", "structconfig_1_1Server.html#a5bff502a23e2fcb5d174261a7b40bc2f", null ],
     [ "dataDirectory", "structconfig_1_1Server.html#a90c673a54f892b3234088cb8cbe8297e", null ],
     [ "ipAddress", "structconfig_1_1Server.html#ab6c2dbe85e39cf0a9b85a8b062714e0f", null ],

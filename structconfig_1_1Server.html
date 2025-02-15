@@ -77,9 +77,9 @@ Collaboration diagram for config::Server:</div>
 <div class="dyncontent">
 <div class="center"><img src="structconfig_1_1Server__coll__graph.png" border="0" usemap="#aconfig_1_1Server_coll__map" alt="Collaboration graph"/></div>
 <map name="aconfig_1_1Server_coll__map" id="aconfig_1_1Server_coll__map">
-<area shape="rect" title="..." alt="" coords="17,393,151,679"/>
-<area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="5,5,163,331"/>
-<area shape="poly" title=" " alt="" coords="87,331,87,377,81,377,81,331"/>
+<area shape="rect" title="..." alt="" coords="17,433,151,719"/>
+<area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="5,5,163,371"/>
+<area shape="poly" title=" " alt="" coords="87,371,87,417,81,417,81,371"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -104,8 +104,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5bff502a23e2fcb5d174261a7b40bc2f" id="r_a5bff502a23e2fcb5d174261a7b40bc2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structconfig_1_1Server.html#a5bff502a23e2fcb5d174261a7b40bc2f">validate</a> () const</td></tr>
 <tr class="memdesc:a5bff502a23e2fcb5d174261a7b40bc2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate the server, ensuring it has all mandatory keys and that nothing else fucky wucky is going on.  <br /></td></tr>
 <tr class="separator:a5bff502a23e2fcb5d174261a7b40bc2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a992447872b96e4c1bd161a20f2129024" id="r_a992447872b96e4c1bd161a20f2129024"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structconfig_1_1Server.html#a992447872b96e4c1bd161a20f2129024">reset</a> ()</td></tr>
-<tr class="separator:a992447872b96e4c1bd161a20f2129024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8649fd4c692d99d8564b563c0f0e58a9" id="r_a8649fd4c692d99d8564b563c0f0e58a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structconfig_1_1Server.html#a8649fd4c692d99d8564b563c0f0e58a9">print</a> () const</td></tr>
+<tr class="separator:a8649fd4c692d99d8564b563c0f0e58a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -256,7 +256,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="Server_8cpp_source.html#l00053">53</a> of file <a class="el" href="Server_8cpp_source.html">Server.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   53</span>{ <span class="keywordflow">return</span> !<a class="code hl_variable" href="structconfig_1_1Server.html#a6b92598157154bee56285dba9c26bfbd">location</a>.<a class="code hl_variable" href="structconfig_1_1Location.html#acd840cd528eacb701e56b8d1e9526b35">root</a>.empty(); }</div>
-<div class="ttc" id="astructconfig_1_1Location_html_acd840cd528eacb701e56b8d1e9526b35"><div class="ttname"><a href="structconfig_1_1Location.html#acd840cd528eacb701e56b8d1e9526b35">config::Location::root</a></div><div class="ttdeci">std::vector&lt; std::string &gt; root</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00012">Location.hpp:12</a></div></div>
+<div class="ttc" id="astructconfig_1_1Location_html_acd840cd528eacb701e56b8d1e9526b35"><div class="ttname"><a href="structconfig_1_1Location.html#acd840cd528eacb701e56b8d1e9526b35">config::Location::root</a></div><div class="ttdeci">std::vector&lt; std::string &gt; root</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00013">Location.hpp:13</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -301,20 +301,51 @@ Public Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a992447872b96e4c1bd161a20f2129024" name="a992447872b96e4c1bd161a20f2129024"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a992447872b96e4c1bd161a20f2129024">&#9670;&#160;</a></span>reset()</h2>
+<a id="a8649fd4c692d99d8564b563c0f0e58a9" name="a8649fd4c692d99d8564b563c0f0e58a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8649fd4c692d99d8564b563c0f0e58a9">&#9670;&#160;</a></span>print()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void config::Server::reset </td>
+          <td class="memname">void config::Server::print </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Server_8cpp_source.html#l00070">70</a> of file <a class="el" href="Server_8cpp_source.html">Server.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   70</span>                             {</div>
+<div class="line"><span class="lineno">   71</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;--------------------------------&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Port: &quot;</span> &lt;&lt; <a class="code hl_variable" href="structconfig_1_1Server.html#a20a4258033228bf14e8ac4498e847366">port</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   74</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;IPAddress: &quot;</span> &lt;&lt; <a class="code hl_variable" href="structconfig_1_1Server.html#ab6c2dbe85e39cf0a9b85a8b062714e0f">ipAddress</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   75</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;MaxBodySize: &quot;</span> &lt;&lt; <a class="code hl_variable" href="structconfig_1_1Server.html#a5e4f00bad29cb511cbb2deea9a472e02">maxBodySize</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   76</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;DataDirectory: &quot;</span> &lt;&lt; <a class="code hl_variable" href="structconfig_1_1Server.html#a90c673a54f892b3234088cb8cbe8297e">dataDirectory</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   77</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Names: &quot;</span>;</div>
+<div class="line"><span class="lineno">   78</span>        <span class="keywordflow">for</span> (std::vector&lt;std::string&gt;::const_iterator it = <a class="code hl_variable" href="structconfig_1_1Server.html#a828b1bc6ae91c5998f9d6dc6ec412387">serverNames</a>.begin(); it != <a class="code hl_variable" href="structconfig_1_1Server.html#a828b1bc6ae91c5998f9d6dc6ec412387">serverNames</a>.end(); ++it) {</div>
+<div class="line"><span class="lineno">   79</span>            std::cout &lt;&lt; *it &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><span class="lineno">   80</span>        }</div>
+<div class="line"><span class="lineno">   81</span>        std::cout &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   82</span>        this-&gt;<a class="code hl_variable" href="structconfig_1_1Server.html#a6b92598157154bee56285dba9c26bfbd">location</a>.<a class="code hl_function" href="structconfig_1_1Location.html#a0f4593421eeb84e104027d926c11521c">print</a>();</div>
+<div class="line"><span class="lineno">   83</span> </div>
+<div class="line"><span class="lineno">   84</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;--------------------------------&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   85</span>    }</div>
+<div class="ttc" id="astructconfig_1_1Location_html_a0f4593421eeb84e104027d926c11521c"><div class="ttname"><a href="structconfig_1_1Location.html#a0f4593421eeb84e104027d926c11521c">config::Location::print</a></div><div class="ttdeci">void print() const</div><div class="ttdoc">Prints the Location details.</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00157">Location.hpp:157</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="structconfig_1_1Server_a8649fd4c692d99d8564b563c0f0e58a9_cgraph.png" border="0" usemap="#astructconfig_1_1Server_a8649fd4c692d99d8564b563c0f0e58a9_cgraph" alt=""/></div>
+<map name="astructconfig_1_1Server_a8649fd4c692d99d8564b563c0f0e58a9_cgraph" id="astructconfig_1_1Server_a8649fd4c692d99d8564b563c0f0e58a9_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,155,31"/>
+<area shape="rect" href="structconfig_1_1Location.html#a0f4593421eeb84e104027d926c11521c" title="Prints the Location details." alt="" coords="203,5,365,31"/>
+<area shape="poly" title=" " alt="" coords="155,15,189,15,189,21,155,21"/>
+<area shape="rect" href="structconfig_1_1Location.html#a9f05fafb323691dded4d08dce941e0cd" title="Helper to print this location with indentation." alt="" coords="413,5,632,31"/>
+<area shape="poly" title=" " alt="" coords="366,15,400,15,400,21,366,21"/>
+</map>
+</div>
 
 </div>
 </div>

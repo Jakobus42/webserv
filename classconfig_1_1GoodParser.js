@@ -8,6 +8,8 @@ var classconfig_1_1GoodParser =
     [ "consume", "classconfig_1_1GoodParser.html#a2d143104d3629eabced6b1ddd33d42aa", null ],
     [ "expectLocationBlock", "classconfig_1_1GoodParser.html#ac088fea9f3e6daf0e2c92024160e4e8c", null ],
     [ "expectServerBlock", "classconfig_1_1GoodParser.html#a0e82e0e5d04aef7803c8c5f58cfe3674", null ],
+    [ "getConfigs", "classconfig_1_1GoodParser.html#acc8cccabfb40d4c12c4dacc96077bbe5", null ],
+    [ "handleSigint", "classconfig_1_1GoodParser.html#a722f4193763cb2e14d38347f68396665", null ],
     [ "locationDirectives", "classconfig_1_1GoodParser.html#a40dd834439d0dc6ce61ebe37e85b7288", null ],
     [ "matchDirective", "classconfig_1_1GoodParser.html#a2edf338e28aec34972844d615c41d1cd", null ],
     [ "matchToken", "classconfig_1_1GoodParser.html#a92c643f7604c55e14ad7df9ac6230e33", null ],
@@ -36,6 +38,7 @@ var classconfig_1_1GoodParser =
     [ "m_data", "classconfig_1_1GoodParser.html#a04a169cd1578c3a4e0017a60b156f7d2", null ],
     [ "m_depth", "classconfig_1_1GoodParser.html#a13d479dfd7b148d1f86c57b2536108d8", null ],
     [ "m_lineIndex", "classconfig_1_1GoodParser.html#ae9699a78b55539ab159a554fdb12c1d2", null ],
+    [ "m_readingFile", "classconfig_1_1GoodParser.html#a6528e07fb8dd6431390ec28e676bf001", null ],
     [ "m_readPos", "classconfig_1_1GoodParser.html#a11aaa31cf7410c4ba41a3a935233aa5a", null ],
     [ "WHITESPACE", "classconfig_1_1GoodParser.html#a4c636041d2a88611c9f39685038be1c5", null ]
 ];

@@ -5,6 +5,8 @@ var structconfig_1_1Location =
     [ "acceptsFileUpload", "structconfig_1_1Location.html#a8dce37fd41245b7e598affd4bbe2e7dc", null ],
     [ "hasRedirect", "structconfig_1_1Location.html#a08fc4cccff64cc1e84bbfc9d78c1b896", null ],
     [ "operator=", "structconfig_1_1Location.html#af34660652fba670e80f9721d95eb6ac6", null ],
+    [ "print", "structconfig_1_1Location.html#a0f4593421eeb84e104027d926c11521c", null ],
+    [ "printIndented", "structconfig_1_1Location.html#a9f05fafb323691dded4d08dce941e0cd", null ],
     [ "validate", "structconfig_1_1Location.html#ad24b20b529d6c74965641e023ed734c0", null ],
     [ "allowedMethods", "structconfig_1_1Location.html#acaa3a528534f8eb8c5fac6d2e688eaa4", null ],
     [ "autoindex", "structconfig_1_1Location.html#a7dcc19d544f0c21f8e29657406ddd5bd", null ],
