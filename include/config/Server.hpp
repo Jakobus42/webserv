@@ -33,7 +33,7 @@ namespace config {
 			bool hasDataDir() const;
 
 			void validate() const;
-			void reset();
+			void print() const;
 	};
 
 

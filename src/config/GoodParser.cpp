@@ -1,9 +1,13 @@
 #include "config/GoodParser.hpp"
 
+#include <signal.h>
+
 #include "http/Router.hpp"
 #include "shared/stringUtils.hpp"
 
 namespace config {
+
+	bool GoodParser::m_readingFile = false;
 
 	const std::string GoodParser::WHITESPACE = "\t\r\v\f ";
 
@@ -64,6 +68,8 @@ namespace config {
 		m_readPos = rhs.m_readPos;
 		return *this;
 	}
+
+	std::vector<Server>& GoodParser::getConfigs() { return m_configs; }
 
 	// ------------------------  utility  ----------------------------------- //
 
@@ -184,19 +190,32 @@ namespace config {
 
 	// ------------------------  parsing infrastructure  -------------------- //
 
+	void GoodParser::handleSigint(int signum) {
+		if (signum == SIGINT) {
+			m_readingFile = false;
+		}
+	}
+
 	bool GoodParser::parseFile(const std::string& fileName) {
+		signal(SIGINT, handleSigint);
+		signal(SIGQUIT, SIG_IGN);
+
 		std::ifstream file(fileName.c_str());
 		if (!file.is_open()) {
 			return false;
 		}
+
 		char c;
-		while (file >> std::noskipws >> c) {
+		m_readingFile = true;
+		while (m_readingFile && file >> std::noskipws >> c) {
+			std::cout << "foo" << std::endl;
 			if (c == '#') {
 				// skip until '\n'
 				while (file >> std::noskipws >> c && c != '\n') {}
 			}
 			m_data.push_back(c);
 		}
+		m_readingFile = false;
 		std::cout << m_data << std::endl;
 		// file.close();
 		// if (file.fail()) {
@@ -377,8 +396,22 @@ namespace config {
 	// ------------------------  server parsers  ---------------------------- //
 
 	void GoodParser::parseListen(const std::string& value, Server& server) {
-		(void)value;
-		(void)server;
+		std::string host;
+		std::string port;
+
+		if (value.find_first_of(':') == std::string::npos) {
+			throw parse_exception(m_lineIndex, "Invalid value for listen: " + value);
+		}
+		host = value.substr(0, value.find_first_of(':'));
+		port = value.substr(value.find_first_of(':') + 1);
+
+		std::stringstream ss(port);
+		if (!(ss >> server.port)) {
+			throw parse_exception(m_lineIndex, "Invalid value for listen: " + value);
+		}
+		if (ss >> port && !port.empty()) {
+			throw parse_exception(m_lineIndex, "Invalid value for listen: " + value);
+		}
 	}
 
 	void GoodParser::parseClientMaxBodySize(const std::string& value, Server& server) {
@@ -427,7 +460,8 @@ namespace config {
 		if (!isValidPath(value)) {
 			throw parse_exception(m_lineIndex, "Invalid path for return: " + value);
 		}
-		location.path = http::Router::splitPath(value); // ensure this won't throw
+		location.redirectUriTokens = http::Router::splitPath(value); // ensure this won't throw
+		location.redirectUri = value;
 	}
 
 	// if no limit_except is present, default initialization

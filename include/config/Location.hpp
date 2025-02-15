@@ -2,6 +2,7 @@
 
 #include "http/types.hpp"
 
+#include <iostream>
 #include <set>
 #include <string>
 #include <vector>
@@ -76,6 +77,85 @@ namespace config {
 			 */
 			void validate() const {
 				// throw config::parse_exception(1, "consarnit");
+			}
+
+			/**
+			 * @brief Helper to print this location with indentation.
+			 * @param indentLevel Number of spaces to indent.
+			 */
+			void printIndented(int indentLevel) const {
+				std::string indent(indentLevel, ' ');
+				// Print the location header line
+				std::cout << indent << "Location: ";
+				if (!path.empty()) {
+					for (std::vector<std::string>::const_iterator it = path.begin();
+						 it != path.end();
+						 ++it) {
+						std::cout << "/" << *it;
+					}
+				} else {
+					std::cout << "/";
+				}
+				std::cout << std::endl;
+
+				// Print root if specified.
+				if (!root.empty()) {
+					std::cout << indent << "  Root: ";
+					for (std::vector<std::string>::const_iterator it = root.begin(); it != root.end(); ++it) {
+						std::cout << *it << " ";
+					}
+					std::cout << std::endl;
+				}
+
+				// Print redirect URI if specified.
+				if (!redirectUri.empty()) {
+					std::cout << indent << "  Redirect URI: " << redirectUri << std::endl;
+				}
+
+				// Print allowed methods.
+				std::cout << indent << "  Allowed Methods: ";
+				for (std::set<http::Method>::const_iterator it = allowedMethods.begin();
+					 it != allowedMethods.end();
+					 ++it) {
+					std::cout << *it << " ";
+				}
+				std::cout << std::endl;
+
+				// Print upload subdirectory if set.
+				if (!uploadSubdirectory.empty()) {
+					std::cout << indent << "  Upload Subdirectory: " << uploadSubdirectory << std::endl;
+				}
+
+				// Print autoindex state.
+				std::cout << indent << "  Autoindex: " << (autoindex ? "on" : "off") << std::endl;
+
+				// Print index files if any.
+				if (!indexFile.empty()) {
+					std::cout << indent << "  Index Files: ";
+					for (std::vector<std::string>::const_iterator it = indexFile.begin();
+						 it != indexFile.end();
+						 ++it) {
+						std::cout << *it << " ";
+					}
+					std::cout << std::endl;
+				}
+
+				// Print nested locations recursively, indenting them further.
+				if (!locations.empty()) {
+					std::cout << indent << "  Nested Locations:" << std::endl;
+					for (std::vector<Location>::const_iterator it = locations.begin();
+						 it != locations.end();
+						 ++it) {
+						it->printIndented(indentLevel + 4);
+					}
+				}
+			}
+
+			/**
+			 * @brief Prints the Location details.
+			 */
+			void print() const {
+				printIndented(0);
 			}
 
 			// void reset() {

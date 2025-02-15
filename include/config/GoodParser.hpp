@@ -47,7 +47,9 @@ namespace config {
 		public:
 			GoodParser();
 			~GoodParser();
+
 			bool parseFile(const std::string& fileName);
+			std::vector<Server>& getConfigs();
 
 		private:
 			std::string m_data;
@@ -55,6 +57,7 @@ namespace config {
 			std::size_t m_depth;
 			std::size_t m_lineIndex;
 			std::size_t m_readPos;
+			static bool m_readingFile;
 
 			static const std::string WHITESPACE;
 
@@ -68,6 +71,7 @@ namespace config {
 			std::string readValue();
 			void skipWhitespace();
 			CommandType matchDirective(const std::string& token, const std::map<std::string, CommandType>& expectedDirectives);
+			static void handleSigint(int signum);
 
 			void parseFromData() throw(config::parse_exception);
 			void parseLine(const std::string& line) throw(config::parse_exception);

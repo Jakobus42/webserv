@@ -67,4 +67,21 @@ namespace config {
 		}
 	}
 
+	void Server::print() const {
+		std::cout << "--------------------------------" << std::endl;
+
+		std::cout << "Port: " << port << std::endl;
+		std::cout << "IPAddress: " << ipAddress << std::endl;
+		std::cout << "MaxBodySize: " << maxBodySize << std::endl;
+		std::cout << "DataDirectory: " << dataDirectory << std::endl;
+		std::cout << "Names: ";
+		for (std::vector<std::string>::const_iterator it = serverNames.begin(); it != serverNames.end(); ++it) {
+			std::cout << *it << " ";
+		}
+		std::cout << std::endl;
+		this->location.print();
+
+		std::cout << "--------------------------------" << std::endl;
+	}
+
 } /* namespace config */
