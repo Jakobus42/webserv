@@ -1,5 +1,7 @@
 #include "config/Server.hpp"
 
+#include "config/GoodParser.hpp"
+
 namespace config {
 
 	/**
@@ -52,14 +54,13 @@ namespace config {
 
 	bool Server::hasDataDir() const { return !dataDirectory.empty(); }
 
-	// void Server::reset() {
-	// 	port = 8080;
-	// 	ipAddress = http::LOCALHOST_ADDRESS;
-	// 	maxBodySize = ONE_MEGABYTE;
-	// 	dataDirectory.clear();
-	// 	serverNames.clear();
-	// 	errorPages.clear();
-	// 	location.reset();
-	// }
+	/**
+	 * @brief Validate the server, ensuring it has all mandatory keys
+	 * and that nothing else fucky wucky is going on
+	 *
+	 */
+	void Server::validate() const {
+		throw parse_exception(1, "fuck");
+	}
 
 } /* namespace config */

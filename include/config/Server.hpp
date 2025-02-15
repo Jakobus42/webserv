@@ -32,6 +32,7 @@ namespace config {
 			bool hasGlobalRoot() const;
 			bool hasDataDir() const;
 
+			void validate() const;
 			void reset();
 	};
 

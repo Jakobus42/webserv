@@ -68,6 +68,13 @@ namespace config {
 				return !redirectUri.empty();
 			}
 
+			/**
+			 * @brief Validate the Location
+			 */
+			void validate() const {
+				// throw config::parse_exception(1, "consarnit");
+			}
+
 			// void reset() {
 			// 	path.clear();
 			// 	root.clear();

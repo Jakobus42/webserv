@@ -18,6 +18,20 @@ namespace config {
 			std::string m_message;
 	};
 
+	enum CommandType {
+		D_PORT,
+		D_LISTEN,
+		D_CLIENT_MAX_BODY_SIZE,
+		D_DATA_DIR,
+		D_SERVER_NAME,
+		D_ROOT,
+		D_RETURN,
+		D_LIMIT_EXCEPT,
+		D_UPLOAD_DIR,
+		D_INDEX,
+		D_LOCATION
+	};
+
 	/**
 	 * @class GoodParser
 	 * @brief ...
@@ -35,6 +49,8 @@ namespace config {
 			std::size_t m_lineIndex;
 			std::size_t m_writePos;
 
+			static const std::string WHITESPACE;
+
 		private:
 			GoodParser(const GoodParser& other);
 			GoodParser& operator=(const GoodParser& rhs);
@@ -42,6 +58,7 @@ namespace config {
 			void consume(std::size_t amount);
 			bool matchToken(const std::string& token);
 			std::string readToken();
+			std::string readValue();
 			void skipWhitespace();
 
 			void parseFromData() throw(config::parse_exception);
@@ -49,5 +66,8 @@ namespace config {
 
 			void expectServerBlock() throw(parse_exception);
 			void expectLocationBlock(Location& parentLocation) throw(parse_exception);
+
+			static const std::map<std::string, CommandType>& locationDirectives();
+			static const std::map<std::string, CommandType>& serverDirectives();
 	};
 } /* namespace config */
