@@ -57,10 +57,14 @@ namespace config {
 	/**
 	 * @brief Validate the server, ensuring it has all mandatory keys
 	 * and that nothing else fucky wucky is going on
-	 *
 	 */
 	void Server::validate() const {
-		// throw parse_exception(1, "fuck");
+		if (dataDirectory.empty()) {
+			throw parse_exception("Server requires a 'data_dir'");
+		}
+		if (location.root.empty()) {
+			throw parse_exception("Server requires a 'root'");
+		}
 	}
 
 } /* namespace config */

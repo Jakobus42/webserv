@@ -11,6 +11,10 @@ namespace config {
 		: std::runtime_error("Line " + shared::string::fromNum(line) + ": Parsing failed, good luck finding out why")
 		, m_message("Line " + shared::string::fromNum(line) + ": Parsing failed, good luck finding out why") {}
 
+	parse_exception::parse_exception(const std::string& message)
+		: std::runtime_error("Parsing failed: " + message)
+		, m_message("Parsing failed: " + message) {}
+
 	parse_exception::parse_exception(std::size_t line, const std::string& message)
 		: std::runtime_error("Line " + shared::string::fromNum(line) + ": Parsing failed: " + message)
 		, m_message("Line " + shared::string::fromNum(line) + ": Parsing failed: " + message) {}
@@ -195,7 +199,6 @@ namespace config {
 			m_data.push_back(c);
 		}
 		std::cout << m_data << std::endl;
-		// strip out everything between '#' and the next '\n'
 		// file.close();
 		// if (file.fail()) {
 		// 	std::cout << "Oh, crud." << std::endl;
@@ -211,21 +214,10 @@ namespace config {
 	}
 
 	void GoodParser::parseFromData() throw(config::parse_exception) {
-		// parse out comments
-		// std::string currentLine;
 		while (m_readPos < m_data.size()) {
 			skipWhitespace();
 			expectServerBlock();
 		}
-		// for (std::string::const_iterator c = m_data.begin(); c != m_data.end(); ++c) {
-		// 	if (*c == '\n') {
-		// 		// parseLine(currentLine);
-		// 		currentLine.clear();
-		// 		m_lineIndex++;
-		// 	} else if (WHITESPACE.find_first_of(*c) == WHITESPACE.size()) {
-		// 		currentLine += *c;
-		// 	}
-		// }
 	}
 
 	// ------------------------  block parsing ------------------------------ //
@@ -243,6 +235,7 @@ namespace config {
 	 * - limit_except (location.allowedMethods)
 	 * - upload_dir (location.uploadSubdirectory)
 	 * - index (location.indexFile)
+	 * - autoindex (location.autoindex)
 	 * - location (location.locations) (can exist more than once)
 	 */
 	void GoodParser::expectServerBlock() throw(parse_exception) {
@@ -260,6 +253,9 @@ namespace config {
 
 		while (m_readPos < m_data.size()) {
 			skipWhitespace();
+			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
+				throw parse_exception(m_lineIndex, "Unexpected opening brace in Server block");
+			}
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '}') {
 				consume(1); // consume '}'
 				m_depth--;
@@ -279,10 +275,7 @@ namespace config {
 					throw parse_exception(m_lineIndex, "Unexpected directive in Server block: " + token);
 				}
 				std::string value = readValue();
-				// process server directives
-				// if the token doesn't match any expected directives,
-				// throw exception
-				std::cout << "Value for token '" << token << "': '" << value << "' (in server block)" << std::endl;
+				setServerValue(value, type, thisServer);
 			}
 		}
 		throw parse_exception(m_lineIndex, "Server block not closed with '}'");
@@ -299,6 +292,7 @@ namespace config {
 	 * - limit_except (allowedMethods)
 	 * - upload_dir (uploadSubdirectory)
 	 * - index (indexFile)
+	 * - autoindex
 	 * - location (locations) (can exist more than once)
 	 */
 	void GoodParser::expectLocationBlock(Location& parentLocation) throw(parse_exception) {
@@ -323,6 +317,9 @@ namespace config {
 		thisLocation.path = http::Router::splitPath(path);
 		while (m_readPos <= m_data.size()) {
 			skipWhitespace();
+			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
+				throw parse_exception(m_lineIndex, "Unexpected opening brace in location block");
+			}
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '}') {
 				consume(1); // consume '}'
 				m_depth--;
@@ -342,10 +339,131 @@ namespace config {
 					throw parse_exception(m_lineIndex, "Unexpected directive in Location block: " + token);
 				}
 				std::string value = readValue();
-				std::cout << "Value for token '" << token << "': '" << value << "'" << std::endl;
+				setLocationValue(value, type, thisLocation);
 			}
 		}
 		throw parse_exception(m_lineIndex, "Location block not closed with '}");
+	}
+
+	void GoodParser::setServerValue(const std::string& value, CommandType type, Server& server) {
+		static std::map<CommandType, ServerTokenParser> tokenParsers;
+
+		if (type > _D_SERVER_TYPES) {
+			return setLocationValue(value, type, server.location);
+		}
+		if (tokenParsers.empty()) {
+			tokenParsers[D_PORT] = &config::GoodParser::parsePort;
+			tokenParsers[D_LISTEN] = &config::GoodParser::parseListen;
+			tokenParsers[D_CLIENT_MAX_BODY_SIZE] = &config::GoodParser::parseClientMaxBodySize;
+			tokenParsers[D_DATA_DIR] = &config::GoodParser::parseDataDir;
+			tokenParsers[D_SERVER_NAME] = &config::GoodParser::parseServerName;
+		}
+
+		(this->*(tokenParsers[type]))(value, server);
+	}
+
+	void GoodParser::setLocationValue(const std::string& value, CommandType type, Location& location) {
+		static std::map<CommandType, LocationTokenParser> tokenParsers;
+
+		if (tokenParsers.empty()) {
+			tokenParsers[D_ROOT] = &config::GoodParser::parseRoot;
+			tokenParsers[D_RETURN] = &config::GoodParser::parseReturn;
+			tokenParsers[D_LIMIT_EXCEPT] = &config::GoodParser::parseLimitExcept;
+			tokenParsers[D_UPLOAD_DIR] = &config::GoodParser::parseUploadDir;
+			tokenParsers[D_INDEX] = &config::GoodParser::parseIndex;
+			tokenParsers[D_AUTOINDEX] = &config::GoodParser::parseAutoindex;
+			tokenParsers[D_LOCATION] = &config::GoodParser::parseLocation;
+		}
+
+		(this->*(tokenParsers[type]))(value, location);
+	}
+
+	// ------------------------  token parsers  ----------------------------- //
+
+
+	// ------------------------  server parsers  -------------------- //
+	void GoodParser::parsePort(const std::string& value, Server& server) {
+		(void)value;
+		(void)server;
+		std::cout << "parsePort parsing: " << value << std::endl;
+	}
+
+	void GoodParser::parseListen(const std::string& value, Server& server) {
+
+		(void)value;
+		(void)server;
+		std::cout << "parseListen parsing: " << value << std::endl;
+	}
+
+	void GoodParser::parseClientMaxBodySize(const std::string& value, Server& server) {
+
+		(void)value;
+		(void)server;
+		std::cout << "parseClientMaxBodySize parsing: " << value << std::endl;
+	}
+
+	void GoodParser::parseDataDir(const std::string& value, Server& server) {
+
+		(void)value;
+		(void)server;
+		std::cout << "parseDataDir parsing: " << value << std::endl;
+	}
+
+	void GoodParser::parseServerName(const std::string& value, Server& server) {
+
+		(void)value;
+		(void)server;
+		std::cout << "parseServerName parsing: " << value << std::endl;
+	}
+
+	// ------------------------  location parsers  ------------------ //
+	void GoodParser::parseRoot(const std::string& value, Location& location) {
+
+		(void)value;
+		(void)location;
+		std::cout << "parseRoot parsing: " << value << std::endl;
+	}
+
+	void GoodParser::parseReturn(const std::string& value, Location& location) {
+
+		(void)value;
+		(void)location;
+		std::cout << "parseReturn parsing: " << value << std::endl;
+	}
+
+	void GoodParser::parseLimitExcept(const std::string& value, Location& location) {
+
+		(void)value;
+		(void)location;
+		std::cout << "parseLimitExcept parsing: " << value << std::endl;
+	}
+
+	void GoodParser::parseUploadDir(const std::string& value, Location& location) {
+
+		(void)value;
+		(void)location;
+		std::cout << "parseUploadDir parsing: " << value << std::endl;
+	}
+
+	void GoodParser::parseIndex(const std::string& value, Location& location) {
+
+		(void)value;
+		(void)location;
+		std::cout << "parseIndex parsing: " << value << std::endl;
+	}
+
+	void GoodParser::parseAutoindex(const std::string& value, Location& location) {
+
+		(void)value;
+		(void)location;
+		std::cout << "parseAutoindex parsing: " << value << std::endl;
+	}
+
+	void GoodParser::parseLocation(const std::string& value, Location& location) {
+
+		(void)value;
+		(void)location;
+		std::cout << "parseLocation parsing: " << value << std::endl;
 	}
 
 } /* namespace config */

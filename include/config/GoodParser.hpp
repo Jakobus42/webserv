@@ -10,6 +10,7 @@ namespace config {
 	class parse_exception : public std::runtime_error {
 		public:
 			explicit parse_exception(std::size_t line);
+			explicit parse_exception(const std::string& message);
 			explicit parse_exception(std::size_t line, const std::string& message);
 			virtual ~parse_exception() throw();
 
@@ -26,6 +27,7 @@ namespace config {
 		D_CLIENT_MAX_BODY_SIZE,
 		D_DATA_DIR,
 		D_SERVER_NAME,
+		_D_SERVER_TYPES,
 		D_ROOT,
 		D_RETURN,
 		D_LIMIT_EXCEPT,
@@ -37,9 +39,12 @@ namespace config {
 
 	/**
 	 * @class GoodParser
-	 * @brief ...
+	 * @brief Parses the config goodly
 	 */
 	class GoodParser {
+			typedef void (GoodParser::*LocationTokenParser)(const std::string&, Location&);
+			typedef void (GoodParser::*ServerTokenParser)(const std::string&, Server&);
+
 		public:
 			GoodParser();
 			~GoodParser();
@@ -71,7 +76,27 @@ namespace config {
 			void expectServerBlock() throw(parse_exception);
 			void expectLocationBlock(Location& parentLocation) throw(parse_exception);
 
+			void setServerValue(const std::string& value, CommandType type, Server& server);
+			void setLocationValue(const std::string& value, CommandType type, Location& location);
+
 			static const std::map<std::string, CommandType>& locationDirectives();
 			static const std::map<std::string, CommandType>& serverDirectives();
+
+		private:
+			// ------------------------  server parsers  -------------------- //
+			void parsePort(const std::string& value, Server& server);
+			void parseListen(const std::string& value, Server& server);
+			void parseClientMaxBodySize(const std::string& value, Server& server);
+			void parseDataDir(const std::string& value, Server& server);
+			void parseServerName(const std::string& value, Server& server);
+
+			// ------------------------  location parsers  ------------------ //
+			void parseRoot(const std::string& value, Location& location);
+			void parseReturn(const std::string& value, Location& location);
+			void parseLimitExcept(const std::string& value, Location& location);
+			void parseUploadDir(const std::string& value, Location& location);
+			void parseIndex(const std::string& value, Location& location);
+			void parseAutoindex(const std::string& value, Location& location);
+			void parseLocation(const std::string& value, Location& location);
 	};
 } /* namespace config */
