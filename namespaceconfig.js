@@ -13,6 +13,7 @@ var namespaceconfig =
       [ "D_CLIENT_MAX_BODY_SIZE", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510aa787eb713d65bcfa9d092409bc9175e9", null ],
       [ "D_DATA_DIR", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ae3d8583faa5dfad9c59c533c488c2eca", null ],
       [ "D_SERVER_NAME", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ab46afab11042a78457b5119b86dbc46f", null ],
+      [ "_D_SERVER_TYPES", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a7243d0b4f279565a2f210582618147ed", null ],
       [ "D_ROOT", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ae5ad47cb3820185e2c3d180bf4526590", null ],
       [ "D_RETURN", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ad235a3161c77a616db3f9b9cac689986", null ],
       [ "D_LIMIT_EXCEPT", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a6bcfc2608af44df7211b7e35ba8724ec", null ],

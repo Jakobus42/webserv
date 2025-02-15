@@ -335,10 +335,15 @@ Public Attributes</h2></td></tr>
 
 <p>Validate the server, ensuring it has all mandatory keys and that nothing else fucky wucky is going on. </p>
 
-<p class="definition">Definition at line <a class="el" href="Server_8cpp_source.html#l00062">62</a> of file <a class="el" href="Server_8cpp_source.html">Server.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   62</span>                                {</div>
-<div class="line"><span class="lineno">   63</span>        <span class="comment">// throw parse_exception(1, &quot;fuck&quot;);</span></div>
-<div class="line"><span class="lineno">   64</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Server_8cpp_source.html#l00061">61</a> of file <a class="el" href="Server_8cpp_source.html">Server.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   61</span>                                {</div>
+<div class="line"><span class="lineno">   62</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="structconfig_1_1Server.html#a90c673a54f892b3234088cb8cbe8297e">dataDirectory</a>.empty()) {</div>
+<div class="line"><span class="lineno">   63</span>            <span class="keywordflow">throw</span> parse_exception(<span class="stringliteral">&quot;Server requires a &#39;data_dir&#39;&quot;</span>);</div>
+<div class="line"><span class="lineno">   64</span>        }</div>
+<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="structconfig_1_1Server.html#a6b92598157154bee56285dba9c26bfbd">location</a>.<a class="code hl_variable" href="structconfig_1_1Location.html#acd840cd528eacb701e56b8d1e9526b35">root</a>.empty()) {</div>
+<div class="line"><span class="lineno">   66</span>            <span class="keywordflow">throw</span> parse_exception(<span class="stringliteral">&quot;Server requires a &#39;root&#39;&quot;</span>);</div>
+<div class="line"><span class="lineno">   67</span>        }</div>
+<div class="line"><span class="lineno">   68</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

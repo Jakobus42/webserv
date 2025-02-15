@@ -74,9 +74,9 @@ Inheritance diagram for config::parse_exception:</div>
 <div class="dyncontent">
 <div class="center"><img src="classconfig_1_1parse__exception__inherit__graph.png" border="0" usemap="#aconfig_1_1parse__exception_inherit__map" alt="Inheritance graph"/></div>
 <map name="aconfig_1_1parse__exception_inherit__map" id="aconfig_1_1parse__exception_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,119,173,244"/>
+<area shape="rect" title=" " alt="" coords="5,119,173,264"/>
 <area shape="rect" title=" " alt="" coords="24,5,155,71"/>
-<area shape="poly" title=" " alt="" coords="92,85,92,119,87,119,87,85"/>
+<area shape="poly" title=" " alt="" coords="92,84,92,118,87,118,87,84"/>
 </map>
 </div>
 <div class="dynheader">
@@ -84,9 +84,9 @@ Collaboration diagram for config::parse_exception:</div>
 <div class="dyncontent">
 <div class="center"><img src="classconfig_1_1parse__exception__coll__graph.png" border="0" usemap="#aconfig_1_1parse__exception_coll__map" alt="Collaboration graph"/></div>
 <map name="aconfig_1_1parse__exception_coll__map" id="aconfig_1_1parse__exception_coll__map">
-<area shape="rect" title=" " alt="" coords="5,119,173,244"/>
+<area shape="rect" title=" " alt="" coords="5,119,173,264"/>
 <area shape="rect" title=" " alt="" coords="24,5,155,71"/>
-<area shape="poly" title=" " alt="" coords="92,85,92,119,87,119,87,85"/>
+<area shape="poly" title=" " alt="" coords="92,84,92,118,87,118,87,84"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -94,6 +94,8 @@ Collaboration diagram for config::parse_exception:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a48f0381d0974183806f87506c733ebc2" id="r_a48f0381d0974183806f87506c733ebc2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classconfig_1_1parse__exception.html#a48f0381d0974183806f87506c733ebc2">parse_exception</a> (std::size_t line)</td></tr>
 <tr class="separator:a48f0381d0974183806f87506c733ebc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b649b8fc5f4580e0278af52c16b224a" id="r_a9b649b8fc5f4580e0278af52c16b224a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classconfig_1_1parse__exception.html#a9b649b8fc5f4580e0278af52c16b224a">parse_exception</a> (const std::string &amp;message)</td></tr>
+<tr class="separator:a9b649b8fc5f4580e0278af52c16b224a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba66a5772e667199aa2465cb5ac77819" id="r_aba66a5772e667199aa2465cb5ac77819"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classconfig_1_1parse__exception.html#aba66a5772e667199aa2465cb5ac77819">parse_exception</a> (std::size_t line, const std::string &amp;message)</td></tr>
 <tr class="separator:aba66a5772e667199aa2465cb5ac77819"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac94c4f77da192017b76d91bb85b2db4f" id="r_ac94c4f77da192017b76d91bb85b2db4f"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classconfig_1_1parse__exception.html#ac94c4f77da192017b76d91bb85b2db4f">~parse_exception</a> ()  throw ()</td></tr>
@@ -111,7 +113,7 @@ Private Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="GoodParser_8hpp_source.html#l00010">10</a> of file <a class="el" href="GoodParser_8hpp_source.html">GoodParser.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a48f0381d0974183806f87506c733ebc2" name="a48f0381d0974183806f87506c733ebc2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48f0381d0974183806f87506c733ebc2">&#9670;&#160;</a></span>parse_exception() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a48f0381d0974183806f87506c733ebc2">&#9670;&#160;</a></span>parse_exception() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -137,13 +139,43 @@ Private Attributes</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00010">10</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   11</span>        : std::runtime_error(<span class="stringliteral">&quot;Line &quot;</span> + <a class="code hl_function" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a>(line) + <span class="stringliteral">&quot;: Parsing failed, good luck finding out why&quot;</span>)</div>
 <div class="line"><span class="lineno">   12</span>        , <a class="code hl_variable" href="classconfig_1_1parse__exception.html#a6ca97f11c246b5a2d1c9c9379c554c02">m_message</a>(<span class="stringliteral">&quot;Line &quot;</span> + <a class="code hl_function" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a>(line) + <span class="stringliteral">&quot;: Parsing failed, good luck finding out why&quot;</span>) {}</div>
-<div class="ttc" id="aclassconfig_1_1parse__exception_html_a6ca97f11c246b5a2d1c9c9379c554c02"><div class="ttname"><a href="classconfig_1_1parse__exception.html#a6ca97f11c246b5a2d1c9c9379c554c02">config::parse_exception::m_message</a></div><div class="ttdeci">std::string m_message</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8hpp_source.html#l00019">GoodParser.hpp:19</a></div></div>
+<div class="ttc" id="aclassconfig_1_1parse__exception_html_a6ca97f11c246b5a2d1c9c9379c554c02"><div class="ttname"><a href="classconfig_1_1parse__exception.html#a6ca97f11c246b5a2d1c9c9379c554c02">config::parse_exception::m_message</a></div><div class="ttdeci">std::string m_message</div><div class="ttdef"><b>Definition</b> <a href="GoodParser_8hpp_source.html#l00020">GoodParser.hpp:20</a></div></div>
 <div class="ttc" id="anamespaceshared_1_1string_html_ae2138ded029ed6312cd2d6505efb8f75"><div class="ttname"><a href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a></div><div class="ttdeci">std::string fromNum(int32_t number)</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8cpp_source.html#l00151">stringUtils.cpp:151</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a9b649b8fc5f4580e0278af52c16b224a" name="a9b649b8fc5f4580e0278af52c16b224a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b649b8fc5f4580e0278af52c16b224a">&#9670;&#160;</a></span>parse_exception() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">config::parse_exception::parse_exception </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00014">14</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   15</span>        : std::runtime_error(<span class="stringliteral">&quot;Parsing failed: &quot;</span> + message)</div>
+<div class="line"><span class="lineno">   16</span>        , <a class="code hl_variable" href="classconfig_1_1parse__exception.html#a6ca97f11c246b5a2d1c9c9379c554c02">m_message</a>(<span class="stringliteral">&quot;Parsing failed: &quot;</span> + message) {}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="aba66a5772e667199aa2465cb5ac77819" name="aba66a5772e667199aa2465cb5ac77819"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba66a5772e667199aa2465cb5ac77819">&#9670;&#160;</a></span>parse_exception() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aba66a5772e667199aa2465cb5ac77819">&#9670;&#160;</a></span>parse_exception() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -176,9 +208,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00014">14</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   15</span>        : std::runtime_error(<span class="stringliteral">&quot;Line &quot;</span> + <a class="code hl_function" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a>(line) + <span class="stringliteral">&quot;: Parsing failed: &quot;</span> + message)</div>
-<div class="line"><span class="lineno">   16</span>        , <a class="code hl_variable" href="classconfig_1_1parse__exception.html#a6ca97f11c246b5a2d1c9c9379c554c02">m_message</a>(<span class="stringliteral">&quot;Line &quot;</span> + <a class="code hl_function" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a>(line) + <span class="stringliteral">&quot;: Parsing failed: &quot;</span> + message) {}</div>
+<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00018">18</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>        : std::runtime_error(<span class="stringliteral">&quot;Line &quot;</span> + <a class="code hl_function" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a>(line) + <span class="stringliteral">&quot;: Parsing failed: &quot;</span> + message)</div>
+<div class="line"><span class="lineno">   20</span>        , <a class="code hl_variable" href="classconfig_1_1parse__exception.html#a6ca97f11c246b5a2d1c9c9379c554c02">m_message</a>(<span class="stringliteral">&quot;Line &quot;</span> + <a class="code hl_function" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a>(line) + <span class="stringliteral">&quot;: Parsing failed: &quot;</span> + message) {}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -211,8 +243,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00018">18</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   18</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00022">22</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   22</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -232,8 +264,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00020">20</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   20</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classconfig_1_1parse__exception.html#a6ca97f11c246b5a2d1c9c9379c554c02">m_message</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="GoodParser_8cpp_source.html#l00024">24</a> of file <a class="el" href="GoodParser_8cpp_source.html">GoodParser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   24</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classconfig_1_1parse__exception.html#a6ca97f11c246b5a2d1c9c9379c554c02">m_message</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -270,7 +302,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="GoodParser_8hpp_source.html#l00019">19</a> of file <a class="el" href="GoodParser_8hpp_source.html">GoodParser.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="GoodParser_8hpp_source.html#l00020">20</a> of file <a class="el" href="GoodParser_8hpp_source.html">GoodParser.hpp</a>.</p>
 
 </div>
 </div>

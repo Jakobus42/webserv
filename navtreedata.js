@@ -86,6 +86,7 @@ var NAVTREE =
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
+        [ "Typedefs", "functions_type.html", null ],
         [ "Enumerations", "functions_enum.html", null ],
         [ "Enumerator", "functions_eval.html", null ]
       ] ]
@@ -106,10 +107,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AHandler_8hpp.html",
-"classconfig_1_1parse__exception.html#a0c8ea815c458cac4927747c5b5af17d2",
-"classhttp_1_1RequestParser.html#a4d5db69101dd93f223be3cee73169174",
-"classshared_1_1Logger.html#a0c56e97f300c75fad99d913cc0295f5b",
-"namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a984068cd778bcc4ab5e9d7b22c2aff6d"
+"classconfig_1_1Parser.html#a987319000c9081bf20ddbebea1b8925a",
+"classhttp_1_1RequestParser.html#a085c03526c534b088b51be604432e50d",
+"classshared_1_1Buffer.html#a0d5c900c1f099445ddd2249b2d7735e2",
+"md__2home_2runner_2work_2webserv_2webserv_2docs_2contributing_2config__file__basics.html#autotoc_md7",
+"structhttp_1_1RequestParser_1_1Token.html#a2c462eec50f148ea7d8a35b25fbca699"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
