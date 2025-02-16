@@ -12,6 +12,7 @@ namespace config {
 		, ipAddress(http::LOCALHOST_ADDRESS)
 		, maxBodySize(ONE_MEGABYTE)
 		, dataDirectory("")
+		, dataDirectoryAsTokens()
 		, serverNames()
 		, location() {}
 
@@ -29,6 +30,7 @@ namespace config {
 		, ipAddress(other.ipAddress)
 		, maxBodySize(other.maxBodySize)
 		, dataDirectory(other.dataDirectory)
+		, dataDirectoryAsTokens(other.dataDirectoryAsTokens)
 		, serverNames(other.serverNames)
 		, location(other.location) {}
 
@@ -45,6 +47,7 @@ namespace config {
 		ipAddress = rhs.ipAddress;
 		maxBodySize = rhs.maxBodySize;
 		dataDirectory = rhs.dataDirectory;
+		dataDirectoryAsTokens = rhs.dataDirectoryAsTokens;
 		serverNames = rhs.serverNames;
 		location = rhs.location;
 		return *this;

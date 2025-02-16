@@ -88,7 +88,7 @@ namespace config {
 	}
 
 	void GoodParser::consume(std::size_t amount) {
-		if (amount > m_readPos + m_data.size()) {
+		if (amount + m_readPos > m_data.size()) {
 			throw std::runtime_error("GoodParser: Cannot consume more data than available");
 		}
 		m_readPos += amount;
@@ -216,7 +216,7 @@ namespace config {
 			m_data.push_back(c);
 		}
 		m_readingFile = false;
-		std::cout << m_data << std::endl;
+		// std::cout << m_data << std::endl;
 		// file.close();
 		// if (file.fail()) {
 		// 	std::cout << "Oh, crud." << std::endl;
@@ -227,6 +227,9 @@ namespace config {
 		} catch (const parse_exception& e) {
 			std::cout << e.getMessage() << std::endl;
 			return false;
+		} catch (const std::exception& e) {
+			std::cout << e.what() << std::endl;
+			return false;
 		}
 		return true;
 	}
@@ -234,6 +237,9 @@ namespace config {
 	void GoodParser::parseFromData() throw(config::parse_exception) {
 		while (m_readPos < m_data.size()) {
 			skipWhitespace();
+			if (!matchToken("server")) {
+				throw parse_exception(m_lineIndex, "Expected 'server' keyword");
+			}
 			expectServerBlock();
 		}
 	}
@@ -257,9 +263,6 @@ namespace config {
 	 * - location (location.locations) (can exist more than once)
 	 */
 	void GoodParser::expectServerBlock() throw(parse_exception) {
-		if (!matchToken("server")) {
-			throw parse_exception(m_lineIndex, "Expected 'server' keyword");
-		}
 		skipWhitespace();
 		if (m_readPos >= m_data.size() || m_data[m_readPos] != '{') {
 			throw parse_exception(m_lineIndex, "Expected opening brace after Server");
@@ -290,7 +293,7 @@ namespace config {
 					throw parse_exception(m_lineIndex, "Unexpected directive in Server block: " + token);
 				}
 				std::string value = readValue();
-				setServerValue(value, type, thisServer);
+				processValue(value, type, thisServer);
 			}
 		}
 		throw parse_exception(m_lineIndex, "Server block not closed with '}'");
@@ -354,17 +357,17 @@ namespace config {
 					throw parse_exception(m_lineIndex, "Unexpected directive in Location block: " + token);
 				}
 				std::string value = readValue();
-				setLocationValue(value, type, thisLocation);
+				processValue(value, type, thisLocation);
 			}
 		}
 		throw parse_exception(m_lineIndex, "Location block not closed with '}");
 	}
 
-	void GoodParser::setServerValue(const std::string& value, CommandType type, Server& server) {
+	void GoodParser::processValue(const std::string& value, CommandType type, Server& server) {
 		static std::map<CommandType, ServerTokenParser> tokenParsers;
 
 		if (type > _D_SERVER_TYPES) {
-			return setLocationValue(value, type, server.location);
+			return processValue(value, type, server.location);
 		}
 		if (tokenParsers.empty()) {
 			tokenParsers[D_LISTEN] = &config::GoodParser::parseListen;
@@ -377,7 +380,7 @@ namespace config {
 	}
 
 	// cppcheck-suppress constParameter
-	void GoodParser::setLocationValue(const std::string& value, CommandType type, Location& location) {
+	void GoodParser::processValue(const std::string& value, CommandType type, Location& location) {
 		static std::map<CommandType, LocationTokenParser> tokenParsers;
 
 		if (tokenParsers.empty()) {
@@ -431,6 +434,7 @@ namespace config {
 			throw parse_exception(m_lineIndex, "Invalid path for data_dir: " + value);
 		}
 		server.dataDirectory = value; // check whether this needs to be stripped of whitespace
+									  // should we normalize these?
 	}
 
 	void GoodParser::parseServerName(const std::string& value, Server& server) {
@@ -460,7 +464,7 @@ namespace config {
 		if (!isValidPath(value)) {
 			throw parse_exception(m_lineIndex, "Invalid path for return: " + value);
 		}
-		location.redirectUriTokens = http::Router::splitPath(value); // ensure this won't throw
+		location.redirectUriAsTokens = http::Router::splitPath(value); // ensure this won't throw
 		location.redirectUri = value;
 	}
 
@@ -498,7 +502,8 @@ namespace config {
 		if (!isValidPath(value)) {
 			throw parse_exception(m_lineIndex, "Invalid path for upload_dir: " + value);
 		}
-		location.uploadSubdirectory = value; // strip this of whitespace if that doesn't happen yet
+		location.uploadSubdirectory = value;								  // strip this of whitespace if that doesn't happen yet
+		location.uploadSubdirectoryAsTokens = http::Router::splitPath(value); // strip this of whitespace if that doesn't happen yet
 	}
 
 	void GoodParser::parseIndex(const std::string& value, Location& location) {
@@ -540,12 +545,5 @@ namespace config {
 			throw parse_exception(m_lineIndex, "Unexpected token in autoindex: " + token);
 		}
 	}
-
-	// void GoodParser::parseLocation(const std::string& value, Location& location) {
-
-	// 	(void)value;
-	// 	(void)location;
-	// 	std::cout << "parseLocation parsing: " << value << std::endl;
-	// }
 
 } /* namespace config */

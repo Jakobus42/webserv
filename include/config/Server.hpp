@@ -21,6 +21,7 @@ namespace config {
 			uint32_t ipAddress;
 			unsigned long maxBodySize;
 			std::string dataDirectory;
+			std::vector<std::string> dataDirectoryAsTokens;
 			std::vector<std::string> serverNames;
 			Location location;
 

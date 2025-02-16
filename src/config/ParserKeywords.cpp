@@ -316,7 +316,7 @@ namespace config {
 		// TODO: check if valid url?
 		Location* current = getLocation(layer);
 		current->redirectUri = args[1];
-		current->redirectUriTokens = http::Router::splitPath(current->redirectUri);
+		current->redirectUriAsTokens = http::Router::splitPath(current->redirectUri);
 		return 0;
 	}
 

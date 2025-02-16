@@ -131,8 +131,8 @@ namespace http {
 			throw http::exception(LOOP_DETECTED, "Redirects exceeded MAX_REDIRECTS");
 		}
 		if (currentLocation.hasRedirect()) {
-			return routeToPath(currentLocation.redirectUriTokens, m_globalRoot, m_globalRoot.path, redirects + 1); // TODO: invalid, this would then always return globalRoot's route
-		}																										   // TODO: how the frick do we solve this?
+			return routeToPath(currentLocation.redirectUriAsTokens, m_globalRoot, m_globalRoot.path, redirects + 1); // TODO: invalid, this would then always return globalRoot's route
+		}																											 // TODO: how the frick do we solve this?
 		if (uriPath.size() <= depth) {
 			if (currentRootPath == m_globalRoot.root) {
 				return std::make_pair(joinPath(currentRootPath), &currentLocation);

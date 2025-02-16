@@ -74,13 +74,12 @@ namespace config {
 			static void handleSigint(int signum);
 
 			void parseFromData() throw(config::parse_exception);
-			void parseLine(const std::string& line) throw(config::parse_exception);
 
 			void expectServerBlock() throw(parse_exception);
 			void expectLocationBlock(Location& parentLocation) throw(parse_exception);
 
-			void setServerValue(const std::string& value, CommandType type, Server& server);
-			void setLocationValue(const std::string& value, CommandType type, Location& location);
+			void processValue(const std::string& value, CommandType type, Server& server);
+			void processValue(const std::string& value, CommandType type, Location& location);
 
 			static const std::map<std::string, CommandType>& locationDirectives();
 			static const std::map<std::string, CommandType>& serverDirectives();
@@ -100,6 +99,5 @@ namespace config {
 			void parseUploadDir(const std::string& value, Location& location);
 			void parseIndex(const std::string& value, Location& location);
 			void parseAutoindex(const std::string& value, Location& location);
-			// void parseLocation(const std::string& value, Location& location);
 	};
 } /* namespace config */

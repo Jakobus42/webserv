@@ -9,24 +9,26 @@
 
 namespace config {
 	struct Location {
-			std::vector<std::string> path;				// location name split into tokens
-			std::vector<std::string> root;				// root split into tokens // TODO: maybe actually assign root to parent root in parser, if not specified in config? might make things easier
-			std::string redirectUri;					// return route (references other locations)
-			std::vector<std::string> redirectUriTokens; // return route split into tokens
-			std::set<http::Method> allowedMethods;		// allowed HTTP methods
-			std::string uploadSubdirectory;				// subdirectory for uploads
-			bool autoindex;								//
-			std::vector<std::string> indexFile;			// file to load when GETting a directory
-			std::vector<Location> locations;			// registered locations // TODO: maybe rename to 'children'
+			std::vector<std::string> path;						 // location name split into tokens
+			std::vector<std::string> root;						 // root split into tokens // TODO: maybe actually assign root to parent root in parser, if not specified in config? might make things easier
+			std::string redirectUri;							 // return route (references other locations)
+			std::vector<std::string> redirectUriAsTokens;		 // return route split into tokens
+			std::set<http::Method> allowedMethods;				 // allowed HTTP methods
+			std::string uploadSubdirectory;						 // subdirectory for uploads
+			std::vector<std::string> uploadSubdirectoryAsTokens; //
+			bool autoindex;										 //
+			std::vector<std::string> indexFile;					 // files to load when GETting a directory
+			std::vector<Location> locations;					 // registered locations // TODO: maybe rename to 'children'
 
 			// default constructor
 			Location()
 				: path()
 				, root()
 				, redirectUri()
-				, redirectUriTokens()
+				, redirectUriAsTokens()
 				, allowedMethods()
 				, uploadSubdirectory()
+				, uploadSubdirectoryAsTokens()
 				, autoindex(false)
 				, indexFile()
 				, locations() {
@@ -40,9 +42,10 @@ namespace config {
 				: path(other.path)
 				, root(other.root)
 				, redirectUri(other.redirectUri)
-				, redirectUriTokens(other.redirectUriTokens)
+				, redirectUriAsTokens(other.redirectUriAsTokens)
 				, allowedMethods(other.allowedMethods)
 				, uploadSubdirectory(other.uploadSubdirectory)
+				, uploadSubdirectoryAsTokens(other.uploadSubdirectoryAsTokens)
 				, autoindex(other.autoindex)
 				, indexFile(other.indexFile)
 				, locations(other.locations) {
@@ -54,9 +57,10 @@ namespace config {
 					path = other.path;
 					root = other.root;
 					redirectUri = other.redirectUri;
-					redirectUriTokens = other.redirectUriTokens;
+					redirectUriAsTokens = other.redirectUriAsTokens;
 					allowedMethods = other.allowedMethods;
 					uploadSubdirectory = other.uploadSubdirectory;
+					uploadSubdirectoryAsTokens = other.uploadSubdirectoryAsTokens;
 					autoindex = other.autoindex;
 					indexFile = other.indexFile;
 					locations = other.locations;
@@ -162,7 +166,7 @@ namespace config {
 			// 	path.clear();
 			// 	root.clear();
 			// 	redirectUri.clear();
-			// 	redirectUriTokens.clear();
+			// 	redirectUriAsTokens.clear();
 			// 	allowedMethods.clear();
 			// 	uploadSubdirectory.clear();
 			// 	autoindex = false;
