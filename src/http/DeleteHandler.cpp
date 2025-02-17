@@ -39,7 +39,7 @@ namespace http {
 			response.setHeader("Content-Length", "0");
 		} catch (const http::exception& e) {
 			std::cout << "FUCK, " << e.getMessage() << std::endl;
-			response.setStatusCode(e.getCode());
+			response.setStatusCode(e.getStatusCode());
 			return handleError(response);
 		}
 	}

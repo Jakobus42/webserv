@@ -27,7 +27,7 @@ namespace http {
 			this->parse();
 		} catch (const http::exception& e) {
 			std::cout << "SHIT, " << e.getMessage() << std::endl;
-			m_req.setStatusCode(e.getCode());
+			m_req.setStatusCode(e.getStatusCode());
 			this->setState(ERROR);
 		} catch (const std::exception& e) {
 			m_req.setStatusCode(INTERNAL_SERVER_ERROR);
@@ -171,7 +171,7 @@ namespace http {
 		} else {
 			uri.cgiPathInfo = ""; // should never be read in this case
 		}
-		uri.pathSegments = Router::splitPath(uri.path);
+		uri.pathSegments = shared::string::splitPath(uri.path);
 		// TODO: should we parse this at all?
 		// also, should we check if we accept the script here?
 	}

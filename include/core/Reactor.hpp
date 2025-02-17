@@ -22,7 +22,7 @@ namespace core {
 			Reactor();
 			~Reactor();
 
-			void init(const std::vector<config::ServerConfig>& serverConfigs);
+			void init(const std::vector<config::Server>& serverConfigs);
 			void react();
 
 		private:

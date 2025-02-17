@@ -14,5 +14,6 @@ enum CmdId {
 	INDEX_ID = 10,
 	GLOBAL_ROOT_ID = 11,
 	DATA_DIR_ID = 12,
+	UPLOAD_DIR_ID = 13,
 	UNKNOWN_ID = 404
 };

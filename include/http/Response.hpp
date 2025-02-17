@@ -1,6 +1,5 @@
 #pragma once
 
-#include "config/Parser.hpp"
 #include "http/http.hpp"
 #include "shared/Buffer.hpp"
 #include "shared/NonCopyable.hpp"

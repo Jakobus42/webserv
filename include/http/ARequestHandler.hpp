@@ -1,10 +1,10 @@
 #pragma once
 
-#include "config/Parser.hpp"
 #include "http/Request.hpp"
 #include "http/Response.hpp"
 #include "http/Router.hpp"
 #include "shared/NonCopyable.hpp"
+#include "shared/stringUtils.hpp"
 
 namespace http {
 

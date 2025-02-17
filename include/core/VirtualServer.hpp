@@ -2,7 +2,8 @@
 
 #include <stdint.h>
 
-#include "config/Parser.hpp"
+#include "config/Location.hpp"
+#include "config/Server.hpp"
 #include "http/Router.hpp"
 #include "shared/Logger.hpp"
 
@@ -17,7 +18,7 @@ namespace http {
 	 */
 	class VirtualServer {
 		public:
-			VirtualServer(const config::ServerConfig& conf);
+			VirtualServer(const config::Server& conf);
 			~VirtualServer();
 			VirtualServer(const VirtualServer& other);
 			const VirtualServer& operator=(const VirtualServer& other);
@@ -34,7 +35,7 @@ namespace http {
 			int32_t getSocket(void);
 			const std::map<int32_t, time_t>& getClients(void) const;
 			std::map<int32_t, time_t>& getClients(void);
-			const config::ServerConfig& getConfig() const;
+			const config::Server& getConfig() const;
 			Router& getRouter();
 
 		private:
@@ -46,7 +47,7 @@ namespace http {
 		private:
 			static const time_t CLIENT_TIMEOUT = 3;
 
-			config::ServerConfig m_config;
+			config::Server m_config;
 			std::map<int32_t, time_t> m_clients; // first is client fd and second is last activity/
 			int32_t m_listenSocket;
 			shared::Logger m_logger;

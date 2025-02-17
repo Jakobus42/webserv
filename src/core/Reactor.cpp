@@ -30,7 +30,7 @@ namespace core {
 	Reactor::~Reactor() {
 	}
 
-	void Reactor::init(const std::vector<config::ServerConfig>& serverConfigs) {
+	void Reactor::init(const std::vector<config::Server>& serverConfigs) {
 		signal(SIGINT, handleSigint);
 		signal(SIGQUIT, SIG_IGN);
 
