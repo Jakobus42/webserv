@@ -68,6 +68,7 @@ namespace config {
 		if (location.root.empty()) {
 			throw parse_exception("Server requires a 'root'");
 		}
+		// TODO: ensure this path exists and can be accessed
 	}
 
 	void Server::print() const {

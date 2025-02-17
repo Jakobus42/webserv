@@ -73,7 +73,8 @@ namespace config {
 			CommandType matchDirective(const std::string& token, const std::map<std::string, CommandType>& expectedDirectives);
 			static void handleSigint(int signum);
 
-			void parseFromData() throw(config::parse_exception);
+			void parseFromData() throw(parse_exception);
+			void processParsedData() throw(parse_exception);
 
 			void expectServerBlock() throw(parse_exception);
 			void expectLocationBlock(Location& parentLocation) throw(parse_exception);
@@ -93,6 +94,7 @@ namespace config {
 			void parseServerName(const std::string& value, Server& server);
 
 			uint32_t parseIpAddress(const std::string& host);
+			void assignAbsolutePaths(Server& server, Location& parentLocation) throw(parse_exception);
 
 			// ------------------------  location parsers  ------------------ //
 			void parseRoot(const std::string& value, Location& location);

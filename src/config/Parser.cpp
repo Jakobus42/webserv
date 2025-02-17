@@ -3,6 +3,7 @@
 #include <signal.h>
 
 #include "http/Router.hpp"
+#include "shared/fileUtils.hpp"
 #include "shared/stringUtils.hpp"
 
 namespace config {
@@ -92,6 +93,10 @@ namespace config {
 			throw std::runtime_error("Parser: Cannot consume more data than available");
 		}
 		m_readPos += amount;
+	}
+
+	static bool isValidPath(const std::string& path) {
+		return !path.empty() && path.at(0) == '/' && path.size() <= PATH_MAX;
 	}
 
 	// ------------------------  tokens and stuff  -------------------------- //
@@ -200,8 +205,13 @@ namespace config {
 		signal(SIGINT, handleSigint);
 		signal(SIGQUIT, SIG_IGN);
 
+		if (!shared::file::isRegularFile(fileName)) {
+			std::cout << "Could not parse file: regular file expected, weird sh*t received" << std::endl;
+			return false;
+		}
 		std::ifstream file(fileName.c_str());
 		if (!file.is_open()) {
+			std::cout << "Could not parse file: could not open file" << std::endl;
 			return false;
 		}
 
@@ -223,6 +233,7 @@ namespace config {
 		// }
 		try {
 			parseFromData();
+			processParsedData();
 		} catch (const parse_exception& e) {
 			std::cout << e.getMessage() << std::endl;
 			return false;
@@ -233,13 +244,41 @@ namespace config {
 		return true;
 	}
 
-	void Parser::parseFromData() throw(config::parse_exception) {
+	void Parser::parseFromData() throw(parse_exception) {
 		while (m_readPos < m_data.size()) {
 			skipWhitespace();
 			if (!matchToken("server")) {
 				throw parse_exception(m_lineIndex, "Expected 'server' keyword");
 			}
 			expectServerBlock();
+		}
+	}
+
+	void Parser::processParsedData() throw(parse_exception) {
+		std::size_t i = 0;
+		for (std::vector<Server>::iterator server = m_configs.begin(); server != m_configs.end(); ++server) {
+			++i;
+			server->location.precalculatedAbsolutePath = server->location.root + server->dataDirectory;
+			if (!isValidPath(server->location.precalculatedAbsolutePath)) {
+				throw parse_exception("Server #" + shared::string::fromNum(i) + ": Root path is invalid");
+			}
+			// concatenate server root & server dataDir
+			// check whether that directory exists and is accessible?
+			assignAbsolutePaths(*server, server->location); // start with server & rootLocation
+		}
+	}
+
+	void Parser::assignAbsolutePaths(Server& server, Location& parentLocation) throw(parse_exception) {
+		for (std::vector<Location>::iterator location = parentLocation.locations.begin(); location != parentLocation.locations.end(); ++location) {
+			if (location->hasOwnRoot()) {
+				location->precalculatedAbsolutePath = server.location.precalculatedAbsolutePath + location->root;
+			} else {
+				location->precalculatedAbsolutePath = parentLocation.precalculatedAbsolutePath;
+			}
+			if (!isValidPath(location->precalculatedAbsolutePath)) {
+				throw parse_exception("Location \"" + location->path + "\": Path is invalid");
+			}
+			assignAbsolutePaths(server, *location);
 		}
 	}
 
@@ -298,10 +337,6 @@ namespace config {
 		throw parse_exception(m_lineIndex, "Server block not closed with '}'");
 	}
 
-	static bool isValidPath(const std::string& path) {
-		return !path.empty() && path.at(0) == '/' && path.size() <= PATH_MAX;
-	}
-
 	/**
 	 * Possible Location directives are:
 	 * - root
@@ -331,7 +366,8 @@ namespace config {
 
 		Location thisLocation;
 
-		thisLocation.path = http::Router::splitPath(path);
+		thisLocation.path = path;
+		thisLocation.pathAsTokens = shared::string::splitPath(path);
 		while (m_readPos <= m_data.size()) {
 			skipWhitespace();
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
@@ -500,14 +536,14 @@ namespace config {
 			throw parse_exception(m_lineIndex, "Invalid path for root: " + value);
 		}
 		location.root = value;
-		location.rootAsTokens = http::Router::splitPath(value);
+		location.rootAsTokens = shared::string::splitPath(value); // will be empty if root is just '/'
 	}
 
 	void Parser::parseReturn(const std::string& value, Location& location) {
 		if (!isValidPath(value)) {
 			throw parse_exception(m_lineIndex, "Invalid path for return: " + value);
 		}
-		location.redirectUriAsTokens = http::Router::splitPath(value); // ensure this won't throw
+		location.redirectUriAsTokens = shared::string::splitPath(value); // ensure this won't throw
 		location.redirectUri = value;
 	}
 
@@ -545,8 +581,8 @@ namespace config {
 		if (!isValidPath(value)) {
 			throw parse_exception(m_lineIndex, "Invalid path for upload_dir: " + value);
 		}
-		location.uploadSubdirectory = value;								  // strip this of whitespace if that doesn't happen yet
-		location.uploadSubdirectoryAsTokens = http::Router::splitPath(value); // strip this of whitespace if that doesn't happen yet
+		location.uploadSubdirectory = value;									// strip this of whitespace if that doesn't happen yet
+		location.uploadSubdirectoryAsTokens = shared::string::splitPath(value); // strip this of whitespace if that doesn't happen yet
 	}
 
 	void Parser::parseIndex(const std::string& value, Location& location) {

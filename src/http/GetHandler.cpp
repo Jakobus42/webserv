@@ -44,7 +44,7 @@ namespace http {
 				}
 				if (filePath.empty()) {
 					if (location.autoindex == true) { // TODO: pretty sus, verify that this works
-						autoindexBody = getDirectoryListing(request.getUri(), location, Router::joinPath(m_router.getGlobalRoot().rootAsTokens));
+						autoindexBody = getDirectoryListing(request.getUri(), location, shared::string::joinPath(m_router.getGlobalRoot().rootAsTokens));
 					} else {
 						throw http::exception(FORBIDDEN, "GET: Requested location does not have an index");
 					}

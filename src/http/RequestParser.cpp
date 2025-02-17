@@ -171,7 +171,7 @@ namespace http {
 		} else {
 			uri.cgiPathInfo = ""; // should never be read in this case
 		}
-		uri.pathSegments = Router::splitPath(uri.path);
+		uri.pathSegments = shared::string::splitPath(uri.path);
 		// TODO: should we parse this at all?
 		// also, should we check if we accept the script here?
 	}

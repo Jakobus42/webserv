@@ -3,6 +3,9 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+#include "shared/fileUtils.hpp"
+#include "shared/stringUtils.hpp"
+
 namespace http {
 
 	/**
@@ -50,52 +53,8 @@ namespace http {
 		return _NOT_FOUND; // Other types (not file/dir)
 	}
 
-	std::vector<std::string> Router::splitPath(const std::string& path) throw(http::exception) {
-		std::vector<std::string> tokens;
-		std::cout << "Splitting path: " << path << std::endl;
-		if (path.empty()) {
-			throw http::exception(NOT_FOUND, "Path is empty");
-		}
-		if (path[0] != '/') {
-			throw http::exception(BAD_REQUEST, "Path doesn't begin with '/'");
-		}
-
-		std::stringstream ss(path.substr(1)); // Remove leading '/'
-		std::string segment;
-		while (std::getline(ss, segment, '/')) {
-			if (!segment.empty()) {
-				tokens.push_back(segment);
-			}
-		}
-		return tokens;
-	}
-
-	std::string Router::joinPath(const std::vector<std::string>& pathComponents) {
-		std::string joined = "";
-		for (std::vector<std::string>::const_iterator it = pathComponents.begin(); it != pathComponents.end(); ++it) {
-			joined += "/";
-			joined += *it;
-		}
-		return joined;
-	}
-
-	std::vector<std::string> Router::normalizePath(const std::vector<std::string>& path) {
-		std::vector<std::string> normalized;
-
-		for (std::vector<std::string>::const_iterator it = path.begin(); it != path.end(); ++it) {
-			if (*it == "..") {
-				if (!normalized.empty()) {
-					normalized.pop_back();
-				}
-			} else if (!it->empty() && *it != ".") {
-				normalized.push_back(*it);
-			}
-		}
-		return normalized;
-	}
-
 	std::string Router::findAbsolutePath(const config::Location& location, const std::string& subPath) {
-		std::string absolutePath = joinPath(m_globalRoot.rootAsTokens) + joinPath(location.rootAsTokens);
+		std::string absolutePath = shared::string::joinPath(m_globalRoot.rootAsTokens) + shared::string::joinPath(location.rootAsTokens);
 		return absolutePath + subPath;
 	}
 
@@ -131,34 +90,34 @@ namespace http {
 			throw http::exception(LOOP_DETECTED, "Redirects exceeded MAX_REDIRECTS");
 		}
 		if (currentLocation.hasRedirect()) {
-			return routeToPath(currentLocation.redirectUriAsTokens, m_globalRoot, m_globalRoot.path, redirects + 1); // TODO: invalid, this would then always return globalRoot's route
-		}																											 // TODO: how the frick do we solve this?
+			return routeToPath(currentLocation.redirectUriAsTokens, m_globalRoot, m_globalRoot.pathAsTokens, redirects + 1); // TODO: invalid, this would then always return globalRoot's route
+		}																													 // TODO: how the frick do we solve this?
 		if (uriPath.size() <= depth) {
 			if (currentRootPath == m_globalRoot.rootAsTokens) {
-				return std::make_pair(joinPath(currentRootPath), &currentLocation);
+				return std::make_pair(shared::string::joinPath(currentRootPath), &currentLocation);
 			}
-			return std::make_pair(joinPath(m_globalRoot.rootAsTokens) + joinPath(currentRootPath), &currentLocation); // TODO: I think this doesn't set the root path properly yet, does it?
+			return std::make_pair(shared::string::joinPath(m_globalRoot.rootAsTokens) + shared::string::joinPath(currentRootPath), &currentLocation); // TODO: I think this doesn't set the root path properly yet, does it?
 		}
 		for (std::vector<config::Location>::const_iterator loc = currentLocation.locations.begin(); loc != currentLocation.locations.end(); ++loc) {
-			if (!loc->path.empty() && loc->path[0] == uriPath.at(depth)) {														 // TODO: breaks if location is '/' -> check if (!loc->path.empty())
-				std::cout << "Location matched: " << loc->path[0] << std::endl;													 // TODO: check the codebase for other possibly unsafe garbage when a vector<string> is empty
+			if (!loc->pathAsTokens.empty() && loc->pathAsTokens[0] == uriPath.at(depth)) {										 // TODO: breaks if location is '/' -> check if (!loc->path.empty())
+				std::cout << "Location matched: " << loc->pathAsTokens[0] << std::endl;											 // TODO: check the codebase for other possibly unsafe garbage when a vector<string> is empty
 				const std::vector<std::string>& nextRootPath = !loc->rootAsTokens.empty() ? loc->rootAsTokens : currentRootPath; // TODO: assign inherited rootPath during parsing
 				return routeToPath(uriPath, *loc, nextRootPath, redirects, depth + 1);											 // use nearest parent
 			}
 		}
 		std::vector<std::string> subDirectory(uriPath.begin() + depth, uriPath.end());
-		std::cout << "currentRootPath is: " << joinPath(currentRootPath) << std::endl;
-		std::cout << "currentLocation.root is: " << joinPath(currentLocation.rootAsTokens) << std::endl;
+		std::cout << "currentRootPath is: " << shared::string::joinPath(currentRootPath) << std::endl;
+		std::cout << "currentLocation.root is: " << shared::string::joinPath(currentLocation.rootAsTokens) << std::endl;
 		if (currentLocation.root.empty()) {
 			if (currentRootPath == m_globalRoot.rootAsTokens) { // TODO: alternatively, give each location its predefined absolute path after parsing
-				return std::make_pair(joinPath(currentRootPath) + joinPath(subDirectory), &currentLocation);
+				return std::make_pair(shared::string::joinPath(currentRootPath) + shared::string::joinPath(subDirectory), &currentLocation);
 			}
-			return std::make_pair(joinPath(m_globalRoot.rootAsTokens) + joinPath(currentRootPath) + joinPath(subDirectory), &currentLocation);
+			return std::make_pair(shared::string::joinPath(m_globalRoot.rootAsTokens) + shared::string::joinPath(currentRootPath) + shared::string::joinPath(subDirectory), &currentLocation);
 		} else {
 			if (currentLocation.rootAsTokens == m_globalRoot.rootAsTokens) {
-				return std::make_pair(joinPath(currentLocation.rootAsTokens) + joinPath(subDirectory), &currentLocation);
+				return std::make_pair(shared::string::joinPath(currentLocation.rootAsTokens) + shared::string::joinPath(subDirectory), &currentLocation);
 			}
-			return std::make_pair(joinPath(m_globalRoot.rootAsTokens) + joinPath(currentLocation.rootAsTokens) + joinPath(subDirectory), &currentLocation);
+			return std::make_pair(shared::string::joinPath(m_globalRoot.rootAsTokens) + shared::string::joinPath(currentLocation.rootAsTokens) + shared::string::joinPath(subDirectory), &currentLocation);
 		}
 	}
 } // namespace http

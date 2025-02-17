@@ -118,42 +118,61 @@ namespace shared {
 			return c == ' ' || c == '\t' || c == '\v' || c == '\f';
 		}
 
-		/**
-		 * @brief Splits a path into its components.
-		 *
-		 * This function splits a path into its components, which are separated by
-		 * forward slashes. The components are stored in the `result` vector.
-		 *
-		 * @param path The path to split.
-		 * @param result A vector to store the components of the path.
-		 *
-		 * @return 0 if the path was successfully split, 1 if the path is invalid.
-		 */
-		int splitPath(const std::string& path, std::vector<std::string>& result) {
-			std::vector<std::string> tempResult;
-			std::string tmp = path;
-			if (tmp[0] != '/') {
-				return 1;
-			}
-			std::stringstream ss(tmp.substr(1));
-			std::string segment;
-			while (std::getline(ss, segment, '/')) {
-				if (!segment.empty()) {
-					tempResult.push_back(segment);
-				} else {
-					return 1;
-				}
-			}
-			result = tempResult;
-			return 0;
-		}
-
 		std::string fromNum(int32_t number) {
 			std::stringstream ss;
 
 			ss << number;
 			return ss.str();
 		}
+
+		std::string joinPath(const std::vector<std::string>& pathComponents) {
+			std::string joined = "";
+			for (std::vector<std::string>::const_iterator it = pathComponents.begin(); it != pathComponents.end(); ++it) {
+				joined += "/";
+				joined += *it;
+			}
+			return joined;
+		}
+
+		std::vector<std::string> normalizePath(const std::vector<std::string>& path) {
+			std::vector<std::string> normalized;
+
+			for (std::vector<std::string>::const_iterator it = path.begin(); it != path.end(); ++it) {
+				if (*it == "..") {
+					if (!normalized.empty()) {
+						normalized.pop_back();
+					}
+				} else if (!it->empty() && *it != ".") {
+					normalized.push_back(*it);
+				}
+			}
+			return normalized;
+		}
+
+		std::string normalizePath(const std::string& path) {
+			return joinPath(normalizePath(splitPath(path))); // TODO: will turn "/" and "/////" into an empty string
+		}
+
+		std::vector<std::string> splitPath(const std::string& path) throw(http::exception) {
+			std::vector<std::string> tokens;
+			std::cout << "Splitting path: " << path << std::endl;
+			if (path.empty()) {
+				throw http::exception(http::NOT_FOUND, "Path is empty");
+			}
+			if (path[0] != '/') {
+				throw http::exception(http::BAD_REQUEST, "Path doesn't begin with '/'");
+			}
+
+			std::stringstream ss(path.substr(1)); // Remove leading '/'
+			std::string segment;
+			while (std::getline(ss, segment, '/')) {
+				if (!segment.empty()) {
+					tokens.push_back(segment);
+				}
+			}
+			return tokens;
+		}
+
 
 	} // namespace string
 

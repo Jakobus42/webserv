@@ -9,8 +9,10 @@
 
 namespace config {
 	struct Location {
-			std::vector<std::string> path;						 // location name split into tokens
+			std::string path;									 // location name split into tokens
+			std::vector<std::string> pathAsTokens;				 // location name split into tokens
 			std::string root;									 // root split into tokens // TODO: maybe actually assign root to parent root in parser, if not specified in config? might make things easier
+			std::string precalculatedAbsolutePath;				 // absolute path to this location's root, pre-calculated after parsing
 			std::vector<std::string> rootAsTokens;				 // root split into tokens // TODO: maybe actually assign root to parent root in parser, if not specified in config? might make things easier
 			std::string redirectUri;							 // return route (references other locations)
 			std::vector<std::string> redirectUriAsTokens;		 // return route split into tokens
@@ -31,8 +33,9 @@ namespace config {
 			Location& operator=(const Location& other);
 
 			bool acceptsFileUpload() const;
-
 			bool hasRedirect() const;
+			bool hasOwnRoot() const;
+
 			/**
 			 * @brief Validate the Location
 			 */

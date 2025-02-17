@@ -39,7 +39,7 @@ server {
 		# Accepted HTTP methods
 		limit_except GET POST DELETE;
 		# Directory configuration
-		root /; # Base directory
+		root /foo; # Base directory
 		autoindex on; # Enable directory listing
 		index default.html; # Default file in directory
 		# Executing CGI scripts for .php files
@@ -52,6 +52,7 @@ server {
 			#fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 			location /ho {
 				return /kapouet/upload;
+				root /;
 			}
 		}
 		# Handle file uploads

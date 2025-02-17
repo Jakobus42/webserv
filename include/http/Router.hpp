@@ -26,35 +26,6 @@ namespace http {
 			static FileType checkFileType(const std::string& absolutePath);
 
 			/**
-			 * @brief Splits a path into its components, delimited by '/'
-			 *
-			 * @param path The path to split
-			 * @return std::vector<std::string> The individual path components
-			 * @throws http::exception if the path is invalid
-			 */
-			static std::vector<std::string> splitPath(const std::string& path) throw(http::exception);
-
-			/**
-			 * @brief Joins a split path into a string, delimited by '/'
-			 *        Should never receive broken data
-			 *
-			 * @param pathComponents The components to join
-			 * @return std::string The composed path
-			 */
-			static std::string joinPath(const std::vector<std::string>& pathComponents);
-
-			/**
-			 * @brief Normalizes a path against a basePath (globalRoot by default)
-			 *        Paths can be relative (use ./ and ../), but may not
-			 *        go lower than the basePath.
-			 *
-			 * @param path The path to normalize split into components by splitPath()
-			 * @param basePath The root path which the path may not escape, split by splitPath()
-			 * @return std::vector<std::string> The normalized path, without any "./" or "../"
-			 */
-			static std::vector<std::string> normalizePath(const std::vector<std::string>& path);
-
-			/**
 			 * @brief Generate the absolute path for a location and an optional subPath
 			 *
 			 * @param location The location of which to retrieve the root path
