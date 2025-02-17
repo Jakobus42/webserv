@@ -1,6 +1,5 @@
 var hierarchy =
 [
-    [ "config::GoodParser", "classconfig_1_1GoodParser.html", null ],
     [ "config::Location", "structconfig_1_1Location.html", null ],
     [ "shared::NonCopyable", "classshared_1_1NonCopyable.html", [
       [ "shared::Buffer< REQUEST_BUFFER_SIZE >", "classshared_1_1Buffer.html", null ],
@@ -30,7 +29,6 @@ var hierarchy =
       [ "http::exception", "classhttp_1_1exception.html", null ]
     ] ],
     [ "config::Server", "structconfig_1_1Server.html", null ],
-    [ "config::ServerConfig", "structconfig_1_1ServerConfig.html", null ],
     [ "http::RequestParser::Token", "structhttp_1_1RequestParser_1_1Token.html", null ],
     [ "http::Uri", "structhttp_1_1Uri.html", null ],
     [ "http::VirtualServer", "classhttp_1_1VirtualServer.html", null ]

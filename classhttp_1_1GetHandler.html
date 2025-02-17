@@ -89,15 +89,15 @@ Collaboration diagram for http::GetHandler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1GetHandler__coll__graph.png" border="0" usemap="#ahttp_1_1GetHandler_coll__map" alt="Collaboration graph"/></div>
 <map name="ahttp_1_1GetHandler_coll__map" id="ahttp_1_1GetHandler_coll__map">
-<area shape="rect" title="..." alt="" coords="75,956,199,1081"/>
-<area shape="rect" href="classhttp_1_1ARequestHandler.html" title="..." alt="" coords="55,781,218,907"/>
-<area shape="poly" title=" " alt="" coords="139,921,139,956,134,956,134,921"/>
-<area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="5,513,159,639"/>
-<area shape="poly" title=" " alt="" coords="100,652,127,780,121,782,95,653"/>
-<area shape="rect" href="classhttp_1_1Router.html" title=" " alt="" coords="183,433,331,719"/>
-<area shape="poly" title=" " alt="" coords="195,720,174,767,169,765,190,718"/>
-<area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="178,5,335,371"/>
-<area shape="poly" title=" " alt="" coords="259,371,259,417,254,417,254,371"/>
+<area shape="rect" title="..." alt="" coords="75,996,199,1121"/>
+<area shape="rect" href="classhttp_1_1ARequestHandler.html" title="..." alt="" coords="55,821,218,947"/>
+<area shape="poly" title=" " alt="" coords="139,961,139,996,134,996,134,961"/>
+<area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="5,553,159,679"/>
+<area shape="poly" title=" " alt="" coords="100,692,127,820,121,822,95,693"/>
+<area shape="rect" href="classhttp_1_1Router.html" title=" " alt="" coords="183,473,331,759"/>
+<area shape="poly" title=" " alt="" coords="195,760,174,807,169,805,190,758"/>
+<area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="149,5,364,411"/>
+<area shape="poly" title=" " alt="" coords="259,411,259,457,254,457,254,411"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -238,7 +238,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="ttc" id="aclasshttp_1_1Router_html_adc2958c32ba4e5e222a993ddba2f715c"><div class="ttname"><a href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c">http::Router::checkFileType</a></div><div class="ttdeci">static FileType checkFileType(const std::string &amp;absolutePath)</div><div class="ttdoc">Checks whether a path exists in the file system, and whether it is a file or directory.</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00039">Router.cpp:39</a></div></div>
 <div class="ttc" id="anamespacehttp_html_aa05465f9f5daa64d3a9ba64a34e92cfa"><div class="ttname"><a href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfa">http::FileType</a></div><div class="ttdeci">FileType</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00065">types.hpp:65</a></div></div>
 <div class="ttc" id="anamespacehttp_html_aa05465f9f5daa64d3a9ba64a34e92cfaaf588e02f8d0cc2fa280d47d9beb900db"><div class="ttname"><a href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaf588e02f8d0cc2fa280d47d9beb900db">http::FILE</a></div><div class="ttdeci">@ FILE</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00066">types.hpp:66</a></div></div>
-<div class="ttc" id="astructconfig_1_1Location_html_ad07d3238b441c27aefa83d6a75ff2aad"><div class="ttname"><a href="structconfig_1_1Location.html#ad07d3238b441c27aefa83d6a75ff2aad">config::Location::indexFile</a></div><div class="ttdeci">std::vector&lt; std::string &gt; indexFile</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00019">Location.hpp:19</a></div></div>
+<div class="ttc" id="astructconfig_1_1Location_html_ad07d3238b441c27aefa83d6a75ff2aad"><div class="ttname"><a href="structconfig_1_1Location.html#ad07d3238b441c27aefa83d6a75ff2aad">config::Location::indexFile</a></div><div class="ttdeci">std::vector&lt; std::string &gt; indexFile</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00021">Location.hpp:21</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -317,7 +317,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   44</span>                }</div>
 <div class="line"><span class="lineno">   45</span>                <span class="keywordflow">if</span> (filePath.empty()) {</div>
 <div class="line"><span class="lineno">   46</span>                    <span class="keywordflow">if</span> (location.<a class="code hl_variable" href="structconfig_1_1Location.html#a7dcc19d544f0c21f8e29657406ddd5bd">autoindex</a> == <span class="keyword">true</span>) { <span class="comment">// TODO: pretty sus, verify that this works</span></div>
-<div class="line"><span class="lineno">   47</span>                        autoindexBody = <a class="code hl_function" href="namespacehttp.html#a1ab12f205ef403b73e4a0e9f93d15291">getDirectoryListing</a>(request.getUri(), location, <a class="code hl_function" href="classhttp_1_1Router.html#a4be6420bb10ab5c7bdabefab8c07c0b2">Router::joinPath</a>(<a class="code hl_variable" href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">m_router</a>.<a class="code hl_function" href="classhttp_1_1Router.html#af5a2093850f5d1b1079d0e6f014f304c">getGlobalRoot</a>().<a class="code hl_variable" href="structconfig_1_1Location.html#acd840cd528eacb701e56b8d1e9526b35">root</a>));</div>
+<div class="line"><span class="lineno">   47</span>                        autoindexBody = <a class="code hl_function" href="namespacehttp.html#a1ab12f205ef403b73e4a0e9f93d15291">getDirectoryListing</a>(request.getUri(), location, <a class="code hl_function" href="classhttp_1_1Router.html#a4be6420bb10ab5c7bdabefab8c07c0b2">Router::joinPath</a>(<a class="code hl_variable" href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">m_router</a>.<a class="code hl_function" href="classhttp_1_1Router.html#af5a2093850f5d1b1079d0e6f014f304c">getGlobalRoot</a>().<a class="code hl_variable" href="structconfig_1_1Location.html#a907285906b1b26fefc0fa69affefec72">rootAsTokens</a>));</div>
 <div class="line"><span class="lineno">   48</span>                    } <span class="keywordflow">else</span> {</div>
 <div class="line"><span class="lineno">   49</span>                        <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">FORBIDDEN</a>, <span class="stringliteral">&quot;GET: Requested location does not have an index&quot;</span>);</div>
 <div class="line"><span class="lineno">   50</span>                    }</div>
@@ -358,8 +358,8 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc">http::OK</a></div><div class="ttdeci">@ OK</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00013">types.hpp:13</a></div></div>
 <div class="ttc" id="anamespaceshared_1_1string_html_a7498d7d25acc1a6d216ef30b3ccfa577"><div class="ttname"><a href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a></div><div class="ttdeci">std::string to_string(const T &amp;value)</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8hpp_source.html#l00045">stringUtils.hpp:45</a></div></div>
 <div class="ttc" id="astructconfig_1_1Location_html"><div class="ttname"><a href="structconfig_1_1Location.html">config::Location</a></div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00011">Location.hpp:11</a></div></div>
-<div class="ttc" id="astructconfig_1_1Location_html_a7dcc19d544f0c21f8e29657406ddd5bd"><div class="ttname"><a href="structconfig_1_1Location.html#a7dcc19d544f0c21f8e29657406ddd5bd">config::Location::autoindex</a></div><div class="ttdeci">bool autoindex</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00018">Location.hpp:18</a></div></div>
-<div class="ttc" id="astructconfig_1_1Location_html_acd840cd528eacb701e56b8d1e9526b35"><div class="ttname"><a href="structconfig_1_1Location.html#acd840cd528eacb701e56b8d1e9526b35">config::Location::root</a></div><div class="ttdeci">std::vector&lt; std::string &gt; root</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00013">Location.hpp:13</a></div></div>
+<div class="ttc" id="astructconfig_1_1Location_html_a7dcc19d544f0c21f8e29657406ddd5bd"><div class="ttname"><a href="structconfig_1_1Location.html#a7dcc19d544f0c21f8e29657406ddd5bd">config::Location::autoindex</a></div><div class="ttdeci">bool autoindex</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00020">Location.hpp:20</a></div></div>
+<div class="ttc" id="astructconfig_1_1Location_html_a907285906b1b26fefc0fa69affefec72"><div class="ttname"><a href="structconfig_1_1Location.html#a907285906b1b26fefc0fa69affefec72">config::Location::rootAsTokens</a></div><div class="ttdeci">std::vector&lt; std::string &gt; rootAsTokens</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00014">Location.hpp:14</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

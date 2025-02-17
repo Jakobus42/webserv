@@ -1,11 +1,9 @@
 var namespaceconfig =
 [
-    [ "GoodParser", "classconfig_1_1GoodParser.html", "classconfig_1_1GoodParser" ],
     [ "Location", "structconfig_1_1Location.html", "structconfig_1_1Location" ],
     [ "parse_exception", "classconfig_1_1parse__exception.html", "classconfig_1_1parse__exception" ],
     [ "Parser", "classconfig_1_1Parser.html", "classconfig_1_1Parser" ],
     [ "Server", "structconfig_1_1Server.html", "structconfig_1_1Server" ],
-    [ "ServerConfig", "structconfig_1_1ServerConfig.html", "structconfig_1_1ServerConfig" ],
     [ "CommandType", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510", [
       [ "_D_NOT_VALID", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a984068cd778bcc4ab5e9d7b22c2aff6d", null ],
       [ "D_LISTEN", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510aa90181f28d339faf54b4bc6d7650f585", null ],
@@ -21,8 +19,6 @@ var namespaceconfig =
       [ "D_AUTOINDEX", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510acf7fc1b46f032b3cce871abf15d760b9", null ],
       [ "D_LOCATION", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ad52403f6ed7f28d41ee4ac439cb87370", null ]
     ] ],
-    [ "ft_stoi", "namespaceconfig.html#ab6a9b31328ee165381cb8fe43c99f25a", null ],
-    [ "is_number", "namespaceconfig.html#ab0ce9a159a3d72a05a0321e13dcdac80", null ],
     [ "isValidPath", "namespaceconfig.html#a562b6854cd3e6748aa72f90553305021", null ],
     [ "shouldReadToken", "namespaceconfig.html#a74567cb58e62cf836a46307f098740bc", null ],
     [ "shouldReadValue", "namespaceconfig.html#ae83eb84b4926b8acd8098438021b536e", null ],

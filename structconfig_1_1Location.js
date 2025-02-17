@@ -14,7 +14,9 @@ var structconfig_1_1Location =
     [ "locations", "structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f", null ],
     [ "path", "structconfig_1_1Location.html#aa442f3548fcb10d18046520882642d55", null ],
     [ "redirectUri", "structconfig_1_1Location.html#af07f8a41a8ab3e137cb4b4cd2e6f6d05", null ],
-    [ "redirectUriTokens", "structconfig_1_1Location.html#a0c50bb58649046d471627c13925af3c5", null ],
-    [ "root", "structconfig_1_1Location.html#acd840cd528eacb701e56b8d1e9526b35", null ],
-    [ "uploadSubdirectory", "structconfig_1_1Location.html#a6782bb25ddf1bf9f2c084a7f0aef482e", null ]
+    [ "redirectUriAsTokens", "structconfig_1_1Location.html#ad93b81da62b72b6cb6794f56b7dbe00f", null ],
+    [ "root", "structconfig_1_1Location.html#a2b164ee5fe8776426e7ac1503cb6d94e", null ],
+    [ "rootAsTokens", "structconfig_1_1Location.html#a907285906b1b26fefc0fa69affefec72", null ],
+    [ "uploadSubdirectory", "structconfig_1_1Location.html#a6782bb25ddf1bf9f2c084a7f0aef482e", null ],
+    [ "uploadSubdirectoryAsTokens", "structconfig_1_1Location.html#a51acb861e27dda26c1cd2c9088c8f2c6", null ]
 ];

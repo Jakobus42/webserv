@@ -9,6 +9,7 @@ var structconfig_1_1Server =
     [ "print", "structconfig_1_1Server.html#a8649fd4c692d99d8564b563c0f0e58a9", null ],
     [ "validate", "structconfig_1_1Server.html#a5bff502a23e2fcb5d174261a7b40bc2f", null ],
     [ "dataDirectory", "structconfig_1_1Server.html#a90c673a54f892b3234088cb8cbe8297e", null ],
+    [ "dataDirectoryAsTokens", "structconfig_1_1Server.html#aef2930d7049745faf85d86fe2d109c9c", null ],
     [ "ipAddress", "structconfig_1_1Server.html#ab6c2dbe85e39cf0a9b85a8b062714e0f", null ],
     [ "location", "structconfig_1_1Server.html#a6b92598157154bee56285dba9c26bfbd", null ],
     [ "maxBodySize", "structconfig_1_1Server.html#a5e4f00bad29cb511cbb2deea9a472e02", null ],
