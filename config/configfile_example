@@ -1,7 +1,6 @@
-server
-{
-	listen 127.0.0.1:8080;  # Choose the port
-	server_name example.com;  # Setup server names
+server {
+	listen 127.0.0.1:8080; # Choose the port
+	server_name example.com; # Setup server names
 
 	# Default error pages
 	# error_page 404 /404.html;
@@ -26,63 +25,55 @@ server
 	limit_except GET POST;
 	# data_dir /workspaces/webserv
 	# root /www
-	# Example of a route with multiple rules 
-	location /default
-	{
+	# Example of a route with multiple rules
+	location /default {
 		# Accepted HTTP methods
 		limit_except GET POST;
-	    # Directory configuration
-	    root /tmp/www;  # Base directory
-	    autoindex on;  # Enable directory listing
-	    index default.html;  # Default file in directory		
+		# Directory configuration
+		root /tmp/www; # Base directory
+		autoindex on; # Enable directory listing
+		index default.html; # Default file in directory
 	}
 
-	location /kapouet 
-	{
-	    # Accepted HTTP methods
-	    limit_except GET POST DELETE;
-	    # Directory configuration
-	    root /;  # Base directory
-	    autoindex on;  # Enable directory listing
-	    index default.html;  # Default file in directory   
-	    # Executing CGI scripts for .php files
-	    location /hi
-		{
+	location /kapouet {
+		# Accepted HTTP methods
+		limit_except GET POST DELETE;
+		# Directory configuration
+		root /; # Base directory
+		autoindex on; # Enable directory listing
+		index default.html; # Default file in directory
+		# Executing CGI scripts for .php files
+		location /hi {
 			limit_except GET POST;
 			upload_dir /upload;
-	        #include fastcgi_params;
-	        #fastcgi_pass 127.0.0.1:9000;  # Assuming PHP-FPM is running
-	        #fastcgi_index index.php;
+			#include fastcgi_params;
+			#fastcgi_pass 127.0.0.1:9000;  # Assuming PHP-FPM is running
+			#fastcgi_index index.php;
 			#fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-			location /ho
-			{
+			location /ho {
 				return /kapouet/upload;
 			}
-	    }
-	    # Handle file uploads
-	    location /upload
-		{
-	        #client_max_body_size 20M;  # Allow larger uploads
-	        #try_files $uri =404;  # Check if the directory exists
-	        root /tmp/uploads;  # Where to save uploads
-			location /hi
-			{
+		}
+		# Handle file uploads
+		location /upload {
+			#client_max_body_size 20M;  # Allow larger uploads
+			#try_files $uri =404;  # Check if the directory exists
+			root /tmp/uploads; # Where to save uploads
+			location /hi {
 
 			}
-	    }
+		}
 	}
 	# HTTP redirection example
-	location /old-route
-	{
-	    return /new-route;  # Redirect to a new route
+	location /old-route {
+		return /new-route; # Redirect to a new route
 	}
 	# Catch-all for other requests
-	location /other
-	{
-	    limit_except GET POST;
-	
-	    # Define the directory
-	    root /tmp/other_content;
-	    autoindex off;  # Turn off directory listing
+	location /other {
+		limit_except GET POST;
+
+		# Define the directory
+		root /tmp/other_content;
+		autoindex off; # Turn off directory listing
 	}
 }

@@ -33,7 +33,7 @@ namespace http {
 		if (!req.hasError()) {
 			try {
 				const config::Location& globalRoot = m_router.getGlobalRoot();
-				std::pair<std::string, const config::Location*> location = m_router.routeToPath(req.getUri().pathSegments, globalRoot, globalRoot.root);
+				std::pair<std::string, const config::Location*> location = m_router.routeToPath(req.getUri().pathSegments, globalRoot, globalRoot.rootAsTokens);
 				std::cout << "path returned: " << location.first << std::endl;
 				FileType fileType = Router::checkFileType(location.first);
 				if (fileType == _NOT_FOUND) {

@@ -1,6 +1,7 @@
 #pragma once
 
-#include "config/Parser.hpp"
+#include "config/Location.hpp"
+#include "http/http.hpp"
 #include "http/types.hpp"
 
 #include <string>

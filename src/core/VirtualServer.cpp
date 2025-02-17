@@ -21,12 +21,12 @@ namespace http {
 	/**
 	 * @brief Constructs a new VirtualServer object.
 	 */
-	VirtualServer::VirtualServer(const config::ServerConfig& conf)
+	VirtualServer::VirtualServer(const config::Server& conf)
 		: m_config(conf)
 		, m_clients()
 		, m_listenSocket(-1)
 		, m_logger()
-		, m_router(conf.locations, conf.globalRoot) {
+		, m_router(conf.location.locations, conf.location) {
 	}
 
 	/**
@@ -86,7 +86,7 @@ namespace http {
 		std::memset(&sockAddr, 0, sizeof(sockAddr));
 		sockAddr.sin_family = AF_INET;
 		sockAddr.sin_port = htons(m_config.port);
-		sockAddr.sin_addr.s_addr = htonl(m_config.ip_address);
+		sockAddr.sin_addr.s_addr = htonl(m_config.ipAddress);
 		if (::bind(m_listenSocket, reinterpret_cast<const sockaddr*>(&sockAddr), sizeof(sockAddr)) < 0) {
 			throw std::runtime_error("bind() failed: " + std::string(strerror(errno)));
 		}
@@ -96,7 +96,7 @@ namespace http {
 			throw std::runtime_error("listen() failed: " + std::string(strerror(errno)));
 		}
 
-		m_logger.setFile(m_config.server_names.at(0) + ".log"); // todo: why are there multiple names?!
+		m_logger.setFile(m_config.serverNames.at(0) + ".log"); // todo: why are there multiple names?!
 	}
 
 	int32_t VirtualServer::acceptClient() {
@@ -160,7 +160,7 @@ namespace http {
 	}
 
 	void VirtualServer::log(const std::string& msg, shared::LogLevel level, int32_t clientSocket) {
-		std::string formatted = "[" + m_config.server_names.at(0) + "] ";
+		std::string formatted = "[" + m_config.serverNames.at(0) + "] ";
 		if (clientSocket != -1) {
 			formatted += "[Client: " + getClientInfo(clientSocket) + "] ";
 		}
@@ -205,7 +205,7 @@ namespace http {
 
 	std::map<int32_t, time_t>& VirtualServer::getClients(void) { return m_clients; }
 
-	const config::ServerConfig& VirtualServer::getConfig() const { return m_config; }
+	const config::Server& VirtualServer::getConfig() const { return m_config; }
 
 	Router& VirtualServer::getRouter() { return m_router; }
 

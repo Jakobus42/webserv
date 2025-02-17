@@ -1,6 +1,6 @@
 #include "config/Server.hpp"
 
-#include "config/GoodParser.hpp"
+#include "config/Parser.hpp"
 
 namespace config {
 

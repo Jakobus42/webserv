@@ -135,7 +135,7 @@ namespace config {
 			if (detailed) {
 				if (!locations[j].root.empty()) {
 					std::cout << c << "Root: ";
-					for (std::vector<std::string>::const_iterator it = locations[j].root.begin(); it != locations[j].root.end(); ++it) {
+					for (std::vector<std::string>::const_iterator it = locations[j].rootAsTokens.begin(); it != locations[j].rootAsTokens.end(); ++it) {
 						std::cout << "/" << *it;
 					}
 				}
