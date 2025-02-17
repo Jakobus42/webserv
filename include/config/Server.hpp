@@ -30,7 +30,7 @@ namespace config {
 			Server(const Server& other);
 			const Server& operator=(const Server& rhs);
 
-			bool hasGlobalRoot() const;
+			bool hasRoot() const;
 			bool hasDataDir() const;
 
 			void validate() const;

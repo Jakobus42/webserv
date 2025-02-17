@@ -1,6 +1,7 @@
 #include "http/http.hpp"
 
 #include "config/Location.hpp"
+#include "shared/fileUtils.hpp"
 
 #include <cstdio>
 
@@ -129,7 +130,7 @@ namespace http {
 	 * @note In case of a location's root having a subdirectory that shares the name of a sublocation, the location takes precedence during routing.
 	 * This means upon autoindex, clicking the directory foo/ routes to a nested location named /foo, and foo/ is inaccessible. This is by design.
 	 */
-	std::string getDirectoryListing(const Uri& uri, const config::Location& location, const std::string& root) { // temporarily pass root path as parameter
+	std::string getDirectoryListing(const Uri& uri, const config::Location& location) { // temporarily pass root path as parameter
 		static const char* DL_TEMPLATE = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\""
 										 "content=\"width=device-width, initial-scale=1.0\"><title>Directory Listing</title><style>body{font-family:Arial,sans-serif;"
 										 "margin:0;padding:0;background-color:#f8f9fa;}.container{max-width:800px;margin:50px auto;padding:20px;background:#fff;box-shadow:0 "
@@ -138,38 +139,57 @@ namespace http {
 										 "li a:hover{color:#0056b3;}</style></head><body><div class=\"container\"><h1>Directory Listing</h1><ul>";
 		static const char* DL_TEMPLATE_END = "</ul></div></body></html>";
 		std::string bodyTemp = DL_TEMPLATE;
-		std::string rootPath = root;
 		// TODO: root path should only be appended for file links; not directories
+		// actually should it? every link should be a uri/subdir thing not a /filepath/subdir, thats fukt up
 		// TODO: directories should be prefixed with the full URI instead
 		DIR* dir;
 		(void)location;
 
 		std::cout << "Uri safeAbsolutePath in getDirListing:" << uri.safeAbsolutePath << std::endl;
 		std::cout << "UriPath in getDirListing: " << uri.path << std::endl;
-		std::cout << "Root in getDirListing: " << root << std::endl;
 		// rootPath += path; // TODO: should be relative path, i.e. without leading /root/dataDir, currently breaks
-		if ((dir = opendir(rootPath.c_str())) == NULL) {
+		if (!shared::file::directoryExists(location.precalculatedAbsolutePath)) {
+			throw http::exception(NOT_FOUND, "getDirectoryListing: Directory doesn't exist: " + location.precalculatedAbsolutePath);
+		}
+		// if (!shared::file::dirIsAccessible(rootPath)) { // TODO: actually maybe not good? what if root isn't accessible but subdir is? is that even possible?
+		// 	throw http::exception(FORBIDDEN, "getDirectoryListing: Directory isn't accessible: " + rootPath);
+		// }
+		if ((dir = opendir(uri.safeAbsolutePath.c_str())) == NULL) {
 			throw http::exception(INTERNAL_SERVER_ERROR, "getDirectoryListing: Couldn't open directory");
 		}
 		struct dirent* ent;
 		while ((ent = readdir(dir)) != NULL) {
-			std::string dirName(ent->d_name);
-			std::cout << "Found dir: " << dirName << std::endl;
+			std::string fileName(ent->d_name);
 
-			if (dirName == ".") {
+			if (fileName == ".") {
 				continue;
 			}
-			if (dirName == ".." && (uri.path == "/" || uri.path == "")) {
+			if (fileName == ".." && (uri.path == "/" || uri.path == "")) {
 				continue;
 			}
+			std::string baseUrl = uri.authority;
+			if (uri.path.empty()) {
+				baseUrl += "/";
+			} else {
+				// Ensure uri.path starts with '/'.
+				if (uri.path[0] != '/')
+					baseUrl += "/" + uri.path;
+				else
+					baseUrl += uri.path;
+				// Ensure it ends with a single '/'
+				if (baseUrl[baseUrl.size() - 1] != '/')
+					baseUrl += "/";
+			}
+
 			std::string link;
 			if (ent->d_type == DT_DIR) {
-				link = "<a href=\"" + uri.path + "/" + dirName + "\">" + dirName + "/</a>"; // don't append the whole uri.path unless we're actually that deep into locations
+				// Add trailing slash to show it’s a directory.
+				link = "<a href=\"http://" + baseUrl + fileName + "\">" + fileName + "/</a>";
 			} else {
-				link = "<a href=\"" + uri.path + "/" + dirName + "\">" + dirName + "</a>";
+				link = "<a href=\"http://" + baseUrl + fileName + "\">" + fileName + "</a>";
 			}
+			// does '///' get normalized to '/' ? I think this still breaks things, so foo//bar isn't foo/bar
 			bodyTemp += "<li>" + link + "</li>"; // TODO: links to directories and routes still break
-			std::cout << "Setting url to: " << link << std::endl;
 		}
 		closedir(dir);
 		return bodyTemp + DL_TEMPLATE_END;

@@ -26,6 +26,7 @@ namespace http {
 	}
 
 	// in GET, there should be a file name in the path
+	// this whole thing is mad sus, TODO: address
 	void GetHandler::handle(const Request& request, Response& response) {
 		try {
 			const config::Location& location = *request.getLocation();
@@ -44,7 +45,7 @@ namespace http {
 				}
 				if (filePath.empty()) {
 					if (location.autoindex == true) { // TODO: pretty sus, verify that this works
-						autoindexBody = getDirectoryListing(request.getUri(), location, shared::string::joinPath(m_router.getGlobalRoot().rootAsTokens));
+						autoindexBody = getDirectoryListing(request.getUri(), location);
 					} else {
 						throw http::exception(FORBIDDEN, "GET: Requested location does not have an index");
 					}

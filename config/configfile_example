@@ -9,21 +9,19 @@ server {
 	# Limit client body size
 	client_max_body_size 10000000;
 
-	root /workspaces/webserv; # TODO: this is mandatory, verify
-	data_dir /www; # TODO: this is also mandatory, verify
+	root /www;
+	data_dir /workspaces/webserv;
+	autoindex on;
 	# global_root directory must exist and be accessible, otherwise exit with an error code
 	# it is also where the server binary, cgi-bin/ and www/ directories must be located
 	# each of these directories should probably also be checked for existence & access permissions
 	# TODO: ensure this and other paths can't be relative
 	# TODO: alternatively, ensure that relative paths are valid and accessible
-	# TODO: figure out if we should actually store global_root + /www
 	# probably not, since cgi-bin/ and www/ are both in this folder
 
 	# server is also a location
-	# TODO: adjust shit for this to be the way (swap data_dir and root, don't separate root and global_root)
 	# index index.html;
 	limit_except GET POST;
-	# data_dir /workspaces/webserv
 	# root /www
 	# Example of a route with multiple rules
 	location /default {
@@ -52,7 +50,6 @@ server {
 			#fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 			location /ho {
 				return /kapouet/upload;
-				root /;
 			}
 		}
 		# Handle file uploads

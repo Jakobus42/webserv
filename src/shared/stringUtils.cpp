@@ -173,7 +173,6 @@ namespace shared {
 			return tokens;
 		}
 
-
 	} // namespace string
 
 } // namespace shared

@@ -53,7 +53,7 @@ namespace config {
 		return *this;
 	}
 
-	bool Server::hasGlobalRoot() const { return !location.root.empty(); }
+	bool Server::hasRoot() const { return !location.root.empty(); }
 
 	bool Server::hasDataDir() const { return !dataDirectory.empty(); }
 

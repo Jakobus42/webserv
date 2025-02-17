@@ -258,7 +258,7 @@ namespace config {
 		std::size_t i = 0;
 		for (std::vector<Server>::iterator server = m_configs.begin(); server != m_configs.end(); ++server) {
 			++i;
-			server->location.precalculatedAbsolutePath = server->location.root + server->dataDirectory;
+			server->location.precalculatedAbsolutePath = server->dataDirectory + server->location.root;
 			if (!isValidPath(server->location.precalculatedAbsolutePath)) {
 				throw parse_exception("Server #" + shared::string::fromNum(i) + ": Root path is invalid");
 			}
@@ -512,7 +512,7 @@ namespace config {
 			throw parse_exception(m_lineIndex, "Invalid path for data_dir: " + value);
 		}
 		server.dataDirectory = value; // check whether this needs to be stripped of whitespace
-									  // should we normalize these?
+									  // TODO: should we normalize these?
 	}
 
 	void Parser::parseServerName(const std::string& value, Server& server) {
