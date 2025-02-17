@@ -79,18 +79,18 @@ Collaboration diagram for http::VirtualServer:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1VirtualServer__coll__graph.png" border="0" usemap="#ahttp_1_1VirtualServer_coll__map" alt="Collaboration graph"/></div>
 <map name="ahttp_1_1VirtualServer_coll__map" id="ahttp_1_1VirtualServer_coll__map">
-<area shape="rect" title="..." alt="" coords="195,941,367,1307"/>
-<area shape="rect" href="structconfig_1_1Server.html" title="..." alt="" coords="5,523,183,829"/>
-<area shape="poly" title=" " alt="" coords="160,828,201,925,196,927,155,830"/>
-<area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="40,5,255,411"/>
-<area shape="poly" title=" " alt="" coords="127,411,116,507,111,507,122,410"/>
-<area shape="rect" href="classhttp_1_1Router.html" title=" " alt="" coords="207,533,355,819"/>
-<area shape="poly" title=" " alt="" coords="208,410,238,517,233,518,202,411"/>
-<area shape="rect" href="classshared_1_1Logger.html" title="..." alt="" coords="379,473,524,879"/>
-<area shape="poly" title=" " alt="" coords="381,868,359,927,354,925,376,867"/>
-<area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="375,145,528,271"/>
-<area shape="poly" title=" " alt="" coords="454,285,454,473,449,473,449,285"/>
-<area shape="poly" title=" " alt="" coords="283,819,283,925,278,925,278,819"/>
+<area shape="rect" title="..." alt="" coords="195,1001,367,1367"/>
+<area shape="rect" href="structconfig_1_1Server.html" title="..." alt="" coords="5,583,183,889"/>
+<area shape="poly" title=" " alt="" coords="160,888,201,985,196,987,155,890"/>
+<area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="40,5,255,471"/>
+<area shape="poly" title=" " alt="" coords="125,471,115,567,109,567,120,470"/>
+<area shape="rect" href="classhttp_1_1Router.html" title=" " alt="" coords="207,623,355,849"/>
+<area shape="poly" title=" " alt="" coords="212,470,249,606,244,608,207,471"/>
+<area shape="rect" href="classshared_1_1Logger.html" title="..." alt="" coords="379,533,524,939"/>
+<area shape="poly" title=" " alt="" coords="381,928,359,987,354,985,376,927"/>
+<area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="375,175,528,301"/>
+<area shape="poly" title=" " alt="" coords="454,315,454,533,449,533,449,315"/>
+<area shape="poly" title=" " alt="" coords="283,849,283,985,278,985,278,849"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -195,7 +195,7 @@ Static Private Attributes</h2></td></tr>
 <div class="ttc" id="aclasshttp_1_1VirtualServer_html_a690d4529557189b00ef20343387daed9"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#a690d4529557189b00ef20343387daed9">http::VirtualServer::m_config</a></div><div class="ttdeci">config::Server m_config</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00050">VirtualServer.hpp:50</a></div></div>
 <div class="ttc" id="aclasshttp_1_1VirtualServer_html_ab53352540672413483b62afd28ed36d7"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">http::VirtualServer::m_clients</a></div><div class="ttdeci">std::map&lt; int32_t, time_t &gt; m_clients</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00051">VirtualServer.hpp:51</a></div></div>
 <div class="ttc" id="aclasshttp_1_1VirtualServer_html_ae899297922e2cce19b245093e85c599f"><div class="ttname"><a href="classhttp_1_1VirtualServer.html#ae899297922e2cce19b245093e85c599f">http::VirtualServer::m_logger</a></div><div class="ttdeci">shared::Logger m_logger</div><div class="ttdef"><b>Definition</b> <a href="VirtualServer_8hpp_source.html#l00053">VirtualServer.hpp:53</a></div></div>
-<div class="ttc" id="astructconfig_1_1Location_html_a9ce52f265254146e5cae2ee150d66f1f"><div class="ttname"><a href="structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f">config::Location::locations</a></div><div class="ttdeci">std::vector&lt; Location &gt; locations</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00022">Location.hpp:22</a></div></div>
+<div class="ttc" id="astructconfig_1_1Location_html_a9ce52f265254146e5cae2ee150d66f1f"><div class="ttname"><a href="structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f">config::Location::locations</a></div><div class="ttdeci">std::vector&lt; Location &gt; locations</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00024">Location.hpp:24</a></div></div>
 <div class="ttc" id="astructconfig_1_1Server_html_a6b92598157154bee56285dba9c26bfbd"><div class="ttname"><a href="structconfig_1_1Server.html#a6b92598157154bee56285dba9c26bfbd">config::Server::location</a></div><div class="ttdeci">Location location</div><div class="ttdef"><b>Definition</b> <a href="Server_8hpp_source.html#l00026">Server.hpp:26</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -628,7 +628,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  185</span> </div>
 <div class="line"><span class="lineno">  186</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;(IP: &quot;</span> + std::string(clientIP) + <span class="stringliteral">&quot;, Port: &quot;</span> + <a class="code hl_function" href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a>(clientPort) + <span class="stringliteral">&quot;)&quot;</span>;</div>
 <div class="line"><span class="lineno">  187</span>    }</div>
-<div class="ttc" id="anamespaceshared_1_1string_html_a7498d7d25acc1a6d216ef30b3ccfa577"><div class="ttname"><a href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a></div><div class="ttdeci">std::string to_string(const T &amp;value)</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8hpp_source.html#l00045">stringUtils.hpp:45</a></div></div>
+<div class="ttc" id="anamespaceshared_1_1string_html_a7498d7d25acc1a6d216ef30b3ccfa577"><div class="ttname"><a href="namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577">shared::string::to_string</a></div><div class="ttdeci">std::string to_string(const T &amp;value)</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8hpp_source.html#l00044">stringUtils.hpp:44</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -847,7 +847,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  100</span>    }</div>
 <div class="ttc" id="aclassshared_1_1Logger_html_a653439b6dc725f5e6492d3d50a4c1549"><div class="ttname"><a href="classshared_1_1Logger.html#a653439b6dc725f5e6492d3d50a4c1549">shared::Logger::setFile</a></div><div class="ttdeci">void setFile(const std::string &amp;filename)</div><div class="ttdef"><b>Definition</b> <a href="Logger_8cpp_source.html#l00051">Logger.cpp:51</a></div></div>
 <div class="ttc" id="aclassshared_1_1Logger_html_aa25eae8290010444e62c9996ef88f8b6"><div class="ttname"><a href="classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6">shared::Logger::log</a></div><div class="ttdeci">void log(const std::string &amp;msg, LogLevel level=DEBUG)</div><div class="ttdef"><b>Definition</b> <a href="Logger_8cpp_source.html#l00030">Logger.cpp:30</a></div></div>
-<div class="ttc" id="anamespaceshared_1_1string_html_ae2138ded029ed6312cd2d6505efb8f75"><div class="ttname"><a href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a></div><div class="ttdeci">std::string fromNum(int32_t number)</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8cpp_source.html#l00151">stringUtils.cpp:151</a></div></div>
+<div class="ttc" id="anamespaceshared_1_1string_html_ae2138ded029ed6312cd2d6505efb8f75"><div class="ttname"><a href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a></div><div class="ttdeci">std::string fromNum(int32_t number)</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8cpp_source.html#l00121">stringUtils.cpp:121</a></div></div>
 <div class="ttc" id="astructconfig_1_1Server_html_a20a4258033228bf14e8ac4498e847366"><div class="ttname"><a href="structconfig_1_1Server.html#a20a4258033228bf14e8ac4498e847366">config::Server::port</a></div><div class="ttdeci">int port</div><div class="ttdef"><b>Definition</b> <a href="Server_8hpp_source.html#l00020">Server.hpp:20</a></div></div>
 <div class="ttc" id="astructconfig_1_1Server_html_a828b1bc6ae91c5998f9d6dc6ec412387"><div class="ttname"><a href="structconfig_1_1Server.html#a828b1bc6ae91c5998f9d6dc6ec412387">config::Server::serverNames</a></div><div class="ttdeci">std::vector&lt; std::string &gt; serverNames</div><div class="ttdef"><b>Definition</b> <a href="Server_8hpp_source.html#l00025">Server.hpp:25</a></div></div>
 <div class="ttc" id="astructconfig_1_1Server_html_ab6c2dbe85e39cf0a9b85a8b062714e0f"><div class="ttname"><a href="structconfig_1_1Server.html#ab6c2dbe85e39cf0a9b85a8b062714e0f">config::Server::ipAddress</a></div><div class="ttdeci">uint32_t ipAddress</div><div class="ttdef"><b>Definition</b> <a href="Server_8hpp_source.html#l00021">Server.hpp:21</a></div></div>

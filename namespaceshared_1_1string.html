@@ -84,11 +84,20 @@ Functions</h2></td></tr>
 <tr class="memdesc:a2c0ea281fde1150615baa77e6dcce5d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if a character is a whitespace character exept for '<br  />
 ' and '\r'  <br /></td></tr>
 <tr class="separator:a2c0ea281fde1150615baa77e6dcce5d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af85298827aba4985d2318526e69ee0d6" id="r_af85298827aba4985d2318526e69ee0d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#af85298827aba4985d2318526e69ee0d6">splitPath</a> (<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">const</a> std::string &amp;path, std::vector&lt; std::string &gt; &amp;<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">result</a>)</td></tr>
-<tr class="memdesc:af85298827aba4985d2318526e69ee0d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Splits a path into its components.  <br /></td></tr>
-<tr class="separator:af85298827aba4985d2318526e69ee0d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2138ded029ed6312cd2d6505efb8f75" id="r_ae2138ded029ed6312cd2d6505efb8f75"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">fromNum</a> (<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">int32_t</a> <a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">number</a>)</td></tr>
 <tr class="separator:ae2138ded029ed6312cd2d6505efb8f75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0010d0341d2d9250a0f95d1732ba9fb" id="r_ac0010d0341d2d9250a0f95d1732ba9fb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#ac0010d0341d2d9250a0f95d1732ba9fb">joinPath</a> (<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">const</a> std::vector&lt; std::string &gt; &amp;<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">pathComponents</a>)</td></tr>
+<tr class="memdesc:ac0010d0341d2d9250a0f95d1732ba9fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joins a split path into a string, delimited by '/' Should never receive broken data.  <br /></td></tr>
+<tr class="separator:ac0010d0341d2d9250a0f95d1732ba9fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84a634a6360ecb3ab2efe768d88de46d" id="r_a84a634a6360ecb3ab2efe768d88de46d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a84a634a6360ecb3ab2efe768d88de46d">normalizePath</a> (<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">const</a> std::vector&lt; std::string &gt; &amp;path)</td></tr>
+<tr class="memdesc:a84a634a6360ecb3ab2efe768d88de46d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalizes a path against a basePath Paths can be relative (use ./ and ../), but may not go lower than the basePath.  <br /></td></tr>
+<tr class="separator:a84a634a6360ecb3ab2efe768d88de46d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ddd51109e12e073dc4cd7ec2b769c37" id="r_a8ddd51109e12e073dc4cd7ec2b769c37"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a8ddd51109e12e073dc4cd7ec2b769c37">normalizePath</a> (<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">const</a> std::string &amp;path)</td></tr>
+<tr class="memdesc:a8ddd51109e12e073dc4cd7ec2b769c37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalizes a path against a basePath, from and to a string.  <br /></td></tr>
+<tr class="separator:a8ddd51109e12e073dc4cd7ec2b769c37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a603400c2a2c832c32c4baf6626c1b599" id="r_a603400c2a2c832c32c4baf6626c1b599"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a603400c2a2c832c32c4baf6626c1b599">splitPath</a> (<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">const</a> std::string &amp;path)  <a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">throw</a> (<a class="el" href="classhttp_1_1exception.html">http::exception</a>)</td></tr>
+<tr class="memdesc:a603400c2a2c832c32c4baf6626c1b599"><td class="mdescLeft">&#160;</td><td class="mdescRight">Splits a path into its components, delimited by '/'.  <br /></td></tr>
+<tr class="separator:a603400c2a2c832c32c4baf6626c1b599"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f29829f5af562af11efd2c7e6ce4958" id="r_a1f29829f5af562af11efd2c7e6ce4958"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a1f29829f5af562af11efd2c7e6ce4958"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">toNum</a> (const std::string &amp;str, int base)</td></tr>
 <tr class="separator:a1f29829f5af562af11efd2c7e6ce4958"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,13 +127,13 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stringUtils_8cpp_source.html#l00151">151</a> of file <a class="el" href="stringUtils_8cpp_source.html">stringUtils.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  151</span>                                          {</div>
-<div class="line"><span class="lineno">  152</span>            std::stringstream ss;</div>
-<div class="line"><span class="lineno">  153</span> </div>
-<div class="line"><span class="lineno">  154</span>            ss &lt;&lt; number;</div>
-<div class="line"><span class="lineno">  155</span>            <span class="keywordflow">return</span> ss.str();</div>
-<div class="line"><span class="lineno">  156</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="stringUtils_8cpp_source.html#l00121">121</a> of file <a class="el" href="stringUtils_8cpp_source.html">stringUtils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  121</span>                                          {</div>
+<div class="line"><span class="lineno">  122</span>            std::stringstream ss;</div>
+<div class="line"><span class="lineno">  123</span> </div>
+<div class="line"><span class="lineno">  124</span>            ss &lt;&lt; number;</div>
+<div class="line"><span class="lineno">  125</span>            <span class="keywordflow">return</span> ss.str();</div>
+<div class="line"><span class="lineno">  126</span>        }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -140,21 +149,26 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceshared_1_1string_ae2138ded029ed6312cd2d6505efb8f75_icgraph.png" border="0" usemap="#anamespaceshared_1_1string_ae2138ded029ed6312cd2d6505efb8f75_icgraph" alt=""/></div>
 <map name="anamespaceshared_1_1string_ae2138ded029ed6312cd2d6505efb8f75_icgraph" id="anamespaceshared_1_1string_ae2138ded029ed6312cd2d6505efb8f75_icgraph">
-<area shape="rect" title=" " alt="" coords="556,127,737,153"/>
-<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="339,76,508,116"/>
-<area shape="poly" title=" " alt="" coords="568,127,508,115,509,110,569,122"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#aaa6efa927f0a998eb33c7232b7bbfdd9" title=" " alt="" coords="353,152,494,192"/>
-<area shape="poly" title=" " alt="" coords="544,157,495,165,494,159,544,152"/>
+<area shape="rect" title=" " alt="" coords="628,177,809,202"/>
+<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="375,84,544,124"/>
+<area shape="poly" title=" " alt="" coords="665,175,520,127,522,121,667,170"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#aaa6efa927f0a998eb33c7232b7bbfdd9" title=" " alt="" coords="389,169,530,209"/>
+<area shape="poly" title=" " alt="" coords="614,192,530,192,530,187,614,187"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a2114c8bccadd7a52a8e8994ed6179d30" title=" " alt="" coords="339,234,580,259"/>
+<area shape="poly" title=" " alt="" coords="651,208,581,224,523,236,521,231,579,219,650,203"/>
 <area shape="rect" href="classhttp_1_1DeleteHandler.html#a06a40a6ec5165137810115a58fd8411d" title=" " alt="" coords="124,5,275,45"/>
-<area shape="poly" title=" " alt="" coords="345,74,263,48,264,43,347,69"/>
+<area shape="poly" title=" " alt="" coords="379,83,265,48,267,43,380,77"/>
 <area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="108,70,291,95"/>
-<area shape="poly" title=" " alt="" coords="325,93,291,91,291,85,325,87"/>
+<area shape="poly" title=" " alt="" coords="361,99,291,93,291,87,361,93"/>
 <area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="128,120,271,160"/>
-<area shape="poly" title=" " alt="" coords="326,118,271,129,270,123,325,113"/>
+<area shape="poly" title=" " alt="" coords="361,120,271,133,271,128,361,115"/>
 <area shape="rect" href="classcore_1_1Reactor.html#a5e95ac2d62f1e1711e7cc6b8ee897b7a" title=" " alt="" coords="131,185,268,210"/>
-<area shape="poly" title=" " alt="" coords="339,184,269,192,268,187,339,179"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,185,60,210"/>
-<area shape="poly" title=" " alt="" coords="117,200,60,200,60,195,117,195"/>
+<area shape="poly" title=" " alt="" coords="375,195,268,198,268,193,375,189"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,210,60,235"/>
+<area shape="poly" title=" " alt="" coords="117,212,61,221,60,216,117,207"/>
+<area shape="rect" href="classconfig_1_1Parser.html#adb5932b97c80ab980d9a4d20689cc3ff" title=" " alt="" coords="111,234,287,259"/>
+<area shape="poly" title=" " alt="" coords="325,249,287,249,287,244,325,244"/>
+<area shape="poly" title=" " alt="" coords="97,235,60,229,61,224,98,229"/>
 </map>
 </div>
 
@@ -199,6 +213,192 @@ Here is the call graph for this function:</div>
 <area shape="rect" title="checks if a character is a whitespace character exept for &#39; &#39; and &#39;\r&#39;" alt="" coords="5,5,204,31"/>
 <area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="252,5,415,31"/>
 <area shape="poly" title=" " alt="" coords="204,15,238,15,238,21,204,21"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac0010d0341d2d9250a0f95d1732ba9fb" name="ac0010d0341d2d9250a0f95d1732ba9fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0010d0341d2d9250a0f95d1732ba9fb">&#9670;&#160;</a></span>joinPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string shared::string::joinPath </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">const</a> std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>pathComponents</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Joins a split path into a string, delimited by '/' Should never receive broken data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pathComponents</td><td>The components to join </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::string The composed path </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="stringUtils_8cpp_source.html#l00128">128</a> of file <a class="el" href="stringUtils_8cpp_source.html">stringUtils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  128</span>                                                                       {</div>
+<div class="line"><span class="lineno">  129</span>            std::string joined = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">  130</span>            <span class="keywordflow">for</span> (std::vector&lt;std::string&gt;::const_iterator it = pathComponents.begin(); it != pathComponents.end(); ++it) {</div>
+<div class="line"><span class="lineno">  131</span>                joined += <span class="stringliteral">&quot;/&quot;</span>;</div>
+<div class="line"><span class="lineno">  132</span>                joined += *it;</div>
+<div class="line"><span class="lineno">  133</span>            }</div>
+<div class="line"><span class="lineno">  134</span>            <span class="keywordflow">return</span> joined;</div>
+<div class="line"><span class="lineno">  135</span>        }</div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceshared_1_1string_ac0010d0341d2d9250a0f95d1732ba9fb_cgraph.png" border="0" usemap="#anamespaceshared_1_1string_ac0010d0341d2d9250a0f95d1732ba9fb_cgraph" alt=""/></div>
+<map name="anamespaceshared_1_1string_ac0010d0341d2d9250a0f95d1732ba9fb_cgraph" id="anamespaceshared_1_1string_ac0010d0341d2d9250a0f95d1732ba9fb_cgraph">
+<area shape="rect" title="Joins a split path into a string, delimited by &#39;/&#39; Should never receive broken data." alt="" coords="5,5,176,31"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="224,5,387,31"/>
+<area shape="poly" title=" " alt="" coords="176,15,210,15,210,21,176,21"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceshared_1_1string_ac0010d0341d2d9250a0f95d1732ba9fb_icgraph.png" border="0" usemap="#anamespaceshared_1_1string_ac0010d0341d2d9250a0f95d1732ba9fb_icgraph" alt=""/></div>
+<map name="anamespaceshared_1_1string_ac0010d0341d2d9250a0f95d1732ba9fb_icgraph" id="anamespaceshared_1_1string_ac0010d0341d2d9250a0f95d1732ba9fb_icgraph">
+<area shape="rect" title="Joins a split path into a string, delimited by &#39;/&#39; Should never receive broken data." alt="" coords="968,80,1139,105"/>
+<area shape="rect" href="classhttp_1_1Router.html#a7d7639f904382ec287b77b590473dc29" title="Generate the absolute path for a location and an optional subPath." alt="" coords="704,5,920,31"/>
+<area shape="poly" title=" " alt="" coords="1009,77,919,45,876,33,878,28,921,39,1011,72"/>
+<area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="721,55,903,80"/>
+<area shape="poly" title=" " alt="" coords="954,85,903,80,904,74,955,80"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a8ddd51109e12e073dc4cd7ec2b769c37" title="Normalizes a path against a basePath, from and to a string." alt="" coords="706,104,918,129"/>
+<area shape="poly" title=" " alt="" coords="955,105,918,109,918,103,954,100"/>
+<area shape="rect" href="classhttp_1_1Router.html#ad6e4a793ff5dfda59239fa8394f4c64a" title="Traverses m_locations according to a Request&#39;s Uri, respecting redirections while avoiding redirect l..." alt="" coords="721,153,903,179"/>
+<area shape="poly" title=" " alt="" coords="1009,113,921,143,873,156,872,151,919,138,1007,108"/>
+<area shape="rect" href="classhttp_1_1RequestProcessor.html#a63639dad340ee5eb69b23a06711e859b" title=" " alt="" coords="484,146,656,186"/>
+<area shape="poly" title=" " alt="" coords="707,169,656,169,656,163,707,163"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="228,153,436,179"/>
+<area shape="poly" title=" " alt="" coords="470,169,436,169,436,163,470,163"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,153,180,179"/>
+<area shape="poly" title=" " alt="" coords="214,169,180,169,180,163,214,163"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8ddd51109e12e073dc4cd7ec2b769c37" name="a8ddd51109e12e073dc4cd7ec2b769c37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ddd51109e12e073dc4cd7ec2b769c37">&#9670;&#160;</a></span>normalizePath() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string shared::string::normalizePath </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">const</a> std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Normalizes a path against a basePath, from and to a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::string </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="stringUtils_8cpp_source.html#l00152">152</a> of file <a class="el" href="stringUtils_8cpp_source.html">stringUtils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  152</span>                                                       {</div>
+<div class="line"><span class="lineno">  153</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="namespaceshared_1_1string.html#ac0010d0341d2d9250a0f95d1732ba9fb">joinPath</a>(<a class="code hl_function" href="namespaceshared_1_1string.html#a84a634a6360ecb3ab2efe768d88de46d">normalizePath</a>(<a class="code hl_function" href="namespaceshared_1_1string.html#a603400c2a2c832c32c4baf6626c1b599">splitPath</a>(path))); <span class="comment">// TODO: will turn &quot;/&quot; and &quot;/////&quot; into an empty string</span></div>
+<div class="line"><span class="lineno">  154</span>        }</div>
+<div class="ttc" id="anamespaceshared_1_1string_html_a603400c2a2c832c32c4baf6626c1b599"><div class="ttname"><a href="namespaceshared_1_1string.html#a603400c2a2c832c32c4baf6626c1b599">shared::string::splitPath</a></div><div class="ttdeci">std::vector&lt; std::string &gt; splitPath(const std::string &amp;path)</div><div class="ttdoc">Splits a path into its components, delimited by '/'.</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8cpp_source.html#l00156">stringUtils.cpp:156</a></div></div>
+<div class="ttc" id="anamespaceshared_1_1string_html_a84a634a6360ecb3ab2efe768d88de46d"><div class="ttname"><a href="namespaceshared_1_1string.html#a84a634a6360ecb3ab2efe768d88de46d">shared::string::normalizePath</a></div><div class="ttdeci">std::vector&lt; std::string &gt; normalizePath(const std::vector&lt; std::string &gt; &amp;path)</div><div class="ttdoc">Normalizes a path against a basePath Paths can be relative (use ./ and ../), but may not go lower tha...</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8cpp_source.html#l00137">stringUtils.cpp:137</a></div></div>
+<div class="ttc" id="anamespaceshared_1_1string_html_ac0010d0341d2d9250a0f95d1732ba9fb"><div class="ttname"><a href="namespaceshared_1_1string.html#ac0010d0341d2d9250a0f95d1732ba9fb">shared::string::joinPath</a></div><div class="ttdeci">std::string joinPath(const std::vector&lt; std::string &gt; &amp;pathComponents)</div><div class="ttdoc">Joins a split path into a string, delimited by '/' Should never receive broken data.</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8cpp_source.html#l00128">stringUtils.cpp:128</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceshared_1_1string_a8ddd51109e12e073dc4cd7ec2b769c37_cgraph.png" border="0" usemap="#anamespaceshared_1_1string_a8ddd51109e12e073dc4cd7ec2b769c37_cgraph" alt=""/></div>
+<map name="anamespaceshared_1_1string_a8ddd51109e12e073dc4cd7ec2b769c37_cgraph" id="anamespaceshared_1_1string_a8ddd51109e12e073dc4cd7ec2b769c37_cgraph">
+<area shape="rect" title="Normalizes a path against a basePath, from and to a string." alt="" coords="5,55,217,80"/>
+<area shape="rect" href="namespaceshared_1_1string.html#ac0010d0341d2d9250a0f95d1732ba9fb" title="Joins a split path into a string, delimited by &#39;/&#39; Should never receive broken data." alt="" coords="286,5,457,31"/>
+<area shape="poly" title=" " alt="" coords="178,52,290,31,291,36,179,57"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a84a634a6360ecb3ab2efe768d88de46d" title="Normalizes a path against a basePath Paths can be relative (use ./ and ../), but may not go lower tha..." alt="" coords="265,55,477,80"/>
+<area shape="poly" title=" " alt="" coords="217,65,252,65,252,70,217,70"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a603400c2a2c832c32c4baf6626c1b599" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="284,104,459,129"/>
+<area shape="poly" title=" " alt="" coords="179,77,291,99,290,104,178,83"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="525,55,688,80"/>
+<area shape="poly" title=" " alt="" coords="433,28,532,49,531,54,432,33"/>
+<area shape="poly" title=" " alt="" coords="477,65,512,65,512,70,477,70"/>
+<area shape="poly" title=" " alt="" coords="432,101,531,80,532,86,433,107"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a84a634a6360ecb3ab2efe768d88de46d" name="a84a634a6360ecb3ab2efe768d88de46d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84a634a6360ecb3ab2efe768d88de46d">&#9670;&#160;</a></span>normalizePath() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; shared::string::normalizePath </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">const</a> std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Normalizes a path against a basePath Paths can be relative (use ./ and ../), but may not go lower than the basePath. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The path to normalize split into components by <a class="el" href="namespaceshared_1_1string.html#a603400c2a2c832c32c4baf6626c1b599" title="Splits a path into its components, delimited by &#39;/&#39;.">splitPath()</a> </td></tr>
+    <tr><td class="paramname">basePath</td><td>The root path which the path may not escape, split by <a class="el" href="namespaceshared_1_1string.html#a603400c2a2c832c32c4baf6626c1b599" title="Splits a path into its components, delimited by &#39;/&#39;.">splitPath()</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;std::string&gt; The normalized path, without any "./" or "../" </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="stringUtils_8cpp_source.html#l00137">137</a> of file <a class="el" href="stringUtils_8cpp_source.html">stringUtils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  137</span>                                                                             {</div>
+<div class="line"><span class="lineno">  138</span>            std::vector&lt;std::string&gt; normalized;</div>
+<div class="line"><span class="lineno">  139</span> </div>
+<div class="line"><span class="lineno">  140</span>            <span class="keywordflow">for</span> (std::vector&lt;std::string&gt;::const_iterator it = path.begin(); it != path.end(); ++it) {</div>
+<div class="line"><span class="lineno">  141</span>                <span class="keywordflow">if</span> (*it == <span class="stringliteral">&quot;..&quot;</span>) {</div>
+<div class="line"><span class="lineno">  142</span>                    <span class="keywordflow">if</span> (!normalized.empty()) {</div>
+<div class="line"><span class="lineno">  143</span>                        normalized.pop_back();</div>
+<div class="line"><span class="lineno">  144</span>                    }</div>
+<div class="line"><span class="lineno">  145</span>                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!it-&gt;empty() &amp;&amp; *it != <span class="stringliteral">&quot;.&quot;</span>) {</div>
+<div class="line"><span class="lineno">  146</span>                    normalized.push_back(*it);</div>
+<div class="line"><span class="lineno">  147</span>                }</div>
+<div class="line"><span class="lineno">  148</span>            }</div>
+<div class="line"><span class="lineno">  149</span>            <span class="keywordflow">return</span> normalized;</div>
+<div class="line"><span class="lineno">  150</span>        }</div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceshared_1_1string_a84a634a6360ecb3ab2efe768d88de46d_cgraph.png" border="0" usemap="#anamespaceshared_1_1string_a84a634a6360ecb3ab2efe768d88de46d_cgraph" alt=""/></div>
+<map name="anamespaceshared_1_1string_a84a634a6360ecb3ab2efe768d88de46d_cgraph" id="anamespaceshared_1_1string_a84a634a6360ecb3ab2efe768d88de46d_cgraph">
+<area shape="rect" title="Normalizes a path against a basePath Paths can be relative (use ./ and ../), but may not go lower tha..." alt="" coords="5,5,217,31"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="265,5,428,31"/>
+<area shape="poly" title=" " alt="" coords="217,15,252,15,252,21,217,21"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceshared_1_1string_a84a634a6360ecb3ab2efe768d88de46d_icgraph.png" border="0" usemap="#anamespaceshared_1_1string_a84a634a6360ecb3ab2efe768d88de46d_icgraph" alt=""/></div>
+<map name="anamespaceshared_1_1string_a84a634a6360ecb3ab2efe768d88de46d_icgraph" id="anamespaceshared_1_1string_a84a634a6360ecb3ab2efe768d88de46d_icgraph">
+<area shape="rect" title="Normalizes a path against a basePath Paths can be relative (use ./ and ../), but may not go lower tha..." alt="" coords="265,5,477,31"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a8ddd51109e12e073dc4cd7ec2b769c37" title="Normalizes a path against a basePath, from and to a string." alt="" coords="5,5,217,31"/>
+<area shape="poly" title=" " alt="" coords="252,21,218,21,218,15,252,15"/>
 </map>
 </div>
 
@@ -269,70 +469,121 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="af85298827aba4985d2318526e69ee0d6" name="af85298827aba4985d2318526e69ee0d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af85298827aba4985d2318526e69ee0d6">&#9670;&#160;</a></span>splitPath()</h2>
+<a id="a603400c2a2c832c32c4baf6626c1b599" name="a603400c2a2c832c32c4baf6626c1b599"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a603400c2a2c832c32c4baf6626c1b599">&#9670;&#160;</a></span>splitPath()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">int</a> shared::string::splitPath </td>
+          <td class="memname">std::vector&lt; std::string &gt; shared::string::splitPath </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">const</a> std::string &amp;&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
         </tr>
         <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&#160;</td>
-          <td class="paramname"><em>result</em>&#160;</td>
+          <td align="right">throw </td><td>(</td><td colspan="2"><a class="el" href="classhttp_1_1exception.html">http::exception</a></td>
         </tr>
         <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td align="right"></td><td>)</td><td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Splits a path into its components. </p>
-<p>This function splits a path into its components, which are separated by forward slashes. The components are stored in the <code>result</code> vector.</p>
+<p>Splits a path into its components, delimited by '/'. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">path</td><td>The path to split. </td></tr>
-    <tr><td class="paramname">result</td><td>A vector to store the components of the path.</td></tr>
+    <tr><td class="paramname">path</td><td>The path to split </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>0 if the path was successfully split, 1 if the path is invalid. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;std::string&gt; The individual path components </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classhttp_1_1exception.html">http::exception</a></td><td>if the path is invalid </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="stringUtils_8cpp_source.html#l00132">132</a> of file <a class="el" href="stringUtils_8cpp_source.html">stringUtils.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  132</span>                                                                           {</div>
-<div class="line"><span class="lineno">  133</span>            std::vector&lt;std::string&gt; tempResult;</div>
-<div class="line"><span class="lineno">  134</span>            std::string tmp = path;</div>
-<div class="line"><span class="lineno">  135</span>            <span class="keywordflow">if</span> (tmp[0] != <span class="charliteral">&#39;/&#39;</span>) {</div>
-<div class="line"><span class="lineno">  136</span>                <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  137</span>            }</div>
-<div class="line"><span class="lineno">  138</span>            std::stringstream ss(tmp.substr(1));</div>
-<div class="line"><span class="lineno">  139</span>            std::string segment;</div>
-<div class="line"><span class="lineno">  140</span>            <span class="keywordflow">while</span> (std::getline(ss, segment, <span class="charliteral">&#39;/&#39;</span>)) {</div>
-<div class="line"><span class="lineno">  141</span>                <span class="keywordflow">if</span> (!segment.empty()) {</div>
-<div class="line"><span class="lineno">  142</span>                    tempResult.push_back(segment);</div>
-<div class="line"><span class="lineno">  143</span>                } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  144</span>                    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><span class="lineno">  145</span>                }</div>
-<div class="line"><span class="lineno">  146</span>            }</div>
-<div class="line"><span class="lineno">  147</span>            result = tempResult;</div>
-<div class="line"><span class="lineno">  148</span>            <span class="keywordflow">return</span> 0;</div>
-<div class="line"><span class="lineno">  149</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="stringUtils_8cpp_source.html#l00156">156</a> of file <a class="el" href="stringUtils_8cpp_source.html">stringUtils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  156</span>                                                                                   {</div>
+<div class="line"><span class="lineno">  157</span>            std::vector&lt;std::string&gt; tokens;</div>
+<div class="line"><span class="lineno">  158</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Splitting path: &quot;</span> &lt;&lt; path &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  159</span>            <span class="keywordflow">if</span> (path.empty()) {</div>
+<div class="line"><span class="lineno">  160</span>                <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a144f7cef2e3efe6d823debdf4e62b10c">http::NOT_FOUND</a>, <span class="stringliteral">&quot;Path is empty&quot;</span>);</div>
+<div class="line"><span class="lineno">  161</span>            }</div>
+<div class="line"><span class="lineno">  162</span>            <span class="keywordflow">if</span> (path[0] != <span class="charliteral">&#39;/&#39;</span>) {</div>
+<div class="line"><span class="lineno">  163</span>                <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">http::BAD_REQUEST</a>, <span class="stringliteral">&quot;Path doesn&#39;t begin with &#39;/&#39;&quot;</span>);</div>
+<div class="line"><span class="lineno">  164</span>            }</div>
+<div class="line"><span class="lineno">  165</span> </div>
+<div class="line"><span class="lineno">  166</span>            std::stringstream ss(path.substr(1)); <span class="comment">// Remove leading &#39;/&#39;</span></div>
+<div class="line"><span class="lineno">  167</span>            std::string segment;</div>
+<div class="line"><span class="lineno">  168</span>            <span class="keywordflow">while</span> (std::getline(ss, segment, <span class="charliteral">&#39;/&#39;</span>)) {</div>
+<div class="line"><span class="lineno">  169</span>                <span class="keywordflow">if</span> (!segment.empty()) {</div>
+<div class="line"><span class="lineno">  170</span>                    tokens.push_back(segment);</div>
+<div class="line"><span class="lineno">  171</span>                }</div>
+<div class="line"><span class="lineno">  172</span>            }</div>
+<div class="line"><span class="lineno">  173</span>            <span class="keywordflow">return</span> tokens;</div>
+<div class="line"><span class="lineno">  174</span>        }</div>
+<div class="ttc" id="aclasshttp_1_1exception_html"><div class="ttname"><a href="classhttp_1_1exception.html">http::exception</a></div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00029">http.hpp:29</a></div></div>
+<div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762a144f7cef2e3efe6d823debdf4e62b10c"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a144f7cef2e3efe6d823debdf4e62b10c">http::NOT_FOUND</a></div><div class="ttdeci">@ NOT_FOUND</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00024">types.hpp:24</a></div></div>
+<div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a3c7a4281c4fc1905c67373fe3234d5cb">http::BAD_REQUEST</a></div><div class="ttdeci">@ BAD_REQUEST</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00021">types.hpp:21</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="namespaceshared_1_1string_af85298827aba4985d2318526e69ee0d6_cgraph.png" border="0" usemap="#anamespaceshared_1_1string_af85298827aba4985d2318526e69ee0d6_cgraph" alt=""/></div>
-<map name="anamespaceshared_1_1string_af85298827aba4985d2318526e69ee0d6_cgraph" id="anamespaceshared_1_1string_af85298827aba4985d2318526e69ee0d6_cgraph">
-<area shape="rect" title="Splits a path into its components." alt="" coords="5,5,180,31"/>
+<div class="center"><img src="namespaceshared_1_1string_a603400c2a2c832c32c4baf6626c1b599_cgraph.png" border="0" usemap="#anamespaceshared_1_1string_a603400c2a2c832c32c4baf6626c1b599_cgraph" alt=""/></div>
+<map name="anamespaceshared_1_1string_a603400c2a2c832c32c4baf6626c1b599_cgraph" id="anamespaceshared_1_1string_a603400c2a2c832c32c4baf6626c1b599_cgraph">
+<area shape="rect" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="5,5,180,31"/>
 <area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="228,5,391,31"/>
 <area shape="poly" title=" " alt="" coords="180,15,214,15,214,21,180,21"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceshared_1_1string_a603400c2a2c832c32c4baf6626c1b599_icgraph.png" border="0" usemap="#anamespaceshared_1_1string_a603400c2a2c832c32c4baf6626c1b599_icgraph" alt=""/></div>
+<map name="anamespaceshared_1_1string_a603400c2a2c832c32c4baf6626c1b599_icgraph" id="anamespaceshared_1_1string_a603400c2a2c832c32c4baf6626c1b599_icgraph">
+<area shape="rect" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="1688,157,1863,182"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a023abcf9a70b66c367d993520f745602" title=" " alt="" coords="1423,5,1639,45"/>
+<area shape="poly" title=" " alt="" coords="1751,149,1702,104,1671,80,1639,60,1612,48,1614,43,1641,55,1675,76,1706,100,1755,145"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a8ddd51109e12e073dc4cd7ec2b769c37" title="Normalizes a path against a basePath, from and to a string." alt="" coords="1425,70,1637,95"/>
+<area shape="poly" title=" " alt="" coords="1737,153,1691,131,1639,111,1595,98,1597,93,1641,105,1693,126,1739,148"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#a80446234d3c666253d3d485c2ce8e46c" title=" " alt="" coords="1456,120,1605,160"/>
+<area shape="poly" title=" " alt="" coords="1674,160,1605,152,1606,146,1675,155"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a5184caa4ae65afa8657ffe8a1130c441" title=" " alt="" coords="1433,185,1629,210"/>
+<area shape="poly" title=" " alt="" coords="1675,184,1629,189,1629,183,1674,178"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a96ff177fb973149963c7844ef61e05d6" title=" " alt="" coords="1439,234,1622,259"/>
+<area shape="poly" title=" " alt="" coords="1733,190,1641,224,1594,237,1592,231,1639,219,1731,185"/>
+<area shape="rect" href="classconfig_1_1Parser.html#ad52bdb0a670523784e0b27f23230a3af" title=" " alt="" coords="1421,283,1640,309"/>
+<area shape="poly" title=" " alt="" coords="1753,194,1704,235,1674,256,1641,274,1610,286,1608,281,1639,270,1671,252,1701,231,1750,190"/>
+<area shape="rect" href="classconfig_1_1Parser.html#ad70447a780efbd014aa25bf42ad9be8e" title=" " alt="" coords="1171,5,1373,45"/>
+<area shape="poly" title=" " alt="" coords="1409,28,1374,28,1374,23,1409,23"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a048ed616c05835d35b11c15c8176eb41" title=" " alt="" coords="905,13,1123,38"/>
+<area shape="poly" title=" " alt="" coords="1157,28,1123,28,1123,23,1157,23"/>
+<area shape="rect" href="classconfig_1_1Parser.html#adb5932b97c80ab980d9a4d20689cc3ff" title=" " alt="" coords="681,13,857,38"/>
+<area shape="poly" title=" " alt="" coords="892,28,858,28,858,23,892,23"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="531,13,586,38"/>
+<area shape="poly" title=" " alt="" coords="667,28,586,28,586,23,667,23"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#ad17d535f4799a7aff46c311e6c3c6c06" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="1185,87,1359,127"/>
+<area shape="poly" title=" " alt="" coords="1442,131,1359,121,1360,115,1443,126"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#ab24dbcb89887e3f95f50534849ad8f8f" title=" " alt="" coords="1193,151,1351,191"/>
+<area shape="poly" title=" " alt="" coords="1443,153,1351,164,1350,159,1442,148"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#a310284f6a6f4d45ecc79f3ec4f6e9650" title=" " alt="" coords="939,119,1089,159"/>
+<area shape="poly" title=" " alt="" coords="1172,122,1089,132,1088,127,1171,116"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#abb2ccb0f5ef2c5cdc1904f879ae6b5b9" title=" " alt="" coords="695,119,844,159"/>
+<area shape="poly" title=" " alt="" coords="925,141,844,141,844,136,925,136"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#aa7770f7b9109b74b07d330fccf1661e4" title=" " alt="" coords="484,119,633,159"/>
+<area shape="poly" title=" " alt="" coords="681,141,634,141,634,136,681,136"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="228,126,436,151"/>
+<area shape="poly" title=" " alt="" coords="470,141,436,141,436,136,470,136"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,126,180,151"/>
+<area shape="poly" title=" " alt="" coords="214,141,180,141,180,136,214,136"/>
+<area shape="poly" title=" " alt="" coords="1179,162,1088,151,1089,145,1180,157"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a49d5396d28056dd60e918ed842495278" title=" " alt="" coords="1171,234,1373,259"/>
+<area shape="poly" title=" " alt="" coords="1451,215,1340,237,1339,231,1450,210"/>
+<area shape="poly" title=" " alt="" coords="1426,249,1374,249,1374,244,1426,244"/>
+<area shape="poly" title=" " alt="" coords="1450,283,1339,262,1340,257,1451,278"/>
 </map>
 </div>
 
@@ -442,12 +693,12 @@ template&lt;<a class="el" href="namespaceshared_1_1string.html#a1f29829f5af562af
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stringUtils_8hpp_source.html#l00045">45</a> of file <a class="el" href="stringUtils_8hpp_source.html">stringUtils.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   45</span>                                            {</div>
-<div class="line"><span class="lineno">   46</span>            std::ostringstream oss;</div>
-<div class="line"><span class="lineno">   47</span>            oss &lt;&lt; value;</div>
-<div class="line"><span class="lineno">   48</span>            <span class="keywordflow">return</span> oss.str();</div>
-<div class="line"><span class="lineno">   49</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="stringUtils_8hpp_source.html#l00044">44</a> of file <a class="el" href="stringUtils_8hpp_source.html">stringUtils.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   44</span>                                            {</div>
+<div class="line"><span class="lineno">   45</span>            std::ostringstream oss;</div>
+<div class="line"><span class="lineno">   46</span>            oss &lt;&lt; value;</div>
+<div class="line"><span class="lineno">   47</span>            <span class="keywordflow">return</span> oss.str();</div>
+<div class="line"><span class="lineno">   48</span>        }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -550,66 +801,108 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceshared_1_1string_a1f29829f5af562af11efd2c7e6ce4958_icgraph.png" border="0" usemap="#anamespaceshared_1_1string_a1f29829f5af562af11efd2c7e6ce4958_icgraph" alt=""/></div>
 <map name="anamespaceshared_1_1string_a1f29829f5af562af11efd2c7e6ce4958_icgraph" id="anamespaceshared_1_1string_a1f29829f5af562af11efd2c7e6ce4958_icgraph">
-<area shape="rect" title=" " alt="" coords="1756,271,1919,296"/>
-<area shape="rect" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75" title=" " alt="" coords="1509,144,1690,169"/>
-<area shape="poly" title=" " alt="" coords="1810,264,1764,227,1707,191,1656,172,1658,167,1709,186,1767,222,1814,259"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3" title="checks if a character is a whitespace character exept for &#39; &#39; and &#39;\r&#39;" alt="" coords="1500,95,1699,120"/>
-<area shape="poly" title=" " alt="" coords="1820,260,1775,196,1743,162,1707,134,1683,123,1685,118,1709,129,1747,158,1779,192,1824,257"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#af5032ff829b5ec593dd1d2f347ea890a" title=" " alt="" coords="1272,294,1421,334"/>
-<area shape="poly" title=" " alt="" coords="1799,267,1756,249,1707,235,1647,224,1599,219,1551,222,1492,235,1467,247,1444,264,1387,296,1384,292,1441,260,1464,243,1490,230,1550,216,1599,213,1647,219,1709,230,1757,244,1801,262"/>
-<area shape="rect" href="classconfig_1_1Parser.html#aeaffc2d7e40663be07d303d3f9307133" title=" " alt="" coords="1491,37,1708,63"/>
-<area shape="poly" title=" " alt="" coords="1824,258,1807,220,1782,173,1748,125,1706,84,1669,65,1671,60,1710,80,1752,121,1786,170,1812,217,1829,256"/>
-<area shape="rect" href="namespaceshared_1_1string.html#aa68d026861d0f4c81179e94efca2ed7c" title="Splits the given string into tokens based on the specified delimiters." alt="" coords="1526,245,1673,271"/>
-<area shape="poly" title=" " alt="" coords="1742,276,1672,268,1673,263,1743,271"/>
-<area shape="rect" href="namespaceshared_1_1string.html#af85298827aba4985d2318526e69ee0d6" title="Splits a path into its components." alt="" coords="1512,295,1687,320"/>
-<area shape="poly" title=" " alt="" coords="1742,296,1687,301,1686,296,1742,290"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a0f7b586737ab36eade3fc402c9abe0a7" title="Converts a hexadecimal string to an unsigned integer." alt="" coords="1514,344,1685,369"/>
-<area shape="poly" title=" " alt="" coords="1794,304,1709,334,1661,347,1660,341,1707,329,1792,299"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a3e43ed005d9012896461ede60cde0e33" title=" " alt="" coords="1514,393,1685,419"/>
-<area shape="poly" title=" " alt="" coords="1815,308,1768,346,1709,383,1674,396,1672,391,1707,378,1765,342,1811,304"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a548d2887496a48cb38f3ab46dd407c6b" title="Trims leading and trailing characters from the input string." alt="" coords="1526,443,1673,468"/>
-<area shape="poly" title=" " alt="" coords="1824,310,1778,372,1746,405,1709,432,1674,447,1672,442,1707,428,1743,401,1774,368,1819,306"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#a4d5db69101dd93f223be3cee73169174" title=" " alt="" coords="1510,493,1689,533"/>
-<area shape="poly" title=" " alt="" coords="1829,310,1812,348,1786,395,1752,442,1710,483,1690,495,1687,490,1706,479,1748,439,1781,392,1807,346,1824,308"/>
-<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="1262,137,1431,177"/>
-<area shape="poly" title=" " alt="" coords="1495,159,1432,159,1432,154,1495,154"/>
-<area shape="rect" href="classhttp_1_1VirtualServer.html#aaa6efa927f0a998eb33c7232b7bbfdd9" title=" " alt="" coords="1276,210,1417,250"/>
-<area shape="poly" title=" " alt="" coords="1542,176,1417,212,1416,207,1541,171"/>
-<area shape="rect" href="classhttp_1_1DeleteHandler.html#a06a40a6ec5165137810115a58fd8411d" title=" " alt="" coords="1026,79,1177,119"/>
-<area shape="poly" title=" " alt="" coords="1248,136,1176,119,1178,114,1249,131"/>
-<area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="1010,144,1193,169"/>
-<area shape="poly" title=" " alt="" coords="1248,159,1193,159,1193,154,1248,154"/>
-<area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="1030,194,1173,234"/>
-<area shape="poly" title=" " alt="" coords="1249,182,1174,200,1172,195,1248,177"/>
-<area shape="rect" href="classcore_1_1Reactor.html#a5e95ac2d62f1e1711e7cc6b8ee897b7a" title=" " alt="" coords="782,257,919,283"/>
-<area shape="poly" title=" " alt="" coords="1263,243,1203,249,920,269,920,264,1202,243,1262,237"/>
-<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="65,231,120,256"/>
-<area shape="poly" title=" " alt="" coords="768,270,120,247,120,242,768,264"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#abb2ccb0f5ef2c5cdc1904f879ae6b5b9" title=" " alt="" coords="776,307,925,347"/>
-<area shape="poly" title=" " alt="" coords="1258,319,926,328,925,323,1258,314"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#aa7770f7b9109b74b07d330fccf1661e4" title=" " alt="" coords="518,307,667,347"/>
-<area shape="poly" title=" " alt="" coords="762,330,667,330,667,325,762,325"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="228,315,436,340"/>
-<area shape="poly" title=" " alt="" coords="504,330,436,330,436,325,504,325"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,315,180,340"/>
-<area shape="poly" title=" " alt="" coords="214,330,180,330,180,325,214,325"/>
-<area shape="rect" href="classconfig_1_1Parser.html#a2f26a832570cde5d76773296121d95c6" title=" " alt="" coords="1251,33,1443,59"/>
-<area shape="poly" title=" " alt="" coords="1477,51,1443,50,1443,45,1477,45"/>
-<area shape="rect" href="classconfig_1_1Parser.html#aefd71b2960373a9db49d640b6f528ca1" title=" " alt="" coords="1000,29,1203,55"/>
-<area shape="poly" title=" " alt="" coords="1237,47,1203,46,1203,41,1237,42"/>
-<area shape="poly" title=" " alt="" coords="1145,20,1142,15,1135,12,1101,8,1075,10,1061,15,1058,20,1065,27,1062,31,1053,21,1057,11,1074,5,1101,3,1136,7,1146,11,1150,17"/>
-<area shape="rect" href="classconfig_1_1Parser.html#ad70447a780efbd014aa25bf42ad9be8e" title=" " alt="" coords="749,107,952,147"/>
-<area shape="poly" title=" " alt="" coords="1032,61,1001,70,898,110,896,105,999,65,1030,56"/>
-<area shape="rect" href="classconfig_1_1Parser.html#a048ed616c05835d35b11c15c8176eb41" title=" " alt="" coords="484,201,701,227"/>
-<area shape="poly" title=" " alt="" coords="778,154,632,204,631,199,776,149"/>
-<area shape="rect" href="classconfig_1_1Parser.html#adb5932b97c80ab980d9a4d20689cc3ff" title=" " alt="" coords="244,204,420,229"/>
-<area shape="poly" title=" " alt="" coords="470,218,420,218,420,213,470,213"/>
-<area shape="poly" title=" " alt="" coords="231,231,121,243,120,238,230,225"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#aad1144f368d4ae3dc3a031f5158501a9" title=" " alt="" coords="1272,462,1421,502"/>
-<area shape="poly" title=" " alt="" coords="1496,503,1421,494,1422,488,1497,498"/>
-<area shape="rect" href="classhttp_1_1RequestParser.html#ad6c1c5f8254fb53cccf21c94b16b4217" title=" " alt="" coords="1027,395,1176,435"/>
-<area shape="poly" title=" " alt="" coords="1259,461,1175,438,1177,433,1260,456"/>
-<area shape="poly" title=" " alt="" coords="1030,393,908,350,910,345,1031,388"/>
+<area shape="rect" title=" " alt="" coords="2044,585,2207,610"/>
+<area shape="rect" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75" title=" " alt="" coords="1797,165,1978,190"/>
+<area shape="poly" title=" " alt="" coords="2114,572,2071,448,2036,369,1994,293,1946,235,1902,192,1905,188,1950,231,1998,291,2041,367,2076,446,2119,570"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a2c0ea281fde1150615baa77e6dcce5d3" title="checks if a character is a whitespace character exept for &#39; &#39; and &#39;\r&#39;" alt="" coords="1788,670,1987,695"/>
+<area shape="poly" title=" " alt="" coords="2090,619,2046,640,1997,660,1953,673,1952,667,1995,655,2044,635,2087,614"/>
+<area shape="rect" href="namespaceshared_1_1string.html#ac0010d0341d2d9250a0f95d1732ba9fb" title="Joins a split path into a string, delimited by &#39;/&#39; Should never receive broken data." alt="" coords="1802,405,1973,430"/>
+<area shape="poly" title=" " alt="" coords="2109,574,2064,508,2032,473,1995,444,1971,433,1973,428,1997,439,2035,469,2068,504,2113,571"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a84a634a6360ecb3ab2efe768d88de46d" title="Normalizes a path against a basePath Paths can be relative (use ./ and ../), but may not go lower tha..." alt="" coords="1781,454,1993,479"/>
+<area shape="poly" title=" " alt="" coords="2099,577,2053,539,1995,501,1944,482,1946,477,1997,496,2056,534,2103,573"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#af5032ff829b5ec593dd1d2f347ea890a" title=" " alt="" coords="1024,601,1173,641"/>
+<area shape="poly" title=" " alt="" coords="2089,581,2045,561,1995,545,1880,528,1761,523,1643,526,1528,536,1420,551,1323,569,1172,604,1171,599,1322,564,1420,546,1528,531,1643,521,1761,517,1880,523,1997,540,2047,556,2091,576"/>
+<area shape="rect" href="classconfig_1_1Parser.html#aeaffc2d7e40663be07d303d3f9307133" title=" " alt="" coords="1779,305,1996,330"/>
+<area shape="poly" title=" " alt="" coords="2110,574,2065,489,2032,440,1994,394,1952,358,1911,332,1914,328,1955,354,1998,390,2036,437,2069,487,2115,571"/>
+<area shape="rect" href="namespaceshared_1_1string.html#aa68d026861d0f4c81179e94efca2ed7c" title="Splits the given string into tokens based on the specified delimiters." alt="" coords="1814,719,1961,745"/>
+<area shape="poly" title=" " alt="" coords="2106,622,2059,667,2029,690,1997,709,1962,722,1960,717,1995,704,2026,685,2056,662,2102,618"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a603400c2a2c832c32c4baf6626c1b599" title="Splits a path into its components, delimited by &#39;/&#39;." alt="" coords="1800,555,1975,581"/>
+<area shape="poly" title=" " alt="" coords="2030,588,1974,581,1975,576,2030,583"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a0f7b586737ab36eade3fc402c9abe0a7" title="Converts a hexadecimal string to an unsigned integer." alt="" coords="1802,769,1973,794"/>
+<area shape="poly" title=" " alt="" coords="2113,624,2069,692,2036,729,1997,760,1974,771,1971,766,1995,755,2032,725,2064,689,2109,621"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a3e43ed005d9012896461ede60cde0e33" title=" " alt="" coords="1802,818,1973,843"/>
+<area shape="poly" title=" " alt="" coords="2118,624,2102,665,2077,715,2042,766,2021,789,1997,809,1974,821,1972,816,1995,804,2018,785,2038,763,2072,713,2097,663,2113,622"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a548d2887496a48cb38f3ab46dd407c6b" title="Trims leading and trailing characters from the input string." alt="" coords="1814,867,1961,893"/>
+<area shape="poly" title=" " alt="" coords="2121,625,2108,675,2084,738,2048,803,2025,833,1998,858,1980,869,1962,876,1960,871,1978,864,1994,854,2021,829,2044,800,2079,736,2103,673,2116,623"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#a4d5db69101dd93f223be3cee73169174" title=" " alt="" coords="1798,605,1977,645"/>
+<area shape="poly" title=" " alt="" coords="2031,611,1977,618,1976,612,2030,606"/>
+<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="1537,64,1706,104"/>
+<area shape="poly" title=" " alt="" coords="1842,162,1730,119,1693,107,1695,102,1732,113,1844,157"/>
+<area shape="rect" href="classhttp_1_1VirtualServer.html#aaa6efa927f0a998eb33c7232b7bbfdd9" title=" " alt="" coords="1551,128,1692,168"/>
+<area shape="poly" title=" " alt="" coords="1783,169,1692,158,1693,153,1783,163"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a2114c8bccadd7a52a8e8994ed6179d30" title=" " alt="" coords="708,193,949,218"/>
+<area shape="poly" title=" " alt="" coords="1783,183,950,205,950,199,1783,177"/>
+<area shape="rect" href="classhttp_1_1DeleteHandler.html#a06a40a6ec5165137810115a58fd8411d" title=" " alt="" coords="1281,69,1431,109"/>
+<area shape="poly" title=" " alt="" coords="1523,89,1432,90,1432,85,1523,83"/>
+<area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="1265,317,1447,342"/>
+<area shape="poly" title=" " alt="" coords="1526,108,1514,118,1498,141,1491,164,1489,187,1491,210,1493,234,1492,258,1484,282,1466,306,1448,319,1445,314,1462,302,1479,280,1486,257,1488,234,1486,211,1484,187,1485,163,1493,138,1510,114,1523,104"/>
+<area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="1285,5,1427,45"/>
+<area shape="poly" title=" " alt="" coords="1523,65,1427,44,1428,38,1524,60"/>
+<area shape="rect" href="classcore_1_1Reactor.html#a5e95ac2d62f1e1711e7cc6b8ee897b7a" title=" " alt="" coords="503,143,641,169"/>
+<area shape="poly" title=" " alt="" coords="1537,151,641,158,641,153,1537,146"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="305,169,359,194"/>
+<area shape="poly" title=" " alt="" coords="490,167,360,181,360,176,489,162"/>
+<area shape="rect" href="classconfig_1_1Parser.html#adb5932b97c80ab980d9a4d20689cc3ff" title=" " alt="" coords="484,193,660,218"/>
+<area shape="poly" title=" " alt="" coords="694,208,660,208,660,203,694,203"/>
+<area shape="poly" title=" " alt="" coords="470,198,360,187,360,181,471,193"/>
+<area shape="poly" title=" " alt="" coords="1854,400,1797,370,1730,345,1657,332,1582,325,1447,325,1447,320,1582,320,1658,327,1731,340,1800,365,1856,395"/>
+<area shape="rect" href="classhttp_1_1Router.html#a7d7639f904382ec287b77b590473dc29" title="Generate the absolute path for a location and an optional subPath." alt="" coords="1513,355,1729,381"/>
+<area shape="poly" title=" " alt="" coords="1805,405,1690,383,1691,378,1805,400"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a8ddd51109e12e073dc4cd7ec2b769c37" title="Normalizes a path against a basePath, from and to a string." alt="" coords="1515,454,1727,479"/>
+<area shape="poly" title=" " alt="" coords="1805,435,1691,457,1690,451,1805,430"/>
+<area shape="rect" href="classhttp_1_1Router.html#ad6e4a793ff5dfda59239fa8394f4c64a" title="Traverses m_locations according to a Request&#39;s Uri, respecting redirections while avoiding redirect l..." alt="" coords="1530,405,1713,430"/>
+<area shape="poly" title=" " alt="" coords="1788,420,1713,420,1713,415,1788,415"/>
+<area shape="rect" href="classhttp_1_1RequestProcessor.html#a63639dad340ee5eb69b23a06711e859b" title=" " alt="" coords="1013,396,1185,436"/>
+<area shape="poly" title=" " alt="" coords="1516,420,1185,419,1185,414,1516,414"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="228,542,436,567"/>
+<area shape="poly" title=" " alt="" coords="1000,436,404,545,403,539,999,431"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,542,180,567"/>
+<area shape="poly" title=" " alt="" coords="214,557,180,557,180,552,214,552"/>
+<area shape="poly" title=" " alt="" coords="1768,469,1728,469,1728,464,1768,464"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#abb2ccb0f5ef2c5cdc1904f879ae6b5b9" title=" " alt="" coords="754,633,903,673"/>
+<area shape="poly" title=" " alt="" coords="1011,634,904,647,903,642,1010,629"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#aa7770f7b9109b74b07d330fccf1661e4" title=" " alt="" coords="497,619,647,659"/>
+<area shape="poly" title=" " alt="" coords="740,651,647,646,647,640,740,646"/>
+<area shape="poly" title=" " alt="" coords="500,616,369,570,370,565,502,611"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a2f26a832570cde5d76773296121d95c6" title=" " alt="" coords="1525,254,1717,279"/>
+<area shape="poly" title=" " alt="" coords="1806,305,1688,282,1689,277,1807,299"/>
+<area shape="rect" href="classconfig_1_1Parser.html#aefd71b2960373a9db49d640b6f528ca1" title=" " alt="" coords="1255,267,1457,293"/>
+<area shape="poly" title=" " alt="" coords="1512,275,1457,278,1457,272,1511,270"/>
+<area shape="poly" title=" " alt="" coords="1402,258,1399,253,1391,250,1356,246,1328,248,1314,253,1311,258,1318,265,1315,269,1306,259,1310,249,1327,243,1356,241,1392,245,1402,249,1406,255"/>
+<area shape="rect" href="classconfig_1_1Parser.html#ad70447a780efbd014aa25bf42ad9be8e" title=" " alt="" coords="997,260,1200,300"/>
+<area shape="poly" title=" " alt="" coords="1241,283,1200,283,1200,277,1241,277"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a048ed616c05835d35b11c15c8176eb41" title=" " alt="" coords="720,254,937,279"/>
+<area shape="poly" title=" " alt="" coords="984,277,937,275,938,269,984,272"/>
+<area shape="poly" title=" " alt="" coords="761,253,625,221,627,215,762,248"/>
+<area shape="poly" title=" " alt="" coords="1839,553,1655,482,1657,477,1841,548"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a023abcf9a70b66c367d993520f745602" title=" " alt="" coords="1248,440,1464,480"/>
+<area shape="poly" title=" " alt="" coords="1810,555,1455,483,1456,477,1811,550"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#a80446234d3c666253d3d485c2ce8e46c" title=" " alt="" coords="1547,755,1696,795"/>
+<area shape="poly" title=" " alt="" coords="1790,588,1781,595,1766,613,1759,630,1757,668,1755,706,1747,725,1733,745,1716,757,1698,766,1695,761,1713,752,1729,741,1743,723,1749,705,1751,667,1754,629,1762,610,1777,591,1786,584"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a5184caa4ae65afa8657ffe8a1130c441" title=" " alt="" coords="1523,655,1719,681"/>
+<area shape="poly" title=" " alt="" coords="1797,588,1780,596,1766,607,1757,620,1748,633,1732,645,1702,658,1700,653,1729,640,1744,629,1752,616,1762,603,1777,591,1794,583"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a96ff177fb973149963c7844ef61e05d6" title=" " alt="" coords="1530,705,1713,730"/>
+<area shape="poly" title=" " alt="" coords="1789,589,1780,595,1769,607,1763,618,1757,643,1751,669,1744,682,1732,694,1710,707,1708,702,1729,690,1740,679,1746,667,1752,642,1758,616,1765,603,1777,591,1786,585"/>
+<area shape="rect" href="classconfig_1_1Parser.html#ad52bdb0a670523784e0b27f23230a3af" title=" " alt="" coords="1512,606,1731,631"/>
+<area shape="poly" title=" " alt="" coords="1807,586,1689,609,1688,603,1806,581"/>
+<area shape="poly" title=" " alt="" coords="1313,434,1127,302,1130,298,1316,430"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#ad17d535f4799a7aff46c311e6c3c6c06" title="Parses Absolute path and saves only the pure path in &quot;m_truePath&quot; src: (RFC 9112 3...." alt="" coords="1269,757,1443,797"/>
+<area shape="poly" title=" " alt="" coords="1533,778,1443,779,1443,774,1533,773"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#ab24dbcb89887e3f95f50534849ad8f8f" title=" " alt="" coords="1277,693,1435,733"/>
+<area shape="poly" title=" " alt="" coords="1533,757,1434,734,1436,729,1534,752"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#a310284f6a6f4d45ecc79f3ec4f6e9650" title=" " alt="" coords="1024,693,1173,733"/>
+<area shape="poly" title=" " alt="" coords="1261,757,1173,734,1174,729,1262,751"/>
+<area shape="poly" title=" " alt="" coords="1010,696,903,672,904,667,1011,691"/>
+<area shape="poly" title=" " alt="" coords="1264,716,1174,716,1174,711,1264,711"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a49d5396d28056dd60e918ed842495278" title=" " alt="" coords="1255,643,1457,669"/>
+<area shape="poly" title=" " alt="" coords="1509,666,1457,663,1457,658,1510,660"/>
+<area shape="poly" title=" " alt="" coords="1552,704,1411,671,1412,666,1553,699"/>
+<area shape="poly" title=" " alt="" coords="1518,636,1447,646,1446,641,1517,631"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#aad1144f368d4ae3dc3a031f5158501a9" title=" " alt="" coords="1547,819,1696,859"/>
+<area shape="poly" title=" " alt="" coords="1788,653,1781,659,1767,677,1760,695,1757,732,1755,770,1747,790,1733,809,1716,821,1698,830,1695,825,1713,816,1729,805,1743,787,1750,769,1752,732,1755,694,1762,674,1777,655,1784,649"/>
+<area shape="rect" href="classhttp_1_1RequestParser.html#ad6c1c5f8254fb53cccf21c94b16b4217" title=" " alt="" coords="1024,785,1173,825"/>
+<area shape="poly" title=" " alt="" coords="1533,836,1173,813,1174,807,1533,830"/>
+<area shape="poly" title=" " alt="" coords="1049,781,864,676,867,671,1051,776"/>
 </map>
 </div>
 

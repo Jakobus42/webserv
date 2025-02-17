@@ -88,19 +88,19 @@ Collaboration diagram for http::RequestProcessor:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1RequestProcessor__coll__graph.png" border="0" usemap="#ahttp_1_1RequestProcessor_coll__map" alt="Collaboration graph"/></div>
 <map name="ahttp_1_1RequestProcessor_coll__map" id="ahttp_1_1RequestProcessor_coll__map">
-<area shape="rect" title="..." alt="" coords="91,996,257,1141"/>
+<area shape="rect" title="..." alt="" coords="91,1056,257,1201"/>
 <area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="5,5,159,131"/>
-<area shape="poly" title=" " alt="" coords="72,144,55,292,48,387,45,491,46,600,55,713,71,825,98,933,110,964,126,995,121,997,105,966,93,934,66,826,49,713,41,601,39,491,43,387,49,292,67,144"/>
-<area shape="rect" href="classhttp_1_1Response.html" title="..." alt="" coords="107,648,241,933"/>
-<area shape="poly" title=" " alt="" coords="82,144,82,234,85,345,93,465,110,585,125,647,120,649,105,586,88,466,79,345,76,234,77,144"/>
-<area shape="rect" href="classshared_1_1Buffer.html" title=" " alt="" coords="119,183,309,583"/>
-<area shape="poly" title=" " alt="" coords="116,142,132,181,127,183,111,144"/>
-<area shape="poly" title=" " alt="" coords="177,934,177,980,171,980,171,934"/>
-<area shape="poly" title=" " alt="" coords="197,583,192,632,187,631,192,583"/>
-<area shape="rect" href="classhttp_1_1Router.html" title=" " alt="" coords="320,648,468,933"/>
-<area shape="poly" title=" " alt="" coords="322,886,243,985,239,982,318,883"/>
-<area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="333,180,548,585"/>
-<area shape="poly" title=" " alt="" coords="420,586,415,632,410,631,415,585"/>
+<area shape="poly" title=" " alt="" coords="72,145,53,303,45,404,41,516,42,634,51,755,69,876,98,993,110,1024,126,1055,121,1057,105,1026,93,994,64,877,46,756,37,634,36,515,40,404,47,302,67,144"/>
+<area shape="rect" href="classhttp_1_1Response.html" title="..." alt="" coords="107,708,241,993"/>
+<area shape="poly" title=" " alt="" coords="82,145,80,245,82,370,91,508,110,645,125,707,120,709,105,646,86,508,77,370,75,245,76,144"/>
+<area shape="rect" href="classshared_1_1Buffer.html" title=" " alt="" coords="119,213,309,613"/>
+<area shape="poly" title=" " alt="" coords="113,143,140,212,135,214,108,144"/>
+<area shape="poly" title=" " alt="" coords="177,994,177,1040,171,1040,171,994"/>
+<area shape="poly" title=" " alt="" coords="198,613,191,692,186,691,193,613"/>
+<area shape="rect" href="classhttp_1_1Router.html" title=" " alt="" coords="320,738,468,963"/>
+<area shape="poly" title=" " alt="" coords="322,946,243,1045,239,1042,318,943"/>
+<area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="333,180,548,645"/>
+<area shape="poly" title=" " alt="" coords="418,646,410,722,405,722,413,645"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -260,9 +260,9 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   69</span>    }</div>
 <div class="ttc" id="aclasshttp_1_1RequestProcessor_html_a06a6ac810295ff2b1f4aaf52376a8733"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#a06a6ac810295ff2b1f4aaf52376a8733">http::RequestProcessor::releaseResponse</a></div><div class="ttdeci">Response * releaseResponse()</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8cpp_source.html#l00071">RequestProcessor.cpp:71</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Response_html_a4971580a804aeee446a85c6c5f5ec6e8"><div class="ttname"><a href="classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8">http::Response::setStatusCode</a></div><div class="ttdeci">void setStatusCode(StatusCode statusCode)</div><div class="ttdef"><b>Definition</b> <a href="Response_8cpp_source.html#l00059">Response.cpp:59</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Router_html_ad6e4a793ff5dfda59239fa8394f4c64a"><div class="ttname"><a href="classhttp_1_1Router.html#ad6e4a793ff5dfda59239fa8394f4c64a">http::Router::routeToPath</a></div><div class="ttdeci">std::pair&lt; std::string, const config::Location * &gt; routeToPath(const std::vector&lt; std::string &gt; &amp;uriPath, const config::Location &amp;currentLocation, const std::vector&lt; std::string &gt; &amp;currentRootPath, std::size_t redirects=0, std::size_t depth=0)</div><div class="ttdoc">Traverses m_locations according to a Request's Uri, respecting redirections while avoiding redirect l...</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00121">Router.cpp:121</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Router_html_adc2958c32ba4e5e222a993ddba2f715c"><div class="ttname"><a href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c">http::Router::checkFileType</a></div><div class="ttdeci">static FileType checkFileType(const std::string &amp;absolutePath)</div><div class="ttdoc">Checks whether a path exists in the file system, and whether it is a file or directory.</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00039">Router.cpp:39</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Router_html_af5a2093850f5d1b1079d0e6f014f304c"><div class="ttname"><a href="classhttp_1_1Router.html#af5a2093850f5d1b1079d0e6f014f304c">http::Router::getGlobalRoot</a></div><div class="ttdeci">const config::Location &amp; getGlobalRoot() const</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00033">Router.cpp:33</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Router_html_ad6e4a793ff5dfda59239fa8394f4c64a"><div class="ttname"><a href="classhttp_1_1Router.html#ad6e4a793ff5dfda59239fa8394f4c64a">http::Router::routeToPath</a></div><div class="ttdeci">std::pair&lt; std::string, const config::Location * &gt; routeToPath(const std::vector&lt; std::string &gt; &amp;uriPath, const config::Location &amp;currentLocation, const std::vector&lt; std::string &gt; &amp;currentRootPath, std::size_t redirects=0, std::size_t depth=0)</div><div class="ttdoc">Traverses m_locations according to a Request's Uri, respecting redirections while avoiding redirect l...</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00080">Router.cpp:80</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Router_html_adc2958c32ba4e5e222a993ddba2f715c"><div class="ttname"><a href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c">http::Router::checkFileType</a></div><div class="ttdeci">static FileType checkFileType(const std::string &amp;absolutePath)</div><div class="ttdoc">Checks whether a path exists in the file system, and whether it is a file or directory.</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00042">Router.cpp:42</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Router_html_af5a2093850f5d1b1079d0e6f014f304c"><div class="ttname"><a href="classhttp_1_1Router.html#af5a2093850f5d1b1079d0e6f014f304c">http::Router::getGlobalRoot</a></div><div class="ttdeci">const config::Location &amp; getGlobalRoot() const</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00036">Router.cpp:36</a></div></div>
 <div class="ttc" id="aclasshttp_1_1exception_html"><div class="ttname"><a href="classhttp_1_1exception.html">http::exception</a></div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00029">http.hpp:29</a></div></div>
 <div class="ttc" id="aclasshttp_1_1exception_html_a1fc13601675b1ac1fde21ee2dc1f4b10"><div class="ttname"><a href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10">http::exception::getMessage</a></div><div class="ttdeci">const std::string &amp; getMessage() const</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00115">http.cpp:115</a></div></div>
 <div class="ttc" id="aclasshttp_1_1exception_html_a4cda45520c85f41e29b07c9b2896b1b4"><div class="ttname"><a href="classhttp_1_1exception.html#a4cda45520c85f41e29b07c9b2896b1b4">http::exception::getStatusCode</a></div><div class="ttdeci">StatusCode getStatusCode() const</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00113">http.cpp:113</a></div></div>
@@ -271,7 +271,7 @@ Private Attributes</h2></td></tr>
 <div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762a144f7cef2e3efe6d823debdf4e62b10c"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a144f7cef2e3efe6d823debdf4e62b10c">http::NOT_FOUND</a></div><div class="ttdeci">@ NOT_FOUND</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00024">types.hpp:24</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762a951e17c8b8b27ee06ced2f743295c2ad"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a951e17c8b8b27ee06ced2f743295c2ad">http::METHOD_NOT_ALLOWED</a></div><div class="ttdeci">@ METHOD_NOT_ALLOWED</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00025">types.hpp:25</a></div></div>
 <div class="ttc" id="astructconfig_1_1Location_html"><div class="ttname"><a href="structconfig_1_1Location.html">config::Location</a></div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00011">Location.hpp:11</a></div></div>
-<div class="ttc" id="astructconfig_1_1Location_html_a907285906b1b26fefc0fa69affefec72"><div class="ttname"><a href="structconfig_1_1Location.html#a907285906b1b26fefc0fa69affefec72">config::Location::rootAsTokens</a></div><div class="ttdeci">std::vector&lt; std::string &gt; rootAsTokens</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00014">Location.hpp:14</a></div></div>
+<div class="ttc" id="astructconfig_1_1Location_html_a907285906b1b26fefc0fa69affefec72"><div class="ttname"><a href="structconfig_1_1Location.html#a907285906b1b26fefc0fa69affefec72">config::Location::rootAsTokens</a></div><div class="ttdeci">std::vector&lt; std::string &gt; rootAsTokens</div><div class="ttdef"><b>Definition</b> <a href="Location_8hpp_source.html#l00016">Location.hpp:16</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -304,6 +304,10 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="100,333,115,379,140,438,177,498,201,526,227,549,237,556,234,560,224,553,197,529,173,501,136,440,110,381,95,335"/>
 <area shape="rect" href="classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8" title=" " alt="" coords="226,613,447,639"/>
 <area shape="poly" title=" " alt="" coords="98,333,110,387,134,459,151,498,172,535,197,569,227,599,235,605,232,609,224,603,193,573,167,538,146,500,129,461,105,388,93,335"/>
+<area shape="rect" href="namespaceshared_1_1string.html#ac0010d0341d2d9250a0f95d1732ba9fb" title="Joins a split path into a string, delimited by &#39;/&#39; Should never receive broken data." alt="" coords="496,465,667,491"/>
+<area shape="poly" title=" " alt="" coords="428,475,482,475,482,481,428,481"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="715,465,877,491"/>
+<area shape="poly" title=" " alt="" coords="667,475,701,475,701,481,667,481"/>
 </map>
 </div>
 <div class="dynheader">
