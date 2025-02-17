@@ -1253,7 +1253,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  512</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid path for data_dir: &quot;</span> + value);</div>
 <div class="line"><span class="lineno">  513</span>        }</div>
 <div class="line"><span class="lineno">  514</span>        server.dataDirectory = value; <span class="comment">// check whether this needs to be stripped of whitespace</span></div>
-<div class="line"><span class="lineno">  515</span>                                      <span class="comment">// should we normalize these?</span></div>
+<div class="line"><span class="lineno">  515</span>                                      <span class="comment">// TODO: should we normalize these?</span></div>
 <div class="line"><span class="lineno">  516</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1784,9 +1784,9 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  576</span>        }</div>
 <div class="line"><span class="lineno">  577</span>        location.allowedMethods = allowedMethods;</div>
 <div class="line"><span class="lineno">  578</span>    }</div>
-<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30">http::DELETE</a></div><div class="ttdeci">@ DELETE</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00056">types.hpp:56</a></div></div>
-<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab">http::POST</a></div><div class="ttdeci">@ POST</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00055">types.hpp:55</a></div></div>
-<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">http::GET</a></div><div class="ttdeci">@ GET</div><div class="ttdef"><b>Definition</b> <a href="http_2types_8hpp_source.html#l00054">types.hpp:54</a></div></div>
+<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30">http::DELETE</a></div><div class="ttdeci">@ DELETE</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00056">types.hpp:56</a></div></div>
+<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab">http::POST</a></div><div class="ttdeci">@ POST</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00055">types.hpp:55</a></div></div>
+<div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">http::GET</a></div><div class="ttdeci">@ GET</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00054">types.hpp:54</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -2236,7 +2236,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  258</span>        std::size_t i = 0;</div>
 <div class="line"><span class="lineno">  259</span>        <span class="keywordflow">for</span> (std::vector&lt;Server&gt;::iterator server = <a class="code hl_variable" href="classconfig_1_1Parser.html#ab3b6602ae2db0e870999ada16afc9fbc">m_configs</a>.begin(); server != <a class="code hl_variable" href="classconfig_1_1Parser.html#ab3b6602ae2db0e870999ada16afc9fbc">m_configs</a>.end(); ++server) {</div>
 <div class="line"><span class="lineno">  260</span>            ++i;</div>
-<div class="line"><span class="lineno">  261</span>            server-&gt;location.precalculatedAbsolutePath = server-&gt;location.root + server-&gt;dataDirectory;</div>
+<div class="line"><span class="lineno">  261</span>            server-&gt;location.precalculatedAbsolutePath = server-&gt;dataDirectory + server-&gt;location.root;</div>
 <div class="line"><span class="lineno">  262</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(server-&gt;location.precalculatedAbsolutePath)) {</div>
 <div class="line"><span class="lineno">  263</span>                <span class="keywordflow">throw</span> parse_exception(<span class="stringliteral">&quot;Server #&quot;</span> + <a class="code hl_function" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a>(i) + <span class="stringliteral">&quot;: Root path is invalid&quot;</span>);</div>
 <div class="line"><span class="lineno">  264</span>            }</div>

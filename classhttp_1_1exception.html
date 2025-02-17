@@ -144,15 +144,15 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00099">99</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  100</span>        : std::runtime_error(<a class="code hl_function" href="classhttp_1_1exception.html#aa66b0a3c468d1fd7fffe1d382e8b661c">buildErrorMessage</a>(statusCode, <a class="code hl_function" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc">getStatusMessage</a>(statusCode)))</div>
-<div class="line"><span class="lineno">  101</span>        , <a class="code hl_variable" href="classhttp_1_1exception.html#ad06858341d115210a8830089291a29bf">m_statusCode</a>(statusCode)</div>
-<div class="line"><span class="lineno">  102</span>        , <a class="code hl_variable" href="classhttp_1_1exception.html#a4ab60d6ffeca2b0a2126dec8045a0a87">m_message</a>(<a class="code hl_function" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc">getStatusMessage</a>(statusCode)) {</div>
-<div class="line"><span class="lineno">  103</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00100">100</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  101</span>        : std::runtime_error(<a class="code hl_function" href="classhttp_1_1exception.html#aa66b0a3c468d1fd7fffe1d382e8b661c">buildErrorMessage</a>(statusCode, <a class="code hl_function" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc">getStatusMessage</a>(statusCode)))</div>
+<div class="line"><span class="lineno">  102</span>        , <a class="code hl_variable" href="classhttp_1_1exception.html#ad06858341d115210a8830089291a29bf">m_statusCode</a>(statusCode)</div>
+<div class="line"><span class="lineno">  103</span>        , <a class="code hl_variable" href="classhttp_1_1exception.html#a4ab60d6ffeca2b0a2126dec8045a0a87">m_message</a>(<a class="code hl_function" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc">getStatusMessage</a>(statusCode)) {</div>
+<div class="line"><span class="lineno">  104</span>    }</div>
 <div class="ttc" id="aclasshttp_1_1exception_html_a4ab60d6ffeca2b0a2126dec8045a0a87"><div class="ttname"><a href="classhttp_1_1exception.html#a4ab60d6ffeca2b0a2126dec8045a0a87">http::exception::m_message</a></div><div class="ttdeci">std::string m_message</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00043">http.hpp:43</a></div></div>
-<div class="ttc" id="aclasshttp_1_1exception_html_aa66b0a3c468d1fd7fffe1d382e8b661c"><div class="ttname"><a href="classhttp_1_1exception.html#aa66b0a3c468d1fd7fffe1d382e8b661c">http::exception::buildErrorMessage</a></div><div class="ttdeci">std::string buildErrorMessage(StatusCode statusCode, const std::string &amp;message)</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00117">http.cpp:117</a></div></div>
+<div class="ttc" id="aclasshttp_1_1exception_html_aa66b0a3c468d1fd7fffe1d382e8b661c"><div class="ttname"><a href="classhttp_1_1exception.html#aa66b0a3c468d1fd7fffe1d382e8b661c">http::exception::buildErrorMessage</a></div><div class="ttdeci">std::string buildErrorMessage(StatusCode statusCode, const std::string &amp;message)</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00118">http.cpp:118</a></div></div>
 <div class="ttc" id="aclasshttp_1_1exception_html_ad06858341d115210a8830089291a29bf"><div class="ttname"><a href="classhttp_1_1exception.html#ad06858341d115210a8830089291a29bf">http::exception::m_statusCode</a></div><div class="ttdeci">StatusCode m_statusCode</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00042">http.hpp:42</a></div></div>
-<div class="ttc" id="anamespacehttp_html_a6ffd27a10b72490009d84fe377d9d8fc"><div class="ttname"><a href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc">http::getStatusMessage</a></div><div class="ttdeci">const std::string &amp; getStatusMessage(StatusCode statusCode)</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00009">http.cpp:9</a></div></div>
+<div class="ttc" id="anamespacehttp_html_a6ffd27a10b72490009d84fe377d9d8fc"><div class="ttname"><a href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc">http::getStatusMessage</a></div><div class="ttdeci">const std::string &amp; getStatusMessage(StatusCode statusCode)</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00010">http.cpp:10</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -182,11 +182,11 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00105">105</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  106</span>        : std::runtime_error(<a class="code hl_function" href="classhttp_1_1exception.html#aa66b0a3c468d1fd7fffe1d382e8b661c">buildErrorMessage</a>(statusCode, message))</div>
-<div class="line"><span class="lineno">  107</span>        , <a class="code hl_variable" href="classhttp_1_1exception.html#ad06858341d115210a8830089291a29bf">m_statusCode</a>(statusCode)</div>
-<div class="line"><span class="lineno">  108</span>        , <a class="code hl_variable" href="classhttp_1_1exception.html#a4ab60d6ffeca2b0a2126dec8045a0a87">m_message</a>(message) {</div>
-<div class="line"><span class="lineno">  109</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00106">106</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  107</span>        : std::runtime_error(<a class="code hl_function" href="classhttp_1_1exception.html#aa66b0a3c468d1fd7fffe1d382e8b661c">buildErrorMessage</a>(statusCode, message))</div>
+<div class="line"><span class="lineno">  108</span>        , <a class="code hl_variable" href="classhttp_1_1exception.html#ad06858341d115210a8830089291a29bf">m_statusCode</a>(statusCode)</div>
+<div class="line"><span class="lineno">  109</span>        , <a class="code hl_variable" href="classhttp_1_1exception.html#a4ab60d6ffeca2b0a2126dec8045a0a87">m_message</a>(message) {</div>
+<div class="line"><span class="lineno">  110</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -219,8 +219,8 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00111">111</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  111</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00112">112</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  112</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -259,12 +259,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00117">117</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  117</span>                                                                                          {</div>
-<div class="line"><span class="lineno">  118</span>        std::ostringstream oss;</div>
-<div class="line"><span class="lineno">  119</span>        oss &lt;&lt; static_cast&lt;int&gt;(statusCode) &lt;&lt; <span class="stringliteral">&quot; - &quot;</span> &lt;&lt; message;</div>
-<div class="line"><span class="lineno">  120</span>        <span class="keywordflow">return</span> oss.str(); <span class="comment">// Only one construction of the string</span></div>
-<div class="line"><span class="lineno">  121</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00118">118</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  118</span>                                                                                          {</div>
+<div class="line"><span class="lineno">  119</span>        std::ostringstream oss;</div>
+<div class="line"><span class="lineno">  120</span>        oss &lt;&lt; static_cast&lt;int&gt;(statusCode) &lt;&lt; <span class="stringliteral">&quot; - &quot;</span> &lt;&lt; message;</div>
+<div class="line"><span class="lineno">  121</span>        <span class="keywordflow">return</span> oss.str(); <span class="comment">// Only one construction of the string</span></div>
+<div class="line"><span class="lineno">  122</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -283,8 +283,8 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00115">115</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  115</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1exception.html#a4ab60d6ffeca2b0a2126dec8045a0a87">m_message</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00116">116</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  116</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1exception.html#a4ab60d6ffeca2b0a2126dec8045a0a87">m_message</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -326,8 +326,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00113">113</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  113</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1exception.html#ad06858341d115210a8830089291a29bf">m_statusCode</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="http_8cpp_source.html#l00114">114</a> of file <a class="el" href="http_8cpp_source.html">http.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  114</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1exception.html#ad06858341d115210a8830089291a29bf">m_statusCode</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

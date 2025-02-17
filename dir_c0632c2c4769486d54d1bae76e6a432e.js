@@ -10,5 +10,5 @@ var dir_c0632c2c4769486d54d1bae76e6a432e =
     [ "RequestProcessor.hpp", "RequestProcessor_8hpp.html", "RequestProcessor_8hpp" ],
     [ "Response.hpp", "Response_8hpp.html", "Response_8hpp" ],
     [ "Router.hpp", "Router_8hpp.html", "Router_8hpp" ],
-    [ "types.hpp", "http_2types_8hpp.html", "http_2types_8hpp" ]
+    [ "types.hpp", "types_8hpp.html", "types_8hpp" ]
 ];

@@ -4,7 +4,7 @@ var structconfig_1_1Server =
     [ "~Server", "structconfig_1_1Server.html#ad28feba63eff3133784d9745b047dad7", null ],
     [ "Server", "structconfig_1_1Server.html#af5235340eb689c6fd38457f565cc988d", null ],
     [ "hasDataDir", "structconfig_1_1Server.html#a05f20d5b9326ce6bf77a3873bfef6a94", null ],
-    [ "hasGlobalRoot", "structconfig_1_1Server.html#a9b78971dea8c4e1b308106f252a9c762", null ],
+    [ "hasRoot", "structconfig_1_1Server.html#ac31ea0044e37998fd73dcba44a16c7ae", null ],
     [ "operator=", "structconfig_1_1Server.html#ad4b7f76d6c4f43002440879d4447bf7c", null ],
     [ "print", "structconfig_1_1Server.html#a8649fd4c692d99d8564b563c0f0e58a9", null ],
     [ "validate", "structconfig_1_1Server.html#a5bff502a23e2fcb5d174261a7b40bc2f", null ],
