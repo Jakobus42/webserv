@@ -1,15 +1,13 @@
 <map id="shared::string::joinPath" name="shared::string::joinPath">
-<area shape="rect" id="Node000001" title="Joins a split path into a string, delimited by &#39;/&#39; Should never receive broken data." alt="" coords="968,55,1139,80"/>
-<area shape="rect" id="Node000002" href="$classhttp_1_1Router.html#a7d7639f904382ec287b77b590473dc29" title="Generate the absolute path for a location and an optional subPath." alt="" coords="704,5,920,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="977,54,874,33,876,28,978,49"/>
-<area shape="rect" id="Node000003" href="$namespaceshared_1_1string.html#a8ddd51109e12e073dc4cd7ec2b769c37" title="Normalizes a path against a basePath, from and to a string." alt="" coords="706,55,918,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="954,70,918,70,918,65,954,65"/>
-<area shape="rect" id="Node000004" href="$classhttp_1_1Router.html#a57c33b97646590044fcd555838b5f565" title="Traverses m_locations according to a Request&#39;s Uri, respecting redirections while avoiding redirect l..." alt="" coords="721,104,903,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="978,85,876,107,874,101,977,80"/>
-<area shape="rect" id="Node000005" href="$classhttp_1_1RequestProcessor.html#a63639dad340ee5eb69b23a06711e859b" title=" " alt="" coords="484,97,656,137"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="707,119,656,119,656,114,707,114"/>
-<area shape="rect" id="Node000006" href="$classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="228,104,436,129"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="470,119,436,119,436,114,470,114"/>
-<area shape="rect" id="Node000007" href="$classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,104,180,129"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="214,119,180,119,180,114,214,114"/>
+<area shape="rect" id="Node000001" title="Joins a split path into a string, delimited by &#39;/&#39; Should never receive broken data." alt="" coords="964,31,1135,56"/>
+<area shape="rect" id="Node000002" href="$namespaceshared_1_1string.html#a8ddd51109e12e073dc4cd7ec2b769c37" title="Normalizes a path against a basePath, from and to a string." alt="" coords="704,5,916,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="950,36,916,32,917,27,951,30"/>
+<area shape="rect" id="Node000003" href="$classhttp_1_1Router.html#a57c33b97646590044fcd555838b5f565" title="Traverses m_locations according to a Request&#39;s Uri, respecting redirections while avoiding redirect l..." alt="" coords="719,55,901,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="951,56,902,61,901,56,950,51"/>
+<area shape="rect" id="Node000004" href="$classhttp_1_1RequestProcessor.html#a63639dad340ee5eb69b23a06711e859b" title=" " alt="" coords="484,47,656,87"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="705,70,656,70,656,65,705,65"/>
+<area shape="rect" id="Node000005" href="$classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="228,55,436,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="470,70,436,70,436,65,470,65"/>
+<area shape="rect" id="Node000006" href="$classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,55,180,80"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="214,70,180,70,180,65,214,65"/>
 </map>

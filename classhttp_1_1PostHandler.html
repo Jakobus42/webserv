@@ -215,45 +215,35 @@ Additional Inherited Members</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="PostHandler_8cpp_source.html#l00020">20</a> of file <a class="el" href="PostHandler_8cpp_source.html">PostHandler.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   20</span>                                                                       {</div>
 <div class="line"><span class="lineno">   21</span>        <span class="keywordflow">try</span> {</div>
-<div class="line"><span class="lineno">   22</span>            <span class="comment">// const config::Location&amp; location = *request.getLocation();</span></div>
-<div class="line"><span class="lineno">   23</span>            <span class="comment">// (void)location;</span></div>
-<div class="line"><span class="lineno">   24</span>            <a class="code hl_enumeration" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfa">FileType</a> fileType = <a class="code hl_variable" href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">m_router</a>.<a class="code hl_function" href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c">checkFileType</a>(request.getUri().safeAbsolutePath);</div>
-<div class="line"><span class="lineno">   25</span>            <span class="keywordflow">if</span> (fileType == <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d">_NOT_FOUND</a>) {</div>
-<div class="line"><span class="lineno">   26</span>                <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">FORBIDDEN</a>, <span class="stringliteral">&quot;POST: Directory could not be found&quot;</span>);</div>
-<div class="line"><span class="lineno">   27</span>            }</div>
-<div class="line"><span class="lineno">   28</span>            <span class="keywordflow">if</span> (fileType == <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaf588e02f8d0cc2fa280d47d9beb900db">FILE</a>) {</div>
-<div class="line"><span class="lineno">   29</span>                <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">FORBIDDEN</a>, <span class="stringliteral">&quot;POST: Expected directory; received file&quot;</span>);</div>
-<div class="line"><span class="lineno">   30</span>            }</div>
-<div class="line"><span class="lineno">   31</span>            <span class="comment">// const config::Location&amp; location = m_router.getLocation(request.getUri()); // TODO: implement</span></div>
-<div class="line"><span class="lineno">   32</span>            <span class="comment">// location should probably be called deepestMatchingLocation</span></div>
-<div class="line"><span class="lineno">   33</span>            <span class="comment">// we somehow need to both get:</span></div>
-<div class="line"><span class="lineno">   34</span>            <span class="comment">// - deepest matching Location &amp; its absolute root path</span></div>
-<div class="line"><span class="lineno">   35</span>            <span class="comment">// - subdirectory path</span></div>
-<div class="line"><span class="lineno">   36</span>            <span class="comment">// -&gt; concatenate the two to get the overall absolute target path (including fileName)</span></div>
-<div class="line"><span class="lineno">   37</span>            <span class="comment">// if (!location.acceptsFileUpload()) {</span></div>
-<div class="line"><span class="lineno">   38</span>            <span class="comment">//  throw http::exception(FORBIDDEN, &quot;Location does not accept file uploads (no POST)&quot;);</span></div>
-<div class="line"><span class="lineno">   39</span>            <span class="comment">// }</span></div>
-<div class="line"><span class="lineno">   40</span> </div>
-<div class="line"><span class="lineno">   41</span>            <span class="comment">// should only return the path to the directory</span></div>
-<div class="line"><span class="lineno">   42</span>            <span class="comment">// we then concatenate on the file name</span></div>
-<div class="line"><span class="lineno">   43</span>            std::string absoluteFilePath = request.getUri().safeAbsolutePath + <span class="stringliteral">&quot;/uploaded.dat&quot;</span>; <span class="comment">// TODO: replace with actual file name</span></div>
-<div class="line"><span class="lineno">   44</span>            std::ofstream outFile(absoluteFilePath.c_str(), std::ios::binary);</div>
-<div class="line"><span class="lineno">   45</span>            <span class="keywordflow">if</span> (!outFile.is_open()) {</div>
-<div class="line"><span class="lineno">   46</span>                <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">FORBIDDEN</a>, <span class="stringliteral">&quot;POST: File couldn&#39;t be opened&quot;</span>);</div>
-<div class="line"><span class="lineno">   47</span>            }</div>
-<div class="line"><span class="lineno">   48</span>            outFile.write(request.getBody().data(), request.getBody().size()); <span class="comment">// TODO: verify whether this could break &amp; if so, what error to throw</span></div>
-<div class="line"><span class="lineno">   49</span>            outFile.close();</div>
-<div class="line"><span class="lineno">   50</span>            response.setStatusCode(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a55ec2403fcca929391dbb044ffed5e85">CREATED</a>);</div>
-<div class="line"><span class="lineno">   51</span>            response.setHeader(<span class="stringliteral">&quot;Content-Length&quot;</span>, <span class="stringliteral">&quot;0&quot;</span>);</div>
-<div class="line"><span class="lineno">   52</span>        } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>&amp; e) {</div>
-<div class="line"><span class="lineno">   53</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;DANG, &quot;</span> &lt;&lt; e.<a class="code hl_function" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10">getMessage</a>() &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   54</span>            response.setStatusCode(e.<a class="code hl_function" href="classhttp_1_1exception.html#a4cda45520c85f41e29b07c9b2896b1b4">getStatusCode</a>());</div>
-<div class="line"><span class="lineno">   55</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65">handleError</a>(response);</div>
-<div class="line"><span class="lineno">   56</span>        }</div>
-<div class="line"><span class="lineno">   57</span>        <span class="comment">//  uploadPath = request.getUri().path; // TODO: shouldn&#39;t contain file name, path probably does</span></div>
-<div class="line"><span class="lineno">   58</span>        <span class="comment">// body should already be there &amp; checked for validity</span></div>
-<div class="line"><span class="lineno">   59</span>        <span class="comment">// TODO: ensure</span></div>
-<div class="line"><span class="lineno">   60</span>    }</div>
+<div class="line"><span class="lineno">   22</span>            <a class="code hl_enumeration" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfa">FileType</a> fileType = <a class="code hl_variable" href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">m_router</a>.<a class="code hl_function" href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c">checkFileType</a>(request.getUri().safeAbsolutePath);</div>
+<div class="line"><span class="lineno">   23</span>            <span class="keywordflow">if</span> (fileType == <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d">_NOT_FOUND</a>) {</div>
+<div class="line"><span class="lineno">   24</span>                <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">FORBIDDEN</a>, <span class="stringliteral">&quot;POST: Directory could not be found&quot;</span>);</div>
+<div class="line"><span class="lineno">   25</span>            }</div>
+<div class="line"><span class="lineno">   26</span>            <span class="keywordflow">if</span> (fileType == <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaf588e02f8d0cc2fa280d47d9beb900db">FILE</a>) {</div>
+<div class="line"><span class="lineno">   27</span>                <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">FORBIDDEN</a>, <span class="stringliteral">&quot;POST: Expected directory; received file&quot;</span>);</div>
+<div class="line"><span class="lineno">   28</span>            }</div>
+<div class="line"><span class="lineno">   29</span>            <span class="keywordflow">if</span> (!request.getLocation()-&gt;acceptsFileUpload()) {</div>
+<div class="line"><span class="lineno">   30</span>                <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">FORBIDDEN</a>, <span class="stringliteral">&quot;Location does not accept file uploads (no POST)&quot;</span>);</div>
+<div class="line"><span class="lineno">   31</span>            }</div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>            std::string absoluteFilePath = request.getUri().safeAbsolutePath + <span class="stringliteral">&quot;/uploaded.dat&quot;</span>; <span class="comment">// TODO: replace with actual file name</span></div>
+<div class="line"><span class="lineno">   34</span>            std::ofstream outFile(absoluteFilePath.c_str(), std::ios::binary);</div>
+<div class="line"><span class="lineno">   35</span>            <span class="keywordflow">if</span> (!outFile.is_open()) {</div>
+<div class="line"><span class="lineno">   36</span>                <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">FORBIDDEN</a>, <span class="stringliteral">&quot;POST: File couldn&#39;t be opened&quot;</span>);</div>
+<div class="line"><span class="lineno">   37</span>            }</div>
+<div class="line"><span class="lineno">   38</span>            outFile.write(request.getBody().data(), request.getBody().size()); <span class="comment">// TODO: verify whether this could break &amp; if so, what error to throw</span></div>
+<div class="line"><span class="lineno">   39</span>            outFile.close();</div>
+<div class="line"><span class="lineno">   40</span>            response.setStatusCode(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762a55ec2403fcca929391dbb044ffed5e85">CREATED</a>);</div>
+<div class="line"><span class="lineno">   41</span>            response.setHeader(<span class="stringliteral">&quot;Content-Length&quot;</span>, <span class="stringliteral">&quot;0&quot;</span>);</div>
+<div class="line"><span class="lineno">   42</span>        } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>&amp; e) {</div>
+<div class="line"><span class="lineno">   43</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;DANG, &quot;</span> &lt;&lt; e.<a class="code hl_function" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10">getMessage</a>() &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   44</span>            response.setStatusCode(e.<a class="code hl_function" href="classhttp_1_1exception.html#a4cda45520c85f41e29b07c9b2896b1b4">getStatusCode</a>());</div>
+<div class="line"><span class="lineno">   45</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65">handleError</a>(response);</div>
+<div class="line"><span class="lineno">   46</span>        }</div>
+<div class="line"><span class="lineno">   47</span>        <span class="comment">//  uploadPath = request.getUri().path; // TODO: shouldn&#39;t contain file name, path probably does</span></div>
+<div class="line"><span class="lineno">   48</span>        <span class="comment">// body should already be there &amp; checked for validity</span></div>
+<div class="line"><span class="lineno">   49</span>        <span class="comment">// TODO: ensure</span></div>
+<div class="line"><span class="lineno">   50</span>    }</div>
 <div class="ttc" id="aclasshttp_1_1ARequestHandler_html_a0fc49eed89135bbf5abbdf10479fda65"><div class="ttname"><a href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65">http::ARequestHandler::handleError</a></div><div class="ttdeci">void handleError(Response &amp;response)</div><div class="ttdef"><b>Definition</b> <a href="ARequestHandler_8hpp_source.html#l00024">ARequestHandler.hpp:24</a></div></div>
 <div class="ttc" id="aclasshttp_1_1ARequestHandler_html_af70584de4f90018bf756bedc26b8a239"><div class="ttname"><a href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">http::ARequestHandler::m_router</a></div><div class="ttdeci">Router &amp; m_router</div><div class="ttdef"><b>Definition</b> <a href="ARequestHandler_8hpp_source.html#l00031">ARequestHandler.hpp:31</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Router_html_adc2958c32ba4e5e222a993ddba2f715c"><div class="ttname"><a href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c">http::Router::checkFileType</a></div><div class="ttdeci">static FileType checkFileType(const std::string &amp;absolutePath)</div><div class="ttdoc">Checks whether a path exists in the file system, and whether it is a file or directory.</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00039">Router.cpp:39</a></div></div>
@@ -270,38 +260,42 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1PostHandler_ae9111139a5a45aab962d6dff1c507704_cgraph.png" border="0" usemap="#aclasshttp_1_1PostHandler_ae9111139a5a45aab962d6dff1c507704_cgraph" alt=""/></div>
 <map name="aclasshttp_1_1PostHandler_ae9111139a5a45aab962d6dff1c507704_cgraph" id="aclasshttp_1_1PostHandler_ae9111139a5a45aab962d6dff1c507704_cgraph">
-<area shape="rect" title=" " alt="" coords="5,171,148,211"/>
-<area shape="rect" href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="208,5,407,31"/>
-<area shape="poly" title=" " alt="" coords="86,170,127,105,158,69,195,40,206,34,208,38,197,44,161,73,131,108,90,173"/>
-<area shape="rect" href="classhttp_1_1Request.html#af85ba241117f0e6a4fdd3ee09d491aa2" title=" " alt="" coords="222,55,393,80"/>
-<area shape="poly" title=" " alt="" coords="94,169,137,128,165,107,195,89,212,82,214,87,197,94,168,111,141,132,98,173"/>
-<area shape="rect" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10" title=" " alt="" coords="204,104,411,129"/>
-<area shape="poly" title=" " alt="" coords="118,169,195,138,224,130,225,135,197,143,120,174"/>
-<area shape="rect" href="classhttp_1_1exception.html#a4cda45520c85f41e29b07c9b2896b1b4" title=" " alt="" coords="196,153,419,179"/>
-<area shape="poly" title=" " alt="" coords="148,181,182,177,182,182,149,186"/>
-<area shape="rect" href="classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="229,203,386,228"/>
-<area shape="poly" title=" " alt="" coords="149,196,215,203,215,208,148,201"/>
-<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="223,253,392,293"/>
-<area shape="poly" title=" " alt="" coords="124,209,197,238,221,246,219,251,195,243,122,214"/>
-<area shape="rect" href="classhttp_1_1Response.html#ab52959eaac18026a4f1c4ce3006731ea" title=" " alt="" coords="481,359,675,384"/>
-<area shape="poly" title=" " alt="" coords="95,210,137,257,166,282,197,302,245,319,313,334,467,357,466,362,313,339,244,324,195,307,162,286,133,261,91,213"/>
-<area shape="rect" href="classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8" title=" " alt="" coords="197,368,418,393"/>
-<area shape="poly" title=" " alt="" coords="90,210,131,278,161,315,198,346,225,361,223,366,194,351,157,318,126,281,85,213"/>
-<area shape="rect" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75" title=" " alt="" coords="487,112,669,137"/>
-<area shape="poly" title=" " alt="" coords="391,254,417,239,434,217,440,194,446,170,453,158,465,147,474,141,477,145,468,151,458,161,451,172,445,195,438,219,420,243,394,259"/>
-<area shape="rect" href="classhttp_1_1Response.html#a4ade0256d440a548f4dfd7f4bc08ffb4" title=" " alt="" coords="487,161,669,187"/>
-<area shape="poly" title=" " alt="" coords="391,250,417,238,431,228,440,217,450,206,465,196,481,189,483,194,468,200,454,210,445,221,435,232,420,243,394,255"/>
-<area shape="rect" href="namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d" title=" " alt="" coords="509,211,647,236"/>
-<area shape="poly" title=" " alt="" coords="392,255,495,236,496,241,393,260"/>
-<area shape="rect" href="classhttp_1_1Response.html#a64b5a9e52e86a1e5758e763ad797ca12" title=" " alt="" coords="467,260,689,285"/>
-<area shape="poly" title=" " alt="" coords="392,270,453,270,453,275,392,275"/>
-<area shape="rect" href="classhttp_1_1Response.html#ac79941baf008165ba0c70903246d2374" title=" " alt="" coords="488,309,668,335"/>
-<area shape="poly" title=" " alt="" coords="393,285,494,304,494,309,392,291"/>
-<area shape="poly" title=" " alt="" coords="377,290,420,309,444,328,468,345,486,352,484,357,465,350,441,332,417,314,375,295"/>
-<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="744,112,907,137"/>
-<area shape="poly" title=" " alt="" coords="669,122,730,122,730,127,669,127"/>
-<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="737,211,913,236"/>
-<area shape="poly" title=" " alt="" coords="647,221,723,221,723,226,647,226"/>
+<area shape="rect" title=" " alt="" coords="5,236,148,276"/>
+<area shape="rect" href="structconfig_1_1Location.html#a8dce37fd41245b7e598affd4bbe2e7dc" title=" " alt="" coords="216,5,399,45"/>
+<area shape="poly" title=" " alt="" coords="82,235,96,197,120,148,152,98,194,55,202,50,205,54,198,59,156,101,124,151,101,199,87,237"/>
+<area shape="rect" href="classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="208,70,407,95"/>
+<area shape="poly" title=" " alt="" coords="86,234,127,170,158,134,195,104,206,98,208,103,197,109,161,138,131,173,90,237"/>
+<area shape="rect" href="classhttp_1_1Request.html#af85ba241117f0e6a4fdd3ee09d491aa2" title=" " alt="" coords="222,119,393,145"/>
+<area shape="poly" title=" " alt="" coords="94,234,137,193,165,171,195,154,212,146,214,151,197,158,168,176,141,197,98,238"/>
+<area shape="rect" href="classhttp_1_1Request.html#abbfb6ceb0a5e79f5ec0aa2591f325a20" title=" " alt="" coords="211,169,404,194"/>
+<area shape="poly" title=" " alt="" coords="118,233,195,203,224,195,225,200,197,208,120,238"/>
+<area shape="rect" href="classhttp_1_1exception.html#a1fc13601675b1ac1fde21ee2dc1f4b10" title=" " alt="" coords="204,218,411,243"/>
+<area shape="poly" title=" " alt="" coords="148,246,190,241,190,246,149,251"/>
+<area shape="rect" href="classhttp_1_1exception.html#a4cda45520c85f41e29b07c9b2896b1b4" title=" " alt="" coords="196,267,419,293"/>
+<area shape="poly" title=" " alt="" coords="149,261,182,264,182,270,148,266"/>
+<area shape="rect" href="classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="229,317,386,342"/>
+<area shape="poly" title=" " alt="" coords="124,274,197,301,230,311,229,316,195,307,122,279"/>
+<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="223,367,392,407"/>
+<area shape="poly" title=" " alt="" coords="99,274,142,314,197,352,212,359,209,364,195,357,138,318,95,278"/>
+<area shape="rect" href="classhttp_1_1Response.html#ab52959eaac18026a4f1c4ce3006731ea" title=" " alt="" coords="481,473,675,498"/>
+<area shape="poly" title=" " alt="" coords="89,275,105,307,128,346,159,385,197,416,244,435,313,451,467,473,467,478,312,456,243,440,195,421,156,389,124,349,100,310,84,278"/>
+<area shape="rect" href="classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8" title=" " alt="" coords="197,482,418,507"/>
+<area shape="poly" title=" " alt="" coords="86,276,100,315,123,365,156,417,175,440,198,461,221,475,219,479,194,465,172,444,151,420,119,368,96,317,81,277"/>
+<area shape="rect" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75" title=" " alt="" coords="487,226,669,251"/>
+<area shape="poly" title=" " alt="" coords="391,368,417,353,434,331,440,308,446,284,453,272,465,261,474,255,477,259,468,265,458,275,451,286,445,309,438,333,420,357,394,373"/>
+<area shape="rect" href="classhttp_1_1Response.html#a4ade0256d440a548f4dfd7f4bc08ffb4" title=" " alt="" coords="487,275,669,301"/>
+<area shape="poly" title=" " alt="" coords="391,364,417,352,431,342,440,331,450,320,465,310,481,303,483,308,468,314,454,324,445,335,435,346,420,357,394,369"/>
+<area shape="rect" href="namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d" title=" " alt="" coords="509,325,647,350"/>
+<area shape="poly" title=" " alt="" coords="392,369,495,350,496,355,393,374"/>
+<area shape="rect" href="classhttp_1_1Response.html#a64b5a9e52e86a1e5758e763ad797ca12" title=" " alt="" coords="467,374,689,399"/>
+<area shape="poly" title=" " alt="" coords="392,384,453,384,453,389,392,389"/>
+<area shape="rect" href="classhttp_1_1Response.html#ac79941baf008165ba0c70903246d2374" title=" " alt="" coords="488,423,668,449"/>
+<area shape="poly" title=" " alt="" coords="393,399,494,418,494,423,392,405"/>
+<area shape="poly" title=" " alt="" coords="377,404,420,423,444,442,468,459,486,466,484,471,465,464,441,446,417,428,375,409"/>
+<area shape="rect" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="744,226,907,251"/>
+<area shape="poly" title=" " alt="" coords="669,236,730,236,730,241,669,241"/>
+<area shape="rect" href="namespacehttp.html#a6ffd27a10b72490009d84fe377d9d8fc" title=" " alt="" coords="737,325,913,350"/>
+<area shape="poly" title=" " alt="" coords="647,335,723,335,723,340,647,340"/>
 </map>
 </div>
 

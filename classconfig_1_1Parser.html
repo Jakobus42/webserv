@@ -382,21 +382,21 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00271">271</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  271</span>                                                                                                    {</div>
-<div class="line"><span class="lineno">  272</span>        <span class="keywordflow">for</span> (std::vector&lt;Location&gt;::iterator location = parentLocation.locations.begin(); location != parentLocation.locations.end(); ++location) {</div>
-<div class="line"><span class="lineno">  273</span>            <span class="keywordflow">if</span> (location-&gt;hasOwnRoot()) {</div>
-<div class="line"><span class="lineno">  274</span>                location-&gt;precalculatedAbsolutePath = server.location.precalculatedAbsolutePath + location-&gt;root;</div>
-<div class="line"><span class="lineno">  275</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  276</span>                location-&gt;precalculatedAbsolutePath = parentLocation.precalculatedAbsolutePath;</div>
-<div class="line"><span class="lineno">  277</span>            }</div>
-<div class="line"><span class="lineno">  278</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(location-&gt;precalculatedAbsolutePath)) {</div>
-<div class="line"><span class="lineno">  279</span>                <span class="keywordflow">throw</span> parse_exception(<span class="stringliteral">&quot;Location \&quot;&quot;</span> + location-&gt;path + <span class="stringliteral">&quot;\&quot;: Path is invalid&quot;</span>);</div>
-<div class="line"><span class="lineno">  280</span>            }</div>
-<div class="line"><span class="lineno">  281</span>            <a class="code hl_function" href="classconfig_1_1Parser.html#a888fdb699c853c69636f30ab18f09714">assignAbsolutePaths</a>(server, *location);</div>
-<div class="line"><span class="lineno">  282</span>        }</div>
-<div class="line"><span class="lineno">  283</span>    }</div>
-<div class="ttc" id="aclassconfig_1_1Parser_html_a888fdb699c853c69636f30ab18f09714"><div class="ttname"><a href="classconfig_1_1Parser.html#a888fdb699c853c69636f30ab18f09714">config::Parser::assignAbsolutePaths</a></div><div class="ttdeci">void assignAbsolutePaths(Server &amp;server, Location &amp;parentLocation)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00271">Parser.cpp:271</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00270">270</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  270</span>                                                                                                    {</div>
+<div class="line"><span class="lineno">  271</span>        <span class="keywordflow">for</span> (std::vector&lt;Location&gt;::iterator location = parentLocation.locations.begin(); location != parentLocation.locations.end(); ++location) {</div>
+<div class="line"><span class="lineno">  272</span>            <span class="keywordflow">if</span> (location-&gt;hasOwnRoot()) {</div>
+<div class="line"><span class="lineno">  273</span>                location-&gt;precalculatedAbsolutePath = server.location.precalculatedAbsolutePath + location-&gt;root;</div>
+<div class="line"><span class="lineno">  274</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  275</span>                location-&gt;precalculatedAbsolutePath = parentLocation.precalculatedAbsolutePath;</div>
+<div class="line"><span class="lineno">  276</span>            }</div>
+<div class="line"><span class="lineno">  277</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(location-&gt;precalculatedAbsolutePath)) {</div>
+<div class="line"><span class="lineno">  278</span>                <span class="keywordflow">throw</span> parse_exception(<span class="stringliteral">&quot;Location \&quot;&quot;</span> + location-&gt;path + <span class="stringliteral">&quot;\&quot;: Path is invalid&quot;</span>);</div>
+<div class="line"><span class="lineno">  279</span>            }</div>
+<div class="line"><span class="lineno">  280</span>            <a class="code hl_function" href="classconfig_1_1Parser.html#a888fdb699c853c69636f30ab18f09714">assignAbsolutePaths</a>(server, *location);</div>
+<div class="line"><span class="lineno">  281</span>        }</div>
+<div class="line"><span class="lineno">  282</span>    }</div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_a888fdb699c853c69636f30ab18f09714"><div class="ttname"><a href="classconfig_1_1Parser.html#a888fdb699c853c69636f30ab18f09714">config::Parser::assignAbsolutePaths</a></div><div class="ttdeci">void assignAbsolutePaths(Server &amp;server, Location &amp;parentLocation)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00270">Parser.cpp:270</a></div></div>
 <div class="ttc" id="anamespaceconfig_html_a562b6854cd3e6748aa72f90553305021"><div class="ttname"><a href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">config::isValidPath</a></div><div class="ttdeci">static bool isValidPath(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00098">Parser.cpp:98</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -521,63 +521,63 @@ Here is the caller graph for this function:</div>
 <li>location (locations) (can exist more than once) </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00350">350</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  350</span>                                                                                    {</div>
-<div class="line"><span class="lineno">  351</span>        std::string path = <a class="code hl_function" href="classconfig_1_1Parser.html#af5f10d2f74ae87f62a0b662cdbf5d257">readToken</a>();</div>
-<div class="line"><span class="lineno">  352</span> </div>
-<div class="line"><span class="lineno">  353</span>        <span class="keywordflow">if</span> (path.empty()) {</div>
-<div class="line"><span class="lineno">  354</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Location has no path&quot;</span>);</div>
-<div class="line"><span class="lineno">  355</span>        }</div>
-<div class="line"><span class="lineno">  356</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(path)) {</div>
-<div class="line"><span class="lineno">  357</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Path is invalid&quot;</span>);</div>
-<div class="line"><span class="lineno">  358</span>        }</div>
-<div class="line"><span class="lineno">  359</span>        <a class="code hl_function" href="classconfig_1_1Parser.html#afe26d8732fa3a1fe9c1190af8afee240">consume</a>(path.length());</div>
-<div class="line"><span class="lineno">  360</span>        <a class="code hl_function" href="classconfig_1_1Parser.html#ab26053f66a7e43dca2f48ece0bb58b1c">skipWhitespace</a>();</div>
-<div class="line"><span class="lineno">  361</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &gt;= <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size() || <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>[<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a>] != <span class="charliteral">&#39;{&#39;</span>) {</div>
-<div class="line"><span class="lineno">  362</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Expected &#39;{&#39; after location path&quot;</span>);</div>
-<div class="line"><span class="lineno">  363</span>        }</div>
-<div class="line"><span class="lineno">  364</span>        <a class="code hl_function" href="classconfig_1_1Parser.html#afe26d8732fa3a1fe9c1190af8afee240">consume</a>(1); <span class="comment">// consume &#39;{&#39;</span></div>
-<div class="line"><span class="lineno">  365</span>        <a class="code hl_variable" href="classconfig_1_1Parser.html#a49923fbc60304b1562c71e6273ecc854">m_depth</a>++;</div>
-<div class="line"><span class="lineno">  366</span> </div>
-<div class="line"><span class="lineno">  367</span>        Location thisLocation;</div>
-<div class="line"><span class="lineno">  368</span> </div>
-<div class="line"><span class="lineno">  369</span>        thisLocation.path = path;</div>
-<div class="line"><span class="lineno">  370</span>        thisLocation.pathAsTokens = <a class="code hl_function" href="namespaceshared_1_1string.html#a603400c2a2c832c32c4baf6626c1b599">shared::string::splitPath</a>(path);</div>
-<div class="line"><span class="lineno">  371</span>        <span class="keywordflow">while</span> (<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &lt;= <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size()) {</div>
-<div class="line"><span class="lineno">  372</span>            <a class="code hl_function" href="classconfig_1_1Parser.html#ab26053f66a7e43dca2f48ece0bb58b1c">skipWhitespace</a>();</div>
-<div class="line"><span class="lineno">  373</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &lt; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size() &amp;&amp; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>[<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a>] == <span class="charliteral">&#39;{&#39;</span>) {</div>
-<div class="line"><span class="lineno">  374</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected opening brace in location block&quot;</span>);</div>
-<div class="line"><span class="lineno">  375</span>            }</div>
-<div class="line"><span class="lineno">  376</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &lt; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size() &amp;&amp; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>[<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a>] == <span class="charliteral">&#39;}&#39;</span>) {</div>
-<div class="line"><span class="lineno">  377</span>                <a class="code hl_function" href="classconfig_1_1Parser.html#afe26d8732fa3a1fe9c1190af8afee240">consume</a>(1); <span class="comment">// consume &#39;}&#39;</span></div>
-<div class="line"><span class="lineno">  378</span>                <a class="code hl_variable" href="classconfig_1_1Parser.html#a49923fbc60304b1562c71e6273ecc854">m_depth</a>--;</div>
-<div class="line"><span class="lineno">  379</span>                thisLocation.validate();</div>
-<div class="line"><span class="lineno">  380</span>                <span class="comment">// validate Location whether enough stuff is present</span></div>
-<div class="line"><span class="lineno">  381</span>                <span class="comment">// is anything mandatory for a location?</span></div>
-<div class="line"><span class="lineno">  382</span>                parentLocation.locations.push_back(thisLocation);</div>
-<div class="line"><span class="lineno">  383</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  384</span>            }</div>
-<div class="line"><span class="lineno">  385</span>            std::string token = <a class="code hl_function" href="classconfig_1_1Parser.html#af5f10d2f74ae87f62a0b662cdbf5d257">readToken</a>();</div>
-<div class="line"><span class="lineno">  386</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classconfig_1_1Parser.html#aa4e016661bfa9f6035fa97e3829e06a6">matchToken</a>(<span class="stringliteral">&quot;location&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  387</span>                <a class="code hl_function" href="classconfig_1_1Parser.html#a023abcf9a70b66c367d993520f745602">expectLocationBlock</a>(thisLocation);</div>
-<div class="line"><span class="lineno">  388</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!token.empty()) {</div>
-<div class="line"><span class="lineno">  389</span>                <span class="comment">// process location directives</span></div>
-<div class="line"><span class="lineno">  390</span>                <a class="code hl_enumeration" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510">CommandType</a> type = <a class="code hl_function" href="classconfig_1_1Parser.html#a15b39a98c43bbc7cc3c2fccb13fc2d3e">matchDirective</a>(token, <a class="code hl_function" href="classconfig_1_1Parser.html#af17cca36b94cd9c103b7d65c547b85b4">locationDirectives</a>());</div>
-<div class="line"><span class="lineno">  391</span>                <span class="keywordflow">if</span> (type == <a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a984068cd778bcc4ab5e9d7b22c2aff6d">_D_NOT_VALID</a>) {</div>
-<div class="line"><span class="lineno">  392</span>                    <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected directive in Location block: &quot;</span> + token);</div>
-<div class="line"><span class="lineno">  393</span>                }</div>
-<div class="line"><span class="lineno">  394</span>                std::string value = <a class="code hl_function" href="classconfig_1_1Parser.html#a641dbc933a9e20ed182211c391571a5f">readValue</a>();</div>
-<div class="line"><span class="lineno">  395</span>                <a class="code hl_function" href="classconfig_1_1Parser.html#aefd71b2960373a9db49d640b6f528ca1">processValue</a>(value, type, thisLocation);</div>
-<div class="line"><span class="lineno">  396</span>            }</div>
-<div class="line"><span class="lineno">  397</span>        }</div>
-<div class="line"><span class="lineno">  398</span>        <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Location block not closed with &#39;}&quot;</span>);</div>
-<div class="line"><span class="lineno">  399</span>    }</div>
-<div class="ttc" id="aclassconfig_1_1Parser_html_a023abcf9a70b66c367d993520f745602"><div class="ttname"><a href="classconfig_1_1Parser.html#a023abcf9a70b66c367d993520f745602">config::Parser::expectLocationBlock</a></div><div class="ttdeci">void expectLocationBlock(Location &amp;parentLocation)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00350">Parser.cpp:350</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00349">349</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  349</span>                                                                                    {</div>
+<div class="line"><span class="lineno">  350</span>        std::string path = <a class="code hl_function" href="classconfig_1_1Parser.html#af5f10d2f74ae87f62a0b662cdbf5d257">readToken</a>();</div>
+<div class="line"><span class="lineno">  351</span> </div>
+<div class="line"><span class="lineno">  352</span>        <span class="keywordflow">if</span> (path.empty()) {</div>
+<div class="line"><span class="lineno">  353</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Location has no path&quot;</span>);</div>
+<div class="line"><span class="lineno">  354</span>        }</div>
+<div class="line"><span class="lineno">  355</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(path)) {</div>
+<div class="line"><span class="lineno">  356</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Path is invalid&quot;</span>);</div>
+<div class="line"><span class="lineno">  357</span>        }</div>
+<div class="line"><span class="lineno">  358</span>        <a class="code hl_function" href="classconfig_1_1Parser.html#afe26d8732fa3a1fe9c1190af8afee240">consume</a>(path.length());</div>
+<div class="line"><span class="lineno">  359</span>        <a class="code hl_function" href="classconfig_1_1Parser.html#ab26053f66a7e43dca2f48ece0bb58b1c">skipWhitespace</a>();</div>
+<div class="line"><span class="lineno">  360</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &gt;= <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size() || <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>[<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a>] != <span class="charliteral">&#39;{&#39;</span>) {</div>
+<div class="line"><span class="lineno">  361</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Expected &#39;{&#39; after location path&quot;</span>);</div>
+<div class="line"><span class="lineno">  362</span>        }</div>
+<div class="line"><span class="lineno">  363</span>        <a class="code hl_function" href="classconfig_1_1Parser.html#afe26d8732fa3a1fe9c1190af8afee240">consume</a>(1); <span class="comment">// consume &#39;{&#39;</span></div>
+<div class="line"><span class="lineno">  364</span>        <a class="code hl_variable" href="classconfig_1_1Parser.html#a49923fbc60304b1562c71e6273ecc854">m_depth</a>++;</div>
+<div class="line"><span class="lineno">  365</span> </div>
+<div class="line"><span class="lineno">  366</span>        Location thisLocation;</div>
+<div class="line"><span class="lineno">  367</span> </div>
+<div class="line"><span class="lineno">  368</span>        thisLocation.path = path;</div>
+<div class="line"><span class="lineno">  369</span>        thisLocation.pathAsTokens = <a class="code hl_function" href="namespaceshared_1_1string.html#a603400c2a2c832c32c4baf6626c1b599">shared::string::splitPath</a>(path);</div>
+<div class="line"><span class="lineno">  370</span>        <span class="keywordflow">while</span> (<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &lt;= <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size()) {</div>
+<div class="line"><span class="lineno">  371</span>            <a class="code hl_function" href="classconfig_1_1Parser.html#ab26053f66a7e43dca2f48ece0bb58b1c">skipWhitespace</a>();</div>
+<div class="line"><span class="lineno">  372</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &lt; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size() &amp;&amp; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>[<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a>] == <span class="charliteral">&#39;{&#39;</span>) {</div>
+<div class="line"><span class="lineno">  373</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected opening brace in location block&quot;</span>);</div>
+<div class="line"><span class="lineno">  374</span>            }</div>
+<div class="line"><span class="lineno">  375</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &lt; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size() &amp;&amp; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>[<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a>] == <span class="charliteral">&#39;}&#39;</span>) {</div>
+<div class="line"><span class="lineno">  376</span>                <a class="code hl_function" href="classconfig_1_1Parser.html#afe26d8732fa3a1fe9c1190af8afee240">consume</a>(1); <span class="comment">// consume &#39;}&#39;</span></div>
+<div class="line"><span class="lineno">  377</span>                <a class="code hl_variable" href="classconfig_1_1Parser.html#a49923fbc60304b1562c71e6273ecc854">m_depth</a>--;</div>
+<div class="line"><span class="lineno">  378</span>                thisLocation.validate();</div>
+<div class="line"><span class="lineno">  379</span>                <span class="comment">// validate Location whether enough stuff is present</span></div>
+<div class="line"><span class="lineno">  380</span>                <span class="comment">// is anything mandatory for a location?</span></div>
+<div class="line"><span class="lineno">  381</span>                parentLocation.locations.push_back(thisLocation);</div>
+<div class="line"><span class="lineno">  382</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  383</span>            }</div>
+<div class="line"><span class="lineno">  384</span>            std::string token = <a class="code hl_function" href="classconfig_1_1Parser.html#af5f10d2f74ae87f62a0b662cdbf5d257">readToken</a>();</div>
+<div class="line"><span class="lineno">  385</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classconfig_1_1Parser.html#aa4e016661bfa9f6035fa97e3829e06a6">matchToken</a>(<span class="stringliteral">&quot;location&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  386</span>                <a class="code hl_function" href="classconfig_1_1Parser.html#a023abcf9a70b66c367d993520f745602">expectLocationBlock</a>(thisLocation);</div>
+<div class="line"><span class="lineno">  387</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!token.empty()) {</div>
+<div class="line"><span class="lineno">  388</span>                <span class="comment">// process location directives</span></div>
+<div class="line"><span class="lineno">  389</span>                <a class="code hl_enumeration" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510">CommandType</a> type = <a class="code hl_function" href="classconfig_1_1Parser.html#a15b39a98c43bbc7cc3c2fccb13fc2d3e">matchDirective</a>(token, <a class="code hl_function" href="classconfig_1_1Parser.html#af17cca36b94cd9c103b7d65c547b85b4">locationDirectives</a>());</div>
+<div class="line"><span class="lineno">  390</span>                <span class="keywordflow">if</span> (type == <a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a984068cd778bcc4ab5e9d7b22c2aff6d">_D_NOT_VALID</a>) {</div>
+<div class="line"><span class="lineno">  391</span>                    <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected directive in Location block: &quot;</span> + token);</div>
+<div class="line"><span class="lineno">  392</span>                }</div>
+<div class="line"><span class="lineno">  393</span>                std::string value = <a class="code hl_function" href="classconfig_1_1Parser.html#a641dbc933a9e20ed182211c391571a5f">readValue</a>();</div>
+<div class="line"><span class="lineno">  394</span>                <a class="code hl_function" href="classconfig_1_1Parser.html#aefd71b2960373a9db49d640b6f528ca1">processValue</a>(value, type, thisLocation);</div>
+<div class="line"><span class="lineno">  395</span>            }</div>
+<div class="line"><span class="lineno">  396</span>        }</div>
+<div class="line"><span class="lineno">  397</span>        <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Location block not closed with &#39;}&quot;</span>);</div>
+<div class="line"><span class="lineno">  398</span>    }</div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_a023abcf9a70b66c367d993520f745602"><div class="ttname"><a href="classconfig_1_1Parser.html#a023abcf9a70b66c367d993520f745602">config::Parser::expectLocationBlock</a></div><div class="ttdeci">void expectLocationBlock(Location &amp;parentLocation)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00349">Parser.cpp:349</a></div></div>
 <div class="ttc" id="aclassconfig_1_1Parser_html_a15b39a98c43bbc7cc3c2fccb13fc2d3e"><div class="ttname"><a href="classconfig_1_1Parser.html#a15b39a98c43bbc7cc3c2fccb13fc2d3e">config::Parser::matchDirective</a></div><div class="ttdeci">CommandType matchDirective(const std::string &amp;token, const std::map&lt; std::string, CommandType &gt; &amp;expectedDirectives)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00153">Parser.cpp:153</a></div></div>
 <div class="ttc" id="aclassconfig_1_1Parser_html_a641dbc933a9e20ed182211c391571a5f"><div class="ttname"><a href="classconfig_1_1Parser.html#a641dbc933a9e20ed182211c391571a5f">config::Parser::readValue</a></div><div class="ttdeci">std::string readValue()</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00138">Parser.cpp:138</a></div></div>
 <div class="ttc" id="aclassconfig_1_1Parser_html_aa4e016661bfa9f6035fa97e3829e06a6"><div class="ttname"><a href="classconfig_1_1Parser.html#aa4e016661bfa9f6035fa97e3829e06a6">config::Parser::matchToken</a></div><div class="ttdeci">bool matchToken(const std::string &amp;token)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00105">Parser.cpp:105</a></div></div>
 <div class="ttc" id="aclassconfig_1_1Parser_html_ab26053f66a7e43dca2f48ece0bb58b1c"><div class="ttname"><a href="classconfig_1_1Parser.html#ab26053f66a7e43dca2f48ece0bb58b1c">config::Parser::skipWhitespace</a></div><div class="ttdeci">void skipWhitespace()</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00077">Parser.cpp:77</a></div></div>
-<div class="ttc" id="aclassconfig_1_1Parser_html_aefd71b2960373a9db49d640b6f528ca1"><div class="ttname"><a href="classconfig_1_1Parser.html#aefd71b2960373a9db49d640b6f528ca1">config::Parser::processValue</a></div><div class="ttdeci">void processValue(const std::string &amp;value, CommandType type, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00401">Parser.cpp:401</a></div></div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_aefd71b2960373a9db49d640b6f528ca1"><div class="ttname"><a href="classconfig_1_1Parser.html#aefd71b2960373a9db49d640b6f528ca1">config::Parser::processValue</a></div><div class="ttdeci">void processValue(const std::string &amp;value, CommandType type, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00400">Parser.cpp:400</a></div></div>
 <div class="ttc" id="aclassconfig_1_1Parser_html_af17cca36b94cd9c103b7d65c547b85b4"><div class="ttname"><a href="classconfig_1_1Parser.html#af17cca36b94cd9c103b7d65c547b85b4">config::Parser::locationDirectives</a></div><div class="ttdeci">static const std::map&lt; std::string, CommandType &gt; &amp; locationDirectives()</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00162">Parser.cpp:162</a></div></div>
 <div class="ttc" id="aclassconfig_1_1Parser_html_af5f10d2f74ae87f62a0b662cdbf5d257"><div class="ttname"><a href="classconfig_1_1Parser.html#af5f10d2f74ae87f62a0b662cdbf5d257">config::Parser::readToken</a></div><div class="ttdeci">std::string readToken()</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00119">Parser.cpp:119</a></div></div>
 <div class="ttc" id="aclassconfig_1_1Parser_html_afe26d8732fa3a1fe9c1190af8afee240"><div class="ttname"><a href="classconfig_1_1Parser.html#afe26d8732fa3a1fe9c1190af8afee240">config::Parser::consume</a></div><div class="ttdeci">void consume(std::size_t amount)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00091">Parser.cpp:91</a></div></div>
@@ -662,43 +662,43 @@ Here is the caller graph for this function:</div>
 <li>location (location.locations) (can exist more than once) </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00303">303</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  303</span>                                                          {</div>
-<div class="line"><span class="lineno">  304</span>        <a class="code hl_function" href="classconfig_1_1Parser.html#ab26053f66a7e43dca2f48ece0bb58b1c">skipWhitespace</a>();</div>
-<div class="line"><span class="lineno">  305</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &gt;= <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size() || <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>[<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a>] != <span class="charliteral">&#39;{&#39;</span>) {</div>
-<div class="line"><span class="lineno">  306</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Expected opening brace after Server&quot;</span>);</div>
-<div class="line"><span class="lineno">  307</span>        }</div>
-<div class="line"><span class="lineno">  308</span>        <a class="code hl_function" href="classconfig_1_1Parser.html#afe26d8732fa3a1fe9c1190af8afee240">consume</a>(1); <span class="comment">// consume &#39;{&#39;</span></div>
-<div class="line"><span class="lineno">  309</span>        <a class="code hl_variable" href="classconfig_1_1Parser.html#a49923fbc60304b1562c71e6273ecc854">m_depth</a>++;</div>
-<div class="line"><span class="lineno">  310</span> </div>
-<div class="line"><span class="lineno">  311</span>        Server thisServer;</div>
-<div class="line"><span class="lineno">  312</span> </div>
-<div class="line"><span class="lineno">  313</span>        <span class="keywordflow">while</span> (<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &lt; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size()) {</div>
-<div class="line"><span class="lineno">  314</span>            <a class="code hl_function" href="classconfig_1_1Parser.html#ab26053f66a7e43dca2f48ece0bb58b1c">skipWhitespace</a>();</div>
-<div class="line"><span class="lineno">  315</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &lt; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size() &amp;&amp; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>[<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a>] == <span class="charliteral">&#39;{&#39;</span>) {</div>
-<div class="line"><span class="lineno">  316</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected opening brace in Server block&quot;</span>);</div>
-<div class="line"><span class="lineno">  317</span>            }</div>
-<div class="line"><span class="lineno">  318</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &lt; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size() &amp;&amp; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>[<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a>] == <span class="charliteral">&#39;}&#39;</span>) {</div>
-<div class="line"><span class="lineno">  319</span>                <a class="code hl_function" href="classconfig_1_1Parser.html#afe26d8732fa3a1fe9c1190af8afee240">consume</a>(1); <span class="comment">// consume &#39;}&#39;</span></div>
-<div class="line"><span class="lineno">  320</span>                <a class="code hl_variable" href="classconfig_1_1Parser.html#a49923fbc60304b1562c71e6273ecc854">m_depth</a>--;</div>
-<div class="line"><span class="lineno">  321</span>                thisServer.validate();</div>
-<div class="line"><span class="lineno">  322</span>                <a class="code hl_variable" href="classconfig_1_1Parser.html#ab3b6602ae2db0e870999ada16afc9fbc">m_configs</a>.push_back(thisServer);</div>
-<div class="line"><span class="lineno">  323</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  324</span>            }</div>
-<div class="line"><span class="lineno">  325</span>            std::string token = <a class="code hl_function" href="classconfig_1_1Parser.html#af5f10d2f74ae87f62a0b662cdbf5d257">readToken</a>();</div>
-<div class="line"><span class="lineno">  326</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classconfig_1_1Parser.html#aa4e016661bfa9f6035fa97e3829e06a6">matchToken</a>(<span class="stringliteral">&quot;location&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  327</span>                <a class="code hl_function" href="classconfig_1_1Parser.html#a023abcf9a70b66c367d993520f745602">expectLocationBlock</a>(thisServer.location);</div>
-<div class="line"><span class="lineno">  328</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!token.empty()) {</div>
-<div class="line"><span class="lineno">  329</span>                <a class="code hl_enumeration" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510">CommandType</a> type = <a class="code hl_function" href="classconfig_1_1Parser.html#a15b39a98c43bbc7cc3c2fccb13fc2d3e">matchDirective</a>(token, <a class="code hl_function" href="classconfig_1_1Parser.html#a60069e2ddc03b966d61f3701b7e58e9f">serverDirectives</a>());</div>
-<div class="line"><span class="lineno">  330</span>                <span class="keywordflow">if</span> (type == <a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a984068cd778bcc4ab5e9d7b22c2aff6d">_D_NOT_VALID</a>) {</div>
-<div class="line"><span class="lineno">  331</span>                    <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected directive in Server block: &quot;</span> + token);</div>
-<div class="line"><span class="lineno">  332</span>                }</div>
-<div class="line"><span class="lineno">  333</span>                std::string value = <a class="code hl_function" href="classconfig_1_1Parser.html#a641dbc933a9e20ed182211c391571a5f">readValue</a>();</div>
-<div class="line"><span class="lineno">  334</span>                <a class="code hl_function" href="classconfig_1_1Parser.html#aefd71b2960373a9db49d640b6f528ca1">processValue</a>(value, type, thisServer);</div>
-<div class="line"><span class="lineno">  335</span>            }</div>
-<div class="line"><span class="lineno">  336</span>        }</div>
-<div class="line"><span class="lineno">  337</span>        <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Server block not closed with &#39;}&#39;&quot;</span>);</div>
-<div class="line"><span class="lineno">  338</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00302">302</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  302</span>                                                          {</div>
+<div class="line"><span class="lineno">  303</span>        <a class="code hl_function" href="classconfig_1_1Parser.html#ab26053f66a7e43dca2f48ece0bb58b1c">skipWhitespace</a>();</div>
+<div class="line"><span class="lineno">  304</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &gt;= <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size() || <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>[<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a>] != <span class="charliteral">&#39;{&#39;</span>) {</div>
+<div class="line"><span class="lineno">  305</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Expected opening brace after Server&quot;</span>);</div>
+<div class="line"><span class="lineno">  306</span>        }</div>
+<div class="line"><span class="lineno">  307</span>        <a class="code hl_function" href="classconfig_1_1Parser.html#afe26d8732fa3a1fe9c1190af8afee240">consume</a>(1); <span class="comment">// consume &#39;{&#39;</span></div>
+<div class="line"><span class="lineno">  308</span>        <a class="code hl_variable" href="classconfig_1_1Parser.html#a49923fbc60304b1562c71e6273ecc854">m_depth</a>++;</div>
+<div class="line"><span class="lineno">  309</span> </div>
+<div class="line"><span class="lineno">  310</span>        Server thisServer;</div>
+<div class="line"><span class="lineno">  311</span> </div>
+<div class="line"><span class="lineno">  312</span>        <span class="keywordflow">while</span> (<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &lt; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size()) {</div>
+<div class="line"><span class="lineno">  313</span>            <a class="code hl_function" href="classconfig_1_1Parser.html#ab26053f66a7e43dca2f48ece0bb58b1c">skipWhitespace</a>();</div>
+<div class="line"><span class="lineno">  314</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &lt; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size() &amp;&amp; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>[<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a>] == <span class="charliteral">&#39;{&#39;</span>) {</div>
+<div class="line"><span class="lineno">  315</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected opening brace in Server block&quot;</span>);</div>
+<div class="line"><span class="lineno">  316</span>            }</div>
+<div class="line"><span class="lineno">  317</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &lt; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size() &amp;&amp; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>[<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a>] == <span class="charliteral">&#39;}&#39;</span>) {</div>
+<div class="line"><span class="lineno">  318</span>                <a class="code hl_function" href="classconfig_1_1Parser.html#afe26d8732fa3a1fe9c1190af8afee240">consume</a>(1); <span class="comment">// consume &#39;}&#39;</span></div>
+<div class="line"><span class="lineno">  319</span>                <a class="code hl_variable" href="classconfig_1_1Parser.html#a49923fbc60304b1562c71e6273ecc854">m_depth</a>--;</div>
+<div class="line"><span class="lineno">  320</span>                thisServer.validate();</div>
+<div class="line"><span class="lineno">  321</span>                <a class="code hl_variable" href="classconfig_1_1Parser.html#ab3b6602ae2db0e870999ada16afc9fbc">m_configs</a>.push_back(thisServer);</div>
+<div class="line"><span class="lineno">  322</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  323</span>            }</div>
+<div class="line"><span class="lineno">  324</span>            std::string token = <a class="code hl_function" href="classconfig_1_1Parser.html#af5f10d2f74ae87f62a0b662cdbf5d257">readToken</a>();</div>
+<div class="line"><span class="lineno">  325</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="classconfig_1_1Parser.html#aa4e016661bfa9f6035fa97e3829e06a6">matchToken</a>(<span class="stringliteral">&quot;location&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  326</span>                <a class="code hl_function" href="classconfig_1_1Parser.html#a023abcf9a70b66c367d993520f745602">expectLocationBlock</a>(thisServer.location);</div>
+<div class="line"><span class="lineno">  327</span>            } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!token.empty()) {</div>
+<div class="line"><span class="lineno">  328</span>                <a class="code hl_enumeration" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510">CommandType</a> type = <a class="code hl_function" href="classconfig_1_1Parser.html#a15b39a98c43bbc7cc3c2fccb13fc2d3e">matchDirective</a>(token, <a class="code hl_function" href="classconfig_1_1Parser.html#a60069e2ddc03b966d61f3701b7e58e9f">serverDirectives</a>());</div>
+<div class="line"><span class="lineno">  329</span>                <span class="keywordflow">if</span> (type == <a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a984068cd778bcc4ab5e9d7b22c2aff6d">_D_NOT_VALID</a>) {</div>
+<div class="line"><span class="lineno">  330</span>                    <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected directive in Server block: &quot;</span> + token);</div>
+<div class="line"><span class="lineno">  331</span>                }</div>
+<div class="line"><span class="lineno">  332</span>                std::string value = <a class="code hl_function" href="classconfig_1_1Parser.html#a641dbc933a9e20ed182211c391571a5f">readValue</a>();</div>
+<div class="line"><span class="lineno">  333</span>                <a class="code hl_function" href="classconfig_1_1Parser.html#aefd71b2960373a9db49d640b6f528ca1">processValue</a>(value, type, thisServer);</div>
+<div class="line"><span class="lineno">  334</span>            }</div>
+<div class="line"><span class="lineno">  335</span>        }</div>
+<div class="line"><span class="lineno">  336</span>        <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Server block not closed with &#39;}&#39;&quot;</span>);</div>
+<div class="line"><span class="lineno">  337</span>    }</div>
 <div class="ttc" id="aclassconfig_1_1Parser_html_a60069e2ddc03b966d61f3701b7e58e9f"><div class="ttname"><a href="classconfig_1_1Parser.html#a60069e2ddc03b966d61f3701b7e58e9f">config::Parser::serverDirectives</a></div><div class="ttdeci">static const std::map&lt; std::string, CommandType &gt; &amp; serverDirectives()</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00177">Parser.cpp:177</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1107,31 +1107,31 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00603">603</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  603</span>                                                                          {</div>
-<div class="line"><span class="lineno">  604</span>        <span class="keyword">static</span> std::set&lt;std::string&gt; allowedValues;</div>
-<div class="line"><span class="lineno">  605</span> </div>
-<div class="line"><span class="lineno">  606</span>        <span class="keywordflow">if</span> (allowedValues.empty()) {</div>
-<div class="line"><span class="lineno">  607</span>            allowedValues.insert(<span class="stringliteral">&quot;on&quot;</span>);</div>
-<div class="line"><span class="lineno">  608</span>            allowedValues.insert(<span class="stringliteral">&quot;off&quot;</span>);</div>
-<div class="line"><span class="lineno">  609</span>        }</div>
-<div class="line"><span class="lineno">  610</span>        <span class="comment">// can only be &quot;on&quot; or &quot;off&quot;, everything else is invalid</span></div>
-<div class="line"><span class="lineno">  611</span>        std::stringstream ss(value);</div>
-<div class="line"><span class="lineno">  612</span>        std::string token;</div>
-<div class="line"><span class="lineno">  613</span> </div>
-<div class="line"><span class="lineno">  614</span>        ss &gt;&gt; token;</div>
-<div class="line"><span class="lineno">  615</span>        <span class="keywordflow">if</span> (allowedValues.find(token) == allowedValues.end()) {</div>
-<div class="line"><span class="lineno">  616</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected value for autoindex: &quot;</span> + value);</div>
-<div class="line"><span class="lineno">  617</span>        }</div>
-<div class="line"><span class="lineno">  618</span>        <span class="keywordflow">if</span> (token == <span class="stringliteral">&quot;on&quot;</span>) {</div>
-<div class="line"><span class="lineno">  619</span>            location.autoindex = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  620</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (token == <span class="stringliteral">&quot;off&quot;</span>) {</div>
-<div class="line"><span class="lineno">  621</span>            location.autoindex = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  622</span>        }</div>
-<div class="line"><span class="lineno">  623</span>        <span class="keywordflow">if</span> (ss &gt;&gt; token &amp;&amp; !token.empty()) {</div>
-<div class="line"><span class="lineno">  624</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected token in autoindex: &quot;</span> + token);</div>
-<div class="line"><span class="lineno">  625</span>        }</div>
-<div class="line"><span class="lineno">  626</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00602">602</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  602</span>                                                                          {</div>
+<div class="line"><span class="lineno">  603</span>        <span class="keyword">static</span> std::set&lt;std::string&gt; allowedValues;</div>
+<div class="line"><span class="lineno">  604</span> </div>
+<div class="line"><span class="lineno">  605</span>        <span class="keywordflow">if</span> (allowedValues.empty()) {</div>
+<div class="line"><span class="lineno">  606</span>            allowedValues.insert(<span class="stringliteral">&quot;on&quot;</span>);</div>
+<div class="line"><span class="lineno">  607</span>            allowedValues.insert(<span class="stringliteral">&quot;off&quot;</span>);</div>
+<div class="line"><span class="lineno">  608</span>        }</div>
+<div class="line"><span class="lineno">  609</span>        <span class="comment">// can only be &quot;on&quot; or &quot;off&quot;, everything else is invalid</span></div>
+<div class="line"><span class="lineno">  610</span>        std::stringstream ss(value);</div>
+<div class="line"><span class="lineno">  611</span>        std::string token;</div>
+<div class="line"><span class="lineno">  612</span> </div>
+<div class="line"><span class="lineno">  613</span>        ss &gt;&gt; token;</div>
+<div class="line"><span class="lineno">  614</span>        <span class="keywordflow">if</span> (allowedValues.find(token) == allowedValues.end()) {</div>
+<div class="line"><span class="lineno">  615</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected value for autoindex: &quot;</span> + value);</div>
+<div class="line"><span class="lineno">  616</span>        }</div>
+<div class="line"><span class="lineno">  617</span>        <span class="keywordflow">if</span> (token == <span class="stringliteral">&quot;on&quot;</span>) {</div>
+<div class="line"><span class="lineno">  618</span>            location.autoindex = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  619</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (token == <span class="stringliteral">&quot;off&quot;</span>) {</div>
+<div class="line"><span class="lineno">  620</span>            location.autoindex = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  621</span>        }</div>
+<div class="line"><span class="lineno">  622</span>        <span class="keywordflow">if</span> (ss &gt;&gt; token &amp;&amp; !token.empty()) {</div>
+<div class="line"><span class="lineno">  623</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected token in autoindex: &quot;</span> + token);</div>
+<div class="line"><span class="lineno">  624</span>        }</div>
+<div class="line"><span class="lineno">  625</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1179,18 +1179,18 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00498">498</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  498</span>                                                                              {</div>
-<div class="line"><span class="lineno">  499</span>        std::stringstream ss(value);</div>
-<div class="line"><span class="lineno">  500</span>        std::string token;</div>
-<div class="line"><span class="lineno">  501</span> </div>
-<div class="line"><span class="lineno">  502</span>        <span class="keywordflow">if</span> (!(ss &gt;&gt; server.maxBodySize)) {</div>
-<div class="line"><span class="lineno">  503</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid value for client_max_body_size&quot;</span>);</div>
-<div class="line"><span class="lineno">  504</span>        }</div>
-<div class="line"><span class="lineno">  505</span>        <span class="keywordflow">if</span> (ss &gt;&gt; token) {</div>
-<div class="line"><span class="lineno">  506</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected token in client_max_body_size: &quot;</span> + token);</div>
-<div class="line"><span class="lineno">  507</span>        }</div>
-<div class="line"><span class="lineno">  508</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00497">497</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  497</span>                                                                              {</div>
+<div class="line"><span class="lineno">  498</span>        std::stringstream ss(value);</div>
+<div class="line"><span class="lineno">  499</span>        std::string token;</div>
+<div class="line"><span class="lineno">  500</span> </div>
+<div class="line"><span class="lineno">  501</span>        <span class="keywordflow">if</span> (!(ss &gt;&gt; server.maxBodySize)) {</div>
+<div class="line"><span class="lineno">  502</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid value for client_max_body_size&quot;</span>);</div>
+<div class="line"><span class="lineno">  503</span>        }</div>
+<div class="line"><span class="lineno">  504</span>        <span class="keywordflow">if</span> (ss &gt;&gt; token) {</div>
+<div class="line"><span class="lineno">  505</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected token in client_max_body_size: &quot;</span> + token);</div>
+<div class="line"><span class="lineno">  506</span>        }</div>
+<div class="line"><span class="lineno">  507</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1247,14 +1247,14 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00510">510</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  510</span>                                                                    {</div>
-<div class="line"><span class="lineno">  511</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(value)) {</div>
-<div class="line"><span class="lineno">  512</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid path for data_dir: &quot;</span> + value);</div>
-<div class="line"><span class="lineno">  513</span>        }</div>
-<div class="line"><span class="lineno">  514</span>        server.dataDirectory = value; <span class="comment">// check whether this needs to be stripped of whitespace</span></div>
-<div class="line"><span class="lineno">  515</span>                                      <span class="comment">// TODO: should we normalize these?</span></div>
-<div class="line"><span class="lineno">  516</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00509">509</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  509</span>                                                                    {</div>
+<div class="line"><span class="lineno">  510</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(value)) {</div>
+<div class="line"><span class="lineno">  511</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid path for data_dir: &quot;</span> + value);</div>
+<div class="line"><span class="lineno">  512</span>        }</div>
+<div class="line"><span class="lineno">  513</span>        server.dataDirectory = value; <span class="comment">// check whether this needs to be stripped of whitespace</span></div>
+<div class="line"><span class="lineno">  514</span>                                      <span class="comment">// TODO: should we normalize these?</span></div>
+<div class="line"><span class="lineno">  515</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1347,7 +1347,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  244</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">  245</span>    }</div>
 <div class="ttc" id="aclassconfig_1_1Parser_html_a048ed616c05835d35b11c15c8176eb41"><div class="ttname"><a href="classconfig_1_1Parser.html#a048ed616c05835d35b11c15c8176eb41">config::Parser::parseFromData</a></div><div class="ttdeci">void parseFromData()</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00247">Parser.cpp:247</a></div></div>
-<div class="ttc" id="aclassconfig_1_1Parser_html_a2114c8bccadd7a52a8e8994ed6179d30"><div class="ttname"><a href="classconfig_1_1Parser.html#a2114c8bccadd7a52a8e8994ed6179d30">config::Parser::processParsedData</a></div><div class="ttdeci">void processParsedData()</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00257">Parser.cpp:257</a></div></div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_a2114c8bccadd7a52a8e8994ed6179d30"><div class="ttname"><a href="classconfig_1_1Parser.html#a2114c8bccadd7a52a8e8994ed6179d30">config::Parser::processParsedData</a></div><div class="ttdeci">void processParsedData()</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00256">Parser.cpp:256</a></div></div>
 <div class="ttc" id="aclassconfig_1_1Parser_html_a95d857707284a157d8a2abfd6d68de1e"><div class="ttname"><a href="classconfig_1_1Parser.html#a95d857707284a157d8a2abfd6d68de1e">config::Parser::handleSigint</a></div><div class="ttdeci">static void handleSigint(int signum)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00198">Parser.cpp:198</a></div></div>
 <div class="ttc" id="anamespaceshared_1_1file_html_a3c38e3febb8f719c536862741552ba6a"><div class="ttname"><a href="namespaceshared_1_1file.html#a3c38e3febb8f719c536862741552ba6a">shared::file::isRegularFile</a></div><div class="ttdeci">bool isRegularFile(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="fileUtils_8cpp_source.html#l00016">fileUtils.cpp:16</a></div></div>
 </div><!-- fragment --><div class="dynheader">
@@ -1473,15 +1473,14 @@ Here is the caller graph for this function:</div>
 
 <p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00247">247</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">  247</span>                                                      {</div>
-<div class="line"><span class="lineno">  248</span>        <span class="keywordflow">while</span> (<a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &lt; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size()) {</div>
-<div class="line"><span class="lineno">  249</span>            <a class="code hl_function" href="classconfig_1_1Parser.html#ab26053f66a7e43dca2f48ece0bb58b1c">skipWhitespace</a>();</div>
-<div class="line"><span class="lineno">  250</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="classconfig_1_1Parser.html#aa4e016661bfa9f6035fa97e3829e06a6">matchToken</a>(<span class="stringliteral">&quot;server&quot;</span>)) {</div>
-<div class="line"><span class="lineno">  251</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Expected &#39;server&#39; keyword&quot;</span>);</div>
-<div class="line"><span class="lineno">  252</span>            }</div>
-<div class="line"><span class="lineno">  253</span>            <a class="code hl_function" href="classconfig_1_1Parser.html#ad70447a780efbd014aa25bf42ad9be8e">expectServerBlock</a>();</div>
-<div class="line"><span class="lineno">  254</span>        }</div>
-<div class="line"><span class="lineno">  255</span>    }</div>
-<div class="ttc" id="aclassconfig_1_1Parser_html_ad70447a780efbd014aa25bf42ad9be8e"><div class="ttname"><a href="classconfig_1_1Parser.html#ad70447a780efbd014aa25bf42ad9be8e">config::Parser::expectServerBlock</a></div><div class="ttdeci">void expectServerBlock()</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00303">Parser.cpp:303</a></div></div>
+<div class="line"><span class="lineno">  248</span>        <span class="keywordflow">while</span> (<a class="code hl_function" href="classconfig_1_1Parser.html#ab26053f66a7e43dca2f48ece0bb58b1c">skipWhitespace</a>(), <a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> &lt; <a class="code hl_variable" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">m_data</a>.size()) {</div>
+<div class="line"><span class="lineno">  249</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="classconfig_1_1Parser.html#aa4e016661bfa9f6035fa97e3829e06a6">matchToken</a>(<span class="stringliteral">&quot;server&quot;</span>)) {</div>
+<div class="line"><span class="lineno">  250</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Expected &#39;server&#39; keyword&quot;</span>);</div>
+<div class="line"><span class="lineno">  251</span>            }</div>
+<div class="line"><span class="lineno">  252</span>            <a class="code hl_function" href="classconfig_1_1Parser.html#ad70447a780efbd014aa25bf42ad9be8e">expectServerBlock</a>();</div>
+<div class="line"><span class="lineno">  253</span>        }</div>
+<div class="line"><span class="lineno">  254</span>    }</div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_ad70447a780efbd014aa25bf42ad9be8e"><div class="ttname"><a href="classconfig_1_1Parser.html#ad70447a780efbd014aa25bf42ad9be8e">config::Parser::expectServerBlock</a></div><div class="ttdeci">void expectServerBlock()</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00302">Parser.cpp:302</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1593,21 +1592,21 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00588">588</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  588</span>                                                                      {</div>
-<div class="line"><span class="lineno">  589</span>        std::vector&lt;std::string&gt; indexFiles;</div>
-<div class="line"><span class="lineno">  590</span>        std::stringstream ss(value);</div>
-<div class="line"><span class="lineno">  591</span>        std::string token;</div>
-<div class="line"><span class="lineno">  592</span> </div>
-<div class="line"><span class="lineno">  593</span>        <span class="keywordflow">while</span> (ss &gt;&gt; token) {</div>
-<div class="line"><span class="lineno">  594</span>            indexFiles.push_back(token);</div>
-<div class="line"><span class="lineno">  595</span>        }</div>
-<div class="line"><span class="lineno">  596</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;parseIndex parsing: &quot;</span> &lt;&lt; value &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  597</span>        <span class="keywordflow">if</span> (indexFiles.empty()) {</div>
-<div class="line"><span class="lineno">  598</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Expected value for index&quot;</span>);</div>
-<div class="line"><span class="lineno">  599</span>        }</div>
-<div class="line"><span class="lineno">  600</span>        location.indexFile = indexFiles;</div>
-<div class="line"><span class="lineno">  601</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00587">587</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  587</span>                                                                      {</div>
+<div class="line"><span class="lineno">  588</span>        std::vector&lt;std::string&gt; indexFiles;</div>
+<div class="line"><span class="lineno">  589</span>        std::stringstream ss(value);</div>
+<div class="line"><span class="lineno">  590</span>        std::string token;</div>
+<div class="line"><span class="lineno">  591</span> </div>
+<div class="line"><span class="lineno">  592</span>        <span class="keywordflow">while</span> (ss &gt;&gt; token) {</div>
+<div class="line"><span class="lineno">  593</span>            indexFiles.push_back(token);</div>
+<div class="line"><span class="lineno">  594</span>        }</div>
+<div class="line"><span class="lineno">  595</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;parseIndex parsing: &quot;</span> &lt;&lt; value &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  596</span>        <span class="keywordflow">if</span> (indexFiles.empty()) {</div>
+<div class="line"><span class="lineno">  597</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Expected value for index&quot;</span>);</div>
+<div class="line"><span class="lineno">  598</span>        }</div>
+<div class="line"><span class="lineno">  599</span>        location.indexFile = indexFiles;</div>
+<div class="line"><span class="lineno">  600</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -1645,48 +1644,48 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00436">436</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  436</span>                                                         {</div>
-<div class="line"><span class="lineno">  437</span>        uint32_t ip = 0;</div>
-<div class="line"><span class="lineno">  438</span>        std::size_t start = 0;</div>
-<div class="line"><span class="lineno">  439</span>        std::size_t part = 0;</div>
-<div class="line"><span class="lineno">  440</span> </div>
-<div class="line"><span class="lineno">  441</span>        <span class="keywordflow">while</span> (part &lt; 4) {</div>
-<div class="line"><span class="lineno">  442</span>            std::size_t pos = host.find(<span class="charliteral">&#39;.&#39;</span>, start);</div>
-<div class="line"><span class="lineno">  443</span>            std::string segment;</div>
-<div class="line"><span class="lineno">  444</span>            <span class="keywordflow">if</span> (pos == std::string::npos) {</div>
-<div class="line"><span class="lineno">  445</span>                segment = host.substr(start);</div>
-<div class="line"><span class="lineno">  446</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  447</span>                segment = host.substr(start, pos - start);</div>
-<div class="line"><span class="lineno">  448</span>            }</div>
-<div class="line"><span class="lineno">  449</span>            <span class="keywordflow">if</span> (segment.empty()) {</div>
-<div class="line"><span class="lineno">  450</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid IP address format: empty segment in \&quot;&quot;</span> + host + <span class="stringliteral">&quot;\&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">  451</span>            }</div>
-<div class="line"><span class="lineno">  452</span>            <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; segment.size(); ++i) {</div>
-<div class="line"><span class="lineno">  453</span>                <span class="keywordflow">if</span> (!std::isdigit(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span><span class="keyword">&gt;</span>(segment[i]))) {</div>
-<div class="line"><span class="lineno">  454</span>                    <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid IP address format: unexpected character &#39;&quot;</span> + segment.substr(i, 1) + <span class="stringliteral">&quot;&#39; in \&quot;&quot;</span> + host + <span class="stringliteral">&quot;\&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">  455</span>                }</div>
-<div class="line"><span class="lineno">  456</span>            }</div>
-<div class="line"><span class="lineno">  457</span>            <span class="keywordflow">if</span> (segment.size() &gt; 3) {</div>
-<div class="line"><span class="lineno">  458</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid IP address format: segment too long in \&quot;&quot;</span> + host + <span class="stringliteral">&quot;\&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">  459</span>            }</div>
-<div class="line"><span class="lineno">  460</span>            <span class="keywordtype">int</span> octet = <a class="code hl_function" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">shared::string::toNum&lt;int&gt;</a>(segment, 10);</div>
-<div class="line"><span class="lineno">  461</span>            <span class="keywordflow">if</span> (octet &lt; 0 || octet &gt; 255) {</div>
-<div class="line"><span class="lineno">  462</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;IP segment out of range in \&quot;&quot;</span> + host + <span class="stringliteral">&quot;\&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">  463</span>            }</div>
-<div class="line"><span class="lineno">  464</span>            ip = (ip &lt;&lt; 8) | (octet &amp; 0xFF);</div>
-<div class="line"><span class="lineno">  465</span>            part++;</div>
-<div class="line"><span class="lineno">  466</span>            <span class="keywordflow">if</span> (pos == std::string::npos)</div>
-<div class="line"><span class="lineno">  467</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  468</span>            start = pos + 1;</div>
-<div class="line"><span class="lineno">  469</span>        }</div>
-<div class="line"><span class="lineno">  470</span> </div>
-<div class="line"><span class="lineno">  471</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;parts: &quot;</span> &lt;&lt; part &lt;&lt; <span class="stringliteral">&quot;; ip: &quot;</span> &lt;&lt; ip &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">  472</span>        <span class="keywordflow">if</span> (part != 4) {</div>
-<div class="line"><span class="lineno">  473</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid IP address format: \&quot;&quot;</span> + host + <span class="stringliteral">&quot;\&quot;&quot;</span>);</div>
-<div class="line"><span class="lineno">  474</span>        }</div>
-<div class="line"><span class="lineno">  475</span>        <span class="keywordflow">return</span> ip;</div>
-<div class="line"><span class="lineno">  476</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00435">435</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  435</span>                                                         {</div>
+<div class="line"><span class="lineno">  436</span>        uint32_t ip = 0;</div>
+<div class="line"><span class="lineno">  437</span>        std::size_t start = 0;</div>
+<div class="line"><span class="lineno">  438</span>        std::size_t part = 0;</div>
+<div class="line"><span class="lineno">  439</span> </div>
+<div class="line"><span class="lineno">  440</span>        <span class="keywordflow">while</span> (part &lt; 4) {</div>
+<div class="line"><span class="lineno">  441</span>            std::size_t pos = host.find(<span class="charliteral">&#39;.&#39;</span>, start);</div>
+<div class="line"><span class="lineno">  442</span>            std::string segment;</div>
+<div class="line"><span class="lineno">  443</span>            <span class="keywordflow">if</span> (pos == std::string::npos) {</div>
+<div class="line"><span class="lineno">  444</span>                segment = host.substr(start);</div>
+<div class="line"><span class="lineno">  445</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  446</span>                segment = host.substr(start, pos - start);</div>
+<div class="line"><span class="lineno">  447</span>            }</div>
+<div class="line"><span class="lineno">  448</span>            <span class="keywordflow">if</span> (segment.empty()) {</div>
+<div class="line"><span class="lineno">  449</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid IP address format: empty segment in \&quot;&quot;</span> + host + <span class="stringliteral">&quot;\&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">  450</span>            }</div>
+<div class="line"><span class="lineno">  451</span>            <span class="keywordflow">for</span> (std::size_t i = 0; i &lt; segment.size(); ++i) {</div>
+<div class="line"><span class="lineno">  452</span>                <span class="keywordflow">if</span> (!std::isdigit(<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span><span class="keyword">&gt;</span>(segment[i]))) {</div>
+<div class="line"><span class="lineno">  453</span>                    <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid IP address format: unexpected character &#39;&quot;</span> + segment.substr(i, 1) + <span class="stringliteral">&quot;&#39; in \&quot;&quot;</span> + host + <span class="stringliteral">&quot;\&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">  454</span>                }</div>
+<div class="line"><span class="lineno">  455</span>            }</div>
+<div class="line"><span class="lineno">  456</span>            <span class="keywordflow">if</span> (segment.size() &gt; 3) {</div>
+<div class="line"><span class="lineno">  457</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid IP address format: segment too long in \&quot;&quot;</span> + host + <span class="stringliteral">&quot;\&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">  458</span>            }</div>
+<div class="line"><span class="lineno">  459</span>            <span class="keywordtype">int</span> octet = <a class="code hl_function" href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">shared::string::toNum&lt;int&gt;</a>(segment, 10);</div>
+<div class="line"><span class="lineno">  460</span>            <span class="keywordflow">if</span> (octet &lt; 0 || octet &gt; 255) {</div>
+<div class="line"><span class="lineno">  461</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;IP segment out of range in \&quot;&quot;</span> + host + <span class="stringliteral">&quot;\&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">  462</span>            }</div>
+<div class="line"><span class="lineno">  463</span>            ip = (ip &lt;&lt; 8) | (octet &amp; 0xFF);</div>
+<div class="line"><span class="lineno">  464</span>            part++;</div>
+<div class="line"><span class="lineno">  465</span>            <span class="keywordflow">if</span> (pos == std::string::npos)</div>
+<div class="line"><span class="lineno">  466</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  467</span>            start = pos + 1;</div>
+<div class="line"><span class="lineno">  468</span>        }</div>
+<div class="line"><span class="lineno">  469</span> </div>
+<div class="line"><span class="lineno">  470</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;parts: &quot;</span> &lt;&lt; part &lt;&lt; <span class="stringliteral">&quot;; ip: &quot;</span> &lt;&lt; ip &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  471</span>        <span class="keywordflow">if</span> (part != 4) {</div>
+<div class="line"><span class="lineno">  472</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid IP address format: \&quot;&quot;</span> + host + <span class="stringliteral">&quot;\&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">  473</span>        }</div>
+<div class="line"><span class="lineno">  474</span>        <span class="keywordflow">return</span> ip;</div>
+<div class="line"><span class="lineno">  475</span>    }</div>
 <div class="ttc" id="anamespaceshared_1_1string_html_a1f29829f5af562af11efd2c7e6ce4958"><div class="ttname"><a href="namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958">shared::string::toNum</a></div><div class="ttdeci">T toNum(const std::string &amp;str, int base)</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8hpp_source.html#l00025">stringUtils.hpp:25</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -1756,34 +1755,34 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00552">552</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  552</span>                                                                            {</div>
-<div class="line"><span class="lineno">  553</span>        <span class="keyword">static</span> std::map&lt;std::string, http::Method&gt; implementedMethods;</div>
-<div class="line"><span class="lineno">  554</span> </div>
-<div class="line"><span class="lineno">  555</span>        <span class="keywordflow">if</span> (implementedMethods.empty()) {</div>
-<div class="line"><span class="lineno">  556</span>            implementedMethods[<span class="stringliteral">&quot;GET&quot;</span>] = <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">http::GET</a>;</div>
-<div class="line"><span class="lineno">  557</span>            implementedMethods[<span class="stringliteral">&quot;POST&quot;</span>] = <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab">http::POST</a>;</div>
-<div class="line"><span class="lineno">  558</span>            implementedMethods[<span class="stringliteral">&quot;DELETE&quot;</span>] = <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30">http::DELETE</a>;</div>
-<div class="line"><span class="lineno">  559</span>        }</div>
-<div class="line"><span class="lineno">  560</span> </div>
-<div class="line"><span class="lineno">  561</span>        std::set&lt;http::Method&gt; allowedMethods;</div>
-<div class="line"><span class="lineno">  562</span>        std::stringstream ss(value);</div>
-<div class="line"><span class="lineno">  563</span>        std::string token;</div>
-<div class="line"><span class="lineno">  564</span> </div>
-<div class="line"><span class="lineno">  565</span>        <span class="keywordflow">while</span> (ss &gt;&gt; token) {</div>
-<div class="line"><span class="lineno">  566</span>            <span class="keywordflow">if</span> (implementedMethods.find(token) == implementedMethods.end()) {</div>
-<div class="line"><span class="lineno">  567</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected method for limit_except: &quot;</span> + token);</div>
-<div class="line"><span class="lineno">  568</span>            }</div>
-<div class="line"><span class="lineno">  569</span>            <span class="keywordflow">if</span> (allowedMethods.find(implementedMethods[token]) != allowedMethods.end()) {</div>
-<div class="line"><span class="lineno">  570</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Duplicte method for limit_except: &quot;</span> + token);</div>
-<div class="line"><span class="lineno">  571</span>            }</div>
-<div class="line"><span class="lineno">  572</span>            allowedMethods.insert(implementedMethods[token]);</div>
-<div class="line"><span class="lineno">  573</span>        }</div>
-<div class="line"><span class="lineno">  574</span>        <span class="keywordflow">if</span> (allowedMethods.empty()) {</div>
-<div class="line"><span class="lineno">  575</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Expected value for limit_except&quot;</span>);</div>
-<div class="line"><span class="lineno">  576</span>        }</div>
-<div class="line"><span class="lineno">  577</span>        location.allowedMethods = allowedMethods;</div>
-<div class="line"><span class="lineno">  578</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00551">551</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  551</span>                                                                            {</div>
+<div class="line"><span class="lineno">  552</span>        <span class="keyword">static</span> std::map&lt;std::string, http::Method&gt; implementedMethods;</div>
+<div class="line"><span class="lineno">  553</span> </div>
+<div class="line"><span class="lineno">  554</span>        <span class="keywordflow">if</span> (implementedMethods.empty()) {</div>
+<div class="line"><span class="lineno">  555</span>            implementedMethods[<span class="stringliteral">&quot;GET&quot;</span>] = <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">http::GET</a>;</div>
+<div class="line"><span class="lineno">  556</span>            implementedMethods[<span class="stringliteral">&quot;POST&quot;</span>] = <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab">http::POST</a>;</div>
+<div class="line"><span class="lineno">  557</span>            implementedMethods[<span class="stringliteral">&quot;DELETE&quot;</span>] = <a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30">http::DELETE</a>;</div>
+<div class="line"><span class="lineno">  558</span>        }</div>
+<div class="line"><span class="lineno">  559</span> </div>
+<div class="line"><span class="lineno">  560</span>        std::set&lt;http::Method&gt; allowedMethods;</div>
+<div class="line"><span class="lineno">  561</span>        std::stringstream ss(value);</div>
+<div class="line"><span class="lineno">  562</span>        std::string token;</div>
+<div class="line"><span class="lineno">  563</span> </div>
+<div class="line"><span class="lineno">  564</span>        <span class="keywordflow">while</span> (ss &gt;&gt; token) {</div>
+<div class="line"><span class="lineno">  565</span>            <span class="keywordflow">if</span> (implementedMethods.find(token) == implementedMethods.end()) {</div>
+<div class="line"><span class="lineno">  566</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Unexpected method for limit_except: &quot;</span> + token);</div>
+<div class="line"><span class="lineno">  567</span>            }</div>
+<div class="line"><span class="lineno">  568</span>            <span class="keywordflow">if</span> (allowedMethods.find(implementedMethods[token]) != allowedMethods.end()) {</div>
+<div class="line"><span class="lineno">  569</span>                <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Duplicte method for limit_except: &quot;</span> + token);</div>
+<div class="line"><span class="lineno">  570</span>            }</div>
+<div class="line"><span class="lineno">  571</span>            allowedMethods.insert(implementedMethods[token]);</div>
+<div class="line"><span class="lineno">  572</span>        }</div>
+<div class="line"><span class="lineno">  573</span>        <span class="keywordflow">if</span> (allowedMethods.empty()) {</div>
+<div class="line"><span class="lineno">  574</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Expected value for limit_except&quot;</span>);</div>
+<div class="line"><span class="lineno">  575</span>        }</div>
+<div class="line"><span class="lineno">  576</span>        location.allowedMethods = allowedMethods;</div>
+<div class="line"><span class="lineno">  577</span>    }</div>
 <div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30">http::DELETE</a></div><div class="ttdeci">@ DELETE</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00056">types.hpp:56</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab">http::POST</a></div><div class="ttdeci">@ POST</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00055">types.hpp:55</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">http::GET</a></div><div class="ttdeci">@ GET</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00054">types.hpp:54</a></div></div>
@@ -1834,27 +1833,27 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00478">478</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  478</span>                                                                   {</div>
-<div class="line"><span class="lineno">  479</span>        std::string host;</div>
-<div class="line"><span class="lineno">  480</span>        std::string port;</div>
-<div class="line"><span class="lineno">  481</span> </div>
-<div class="line"><span class="lineno">  482</span>        <span class="keywordflow">if</span> (value.find_first_of(<span class="charliteral">&#39;:&#39;</span>) == std::string::npos) {</div>
-<div class="line"><span class="lineno">  483</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid value for listen: &quot;</span> + value);</div>
-<div class="line"><span class="lineno">  484</span>        }</div>
-<div class="line"><span class="lineno">  485</span>        host = value.substr(0, value.find_first_of(<span class="charliteral">&#39;:&#39;</span>));</div>
-<div class="line"><span class="lineno">  486</span>        port = value.substr(value.find_first_of(<span class="charliteral">&#39;:&#39;</span>) + 1);</div>
-<div class="line"><span class="lineno">  487</span> </div>
-<div class="line"><span class="lineno">  488</span>        std::stringstream ss(port);</div>
-<div class="line"><span class="lineno">  489</span>        <span class="keywordflow">if</span> (!(ss &gt;&gt; server.port)) {</div>
-<div class="line"><span class="lineno">  490</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid value for listen: &quot;</span> + value);</div>
-<div class="line"><span class="lineno">  491</span>        }</div>
-<div class="line"><span class="lineno">  492</span>        server.ipAddress = <a class="code hl_function" href="classconfig_1_1Parser.html#aeaffc2d7e40663be07d303d3f9307133">parseIpAddress</a>(host);</div>
-<div class="line"><span class="lineno">  493</span>        <span class="keywordflow">if</span> (ss &gt;&gt; port &amp;&amp; !port.empty()) {</div>
-<div class="line"><span class="lineno">  494</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid value for listen: &quot;</span> + value);</div>
-<div class="line"><span class="lineno">  495</span>        }</div>
-<div class="line"><span class="lineno">  496</span>    }</div>
-<div class="ttc" id="aclassconfig_1_1Parser_html_aeaffc2d7e40663be07d303d3f9307133"><div class="ttname"><a href="classconfig_1_1Parser.html#aeaffc2d7e40663be07d303d3f9307133">config::Parser::parseIpAddress</a></div><div class="ttdeci">uint32_t parseIpAddress(const std::string &amp;host)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00436">Parser.cpp:436</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00477">477</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  477</span>                                                                   {</div>
+<div class="line"><span class="lineno">  478</span>        std::string host;</div>
+<div class="line"><span class="lineno">  479</span>        std::string port;</div>
+<div class="line"><span class="lineno">  480</span> </div>
+<div class="line"><span class="lineno">  481</span>        <span class="keywordflow">if</span> (value.find_first_of(<span class="charliteral">&#39;:&#39;</span>) == std::string::npos) {</div>
+<div class="line"><span class="lineno">  482</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid value for listen: &quot;</span> + value);</div>
+<div class="line"><span class="lineno">  483</span>        }</div>
+<div class="line"><span class="lineno">  484</span>        host = value.substr(0, value.find_first_of(<span class="charliteral">&#39;:&#39;</span>));</div>
+<div class="line"><span class="lineno">  485</span>        port = value.substr(value.find_first_of(<span class="charliteral">&#39;:&#39;</span>) + 1);</div>
+<div class="line"><span class="lineno">  486</span> </div>
+<div class="line"><span class="lineno">  487</span>        std::stringstream ss(port);</div>
+<div class="line"><span class="lineno">  488</span>        <span class="keywordflow">if</span> (!(ss &gt;&gt; server.port)) {</div>
+<div class="line"><span class="lineno">  489</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid value for listen: &quot;</span> + value);</div>
+<div class="line"><span class="lineno">  490</span>        }</div>
+<div class="line"><span class="lineno">  491</span>        server.ipAddress = <a class="code hl_function" href="classconfig_1_1Parser.html#aeaffc2d7e40663be07d303d3f9307133">parseIpAddress</a>(host);</div>
+<div class="line"><span class="lineno">  492</span>        <span class="keywordflow">if</span> (ss &gt;&gt; port &amp;&amp; !port.empty()) {</div>
+<div class="line"><span class="lineno">  493</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid value for listen: &quot;</span> + value);</div>
+<div class="line"><span class="lineno">  494</span>        }</div>
+<div class="line"><span class="lineno">  495</span>    }</div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_aeaffc2d7e40663be07d303d3f9307133"><div class="ttname"><a href="classconfig_1_1Parser.html#aeaffc2d7e40663be07d303d3f9307133">config::Parser::parseIpAddress</a></div><div class="ttdeci">uint32_t parseIpAddress(const std::string &amp;host)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00435">Parser.cpp:435</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1959,14 +1958,14 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00542">542</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  542</span>                                                                       {</div>
-<div class="line"><span class="lineno">  543</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(value)) {</div>
-<div class="line"><span class="lineno">  544</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid path for return: &quot;</span> + value);</div>
-<div class="line"><span class="lineno">  545</span>        }</div>
-<div class="line"><span class="lineno">  546</span>        location.redirectUriAsTokens = <a class="code hl_function" href="namespaceshared_1_1string.html#a603400c2a2c832c32c4baf6626c1b599">shared::string::splitPath</a>(value); <span class="comment">// ensure this won&#39;t throw</span></div>
-<div class="line"><span class="lineno">  547</span>        location.redirectUri = value;</div>
-<div class="line"><span class="lineno">  548</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00541">541</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  541</span>                                                                       {</div>
+<div class="line"><span class="lineno">  542</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(value)) {</div>
+<div class="line"><span class="lineno">  543</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid path for return: &quot;</span> + value);</div>
+<div class="line"><span class="lineno">  544</span>        }</div>
+<div class="line"><span class="lineno">  545</span>        location.redirectUriAsTokens = <a class="code hl_function" href="namespaceshared_1_1string.html#a603400c2a2c832c32c4baf6626c1b599">shared::string::splitPath</a>(value); <span class="comment">// ensure this won&#39;t throw</span></div>
+<div class="line"><span class="lineno">  546</span>        location.redirectUri = value;</div>
+<div class="line"><span class="lineno">  547</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2028,14 +2027,14 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00534">534</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  534</span>                                                                     {</div>
-<div class="line"><span class="lineno">  535</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(value)) {</div>
-<div class="line"><span class="lineno">  536</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid path for root: &quot;</span> + value);</div>
-<div class="line"><span class="lineno">  537</span>        }</div>
-<div class="line"><span class="lineno">  538</span>        location.root = value;</div>
-<div class="line"><span class="lineno">  539</span>        location.rootAsTokens = <a class="code hl_function" href="namespaceshared_1_1string.html#a603400c2a2c832c32c4baf6626c1b599">shared::string::splitPath</a>(value); <span class="comment">// will be empty if root is just &#39;/&#39;</span></div>
-<div class="line"><span class="lineno">  540</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00533">533</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  533</span>                                                                     {</div>
+<div class="line"><span class="lineno">  534</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(value)) {</div>
+<div class="line"><span class="lineno">  535</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid path for root: &quot;</span> + value);</div>
+<div class="line"><span class="lineno">  536</span>        }</div>
+<div class="line"><span class="lineno">  537</span>        location.root = value;</div>
+<div class="line"><span class="lineno">  538</span>        location.rootAsTokens = <a class="code hl_function" href="namespaceshared_1_1string.html#a603400c2a2c832c32c4baf6626c1b599">shared::string::splitPath</a>(value); <span class="comment">// will be empty if root is just &#39;/&#39;</span></div>
+<div class="line"><span class="lineno">  539</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2097,20 +2096,20 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00518">518</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  518</span>                                                                       {</div>
-<div class="line"><span class="lineno">  519</span>        std::vector&lt;std::string&gt; splitNames;</div>
-<div class="line"><span class="lineno">  520</span>        std::stringstream ss(value);</div>
-<div class="line"><span class="lineno">  521</span>        std::string name;</div>
-<div class="line"><span class="lineno">  522</span> </div>
-<div class="line"><span class="lineno">  523</span>        <span class="keywordflow">while</span> (ss &gt;&gt; name) {</div>
-<div class="line"><span class="lineno">  524</span>            splitNames.push_back(name);</div>
-<div class="line"><span class="lineno">  525</span>        }</div>
-<div class="line"><span class="lineno">  526</span>        <span class="keywordflow">if</span> (splitNames.empty()) {</div>
-<div class="line"><span class="lineno">  527</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Expected value for server_name&quot;</span>);</div>
-<div class="line"><span class="lineno">  528</span>        }</div>
-<div class="line"><span class="lineno">  529</span>        server.serverNames = splitNames;</div>
-<div class="line"><span class="lineno">  530</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00517">517</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  517</span>                                                                       {</div>
+<div class="line"><span class="lineno">  518</span>        std::vector&lt;std::string&gt; splitNames;</div>
+<div class="line"><span class="lineno">  519</span>        std::stringstream ss(value);</div>
+<div class="line"><span class="lineno">  520</span>        std::string name;</div>
+<div class="line"><span class="lineno">  521</span> </div>
+<div class="line"><span class="lineno">  522</span>        <span class="keywordflow">while</span> (ss &gt;&gt; name) {</div>
+<div class="line"><span class="lineno">  523</span>            splitNames.push_back(name);</div>
+<div class="line"><span class="lineno">  524</span>        }</div>
+<div class="line"><span class="lineno">  525</span>        <span class="keywordflow">if</span> (splitNames.empty()) {</div>
+<div class="line"><span class="lineno">  526</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Expected value for server_name&quot;</span>);</div>
+<div class="line"><span class="lineno">  527</span>        }</div>
+<div class="line"><span class="lineno">  528</span>        server.serverNames = splitNames;</div>
+<div class="line"><span class="lineno">  529</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -2167,14 +2166,14 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00580">580</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  580</span>                                                                          {</div>
-<div class="line"><span class="lineno">  581</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(value)) {</div>
-<div class="line"><span class="lineno">  582</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid path for upload_dir: &quot;</span> + value);</div>
-<div class="line"><span class="lineno">  583</span>        }</div>
-<div class="line"><span class="lineno">  584</span>        location.uploadSubdirectory = value;                                    <span class="comment">// strip this of whitespace if that doesn&#39;t happen yet</span></div>
-<div class="line"><span class="lineno">  585</span>        location.uploadSubdirectoryAsTokens = <a class="code hl_function" href="namespaceshared_1_1string.html#a603400c2a2c832c32c4baf6626c1b599">shared::string::splitPath</a>(value); <span class="comment">// strip this of whitespace if that doesn&#39;t happen yet</span></div>
-<div class="line"><span class="lineno">  586</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00579">579</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  579</span>                                                                          {</div>
+<div class="line"><span class="lineno">  580</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(value)) {</div>
+<div class="line"><span class="lineno">  581</span>            <span class="keywordflow">throw</span> parse_exception(<a class="code hl_variable" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">m_lineIndex</a>, <span class="stringliteral">&quot;Invalid path for upload_dir: &quot;</span> + value);</div>
+<div class="line"><span class="lineno">  582</span>        }</div>
+<div class="line"><span class="lineno">  583</span>        location.uploadSubdirectory = value;                                    <span class="comment">// strip this of whitespace if that doesn&#39;t happen yet</span></div>
+<div class="line"><span class="lineno">  584</span>        location.uploadSubdirectoryAsTokens = <a class="code hl_function" href="namespaceshared_1_1string.html#a603400c2a2c832c32c4baf6626c1b599">shared::string::splitPath</a>(value); <span class="comment">// strip this of whitespace if that doesn&#39;t happen yet</span></div>
+<div class="line"><span class="lineno">  585</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2231,20 +2230,20 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00257">257</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  257</span>                                                          {</div>
-<div class="line"><span class="lineno">  258</span>        std::size_t i = 0;</div>
-<div class="line"><span class="lineno">  259</span>        <span class="keywordflow">for</span> (std::vector&lt;Server&gt;::iterator server = <a class="code hl_variable" href="classconfig_1_1Parser.html#ab3b6602ae2db0e870999ada16afc9fbc">m_configs</a>.begin(); server != <a class="code hl_variable" href="classconfig_1_1Parser.html#ab3b6602ae2db0e870999ada16afc9fbc">m_configs</a>.end(); ++server) {</div>
-<div class="line"><span class="lineno">  260</span>            ++i;</div>
-<div class="line"><span class="lineno">  261</span>            server-&gt;location.precalculatedAbsolutePath = server-&gt;dataDirectory + server-&gt;location.root;</div>
-<div class="line"><span class="lineno">  262</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(server-&gt;location.precalculatedAbsolutePath)) {</div>
-<div class="line"><span class="lineno">  263</span>                <span class="keywordflow">throw</span> parse_exception(<span class="stringliteral">&quot;Server #&quot;</span> + <a class="code hl_function" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a>(i) + <span class="stringliteral">&quot;: Root path is invalid&quot;</span>);</div>
-<div class="line"><span class="lineno">  264</span>            }</div>
-<div class="line"><span class="lineno">  265</span>            <span class="comment">// concatenate server root &amp; server dataDir</span></div>
-<div class="line"><span class="lineno">  266</span>            <span class="comment">// check whether that directory exists and is accessible?</span></div>
-<div class="line"><span class="lineno">  267</span>            <a class="code hl_function" href="classconfig_1_1Parser.html#a888fdb699c853c69636f30ab18f09714">assignAbsolutePaths</a>(*server, server-&gt;location); <span class="comment">// start with server &amp; rootLocation</span></div>
-<div class="line"><span class="lineno">  268</span>        }</div>
-<div class="line"><span class="lineno">  269</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00256">256</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  256</span>                                                          {</div>
+<div class="line"><span class="lineno">  257</span>        std::size_t i = 0;</div>
+<div class="line"><span class="lineno">  258</span>        <span class="keywordflow">for</span> (std::vector&lt;Server&gt;::iterator server = <a class="code hl_variable" href="classconfig_1_1Parser.html#ab3b6602ae2db0e870999ada16afc9fbc">m_configs</a>.begin(); server != <a class="code hl_variable" href="classconfig_1_1Parser.html#ab3b6602ae2db0e870999ada16afc9fbc">m_configs</a>.end(); ++server) {</div>
+<div class="line"><span class="lineno">  259</span>            ++i;</div>
+<div class="line"><span class="lineno">  260</span>            server-&gt;location.precalculatedAbsolutePath = server-&gt;dataDirectory + server-&gt;location.root;</div>
+<div class="line"><span class="lineno">  261</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespaceconfig.html#a562b6854cd3e6748aa72f90553305021">isValidPath</a>(server-&gt;location.precalculatedAbsolutePath)) {</div>
+<div class="line"><span class="lineno">  262</span>                <span class="keywordflow">throw</span> parse_exception(<span class="stringliteral">&quot;Server #&quot;</span> + <a class="code hl_function" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a>(i) + <span class="stringliteral">&quot;: Root path is invalid&quot;</span>);</div>
+<div class="line"><span class="lineno">  263</span>            }</div>
+<div class="line"><span class="lineno">  264</span>            <span class="comment">// concatenate server root &amp; server dataDir</span></div>
+<div class="line"><span class="lineno">  265</span>            <span class="comment">// check whether that directory exists and is accessible?</span></div>
+<div class="line"><span class="lineno">  266</span>            <a class="code hl_function" href="classconfig_1_1Parser.html#a888fdb699c853c69636f30ab18f09714">assignAbsolutePaths</a>(*server, server-&gt;location); <span class="comment">// start with server &amp; rootLocation</span></div>
+<div class="line"><span class="lineno">  267</span>        }</div>
+<div class="line"><span class="lineno">  268</span>    }</div>
 <div class="ttc" id="anamespaceshared_1_1string_html_ae2138ded029ed6312cd2d6505efb8f75"><div class="ttname"><a href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a></div><div class="ttdeci">std::string fromNum(int32_t number)</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8cpp_source.html#l00121">stringUtils.cpp:121</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -2318,28 +2317,28 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00418">418</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  418</span>                                                                                          {</div>
-<div class="line"><span class="lineno">  419</span>        <span class="keyword">static</span> std::map&lt;CommandType, LocationTokenParser&gt; tokenParsers;</div>
-<div class="line"><span class="lineno">  420</span> </div>
-<div class="line"><span class="lineno">  421</span>        <span class="keywordflow">if</span> (tokenParsers.empty()) {</div>
-<div class="line"><span class="lineno">  422</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ae5ad47cb3820185e2c3d180bf4526590">D_ROOT</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#a96ff177fb973149963c7844ef61e05d6">config::Parser::parseRoot</a>;</div>
-<div class="line"><span class="lineno">  423</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ad235a3161c77a616db3f9b9cac689986">D_RETURN</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#a5184caa4ae65afa8657ffe8a1130c441">config::Parser::parseReturn</a>;</div>
-<div class="line"><span class="lineno">  424</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a6bcfc2608af44df7211b7e35ba8724ec">D_LIMIT_EXCEPT</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#ad65c9209ad980f3984a52ff4429925af">config::Parser::parseLimitExcept</a>;</div>
-<div class="line"><span class="lineno">  425</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a030d6f86b11b598e89c56fba7852d5db">D_UPLOAD_DIR</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#ad52bdb0a670523784e0b27f23230a3af">config::Parser::parseUploadDir</a>;</div>
-<div class="line"><span class="lineno">  426</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510aff6a3be8d2e740a92586e6df2038c498">D_INDEX</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#a85423d4d85cadda62ea066ba62599afe">config::Parser::parseIndex</a>;</div>
-<div class="line"><span class="lineno">  427</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510acf7fc1b46f032b3cce871abf15d760b9">D_AUTOINDEX</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#ac06c9b9ee196f28edefb1ede85a0d413">config::Parser::parseAutoindex</a>;</div>
-<div class="line"><span class="lineno">  428</span>            <span class="comment">// tokenParsers[D_LOCATION] = &amp;config::Parser::parseLocation;</span></div>
-<div class="line"><span class="lineno">  429</span>        }</div>
-<div class="line"><span class="lineno">  430</span> </div>
-<div class="line"><span class="lineno">  431</span>        (this-&gt;*(tokenParsers[type]))(value, location);</div>
-<div class="line"><span class="lineno">  432</span>    }</div>
-<div class="ttc" id="aclassconfig_1_1Parser_html_a5184caa4ae65afa8657ffe8a1130c441"><div class="ttname"><a href="classconfig_1_1Parser.html#a5184caa4ae65afa8657ffe8a1130c441">config::Parser::parseReturn</a></div><div class="ttdeci">void parseReturn(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00542">Parser.cpp:542</a></div></div>
-<div class="ttc" id="aclassconfig_1_1Parser_html_a85423d4d85cadda62ea066ba62599afe"><div class="ttname"><a href="classconfig_1_1Parser.html#a85423d4d85cadda62ea066ba62599afe">config::Parser::parseIndex</a></div><div class="ttdeci">void parseIndex(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00588">Parser.cpp:588</a></div></div>
-<div class="ttc" id="aclassconfig_1_1Parser_html_a96ff177fb973149963c7844ef61e05d6"><div class="ttname"><a href="classconfig_1_1Parser.html#a96ff177fb973149963c7844ef61e05d6">config::Parser::parseRoot</a></div><div class="ttdeci">void parseRoot(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00534">Parser.cpp:534</a></div></div>
-<div class="ttc" id="aclassconfig_1_1Parser_html_ac06c9b9ee196f28edefb1ede85a0d413"><div class="ttname"><a href="classconfig_1_1Parser.html#ac06c9b9ee196f28edefb1ede85a0d413">config::Parser::parseAutoindex</a></div><div class="ttdeci">void parseAutoindex(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00603">Parser.cpp:603</a></div></div>
-<div class="ttc" id="aclassconfig_1_1Parser_html_ad52bdb0a670523784e0b27f23230a3af"><div class="ttname"><a href="classconfig_1_1Parser.html#ad52bdb0a670523784e0b27f23230a3af">config::Parser::parseUploadDir</a></div><div class="ttdeci">void parseUploadDir(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00580">Parser.cpp:580</a></div></div>
-<div class="ttc" id="aclassconfig_1_1Parser_html_ad65c9209ad980f3984a52ff4429925af"><div class="ttname"><a href="classconfig_1_1Parser.html#ad65c9209ad980f3984a52ff4429925af">config::Parser::parseLimitExcept</a></div><div class="ttdeci">void parseLimitExcept(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00552">Parser.cpp:552</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00417">417</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  417</span>                                                                                          {</div>
+<div class="line"><span class="lineno">  418</span>        <span class="keyword">static</span> std::map&lt;CommandType, LocationTokenParser&gt; tokenParsers;</div>
+<div class="line"><span class="lineno">  419</span> </div>
+<div class="line"><span class="lineno">  420</span>        <span class="keywordflow">if</span> (tokenParsers.empty()) {</div>
+<div class="line"><span class="lineno">  421</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ae5ad47cb3820185e2c3d180bf4526590">D_ROOT</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#a96ff177fb973149963c7844ef61e05d6">config::Parser::parseRoot</a>;</div>
+<div class="line"><span class="lineno">  422</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ad235a3161c77a616db3f9b9cac689986">D_RETURN</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#a5184caa4ae65afa8657ffe8a1130c441">config::Parser::parseReturn</a>;</div>
+<div class="line"><span class="lineno">  423</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a6bcfc2608af44df7211b7e35ba8724ec">D_LIMIT_EXCEPT</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#ad65c9209ad980f3984a52ff4429925af">config::Parser::parseLimitExcept</a>;</div>
+<div class="line"><span class="lineno">  424</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a030d6f86b11b598e89c56fba7852d5db">D_UPLOAD_DIR</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#ad52bdb0a670523784e0b27f23230a3af">config::Parser::parseUploadDir</a>;</div>
+<div class="line"><span class="lineno">  425</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510aff6a3be8d2e740a92586e6df2038c498">D_INDEX</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#a85423d4d85cadda62ea066ba62599afe">config::Parser::parseIndex</a>;</div>
+<div class="line"><span class="lineno">  426</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510acf7fc1b46f032b3cce871abf15d760b9">D_AUTOINDEX</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#ac06c9b9ee196f28edefb1ede85a0d413">config::Parser::parseAutoindex</a>;</div>
+<div class="line"><span class="lineno">  427</span>            <span class="comment">// tokenParsers[D_LOCATION] = &amp;config::Parser::parseLocation;</span></div>
+<div class="line"><span class="lineno">  428</span>        }</div>
+<div class="line"><span class="lineno">  429</span> </div>
+<div class="line"><span class="lineno">  430</span>        (this-&gt;*(tokenParsers[type]))(value, location);</div>
+<div class="line"><span class="lineno">  431</span>    }</div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_a5184caa4ae65afa8657ffe8a1130c441"><div class="ttname"><a href="classconfig_1_1Parser.html#a5184caa4ae65afa8657ffe8a1130c441">config::Parser::parseReturn</a></div><div class="ttdeci">void parseReturn(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00541">Parser.cpp:541</a></div></div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_a85423d4d85cadda62ea066ba62599afe"><div class="ttname"><a href="classconfig_1_1Parser.html#a85423d4d85cadda62ea066ba62599afe">config::Parser::parseIndex</a></div><div class="ttdeci">void parseIndex(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00587">Parser.cpp:587</a></div></div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_a96ff177fb973149963c7844ef61e05d6"><div class="ttname"><a href="classconfig_1_1Parser.html#a96ff177fb973149963c7844ef61e05d6">config::Parser::parseRoot</a></div><div class="ttdeci">void parseRoot(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00533">Parser.cpp:533</a></div></div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_ac06c9b9ee196f28edefb1ede85a0d413"><div class="ttname"><a href="classconfig_1_1Parser.html#ac06c9b9ee196f28edefb1ede85a0d413">config::Parser::parseAutoindex</a></div><div class="ttdeci">void parseAutoindex(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00602">Parser.cpp:602</a></div></div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_ad52bdb0a670523784e0b27f23230a3af"><div class="ttname"><a href="classconfig_1_1Parser.html#ad52bdb0a670523784e0b27f23230a3af">config::Parser::parseUploadDir</a></div><div class="ttdeci">void parseUploadDir(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00579">Parser.cpp:579</a></div></div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_ad65c9209ad980f3984a52ff4429925af"><div class="ttname"><a href="classconfig_1_1Parser.html#ad65c9209ad980f3984a52ff4429925af">config::Parser::parseLimitExcept</a></div><div class="ttdeci">void parseLimitExcept(const std::string &amp;value, Location &amp;location)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00551">Parser.cpp:551</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -2413,26 +2412,26 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00401">401</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  401</span>                                                                                      {</div>
-<div class="line"><span class="lineno">  402</span>        <span class="keyword">static</span> std::map&lt;CommandType, ServerTokenParser&gt; tokenParsers;</div>
-<div class="line"><span class="lineno">  403</span> </div>
-<div class="line"><span class="lineno">  404</span>        <span class="keywordflow">if</span> (type &gt; <a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a7243d0b4f279565a2f210582618147ed">_D_SERVER_TYPES</a>) {</div>
-<div class="line"><span class="lineno">  405</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classconfig_1_1Parser.html#aefd71b2960373a9db49d640b6f528ca1">processValue</a>(value, type, server.location);</div>
-<div class="line"><span class="lineno">  406</span>        }</div>
-<div class="line"><span class="lineno">  407</span>        <span class="keywordflow">if</span> (tokenParsers.empty()) {</div>
-<div class="line"><span class="lineno">  408</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510aa90181f28d339faf54b4bc6d7650f585">D_LISTEN</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#a2f26a832570cde5d76773296121d95c6">config::Parser::parseListen</a>;</div>
-<div class="line"><span class="lineno">  409</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510aa787eb713d65bcfa9d092409bc9175e9">D_CLIENT_MAX_BODY_SIZE</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#a26ba9f76f55920e59ce7d952d57d2837">config::Parser::parseClientMaxBodySize</a>;</div>
-<div class="line"><span class="lineno">  410</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ae3d8583faa5dfad9c59c533c488c2eca">D_DATA_DIR</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#adf5ab6c3942d6e45c2f6e097ddb5bdab">config::Parser::parseDataDir</a>;</div>
-<div class="line"><span class="lineno">  411</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ab46afab11042a78457b5119b86dbc46f">D_SERVER_NAME</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#a9463612547f7d7663cac8f6bcbe7f957">config::Parser::parseServerName</a>;</div>
-<div class="line"><span class="lineno">  412</span>        }</div>
-<div class="line"><span class="lineno">  413</span> </div>
-<div class="line"><span class="lineno">  414</span>        (this-&gt;*(tokenParsers[type]))(value, server);</div>
-<div class="line"><span class="lineno">  415</span>    }</div>
-<div class="ttc" id="aclassconfig_1_1Parser_html_a26ba9f76f55920e59ce7d952d57d2837"><div class="ttname"><a href="classconfig_1_1Parser.html#a26ba9f76f55920e59ce7d952d57d2837">config::Parser::parseClientMaxBodySize</a></div><div class="ttdeci">void parseClientMaxBodySize(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00498">Parser.cpp:498</a></div></div>
-<div class="ttc" id="aclassconfig_1_1Parser_html_a2f26a832570cde5d76773296121d95c6"><div class="ttname"><a href="classconfig_1_1Parser.html#a2f26a832570cde5d76773296121d95c6">config::Parser::parseListen</a></div><div class="ttdeci">void parseListen(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00478">Parser.cpp:478</a></div></div>
-<div class="ttc" id="aclassconfig_1_1Parser_html_a9463612547f7d7663cac8f6bcbe7f957"><div class="ttname"><a href="classconfig_1_1Parser.html#a9463612547f7d7663cac8f6bcbe7f957">config::Parser::parseServerName</a></div><div class="ttdeci">void parseServerName(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00518">Parser.cpp:518</a></div></div>
-<div class="ttc" id="aclassconfig_1_1Parser_html_adf5ab6c3942d6e45c2f6e097ddb5bdab"><div class="ttname"><a href="classconfig_1_1Parser.html#adf5ab6c3942d6e45c2f6e097ddb5bdab">config::Parser::parseDataDir</a></div><div class="ttdeci">void parseDataDir(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00510">Parser.cpp:510</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Parser_8cpp_source.html#l00400">400</a> of file <a class="el" href="Parser_8cpp_source.html">Parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  400</span>                                                                                      {</div>
+<div class="line"><span class="lineno">  401</span>        <span class="keyword">static</span> std::map&lt;CommandType, ServerTokenParser&gt; tokenParsers;</div>
+<div class="line"><span class="lineno">  402</span> </div>
+<div class="line"><span class="lineno">  403</span>        <span class="keywordflow">if</span> (type &gt; <a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a7243d0b4f279565a2f210582618147ed">_D_SERVER_TYPES</a>) {</div>
+<div class="line"><span class="lineno">  404</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classconfig_1_1Parser.html#aefd71b2960373a9db49d640b6f528ca1">processValue</a>(value, type, server.location);</div>
+<div class="line"><span class="lineno">  405</span>        }</div>
+<div class="line"><span class="lineno">  406</span>        <span class="keywordflow">if</span> (tokenParsers.empty()) {</div>
+<div class="line"><span class="lineno">  407</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510aa90181f28d339faf54b4bc6d7650f585">D_LISTEN</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#a2f26a832570cde5d76773296121d95c6">config::Parser::parseListen</a>;</div>
+<div class="line"><span class="lineno">  408</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510aa787eb713d65bcfa9d092409bc9175e9">D_CLIENT_MAX_BODY_SIZE</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#a26ba9f76f55920e59ce7d952d57d2837">config::Parser::parseClientMaxBodySize</a>;</div>
+<div class="line"><span class="lineno">  409</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ae3d8583faa5dfad9c59c533c488c2eca">D_DATA_DIR</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#adf5ab6c3942d6e45c2f6e097ddb5bdab">config::Parser::parseDataDir</a>;</div>
+<div class="line"><span class="lineno">  410</span>            tokenParsers[<a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ab46afab11042a78457b5119b86dbc46f">D_SERVER_NAME</a>] = &amp;<a class="code hl_function" href="classconfig_1_1Parser.html#a9463612547f7d7663cac8f6bcbe7f957">config::Parser::parseServerName</a>;</div>
+<div class="line"><span class="lineno">  411</span>        }</div>
+<div class="line"><span class="lineno">  412</span> </div>
+<div class="line"><span class="lineno">  413</span>        (this-&gt;*(tokenParsers[type]))(value, server);</div>
+<div class="line"><span class="lineno">  414</span>    }</div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_a26ba9f76f55920e59ce7d952d57d2837"><div class="ttname"><a href="classconfig_1_1Parser.html#a26ba9f76f55920e59ce7d952d57d2837">config::Parser::parseClientMaxBodySize</a></div><div class="ttdeci">void parseClientMaxBodySize(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00497">Parser.cpp:497</a></div></div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_a2f26a832570cde5d76773296121d95c6"><div class="ttname"><a href="classconfig_1_1Parser.html#a2f26a832570cde5d76773296121d95c6">config::Parser::parseListen</a></div><div class="ttdeci">void parseListen(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00477">Parser.cpp:477</a></div></div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_a9463612547f7d7663cac8f6bcbe7f957"><div class="ttname"><a href="classconfig_1_1Parser.html#a9463612547f7d7663cac8f6bcbe7f957">config::Parser::parseServerName</a></div><div class="ttdeci">void parseServerName(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00517">Parser.cpp:517</a></div></div>
+<div class="ttc" id="aclassconfig_1_1Parser_html_adf5ab6c3942d6e45c2f6e097ddb5bdab"><div class="ttname"><a href="classconfig_1_1Parser.html#adf5ab6c3942d6e45c2f6e097ddb5bdab">config::Parser::parseDataDir</a></div><div class="ttdeci">void parseDataDir(const std::string &amp;value, Server &amp;server)</div><div class="ttdef"><b>Definition</b> <a href="Parser_8cpp_source.html#l00509">Parser.cpp:509</a></div></div>
 <div class="ttc" id="anamespaceconfig_html_aee8549161116ce4e258c23d4d7c3b510a7243d0b4f279565a2f210582618147ed"><div class="ttname"><a href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a7243d0b4f279565a2f210582618147ed">config::_D_SERVER_TYPES</a></div><div class="ttdeci">@ _D_SERVER_TYPES</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00029">Parser.hpp:29</a></div></div>
 <div class="ttc" id="anamespaceconfig_html_aee8549161116ce4e258c23d4d7c3b510aa787eb713d65bcfa9d092409bc9175e9"><div class="ttname"><a href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510aa787eb713d65bcfa9d092409bc9175e9">config::D_CLIENT_MAX_BODY_SIZE</a></div><div class="ttdeci">@ D_CLIENT_MAX_BODY_SIZE</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00026">Parser.hpp:26</a></div></div>
 <div class="ttc" id="anamespaceconfig_html_aee8549161116ce4e258c23d4d7c3b510aa90181f28d339faf54b4bc6d7650f585"><div class="ttname"><a href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510aa90181f28d339faf54b4bc6d7650f585">config::D_LISTEN</a></div><div class="ttdeci">@ D_LISTEN</div><div class="ttdef"><b>Definition</b> <a href="Parser_8hpp_source.html#l00025">Parser.hpp:25</a></div></div>
