@@ -1,86 +1,81 @@
-server
-{
-	listen 127.0.0.1:8080;  # Choose the port
-	server_name example.com;  # Setup server names
+server {
+	listen 127.0.0.1:8080; # Choose the port
+	server_name example.com; # Setup server names
 
 	# Default error pages
-	error_page 404 /404.html;
-	error_page 500 502 503 504 /50x.html;
+	# error_page 404 /404.html;
+	# error_page 500 502 503 504 /50x.html;
 
 	# Limit client body size
 	client_max_body_size 10000000;
 
-	global_root /workspaces/webserv; # TODO: this is mandatory, verify
-	data_dir /www; # TODO: this is also mandatory, verify
+	root /www;
+	data_dir /workspaces/webserv;
+	autoindex on;
+	index index.htm; # if not found, falls back to autoindex
 	# global_root directory must exist and be accessible, otherwise exit with an error code
 	# it is also where the server binary, cgi-bin/ and www/ directories must be located
 	# each of these directories should probably also be checked for existence & access permissions
 	# TODO: ensure this and other paths can't be relative
 	# TODO: alternatively, ensure that relative paths are valid and accessible
-	# TODO: figure out if we should actually store global_root + /www
 	# probably not, since cgi-bin/ and www/ are both in this folder
-	# TODO: make fetch routing
 
-	# Default server for unspecified routes
+	# TODO: PATHS TO VALIDATE AGAINST CONTAINING RELATIVE PATH (/.. or /. segments)
+	# root, data_dir, location, index (should only be files), return
 
-	# Example of a route with multiple rules 
-	location /default
-	{
+	# server is also a location
+	# index index.html;
+	limit_except GET POST;
+	# root /www
+	# Example of a route with multiple rules
+	location /default {
 		# Accepted HTTP methods
-	    limit_except GET POST;
-	    # Directory configuration
-	    root /tmp/www;  # Base directory
-	    autoindex on;  # Enable directory listing
-	    index default.html;  # Default file in directory		
+		limit_except GET POST;
+		# Directory configuration
+		root /tmp/www; # Base directory
+		autoindex on; # Enable directory listing
+		index default.html; # Default file in directory
 	}
 
-	location /kapouet 
-	{
-	    # Accepted HTTP methods
-	    limit_except GET POST DELETE;
-	    # Directory configuration
-	    root /foo;  # Base directory
-	    autoindex on;  # Enable directory listing
-	    index default.html;  # Default file in directory   
-	    # Executing CGI scripts for .php files
-	    location /hi
-		{
-			root /foo/bar;  # Base directory
+	location /kapouet {
+		# Accepted HTTP methods
+		limit_except GET POST DELETE;
+		# Directory configuration
+		root /foo; # Base directory
+		autoindex on; # Enable directory listing
+		index default.html; # Default file in directory
+		# Executing CGI scripts for .php files
+		location /hi {
 			limit_except GET POST;
-	        #include fastcgi_params;
-	        #fastcgi_pass 127.0.0.1:9000;  # Assuming PHP-FPM is running
-	        #fastcgi_index index.php;
+			upload_dir /upload;
+			#include fastcgi_params;
+			#fastcgi_pass 127.0.0.1:9000;  # Assuming PHP-FPM is running
+			#fastcgi_index index.php;
 			#fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-			location /hi2
-			{
+			location /ho {
 				return /kapouet/upload;
-				root /123/234/345;
 			}
-	    }
-	    # Handle file uploads
-	    location /upload
-		{
-	        #client_max_body_size 20M;  # Allow larger uploads
-	        #try_files $uri =404;  # Check if the directory exists
-	        root /tmp/uploads;  # Where to save uploads
-			location /hi
-			{
+		}
+		# Handle file uploads
+		location /upload {
+			#client_max_body_size 20M;  # Allow larger uploads
+			#try_files $uri =404;  # Check if the directory exists
+			root /tmp/uploads; # Where to save uploads
+			location /hi {
 
 			}
-	    }
+		}
 	}
 	# HTTP redirection example
-	location /old-route
-	{
-	    return /new-route;  # Redirect to a new route
+	location /old-route {
+		return /new-route; # Redirect to a new route
 	}
 	# Catch-all for other requests
-	location /other
-	{
-	    limit_except GET POST;
-	
-	    # Define the directory
-	    root /tmp/other_content;
-	    autoindex off;  # Turn off directory listing
+	location /other {
+		limit_except GET POST;
+
+		# Define the directory
+		root /tmp/other_content;
+		autoindex off; # Turn off directory listing
 	}
 }

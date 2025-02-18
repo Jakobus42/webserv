@@ -1,14 +1,20 @@
 #pragma once
 
+#include <dirent.h>
 #include <netinet/in.h>
 #include <stdint.h>
 #include <sys/socket.h>
+#include <unistd.h>
 
+#include "config/Location.hpp"
 #include "http/types.hpp"
+#include "shared/Logger.hpp"
 
 #include <iostream>
 #include <map>
 #include <sstream>
+#include <string>
+#include <vector>
 
 namespace http {
 
@@ -26,7 +32,7 @@ namespace http {
 			exception(StatusCode statusCode, const std::string& message);
 			virtual ~exception() throw();
 
-			StatusCode getCode() const;
+			StatusCode getStatusCode() const;
 			const std::string& getMessage() const;
 
 		private:
@@ -41,5 +47,7 @@ namespace http {
 	std::string getErrorPage(StatusCode statusCode);
 	std::string getMethodString(Method method);
 	Method stringToMethod(const std::string& method);
+	std::string getDirectoryListing(const Uri& uri, const config::Location& location);
+	bool getRootPath(std::string& rootPath);
 
 } // namespace http

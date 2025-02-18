@@ -5,16 +5,28 @@
 #include <iostream>
 
 int main(int argc, char** const argv) {
+	std::vector<config::Server> configs;
 
 	try {
 		std::string configPath = argc > 1 ? argv[1] : "config/configfile_example";
-		config::ConfigFileParser configFileParser;
-		if (configFileParser.loadConfigFile(configPath) == 1)
+		config::Parser parser;
+		if (!parser.parseFile(configPath)) {
 			return 1;
-		const std::vector<config::ServerConfig>& serverConfigs = configFileParser.getServerConfigs();
+		}
+		configs = parser.getConfigs();
+		for (std::vector<config::Server>::iterator server = configs.begin(); server != configs.end(); ++server) {
+			std::cout << "Printing..." << std::endl;
+			server->print();
+		}
+	} catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+		std::cout << "Parsing failed, exiting..." << std::endl;
+		return 1;
+	}
 
+	try {
 		core::Reactor reactor;
-		reactor.init(serverConfigs);
+		reactor.init(configs);
 		reactor.react();
 	} catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;

@@ -23,8 +23,6 @@ namespace http {
 	// i.e. a html page saying "file /foo/bar.baz was deleted"
 	void DeleteHandler::handle(const Request& request, Response& response) {
 		try {
-			// const config::Location& location = *request.getLocation();
-			// (void)location;
 			FileType fileType = m_router.checkFileType(request.getUri().safeAbsolutePath);
 			if (fileType == _NOT_FOUND) { // TODO: replace with actual file name
 				throw http::exception(NOT_FOUND, "DELETE: File doesn't exist");
@@ -39,7 +37,7 @@ namespace http {
 			response.setHeader("Content-Length", "0");
 		} catch (const http::exception& e) {
 			std::cout << "FUCK, " << e.getMessage() << std::endl;
-			response.setStatusCode(e.getCode());
+			response.setStatusCode(e.getStatusCode());
 			return handleError(response);
 		}
 	}

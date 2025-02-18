@@ -14,6 +14,9 @@ namespace http {
 			~GetHandler();
 
 			void handle(const Request& request, Response& response);
+
+		private:
+			void getFilePath(const config::Location& location, const std::string& filePath, std::string& target);
 	};
 
 } /* namespace http */
