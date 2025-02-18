@@ -239,7 +239,7 @@ $(document).ready(function(){initNavTree('Parser_8cpp_source.html',''); initResi
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="keywordflow">if</span> (matchedDirective == expectedDirectives.end()) {</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510a984068cd778bcc4ab5e9d7b22c2aff6d">_D_NOT_VALID</a>;</div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        }</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <a class="code hl_variable" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">m_readPos</a> += token.size();</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <a class="code hl_function" href="classconfig_1_1Parser.html#afe26d8732fa3a1fe9c1190af8afee240">consume</a>(token.size());</div>
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="keywordflow">return</span> matchedDirective-&gt;second;</div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    }</div>
 </div>
