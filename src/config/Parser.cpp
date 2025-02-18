@@ -143,10 +143,9 @@ namespace config {
 			value.push_back(m_data[m_readPos]);
 			consume(1);
 		}
-		if (m_readPos >= m_data.size() || m_data[m_readPos] != ';') {
+		if (!matchToken(";")) {
 			throw parse_exception(m_lineIndex, "Expected semicolon after value \"" + value + "\"");
 		}
-		consume(1);
 		return value;
 	}
 
@@ -205,6 +204,18 @@ namespace config {
 		signal(SIGINT, handleSigint);
 		signal(SIGQUIT, SIG_IGN);
 
+		if (shared::file::isDirectory(fileName)) {
+			std::cout << "Could not parse file: regular file expected, directory received" << std::endl;
+			return false;
+		}
+		if (!shared::file::fileExists(fileName)) {
+			std::cout << "Could not parse file: file doesn't exist" << std::endl;
+			return false;
+		}
+		if (!shared::file::isReadable(fileName)) {
+			std::cout << "Could not parse file: file can't be read" << std::endl;
+			return false;
+		}
 		if (!shared::file::isRegularFile(fileName)) {
 			std::cout << "Could not parse file: regular file expected, weird sh*t received" << std::endl;
 			return false;
@@ -220,7 +231,6 @@ namespace config {
 		// cppcheck-suppress knownConditionTrueFalse
 		while (m_readingFile && file >> std::noskipws >> c) {
 			if (c == '#') {
-				// skip until '\n'
 				while (file >> std::noskipws >> c && c != '\n') {}
 			}
 			m_data.push_back(c);
@@ -254,15 +264,19 @@ namespace config {
 	}
 
 	void Parser::processParsedData() throw(parse_exception) {
+		if (m_configs.empty()) {
+			throw parse_exception("No servers configured");
+		}
+
 		std::size_t i = 0;
+
 		for (std::vector<Server>::iterator server = m_configs.begin(); server != m_configs.end(); ++server) {
 			++i;
 			server->location.precalculatedAbsolutePath = server->dataDirectory + server->location.root;
 			if (!isValidPath(server->location.precalculatedAbsolutePath)) {
 				throw parse_exception("Server #" + shared::string::fromNum(i) + ": Root path is invalid");
 			}
-			// concatenate server root & server dataDir
-			// check whether that directory exists and is accessible?
+			// TODO: check whether that directory exists and is accessible?
 			assignAbsolutePaths(*server, server->location); // start with server & rootLocation
 		}
 	}
@@ -301,10 +315,9 @@ namespace config {
 	 */
 	void Parser::expectServerBlock() throw(parse_exception) {
 		skipWhitespace();
-		if (m_readPos >= m_data.size() || m_data[m_readPos] != '{') {
+		if (!matchToken("{")) {
 			throw parse_exception(m_lineIndex, "Expected opening brace after Server");
 		}
-		consume(1); // consume '{'
 		m_depth++;
 
 		Server thisServer;
@@ -314,8 +327,7 @@ namespace config {
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
 				throw parse_exception(m_lineIndex, "Unexpected opening brace in Server block");
 			}
-			if (m_readPos < m_data.size() && m_data[m_readPos] == '}') {
-				consume(1); // consume '}'
+			if (matchToken("}")) {
 				m_depth--;
 				thisServer.validate();
 				m_configs.push_back(thisServer);
@@ -330,7 +342,7 @@ namespace config {
 					throw parse_exception(m_lineIndex, "Unexpected directive in Server block: " + token);
 				}
 				std::string value = readValue();
-				processValue(value, type, thisServer);
+				processServerValue(value, type, thisServer);
 			}
 		}
 		throw parse_exception(m_lineIndex, "Server block not closed with '}'");
@@ -352,15 +364,14 @@ namespace config {
 		if (path.empty()) {
 			throw parse_exception(m_lineIndex, "Location has no path");
 		}
-		if (!isValidPath(path)) {
+		if (!isValidPath(path)) { // TODO: or if path is not just a single segment. I don't want to handle locations with multiple segments.
 			throw parse_exception(m_lineIndex, "Path is invalid");
 		}
 		consume(path.length());
 		skipWhitespace();
-		if (m_readPos >= m_data.size() || m_data[m_readPos] != '{') {
+		if (!matchToken("{")) {
 			throw parse_exception(m_lineIndex, "Expected '{' after location path");
 		}
-		consume(1); // consume '{'
 		m_depth++;
 
 		Location thisLocation;
@@ -372,8 +383,7 @@ namespace config {
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
 				throw parse_exception(m_lineIndex, "Unexpected opening brace in location block");
 			}
-			if (m_readPos < m_data.size() && m_data[m_readPos] == '}') {
-				consume(1); // consume '}'
+			if (matchToken("}")) {
 				m_depth--;
 				thisLocation.validate();
 				// validate Location whether enough stuff is present
@@ -385,23 +395,22 @@ namespace config {
 			if (matchToken("location")) {
 				expectLocationBlock(thisLocation);
 			} else if (!token.empty()) {
-				// process location directives
 				CommandType type = matchDirective(token, locationDirectives());
 				if (type == _D_NOT_VALID) {
 					throw parse_exception(m_lineIndex, "Unexpected directive in Location block: " + token);
 				}
 				std::string value = readValue();
-				processValue(value, type, thisLocation);
+				processLocationValue(value, type, thisLocation);
 			}
 		}
 		throw parse_exception(m_lineIndex, "Location block not closed with '}");
 	}
 
-	void Parser::processValue(const std::string& value, CommandType type, Server& server) {
+	void Parser::processServerValue(const std::string& value, CommandType type, Server& server) {
 		static std::map<CommandType, ServerTokenParser> tokenParsers;
 
 		if (type > _D_SERVER_TYPES) {
-			return processValue(value, type, server.location);
+			return processLocationValue(value, type, server.location);
 		}
 		if (tokenParsers.empty()) {
 			tokenParsers[D_LISTEN] = &config::Parser::parseListen;
@@ -414,7 +423,7 @@ namespace config {
 	}
 
 	// cppcheck-suppress constParameter
-	void Parser::processValue(const std::string& value, CommandType type, Location& location) {
+	void Parser::processLocationValue(const std::string& value, CommandType type, Location& location) {
 		static std::map<CommandType, LocationTokenParser> tokenParsers;
 
 		if (tokenParsers.empty()) {

@@ -1,6 +1,6 @@
 server 
 {
-	listen 80;
+	listen 1.1.1.1:80;
 
 	location /
 	{

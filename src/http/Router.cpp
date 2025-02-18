@@ -64,9 +64,6 @@ namespace http {
 	// TODO: currently doesn't handle locations with more than one path segment, i.e. location /foo/bar
 	// TODO: probably just disallow this in the parser
 	//       apparently NGINX requires it but I don't want to implement this
-	// TODO: if indexFile is defined when a route has finished matching, immediately look for that indexFile, read and respond with it
-	// TODO: if no indexFile is defined, but autoindex is on, generate and return a directory listing
-	// TODO: if no indexFile is defined and autoindex is off, return a 403 forbidden response
 	std::pair<std::string, const config::Location*>
 	Router::routeToPath(const std::vector<std::string>& pathToMatch,
 						const config::Location& currentLocation, // Location we're currently inside of, default should be m_serverRoot

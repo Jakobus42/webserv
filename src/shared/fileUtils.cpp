@@ -20,9 +20,21 @@ namespace shared {
 			return S_ISREG(info.st_mode);
 		}
 
+		bool isDirectory(const std::string& path) {
+			struct stat info;
+			if (stat(path.c_str(), &info) != 0) {
+				return false;
+			}
+			return S_ISDIR(info.st_mode);
+		}
+
 		// Check if a file is readable
 		bool isReadable(const std::string& path) {
-			return (access(path.c_str(), R_OK) == 0);
+			struct stat info;
+			if (stat(path.c_str(), &info) != 0) {
+				return false;
+			}
+			return (access(path.c_str(), R_OK) == 0 && (info.st_mode & S_IRUSR) != 0);
 		}
 
 		// Check if a file is writable
