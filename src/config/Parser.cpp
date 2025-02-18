@@ -155,7 +155,7 @@ namespace config {
 		if (matchedDirective == expectedDirectives.end()) {
 			return _D_NOT_VALID;
 		}
-		m_readPos += token.size();
+		consume(token.size());
 		return matchedDirective->second;
 	}
 

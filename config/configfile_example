@@ -12,12 +12,16 @@ server {
 	root /www;
 	data_dir /workspaces/webserv;
 	autoindex on;
+	index index.htm; # if not found, falls back to autoindex
 	# global_root directory must exist and be accessible, otherwise exit with an error code
 	# it is also where the server binary, cgi-bin/ and www/ directories must be located
 	# each of these directories should probably also be checked for existence & access permissions
 	# TODO: ensure this and other paths can't be relative
 	# TODO: alternatively, ensure that relative paths are valid and accessible
 	# probably not, since cgi-bin/ and www/ are both in this folder
+
+	# TODO: PATHS TO VALIDATE AGAINST CONTAINING RELATIVE PATH (/.. or /. segments)
+	# root, data_dir, location, index (should only be files), return
 
 	# server is also a location
 	# index index.html;

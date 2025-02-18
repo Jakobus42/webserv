@@ -21,6 +21,7 @@ int main(int argc, char** const argv) {
 	} catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
 		std::cout << "Parsing failed, exiting..." << std::endl;
+		return 1;
 	}
 
 	try {

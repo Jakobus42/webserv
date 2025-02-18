@@ -3,6 +3,8 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+#include "shared/fileUtils.hpp"
+
 namespace http {
 
 	/**
@@ -29,8 +31,22 @@ namespace http {
 			if (!request.getLocation()->acceptsFileUpload()) {
 				throw http::exception(FORBIDDEN, "Location does not accept file uploads (no POST)");
 			}
-
-			std::string absoluteFilePath = request.getUri().safeAbsolutePath + "/uploaded.dat"; // TODO: replace with actual file name
+			std::string fileName = "uploaded.dat";
+			if (request.hasHeader("x-cool-filename")) {
+				const std::vector<std::string>& filenameHeader = request.getHeader("x-cool-filename");
+				if (!filenameHeader.empty() && !filenameHeader.at(0).empty()) {
+					std::cout << "Filename header: " << filenameHeader.at(0) << std::endl;
+					fileName = filenameHeader.at(0);
+				} else {
+					std::cout << "Filename empty! Falling back to default..." << std::endl;
+				}
+			}
+			std::string absoluteFilePath = request.getUri().safeAbsolutePath + "/" + fileName; // TODO: replace with actual file name
+			std::cout << "Checking path for posted file: " << absoluteFilePath << std::endl;
+			if (shared::file::fileExists(absoluteFilePath)) {
+				throw http::exception(CONFLICT, "POST: A file with this name already exists");
+			}
+			std::cout << "Saving POSTed file as " << absoluteFilePath << std::endl;
 			std::ofstream outFile(absoluteFilePath.c_str(), std::ios::binary);
 			if (!outFile.is_open()) {
 				throw http::exception(FORBIDDEN, "POST: File couldn't be opened");
@@ -44,9 +60,6 @@ namespace http {
 			response.setStatusCode(e.getStatusCode());
 			return handleError(response);
 		}
-		// 	uploadPath = request.getUri().path; // TODO: shouldn't contain file name, path probably does
-		// body should already be there & checked for validity
-		// TODO: ensure
 	}
 
 } /* namespace http */
