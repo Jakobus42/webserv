@@ -50,12 +50,6 @@ namespace http {
 		return _NOT_FOUND; // Other types (not file/dir)
 	}
 
-	// TODO: unused
-	std::string Router::findAbsolutePath(const config::Location& location, const std::string& subPath) {
-		std::string absolutePath = shared::string::joinPath(m_rootLocation.rootAsTokens) + shared::string::joinPath(location.rootAsTokens);
-		return absolutePath + subPath;
-	}
-
 	// sample GET /foo/bar/baz
 	/************************
 	 * root /var/server;
@@ -68,18 +62,17 @@ namespace http {
 	 * 	}
 	 * }
 	 ************************/
-	// TODO: handle autoindex somewhere
 	// TODO: currently doesn't handle locations with more than one path segment, i.e. location /foo/bar
 	// TODO: probably just disallow this in the parser
 	//       apparently NGINX requires it but I don't want to implement this
 	// TODO: if indexFile is defined when a route has finished matching, immediately look for that indexFile, read and respond with it
 	// TODO: if no indexFile is defined, but autoindex is on, generate and return a directory listing
 	// TODO: if no indexFile is defined and autoindex is off, return a 403 forbidden response
-	std::pair<std::string, const config::Location*> Router::routeToPath(
-		const std::vector<std::string>& pathToMatch, // the requests' URI that we're traversing
-		const config::Location& currentLocation,	 // Location we're currently inside of, default should be m_serverRoot
-		std::size_t redirects,
-		std::size_t depth) throw(http::exception) {
+	std::pair<std::string, const config::Location*>
+	Router::routeToPath(const std::vector<std::string>& pathToMatch,
+						const config::Location& currentLocation, // Location we're currently inside of, default should be m_serverRoot
+						std::size_t redirects,
+						std::size_t depth) throw(http::exception) {
 		if (depth > MAX_REDIRECTS) {
 			throw http::exception(LOOP_DETECTED, "Depth exceeded MAX_REDIRECTS");
 		}

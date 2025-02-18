@@ -245,8 +245,7 @@ namespace config {
 	}
 
 	void Parser::parseFromData() throw(parse_exception) {
-		while (m_readPos < m_data.size()) {
-			skipWhitespace();
+		while (skipWhitespace(), m_readPos < m_data.size()) {
 			if (!matchToken("server")) {
 				throw parse_exception(m_lineIndex, "Expected 'server' keyword");
 			}

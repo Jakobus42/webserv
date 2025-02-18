@@ -139,21 +139,14 @@ namespace http {
 										 "li a:hover{color:#0056b3;}</style></head><body><div class=\"container\"><h1>Directory Listing</h1><ul>";
 		static const char* DL_TEMPLATE_END = "</ul></div></body></html>";
 		std::string bodyTemp = DL_TEMPLATE;
-		// TODO: root path should only be appended for file links; not directories
-		// actually should it? every link should be a uri/subdir thing not a /filepath/subdir, thats fukt up
-		// TODO: directories should be prefixed with the full URI instead
-		DIR* dir;
-		(void)location;
 
-		std::cout << "Uri safeAbsolutePath in getDirListing:" << uri.safeAbsolutePath << std::endl;
-		std::cout << "UriPath in getDirListing: " << uri.path << std::endl;
-		// rootPath += path; // TODO: should be relative path, i.e. without leading /root/dataDir, currently breaks
 		if (!shared::file::directoryExists(location.precalculatedAbsolutePath)) {
 			throw http::exception(NOT_FOUND, "getDirectoryListing: Directory doesn't exist: " + location.precalculatedAbsolutePath);
 		}
 		// if (!shared::file::dirIsAccessible(rootPath)) { // TODO: actually maybe not good? what if root isn't accessible but subdir is? is that even possible?
 		// 	throw http::exception(FORBIDDEN, "getDirectoryListing: Directory isn't accessible: " + rootPath);
 		// }
+		DIR* dir;
 		if ((dir = opendir(uri.safeAbsolutePath.c_str())) == NULL) {
 			throw http::exception(INTERNAL_SERVER_ERROR, "getDirectoryListing: Couldn't open directory");
 		}
@@ -189,47 +182,10 @@ namespace http {
 				link = "<a href=\"http://" + baseUrl + fileName + "\">" + fileName + "</a>";
 			}
 			// does '///' get normalized to '/' ? I think this still breaks things, so foo//bar isn't foo/bar
-			bodyTemp += "<li>" + link + "</li>"; // TODO: links to directories and routes still break
+			bodyTemp += "<li>" + link + "</li>";
 		}
 		closedir(dir);
 		return bodyTemp + DL_TEMPLATE_END;
 	}
-
-	// bool getRootPath(std::string& path) {
-	// 	static std::string rootPath;
-	// 	if (!rootPath.empty()) {
-	// 		path = rootPath;
-	// 		return true;
-	// 	}
-	// 	DIR* dir;
-	// 	// get current directory
-	// 	char buffer[1024];
-	// 	if (getcwd(buffer, 1024) == NULL) {
-	// 		LOG("Error getting current directory", shared::FATAL);
-	// 		return false;
-	// 	}
-	// 	bool foundWWW = false;
-	// 	/* bool foundCGI = false; */
-	// 	if ((dir = opendir(buffer)) == NULL) {
-	// 		LOG("Error opening current directory", shared::FATAL);
-	// 		return false;
-	// 	}
-	// 	struct dirent* ent;
-	// 	while ((ent = readdir(dir)) != NULL) {
-	// 		if (std::string(ent->d_name) == "www") {
-	// 			rootPath = std::string(buffer) + "/www";
-	// 			foundWWW = true;
-	// 		}
-	// 		/* 				if (std::string(ent->d_name) == ".cgi") {
-	// 							foundCGI = true;
-	// 						} */
-	// 	}
-	// 	closedir(dir);
-	// 	if (foundWWW) { // && foundCGI)
-	// 		return true;
-	// 	}
-	// 	LOG("Error finding www and .cgi directory", shared::FATAL);
-	// 	return false;
-	// }
 
 } // namespace http

@@ -11,9 +11,9 @@ namespace config {
 	struct Location {
 			std::string path;									 // location name split into tokens
 			std::vector<std::string> pathAsTokens;				 // location name split into tokens
-			std::string root;									 // root split into tokens // TODO: maybe actually assign root to parent root in parser, if not specified in config? might make things easier
+			std::string root;									 // root split into tokens
 			std::string precalculatedAbsolutePath;				 // absolute path to this location's root, pre-calculated after parsing
-			std::vector<std::string> rootAsTokens;				 // root split into tokens // TODO: maybe actually assign root to parent root in parser, if not specified in config? might make things easier
+			std::vector<std::string> rootAsTokens;				 // root split into tokens
 			std::string redirectUri;							 // return route (references other locations)
 			std::vector<std::string> redirectUriAsTokens;		 // return route split into tokens
 			std::set<http::Method> allowedMethods;				 // allowed HTTP methods
@@ -21,7 +21,7 @@ namespace config {
 			std::vector<std::string> uploadSubdirectoryAsTokens; //
 			bool autoindex;										 //
 			std::vector<std::string> indexFile;					 // files to load when GETting a directory
-			std::vector<Location> locations;					 // registered locations // TODO: maybe rename to 'children'
+			std::vector<Location> locations;					 // registered locations
 
 			// default constructor
 			Location();

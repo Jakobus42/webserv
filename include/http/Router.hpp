@@ -83,10 +83,6 @@ namespace http {
 			 * If a Location doesn't have a root path (or the root path is empty),
 			 * just use the serverRoot Location instead.
 			 *
-			 * TODO: Parser -> The serverRoot should already contain the dataDir.
-			 * e.g.: data_dir = /www and global_root = /var/server in config,
-			 * the serverRoot Location should have the path /var/server/www.
-			 *
 			 */
 
 		private:
