@@ -39,7 +39,20 @@ namespace shared {
 
 		// Check if a file is writable
 		bool isWritable(const std::string& path) {
+			struct stat info;
+			if (stat(path.c_str(), &info) != 0) {
+				return false;
+			}
 			return (access(path.c_str(), W_OK) == 0);
+		}
+
+		bool isDirUsable(const std::string& path) {
+			struct stat info;
+			if (stat(path.c_str(), &info) != 0) {
+				return false;
+			}
+			// Check if it's a directory and has read+write+execute permissions
+			return S_ISDIR(info.st_mode) && (info.st_mode & S_IRUSR) && (info.st_mode & S_IWUSR) && (info.st_mode & S_IXUSR);
 		}
 
 		// Check if a file is executable
