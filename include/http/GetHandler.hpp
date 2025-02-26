@@ -2,6 +2,8 @@
 
 #include "ARequestHandler.hpp"
 
+#include <fstream>
+
 namespace http {
 
 	/**
@@ -14,9 +16,11 @@ namespace http {
 			~GetHandler();
 
 			void handle(const Request& request, Response& response);
+			void reset();
 
 		private:
 			void getFilePath(const config::Location& location, const std::string& filePath, std::string& target);
+			std::ifstream m_fileStream;
 	};
 
 } /* namespace http */

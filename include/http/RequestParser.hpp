@@ -28,7 +28,7 @@ namespace http {
 			bool hasError() const;
 			bool isPending() const;
 
-			Request& getRequest();
+			Request* releaseRequest();
 
 		private:
 			enum ParseState {
@@ -91,7 +91,7 @@ namespace http {
 			static const std::size_t MAX_HEADER_VALUE_COUNT = 64;
 			static const std::size_t MAX_HEADER_NAME_LENGTH = 256;
 
-			Request m_req;
+			Request* m_req;
 
 			shared::Buffer<REQUEST_BUFFER_SIZE> m_buffer;
 			std::size_t m_contentLength;

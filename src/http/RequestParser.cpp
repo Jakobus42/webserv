@@ -21,16 +21,19 @@ namespace http {
 	RequestParser::~RequestParser() {}
 
 	void RequestParser::process() {
+		if (!m_req) {
+			m_req = new Request();
+		}
 		this->clearPendingState();
 
 		try {
 			this->parse();
 		} catch (const http::exception& e) {
 			std::cout << "SHIT, " << e.getMessage() << std::endl;
-			m_req.setStatusCode(e.getStatusCode());
+			m_req->setStatusCode(e.getStatusCode());
 			this->setState(ERROR);
 		} catch (const std::exception& e) {
-			m_req.setStatusCode(INTERNAL_SERVER_ERROR);
+			m_req->setStatusCode(INTERNAL_SERVER_ERROR);
 			this->setState(ERROR);
 		}
 	}
@@ -56,7 +59,7 @@ namespace http {
 		}
 
 		std::size_t size = std::strcspn(line, WHITESPACE);
-		m_req.setMethod(line, size);
+		m_req->setMethod(line, size);
 		line += size + 1;
 
 		size = std::strcspn(line, WHITESPACE);
@@ -66,10 +69,10 @@ namespace http {
 		if (size == 0) {
 			throw http::exception(NOT_FOUND, "URI is empty");
 		}
-		m_req.setUriRaw(line, size);
+		m_req->setUriRaw(line, size);
 
 		// parse the URI
-		if (m_req.getUriRaw()[0] == '/') {
+		if (m_req->getUriRaw()[0] == '/') {
 			parseUriOriginForm();
 		} else {
 			parseUriAbsoluteForm();
@@ -78,7 +81,7 @@ namespace http {
 		line += size + 1;
 
 		size = std::strcspn(line, WHITESPACE);
-		m_req.setVersion(line, size);
+		m_req->setVersion(line, size);
 		line += size;
 
 		if (*line) {
@@ -89,21 +92,21 @@ namespace http {
 	}
 
 	// void RequestParser::parseUri() {
-	// 	const std::string& uriRaw = m_req.getUriRaw();
+	// 	const std::string& uriRaw = m_req->getUriRaw();
 	// 	const std::size_t questionMarks = std::count(uriRaw.begin(), uriRaw.end(), '?');
 	// 	const std::size_t spaces = std::count(uriRaw.begin(), uriRaw.end(), ' ');
 
 	// 	if (questionMarks > 1 || spaces > 0) {
-	// 		m_req.setStatusCode(BAD_REQUEST);
+	// 		m_req->setStatusCode(BAD_REQUEST);
 	// 		throw http::exception(BAD_REQUEST, "malformed request line: unexpected ' ' or '?'");
 	// 	}
 
 	// 	std::size_t pathBeginIndex = 0;
 	// 	std::size_t queryBeginIndex = uriRaw.find_first_of("#?");
-	// 	Uri& uri = m_req.getUri();
+	// 	Uri& uri = m_req->getUri();
 
 	// 	if (uriRaw.find("/cgi-bin/") == 0) {
-	// 		m_req.setType(CGI);
+	// 		m_req->setType(CGI);
 	// 		pathBeginIndex = uriRaw.find_first_of("/#?", 9);
 	// 		uri.path = uriRaw.substr(0, pathBeginIndex);
 	// 		uri.cgiPathInfo = decodePercentEncodedString(uriRaw.substr(pathBeginIndex, queryBeginIndex - pathBeginIndex));
@@ -146,9 +149,9 @@ namespace http {
 	// }
 
 	void RequestParser::parseUriOriginForm() {
-		const std::string& uriRaw = m_req.getUriRaw();
+		const std::string& uriRaw = m_req->getUriRaw();
 
-		http::Uri& uri = m_req.getUri();
+		http::Uri& uri = m_req->getUri();
 		if (uriRaw.find('?') < uriRaw.find('#')) { // optional query part after the first question mark
 			uri.query = uriRaw.substr(uriRaw.find('?') + 1);
 		} else {
@@ -161,9 +164,9 @@ namespace http {
 
 	// parse CGI if the path starts with /cgi-bin/
 	void RequestParser::parsePath() {
-		Uri& uri = m_req.getUri();
+		Uri& uri = m_req->getUri();
 		if (uri.path.find("/cgi-bin/") == 0) {
-			m_req.setType(CGI);
+			m_req->setType(CGI);
 			uri.cgiPathInfo = uri.path.substr(uri.path.find_first_of("/#?", 9));
 			uri.path = uri.path.substr(0, uri.path.find_first_of("/#?", 9));
 			// TODO: should never receive # or ? but idk bro
@@ -187,8 +190,8 @@ namespace http {
 		std::string authority;
 		std::string path;
 
-		http::Uri& uri = m_req.getUri();
-		const std::string& uriRaw = m_req.getUriRaw();
+		http::Uri& uri = m_req->getUri();
+		const std::string& uriRaw = m_req->getUriRaw();
 
 		if (uriRaw.find(':') == std::string::npos) {
 			throw http::exception(BAD_REQUEST, "Invalid URI");
@@ -231,17 +234,17 @@ namespace http {
 
 			Token key = this->extractHeaderKey(line);
 			if (!*line) {
-				m_req.setHeader(key.token, key.size, NULL, 0);
+				m_req->setHeader(key.token, key.size, NULL, 0);
 			}
 			std::size_t valCount = 0;
 			while (*line) {
 				Token value = this->extractHeaderValue(line);
-				m_req.setHeader(key.token, key.size, value.token, value.size);
+				m_req->setHeader(key.token, key.size, value.token, value.size);
 				if (++valCount > MAX_HEADER_VALUE_COUNT) {
 					throw http::exception(PAYLOAD_TOO_LARGE, "header value count too large");
 				}
 			}
-			if (m_req.getHeaders().size() > MAX_HEADER_COUNT) {
+			if (m_req->getHeaders().size() > MAX_HEADER_COUNT) {
 				throw http::exception(PAYLOAD_TOO_LARGE, "header count too large");
 			}
 		}
@@ -302,29 +305,29 @@ namespace http {
 	// HTTP/1.1 mandates that Host is ALWAYS present, ALWAYS only one word long
 	// and that, if the absolute form is present, the authority in it matches the host header's content
 	void RequestParser::interpretHeaders() {
-		if (!m_req.hasHeader("host")) {
+		if (!m_req->hasHeader("host")) {
 			throw http::exception(BAD_REQUEST, "Host header is missing");
 		}
 
-		const std::vector<std::string>& hostHeader = m_req.getHeader("host");
+		const std::vector<std::string>& hostHeader = m_req->getHeader("host");
 		if (hostHeader.size() != 1) {
 			throw http::exception(BAD_REQUEST, "Host header is malformed");
 		}
 
-		Uri& uri = m_req.getUri();
+		Uri& uri = m_req->getUri();
 		if (uri.isAbsoluteForm() && hostHeader[0] != uri.authority) {
 			throw http::exception(BAD_REQUEST, "Host header does not match authority specified in absolute form URI");
 		}
 		if (!uri.isAbsoluteForm()) { // shitty - put this somewhere else but check for only one host
 			uri.authority = hostHeader[0];
 		}
-		if (m_req.hasHeader("content-length") && m_req.hasHeader("transfer-encoding")) {
+		if (m_req->hasHeader("content-length") && m_req->hasHeader("transfer-encoding")) {
 			throw http::exception(BAD_REQUEST, "invalid header combination: cant have content-length and transfer-encoding");
 		}
-		if (m_req.hasHeader("content-length")) {
+		if (m_req->hasHeader("content-length")) {
 			this->validateContentLength();
 			this->setState(m_contentLength == 0 ? COMPLETE : BODY);
-		} else if (m_req.hasHeader("transfer-encoding")) {
+		} else if (m_req->hasHeader("transfer-encoding")) {
 			this->validateTransferEncoding();
 			this->setState(CHUNK_SIZE);
 		} else {
@@ -340,8 +343,8 @@ namespace http {
 				return;
 			}
 
-			m_req.appendToBody(m_buffer.getReadPos(), available);
-			if (m_req.getBody().size() > MAX_BODY_SIZE) {
+			m_req->appendToBody(m_buffer.getReadPos(), available);
+			if (m_req->getBody().size() > MAX_BODY_SIZE) {
 				throw http::exception(PAYLOAD_TOO_LARGE, "body too large");
 			}
 			m_buffer.consume(available);
@@ -401,7 +404,7 @@ namespace http {
 	}
 
 	void RequestParser::validateContentLength() {
-		const std::vector<std::string>& contentLengthVec = m_req.getHeader("content-length");
+		const std::vector<std::string>& contentLengthVec = m_req->getHeader("content-length");
 		if (contentLengthVec.size() != 1) {
 			throw http::exception(BAD_REQUEST, "malformed content-length: expected exactly one value");
 		}
@@ -417,7 +420,7 @@ namespace http {
 	}
 
 	void RequestParser::validateTransferEncoding() {
-		const std::vector<std::string>& transferEncodingVec = m_req.getHeader("transfer-encoding");
+		const std::vector<std::string>& transferEncodingVec = m_req->getHeader("transfer-encoding");
 		if (transferEncodingVec.size() != 1) {
 			throw http::exception(BAD_REQUEST, "malformed transfer-encoding: expected exactly one value");
 		}
@@ -433,8 +436,10 @@ namespace http {
 		this->setState(START);
 	}
 
-	Request& RequestParser::getRequest() {
-		return m_req;
+	Request* RequestParser::releaseRequest() {
+		Request* released = m_req;
+		m_req = NULL;
+		return released;
 	}
 
 	bool RequestParser::isComplete() const {

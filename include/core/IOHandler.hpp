@@ -33,6 +33,7 @@ namespace core {
 			http::RequestParser m_reqParser;
 			http::RequestProcessor m_reqProcessor;
 
+			std::queue<http::Request*> m_requests;
 			std::queue<http::Response*> m_responses; // todo que
 	};
 

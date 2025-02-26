@@ -20,18 +20,24 @@ namespace http {
 			RequestProcessor(Router& router);
 			~RequestProcessor();
 
-			Response* process(Request& req);
+			void process(Request& req);
 
 			// TODO: remove testing function
 			int testParseURI(const std::string& uri, int mode);
 
-		private:
 			Response* releaseResponse();
+			bool isDone() const;
+			void reset();
+
+		private:
+			void routeToSafePath(Request& req);
+			void handleError(Response* response);
 
 		private:
 			Response* m_res;
 			std::map<Method, ARequestHandler*> m_handlers;
 			Router& m_router;
+			bool m_done;
 	};
 
 } /* namespace http */

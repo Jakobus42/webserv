@@ -13,6 +13,7 @@ namespace core {
 		: m_vServer(vServer)
 		, m_reqParser()
 		, m_reqProcessor(vServer.getRouter())
+		, m_requests()
 		, m_responses() {
 	}
 
@@ -23,6 +24,10 @@ namespace core {
 		while (m_responses.size()) {
 			delete m_responses.front();
 			m_responses.pop();
+		}
+		while (m_requests.size()) {
+			delete m_requests.front();
+			m_requests.pop();
 		}
 	}
 
@@ -38,12 +43,23 @@ namespace core {
 			}
 
 			if (events & EPOLLOUT) {
-				this->handleWrite(fd);
+				if (!m_reqProcessor.isDone() && !m_requests.empty()) {
+					m_reqProcessor.process(*(m_requests.front()));
+					if (m_reqProcessor.isDone()) {
+						http::Response* releasedResponse = m_reqProcessor.releaseResponse();
+						releasedResponse->serialize();
+						m_responses.push(releasedResponse);
+						delete m_requests.front();
+						m_requests.pop();
+					}
+				} else {
+					this->handleWrite(fd);
+				}
 			}
 		} catch (const std::exception& e) {
 			m_vServer.log(e.what(), shared::ERROR);
-			m_vServer.dropClient(fd);
-			m_reqParser.getRequest().setStatusCode(http::INTERNAL_SERVER_ERROR);
+			m_vServer.dropClient(fd); // TODO: ?????
+			// TODO: send error response BEFORE DROPPING CLIENT
 			return this->markDone();
 		}
 	}
@@ -67,9 +83,7 @@ namespace core {
 
 		m_reqParser.process();
 		if (m_reqParser.isComplete() || m_reqParser.hasError()) {
-			http::Response* res = m_reqProcessor.process(m_reqParser.getRequest());
-			res->serialize();
-			m_responses.push(res);
+			m_requests.push(m_reqParser.releaseRequest());
 			m_reqParser.reset();
 		}
 
@@ -80,7 +94,6 @@ namespace core {
 		if (m_responses.empty()) {
 			return;
 		}
-
 		shared::Buffer<RESPONSE_BUFFER_SIZE>& buff = m_responses.front()->getData();
 		ssize_t bytesSent = send(fd, buff.getReadPos(), buff.size(), 0);
 		if (bytesSent == -1) {
@@ -95,6 +108,8 @@ namespace core {
 			m_responses.pop();
 
 			m_vServer.dropClient(fd);
+			m_reqProcessor.reset();
+			// TODO: reset all handler states
 			return this->markDone();
 		}
 
