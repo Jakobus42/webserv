@@ -2,6 +2,7 @@ var classhttp_1_1Response =
 [
     [ "Response", "classhttp_1_1Response.html#aee5d4231503752a6144614bff6b654b7", null ],
     [ "~Response", "classhttp_1_1Response.html#a37e583fa3e6770c75df3e53acfcda236", null ],
+    [ "appendToBody", "classhttp_1_1Response.html#aba92361e769d24eaf818f3c865b746b7", null ],
     [ "getBody", "classhttp_1_1Response.html#a4ade0256d440a548f4dfd7f4bc08ffb4", null ],
     [ "getData", "classhttp_1_1Response.html#a8396c8c9da160b0854b5cac7500a4d9c", null ],
     [ "getDateString", "classhttp_1_1Response.html#a8c41b4c74914e062f304693d58fb41df", null ],

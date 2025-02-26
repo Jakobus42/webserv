@@ -7,6 +7,7 @@ var classcore_1_1IOHandler =
     [ "handleWrite", "classcore_1_1IOHandler.html#a0743b5e212838105fa3c5b2fdbbd346a", null ],
     [ "m_reqParser", "classcore_1_1IOHandler.html#ab4c76bc519875e49ad94f6959e07ed1d", null ],
     [ "m_reqProcessor", "classcore_1_1IOHandler.html#a1bae2cc1fb76b4bc19eca5474576fb79", null ],
+    [ "m_requests", "classcore_1_1IOHandler.html#acd539a19869f5e58a6f0bb4a1c33129a", null ],
     [ "m_responses", "classcore_1_1IOHandler.html#addd9a29dc5f409d213c16c993efa4407", null ],
     [ "m_vServer", "classcore_1_1IOHandler.html#a1b6ab566aedd2c201c977fff4095718a", null ]
 ];

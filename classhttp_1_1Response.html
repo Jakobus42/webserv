@@ -77,9 +77,9 @@ Inheritance diagram for http::Response:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Response__inherit__graph.png" border="0" usemap="#ahttp_1_1Response_inherit__map" alt="Inheritance graph"/></div>
 <map name="ahttp_1_1Response_inherit__map" id="ahttp_1_1Response_inherit__map">
-<area shape="rect" title="..." alt="" coords="15,179,149,484"/>
+<area shape="rect" title="..." alt="" coords="15,179,149,504"/>
 <area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="5,5,159,131"/>
-<area shape="poly" title=" " alt="" coords="85,145,85,179,79,179,79,145"/>
+<area shape="poly" title=" " alt="" coords="85,144,85,179,79,179,79,144"/>
 </map>
 </div>
 <div class="dynheader">
@@ -87,12 +87,12 @@ Collaboration diagram for http::Response:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Response__coll__graph.png" border="0" usemap="#ahttp_1_1Response_coll__map" alt="Collaboration graph"/></div>
 <map name="ahttp_1_1Response_coll__map" id="ahttp_1_1Response_coll__map">
-<area shape="rect" title="..." alt="" coords="21,643,154,928"/>
+<area shape="rect" title="..." alt="" coords="21,643,154,948"/>
 <area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="5,5,159,131"/>
-<area shape="poly" title=" " alt="" coords="85,144,89,642,84,642,80,144"/>
+<area shape="poly" title=" " alt="" coords="85,144,89,643,84,643,80,145"/>
 <area shape="rect" href="classshared_1_1Buffer.html" title=" " alt="" coords="103,180,293,580"/>
 <area shape="poly" title=" " alt="" coords="112,142,126,179,121,181,107,144"/>
-<area shape="poly" title=" " alt="" coords="146,581,133,627,128,626,141,580"/>
+<area shape="poly" title=" " alt="" coords="147,581,135,627,130,626,142,580"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -114,6 +114,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac79941baf008165ba0c70903246d2374"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab52959eaac18026a4f1c4ce3006731ea" id="r_ab52959eaac18026a4f1c4ce3006731ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#ab52959eaac18026a4f1c4ce3006731ea">setHeader</a> (const std::string &amp;key, const std::string &amp;value)</td></tr>
 <tr class="separator:ab52959eaac18026a4f1c4ce3006731ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba92361e769d24eaf818f3c865b746b7" id="r_aba92361e769d24eaf818f3c865b746b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#aba92361e769d24eaf818f3c865b746b7">appendToBody</a> (const std::string &amp;bodySegment)</td></tr>
+<tr class="separator:aba92361e769d24eaf818f3c865b746b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8396c8c9da160b0854b5cac7500a4d9c" id="r_a8396c8c9da160b0854b5cac7500a4d9c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classshared_1_1Buffer.html">shared::Buffer</a>&lt; <a class="el" href="Response_8hpp.html#a3d9d93e9a53461ba2177521472b761c4">RESPONSE_BUFFER_SIZE</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a8396c8c9da160b0854b5cac7500a4d9c">getData</a> ()</td></tr>
 <tr class="separator:a8396c8c9da160b0854b5cac7500a4d9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64b5a9e52e86a1e5758e763ad797ca12" id="r_a64b5a9e52e86a1e5758e763ad797ca12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762">StatusCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1Response.html#a64b5a9e52e86a1e5758e763ad797ca12">getStatusCode</a> () const</td></tr>
@@ -168,10 +170,10 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   15</span>        , <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a>()</div>
 <div class="line"><span class="lineno">   16</span>        , <a class="code hl_variable" href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">m_data</a>() {</div>
 <div class="line"><span class="lineno">   17</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a00ffffb35cf49ec5be07221c0221c9fe"><div class="ttname"><a href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">http::Response::m_body</a></div><div class="ttdeci">std::string m_body</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00037">Response.hpp:37</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a175678f595cc5bda76c597afa9f35d2b"><div class="ttname"><a href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">http::Response::m_statusCode</a></div><div class="ttdeci">StatusCode m_statusCode</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00035">Response.hpp:35</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a3bf0bc50fa98445c51ea9c7e1ae7eef4"><div class="ttname"><a href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">http::Response::m_data</a></div><div class="ttdeci">shared::Buffer&lt; RESPONSE_BUFFER_SIZE &gt; m_data</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00039">Response.hpp:39</a></div></div>
-<div class="ttc" id="aclasshttp_1_1Response_html_a495a8dd4ccc444a9787b46834937f258"><div class="ttname"><a href="classhttp_1_1Response.html#a495a8dd4ccc444a9787b46834937f258">http::Response::m_headers</a></div><div class="ttdeci">std::map&lt; std::string, std::vector&lt; std::string &gt; &gt; m_headers</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00036">Response.hpp:36</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a00ffffb35cf49ec5be07221c0221c9fe"><div class="ttname"><a href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">http::Response::m_body</a></div><div class="ttdeci">std::string m_body</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00038">Response.hpp:38</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a175678f595cc5bda76c597afa9f35d2b"><div class="ttname"><a href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">http::Response::m_statusCode</a></div><div class="ttdeci">StatusCode m_statusCode</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00036">Response.hpp:36</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a3bf0bc50fa98445c51ea9c7e1ae7eef4"><div class="ttname"><a href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">http::Response::m_data</a></div><div class="ttdeci">shared::Buffer&lt; RESPONSE_BUFFER_SIZE &gt; m_data</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00040">Response.hpp:40</a></div></div>
+<div class="ttc" id="aclasshttp_1_1Response_html_a495a8dd4ccc444a9787b46834937f258"><div class="ttname"><a href="classhttp_1_1Response.html#a495a8dd4ccc444a9787b46834937f258">http::Response::m_headers</a></div><div class="ttdeci">std::map&lt; std::string, std::vector&lt; std::string &gt; &gt; m_headers</div><div class="ttdef"><b>Definition</b> <a href="Response_8hpp_source.html#l00037">Response.hpp:37</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762ace8bd8e364919b329d851fd49423d8cc">http::OK</a></div><div class="ttdeci">@ OK</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00013">types.hpp:13</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -200,6 +202,27 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="aba92361e769d24eaf818f3c865b746b7" name="aba92361e769d24eaf818f3c865b746b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba92361e769d24eaf818f3c865b746b7">&#9670;&#160;</a></span>appendToBody()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void http::Response::appendToBody </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>bodySegment</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00065">65</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   65</span>{ <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a> += bodySegment; }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a4ade0256d440a548f4dfd7f4bc08ffb4" name="a4ade0256d440a548f4dfd7f4bc08ffb4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4ade0256d440a548f4dfd7f4bc08ffb4">&#9670;&#160;</a></span>getBody()</h2>
 
@@ -215,23 +238,28 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00069">69</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   69</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00071">71</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">m_body</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Response_a4ade0256d440a548f4dfd7f4bc08ffb4_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a4ade0256d440a548f4dfd7f4bc08ffb4_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1Response_a4ade0256d440a548f4dfd7f4bc08ffb4_icgraph" id="aclasshttp_1_1Response_a4ade0256d440a548f4dfd7f4bc08ffb4_icgraph">
-<area shape="rect" title=" " alt="" coords="453,35,635,60"/>
-<area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="5,5,188,31"/>
-<area shape="poly" title=" " alt="" coords="440,43,188,27,188,21,440,38"/>
-<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="236,55,405,95"/>
-<area shape="poly" title=" " alt="" coords="440,63,406,67,405,62,439,58"/>
-<area shape="poly" title=" " alt="" coords="228,54,147,33,148,28,230,49"/>
-<area shape="rect" href="classhttp_1_1DeleteHandler.html#a06a40a6ec5165137810115a58fd8411d" title=" " alt="" coords="21,55,172,95"/>
-<area shape="poly" title=" " alt="" coords="222,78,172,78,172,73,222,73"/>
-<area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="25,119,168,159"/>
-<area shape="poly" title=" " alt="" coords="237,102,168,122,166,117,236,97"/>
+<area shape="rect" title=" " alt="" coords="679,77,860,102"/>
+<area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="448,19,631,45"/>
+<area shape="poly" title=" " alt="" coords="704,76,590,47,592,42,705,71"/>
+<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="455,69,624,109"/>
+<area shape="poly" title=" " alt="" coords="665,92,624,92,624,87,665,87"/>
+<area shape="rect" href="classhttp_1_1RequestProcessor.html#a8f65d650283668b454c5aecfb07597be" title=" " alt="" coords="453,133,625,173"/>
+<area shape="poly" title=" " alt="" coords="710,108,613,136,611,131,709,103"/>
+<area shape="rect" href="classhttp_1_1DeleteHandler.html#a06a40a6ec5165137810115a58fd8411d" title=" " alt="" coords="239,5,389,45"/>
+<area shape="poly" title=" " alt="" coords="454,68,384,48,386,43,456,63"/>
+<area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="243,69,385,109"/>
+<area shape="poly" title=" " alt="" coords="441,92,386,92,386,87,441,87"/>
+<area shape="rect" href="classhttp_1_1RequestProcessor.html#a150bf9046bd9ccee14e8bbe8ce1f5cb4" title=" " alt="" coords="228,133,400,173"/>
+<area shape="poly" title=" " alt="" coords="440,156,400,156,400,151,440,151"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,141,180,166"/>
+<area shape="poly" title=" " alt="" coords="214,156,180,156,180,151,214,151"/>
 </map>
 </div>
 
@@ -252,8 +280,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00065">65</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   65</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">m_data</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00067">67</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   67</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">m_data</a>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -293,11 +321,9 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Response_a8c41b4c74914e062f304693d58fb41df_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a8c41b4c74914e062f304693d58fb41df_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1Response_a8c41b4c74914e062f304693d58fb41df_icgraph" id="aclasshttp_1_1Response_a8c41b4c74914e062f304693d58fb41df_icgraph">
-<area shape="rect" title=" " alt="" coords="715,5,932,31"/>
-<area shape="rect" href="classhttp_1_1Response.html#aef63e8fa85ae3fcfe421fe5270080583" title=" " alt="" coords="484,5,667,31"/>
-<area shape="poly" title=" " alt="" coords="701,21,667,21,667,15,701,15"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="228,5,436,31"/>
-<area shape="poly" title=" " alt="" coords="470,21,436,21,436,15,470,15"/>
+<area shape="rect" title=" " alt="" coords="459,5,676,31"/>
+<area shape="rect" href="classhttp_1_1Response.html#aef63e8fa85ae3fcfe421fe5270080583" title=" " alt="" coords="228,5,411,31"/>
+<area shape="poly" title=" " alt="" coords="445,21,411,21,411,15,445,15"/>
 <area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,5,180,31"/>
 <area shape="poly" title=" " alt="" coords="214,21,180,21,180,15,214,15"/>
 </map>
@@ -320,22 +346,26 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00067">67</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   67</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a>; }</div>
+<p class="definition">Definition at line <a class="el" href="Response_8cpp_source.html#l00069">69</a> of file <a class="el" href="Response_8cpp_source.html">Response.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   69</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1Response.html#a175678f595cc5bda76c597afa9f35d2b">m_statusCode</a>; }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Response_a64b5a9e52e86a1e5758e763ad797ca12_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a64b5a9e52e86a1e5758e763ad797ca12_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1Response_a64b5a9e52e86a1e5758e763ad797ca12_icgraph" id="aclasshttp_1_1Response_a64b5a9e52e86a1e5758e763ad797ca12_icgraph">
-<area shape="rect" title=" " alt="" coords="453,70,676,95"/>
-<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="236,63,405,103"/>
-<area shape="poly" title=" " alt="" coords="440,85,406,85,406,80,440,80"/>
-<area shape="rect" href="classhttp_1_1DeleteHandler.html#a06a40a6ec5165137810115a58fd8411d" title=" " alt="" coords="21,5,172,45"/>
-<area shape="poly" title=" " alt="" coords="228,62,171,47,173,42,230,57"/>
-<area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="5,70,188,95"/>
-<area shape="poly" title=" " alt="" coords="222,85,188,85,188,80,222,80"/>
-<area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="25,120,168,160"/>
-<area shape="poly" title=" " alt="" coords="229,109,169,124,168,119,228,104"/>
+<area shape="rect" title=" " alt="" coords="668,109,891,134"/>
+<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="449,69,619,109"/>
+<area shape="poly" title=" " alt="" coords="668,110,619,103,619,98,669,104"/>
+<area shape="rect" href="classhttp_1_1RequestProcessor.html#a8f65d650283668b454c5aecfb07597be" title=" " alt="" coords="448,133,620,173"/>
+<area shape="poly" title=" " alt="" coords="669,138,620,145,620,140,668,133"/>
+<area shape="rect" href="classhttp_1_1DeleteHandler.html#a06a40a6ec5165137810115a58fd8411d" title=" " alt="" coords="239,5,389,45"/>
+<area shape="poly" title=" " alt="" coords="451,68,383,48,384,43,452,63"/>
+<area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="243,69,385,109"/>
+<area shape="poly" title=" " alt="" coords="436,92,385,92,385,87,436,87"/>
+<area shape="rect" href="classhttp_1_1RequestProcessor.html#a150bf9046bd9ccee14e8bbe8ce1f5cb4" title=" " alt="" coords="228,133,400,173"/>
+<area shape="poly" title=" " alt="" coords="434,156,400,156,400,151,434,151"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,141,180,166"/>
+<area shape="poly" title=" " alt="" coords="214,156,180,156,180,151,214,151"/>
 </map>
 </div>
 
@@ -415,9 +445,7 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Response_aef63e8fa85ae3fcfe421fe5270080583_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_aef63e8fa85ae3fcfe421fe5270080583_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1Response_aef63e8fa85ae3fcfe421fe5270080583_icgraph" id="aclasshttp_1_1Response_aef63e8fa85ae3fcfe421fe5270080583_icgraph">
-<area shape="rect" title=" " alt="" coords="484,5,667,31"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="228,5,436,31"/>
-<area shape="poly" title=" " alt="" coords="470,21,436,21,436,15,470,15"/>
+<area shape="rect" title=" " alt="" coords="228,5,411,31"/>
 <area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,5,180,31"/>
 <area shape="poly" title=" " alt="" coords="214,21,180,21,180,15,214,15"/>
 </map>
@@ -448,16 +476,21 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Response_ac79941baf008165ba0c70903246d2374_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_ac79941baf008165ba0c70903246d2374_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1Response_ac79941baf008165ba0c70903246d2374_icgraph" id="aclasshttp_1_1Response_ac79941baf008165ba0c70903246d2374_icgraph">
-<area shape="rect" title=" " alt="" coords="453,35,633,60"/>
-<area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="5,5,188,31"/>
-<area shape="poly" title=" " alt="" coords="440,43,188,27,188,21,440,38"/>
-<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="236,55,405,95"/>
-<area shape="poly" title=" " alt="" coords="440,63,406,67,405,62,439,58"/>
-<area shape="poly" title=" " alt="" coords="228,54,147,33,148,28,230,49"/>
-<area shape="rect" href="classhttp_1_1DeleteHandler.html#a06a40a6ec5165137810115a58fd8411d" title=" " alt="" coords="21,55,172,95"/>
-<area shape="poly" title=" " alt="" coords="222,78,172,78,172,73,222,73"/>
-<area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="25,119,168,159"/>
-<area shape="poly" title=" " alt="" coords="237,102,168,122,166,117,236,97"/>
+<area shape="rect" title=" " alt="" coords="679,77,859,102"/>
+<area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="448,19,631,45"/>
+<area shape="poly" title=" " alt="" coords="703,76,590,47,591,42,704,71"/>
+<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="455,69,624,109"/>
+<area shape="poly" title=" " alt="" coords="665,92,624,92,624,87,665,87"/>
+<area shape="rect" href="classhttp_1_1RequestProcessor.html#a8f65d650283668b454c5aecfb07597be" title=" " alt="" coords="453,133,625,173"/>
+<area shape="poly" title=" " alt="" coords="710,108,613,136,611,131,708,103"/>
+<area shape="rect" href="classhttp_1_1DeleteHandler.html#a06a40a6ec5165137810115a58fd8411d" title=" " alt="" coords="239,5,389,45"/>
+<area shape="poly" title=" " alt="" coords="454,68,384,48,386,43,456,63"/>
+<area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="243,69,385,109"/>
+<area shape="poly" title=" " alt="" coords="441,92,386,92,386,87,441,87"/>
+<area shape="rect" href="classhttp_1_1RequestProcessor.html#a150bf9046bd9ccee14e8bbe8ce1f5cb4" title=" " alt="" coords="228,133,400,173"/>
+<area shape="poly" title=" " alt="" coords="440,156,400,156,400,151,440,151"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,141,180,166"/>
+<area shape="poly" title=" " alt="" coords="214,156,180,156,180,151,214,151"/>
 </map>
 </div>
 
@@ -496,24 +529,26 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Response_ab52959eaac18026a4f1c4ce3006731ea_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_ab52959eaac18026a4f1c4ce3006731ea_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1Response_ab52959eaac18026a4f1c4ce3006731ea_icgraph" id="aclasshttp_1_1Response_ab52959eaac18026a4f1c4ce3006731ea_icgraph">
-<area shape="rect" title=" " alt="" coords="715,114,909,139"/>
-<area shape="rect" href="classhttp_1_1DeleteHandler.html#a06a40a6ec5165137810115a58fd8411d" title=" " alt="" coords="257,5,407,45"/>
-<area shape="poly" title=" " alt="" coords="769,111,720,92,666,75,530,48,407,34,408,28,530,43,667,69,722,87,771,106"/>
-<area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="241,75,423,101"/>
-<area shape="poly" title=" " alt="" coords="751,113,666,97,539,88,423,88,424,82,540,83,667,92,752,108"/>
-<area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="261,136,403,176"/>
-<area shape="poly" title=" " alt="" coords="752,145,667,161,597,166,527,168,404,164,404,159,527,163,597,161,666,156,752,140"/>
-<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="491,107,660,147"/>
-<area shape="poly" title=" " alt="" coords="701,129,660,129,660,124,701,124"/>
-<area shape="rect" href="classhttp_1_1Response.html#aef63e8fa85ae3fcfe421fe5270080583" title=" " alt="" coords="484,222,667,247"/>
-<area shape="poly" title=" " alt="" coords="778,149,668,205,618,224,616,219,666,200,776,144"/>
-<area shape="poly" title=" " alt="" coords="519,103,435,65,390,48,392,43,437,60,521,98"/>
-<area shape="poly" title=" " alt="" coords="477,114,412,103,413,98,478,108"/>
-<area shape="poly" title=" " alt="" coords="477,141,404,150,403,145,477,136"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="228,222,436,247"/>
-<area shape="poly" title=" " alt="" coords="470,237,436,237,436,232,470,232"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,222,180,247"/>
-<area shape="poly" title=" " alt="" coords="214,237,180,237,180,232,214,232"/>
+<area shape="rect" title=" " alt="" coords="689,123,884,148"/>
+<area shape="rect" href="classhttp_1_1DeleteHandler.html#a06a40a6ec5165137810115a58fd8411d" title=" " alt="" coords="244,13,395,53"/>
+<area shape="poly" title=" " alt="" coords="764,115,711,67,677,44,640,26,578,12,513,8,450,12,395,19,394,14,450,6,513,3,578,7,642,21,680,39,715,63,767,111"/>
+<area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="459,36,641,62"/>
+<area shape="poly" title=" " alt="" coords="745,120,640,77,600,64,602,59,642,72,747,115"/>
+<area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="248,112,391,152"/>
+<area shape="poly" title=" " alt="" coords="676,141,459,141,391,139,391,133,459,136,676,136"/>
+<area shape="rect" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65" title=" " alt="" coords="465,86,635,126"/>
+<area shape="poly" title=" " alt="" coords="675,125,634,120,635,114,676,119"/>
+<area shape="rect" href="classhttp_1_1RequestProcessor.html#a8f65d650283668b454c5aecfb07597be" title=" " alt="" coords="464,201,636,241"/>
+<area shape="poly" title=" " alt="" coords="738,156,607,204,605,199,737,151"/>
+<area shape="rect" href="classhttp_1_1Response.html#aef63e8fa85ae3fcfe421fe5270080583" title=" " alt="" coords="228,266,411,291"/>
+<area shape="poly" title=" " alt="" coords="768,161,715,211,680,236,642,256,584,273,524,284,465,288,411,288,411,283,464,283,523,278,583,268,640,251,678,231,712,207,764,157"/>
+<area shape="poly" title=" " alt="" coords="473,85,382,56,384,51,474,80"/>
+<area shape="poly" title=" " alt="" coords="452,120,391,127,390,121,451,115"/>
+<area shape="rect" href="classhttp_1_1RequestProcessor.html#a150bf9046bd9ccee14e8bbe8ce1f5cb4" title=" " alt="" coords="233,201,405,241"/>
+<area shape="poly" title=" " alt="" coords="450,224,406,224,406,218,450,218"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,238,180,263"/>
+<area shape="poly" title=" " alt="" coords="220,237,181,242,180,237,219,231"/>
+<area shape="poly" title=" " alt="" coords="214,268,180,264,180,259,215,263"/>
 </map>
 </div>
 
@@ -542,19 +577,17 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Response_a4971580a804aeee446a85c6c5f5ec6e8_icgraph.png" border="0" usemap="#aclasshttp_1_1Response_a4971580a804aeee446a85c6c5f5ec6e8_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1Response_a4971580a804aeee446a85c6c5f5ec6e8_icgraph" id="aclasshttp_1_1Response_a4971580a804aeee446a85c6c5f5ec6e8_icgraph">
-<area shape="rect" title=" " alt="" coords="715,99,936,125"/>
-<area shape="rect" href="classhttp_1_1DeleteHandler.html#a06a40a6ec5165137810115a58fd8411d" title=" " alt="" coords="500,5,651,45"/>
-<area shape="poly" title=" " alt="" coords="774,97,633,48,635,43,775,92"/>
-<area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="484,70,667,95"/>
-<area shape="poly" title=" " alt="" coords="703,100,667,96,667,91,704,95"/>
-<area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="504,120,647,160"/>
-<area shape="poly" title=" " alt="" coords="701,129,647,135,646,129,701,123"/>
-<area shape="rect" href="classhttp_1_1RequestProcessor.html#a63639dad340ee5eb69b23a06711e859b" title=" " alt="" coords="489,184,661,224"/>
-<area shape="poly" title=" " alt="" coords="779,132,668,175,635,186,633,181,666,169,777,127"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a7eb46eed5cc70a1dc28365088dee997d" title=" " alt="" coords="228,191,436,217"/>
-<area shape="poly" title=" " alt="" coords="476,207,436,207,436,201,476,201"/>
+<area shape="rect" title=" " alt="" coords="459,99,680,125"/>
+<area shape="rect" href="classhttp_1_1DeleteHandler.html#a06a40a6ec5165137810115a58fd8411d" title=" " alt="" coords="244,5,395,45"/>
+<area shape="poly" title=" " alt="" coords="518,97,377,48,379,43,519,92"/>
+<area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="228,70,411,95"/>
+<area shape="poly" title=" " alt="" coords="447,100,411,96,411,91,448,95"/>
+<area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="248,120,391,160"/>
+<area shape="poly" title=" " alt="" coords="445,129,391,135,390,129,445,123"/>
+<area shape="rect" href="classhttp_1_1RequestProcessor.html#a150bf9046bd9ccee14e8bbe8ce1f5cb4" title=" " alt="" coords="233,184,405,224"/>
+<area shape="poly" title=" " alt="" coords="523,132,412,175,379,186,377,181,410,169,521,127"/>
 <area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,191,180,217"/>
-<area shape="poly" title=" " alt="" coords="214,207,180,207,180,201,214,201"/>
+<area shape="poly" title=" " alt="" coords="220,207,180,207,180,201,220,201"/>
 </map>
 </div>
 
@@ -581,7 +614,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00037">37</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00038">38</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
 
 </div>
 </div>
@@ -605,7 +638,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00039">39</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00040">40</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
 
 </div>
 </div>
@@ -629,7 +662,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00036">36</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00037">37</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
 
 </div>
 </div>
@@ -653,7 +686,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00035">35</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Response_8hpp_source.html#l00036">36</a> of file <a class="el" href="Response_8hpp_source.html">Response.hpp</a>.</p>
 
 </div>
 </div>

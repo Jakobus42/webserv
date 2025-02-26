@@ -62,7 +62,9 @@ $(document).ready(function(){initNavTree('classhttp_1_1ARequestHandler.html','')
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-types">Protected Types</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
 <a href="classhttp_1_1ARequestHandler-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">http::ARequestHandler Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
@@ -77,15 +79,15 @@ Inheritance diagram for http::ARequestHandler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1ARequestHandler__inherit__graph.png" border="0" usemap="#ahttp_1_1ARequestHandler_inherit__map" alt="Inheritance graph"/></div>
 <map name="ahttp_1_1ARequestHandler_inherit__map" id="ahttp_1_1ARequestHandler_inherit__map">
-<area shape="rect" title="..." alt="" coords="155,179,317,304"/>
-<area shape="rect" href="classhttp_1_1DeleteHandler.html" title="..." alt="" coords="5,362,149,467"/>
-<area shape="poly" title=" " alt="" coords="171,316,127,364,123,360,168,312"/>
-<area shape="rect" href="classhttp_1_1GetHandler.html" title="..." alt="" coords="174,352,298,477"/>
-<area shape="poly" title=" " alt="" coords="239,318,239,352,233,352,233,318"/>
-<area shape="rect" href="classhttp_1_1PostHandler.html" title="..." alt="" coords="322,362,451,467"/>
-<area shape="poly" title=" " alt="" coords="302,313,343,360,339,364,298,316"/>
+<area shape="rect" title="..." alt="" coords="155,179,317,404"/>
+<area shape="rect" href="classhttp_1_1DeleteHandler.html" title="..." alt="" coords="5,472,149,577"/>
+<area shape="poly" title=" " alt="" coords="154,417,115,473,110,470,149,414"/>
+<area shape="rect" href="classhttp_1_1GetHandler.html" title="..." alt="" coords="174,452,298,597"/>
+<area shape="poly" title=" " alt="" coords="239,418,239,452,233,452,233,418"/>
+<area shape="rect" href="classhttp_1_1PostHandler.html" title="..." alt="" coords="322,472,451,577"/>
+<area shape="poly" title=" " alt="" coords="319,414,355,471,351,473,314,417"/>
 <area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="159,5,313,131"/>
-<area shape="poly" title=" " alt="" coords="239,145,239,178,233,178,233,145"/>
+<area shape="poly" title=" " alt="" coords="239,144,239,179,233,179,233,144"/>
 </map>
 </div>
 <div class="dynheader">
@@ -93,11 +95,11 @@ Collaboration diagram for http::ARequestHandler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1ARequestHandler__coll__graph.png" border="0" usemap="#ahttp_1_1ARequestHandler_coll__map" alt="Collaboration graph"/></div>
 <map name="ahttp_1_1ARequestHandler_coll__map" id="ahttp_1_1ARequestHandler_coll__map">
-<area shape="rect" title="..." alt="" coords="55,801,218,927"/>
+<area shape="rect" title="..." alt="" coords="55,801,218,1007"/>
 <area shape="rect" href="classshared_1_1NonCopyable.html" title="..." alt="" coords="5,573,159,699"/>
-<area shape="poly" title=" " alt="" coords="103,711,124,801,119,802,98,713"/>
+<area shape="poly" title=" " alt="" coords="100,712,118,800,113,801,95,713"/>
 <area shape="rect" href="classhttp_1_1Router.html" title=" " alt="" coords="183,533,331,739"/>
-<area shape="poly" title=" " alt="" coords="205,740,179,788,175,785,200,738"/>
+<area shape="poly" title=" " alt="" coords="213,740,192,787,187,785,208,738"/>
 <area shape="rect" href="structconfig_1_1Location.html" title=" " alt="" coords="149,5,364,471"/>
 <area shape="poly" title=" " alt="" coords="259,471,259,517,254,517,254,471"/>
 </map>
@@ -111,13 +113,34 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aac149b0f531f1a1482418a6c5098e1e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28c092d38a9351a3e24cb992f4c46dde" id="r_a28c092d38a9351a3e24cb992f4c46dde"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1ARequestHandler.html#a28c092d38a9351a3e24cb992f4c46dde">handle</a> (const <a class="el" href="classhttp_1_1Request.html">Request</a> &amp;request, <a class="el" href="classhttp_1_1Response.html">Response</a> &amp;response)=0</td></tr>
 <tr class="separator:a28c092d38a9351a3e24cb992f4c46dde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2ef63ffa22f57e525b7e2a5f6ed7e59" id="r_ad2ef63ffa22f57e525b7e2a5f6ed7e59"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1ARequestHandler.html#ad2ef63ffa22f57e525b7e2a5f6ed7e59">reset</a> ()</td></tr>
+<tr class="separator:ad2ef63ffa22f57e525b7e2a5f6ed7e59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fc49eed89135bbf5abbdf10479fda65" id="r_a0fc49eed89135bbf5abbdf10479fda65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65">handleError</a> (<a class="el" href="classhttp_1_1Response.html">Response</a> &amp;response)</td></tr>
 <tr class="separator:a0fc49eed89135bbf5abbdf10479fda65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a11190c5e06b4a0738ca72a7c2bad91" id="r_a5a11190c5e06b4a0738ca72a7c2bad91"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1ARequestHandler.html#a5a11190c5e06b4a0738ca72a7c2bad91">isComplete</a> () const</td></tr>
+<tr class="separator:a5a11190c5e06b4a0738ca72a7c2bad91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-types" name="pro-types"></a>
+Protected Types</h2></td></tr>
+<tr class="memitem:a7caf76fa6aadd1c9be0a0b301ee1ff4f" id="r_a7caf76fa6aadd1c9be0a0b301ee1ff4f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1ARequestHandler.html#a7caf76fa6aadd1c9be0a0b301ee1ff4f">HandlerState</a> { <a class="el" href="classhttp_1_1ARequestHandler.html#a7caf76fa6aadd1c9be0a0b301ee1ff4fa52f9ab60f6784bb16e907618a3075a98">PENDING</a>
+, <a class="el" href="classhttp_1_1ARequestHandler.html#a7caf76fa6aadd1c9be0a0b301ee1ff4fa0f2288e2da6b939163abf00aa07bd365">PROCESSING</a>
+, <a class="el" href="classhttp_1_1ARequestHandler.html#a7caf76fa6aadd1c9be0a0b301ee1ff4faf8fe0f3a9712ec3c8f4700f85c139dd2">DONE</a>
+ }</td></tr>
+<tr class="separator:a7caf76fa6aadd1c9be0a0b301ee1ff4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
+<tr class="memitem:ac00ae62698bce08a22ab8c6e8d33cf7f" id="r_ac00ae62698bce08a22ab8c6e8d33cf7f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhttp_1_1ARequestHandler.html#a7caf76fa6aadd1c9be0a0b301ee1ff4f">HandlerState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1ARequestHandler.html#ac00ae62698bce08a22ab8c6e8d33cf7f">m_state</a></td></tr>
+<tr class="separator:ac00ae62698bce08a22ab8c6e8d33cf7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ef5aeb104eccb5d7b26fd4c3d80c9a6" id="r_a0ef5aeb104eccb5d7b26fd4c3d80c9a6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1ARequestHandler.html#a0ef5aeb104eccb5d7b26fd4c3d80c9a6">m_filePath</a></td></tr>
+<tr class="separator:a0ef5aeb104eccb5d7b26fd4c3d80c9a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af70584de4f90018bf756bedc26b8a239" id="r_af70584de4f90018bf756bedc26b8a239"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classhttp_1_1Router.html">Router</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">m_router</a></td></tr>
 <tr class="separator:af70584de4f90018bf756bedc26b8a239"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:af42c1f87ddc44aec628c4da29855396f" id="r_af42c1f87ddc44aec628c4da29855396f"><td class="memItemLeft" align="right" valign="top">static const std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhttp_1_1ARequestHandler.html#af42c1f87ddc44aec628c4da29855396f">CHUNK_SIZE</a> = 8192</td></tr>
+<tr class="separator:af42c1f87ddc44aec628c4da29855396f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -130,8 +153,46 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>... </p>
 
-<p class="definition">Definition at line <a class="el" href="ARequestHandler_8hpp_source.html#l00015">15</a> of file <a class="el" href="ARequestHandler_8hpp_source.html">ARequestHandler.hpp</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<p class="definition">Definition at line <a class="el" href="ARequestHandler_8hpp_source.html#l00016">16</a> of file <a class="el" href="ARequestHandler_8hpp_source.html">ARequestHandler.hpp</a>.</p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a7caf76fa6aadd1c9be0a0b301ee1ff4f" name="a7caf76fa6aadd1c9be0a0b301ee1ff4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7caf76fa6aadd1c9be0a0b301ee1ff4f">&#9670;&#160;</a></span>HandlerState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classhttp_1_1ARequestHandler.html#a7caf76fa6aadd1c9be0a0b301ee1ff4f">http::ARequestHandler::HandlerState</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7caf76fa6aadd1c9be0a0b301ee1ff4fa52f9ab60f6784bb16e907618a3075a98" name="a7caf76fa6aadd1c9be0a0b301ee1ff4fa52f9ab60f6784bb16e907618a3075a98"></a>PENDING&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7caf76fa6aadd1c9be0a0b301ee1ff4fa0f2288e2da6b939163abf00aa07bd365" name="a7caf76fa6aadd1c9be0a0b301ee1ff4fa0f2288e2da6b939163abf00aa07bd365"></a>PROCESSING&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7caf76fa6aadd1c9be0a0b301ee1ff4faf8fe0f3a9712ec3c8f4700f85c139dd2" name="a7caf76fa6aadd1c9be0a0b301ee1ff4faf8fe0f3a9712ec3c8f4700f85c139dd2"></a>DONE&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="ARequestHandler_8hpp_source.html#l00052">52</a> of file <a class="el" href="ARequestHandler_8hpp_source.html">ARequestHandler.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   52</span>                              {</div>
+<div class="line"><span class="lineno">   53</span>                <a class="code hl_enumvalue" href="classhttp_1_1ARequestHandler.html#a7caf76fa6aadd1c9be0a0b301ee1ff4fa52f9ab60f6784bb16e907618a3075a98">PENDING</a>,</div>
+<div class="line"><span class="lineno">   54</span>                <a class="code hl_enumvalue" href="classhttp_1_1ARequestHandler.html#a7caf76fa6aadd1c9be0a0b301ee1ff4fa0f2288e2da6b939163abf00aa07bd365">PROCESSING</a>,</div>
+<div class="line"><span class="lineno">   55</span>                <a class="code hl_enumvalue" href="classhttp_1_1ARequestHandler.html#a7caf76fa6aadd1c9be0a0b301ee1ff4faf8fe0f3a9712ec3c8f4700f85c139dd2">DONE</a></div>
+<div class="line"><span class="lineno">   56</span>            };</div>
+<div class="ttc" id="aclasshttp_1_1ARequestHandler_html_a7caf76fa6aadd1c9be0a0b301ee1ff4fa0f2288e2da6b939163abf00aa07bd365"><div class="ttname"><a href="classhttp_1_1ARequestHandler.html#a7caf76fa6aadd1c9be0a0b301ee1ff4fa0f2288e2da6b939163abf00aa07bd365">http::ARequestHandler::PROCESSING</a></div><div class="ttdeci">@ PROCESSING</div><div class="ttdef"><b>Definition</b> <a href="ARequestHandler_8hpp_source.html#l00054">ARequestHandler.hpp:54</a></div></div>
+<div class="ttc" id="aclasshttp_1_1ARequestHandler_html_a7caf76fa6aadd1c9be0a0b301ee1ff4fa52f9ab60f6784bb16e907618a3075a98"><div class="ttname"><a href="classhttp_1_1ARequestHandler.html#a7caf76fa6aadd1c9be0a0b301ee1ff4fa52f9ab60f6784bb16e907618a3075a98">http::ARequestHandler::PENDING</a></div><div class="ttdeci">@ PENDING</div><div class="ttdef"><b>Definition</b> <a href="ARequestHandler_8hpp_source.html#l00053">ARequestHandler.hpp:53</a></div></div>
+<div class="ttc" id="aclasshttp_1_1ARequestHandler_html_a7caf76fa6aadd1c9be0a0b301ee1ff4faf8fe0f3a9712ec3c8f4700f85c139dd2"><div class="ttname"><a href="classhttp_1_1ARequestHandler.html#a7caf76fa6aadd1c9be0a0b301ee1ff4faf8fe0f3a9712ec3c8f4700f85c139dd2">http::ARequestHandler::DONE</a></div><div class="ttdeci">@ DONE</div><div class="ttdef"><b>Definition</b> <a href="ARequestHandler_8hpp_source.html#l00056">ARequestHandler.hpp:55</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a119a4ccba84e108a3eb1dd0c42deb870" name="a119a4ccba84e108a3eb1dd0c42deb870"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a119a4ccba84e108a3eb1dd0c42deb870">&#9670;&#160;</a></span>ARequestHandler()</h2>
 
@@ -156,9 +217,13 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ARequestHandler_8hpp_source.html#l00017">17</a> of file <a class="el" href="ARequestHandler_8hpp_source.html">ARequestHandler.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   18</span>                : <a class="code hl_variable" href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">m_router</a>(router) {}</div>
-<div class="ttc" id="aclasshttp_1_1ARequestHandler_html_af70584de4f90018bf756bedc26b8a239"><div class="ttname"><a href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">http::ARequestHandler::m_router</a></div><div class="ttdeci">Router &amp; m_router</div><div class="ttdef"><b>Definition</b> <a href="ARequestHandler_8hpp_source.html#l00031">ARequestHandler.hpp:31</a></div></div>
+<p class="definition">Definition at line <a class="el" href="ARequestHandler_8hpp_source.html#l00018">18</a> of file <a class="el" href="ARequestHandler_8hpp_source.html">ARequestHandler.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>                : <a class="code hl_variable" href="classhttp_1_1ARequestHandler.html#ac00ae62698bce08a22ab8c6e8d33cf7f">m_state</a>(<a class="code hl_enumvalue" href="classhttp_1_1ARequestHandler.html#a7caf76fa6aadd1c9be0a0b301ee1ff4fa52f9ab60f6784bb16e907618a3075a98">PENDING</a>)</div>
+<div class="line"><span class="lineno">   20</span>                , <a class="code hl_variable" href="classhttp_1_1ARequestHandler.html#a0ef5aeb104eccb5d7b26fd4c3d80c9a6">m_filePath</a>(<span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><span class="lineno">   21</span>                , <a class="code hl_variable" href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">m_router</a>(router) {}</div>
+<div class="ttc" id="aclasshttp_1_1ARequestHandler_html_a0ef5aeb104eccb5d7b26fd4c3d80c9a6"><div class="ttname"><a href="classhttp_1_1ARequestHandler.html#a0ef5aeb104eccb5d7b26fd4c3d80c9a6">http::ARequestHandler::m_filePath</a></div><div class="ttdeci">std::string m_filePath</div><div class="ttdef"><b>Definition</b> <a href="ARequestHandler_8hpp_source.html#l00060">ARequestHandler.hpp:60</a></div></div>
+<div class="ttc" id="aclasshttp_1_1ARequestHandler_html_ac00ae62698bce08a22ab8c6e8d33cf7f"><div class="ttname"><a href="classhttp_1_1ARequestHandler.html#ac00ae62698bce08a22ab8c6e8d33cf7f">http::ARequestHandler::m_state</a></div><div class="ttdeci">HandlerState m_state</div><div class="ttdef"><b>Definition</b> <a href="ARequestHandler_8hpp_source.html#l00059">ARequestHandler.hpp:59</a></div></div>
+<div class="ttc" id="aclasshttp_1_1ARequestHandler_html_af70584de4f90018bf756bedc26b8a239"><div class="ttname"><a href="classhttp_1_1ARequestHandler.html#af70584de4f90018bf756bedc26b8a239">http::ARequestHandler::m_router</a></div><div class="ttdeci">Router &amp; m_router</div><div class="ttdef"><b>Definition</b> <a href="ARequestHandler_8hpp_source.html#l00061">ARequestHandler.hpp:61</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -185,8 +250,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ARequestHandler_8hpp_source.html#l00020">20</a> of file <a class="el" href="ARequestHandler_8hpp_source.html">ARequestHandler.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   20</span>{}</div>
+<p class="definition">Definition at line <a class="el" href="ARequestHandler_8hpp_source.html#l00023">23</a> of file <a class="el" href="ARequestHandler_8hpp_source.html">ARequestHandler.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   23</span>{}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -253,12 +318,19 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ARequestHandler_8hpp_source.html#l00024">24</a> of file <a class="el" href="ARequestHandler_8hpp_source.html">ARequestHandler.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   24</span>                                                 {</div>
-<div class="line"><span class="lineno">   25</span>                response.setBody(<a class="code hl_function" href="namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d">getErrorPage</a>(response.getStatusCode()));</div>
-<div class="line"><span class="lineno">   26</span>                response.setHeader(<span class="stringliteral">&quot;Content-Length&quot;</span>, <a class="code hl_function" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a>(response.getBody().length()));</div>
-<div class="line"><span class="lineno">   27</span>                response.setHeader(<span class="stringliteral">&quot;Content-Type&quot;</span>, <a class="code hl_variable" href="namespacehttp.html#a9a0c25913622339c10b4fa85074d2fb9">TEXT_HTML</a>);</div>
-<div class="line"><span class="lineno">   28</span>            }</div>
+<p class="definition">Definition at line <a class="el" href="ARequestHandler_8hpp_source.html#l00032">32</a> of file <a class="el" href="ARequestHandler_8hpp_source.html">ARequestHandler.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>                                                 {</div>
+<div class="line"><span class="lineno">   33</span>                <span class="comment">// if (response.getLocation().errorPages matches response.getStatusCode()) {</span></div>
+<div class="line"><span class="lineno">   34</span>                <span class="comment">//   if file exists (matched code to errorPage) {</span></div>
+<div class="line"><span class="lineno">   35</span>                <span class="comment">//     read file and return that</span></div>
+<div class="line"><span class="lineno">   36</span>                <span class="comment">//} else {</span></div>
+<div class="line"><span class="lineno">   37</span>                <span class="comment">// proceed as usual</span></div>
+<div class="line"><span class="lineno">   38</span>                <span class="comment">//}</span></div>
+<div class="line"><span class="lineno">   39</span>                <span class="comment">//}</span></div>
+<div class="line"><span class="lineno">   40</span>                response.setBody(<a class="code hl_function" href="namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d">getErrorPage</a>(response.getStatusCode()));</div>
+<div class="line"><span class="lineno">   41</span>                response.setHeader(<span class="stringliteral">&quot;Content-Length&quot;</span>, <a class="code hl_function" href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a>(response.getBody().length()));</div>
+<div class="line"><span class="lineno">   42</span>                response.setHeader(<span class="stringliteral">&quot;Content-Type&quot;</span>, <a class="code hl_variable" href="namespacehttp.html#a9a0c25913622339c10b4fa85074d2fb9">TEXT_HTML</a>);</div>
+<div class="line"><span class="lineno">   43</span>            }</div>
 <div class="ttc" id="anamespacehttp_html_a2f88c738f00d5d4d10444e4d3bfd251d"><div class="ttname"><a href="namespacehttp.html#a2f88c738f00d5d4d10444e4d3bfd251d">http::getErrorPage</a></div><div class="ttdeci">std::string getErrorPage(StatusCode statusCode)</div><div class="ttdef"><b>Definition</b> <a href="http_8cpp_source.html#l00084">http.cpp:84</a></div></div>
 <div class="ttc" id="anamespacehttp_html_a9a0c25913622339c10b4fa85074d2fb9"><div class="ttname"><a href="namespacehttp.html#a9a0c25913622339c10b4fa85074d2fb9">http::TEXT_HTML</a></div><div class="ttdeci">const std::string TEXT_HTML</div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00027">http.hpp:27</a></div></div>
 <div class="ttc" id="anamespaceshared_1_1string_html_ae2138ded029ed6312cd2d6505efb8f75"><div class="ttname"><a href="namespaceshared_1_1string.html#ae2138ded029ed6312cd2d6505efb8f75">shared::string::fromNum</a></div><div class="ttdeci">std::string fromNum(int32_t number)</div><div class="ttdef"><b>Definition</b> <a href="stringUtils_8cpp_source.html#l00121">stringUtils.cpp:121</a></div></div>
@@ -291,19 +363,138 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1ARequestHandler_a0fc49eed89135bbf5abbdf10479fda65_icgraph.png" border="0" usemap="#aclasshttp_1_1ARequestHandler_a0fc49eed89135bbf5abbdf10479fda65_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1ARequestHandler_a0fc49eed89135bbf5abbdf10479fda65_icgraph" id="aclasshttp_1_1ARequestHandler_a0fc49eed89135bbf5abbdf10479fda65_icgraph">
-<area shape="rect" title=" " alt="" coords="236,63,405,103"/>
-<area shape="rect" href="classhttp_1_1DeleteHandler.html#a06a40a6ec5165137810115a58fd8411d" title=" " alt="" coords="21,5,172,45"/>
-<area shape="poly" title=" " alt="" coords="228,62,171,47,173,42,230,57"/>
-<area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="5,70,188,95"/>
-<area shape="poly" title=" " alt="" coords="222,85,188,85,188,80,222,80"/>
-<area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="25,120,168,160"/>
-<area shape="poly" title=" " alt="" coords="229,109,169,124,168,119,228,104"/>
+<area shape="rect" title=" " alt="" coords="204,37,373,77"/>
+<area shape="rect" href="classhttp_1_1DeleteHandler.html#a06a40a6ec5165137810115a58fd8411d" title=" " alt="" coords="5,5,156,45"/>
+<area shape="poly" title=" " alt="" coords="190,45,156,40,157,34,191,40"/>
+<area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="9,69,152,109"/>
+<area shape="poly" title=" " alt="" coords="191,75,153,81,152,76,190,70"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5a11190c5e06b4a0738ca72a7c2bad91" name="a5a11190c5e06b4a0738ca72a7c2bad91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a11190c5e06b4a0738ca72a7c2bad91">&#9670;&#160;</a></span>isComplete()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool http::ARequestHandler::isComplete </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ARequestHandler_8hpp_source.html#l00045">45</a> of file <a class="el" href="ARequestHandler_8hpp_source.html">ARequestHandler.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   45</span>                                    {</div>
+<div class="line"><span class="lineno">   46</span>                <span class="keywordflow">return</span> <a class="code hl_variable" href="classhttp_1_1ARequestHandler.html#ac00ae62698bce08a22ab8c6e8d33cf7f">m_state</a> == <a class="code hl_enumvalue" href="classhttp_1_1ARequestHandler.html#a7caf76fa6aadd1c9be0a0b301ee1ff4faf8fe0f3a9712ec3c8f4700f85c139dd2">DONE</a>;</div>
+<div class="line"><span class="lineno">   47</span>            }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad2ef63ffa22f57e525b7e2a5f6ed7e59" name="ad2ef63ffa22f57e525b7e2a5f6ed7e59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2ef63ffa22f57e525b7e2a5f6ed7e59">&#9670;&#160;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void http::ARequestHandler::reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="classhttp_1_1GetHandler.html#ae7277d4bdf18bfad98db02a8a5499bdf">http::GetHandler</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="ARequestHandler_8hpp_source.html#l00027">27</a> of file <a class="el" href="ARequestHandler_8hpp_source.html">ARequestHandler.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>                                 {</div>
+<div class="line"><span class="lineno">   28</span>                <a class="code hl_variable" href="classhttp_1_1ARequestHandler.html#ac00ae62698bce08a22ab8c6e8d33cf7f">m_state</a> = <a class="code hl_enumvalue" href="classhttp_1_1ARequestHandler.html#a7caf76fa6aadd1c9be0a0b301ee1ff4fa52f9ab60f6784bb16e907618a3075a98">PENDING</a>;</div>
+<div class="line"><span class="lineno">   29</span>                <a class="code hl_variable" href="classhttp_1_1ARequestHandler.html#a0ef5aeb104eccb5d7b26fd4c3d80c9a6">m_filePath</a>.clear();</div>
+<div class="line"><span class="lineno">   30</span>            }</div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhttp_1_1ARequestHandler_ad2ef63ffa22f57e525b7e2a5f6ed7e59_icgraph.png" border="0" usemap="#aclasshttp_1_1ARequestHandler_ad2ef63ffa22f57e525b7e2a5f6ed7e59_icgraph" alt=""/></div>
+<map name="aclasshttp_1_1ARequestHandler_ad2ef63ffa22f57e525b7e2a5f6ed7e59_icgraph" id="aclasshttp_1_1ARequestHandler_ad2ef63ffa22f57e525b7e2a5f6ed7e59_icgraph">
+<area shape="rect" title=" " alt="" coords="224,5,393,45"/>
+<area shape="rect" href="classhttp_1_1GetHandler.html#ae7277d4bdf18bfad98db02a8a5499bdf" title=" " alt="" coords="5,13,176,38"/>
+<area shape="poly" title=" " alt="" coords="210,28,176,28,176,23,210,23"/>
 </map>
 </div>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="af42c1f87ddc44aec628c4da29855396f" name="af42c1f87ddc44aec628c4da29855396f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af42c1f87ddc44aec628c4da29855396f">&#9670;&#160;</a></span>CHUNK_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::size_t http::ARequestHandler::CHUNK_SIZE = 8192</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ARequestHandler_8hpp_source.html#l00050">50</a> of file <a class="el" href="ARequestHandler_8hpp_source.html">ARequestHandler.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a0ef5aeb104eccb5d7b26fd4c3d80c9a6" name="a0ef5aeb104eccb5d7b26fd4c3d80c9a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ef5aeb104eccb5d7b26fd4c3d80c9a6">&#9670;&#160;</a></span>m_filePath</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string http::ARequestHandler::m_filePath</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ARequestHandler_8hpp_source.html#l00060">60</a> of file <a class="el" href="ARequestHandler_8hpp_source.html">ARequestHandler.hpp</a>.</p>
+
+</div>
+</div>
 <a id="af70584de4f90018bf756bedc26b8a239" name="af70584de4f90018bf756bedc26b8a239"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af70584de4f90018bf756bedc26b8a239">&#9670;&#160;</a></span>m_router</h2>
 
@@ -324,7 +515,31 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ARequestHandler_8hpp_source.html#l00031">31</a> of file <a class="el" href="ARequestHandler_8hpp_source.html">ARequestHandler.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ARequestHandler_8hpp_source.html#l00061">61</a> of file <a class="el" href="ARequestHandler_8hpp_source.html">ARequestHandler.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ac00ae62698bce08a22ab8c6e8d33cf7f" name="ac00ae62698bce08a22ab8c6e8d33cf7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac00ae62698bce08a22ab8c6e8d33cf7f">&#9670;&#160;</a></span>m_state</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classhttp_1_1ARequestHandler.html#a7caf76fa6aadd1c9be0a0b301ee1ff4f">HandlerState</a> http::ARequestHandler::m_state</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ARequestHandler_8hpp_source.html#l00059">59</a> of file <a class="el" href="ARequestHandler_8hpp_source.html">ARequestHandler.hpp</a>.</p>
 
 </div>
 </div>
