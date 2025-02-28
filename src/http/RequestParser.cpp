@@ -167,8 +167,11 @@ namespace http {
 		Uri& uri = m_req->getUri();
 		if (uri.path.find("/cgi-bin/") == 0) {
 			m_req->setType(CGI);
-			uri.cgiPathInfo = uri.path.substr(uri.path.find_first_of("/#?", 9));
-			uri.path = uri.path.substr(0, uri.path.find_first_of("/#?", 9));
+			std::size_t pos = uri.path.find_first_of("/#?", 9);
+			if (pos != std::string::npos) {
+				uri.cgiPathInfo = uri.path.substr(pos);
+				uri.path = uri.path.substr(0, pos);
+			} 
 			// TODO: should never receive # or ? but idk bro
 			// I'm just a silly little guy, writing my silly little code
 		} else {

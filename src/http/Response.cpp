@@ -80,5 +80,6 @@ namespace http {
 		}
 	}
 
+	std::string& Response::getBody()  { return m_body; }
 
 } /* namespace http */

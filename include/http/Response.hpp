@@ -35,6 +35,7 @@ namespace http {
 
 			void advanceReadPos(std::size_t n);
 			bool eof() const;
+			std::string& getBody();
 
 		private:
 			StatusCode m_statusCode;
