@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ARequestHandler.hpp"
+#include "CGIHandler.hpp"
 
 #include <fstream>
 
@@ -28,6 +29,7 @@ namespace http {
 		private:
 			static const std::streamsize BUFFER_SIZE = 16384; // 16 KB
 			std::ifstream m_fileStream;
+			CGIHandler m_cgi;
 	};
 
 } /* namespace http */

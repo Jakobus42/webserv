@@ -15,6 +15,12 @@ namespace http {
 	 */
 	class ARequestHandler : shared::NonCopyable {
 		public:
+			enum HandlerState {
+				PENDING,
+				PROCESSING,
+				DONE
+			};
+
 			ARequestHandler(Router& router)
 				: m_state(PENDING)
 				, m_filePath("")
@@ -47,15 +53,13 @@ namespace http {
 			}
 
 			std::size_t getChunkSize() const { return CHUNK_SIZE; }
+			HandlerState getState() const {
+				return m_state;
+			}
 
 		protected:
 			static const std::size_t CHUNK_SIZE = 16384; // 16 KB
 
-			enum HandlerState {
-				PENDING,
-				PROCESSING,
-				DONE
-			};
 
 		protected:
 			HandlerState m_state;
