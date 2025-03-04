@@ -3,8 +3,6 @@
 #include "http2/Request.hpp"
 #include "http2/Response.hpp"
 
-#include <type_traits>
-
 namespace http2 {
 
 	/**

@@ -1,45 +1,22 @@
 #include "shared/StringView.hpp"
 
-#include <iostream>
+#include <cstring>
 
 namespace shared {
 
-	/**
-	 * @brief Constructs a new StringView object.
-	 */
-	template <typename CharT>
-	StringView<CharT>::StringView()
+	StringView::StringView()
 		: m_data(NULL)
-		, m_size(0) {
-	}
+		, m_size(0) {}
 
-	template <typename CharT>
-	StringView<CharT>::StringView(const char* data, uint32_t size)
+	StringView::StringView(const char* data, uint32_t size)
 		: m_data(data)
 		, m_size(size) {}
 
-	/**
-	 * @brief Destroys the StringView object.
-	 */
-	template <typename CharT>
-	StringView<CharT>::~StringView() {}
-
-	/**
-	 * @brief Copy constructor.
-	 * @param other The other StringView object to copy.
-	 */
-	template <typename CharT>
-	StringView<CharT>::StringView(const StringView& other)
+	StringView::StringView(const StringView& other)
 		: m_data(other.m_data)
 		, m_size(other.m_size) {}
 
-	/**
-	 * @brief Copy assignment operator.
-	 * @param other The other StringView object to assign from.
-	 * @return A reference to the assigned StringView object.
-	 */
-	template <typename CharT>
-	StringView<CharT>& StringView<CharT>::operator=(const StringView<CharT>& rhs) {
+	StringView& StringView::operator=(const StringView& rhs) {
 		if (this != &rhs) {
 			m_data = rhs.m_data;
 			m_size = rhs.m_size;
@@ -47,11 +24,39 @@ namespace shared {
 		return *this;
 	}
 
-	template <typename CharT>
-	const CharT* StringView<CharT>::data() const { return m_data; }
+	StringView::~StringView() {}
 
-	template <typename CharT>
-	uint32_t StringView<CharT>::size() const { return m_size; }
+	const char* StringView::data() const { return m_data; }
 
+	uint32_t StringView::size() const { return m_size; }
 
-} /* namespace shared */
+	bool StringView::empty() const { return m_size == 0; }
+
+	const char* StringView::begin() const { return m_data; }
+
+	const char* StringView::end() const { return m_data + m_size; }
+
+	bool StringView::operator==(const StringView& rhs) const { return m_size == rhs.m_size && m_data == rhs.m_data; }
+
+	bool StringView::operator!=(const StringView& rhs) const { return !(*this == rhs); }
+
+	bool StringView::operator<(const StringView& other) const {
+		if (m_data == other.m_data && m_size == other.m_size) {
+			return false;
+		}
+
+		int cmp = std::memcmp(m_data, other.m_data, std::min(m_size, other.m_size));
+		if (cmp == 0) {
+			return m_size < other.m_size;
+		}
+		return cmp < 0 ? false : true;
+	}
+
+	std::ostream& operator<<(std::ostream& os, const StringView& sv) {
+		for (uint32_t i = 0; i < sv.m_size; ++i) {
+			os << sv.m_data[i];
+		}
+		return os;
+	}
+
+} // namespace shared
