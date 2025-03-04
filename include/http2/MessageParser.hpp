@@ -1,6 +1,7 @@
 #pragma once
 
 #include "shared/NonCopyable.hpp"
+#include "shared/Buffer.hpp"
 
 namespace http2 {
 

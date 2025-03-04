@@ -102,7 +102,7 @@ namespace http {
 		}
 	}
 
-	void CGIHandler::collectScriptOutput(const Request& req, Response& res) {
+	void CGIHandler::collectScriptOutput(const Request&, Response&) {
 		int32_t status;
 		if(waitpid(m_pid, &status, WNOHANG) == -1) {
 			throw http::exception(INTERNAL_SERVER_ERROR, "waitpid() failed");
