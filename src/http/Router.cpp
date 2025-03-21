@@ -88,9 +88,8 @@ namespace http {
 			return std::make_pair(currentLocation.precalculatedAbsolutePath, &currentLocation); // TODO: I think this doesn't set the root path properly yet, does it?
 		}
 		for (std::vector<config::Location>::const_iterator loc = currentLocation.locations.begin(); loc != currentLocation.locations.end(); ++loc) {
-			if (!loc->pathAsTokens.empty() && loc->pathAsTokens[0] == pathToMatch[depth]) {					// TODO: breaks if location is '/' -> check if (!loc->path.empty())
-				std::cout << "Location matched: " << loc->pathAsTokens[0] << ", going deeper" << std::endl; // TODO: check the codebase for other possibly unsafe garbage when a vector<string> is empty
-				return routeToPath(pathToMatch, *loc, redirects, depth + 1);								// use nearest parent
+			if (!loc->pathAsTokens.empty() && loc->pathAsTokens[0] == pathToMatch[depth]) { // TODO: breaks if location is '/' -> check if (!loc->path.empty())
+				return routeToPath(pathToMatch, *loc, redirects, depth + 1);				// use nearest parent
 			}
 		}
 		// no location matched

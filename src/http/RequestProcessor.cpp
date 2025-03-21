@@ -66,18 +66,25 @@ namespace http {
 		if (!m_res) {
 			m_res = new Response();
 		}
+		ARequestHandler* handler = m_handlers[req.getMethod()];
+
 		try {
 			if (req.hasError()) {
 				throw http::exception(req.getStatusCode());
 			}
-			routeToSafePath(req);
-			m_handlers[req.getMethod()]->handle(req, *m_res);
-			m_done = m_handlers[req.getMethod()]->isComplete();
+			if (req.needsSafePath()) {
+				routeToSafePath(req);
+			}
+			handler->handle(req, *m_res);
+			m_done = handler->isComplete();
 		} catch (const http::exception& e) {
 			std::cout << "CRAP, " << e.getMessage() << "; " << e.getStatusCode() << "; handling error now" << std::endl;
 			m_res->setStatusCode(e.getStatusCode());
 			handleError(m_res);
 			m_done = true;
+		}
+		if (m_done) {
+			handler->reset();
 		}
 	}
 

@@ -16,10 +16,15 @@ namespace http {
 			~GetHandler();
 
 			void handle(const Request& request, Response& response);
+			void openFile(const Request& request, Response& response);
+			void readFile(Response& response);
 			void reset();
 
 		private:
 			void getFilePath(const config::Location& location, const std::string& filePath, std::string& target);
+
+		private:
+			static const std::streamsize GET_BUFFER_SIZE = 16384; // 16 KB
 			std::ifstream m_fileStream;
 	};
 

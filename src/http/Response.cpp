@@ -62,7 +62,7 @@ namespace http {
 
 	void Response::setHeader(const std::string& key, const std::string& value) { m_headers[key].push_back(value); }
 
-	void Response::appendToBody(const std::string& bodySegment) { m_body += bodySegment; }
+	void Response::appendToBody(const char* data, std::size_t len) { m_body.append(data, len); }
 
 	shared::Buffer<RESPONSE_BUFFER_SIZE>& Response::getData() { return m_data; }
 

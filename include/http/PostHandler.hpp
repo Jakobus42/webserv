@@ -14,6 +14,15 @@ namespace http {
 			~PostHandler();
 
 			void handle(const Request& request, Response& response);
+
+			void reset();
+
+		private:
+			void createFile(const Request& request);
+
+		private:
+			std::ofstream m_fileStream;
+			size_t m_bytesWritten;
 	};
 
 } /* namespace http */

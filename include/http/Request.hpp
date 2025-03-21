@@ -45,6 +45,7 @@ namespace http {
 			void setLocation(const config::Location* location);
 
 			bool hasHeader(const std::string& key) const;
+			bool needsSafePath() const;
 
 			void appendToBody(const char* data, std::size_t len);
 

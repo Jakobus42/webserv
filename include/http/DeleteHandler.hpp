@@ -14,6 +14,9 @@ namespace http {
 			~DeleteHandler();
 
 			void handle(const Request& request, Response& response);
+
+		private:
+			void deleteFile(Response& response, const std::string& filePath);
 	};
 
 } /* namespace http */

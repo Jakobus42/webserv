@@ -61,6 +61,10 @@ namespace http {
 		return m_headers.find(key) != m_headers.end();
 	}
 
+	bool Request::needsSafePath() const {
+		return m_uri.safeAbsolutePath.empty();
+	}
+
 	void Request::appendToBody(const char* data, std::size_t len) {
 		m_body.append(data, len);
 	}

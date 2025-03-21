@@ -26,7 +26,7 @@ namespace http {
 			void setStatusCode(StatusCode statusCode);
 			void setBody(const std::string& body);
 			void setHeader(const std::string& key, const std::string& value);
-			void appendToBody(const std::string& bodySegment);
+			void appendToBody(const char* data, std::size_t len);
 
 			shared::Buffer<RESPONSE_BUFFER_SIZE>& getData();
 			StatusCode getStatusCode() const;

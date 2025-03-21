@@ -46,8 +46,10 @@ namespace http {
 				return m_state == DONE;
 			}
 
+			std::size_t getChunkSize() const { return CHUNK_SIZE; }
+
 		protected:
-			static const std::size_t CHUNK_SIZE = 8192;
+			static const std::size_t CHUNK_SIZE = 16384; // 16 KB
 
 			enum HandlerState {
 				PENDING,
