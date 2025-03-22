@@ -24,6 +24,7 @@ namespace http {
 
 			// TODO: remove testing function
 			int testParseURI(const std::string& uri, int mode);
+			void log(const std::string& msg, shared::LogLevel level, const Request& request);
 
 			Response* releaseResponse();
 			bool isDone() const;
@@ -38,6 +39,7 @@ namespace http {
 			std::map<Method, ARequestHandler*> m_handlers;
 			Router& m_router;
 			bool m_done;
+			shared::Logger m_logger;
 	};
 
 } /* namespace http */

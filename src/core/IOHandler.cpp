@@ -69,7 +69,7 @@ namespace core {
 		buff.prepareWrite();
 
 		ssize_t bytesRead = recv(fd, buff.getWritePos(), buff.availableSpace(), 0);
-		m_vServer.log("received " + shared::string::to_string(bytesRead) + " bytes.", shared::INFO, fd);
+		// m_vServer.log("received " + shared::string::to_string(bytesRead) + " bytes.", shared::INFO, fd);
 
 		if (bytesRead == -1) {
 			throw std::runtime_error("recv() failed");
@@ -78,7 +78,7 @@ namespace core {
 			m_vServer.dropClient(fd);
 			return this->markDone();
 		}
-		m_vServer.log("received request from client:\n" + std::string(buff.getWritePos(), bytesRead), shared::INFO, fd);
+		// m_vServer.log("received request from client:\n" + std::string(buff.getWritePos(), bytesRead), shared::INFO, fd);
 		buff.advanceWriter(bytesRead);
 
 		m_reqParser.process();
@@ -94,22 +94,24 @@ namespace core {
 		if (m_responses.empty()) {
 			return;
 		}
-		shared::Buffer<RESPONSE_BUFFER_SIZE>& buff = m_responses.front()->getData();
-		ssize_t bytesSent = send(fd, buff.getReadPos(), buff.size(), 0);
+		http::Response& res = *m_responses.front();
+		std::size_t bytesToRead = res.getData().size() - res.getReadPos();
+
+		ssize_t bytesSent = send(fd, res.getData().data() + res.getReadPos(), std::min(bytesToRead, this->getChunkSize()), 0);
 		if (bytesSent == -1) {
 			throw std::runtime_error("send() failed");
 		}
 
-		m_vServer.log("sent response to client\n" + std::string(buff.getReadPos(), buff.getWritePos()), shared::INFO, fd);
+		// m_vServer.log("Bytes sent: " + shared::string::fromNum(bytesSent), shared::INFO);
 
-		buff.consume(bytesSent);
-		if (buff.isEmpty()) {
+		res.advanceReadPos(bytesSent);
+		if (res.eof()) {
+			// m_vServer.log("Sent response:\n------\n" + res.getData() + "------\n", shared::INFO);
 			delete m_responses.front();
 			m_responses.pop();
 
 			m_vServer.dropClient(fd);
 			m_reqProcessor.reset();
-			// TODO: reset all handler states
 			return this->markDone();
 		}
 

@@ -26,60 +26,71 @@ namespace http {
 		}
 	}
 
+	void GetHandler::openFile(const Request& request, Response& response) {
+		const config::Location& location = *request.getLocation();
+		FileType fileType = request.getFileType();
+
+		if (fileType == _NOT_FOUND) {
+			throw http::exception(NOT_FOUND, "GET: File doesn't exist");
+		}
+		if (fileType == DIRECTORY) {
+			if (!location.indexFile.empty()) {
+				getFilePath(location, request.getUri().safeAbsolutePath, m_filePath); // returns true only if filePath isn't still ""
+			}
+			if (m_filePath.empty()) { // we didn't find a file or config doesn't have index file
+				if (location.autoindex == true) {
+					std::string autoindexBody = getDirectoryListing(request.getUri(), location);
+					response.setBody(autoindexBody);
+					response.setHeader("Content-Length", shared::string::to_string(autoindexBody.size()));
+					response.setStatusCode(OK);
+					m_state = DONE;
+					return; // no more work to be done, return true
+				}
+				throw http::exception(FORBIDDEN, "GET: Requested location does not have an index");
+			}
+		}
+		if (fileType == FILE) {
+			m_filePath = request.getUri().safeAbsolutePath;
+		}
+
+
+		m_fileStream.open(m_filePath.c_str(), std::ios_base::in | std::ios_base::binary);
+		if (!m_fileStream.is_open()) {
+			throw http::exception(FORBIDDEN, "GET: File could not be opened"); // TODO: also happens if path doesn't exist, should be NOT_FOUND in that case
+		}
+
+		m_state = PROCESSING;
+	}
+
+	void GetHandler::readFile(Response& response) {
+		std::vector<char> buffer(this->getBufferSize());
+
+		m_fileStream.read(buffer.data(), this->getBufferSize());
+		std::streamsize bytesRead = m_fileStream.gcount();
+
+		if (bytesRead > 0) {
+			response.appendToBody(buffer.data(), bytesRead);
+			return;
+		}
+
+		m_fileStream.close();
+		response.setHeader("Content-Length", shared::string::to_string(response.getBody().size()));
+		response.setStatusCode(OK);
+		m_state = DONE;
+	}
+
 	// in GET, there should be a file name in the path
 	// this whole thing is mad sus, TODO: address
 	void GetHandler::handle(const Request& request, Response& response) {
 		switch (m_state) {
 			case PENDING: {
-				const config::Location& location = *request.getLocation();
-				FileType fileType = m_router.checkFileType(request.getUri().safeAbsolutePath);
-
-				if (fileType == _NOT_FOUND) {
-					throw http::exception(NOT_FOUND, "GET: File doesn't exist");
-				}
-				if (fileType == DIRECTORY) {
-					if (!location.indexFile.empty()) {
-						getFilePath(location, request.getUri().safeAbsolutePath, m_filePath); // returns true only if filePath isn't still ""
-					}
-					if (m_filePath.empty()) { // we didn't find a file or config doesn't have index file
-						if (location.autoindex == true) {
-							std::string autoindexBody = getDirectoryListing(request.getUri(), location);
-							response.setBody(autoindexBody);
-							response.setHeader("Content-Length", shared::string::to_string(autoindexBody.size()));
-							response.setStatusCode(OK);
-							m_state = DONE;
-							return; // no more work to be done, return true
-						}
-						throw http::exception(FORBIDDEN, "GET: Requested location does not have an index");
-					}
-				}
-				m_fileStream.open(m_filePath.c_str(), std::ios::binary);
-				if (!m_fileStream) {
-					throw http::exception(FORBIDDEN, "GET: File could not be opened"); // TODO: also happens if path doesn't exist, should be NOT_FOUND in that case
-				}
-				m_state = PROCESSING;
-				return;
+				return openFile(request, response);
 			}
 
 			case PROCESSING: {
-				// m_fileStream.read(m_buffer.getWritePos(), m_buffer.availableSpace());
-				// std::streamsize bytesRead = m_fileStream.gcount();
-
-				// if (bytesRead > 0) {
-				// 	m_buffer.advanceWriter(bytesRead);
-				// 	response.appendToBody(m_buffer.getReadPos());
-				// 	return; // more to read
-				// }
-				std::string content;
-				m_fileStream >> content;
-				response.setBody(content);
-
-				m_fileStream.close();
-				response.setHeader("Content-Length", shared::string::to_string(response.getBody().size()));
-				response.setStatusCode(OK);
-				m_state = DONE;
-				return;
+				return readFile(response);
 			}
+
 			case DONE:
 				return;
 

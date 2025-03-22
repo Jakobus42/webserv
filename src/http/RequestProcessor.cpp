@@ -13,8 +13,10 @@ namespace http {
 	 */
 	RequestProcessor::RequestProcessor(Router& router)
 		: m_res(NULL)
+		, m_handlers()
 		, m_router(router)
-		, m_done(false) {
+		, m_done(false)
+		, m_logger() {
 		m_handlers.insert(std::make_pair(GET, new GetHandler(m_router)));
 		m_handlers.insert(std::make_pair(POST, new PostHandler(m_router)));
 		m_handlers.insert(std::make_pair(DELETE, new DeleteHandler(m_router)));
@@ -28,6 +30,13 @@ namespace http {
 			delete it->second;
 		}
 		delete m_res;
+	}
+
+	void RequestProcessor::log(const std::string& msg, shared::LogLevel level, const Request& request) {
+		std::string formatted = "[" + getMethodString(request.getMethod()) + " " + request.getUri().path + "] ";
+
+		formatted += msg;
+		m_logger.log(formatted, level);
 	}
 
 	void RequestProcessor::handleError(Response* response) {
@@ -47,11 +56,11 @@ namespace http {
 		const config::Location& serverRoot = m_router.getServerRoot();
 		std::pair<std::string, const config::Location*> location = m_router.routeToPath(req.getUri().pathSegments, serverRoot);
 
-		std::cout << "path returned: " << location.first << std::endl;
+		this->log("routeToSafePath returned: " + location.first, shared::DEBUG, req);
 
-		FileType fileType = Router::checkFileType(location.first);
+		req.setFileType(Router::checkFileType(location.first));
 
-		if (fileType == _NOT_FOUND) {
+		if (req.getFileType() == _NOT_FOUND) {
 			throw http::exception(NOT_FOUND, "File or directory not found");
 		}
 		if (!location.second->allowedMethods.empty() && location.second->allowedMethods.find(req.getMethod()) == location.second->allowedMethods.end()) { // TODO: probably shouldn't check this here, causes files that
@@ -66,18 +75,25 @@ namespace http {
 		if (!m_res) {
 			m_res = new Response();
 		}
+		ARequestHandler* handler = m_handlers[req.getMethod()];
+
 		try {
 			if (req.hasError()) {
 				throw http::exception(req.getStatusCode());
 			}
-			routeToSafePath(req);
-			m_handlers[req.getMethod()]->handle(req, *m_res);
-			m_done = m_handlers[req.getMethod()]->isComplete();
+			if (req.needsSafePath()) {
+				routeToSafePath(req);
+			}
+			handler->handle(req, *m_res);
+			m_done = handler->isComplete();
 		} catch (const http::exception& e) {
-			std::cout << "CRAP, " << e.getMessage() << "; " << e.getStatusCode() << "; handling error now" << std::endl;
+			this->log("CRAP, " + e.getMessage() + "; handling error now", shared::ERROR, req);
 			m_res->setStatusCode(e.getStatusCode());
 			handleError(m_res);
 			m_done = true;
+		}
+		if (m_done) {
+			handler->reset();
 		}
 	}
 
