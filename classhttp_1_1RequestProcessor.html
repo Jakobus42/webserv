@@ -183,11 +183,11 @@ Private Attributes</h2></td></tr>
 <div class="line"><span class="lineno">   21</span>        <a class="code hl_variable" href="classhttp_1_1RequestProcessor.html#ae06d06d606262ec6eece9a46b01a7e28">m_handlers</a>.insert(std::make_pair(<a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab">POST</a>, <span class="keyword">new</span> PostHandler(<a class="code hl_variable" href="classhttp_1_1RequestProcessor.html#a3b44f9f1bdd6cf94f314c8ab273987a2">m_router</a>)));</div>
 <div class="line"><span class="lineno">   22</span>        <a class="code hl_variable" href="classhttp_1_1RequestProcessor.html#ae06d06d606262ec6eece9a46b01a7e28">m_handlers</a>.insert(std::make_pair(<a class="code hl_enumvalue" href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30">DELETE</a>, <span class="keyword">new</span> DeleteHandler(<a class="code hl_variable" href="classhttp_1_1RequestProcessor.html#a3b44f9f1bdd6cf94f314c8ab273987a2">m_router</a>)));</div>
 <div class="line"><span class="lineno">   23</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1RequestProcessor_html_a3b44f9f1bdd6cf94f314c8ab273987a2"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#a3b44f9f1bdd6cf94f314c8ab273987a2">http::RequestProcessor::m_router</a></div><div class="ttdeci">Router &amp; m_router</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8hpp_source.html#l00040">RequestProcessor.hpp:40</a></div></div>
-<div class="ttc" id="aclasshttp_1_1RequestProcessor_html_a4b6192fb3742f1fc6382dae1bd69ff73"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#a4b6192fb3742f1fc6382dae1bd69ff73">http::RequestProcessor::m_res</a></div><div class="ttdeci">Response * m_res</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8hpp_source.html#l00038">RequestProcessor.hpp:38</a></div></div>
-<div class="ttc" id="aclasshttp_1_1RequestProcessor_html_a6dc413ef6b93dfdffb5f930d0d009d92"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#a6dc413ef6b93dfdffb5f930d0d009d92">http::RequestProcessor::m_done</a></div><div class="ttdeci">bool m_done</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8hpp_source.html#l00041">RequestProcessor.hpp:41</a></div></div>
-<div class="ttc" id="aclasshttp_1_1RequestProcessor_html_adafc8a16e2538c9859830541c6fb8492"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#adafc8a16e2538c9859830541c6fb8492">http::RequestProcessor::m_logger</a></div><div class="ttdeci">shared::Logger m_logger</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8hpp_source.html#l00042">RequestProcessor.hpp:42</a></div></div>
-<div class="ttc" id="aclasshttp_1_1RequestProcessor_html_ae06d06d606262ec6eece9a46b01a7e28"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#ae06d06d606262ec6eece9a46b01a7e28">http::RequestProcessor::m_handlers</a></div><div class="ttdeci">std::map&lt; Method, ARequestHandler * &gt; m_handlers</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8hpp_source.html#l00039">RequestProcessor.hpp:39</a></div></div>
+<div class="ttc" id="aclasshttp_1_1RequestProcessor_html_a3b44f9f1bdd6cf94f314c8ab273987a2"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#a3b44f9f1bdd6cf94f314c8ab273987a2">http::RequestProcessor::m_router</a></div><div class="ttdeci">Router &amp; m_router</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8hpp_source.html#l00039">RequestProcessor.hpp:39</a></div></div>
+<div class="ttc" id="aclasshttp_1_1RequestProcessor_html_a4b6192fb3742f1fc6382dae1bd69ff73"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#a4b6192fb3742f1fc6382dae1bd69ff73">http::RequestProcessor::m_res</a></div><div class="ttdeci">Response * m_res</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8hpp_source.html#l00037">RequestProcessor.hpp:37</a></div></div>
+<div class="ttc" id="aclasshttp_1_1RequestProcessor_html_a6dc413ef6b93dfdffb5f930d0d009d92"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#a6dc413ef6b93dfdffb5f930d0d009d92">http::RequestProcessor::m_done</a></div><div class="ttdeci">bool m_done</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8hpp_source.html#l00040">RequestProcessor.hpp:40</a></div></div>
+<div class="ttc" id="aclasshttp_1_1RequestProcessor_html_adafc8a16e2538c9859830541c6fb8492"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#adafc8a16e2538c9859830541c6fb8492">http::RequestProcessor::m_logger</a></div><div class="ttdeci">shared::Logger m_logger</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8hpp_source.html#l00041">RequestProcessor.hpp:41</a></div></div>
+<div class="ttc" id="aclasshttp_1_1RequestProcessor_html_ae06d06d606262ec6eece9a46b01a7e28"><div class="ttname"><a href="classhttp_1_1RequestProcessor.html#ae06d06d606262ec6eece9a46b01a7e28">http::RequestProcessor::m_handlers</a></div><div class="ttdeci">std::map&lt; Method, ARequestHandler * &gt; m_handlers</div><div class="ttdef"><b>Definition</b> <a href="RequestProcessor_8hpp_source.html#l00038">RequestProcessor.hpp:38</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa0f95802f99b68a7b2e4c8b11dbfabd30">http::DELETE</a></div><div class="ttdeci">@ DELETE</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00056">types.hpp:56</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfa451d3d8d46675b86802c405f179e92ab">http::POST</a></div><div class="ttdeci">@ POST</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00055">types.hpp:55</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0"><div class="ttname"><a href="namespacehttp.html#ad6f0ed7c44035f65821fa7509a03d4cfaad87349b6ec813144e72c316f0ed45e0">http::GET</a></div><div class="ttdeci">@ GET</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00054">types.hpp:54</a></div></div>
@@ -780,7 +780,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RequestProcessor_8hpp_source.html#l00041">41</a> of file <a class="el" href="RequestProcessor_8hpp_source.html">RequestProcessor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RequestProcessor_8hpp_source.html#l00040">40</a> of file <a class="el" href="RequestProcessor_8hpp_source.html">RequestProcessor.hpp</a>.</p>
 
 </div>
 </div>
@@ -804,7 +804,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RequestProcessor_8hpp_source.html#l00039">39</a> of file <a class="el" href="RequestProcessor_8hpp_source.html">RequestProcessor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RequestProcessor_8hpp_source.html#l00038">38</a> of file <a class="el" href="RequestProcessor_8hpp_source.html">RequestProcessor.hpp</a>.</p>
 
 </div>
 </div>
@@ -828,7 +828,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RequestProcessor_8hpp_source.html#l00042">42</a> of file <a class="el" href="RequestProcessor_8hpp_source.html">RequestProcessor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RequestProcessor_8hpp_source.html#l00041">41</a> of file <a class="el" href="RequestProcessor_8hpp_source.html">RequestProcessor.hpp</a>.</p>
 
 </div>
 </div>
@@ -852,7 +852,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RequestProcessor_8hpp_source.html#l00038">38</a> of file <a class="el" href="RequestProcessor_8hpp_source.html">RequestProcessor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RequestProcessor_8hpp_source.html#l00037">37</a> of file <a class="el" href="RequestProcessor_8hpp_source.html">RequestProcessor.hpp</a>.</p>
 
 </div>
 </div>
@@ -876,7 +876,7 @@ Here is the caller graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RequestProcessor_8hpp_source.html#l00040">40</a> of file <a class="el" href="RequestProcessor_8hpp_source.html">RequestProcessor.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RequestProcessor_8hpp_source.html#l00039">39</a> of file <a class="el" href="RequestProcessor_8hpp_source.html">RequestProcessor.hpp</a>.</p>
 
 </div>
 </div>

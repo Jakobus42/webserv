@@ -251,7 +251,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="line"><span class="lineno">   24</span>        <span class="keywordflow">if</span> (fileType == <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaa0612c5b78b5641671e6de05d375881d0">DIRECTORY</a>) {</div>
 <div class="line"><span class="lineno">   25</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">FORBIDDEN</a>, <span class="stringliteral">&quot;DELETE: Expected file; received directory&quot;</span>);</div>
 <div class="line"><span class="lineno">   26</span>        }</div>
-<div class="line"><span class="lineno">   27</span>        <span class="keywordflow">if</span> (std::remove(filePath.c_str()) != 0) { <span class="comment">// unlink the file</span></div>
+<div class="line"><span class="lineno">   27</span>        <span class="keywordflow">if</span> (std::remove(filePath.c_str()) != 0) {</div>
 <div class="line"><span class="lineno">   28</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762aa7fc75a70dfcdabcdda77d353a9424a7">FORBIDDEN</a>, <span class="stringliteral">&quot;DELETE: File could not be removed&quot;</span>);</div>
 <div class="line"><span class="lineno">   29</span>        }</div>
 <div class="line"><span class="lineno">   30</span> </div>

@@ -19,6 +19,7 @@ var namespaceconfig =
       [ "D_AUTOINDEX", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510acf7fc1b46f032b3cce871abf15d760b9", null ],
       [ "D_LOCATION", "namespaceconfig.html#aee8549161116ce4e258c23d4d7c3b510ad52403f6ed7f28d41ee4ac439cb87370", null ]
     ] ],
+    [ "hasSinglePathSeparator", "namespaceconfig.html#abc67bb3055d593118fccc9b44f38f80b", null ],
     [ "isValidPath", "namespaceconfig.html#a562b6854cd3e6748aa72f90553305021", null ],
     [ "shouldReadToken", "namespaceconfig.html#a74567cb58e62cf836a46307f098740bc", null ],
     [ "shouldReadValue", "namespaceconfig.html#ae83eb84b4926b8acd8098438021b536e", null ],
