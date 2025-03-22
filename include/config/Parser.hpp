@@ -79,8 +79,8 @@ namespace config {
 			void expectServerBlock() throw(parse_exception);
 			void expectLocationBlock(Location& parentLocation) throw(parse_exception);
 
-			void processValue(const std::string& value, CommandType type, Server& server);
-			void processValue(const std::string& value, CommandType type, Location& location);
+			void processServerValue(const std::string& value, CommandType type, Server& server);
+			void processLocationValue(const std::string& value, CommandType type, Location& location);
 
 			static const std::map<std::string, CommandType>& locationDirectives();
 			static const std::map<std::string, CommandType>& serverDirectives();

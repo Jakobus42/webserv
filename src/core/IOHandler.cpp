@@ -58,8 +58,11 @@ namespace core {
 			}
 		} catch (const std::exception& e) {
 			m_vServer.log(e.what(), shared::ERROR);
-			m_vServer.dropClient(fd); // TODO: ?????
-			// TODO: send error response BEFORE DROPPING CLIENT
+			m_vServer.dropClient(fd);
+			// TODO: send 500 error response BEFORE DROPPING CLIENT
+			// or does arriving in this catch() statement mean something
+			// went catastrophically wrong and we might be unable
+			// to even render an error response?
 			return this->markDone();
 		}
 	}

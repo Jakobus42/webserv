@@ -19,6 +19,7 @@ namespace http {
 
 		private:
 			void createFile(const Request& request);
+			std::string generateFileName() const;
 
 		private:
 			std::ofstream m_fileStream;
