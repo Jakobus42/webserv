@@ -451,7 +451,7 @@ namespace http {
 	}
 
 	bool RequestParser::hasError() const {
-		return m_state & ERROR;
+		return m_state == ERROR;
 	}
 
 	shared::Buffer<REQUEST_BUFFER_SIZE>& RequestParser::getWriteBuffer() {
