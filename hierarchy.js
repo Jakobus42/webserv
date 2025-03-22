@@ -3,7 +3,6 @@ var hierarchy =
     [ "config::Location", "structconfig_1_1Location.html", null ],
     [ "shared::NonCopyable", "classshared_1_1NonCopyable.html", [
       [ "shared::Buffer< REQUEST_BUFFER_SIZE >", "classshared_1_1Buffer.html", null ],
-      [ "shared::Buffer< RESPONSE_BUFFER_SIZE >", "classshared_1_1Buffer.html", null ],
       [ "core::AHandler", "classcore_1_1AHandler.html", [
         [ "core::AcceptHandler", "classcore_1_1AcceptHandler.html", null ],
         [ "core::IOHandler", "classcore_1_1IOHandler.html", null ]

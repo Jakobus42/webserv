@@ -7,6 +7,7 @@ var classhttp_1_1ARequestHandler =
     ] ],
     [ "ARequestHandler", "classhttp_1_1ARequestHandler.html#a119a4ccba84e108a3eb1dd0c42deb870", null ],
     [ "~ARequestHandler", "classhttp_1_1ARequestHandler.html#aac149b0f531f1a1482418a6c5098e1e1", null ],
+    [ "getChunkSize", "classhttp_1_1ARequestHandler.html#a404db817b6b86d5ff2df7fe7f6786599", null ],
     [ "handle", "classhttp_1_1ARequestHandler.html#a28c092d38a9351a3e24cb992f4c46dde", null ],
     [ "handleError", "classhttp_1_1ARequestHandler.html#a0fc49eed89135bbf5abbdf10479fda65", null ],
     [ "isComplete", "classhttp_1_1ARequestHandler.html#a5a11190c5e06b4a0738ca72a7c2bad91", null ],

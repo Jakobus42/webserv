@@ -1,19 +1,35 @@
 <map id="http::RequestProcessor::routeToSafePath" name="http::RequestProcessor::routeToSafePath">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,122,177,162"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,199,177,239"/>
 <area shape="rect" id="Node000002" href="$classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="226,5,425,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,120,161,79,192,58,224,40,242,32,244,37,226,44,194,62,164,83,116,124"/>
-<area shape="rect" id="Node000003" href="$classhttp_1_1Request.html#a8d7f2adb5a9e2717fe6b784160818aee" title=" " alt="" coords="232,55,419,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="140,119,225,89,252,81,254,86,226,94,142,124"/>
-<area shape="rect" id="Node000004" href="$classhttp_1_1Router.html#a64b9edf8d6bfa70e733f2688d57d711b" title=" " alt="" coords="225,104,425,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="177,130,211,126,212,132,178,135"/>
-<area shape="rect" id="Node000005" href="$classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="247,153,404,179"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="178,148,233,154,232,159,177,153"/>
-<area shape="rect" id="Node000006" href="$classhttp_1_1Router.html#a57c33b97646590044fcd555838b5f565" title="Traverses m_locations according to a Request&#39;s Uri, respecting redirections while avoiding redirect l..." alt="" coords="234,203,417,228"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="145,160,226,187,258,197,257,202,225,193,144,165"/>
-<area shape="rect" id="Node000009" href="$classhttp_1_1Request.html#a8b07466b813b2a50d8fad8e8efd843e3" title=" " alt="" coords="229,252,421,277"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="116,160,165,199,227,237,247,245,245,250,224,242,162,204,113,164"/>
-<area shape="rect" id="Node000007" href="$namespaceshared_1_1string.html#ac0010d0341d2d9250a0f95d1732ba9fb" title="Joins a split path into a string, delimited by &#39;/&#39; Should never receive broken data." alt="" coords="473,203,644,228"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="417,213,460,213,460,218,417,218"/>
-<area shape="rect" id="Node000008" href="$namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="692,203,855,228"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="644,213,678,213,678,218,644,218"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,198,118,163,145,120,181,77,224,40,234,34,237,38,227,44,184,80,149,124,122,166,104,200"/>
+<area shape="rect" id="Node000003" href="$classhttp_1_1Request.html#a6162975c48ac5fc6c9efc69af861fa5d" title=" " alt="" coords="230,55,421,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="108,197,157,148,189,121,224,97,257,82,259,87,227,102,192,125,161,151,112,201"/>
+<area shape="rect" id="Node000004" href="$classhttp_1_1Request.html#a8d7f2adb5a9e2717fe6b784160818aee" title=" " alt="" coords="473,107,660,132"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="136,197,178,180,225,165,346,140,459,125,460,130,346,145,226,170,180,185,138,202"/>
+<area shape="rect" id="Node000005" href="$classhttp_1_1Router.html#a64b9edf8d6bfa70e733f2688d57d711b" title=" " alt="" coords="225,256,425,281"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="178,235,252,251,251,256,177,240"/>
+<area shape="rect" id="Node000006" href="$classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="488,157,645,183"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="177,199,225,191,355,178,474,171,475,176,356,184,226,197,178,204"/>
+<area shape="rect" id="Node000007" href="$classhttp_1_1RequestProcessor.html#a80e69a358276a49f6b4f9241a484ec11" title=" " alt="" coords="225,207,425,232"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="177,217,212,217,212,222,177,222"/>
+<area shape="rect" id="Node000012" href="$classhttp_1_1Router.html#a57c33b97646590044fcd555838b5f565" title="Traverses m_locations according to a Request&#39;s Uri, respecting redirections while avoiding redirect l..." alt="" coords="234,305,417,331"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="124,237,171,265,226,292,249,299,247,304,224,296,169,270,122,242"/>
+<area shape="rect" id="Node000015" href="$classhttp_1_1Request.html#ac1d2cf9b6b79937bd26636ded60b7367" title=" " alt="" coords="230,355,421,380"/>
+<area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="110,238,159,290,191,318,227,341,241,348,239,352,224,346,188,322,155,294,106,241"/>
+<area shape="rect" id="Node000016" href="$classhttp_1_1Request.html#a8b07466b813b2a50d8fad8e8efd843e3" title=" " alt="" coords="229,404,421,429"/>
+<area shape="poly" id="edge17_Node000001_Node000016" title=" " alt="" coords="105,238,123,272,150,313,185,355,227,390,237,396,234,401,224,395,181,359,146,317,118,275,100,241"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="347,204,403,174,472,142,498,134,499,139,474,147,405,179,350,209"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="388,204,490,183,491,188,389,209"/>
+<area shape="rect" id="Node000008" href="$namespacehttp.html#a1d02d0271977cac915906163e6cbca8c" title=" " alt="" coords="485,256,649,281"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="389,229,491,251,490,256,388,235"/>
+<area shape="rect" id="Node000009" href="$classshared_1_1Logger.html#aa25eae8290010444e62c9996ef88f8b6" title=" " alt="" coords="493,207,640,232"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="425,217,479,217,479,222,425,222"/>
+<area shape="rect" id="Node000010" href="$classshared_1_1Logger.html#afa95b6aabdf9018417243de3e904674e" title=" " alt="" coords="708,232,929,257"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="640,224,695,230,694,235,640,229"/>
+<area shape="rect" id="Node000011" href="$classshared_1_1Logger.html#a59ccf733344c360fe7839dbc1a6ae6f5" title=" " alt="" coords="713,183,924,208"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="640,210,699,204,700,209,640,215"/>
+<area shape="rect" id="Node000013" href="$namespaceshared_1_1string.html#ac0010d0341d2d9250a0f95d1732ba9fb" title="Joins a split path into a string, delimited by &#39;/&#39; Should never receive broken data." alt="" coords="481,305,652,331"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="417,315,468,315,468,321,417,321"/>
+<area shape="rect" id="Node000014" href="$namespaceshared_1_1string.html#a1f29829f5af562af11efd2c7e6ce4958" title=" " alt="" coords="737,305,900,331"/>
+<area shape="poly" id="edge15_Node000013_Node000014" title=" " alt="" coords="652,315,723,315,723,321,652,321"/>
 </map>

@@ -69,9 +69,14 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 </ul>
 
 
+<h3><a id="index_b" name="index_b"></a>- b -</h3><ul>
+<li>BUFFER_SIZE&#160;:&#160;<a class="el" href="classhttp_1_1GetHandler.html#a8186365ce7b9d4b080c5cad57c96c4f8">http::GetHandler</a></li>
+</ul>
+
+
 <h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
 <li>cgiPathInfo&#160;:&#160;<a class="el" href="structhttp_1_1Uri.html#ae7676902f6d0670d9d9fcfd991e98b1d">http::Uri</a></li>
-<li>CHUNK_SIZE&#160;:&#160;<a class="el" href="classhttp_1_1ARequestHandler.html#af42c1f87ddc44aec628c4da29855396f">http::ARequestHandler</a></li>
+<li>CHUNK_SIZE&#160;:&#160;<a class="el" href="classcore_1_1IOHandler.html#a481354048daafdeb0d16237c2dd3fdfd">core::IOHandler</a>, <a class="el" href="classhttp_1_1ARequestHandler.html#af42c1f87ddc44aec628c4da29855396f">http::ARequestHandler</a></li>
 <li>CLIENT_TIMEOUT&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#ad7436180516bb83163543094014a7ac7">http::VirtualServer</a></li>
 </ul>
 
@@ -109,18 +114,20 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
 <li>m_body&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#aeeeb51221d331e67c9b68f26720d7840">http::Request</a>, <a class="el" href="classhttp_1_1Response.html#a00ffffb35cf49ec5be07221c0221c9fe">http::Response</a></li>
 <li>m_buffer&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#a1b850f69c68f06a4c75bfcd3a8526bb1">http::RequestParser</a></li>
+<li>m_bytesWritten&#160;:&#160;<a class="el" href="classhttp_1_1PostHandler.html#a8c02f55f358bf94f4d7bc3c3f7db6f74">http::PostHandler</a></li>
 <li>m_clients&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#ab53352540672413483b62afd28ed36d7">http::VirtualServer</a></li>
 <li>m_config&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#a690d4529557189b00ef20343387daed9">http::VirtualServer</a></li>
 <li>m_configs&#160;:&#160;<a class="el" href="classconfig_1_1Parser.html#ab3b6602ae2db0e870999ada16afc9fbc">config::Parser</a></li>
 <li>m_contentLength&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#a7d98a07e4d93790df8a1126a2c41a0b0">http::RequestParser</a></li>
-<li>m_data&#160;:&#160;<a class="el" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">config::Parser</a>, <a class="el" href="classhttp_1_1Response.html#a3bf0bc50fa98445c51ea9c7e1ae7eef4">http::Response</a>, <a class="el" href="classshared_1_1Buffer.html#a187b3f9291b5b1e6c379ab6bcdd230ef">shared::Buffer&lt; Capacity &gt;</a></li>
+<li>m_data&#160;:&#160;<a class="el" href="classconfig_1_1Parser.html#a48afcbf32e653360f5b80565639732ef">config::Parser</a>, <a class="el" href="classhttp_1_1Response.html#aeb0230fa6d045ae3ad7555dc628b8836">http::Response</a>, <a class="el" href="classshared_1_1Buffer.html#a187b3f9291b5b1e6c379ab6bcdd230ef">shared::Buffer&lt; Capacity &gt;</a></li>
 <li>m_depth&#160;:&#160;<a class="el" href="classconfig_1_1Parser.html#a49923fbc60304b1562c71e6273ecc854">config::Parser</a></li>
 <li>m_dispatcher&#160;:&#160;<a class="el" href="classcore_1_1AcceptHandler.html#a2be718a6a4dfb5a61e88865ac1b4ce00">core::AcceptHandler</a>, <a class="el" href="classcore_1_1Reactor.html#ac39befe378eb1efd88fde093064d4086">core::Reactor</a></li>
 <li>m_done&#160;:&#160;<a class="el" href="classhttp_1_1RequestProcessor.html#a6dc413ef6b93dfdffb5f930d0d009d92">http::RequestProcessor</a></li>
 <li>m_epoll_master_fd&#160;:&#160;<a class="el" href="classcore_1_1Dispatcher.html#ae3358923cf95122243edaecafff901d1">core::Dispatcher</a></li>
 <li>m_events&#160;:&#160;<a class="el" href="classcore_1_1Dispatcher.html#abfe2c81d53697c4c49251b5ca51de1cf">core::Dispatcher</a></li>
 <li>m_filePath&#160;:&#160;<a class="el" href="classhttp_1_1ARequestHandler.html#a0ef5aeb104eccb5d7b26fd4c3d80c9a6">http::ARequestHandler</a></li>
-<li>m_fileStream&#160;:&#160;<a class="el" href="classhttp_1_1GetHandler.html#af12654f53d9219f1da0d7c095a7ad6d8">http::GetHandler</a></li>
+<li>m_fileStream&#160;:&#160;<a class="el" href="classhttp_1_1GetHandler.html#af12654f53d9219f1da0d7c095a7ad6d8">http::GetHandler</a>, <a class="el" href="classhttp_1_1PostHandler.html#a305fd058ea89b57ff44913e3dd87c3c1">http::PostHandler</a></li>
+<li>m_fileType&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#a7afda77bf01d2f4c996cd385cd1559f1">http::Request</a></li>
 <li>m_handlers&#160;:&#160;<a class="el" href="classcore_1_1Dispatcher.html#a1319290758b876fc0f0af9a8045e9ea1">core::Dispatcher</a>, <a class="el" href="classhttp_1_1RequestProcessor.html#ae06d06d606262ec6eece9a46b01a7e28">http::RequestProcessor</a></li>
 <li>m_headers&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#a9bd2fbffae2ae25d159f2947bdac509a">http::Request</a>, <a class="el" href="classhttp_1_1Response.html#a495a8dd4ccc444a9787b46834937f258">http::Response</a></li>
 <li>m_isDone&#160;:&#160;<a class="el" href="classcore_1_1AHandler.html#ab262daace90ee13c752fb8a585baeb0c">core::AHandler</a></li>
@@ -128,12 +135,12 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>m_lineIndex&#160;:&#160;<a class="el" href="classconfig_1_1Parser.html#aa0b74f3e532e04447701fc6b530a540e">config::Parser</a></li>
 <li>m_listenSocket&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#a28f6e31ee3abf041f506a1fa2455b605">http::VirtualServer</a></li>
 <li>m_logFile&#160;:&#160;<a class="el" href="classshared_1_1Logger.html#a5f7e011412c364d83460d1bbe7b11a1e">shared::Logger</a></li>
-<li>m_logger&#160;:&#160;<a class="el" href="classhttp_1_1VirtualServer.html#ae899297922e2cce19b245093e85c599f">http::VirtualServer</a></li>
+<li>m_logger&#160;:&#160;<a class="el" href="classhttp_1_1RequestProcessor.html#adafc8a16e2538c9859830541c6fb8492">http::RequestProcessor</a>, <a class="el" href="classhttp_1_1VirtualServer.html#ae899297922e2cce19b245093e85c599f">http::VirtualServer</a></li>
 <li>m_message&#160;:&#160;<a class="el" href="classconfig_1_1parse__exception.html#a6ca97f11c246b5a2d1c9c9379c554c02">config::parse_exception</a>, <a class="el" href="classhttp_1_1exception.html#a4ab60d6ffeca2b0a2126dec8045a0a87">http::exception</a></li>
 <li>m_method&#160;:&#160;<a class="el" href="classhttp_1_1Request.html#a209f172cc311ccea1cce70bdfab6f5df">http::Request</a></li>
 <li>m_reacting&#160;:&#160;<a class="el" href="classcore_1_1Reactor.html#a2d794de183f0153b8ec67be4739bd3d9">core::Reactor</a></li>
 <li>m_readingFile&#160;:&#160;<a class="el" href="classconfig_1_1Parser.html#a8b2f5d539bf1a63cc0bdf38086c22801">config::Parser</a></li>
-<li>m_readPos&#160;:&#160;<a class="el" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">config::Parser</a>, <a class="el" href="classshared_1_1Buffer.html#aa1c1c7e5c7525d3b18f6c4da073d4d2c">shared::Buffer&lt; Capacity &gt;</a></li>
+<li>m_readPos&#160;:&#160;<a class="el" href="classconfig_1_1Parser.html#a1cd36c93ef6d48fd4acb2125577e610e">config::Parser</a>, <a class="el" href="classhttp_1_1Response.html#aaa279f6bb37e077202724902453d077a">http::Response</a>, <a class="el" href="classshared_1_1Buffer.html#aa1c1c7e5c7525d3b18f6c4da073d4d2c">shared::Buffer&lt; Capacity &gt;</a></li>
 <li>m_req&#160;:&#160;<a class="el" href="classhttp_1_1RequestParser.html#a992267c7cb73d2b028c330da73cab820">http::RequestParser</a></li>
 <li>m_reqParser&#160;:&#160;<a class="el" href="classcore_1_1IOHandler.html#ab4c76bc519875e49ad94f6959e07ed1d">core::IOHandler</a></li>
 <li>m_reqProcessor&#160;:&#160;<a class="el" href="classcore_1_1IOHandler.html#a1bae2cc1fb76b4bc19eca5474576fb79">core::IOHandler</a></li>

@@ -226,18 +226,17 @@ Static Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="Router_8cpp_source.html#l00039">39</a> of file <a class="el" href="Router_8cpp_source.html">Router.cpp</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   39</span>                                                                {</div>
-<div class="line"><span class="lineno">   40</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;Checking FileType for path: &quot;</span> &lt;&lt; absolutePath &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   41</span>        <span class="keyword">struct </span>stat statBuf;</div>
-<div class="line"><span class="lineno">   42</span>        <span class="keywordflow">if</span> (stat(absolutePath.c_str(), &amp;statBuf) != 0) {</div>
-<div class="line"><span class="lineno">   43</span>            <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d">_NOT_FOUND</a>; <span class="comment">// Path does not exist</span></div>
-<div class="line"><span class="lineno">   44</span>        }</div>
-<div class="line"><span class="lineno">   45</span>        <span class="keywordflow">if</span> (S_ISDIR(statBuf.st_mode)) {</div>
-<div class="line"><span class="lineno">   46</span>            <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaa0612c5b78b5641671e6de05d375881d0">DIRECTORY</a>;</div>
-<div class="line"><span class="lineno">   47</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (S_ISREG(statBuf.st_mode)) {</div>
-<div class="line"><span class="lineno">   48</span>            <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaf588e02f8d0cc2fa280d47d9beb900db">FILE</a>;</div>
-<div class="line"><span class="lineno">   49</span>        }</div>
-<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d">_NOT_FOUND</a>; <span class="comment">// Other types (not file/dir)</span></div>
-<div class="line"><span class="lineno">   51</span>    }</div>
+<div class="line"><span class="lineno">   40</span>        <span class="keyword">struct </span>stat statBuf;</div>
+<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">if</span> (stat(absolutePath.c_str(), &amp;statBuf) != 0) {</div>
+<div class="line"><span class="lineno">   42</span>            <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d">_NOT_FOUND</a>; <span class="comment">// Path does not exist</span></div>
+<div class="line"><span class="lineno">   43</span>        }</div>
+<div class="line"><span class="lineno">   44</span>        <span class="keywordflow">if</span> (S_ISDIR(statBuf.st_mode)) {</div>
+<div class="line"><span class="lineno">   45</span>            <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaa0612c5b78b5641671e6de05d375881d0">DIRECTORY</a>;</div>
+<div class="line"><span class="lineno">   46</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (S_ISREG(statBuf.st_mode)) {</div>
+<div class="line"><span class="lineno">   47</span>            <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaf588e02f8d0cc2fa280d47d9beb900db">FILE</a>;</div>
+<div class="line"><span class="lineno">   48</span>        }</div>
+<div class="line"><span class="lineno">   49</span>        <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d">_NOT_FOUND</a>; <span class="comment">// Other types (not file/dir)</span></div>
+<div class="line"><span class="lineno">   50</span>    }</div>
 <div class="ttc" id="anamespacehttp_html_aa05465f9f5daa64d3a9ba64a34e92cfaa0612c5b78b5641671e6de05d375881d0"><div class="ttname"><a href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaa0612c5b78b5641671e6de05d375881d0">http::DIRECTORY</a></div><div class="ttdeci">@ DIRECTORY</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00067">types.hpp:67</a></div></div>
 <div class="ttc" id="anamespacehttp_html_aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d"><div class="ttname"><a href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaef01a006dc765ad7c46d4c9e587e7c6d">http::_NOT_FOUND</a></div><div class="ttdeci">@ _NOT_FOUND</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00069">types.hpp:68</a></div></div>
 <div class="ttc" id="anamespacehttp_html_aa05465f9f5daa64d3a9ba64a34e92cfaaf588e02f8d0cc2fa280d47d9beb900db"><div class="ttname"><a href="namespacehttp.html#aa05465f9f5daa64d3a9ba64a34e92cfaaf588e02f8d0cc2fa280d47d9beb900db">http::FILE</a></div><div class="ttdeci">@ FILE</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00066">types.hpp:66</a></div></div>
@@ -246,22 +245,19 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classhttp_1_1Router_adc2958c32ba4e5e222a993ddba2f715c_icgraph.png" border="0" usemap="#aclasshttp_1_1Router_adc2958c32ba4e5e222a993ddba2f715c_icgraph" alt=""/></div>
 <map name="aclasshttp_1_1Router_adc2958c32ba4e5e222a993ddba2f715c_icgraph" id="aclasshttp_1_1Router_adc2958c32ba4e5e222a993ddba2f715c_icgraph">
-<area shape="rect" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="717,113,916,139"/>
-<area shape="rect" href="classhttp_1_1GetHandler.html#a1d39cf89034ec73fb9c80fa66cbbc4cc" title=" " alt="" coords="459,5,669,31"/>
-<area shape="poly" title=" " alt="" coords="781,109,728,80,668,52,612,33,614,28,670,48,731,76,783,104"/>
-<area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="228,31,411,56"/>
-<area shape="poly" title=" " alt="" coords="748,113,669,97,410,57,411,52,670,91,749,108"/>
-<area shape="rect" href="classhttp_1_1DeleteHandler.html#a06a40a6ec5165137810115a58fd8411d" title=" " alt="" coords="489,106,639,146"/>
-<area shape="poly" title=" " alt="" coords="704,129,640,129,640,123,704,123"/>
-<area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="493,170,635,210"/>
-<area shape="poly" title=" " alt="" coords="753,145,636,175,635,169,752,140"/>
-<area shape="rect" href="classhttp_1_1RequestProcessor.html#afb4a65504dff5d858ec9067f21095424" title=" " alt="" coords="478,234,650,274"/>
-<area shape="poly" title=" " alt="" coords="790,149,736,187,670,224,641,236,639,232,668,220,734,182,787,145"/>
-<area shape="poly" title=" " alt="" coords="445,33,411,37,411,31,445,28"/>
-<area shape="rect" href="classhttp_1_1RequestProcessor.html#a150bf9046bd9ccee14e8bbe8ce1f5cb4" title=" " alt="" coords="233,234,405,274"/>
-<area shape="poly" title=" " alt="" coords="464,257,405,257,405,251,464,251"/>
-<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="5,241,180,267"/>
-<area shape="poly" title=" " alt="" coords="220,257,180,257,180,251,220,251"/>
+<area shape="rect" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="736,35,935,60"/>
+<area shape="rect" href="classhttp_1_1GetHandler.html#a1d39cf89034ec73fb9c80fa66cbbc4cc" title=" " alt="" coords="477,5,688,31"/>
+<area shape="poly" title=" " alt="" coords="722,37,688,33,689,28,723,32"/>
+<area shape="rect" href="classhttp_1_1RequestProcessor.html#afb4a65504dff5d858ec9067f21095424" title=" " alt="" coords="497,55,669,95"/>
+<area shape="poly" title=" " alt="" coords="723,62,669,68,669,63,722,57"/>
+<area shape="rect" href="classhttp_1_1GetHandler.html#ad2e6cfce6677f48080dfffb69f3e2cca" title=" " alt="" coords="236,5,429,31"/>
+<area shape="poly" title=" " alt="" coords="464,21,429,21,429,15,464,15"/>
+<area shape="rect" href="classhttp_1_1GetHandler.html#af56131f653540bb9121e3c508466823f" title=" " alt="" coords="5,5,188,31"/>
+<area shape="poly" title=" " alt="" coords="222,21,188,21,188,15,222,15"/>
+<area shape="rect" href="classhttp_1_1RequestProcessor.html#a150bf9046bd9ccee14e8bbe8ce1f5cb4" title=" " alt="" coords="247,55,419,95"/>
+<area shape="poly" title=" " alt="" coords="483,78,419,78,419,73,483,73"/>
+<area shape="rect" href="classcore_1_1IOHandler.html#a86a22f9acf337467c952a1dee5a306cf" title=" " alt="" coords="9,63,184,88"/>
+<area shape="poly" title=" " alt="" coords="233,78,184,78,184,73,233,73"/>
 </map>
 </div>
 
@@ -427,33 +423,31 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Router_8cpp_source.html#l00072">72</a> of file <a class="el" href="Router_8cpp_source.html">Router.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   75</span>                                                              {</div>
-<div class="line"><span class="lineno">   76</span>        <span class="keywordflow">if</span> (depth &gt; <a class="code hl_variable" href="classhttp_1_1Router.html#ae806663a58c54da78a19cb22827ca53e">MAX_REDIRECTS</a>) {</div>
-<div class="line"><span class="lineno">   77</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af821caf2cfdc4a65b948ad4862cadaf8">LOOP_DETECTED</a>, <span class="stringliteral">&quot;Depth exceeded MAX_REDIRECTS&quot;</span>);</div>
-<div class="line"><span class="lineno">   78</span>        }</div>
-<div class="line"><span class="lineno">   79</span>        <span class="keywordflow">if</span> (redirects &gt; <a class="code hl_variable" href="classhttp_1_1Router.html#ae806663a58c54da78a19cb22827ca53e">MAX_REDIRECTS</a>) {</div>
-<div class="line"><span class="lineno">   80</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af821caf2cfdc4a65b948ad4862cadaf8">LOOP_DETECTED</a>, <span class="stringliteral">&quot;Redirects exceeded MAX_REDIRECTS&quot;</span>);</div>
-<div class="line"><span class="lineno">   81</span>        }</div>
-<div class="line"><span class="lineno">   82</span>        <span class="keywordflow">if</span> (currentLocation.<a class="code hl_function" href="structconfig_1_1Location.html#a08fc4cccff64cc1e84bbfc9d78c1b896">hasRedirect</a>()) { <span class="comment">// restart routing with the new route? or actually send a redirect response?</span></div>
-<div class="line"><span class="lineno">   83</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Redirecting to &quot;</span> &lt;&lt; currentLocation.<a class="code hl_variable" href="structconfig_1_1Location.html#af07f8a41a8ab3e137cb4b4cd2e6f6d05">redirectUri</a> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   84</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classhttp_1_1Router.html#a57c33b97646590044fcd555838b5f565">routeToPath</a>(currentLocation.<a class="code hl_variable" href="structconfig_1_1Location.html#ad93b81da62b72b6cb6794f56b7dbe00f">redirectUriAsTokens</a>, <a class="code hl_variable" href="classhttp_1_1Router.html#ac0c994984463cfa7c8584505e37114fa">m_rootLocation</a>, redirects + 1, 0); <span class="comment">// TODO: invalid, this would then always return serverRoot&#39;s route</span></div>
-<div class="line"><span class="lineno">   85</span>        }                                                                                              <span class="comment">// TODO: how the frick do we solve this?</span></div>
-<div class="line"><span class="lineno">   86</span>        <span class="keywordflow">if</span> (depth &gt;= pathToMatch.size()) {                                                             <span class="comment">// TODO: what about files?</span></div>
-<div class="line"><span class="lineno">   87</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Reached end of path&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><span class="lineno">   88</span>            <span class="keywordflow">return</span> std::make_pair(currentLocation.<a class="code hl_variable" href="structconfig_1_1Location.html#a1271b3c08786c0d92ee1a296bc34c67c">precalculatedAbsolutePath</a>, &amp;currentLocation); <span class="comment">// TODO: I think this doesn&#39;t set the root path properly yet, does it?</span></div>
-<div class="line"><span class="lineno">   89</span>        }</div>
-<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">for</span> (std::vector&lt;config::Location&gt;::const_iterator loc = currentLocation.<a class="code hl_variable" href="structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f">locations</a>.begin(); loc != currentLocation.<a class="code hl_variable" href="structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f">locations</a>.end(); ++loc) {</div>
-<div class="line"><span class="lineno">   91</span>            <span class="keywordflow">if</span> (!loc-&gt;pathAsTokens.empty() &amp;&amp; loc-&gt;pathAsTokens[0] == pathToMatch[depth]) {                 <span class="comment">// TODO: breaks if location is &#39;/&#39; -&gt; check if (!loc-&gt;path.empty())</span></div>
-<div class="line"><span class="lineno">   92</span>                std::cout &lt;&lt; <span class="stringliteral">&quot;Location matched: &quot;</span> &lt;&lt; loc-&gt;pathAsTokens[0] &lt;&lt; <span class="stringliteral">&quot;, going deeper&quot;</span> &lt;&lt; std::endl; <span class="comment">// TODO: check the codebase for other possibly unsafe garbage when a vector&lt;string&gt; is empty</span></div>
-<div class="line"><span class="lineno">   93</span>                <span class="keywordflow">return</span> <a class="code hl_function" href="classhttp_1_1Router.html#a57c33b97646590044fcd555838b5f565">routeToPath</a>(pathToMatch, *loc, redirects, depth + 1);                                <span class="comment">// use nearest parent</span></div>
-<div class="line"><span class="lineno">   94</span>            }</div>
-<div class="line"><span class="lineno">   95</span>        }</div>
-<div class="line"><span class="lineno">   96</span>        <span class="comment">// no location matched</span></div>
-<div class="line"><span class="lineno">   97</span>        std::vector&lt;std::string&gt; subDirectory(pathToMatch.begin() + depth, pathToMatch.end());</div>
-<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">return</span> std::make_pair(currentLocation.<a class="code hl_variable" href="structconfig_1_1Location.html#a1271b3c08786c0d92ee1a296bc34c67c">precalculatedAbsolutePath</a> + <a class="code hl_function" href="namespaceshared_1_1string.html#ac0010d0341d2d9250a0f95d1732ba9fb">shared::string::joinPath</a>(subDirectory), &amp;currentLocation);</div>
-<div class="line"><span class="lineno">   99</span>    }</div>
-<div class="ttc" id="aclasshttp_1_1Router_html_a57c33b97646590044fcd555838b5f565"><div class="ttname"><a href="classhttp_1_1Router.html#a57c33b97646590044fcd555838b5f565">http::Router::routeToPath</a></div><div class="ttdeci">std::pair&lt; std::string, const config::Location * &gt; routeToPath(const std::vector&lt; std::string &gt; &amp;uriPath, const config::Location &amp;currentLocation, std::size_t redirects=0, std::size_t depth=0)</div><div class="ttdoc">Traverses m_locations according to a Request's Uri, respecting redirections while avoiding redirect l...</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00072">Router.cpp:72</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Router_8cpp_source.html#l00071">71</a> of file <a class="el" href="Router_8cpp_source.html">Router.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   74</span>                                                              {</div>
+<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">if</span> (depth &gt; <a class="code hl_variable" href="classhttp_1_1Router.html#ae806663a58c54da78a19cb22827ca53e">MAX_REDIRECTS</a>) {</div>
+<div class="line"><span class="lineno">   76</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af821caf2cfdc4a65b948ad4862cadaf8">LOOP_DETECTED</a>, <span class="stringliteral">&quot;Depth exceeded MAX_REDIRECTS&quot;</span>);</div>
+<div class="line"><span class="lineno">   77</span>        }</div>
+<div class="line"><span class="lineno">   78</span>        <span class="keywordflow">if</span> (redirects &gt; <a class="code hl_variable" href="classhttp_1_1Router.html#ae806663a58c54da78a19cb22827ca53e">MAX_REDIRECTS</a>) {</div>
+<div class="line"><span class="lineno">   79</span>            <span class="keywordflow">throw</span> <a class="code hl_class" href="classhttp_1_1exception.html">http::exception</a>(<a class="code hl_enumvalue" href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af821caf2cfdc4a65b948ad4862cadaf8">LOOP_DETECTED</a>, <span class="stringliteral">&quot;Redirects exceeded MAX_REDIRECTS&quot;</span>);</div>
+<div class="line"><span class="lineno">   80</span>        }</div>
+<div class="line"><span class="lineno">   81</span>        <span class="keywordflow">if</span> (currentLocation.<a class="code hl_function" href="structconfig_1_1Location.html#a08fc4cccff64cc1e84bbfc9d78c1b896">hasRedirect</a>()) { <span class="comment">// restart routing with the new route? or actually send a redirect response?</span></div>
+<div class="line"><span class="lineno">   82</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Redirecting to &quot;</span> &lt;&lt; currentLocation.<a class="code hl_variable" href="structconfig_1_1Location.html#af07f8a41a8ab3e137cb4b4cd2e6f6d05">redirectUri</a> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   83</span>            <span class="keywordflow">return</span> <a class="code hl_function" href="classhttp_1_1Router.html#a57c33b97646590044fcd555838b5f565">routeToPath</a>(currentLocation.<a class="code hl_variable" href="structconfig_1_1Location.html#ad93b81da62b72b6cb6794f56b7dbe00f">redirectUriAsTokens</a>, <a class="code hl_variable" href="classhttp_1_1Router.html#ac0c994984463cfa7c8584505e37114fa">m_rootLocation</a>, redirects + 1, 0); <span class="comment">// TODO: invalid, this would then always return serverRoot&#39;s route</span></div>
+<div class="line"><span class="lineno">   84</span>        }                                                                                              <span class="comment">// TODO: how the frick do we solve this?</span></div>
+<div class="line"><span class="lineno">   85</span>        <span class="keywordflow">if</span> (depth &gt;= pathToMatch.size()) {                                                             <span class="comment">// TODO: what about files?</span></div>
+<div class="line"><span class="lineno">   86</span>            <span class="keywordflow">return</span> std::make_pair(currentLocation.<a class="code hl_variable" href="structconfig_1_1Location.html#a1271b3c08786c0d92ee1a296bc34c67c">precalculatedAbsolutePath</a>, &amp;currentLocation);        <span class="comment">// TODO: I think this doesn&#39;t set the root path properly yet, does it?</span></div>
+<div class="line"><span class="lineno">   87</span>        }</div>
+<div class="line"><span class="lineno">   88</span>        <span class="keywordflow">for</span> (std::vector&lt;config::Location&gt;::const_iterator loc = currentLocation.<a class="code hl_variable" href="structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f">locations</a>.begin(); loc != currentLocation.<a class="code hl_variable" href="structconfig_1_1Location.html#a9ce52f265254146e5cae2ee150d66f1f">locations</a>.end(); ++loc) {</div>
+<div class="line"><span class="lineno">   89</span>            <span class="keywordflow">if</span> (!loc-&gt;pathAsTokens.empty() &amp;&amp; loc-&gt;pathAsTokens[0] == pathToMatch[depth]) { <span class="comment">// TODO: breaks if location is &#39;/&#39; -&gt; check if (!loc-&gt;path.empty())</span></div>
+<div class="line"><span class="lineno">   90</span>                <span class="keywordflow">return</span> <a class="code hl_function" href="classhttp_1_1Router.html#a57c33b97646590044fcd555838b5f565">routeToPath</a>(pathToMatch, *loc, redirects, depth + 1);                <span class="comment">// use nearest parent</span></div>
+<div class="line"><span class="lineno">   91</span>            }</div>
+<div class="line"><span class="lineno">   92</span>        }</div>
+<div class="line"><span class="lineno">   93</span>        <span class="comment">// no location matched</span></div>
+<div class="line"><span class="lineno">   94</span>        std::vector&lt;std::string&gt; subDirectory(pathToMatch.begin() + depth, pathToMatch.end());</div>
+<div class="line"><span class="lineno">   95</span>        <span class="keywordflow">return</span> std::make_pair(currentLocation.<a class="code hl_variable" href="structconfig_1_1Location.html#a1271b3c08786c0d92ee1a296bc34c67c">precalculatedAbsolutePath</a> + <a class="code hl_function" href="namespaceshared_1_1string.html#ac0010d0341d2d9250a0f95d1732ba9fb">shared::string::joinPath</a>(subDirectory), &amp;currentLocation);</div>
+<div class="line"><span class="lineno">   96</span>    }</div>
+<div class="ttc" id="aclasshttp_1_1Router_html_a57c33b97646590044fcd555838b5f565"><div class="ttname"><a href="classhttp_1_1Router.html#a57c33b97646590044fcd555838b5f565">http::Router::routeToPath</a></div><div class="ttdeci">std::pair&lt; std::string, const config::Location * &gt; routeToPath(const std::vector&lt; std::string &gt; &amp;uriPath, const config::Location &amp;currentLocation, std::size_t redirects=0, std::size_t depth=0)</div><div class="ttdoc">Traverses m_locations according to a Request's Uri, respecting redirections while avoiding redirect l...</div><div class="ttdef"><b>Definition</b> <a href="Router_8cpp_source.html#l00071">Router.cpp:71</a></div></div>
 <div class="ttc" id="aclasshttp_1_1Router_html_ae806663a58c54da78a19cb22827ca53e"><div class="ttname"><a href="classhttp_1_1Router.html#ae806663a58c54da78a19cb22827ca53e">http::Router::MAX_REDIRECTS</a></div><div class="ttdeci">static const std::size_t MAX_REDIRECTS</div><div class="ttdef"><b>Definition</b> <a href="Router_8hpp_source.html#l00089">Router.hpp:89</a></div></div>
 <div class="ttc" id="aclasshttp_1_1exception_html"><div class="ttname"><a href="classhttp_1_1exception.html">http::exception</a></div><div class="ttdef"><b>Definition</b> <a href="http_8hpp_source.html#l00029">http.hpp:29</a></div></div>
 <div class="ttc" id="anamespacehttp_html_ac125d409f7c7b6034fe7e49d237b7762af821caf2cfdc4a65b948ad4862cadaf8"><div class="ttname"><a href="namespacehttp.html#ac125d409f7c7b6034fe7e49d237b7762af821caf2cfdc4a65b948ad4862cadaf8">http::LOOP_DETECTED</a></div><div class="ttdeci">@ LOOP_DETECTED</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00047">types.hpp:46</a></div></div>

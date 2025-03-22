@@ -1,26 +1,38 @@
 <map id="http::GetHandler::handle" name="http::GetHandler::handle">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,220,188,245"/>
-<area shape="rect" id="Node000002" href="$classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="505,46,704,72"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,218,115,179,142,126,182,73,207,50,235,31,276,15,320,5,365,3,410,5,493,19,560,39,558,44,492,25,409,10,365,8,321,11,278,20,237,36,210,54,186,76,147,129,120,181,105,220"/>
-<area shape="rect" id="Node000003" href="$classhttp_1_1Response.html#a4ade0256d440a548f4dfd7f4bc08ffb4" title=" " alt="" coords="256,46,437,72"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="104,218,153,152,191,113,235,81,248,74,250,79,237,85,194,117,157,155,108,221"/>
-<area shape="rect" id="Node000004" href="$namespacehttp.html#a05c1592a4827674d8f42af19d8b42b29" title="Generate the Directory Listing HTML for the passed uri." alt="" coords="257,145,437,170"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="130,217,235,180,271,171,272,176,237,185,131,222"/>
-<area shape="rect" id="Node000006" href="$classhttp_1_1GetHandler.html#a1d39cf89034ec73fb9c80fa66cbbc4cc" title=" " alt="" coords="241,96,452,121"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="110,217,162,175,197,151,235,131,258,122,260,127,237,136,200,156,165,179,113,222"/>
-<area shape="rect" id="Node000007" href="$classhttp_1_1Request.html#abbfb6ceb0a5e79f5ec0aa2591f325a20" title=" " alt="" coords="250,194,443,220"/>
-<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="188,220,236,215,237,221,189,226"/>
-<area shape="rect" id="Node000008" href="$classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="268,244,425,269"/>
-<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="189,238,254,245,254,250,188,244"/>
-<area shape="rect" id="Node000009" href="$classhttp_1_1Response.html#ac79941baf008165ba0c70903246d2374" title=" " alt="" coords="257,293,437,318"/>
-<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="131,242,237,279,268,287,267,292,235,284,129,247"/>
-<area shape="rect" id="Node000010" href="$classhttp_1_1Response.html#ab52959eaac18026a4f1c4ce3006731ea" title=" " alt="" coords="249,342,444,368"/>
-<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="113,243,165,285,200,309,237,328,256,336,254,341,235,333,197,313,162,290,110,247"/>
-<area shape="rect" id="Node000011" href="$classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8" title=" " alt="" coords="236,392,457,417"/>
-<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="108,243,157,309,194,346,237,378,250,384,248,389,235,382,191,350,153,312,104,247"/>
-<area shape="rect" id="Node000012" href="$namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="281,442,413,482"/>
-<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="106,244,123,280,151,330,190,383,212,407,237,427,269,444,266,448,235,432,209,410,186,386,147,333,118,283,101,246"/>
-<area shape="rect" id="Node000005" href="$namespaceshared_1_1file.html#ad8229e44f8f1d734706169e4e7b663e5" title=" " alt="" coords="505,145,704,170"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="437,155,491,155,491,160,437,160"/>
-<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="413,93,524,72,525,77,414,98"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,331,188,356"/>
+<area shape="rect" id="Node000002" href="$classhttp_1_1GetHandler.html#ad2e6cfce6677f48080dfffb69f3e2cca" title=" " alt="" coords="236,228,429,253"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,328,289,256,291,261,128,333"/>
+<area shape="rect" id="Node000014" href="$classhttp_1_1GetHandler.html#aee69207d61e468765d584f770552463f" title=" " alt="" coords="237,408,428,433"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="137,354,281,401,279,406,136,359"/>
+<area shape="rect" id="Node000003" href="$namespacehttp.html#a05c1592a4827674d8f42af19d8b42b29" title="Generate the Directory Listing HTML for the passed uri." alt="" coords="500,5,680,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="337,227,354,189,384,138,425,85,449,60,476,40,486,34,489,38,479,44,452,64,429,88,388,141,359,192,342,229"/>
+<area shape="rect" id="Node000005" href="$classhttp_1_1GetHandler.html#a1d39cf89034ec73fb9c80fa66cbbc4cc" title=" " alt="" coords="485,55,695,80"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="340,226,392,161,431,123,476,90,493,82,495,87,479,95,434,127,396,164,344,230"/>
+<area shape="rect" id="Node000007" href="$classhttp_1_1Request.html#a6162975c48ac5fc6c9efc69af861fa5d" title=" " alt="" coords="495,104,685,129"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="347,226,401,183,437,160,476,140,500,131,502,136,478,144,440,164,404,188,350,230"/>
+<area shape="rect" id="Node000008" href="$classhttp_1_1Request.html#abbfb6ceb0a5e79f5ec0aa2591f325a20" title=" " alt="" coords="493,153,687,179"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="367,225,477,189,513,179,515,184,478,194,369,230"/>
+<area shape="rect" id="Node000009" href="$classhttp_1_1Request.html#a241197dcec6a918472a7258394a38a16" title=" " alt="" coords="511,203,669,228"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="429,229,497,222,498,227,430,234"/>
+<area shape="rect" id="Node000010" href="$classhttp_1_1Response.html#ac79941baf008165ba0c70903246d2374" title=" " alt="" coords="500,252,680,277"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="430,247,487,252,486,258,429,252"/>
+<area shape="rect" id="Node000011" href="$classhttp_1_1Response.html#ab52959eaac18026a4f1c4ce3006731ea" title=" " alt="" coords="493,301,687,327"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="368,251,478,287,510,296,509,301,477,293,366,256"/>
+<area shape="rect" id="Node000012" href="$classhttp_1_1Response.html#a4971580a804aeee446a85c6c5f5ec6e8" title=" " alt="" coords="479,351,701,376"/>
+<area shape="poly" id="edge11_Node000002_Node000012" title=" " alt="" coords="350,251,404,294,440,317,478,337,499,344,497,349,476,342,437,322,401,298,347,256"/>
+<area shape="rect" id="Node000013" href="$namespaceshared_1_1string.html#a7498d7d25acc1a6d216ef30b3ccfa577" title=" " alt="" coords="524,401,656,441"/>
+<area shape="poly" id="edge12_Node000002_Node000013" title=" " alt="" coords="345,252,397,316,435,354,479,386,512,402,510,407,476,391,432,358,393,320,341,255"/>
+<area shape="rect" id="Node000004" href="$namespaceshared_1_1file.html#ad8229e44f8f1d734706169e4e7b663e5" title=" " alt="" coords="751,5,949,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="680,15,737,15,737,21,680,21"/>
+<area shape="rect" id="Node000006" href="$classhttp_1_1Router.html#adc2958c32ba4e5e222a993ddba2f715c" title="Checks whether a path exists in the file system, and whether it is a file or directory." alt="" coords="751,55,949,80"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="696,65,737,65,737,70,696,70"/>
+<area shape="poly" id="edge17_Node000014_Node000011" title=" " alt="" coords="351,405,406,371,476,337,504,328,506,333,478,342,408,376,354,410"/>
+<area shape="poly" id="edge18_Node000014_Node000012" title=" " alt="" coords="390,405,518,376,520,382,391,411"/>
+<area shape="poly" id="edge19_Node000014_Node000013" title=" " alt="" coords="428,418,510,418,510,423,428,423"/>
+<area shape="rect" id="Node000015" href="$classhttp_1_1Response.html#a6e5a692815da6bf22087139625f51b93" title=" " alt="" coords="479,465,701,491"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="391,431,520,460,518,465,390,436"/>
+<area shape="rect" id="Node000016" href="$classhttp_1_1Response.html#a4ade0256d440a548f4dfd7f4bc08ffb4" title=" " alt="" coords="499,515,681,540"/>
+<area shape="poly" id="edge15_Node000014_Node000016" title=" " alt="" coords="354,431,408,466,478,501,501,509,500,514,476,506,405,471,351,436"/>
+<area shape="rect" id="Node000017" href="$classhttp_1_1GetHandler.html#ad45de1adc22531a58e10940b77e700a8" title=" " alt="" coords="477,564,703,589"/>
+<area shape="poly" id="edge16_Node000014_Node000017" title=" " alt="" coords="346,432,398,490,436,523,479,550,494,557,492,562,476,555,433,527,395,494,342,435"/>
 </map>
