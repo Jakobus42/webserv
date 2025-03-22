@@ -37,7 +37,6 @@ namespace http {
 	//
 
 	FileType Router::checkFileType(const std::string& absolutePath) {
-		std::cout << "Checking FileType for path: " << absolutePath << std::endl;
 		struct stat statBuf;
 		if (stat(absolutePath.c_str(), &statBuf) != 0) {
 			return _NOT_FOUND; // Path does not exist
@@ -84,8 +83,7 @@ namespace http {
 			return routeToPath(currentLocation.redirectUriAsTokens, m_rootLocation, redirects + 1, 0); // TODO: invalid, this would then always return serverRoot's route
 		}																							   // TODO: how the frick do we solve this?
 		if (depth >= pathToMatch.size()) {															   // TODO: what about files?
-			std::cout << "Reached end of path" << std::endl;
-			return std::make_pair(currentLocation.precalculatedAbsolutePath, &currentLocation); // TODO: I think this doesn't set the root path properly yet, does it?
+			return std::make_pair(currentLocation.precalculatedAbsolutePath, &currentLocation);		   // TODO: I think this doesn't set the root path properly yet, does it?
 		}
 		for (std::vector<config::Location>::const_iterator loc = currentLocation.locations.begin(); loc != currentLocation.locations.end(); ++loc) {
 			if (!loc->pathAsTokens.empty() && loc->pathAsTokens[0] == pathToMatch[depth]) { // TODO: breaks if location is '/' -> check if (!loc->path.empty())

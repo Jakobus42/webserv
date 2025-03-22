@@ -15,8 +15,8 @@ namespace http {
 	 */
 	DeleteHandler::~DeleteHandler() {}
 
-	void DeleteHandler::deleteFile(Response& response, const std::string& filePath) {
-		FileType fileType = m_router.checkFileType(filePath);
+	void DeleteHandler::deleteFile(const Request& request, Response& response, const std::string& filePath) {
+		FileType fileType = request.getFileType();
 
 		if (fileType == _NOT_FOUND) { // TODO: replace with actual file name
 			throw http::exception(NOT_FOUND, "DELETE: File doesn't exist");
@@ -41,7 +41,7 @@ namespace http {
 		switch (m_state) {
 			case PENDING:
 			case PROCESSING: {
-				return deleteFile(response, request.getUri().safeAbsolutePath);
+				return deleteFile(request, response, request.getUri().safeAbsolutePath);
 			}
 
 			case DONE: {

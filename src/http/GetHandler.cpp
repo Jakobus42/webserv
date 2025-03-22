@@ -28,7 +28,7 @@ namespace http {
 
 	void GetHandler::openFile(const Request& request, Response& response) {
 		const config::Location& location = *request.getLocation();
-		FileType fileType = m_router.checkFileType(request.getUri().safeAbsolutePath);
+		FileType fileType = request.getFileType();
 
 		if (fileType == _NOT_FOUND) {
 			throw http::exception(NOT_FOUND, "GET: File doesn't exist");
@@ -63,22 +63,15 @@ namespace http {
 	}
 
 	void GetHandler::readFile(Response& response) {
-		std::vector<char> buffer(GET_BUFFER_SIZE);
+		std::vector<char> buffer(this->getBufferSize());
 
-		std::cout << " state is " << m_fileStream.good() << std::endl;
-		m_fileStream.read(buffer.data(), GET_BUFFER_SIZE);
-		std::cout << " state is " << m_fileStream.good() << m_fileStream.eof() << std::endl;
+		m_fileStream.read(buffer.data(), this->getBufferSize());
 		std::streamsize bytesRead = m_fileStream.gcount();
 
-		std::cout << "read " << bytesRead << " bytes " << std::endl;
 		if (bytesRead > 0) {
-			// std::cout << "appending:" << std::endl;
-			// std::cout << buffer << std::endl;
 			response.appendToBody(buffer.data(), bytesRead);
-			return; // more to read
+			return;
 		}
-		std::cout << "Read complete, preparing for sendoff. Body:" << std::endl;
-		std::cout << response.getBody() << std::endl;
 
 		m_fileStream.close();
 		response.setHeader("Content-Length", shared::string::to_string(response.getBody().size()));

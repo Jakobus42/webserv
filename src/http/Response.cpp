@@ -13,6 +13,7 @@ namespace http {
 		: m_statusCode(OK)
 		, m_headers()
 		, m_body()
+		, m_readPos(0)
 		, m_data() {
 	}
 
@@ -31,8 +32,6 @@ namespace http {
 	}
 
 	void Response::serialize() {
-		m_data.reset();
-
 		std::string statusLine = HTTP_VERSION + " " +
 			shared::string::to_string(static_cast<int>(m_statusCode)) + " " +
 			getStatusMessage(m_statusCode) + CRLF;
@@ -64,11 +63,22 @@ namespace http {
 
 	void Response::appendToBody(const char* data, std::size_t len) { m_body.append(data, len); }
 
-	shared::Buffer<RESPONSE_BUFFER_SIZE>& Response::getData() { return m_data; }
+	std::string& Response::getData() { return m_data; }
 
 	StatusCode Response::getStatusCode() const { return m_statusCode; }
 
 	const std::string& Response::getBody() const { return m_body; }
+
+	std::size_t Response::getReadPos() const { return m_readPos; }
+
+	bool Response::eof() const { return m_readPos >= m_data.size(); }
+
+	void Response::advanceReadPos(std::size_t n) {
+		m_readPos += n;
+		if (m_readPos > m_data.size()) {
+			m_readPos = m_data.size();
+		}
+	}
 
 
 } /* namespace http */

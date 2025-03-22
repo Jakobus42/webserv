@@ -21,7 +21,7 @@ namespace http {
 	PostHandler::~PostHandler() {}
 
 	void PostHandler::createFile(const Request& request) {
-		FileType fileType = m_router.checkFileType(request.getUri().safeAbsolutePath);
+		FileType fileType = request.getFileType();
 
 		if (fileType == _NOT_FOUND) {
 			throw http::exception(FORBIDDEN, "POST: Directory could not be found");
@@ -72,7 +72,6 @@ namespace http {
 
 					m_fileStream.write(requestBody.data() + m_bytesWritten, bytesToWrite); // TODO: verify whether this could break & if so, what error to throw
 					m_bytesWritten += bytesToWrite;
-					std::cout << "Total bytes written now " << m_bytesWritten << std::endl;
 				} catch (std::exception& e) {
 					std::cerr << "PostHandler::handle(): " << e.what() << std::endl;
 					m_fileStream.close();

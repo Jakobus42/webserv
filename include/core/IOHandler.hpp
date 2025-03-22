@@ -27,14 +27,17 @@ namespace core {
 			void handleRead(int32_t fd);
 			void handleWrite(int32_t fd);
 
+			std::size_t getChunkSize() const { return CHUNK_SIZE; }
+
 		private:
+			static const std::size_t CHUNK_SIZE = 16384; // 16 KB
 			http::VirtualServer& m_vServer;
 
 			http::RequestParser m_reqParser;
 			http::RequestProcessor m_reqProcessor;
 
 			std::queue<http::Request*> m_requests;
-			std::queue<http::Response*> m_responses; // todo que
+			std::queue<http::Response*> m_responses;
 	};
 
 } /* namespace core */

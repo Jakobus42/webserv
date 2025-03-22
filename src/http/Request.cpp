@@ -17,7 +17,8 @@ namespace http {
 		, m_version(HTTP_VERSION)
 		, m_statusCode(OK)
 		, m_uri()
-		, m_requestedLocation(NULL) {
+		, m_requestedLocation(NULL)
+		, m_fileType(FILE) {
 	}
 
 	/**
@@ -93,6 +94,8 @@ namespace http {
 
 	const config::Location* Request::getLocation() const { return m_requestedLocation; }
 
+	FileType Request::getFileType() const { return m_fileType; }
+
 	bool Request::hasError() const {
 		return m_statusCode >= 400;
 	}
@@ -123,6 +126,8 @@ namespace http {
 	void Request::setStatusCode(StatusCode statusCode) { m_statusCode = statusCode; }
 
 	void Request::setLocation(const config::Location* location) { m_requestedLocation = location; }
+
+	void Request::setFileType(FileType type) { m_fileType = type; }
 
 	void Request::validateUriRaw(const char* uri, std::size_t len) {
 		if (len == 0 || uri == NULL) {

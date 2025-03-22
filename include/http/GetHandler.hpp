@@ -23,8 +23,10 @@ namespace http {
 		private:
 			void getFilePath(const config::Location& location, const std::string& filePath, std::string& target);
 
+			std::streamsize getBufferSize() const { return BUFFER_SIZE; }
+
 		private:
-			static const std::streamsize GET_BUFFER_SIZE = 16384; // 16 KB
+			static const std::streamsize BUFFER_SIZE = 16384; // 16 KB
 			std::ifstream m_fileStream;
 	};
 

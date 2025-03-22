@@ -34,6 +34,7 @@ namespace http {
 			StatusCode getStatusCode() const;
 			bool hasError() const;
 			const config::Location* getLocation() const;
+			FileType getFileType() const;
 
 			void setType(RequestType type);
 			void setMethod(const char* method, std::size_t len);
@@ -43,6 +44,7 @@ namespace http {
 			void setHeader(const char* key, std::size_t keyLen, const char* value, std::size_t valueLen);
 			void setStatusCode(StatusCode statusCode);
 			void setLocation(const config::Location* location);
+			void setFileType(FileType type);
 
 			bool hasHeader(const std::string& key) const;
 			bool needsSafePath() const;
@@ -69,6 +71,7 @@ namespace http {
 			http::StatusCode m_statusCode;
 			Uri m_uri;
 			const config::Location* m_requestedLocation;
+			FileType m_fileType;
 	};
 
 } /* namespace http */
