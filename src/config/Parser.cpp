@@ -276,13 +276,13 @@ namespace config {
 				throw parse_exception("Server #" + shared::string::fromNum(i) + ": Root path is invalid");
 			}
 			// TODO: check whether that directory exists and is accessible?
-			if (shared::file::isDirectory(server->location.precalculatedAbsolutePath)) {
+			if (!shared::file::isDirectory(server->location.precalculatedAbsolutePath)) {
 				throw parse_exception("Server #" + shared::string::fromNum(i) + ": root is not a directory");
 			}
-			if (shared::file::isReadable(server->location.precalculatedAbsolutePath)) {
+			if (!shared::file::isReadable(server->location.precalculatedAbsolutePath)) {
 				throw parse_exception("Server #" + shared::string::fromNum(i) + ": root is not readable");
 			}
-			if (shared::file::isWritable(server->location.precalculatedAbsolutePath)) {
+			if (!shared::file::isWritable(server->location.precalculatedAbsolutePath)) {
 				throw parse_exception("Server #" + shared::string::fromNum(i) + ": root is not writable");
 			}
 			assignAbsolutePaths(*server, server->location); // start with server & rootLocation
