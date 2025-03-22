@@ -98,56 +98,87 @@ $(document).ready(function(){initNavTree('fileUtils_8cpp_source.html',''); initR
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        }</div>
 </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="comment">// Check if a file is readable</span></div>
-<div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="namespaceshared_1_1file.html#aabd1ef499991ebe564697638bfc9a943">   24</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceshared_1_1file.html#aabd1ef499991ebe564697638bfc9a943">isReadable</a>(<span class="keyword">const</span> std::string&amp; path) {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="keywordflow">return</span> (access(path.c_str(), R_OK) == 0);</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        }</div>
+<div class="foldopen" id="foldopen00023" data-start="{" data-end="}">
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="namespaceshared_1_1file.html#a6f4c8ce23e23d030abc36929d7eb8a82">   23</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceshared_1_1file.html#a6f4c8ce23e23d030abc36929d7eb8a82">isDirectory</a>(<span class="keyword">const</span> std::string&amp; path) {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            <span class="keyword">struct </span>stat info;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="keywordflow">if</span> (stat(path.c_str(), &amp;info) != 0) {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            <span class="keywordflow">return</span> S_ISDIR(info.st_mode);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        }</div>
 </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="comment">// Check if a file is writable</span></div>
-<div class="foldopen" id="foldopen00029" data-start="{" data-end="}">
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="namespaceshared_1_1file.html#a212dfb3af0541e3557de27e0be2e2784">   29</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceshared_1_1file.html#a212dfb3af0541e3557de27e0be2e2784">isWritable</a>(<span class="keyword">const</span> std::string&amp; path) {</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            <span class="keywordflow">return</span> (access(path.c_str(), W_OK) == 0);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        }</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="comment">// Check if a file is readable</span></div>
+<div class="foldopen" id="foldopen00032" data-start="{" data-end="}">
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="namespaceshared_1_1file.html#aabd1ef499991ebe564697638bfc9a943">   32</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceshared_1_1file.html#aabd1ef499991ebe564697638bfc9a943">isReadable</a>(<span class="keyword">const</span> std::string&amp; path) {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            <span class="keyword">struct </span>stat info;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <span class="keywordflow">if</span> (stat(path.c_str(), &amp;info) != 0) {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            }</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            <span class="keywordflow">return</span> (access(path.c_str(), R_OK) == 0 &amp;&amp; (info.st_mode &amp; S_IRUSR) != 0);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        }</div>
 </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="comment">// Check if a file is executable</span></div>
-<div class="foldopen" id="foldopen00034" data-start="{" data-end="}">
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="namespaceshared_1_1file.html#a1203f1b84367162897b8b87b8d23b65b">   34</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceshared_1_1file.html#a1203f1b84367162897b8b87b8d23b65b">isExecutable</a>(<span class="keyword">const</span> std::string&amp; path) {</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <span class="keywordflow">return</span> (access(path.c_str(), X_OK) == 0);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        }</div>
-</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="comment">// Check if a directory exists</span></div>
-<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="namespaceshared_1_1file.html#ad8229e44f8f1d734706169e4e7b663e5">   39</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceshared_1_1file.html#ad8229e44f8f1d734706169e4e7b663e5">directoryExists</a>(<span class="keyword">const</span> std::string&amp; path) {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keyword">struct </span>stat info;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            <span class="keywordflow">return</span> (stat(path.c_str(), &amp;info) == 0) &amp;&amp; (info.st_mode &amp; S_IFDIR);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        }</div>
-</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="comment">// Check if a directory is accessible (read &amp; execute)</span></div>
-<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="namespaceshared_1_1file.html#a47a5249fff583aa9f3469a18a3f45c38">   45</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceshared_1_1file.html#a47a5249fff583aa9f3469a18a3f45c38">dirIsAccessible</a>(<span class="keyword">const</span> std::string&amp; path) {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keywordflow">return</span> access(path.c_str(), R_OK | X_OK) == 0;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="comment">// Check if a file is writable</span></div>
+<div class="foldopen" id="foldopen00041" data-start="{" data-end="}">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="namespaceshared_1_1file.html#a212dfb3af0541e3557de27e0be2e2784">   41</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceshared_1_1file.html#a212dfb3af0541e3557de27e0be2e2784">isWritable</a>(<span class="keyword">const</span> std::string&amp; path) {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keyword">struct </span>stat info;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keywordflow">if</span> (stat(path.c_str(), &amp;info) != 0) {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keywordflow">return</span> (access(path.c_str(), W_OK) == 0);</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        }</div>
 </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    } <span class="comment">// namespace file</span></div>
+<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="namespaceshared_1_1file.html#a67ff7400150e99b481dd04a050d2e9e7">   49</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceshared_1_1file.html#a67ff7400150e99b481dd04a050d2e9e7">isDirUsable</a>(<span class="keyword">const</span> std::string&amp; path) {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <span class="keyword">struct </span>stat info;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keywordflow">if</span> (stat(path.c_str(), &amp;info) != 0) {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="comment">// Check if it&#39;s a directory and has read+write+execute permissions</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <span class="keywordflow">return</span> S_ISDIR(info.st_mode) &amp;&amp; (info.st_mode &amp; S_IRUSR) &amp;&amp; (info.st_mode &amp; S_IWUSR) &amp;&amp; (info.st_mode &amp; S_IXUSR);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
 </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>} <span class="comment">// namespace shared</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="comment">// Check if a file is executable</span></div>
+<div class="foldopen" id="foldopen00059" data-start="{" data-end="}">
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="namespaceshared_1_1file.html#a1203f1b84367162897b8b87b8d23b65b">   59</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceshared_1_1file.html#a1203f1b84367162897b8b87b8d23b65b">isExecutable</a>(<span class="keyword">const</span> std::string&amp; path) {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <span class="keywordflow">return</span> (access(path.c_str(), X_OK) == 0);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        }</div>
+</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="comment">// Check if a directory exists</span></div>
+<div class="foldopen" id="foldopen00064" data-start="{" data-end="}">
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="namespaceshared_1_1file.html#ad8229e44f8f1d734706169e4e7b663e5">   64</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceshared_1_1file.html#ad8229e44f8f1d734706169e4e7b663e5">directoryExists</a>(<span class="keyword">const</span> std::string&amp; path) {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <span class="keyword">struct </span>stat info;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            <span class="keywordflow">return</span> (stat(path.c_str(), &amp;info) == 0) &amp;&amp; (info.st_mode &amp; S_IFDIR);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        }</div>
+</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="comment">// Check if a directory is accessible (read &amp; execute)</span></div>
+<div class="foldopen" id="foldopen00070" data-start="{" data-end="}">
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="namespaceshared_1_1file.html#a47a5249fff583aa9f3469a18a3f45c38">   70</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="namespaceshared_1_1file.html#a47a5249fff583aa9f3469a18a3f45c38">dirIsAccessible</a>(<span class="keyword">const</span> std::string&amp; path) {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordflow">return</span> access(path.c_str(), R_OK | X_OK) == 0;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        }</div>
+</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    } <span class="comment">// namespace file</span></div>
+</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>} <span class="comment">// namespace shared</span></div>
 </div>
 <div class="ttc" id="afileUtils_8hpp_html"><div class="ttname"><a href="fileUtils_8hpp.html">fileUtils.hpp</a></div></div>
 <div class="ttc" id="anamespaceshared_1_1file_html_a021f6efc8707aadff70a9742726bb825"><div class="ttname"><a href="namespaceshared_1_1file.html#a021f6efc8707aadff70a9742726bb825">shared::file::exists</a></div><div class="ttdeci">bool exists(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="fileUtils_8cpp_source.html#l00007">fileUtils.cpp:7</a></div></div>
-<div class="ttc" id="anamespaceshared_1_1file_html_a1203f1b84367162897b8b87b8d23b65b"><div class="ttname"><a href="namespaceshared_1_1file.html#a1203f1b84367162897b8b87b8d23b65b">shared::file::isExecutable</a></div><div class="ttdeci">bool isExecutable(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="fileUtils_8cpp_source.html#l00034">fileUtils.cpp:34</a></div></div>
-<div class="ttc" id="anamespaceshared_1_1file_html_a212dfb3af0541e3557de27e0be2e2784"><div class="ttname"><a href="namespaceshared_1_1file.html#a212dfb3af0541e3557de27e0be2e2784">shared::file::isWritable</a></div><div class="ttdeci">bool isWritable(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="fileUtils_8cpp_source.html#l00029">fileUtils.cpp:29</a></div></div>
+<div class="ttc" id="anamespaceshared_1_1file_html_a1203f1b84367162897b8b87b8d23b65b"><div class="ttname"><a href="namespaceshared_1_1file.html#a1203f1b84367162897b8b87b8d23b65b">shared::file::isExecutable</a></div><div class="ttdeci">bool isExecutable(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="fileUtils_8cpp_source.html#l00059">fileUtils.cpp:59</a></div></div>
+<div class="ttc" id="anamespaceshared_1_1file_html_a212dfb3af0541e3557de27e0be2e2784"><div class="ttname"><a href="namespaceshared_1_1file.html#a212dfb3af0541e3557de27e0be2e2784">shared::file::isWritable</a></div><div class="ttdeci">bool isWritable(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="fileUtils_8cpp_source.html#l00041">fileUtils.cpp:41</a></div></div>
 <div class="ttc" id="anamespaceshared_1_1file_html_a3c38e3febb8f719c536862741552ba6a"><div class="ttname"><a href="namespaceshared_1_1file.html#a3c38e3febb8f719c536862741552ba6a">shared::file::isRegularFile</a></div><div class="ttdeci">bool isRegularFile(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="fileUtils_8cpp_source.html#l00016">fileUtils.cpp:16</a></div></div>
-<div class="ttc" id="anamespaceshared_1_1file_html_a47a5249fff583aa9f3469a18a3f45c38"><div class="ttname"><a href="namespaceshared_1_1file.html#a47a5249fff583aa9f3469a18a3f45c38">shared::file::dirIsAccessible</a></div><div class="ttdeci">bool dirIsAccessible(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="fileUtils_8cpp_source.html#l00045">fileUtils.cpp:45</a></div></div>
+<div class="ttc" id="anamespaceshared_1_1file_html_a47a5249fff583aa9f3469a18a3f45c38"><div class="ttname"><a href="namespaceshared_1_1file.html#a47a5249fff583aa9f3469a18a3f45c38">shared::file::dirIsAccessible</a></div><div class="ttdeci">bool dirIsAccessible(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="fileUtils_8cpp_source.html#l00070">fileUtils.cpp:70</a></div></div>
 <div class="ttc" id="anamespaceshared_1_1file_html_a527c79e46ae555ae1cecd6ff5ca7e8a1"><div class="ttname"><a href="namespaceshared_1_1file.html#a527c79e46ae555ae1cecd6ff5ca7e8a1">shared::file::fileExists</a></div><div class="ttdeci">bool fileExists(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="fileUtils_8cpp_source.html#l00012">fileUtils.cpp:12</a></div></div>
-<div class="ttc" id="anamespaceshared_1_1file_html_aabd1ef499991ebe564697638bfc9a943"><div class="ttname"><a href="namespaceshared_1_1file.html#aabd1ef499991ebe564697638bfc9a943">shared::file::isReadable</a></div><div class="ttdeci">bool isReadable(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="fileUtils_8cpp_source.html#l00024">fileUtils.cpp:24</a></div></div>
-<div class="ttc" id="anamespaceshared_1_1file_html_ad8229e44f8f1d734706169e4e7b663e5"><div class="ttname"><a href="namespaceshared_1_1file.html#ad8229e44f8f1d734706169e4e7b663e5">shared::file::directoryExists</a></div><div class="ttdeci">bool directoryExists(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="fileUtils_8cpp_source.html#l00039">fileUtils.cpp:39</a></div></div>
+<div class="ttc" id="anamespaceshared_1_1file_html_a67ff7400150e99b481dd04a050d2e9e7"><div class="ttname"><a href="namespaceshared_1_1file.html#a67ff7400150e99b481dd04a050d2e9e7">shared::file::isDirUsable</a></div><div class="ttdeci">bool isDirUsable(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="fileUtils_8cpp_source.html#l00049">fileUtils.cpp:49</a></div></div>
+<div class="ttc" id="anamespaceshared_1_1file_html_a6f4c8ce23e23d030abc36929d7eb8a82"><div class="ttname"><a href="namespaceshared_1_1file.html#a6f4c8ce23e23d030abc36929d7eb8a82">shared::file::isDirectory</a></div><div class="ttdeci">bool isDirectory(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="fileUtils_8cpp_source.html#l00023">fileUtils.cpp:23</a></div></div>
+<div class="ttc" id="anamespaceshared_1_1file_html_aabd1ef499991ebe564697638bfc9a943"><div class="ttname"><a href="namespaceshared_1_1file.html#aabd1ef499991ebe564697638bfc9a943">shared::file::isReadable</a></div><div class="ttdeci">bool isReadable(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="fileUtils_8cpp_source.html#l00032">fileUtils.cpp:32</a></div></div>
+<div class="ttc" id="anamespaceshared_1_1file_html_ad8229e44f8f1d734706169e4e7b663e5"><div class="ttname"><a href="namespaceshared_1_1file.html#ad8229e44f8f1d734706169e4e7b663e5">shared::file::directoryExists</a></div><div class="ttdeci">bool directoryExists(const std::string &amp;path)</div><div class="ttdef"><b>Definition</b> <a href="fileUtils_8cpp_source.html#l00064">fileUtils.cpp:64</a></div></div>
 <div class="ttc" id="anamespaceshared_html"><div class="ttname"><a href="namespaceshared.html">shared</a></div><div class="ttdef"><b>Definition</b> <a href="fileUtils_8cpp_source.html#l00003">fileUtils.cpp:3</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

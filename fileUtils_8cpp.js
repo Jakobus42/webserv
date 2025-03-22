@@ -4,6 +4,8 @@ var fileUtils_8cpp =
     [ "dirIsAccessible", "fileUtils_8cpp.html#a47a5249fff583aa9f3469a18a3f45c38", null ],
     [ "exists", "fileUtils_8cpp.html#a021f6efc8707aadff70a9742726bb825", null ],
     [ "fileExists", "fileUtils_8cpp.html#a527c79e46ae555ae1cecd6ff5ca7e8a1", null ],
+    [ "isDirectory", "fileUtils_8cpp.html#a6f4c8ce23e23d030abc36929d7eb8a82", null ],
+    [ "isDirUsable", "fileUtils_8cpp.html#a67ff7400150e99b481dd04a050d2e9e7", null ],
     [ "isExecutable", "fileUtils_8cpp.html#a1203f1b84367162897b8b87b8d23b65b", null ],
     [ "isReadable", "fileUtils_8cpp.html#aabd1ef499991ebe564697638bfc9a943", null ],
     [ "isRegularFile", "fileUtils_8cpp.html#a3c38e3febb8f719c536862741552ba6a", null ],

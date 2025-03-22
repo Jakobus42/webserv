@@ -74,10 +74,14 @@ Functions</h2></td></tr>
 <tr class="separator:a527c79e46ae555ae1cecd6ff5ca7e8a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c38e3febb8f719c536862741552ba6a" id="r_a3c38e3febb8f719c536862741552ba6a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1file.html#a3c38e3febb8f719c536862741552ba6a">isRegularFile</a> (const std::string &amp;path)</td></tr>
 <tr class="separator:a3c38e3febb8f719c536862741552ba6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f4c8ce23e23d030abc36929d7eb8a82" id="r_a6f4c8ce23e23d030abc36929d7eb8a82"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1file.html#a6f4c8ce23e23d030abc36929d7eb8a82">isDirectory</a> (const std::string &amp;path)</td></tr>
+<tr class="separator:a6f4c8ce23e23d030abc36929d7eb8a82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabd1ef499991ebe564697638bfc9a943" id="r_aabd1ef499991ebe564697638bfc9a943"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1file.html#aabd1ef499991ebe564697638bfc9a943">isReadable</a> (const std::string &amp;path)</td></tr>
 <tr class="separator:aabd1ef499991ebe564697638bfc9a943"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a212dfb3af0541e3557de27e0be2e2784" id="r_a212dfb3af0541e3557de27e0be2e2784"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1file.html#a212dfb3af0541e3557de27e0be2e2784">isWritable</a> (const std::string &amp;path)</td></tr>
 <tr class="separator:a212dfb3af0541e3557de27e0be2e2784"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67ff7400150e99b481dd04a050d2e9e7" id="r_a67ff7400150e99b481dd04a050d2e9e7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1file.html#a67ff7400150e99b481dd04a050d2e9e7">isDirUsable</a> (const std::string &amp;path)</td></tr>
+<tr class="separator:a67ff7400150e99b481dd04a050d2e9e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1203f1b84367162897b8b87b8d23b65b" id="r_a1203f1b84367162897b8b87b8d23b65b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1file.html#a1203f1b84367162897b8b87b8d23b65b">isExecutable</a> (const std::string &amp;path)</td></tr>
 <tr class="separator:a1203f1b84367162897b8b87b8d23b65b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8229e44f8f1d734706169e4e7b663e5" id="r_ad8229e44f8f1d734706169e4e7b663e5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceshared_1_1file.html#ad8229e44f8f1d734706169e4e7b663e5">directoryExists</a> (const std::string &amp;path)</td></tr>
@@ -102,11 +106,11 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="fileUtils_8cpp_source.html#l00039">39</a> of file <a class="el" href="fileUtils_8cpp_source.html">fileUtils.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   39</span>                                                    {</div>
-<div class="line"><span class="lineno">   40</span>            <span class="keyword">struct </span>stat info;</div>
-<div class="line"><span class="lineno">   41</span>            <span class="keywordflow">return</span> (stat(path.c_str(), &amp;info) == 0) &amp;&amp; (info.st_mode &amp; S_IFDIR);</div>
-<div class="line"><span class="lineno">   42</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="fileUtils_8cpp_source.html#l00064">64</a> of file <a class="el" href="fileUtils_8cpp_source.html">fileUtils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   64</span>                                                    {</div>
+<div class="line"><span class="lineno">   65</span>            <span class="keyword">struct </span>stat info;</div>
+<div class="line"><span class="lineno">   66</span>            <span class="keywordflow">return</span> (stat(path.c_str(), &amp;info) == 0) &amp;&amp; (info.st_mode &amp; S_IFDIR);</div>
+<div class="line"><span class="lineno">   67</span>        }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -140,10 +144,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="fileUtils_8cpp_source.html#l00045">45</a> of file <a class="el" href="fileUtils_8cpp_source.html">fileUtils.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   45</span>                                                    {</div>
-<div class="line"><span class="lineno">   46</span>            <span class="keywordflow">return</span> access(path.c_str(), R_OK | X_OK) == 0;</div>
-<div class="line"><span class="lineno">   47</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="fileUtils_8cpp_source.html#l00070">70</a> of file <a class="el" href="fileUtils_8cpp_source.html">fileUtils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   70</span>                                                    {</div>
+<div class="line"><span class="lineno">   71</span>            <span class="keywordflow">return</span> access(path.c_str(), R_OK | X_OK) == 0;</div>
+<div class="line"><span class="lineno">   72</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -173,13 +177,17 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceshared_1_1file_a021f6efc8707aadff70a9742726bb825_icgraph.png" border="0" usemap="#anamespaceshared_1_1file_a021f6efc8707aadff70a9742726bb825_icgraph" alt=""/></div>
 <map name="anamespaceshared_1_1file_a021f6efc8707aadff70a9742726bb825_icgraph" id="anamespaceshared_1_1file_a021f6efc8707aadff70a9742726bb825_icgraph">
-<area shape="rect" title=" " alt="" coords="596,13,737,38"/>
-<area shape="rect" href="namespaceshared_1_1file.html#a527c79e46ae555ae1cecd6ff5ca7e8a1" title=" " alt="" coords="387,13,548,38"/>
-<area shape="poly" title=" " alt="" coords="582,28,548,28,548,23,582,23"/>
-<area shape="rect" href="classhttp_1_1PostHandler.html#a0bd928e2b39bfa19df3c2ad929fdeb59" title=" " alt="" coords="196,5,339,45"/>
-<area shape="poly" title=" " alt="" coords="373,28,339,28,339,23,373,23"/>
+<area shape="rect" title=" " alt="" coords="629,42,771,67"/>
+<area shape="rect" href="namespaceshared_1_1file.html#a527c79e46ae555ae1cecd6ff5ca7e8a1" title=" " alt="" coords="420,42,581,67"/>
+<area shape="poly" title=" " alt="" coords="616,57,581,57,581,52,616,52"/>
+<area shape="rect" href="classhttp_1_1PostHandler.html#a0bd928e2b39bfa19df3c2ad929fdeb59" title=" " alt="" coords="213,5,355,45"/>
+<area shape="poly" title=" " alt="" coords="406,45,355,38,356,32,407,39"/>
+<area shape="rect" href="classconfig_1_1Parser.html#adb5932b97c80ab980d9a4d20689cc3ff" title=" " alt="" coords="196,70,372,95"/>
+<area shape="poly" title=" " alt="" coords="406,70,373,74,372,69,406,64"/>
 <area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="5,5,148,45"/>
-<area shape="poly" title=" " alt="" coords="183,28,148,28,148,23,183,23"/>
+<area shape="poly" title=" " alt="" coords="198,28,148,28,148,23,198,23"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="49,70,104,95"/>
+<area shape="poly" title=" " alt="" coords="182,85,104,85,104,80,182,80"/>
 </map>
 </div>
 
@@ -221,14 +229,88 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceshared_1_1file_a527c79e46ae555ae1cecd6ff5ca7e8a1_icgraph.png" border="0" usemap="#anamespaceshared_1_1file_a527c79e46ae555ae1cecd6ff5ca7e8a1_icgraph" alt=""/></div>
 <map name="anamespaceshared_1_1file_a527c79e46ae555ae1cecd6ff5ca7e8a1_icgraph" id="anamespaceshared_1_1file_a527c79e46ae555ae1cecd6ff5ca7e8a1_icgraph">
-<area shape="rect" title=" " alt="" coords="387,13,548,38"/>
-<area shape="rect" href="classhttp_1_1PostHandler.html#a0bd928e2b39bfa19df3c2ad929fdeb59" title=" " alt="" coords="196,5,339,45"/>
-<area shape="poly" title=" " alt="" coords="373,28,339,28,339,23,373,23"/>
+<area shape="rect" title=" " alt="" coords="420,42,581,67"/>
+<area shape="rect" href="classhttp_1_1PostHandler.html#a0bd928e2b39bfa19df3c2ad929fdeb59" title=" " alt="" coords="213,5,355,45"/>
+<area shape="poly" title=" " alt="" coords="406,45,355,38,356,32,407,39"/>
+<area shape="rect" href="classconfig_1_1Parser.html#adb5932b97c80ab980d9a4d20689cc3ff" title=" " alt="" coords="196,70,372,95"/>
+<area shape="poly" title=" " alt="" coords="406,70,373,74,372,69,406,64"/>
 <area shape="rect" href="classhttp_1_1PostHandler.html#ae9111139a5a45aab962d6dff1c507704" title=" " alt="" coords="5,5,148,45"/>
-<area shape="poly" title=" " alt="" coords="183,28,148,28,148,23,183,23"/>
+<area shape="poly" title=" " alt="" coords="198,28,148,28,148,23,198,23"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="49,70,104,95"/>
+<area shape="poly" title=" " alt="" coords="182,85,104,85,104,80,182,80"/>
 </map>
 </div>
 
+</div>
+</div>
+<a id="a6f4c8ce23e23d030abc36929d7eb8a82" name="a6f4c8ce23e23d030abc36929d7eb8a82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f4c8ce23e23d030abc36929d7eb8a82">&#9670;&#160;</a></span>isDirectory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool shared::file::isDirectory </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="fileUtils_8cpp_source.html#l00023">23</a> of file <a class="el" href="fileUtils_8cpp_source.html">fileUtils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   23</span>                                                {</div>
+<div class="line"><span class="lineno">   24</span>            <span class="keyword">struct </span>stat info;</div>
+<div class="line"><span class="lineno">   25</span>            <span class="keywordflow">if</span> (stat(path.c_str(), &amp;info) != 0) {</div>
+<div class="line"><span class="lineno">   26</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   27</span>            }</div>
+<div class="line"><span class="lineno">   28</span>            <span class="keywordflow">return</span> S_ISDIR(info.st_mode);</div>
+<div class="line"><span class="lineno">   29</span>        }</div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceshared_1_1file_a6f4c8ce23e23d030abc36929d7eb8a82_icgraph.png" border="0" usemap="#anamespaceshared_1_1file_a6f4c8ce23e23d030abc36929d7eb8a82_icgraph" alt=""/></div>
+<map name="anamespaceshared_1_1file_a6f4c8ce23e23d030abc36929d7eb8a82_icgraph" id="anamespaceshared_1_1file_a6f4c8ce23e23d030abc36929d7eb8a82_icgraph">
+<area shape="rect" title=" " alt="" coords="621,5,795,31"/>
+<area shape="rect" href="classconfig_1_1Parser.html#adb5932b97c80ab980d9a4d20689cc3ff" title=" " alt="" coords="108,5,284,31"/>
+<area shape="poly" title=" " alt="" coords="607,21,284,21,284,15,607,15"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a2114c8bccadd7a52a8e8994ed6179d30" title=" " alt="" coords="332,31,573,56"/>
+<area shape="poly" title=" " alt="" coords="608,31,574,34,573,29,607,25"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+<area shape="poly" title=" " alt="" coords="318,33,284,29,284,24,318,27"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a67ff7400150e99b481dd04a050d2e9e7" name="a67ff7400150e99b481dd04a050d2e9e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67ff7400150e99b481dd04a050d2e9e7">&#9670;&#160;</a></span>isDirUsable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool shared::file::isDirUsable </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="fileUtils_8cpp_source.html#l00049">49</a> of file <a class="el" href="fileUtils_8cpp_source.html">fileUtils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>                                                {</div>
+<div class="line"><span class="lineno">   50</span>            <span class="keyword">struct </span>stat info;</div>
+<div class="line"><span class="lineno">   51</span>            <span class="keywordflow">if</span> (stat(path.c_str(), &amp;info) != 0) {</div>
+<div class="line"><span class="lineno">   52</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   53</span>            }</div>
+<div class="line"><span class="lineno">   54</span>            <span class="comment">// Check if it&#39;s a directory and has read+write+execute permissions</span></div>
+<div class="line"><span class="lineno">   55</span>            <span class="keywordflow">return</span> S_ISDIR(info.st_mode) &amp;&amp; (info.st_mode &amp; S_IRUSR) &amp;&amp; (info.st_mode &amp; S_IWUSR) &amp;&amp; (info.st_mode &amp; S_IXUSR);</div>
+<div class="line"><span class="lineno">   56</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a1203f1b84367162897b8b87b8d23b65b" name="a1203f1b84367162897b8b87b8d23b65b"></a>
@@ -247,10 +329,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="fileUtils_8cpp_source.html#l00034">34</a> of file <a class="el" href="fileUtils_8cpp_source.html">fileUtils.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   34</span>                                                 {</div>
-<div class="line"><span class="lineno">   35</span>            <span class="keywordflow">return</span> (access(path.c_str(), X_OK) == 0);</div>
-<div class="line"><span class="lineno">   36</span>        }</div>
+<p class="definition">Definition at line <a class="el" href="fileUtils_8cpp_source.html#l00059">59</a> of file <a class="el" href="fileUtils_8cpp_source.html">fileUtils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   59</span>                                                 {</div>
+<div class="line"><span class="lineno">   60</span>            <span class="keywordflow">return</span> (access(path.c_str(), X_OK) == 0);</div>
+<div class="line"><span class="lineno">   61</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -270,11 +352,30 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="fileUtils_8cpp_source.html#l00024">24</a> of file <a class="el" href="fileUtils_8cpp_source.html">fileUtils.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   24</span>                                               {</div>
-<div class="line"><span class="lineno">   25</span>            <span class="keywordflow">return</span> (access(path.c_str(), R_OK) == 0);</div>
-<div class="line"><span class="lineno">   26</span>        }</div>
-</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="fileUtils_8cpp_source.html#l00032">32</a> of file <a class="el" href="fileUtils_8cpp_source.html">fileUtils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>                                               {</div>
+<div class="line"><span class="lineno">   33</span>            <span class="keyword">struct </span>stat info;</div>
+<div class="line"><span class="lineno">   34</span>            <span class="keywordflow">if</span> (stat(path.c_str(), &amp;info) != 0) {</div>
+<div class="line"><span class="lineno">   35</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   36</span>            }</div>
+<div class="line"><span class="lineno">   37</span>            <span class="keywordflow">return</span> (access(path.c_str(), R_OK) == 0 &amp;&amp; (info.st_mode &amp; S_IRUSR) != 0);</div>
+<div class="line"><span class="lineno">   38</span>        }</div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceshared_1_1file_aabd1ef499991ebe564697638bfc9a943_icgraph.png" border="0" usemap="#anamespaceshared_1_1file_aabd1ef499991ebe564697638bfc9a943_icgraph" alt=""/></div>
+<map name="anamespaceshared_1_1file_aabd1ef499991ebe564697638bfc9a943_icgraph" id="anamespaceshared_1_1file_aabd1ef499991ebe564697638bfc9a943_icgraph">
+<area shape="rect" title=" " alt="" coords="621,5,796,31"/>
+<area shape="rect" href="classconfig_1_1Parser.html#adb5932b97c80ab980d9a4d20689cc3ff" title=" " alt="" coords="108,5,284,31"/>
+<area shape="poly" title=" " alt="" coords="607,21,284,21,284,15,607,15"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a2114c8bccadd7a52a8e8994ed6179d30" title=" " alt="" coords="332,31,573,56"/>
+<area shape="poly" title=" " alt="" coords="608,31,574,34,573,29,607,25"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+<area shape="poly" title=" " alt="" coords="318,33,284,29,284,24,318,27"/>
+</map>
+</div>
+
 </div>
 </div>
 <a id="a3c38e3febb8f719c536862741552ba6a" name="a3c38e3febb8f719c536862741552ba6a"></a>
@@ -331,11 +432,29 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="fileUtils_8cpp_source.html#l00029">29</a> of file <a class="el" href="fileUtils_8cpp_source.html">fileUtils.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>                                               {</div>
-<div class="line"><span class="lineno">   30</span>            <span class="keywordflow">return</span> (access(path.c_str(), W_OK) == 0);</div>
-<div class="line"><span class="lineno">   31</span>        }</div>
-</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="fileUtils_8cpp_source.html#l00041">41</a> of file <a class="el" href="fileUtils_8cpp_source.html">fileUtils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   41</span>                                               {</div>
+<div class="line"><span class="lineno">   42</span>            <span class="keyword">struct </span>stat info;</div>
+<div class="line"><span class="lineno">   43</span>            <span class="keywordflow">if</span> (stat(path.c_str(), &amp;info) != 0) {</div>
+<div class="line"><span class="lineno">   44</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   45</span>            }</div>
+<div class="line"><span class="lineno">   46</span>            <span class="keywordflow">return</span> (access(path.c_str(), W_OK) == 0);</div>
+<div class="line"><span class="lineno">   47</span>        }</div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceshared_1_1file_a212dfb3af0541e3557de27e0be2e2784_icgraph.png" border="0" usemap="#anamespaceshared_1_1file_a212dfb3af0541e3557de27e0be2e2784_icgraph" alt=""/></div>
+<map name="anamespaceshared_1_1file_a212dfb3af0541e3557de27e0be2e2784_icgraph" id="anamespaceshared_1_1file_a212dfb3af0541e3557de27e0be2e2784_icgraph">
+<area shape="rect" title=" " alt="" coords="621,5,789,31"/>
+<area shape="rect" href="classconfig_1_1Parser.html#a2114c8bccadd7a52a8e8994ed6179d30" title=" " alt="" coords="332,5,573,31"/>
+<area shape="poly" title=" " alt="" coords="608,21,574,21,574,15,608,15"/>
+<area shape="rect" href="classconfig_1_1Parser.html#adb5932b97c80ab980d9a4d20689cc3ff" title=" " alt="" coords="108,5,284,31"/>
+<area shape="poly" title=" " alt="" coords="318,21,284,21,284,15,318,15"/>
+<area shape="rect" href="main_8cpp.html#a172241e088a9da9dabf2cf839a73c865" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+</map>
+</div>
+
 </div>
 </div>
 </div><!-- contents -->
