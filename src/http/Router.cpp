@@ -75,16 +75,16 @@ namespace http {
 		if (redirects > MAX_REDIRECTS) {
 			throw http::exception(LOOP_DETECTED, "Redirects exceeded MAX_REDIRECTS");
 		}
-		if (currentLocation.hasRedirect()) { // restart routing with the new route? or actually send a redirect response?
+		if (currentLocation.hasRedirect()) { // TODO: restart routing with the new route? or actually send a redirect response?
 			std::cout << "Redirecting to " << currentLocation.redirectUri << std::endl;
-			return routeToPath(currentLocation.redirectUriAsTokens, m_rootLocation, redirects + 1, 0); // TODO: invalid, this would then always return serverRoot's route
-		}																							   // TODO: how the frick do we solve this?
-		if (depth >= pathToMatch.size()) {															   // TODO: what about files?
-			return std::make_pair(currentLocation.precalculatedAbsolutePath, &currentLocation);		   // TODO: I think this doesn't set the root path properly yet, does it?
+			routeToPath(currentLocation.redirectUriAsTokens, m_rootLocation, redirects + 1, 0); // TODO: invalid, this would then always return serverRoot's route
+		}																						// TODO: how the frick do we solve this?
+		if (depth >= pathToMatch.size()) {														// TODO: what about files?
+			return std::make_pair(currentLocation.precalculatedAbsolutePath, &currentLocation); // TODO: I think this doesn't set the root path properly yet, does it?
 		}
 		for (std::vector<config::Location>::const_iterator loc = currentLocation.locations.begin(); loc != currentLocation.locations.end(); ++loc) {
-			if (!loc->pathAsTokens.empty() && loc->pathAsTokens[0] == pathToMatch[depth]) { // TODO: breaks if location is '/' -> check if (!loc->path.empty())
-				return routeToPath(pathToMatch, *loc, redirects, depth + 1);				// use nearest parent
+			if (!loc->pathAsTokens.empty() && loc->pathAsTokens[0] == pathToMatch[depth]) {
+				return routeToPath(pathToMatch, *loc, redirects, depth + 1);
 			}
 		}
 		// no location matched

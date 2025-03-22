@@ -99,6 +99,10 @@ namespace config {
 		return !path.empty() && path.at(0) == '/' && path.size() <= PATH_MAX;
 	}
 
+	static bool hasSinglePathSeparator(const std::string& path) {
+		return path.find_first_of('/', 1) == std::string::npos;
+	}
+
 	// ------------------------  tokens and stuff  -------------------------- //
 
 	// CONSUMES IF MATCHED
@@ -372,8 +376,8 @@ namespace config {
 		if (path.empty()) {
 			throw parse_exception(m_lineIndex, "Location has no path");
 		}
-		if (!isValidPath(path)) { // TODO: or if path is not just a single segment. I don't want to handle locations with multiple segments.
-			throw parse_exception(m_lineIndex, "Path is invalid");
+		if (!isValidPath(path) || !hasSinglePathSeparator(path) || path == "/") {
+			throw parse_exception(m_lineIndex, "Path is invalid: '" + path + "'");
 		}
 		consume(path.length());
 		skipWhitespace();

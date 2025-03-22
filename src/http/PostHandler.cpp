@@ -20,6 +20,19 @@ namespace http {
 	 */
 	PostHandler::~PostHandler() {}
 
+	std::string PostHandler::generateFileName() const {
+		static const std::size_t MAX_UPLOADS_PER_SECOND = 4096;
+		static std::size_t lol = 0;
+		std::string fileName;
+
+		fileName = shared::string::fromNum(static_cast<int>(time(NULL))) + "_" + shared::string::fromNum(lol) + "_upload.dat";
+		lol += 1;
+		if (lol >= MAX_UPLOADS_PER_SECOND) {
+			lol = 0;
+		}
+		return fileName;
+	}
+
 	void PostHandler::createFile(const Request& request) {
 		FileType fileType = request.getFileType();
 
@@ -33,23 +46,19 @@ namespace http {
 			throw http::exception(FORBIDDEN, "Location does not accept file uploads (no POST)");
 		}
 
-		std::string fileName;
+		std::string fileName = generateFileName();
 
 		if (request.hasHeader("x-cool-filename")) {
 			const std::vector<std::string>& filenameHeader = request.getHeader("x-cool-filename");
 			if (!filenameHeader.empty() && !filenameHeader.at(0).empty()) {
 				fileName = filenameHeader.at(0);
-			} else {
-				time_t now = time(NULL);
-				std::cout << "Filename empty! Falling back to default..." << std::endl;
-				fileName = shared::string::fromNum(static_cast<int>(now)) + "_upload.dat";
 			}
 		}
 
-		std::string absoluteFilePath = request.getUri().safeAbsolutePath + "/" + fileName; // TODO: replace with actual file name
+		std::string absoluteFilePath = request.getUri().safeAbsolutePath + "/" + fileName;
 
 		if (shared::file::fileExists(absoluteFilePath)) {
-			throw http::exception(CONFLICT, "POST: A file with this name already exists");
+			throw http::exception(CONFLICT, "POST: A file with this name already exists: " + fileName);
 		}
 		m_fileStream.open(absoluteFilePath.c_str(), std::ios::binary);
 		m_state = PROCESSING;

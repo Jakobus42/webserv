@@ -22,7 +22,6 @@ namespace http {
 
 			void process(Request& req);
 
-			// TODO: remove testing function
 			int testParseURI(const std::string& uri, int mode);
 			void log(const std::string& msg, shared::LogLevel level, const Request& request);
 

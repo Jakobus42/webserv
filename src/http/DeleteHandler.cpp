@@ -24,7 +24,7 @@ namespace http {
 		if (fileType == DIRECTORY) {
 			throw http::exception(FORBIDDEN, "DELETE: Expected file; received directory");
 		}
-		if (std::remove(filePath.c_str()) != 0) { // unlink the file
+		if (std::remove(filePath.c_str()) != 0) {
 			throw http::exception(FORBIDDEN, "DELETE: File could not be removed");
 		}
 
