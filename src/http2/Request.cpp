@@ -47,7 +47,7 @@ namespace http2 {
 	/* Debugging */
 
 	std::string Request::toString() const {
-		return m_method + " " + m_uri.toString() + " " + HTTP_VERSION + this->AMessage::toString();
+		return http::getMethodString(m_method) + " " + m_uri.toString() + " " + m_version + this->AMessage::toString();
 	}
 
 } /* namespace http2 */

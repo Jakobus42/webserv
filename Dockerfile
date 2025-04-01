@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-ENV DEBIAN_FRONTEND=noninteractive
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -y && apt-get upgrade -y && apt-get install -y \
     zsh \
@@ -33,7 +33,7 @@ RUN apt-get update -y && apt-get upgrade -y && apt-get install -y \
 
 
 RUN apt-get install -y locales && locale-gen en_US.UTF-8 && update-locale LANG=en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
+ARG LC_ALL en_US.UTF-8
 
 RUN mkdir -p /root/.ssh && chmod 700 /root/.ssh && \
     curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | zsh && \

@@ -6,7 +6,8 @@ namespace http2 {
 	 * @brief Constructs a new Response object.
 	 */
 	Response::Response()
-		: AMessage() {
+		: AMessage(), 
+		m_statusCode(http::OK) {
 	}
 
 	/**

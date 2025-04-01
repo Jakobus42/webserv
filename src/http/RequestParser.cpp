@@ -29,7 +29,6 @@ namespace http {
 		try {
 			this->parse();
 		} catch (const http::exception& e) {
-			std::cout << "SHIT, " << e.getMessage() << std::endl;
 			m_req->setStatusCode(e.getStatusCode());
 			this->setState(ERROR);
 		} catch (const std::exception& e) {
@@ -91,63 +90,6 @@ namespace http {
 		m_state = HEADERS;
 	}
 
-	// void RequestParser::parseUri() {
-	// 	const std::string& uriRaw = m_req->getUriRaw();
-	// 	const std::size_t questionMarks = std::count(uriRaw.begin(), uriRaw.end(), '?');
-	// 	const std::size_t spaces = std::count(uriRaw.begin(), uriRaw.end(), ' ');
-
-	// 	if (questionMarks > 1 || spaces > 0) {
-	// 		m_req->setStatusCode(BAD_REQUEST);
-	// 		throw http::exception(BAD_REQUEST, "malformed request line: unexpected ' ' or '?'");
-	// 	}
-
-	// 	std::size_t pathBeginIndex = 0;
-	// 	std::size_t queryBeginIndex = uriRaw.find_first_of("#?");
-	// 	Uri& uri = m_req->getUri();
-
-	// 	if (uriRaw.find("/cgi-bin/") == 0) {
-	// 		m_req->setType(CGI);
-	// 		pathBeginIndex = uriRaw.find_first_of("/#?", 9);
-	// 		uri.path = uriRaw.substr(0, pathBeginIndex);
-	// 		uri.cgiPathInfo = decodePercentEncodedString(uriRaw.substr(pathBeginIndex, queryBeginIndex - pathBeginIndex));
-	// 	} else {
-	// 		uri.path = uriRaw.substr(pathBeginIndex, queryBeginIndex);
-	// 	}
-	// 	uri.path = decodePercentEncodedString(uri.path);
-	// 	std::cout << "Parsed path: " << uri.path << std::endl;
-	// 	std::cout << "CGI Path info: " << uri.cgiPathInfo << std::endl;
-	// }
-
-	// char RequestParser::decodeCharacterFromPercentEncoding(const std::string& hex) {
-	// 	if (hex.length() != 2) {
-	// 		throw std::invalid_argument("Invalid percent-encoded character length");
-	// 	}
-
-	// 	int value = shared::string::toNum<int>(hex, 16);
-
-	// 	return static_cast<char>(value);
-	// }
-
-	// std::string RequestParser::decodePercentEncodedString(const std::string& encoded) {
-	// 	std::string decoded;
-
-	// 	std::cout << "decoding " << encoded << std::endl;
-	// 	for (std::string::size_type i = 0; i < encoded.length(); ++i) {
-	// 		if (encoded[i] == '%' && i + 2 < encoded.length()) {
-	// 			try {
-	// 				decoded += decodeCharacterFromPercentEncoding(encoded.substr(i + 1, 2));
-	// 				i += 2; // Skip over the percent and the two hex characters
-	// 			} catch (const std::invalid_argument&) {
-	// 				decoded += '%';
-	// 			}
-	// 		} else {
-	// 			decoded += encoded[i];
-	// 		}
-	// 	}
-	// 	std::cout << "returning decoded: '" << decoded << "'" << std::endl;
-	// 	return decoded;
-	// }
-
 	void RequestParser::parseUriOriginForm() {
 		const std::string& uriRaw = m_req->getUriRaw();
 
@@ -171,7 +113,7 @@ namespace http {
 			if (pos != std::string::npos) {
 				uri.cgiPathInfo = uri.path.substr(pos);
 				uri.path = uri.path.substr(0, pos);
-			} 
+			}
 			// TODO: should never receive # or ? but idk bro
 			// I'm just a silly little guy, writing my silly little code
 		} else {

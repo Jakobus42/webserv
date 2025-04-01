@@ -1,7 +1,6 @@
 #pragma once
 
 #include "http/http.hpp"
-#include "shared/StringView.hpp"
 
 namespace http2 {
 
@@ -16,26 +15,26 @@ namespace http2 {
 			Uri(const Uri& other);
 			Uri& operator=(const Uri& rhs);
 
-			const shared::StringView& getScheme() const;
-			const shared::StringView& getAuthority() const;
-			const shared::StringView& getPath() const;
+			const std::string& getScheme() const;
+			const std::string& getAuthority() const;
+			const std::string& getPath() const;
 			in_port_t getPort() const;
-			const shared::StringView& getQuery() const;
+			const std::string& getQuery() const;
 
-			void setScheme(const shared::StringView& scheme);
-			void setAuthority(const shared::StringView& authority);
+			void setScheme(const std::string& scheme);
+			void setAuthority(const std::string& authority);
 			void setPort(in_port_t port);
-			void setQuery(const shared::StringView& query);
+			void setQuery(const std::string& query);
 
 			/* Debugging */
 			std::string toString() const;
 
 		private:
-			shared::StringView m_scheme;
-			shared::StringView m_authority;
+			std::string m_scheme;
+			std::string m_authority;
 			in_port_t m_port;
-			shared::StringView m_path;
-			shared::StringView m_query;
+			std::string m_path;
+			std::string m_query;
 	};
 
 } /* namespace http2 */
