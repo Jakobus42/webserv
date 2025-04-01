@@ -29,7 +29,6 @@ namespace http2 {
 				HEADERS,
 				BODY,
 				COMPLETE,
-				ERROR,
 			};
 
 			struct Token {
@@ -54,6 +53,8 @@ namespace http2 {
 			AMessage* m_message;
 			ParseState m_state;
 			shared::Buffer<BUFFER_SIZE> m_buffer;
+
+			bool m_needData;
 	};
 
 
