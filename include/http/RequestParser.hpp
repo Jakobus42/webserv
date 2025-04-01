@@ -63,9 +63,6 @@ namespace http {
 			void parseChunkSize();
 			void parseHeaders();
 
-			// char decodeCharacter(char*& sequence);
-			// char decodeCharacterFromPercentEncoding(const std::string& hex);
-			// std::string decodePercentEncodedString(const std::string& encoded);
 			Token extractHeaderKey(char*& line);
 			Token extractHeaderValue(char*& line);
 			void interpretHeaders();

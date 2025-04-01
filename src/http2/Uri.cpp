@@ -30,23 +30,23 @@ namespace http2 {
 		return *this;
 	}
 
-	const shared::StringView& Uri::getScheme() const { return m_scheme; }
+	const std::string& Uri::getScheme() const { return m_scheme; }
 
-	const shared::StringView& Uri::getAuthority() const { return m_authority; }
+	const std::string& Uri::getAuthority() const { return m_authority; }
 
-	const shared::StringView& Uri::getPath() const { return m_path; }
+	const std::string& Uri::getPath() const { return m_path; }
 
 	in_port_t Uri::getPort() const { return m_port; }
 
-	const shared::StringView& Uri::getQuery() const { return m_query; }
+	const std::string& Uri::getQuery() const { return m_query; }
 
-	void Uri::setScheme(const shared::StringView& scheme) { m_scheme = scheme; }
+	void Uri::setScheme(const std::string& scheme) { m_scheme = scheme; }
 
-	void Uri::setAuthority(const shared::StringView& authority) { m_authority = authority; }
+	void Uri::setAuthority(const std::string& authority) { m_authority = authority; }
 
 	void Uri::setPort(in_port_t port) { m_port = port; }
 
-	void Uri::setQuery(const shared::StringView& query) { m_query = query; }
+	void Uri::setQuery(const std::string& query) { m_query = query; }
 
 	std::string Uri::toString() const {
 		std::ostringstream oss;

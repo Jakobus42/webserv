@@ -1,6 +1,7 @@
 #pragma once
 
 #include "http2/AMessageParser.hpp"
+#include "http2/Response.hpp"
 
 namespace http2 {
 
@@ -11,11 +12,13 @@ namespace http2 {
 	class ResponseParser : public AMessageParser {
 		public:
 			ResponseParser();
-			~ResponseParser();
+			virtual ~ResponseParser();
 
-            void parseStartLine();
+			Response* releaseResponse();
 
 		private:
+			virtual AMessage* createMessage() const;
+			virtual void parseStartLine();
 	};
 
 } /* namespace http2 */
