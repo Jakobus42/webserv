@@ -30,6 +30,7 @@ namespace http2 {
 			void appendHeader(const std::string& key, const std::string& value);
 			void appendHeader(const shared::StringView& key, const shared::StringView& value);
 			void setHeader(const std::string& key, const std::vector<std::string>& values);
+			void setHeader(const shared::StringView& key, const std::vector<shared::StringView>& values);
 
 			bool hasHeader(const std::string& key) const;
 

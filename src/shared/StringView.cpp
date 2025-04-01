@@ -36,6 +36,48 @@ namespace shared {
 
 	const char* StringView::end() const { return m_data + m_size; }
 
+	StringView StringView::substr(uint32_t pos, uint32_t count) const {
+		if (pos >= m_size) {
+			return StringView();
+		}
+
+		uint32_t rcount = std::min(count, m_size - pos);
+		return StringView(m_data + pos, rcount);
+	}
+
+	uint32_t StringView::find(StringView v, uint32_t pos) const {
+		if (v.empty()) {
+			return pos <= m_size ? pos : npos;
+		}
+
+		if (pos >= m_size || m_size - pos < v.m_size) {
+			return npos;
+		}
+
+		const char* end = m_data + m_size - v.m_size + 1;
+		for (const char* p = m_data + pos; p < end; ++p) {
+			if (std::memcmp(p, v.m_data, v.m_size) == 0) {
+				return p - m_data;
+			}
+		}
+		return npos;
+	}
+
+	uint32_t StringView::find(char ch, uint32_t pos) const {
+		if (pos >= m_size) {
+			return npos;
+		}
+
+		for (uint32_t i = pos; i < m_size; ++i) {
+			if (m_data[i] == ch) {
+				return i;
+			}
+		}
+		return npos;
+	}
+
+	char StringView::operator[](uint32_t index) const { return m_data[index]; }
+
 	bool StringView::operator==(const StringView& rhs) const { return m_size == rhs.m_size && m_data == rhs.m_data; }
 
 	bool StringView::operator!=(const StringView& rhs) const { return !(*this == rhs); }

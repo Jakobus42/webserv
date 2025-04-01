@@ -9,12 +9,12 @@
 namespace http2 {
 
 	struct MessageParserConfig {
-			std::size_t maxUriLength;
-			std::size_t maxBodySize;
-			std::size_t maxHeaderValueLength;
-			std::size_t maxHeaderCount;
-			std::size_t maxHeaderValueCount;
-			std::size_t maxHeaderNameLength;
+			uint32_t maxUriLength;
+			uint32_t maxBodySize;
+			uint32_t maxHeaderValueLength;
+			uint32_t maxHeaderCount;
+			uint32_t maxHeaderValueCount;
+			uint32_t maxHeaderNameLength;
 
 			MessageParserConfig();
 	};
@@ -25,7 +25,7 @@ namespace http2 {
 	 */
 	class AMessageParser : shared::NonCopyable {
 		public:
-			static const std::size_t BUFFER_SIZE = 16 * 1024; // 16 KB
+			static const uint32_t BUFFER_SIZE = 16 * 1024; // 16 KB
 
 			AMessageParser(const MessageParserConfig& conf);
 			virtual ~AMessageParser();
@@ -48,7 +48,7 @@ namespace http2 {
 
 			struct Token {
 					char* begin;
-					std::size_t length;
+					uint32_t length;
 			};
 
 			/* Message management */
@@ -61,7 +61,11 @@ namespace http2 {
 
 			/* Parsers */
 			virtual void parseStartLine() = 0;
+
 			void parseHeaderLine();
+			shared::StringView extractHeaderKey(const shared::StringView& line) const;
+			std::vector<shared::StringView> extractHeaderValues(const shared::StringView& line) const;
+
 
 		protected:
 			static const char* CRLF;

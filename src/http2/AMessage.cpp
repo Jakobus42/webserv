@@ -17,7 +17,7 @@ namespace http2 {
 	AMessage::~AMessage() {}
 
 	/* Version */
-	
+
 	const std::string& AMessage::getVersion() const { return m_version; }
 
 	void AMessage::setVersion(const std::string& version) { m_version = version; }
@@ -32,9 +32,27 @@ namespace http2 {
 
 	void AMessage::appendHeader(const std::string& key, const std::string& value) { m_headers[key].push_back(value); }
 
-	void AMessage::appendHeader(const shared::StringView& key, const shared::StringView& value) { m_headers[std::string(key.begin(), key.end())].push_back(std::string(value.begin(), value.end())); }
+	void AMessage::appendHeader(const shared::StringView& key, const shared::StringView& value) {
+		std::vector<std::string>& target = m_headers[std::string(key.begin(), key.end())];
+
+		target.push_back(std::string());
+		target.back().assign(value.begin(), value.end());
+	}
 
 	void AMessage::setHeader(const std::string& key, const std::vector<std::string>& values) { m_headers[key] = values; }
+
+	void AMessage::setHeader(const shared::StringView& key, const std::vector<shared::StringView>& values) {
+		std::vector<std::string>& target = m_headers[std::string(key.begin(), key.end())];
+
+		if (target.empty()) {
+			target.reserve(values.size());
+		}
+
+		for (std::vector<shared::StringView>::const_iterator it = values.begin(); it != values.end(); ++it) {
+			target.push_back(std::string());
+			target.back().assign(it->begin(), it->end());
+		}
+	}
 
 	bool AMessage::hasHeader(const std::string& key) const { return m_headers.find(key) != m_headers.end(); }
 

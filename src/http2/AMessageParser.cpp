@@ -18,7 +18,7 @@ namespace http2 {
 	{}
 
 	const char* AMessageParser::CRLF = "\r\n";
-	const char AMessageParser::TCHAR[256] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ' ', '!', 0, '#', '$', '%', '&', '\'', 0, 0, '*', '+', 0, '-', '.', 0, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 0, 0, 0, 0, 0, 0, 0, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 0, 0, 0, '^', '_', '`', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 0, '|', 0, '~', 0}; // the formatter is shit pardon me
+	const char AMessageParser::TCHAR[256] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '!', 0, '#', '$', '%', '&', '\'', 0, 0, '*', '+', 0, '-', '.', 0, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 0, 0, 0, 0, 0, 0, 0, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 0, 0, 0, '^', '_', '`', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 0, '|', 0, '~', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	const char AMessageParser::WHITESPACE[] = " \t";
 
 	/* Public */
@@ -109,7 +109,46 @@ namespace http2 {
 			return;
 		}
 
-		std::cout << line << std::endl;
+		if (m_message->getHeaders().size() > m_config.maxHeaderCount) {
+			throw http::exception(http::PAYLOAD_TOO_LARGE, "header amount exceeds limit");
+		}
+
+		try {
+			shared::StringView keyView = extractHeaderKey(line);
+			std::vector<shared::StringView> valueViews = extractHeaderValues(line);
+			m_message->setHeader(keyView, valueViews);
+		} catch (const http::exception& e) {
+			throw http::exception(e.getStatusCode(), "invalid header: " + e.getMessage());
+		}
 	}
+
+	/*
+		field-name = token
+		token = 1*tchar
+	*/
+	shared::StringView AMessageParser::extractHeaderKey(const shared::StringView& line) const {
+		uint32_t colonPos = line.find(':');
+		if (colonPos == shared::StringView::npos) {
+			throw http::exception(http::BAD_REQUEST, "missing ':' after field-name");
+		}
+		if (colonPos == 0) {
+			throw http::exception(http::BAD_REQUEST, "empty field-name");
+		}
+		if (colonPos > m_config.maxHeaderNameLength) {
+			throw http::exception(http::PAYLOAD_TOO_LARGE, "header field-name exceeds size limit");
+		}
+
+		for (uint32_t i = 0; i < colonPos; ++i) {
+			if (!isTChar(line[i])) {
+				throw http::exception(http::BAD_REQUEST, std::string("invalid character in field-name '") + line[i] + "'");
+			}
+		}
+		return line.substr(0, colonPos);
+	}
+
+	std::vector<shared::StringView> AMessageParser::extractHeaderValues(const shared::StringView&) const {
+		return std::vector<shared::StringView>();
+	}
+
 
 } /* namespace http2 */
