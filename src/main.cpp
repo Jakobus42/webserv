@@ -4,7 +4,8 @@
 #include <cstring>
 
 int main() {
-	http2::RequestParser parser;
+	http2::MessageParserConfig conf;
+	http2::RequestParser parser(conf);
 	const char* httpRequest =
 		"GET /index.html?param=value HTTP/1.1\r\n"
 		"Host: www.example.com\r\n"

@@ -5,7 +5,8 @@ namespace http2 {
 	/**
 	 * @brief Constructs a new ResponseParser object.
 	 */
-	ResponseParser::ResponseParser() {}
+	ResponseParser::ResponseParser(const MessageParserConfig& conf)
+		: AMessageParser(conf) {}
 
 	/**
 	 * @brief Destroys the ResponseParser object.
