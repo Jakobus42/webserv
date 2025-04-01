@@ -109,7 +109,7 @@ namespace http2 {
 			return;
 		}
 
-		if (m_message->getHeaders().size() > m_config.maxHeaderCount) {
+		if (m_message->getHeaders().size() > m_config.maxHeaderCount - 1) {
 			throw http::exception(http::PAYLOAD_TOO_LARGE, "header amount exceeds limit");
 		}
 
