@@ -1,73 +1,77 @@
 #pragma once
 
-#include "shared/NonCopyable.hpp"
-
-#include <cstddef>
-#include <stdexcept>
+#include <cstring>
 
 namespace shared {
 
 	template <std::size_t Capacity>
-	class Buffer : shared::NonCopyable {
+	class Buffer {
 		public:
 			Buffer()
 				: m_readPos(0)
-				, m_writePos(0)
-				, m_size(0) {}
+				, m_writePos(0) {}
 
 			~Buffer() {}
 
-			void skip(std::size_t size) {
-				if (size > m_size) {
-					throw std::out_of_range("cannot skip more data than available");
+			void compact() {
+				if (m_readPos == 0) {
+					return;
 				}
 
-				m_readPos = (m_readPos + size) % Capacity;
-				m_size -= size;
-				if (m_size == 0) {
-					clear();
+				std::size_t unreadSize = m_writePos - m_readPos;
+				if (unreadSize > 0) {
+					std::memmove(m_data, m_data + m_readPos, unreadSize);
 				}
+				m_writePos = unreadSize;
+				m_readPos = 0;
 			}
 
-			std::size_t contiguousReadSize() const {
-				if (isEmpty()) {
-					return 0;
+			std::size_t prepareWrite(std::size_t minSpace = 1) {
+				if (m_writePos + minSpace > Capacity) {
+					compact();
+					if (m_writePos + minSpace > Capacity) {
+						return 0;
+					}
 				}
-
-				if (m_readPos < m_writePos) {
-					return m_writePos - m_readPos;
-				} else {
-					return Capacity - m_readPos;
-				}
+				return Capacity - m_writePos;
 			}
 
-			std::size_t contiguousWriteSize() const {
-				if (isFull()) {
-					return 0;
+			void append(const char* data, std::size_t size) {
+				if (prepareWrite(size) < size) {
+					throw std::runtime_error("buffer full");
 				}
+				std::memcpy(m_data + m_writePos, data, size);
+				m_writePos += size;
+			}
 
-				if (m_readPos <= m_writePos) {
-					return Capacity - m_writePos;
-				} else {
-					return m_readPos - m_writePos;
+			void consume(std::size_t size) {
+				if (size > this->size()) {
+					throw std::out_of_range("cannot consume more data than available");
 				}
+				m_readPos += size;
+			}
+
+			void advanceWriter(std::size_t size) {
+				if (size > Capacity - m_writePos) {
+					throw std::runtime_error("write advancement too large");
+				}
+				m_writePos += size;
 			}
 
 			void clear() {
 				m_readPos = 0;
 				m_writePos = 0;
-				m_size = 0;
 			}
 
-			std::size_t size() const { return m_size; }
+			std::size_t size() const { return m_writePos - m_readPos; }
 
 			std::size_t capacity() const { return Capacity; }
 
-			std::size_t availableSpace() const { return Capacity - m_size; }
+			std::size_t availableSpace() const { return Capacity - m_writePos; }
 
-			bool isFull() const { return m_size == Capacity; }
+			bool isFull() const { return m_writePos == Capacity; }
 
-			bool isEmpty() const { return m_size == 0; }
+			bool isEmpty() const { return m_readPos == m_writePos; }
 
 			const char* readPtr() const { return m_data + m_readPos; }
 
@@ -77,20 +81,10 @@ namespace shared {
 
 			char* writePtr() { return m_data + m_writePos; }
 
-			void commitWrite(std::size_t size) {
-				if (m_size + size > Capacity) {
-					throw std::runtime_error("commit size too large");
-				}
-
-				m_writePos = (m_writePos + size) % Capacity;
-				m_size += size;
-			}
-
 		private:
 			char m_data[Capacity];
 			std::size_t m_readPos;
 			std::size_t m_writePos;
-			std::size_t m_size;
 	};
 
 } /* namespace shared */

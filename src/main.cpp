@@ -19,8 +19,9 @@ int main() {
 
 	shared::Buffer<http2::RequestParser::BUFFER_SIZE>& buffer = parser.getReadBuffer();
 	std::size_t size = std::strlen(httpRequest);
+	buffer.prepareWrite(size);
 	std::memcpy(buffer.writePtr(), httpRequest, size);
-	buffer.commitWrite(size);
+	buffer.advanceWriter(size);
 
 	parser.parse();
 	http2::Request* req = parser.releaseRequest();
