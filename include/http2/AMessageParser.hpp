@@ -8,7 +8,6 @@
 
 namespace http2 {
 
-	static const std::size_t BUFFER_SIZE = 16 * 1024; // 16 KB
 
 	/**
 	 * @class AMessageParser
@@ -16,6 +15,8 @@ namespace http2 {
 	 */
 	class AMessageParser : shared::NonCopyable {
 		public:
+			static const std::size_t BUFFER_SIZE = 16 * 1024; // 16 KB
+
 			AMessageParser();
 			virtual ~AMessageParser();
 

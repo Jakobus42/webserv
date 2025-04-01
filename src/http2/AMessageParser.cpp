@@ -12,7 +12,7 @@ namespace http2 {
 
 	AMessageParser::~AMessageParser() { delete m_message; }
 
-	std::vector<char>& AMessageParser::getReadBuffer() { return m_buffer; }
+	shared::Buffer<AMessageParser::BUFFER_SIZE>& AMessageParser::getReadBuffer() { return m_buffer; }
 
 	void AMessageParser::parse() {
 		if (!m_message) {

@@ -17,8 +17,10 @@ int main() {
 		"\r\n"
 		"username=john&password=pass";
 
-	std::vector<char>& buffer = parser.getReadBuffer();
-	buffer.insert(buffer.end(), httpRequest, httpRequest + std::strlen(httpRequest));
+	shared::Buffer<http2::RequestParser::BUFFER_SIZE>& buffer = parser.getReadBuffer();
+	std::size_t size = std::strlen(httpRequest);
+	std::memcpy(buffer.writePtr(), httpRequest, size);
+	buffer.commitWrite(size);
 
 	parser.parse();
 	http2::Request* req = parser.releaseRequest();
