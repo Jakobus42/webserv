@@ -9,10 +9,7 @@
 
 namespace http2 {
 
-	/**
-	 * @class AMessage
-	 * @brief ...
-	 */
+	/* HTTP-message   = Request | Response */
 	class AMessage : shared::NonCopyable {
 		public:
 			typedef std::map<std::string, std::vector<std::string> > HeaderMap;

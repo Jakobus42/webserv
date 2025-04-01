@@ -8,6 +8,16 @@
 
 namespace http2 {
 
+	struct MessageParserConfig {
+			std::size_t maxUriLength;
+			std::size_t maxBodySize;
+			std::size_t maxHeaderValueLength;
+			std::size_t maxHeaderCount;
+			std::size_t maxHeaderValueCount;
+			std::size_t maxHeaderNameLength;
+
+			MessageParserConfig();
+	};
 
 	/**
 	 * @class AMessageParser
@@ -17,15 +27,20 @@ namespace http2 {
 		public:
 			static const std::size_t BUFFER_SIZE = 16 * 1024; // 16 KB
 
-			AMessageParser();
+			AMessageParser(const MessageParserConfig& conf);
 			virtual ~AMessageParser();
 
-			void parse();
 			shared::Buffer<BUFFER_SIZE>& getReadBuffer();
+			void parse();
+
+			bool isComplete() const;
+			bool isPending() const;
+
+			void reset();
 
 		protected:
 			enum ParseState {
-				START,
+				START_LINE,
 				HEADERS,
 				BODY,
 				COMPLETE,
@@ -42,6 +57,7 @@ namespace http2 {
 
 			/* Shared */
 			shared::StringView readLine();
+			bool isTChar(char c) const;
 
 			/* Parsers */
 			virtual void parseStartLine() = 0;
@@ -49,7 +65,10 @@ namespace http2 {
 
 		protected:
 			static const char* CRLF;
+			static const char TCHAR[];
+			static const char WHITESPACE[];
 
+			MessageParserConfig m_config;
 			AMessage* m_message;
 			ParseState m_state;
 			shared::Buffer<BUFFER_SIZE> m_buffer;

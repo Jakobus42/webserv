@@ -3,16 +3,16 @@
 namespace http2 {
 
 	/**
-	 * @brief Constructs a new RequestParser object.
+	 * @brief
+	 *
 	 */
-	RequestParser::RequestParser() {
-	}
+	RequestParser::RequestParser(const MessageParserConfig& conf = MessageParserConfig())
+		: AMessageParser(conf) {}
 
 	/**
 	 * @brief Destroys the RequestParser object.
 	 */
-	RequestParser::~RequestParser() {
-	}
+	RequestParser::~RequestParser() {}
 
 	Request* RequestParser::releaseRequest() { return static_cast<Request*>(releaseMessage()); }
 
