@@ -19,6 +19,10 @@ namespace http2 {
 	AMessage* RequestParser::createMessage() const { return new Request(); }
 
 	void RequestParser::parseStartLine() {
+		shared::StringView line = readLine();
+		if (m_needData) {
+			return;
+		}
 		m_state = HEADERS;
 	}
 
