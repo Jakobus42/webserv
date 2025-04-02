@@ -8,7 +8,7 @@ int main() {
 	http2::RequestParser parser(conf);
 	const char* httpRequest =
 		"Host: w, f\r\n"
-		"Host: w, faaa\1\r\n"
+		"Host: w, faaa\r\n"
 		"Content-Length: 27\r\n"
 		"\r\n"
 		"username=john&password=pass";

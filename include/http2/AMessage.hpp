@@ -12,7 +12,11 @@ namespace http2 {
 	/* HTTP-message   = Request | Response */
 	class AMessage : shared::NonCopyable {
 		public:
-			typedef std::map<std::string, std::vector<std::string> > HeaderMap;
+			struct CaseInsensitiveComparator {
+					bool operator()(const std::string& s1, const std::string& s2) const;
+			};
+
+			typedef std::map<std::string, std::vector<std::string>, CaseInsensitiveComparator> HeaderMap;
 
 			AMessage();
 			virtual ~AMessage();
@@ -39,6 +43,8 @@ namespace http2 {
 
 			void setBody(const std::string& body);
 			void setBody(const shared::StringView& body);
+			void appendBody(const std::string& body);
+			void appendBody(const shared::StringView& body);
 
 			/* Debugging */
 			std::string toString() const;

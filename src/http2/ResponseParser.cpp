@@ -17,6 +17,12 @@ namespace http2 {
 
 	AMessage* ResponseParser::createMessage() const { return new Response(); }
 
-	void ResponseParser::parseStartLine() {}
+	void ResponseParser::parseStartLine() {
+		shared::StringView line = readLine();
+		if (m_needData) {
+			return;
+		}
+		m_state = HEADERS;
+	}
 
 } /* namespace http2 */

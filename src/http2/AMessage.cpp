@@ -1,8 +1,20 @@
 #include "http2/AMessage.hpp"
 
+#include <algorithm>
 #include <sstream>
 
 namespace http2 {
+
+	bool AMessage::CaseInsensitiveComparator::operator()(const std::string& lhs, const std::string& rhs) const {
+		for (std::size_t i = 0, n = std::min(lhs.size(), rhs.size()); i < n; ++i) {
+			char l = std::tolower(lhs[i]);
+			char r = std::tolower(rhs[i]);
+			if (l != r) {
+				return l < r;
+			}
+		}
+		return lhs.size() < rhs.size();
+	}
 
 	/**
 	 * @brief Constructs a new AMessage object.
@@ -63,6 +75,10 @@ namespace http2 {
 	void AMessage::setBody(const std::string& body) { m_body = body; }
 
 	void AMessage::setBody(const shared::StringView& body) { m_body.assign(body.begin(), body.end()); }
+
+	void AMessage::appendBody(const std::string& body) { m_body.append(body); }
+
+	void AMessage::appendBody(const shared::StringView& body) { m_body.append(body.begin(), body.size()); }
 
 	/* Debugging */
 

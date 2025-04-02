@@ -9,12 +9,12 @@
 namespace http2 {
 
 	struct MessageParserConfig {
-			uint32_t maxUriLength;
-			uint32_t maxBodySize;
-			uint32_t maxHeaderValueLength;
-			uint32_t maxHeaderCount;
-			uint32_t maxHeaderValueCount;
-			uint32_t maxHeaderNameLength;
+			std::size_t maxUriLength;
+			std::size_t maxBodySize;
+			std::size_t maxHeaderValueLength;
+			std::size_t maxHeaderCount;
+			std::size_t maxHeaderValueCount;
+			std::size_t maxHeaderNameLength;
 
 			MessageParserConfig();
 	};
@@ -25,14 +25,14 @@ namespace http2 {
 	 */
 	class AMessageParser : shared::NonCopyable {
 		public:
-			static const uint32_t BUFFER_SIZE = 16 * 1024; // 16 KB
+			static const std::size_t BUFFER_SIZE = 16 * 1024; // 16 KB
 
 			AMessageParser(const MessageParserConfig& conf = MessageParserConfig());
 			virtual ~AMessageParser();
 
-			shared::Buffer2<BUFFER_SIZE>& getReadBuffer();
 			void parse();
-
+			
+			shared::Buffer2<BUFFER_SIZE>& getReadBuffer();
 			bool isComplete() const;
 			bool isPending() const;
 
@@ -42,7 +42,10 @@ namespace http2 {
 			enum ParseState {
 				START_LINE,
 				HEADERS,
+				CHUNK_SIZE,
+				CHUNK_BODY,
 				BODY,
+				TRAILING_HEADERS,
 				COMPLETE,
 			};
 
@@ -52,6 +55,7 @@ namespace http2 {
 
 			/* Shared */
 			shared::StringView readLine();
+			bool isChunked() const;
 			bool isTChar(char c) const;
 			bool isVChar(char c) const;
 
@@ -59,8 +63,13 @@ namespace http2 {
 			virtual void parseStartLine() = 0;
 
 			void parseHeaderLine();
+			void validateHeaders();
 			shared::StringView extractHeaderKey(const shared::StringView& line) const;
 			std::vector<shared::StringView> extractHeaderValues(const shared::StringView& line) const;
+
+			void parseChunkSize();
+
+			void parseBody();
 
 
 		protected:
@@ -72,7 +81,7 @@ namespace http2 {
 			AMessage* m_message;
 			ParseState m_state;
 			shared::Buffer2<BUFFER_SIZE> m_buffer;
-
+			std::size_t m_contentLength;
 			bool m_needData;
 	};
 

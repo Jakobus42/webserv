@@ -2,16 +2,17 @@
 
 #include <stdint.h>
 
+#include <climits>
 #include <iostream>
 
 namespace shared {
 
 	class StringView {
 		public:
-			static const uint32_t npos = UINT32_MAX;
+			static const std::size_t npos = SIZE_MAX;
 
 			StringView();
-			StringView(const char* data, uint32_t size);
+			StringView(const char* data, std::size_t size);
 			StringView(const char* data);
 			~StringView();
 
@@ -19,28 +20,28 @@ namespace shared {
 			StringView& operator=(const StringView& rhs);
 
 			const char* data() const;
-			uint32_t size() const;
+			std::size_t size() const;
 			bool empty() const;
 
 			const char* begin() const;
 			const char* end() const;
 
-			void remove_prefix(uint32_t n);
-			void remove_suffix(uint32_t n);
+			void remove_prefix(std::size_t n);
+			void remove_suffix(std::size_t n);
 
-			StringView substr(uint32_t pos = 0, uint32_t count = npos) const;
-			uint32_t find(const StringView& v, uint32_t pos = 0) const;
-			uint32_t find(char ch, uint32_t pos = 0) const;
-			uint32_t rfind(const StringView& v, uint32_t pos = npos) const;
-			uint32_t rfind(char ch, uint32_t pos = npos) const;
-			uint32_t find_first_not_of(const StringView& chars, uint32_t pos = 0) const;
-			uint32_t find_first_not_of(char ch, uint32_t pos = 0) const;
-			uint32_t find_last_not_of(const StringView& chars, uint32_t pos = npos) const;
-			uint32_t find_last_not_of(char ch, uint32_t pos = npos) const;
+			StringView substr(std::size_t pos = 0, std::size_t count = npos) const;
+			std::size_t find(const StringView& v, std::size_t pos = 0) const;
+			std::size_t find(char ch, std::size_t pos = 0) const;
+			std::size_t rfind(const StringView& v, std::size_t pos = npos) const;
+			std::size_t rfind(char ch, std::size_t pos = npos) const;
+			std::size_t find_first_not_of(const StringView& chars, std::size_t pos = 0) const;
+			std::size_t find_first_not_of(char ch, std::size_t pos = 0) const;
+			std::size_t find_last_not_of(const StringView& chars, std::size_t pos = npos) const;
+			std::size_t find_last_not_of(char ch, std::size_t pos = npos) const;
 
 			std::string to_string() const;
 
-			char operator[](uint32_t index) const;
+			char operator[](std::size_t index) const;
 
 			bool operator==(const StringView& rhs) const;
 			bool operator!=(const StringView& rhs) const;
@@ -53,7 +54,7 @@ namespace shared {
 
 		private:
 			const char* m_data;
-			uint32_t m_size;
+			std::size_t m_size;
 	};
 
 } // namespace shared
