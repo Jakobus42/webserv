@@ -69,15 +69,14 @@ namespace http2 {
 	std::string AMessage::toString() const {
 		std::ostringstream oss;
 
-		oss << "Headers:\n";
 		for (HeaderMap::const_iterator it = m_headers.begin(); it != m_headers.end(); ++it) {
 			oss << it->first << ": ";
 			for (HeaderMap::value_type::second_type::const_iterator val_it = it->second.begin(); val_it != it->second.end(); ++val_it) {
-				oss << *val_it << "; ";
+				oss << *val_it << ", ";
 			}
-			oss << "\n";
+			oss << '\n';
 		}
-		oss << "\nBody:\n"
+		oss << '\n'
 			<< m_body;
 		return oss.str();
 	}

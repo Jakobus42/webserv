@@ -7,7 +7,7 @@ namespace http2 {
 	Uri::Uri()
 		: m_scheme()
 		, m_authority()
-		, m_port(0)
+		, m_port(8080)
 		, m_path()
 		, m_query() {}
 

@@ -7,12 +7,13 @@ int main() {
 	http2::MessageParserConfig conf;
 	http2::RequestParser parser(conf);
 	const char* httpRequest =
-		"Host: www.example.com\r\n"
+		"Host: w, f\r\n"
+		"Host: w, faaa\1\r\n"
 		"Content-Length: 27\r\n"
 		"\r\n"
 		"username=john&password=pass";
 
-	shared::Buffer<http2::RequestParser::BUFFER_SIZE>& buffer = parser.getReadBuffer();
+	shared::Buffer2<http2::RequestParser::BUFFER_SIZE>& buffer = parser.getReadBuffer();
 	std::size_t size = std::strlen(httpRequest);
 	buffer.prepareWrite(size);
 	std::memcpy(buffer.writePtr(), httpRequest, size);

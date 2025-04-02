@@ -6,7 +6,7 @@ namespace http2 {
 	 * @brief
 	 *
 	 */
-	RequestParser::RequestParser(const MessageParserConfig& conf = MessageParserConfig())
+	RequestParser::RequestParser(const MessageParserConfig& conf)
 		: AMessageParser(conf) {}
 
 	/**
