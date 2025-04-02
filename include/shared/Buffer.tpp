@@ -48,6 +48,7 @@ namespace shared {
 
 	template <std::size_t Capacity>
 	void Buffer<Capacity>::consume(std::size_t size) {
+		std::cout << "other consome" << std::endl;
 		if (size > this->size()) {
 			throw std::out_of_range("cannot consume more data than available");
 		}

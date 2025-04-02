@@ -11,7 +11,7 @@ namespace http2 {
 	 */
 	class RequestParser : public AMessageParser {
 		public:
-			RequestParser(const MessageParserConfig& conf);
+			RequestParser(const MessageParserConfig& conf = MessageParserConfig());
 			virtual ~RequestParser();
 
 			Request* releaseRequest();
