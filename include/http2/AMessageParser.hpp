@@ -1,15 +1,14 @@
 #pragma once
 
-#include "http2/AMessage.hpp"
 #include "shared/Buffer2.hpp"
 #include "shared/NonCopyable.hpp"
+#include "shared/StringView.hpp"
 
 #include <vector>
 
 namespace http2 {
 
 	struct MessageParserConfig {
-			std::size_t maxUriLength;
 			std::size_t maxBodySize;
 			std::size_t maxHeaderValueLength;
 			std::size_t maxHeaderCount;
@@ -18,6 +17,8 @@ namespace http2 {
 
 			MessageParserConfig();
 	};
+
+	class AMessage;
 
 	/**
 	 * @class AMessageParser
@@ -31,7 +32,7 @@ namespace http2 {
 			virtual ~AMessageParser();
 
 			void parse();
-			
+
 			shared::Buffer2<BUFFER_SIZE>& getReadBuffer();
 			bool isComplete() const;
 			bool isPending() const;
@@ -49,8 +50,14 @@ namespace http2 {
 				COMPLETE,
 			};
 
+			enum ParseResult {
+				NEED_DATA,
+				CONTINUE
+			};
+
 			/* Message management */
 			AMessage* releaseMessage();
+
 			virtual AMessage* createMessage() const = 0;
 
 			/* Shared */

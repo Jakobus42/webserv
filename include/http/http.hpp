@@ -44,6 +44,7 @@ namespace http {
 	};
 
 	const std::string& getStatusMessage(StatusCode statusCode);
+	StatusCode toStatusCode(std::size_t code);
 	std::string getErrorPage(StatusCode statusCode);
 	std::string getMethodString(Method method);
 	Method stringToMethod(const std::string& method);

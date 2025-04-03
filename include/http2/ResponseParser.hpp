@@ -5,20 +5,30 @@
 
 namespace http2 {
 
+	struct ResponseParserConfig {
+			std::size_t maxReasonPhraseLength;
+			MessageParserConfig messageParserConfig;
+			ResponseParserConfig();
+	};
+
 	/**
 	 * @class ResponseParser
 	 * @brief ...
 	 */
 	class ResponseParser : public AMessageParser {
 		public:
-			ResponseParser(const MessageParserConfig& conf = MessageParserConfig());
+			ResponseParser(const ResponseParserConfig& conf = ResponseParserConfig());
 			virtual ~ResponseParser();
 
 			Response* releaseResponse();
 
 		private:
 			virtual AMessage* createMessage() const;
+
 			virtual void parseStartLine();
+
+		private:
+			ResponseParserConfig m_config;
 	};
 
 } /* namespace http2 */

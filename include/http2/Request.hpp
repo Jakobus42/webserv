@@ -14,8 +14,6 @@ namespace http2 {
 		public:
 			Request();
 			~Request();
-			Request(const Request& other);
-			Request& operator=(const Request& rhs);
 
 			/* Start Line */
 			const http::Method& getMethod() const;

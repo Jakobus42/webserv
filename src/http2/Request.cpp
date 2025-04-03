@@ -17,23 +17,6 @@ namespace http2 {
 	Request::~Request() {
 	}
 
-	/**
-	 * @brief Copy constructor.
-	 * @param other The other Request object to copy.
-	 */
-	Request::Request(const Request&)
-		: AMessage() {
-	}
-
-	/**
-	 * @brief Copy assignment operator.
-	 * @param other The other Request object to assign from.
-	 * @return A reference to the assigned Request object.
-	 */
-	Request& Request::operator=(const Request&) {
-		return *this;
-	}
-
 	/* Start Line */
 
 	const http::Method& Request::getMethod() const { return m_method; }
