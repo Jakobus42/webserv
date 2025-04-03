@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstring>
+#include <stdexcept>
 
 namespace shared {
 
@@ -43,6 +44,22 @@ namespace shared {
 				std::memcpy(m_data + m_writePos, data, size);
 				m_writePos += size;
 			}
+
+			const char* find(const char* pattern, std::size_t patternLength) const {
+				if (isEmpty() || patternLength == 0 || patternLength > size()) {
+					return NULL;
+				}
+
+				const char* bufferEnd = writePtr() - patternLength + 1;
+				for (const char* p = readPtr(); p < bufferEnd; ++p) {
+					if (std::memcmp(p, pattern, patternLength) == 0) {
+						return p;
+					}
+				}
+				return NULL;
+			}
+
+			const char* find(const char* pattern) const { return find(pattern, std::strlen(pattern)); }
 
 			void consume(std::size_t size) {
 				if (size > this->size()) {

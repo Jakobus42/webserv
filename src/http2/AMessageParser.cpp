@@ -2,17 +2,19 @@
 
 #include "http/http.hpp"
 #include "http/types.hpp"
+#include "http2/AMessage.hpp"
 #include "shared/stringUtils.hpp"
 
 #include <algorithm>
 #include <cstring>
 #include <sstream>
 
+// todo: refactor state flow and non specific message config
+
 namespace http2 {
 
 	MessageParserConfig::MessageParserConfig()
-		: maxUriLength(8 * 1024)		 // 8KB
-		, maxBodySize(10 * 1024 * 1024)	 // 10MB
+		: maxBodySize(10 * 1024 * 1024)	 // 10MB
 		, maxHeaderValueLength(8 * 1024) // 8KB
 		, maxHeaderCount(128)			 // 128 headers
 		, maxHeaderValueCount(64)		 // 64 values
@@ -38,6 +40,7 @@ namespace http2 {
 			m_message = createMessage();
 		}
 
+		m_needData = false;
 		while (m_state != COMPLETE && !m_needData) {
 			if (m_state == START_LINE) {
 				parseStartLine();
@@ -76,16 +79,17 @@ namespace http2 {
 	/* Shared */
 
 	shared::StringView AMessageParser::readLine() {
-		char* line = m_buffer.readPtr();
-
-		char* lineEnd = std::strstr(line, CRLF);
+		const char* lineStart = m_buffer.readPtr();
+		const char* lineEnd = m_buffer.find(CRLF);
 		if (lineEnd == NULL) {
 			m_needData = true;
 			return shared::StringView();
 		}
 
-		m_buffer.consume(lineEnd + 2 /* CRLF len */ - line);
-		return shared::StringView(line, lineEnd - line);
+		shared::StringView(lineStart, lineEnd - lineStart);
+
+		m_buffer.consume((lineEnd - lineStart) + std::strlen(CRLF));
+		return shared::StringView(lineStart, lineEnd - lineStart);
 	}
 
 	bool AMessageParser::isChunked() const {
@@ -210,7 +214,7 @@ namespace http2 {
 				rawValue.find_last_not_of(WHITESPACE));
 
 			for (std::size_t i = 0; i < value.size(); ++i) {
-				if (!isVChar(value[i])) {
+				if (!isVChar(value[i]) && !std::strchr(WHITESPACE, value[i])) {
 					throw http::exception(http::BAD_REQUEST, std::string("invalid character in field-value '") + line[i] + '\'');
 				}
 			}
@@ -230,8 +234,12 @@ namespace http2 {
 		if (m_needData) {
 			return;
 		}
+
+		// RFC 7230 section 4.1.1 (ignore extension)
+		std::size_t semicolonPos = line.find(';');
+		shared::StringView sizeView = semicolonPos == shared::StringView::npos ? line : line.substr(0, semicolonPos);
 		try {
-			m_contentLength = shared::string::toNum<std::size_t>(line.to_string(), 16);
+			m_contentLength = shared::string::toNum<std::size_t>(sizeView.to_string(), 16);
 		} catch (std::exception& e) {
 			throw http::exception(http::BAD_REQUEST, "invalid chunk size: " + std::string(e.what()));
 		}
@@ -267,6 +275,8 @@ namespace http2 {
 			if (m_needData) {
 				return;
 			}
+
+			std::cout << emptyLine << std::endl;
 
 			if (!emptyLine.empty()) {
 				throw http::exception(http::BAD_REQUEST, "expected CRLF after chunk data");

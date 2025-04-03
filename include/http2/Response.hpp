@@ -13,11 +13,18 @@ namespace http2 {
 		public:
 			Response();
 			~Response();
-			Response(const Response& other);
-			Response& operator=(const Response& rhs);
+
+			/* Start Line */
+			http::StatusCode getStatusCode() const;
+			const std::string& getReasonPhrase() const;
+
+			void setStatusCode(http::StatusCode code);
+			void setReasonPhrase(const std::string& phrase);
+			void setReasonPhrase(const shared::StringView& phrase);
 
 		private:
 			http::StatusCode m_statusCode;
+			std::string m_reasonPhrase;
 	};
 
 } /* namespace http2 */
