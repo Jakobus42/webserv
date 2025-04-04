@@ -4,10 +4,6 @@ header_template='#pragma once
 
 namespace %NAMESPACE% {
 
-/**
- * @class %CLASS_NAME%
- * @brief ...
- */
 class %CLASS_NAME% {
     public:
         %CLASS_NAME%();
@@ -27,33 +23,18 @@ source_template='#include "%SUB_FOLDER%/%CLASS_NAME%.hpp"
 
 namespace %NAMESPACE% {
 
-/**
- * @brief Constructs a new %CLASS_NAME% object.
- */
 %CLASS_NAME%::%CLASS_NAME%() {
 
 }
 
-/**
- * @brief Destroys the %CLASS_NAME% object.
- */
 %CLASS_NAME%::~%CLASS_NAME%() {
 
 }
 
-/**
- * @brief Copy constructor.
- * @param other The other %CLASS_NAME% object to copy.
- */
 %CLASS_NAME%::%CLASS_NAME%(const %CLASS_NAME% &other) {
 
 }
 
-/**
- * @brief Copy assignment operator.
- * @param other The other %CLASS_NAME% object to assign from.
- * @return A reference to the assigned %CLASS_NAME% object.
- */
 %CLASS_NAME%& %CLASS_NAME%::operator=(const %CLASS_NAME% &rhs) {
     return *this;
 }
