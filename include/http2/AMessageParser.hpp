@@ -4,6 +4,7 @@
 #include "shared/NonCopyable.hpp"
 #include "shared/StringView.hpp"
 
+#include <utility>
 #include <vector>
 
 namespace http2 {
@@ -35,7 +36,6 @@ namespace http2 {
 
 			shared::Buffer2<BUFFER_SIZE>& getReadBuffer();
 			bool isComplete() const;
-			bool isPending() const;
 
 			void reset();
 
@@ -45,14 +45,16 @@ namespace http2 {
 				HEADERS,
 				CHUNK_SIZE,
 				CHUNK_BODY,
+				CHUNK_END,
 				BODY,
 				TRAILING_HEADERS,
 				COMPLETE,
 			};
 
 			enum ParseResult {
+				DONE,
+				CONTINUE,
 				NEED_DATA,
-				CONTINUE
 			};
 
 			/* Message management */
@@ -61,23 +63,22 @@ namespace http2 {
 			virtual AMessage* createMessage() const = 0;
 
 			/* Shared */
-			shared::StringView readLine();
+			std::pair<shared::StringView /*line*/, bool /*ok*/> readLine();
 			bool isChunked() const;
 			bool isTChar(char c) const;
 			bool isVChar(char c) const;
 
 			/* Parsers */
-			virtual void parseStartLine() = 0;
+			virtual ParseResult parseStartLine() = 0;
 
-			void parseHeaderLine();
+			ParseResult parseHeaderLine();
 			void validateHeaders();
 			shared::StringView extractHeaderKey(const shared::StringView& line) const;
 			std::vector<shared::StringView> extractHeaderValues(const shared::StringView& line) const;
 
-			void parseChunkSize();
+			ParseResult parseChunkSize();
 
-			void parseBody();
-
+			ParseResult parseBody(bool isChunked);
 
 		protected:
 			static const char CRLF[];
@@ -89,7 +90,6 @@ namespace http2 {
 			ParseState m_state;
 			shared::Buffer2<BUFFER_SIZE> m_buffer;
 			std::size_t m_contentLength;
-			bool m_needData;
 	};
 
 

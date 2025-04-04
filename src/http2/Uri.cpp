@@ -42,11 +42,27 @@ namespace http2 {
 
 	void Uri::setScheme(const std::string& scheme) { m_scheme = scheme; }
 
+	void Uri::setScheme(const shared::StringView& scheme) { m_scheme.assign(scheme.begin(), scheme.size()); }
+
 	void Uri::setAuthority(const std::string& authority) { m_authority = authority; }
+
+	void Uri::setAuthority(const shared::StringView& authority) { m_authority.assign(authority.begin(), authority.size()); }
 
 	void Uri::setPort(in_port_t port) { m_port = port; }
 
+	void Uri::setPath(const std::string& path) { m_path = path; }
+
+	void Uri::setPath(const shared::StringView& path) { m_path.assign(path.begin(), path.size()); }
+
 	void Uri::setQuery(const std::string& query) { m_query = query; }
+
+	void Uri::setQuery(const shared::StringView& query) { m_query.assign(query.begin(), query.size()); }
+
+	void Uri::setCgiPathInfo(const std::string& cgiPathInfo) { m_cgiPathInfo = cgiPathInfo; }
+
+	void Uri::setCgiPathInfo(const shared::StringView& cgiPathInfo) { m_cgiPathInfo.assign(cgiPathInfo.begin(), cgiPathInfo.size()); }
+
+	void Uri::setPathSegment(const std::vector<std::string>& pathSegment) { m_pathSegment = pathSegment; }
 
 	std::string Uri::toString() const {
 		std::ostringstream oss;
@@ -57,5 +73,9 @@ namespace http2 {
 		}
 		return oss.str();
 	}
+
+
+
+
 
 } /* namespace http2 */

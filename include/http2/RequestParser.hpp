@@ -25,11 +25,14 @@ namespace http2 {
 		private:
 			virtual AMessage* createMessage() const;
 
-			virtual void parseStartLine();
-			void parseUri(const shared::StringView& uriView);
+			virtual ParseResult parseStartLine();
+			void parseUriOriginForm(const shared::StringView& uriView);
+			void parseUriAbsoluteForm(const shared::StringView& uriView);
+			void parsePath();
 
 		private:
 			RequestParserConfig m_config;
+			Request* m_request;
 	};
 
 } /* namespace http2 */
