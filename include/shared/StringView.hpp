@@ -34,6 +34,8 @@ namespace shared {
 			std::size_t find(char ch, std::size_t pos = 0) const;
 			std::size_t rfind(const StringView& v, std::size_t pos = npos) const;
 			std::size_t rfind(char ch, std::size_t pos = npos) const;
+			std::size_t find_first_of(const StringView& chars, std::size_t pos = 0) const;
+			std::size_t find_first_of(char ch, std::size_t pos = 0) const;
 			std::size_t find_first_not_of(const StringView& chars, std::size_t pos = 0) const;
 			std::size_t find_first_not_of(char ch, std::size_t pos = 0) const;
 			std::size_t find_last_not_of(const StringView& chars, std::size_t pos = npos) const;

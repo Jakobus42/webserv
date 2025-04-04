@@ -25,10 +25,11 @@ namespace http2 {
 		private:
 			virtual AMessage* createMessage() const;
 
-			virtual void parseStartLine();
+			virtual ParseResult parseStartLine();
 
 		private:
 			ResponseParserConfig m_config;
+			Response* m_response;
 	};
 
 } /* namespace http2 */

@@ -2,6 +2,9 @@
 
 #include "http/http.hpp"
 #include "shared/NonCopyable.hpp"
+#include "shared/StringView.hpp"
+
+#include <vector>
 
 namespace http2 {
 
@@ -23,9 +26,18 @@ namespace http2 {
 			const std::string& getQuery() const;
 
 			void setScheme(const std::string& scheme);
+			void setScheme(const shared::StringView& scheme);
 			void setAuthority(const std::string& authority);
+			void setAuthority(const shared::StringView& authority);
 			void setPort(in_port_t port);
+			void setPath(const std::string& path);
+			void setPath(const shared::StringView& path);
 			void setQuery(const std::string& query);
+			void setQuery(const shared::StringView& query);
+			void setCgiPathInfo(const std::string& cgiPathInfo);
+			void setCgiPathInfo(const shared::StringView& cgiPathInfo);
+			void setPathSegment(const std::vector<std::string>& pathSegment);
+
 
 			/* Debugging */
 			std::string toString() const;
@@ -36,6 +48,8 @@ namespace http2 {
 			in_port_t m_port;
 			std::string m_path;
 			std::string m_query;
+			std::string m_cgiPathInfo;
+			std::vector<std::string> m_pathSegment;
 	};
 
 } /* namespace http2 */

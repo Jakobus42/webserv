@@ -138,6 +138,32 @@ namespace shared {
 		return npos;
 	}
 
+	std::size_t StringView::find_first_of(const StringView& chars, std::size_t pos) const {
+		if (pos >= m_size) {
+			return npos;
+		}
+
+		for (std::size_t i = pos; i < m_size; ++i) {
+			if (contains_char(m_data[i], chars)) {
+				return i;
+			}
+		}
+		return npos;
+	}
+
+	std::size_t StringView::find_first_of(char ch, std::size_t pos) const {
+		if (pos >= m_size) {
+			return npos;
+		}
+
+		for (std::size_t i = pos; i < m_size; ++i) {
+			if (m_data[i] == ch) {
+				return i;
+			}
+		}
+		return npos;
+	}
+
 	std::size_t StringView::find_first_not_of(char ch, std::size_t pos) const {
 		if (pos >= m_size) {
 			return npos;

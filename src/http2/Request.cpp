@@ -23,6 +23,8 @@ namespace http2 {
 
 	const http2::Uri& Request::getUri() const { return m_uri; }
 
+	http2::Uri& Request::getUri() { return m_uri; }
+
 	void Request::setMethod(const http::Method& method) { m_method = method; }
 
 	void Request::setUri(const http2::Uri& uri) { m_uri = uri; }

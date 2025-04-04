@@ -155,7 +155,6 @@ namespace shared {
 
 		std::vector<std::string> splitPath(const std::string& path) throw(http::exception) {
 			std::vector<std::string> tokens;
-			std::cout << "Splitting path: " << path << std::endl;
 			if (path.empty()) {
 				throw http::exception(http::NOT_FOUND, "Path is empty");
 			}

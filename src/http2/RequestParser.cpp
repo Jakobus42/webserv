@@ -1,5 +1,10 @@
 #include "http2/RequestParser.hpp"
 
+#include "shared/stringUtils.hpp"
+
+// todo: validate host, scheme
+// todo: better error messages for uri
+
 namespace http2 {
 
 	RequestParserConfig::RequestParserConfig()
@@ -23,11 +28,12 @@ namespace http2 {
 	AMessage* RequestParser::createMessage() const { return new Request(); }
 
 	/* <Method> <Request-URI> <HTTP-Version> */
-	void RequestParser::parseStartLine() {
-		shared::StringView line = readLine();
-		if (m_needData) {
-			return;
+	AMessageParser::ParseResult RequestParser::parseStartLine() {
+		std::pair<shared::StringView /*line*/, bool /*ok*/> ret = readLine();
+		if (ret.second == false) {
+			return NEED_DATA;
 		}
+		shared::StringView line = ret.first;
 
 		std::size_t firstSpace = line.find(' ');
 		std::size_t secondSpace = line.find(' ', firstSpace + 1);
@@ -35,22 +41,89 @@ namespace http2 {
 			throw http::exception(http::BAD_REQUEST, "invalid start-line: cant find spaces");
 		}
 
-		Request* request = static_cast<Request*>(m_message);
+		m_request = static_cast<Request*>(m_message);
 
-		request->setMethod(http::stringToMethod(line.substr(0, firstSpace).to_string()));
+		m_request->setMethod(http::stringToMethod(line.substr(0, firstSpace).to_string()));
 
 		shared::StringView uriView = line.substr(firstSpace + 1, secondSpace - firstSpace - 1);
 		if (uriView.size() > m_config.maxUriLength) {
 			throw http::exception(http::PAYLOAD_TOO_LARGE, "uri exceeds size limit");
 		}
-		parseUri(uriView);
 
-		request->setVersion(line.substr(secondSpace + 1));
+		if (uriView[0] == '/') {
+			parseUriOriginForm(uriView);
+		} else {
+			parseUriAbsoluteForm(uriView);
+		}
 
-		m_state = HEADERS;
+		m_request->setVersion(line.substr(secondSpace + 1));
+
+		return DONE;
 	}
 
-	void RequestParser::parseUri(const shared::StringView&) {}
+	void RequestParser::parseUriOriginForm(const shared::StringView& uriView) {
+		Uri& uri = m_request->getUri();
+		if (uriView.find('?') < uriView.find('#')) {
+			uri.setQuery(uriView.substr(uriView.find('?') + 1));
+		}
+		uri.setPath(uriView.substr(0, uriView.find_first_of("?#")));
+		parsePath();
+	}
+
+	/**
+	 * @brief Parses Absolute path and saves only the pure path in "m_truePath" src: (RFC 9112 3.2.2)
+	 * @details
+	 * absolute-URI = scheme ":" hier-part [ "?" query ]
+	 * @param path
+	 */
+	void RequestParser::parseUriAbsoluteForm(const shared::StringView& uriView) {
+		Uri& uri = m_request->getUri();
+		shared::StringView scheme;
+		shared::StringView authority;
+		shared::StringView path;
+
+		if (uriView.find(':') == shared::StringView::npos) {
+			throw http::exception(http::BAD_REQUEST, "invalid URI");
+		}
+		scheme = uriView.substr(0, uriView.find(":"));
+		if (scheme.empty() || std::isalpha(scheme[0]) == 0 || scheme.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-.") != shared::StringView::npos) {
+			throw http::exception(http::BAD_REQUEST, "invalid URI");
+		}
+		path = uriView.substr(uriView.find(':') + 1, uriView.find('?') - uriView.find(':') - 1);
+		if (path[0] != '/' && path[1] != '/') {
+			throw http::exception(http::BAD_REQUEST, "invalid URI");
+		}
+		path = path.substr(2);
+		if (path.find('/') == shared::StringView::npos) {
+			throw http::exception(http::BAD_REQUEST, "invalid URI");
+		}
+		authority = path.substr(0, path.find('/'));
+		if (authority.empty()) {
+			throw http::exception(http::BAD_REQUEST, "invalid URI");
+		}
+		if (uriView.find('?') != shared::StringView::npos) {
+			uri.setQuery(uriView.substr(uriView.find('?') + 1));
+		}
+		uri.setPath(path.substr(path.find('/')));
+		uri.setScheme(scheme);
+		uri.setAuthority(authority);
+		parsePath();
+	}
+
+	// parse CGI if the path starts with /cgi-bin/
+	void RequestParser::parsePath() {
+		Uri& uri = m_request->getUri();
+		if (uri.getPath().find("/cgi-bin/") == 0) {
+			std::size_t pos = uri.getPath().find_first_of("/#?", 9);
+			if (pos != std::string::npos) {
+				uri.setCgiPathInfo(uri.getPath().substr(pos));
+				uri.setPath(uri.getPath().substr(0, pos));
+			}
+		}
+		uri.setPathSegment(shared::string::splitPath(uri.getPath()));
+		// TODO: should we parse this at all?
+		// also, should we check if we accept the script here?
+	}
 
 
 } /* namespace http2 */

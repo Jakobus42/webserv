@@ -6,10 +6,11 @@
 #include "shared/stringUtils.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <cstring>
 #include <sstream>
 
-// todo: refactor state flow and non specific message config
+// Todo consume CRLF after chunked body and empty line after 0 chunk
 
 namespace http2 {
 
@@ -30,8 +31,7 @@ namespace http2 {
 		, m_message(NULL)
 		, m_state(START_LINE)
 		, m_buffer()
-		, m_contentLength(0)
-		, m_needData(false) {}
+		, m_contentLength(0) {}
 
 	AMessageParser::~AMessageParser() { delete m_message; }
 
@@ -40,16 +40,46 @@ namespace http2 {
 			m_message = createMessage();
 		}
 
-		m_needData = false;
-		while (m_state != COMPLETE && !m_needData) {
-			if (m_state == START_LINE) {
-				parseStartLine();
-			} else if (m_state == HEADERS || m_state == TRAILING_HEADERS) {
-				parseHeaderLine();
-			} else if (m_state == CHUNK_SIZE) {
-				parseChunkSize();
-			} else if (m_state == BODY || m_state == CHUNK_BODY) {
-				parseBody();
+		while (m_state != COMPLETE) {
+			ParseResult result = NEED_DATA;
+
+			switch (m_state) {
+				case START_LINE:
+					result = parseStartLine();
+					if (result == DONE) m_state = HEADERS;
+					break;
+
+				case HEADERS:
+					result = parseHeaderLine();
+					if (result == DONE) m_state = isChunked() ? CHUNK_SIZE : BODY;
+					break;
+
+				case TRAILING_HEADERS:
+					result = parseHeaderLine();
+					if (result == DONE) m_state = COMPLETE;
+					break;
+
+				case CHUNK_SIZE:
+					result = parseChunkSize();
+					if (result == DONE) m_state = (m_contentLength == 0) ? TRAILING_HEADERS : CHUNK_BODY;
+					break;
+
+				case BODY:
+					result = parseBody(false);
+					if (result == DONE) m_state = COMPLETE;
+					break;
+
+				case CHUNK_BODY:
+					result = parseBody(true);
+					if (result == DONE) m_state = CHUNK_SIZE;
+					break;
+
+				default:
+					assert(false && "unexpected parser state!");
+			}
+
+			if (result == NEED_DATA) {
+				break;
 			}
 		}
 	}
@@ -58,10 +88,7 @@ namespace http2 {
 
 	bool AMessageParser::isComplete() const { return m_state == COMPLETE; }
 
-	bool AMessageParser::isPending() const { return m_needData == true; }
-
 	void AMessageParser::reset() {
-		m_needData = false;
 		m_state = START_LINE;
 		delete m_message;
 		m_message = NULL;
@@ -78,18 +105,15 @@ namespace http2 {
 
 	/* Shared */
 
-	shared::StringView AMessageParser::readLine() {
+	std::pair<shared::StringView /*line */ , bool /*ok*/> AMessageParser::readLine() {
 		const char* lineStart = m_buffer.readPtr();
 		const char* lineEnd = m_buffer.find(CRLF);
 		if (lineEnd == NULL) {
-			m_needData = true;
-			return shared::StringView();
+			return std::make_pair(shared::StringView(), false);
 		}
 
-		shared::StringView(lineStart, lineEnd - lineStart);
-
 		m_buffer.consume((lineEnd - lineStart) + std::strlen(CRLF));
-		return shared::StringView(lineStart, lineEnd - lineStart);
+		return std::make_pair(shared::StringView(lineStart, lineEnd - lineStart), true);
 	}
 
 	bool AMessageParser::isChunked() const {
@@ -111,18 +135,16 @@ namespace http2 {
 						and consisting of either *TEXT or combinations
 						of token, separators, and quoted-string>
 	*/
-	void AMessageParser::parseHeaderLine() {
-		shared::StringView line = readLine();
-		if (m_needData) {
-			return;
-		} else if (line.empty()) {
-			if (m_state == TRAILING_HEADERS) {
-				m_state = COMPLETE;
-			} else {
-				validateHeaders();
-				m_state = isChunked() ? CHUNK_SIZE : BODY;
-			}
-			return;
+	AMessageParser::ParseResult AMessageParser::parseHeaderLine() {
+		std::pair<shared::StringView /*line */, bool /*ok*/> ret = readLine();
+		if (ret.second == false) {
+			return NEED_DATA;
+		}
+
+		shared::StringView line = ret.first;
+		if (line.empty()) {
+			validateHeaders();
+			return DONE;
 		}
 
 		if (m_message->getHeaders().size() > m_config.maxHeaderCount - 1) {
@@ -140,6 +162,7 @@ namespace http2 {
 		} catch (const http::exception& e) {
 			throw http::exception(e.getStatusCode(), "invalid header: " + e.getMessage());
 		}
+		return CONTINUE;
 	}
 
 	void AMessageParser::validateHeaders() {
@@ -167,12 +190,11 @@ namespace http2 {
 
 			try {
 				m_contentLength = shared::string::toNum<std::size_t>(values.front(), 10);
-
-				if (m_contentLength > m_config.maxBodySize) {
-					throw http::exception(http::PAYLOAD_TOO_LARGE, "content-length exceeds size limit");
-				}
 			} catch (const std::exception& e) {
 				throw http::exception(http::BAD_REQUEST, "invalid content-length: could not parse: " + std::string(e.what()));
+			}
+			if (m_contentLength > m_config.maxBodySize) {
+				throw http::exception(http::PAYLOAD_TOO_LARGE, "content-length exceeds size limit");
 			}
 		}
 	}
@@ -229,62 +251,47 @@ namespace http2 {
 		return values;
 	}
 
-	void AMessageParser::parseChunkSize() {
-		shared::StringView line = readLine();
-		if (m_needData) {
-			return;
+	AMessageParser::ParseResult AMessageParser::parseChunkSize() {
+		std::pair<shared::StringView /*line */, bool /*ok*/> ret = readLine();
+		if (ret.second == false) {
+			return NEED_DATA;
 		}
+		shared::StringView line = ret.first;
 
 		// RFC 7230 section 4.1.1 (ignore extension)
 		std::size_t semicolonPos = line.find(';');
-		shared::StringView sizeView = semicolonPos == shared::StringView::npos ? line : line.substr(0, semicolonPos);
+		shared::StringView sizeView = line.substr(0, semicolonPos);
+
 		try {
 			m_contentLength = shared::string::toNum<std::size_t>(sizeView.to_string(), 16);
 		} catch (std::exception& e) {
 			throw http::exception(http::BAD_REQUEST, "invalid chunk size: " + std::string(e.what()));
 		}
-		m_state = (m_contentLength == 0) ? TRAILING_HEADERS : CHUNK_BODY;
+		return DONE;
 	}
 
-	void AMessageParser::parseBody() {
-		if (m_contentLength == 0) {
-			m_state = m_state == CHUNK_BODY ? CHUNK_SIZE : COMPLETE;
-			return;
-		}
-
-		std::size_t available = std::min(m_buffer.size(), m_contentLength);
-		if (available == 0) {
-			m_needData = true;
-			return;
-		}
-
-		m_message->appendBody(shared::StringView(m_buffer.readPtr(), available));
-		if (m_message->getBody().size() > m_config.maxBodySize) {
-			throw http::exception(http::PAYLOAD_TOO_LARGE, "body exceeds size limit");
-		}
-
-		m_buffer.consume(available);
-		m_contentLength -= available;
+	// this function flow is kinda fucked up but idc (maybe I do) .-.
+	AMessageParser::ParseResult AMessageParser::parseBody(bool isChunked) {
 		if (m_contentLength > 0) {
-			m_needData = true;
-			return;
-		}
-
-		if (m_state == CHUNK_BODY) {
-			shared::StringView emptyLine = readLine();
-			if (m_needData) {
-				return;
+			std::size_t available = std::min(m_buffer.size(), m_contentLength);
+			m_message->appendBody(shared::StringView(m_buffer.readPtr(), available));
+			if (m_message->getBody().size() > m_config.maxBodySize) {
+				throw http::exception(http::PAYLOAD_TOO_LARGE, "body exceeds size limit");
 			}
 
-			std::cout << emptyLine << std::endl;
-
-			if (!emptyLine.empty()) {
-				throw http::exception(http::BAD_REQUEST, "expected CRLF after chunk data");
+			m_buffer.consume(available);
+			m_contentLength -= available;
+			if (m_contentLength > 0) {
+				return NEED_DATA;
 			}
-			m_state = CHUNK_SIZE;
-		} else {
-			m_state = COMPLETE;
+			return isChunked ? CONTINUE : DONE;
+		} else if (isChunked) { // consume CRLF after last chunk
+			std::pair<shared::StringView /*line */, bool /*ok*/> ret = readLine();
+			if (ret.second == false) {
+				return NEED_DATA;
+			}
 		}
+		return DONE;
 	}
 
 } /* namespace http2 */

@@ -18,6 +18,7 @@ namespace http2 {
 			/* Start Line */
 			const http::Method& getMethod() const;
 			const http2::Uri& getUri() const;
+			http2::Uri& getUri();
 
 			void setMethod(const http::Method& method);
 			void setUri(const http2::Uri& uri);
