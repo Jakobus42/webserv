@@ -1,5 +1,5 @@
 ###COMPILER###
-CC = c++ -g
+CC = c++
 
 ###FLAGS###
 CFLAGS = -Wextra -Wall -Werror -std=c++98 -I$(INCDIR)
@@ -13,23 +13,24 @@ NAME = webserv
 SRCDIR = src
 INCDIR = include
 BINDIR = bin
-TESTBUILDDIR = build
 OBJDIR = $(BINDIR)/obj
 DEPDIR = $(BINDIR)/dep
 
-#############################################################################################
-
+###COLORS###
 GREEN = \033[0;32m
 YELLOW = \033[0;33m
 RED = \033[0;31m
 NC = \033[0m
 
-CLANG_FORMAT = clang-format
+#############################################################################################
 
 SOURCES = $(shell find $(SRCDIR) -name '*.cpp')
 HEADERS = $(shell find $(INCDIR) -name '*.hpp')
 OBJECTS = $(SOURCES:%.cpp=$(OBJDIR)/%.o)
 DEPS = $(SOURCES:%.cpp=$(DEPDIR)/%.d)
+
+.PHONY: all
+all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	@echo "$(YELLOW)Linking objects to create $(NAME)...$(NC)"
@@ -42,60 +43,44 @@ $(OBJDIR)/%.o: %.cpp
 	@echo "$(YELLOW)Compiling $<...$(NC)"
 	$(CC) $(CFLAGS) -MMD -MP -c $< -o $@ -MF $(DEPDIR)/$*.d
 
--include $(DEPS)
-
-NUM_PROCS = $(shell nproc)
-MAKEFLAGS = -j$(NUM_PROCS)
-
-#############################################################################################
-
-all: $(NAME)
-
+.PHONY: run
 run: all
 	@echo "$(GREEN)Running $(NAME)...$(NC)"
 	./$(NAME)
 
+.PHONY: leak
 leak: all
 	@echo "$(GREEN)Running $(NAME) with valgrind...$(NC)"
 	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --error-exitcode=1 ./$(NAME)
 
+.PHONY: debug
 debug: CFLAGS += $(DEBUG_FLAGS)
 debug: all
 	@echo "$(GREEN)Launching debugger for $(NAME)...$(NC)"
 	gdb ./$(NAME)
 
+.PHONY: cppcheck
 cppcheck:
 	@echo "Running cppcheck..."
-	cppcheck $(CPPCHECKFLAGS) --enable=all --error-exitcode=1 --suppress=missingIncludeSystem --suppress=noExplicitConstructor --suppress=unusedFunction --inline-suppr $(SRCDIR)/ $(INCDIR)/
+	cppcheck $(CPPCHECKFLAGS) --enable=all --error-exitcode=1 --suppress=missingIncludeSystem --inline-suppr $(SRCDIR)/ $(INCDIR)/
 
+.PHONY: strict
 strict: all cppcheck
 	@echo "$(GREEN)Strict build completed.$(NC)"
 
-build_tests:
-	@echo "$(GREEN)Building tests...$(NC)"
-	mkdir -p $(TESTBUILDDIR)
-	cd $(TESTBUILDDIR) && cmake .. && cmake --build .
-
-test: build_tests
-	@echo "$(GREEN)Testing code...$(NC)"
-	cd build && ctest
-
-
-format:
-	@echo "Formatting code with clang-format..."
-	$(CLANG_FORMAT) -i $(SOURCES) $(HEADERS)
-
+.PHONY: clean
 clean:
 	@echo "$(RED)Cleaning up...$(NC)"
-	rm -rf Testing
 	rm -rf $(BINDIR)
 	rm -rf $(TESTBUILDDIR)
 
+.PHONY: fclean
 fclean: clean
 	@echo "$(RED)Removing $(NAME)...$(NC)"
 	rm -f $(NAME)
 
+.PHONY: re
 re: fclean
 	$(MAKE) all
 
-.PHONY: all clean fclean re run debug cppcheck strict leak format
+-include $(DEPS)
