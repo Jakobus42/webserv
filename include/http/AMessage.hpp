@@ -1,7 +1,7 @@
 #pragma once
 
-#include "shared/mixin/NonCopyable.hpp"
-#include "shared/string/StringView.hpp"
+#include "shared/NonCopyable.hpp"
+#include "shared/StringView.hpp"
 
 #include <map>
 #include <vector>

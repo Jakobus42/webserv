@@ -6,11 +6,9 @@
 #include <vector>
 
 namespace shared {
-
 	namespace file {
 
 		bool exists(const std::string& path);
-		bool fileExists(const std::string& path);
 		bool isRegularFile(const std::string& path);
 		bool isDirectory(const std::string& path);
 		bool isReadable(const std::string& path);
@@ -20,5 +18,4 @@ namespace shared {
 		bool dirIsAccessible(const std::string& path);
 
 	} // namespace file
-
 } // namespace shared

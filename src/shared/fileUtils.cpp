@@ -1,16 +1,11 @@
 #include "shared/fileUtils.hpp"
 
 namespace shared {
-
 	namespace file {
 
 		bool exists(const std::string& path) {
 			struct stat info;
 			return (stat(path.c_str(), &info) == 0);
-		}
-
-		bool fileExists(const std::string& path) {
-			return exists(path);
 		}
 
 		bool isRegularFile(const std::string& path) {
@@ -37,7 +32,6 @@ namespace shared {
 			return (access(path.c_str(), R_OK) == 0 && (info.st_mode & S_IRUSR) != 0);
 		}
 
-		// Check if a file is writable
 		bool isWritable(const std::string& path) {
 			struct stat info;
 			if (stat(path.c_str(), &info) != 0) {
@@ -60,7 +54,6 @@ namespace shared {
 			return (access(path.c_str(), X_OK) == 0);
 		}
 
-		// Check if a directory exists
 		bool directoryExists(const std::string& path) {
 			struct stat info;
 			return (stat(path.c_str(), &info) == 0) && (info.st_mode & S_IFDIR);
@@ -72,5 +65,4 @@ namespace shared {
 		}
 
 	} // namespace file
-
 } // namespace shared

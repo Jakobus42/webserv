@@ -7,8 +7,8 @@ namespace http {
 	 */
 	GetHandler::GetHandler(Router& router)
 		: ARequestHandler(router)
-		, m_fileStream(),
-		m_cgi(router){}
+		, m_fileStream()
+		, m_cgi(router) {}
 
 	/**
 	 * @brief Destroys the GetHandler object.
@@ -83,7 +83,7 @@ namespace http {
 	// in GET, there should be a file name in the path
 	// this whole thing is mad sus, TODO: address
 	void GetHandler::handle(const Request& request, Response& response) {
-		if(request.getType() == CGI) {
+		if (request.getType() == CGI) {
 			m_cgi.handle(request, response);
 			m_state = m_cgi.getState();
 			return;

@@ -1,4 +1,4 @@
-#include "shared/string/StringView.hpp"
+#include "shared/StringView.hpp"
 
 #include <cstring>
 
@@ -26,6 +26,12 @@ namespace shared {
 				m_data = rhs.m_data;
 				m_size = rhs.m_size;
 			}
+			return *this;
+		}
+
+		StringView& StringView::operator=(const char* data) {
+			m_data = data;
+			m_size = std::strlen(data);
 			return *this;
 		}
 
@@ -229,7 +235,7 @@ namespace shared {
 			return npos;
 		}
 
-		std::string StringView::to_string() const { return std::string(m_data, m_size); }
+		std::string StringView::toString() const { return std::string(m_data, m_size); }
 
 		char StringView::operator[](std::size_t index) const { return m_data[index]; }
 

@@ -29,6 +29,8 @@ HEADERS = $(shell find $(INCDIR) -name '*.hpp')
 OBJECTS = $(SOURCES:%.cpp=$(OBJDIR)/%.o)
 DEPS = $(SOURCES:%.cpp=$(DEPDIR)/%.d)
 
+MAKEFLAGS += --jobs
+
 .PHONY: all
 all: $(NAME)
 
@@ -59,10 +61,11 @@ debug: all
 	@echo "$(GREEN)Launching debugger for $(NAME)...$(NC)"
 	gdb ./$(NAME)
 
+#todo: remove unused function supression before submission
 .PHONY: cppcheck
 cppcheck:
 	@echo "Running cppcheck..."
-	cppcheck $(CPPCHECKFLAGS) --enable=all --error-exitcode=1 --suppress=missingIncludeSystem --inline-suppr $(SRCDIR)/ $(INCDIR)/
+	cppcheck $(CPPCHECKFLAGS) --enable=all --error-exitcode=1 --suppress=missingIncludeSystem --suppress=unusedFunction --inline-suppr $(SRCDIR)/ $(INCDIR)/
 
 .PHONY: strict
 strict: all cppcheck

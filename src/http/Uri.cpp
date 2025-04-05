@@ -74,8 +74,4 @@ namespace http {
 		return oss.str();
 	}
 
-
-
-
-
 } /* namespace http */

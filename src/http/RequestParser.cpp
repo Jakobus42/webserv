@@ -13,16 +13,11 @@ namespace http {
 		: maxUriLength(1024) // 1KB
 		, messageParserConfig() {}
 
-	/**
-	 * @brief
-	 *
-	 */
 	RequestParser::RequestParser(const RequestParserConfig& conf)
-		: AMessageParser(conf.messageParserConfig) {}
+		: AMessageParser(conf.messageParserConfig)
+		, m_config(conf)
+		, m_request(NULL) {}
 
-	/**
-	 * @brief Destroys the RequestParser object.
-	 */
 	RequestParser::~RequestParser() {}
 
 	Request* RequestParser::releaseRequest() { return static_cast<Request*>(releaseMessage()); }
@@ -45,7 +40,7 @@ namespace http {
 
 		m_request = static_cast<Request*>(m_message);
 
-		m_request->setMethod(stringToMethod(line.substr(0, firstSpace).to_string()));
+		m_request->setMethod(stringToMethod(line.substr(0, firstSpace).toString()));
 
 		shared::string::StringView uriView = line.substr(firstSpace + 1, secondSpace - firstSpace - 1);
 		if (uriView.size() > m_config.maxUriLength) {
@@ -68,7 +63,7 @@ namespace http {
 		if (uriView.find('?') < uriView.find('#')) {
 			uri.setQuery(uriView.substr(uriView.find('?') + 1));
 		}
-		uri.setPath(uriView.substr(0, uriView.find_first_of("?#")));
+		uri.setPath(uriView.substr(0, uriView.find_first_of(shared::string::StringView("?#"))));
 		parsePath();
 	}
 
@@ -87,8 +82,8 @@ namespace http {
 		if (uriView.find(':') == shared::string::StringView::npos) {
 			throw HttpException(BAD_REQUEST, "invalid URI");
 		}
-		scheme = uriView.substr(0, uriView.find(":"));
-		if (scheme.empty() || std::isalpha(scheme[0]) == 0 || scheme.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-.") != shared::string::StringView::npos) {
+		scheme = uriView.substr(0, uriView.find(shared::string::StringView(":")));
+		if (scheme.empty() || std::isalpha(scheme[0]) == 0 || scheme.find_first_not_of(shared::string::StringView("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-.")) != shared::string::StringView::npos) {
 			throw HttpException(BAD_REQUEST, "invalid URI");
 		}
 		path = uriView.substr(uriView.find(':') + 1, uriView.find('?') - uriView.find(':') - 1);

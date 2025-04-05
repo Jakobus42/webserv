@@ -72,7 +72,7 @@ namespace core {
 		buff.prepareWrite();
 
 		ssize_t bytesRead = recv(fd, buff.getWritePos(), buff.availableSpace(), 0);
-		// m_vServer.log("received " + shared::string::to_string(bytesRead) + " bytes.", shared::INFO, fd);
+		m_vServer.log("received " + shared::string::toString(bytesRead) + " bytes.", shared::INFO, fd);
 
 		if (bytesRead == -1) {
 			throw std::runtime_error("recv() failed");

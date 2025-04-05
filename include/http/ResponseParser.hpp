@@ -12,10 +12,6 @@ namespace http {
 
 	class Response;
 
-	/**
-	 * @class ResponseParser
-	 * @brief ...
-	 */
 	class ResponseParser : public AMessageParser {
 		public:
 			ResponseParser(const ResponseParserConfig& conf = ResponseParserConfig());

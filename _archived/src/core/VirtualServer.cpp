@@ -91,7 +91,7 @@ namespace http {
 			throw std::runtime_error("bind() failed: " + std::string(strerror(errno)));
 		}
 
-		m_logger.log("Attempting to listen on port " + shared::string::to_string(m_config.port), shared::INFO);
+		m_logger.log("Attempting to listen on port " + shared::string::toString(m_config.port), shared::INFO);
 		if (::listen(m_listenSocket, SOMAXCONN)) {
 			throw std::runtime_error("listen() failed: " + std::string(strerror(errno)));
 		}
@@ -175,7 +175,7 @@ namespace http {
 
 		std::memset(&clientAddr, 0, clientAddrLen);
 		if (getpeername(clientSocket, reinterpret_cast<sockaddr*>(&clientAddr), &clientAddrLen) == -1) {
-			return "Unknown client (socket: " + shared::string::to_string(clientSocket) + ")";
+			return "Unknown client (socket: " + shared::string::toString(clientSocket) + ")";
 		}
 
 		char clientIP[INET_ADDRSTRLEN];
@@ -183,7 +183,7 @@ namespace http {
 
 		int32_t clientPort = ntohs(clientAddr.sin_port);
 
-		return "(IP: " + std::string(clientIP) + ", Port: " + shared::string::to_string(clientPort) + ")";
+		return "(IP: " + std::string(clientIP) + ", Port: " + shared::string::toString(clientPort) + ")";
 	}
 
 	void VirtualServer::setNonBlocking(int32_t socket) {

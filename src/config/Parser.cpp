@@ -1,74 +1,42 @@
 #include "config/Parser.hpp"
 
+#include <limits.h>
 #include <signal.h>
 
-#include "http/Router.hpp"
+#include "shared/Logger.hpp"
 #include "shared/fileUtils.hpp"
 #include "shared/stringUtils.hpp"
 
+#include <fstream>
+#include <iostream>
+
+// todo: test this properly again to see if it behaves as expected.
 namespace config {
 
 	bool Parser::m_readingFile = false;
 
 	const std::string Parser::WHITESPACE = "\t\r\v\f ";
 
-	parse_exception::parse_exception(std::size_t line)
-		: std::runtime_error("Line " + shared::string::to_string(line) + ": Parsing failed, good luck finding out why")
-		, m_message("Line " + shared::string::to_string(line) + ": Parsing failed, good luck finding out why") {}
-
 	parse_exception::parse_exception(const std::string& message)
 		: std::runtime_error("Parsing failed: " + message)
 		, m_message("Parsing failed: " + message) {}
 
 	parse_exception::parse_exception(std::size_t line, const std::string& message)
-		: std::runtime_error("Line " + shared::string::to_string(line) + ": Parsing failed: " + message)
-		, m_message("Line " + shared::string::to_string(line) + ": Parsing failed: " + message) {}
+		: std::runtime_error("Line " + shared::string::toString(line) + ": Parsing failed: " + message)
+		, m_message("Line " + shared::string::toString(line) + ": Parsing failed: " + message) {}
 
 	parse_exception::~parse_exception() throw() {}
 
 	const std::string& parse_exception::getMessage() const { return m_message; }
 
-	/**
-	 * @brief Constructs a new Parser object.
-	 */
 	Parser::Parser()
-		: m_data("")
+		: m_data()
 		, m_configs()
 		, m_depth(0)
 		, m_lineIndex(1)
 		, m_readPos(0) {}
 
-	/**
-	 * @brief Destroys the Parser object.
-	 */
 	Parser::~Parser() {}
-
-	/**
-	 * @brief Copy constructor.
-	 * @param other The other Parser object to copy.
-	 */
-	Parser::Parser(const Parser& other)
-		: m_data(other.m_data)
-		, m_configs(other.m_configs)
-		, m_depth(other.m_depth)
-		, m_lineIndex(other.m_lineIndex)
-		, m_readPos(other.m_readPos) {}
-
-	/**
-	 * @brief Copy assignment operator.
-	 * @param other The other Parser object to assign from.
-	 * @return A reference to the assigned Parser object.
-	 */
-	Parser& Parser::operator=(const Parser& rhs) {
-		if (this == &rhs)
-			return *this;
-		m_data = rhs.m_data;
-		m_configs = rhs.m_configs;
-		m_depth = rhs.m_depth;
-		m_lineIndex = rhs.m_lineIndex;
-		m_readPos = rhs.m_readPos;
-		return *this;
-	}
 
 	std::vector<Server>& Parser::getConfigs() { return m_configs; }
 
@@ -78,10 +46,10 @@ namespace config {
 		while (m_readPos < m_data.size()) {
 			char c = m_data[m_readPos];
 			if (c == '\n') {
-				++m_lineIndex; // if char is newline, increment lineIndex
-				++m_readPos;   // then skip it
+				++m_lineIndex;
+				++m_readPos;
 			} else if (WHITESPACE.find(c) != std::string::npos) {
-				++m_readPos; // if char is whitespace, skip it
+				++m_readPos;
 			} else {
 				break; // no more whitespace
 			}
@@ -152,7 +120,7 @@ namespace config {
 		return value;
 	}
 
-	CommandType Parser::matchDirective(const std::string& token, const std::map<std::string, CommandType>& expectedDirectives) {
+	Parser::CommandType Parser::matchDirective(const std::string& token, const std::map<std::string, CommandType>& expectedDirectives) {
 		std::map<std::string, CommandType>::const_iterator matchedDirective = expectedDirectives.find(token);
 		if (matchedDirective == expectedDirectives.end()) {
 			return _D_NOT_VALID;
@@ -161,7 +129,7 @@ namespace config {
 		return matchedDirective->second;
 	}
 
-	const std::map<std::string, CommandType>& Parser::locationDirectives() {
+	const std::map<std::string, Parser::CommandType>& Parser::locationDirectives() {
 		static std::map<std::string, CommandType> allowedDirectives;
 
 		if (allowedDirectives.empty()) {
@@ -176,7 +144,7 @@ namespace config {
 		return allowedDirectives;
 	}
 
-	const std::map<std::string, CommandType>& Parser::serverDirectives() {
+	const std::map<std::string, Parser::CommandType>& Parser::serverDirectives() {
 		static std::map<std::string, CommandType> allowedDirectives;
 
 		if (allowedDirectives.empty()) {
@@ -211,7 +179,7 @@ namespace config {
 			std::cout << "Could not parse file: regular file expected, directory received" << std::endl;
 			return false;
 		}
-		if (!shared::file::fileExists(fileName)) {
+		if (!shared::file::exists(fileName)) {
 			std::cout << "Could not parse file: file doesn't exist" << std::endl;
 			return false;
 		}
@@ -220,12 +188,12 @@ namespace config {
 			return false;
 		}
 		if (!shared::file::isRegularFile(fileName)) {
-			std::cout << "Could not parse file: regular file expected, weird sh*t received" << std::endl;
+			LOG_FATAL("Could not parse config-file: expected valid file");
 			return false;
 		}
 		std::ifstream file(fileName.c_str());
 		if (!file.is_open()) {
-			std::cout << "Could not parse file: could not open file" << std::endl;
+			LOG_FATAL("Could not parse config-file: file is not openable");
 			return false;
 		}
 
@@ -238,20 +206,15 @@ namespace config {
 			}
 			m_data.push_back(c);
 		}
-		// std::cout << m_data << std::endl;
-		// file.close();
-		// if (file.fail()) {
-		// 	std::cout << "Oh, crud." << std::endl;
-		// 	return false;
-		// }
+
 		try {
 			parseFromData();
 			processParsedData();
 		} catch (const parse_exception& e) {
-			std::cout << e.getMessage() << std::endl;
+			LOG_FATAL(e.getMessage());
 			return false;
 		} catch (const std::exception& e) {
-			std::cout << e.what() << std::endl;
+			LOG_FATAL(e.what());
 			return false;
 		}
 		return true;
@@ -277,17 +240,17 @@ namespace config {
 			++i;
 			server->location.precalculatedAbsolutePath = server->dataDirectory + server->location.root;
 			if (!isValidPath(server->location.precalculatedAbsolutePath)) {
-				throw parse_exception("Server #" + shared::string::to_string(i) + ": Root path is invalid");
+				throw parse_exception("Server #" + shared::string::toString(i) + ": Root path is invalid");
 			}
 			// TODO: check whether that directory exists and is accessible?
 			if (!shared::file::isDirectory(server->location.precalculatedAbsolutePath)) {
-				throw parse_exception("Server #" + shared::string::fromNum(i) + ": root is not a directory");
+				throw parse_exception("Server #" + shared::string::toString(i) + ": root is not a directory");
 			}
 			if (!shared::file::isReadable(server->location.precalculatedAbsolutePath)) {
-				throw parse_exception("Server #" + shared::string::fromNum(i) + ": root is not readable");
+				throw parse_exception("Server #" + shared::string::toString(i) + ": root is not readable");
 			}
 			if (!shared::file::isWritable(server->location.precalculatedAbsolutePath)) {
-				throw parse_exception("Server #" + shared::string::fromNum(i) + ": root is not writable");
+				throw parse_exception("Server #" + shared::string::toString(i) + ": root is not writable");
 			}
 			assignAbsolutePaths(*server, server->location); // start with server & rootLocation
 		}
@@ -389,7 +352,7 @@ namespace config {
 		Location thisLocation;
 
 		thisLocation.path = path;
-		thisLocation.pathAsTokens = shared::string::splitPath(path);
+		thisLocation.pathAsTokens = shared::string::split(path, '/');
 		while (m_readPos <= m_data.size()) {
 			skipWhitespace();
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
@@ -477,7 +440,7 @@ namespace config {
 			if (segment.size() > 3) {
 				throw parse_exception(m_lineIndex, "Invalid IP address format: segment too long in \"" + host + "\"");
 			}
-			int octet = shared::string::toNum<int>(segment, 10);
+			int octet = shared::string::toNum<int>(segment);
 			if (octet < 0 || octet > 255) {
 				throw parse_exception(m_lineIndex, "IP segment out of range in \"" + host + "\"");
 			}
@@ -488,7 +451,6 @@ namespace config {
 			start = pos + 1;
 		}
 
-		std::cout << "parts: " << part << "; ip: " << ip << std::endl;
 		if (part != 4) {
 			throw parse_exception(m_lineIndex, "Invalid IP address format: \"" + host + "\"");
 		}
@@ -556,14 +518,14 @@ namespace config {
 			throw parse_exception(m_lineIndex, "Invalid path for root: " + value);
 		}
 		location.root = value;
-		location.rootAsTokens = shared::string::splitPath(value); // will be empty if root is just '/'
+		location.rootAsTokens = shared::string::split(value, '/'); // will be empty if root is just '/'
 	}
 
 	void Parser::parseReturn(const std::string& value, Location& location) {
 		if (!isValidPath(value)) {
 			throw parse_exception(m_lineIndex, "Invalid path for return: " + value);
 		}
-		location.redirectUriAsTokens = shared::string::splitPath(value); // ensure this won't throw
+		location.redirectUriAsTokens = shared::string::split(value, '/'); // ensure this won't throw
 		location.redirectUri = value;
 	}
 
@@ -601,8 +563,8 @@ namespace config {
 		if (!isValidPath(value)) {
 			throw parse_exception(m_lineIndex, "Invalid path for upload_dir: " + value);
 		}
-		location.uploadSubdirectory = value;									// strip this of whitespace if that doesn't happen yet
-		location.uploadSubdirectoryAsTokens = shared::string::splitPath(value); // strip this of whitespace if that doesn't happen yet
+		location.uploadSubdirectory = value;									 // strip this of whitespace if that doesn't happen yet
+		location.uploadSubdirectoryAsTokens = shared::string::split(value, '/'); // strip this of whitespace if that doesn't happen yet
 	}
 
 	void Parser::parseIndex(const std::string& value, Location& location) {
@@ -613,7 +575,6 @@ namespace config {
 		while (ss >> token) {
 			indexFiles.push_back(token);
 		}
-		std::cout << "parseIndex parsing: " << value << std::endl;
 		if (indexFiles.empty()) {
 			throw parse_exception(m_lineIndex, "Expected value for index");
 		}

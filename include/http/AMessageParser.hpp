@@ -1,8 +1,8 @@
 #pragma once
 
-#include "shared/container/Buffer.hpp"
-#include "shared/mixin/NonCopyable.hpp"
-#include "shared/string/StringView.hpp"
+#include "shared/Buffer.hpp"
+#include "shared/NonCopyable.hpp"
+#include "shared/StringView.hpp"
 
 #include <vector>
 
@@ -20,10 +20,6 @@ namespace http {
 
 	class AMessage;
 
-	/**
-	 * @class AMessageParser
-	 * @brief ...
-	 */
 	class AMessageParser : shared::mixin::NonCopyable {
 		public:
 			static const std::size_t BUFFER_SIZE = 16 * 1024; // 16 KB
@@ -78,11 +74,11 @@ namespace http {
 			ParseResult parseBody(bool isChunked);
 
 		protected:
-			static const char CRLF[];
+			static shared::string::StringView CRLF;
 			static const char TCHAR[];
-			static const char WHITESPACE[];
+			static shared::string::StringView WHITESPACE;
 
-			MessageParserConfig m_config;
+			MessageParserConfig m_baseConfig;
 			AMessage* m_message;
 			ParseState m_state;
 			shared::container::Buffer<BUFFER_SIZE> m_buffer;

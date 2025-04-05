@@ -1,22 +1,16 @@
 #pragma once
 
-#include "config/Location.hpp"
-#include "http/http.hpp"
-#include "http/types.hpp"
+#include <stdint.h>
 
-#include <map>
+#include "config/Location.hpp"
+
 #include <string>
 #include <vector>
 
 namespace config {
 
-	static const std::size_t ONE_MEGABYTE = 1048576;
-
-	/**
-	 * @struct Server
-	 * @brief ...
-	 */
 	struct Server {
+		public:
 			int port;
 			uint32_t ipAddress;
 			unsigned long maxBodySize;
@@ -35,6 +29,10 @@ namespace config {
 
 			void validate() const;
 			void print() const;
+
+		private:
+			static const std::size_t ONE_MEGABYTE = 1048576;
+			static const uint32_t LOCALHOST_ADDRESS = 0x7F000001;
 	};
 
 

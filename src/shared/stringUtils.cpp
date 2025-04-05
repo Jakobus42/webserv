@@ -1,7 +1,20 @@
-#include "shared/string/stringUtils.hpp"
+#include "shared/stringUtils.hpp"
 
 namespace shared {
 	namespace string {
+
+		std::vector<std::string> split(const std::string& str, char delimiter) {
+			std::vector<std::string> tokens;
+			std::stringstream ss(str);
+			std::string segment;
+
+			while (std::getline(ss, segment, delimiter)) {
+				if (!segment.empty()) {
+					tokens.push_back(segment);
+				}
+			}
+			return tokens;
+		}
 
 		// todo: move this somewhere else
 
@@ -33,24 +46,6 @@ namespace shared {
 		// 	return joinPath(normalizePath(splitPath(path))); // TODO: will turn "/" and "/////" into an empty string
 		// }
 
-		// std::vector<std::string> splitPath(const std::string& path) throw(HttpException) {
-		// 	std::vector<std::string> tokens;
-		// 	if (path.empty()) {
-		// 		throw HttpException(NOT_FOUND, "Path is empty");
-		// 	}
-		// 	if (path[0] != '/') {
-		// 		throw HttpException(BAD_REQUEST, "Path doesn't begin with '/'");
-		// 	}
-
-		// 	std::stringstream ss(path.substr(1)); // Remove leading '/'
-		// 	std::string segment;
-		// 	while (std::getline(ss, segment, '/')) {
-		// 		if (!segment.empty()) {
-		// 			tokens.push_back(segment);
-		// 		}
-		// 	}
-		// 	return tokens;
-		// }
 
 	} // namespace string
 

@@ -1,7 +1,8 @@
 #pragma once
 
+#include "shared/NonCopyable.hpp"
+
 #include <fstream>
-#include <shared/mixin/NonCopyable.hpp>
 #include <vector>
 
 namespace shared {
@@ -19,7 +20,7 @@ namespace shared {
 			public:
 				class ScopedContext {
 					public:
-						ScopedContext(const std::string& ctx);
+						explicit ScopedContext(const std::string& ctx);
 						~ScopedContext();
 				};
 

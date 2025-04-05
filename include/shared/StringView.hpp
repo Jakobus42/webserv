@@ -12,12 +12,13 @@ namespace shared {
 				static const std::size_t npos = SIZE_MAX;
 
 				StringView();
-				StringView(const char* data, std::size_t size);
-				StringView(const char* data);
+				explicit StringView(const char* data, std::size_t size);
+				explicit StringView(const char* data);
 				~StringView();
 
 				StringView(const StringView& other);
 				StringView& operator=(const StringView& rhs);
+				StringView& operator=(const char* data);
 
 				const char* data() const;
 				std::size_t size() const;
@@ -41,7 +42,7 @@ namespace shared {
 				std::size_t find_last_not_of(const StringView& chars, std::size_t pos = npos) const;
 				std::size_t find_last_not_of(char ch, std::size_t pos = npos) const;
 
-				std::string to_string() const;
+				std::string toString() const;
 
 				char operator[](std::size_t index) const;
 

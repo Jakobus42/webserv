@@ -1,6 +1,6 @@
 #include "http/http.hpp"
 
-#include "shared/string/stringUtils.hpp"
+#include "shared/stringUtils.hpp"
 
 namespace http {
 
@@ -59,6 +59,7 @@ namespace http {
 			case HTTP_VERSION_NOT_SUPPORTED: return "HTTP Version Not Supported";
 			case LOOP_DETECTED: return "Loop Detected";
 		}
+		throw HttpException(INTERNAL_SERVER_ERROR, "unreachable");
 	}
 
 	StatusCode numToStatusCode(std::size_t code) {
@@ -107,6 +108,7 @@ namespace http {
 			case POST: return "POST";
 			case DELETE: return "DELETE";
 		}
+		throw HttpException(INTERNAL_SERVER_ERROR, "unreachable");
 	}
 
 	Method stringToMethod(const std::string& method) {
