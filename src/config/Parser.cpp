@@ -7,10 +7,14 @@
 #include "shared/fileUtils.hpp"
 #include "shared/stringUtils.hpp"
 
+#include <cstring>
 #include <fstream>
 #include <iostream>
 
+// todo: decline invalid paths or something ig
 // todo: test this properly again to see if it behaves as expected.
+// todo: maybe make structs to class
+// todo: maybe remove signals
 namespace config {
 
 	bool Parser::m_readingFile = false;
@@ -193,7 +197,7 @@ namespace config {
 		}
 		std::ifstream file(fileName.c_str());
 		if (!file.is_open()) {
-			LOG_FATAL("Could not parse config-file: file is not openable");
+			LOG_FATAL("Could not open config file: " + fileName + ": " + std::strerror(errno));
 			return false;
 		}
 
