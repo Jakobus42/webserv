@@ -6,13 +6,13 @@
 namespace shared {
 
 	template <std::size_t Capacity>
-	class Buffer2 {
+	class Buffer {
 		public:
-			Buffer2()
+			Buffer()
 				: m_readPos(0)
 				, m_writePos(0) {}
 
-			~Buffer2() {}
+			~Buffer() {}
 
 			void compact() {
 				if (m_readPos == 0) {

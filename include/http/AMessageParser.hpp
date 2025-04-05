@@ -1,13 +1,12 @@
 #pragma once
 
-#include "shared/Buffer2.hpp"
+#include "shared/Buffer.hpp"
 #include "shared/NonCopyable.hpp"
 #include "shared/StringView.hpp"
 
-#include <utility>
 #include <vector>
 
-namespace http2 {
+namespace http {
 
 	struct MessageParserConfig {
 			std::size_t maxBodySize;
@@ -34,7 +33,7 @@ namespace http2 {
 
 			void parse();
 
-			shared::Buffer2<BUFFER_SIZE>& getReadBuffer();
+			shared::Buffer<BUFFER_SIZE>& getReadBuffer();
 			bool isComplete() const;
 
 			void reset();
@@ -45,7 +44,6 @@ namespace http2 {
 				HEADERS,
 				CHUNK_SIZE,
 				CHUNK_BODY,
-				CHUNK_END,
 				BODY,
 				TRAILING_HEADERS,
 				COMPLETE,
@@ -88,9 +86,9 @@ namespace http2 {
 			MessageParserConfig m_config;
 			AMessage* m_message;
 			ParseState m_state;
-			shared::Buffer2<BUFFER_SIZE> m_buffer;
+			shared::Buffer<BUFFER_SIZE> m_buffer;
 			std::size_t m_contentLength;
 	};
 
 
-} /* namespace http2 */
+} /* namespace http */

@@ -1,15 +1,16 @@
 #pragma once
 
-#include "http2/AMessageParser.hpp"
-#include "http2/Request.hpp"
+#include "http/AMessageParser.hpp"
 
-namespace http2 {
+namespace http {
 
 	struct RequestParserConfig {
 			std::size_t maxUriLength;
 			MessageParserConfig messageParserConfig;
 			RequestParserConfig();
 	};
+
+	class Request;
 
 	/**
 	 * @class RequestParser
@@ -35,4 +36,4 @@ namespace http2 {
 			Request* m_request;
 	};
 
-} /* namespace http2 */
+} /* namespace http */

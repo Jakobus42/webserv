@@ -2,7 +2,6 @@
 
 #include <stdint.h>
 
-#include <climits>
 #include <iostream>
 
 namespace shared {

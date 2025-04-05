@@ -7,6 +7,8 @@ ContinuationIndentWidth: 4
 IndentCaseLabels: true
 IndentPPDirectives: AfterHash
 IndentAccessModifiers: true
+AllowShortEnumsOnASingleLine: true
+AllowShortCaseLabelsOnASingleLine: true
 AllowShortIfStatementsOnASingleLine: true
 AllowShortLoopsOnASingleLine: false
 AllowShortBlocksOnASingleLine: true

@@ -1,9 +1,8 @@
-#include "http2/AMessage.hpp"
+#include "http/AMessage.hpp"
 
-#include <algorithm>
 #include <sstream>
 
-namespace http2 {
+namespace http {
 
 	bool AMessage::CaseInsensitiveComparator::operator()(const std::string& lhs, const std::string& rhs) const {
 		for (std::size_t i = 0, n = std::min(lhs.size(), rhs.size()); i < n; ++i) {
@@ -97,4 +96,4 @@ namespace http2 {
 		return oss.str();
 	}
 
-} // namespace http2
+} // namespace http

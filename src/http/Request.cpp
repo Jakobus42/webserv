@@ -1,6 +1,8 @@
-#include "http2/Request.hpp"
+#include "http/Request.hpp"
 
-namespace http2 {
+#include <sstream>
+
+namespace http {
 
 	/**
 	 * @brief Constructs a new Request object.
@@ -21,18 +23,21 @@ namespace http2 {
 
 	const http::Method& Request::getMethod() const { return m_method; }
 
-	const http2::Uri& Request::getUri() const { return m_uri; }
+	const http::Uri& Request::getUri() const { return m_uri; }
 
-	http2::Uri& Request::getUri() { return m_uri; }
+	http::Uri& Request::getUri() { return m_uri; }
 
 	void Request::setMethod(const http::Method& method) { m_method = method; }
 
-	void Request::setUri(const http2::Uri& uri) { m_uri = uri; }
+	void Request::setUri(const http::Uri& uri) { m_uri = uri; }
 
 	/* Debugging */
 
 	std::string Request::toString() const {
-		return http::getMethodString(m_method) + " " + m_uri.toString() + " " + m_version + '\n' + this->AMessage::toString();
+		std::ostringstream ss;
+		ss << http::methodToString(m_method) << " " << m_uri.toString() << " " << m_version << '\n'
+		   << this->AMessage::toString();
+		return ss.str();
 	}
 
-} /* namespace http2 */
+} /* namespace http */
