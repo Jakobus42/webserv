@@ -2,8 +2,8 @@
 
 #include <netinet/in.h>
 
-#include "shared/NonCopyable.hpp"
-#include "shared/StringView.hpp"
+#include "shared/mixin/NonCopyable.hpp"
+#include "shared/string/StringView.hpp"
 
 #include <vector>
 
@@ -29,16 +29,16 @@ namespace http {
 			const std::string& getQuery() const;
 
 			void setScheme(const std::string& scheme);
-			void setScheme(const shared::StringView& scheme);
+			void setScheme(const shared::string::StringView& scheme);
 			void setAuthority(const std::string& authority);
-			void setAuthority(const shared::StringView& authority);
+			void setAuthority(const shared::string::StringView& authority);
 			void setPort(in_port_t port);
 			void setPath(const std::string& path);
-			void setPath(const shared::StringView& path);
+			void setPath(const shared::string::StringView& path);
 			void setQuery(const std::string& query);
-			void setQuery(const shared::StringView& query);
+			void setQuery(const shared::string::StringView& query);
 			void setCgiPathInfo(const std::string& cgiPathInfo);
-			void setCgiPathInfo(const shared::StringView& cgiPathInfo);
+			void setCgiPathInfo(const shared::string::StringView& cgiPathInfo);
 			void setPathSegment(const std::vector<std::string>& pathSegment);
 
 			/* Debugging */

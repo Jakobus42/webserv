@@ -1,7 +1,7 @@
 #include "http/ResponseParser.hpp"
 
 #include "http/Response.hpp"
-#include "shared/stringUtils.hpp"
+#include "shared/string/stringUtils.hpp"
 
 namespace http {
 
@@ -26,11 +26,11 @@ namespace http {
 
 	/* <HTTP-Version> <Status-Code> <Reason-Phrase> */
 	AMessageParser::ParseResult ResponseParser::parseStartLine() {
-		std::pair<shared::StringView /*line*/, bool /*ok*/> ret = readLine();
+		std::pair<shared::string::StringView /*line*/, bool /*ok*/> ret = readLine();
 		if (ret.second == false) {
 			return NEED_DATA;
 		}
-		shared::StringView line = ret.first;
+		shared::string::StringView line = ret.first;
 
 		std::size_t firstSpace = line.find(' ');
 		std::size_t secondSpace = line.find(' ', firstSpace + 1);
@@ -43,7 +43,7 @@ namespace http {
 
 		m_response->setVersion(line.substr(0, firstSpace));
 
-		shared::StringView codeView = line.substr(firstSpace + 1, secondSpace - firstSpace - 1);
+		shared::string::StringView codeView = line.substr(firstSpace + 1, secondSpace - firstSpace - 1);
 		try {
 			std::size_t code = shared::string::toNum<std::size_t>(codeView.to_string());
 			m_response->setStatusCode(numToStatusCode(code));

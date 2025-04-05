@@ -1,8 +1,8 @@
 #pragma once
 
-#include "shared/Buffer.hpp"
-#include "shared/NonCopyable.hpp"
-#include "shared/StringView.hpp"
+#include "shared/container/Buffer.hpp"
+#include "shared/mixin/NonCopyable.hpp"
+#include "shared/string/StringView.hpp"
 
 #include <vector>
 
@@ -24,7 +24,7 @@ namespace http {
 	 * @class AMessageParser
 	 * @brief ...
 	 */
-	class AMessageParser : shared::NonCopyable {
+	class AMessageParser : shared::mixin::NonCopyable {
 		public:
 			static const std::size_t BUFFER_SIZE = 16 * 1024; // 16 KB
 
@@ -33,7 +33,7 @@ namespace http {
 
 			bool parse();
 
-			shared::Buffer<BUFFER_SIZE>& getReadBuffer();
+			shared::container::Buffer<BUFFER_SIZE>& getReadBuffer();
 
 			void reset();
 
@@ -60,7 +60,7 @@ namespace http {
 			virtual AMessage* createMessage() const = 0;
 
 			/* Shared */
-			std::pair<shared::StringView /*line*/, bool /*ok*/> readLine();
+			std::pair<shared::string::StringView /*line*/, bool /*ok*/> readLine();
 			bool isChunked() const;
 			bool isTChar(char c) const;
 			bool isVChar(char c) const;
@@ -70,8 +70,8 @@ namespace http {
 
 			ParseResult parseHeaderLine();
 			void validateHeaders();
-			shared::StringView extractHeaderKey(const shared::StringView& line) const;
-			std::vector<shared::StringView> extractHeaderValues(const shared::StringView& line) const;
+			shared::string::StringView extractHeaderKey(const shared::string::StringView& line) const;
+			std::vector<shared::string::StringView> extractHeaderValues(const shared::string::StringView& line) const;
 
 			ParseResult parseChunkSize();
 
@@ -85,7 +85,7 @@ namespace http {
 			MessageParserConfig m_config;
 			AMessage* m_message;
 			ParseState m_state;
-			shared::Buffer<BUFFER_SIZE> m_buffer;
+			shared::container::Buffer<BUFFER_SIZE> m_buffer;
 			std::size_t m_contentLength;
 	};
 

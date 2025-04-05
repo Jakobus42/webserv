@@ -33,7 +33,7 @@ namespace http {
 
 	void AMessage::setVersion(const std::string& version) { m_version = version; }
 
-	void AMessage::setVersion(const shared::StringView& version) { m_version.assign(version.begin(), version.end()); }
+	void AMessage::setVersion(const shared::string::StringView& version) { m_version.assign(version.begin(), version.end()); }
 
 	/* Headers */
 
@@ -43,7 +43,7 @@ namespace http {
 
 	void AMessage::appendHeader(const std::string& key, const std::string& value) { m_headers[key].push_back(value); }
 
-	void AMessage::appendHeader(const shared::StringView& key, const shared::StringView& value) {
+	void AMessage::appendHeader(const shared::string::StringView& key, const shared::string::StringView& value) {
 		std::vector<std::string>& target = m_headers[std::string(key.begin(), key.end())];
 
 		target.push_back(std::string());
@@ -52,14 +52,14 @@ namespace http {
 
 	void AMessage::setHeader(const std::string& key, const std::vector<std::string>& values) { m_headers[key] = values; }
 
-	void AMessage::setHeader(const shared::StringView& key, const std::vector<shared::StringView>& values) {
+	void AMessage::setHeader(const shared::string::StringView& key, const std::vector<shared::string::StringView>& values) {
 		std::vector<std::string>& target = m_headers[std::string(key.begin(), key.end())];
 
 		if (target.empty()) {
 			target.reserve(values.size());
 		}
 
-		for (std::vector<shared::StringView>::const_iterator it = values.begin(); it != values.end(); ++it) {
+		for (std::vector<shared::string::StringView>::const_iterator it = values.begin(); it != values.end(); ++it) {
 			target.push_back(std::string());
 			target.back().assign(it->begin(), it->end());
 		}
@@ -73,11 +73,11 @@ namespace http {
 
 	void AMessage::setBody(const std::string& body) { m_body = body; }
 
-	void AMessage::setBody(const shared::StringView& body) { m_body.assign(body.begin(), body.end()); }
+	void AMessage::setBody(const shared::string::StringView& body) { m_body.assign(body.begin(), body.end()); }
 
 	void AMessage::appendBody(const std::string& body) { m_body.append(body); }
 
-	void AMessage::appendBody(const shared::StringView& body) { m_body.append(body.begin(), body.size()); }
+	void AMessage::appendBody(const shared::string::StringView& body) { m_body.append(body.begin(), body.size()); }
 
 	/* Debugging */
 

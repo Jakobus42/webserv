@@ -5,7 +5,11 @@
     "-v",
     "${env:HOME}/.ssh:/root/.ssh",
     "-v",
-    "${env:HOME}/.zshrc:/root/.zshrc"
+    "${env:HOME}/.zshrc:/root/.zshrc",
+    "-v",
+    "/etc/timezone:/etc/timezone:ro",
+    "-v",
+    "/etc/localtime:/etc/localtime:ro"
   ],
   "customizations": {
     "vscode": {

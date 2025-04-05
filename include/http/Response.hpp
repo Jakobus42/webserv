@@ -20,7 +20,7 @@ namespace http {
 
 			void setStatusCode(StatusCode code);
 			void setReasonPhrase(const std::string& phrase);
-			void setReasonPhrase(const shared::StringView& phrase);
+			void setReasonPhrase(const shared::string::StringView& phrase);
 
 		private:
 			StatusCode m_statusCode;
