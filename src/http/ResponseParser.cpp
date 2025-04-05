@@ -1,9 +1,9 @@
-#include "http2/ResponseParser.hpp"
+#include "http/ResponseParser.hpp"
 
-#include "http/http.hpp"
+#include "http/Response.hpp"
 #include "shared/stringUtils.hpp"
 
-namespace http2 {
+namespace http {
 
 	ResponseParserConfig::ResponseParserConfig()
 		: maxReasonPhraseLength(1024) // 1KB
@@ -44,15 +44,18 @@ namespace http2 {
 		m_response->setVersion(line.substr(0, firstSpace));
 
 		shared::StringView codeView = line.substr(firstSpace + 1, secondSpace - firstSpace - 1);
-		std::size_t code = shared::string::toNum<std::size_t>(codeView.to_string(), 10);
-		m_response->setStatusCode(http::toStatusCode(code));
+		try {
+			std::size_t code = shared::string::toNum<std::size_t>(codeView.to_string(), 10);
+			m_response->setStatusCode(http::numToStatusCode(code));
+		} catch (const std::exception& e) {
+			throw http::exception(http::BAD_REQUEST, "invalid statuc-code: could not parse: " + std::string(e.what()));
+		}
 
 		m_response->setReasonPhrase(line.substr(secondSpace + 1));
 		if (m_response->getReasonPhrase().size() > m_config.maxReasonPhraseLength) {
 			throw http::exception(http::PAYLOAD_TOO_LARGE, "reason-phrase exceeds size limit");
 		}
-
 		return DONE;
 	}
 
-} /* namespace http2 */
+} /* namespace http */

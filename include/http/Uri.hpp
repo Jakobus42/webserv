@@ -1,12 +1,15 @@
 #pragma once
 
-#include "http/http.hpp"
+#include <netinet/in.h>
+
 #include "shared/NonCopyable.hpp"
 #include "shared/StringView.hpp"
 
 #include <vector>
 
-namespace http2 {
+// todo: missing getters and setters ...
+
+namespace http {
 
 	/**
 	 * @class Uri
@@ -38,7 +41,6 @@ namespace http2 {
 			void setCgiPathInfo(const shared::StringView& cgiPathInfo);
 			void setPathSegment(const std::vector<std::string>& pathSegment);
 
-
 			/* Debugging */
 			std::string toString() const;
 
@@ -52,4 +54,4 @@ namespace http2 {
 			std::vector<std::string> m_pathSegment;
 	};
 
-} /* namespace http2 */
+} /* namespace http */

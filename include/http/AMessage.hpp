@@ -4,10 +4,9 @@
 #include "shared/StringView.hpp"
 
 #include <map>
-#include <string>
 #include <vector>
 
-namespace http2 {
+namespace http {
 
 	/* HTTP-message   = Request | Response */
 	class AMessage : shared::NonCopyable {
@@ -55,4 +54,4 @@ namespace http2 {
 			std::string m_version;
 	};
 
-} // namespace http2
+} // namespace http

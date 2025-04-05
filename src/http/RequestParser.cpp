@@ -1,11 +1,13 @@
-#include "http2/RequestParser.hpp"
+#include "http/RequestParser.hpp"
 
-#include "shared/stringUtils.hpp"
+#include "http/Request.hpp"
 
 // todo: validate host, scheme
 // todo: better error messages for uri
+// todo: normelize the path here maybe or in the uri class (uri.normelize())
+// todo: setPathSegemnt should take a stringView. (see setHeaders for impl example) - also the split path should be implemented here using stringView aswell
 
-namespace http2 {
+namespace http {
 
 	RequestParserConfig::RequestParserConfig()
 		: maxUriLength(1024) // 1KB
@@ -120,10 +122,10 @@ namespace http2 {
 				uri.setPath(uri.getPath().substr(0, pos));
 			}
 		}
-		uri.setPathSegment(shared::string::splitPath(uri.getPath()));
+		// uri.setPathSegment(shared::string::splitPath(uri.getPath()));
 		// TODO: should we parse this at all?
 		// also, should we check if we accept the script here?
 	}
 
 
-} /* namespace http2 */
+} /* namespace http */

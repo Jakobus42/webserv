@@ -44,7 +44,7 @@ namespace http {
 				//}
 				//}
 				response.setBody(getErrorPage(response.getStatusCode()));
-				response.setHeader("Content-Length", shared::string::fromNum(response.getBody().length()));
+				response.setHeader("Content-Length", shared::string::to_string(response.getBody().length()));
 				response.setHeader("Content-Type", TEXT_HTML);
 			}
 

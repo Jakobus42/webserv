@@ -13,16 +13,16 @@ namespace config {
 	const std::string Parser::WHITESPACE = "\t\r\v\f ";
 
 	parse_exception::parse_exception(std::size_t line)
-		: std::runtime_error("Line " + shared::string::fromNum(line) + ": Parsing failed, good luck finding out why")
-		, m_message("Line " + shared::string::fromNum(line) + ": Parsing failed, good luck finding out why") {}
+		: std::runtime_error("Line " + shared::string::to_string(line) + ": Parsing failed, good luck finding out why")
+		, m_message("Line " + shared::string::to_string(line) + ": Parsing failed, good luck finding out why") {}
 
 	parse_exception::parse_exception(const std::string& message)
 		: std::runtime_error("Parsing failed: " + message)
 		, m_message("Parsing failed: " + message) {}
 
 	parse_exception::parse_exception(std::size_t line, const std::string& message)
-		: std::runtime_error("Line " + shared::string::fromNum(line) + ": Parsing failed: " + message)
-		, m_message("Line " + shared::string::fromNum(line) + ": Parsing failed: " + message) {}
+		: std::runtime_error("Line " + shared::string::to_string(line) + ": Parsing failed: " + message)
+		, m_message("Line " + shared::string::to_string(line) + ": Parsing failed: " + message) {}
 
 	parse_exception::~parse_exception() throw() {}
 
@@ -277,7 +277,7 @@ namespace config {
 			++i;
 			server->location.precalculatedAbsolutePath = server->dataDirectory + server->location.root;
 			if (!isValidPath(server->location.precalculatedAbsolutePath)) {
-				throw parse_exception("Server #" + shared::string::fromNum(i) + ": Root path is invalid");
+				throw parse_exception("Server #" + shared::string::to_string(i) + ": Root path is invalid");
 			}
 			// TODO: check whether that directory exists and is accessible?
 			if (!shared::file::isDirectory(server->location.precalculatedAbsolutePath)) {

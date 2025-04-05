@@ -1,15 +1,16 @@
 #pragma once
 
-#include "http2/AMessageParser.hpp"
-#include "http2/Response.hpp"
+#include "http/AMessageParser.hpp"
 
-namespace http2 {
+namespace http {
 
 	struct ResponseParserConfig {
 			std::size_t maxReasonPhraseLength;
 			MessageParserConfig messageParserConfig;
 			ResponseParserConfig();
 	};
+
+	class Response;
 
 	/**
 	 * @class ResponseParser
@@ -32,4 +33,4 @@ namespace http2 {
 			Response* m_response;
 	};
 
-} /* namespace http2 */
+} /* namespace http */

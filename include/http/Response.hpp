@@ -1,9 +1,9 @@
 #pragma once
 
+#include "http/AMessage.hpp"
 #include "http/http.hpp"
-#include "http2/AMessage.hpp"
 
-namespace http2 {
+namespace http {
 
 	/**
 	 * @class Response
@@ -27,4 +27,4 @@ namespace http2 {
 			std::string m_reasonPhrase;
 	};
 
-} /* namespace http2 */
+} /* namespace http */

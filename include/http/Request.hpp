@@ -1,10 +1,10 @@
 #pragma once
 
+#include "http/AMessage.hpp"
+#include "http/Uri.hpp"
 #include "http/http.hpp"
-#include "http2/AMessage.hpp"
-#include "http2/Uri.hpp"
 
-namespace http2 {
+namespace http {
 
 	/**
 	 * @class Request
@@ -17,18 +17,18 @@ namespace http2 {
 
 			/* Start Line */
 			const http::Method& getMethod() const;
-			const http2::Uri& getUri() const;
-			http2::Uri& getUri();
+			const http::Uri& getUri() const;
+			http::Uri& getUri();
 
 			void setMethod(const http::Method& method);
-			void setUri(const http2::Uri& uri);
+			void setUri(const http::Uri& uri);
 
 			/* Debugging */
 			std::string toString() const;
 
 		private:
 			http::Method m_method;
-			http2::Uri m_uri;
+			http::Uri m_uri;
 	};
 
-} /* namespace http2 */
+} /* namespace http */

@@ -1,18 +1,10 @@
-#include "http2/AMessageParser.hpp"
+#include "http/AMessageParser.hpp"
 
+#include "http/AMessage.hpp"
 #include "http/http.hpp"
-#include "http/types.hpp"
-#include "http2/AMessage.hpp"
 #include "shared/stringUtils.hpp"
 
-#include <algorithm>
-#include <cassert>
-#include <cstring>
-#include <sstream>
-
-// Todo consume CRLF after chunked body and empty line after 0 chunk
-
-namespace http2 {
+namespace http {
 
 	MessageParserConfig::MessageParserConfig()
 		: maxBodySize(10 * 1024 * 1024)	 // 10MB
@@ -74,8 +66,8 @@ namespace http2 {
 					if (result == DONE) m_state = CHUNK_SIZE;
 					break;
 
-				default:
-					assert(false && "unexpected parser state!");
+				case COMPLETE:
+					break;
 			}
 
 			if (result == NEED_DATA) {
@@ -84,7 +76,7 @@ namespace http2 {
 		}
 	}
 
-	shared::Buffer2<AMessageParser::BUFFER_SIZE>& AMessageParser::getReadBuffer() { return m_buffer; }
+	shared::Buffer<AMessageParser::BUFFER_SIZE>& AMessageParser::getReadBuffer() { return m_buffer; }
 
 	bool AMessageParser::isComplete() const { return m_state == COMPLETE; }
 
@@ -105,7 +97,7 @@ namespace http2 {
 
 	/* Shared */
 
-	std::pair<shared::StringView /*line */ , bool /*ok*/> AMessageParser::readLine() {
+	std::pair<shared::StringView /*line */, bool /*ok*/> AMessageParser::readLine() {
 		const char* lineStart = m_buffer.readPtr();
 		const char* lineEnd = m_buffer.find(CRLF);
 		if (lineEnd == NULL) {
@@ -294,4 +286,4 @@ namespace http2 {
 		return DONE;
 	}
 
-} /* namespace http2 */
+} /* namespace http */

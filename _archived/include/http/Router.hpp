@@ -8,6 +8,13 @@
 #include <vector>
 
 namespace http {
+
+	enum FileType {
+		FILE,
+		DIRECTORY,
+		_NOT_FOUND
+	};
+
 	class Router {
 		public:
 			Router(const config::Location& serverRoot);

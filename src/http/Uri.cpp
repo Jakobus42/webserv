@@ -1,8 +1,8 @@
-#include "http2/Uri.hpp"
+#include "http/Uri.hpp"
 
-#include <ostream>
+#include <sstream>
 
-namespace http2 {
+namespace http {
 
 	Uri::Uri()
 		: m_scheme()
@@ -78,4 +78,4 @@ namespace http2 {
 
 
 
-} /* namespace http2 */
+} /* namespace http */

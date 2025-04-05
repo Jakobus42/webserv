@@ -1,6 +1,6 @@
-#include "http2/Response.hpp"
+#include "http/Response.hpp"
 
-namespace http2 {
+namespace http {
 
 	/**
 	 * @brief Constructs a new Response object.
@@ -8,7 +8,7 @@ namespace http2 {
 	Response::Response()
 		: AMessage()
 		, m_statusCode(http::OK)
-		, m_reasonPhrase(http::getStatusMessage(m_statusCode)) {
+		, m_reasonPhrase(http::statusCodeToMessage(m_statusCode)) {
 	}
 
 	/**
@@ -27,4 +27,4 @@ namespace http2 {
 
 	void Response::setReasonPhrase(const shared::StringView& phrase) { m_reasonPhrase.assign(phrase.begin(), phrase.size()); }
 
-} /* namespace http2 */
+} /* namespace http */
