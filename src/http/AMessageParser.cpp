@@ -27,7 +27,7 @@ namespace http {
 
 	AMessageParser::~AMessageParser() { delete m_message; }
 
-	void AMessageParser::parse() {
+	bool AMessageParser::parse() {
 		if (!m_message) {
 			m_message = createMessage();
 		}
@@ -74,11 +74,11 @@ namespace http {
 				break;
 			}
 		}
+
+		return m_state == COMPLETE;
 	}
 
 	shared::Buffer<AMessageParser::BUFFER_SIZE>& AMessageParser::getReadBuffer() { return m_buffer; }
-
-	bool AMessageParser::isComplete() const { return m_state == COMPLETE; }
 
 	void AMessageParser::reset() {
 		m_state = START_LINE;
@@ -115,7 +115,7 @@ namespace http {
 
 	bool AMessageParser::isTChar(char c) const { return TCHAR[static_cast<unsigned char>(c)] != 0; }
 
-	bool AMessageParser::isVChar(char c) const { return (c >= 0x21 && c <= 0x7E); }
+	bool AMessageParser::isVChar(char c) const { return c >= '!' && c <= '~'; }
 
 	/* Parsers */
 
@@ -181,7 +181,7 @@ namespace http {
 			}
 
 			try {
-				m_contentLength = shared::string::toNum<std::size_t>(values.front(), 10);
+				m_contentLength = shared::string::toNum<std::size_t>(values.front());
 			} catch (const std::exception& e) {
 				throw HttpException(BAD_REQUEST, "invalid content-length: could not parse: " + std::string(e.what()));
 			}
@@ -255,7 +255,7 @@ namespace http {
 		shared::StringView sizeView = line.substr(0, semicolonPos);
 
 		try {
-			m_contentLength = shared::string::toNum<std::size_t>(sizeView.to_string(), 16);
+			m_contentLength = shared::string::toNum<std::size_t>(sizeView.to_string(), std::hex);
 		} catch (std::exception& e) {
 			throw HttpException(BAD_REQUEST, "invalid chunk size: " + std::string(e.what()));
 		}

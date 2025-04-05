@@ -6,17 +6,15 @@ namespace shared {
 
 	namespace string {
 
-		// only supports base 16 and 10
 		template <typename T>
-		T toNum(const std::string& str, std::size_t base) {
+		T toNum(const std::string& str, std::ios_base& (*baseManipulator)(std::ios_base&) = NULL) {
 			T result;
 			std::istringstream stream(str);
 
-			if (base == 16) {
-				stream >> std::hex;
-			} else if (base == 8) {
-				stream >> std::oct;
+			if (baseManipulator) {
+				stream >> baseManipulator;
 			}
+
 			stream >> result;
 			if (stream.fail() || !stream.eof())
 				throw std::runtime_error("cant convert to number");

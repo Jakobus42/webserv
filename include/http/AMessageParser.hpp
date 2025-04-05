@@ -31,10 +31,9 @@ namespace http {
 			AMessageParser(const MessageParserConfig& conf = MessageParserConfig());
 			virtual ~AMessageParser();
 
-			void parse();
+			bool parse();
 
 			shared::Buffer<BUFFER_SIZE>& getReadBuffer();
-			bool isComplete() const;
 
 			void reset();
 

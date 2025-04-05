@@ -45,7 +45,7 @@ namespace http {
 
 		shared::StringView codeView = line.substr(firstSpace + 1, secondSpace - firstSpace - 1);
 		try {
-			std::size_t code = shared::string::toNum<std::size_t>(codeView.to_string(), 10);
+			std::size_t code = shared::string::toNum<std::size_t>(codeView.to_string());
 			m_response->setStatusCode(numToStatusCode(code));
 		} catch (const std::exception& e) {
 			throw HttpException(BAD_REQUEST, "invalid statuc-code: could not parse: " + std::string(e.what()));
