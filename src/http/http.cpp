@@ -1,6 +1,6 @@
 #include "http/http.hpp"
 
-#include "shared/stringUtils.hpp"
+#include "shared/string/stringUtils.hpp"
 
 namespace http {
 

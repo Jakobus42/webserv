@@ -25,6 +25,6 @@ namespace http {
 
 	void Response::setReasonPhrase(const std::string& phrase) { m_reasonPhrase = phrase; }
 
-	void Response::setReasonPhrase(const shared::StringView& phrase) { m_reasonPhrase.assign(phrase.begin(), phrase.size()); }
+	void Response::setReasonPhrase(const shared::string::StringView& phrase) { m_reasonPhrase.assign(phrase.begin(), phrase.size()); }
 
 } /* namespace http */

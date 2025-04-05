@@ -31,11 +31,11 @@ namespace http {
 
 	/* <Method> <Request-URI> <HTTP-Version> */
 	AMessageParser::ParseResult RequestParser::parseStartLine() {
-		std::pair<shared::StringView /*line*/, bool /*ok*/> ret = readLine();
+		std::pair<shared::string::StringView /*line*/, bool /*ok*/> ret = readLine();
 		if (ret.second == false) {
 			return NEED_DATA;
 		}
-		shared::StringView line = ret.first;
+		shared::string::StringView line = ret.first;
 
 		std::size_t firstSpace = line.find(' ');
 		std::size_t secondSpace = line.find(' ', firstSpace + 1);
@@ -47,7 +47,7 @@ namespace http {
 
 		m_request->setMethod(stringToMethod(line.substr(0, firstSpace).to_string()));
 
-		shared::StringView uriView = line.substr(firstSpace + 1, secondSpace - firstSpace - 1);
+		shared::string::StringView uriView = line.substr(firstSpace + 1, secondSpace - firstSpace - 1);
 		if (uriView.size() > m_config.maxUriLength) {
 			throw HttpException(PAYLOAD_TOO_LARGE, "uri exceeds size limit");
 		}
@@ -63,7 +63,7 @@ namespace http {
 		return DONE;
 	}
 
-	void RequestParser::parseUriOriginForm(const shared::StringView& uriView) {
+	void RequestParser::parseUriOriginForm(const shared::string::StringView& uriView) {
 		Uri& uri = m_request->getUri();
 		if (uriView.find('?') < uriView.find('#')) {
 			uri.setQuery(uriView.substr(uriView.find('?') + 1));
@@ -78,17 +78,17 @@ namespace http {
 	 * absolute-URI = scheme ":" hier-part [ "?" query ]
 	 * @param path
 	 */
-	void RequestParser::parseUriAbsoluteForm(const shared::StringView& uriView) {
+	void RequestParser::parseUriAbsoluteForm(const shared::string::StringView& uriView) {
 		Uri& uri = m_request->getUri();
-		shared::StringView scheme;
-		shared::StringView authority;
-		shared::StringView path;
+		shared::string::StringView scheme;
+		shared::string::StringView authority;
+		shared::string::StringView path;
 
-		if (uriView.find(':') == shared::StringView::npos) {
+		if (uriView.find(':') == shared::string::StringView::npos) {
 			throw HttpException(BAD_REQUEST, "invalid URI");
 		}
 		scheme = uriView.substr(0, uriView.find(":"));
-		if (scheme.empty() || std::isalpha(scheme[0]) == 0 || scheme.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-.") != shared::StringView::npos) {
+		if (scheme.empty() || std::isalpha(scheme[0]) == 0 || scheme.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-.") != shared::string::StringView::npos) {
 			throw HttpException(BAD_REQUEST, "invalid URI");
 		}
 		path = uriView.substr(uriView.find(':') + 1, uriView.find('?') - uriView.find(':') - 1);
@@ -96,14 +96,14 @@ namespace http {
 			throw HttpException(BAD_REQUEST, "invalid URI");
 		}
 		path = path.substr(2);
-		if (path.find('/') == shared::StringView::npos) {
+		if (path.find('/') == shared::string::StringView::npos) {
 			throw HttpException(BAD_REQUEST, "invalid URI");
 		}
 		authority = path.substr(0, path.find('/'));
 		if (authority.empty()) {
 			throw HttpException(BAD_REQUEST, "invalid URI");
 		}
-		if (uriView.find('?') != shared::StringView::npos) {
+		if (uriView.find('?') != shared::string::StringView::npos) {
 			uri.setQuery(uriView.substr(uriView.find('?') + 1));
 		}
 		uri.setPath(path.substr(path.find('/')));

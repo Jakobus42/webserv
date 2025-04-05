@@ -3,7 +3,6 @@
 #include <sstream>
 
 namespace shared {
-
 	namespace string {
 
 		template <typename T>
@@ -68,5 +67,4 @@ namespace shared {
 
 
 	} // namespace string
-
 } // namespace shared

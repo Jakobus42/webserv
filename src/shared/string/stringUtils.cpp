@@ -1,7 +1,6 @@
-#include "shared/stringUtils.hpp"
+#include "shared/string/stringUtils.hpp"
 
 namespace shared {
-
 	namespace string {
 
 		// todo: move this somewhere else

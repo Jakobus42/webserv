@@ -1,7 +1,7 @@
 #pragma once
 
-#include "shared/NonCopyable.hpp"
-#include "shared/StringView.hpp"
+#include "shared/mixin/NonCopyable.hpp"
+#include "shared/string/StringView.hpp"
 
 #include <map>
 #include <vector>
@@ -9,7 +9,7 @@
 namespace http {
 
 	/* HTTP-message   = Request | Response */
-	class AMessage : shared::NonCopyable {
+	class AMessage : shared::mixin::NonCopyable {
 		public:
 			struct CaseInsensitiveComparator {
 					bool operator()(const std::string& s1, const std::string& s2) const;
@@ -24,16 +24,16 @@ namespace http {
 			const std::string& getVersion() const;
 
 			void setVersion(const std::string& version);
-			void setVersion(const shared::StringView& version);
+			void setVersion(const shared::string::StringView& version);
 
 			/* Headers */
 			const std::vector<std::string>& getHeader(const std::string& key) const;
 			const HeaderMap& getHeaders() const;
 
 			void appendHeader(const std::string& key, const std::string& value);
-			void appendHeader(const shared::StringView& key, const shared::StringView& value);
+			void appendHeader(const shared::string::StringView& key, const shared::string::StringView& value);
 			void setHeader(const std::string& key, const std::vector<std::string>& values);
-			void setHeader(const shared::StringView& key, const std::vector<shared::StringView>& values);
+			void setHeader(const shared::string::StringView& key, const std::vector<shared::string::StringView>& values);
 
 			bool hasHeader(const std::string& key) const;
 
@@ -41,9 +41,9 @@ namespace http {
 			const std::string& getBody() const;
 
 			void setBody(const std::string& body);
-			void setBody(const shared::StringView& body);
+			void setBody(const shared::string::StringView& body);
 			void appendBody(const std::string& body);
-			void appendBody(const shared::StringView& body);
+			void appendBody(const shared::string::StringView& body);
 
 			/* Debugging */
 			std::string toString() const;

@@ -2,7 +2,7 @@
 
 #include "http/AMessage.hpp"
 #include "http/http.hpp"
-#include "shared/stringUtils.hpp"
+#include "shared/string/stringUtils.hpp"
 
 namespace http {
 
@@ -78,7 +78,7 @@ namespace http {
 		return m_state == COMPLETE;
 	}
 
-	shared::Buffer<AMessageParser::BUFFER_SIZE>& AMessageParser::getReadBuffer() { return m_buffer; }
+	shared::container::Buffer<AMessageParser::BUFFER_SIZE>& AMessageParser::getReadBuffer() { return m_buffer; }
 
 	void AMessageParser::reset() {
 		m_state = START_LINE;
@@ -97,15 +97,15 @@ namespace http {
 
 	/* Shared */
 
-	std::pair<shared::StringView /*line */, bool /*ok*/> AMessageParser::readLine() {
+	std::pair<shared::string::StringView /*line */, bool /*ok*/> AMessageParser::readLine() {
 		const char* lineStart = m_buffer.readPtr();
 		const char* lineEnd = m_buffer.find(CRLF);
 		if (lineEnd == NULL) {
-			return std::make_pair(shared::StringView(), false);
+			return std::make_pair(shared::string::StringView(), false);
 		}
 
 		m_buffer.consume((lineEnd - lineStart) + std::strlen(CRLF));
-		return std::make_pair(shared::StringView(lineStart, lineEnd - lineStart), true);
+		return std::make_pair(shared::string::StringView(lineStart, lineEnd - lineStart), true);
 	}
 
 	bool AMessageParser::isChunked() const {
@@ -128,12 +128,12 @@ namespace http {
 						of token, separators, and quoted-string>
 	*/
 	AMessageParser::ParseResult AMessageParser::parseHeaderLine() {
-		std::pair<shared::StringView /*line */, bool /*ok*/> ret = readLine();
+		std::pair<shared::string::StringView /*line */, bool /*ok*/> ret = readLine();
 		if (ret.second == false) {
 			return NEED_DATA;
 		}
 
-		shared::StringView line = ret.first;
+		shared::string::StringView line = ret.first;
 		if (line.empty()) {
 			validateHeaders();
 			return DONE;
@@ -144,9 +144,9 @@ namespace http {
 		}
 
 		try {
-			shared::StringView keyView = extractHeaderKey(line);
+			shared::string::StringView keyView = extractHeaderKey(line);
 			line.remove_prefix(keyView.size() + 1 /*colon len*/);
-			std::vector<shared::StringView> valueViews = extractHeaderValues(line);
+			std::vector<shared::string::StringView> valueViews = extractHeaderValues(line);
 			m_message->setHeader(keyView, valueViews);
 			if (m_message->getHeaders().size() > m_config.maxHeaderValueCount - 1) {
 				throw HttpException(PAYLOAD_TOO_LARGE, "field-value amount exceeds limit");
@@ -191,9 +191,9 @@ namespace http {
 		}
 	}
 
-	shared::StringView AMessageParser::extractHeaderKey(const shared::StringView& line) const {
+	shared::string::StringView AMessageParser::extractHeaderKey(const shared::string::StringView& line) const {
 		std::size_t colonPos = line.find(':');
-		if (colonPos == shared::StringView::npos) {
+		if (colonPos == shared::string::StringView::npos) {
 			throw HttpException(BAD_REQUEST, "missing ':' after field-name");
 		}
 		if (colonPos == 0) {
@@ -211,19 +211,19 @@ namespace http {
 		return line.substr(0, colonPos);
 	}
 
-	std::vector<shared::StringView> AMessageParser::extractHeaderValues(const shared::StringView& line) const {
-		std::vector<shared::StringView> values;
+	std::vector<shared::string::StringView> AMessageParser::extractHeaderValues(const shared::string::StringView& line) const {
+		std::vector<shared::string::StringView> values;
 		std::size_t start = 0, end = 0;
 
 		values.reserve(8);
 		while (start < line.size()) {
 			end = line.find(',', start);
-			if (end == shared::StringView::npos) {
+			if (end == shared::string::StringView::npos) {
 				end = line.size();
 			}
-			shared::StringView rawValue(line.data() + start, end - start);
+			shared::string::StringView rawValue(line.data() + start, end - start);
 
-			shared::StringView value = rawValue.substr(
+			shared::string::StringView value = rawValue.substr(
 				rawValue.find_first_not_of(WHITESPACE),
 				rawValue.find_last_not_of(WHITESPACE));
 
@@ -244,15 +244,15 @@ namespace http {
 	}
 
 	AMessageParser::ParseResult AMessageParser::parseChunkSize() {
-		std::pair<shared::StringView /*line */, bool /*ok*/> ret = readLine();
+		std::pair<shared::string::StringView /*line */, bool /*ok*/> ret = readLine();
 		if (ret.second == false) {
 			return NEED_DATA;
 		}
-		shared::StringView line = ret.first;
+		shared::string::StringView line = ret.first;
 
 		// RFC 7230 section 4.1.1 (ignore extension)
 		std::size_t semicolonPos = line.find(';');
-		shared::StringView sizeView = line.substr(0, semicolonPos);
+		shared::string::StringView sizeView = line.substr(0, semicolonPos);
 
 		try {
 			m_contentLength = shared::string::toNum<std::size_t>(sizeView.to_string(), std::hex);
@@ -266,7 +266,7 @@ namespace http {
 	AMessageParser::ParseResult AMessageParser::parseBody(bool isChunked) {
 		if (m_contentLength > 0) {
 			std::size_t available = std::min(m_buffer.size(), m_contentLength);
-			m_message->appendBody(shared::StringView(m_buffer.readPtr(), available));
+			m_message->appendBody(shared::string::StringView(m_buffer.readPtr(), available));
 			if (m_message->getBody().size() > m_config.maxBodySize) {
 				throw HttpException(PAYLOAD_TOO_LARGE, "body exceeds size limit");
 			}
@@ -278,7 +278,7 @@ namespace http {
 			}
 			return isChunked ? CONTINUE : DONE;
 		} else if (isChunked) { // consume CRLF after last chunk
-			std::pair<shared::StringView /*line */, bool /*ok*/> ret = readLine();
+			std::pair<shared::string::StringView /*line */, bool /*ok*/> ret = readLine();
 			if (ret.second == false) {
 				return NEED_DATA;
 			}

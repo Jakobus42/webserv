@@ -27,8 +27,8 @@ namespace http {
 			virtual AMessage* createMessage() const;
 
 			virtual ParseResult parseStartLine();
-			void parseUriOriginForm(const shared::StringView& uriView);
-			void parseUriAbsoluteForm(const shared::StringView& uriView);
+			void parseUriOriginForm(const shared::string::StringView& uriView);
+			void parseUriAbsoluteForm(const shared::string::StringView& uriView);
 			void parsePath();
 
 		private:
