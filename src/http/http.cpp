@@ -4,23 +4,23 @@
 
 namespace http {
 
-	exception::exception(StatusCode statusCode)
+	HttpException::HttpException(StatusCode statusCode)
 		: std::runtime_error(shared::string::toString(static_cast<int>(statusCode)) + " - " + std::string(statusCodeToMessage(statusCode)))
 		, m_statusCode(statusCode)
 		, m_message(statusCodeToMessage(statusCode)) {
 	}
 
-	exception::exception(StatusCode statusCode, const std::string& message)
+	HttpException::HttpException(StatusCode statusCode, const std::string& message)
 		: std::runtime_error(shared::string::toString(static_cast<int>(statusCode)) + " - " + message)
 		, m_statusCode(statusCode)
 		, m_message(message) {
 	}
 
-	exception::~exception() throw() {}
+	HttpException::~HttpException() throw() {}
 
-	StatusCode exception::getStatusCode() const { return m_statusCode; }
+	StatusCode HttpException::getStatusCode() const { return m_statusCode; }
 
-	const std::string& exception::getMessage() const { return m_message; }
+	const std::string& HttpException::getMessage() const { return m_message; }
 
 	const char* statusCodeToMessage(StatusCode statusCode) {
 		switch (statusCode) {
@@ -113,7 +113,7 @@ namespace http {
 		if (method == "GET") return GET;
 		if (method == "POST") return POST;
 		if (method == "DELETE") return DELETE;
-		throw http::exception(NOT_IMPLEMENTED, "method not implemented");
+		throw HttpException(NOT_IMPLEMENTED, "method not implemented");
 	}
 
 	// todo: move this somewhere else
@@ -138,12 +138,12 @@ namespace http {
 	// 									 std::string bodyTemp = DL_TEMPLATE;
 
 	// 	if (!shared::file::directoryExists(location.precalculatedAbsolutePath)) {
-	// 		throw http::exception(NOT_FOUND, "getDirectoryListing: Directory doesn't exist: " + location.precalculatedAbsolutePath);
+	// 		throw HttpException(NOT_FOUND, "getDirectoryListing: Directory doesn't exist: " + location.precalculatedAbsolutePath);
 	// 	}
 
 	// 	DIR* dir;
 	// 	if ((dir = opendir(uri.safeAbsolutePath.c_str())) == NULL) {
-	// 		throw http::exception(INTERNAL_SERVER_ERROR, "getDirectoryListing: Couldn't open directory");
+	// 		throw HttpException(INTERNAL_SERVER_ERROR, "getDirectoryListing: Couldn't open directory");
 	// 	}
 	// 	struct dirent* ent;
 	// 	while ((ent = readdir(dir)) != NULL) {

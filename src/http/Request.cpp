@@ -9,7 +9,7 @@ namespace http {
 	 */
 	Request::Request()
 		: AMessage()
-		, m_method(http::GET)
+		, m_method(GET)
 		, m_uri() {
 	}
 
@@ -21,21 +21,21 @@ namespace http {
 
 	/* Start Line */
 
-	const http::Method& Request::getMethod() const { return m_method; }
+	const Method& Request::getMethod() const { return m_method; }
 
-	const http::Uri& Request::getUri() const { return m_uri; }
+	const Uri& Request::getUri() const { return m_uri; }
 
-	http::Uri& Request::getUri() { return m_uri; }
+	Uri& Request::getUri() { return m_uri; }
 
-	void Request::setMethod(const http::Method& method) { m_method = method; }
+	void Request::setMethod(const Method& method) { m_method = method; }
 
-	void Request::setUri(const http::Uri& uri) { m_uri = uri; }
+	void Request::setUri(const Uri& uri) { m_uri = uri; }
 
 	/* Debugging */
 
 	std::string Request::toString() const {
 		std::ostringstream ss;
-		ss << http::methodToString(m_method) << " " << m_uri.toString() << " " << m_version << '\n'
+		ss << methodToString(m_method) << " " << m_uri.toString() << " " << m_version << '\n'
 		   << this->AMessage::toString();
 		return ss.str();
 	}

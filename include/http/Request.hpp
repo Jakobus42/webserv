@@ -16,19 +16,19 @@ namespace http {
 			~Request();
 
 			/* Start Line */
-			const http::Method& getMethod() const;
-			const http::Uri& getUri() const;
-			http::Uri& getUri();
+			const Method& getMethod() const;
+			const Uri& getUri() const;
+			Uri& getUri();
 
-			void setMethod(const http::Method& method);
-			void setUri(const http::Uri& uri);
+			void setMethod(const Method& method);
+			void setUri(const Uri& uri);
 
 			/* Debugging */
 			std::string toString() const;
 
 		private:
-			http::Method m_method;
-			http::Uri m_uri;
+			Method m_method;
+			Uri m_uri;
 	};
 
 } /* namespace http */

@@ -7,8 +7,8 @@ namespace http {
 	 */
 	Response::Response()
 		: AMessage()
-		, m_statusCode(http::OK)
-		, m_reasonPhrase(http::statusCodeToMessage(m_statusCode)) {
+		, m_statusCode(OK)
+		, m_reasonPhrase(statusCodeToMessage(m_statusCode)) {
 	}
 
 	/**
@@ -17,11 +17,11 @@ namespace http {
 	Response::~Response() {
 	}
 
-	http::StatusCode Response::getStatusCode() const { return m_statusCode; }
+	StatusCode Response::getStatusCode() const { return m_statusCode; }
 
 	const std::string& Response::getReasonPhrase() const { return m_reasonPhrase; }
 
-	void Response::setStatusCode(http::StatusCode code) { m_statusCode = code; }
+	void Response::setStatusCode(StatusCode code) { m_statusCode = code; }
 
 	void Response::setReasonPhrase(const std::string& phrase) { m_reasonPhrase = phrase; }
 

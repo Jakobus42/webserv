@@ -15,15 +15,15 @@ namespace http {
 			~Response();
 
 			/* Start Line */
-			http::StatusCode getStatusCode() const;
+			StatusCode getStatusCode() const;
 			const std::string& getReasonPhrase() const;
 
-			void setStatusCode(http::StatusCode code);
+			void setStatusCode(StatusCode code);
 			void setReasonPhrase(const std::string& phrase);
 			void setReasonPhrase(const shared::StringView& phrase);
 
 		private:
-			http::StatusCode m_statusCode;
+			StatusCode m_statusCode;
 			std::string m_reasonPhrase;
 	};
 
