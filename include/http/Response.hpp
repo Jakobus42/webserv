@@ -5,10 +5,6 @@
 
 namespace http {
 
-	/**
-	 * @class Response
-	 * @brief ...
-	 */
 	class Response : public AMessage {
 		public:
 			Response();
