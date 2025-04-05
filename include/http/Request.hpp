@@ -6,10 +6,7 @@
 
 namespace http {
 
-	/**
-	 * @class Request
-	 * @brief ...
-	 */
+
 	class Request : public AMessage {
 		public:
 			Request();

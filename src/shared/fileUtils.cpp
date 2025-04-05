@@ -23,7 +23,6 @@ namespace shared {
 			return S_ISDIR(info.st_mode);
 		}
 
-		// Check if a file is readable
 		bool isReadable(const std::string& path) {
 			struct stat info;
 			if (stat(path.c_str(), &info) != 0) {
@@ -49,7 +48,6 @@ namespace shared {
 			return S_ISDIR(info.st_mode) && (info.st_mode & S_IRUSR) && (info.st_mode & S_IWUSR) && (info.st_mode & S_IXUSR);
 		}
 
-		// Check if a file is executable
 		bool isExecutable(const std::string& path) {
 			return (access(path.c_str(), X_OK) == 0);
 		}

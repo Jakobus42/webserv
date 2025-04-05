@@ -11,10 +11,6 @@
 
 namespace http {
 
-	/**
-	 * @class Uri
-	 * @brief ...
-	 */
 	class Uri {
 		public:
 			Uri();
