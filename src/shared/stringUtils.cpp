@@ -33,13 +33,13 @@ namespace shared {
 		// 	return joinPath(normalizePath(splitPath(path))); // TODO: will turn "/" and "/////" into an empty string
 		// }
 
-		// std::vector<std::string> splitPath(const std::string& path) throw(http::exception) {
+		// std::vector<std::string> splitPath(const std::string& path) throw(HttpException) {
 		// 	std::vector<std::string> tokens;
 		// 	if (path.empty()) {
-		// 		throw http::exception(http::NOT_FOUND, "Path is empty");
+		// 		throw HttpException(NOT_FOUND, "Path is empty");
 		// 	}
 		// 	if (path[0] != '/') {
-		// 		throw http::exception(http::BAD_REQUEST, "Path doesn't begin with '/'");
+		// 		throw HttpException(BAD_REQUEST, "Path doesn't begin with '/'");
 		// 	}
 
 		// 	std::stringstream ss(path.substr(1)); // Remove leading '/'

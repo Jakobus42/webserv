@@ -47,11 +47,11 @@ namespace http {
 		DELETE
 	};
 
-	class exception : public std::runtime_error {
+	class HttpException : public std::runtime_error {
 		public:
-			explicit exception(StatusCode statusCode);
-			explicit exception(StatusCode statusCode, const std::string& message);
-			virtual ~exception() throw();
+			explicit HttpException(StatusCode statusCode);
+			explicit HttpException(StatusCode statusCode, const std::string& message);
+			virtual ~HttpException() throw();
 
 			StatusCode getStatusCode() const;
 			const std::string& getMessage() const;

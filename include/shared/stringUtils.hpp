@@ -36,9 +36,9 @@ namespace shared {
 		//   *
 		//   * @param path The path to split
 		//   * @return std::vector<std::string> The individual path components
-		//   * @throws http::exception if the path is invalid
+		//   * @throws HttpException if the path is invalid
 		//   */
-		//  std::vector<std::string> splitPath(const std::string& path) throw(http::exception);
+		//  std::vector<std::string> splitPath(const std::string& path) throw(HttpException);
 
 		// /**
 		//  * @brief Joins a split path into a string, delimited by '/'

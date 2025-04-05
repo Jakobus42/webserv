@@ -40,16 +40,16 @@ namespace http {
 		std::size_t firstSpace = line.find(' ');
 		std::size_t secondSpace = line.find(' ', firstSpace + 1);
 		if (firstSpace == std::string::npos || secondSpace == std::string::npos) {
-			throw http::exception(http::BAD_REQUEST, "invalid start-line: cant find spaces");
+			throw HttpException(BAD_REQUEST, "invalid start-line: cant find spaces");
 		}
 
 		m_request = static_cast<Request*>(m_message);
 
-		m_request->setMethod(http::stringToMethod(line.substr(0, firstSpace).to_string()));
+		m_request->setMethod(stringToMethod(line.substr(0, firstSpace).to_string()));
 
 		shared::StringView uriView = line.substr(firstSpace + 1, secondSpace - firstSpace - 1);
 		if (uriView.size() > m_config.maxUriLength) {
-			throw http::exception(http::PAYLOAD_TOO_LARGE, "uri exceeds size limit");
+			throw HttpException(PAYLOAD_TOO_LARGE, "uri exceeds size limit");
 		}
 
 		if (uriView[0] == '/') {
@@ -85,23 +85,23 @@ namespace http {
 		shared::StringView path;
 
 		if (uriView.find(':') == shared::StringView::npos) {
-			throw http::exception(http::BAD_REQUEST, "invalid URI");
+			throw HttpException(BAD_REQUEST, "invalid URI");
 		}
 		scheme = uriView.substr(0, uriView.find(":"));
 		if (scheme.empty() || std::isalpha(scheme[0]) == 0 || scheme.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-.") != shared::StringView::npos) {
-			throw http::exception(http::BAD_REQUEST, "invalid URI");
+			throw HttpException(BAD_REQUEST, "invalid URI");
 		}
 		path = uriView.substr(uriView.find(':') + 1, uriView.find('?') - uriView.find(':') - 1);
 		if (path[0] != '/' && path[1] != '/') {
-			throw http::exception(http::BAD_REQUEST, "invalid URI");
+			throw HttpException(BAD_REQUEST, "invalid URI");
 		}
 		path = path.substr(2);
 		if (path.find('/') == shared::StringView::npos) {
-			throw http::exception(http::BAD_REQUEST, "invalid URI");
+			throw HttpException(BAD_REQUEST, "invalid URI");
 		}
 		authority = path.substr(0, path.find('/'));
 		if (authority.empty()) {
-			throw http::exception(http::BAD_REQUEST, "invalid URI");
+			throw HttpException(BAD_REQUEST, "invalid URI");
 		}
 		if (uriView.find('?') != shared::StringView::npos) {
 			uri.setQuery(uriView.substr(uriView.find('?') + 1));

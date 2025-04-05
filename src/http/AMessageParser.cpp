@@ -140,7 +140,7 @@ namespace http {
 		}
 
 		if (m_message->getHeaders().size() > m_config.maxHeaderCount - 1) {
-			throw http::exception(http::PAYLOAD_TOO_LARGE, "header amount exceeds limit");
+			throw HttpException(PAYLOAD_TOO_LARGE, "header amount exceeds limit");
 		}
 
 		try {
@@ -149,10 +149,10 @@ namespace http {
 			std::vector<shared::StringView> valueViews = extractHeaderValues(line);
 			m_message->setHeader(keyView, valueViews);
 			if (m_message->getHeaders().size() > m_config.maxHeaderValueCount - 1) {
-				throw http::exception(http::PAYLOAD_TOO_LARGE, "field-value amount exceeds limit");
+				throw HttpException(PAYLOAD_TOO_LARGE, "field-value amount exceeds limit");
 			}
-		} catch (const http::exception& e) {
-			throw http::exception(e.getStatusCode(), "invalid header: " + e.getMessage());
+		} catch (const HttpException& e) {
+			throw HttpException(e.getStatusCode(), "invalid header: " + e.getMessage());
 		}
 		return CONTINUE;
 	}
@@ -175,7 +175,7 @@ namespace http {
 			if (values.size() > 1) {
 				for (std::size_t i = 1; i < values.size(); ++i) {
 					if (values[i] != values[0]) {
-						throw http::exception(http::BAD_REQUEST, "conflicting content-length headers");
+						throw HttpException(BAD_REQUEST, "conflicting content-length headers");
 					}
 				}
 			}
@@ -183,10 +183,10 @@ namespace http {
 			try {
 				m_contentLength = shared::string::toNum<std::size_t>(values.front(), 10);
 			} catch (const std::exception& e) {
-				throw http::exception(http::BAD_REQUEST, "invalid content-length: could not parse: " + std::string(e.what()));
+				throw HttpException(BAD_REQUEST, "invalid content-length: could not parse: " + std::string(e.what()));
 			}
 			if (m_contentLength > m_config.maxBodySize) {
-				throw http::exception(http::PAYLOAD_TOO_LARGE, "content-length exceeds size limit");
+				throw HttpException(PAYLOAD_TOO_LARGE, "content-length exceeds size limit");
 			}
 		}
 	}
@@ -194,18 +194,18 @@ namespace http {
 	shared::StringView AMessageParser::extractHeaderKey(const shared::StringView& line) const {
 		std::size_t colonPos = line.find(':');
 		if (colonPos == shared::StringView::npos) {
-			throw http::exception(http::BAD_REQUEST, "missing ':' after field-name");
+			throw HttpException(BAD_REQUEST, "missing ':' after field-name");
 		}
 		if (colonPos == 0) {
-			throw http::exception(http::BAD_REQUEST, "empty field-name");
+			throw HttpException(BAD_REQUEST, "empty field-name");
 		}
 		if (colonPos > m_config.maxHeaderNameLength) {
-			throw http::exception(http::PAYLOAD_TOO_LARGE, "field-name exceeds size limit");
+			throw HttpException(PAYLOAD_TOO_LARGE, "field-name exceeds size limit");
 		}
 
 		for (std::size_t i = 0; i < colonPos; ++i) {
 			if (!isTChar(line[i])) {
-				throw http::exception(http::BAD_REQUEST, std::string("invalid character in field-name '") + line[i] + '\'');
+				throw HttpException(BAD_REQUEST, std::string("invalid character in field-name '") + line[i] + '\'');
 			}
 		}
 		return line.substr(0, colonPos);
@@ -229,12 +229,12 @@ namespace http {
 
 			for (std::size_t i = 0; i < value.size(); ++i) {
 				if (!isVChar(value[i]) && !std::strchr(WHITESPACE, value[i])) {
-					throw http::exception(http::BAD_REQUEST, std::string("invalid character in field-value '") + line[i] + '\'');
+					throw HttpException(BAD_REQUEST, std::string("invalid character in field-value '") + line[i] + '\'');
 				}
 			}
 
 			if (value.size() > m_config.maxHeaderValueLength) {
-				throw http::exception(http::PAYLOAD_TOO_LARGE, "field-value exceeds size limit");
+				throw HttpException(PAYLOAD_TOO_LARGE, "field-value exceeds size limit");
 			}
 			values.push_back(value);
 
@@ -257,7 +257,7 @@ namespace http {
 		try {
 			m_contentLength = shared::string::toNum<std::size_t>(sizeView.to_string(), 16);
 		} catch (std::exception& e) {
-			throw http::exception(http::BAD_REQUEST, "invalid chunk size: " + std::string(e.what()));
+			throw HttpException(BAD_REQUEST, "invalid chunk size: " + std::string(e.what()));
 		}
 		return DONE;
 	}
@@ -268,7 +268,7 @@ namespace http {
 			std::size_t available = std::min(m_buffer.size(), m_contentLength);
 			m_message->appendBody(shared::StringView(m_buffer.readPtr(), available));
 			if (m_message->getBody().size() > m_config.maxBodySize) {
-				throw http::exception(http::PAYLOAD_TOO_LARGE, "body exceeds size limit");
+				throw HttpException(PAYLOAD_TOO_LARGE, "body exceeds size limit");
 			}
 
 			m_buffer.consume(available);
