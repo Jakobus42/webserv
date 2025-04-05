@@ -1,6 +1,8 @@
 #include "config/Location.hpp"
 
-#include "config/Parser.hpp"
+#include "config/Parser.hpp" //hm
+
+#include <iostream>
 
 namespace config {
 
@@ -77,7 +79,7 @@ namespace config {
 
 	void Location::printIndented(int indentLevel) const {
 		std::string indent(indentLevel, ' ');
-		// Print the location header line
+
 		std::cout << indent << "Location: ";
 		if (!pathAsTokens.empty()) {
 			for (std::vector<std::string>::const_iterator it = pathAsTokens.begin(); it != pathAsTokens.end(); ++it) {

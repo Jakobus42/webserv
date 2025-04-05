@@ -1,4 +1,4 @@
-#include "shared/log/Logger.hpp"
+#include "shared/Logger.hpp"
 
 #include <ctime>
 #include <iostream>

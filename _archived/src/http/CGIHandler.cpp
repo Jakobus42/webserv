@@ -44,13 +44,13 @@ namespace http {
 	void CGIHandler::launchScript(const Request& req) {
 		this->prepareEnviroment(req);
 
-		
+
 		m_stdin.create();
 		m_stdout.create();
-		
+
 		m_pid = fork();
 		if (m_pid == -1) {
-			throw http::exception(INTERNAL_SERVER_ERROR, "Failed to fork CGI process: " + shared::string::to_string(strerror(errno)));
+			throw http::exception(INTERNAL_SERVER_ERROR, "Failed to fork CGI process: " + shared::string::toString(strerror(errno)));
 		}
 
 		if (m_pid == 0) {
@@ -65,7 +65,7 @@ namespace http {
 			char* argv[] = {const_cast<char*>(interpreter.c_str()), const_cast<char*>(path.c_str()), NULL};
 
 			execve(interpreter.c_str(), reinterpret_cast<char* const*>(argv), environ);
-			LOG("execve() failed: " + shared::string::to_string(strerror(errno)), shared::ERROR);
+			LOG("execve() failed: " + shared::string::toString(strerror(errno)), shared::ERROR);
 			exit(1);
 		}
 		m_stdout.close();
@@ -104,12 +104,12 @@ namespace http {
 
 	void CGIHandler::collectScriptOutput(const Request&, Response&) {
 		int32_t status;
-		if(waitpid(m_pid, &status, WNOHANG) == -1) {
+		if (waitpid(m_pid, &status, WNOHANG) == -1) {
 			throw http::exception(INTERNAL_SERVER_ERROR, "waitpid() failed");
 		}
 		if (WIFEXITED(status) || WIFSIGNALED(status)) {
 			m_state = DONE;
-        }
+		}
 	}
 
 	void CGIHandler::killProcess() {
@@ -129,7 +129,7 @@ namespace http {
 		int32_t fd[2];
 
 		if (pipe(fd) == -1) {
-			throw http::exception(INTERNAL_SERVER_ERROR, "pipe() failed " + shared::string::to_string(strerror(errno)));
+			throw http::exception(INTERNAL_SERVER_ERROR, "pipe() failed " + shared::string::toString(strerror(errno)));
 		}
 		m_read_fd = fd[0];
 		m_write_fd = fd[1];
@@ -155,7 +155,7 @@ namespace http {
 	void CGIHandler::Pipe::safeClose(int32_t* fd) {
 		if (*fd != -1) {
 			if (::close(*fd)) {
-				throw http::exception(INTERNAL_SERVER_ERROR, "close() failed " + shared::string::to_string(strerror(errno)));
+				throw http::exception(INTERNAL_SERVER_ERROR, "close() failed " + shared::string::toString(strerror(errno)));
 			}
 			*fd = -1;
 		}
@@ -163,7 +163,7 @@ namespace http {
 
 	void CGIHandler::Pipe::dup2(int32_t fd1, int32_t fd2) {
 		if (::dup2(fd1, fd2) == -1) {
-			throw http::exception(INTERNAL_SERVER_ERROR, "dup2() failed " + shared::string::to_string(strerror(errno)));
+			throw http::exception(INTERNAL_SERVER_ERROR, "dup2() failed " + shared::string::toString(strerror(errno)));
 		}
 	}
 
@@ -173,7 +173,7 @@ namespace http {
 			if (errno == EAGAIN || errno == EWOULDBLOCK) {
 				return 0;
 			}
-			throw http::exception(INTERNAL_SERVER_ERROR, "read() failed: " + shared::string::to_string(strerror(errno)));
+			throw http::exception(INTERNAL_SERVER_ERROR, "read() failed: " + shared::string::toString(strerror(errno)));
 		}
 		return bytesRead;
 	}
@@ -184,7 +184,7 @@ namespace http {
 			if (errno == EAGAIN || errno == EWOULDBLOCK) {
 				return 0;
 			}
-			throw http::exception(INTERNAL_SERVER_ERROR, "write() failed: " + shared::string::to_string(strerror(errno)));
+			throw http::exception(INTERNAL_SERVER_ERROR, "write() failed: " + shared::string::toString(strerror(errno)));
 		}
 		return bytesWritten;
 	}

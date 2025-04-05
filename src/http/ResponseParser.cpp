@@ -1,7 +1,7 @@
 #include "http/ResponseParser.hpp"
 
 #include "http/Response.hpp"
-#include "shared/string/stringUtils.hpp"
+#include "shared/stringUtils.hpp"
 
 namespace http {
 
@@ -9,15 +9,11 @@ namespace http {
 		: maxReasonPhraseLength(1024) // 1KB
 		, messageParserConfig() {}
 
-	/**
-	 * @brief Constructs a new ResponseParser object.
-	 */
 	ResponseParser::ResponseParser(const ResponseParserConfig& conf)
-		: AMessageParser(conf.messageParserConfig) {}
+		: AMessageParser(conf.messageParserConfig)
+		, m_config(conf)
+		, m_response(NULL) {}
 
-	/**
-	 * @brief Destroys the ResponseParser object.
-	 */
 	ResponseParser::~ResponseParser() {}
 
 	Response* ResponseParser::releaseResponse() { return static_cast<Response*>(releaseMessage()); }
@@ -40,12 +36,11 @@ namespace http {
 
 		m_response = static_cast<Response*>(m_message);
 
-
 		m_response->setVersion(line.substr(0, firstSpace));
 
 		shared::string::StringView codeView = line.substr(firstSpace + 1, secondSpace - firstSpace - 1);
 		try {
-			std::size_t code = shared::string::toNum<std::size_t>(codeView.to_string());
+			std::size_t code = shared::string::toNum<std::size_t>(codeView.toString());
 			m_response->setStatusCode(numToStatusCode(code));
 		} catch (const std::exception& e) {
 			throw HttpException(BAD_REQUEST, "invalid statuc-code: could not parse: " + std::string(e.what()));

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "config/Server.hpp"
+#include "shared/NonCopyable.hpp"
 
 #include <map>
 #include <vector>
@@ -9,7 +10,6 @@ namespace config {
 
 	class parse_exception : public std::runtime_error {
 		public:
-			explicit parse_exception(std::size_t line);
 			explicit parse_exception(const std::string& message);
 			explicit parse_exception(std::size_t line, const std::string& message);
 			virtual ~parse_exception() throw();
@@ -20,27 +20,7 @@ namespace config {
 			std::string m_message;
 	};
 
-	enum CommandType {
-		_D_NOT_VALID,
-		D_LISTEN,
-		D_CLIENT_MAX_BODY_SIZE,
-		D_DATA_DIR,
-		D_SERVER_NAME,
-		_D_SERVER_TYPES,
-		D_ROOT,
-		D_RETURN,
-		D_LIMIT_EXCEPT,
-		D_UPLOAD_DIR,
-		D_INDEX,
-		D_AUTOINDEX,
-		D_LOCATION
-	};
-
-	/**
-	 * @class Parser
-	 * @brief Parses the config goodly
-	 */
-	class Parser {
+	class Parser : shared::mixin::NonCopyable {
 			typedef void (Parser::*LocationTokenParser)(const std::string&, Location&);
 			typedef void (Parser::*ServerTokenParser)(const std::string&, Server&);
 
@@ -62,8 +42,21 @@ namespace config {
 			static const std::string WHITESPACE;
 
 		private:
-			Parser(const Parser& other);
-			Parser& operator=(const Parser& rhs);
+			enum CommandType {
+				_D_NOT_VALID,
+				D_LISTEN,
+				D_CLIENT_MAX_BODY_SIZE,
+				D_DATA_DIR,
+				D_SERVER_NAME,
+				_D_SERVER_TYPES,
+				D_ROOT,
+				D_RETURN,
+				D_LIMIT_EXCEPT,
+				D_UPLOAD_DIR,
+				D_INDEX,
+				D_AUTOINDEX,
+				D_LOCATION
+			};
 
 			void consume(std::size_t amount);
 			bool matchToken(const std::string& token);
@@ -87,7 +80,6 @@ namespace config {
 
 		private:
 			// ------------------------  server parsers  -------------------- //
-			void parsePort(const std::string& value, Server& server);
 			void parseListen(const std::string& value, Server& server);
 			void parseClientMaxBodySize(const std::string& value, Server& server);
 			void parseDataDir(const std::string& value, Server& server);
@@ -104,4 +96,5 @@ namespace config {
 			void parseIndex(const std::string& value, Location& location);
 			void parseAutoindex(const std::string& value, Location& location);
 	};
+
 } /* namespace config */

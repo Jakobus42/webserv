@@ -2,7 +2,8 @@
 
 #include "http/AMessage.hpp"
 #include "http/http.hpp"
-#include "shared/string/stringUtils.hpp"
+#include "shared/Logger.hpp"
+#include "shared/stringUtils.hpp"
 
 namespace http {
 
@@ -14,12 +15,12 @@ namespace http {
 		, maxHeaderNameLength(256)		 // 256B
 	{}
 
-	const char AMessageParser::CRLF[] = "\r\n";
+	shared::string::StringView AMessageParser::CRLF = shared::string::StringView("\r\n");
 	const char AMessageParser::TCHAR[256] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '!', 0, '#', '$', '%', '&', '\'', 0, 0, '*', '+', 0, '-', '.', 0, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 0, 0, 0, 0, 0, 0, 0, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 0, 0, 0, '^', '_', '`', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 0, '|', 0, '~', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	const char AMessageParser::WHITESPACE[] = " \t";
+	shared::string::StringView AMessageParser::WHITESPACE = shared::string::StringView(" \t");
 
 	AMessageParser::AMessageParser(const MessageParserConfig& conf)
-		: m_config(conf)
+		: m_baseConfig(conf)
 		, m_message(NULL)
 		, m_state(START_LINE)
 		, m_buffer()
@@ -99,12 +100,12 @@ namespace http {
 
 	std::pair<shared::string::StringView /*line */, bool /*ok*/> AMessageParser::readLine() {
 		const char* lineStart = m_buffer.readPtr();
-		const char* lineEnd = m_buffer.find(CRLF);
+		const char* lineEnd = m_buffer.find(CRLF.data());
 		if (lineEnd == NULL) {
 			return std::make_pair(shared::string::StringView(), false);
 		}
 
-		m_buffer.consume((lineEnd - lineStart) + std::strlen(CRLF));
+		m_buffer.consume((lineEnd - lineStart) + CRLF.size());
 		return std::make_pair(shared::string::StringView(lineStart, lineEnd - lineStart), true);
 	}
 
@@ -139,7 +140,7 @@ namespace http {
 			return DONE;
 		}
 
-		if (m_message->getHeaders().size() > m_config.maxHeaderCount - 1) {
+		if (m_message->getHeaders().size() > m_baseConfig.maxHeaderCount - 1) {
 			throw HttpException(PAYLOAD_TOO_LARGE, "header amount exceeds limit");
 		}
 
@@ -148,7 +149,7 @@ namespace http {
 			line.remove_prefix(keyView.size() + 1 /*colon len*/);
 			std::vector<shared::string::StringView> valueViews = extractHeaderValues(line);
 			m_message->setHeader(keyView, valueViews);
-			if (m_message->getHeaders().size() > m_config.maxHeaderValueCount - 1) {
+			if (m_message->getHeaders().size() > m_baseConfig.maxHeaderValueCount - 1) {
 				throw HttpException(PAYLOAD_TOO_LARGE, "field-value amount exceeds limit");
 			}
 		} catch (const HttpException& e) {
@@ -163,9 +164,8 @@ namespace http {
 
 		// RFC 7230 section 3.3.3
 		if (hasTransferEncoding && hasContentLength) {
-			std::cerr << "suspicious HTTP message: Transfer-Encoding "
-						 "and Content-Length are present - Content-Length will be ignored."
-					  << std::endl; // todo: log warning
+			LOG_WARNING("suspicious HTTP message: Transfer-Encoding \
+				and Content-Length are present - Content-Length will be ignored.");
 		}
 
 		if (hasContentLength && !isChunked()) {
@@ -185,7 +185,7 @@ namespace http {
 			} catch (const std::exception& e) {
 				throw HttpException(BAD_REQUEST, "invalid content-length: could not parse: " + std::string(e.what()));
 			}
-			if (m_contentLength > m_config.maxBodySize) {
+			if (m_contentLength > m_baseConfig.maxBodySize) {
 				throw HttpException(PAYLOAD_TOO_LARGE, "content-length exceeds size limit");
 			}
 		}
@@ -199,7 +199,7 @@ namespace http {
 		if (colonPos == 0) {
 			throw HttpException(BAD_REQUEST, "empty field-name");
 		}
-		if (colonPos > m_config.maxHeaderNameLength) {
+		if (colonPos > m_baseConfig.maxHeaderNameLength) {
 			throw HttpException(PAYLOAD_TOO_LARGE, "field-name exceeds size limit");
 		}
 
@@ -213,11 +213,11 @@ namespace http {
 
 	std::vector<shared::string::StringView> AMessageParser::extractHeaderValues(const shared::string::StringView& line) const {
 		std::vector<shared::string::StringView> values;
-		std::size_t start = 0, end = 0;
+		std::size_t start = 0;
 
 		values.reserve(8);
 		while (start < line.size()) {
-			end = line.find(',', start);
+			std::size_t end = line.find(',', start);
 			if (end == shared::string::StringView::npos) {
 				end = line.size();
 			}
@@ -228,12 +228,12 @@ namespace http {
 				rawValue.find_last_not_of(WHITESPACE));
 
 			for (std::size_t i = 0; i < value.size(); ++i) {
-				if (!isVChar(value[i]) && !std::strchr(WHITESPACE, value[i])) {
+				if (!isVChar(value[i]) && !std::strchr(WHITESPACE.data(), value[i])) {
 					throw HttpException(BAD_REQUEST, std::string("invalid character in field-value '") + line[i] + '\'');
 				}
 			}
 
-			if (value.size() > m_config.maxHeaderValueLength) {
+			if (value.size() > m_baseConfig.maxHeaderValueLength) {
 				throw HttpException(PAYLOAD_TOO_LARGE, "field-value exceeds size limit");
 			}
 			values.push_back(value);
@@ -255,7 +255,7 @@ namespace http {
 		shared::string::StringView sizeView = line.substr(0, semicolonPos);
 
 		try {
-			m_contentLength = shared::string::toNum<std::size_t>(sizeView.to_string(), std::hex);
+			m_contentLength = shared::string::toNum<std::size_t>(sizeView.toString(), std::hex);
 		} catch (std::exception& e) {
 			throw HttpException(BAD_REQUEST, "invalid chunk size: " + std::string(e.what()));
 		}
@@ -267,7 +267,7 @@ namespace http {
 		if (m_contentLength > 0) {
 			std::size_t available = std::min(m_buffer.size(), m_contentLength);
 			m_message->appendBody(shared::string::StringView(m_buffer.readPtr(), available));
-			if (m_message->getBody().size() > m_config.maxBodySize) {
+			if (m_message->getBody().size() > m_baseConfig.maxBodySize) {
 				throw HttpException(PAYLOAD_TOO_LARGE, "body exceeds size limit");
 			}
 

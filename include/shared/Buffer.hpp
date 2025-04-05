@@ -10,7 +10,8 @@ namespace shared {
 		class Buffer {
 			public:
 				Buffer()
-					: m_readPos(0)
+					: m_data()
+					, m_readPos(0)
 					, m_writePos(0) {}
 
 				~Buffer() {}

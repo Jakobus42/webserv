@@ -1,6 +1,7 @@
 #pragma once
 
 #include <sstream>
+#include <vector>
 
 namespace shared {
 	namespace string {
@@ -26,6 +27,8 @@ namespace shared {
 			oss << value;
 			return oss.str();
 		}
+
+		std::vector<std::string> split(const std::string& str, char delimiter);
 
 		// todo: move this somewhere else
 		//  /**

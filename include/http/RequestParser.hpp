@@ -12,10 +12,6 @@ namespace http {
 
 	class Request;
 
-	/**
-	 * @class RequestParser
-	 * @brief ...
-	 */
 	class RequestParser : public AMessageParser {
 		public:
 			RequestParser(const RequestParserConfig& conf = RequestParserConfig());

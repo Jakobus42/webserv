@@ -33,7 +33,7 @@ namespace http {
 
 	void Response::serialize() {
 		std::string statusLine = HTTP_VERSION + " " +
-			shared::string::to_string(static_cast<int>(m_statusCode)) + " " +
+			shared::string::toString(static_cast<int>(m_statusCode)) + " " +
 			getStatusMessage(m_statusCode) + CRLF;
 		m_data.append(statusLine.c_str(), statusLine.length());
 
