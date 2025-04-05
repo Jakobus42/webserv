@@ -5,6 +5,7 @@ namespace shared {
 	namespace string {
 
 		// todo: move this somewhere else
+
 		//  std::string joinPath(const std::vector<std::string>& pathComponents) {
 		//  	std::string joined = "";
 		//  	for (std::vector<std::string>::const_iterator it = pathComponents.begin(); it != pathComponents.end(); ++it) {
