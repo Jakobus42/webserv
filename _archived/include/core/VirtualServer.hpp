@@ -12,10 +12,6 @@
 
 namespace http {
 
-	/**
-	 * @class VirtualServer
-	 * @brief ...
-	 */
 	class VirtualServer {
 		public:
 			VirtualServer(const config::Server& conf);

@@ -18,9 +18,6 @@
 
 namespace http {
 
-	/**
-	 * @brief Constructs a new VirtualServer object.
-	 */
 	VirtualServer::VirtualServer(const config::Server& conf)
 		: m_config(conf)
 		, m_clients()
@@ -29,23 +26,12 @@ namespace http {
 		, m_router(conf.location) {
 	}
 
-	/**
-	 * @brief Destroys the VirtualServer object.
-	 * @todo Should prolly close everything down neatly, this happens only at exit.
-	 * @warning Edit: Should NOT close everything, otherwise creating Sockets
-	 * @warning and placing them in Reactor's vector triggers the destructor,
-	 * @warning closing the socket in the process.
-	 */
 	VirtualServer::~VirtualServer() {
 		if (m_listenSocket != -1) {
 			this->shutDown();
 		}
 	}
 
-	/**
-	 * @brief Copy constructor.
-	 * @param other The other VirtualServer object to copy.
-	 */
 	VirtualServer::VirtualServer(const VirtualServer& other)
 		: m_config(other.m_config)
 		, m_clients(other.m_clients)
@@ -54,11 +40,6 @@ namespace http {
 		, m_router(other.m_router) {
 	}
 
-	/**
-	 * @brief Copy assignment operator.
-	 * @param other The other VirtualServer object to assign from.
-	 * @return A reference to the assigned VirtualServer object.
-	 */
 	const VirtualServer& VirtualServer::operator=(const VirtualServer& rhs) {
 		if (this == &rhs)
 			return *this;

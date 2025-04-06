@@ -1,13 +1,9 @@
 #include "config/Parser.hpp"
 
-int main() {
+int main(int argc, char** argv) {
 	config::Parser configParser;
-	if (!configParser.parseFile("config/config.conf")) {
+	if (!configParser.parseFile(argc == 2 ? argv[1] : "config/config.conf")) {
 		return 1;
-	}
-	std::vector<config::Server>& serverConfig = configParser.getConfigs();
-	for (std::size_t i = 0; i < serverConfig.size(); ++i) {
-		serverConfig[i].print();
 	}
 	return 0;
 }
