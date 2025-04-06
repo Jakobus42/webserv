@@ -2,16 +2,12 @@
 
 #	include "io/EpollMultiplexer.hpp"
 
-#	include <errno.h>
-#	include <string.h>
+#	include <cstring>
 #	include <sys/epoll.h>
 #	include <unistd.h>
 
 #	include "io/AHandler.hpp"
 #	include "shared/Logger.hpp"
-
-#	include <sstream>
-#	include <stdexcept>
 
 namespace io {
 
@@ -40,7 +36,7 @@ namespace io {
 		}
 
 		struct epoll_event ev;
-		memset(&ev, 0, sizeof(ev));
+		std::memset(&ev, 0, sizeof(ev));
 		ev.events = convertToEpollEvents(events);
 		ev.data.fd = fd;
 
@@ -74,7 +70,7 @@ namespace io {
 		entry.events = events;
 
 		struct epoll_event ev;
-		memset(&ev, 0, sizeof(ev));
+		std::memset(&ev, 0, sizeof(ev));
 		ev.events = convertToEpollEvents(events);
 		ev.data.fd = fd;
 
@@ -94,7 +90,7 @@ namespace io {
 		}
 
 		struct epoll_event ev;
-		memset(&ev, 0, sizeof(ev));
+		std::memset(&ev, 0, sizeof(ev));
 
 		if (epoll_ctl(m_epollFd, EPOLL_CTL_DEL, fd, &ev) == -1) {
 			if (errno == EBADF) { // fd might have been already closed so we ignore this
