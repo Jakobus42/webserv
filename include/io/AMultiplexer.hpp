@@ -4,51 +4,52 @@
 
 #include "shared/NonCopyable.hpp"
 
-#include <cstddef>
 #include <map>
+#include <vector>
 
 namespace io {
-
-	enum Event {
-		EVENT_READ = 0x1,
-		EVENT_WRITE = 0x2,
-		EVENT_ERROR = 0x4,
-	};
-
-	class AHandler;
 
 	class AMultiplexer : shared::mixin::NonCopyable {
 		public:
 			static const int32_t TIMEOUT_INFINITE = -1;
+			static const int32_t MAX_EVENTS = 64;
 
-			AMultiplexer()
-				: m_handlers() {}
+			enum EventType {
+				EVENT_READ = 0x1,
+				EVENT_WRITE = 0x2,
+				EVENT_ERROR = 0x4,
+			};
 
-			virtual ~AMultiplexer() {}
-
-			virtual void subscribe(int32_t fd, uint32_t events, AHandler* handler) = 0;
-			virtual void modify(int32_t fd, uint32_t events) = 0;
-			virtual void unsubscribe(int32_t fd) = 0;
-
-			virtual int32_t dispatch(int32_t timeoutMs = TIMEOUT_INFINITE) = 0;
-
-		protected:
-			struct HandlerEntry {
-					AHandler* handler;
+			struct Event {
+					int32_t fd;
 					uint32_t events;
 
-					HandlerEntry()
-						: handler(NULL)
-						, events(0) {}
-
-					HandlerEntry(AHandler* handler, uint32_t events)
-						: handler(handler)
+					Event(int32_t fd, uint32_t events)
+						: fd(fd)
 						, events(events) {}
 			};
 
-			typedef std::map<int32_t /*fd*/, HandlerEntry> HandlerMap;
+			typedef std::vector<Event> Events;
 
-			HandlerMap m_handlers;
+			AMultiplexer()
+				: m_readyEvents()
+				, m_registeredEvents() {}
+
+			virtual ~AMultiplexer() {}
+
+			virtual void add(int32_t fd, uint32_t events) = 0;
+			virtual void modify(int32_t fd, uint32_t events) = 0;
+			virtual void remove(int32_t fd) = 0;
+
+			virtual int32_t poll(int32_t timeoutMs = TIMEOUT_INFINITE) = 0;
+
+			const Events& getReadyEvents() const { return m_readyEvents; }
+
+		protected:
+			typedef std::map<int32_t, uint32_t> EventMap;
+
+			Events m_readyEvents;
+			EventMap m_registeredEvents;
 	};
 
 } /* namespace io */
