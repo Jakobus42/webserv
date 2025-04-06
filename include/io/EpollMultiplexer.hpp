@@ -6,24 +6,22 @@
 
 namespace io {
 
-	class EpollMultiplexer : AMultiplexer {
+	class EpollMultiplexer : public AMultiplexer {
 		public:
 			EpollMultiplexer();
 			virtual ~EpollMultiplexer();
 
-			virtual void subscribe(int32_t fd, uint32_t events, AHandler* handler);
+			virtual void add(int32_t fd, uint32_t events);
 			virtual void modify(int32_t fd, uint32_t events);
-			virtual void unsubscribe(int32_t fd);
+			virtual void remove(int32_t fd);
 
-			virtual int32_t dispatch(int32_t timeoutMs = TIMEOUT_INFINITE);
-
-		private:
-			uint32_t convertToEpollEvents(uint32_t events) const;
+			virtual int32_t poll(int32_t timeoutMs = TIMEOUT_INFINITE);
 
 		private:
-			static const int16_t MAX_EVENTS = 256;
-
 			int32_t m_epollFd;
+
+			uint32_t convertToEpollEvents(uint32_t events) const;
+			uint32_t convertFromEpollEvents(uint32_t epollEvents) const;
 	};
 
 } /* namespace io */

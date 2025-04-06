@@ -15,5 +15,5 @@ namespace io {
 }
 
 #else
-#	error "Unsupported platform"
+#	error "unsupported platform"
 #endif
