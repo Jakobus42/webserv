@@ -6,7 +6,6 @@
 
 namespace http {
 
-
 	class Request : public AMessage {
 		public:
 			Request();

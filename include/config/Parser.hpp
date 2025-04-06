@@ -4,7 +4,6 @@
 #include "shared/NonCopyable.hpp"
 
 #include <map>
-#include <vector>
 
 namespace config {
 

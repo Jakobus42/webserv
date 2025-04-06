@@ -180,15 +180,15 @@ namespace config {
 		signal(SIGQUIT, SIG_IGN);
 
 		if (shared::file::isDirectory(fileName)) {
-			std::cout << "Could not parse file: regular file expected, directory received" << std::endl;
+			LOG_FATAL("Could not parse file: regular file expected, directory received");
 			return false;
 		}
 		if (!shared::file::exists(fileName)) {
-			std::cout << "Could not parse file: file doesn't exist" << std::endl;
+			LOG_FATAL("Could not parse file: file doesn't exist");
 			return false;
 		}
 		if (!shared::file::isReadable(fileName)) {
-			std::cout << "Could not parse file: file can't be read" << std::endl;
+			LOG_FATAL("Could not parse file: file can't be read");
 			return false;
 		}
 		if (!shared::file::isRegularFile(fileName)) {
