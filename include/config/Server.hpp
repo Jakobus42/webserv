@@ -4,7 +4,6 @@
 
 #include "config/Location.hpp"
 
-#include <string>
 #include <vector>
 
 namespace config {
