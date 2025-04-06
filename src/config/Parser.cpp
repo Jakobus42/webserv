@@ -175,6 +175,7 @@ namespace config {
 		}
 	}
 
+	//todo: maybe the server should still start with no config? just fall back to default and log a warning
 	bool Parser::parseFile(const std::string& fileName) {
 		signal(SIGINT, handleSigint);
 		signal(SIGQUIT, SIG_IGN);
