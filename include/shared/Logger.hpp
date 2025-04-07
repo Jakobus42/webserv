@@ -5,6 +5,8 @@
 #include <fstream>
 #include <vector>
 
+// todo: figure out how to do this with a stream
+
 namespace shared {
 	namespace log {
 

@@ -4,7 +4,7 @@ CC = c++
 ###FLAGS###
 CFLAGS = -Wextra -Wall -Werror -std=c++98 -I$(INCDIR)
 CPPCHECKFLAGS = -I$(INCDIR) --std=c++03
-DEBUG_FLAGS = -g
+DEBUG_FLAGS = -g -gdwarf-4 # gdwarf thingi fixed valgrind idk lol
 
 ###PROGRAM###
 NAME = webserv
@@ -51,6 +51,7 @@ run: all
 	./$(NAME)
 
 .PHONY: leak
+leak: CFLAGS += $(DEBUG_FLAGS)
 leak: all
 	@echo "$(GREEN)Running $(NAME) with valgrind...$(NC)"
 	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --error-exitcode=1 ./$(NAME)

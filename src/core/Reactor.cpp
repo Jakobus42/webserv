@@ -15,10 +15,20 @@ namespace core {
 		signal(SIGINT, handleSigint);
 		signal(SIGQUIT, SIG_IGN);
 
-		m_dispatcher.registerHandler(-1, new AcceptHandler()); // -1 is the best server fd lelel
+		for (std::size_t i = 0; i < config.serverConfigs.size(); ++i) {
+			const config::ServerConfig& serverConfig = config.serverConfigs[i];
+			VirtualServer* vServer = new VirtualServer(serverConfig);
+
+			m_vServers.push_back(vServer);
+			vServer->listen();
+			m_dispatcher.registerHandler(vServer->getListenSocket().getFd(), new AcceptHandler(vServer, m_dispatcher));
+		}
 	}
 
 	Reactor::~Reactor() {
+		for (std::size_t i = 0; i < m_vServers.size(); ++i) {
+			delete m_vServers[i];
+		}
 	}
 
 	void Reactor::run() {

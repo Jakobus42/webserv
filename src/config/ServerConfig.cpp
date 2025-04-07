@@ -1,4 +1,4 @@
-#include "config/Server.hpp"
+#include "config/ServerConfig.hpp"
 
 #include "config/Parser.hpp"
 
@@ -6,7 +6,7 @@
 
 namespace config {
 
-	Server::Server()
+	ServerConfig::ServerConfig()
 		: port(8080)
 		, ipAddress(LOCALHOST_ADDRESS)
 		, maxBodySize(ONE_MEGABYTE)
@@ -15,9 +15,9 @@ namespace config {
 		, serverNames()
 		, location() {}
 
-	Server::~Server() {}
+	ServerConfig::~ServerConfig() {}
 
-	Server::Server(const Server& other)
+	ServerConfig::ServerConfig(const ServerConfig& other)
 		: port(other.port)
 		, ipAddress(other.ipAddress)
 		, maxBodySize(other.maxBodySize)
@@ -26,7 +26,7 @@ namespace config {
 		, serverNames(other.serverNames)
 		, location(other.location) {}
 
-	const Server& Server::operator=(const Server& rhs) {
+	const ServerConfig& ServerConfig::operator=(const ServerConfig& rhs) {
 		if (this == &rhs) {
 			return *this;
 		}
@@ -40,15 +40,15 @@ namespace config {
 		return *this;
 	}
 
-	bool Server::hasRoot() const { return !location.root.empty(); }
+	bool ServerConfig::hasRoot() const { return !location.root.empty(); }
 
-	bool Server::hasDataDir() const { return !dataDirectory.empty(); }
+	bool ServerConfig::hasDataDir() const { return !dataDirectory.empty(); }
 
 	/**
 	 * @brief Validate the server, ensuring it has all mandatory keys
 	 * and that nothing else fucky wucky is going on
 	 */
-	void Server::validate() const {
+	void ServerConfig::validate() const {
 		if (dataDirectory.empty()) {
 			throw parse_exception("Server requires a 'data_dir'");
 		}
@@ -58,7 +58,7 @@ namespace config {
 		// TODO: ensure this path exists and can be accessed
 	}
 
-	void Server::print() const {
+	void ServerConfig::print() const {
 		std::cout << "--------------------------------" << std::endl;
 
 		std::cout << "Port: " << port << std::endl;

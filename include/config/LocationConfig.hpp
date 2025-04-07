@@ -7,7 +7,7 @@
 
 namespace config {
 
-	struct Location {
+	struct LocationConfig {
 			std::string path;									 // location name split into tokens
 			std::vector<std::string> pathAsTokens;				 // location name split into tokens
 			std::string root;									 // root split into tokens
@@ -20,11 +20,11 @@ namespace config {
 			std::vector<std::string> uploadSubdirectoryAsTokens; //
 			bool autoindex;										 //
 			std::vector<std::string> indexFile;					 // files to load when GETting a directory
-			std::vector<Location> locations;					 // registered locations
+			std::vector<LocationConfig> locations;				 // registered locations
 
-			Location();
-			Location(const Location& other);
-			Location& operator=(const Location& other);
+			LocationConfig();
+			LocationConfig(const LocationConfig& other);
+			LocationConfig& operator=(const LocationConfig& other);
 
 			bool acceptsFileUpload() const;
 			bool hasRedirect() const;

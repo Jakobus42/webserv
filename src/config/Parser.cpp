@@ -241,7 +241,7 @@ namespace config {
 
 		std::size_t i = 0;
 
-		for (std::vector<Server>::iterator server = m_config.serverConfigs.begin(); server != m_config.serverConfigs.end(); ++server) {
+		for (std::vector<ServerConfig>::iterator server = m_config.serverConfigs.begin(); server != m_config.serverConfigs.end(); ++server) {
 			++i;
 			server->location.precalculatedAbsolutePath = server->dataDirectory + server->location.root;
 			if (!isValidPath(server->location.precalculatedAbsolutePath)) {
@@ -261,8 +261,8 @@ namespace config {
 		}
 	}
 
-	void Parser::assignAbsolutePaths(Server& server, Location& parentLocation) throw(parse_exception) {
-		for (std::vector<Location>::iterator location = parentLocation.locations.begin(); location != parentLocation.locations.end(); ++location) {
+	void Parser::assignAbsolutePaths(ServerConfig& server, LocationConfig& parentLocation) throw(parse_exception) {
+		for (std::vector<LocationConfig>::iterator location = parentLocation.locations.begin(); location != parentLocation.locations.end(); ++location) {
 			if (location->hasOwnRoot()) {
 				location->precalculatedAbsolutePath = server.location.precalculatedAbsolutePath + location->root;
 			} else {
@@ -278,7 +278,7 @@ namespace config {
 	// ------------------------  block parsing ------------------------------ //
 
 	/**
-	 * Possible Server directives are:
+	 * Possible ServerConfig directives are:
 	 * - port
 	 * - listen (ipAddress)
 	 * - client_max_body_size (maxBodySize)
@@ -300,7 +300,7 @@ namespace config {
 		}
 		m_depth++;
 
-		Server thisServer;
+		ServerConfig thisServer;
 
 		while (m_readPos < m_data.size()) {
 			skipWhitespace();
@@ -338,7 +338,7 @@ namespace config {
 	 * - autoindex
 	 * - location (locations) (can exist more than once)
 	 */
-	void Parser::expectLocationBlock(Location& parentLocation) throw(parse_exception) {
+	void Parser::expectLocationBlock(LocationConfig& parentLocation) throw(parse_exception) {
 		std::string path = readToken();
 
 		if (path.empty()) {
@@ -354,7 +354,7 @@ namespace config {
 		}
 		m_depth++;
 
-		Location thisLocation;
+		LocationConfig thisLocation;
 
 		thisLocation.path = path;
 		thisLocation.pathAsTokens = shared::string::split(path, '/');
@@ -366,7 +366,7 @@ namespace config {
 			if (matchToken("}")) {
 				m_depth--;
 				thisLocation.validate();
-				// validate Location whether enough stuff is present
+				// validate LocationConfig whether enough stuff is present
 				// is anything mandatory for a location?
 				parentLocation.locations.push_back(thisLocation);
 				return;
@@ -386,7 +386,7 @@ namespace config {
 		throw parse_exception(m_lineIndex, "Location block not closed with '}");
 	}
 
-	void Parser::processServerValue(const std::string& value, CommandType type, Server& server) {
+	void Parser::processServerValue(const std::string& value, CommandType type, ServerConfig& server) {
 		static std::map<CommandType, ServerTokenParser> tokenParsers;
 
 		if (type > _D_SERVER_TYPES) {
@@ -403,7 +403,7 @@ namespace config {
 	}
 
 	// cppcheck-suppress constParameter
-	void Parser::processLocationValue(const std::string& value, CommandType type, Location& location) {
+	void Parser::processLocationValue(const std::string& value, CommandType type, LocationConfig& location) {
 		static std::map<CommandType, LocationTokenParser> tokenParsers;
 
 		if (tokenParsers.empty()) {
@@ -462,7 +462,7 @@ namespace config {
 		return ip;
 	}
 
-	void Parser::parseListen(const std::string& value, Server& server) {
+	void Parser::parseListen(const std::string& value, ServerConfig& server) {
 		std::string host;
 		std::string port;
 
@@ -482,7 +482,7 @@ namespace config {
 		}
 	}
 
-	void Parser::parseClientMaxBodySize(const std::string& value, Server& server) {
+	void Parser::parseClientMaxBodySize(const std::string& value, ServerConfig& server) {
 		std::stringstream ss(value);
 		std::string token;
 
@@ -494,7 +494,7 @@ namespace config {
 		}
 	}
 
-	void Parser::parseDataDir(const std::string& value, Server& server) {
+	void Parser::parseDataDir(const std::string& value, ServerConfig& server) {
 		if (!isValidPath(value)) {
 			throw parse_exception(m_lineIndex, "Invalid path for data_dir: " + value);
 		}
@@ -502,7 +502,7 @@ namespace config {
 									  // TODO: should we normalize these?
 	}
 
-	void Parser::parseServerName(const std::string& value, Server& server) {
+	void Parser::parseServerName(const std::string& value, ServerConfig& server) {
 		std::vector<std::string> splitNames;
 		std::stringstream ss(value);
 		std::string name;
@@ -518,7 +518,7 @@ namespace config {
 
 	// ------------------------  location parsers  -------------------------- //
 
-	void Parser::parseRoot(const std::string& value, Location& location) {
+	void Parser::parseRoot(const std::string& value, LocationConfig& location) {
 		if (!isValidPath(value)) {
 			throw parse_exception(m_lineIndex, "Invalid path for root: " + value);
 		}
@@ -526,7 +526,7 @@ namespace config {
 		location.rootAsTokens = shared::string::split(value, '/'); // will be empty if root is just '/'
 	}
 
-	void Parser::parseReturn(const std::string& value, Location& location) {
+	void Parser::parseReturn(const std::string& value, LocationConfig& location) {
 		if (!isValidPath(value)) {
 			throw parse_exception(m_lineIndex, "Invalid path for return: " + value);
 		}
@@ -536,7 +536,7 @@ namespace config {
 
 	// if no limit_except is present, default initialization
 	// for locations should permit all methods; GET POST and DELETE
-	void Parser::parseLimitExcept(const std::string& value, Location& location) {
+	void Parser::parseLimitExcept(const std::string& value, LocationConfig& location) {
 		static std::map<std::string, http::Method> implementedMethods;
 
 		if (implementedMethods.empty()) {
@@ -564,7 +564,7 @@ namespace config {
 		location.allowedMethods = allowedMethods;
 	}
 
-	void Parser::parseUploadDir(const std::string& value, Location& location) {
+	void Parser::parseUploadDir(const std::string& value, LocationConfig& location) {
 		if (!isValidPath(value)) {
 			throw parse_exception(m_lineIndex, "Invalid path for upload_dir: " + value);
 		}
@@ -572,7 +572,7 @@ namespace config {
 		location.uploadSubdirectoryAsTokens = shared::string::split(value, '/'); // strip this of whitespace if that doesn't happen yet
 	}
 
-	void Parser::parseIndex(const std::string& value, Location& location) {
+	void Parser::parseIndex(const std::string& value, LocationConfig& location) {
 		std::vector<std::string> indexFiles;
 		std::stringstream ss(value);
 		std::string token;
@@ -586,7 +586,7 @@ namespace config {
 		location.indexFile = indexFiles;
 	}
 
-	void Parser::parseAutoindex(const std::string& value, Location& location) {
+	void Parser::parseAutoindex(const std::string& value, LocationConfig& location) {
 		static std::set<std::string> allowedValues;
 
 		if (allowedValues.empty()) {

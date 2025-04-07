@@ -1,4 +1,4 @@
-#include "config/Location.hpp"
+#include "config/LocationConfig.hpp"
 
 #include "config/Parser.hpp" //hm
 
@@ -6,7 +6,7 @@
 
 namespace config {
 
-	Location::Location()
+	LocationConfig::LocationConfig()
 		: path()
 		, pathAsTokens()
 		, root()
@@ -24,7 +24,7 @@ namespace config {
 		allowedMethods.insert(http::DELETE);
 	}
 
-	Location::Location(const Location& other)
+	LocationConfig::LocationConfig(const LocationConfig& other)
 		: path(other.path)
 		, pathAsTokens(other.pathAsTokens)
 		, root(other.root)
@@ -39,7 +39,7 @@ namespace config {
 		, locations(other.locations) {
 	}
 
-	Location& Location::operator=(const Location& other) {
+	LocationConfig& LocationConfig::operator=(const LocationConfig& other) {
 		if (this != &other) {
 			path = other.path;
 			pathAsTokens = other.pathAsTokens;
@@ -57,30 +57,30 @@ namespace config {
 		return *this;
 	}
 
-	bool Location::acceptsFileUpload() const {
+	bool LocationConfig::acceptsFileUpload() const {
 		return !uploadSubdirectory.empty() && allowedMethods.find(http::POST) != allowedMethods.end();
 	}
 
 	// TODO: validate?
-	bool Location::hasRedirect() const {
+	bool LocationConfig::hasRedirect() const {
 		return !redirectUri.empty();
 	}
 
-	bool Location::hasOwnRoot() const {
+	bool LocationConfig::hasOwnRoot() const {
 		return !root.empty();
 	}
 
 	// TODO: implement
-	void Location::validate() const {
+	void LocationConfig::validate() const {
 		if (path.empty()) {
-			throw parse_exception("Location doesn't have a path");
+			throw parse_exception("LocationConfig doesn't have a path");
 		}
 	}
 
-	void Location::printIndented(int indentLevel) const {
+	void LocationConfig::printIndented(int indentLevel) const {
 		std::string indent(indentLevel, ' ');
 
-		std::cout << indent << "Location: ";
+		std::cout << indent << "LocationConfig: ";
 		if (!pathAsTokens.empty()) {
 			for (std::vector<std::string>::const_iterator it = pathAsTokens.begin(); it != pathAsTokens.end(); ++it) {
 				std::cout << "/" << *it;
@@ -136,7 +136,7 @@ namespace config {
 
 		if (!locations.empty()) {
 			std::cout << indent << "  Nested Locations:" << std::endl;
-			for (std::vector<Location>::const_iterator it = locations.begin();
+			for (std::vector<LocationConfig>::const_iterator it = locations.begin();
 				 it != locations.end();
 				 ++it) {
 				it->printIndented(indentLevel + 4);
@@ -144,7 +144,7 @@ namespace config {
 		}
 	}
 
-	void Location::print() const {
+	void LocationConfig::print() const {
 		printIndented(0);
 	}
 

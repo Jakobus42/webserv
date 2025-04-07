@@ -6,6 +6,8 @@
 
 namespace core {
 
+	class VirtualServer;
+
 	class Reactor : shared::mixin::NonCopyable {
 		public:
 			explicit Reactor(const config::Config& config);
@@ -17,8 +19,11 @@ namespace core {
 			static void handleSigint(int);
 
 		private:
+			typedef std::vector<VirtualServer*> vServers;
+
 			config::Config m_config;
 			io::Dispatcher m_dispatcher;
+			vServers m_vServers;
 
 			static bool m_isRunning;
 	};

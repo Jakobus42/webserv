@@ -1,6 +1,6 @@
 #pragma once
 
-#include "config/Server.hpp"
+#include "config/ServerConfig.hpp"
 #include "shared/NonCopyable.hpp"
 
 #include <map>
@@ -20,12 +20,12 @@ namespace config {
 	};
 
 	struct Config {
-			std::vector<Server> serverConfigs;
+			std::vector<ServerConfig> serverConfigs;
 	};
 
 	class Parser : shared::mixin::NonCopyable {
-			typedef void (Parser::*LocationTokenParser)(const std::string&, Location&);
-			typedef void (Parser::*ServerTokenParser)(const std::string&, Server&);
+			typedef void (Parser::*LocationTokenParser)(const std::string&, LocationConfig&);
+			typedef void (Parser::*ServerTokenParser)(const std::string&, ServerConfig&);
 
 		public:
 			Parser();
@@ -73,31 +73,31 @@ namespace config {
 			void processParsedData() throw(parse_exception);
 
 			void expectServerBlock() throw(parse_exception);
-			void expectLocationBlock(Location& parentLocation) throw(parse_exception);
+			void expectLocationBlock(LocationConfig& parentLocation) throw(parse_exception);
 
-			void processServerValue(const std::string& value, CommandType type, Server& server);
-			void processLocationValue(const std::string& value, CommandType type, Location& location);
+			void processServerValue(const std::string& value, CommandType type, ServerConfig& server);
+			void processLocationValue(const std::string& value, CommandType type, LocationConfig& location);
 
 			static const std::map<std::string, CommandType>& locationDirectives();
 			static const std::map<std::string, CommandType>& serverDirectives();
 
 		private:
 			// ------------------------  server parsers  -------------------- //
-			void parseListen(const std::string& value, Server& server);
-			void parseClientMaxBodySize(const std::string& value, Server& server);
-			void parseDataDir(const std::string& value, Server& server);
-			void parseServerName(const std::string& value, Server& server);
+			void parseListen(const std::string& value, ServerConfig& server);
+			void parseClientMaxBodySize(const std::string& value, ServerConfig& server);
+			void parseDataDir(const std::string& value, ServerConfig& server);
+			void parseServerName(const std::string& value, ServerConfig& server);
 
 			uint32_t parseIpAddress(const std::string& host);
-			void assignAbsolutePaths(Server& server, Location& parentLocation) throw(parse_exception);
+			void assignAbsolutePaths(ServerConfig& server, LocationConfig& parentLocation) throw(parse_exception);
 
 			// ------------------------  location parsers  ------------------ //
-			void parseRoot(const std::string& value, Location& location);
-			void parseReturn(const std::string& value, Location& location);
-			void parseLimitExcept(const std::string& value, Location& location);
-			void parseUploadDir(const std::string& value, Location& location);
-			void parseIndex(const std::string& value, Location& location);
-			void parseAutoindex(const std::string& value, Location& location);
+			void parseRoot(const std::string& value, LocationConfig& location);
+			void parseReturn(const std::string& value, LocationConfig& location);
+			void parseLimitExcept(const std::string& value, LocationConfig& location);
+			void parseUploadDir(const std::string& value, LocationConfig& location);
+			void parseIndex(const std::string& value, LocationConfig& location);
+			void parseAutoindex(const std::string& value, LocationConfig& location);
 	};
 
 } /* namespace config */
