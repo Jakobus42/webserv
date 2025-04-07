@@ -6,7 +6,5 @@ int main(int argc, char** argv) {
 	if (!configParser.parseFile(argc == 2 ? argv[1] : "config/config.conf")) {
 		return 1;
 	}
-	io::Dispatcher dispatcher;
-	dispatcher.dispatch();
 	return 0;
 }
