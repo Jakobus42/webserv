@@ -15,16 +15,10 @@ namespace http {
 		return lhs.size() < rhs.size();
 	}
 
-	/**
-	 * @brief Constructs a new AMessage object.
-	 */
 	AMessage::AMessage()
 		: m_headers()
 		, m_body() {}
 
-	/**
-	 * @brief Destroys the AMessage object.
-	 */
 	AMessage::~AMessage() {}
 
 	/* Version */

@@ -4,18 +4,12 @@
 
 namespace http {
 
-	/**
-	 * @brief Constructs a new Request object.
-	 */
 	Request::Request()
 		: AMessage()
 		, m_method(GET)
 		, m_uri() {
 	}
 
-	/**
-	 * @brief Destroys the Request object.
-	 */
 	Request::~Request() {
 	}
 

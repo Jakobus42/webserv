@@ -24,17 +24,19 @@ namespace io {
 		}
 	}
 
+	// note: takes ownership of the handler
 	void Dispatcher::registerHandler(int32_t fd, IEventHandler* handler, uint32_t events) {
 		if (!handler) {
 			throw std::runtime_error("cannot register null handler");
 		}
 
 		if (m_handlers.find(fd) != m_handlers.end()) {
+			delete handler;
 			throw std::runtime_error("handler already registered for this file descriptor");
 		}
 
-		m_multiplexer.add(fd, events);
 		m_handlers[fd] = handler;
+		m_multiplexer.add(fd, events);
 	}
 
 	void Dispatcher::modifyEvents(int32_t fd, uint32_t events) {
@@ -51,6 +53,7 @@ namespace io {
 			throw std::runtime_error("no handler registered for this file descriptor");
 		}
 
+		delete it->second;
 		m_multiplexer.remove(fd);
 		m_handlers.erase(it);
 	}

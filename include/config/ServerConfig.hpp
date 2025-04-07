@@ -2,13 +2,13 @@
 
 #include <stdint.h>
 
-#include "config/Location.hpp"
+#include "config/LocationConfig.hpp"
 
 #include <vector>
 
 namespace config {
 
-	struct Server {
+	struct ServerConfig {
 		public:
 			int port;
 			uint32_t ipAddress;
@@ -16,12 +16,12 @@ namespace config {
 			std::string dataDirectory;
 			std::vector<std::string> dataDirectoryAsTokens;
 			std::vector<std::string> serverNames;
-			Location location;
+			LocationConfig location;
 
-			Server();
-			~Server();
-			Server(const Server& other);
-			const Server& operator=(const Server& rhs);
+			ServerConfig();
+			~ServerConfig();
+			ServerConfig(const ServerConfig& other);
+			const ServerConfig& operator=(const ServerConfig& rhs);
 
 			bool hasRoot() const;
 			bool hasDataDir() const;

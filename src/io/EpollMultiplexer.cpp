@@ -9,6 +9,8 @@
 #	include <stdexcept>
 #	include <cerrno>
 
+//todo: EPOLL_HUP?
+
 namespace io {
 
 	EpollMultiplexer::EpollMultiplexer()

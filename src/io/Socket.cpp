@@ -23,7 +23,7 @@ namespace io {
 
 	Socket::~Socket() { close(); }
 
-	void Socket::bind(in_port_t port, const std::string& address) {
+	void Socket::bind(in_port_t port, uint32_t address) {
 		if (!isValid()) {
 			throw std::runtime_error("cannot bind: invalid socket");
 		}
@@ -32,14 +32,7 @@ namespace io {
 		memset(&addr, 0, sizeof(addr));
 		addr.sin_family = AF_INET;
 		addr.sin_port = htons(port);
-
-		if (address.empty()) {
-			addr.sin_addr.s_addr = INADDR_ANY;
-		} else {
-			if (inet_pton(AF_INET, address.c_str(), &addr.sin_addr) <= 0) {
-				throw std::runtime_error("inet_pton() failed: " + std::string(strerror(errno)));
-			}
-		}
+		addr.sin_addr.s_addr = htonl(address);
 
 		if (::bind(m_fd, (struct sockaddr*)&addr, sizeof(addr)) == -1) {
 			throw std::runtime_error("bind() failed: " + std::string(strerror(errno)));
@@ -62,17 +55,17 @@ namespace io {
 		}
 
 		struct sockaddr_in addr;
-		socklen_t addr_len = sizeof(addr);
+		socklen_t addrLen = sizeof(addr);
 
-		int client_fd = ::accept(m_fd, (struct sockaddr*)&addr, &addr_len);
-		if (client_fd == -1) {
+		int connectionFd = ::accept(m_fd, (struct sockaddr*)&addr, &addrLen);
+		if (connectionFd == -1) {
 			if (errno == EAGAIN || errno == EWOULDBLOCK) {
 				return NULL;
 			} else {
 				throw std::runtime_error("accept() failed: " + std::string(strerror(errno)));
 			}
 		}
-		return new Socket(client_fd);
+		return new Socket(connectionFd);
 	}
 
 	void Socket::shutdown(ShutdownMode mode) {
@@ -178,9 +171,9 @@ namespace io {
 		}
 
 		struct sockaddr_in addr;
-		socklen_t addr_len = sizeof(addr);
+		socklen_t addrLen = sizeof(addr);
 
-		if (getpeername(m_fd, (struct sockaddr*)&addr, &addr_len) == -1) {
+		if (getpeername(m_fd, (struct sockaddr*)&addr, &addrLen) == -1) {
 			throw std::runtime_error("getpeername() failed: " + std::string(strerror(errno)));
 		}
 
@@ -198,9 +191,9 @@ namespace io {
 		}
 
 		struct sockaddr_in addr;
-		socklen_t addr_len = sizeof(addr);
+		socklen_t addrLen = sizeof(addr);
 
-		if (getpeername(m_fd, (struct sockaddr*)&addr, &addr_len) == -1) {
+		if (getpeername(m_fd, (struct sockaddr*)&addr, &addrLen) == -1) {
 			throw std::runtime_error("getpeername() failed: " + std::string(strerror(errno)));
 		}
 
