@@ -8,7 +8,7 @@ namespace core {
 
 	class Reactor : shared::mixin::NonCopyable {
 		public:
-			Reactor(const config::Config& config);
+			explicit Reactor(const config::Config& config);
 			~Reactor();
 
 			void run();
