@@ -8,9 +8,7 @@ namespace io {
 
 	Dispatcher::Dispatcher()
 		: m_multiplexer()
-		, m_handlers()
-		, m_running(false) {
-	}
+		, m_handlers() {}
 
 	Dispatcher::~Dispatcher() {
 		HandlerMap::iterator it = m_handlers.begin();
@@ -57,7 +55,7 @@ namespace io {
 		m_handlers.erase(it);
 	}
 
-	int32_t Dispatcher::dispatchOnce(int32_t timeoutMs) {
+	int32_t Dispatcher::dispatch(int32_t timeoutMs) {
 		int32_t numEvents = m_multiplexer.poll(timeoutMs);
 
 		const AMultiplexer::Events& events = m_multiplexer.getReadyEvents();
@@ -68,40 +66,38 @@ namespace io {
 		return numEvents;
 	}
 
-	void Dispatcher::dispatch(int32_t timeoutMs) {
-		m_running = true;
-
-		while (m_running) {
-			dispatchOnce(timeoutMs);
-		}
-	}
-
-	void Dispatcher::stop() {
-		m_running = false;
-	}
-
 	void Dispatcher::handleEvent(const AMultiplexer::Event& event) {
-		IEventHandler* handler = m_handlers.at(event.fd);
-		EventResult result = KEEP_MONITORING;
 
-		if (event.events & AMultiplexer::EVENT_ERROR) {
-			result = handler->onError(event.fd);
-		}
+		try {
+			IEventHandler* handler = m_handlers.at(event.fd);
+			EventResult result = KEEP_MONITORING;
 
-		if (result != UNREGISTER && event.events & AMultiplexer::EVENT_READ) {
-			result = handler->onReadable(event.fd);
-		}
-
-		if (result != UNREGISTER && event.events & AMultiplexer::EVENT_WRITE) {
-			result = handler->onWriteable(event.fd);
-		}
-
-		if (result == UNREGISTER) {
-			try {
-				unregisterHandler(event.fd);
-			} catch (const std::exception& e) {
-				LOG_ERROR("failed to unregister handler for fd " + shared::string::toString(event.fd) + e.what());
+			if (event.events & AMultiplexer::EVENT_ERROR) {
+				result = handler->onError(event.fd);
 			}
+
+			if (result != UNREGISTER && event.events & AMultiplexer::EVENT_READ) {
+				result = handler->onReadable(event.fd);
+			}
+
+			if (result != UNREGISTER && event.events & AMultiplexer::EVENT_WRITE) {
+				result = handler->onWriteable(event.fd);
+			}
+
+			if (result == UNREGISTER) {
+				secureUnregisterHandler(event.fd);
+			}
+		} catch (const std::exception& e) {
+			LOG_ERROR("handler failed for fd " + shared::string::toString(event.fd) + ": " + e.what());
+			secureUnregisterHandler(event.fd);
+		}
+	}
+
+	void Dispatcher::secureUnregisterHandler(int32_t fd) {
+		try {
+			unregisterHandler(fd);
+		} catch (const std::exception& e) {
+			LOG_ERROR("failed to unregister handler for fd " + shared::string::toString(fd) + e.what());
 		}
 	}
 
