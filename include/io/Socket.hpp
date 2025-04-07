@@ -16,7 +16,7 @@ namespace io {
 			};
 
 			Socket();
-			Socket(int fd);
+			explicit Socket(int fd);
 			~Socket();
 
 			void bind(in_port_t port, const std::string& address = "");
