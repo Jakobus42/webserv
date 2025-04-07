@@ -15,13 +15,14 @@ namespace core {
 		LOG_CONTEXT("read event for " + m_vServer->getVirtualServerInfo());
 
 		while (Connection* conn = m_vServer->acceptNewConnection()) {
-			m_dispatcher.registerHandler(conn->getSocket()->getFd(), new ConnectionHandler(conn, m_dispatcher));
+			m_dispatcher.registerHandler(conn->getSocket()->getFd(), new ConnectionHandler(m_vServer, conn, m_dispatcher));
 		}
 		return io::KEEP_MONITORING;
 	}
 
 	io::EventResult AcceptHandler::onWriteable(int32_t) {
 		LOG_WARNING("unexpected write event for " + m_vServer->getVirtualServerInfo());
+		m_vServer->shutdown();
 		return io::UNREGISTER;
 	}
 

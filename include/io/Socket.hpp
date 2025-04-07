@@ -29,8 +29,6 @@ namespace io {
 			ssize_t recv(void* buffer, size_t size, int flags = 0);
 
 			void setReuseAddr(bool enable);
-			void setReceiveTimeout(time_t seconds, suseconds_t microseconds);
-			void setSendTimeout(time_t seconds, suseconds_t microseconds);
 			void setNonBlocking(bool nonBlocking);
 
 			int getFd() const;

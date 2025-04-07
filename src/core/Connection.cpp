@@ -1,5 +1,8 @@
 #include "core/Connection.hpp"
 
+#include "shared/Logger.hpp"
+
+#include <ctime>
 #include <sstream>
 
 namespace core {
@@ -9,11 +12,20 @@ namespace core {
 		: m_socket(socket) {
 		m_socket->setReuseAddr(true);
 		m_socket->setNonBlocking(true);
-		m_socket->setReceiveTimeout(DEFAULT_RECV_TIMEOUT, 0);
-		m_socket->setSendTimeout(DEFAULT_SEND_TIMEOUT, 0);
 	}
 
 	Connection::~Connection() { delete m_socket; }
+
+	ssize_t Connection::recv(void* buffer, size_t size, int flags) { return m_socket->recv(buffer, size, flags); }
+
+	ssize_t Connection::send(const void* buffer, size_t size, int flags) { return m_socket->send(buffer, size, flags); }
+
+	void Connection::close() {
+		LOG_INFO("closing connection: " + getConnectionInfo());
+		m_socket->close();
+	}
+
+	void Connection::updateActivityTimestamp() { m_lastActivityTimestamp = std::time(NULL); }
 
 	const io::Socket* Connection::getSocket() const { return m_socket; }
 
