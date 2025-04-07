@@ -135,34 +135,6 @@ namespace io {
 		}
 	}
 
-	void Socket::setReceiveTimeout(time_t seconds, suseconds_t microseconds) {
-		if (!isValid()) {
-			throw std::runtime_error("cannot set option: invalid socket");
-		}
-
-		struct timeval tv;
-		tv.tv_sec = seconds;
-		tv.tv_usec = microseconds;
-
-		if (setsockopt(m_fd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv)) == -1) {
-			throw std::runtime_error("setsockopt() failed: " + std::string(strerror(errno)));
-		}
-	}
-
-	void Socket::setSendTimeout(time_t seconds, suseconds_t microseconds) {
-		if (!isValid()) {
-			throw std::runtime_error("cannot set option: invalid socket");
-		}
-
-		struct timeval tv;
-		tv.tv_sec = seconds;
-		tv.tv_usec = microseconds;
-
-		if (setsockopt(m_fd, SOL_SOCKET, SO_SNDTIMEO, &tv, sizeof(tv)) == -1) {
-			throw std::runtime_error("setsockopt() failed: " + std::string(strerror(errno)));
-		}
-	}
-
 	int Socket::getFd() const { return m_fd; }
 
 	std::string Socket::getPeerAddress() const {

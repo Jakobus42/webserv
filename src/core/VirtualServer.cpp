@@ -27,15 +27,26 @@ namespace core {
 				return NULL;
 			}
 
-			Connection* conn = new Connection(clientSocket); //todo: maybe catch if pushback fails and delete?
+			Connection* conn = new Connection(clientSocket); // todo: maybe catch if pushback fails and delete?
 			m_connections.push_back(conn);
 
-			LOG_INFO("accepted new connection: " + conn->getConnectionInfo()); // todo
+			LOG_INFO("accepted new connection: " + conn->getConnectionInfo());
 			return conn;
 		} catch (const std::exception& e) {
 			LOG_ERROR("failed to accept new connection" + std::string(e.what()));
 		}
 		return NULL;
+	}
+
+	void VirtualServer::removeConnection(Connection* conn) {
+		for (std::size_t i = 0; i < m_connections.size(); ++i) {
+			if (m_connections[i] == conn) {
+				delete conn;
+				m_connections.erase(m_connections.begin() + i);
+				return;
+			}
+		}
+		LOG_WARNING("attempted to remove unknown connection from server " + getVirtualServerInfo());
 	}
 
 	void VirtualServer::listen() { m_listenSocket.listen(); }
@@ -46,7 +57,7 @@ namespace core {
 
 	std::string VirtualServer::getVirtualServerInfo() const {
 		std::stringstream ss;
-		ss << "(" << m_config.serverNames.front() << ":" << m_config.port << ")";
+		ss << "(name: " << m_config.serverNames.front() << "; port: " << m_config.port << ")";
 		return ss.str();
 	}
 } /* namespace core */

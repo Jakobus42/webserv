@@ -14,7 +14,9 @@ namespace core {
 
 			void listen();
 			void shutdown();
+
 			Connection* acceptNewConnection();
+			void removeConnection(Connection* conn);
 
 			const io::Socket& getListenSocket() const;
 			std::string getVirtualServerInfo() const;
