@@ -1,5 +1,9 @@
 #pragma once
 
+#include <stdint.h>
+
+#include <shared/NonCopyable.hpp>
+
 namespace io {
 
 	enum EventResult {
@@ -7,7 +11,7 @@ namespace io {
 		UNREGISTER
 	};
 
-	class IEventHandler {
+	class IEventHandler : shared::mixin::NonCopyable {
 		public:
 			virtual ~IEventHandler() {}
 

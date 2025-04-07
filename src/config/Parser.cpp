@@ -35,14 +35,14 @@ namespace config {
 
 	Parser::Parser()
 		: m_data()
-		, m_configs()
+		, m_config()
 		, m_depth(0)
 		, m_lineIndex(1)
 		, m_readPos(0) {}
 
 	Parser::~Parser() {}
 
-	std::vector<Server>& Parser::getConfigs() { return m_configs; }
+	const Config& Parser::getConfig() { return m_config; }
 
 	// ------------------------  utility  ----------------------------------- //
 
@@ -175,31 +175,31 @@ namespace config {
 		}
 	}
 
-	//todo: maybe the server should still start with no config? just fall back to default and log a warning
+	// todo: maybe the server should still start with no config? just fall back to default and log a warning
 	bool Parser::parseFile(const std::string& fileName) {
 		signal(SIGINT, handleSigint);
 		signal(SIGQUIT, SIG_IGN);
 
 		if (shared::file::isDirectory(fileName)) {
 			LOG_FATAL("Could not parse file: regular file expected, directory received");
-			return false;
+			return true;
 		}
 		if (!shared::file::exists(fileName)) {
 			LOG_FATAL("Could not parse file: file doesn't exist");
-			return false;
+			return true;
 		}
 		if (!shared::file::isReadable(fileName)) {
 			LOG_FATAL("Could not parse file: file can't be read");
-			return false;
+			return true;
 		}
 		if (!shared::file::isRegularFile(fileName)) {
 			LOG_FATAL("Could not parse config-file: expected valid file");
-			return false;
+			return true;
 		}
 		std::ifstream file(fileName.c_str());
 		if (!file.is_open()) {
 			LOG_FATAL("Could not open config file: " + fileName + ": " + std::strerror(errno));
-			return false;
+			return true;
 		}
 
 		char c;
@@ -217,12 +217,12 @@ namespace config {
 			processParsedData();
 		} catch (const parse_exception& e) {
 			LOG_FATAL(e.getMessage());
-			return false;
+			return true;
 		} catch (const std::exception& e) {
 			LOG_FATAL(e.what());
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	void Parser::parseFromData() throw(parse_exception) {
@@ -235,13 +235,13 @@ namespace config {
 	}
 
 	void Parser::processParsedData() throw(parse_exception) {
-		if (m_configs.empty()) {
+		if (m_config.serverConfigs.empty()) {
 			throw parse_exception("No servers configured");
 		}
 
 		std::size_t i = 0;
 
-		for (std::vector<Server>::iterator server = m_configs.begin(); server != m_configs.end(); ++server) {
+		for (std::vector<Server>::iterator server = m_config.serverConfigs.begin(); server != m_config.serverConfigs.end(); ++server) {
 			++i;
 			server->location.precalculatedAbsolutePath = server->dataDirectory + server->location.root;
 			if (!isValidPath(server->location.precalculatedAbsolutePath)) {
@@ -310,7 +310,7 @@ namespace config {
 			if (matchToken("}")) {
 				m_depth--;
 				thisServer.validate();
-				m_configs.push_back(thisServer);
+				m_config.serverConfigs.push_back(thisServer);
 				return;
 			}
 			std::string token = readToken();

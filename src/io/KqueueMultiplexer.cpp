@@ -25,10 +25,6 @@ namespace io {
 	}
 
 	void KqueueMultiplexer::add(int32_t fd, uint32_t events) {
-		if (fd < 0) {
-			throw std::runtime_error("invalid fd");
-		}
-
 		uint32_t nChanges = 0;
 		struct kevent changes[2];
 		EV_SET(&changes[0], 0, 0, 0, 0, 0, NULL);
@@ -51,10 +47,6 @@ namespace io {
 	}
 
 	void KqueueMultiplexer::modify(int32_t fd, uint32_t events) {
-		if (fd < 0) {
-			throw std::runtime_error("invalid fd");
-		}
-
 		EventMap::iterator it = m_registeredEvents.find(fd);
 		if (it == m_registeredEvents.end()) {
 			throw std::runtime_error("fd not registered");
@@ -92,10 +84,6 @@ namespace io {
 	}
 
 	void KqueueMultiplexer::remove(int32_t fd) {
-		if (fd < 0) {
-			throw std::runtime_error("invalid fd");
-		}
-
 		EventMap::iterator it = m_registeredEvents.find(fd);
 		if (it == m_registeredEvents.end()) {
 			return;

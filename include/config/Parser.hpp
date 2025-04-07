@@ -19,6 +19,10 @@ namespace config {
 			std::string m_message;
 	};
 
+	struct Config {
+			std::vector<Server> serverConfigs;
+	};
+
 	class Parser : shared::mixin::NonCopyable {
 			typedef void (Parser::*LocationTokenParser)(const std::string&, Location&);
 			typedef void (Parser::*ServerTokenParser)(const std::string&, Server&);
@@ -28,11 +32,11 @@ namespace config {
 			~Parser();
 
 			bool parseFile(const std::string& fileName);
-			std::vector<Server>& getConfigs();
+			const Config& getConfig();
 
 		private:
 			std::string m_data;
-			std::vector<Server> m_configs;
+			Config m_config;
 			std::size_t m_depth;
 			std::size_t m_lineIndex;
 			std::size_t m_readPos;
