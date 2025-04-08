@@ -5,9 +5,10 @@
 namespace http {
 
 	struct ResponseParserConfig {
-			std::size_t maxReasonPhraseLength;
 			MessageParserConfig messageParserConfig;
+			std::size_t maxReasonPhraseLength;
 			ResponseParserConfig();
+			ResponseParserConfig(MessageParserConfig messageParserConfig, std::size_t maxReasonPhraseLength);
 	};
 
 	class Response;

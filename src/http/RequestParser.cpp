@@ -1,6 +1,7 @@
 #include "http/RequestParser.hpp"
 
 #include "http/Request.hpp"
+#include "shared/stringUtils.hpp"
 
 // todo: validate host, scheme
 // todo: better error messages for uri
@@ -10,8 +11,13 @@
 namespace http {
 
 	RequestParserConfig::RequestParserConfig()
-		: maxUriLength(1024) // 1KB
-		, messageParserConfig() {}
+		: messageParserConfig()
+		, maxUriLength(1024) // 1KB
+	{}
+
+	RequestParserConfig::RequestParserConfig(MessageParserConfig messageParserConfig, std::size_t maxUriLength)
+		: messageParserConfig(messageParserConfig)
+		, maxUriLength(maxUriLength) {}
 
 	RequestParser::RequestParser(const RequestParserConfig& conf)
 		: AMessageParser(conf.messageParserConfig)
@@ -117,7 +123,7 @@ namespace http {
 				uri.setPath(uri.getPath().substr(0, pos));
 			}
 		}
-		// uri.setPathSegment(shared::string::splitPath(uri.getPath()));
+		uri.setPathSegment(shared::string::split(uri.getPath(), '/'));
 		// TODO: should we parse this at all?
 		// also, should we check if we accept the script here?
 	}

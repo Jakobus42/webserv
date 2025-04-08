@@ -5,9 +5,11 @@
 namespace http {
 
 	struct RequestParserConfig {
-			std::size_t maxUriLength;
 			MessageParserConfig messageParserConfig;
+			std::size_t maxUriLength;
 			RequestParserConfig();
+
+			RequestParserConfig(MessageParserConfig messageParserConfig, std::size_t maxUriLength);
 	};
 
 	class Request;

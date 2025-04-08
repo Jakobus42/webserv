@@ -44,6 +44,8 @@ namespace core {
 		} else if (bytesWritten == 0) {
 			return unregister();
 		}
+		m_connection->updateActivityTimestamp();
+
 		buffer.advanceWriter(bytesWritten);
 		LOG_INFO("received " + shared::string::toString(bytesWritten) + " bytes");
 
@@ -78,6 +80,7 @@ namespace core {
 		if (m_responses.empty()) {
 			return io::KEEP_MONITORING;
 		}
+		m_connection->updateActivityTimestamp();
 
 		http::Response* response = m_responses.front();
 		response->appendHeader("Content-Length", "0"); // tmp

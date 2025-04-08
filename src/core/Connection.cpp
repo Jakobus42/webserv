@@ -16,7 +16,10 @@ namespace core {
 		m_socket->setNonBlocking(true);
 	}
 
-	Connection::~Connection() { delete m_socket; }
+	Connection::~Connection() {
+		close();
+		delete m_socket;
+	}
 
 	ssize_t Connection::recv(void* buffer, size_t size, int flags) { return m_socket->recv(buffer, size, flags); }
 
