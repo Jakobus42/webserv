@@ -6,8 +6,12 @@
 namespace http {
 
 	ResponseParserConfig::ResponseParserConfig()
-		: maxReasonPhraseLength(1024) // 1KB
-		, messageParserConfig() {}
+		: messageParserConfig() // 1KB
+		, maxReasonPhraseLength(1024) {}
+
+	ResponseParserConfig::ResponseParserConfig(MessageParserConfig messageParserConfig, std::size_t maxReasonPhraseLength)
+		: messageParserConfig(messageParserConfig)
+		, maxReasonPhraseLength(maxReasonPhraseLength) {}
 
 	ResponseParser::ResponseParser(const ResponseParserConfig& conf)
 		: AMessageParser(conf.messageParserConfig)

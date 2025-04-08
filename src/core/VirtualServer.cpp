@@ -6,7 +6,7 @@
 
 namespace core {
 
-	const time_t VirtualServer::CONNECTION_TIMEOUT = 120;
+	const time_t VirtualServer::CONNECTION_TIMEOUT = 60; // todo: config
 
 	VirtualServer::VirtualServer(const config::ServerConfig& config)
 		: m_listenSocket()
