@@ -1,9 +1,12 @@
 #include "core/VirtualServer.hpp"
 
+#include "ctime"
 #include "shared/Logger.hpp"
 #include "sstream"
 
 namespace core {
+
+	const time_t VirtualServer::CONNECTION_TIMEOUT = 120;
 
 	VirtualServer::VirtualServer(const config::ServerConfig& config)
 		: m_listenSocket()
@@ -16,8 +19,10 @@ namespace core {
 
 	VirtualServer::~VirtualServer() {
 		for (std::size_t i = 0; i < m_connections.size(); ++i) {
+			m_connections[i]->close();
 			delete m_connections[i];
 		}
+		shutdown();
 	}
 
 	Connection* VirtualServer::acceptNewConnection() {
@@ -33,7 +38,7 @@ namespace core {
 			LOG_INFO("accepted new connection: " + conn->getConnectionInfo());
 			return conn;
 		} catch (const std::exception& e) {
-			LOG_ERROR("failed to accept new connection" + std::string(e.what()));
+			LOG_ERROR("failed to accept connection:" + std::string(e.what()));
 		}
 		return NULL;
 	}
@@ -46,12 +51,30 @@ namespace core {
 				return;
 			}
 		}
-		LOG_WARNING("attempted to remove unknown connection from server " + getVirtualServerInfo());
+	}
+
+	void VirtualServer::removeInactiveConnections() {
+		time_t now = std::time(NULL);
+		for (std::size_t i = 0; i < m_connections.size(); ++i) {
+			Connection* conn = m_connections[i];
+
+			if (conn->getLastActivityTimestamp() == -1) {
+				continue;
+			}
+
+			if (now - conn->getLastActivityTimestamp() > CONNECTION_TIMEOUT) { // todo: maybe make this configureable
+				LOG_INFO("removing inactive connection: " + conn->getConnectionInfo());
+				removeConnection(conn);
+			}
+		}
 	}
 
 	void VirtualServer::listen() { m_listenSocket.listen(); }
 
-	void VirtualServer::shutdown() { m_listenSocket.close(); }
+	void VirtualServer::shutdown() {
+		LOG_INFO("shutting down virtual server");
+		m_listenSocket.close();
+	}
 
 	const io::Socket& VirtualServer::getListenSocket() const { return m_listenSocket; }
 

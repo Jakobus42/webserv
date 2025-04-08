@@ -17,9 +17,16 @@ namespace http {
 
 	AMessage::AMessage()
 		: m_headers()
-		, m_body() {}
+		, m_body()
+		, m_version("HTTP/1.1")
+		, m_statusCode(OK)
+		, m_isValid(true) {}
 
 	AMessage::~AMessage() {}
+
+	void AMessage::setIsValid(bool isValid) { m_isValid = isValid; }
+
+	bool AMessage::isValid() const { return m_isValid; }
 
 	/* Version */
 
@@ -28,6 +35,10 @@ namespace http {
 	void AMessage::setVersion(const std::string& version) { m_version = version; }
 
 	void AMessage::setVersion(const shared::string::StringView& version) { m_version.assign(version.begin(), version.end()); }
+
+	http::StatusCode AMessage::getStatusCode() const { return m_statusCode; }
+
+	void AMessage::setStatusCode(StatusCode code) { m_statusCode = code; }
 
 	/* Headers */
 

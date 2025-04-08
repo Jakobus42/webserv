@@ -4,6 +4,8 @@
 #include "shared/Logger.hpp"
 #include "shared/stringUtils.hpp"
 
+#include <iostream>
+
 namespace io {
 
 	Dispatcher::Dispatcher()
@@ -31,8 +33,7 @@ namespace io {
 		}
 
 		if (m_handlers.find(fd) != m_handlers.end()) {
-			delete handler;
-			throw std::runtime_error("handler already registered for this file descriptor");
+			unregisterHandler(fd);
 		}
 
 		m_handlers[fd] = handler;

@@ -37,6 +37,10 @@ namespace core {
 		// cppcheck-suppress knownConditionTrueFalse
 		while (m_isRunning) {
 			m_dispatcher.dispatch();
+
+			for (std::size_t i = 0; i < m_vServers.size(); ++i) {
+				m_vServers[i]->removeInactiveConnections(); // todo: maybe do this somehwere else
+			}
 		}
 
 		LOG_INFO("reactor shutting down...");

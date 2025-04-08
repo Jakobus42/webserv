@@ -33,46 +33,54 @@ namespace http {
 			m_message = createMessage();
 		}
 
+
 		while (m_state != COMPLETE) {
-			ParseResult result = NEED_DATA;
+			try {
+				ParseResult result = NEED_DATA;
 
-			switch (m_state) {
-				case START_LINE:
-					result = parseStartLine();
-					if (result == DONE) m_state = HEADERS;
+				switch (m_state) {
+					case START_LINE:
+						result = parseStartLine();
+						if (result == DONE) m_state = HEADERS;
+						break;
+
+					case HEADERS:
+						result = parseHeaderLine();
+						if (result == DONE) m_state = isChunked() ? CHUNK_SIZE : BODY;
+						break;
+
+					case TRAILING_HEADERS:
+						result = parseHeaderLine();
+						if (result == DONE) m_state = COMPLETE;
+						break;
+
+					case CHUNK_SIZE:
+						result = parseChunkSize();
+						if (result == DONE) m_state = (m_contentLength == 0) ? TRAILING_HEADERS : CHUNK_BODY;
+						break;
+
+					case BODY:
+						result = parseBody(false);
+						if (result == DONE) m_state = COMPLETE;
+						break;
+
+					case CHUNK_BODY:
+						result = parseBody(true);
+						if (result == DONE) m_state = CHUNK_SIZE;
+						break;
+
+					case COMPLETE:
+						break;
+				}
+
+				if (result == NEED_DATA) {
 					break;
-
-				case HEADERS:
-					result = parseHeaderLine();
-					if (result == DONE) m_state = isChunked() ? CHUNK_SIZE : BODY;
-					break;
-
-				case TRAILING_HEADERS:
-					result = parseHeaderLine();
-					if (result == DONE) m_state = COMPLETE;
-					break;
-
-				case CHUNK_SIZE:
-					result = parseChunkSize();
-					if (result == DONE) m_state = (m_contentLength == 0) ? TRAILING_HEADERS : CHUNK_BODY;
-					break;
-
-				case BODY:
-					result = parseBody(false);
-					if (result == DONE) m_state = COMPLETE;
-					break;
-
-				case CHUNK_BODY:
-					result = parseBody(true);
-					if (result == DONE) m_state = CHUNK_SIZE;
-					break;
-
-				case COMPLETE:
-					break;
-			}
-
-			if (result == NEED_DATA) {
-				break;
+				}
+			} catch (const http::HttpException& e) {
+				m_message->setIsValid(false);
+				m_message->setStatusCode(e.getStatusCode());
+				LOG_WARNING("invalid message: " + std::string(e.what()));
+				return true;
 			}
 		}
 

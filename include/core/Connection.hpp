@@ -15,6 +15,10 @@ namespace core {
 			void close();
 
 			void updateActivityTimestamp();
+			time_t getLastActivityTimestamp() const;
+
+			void setIsKeepAlive(bool isKeepAlive);
+			bool isKeepAlive() const;
 
 			const io::Socket* getSocket() const;
 			std::string getConnectionInfo() const;
@@ -22,6 +26,7 @@ namespace core {
 		private:
 			io::Socket* m_socket;
 			time_t m_lastActivityTimestamp;
+			bool m_isKeepAlive;
 	};
 
 } /* namespace core */
