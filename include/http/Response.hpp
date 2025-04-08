@@ -10,17 +10,18 @@ namespace http {
 			Response();
 			~Response();
 
+			const std::string& serialize();
+
 			/* Start Line */
-			StatusCode getStatusCode() const;
 			const std::string& getReasonPhrase() const;
 
-			void setStatusCode(StatusCode code);
 			void setReasonPhrase(const std::string& phrase);
 			void setReasonPhrase(const shared::string::StringView& phrase);
 
 		private:
-			StatusCode m_statusCode;
 			std::string m_reasonPhrase;
+
+			std::string m_serializedData;
 	};
 
 } /* namespace http */

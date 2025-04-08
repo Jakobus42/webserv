@@ -1,5 +1,6 @@
 #pragma once
 
+#include "http/http.hpp"
 #include "shared/NonCopyable.hpp"
 #include "shared/StringView.hpp"
 
@@ -20,11 +21,18 @@ namespace http {
 			AMessage();
 			virtual ~AMessage();
 
+			void setIsValid(bool isValid);
+			bool isValid() const;
+
 			/* Start Line */
 			const std::string& getVersion() const;
 
 			void setVersion(const std::string& version);
 			void setVersion(const shared::string::StringView& version);
+
+			StatusCode getStatusCode() const;
+
+			void setStatusCode(StatusCode code);
 
 			/* Headers */
 			const std::vector<std::string>& getHeader(const std::string& key) const;
@@ -52,6 +60,9 @@ namespace http {
 			HeaderMap m_headers;
 			std::string m_body;
 			std::string m_version;
+
+			StatusCode m_statusCode;
+			bool m_isValid;
 	};
 
 } // namespace http

@@ -18,6 +18,7 @@ namespace io {
 				EVENT_READ = 0x1,
 				EVENT_WRITE = 0x2,
 				EVENT_ERROR = 0x4,
+				EVENT_ALL = EVENT_READ | EVENT_WRITE | EVENT_ERROR,
 			};
 
 			struct Event {

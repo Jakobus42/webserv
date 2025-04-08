@@ -9,7 +9,9 @@ namespace core {
 
 	// note: takes ownership of socket
 	Connection::Connection(io::Socket* socket)
-		: m_socket(socket) {
+		: m_socket(socket)
+		, m_lastActivityTimestamp(-1)
+		, m_isKeepAlive(true) {
 		m_socket->setReuseAddr(true);
 		m_socket->setNonBlocking(true);
 	}
@@ -26,6 +28,12 @@ namespace core {
 	}
 
 	void Connection::updateActivityTimestamp() { m_lastActivityTimestamp = std::time(NULL); }
+
+	time_t Connection::getLastActivityTimestamp() const { return m_lastActivityTimestamp; }
+
+	void Connection::setIsKeepAlive(bool isKeepAlive) { m_isKeepAlive = isKeepAlive; }
+
+	bool Connection::isKeepAlive() const { return m_isKeepAlive; }
 
 	const io::Socket* Connection::getSocket() const { return m_socket; }
 

@@ -22,7 +22,7 @@ namespace http {
 
 	class AMessageParser : shared::mixin::NonCopyable {
 		public:
-			static const std::size_t BUFFER_SIZE = 16 * 1024; // 16 KB
+			static const std::size_t BUFFER_SIZE = 32 * 1024; // 32 KB
 
 			AMessageParser(const MessageParserConfig& conf = MessageParserConfig());
 			virtual ~AMessageParser();
