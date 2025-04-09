@@ -69,7 +69,9 @@ namespace core {
 		}
 	}
 
-	void VirtualServer::listen() { m_listenSocket.listen(); }
+	void VirtualServer::listen() {
+		m_listenSocket.listen();
+	}
 
 	void VirtualServer::shutdown() {
 		LOG_INFO("shutting down virtual server");
@@ -80,7 +82,7 @@ namespace core {
 
 	std::string VirtualServer::getVirtualServerInfo() const {
 		std::stringstream ss;
-		ss << "(name: " << m_config.serverNames.front() << "; port: " << m_config.port << ")";
+		ss << "(" << m_config.serverNames.front() << ")";
 		return ss.str();
 	}
 } /* namespace core */
