@@ -1,13 +1,14 @@
 #pragma once
 
+#include "http/http.hpp"
 #include "shared/NonCopyable.hpp"
+
+#include <map>
 
 namespace http {
 	class Request;
 	class Response;
-}; // namespace http
-
-namespace core {
+	class ARequestHandler;
 
 	class RequestProcessor : shared::mixin::NonCopyable {
 		public:
@@ -20,7 +21,11 @@ namespace core {
 			void reset();
 
 		private:
+			void generateErrorResponse(http::StatusCode statusCode);
+
+		private:
 			http::Response* m_response;
+			std::map<http::Method, http::ARequestHandler*> m_handlers;
 	};
 
-} /* namespace core */
+} /* namespace http */
