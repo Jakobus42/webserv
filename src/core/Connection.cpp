@@ -26,7 +26,7 @@ namespace core {
 	ssize_t Connection::send(const void* buffer, size_t size, int flags) { return m_socket->send(buffer, size, flags); }
 
 	void Connection::close() {
-		LOG_INFO("closing connection: " + getConnectionInfo());
+		LOG_INFO("closing connection");
 		m_socket->close();
 	}
 

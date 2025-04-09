@@ -14,9 +14,13 @@ namespace core {
 			RequestProcessor();
 			~RequestProcessor();
 
-			http::Response* processRequest(http::Request* request);
+			bool processRequest(http::Request* request);
+			http::Response* releaseResponse();
+
+			void reset();
 
 		private:
+			http::Response* m_response;
 	};
 
 } /* namespace core */

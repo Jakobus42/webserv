@@ -40,7 +40,7 @@ namespace core {
 			http::RequestParser m_requestParser;
 			RequestProcessor m_requestProcessor;
 
-			std::size_t m_totalBytesSent;
+			std::size_t m_totalBytesSent; // todo: maybe find a better way to not have this in here
 
 			std::queue<http::Request*> m_requests;
 			std::queue<http::Response*> m_responses;

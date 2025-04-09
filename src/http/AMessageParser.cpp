@@ -87,11 +87,11 @@ namespace http {
 				m_message->setIsValid(false);
 				m_message->setStatusCode(e.getStatusCode());
 				LOG_WARNING("invalid message: " + std::string(e.what()));
-				return true;
+				return false;
 			}
 		}
 
-		return m_state == COMPLETE;
+		return !(m_state == COMPLETE);
 	}
 
 	shared::container::Buffer<AMessageParser::BUFFER_SIZE>& AMessageParser::getReadBuffer() { return m_buffer; }

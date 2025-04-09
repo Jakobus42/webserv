@@ -44,12 +44,12 @@ namespace core {
 		} else if (bytesWritten == 0) {
 			return unregister();
 		}
-		m_connection->updateActivityTimestamp();
-
 		buffer.advanceWriter(bytesWritten);
 		LOG_INFO("received " + shared::string::toString(bytesWritten) + " bytes");
 
-		if (m_requestParser.parse()) {
+		m_connection->updateActivityTimestamp();
+
+		if (!m_requestParser.parse()) {
 			http::Request* req = m_requestParser.releaseRequest();
 
 			if (req->hasHeader("keep-alive") && req->getHeader("keep-alive").front() == "close") {
@@ -67,10 +67,10 @@ namespace core {
 					" | connection: " + m_connection->getConnectionInfo());
 
 		if (!m_requests.empty()) {
-			http::Response* response = m_requestProcessor.processRequest(m_requests.front());
-			if (response) {
-				m_responses.push(response);
-				delete m_requests.front();
+			http::Request* request = m_requests.front();
+			if (!m_requestProcessor.processRequest(request)) {
+				m_responses.push(m_requestProcessor.releaseResponse());
+				delete request;
 				m_requests.pop();
 			} else {
 				return io::KEEP_MONITORING;
@@ -80,7 +80,6 @@ namespace core {
 		if (m_responses.empty()) {
 			return io::KEEP_MONITORING;
 		}
-		m_connection->updateActivityTimestamp();
 
 		http::Response* response = m_responses.front();
 		response->appendHeader("Content-Length", "0"); // tmp
@@ -91,6 +90,8 @@ namespace core {
 			return unregister();
 		}
 		LOG_INFO("sent " + shared::string::toString(bytesSent) + " bytes");
+
+		m_connection->updateActivityTimestamp();
 
 		m_totalBytesSent += bytesSent;
 		if (m_totalBytesSent == serializedResponse.size()) {

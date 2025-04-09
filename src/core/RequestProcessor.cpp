@@ -6,21 +6,27 @@
 
 namespace core {
 
-	RequestProcessor::RequestProcessor() {
+	RequestProcessor::RequestProcessor()
+		: m_response(NULL) {}
+
+	RequestProcessor::~RequestProcessor() { delete m_response; }
+
+	bool RequestProcessor::processRequest(http::Request*) {
+		if (!m_response) {
+			m_response = new http::Response();
+		}
+		return false;
 	}
 
-	RequestProcessor::~RequestProcessor() {
+	http::Response* RequestProcessor::releaseResponse() {
+		http::Response* released = m_response;
+		m_response = NULL;
+		return released;
 	}
 
-	http::Response* generateErrorResponse(http::StatusCode statusCode) {
-		http::Response* response = new http::Response();
-		response->setStatusCode(statusCode);
-		response->setReasonPhrase(http::statusCodeToMessage(statusCode));
-		return response;
-	}
-
-	http::Response* RequestProcessor::processRequest(http::Request*) {
-		return new http::Response();
+	void RequestProcessor::reset() {
+		delete m_response;
+		m_response = NULL;
 	}
 
 } /* namespace core */
