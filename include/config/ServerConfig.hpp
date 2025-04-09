@@ -13,6 +13,10 @@ namespace config {
 			int port;
 			uint32_t ipAddress;
 			unsigned long maxBodySize;
+			unsigned long maxHeaderValueLength;
+			unsigned long maxHeaderCount;
+			unsigned long maxHeaderValueCount;
+			unsigned long maxHeaderNameLength;
 			std::string dataDirectory;
 			std::vector<std::string> dataDirectoryAsTokens;
 			std::vector<std::string> serverNames;

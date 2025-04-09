@@ -49,6 +49,10 @@ namespace config {
 				_D_NOT_VALID,
 				D_LISTEN,
 				D_CLIENT_MAX_BODY_SIZE,
+				D_MAX_HEADER_VALUE_SIZE,
+				D_MAX_HEADER_COUNT,
+				D_MAX_HEADER_VALUE_COUNT,
+				D_MAX_HEADER_NAME_SIZE,
 				D_DATA_DIR,
 				D_SERVER_NAME,
 				_D_SERVER_TYPES,
@@ -85,6 +89,10 @@ namespace config {
 			// ------------------------  server parsers  -------------------- //
 			void parseListen(const std::string& value, ServerConfig& server);
 			void parseClientMaxBodySize(const std::string& value, ServerConfig& server);
+			void parseMaxHeaderValueLength(const std::string& value, ServerConfig& server);
+			void parseMaxHeaderCount(const std::string& value, ServerConfig& server);
+			void parseMaxHeaderValueCount(const std::string& value, ServerConfig& server);
+			void parseMaxHeaderNameLength(const std::string& value, ServerConfig& server);
 			void parseDataDir(const std::string& value, ServerConfig& server);
 			void parseServerName(const std::string& value, ServerConfig& server);
 
