@@ -8,7 +8,13 @@ namespace http {
 
 	class Request : public AMessage {
 		public:
+			enum Type {
+				FETCH,
+				CGI
+			};
+
 			Request();
+
 			~Request();
 
 			/* Start Line */
@@ -19,12 +25,18 @@ namespace http {
 			void setMethod(const Method& method);
 			void setUri(const Uri& uri);
 
+			/* Helpers */
+			void setType(Type type);
+			Type getType() const;
+
 			/* Debugging */
 			std::string toString() const;
 
 		private:
 			Method m_method;
 			Uri m_uri;
+
+			Type m_type;
 	};
 
 } /* namespace http */

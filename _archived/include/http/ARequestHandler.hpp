@@ -16,8 +16,8 @@ namespace http {
 	class ARequestHandler : shared::NonCopyable {
 		public:
 			enum HandlerState {
-				PENDING,
-				PROCESSING,
+				PREPROCESS,
+				PROCESS,
 				DONE
 			};
 

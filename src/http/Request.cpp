@@ -7,7 +7,8 @@ namespace http {
 	Request::Request()
 		: AMessage()
 		, m_method(GET)
-		, m_uri() {
+		, m_uri()
+		, m_type(FETCH) {
 	}
 
 	Request::~Request() {
@@ -24,6 +25,12 @@ namespace http {
 	void Request::setMethod(const Method& method) { m_method = method; }
 
 	void Request::setUri(const Uri& uri) { m_uri = uri; }
+
+	/* Helpers */
+
+	void Request::setType(Type type) { m_type = type; }
+
+	Request::Type Request::getType() const { return m_type; }
 
 	/* Debugging */
 

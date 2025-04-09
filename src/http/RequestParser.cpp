@@ -122,6 +122,7 @@ namespace http {
 				uri.setCgiPathInfo(uri.getPath().substr(pos));
 				uri.setPath(uri.getPath().substr(0, pos));
 			}
+			m_request->setType(Request::CGI);
 		}
 		uri.setPathSegment(shared::string::split(uri.getPath(), '/'));
 		// TODO: should we parse this at all?
