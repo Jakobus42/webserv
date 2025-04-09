@@ -154,6 +154,11 @@ namespace config {
 		if (allowedDirectives.empty()) {
 			allowedDirectives["listen"] = D_LISTEN;
 			allowedDirectives["client_max_body_size"] = D_CLIENT_MAX_BODY_SIZE;
+			allowedDirectives["max_header_value_length"] = D_MAX_HEADER_VALUE_SIZE;
+			allowedDirectives["max_header_count"] = D_MAX_HEADER_COUNT;
+			allowedDirectives["max_header_value_count"] = D_MAX_HEADER_VALUE_COUNT;
+			allowedDirectives["max_header_name_length"] = D_MAX_HEADER_NAME_SIZE;
+			allowedDirectives["client_max_body_size"] = D_CLIENT_MAX_BODY_SIZE;
 			allowedDirectives["data_dir"] = D_DATA_DIR;
 			allowedDirectives["server_name"] = D_SERVER_NAME;
 			allowedDirectives["root"] = D_ROOT;
@@ -395,6 +400,10 @@ namespace config {
 		if (tokenParsers.empty()) {
 			tokenParsers[D_LISTEN] = &config::Parser::parseListen;
 			tokenParsers[D_CLIENT_MAX_BODY_SIZE] = &config::Parser::parseClientMaxBodySize;
+			tokenParsers[D_MAX_HEADER_VALUE_SIZE] = &config::Parser::parseMaxHeaderValueLength;
+			tokenParsers[D_MAX_HEADER_COUNT] = &config::Parser::parseMaxHeaderCount;
+			tokenParsers[D_MAX_HEADER_VALUE_COUNT] = &config::Parser::parseMaxHeaderValueCount;
+			tokenParsers[D_MAX_HEADER_NAME_SIZE] = &config::Parser::parseMaxHeaderNameLength;
 			tokenParsers[D_DATA_DIR] = &config::Parser::parseDataDir;
 			tokenParsers[D_SERVER_NAME] = &config::Parser::parseServerName;
 		}
@@ -491,6 +500,54 @@ namespace config {
 		}
 		if (ss >> token) {
 			throw parse_exception(m_lineIndex, "Unexpected token in client_max_body_size: " + token);
+		}
+	}
+
+	void Parser::parseMaxHeaderValueLength(const std::string& value, ServerConfig& server) {
+		std::stringstream ss(value);
+		std::string token;
+
+		if (!(ss >> server.maxHeaderValueLength)) {
+			throw parse_exception(m_lineIndex, "Invalid value for max_header_value_length");
+		}
+		if (ss >> token) {
+			throw parse_exception(m_lineIndex, "Unexpected token in max_header_value_length: " + token);
+		}
+	}
+
+	void Parser::parseMaxHeaderCount(const std::string& value, ServerConfig& server) {
+		std::stringstream ss(value);
+		std::string token;
+
+		if (!(ss >> server.maxHeaderCount)) {
+			throw parse_exception(m_lineIndex, "Invalid value for max_header_count");
+		}
+		if (ss >> token) {
+			throw parse_exception(m_lineIndex, "Unexpected token in max_header_count: " + token);
+		}
+	}
+
+	void Parser::parseMaxHeaderValueCount(const std::string& value, ServerConfig& server) {
+		std::stringstream ss(value);
+		std::string token;
+
+		if (!(ss >> server.maxHeaderValueCount)) {
+			throw parse_exception(m_lineIndex, "Invalid value for max_header_value_count");
+		}
+		if (ss >> token) {
+			throw parse_exception(m_lineIndex, "Unexpected token in max_header_value_count: " + token);
+		}
+	}
+
+	void Parser::parseMaxHeaderNameLength(const std::string& value, ServerConfig& server) {
+		std::stringstream ss(value);
+		std::string token;
+
+		if (!(ss >> server.maxHeaderNameLength)) {
+			throw parse_exception(m_lineIndex, "Invalid value for max_header_name_length");
+		}
+		if (ss >> token) {
+			throw parse_exception(m_lineIndex, "Unexpected token in max_header_name_length: " + token);
 		}
 	}
 
