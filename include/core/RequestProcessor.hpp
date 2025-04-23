@@ -9,6 +9,10 @@ namespace http {
 	class Request;
 	class Response;
 	class ARequestHandler;
+} // namespace http
+
+namespace core {
+
 
 	class RequestProcessor : shared::mixin::NonCopyable {
 		public:
@@ -28,4 +32,4 @@ namespace http {
 			std::map<http::Method, http::ARequestHandler*> m_handlers;
 	};
 
-} /* namespace http */
+} /* namespace core */

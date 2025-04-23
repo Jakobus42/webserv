@@ -2,8 +2,8 @@
 
 #include <unistd.h>
 
+#include "core/RequestProcessor.hpp"
 #include "http/RequestParser.hpp"
-#include "http/RequestProcessor.hpp"
 #include "io/Dispatcher.hpp"
 #include "io/IEventHandler.hpp"
 
@@ -38,7 +38,7 @@ namespace core {
 			Connection* m_connection;
 
 			http::RequestParser m_requestParser;
-			http::RequestProcessor m_requestProcessor;
+			RequestProcessor m_requestProcessor;
 
 			std::size_t m_totalBytesSent; // todo: maybe find a better way to not have this in here
 
