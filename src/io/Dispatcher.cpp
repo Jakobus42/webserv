@@ -101,7 +101,7 @@ namespace io {
 		try {
 			unregisterHandler(fd);
 		} catch (const std::exception& e) {
-			LOG_ERROR("failed to unregister handler for fd " + shared::string::toString(fd) + e.what());
+			LOG_ERROR("failed to unregister handler for fd " + shared::string::toString(fd) + " " + e.what());
 		}
 	}
 

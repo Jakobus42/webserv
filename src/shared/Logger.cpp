@@ -59,8 +59,7 @@ namespace shared {
 			formattedMessage << message << std::endl;
 
 			if (m_consoleOutputEnabled) {
-				std::ostream& os = (level >= WARNING) ? std::cerr : std::cout;
-				os << formattedMessage.str();
+				std::cerr << formattedMessage.str();
 			}
 			if (m_logFile.is_open()) {
 				m_logFile << formattedMessage.str() << std::endl;

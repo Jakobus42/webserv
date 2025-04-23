@@ -11,9 +11,6 @@ namespace http {
 			virtual ~PostHandler();
 
 			virtual void handle(const Request* request, Response* response);
-
-		private:
-			http::CGIHandler m_cgi;
 	};
 
 } /* namespace http */

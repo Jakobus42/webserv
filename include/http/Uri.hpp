@@ -23,6 +23,7 @@ namespace http {
 			const std::string& getPath() const;
 			in_port_t getPort() const;
 			const std::string& getQuery() const;
+			const std::string& getCgiPathInfo() const;
 
 			void setScheme(const std::string& scheme);
 			void setScheme(const shared::string::StringView& scheme);
