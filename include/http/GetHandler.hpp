@@ -1,7 +1,6 @@
 #pragma once
 
 #include "http/ARequestHandler.hpp"
-#include "http/CGIHandler.hpp"
 
 namespace http {
 

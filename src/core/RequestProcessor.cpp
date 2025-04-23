@@ -1,4 +1,4 @@
-#include "http/RequestProcessor.hpp"
+#include "core/RequestProcessor.hpp"
 
 #include "http/ARequestHandler.hpp"
 #include "http/DeleteHandler.hpp"
@@ -9,21 +9,21 @@
 #include "http/http.hpp"
 #include "shared/Logger.hpp"
 
-namespace http {
+namespace core {
 
 	RequestProcessor::RequestProcessor()
 		: m_response(NULL) {
-		m_handlers[GET] = new GetHandler();
-		m_handlers[POST] = new PostHandler();
-		m_handlers[DELETE] = new DeleteHandler();
+		m_handlers[http::GET] = new http::GetHandler();
+		m_handlers[http::POST] = new http::PostHandler();
+		m_handlers[http::DELETE] = new http::DeleteHandler();
 	}
 
 	RequestProcessor::~RequestProcessor() { delete m_response; }
 
 	// todo maybe have a isComplete function. the return value could be confusing
-	bool RequestProcessor::processRequest(Request* request) {
+	bool RequestProcessor::processRequest(http::Request* request) {
 		if (!m_response) {
-			m_response = new Response();
+			m_response = new http::Response();
 		}
 
 		if (request->isValid() == false) { // yeah this is kinda weird...
@@ -31,14 +31,14 @@ namespace http {
 			return false;
 		}
 
-		ARequestHandler* handler = m_handlers[request->getMethod()];
+		http::ARequestHandler* handler = m_handlers[request->getMethod()];
 		try {
 			handler->handle(request, m_response);
 			if (handler->isDone() == false) {
 				return true;
 			}
 			handler->reset();
-		} catch (const HttpException& e) {
+		} catch (const http::HttpException& e) {
 			LOG_ERROR("request handler failed: " + std::string(e.what()));
 			generateErrorResponse(e.getStatusCode());
 			return false;
@@ -47,8 +47,8 @@ namespace http {
 		return false;
 	}
 
-	Response* RequestProcessor::releaseResponse() {
-		Response* released = m_response;
+	http::Response* RequestProcessor::releaseResponse() {
+		http::Response* released = m_response;
 		m_response = NULL;
 		return released;
 	}
@@ -58,7 +58,7 @@ namespace http {
 		m_response = NULL;
 	}
 
-	void RequestProcessor::generateErrorResponse(StatusCode) {
+	void RequestProcessor::generateErrorResponse(http::StatusCode) {
 	}
 
-} // namespace http
+} // namespace core

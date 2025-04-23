@@ -2,8 +2,6 @@
 
 #include "http/ARequestHandler.hpp"
 
-// todo maybe make a pipe class
-
 namespace http {
 
 	/**
