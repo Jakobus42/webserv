@@ -5,6 +5,8 @@
 #include "shared/Logger.hpp"
 #include "shared/stringUtils.hpp"
 
+// todo: all the status codes are frong for a response lol (no BAD_REQUEST lmao)
+
 namespace http {
 
 	MessageParserConfig::MessageParserConfig()
@@ -39,7 +41,6 @@ namespace http {
 		if (!m_message) {
 			m_message = createMessage();
 		}
-
 
 		while (m_state != COMPLETE) {
 			try {
@@ -93,6 +94,8 @@ namespace http {
 
 		return !(m_state == COMPLETE);
 	}
+
+	bool AMessageParser::isComplete() const { return m_state == COMPLETE; }
 
 	shared::container::Buffer<AMessageParser::BUFFER_SIZE>& AMessageParser::getReadBuffer() { return m_buffer; }
 

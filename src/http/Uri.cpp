@@ -40,6 +40,8 @@ namespace http {
 
 	const std::string& Uri::getQuery() const { return m_query; }
 
+	const std::string& Uri::getCgiPathInfo() const { return m_cgiPathInfo; }
+
 	void Uri::setScheme(const std::string& scheme) { m_scheme = scheme; }
 
 	void Uri::setScheme(const shared::string::StringView& scheme) { m_scheme.assign(scheme.begin(), scheme.size()); }

@@ -11,14 +11,8 @@ namespace http {
 	PostHandler::~PostHandler() {
 	}
 
-	void PostHandler::handle(const Request* request, Response* response) {
-		if (request->getType() == Request::CGI) {
-			m_cgi.handle(request, response);
-			if (m_cgi.isDone()) {
-				m_state = DONE;
-			}
-			return;
-		}
+	void PostHandler::handle(const Request*, Response*) {
+		m_state = DONE;
 	}
 
 

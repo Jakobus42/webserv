@@ -10,6 +10,7 @@ namespace http {
 	}
 
 	void DeleteHandler::handle(const Request*, Response*) {
+		m_state = DONE;
 	}
 
 } /* namespace http */

@@ -29,6 +29,7 @@ namespace http {
 			virtual ~AMessageParser();
 
 			bool parse();
+			bool isComplete() const;
 
 			shared::container::Buffer<BUFFER_SIZE>& getReadBuffer();
 
