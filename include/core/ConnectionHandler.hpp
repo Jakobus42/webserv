@@ -31,9 +31,6 @@ namespace core {
 			virtual io::EventResult onError(int32_t fd);
 
 		private:
-			io::EventResult unregister();
-
-		private:
 			VirtualServer* m_vServer;
 			Connection* m_connection;
 

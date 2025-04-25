@@ -11,7 +11,8 @@ namespace core {
 
 	Reactor::Reactor(const config::Config& config)
 		: m_config(config)
-		, m_dispatcher() {
+		, m_dispatcher()
+		, m_vServers() {
 		signal(SIGINT, handleSigint);
 		signal(SIGQUIT, SIG_IGN);
 
@@ -26,6 +27,7 @@ namespace core {
 	}
 
 	Reactor::~Reactor() {
+		m_dispatcher.cleanup();
 		for (std::size_t i = 0; i < m_vServers.size(); ++i) {
 			delete m_vServers[i];
 		}

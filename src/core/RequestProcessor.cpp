@@ -18,7 +18,12 @@ namespace core {
 		m_handlers[http::DELETE] = new http::DeleteHandler();
 	}
 
-	RequestProcessor::~RequestProcessor() { delete m_response; }
+	RequestProcessor::~RequestProcessor() {
+		for (HandlerMap::iterator it = m_handlers.begin(); it != m_handlers.end(); ++it) {
+			delete it->second;
+		}
+		delete m_response;
+	}
 
 	// todo maybe have a isComplete function. the return value could be confusing
 	bool RequestProcessor::processRequest(http::Request* request) {
