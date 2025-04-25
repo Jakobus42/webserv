@@ -9,11 +9,19 @@ namespace core {
 	const time_t VirtualServer::CONNECTION_TIMEOUT = 60; // todo: config
 
 	VirtualServer::VirtualServer(const config::ServerConfig& config)
-		: m_listenSocket()
+		: m_listenSocket(NULL)
 		, m_connections()
 		, m_config(config) {
-		m_listenSocket.setReuseAddr(true);
-		m_listenSocket.bind(m_config.port, m_config.ipAddress);
+
+#if defined(__linux__)
+		m_listenSocket = new io::Socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0);
+#else
+		m_listenSocket = new io::Socket(AF_INET, SOCK_STREAM, 0);
+		m_listenSocket->setNonBlocking(true);
+#endif
+
+		m_listenSocket->setReuseAddr(true);
+		m_listenSocket->bind(m_config.port, m_config.ipAddress);
 	}
 
 	VirtualServer::~VirtualServer() {
@@ -22,11 +30,12 @@ namespace core {
 			delete m_connections[i];
 		}
 		shutdown();
+		delete m_listenSocket;
 	}
 
 	Connection* VirtualServer::acceptNewConnection() {
 		try {
-			io::Socket* clientSocket = m_listenSocket.accept();
+			io::Socket* clientSocket = m_listenSocket->accept();
 			if (!clientSocket) {
 				return NULL;
 			}
@@ -68,16 +77,14 @@ namespace core {
 		}
 	}
 
-	void VirtualServer::listen() {
-		m_listenSocket.listen();
-	}
+	void VirtualServer::listen() { m_listenSocket->listen(); }
 
 	void VirtualServer::shutdown() {
 		LOG_INFO("shutting down virtual server");
-		m_listenSocket.close();
+		m_listenSocket->close();
 	}
 
-	const io::Socket& VirtualServer::getListenSocket() const { return m_listenSocket; }
+	const io::Socket* VirtualServer::getListenSocket() const { return m_listenSocket; }
 
 	std::string VirtualServer::getVirtualServerInfo() const {
 		std::stringstream ss;
