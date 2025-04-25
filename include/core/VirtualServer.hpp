@@ -19,13 +19,13 @@ namespace core {
 			void removeConnection(Connection* conn);
 			void removeInactiveConnections();
 
-			const io::Socket& getListenSocket() const;
+			const io::Socket* getListenSocket() const;
 			std::string getVirtualServerInfo() const;
 
 		private:
 			static const time_t CONNECTION_TIMEOUT;
 
-			io::Socket m_listenSocket;
+			io::Socket* m_listenSocket;
 			std::vector<Connection*> m_connections;
 			config::ServerConfig m_config;
 	};

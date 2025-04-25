@@ -22,7 +22,7 @@ namespace core {
 
 			m_vServers.push_back(vServer);
 			vServer->listen();
-			m_dispatcher.registerHandler(vServer->getListenSocket().getFd(), new AcceptEventHandler(vServer, m_dispatcher));
+			m_dispatcher.registerHandler(vServer->getListenSocket()->getFd(), new AcceptEventHandler(vServer, m_dispatcher));
 		}
 	}
 

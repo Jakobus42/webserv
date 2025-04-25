@@ -10,21 +10,13 @@
 
 namespace io {
 
-	Socket::Socket()
+	Socket::Socket(int domain, int type, int protocol)
 		: m_fd(-1) {
-#if defined(__linux__)
-		m_fd = socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0);
-		if (m_fd == -1) {
-			throw std::runtime_error("socket() failed: " + std::string(strerror(errno)));
-		}
-#else
-		m_fd = socket(AF_INET, SOCK_STREAM, 0);
-		if (m_fd == -1) {
-			throw std::runtime_error("socket() failed: " + std::string(strerror(errno)));
-		}
 
-		this->setNonBlocking(true);
-#endif
+		m_fd = socket(domain, type, protocol);
+		if (m_fd == -1) {
+			throw std::runtime_error("socket() failed: " + std::string(strerror(errno)));
+		}
 	}
 
 	Socket::Socket(int fd)
@@ -77,7 +69,7 @@ namespace io {
 		return new Socket(connectionFd);
 	}
 
-	void Socket::shutdown(ShutdownMode mode) {
+	void Socket::shutdown(int mode) {
 		if (!isValid()) {
 			return;
 		}
