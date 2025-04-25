@@ -72,9 +72,7 @@ namespace io {
 		std::memset(&ev, 0, sizeof(ev));
 
 		if (epoll_ctl(m_epollFd, EPOLL_CTL_DEL, fd, &ev) == -1) {
-			if (errno != EBADF) { // Ignore EBADF as fd might have been already closed
-				throw std::runtime_error(std::string("failed to remove fd from epoll: ") + std::strerror(errno));
-			}
+			throw std::runtime_error(std::string("failed to remove fd from epoll: ") + std::strerror(errno));
 		}
 
 		m_registeredEvents.erase(it);

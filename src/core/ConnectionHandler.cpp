@@ -29,6 +29,8 @@ namespace core {
 			delete m_responses.front();
 			m_responses.pop();
 		}
+
+		m_vServer->removeConnection(m_connection);
 	}
 
 	io::EventResult ConnectionHandler::onReadable(int32_t) {
@@ -40,9 +42,9 @@ namespace core {
 		ssize_t bytesWritten = m_connection->recv(buffer.writePtr(), available);
 		if (bytesWritten == -1) {
 			LOG_ERROR("failed to receive data");
-			return unregister();
+			return io::UNREGISTER;
 		} else if (bytesWritten == 0) {
-			return unregister();
+			return io::UNREGISTER;
 		}
 		buffer.advanceWriter(bytesWritten);
 		LOG_INFO("received " + shared::string::toString(bytesWritten) + " bytes");
@@ -87,7 +89,7 @@ namespace core {
 		ssize_t bytesSent = m_connection->send(serializedResponse.c_str() + m_totalBytesSent, serializedResponse.size() - m_totalBytesSent);
 		if (bytesSent == -1) {
 			LOG_ERROR("failed to send data");
-			return unregister();
+			return io::UNREGISTER;
 		}
 		LOG_INFO("sent " + shared::string::toString(bytesSent) + " bytes");
 
@@ -98,7 +100,7 @@ namespace core {
 			m_totalBytesSent = 0;
 			delete response;
 			m_responses.pop();
-			return m_connection->isKeepAlive() ? io::KEEP_MONITORING : unregister();
+			return m_connection->isKeepAlive() ? io::KEEP_MONITORING : io::UNREGISTER;
 		}
 		return io::KEEP_MONITORING;
 	}
@@ -106,11 +108,6 @@ namespace core {
 	io::EventResult ConnectionHandler::onError(int32_t) {
 		LOG_CONTEXT("error event | virtual server: " + m_vServer->getVirtualServerInfo() +
 					" | connection: " + m_connection->getConnectionInfo());
-		return unregister();
-	}
-
-	io::EventResult ConnectionHandler::unregister() {
-		m_vServer->removeConnection(m_connection);
 		return io::UNREGISTER;
 	}
 

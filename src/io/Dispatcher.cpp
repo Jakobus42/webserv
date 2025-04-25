@@ -12,19 +12,7 @@ namespace io {
 		: m_multiplexer()
 		, m_handlers() {}
 
-	Dispatcher::~Dispatcher() {
-		HandlerMap::iterator it = m_handlers.begin();
-		while (it != m_handlers.end()) {
-			int32_t fd = it->first;
-			++it;
-
-			try {
-				unregisterHandler(fd);
-			} catch (const std::exception& e) {
-				LOG_ERROR("failed to unregister handler for fd " + shared::string::toString(fd) + e.what());
-			}
-		}
-	}
+	Dispatcher::~Dispatcher() { cleanup(); }
 
 	// note: takes ownership of the handler
 	void Dispatcher::registerHandler(int32_t fd, IEventHandler* handler, uint32_t events) {
@@ -54,8 +42,8 @@ namespace io {
 			throw std::runtime_error("no handler registered for this file descriptor");
 		}
 
-		delete it->second;
 		m_multiplexer.remove(fd);
+		delete it->second;
 		m_handlers.erase(it);
 	}
 
@@ -71,9 +59,13 @@ namespace io {
 	}
 
 	void Dispatcher::handleEvent(const AMultiplexer::Event& event) {
-
 		try {
-			IEventHandler* handler = m_handlers.at(event.fd);
+			HandlerMap::iterator it = m_handlers.find(event.fd);
+			if (it == m_handlers.end()) {
+				return;
+			}
+
+			IEventHandler* handler = it->second;
 			EventResult result = KEEP_MONITORING;
 
 			if (event.events & AMultiplexer::EVENT_ERROR) {
@@ -102,6 +94,20 @@ namespace io {
 			unregisterHandler(fd);
 		} catch (const std::exception& e) {
 			LOG_ERROR("failed to unregister handler for fd " + shared::string::toString(fd) + " " + e.what());
+		}
+	}
+
+	void Dispatcher::cleanup() {
+		HandlerMap::iterator it = m_handlers.begin();
+		while (it != m_handlers.end()) {
+			int32_t fd = it->first;
+			++it;
+
+			try {
+				unregisterHandler(fd);
+			} catch (const std::exception& e) {
+				LOG_ERROR("failed to unregister handler for fd " + shared::string::toString(fd) + e.what());
+			}
 		}
 	}
 

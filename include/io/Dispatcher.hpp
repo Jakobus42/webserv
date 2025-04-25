@@ -17,6 +17,8 @@ namespace io {
 
 			int32_t dispatch(int32_t timeoutMs = AMultiplexer::TIMEOUT_INFINITE);
 
+			void cleanup();
+
 		private:
 			typedef std::map<int32_t, IEventHandler*> HandlerMap;
 

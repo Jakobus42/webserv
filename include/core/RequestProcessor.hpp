@@ -25,11 +25,13 @@ namespace core {
 			void reset();
 
 		private:
+			typedef std::map<http::Method, http::ARequestHandler*> HandlerMap;
+
 			void generateErrorResponse(http::StatusCode statusCode);
 
 		private:
 			http::Response* m_response;
-			std::map<http::Method, http::ARequestHandler*> m_handlers;
+			HandlerMap m_handlers;
 	};
 
 } /* namespace core */

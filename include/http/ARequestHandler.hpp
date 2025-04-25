@@ -12,7 +12,7 @@ namespace http {
 			ARequestHandler()
 				: m_state(PREPROCESS) {}
 
-			~ARequestHandler() {}
+			virtual ~ARequestHandler() {}
 
 			virtual void handle(const Request* request, Response* response) = 0;
 
