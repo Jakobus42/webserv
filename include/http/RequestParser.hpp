@@ -9,7 +9,7 @@ namespace http {
 			std::size_t maxUriLength;
 			RequestParserConfig();
 
-			RequestParserConfig(MessageParserConfig messageParserConfig, std::size_t maxUriLength);
+			RequestParserConfig(const MessageParserConfig& messageParserConfig, std::size_t maxUriLength);
 	};
 
 	class Request;
