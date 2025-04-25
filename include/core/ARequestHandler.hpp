@@ -3,9 +3,11 @@
 #include "shared/NonCopyable.hpp"
 
 namespace http {
-
 	class Request;
 	class Response;
+} // namespace http
+
+namespace core {
 
 	class ARequestHandler {
 		public:
@@ -14,7 +16,7 @@ namespace http {
 
 			virtual ~ARequestHandler() {}
 
-			virtual void handle(const Request* request, Response* response) = 0;
+			virtual void handle(const http::Request* request, http::Response* response) = 0;
 
 			virtual void reset() { m_state = PREPROCESS; }
 
@@ -31,4 +33,4 @@ namespace http {
 			HandlerState m_state;
 	};
 
-} /* namespace http */
+} /* namespace core */

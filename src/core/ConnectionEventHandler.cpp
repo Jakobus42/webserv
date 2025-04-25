@@ -1,4 +1,4 @@
-#include "core/ConnectionHandler.hpp"
+#include "core/ConnectionEventHandler.hpp"
 
 #include "core/Connection.hpp"
 #include "core/VirtualServer.hpp"
@@ -9,7 +9,7 @@
 
 namespace core {
 
-	ConnectionHandler::ConnectionHandler(VirtualServer* vServer, Connection* conn)
+	ConnectionEventHandler::ConnectionEventHandler(VirtualServer* vServer, Connection* conn)
 		: m_vServer(vServer)
 		, m_connection(conn)
 		, m_requestParser()
@@ -19,7 +19,7 @@ namespace core {
 		// todo: set max body size for parser
 	}
 
-	ConnectionHandler::~ConnectionHandler() {
+	ConnectionEventHandler::~ConnectionEventHandler() {
 		while (!m_requests.empty()) {
 			delete m_requests.front();
 			m_requests.pop();
@@ -33,7 +33,7 @@ namespace core {
 		m_vServer->removeConnection(m_connection);
 	}
 
-	io::EventResult ConnectionHandler::onReadable(int32_t) {
+	io::EventResult ConnectionEventHandler::onReadable(int32_t) {
 		LOG_CONTEXT("read event | server: " + m_vServer->getVirtualServerInfo() +
 					" | connection: " + m_connection->getConnectionInfo());
 
@@ -64,7 +64,7 @@ namespace core {
 		return io::KEEP_MONITORING;
 	}
 
-	io::EventResult ConnectionHandler::onWriteable(int32_t) {
+	io::EventResult ConnectionEventHandler::onWriteable(int32_t) {
 		LOG_CONTEXT("write event | server: " + m_vServer->getVirtualServerInfo() +
 					" | connection: " + m_connection->getConnectionInfo());
 
@@ -105,7 +105,7 @@ namespace core {
 		return io::KEEP_MONITORING;
 	}
 
-	io::EventResult ConnectionHandler::onError(int32_t) {
+	io::EventResult ConnectionEventHandler::onError(int32_t) {
 		LOG_CONTEXT("error event | virtual server: " + m_vServer->getVirtualServerInfo() +
 					" | connection: " + m_connection->getConnectionInfo());
 		return io::UNREGISTER;

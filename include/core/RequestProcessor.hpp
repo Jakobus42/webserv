@@ -8,11 +8,11 @@
 namespace http {
 	class Request;
 	class Response;
-	class ARequestHandler;
 } // namespace http
 
 namespace core {
 
+	class ARequestHandler;
 
 	class RequestProcessor : shared::mixin::NonCopyable {
 		public:
@@ -25,7 +25,7 @@ namespace core {
 			void reset();
 
 		private:
-			typedef std::map<http::Method, http::ARequestHandler*> HandlerMap;
+			typedef std::map<http::Method, ARequestHandler*> HandlerMap;
 
 			void generateErrorResponse(http::StatusCode statusCode);
 

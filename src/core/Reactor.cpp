@@ -1,6 +1,6 @@
 #include "core/Reactor.hpp"
 
-#include "core/AcceptHandler.hpp"
+#include "core/AcceptEventHandler.hpp"
 #include "shared/Logger.hpp"
 
 #include <csignal>
@@ -22,7 +22,7 @@ namespace core {
 
 			m_vServers.push_back(vServer);
 			vServer->listen();
-			m_dispatcher.registerHandler(vServer->getListenSocket().getFd(), new AcceptHandler(vServer, m_dispatcher));
+			m_dispatcher.registerHandler(vServer->getListenSocket().getFd(), new AcceptEventHandler(vServer, m_dispatcher));
 		}
 	}
 

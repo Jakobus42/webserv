@@ -19,10 +19,10 @@ namespace core {
 	class Connection;
 	class VirtualServer;
 
-	class ConnectionHandler : public io::IEventHandler {
+	class ConnectionEventHandler : public io::IEventHandler {
 		public:
-			ConnectionHandler(VirtualServer* vServer, Connection* conn);
-			virtual ~ConnectionHandler();
+			ConnectionEventHandler(VirtualServer* vServer, Connection* conn);
+			virtual ~ConnectionEventHandler();
 
 			virtual io::EventResult onReadable(int32_t fd);
 

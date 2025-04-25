@@ -1,9 +1,9 @@
 #include "core/RequestProcessor.hpp"
 
-#include "http/ARequestHandler.hpp"
-#include "http/DeleteHandler.hpp"
-#include "http/GetHandler.hpp"
-#include "http/PostHandler.hpp"
+#include "core/ARequestHandler.hpp"
+#include "core/DeleteRequestHandler.hpp"
+#include "core/GetRequestHandler.hpp"
+#include "core/PostRequestHandler.hpp"
 #include "http/Request.hpp"
 #include "http/Response.hpp"
 #include "http/http.hpp"
@@ -13,9 +13,9 @@ namespace core {
 
 	RequestProcessor::RequestProcessor()
 		: m_response(NULL) {
-		m_handlers[http::GET] = new http::GetHandler();
-		m_handlers[http::POST] = new http::PostHandler();
-		m_handlers[http::DELETE] = new http::DeleteHandler();
+		m_handlers[http::GET] = new GetRequestHandler();
+		m_handlers[http::POST] = new PostRequestHandler();
+		m_handlers[http::DELETE] = new DeleteRequestHandler();
 	}
 
 	RequestProcessor::~RequestProcessor() {
@@ -36,7 +36,7 @@ namespace core {
 			return false;
 		}
 
-		http::ARequestHandler* handler = m_handlers[request->getMethod()];
+		ARequestHandler* handler = m_handlers[request->getMethod()];
 		try {
 			handler->handle(request, m_response);
 			if (handler->isDone() == false) {
