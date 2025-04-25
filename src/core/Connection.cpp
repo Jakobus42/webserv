@@ -13,7 +13,6 @@ namespace core {
 		, m_lastActivityTimestamp(-1)
 		, m_isKeepAlive(true) {
 		m_socket->setReuseAddr(true);
-		m_socket->setNonBlocking(true);
 	}
 
 	Connection::~Connection() {

@@ -104,9 +104,7 @@ namespace io {
 
 		if (nChanges > 0) {
 			if (kevent(m_kqueueFd, changes, nChanges, NULL, 0, NULL) == -1) {
-				if (errno != EBADF) { // Ignore EBADF as fd might have been already closed
-					throw std::runtime_error(std::string("failed to remove fd from kqueue: ") + std::strerror(errno));
-				}
+				throw std::runtime_error(std::string("failed to remove fd from kqueue: ") + std::strerror(errno));
 			}
 		}
 

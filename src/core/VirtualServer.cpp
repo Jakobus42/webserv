@@ -12,7 +12,6 @@ namespace core {
 		: m_listenSocket()
 		, m_connections()
 		, m_config(config) {
-		m_listenSocket.setNonBlocking(true);
 		m_listenSocket.setReuseAddr(true);
 		m_listenSocket.bind(m_config.port, m_config.ipAddress);
 	}
