@@ -9,7 +9,11 @@ namespace config {
 	ServerConfig::ServerConfig()
 		: port(8080)
 		, ipAddress(LOCALHOST_ADDRESS)
-		, maxBodySize(ONE_MEGABYTE)
+		, maxBodySize(10 * 1024 * 1024)	 // 10MB
+		, maxHeaderValueLength(8 * 1024) // 8KB
+		, maxHeaderCount(128)			 // 128 headers
+		, maxHeaderValueCount(64)		 // 64 values
+		, maxHeaderNameLength(256)		 // 256B
 		, dataDirectory("")
 		, dataDirectoryAsTokens()
 		, serverNames()
@@ -21,6 +25,10 @@ namespace config {
 		: port(other.port)
 		, ipAddress(other.ipAddress)
 		, maxBodySize(other.maxBodySize)
+		, maxHeaderValueLength(other.maxHeaderValueCount)
+		, maxHeaderCount(other.maxHeaderCount)
+		, maxHeaderValueCount(other.maxHeaderValueCount)
+		, maxHeaderNameLength(other.maxHeaderNameLength)
 		, dataDirectory(other.dataDirectory)
 		, dataDirectoryAsTokens(other.dataDirectoryAsTokens)
 		, serverNames(other.serverNames)
@@ -33,6 +41,10 @@ namespace config {
 		port = rhs.port;
 		ipAddress = rhs.ipAddress;
 		maxBodySize = rhs.maxBodySize;
+		maxHeaderCount = rhs.maxHeaderCount;
+		maxHeaderNameLength = rhs.maxHeaderNameLength;
+		maxHeaderValueCount = rhs.maxHeaderValueCount;
+		maxHeaderValueLength = rhs.maxHeaderValueLength;
 		dataDirectory = rhs.dataDirectory;
 		dataDirectoryAsTokens = rhs.dataDirectoryAsTokens;
 		serverNames = rhs.serverNames;
