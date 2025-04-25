@@ -11,7 +11,7 @@ namespace core {
 	GetRequestHandler::~GetRequestHandler() {
 	}
 
-	void GetRequestHandler::handle(const http::Request*, http::Response*) {
+	void GetRequestHandler::handle(const http::Request&, http::Response&) {
 		m_state = DONE;
 	}
 

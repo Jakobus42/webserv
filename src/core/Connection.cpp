@@ -37,7 +37,7 @@ namespace core {
 
 	bool Connection::isKeepAlive() const { return m_isKeepAlive; }
 
-	const io::Socket* Connection::getSocket() const { return m_socket; }
+	const io::Socket& Connection::getSocket() const { return *m_socket; }
 
 	std::string Connection::getConnectionInfo() const {
 		std::stringstream ss;

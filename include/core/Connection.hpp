@@ -20,7 +20,7 @@ namespace core {
 			void setIsKeepAlive(bool isKeepAlive);
 			bool isKeepAlive() const;
 
-			const io::Socket* getSocket() const;
+			const io::Socket& getSocket() const;
 			std::string getConnectionInfo() const;
 
 		private:
