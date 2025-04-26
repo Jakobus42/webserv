@@ -15,7 +15,6 @@ namespace io {
 
 	Socket::Socket(int domain, int type, int protocol)
 		: m_fd(-1) {
-
 		memset(&m_localAddr, 0, sizeof(m_localAddr));
 		memset(&m_peerAddr, 0, sizeof(m_peerAddr));
 
@@ -79,16 +78,6 @@ namespace io {
 		clientSocket->m_peerAddr = addr;
 
 		return clientSocket;
-	}
-
-	void Socket::shutdown(int mode) {
-		if (!isValid()) {
-			return;
-		}
-
-		if (::shutdown(m_fd, mode) == -1) {
-			throw std::runtime_error("shutdown() failed: " + std::string(strerror(errno)));
-		}
 	}
 
 	void Socket::close() {

@@ -21,7 +21,6 @@ namespace io {
 			void bind(in_port_t port, uint32_t address = INADDR_ANY);
 			void listen(int backlog = 64);
 			Socket* accept();
-			void shutdown(int mode = SHUT_RDWR);
 			void close();
 
 			ssize_t send(const void* buffer, size_t size, int flags = 0);
