@@ -1,4 +1,6 @@
-#if defined(__linux__)
+#include "shared/platform.hpp"
+
+#if defined(PLATFORM_HAS_EPOLL)
 
 #	include "io/EpollMultiplexer.hpp"
 
@@ -8,8 +10,6 @@
 #	include <cstring>
 #	include <stdexcept>
 #	include <cerrno>
-
-// todo: EPOLL_HUP?
 
 namespace io {
 
