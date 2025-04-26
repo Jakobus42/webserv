@@ -9,7 +9,7 @@ namespace core {
 			DeleteRequestHandler();
 			virtual ~DeleteRequestHandler();
 
-			void handle(const http::Request* request, http::Response* response);
+			bool handle(const http::Request* request, http::Response* response);
 	};
 
 } /* namespace core */

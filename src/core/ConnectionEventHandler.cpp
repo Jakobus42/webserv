@@ -9,10 +9,11 @@
 
 namespace core {
 
-	ConnectionEventHandler::ConnectionEventHandler(VirtualServer* vServer, Connection* conn)
+	ConnectionEventHandler::ConnectionEventHandler(VirtualServer* vServer, Connection* conn, io::Dispatcher& dispatcher)
 		: m_vServer(vServer)
 		, m_connection(conn)
 		, m_requestParser()
+		, m_requestProcessor(dispatcher)
 		, m_totalBytesSent(0)
 		, m_requests()
 		, m_responses() {
@@ -70,13 +71,14 @@ namespace core {
 
 		if (!m_requests.empty()) {
 			http::Request* request = m_requests.front();
-			if (!m_requestProcessor.processRequest(request)) {
-				m_responses.push(m_requestProcessor.releaseResponse());
-				delete request;
-				m_requests.pop();
-			} else {
+			if (m_requestProcessor.processRequest(request)) {
 				return io::KEEP_MONITORING;
 			}
+			m_responses.push(m_requestProcessor.releaseResponse());
+			m_requestProcessor.reset();
+		
+			delete request;
+			m_requests.pop();
 		}
 
 		if (m_responses.empty()) {

@@ -11,8 +11,9 @@
 
 namespace core {
 
-	RequestProcessor::RequestProcessor()
-		: m_response(NULL) {
+	RequestProcessor::RequestProcessor(io::Dispatcher& dispatcher)
+		: m_cgiProcessor(dispatcher)
+		, m_response(NULL) {
 		m_handlers[http::GET] = new GetRequestHandler();
 		m_handlers[http::POST] = new PostRequestHandler();
 		m_handlers[http::DELETE] = new DeleteRequestHandler();
@@ -25,7 +26,7 @@ namespace core {
 		delete m_response;
 	}
 
-	// todo maybe have a isComplete function. the return value could be confusing
+	// todo maybe have a isComplete function. the return value could be confusing (also applies to CGIProcessor, Request/Response Parser)
 	bool RequestProcessor::processRequest(http::Request* request) {
 		if (!m_response) {
 			m_response = new http::Response();
@@ -36,19 +37,26 @@ namespace core {
 			return false;
 		}
 
-		ARequestHandler* handler = m_handlers[request->getMethod()];
 		try {
-			handler->handle(request, m_response);
-			if (handler->isDone() == false) {
-				return true;
+			http::Request::Type requestType = request->getType();
+
+			if (requestType == http::Request::FETCH) {
+				ARequestHandler* handler = m_handlers[request->getMethod()];
+				if (handler->handle(request, m_response)) {
+					return true;
+				}
+			} else if (requestType == http::Request::CGI) {
+				if (m_cgiProcessor.process(*request)) {
+					return true;
+				}
+				delete m_response;
+				m_response = m_cgiProcessor.releaseResponse();
 			}
-			handler->reset();
 		} catch (const http::HttpException& e) {
 			LOG_ERROR("request handler failed: " + std::string(e.what()));
 			generateErrorResponse(e.getStatusCode());
 			return false;
 		}
-
 		return false;
 	}
 
@@ -61,6 +69,12 @@ namespace core {
 	void RequestProcessor::reset() {
 		delete m_response;
 		m_response = NULL;
+
+		for (HandlerMap::iterator it = m_handlers.begin(); it != m_handlers.end(); ++it) {
+			it->second->reset();
+		}
+
+		m_cgiProcessor.reset();
 	}
 
 	void RequestProcessor::generateErrorResponse(http::StatusCode) {

@@ -10,8 +10,8 @@ namespace core {
 	PostRequestHandler::~PostRequestHandler() {
 	}
 
-	void PostRequestHandler::handle(const http::Request*, http::Response*) {
-		m_state = DONE;
+	bool PostRequestHandler::handle(const http::Request*, http::Response*) {
+		return false;
 	}
 
 

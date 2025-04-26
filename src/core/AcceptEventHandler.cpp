@@ -16,7 +16,7 @@ namespace core {
 
 		while (Connection* conn = m_vServer->acceptNewConnection()) {
 			m_dispatcher.registerHandler(conn->getSocket()->getFd(),
-										 new ConnectionEventHandler(m_vServer, conn),
+										 new ConnectionEventHandler(m_vServer, conn, m_dispatcher),
 										 io::AMultiplexer::EVENT_ALL);
 		}
 		return io::KEEP_MONITORING;
