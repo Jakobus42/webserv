@@ -129,6 +129,8 @@ namespace io {
 		}
 	}
 
+	void Socket::setNonBlocking(bool enable) { setSocketFlag(O_NONBLOCK, enable); }
+
 #endif
 
 	void Socket::setReuseAddr(bool enable) {

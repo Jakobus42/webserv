@@ -41,6 +41,7 @@ namespace io {
 
 #if ALLOW_FORBIDDEN_FUNCTIONS
 			void setSocketFlag(int flag, bool enable);
+			void setNonBlocking(bool enable);
 #endif
 
 			int getFd() const;

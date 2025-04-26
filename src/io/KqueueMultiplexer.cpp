@@ -1,3 +1,5 @@
+#include "shared/platform.hpp"
+
 #if defined(PLATFORM_HAS_KQUEUE)
 
 #	include "io/KqueueMultiplexer.hpp"
