@@ -21,7 +21,7 @@ namespace core {
 			RequestProcessor(io::Dispatcher& dispatcher);
 			~RequestProcessor();
 
-			bool processRequest(http::Request* request);
+			bool processRequest(const http::Request* request);
 			http::Response* releaseResponse();
 
 			void reset();

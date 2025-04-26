@@ -27,7 +27,7 @@ namespace core {
 	}
 
 	// todo maybe have a isComplete function. the return value could be confusing (also applies to CGIProcessor, Request/Response Parser)
-	bool RequestProcessor::processRequest(http::Request* request) {
+	bool RequestProcessor::processRequest(const http::Request* request) {
 		if (!m_response) {
 			m_response = new http::Response();
 		}
@@ -49,12 +49,17 @@ namespace core {
 				if (m_cgiProcessor.process(*request)) {
 					return true;
 				}
+				std::cout << "lelelele" << std::endl;
 				delete m_response;
 				m_response = m_cgiProcessor.releaseResponse();
 			}
 		} catch (const http::HttpException& e) {
 			LOG_ERROR("request handler failed: " + std::string(e.what()));
 			generateErrorResponse(e.getStatusCode());
+			return false;
+		} catch (const std::exception& e) {
+			LOG_ERROR("request handler failed: " + std::string(e.what()));
+			generateErrorResponse(http::INTERNAL_SERVER_ERROR);
 			return false;
 		}
 		return false;
