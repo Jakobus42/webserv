@@ -16,7 +16,8 @@ namespace io {
 	EpollMultiplexer::EpollMultiplexer()
 		: AMultiplexer()
 		, m_epollFd(-1) {
-		m_epollFd = epoll_create1(0);
+		// Since Linux 2.6.8, the size argument is ignored
+		m_epollFd = epoll_create(1);
 		if (m_epollFd == -1) {
 			throw std::runtime_error(std::string("failed to create epoll instance: ") + std::strerror(errno));
 		}

@@ -15,8 +15,8 @@ namespace io {
 
 	Socket::Socket(int domain, int type, int protocol)
 		: m_fd(-1) {
-		memset(&m_localAddr, 0, sizeof(m_localAddr));
-		memset(&m_peerAddr, 0, sizeof(m_peerAddr));
+		std::memset(&m_localAddr, 0, sizeof(m_localAddr));
+		std::memset(&m_peerAddr, 0, sizeof(m_peerAddr));
 
 		m_fd = socket(domain, type, protocol);
 		if (m_fd == -1) {
@@ -26,8 +26,8 @@ namespace io {
 
 	Socket::Socket(int fd)
 		: m_fd(fd) {
-		memset(&m_localAddr, 0, sizeof(m_localAddr));
-		memset(&m_peerAddr, 0, sizeof(m_peerAddr));
+		std::memset(&m_localAddr, 0, sizeof(m_localAddr));
+		std::memset(&m_peerAddr, 0, sizeof(m_peerAddr));
 	}
 
 	Socket::~Socket() { close(); }
@@ -37,7 +37,7 @@ namespace io {
 			throw std::runtime_error("cannot bind: invalid socket");
 		}
 
-		memset(&m_localAddr, 0, sizeof(m_localAddr));
+		std::memset(&m_localAddr, 0, sizeof(m_localAddr));
 		m_localAddr.sin_family = AF_INET;
 		m_localAddr.sin_port = htons(port);
 		m_localAddr.sin_addr.s_addr = htonl(address);
@@ -63,7 +63,7 @@ namespace io {
 		}
 
 		struct sockaddr_in addr;
-		memset(&addr, 0, sizeof(addr));
+		std::memset(&addr, 0, sizeof(addr));
 		socklen_t addrLen = sizeof(addr);
 		int connectionFd = ::accept(m_fd, (struct sockaddr*)&addr, &addrLen);
 		if (connectionFd == -1) {
