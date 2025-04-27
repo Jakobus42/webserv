@@ -98,15 +98,18 @@ namespace io {
 	}
 
 	void Dispatcher::cleanup() {
-		HandlerMap::iterator it = m_handlers.begin();
-		while (it != m_handlers.end()) {
+		while (!m_handlers.empty()) {
+			HandlerMap::iterator it = m_handlers.begin();
 			int32_t fd = it->first;
-			++it;
 
 			try {
 				unregisterHandler(fd);
 			} catch (const std::exception& e) {
-				LOG_ERROR("failed to unregister handler for fd " + shared::string::toString(fd) + e.what());
+				if (!m_handlers.empty() && m_handlers.begin()->first == fd) {
+					delete m_handlers.begin()->second;
+					m_handlers.erase(m_handlers.begin());
+				}
+				LOG_ERROR("failed to unregister handler for fd " + shared::string::toString(fd) + " " + e.what());
 			}
 		}
 	}

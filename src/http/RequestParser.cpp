@@ -7,6 +7,7 @@
 // todo: better error messages for uri
 // todo: normelize the path here maybe or in the uri class (uri.normelize())
 // todo: setPathSegemnt should take a stringView. (see setHeaders for impl example) - also the split path should be implemented here using stringView aswell
+// todo: validate http version
 
 namespace http {
 
@@ -120,7 +121,9 @@ namespace http {
 			std::size_t pos = uri.getPath().find_first_of("/#?", 9);
 			if (pos != std::string::npos) {
 				uri.setCgiPathInfo(uri.getPath().substr(pos));
-				uri.setPath(uri.getPath().substr(1, pos));
+				uri.setPath(uri.getPath().substr(1, pos - 1));
+			} else {
+				uri.setPath(uri.getPath().substr(1));
 			}
 			m_request->setType(Request::CGI);
 		}

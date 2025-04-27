@@ -54,7 +54,7 @@ run: all
 leak: CFLAGS += $(DEBUG_FLAGS)
 leak: all
 	@echo "$(GREEN)Running $(NAME) with valgrind...$(NC)"
-	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --track-origins=yes --error-exitcode=1 ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --trace-children=yes --track-fds=yes --track-origins=yes --error-exitcode=1 ./$(NAME)
 
 .PHONY: debug
 debug: CFLAGS += $(DEBUG_FLAGS)

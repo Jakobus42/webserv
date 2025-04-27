@@ -1,6 +1,8 @@
 #pragma once
 
+#include "core/CGIProcessor.hpp"
 #include "http/http.hpp"
+#include "io/Dispatcher.hpp"
 #include "shared/NonCopyable.hpp"
 
 #include <map>
@@ -16,10 +18,10 @@ namespace core {
 
 	class RequestProcessor : shared::mixin::NonCopyable {
 		public:
-			RequestProcessor();
+			explicit RequestProcessor(io::Dispatcher& dispatcher);
 			~RequestProcessor();
 
-			bool processRequest(http::Request& request);
+			bool processRequest(const http::Request& request);
 			http::Response* releaseResponse();
 
 			void reset();
@@ -30,6 +32,7 @@ namespace core {
 			void generateErrorResponse(http::StatusCode statusCode);
 
 		private:
+			CGIProcessor m_cgiProcessor;
 			http::Response* m_response;
 			HandlerMap m_handlers;
 	};

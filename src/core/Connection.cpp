@@ -11,9 +11,7 @@ namespace core {
 	Connection::Connection(io::Socket* socket)
 		: m_socket(socket)
 		, m_lastActivityTimestamp(-1)
-		, m_isKeepAlive(true) {
-		m_socket->setReuseAddr(true);
-	}
+		, m_isKeepAlive(true) {}
 
 	Connection::~Connection() {
 		close();

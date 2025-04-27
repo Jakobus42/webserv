@@ -9,10 +9,11 @@
 
 namespace core {
 
-	ConnectionEventHandler::ConnectionEventHandler(VirtualServer& vServer, Connection& conn)
+	ConnectionEventHandler::ConnectionEventHandler(VirtualServer& vServer, Connection& conn, io::Dispatcher& dispatcher)
 		: m_vServer(vServer)
 		, m_connection(conn)
 		, m_requestParser()
+		, m_requestProcessor(dispatcher)
 		, m_totalBytesSent(0)
 		, m_requests()
 		, m_responses() {
@@ -20,6 +21,9 @@ namespace core {
 	}
 
 	ConnectionEventHandler::~ConnectionEventHandler() {
+		LOG_CONTEXT("server: " + m_vServer.getVirtualServerInfo() +
+					" | connection: " + m_connection.getConnectionInfo());
+
 		while (!m_requests.empty()) {
 			delete m_requests.front();
 			m_requests.pop();
@@ -70,13 +74,14 @@ namespace core {
 
 		if (!m_requests.empty()) {
 			http::Request* request = m_requests.front();
-			if (!m_requestProcessor.processRequest(*request)) {
-				m_responses.push(m_requestProcessor.releaseResponse());
-				delete request;
-				m_requests.pop();
-			} else {
+			if (m_requestProcessor.processRequest(*request)) {
 				return io::KEEP_MONITORING;
 			}
+			m_responses.push(m_requestProcessor.releaseResponse());
+			m_requestProcessor.reset();
+
+			delete request;
+			m_requests.pop();
 		}
 
 		if (m_responses.empty()) {
@@ -84,7 +89,6 @@ namespace core {
 		}
 
 		http::Response* response = m_responses.front();
-		response->appendHeader("Content-Length", "0"); // tmp
 		const std::string& serializedResponse = response->serialize();
 		ssize_t bytesSent = m_connection.send(serializedResponse.c_str() + m_totalBytesSent, serializedResponse.size() - m_totalBytesSent);
 		if (bytesSent == -1) {
@@ -106,8 +110,8 @@ namespace core {
 	}
 
 	io::EventResult ConnectionEventHandler::onError(int32_t) {
-		LOG_CONTEXT("error event | virtual server: " + m_vServer.getVirtualServerInfo() +
-					" | connection: " + m_connection.getConnectionInfo());
+		LOG_ERROR("error event | virtual server: " + m_vServer.getVirtualServerInfo() +
+				  " | connection: " + m_connection.getConnectionInfo() + " multiplexing error");
 		return io::UNREGISTER;
 	}
 
