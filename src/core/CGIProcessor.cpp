@@ -98,6 +98,7 @@ namespace core {
 
 		if (m_pid == 0) {
 			try {
+				throw std::runtime_error("lol");
 				prepareEnviorment(request);
 
 				m_inputPipe.closeWriteEnd();
@@ -117,7 +118,7 @@ namespace core {
 				throw std::runtime_error("execve() failed: " + std::string(std::strerror(errno)));
 			} catch (const std::exception& e) {
 				LOG_ERROR("child process: " + std::string(e.what()));
-				_exit(EXIT_FAILURE);
+				std::exit(EXIT_FAILURE);
 			}
 		} else {
 			m_inputPipe.closeReadEnd();
