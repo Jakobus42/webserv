@@ -18,7 +18,7 @@ namespace core {
 
 	class RequestProcessor : shared::mixin::NonCopyable {
 		public:
-			RequestProcessor(io::Dispatcher& dispatcher);
+			explicit RequestProcessor(io::Dispatcher& dispatcher);
 			~RequestProcessor();
 
 			bool processRequest(const http::Request* request);

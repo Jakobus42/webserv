@@ -8,7 +8,6 @@ namespace core {
 
 	class CGIEventHandler : public io::IEventHandler {
 		public:
-			// sets pointer to CGI response
 			explicit CGIEventHandler(CGIProcessor& processor, const http::Request& request, http::Response*& response);
 			~CGIEventHandler();
 
