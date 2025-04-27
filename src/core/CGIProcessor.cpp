@@ -70,6 +70,7 @@ namespace core {
 		m_inputPipe.open();
 		m_outputPipe.open();
 		m_state = EXECUTE;
+		m_ioState = IO_NONE;
 	}
 
 	void CGIProcessor::notifyIOReadCompletion() {
@@ -158,9 +159,13 @@ namespace core {
 
 		if (request.hasHeader("content-length")) {
 			setenv("CONTENT_LENGTH", request.getHeader("content-length").front().c_str());
+		} else {
+			setenv("CONTENT_LENGTH", "0");
 		}
 		if (request.hasHeader("content-type")) {
 			setenv("CONTENT_TYPE", request.getHeader("content-type").front().c_str());
+		} else {
+			setenv("CONTENT_TYPE", "text/plain");
 		}
 	}
 
@@ -178,7 +183,6 @@ namespace core {
 			return true;
 		}
 
-
 		int status;
 		pid_t result = waitpid(m_pid, &status, WNOHANG);
 		if (result == -1) {
@@ -187,9 +191,19 @@ namespace core {
 			return true;
 		}
 
-		LOG_INFO("CGI Process exited with status code: " + shared::string::toString(status));
 		m_pid = -1;
 
+		if (WIFEXITED(status)) {
+			int exitCode = WEXITSTATUS(status);
+			if (exitCode != 0) {
+				throw http::HttpException(http::BAD_GATEWAY,
+										  "CGI script exited with non-zero exit code: " + shared::string::toString(exitCode));
+			}
+		} else if (WIFSIGNALED(status)) {
+			int signal = WTERMSIG(status);
+			throw http::HttpException(http::BAD_GATEWAY,
+									  "CGI script terminated by signal: " + shared::string::toString(signal));
+		}
 		return false;
 	}
 
