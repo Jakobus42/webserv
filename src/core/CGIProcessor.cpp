@@ -98,7 +98,6 @@ namespace core {
 
 		if (m_pid == 0) {
 			try {
-				throw std::runtime_error("lol");
 				prepareEnviorment(request);
 
 				m_inputPipe.closeWriteEnd();
