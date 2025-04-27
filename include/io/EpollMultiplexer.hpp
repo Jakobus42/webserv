@@ -1,8 +1,6 @@
 #pragma once
 
-#if defined(__linux__)
-
-#	include "io/AMultiplexer.hpp"
+#include "io/AMultiplexer.hpp"
 
 namespace io {
 
@@ -25,5 +23,3 @@ namespace io {
 	};
 
 } /* namespace io */
-
-#endif // platform check

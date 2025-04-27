@@ -1,6 +1,5 @@
 #include "io/Pipe.hpp"
 
-#include <fcntl.h>
 #include <unistd.h>
 
 #include <cerrno>
@@ -58,46 +57,6 @@ namespace io {
 		if (::dup2(m_writeFd, newFd) == -1) {
 			throw std::runtime_error("failed to dup write fd: " + std::string(std::strerror(errno)));
 		}
-	}
-
-	void Pipe::setNonBlocking(bool nonBlocking) {
-		setReadNonBlocking(nonBlocking);
-		setWriteNonBlocking(nonBlocking);
-	}
-
-	void Pipe::setReadNonBlocking(bool nonBlocking) {
-		if (m_readFd == -1) {
-			throw std::runtime_error("Cannot set non-blocking mode on closed read end");
-		}
-
-		if (!setNonBlocking(m_readFd, nonBlocking)) {
-			throw std::runtime_error("failed to set non-blocking for read end: " + std::string(std::strerror(errno)));
-		}
-	}
-
-	void Pipe::setWriteNonBlocking(bool nonBlocking) {
-		if (m_writeFd == -1) {
-			throw std::runtime_error("Cannot set non-blocking mode on closed write end");
-		}
-
-		if (!setNonBlocking(m_writeFd, nonBlocking)) {
-			throw std::runtime_error("failed to set non-blocking for write end: " + std::string(std::strerror(errno)));
-		}
-	}
-
-	bool Pipe::setNonBlocking(int fd, bool nonBlocking) {
-		int flags = ::fcntl(fd, F_GETFL, 0);
-		if (flags == -1) {
-			return false;
-		}
-
-		if (nonBlocking) {
-			flags |= O_NONBLOCK;
-		} else {
-			flags &= ~O_NONBLOCK;
-		}
-
-		return (::fcntl(fd, F_SETFL, flags) != -1);
 	}
 
 	void Pipe::closeReadEnd() {

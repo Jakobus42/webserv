@@ -1,17 +1,22 @@
 #include "io/Socket.hpp"
 
 #include <arpa/inet.h>
-#include <errno.h>
-#include <fcntl.h>
 #include <unistd.h>
 
+#include "shared/stringUtils.hpp"
+
+#include <cassert>
+#include <cerrno>
 #include <cstring>
+#include <iostream>
 #include <stdexcept>
 
 namespace io {
 
 	Socket::Socket(int domain, int type, int protocol)
 		: m_fd(-1) {
+		std::memset(&m_localAddr, 0, sizeof(m_localAddr));
+		std::memset(&m_peerAddr, 0, sizeof(m_peerAddr));
 
 		m_fd = socket(domain, type, protocol);
 		if (m_fd == -1) {
@@ -20,7 +25,10 @@ namespace io {
 	}
 
 	Socket::Socket(int fd)
-		: m_fd(fd) {}
+		: m_fd(fd) {
+		std::memset(&m_localAddr, 0, sizeof(m_localAddr));
+		std::memset(&m_peerAddr, 0, sizeof(m_peerAddr));
+	}
 
 	Socket::~Socket() { close(); }
 
@@ -29,13 +37,12 @@ namespace io {
 			throw std::runtime_error("cannot bind: invalid socket");
 		}
 
-		struct sockaddr_in addr;
-		memset(&addr, 0, sizeof(addr));
-		addr.sin_family = AF_INET;
-		addr.sin_port = htons(port);
-		addr.sin_addr.s_addr = htonl(address);
+		std::memset(&m_localAddr, 0, sizeof(m_localAddr));
+		m_localAddr.sin_family = AF_INET;
+		m_localAddr.sin_port = htons(port);
+		m_localAddr.sin_addr.s_addr = htonl(address);
 
-		if (::bind(m_fd, (struct sockaddr*)&addr, sizeof(addr)) == -1) {
+		if (::bind(m_fd, (struct sockaddr*)&m_localAddr, sizeof(m_localAddr)) == -1) {
 			throw std::runtime_error("bind() failed: " + std::string(strerror(errno)));
 		}
 	}
@@ -56,8 +63,8 @@ namespace io {
 		}
 
 		struct sockaddr_in addr;
+		std::memset(&addr, 0, sizeof(addr));
 		socklen_t addrLen = sizeof(addr);
-
 		int connectionFd = ::accept(m_fd, (struct sockaddr*)&addr, &addrLen);
 		if (connectionFd == -1) {
 			if (errno == EAGAIN || errno == EWOULDBLOCK) {
@@ -66,17 +73,11 @@ namespace io {
 				throw std::runtime_error("accept() failed: " + std::string(strerror(errno)));
 			}
 		}
-		return new Socket(connectionFd);
-	}
 
-	void Socket::shutdown(int mode) {
-		if (!isValid()) {
-			return;
-		}
+		Socket* clientSocket = new Socket(connectionFd);
+		clientSocket->m_peerAddr = addr;
 
-		if (::shutdown(m_fd, mode) == -1) {
-			throw std::runtime_error("shutdown() failed: " + std::string(strerror(errno)));
-		}
+		return clientSocket;
 	}
 
 	void Socket::close() {
@@ -104,9 +105,12 @@ namespace io {
 		return ::recv(m_fd, buffer, size, flags);
 	}
 
-	void Socket::setNonBlocking(bool nonBlocking) {
+#if ALLOW_FORBIDDEN_FUNCTIONS
+#	include <fcntl.h>
+
+	void Socket::setSocketFlag(int flag, bool enable) {
 		if (!isValid()) {
-			throw std::runtime_error("cannot set non-blocking: invalid socket");
+			throw std::runtime_error("cannot set socket flag: invalid socket");
 		}
 
 		int flags = fcntl(m_fd, F_GETFL, 0);
@@ -114,10 +118,10 @@ namespace io {
 			throw std::runtime_error("fcntl() failed: " + std::string(strerror(errno)));
 		}
 
-		if (nonBlocking) {
-			flags |= O_NONBLOCK;
+		if (enable) {
+			flags |= flag;
 		} else {
-			flags &= ~O_NONBLOCK;
+			flags &= ~flag;
 		}
 
 		if (fcntl(m_fd, F_SETFL, flags) == -1) {
@@ -125,54 +129,56 @@ namespace io {
 		}
 	}
 
-	void Socket::setReuseAddr(bool enable) {
-		if (!isValid()) {
-			throw std::runtime_error("cannot set option: invalid socket");
-		}
+	void Socket::setNonBlocking(bool enable) { setSocketFlag(O_NONBLOCK, enable); }
 
-		int opt = enable;
-		if (setsockopt(m_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) == -1) {
-			throw std::runtime_error("setsockopt() failed: " + std::string(strerror(errno)));
-		}
+#endif
+
+	void Socket::setReuseAddr(bool enable) {
+		int opt = enable ? 1 : 0;
+		setSocketOption(SOL_SOCKET, SO_REUSEADDR, opt);
 	}
 
 	int Socket::getFd() const { return m_fd; }
 
+	std::string Socket::getLocalAddress() const {
+		if (!isValid()) {
+			throw std::runtime_error("cannot get local: invalid socket");
+		}
+
+		return addrToString(m_localAddr);
+	}
+
+	in_port_t Socket::getLocalPort() const {
+		if (!isValid()) {
+			throw std::runtime_error("cannot get local: invalid socket");
+		}
+
+		return ntohs(m_localAddr.sin_port);
+	}
+
 	std::string Socket::getPeerAddress() const {
 		if (!isValid()) {
-			throw std::runtime_error("cannot get peer: invalid socket");
+			throw std::runtime_error("cannot get remote: invalid socket");
 		}
 
-		struct sockaddr_in addr;
-		socklen_t addrLen = sizeof(addr);
-
-		if (getpeername(m_fd, (struct sockaddr*)&addr, &addrLen) == -1) {
-			throw std::runtime_error("getpeername() failed: " + std::string(strerror(errno)));
-		}
-
-		char addrStr[INET_ADDRSTRLEN];
-		if (inet_ntop(AF_INET, &addr.sin_addr, addrStr, sizeof(addrStr)) == NULL) {
-			throw std::runtime_error("inet_ntop() failed: " + std::string(strerror(errno)));
-		}
-
-		return std::string(addrStr);
+		return addrToString(m_peerAddr);
 	}
 
 	in_port_t Socket::getPeerPort() const {
 		if (!isValid()) {
 			throw std::runtime_error("cannot get peer: invalid socket");
 		}
-
-		struct sockaddr_in addr;
-		socklen_t addrLen = sizeof(addr);
-
-		if (getpeername(m_fd, (struct sockaddr*)&addr, &addrLen) == -1) {
-			throw std::runtime_error("getpeername() failed: " + std::string(strerror(errno)));
-		}
-
-		return ntohs(addr.sin_port);
+		return ntohs(m_peerAddr.sin_port);
 	}
 
 	bool Socket::isValid() const { return m_fd != -1; }
 
+	std::string Socket::addrToString(const struct sockaddr_in& addr) const {
+		unsigned char* bytes = (unsigned char*)&addr.sin_addr.s_addr;
+
+		return shared::string::toString((unsigned int)bytes[0]) + "." +
+			shared::string::toString((unsigned int)bytes[1]) + "." +
+			shared::string::toString((unsigned int)bytes[2]) + "." +
+			shared::string::toString((unsigned int)bytes[3]);
+	}
 } /* namespace io */

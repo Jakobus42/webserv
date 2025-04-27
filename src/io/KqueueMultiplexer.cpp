@@ -1,4 +1,6 @@
-#if defined(__APPLE__) || defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__)
+#include "shared/platform.hpp"
+
+#if defined(PLATFORM_HAS_KQUEUE)
 
 #	include "io/KqueueMultiplexer.hpp"
 

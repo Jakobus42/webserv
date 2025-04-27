@@ -1,13 +1,15 @@
 #pragma once
 
-#if defined(__APPLE__) || defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__)
+#include "shared/platform.hpp"
+
+#if defined(PLATFORM_HAS_KQUEUE)
 #	include "io/KqueueMultiplexer.hpp"
 
 namespace io {
 	typedef KqueueMultiplexer Multiplexer;
 }
 
-#elif defined(__linux__)
+#elif defined(PLATFORM_HAS_EPOLL)
 #	include "io/EpollMultiplexer.hpp"
 
 namespace io {
@@ -15,5 +17,5 @@ namespace io {
 }
 
 #else
-#	error "unsupported platform"
-#endif
+#	error "unsupported platform: no multiplexer available"
+#endif // platform check

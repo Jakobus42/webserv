@@ -25,10 +25,6 @@ namespace core {
 	}
 
 	VirtualServer::~VirtualServer() {
-		for (std::size_t i = 0; i < m_connections.size(); ++i) {
-			m_connections[i]->close();
-			delete m_connections[i];
-		}
 		shutdown();
 		delete m_listenSocket;
 	}
@@ -81,6 +77,11 @@ namespace core {
 
 	void VirtualServer::shutdown() {
 		LOG_INFO("shutting down virtual server");
+
+		for (std::size_t i = 0; i < m_connections.size(); ++i) {
+			m_connections[i]->close();
+			delete m_connections[i];
+		}
 		m_listenSocket->close();
 	}
 
@@ -88,7 +89,11 @@ namespace core {
 
 	std::string VirtualServer::getVirtualServerInfo() const {
 		std::stringstream ss;
-		ss << "(" << m_config.serverNames.front() << ")";
+
+		ss << "(" << m_config.serverNames.front()
+		   << "; " << m_listenSocket->getLocalAddress()
+		   << ":" << m_listenSocket->getLocalPort() << ")";
 		return ss.str();
 	}
+
 } /* namespace core */
