@@ -76,6 +76,10 @@ namespace core {
 	void VirtualServer::listen() { m_listenSocket->listen(); }
 
 	void VirtualServer::shutdown() {
+		if (m_listenSocket->isValid() == false) {
+			return;
+		}
+
 		LOG_INFO("shutting down virtual server");
 
 		for (std::size_t i = 0; i < m_connections.size(); ++i) {

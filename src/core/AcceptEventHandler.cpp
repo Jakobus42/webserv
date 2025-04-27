@@ -9,7 +9,9 @@ namespace core {
 		: m_vServer(vServer)
 		, m_dispatcher(dispatcher) {}
 
-	AcceptEventHandler::~AcceptEventHandler() {}
+	AcceptEventHandler::~AcceptEventHandler() {
+		m_vServer.shutdown();
+	}
 
 	io::EventResult AcceptEventHandler::onReadable(int32_t) {
 		LOG_CONTEXT("read event | server: " + m_vServer.getVirtualServerInfo());
@@ -22,15 +24,10 @@ namespace core {
 		return io::KEEP_MONITORING;
 	}
 
-	io::EventResult AcceptEventHandler::onWriteable(int32_t) {
-		LOG_CONTEXT("write event | server: " + m_vServer.getVirtualServerInfo());
-		m_vServer.shutdown();
-		return io::UNREGISTER;
-	}
+	io::EventResult AcceptEventHandler::onWriteable(int32_t) { return io::UNREGISTER; }
 
 	io::EventResult AcceptEventHandler::onError(int32_t) {
-		LOG_CONTEXT("error event | server: " + m_vServer.getVirtualServerInfo());
-		m_vServer.shutdown();
+		LOG_ERROR("error event | server: " + m_vServer.getVirtualServerInfo() + "multiplexing error");
 		return io::UNREGISTER;
 	}
 
