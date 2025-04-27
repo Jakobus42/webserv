@@ -18,7 +18,7 @@
 
 namespace core {
 
-	const time_t CGIProcessor::DEFAULT_TIMEOUT = 5; // todo: change this to 30
+	const time_t CGIProcessor::DEFAULT_TIMEOUT = 30;
 
 	CGIProcessor::CGIProcessor(io::Dispatcher& dispatcher)
 		: m_dispatcher(dispatcher)
@@ -27,7 +27,7 @@ namespace core {
 		, m_inputPipe()
 		, m_outputPipe()
 		, m_startTime(-1)
-		, m_timeout(DEFAULT_TIMEOUT) // todo: switch with config
+		, m_timeout(DEFAULT_TIMEOUT)
 		, m_ioState(IO_NONE)
 		, m_state(EXECUTE) {
 		m_inputPipe.open();
@@ -131,7 +131,7 @@ namespace core {
 		}
 	}
 
-	// todo: get real path from env or config?
+	// todo: get real interpreter path from env or config?
 	const std::string& CGIProcessor::getInterpreter(const std::string& scriptPath) {
 		size_t dotPos = scriptPath.find_last_of('.');
 		std::string extension = (dotPos != std::string::npos) ? scriptPath.substr(dotPos) : "";
@@ -149,13 +149,14 @@ namespace core {
 		return it->second;
 	}
 
-	// todo: maybe add some more stuff
+	// todo: maybe add some more stuff (need server config for that)
 	void CGIProcessor::prepareEnviorment(const http::Request& request) {
 		setenv("PATH_INFO", request.getUri().getCgiPathInfo().c_str());
 		setenv("SERVER_PROTOCOL", request.getVersion().c_str());
 		setenv("QUERY_STRING", request.getUri().getQuery().c_str());
 		setenv("REQUEST_METHOD", methodToString(request.getMethod()));
 		setenv("SCRIPT_NAME", request.getUri().getPath().substr(9 /* /cgi-bin/ */).c_str());
+		setenv("GATEWAY_INTERFACE", "CGI/1.1");
 
 		if (request.hasHeader("content-length")) {
 			setenv("CONTENT_LENGTH", request.getHeader("content-length").front().c_str());
@@ -166,6 +167,31 @@ namespace core {
 			setenv("CONTENT_TYPE", request.getHeader("content-type").front().c_str());
 		} else {
 			setenv("CONTENT_TYPE", "text/plain");
+		}
+
+		for (http::Request::HeaderMap::const_iterator it = request.getHeaders().begin();
+			 it != request.getHeaders().end();
+			 ++it) {
+			if (it->first != "content-length" && it->first != "content-type") {
+				std::string headerName = "HTTP_" + it->first;
+
+				for (size_t i = 0; i < headerName.length(); ++i) {
+					if (headerName[i] == '-') {
+						headerName[i] = '_';
+					} else {
+						headerName[i] = std::toupper(headerName[i]);
+					}
+				}
+
+				std::string headerValue;
+				for (size_t i = 0; i < it->second.size(); ++i) {
+					if (i > 0) {
+						headerValue += ", ";
+					}
+					headerValue += it->second[i];
+				}
+				setenv(headerName.c_str(), headerValue.c_str());
+			}
 		}
 	}
 
