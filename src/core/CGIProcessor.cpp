@@ -1,17 +1,24 @@
 #include "core/CGIProcessor.hpp"
 
 #include <signal.h>
+#include <sys/wait.h>
 
 #include "core/CGIEventHandler.hpp"
 #include "http/Request.hpp"
 #include "http/Response.hpp"
 #include "http/http.hpp"
 #include "shared/Logger.hpp"
+#include "shared/stringUtils.hpp"
 
 #include <cstdlib>
 #include <cstring>
+#include <ctime>
+
+// todo: add CGI timeout and interpreters paths to config
 
 namespace core {
+
+	const time_t CGIProcessor::DEFAULT_TIMEOUT = 5; // todo: change this to 30
 
 	CGIProcessor::CGIProcessor(io::Dispatcher& dispatcher)
 		: m_dispatcher(dispatcher)
@@ -19,6 +26,9 @@ namespace core {
 		, m_pid(-1)
 		, m_inputPipe()
 		, m_outputPipe()
+		, m_startTime(-1)
+		, m_timeout(DEFAULT_TIMEOUT) // todo: switch with config
+		, m_ioState(IO_NONE)
 		, m_state(EXECUTE) {
 		m_inputPipe.open();
 		m_outputPipe.open();
@@ -34,11 +44,16 @@ namespace core {
 		switch (m_state) {
 			case EXECUTE: {
 				prepareEnviorment(request);
-				executeCGIScript(request); // todo: somehow get the corret path
+				executeCGIScript(request);
 				m_state = WAIT;
 				break;
 			}
-			case WAIT: break;
+			case WAIT: {
+				if (!waitCGIScript()) {
+					m_state = DONE;
+				}
+				break;
+			}
 			case DONE: break;
 		}
 		return !(m_state == DONE);
@@ -58,9 +73,30 @@ namespace core {
 		m_state = EXECUTE;
 	}
 
+	void CGIProcessor::notifyIOReadCompletion() {
+		if (m_ioState & IO_ERROR) {
+			return;
+		}
+		m_ioState |= IO_READ_COMPLETE;
+	}
+
+	void CGIProcessor::notifyIOWriteCompletion() {
+		if (m_ioState & IO_ERROR) {
+			return;
+		}
+		m_ioState |= IO_WRITE_COMPLETE;
+	}
+
+	void CGIProcessor::notifyIOError() {
+		m_ioState |= IO_ERROR;
+	}
+
 	// todo: exit child properly
 	// todo: check if script exists before exec - this should maybe happen in router or something
+	// todo: somehow get the corret path
 	void CGIProcessor::executeCGIScript(const http::Request& request) {
+		m_startTime = std::time(NULL);
+
 		m_pid = fork();
 		if (m_pid == -1) {
 			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "fork() failed " + std::string(std::strerror(errno)));
@@ -86,14 +122,16 @@ namespace core {
 			m_inputPipe.closeReadEnd();
 			m_outputPipe.closeWriteEnd();
 
-			m_dispatcher.registerHandler(m_outputPipe.getReadFd(), new CGIEventHandler(), io::AMultiplexer::EVENT_READ);
+			m_dispatcher.registerHandler(m_outputPipe.getReadFd(), new CGIEventHandler(*this, request, m_response), io::AMultiplexer::EVENT_READ);
 			if (request.getMethod() == http::POST) {
-				m_dispatcher.registerHandler(m_inputPipe.getWriteFd(), new CGIEventHandler(), io::AMultiplexer::EVENT_WRITE);
+				m_dispatcher.registerHandler(m_inputPipe.getWriteFd(), new CGIEventHandler(*this, request, m_response), io::AMultiplexer::EVENT_WRITE);
+			} else {
+				notifyIOWriteCompletion();
 			}
 		}
 	}
 
-	// todo: get real path from env
+	// todo: get real path from env or config?
 	const std::string& CGIProcessor::getInterpreter(const std::string& scriptPath) {
 		size_t dotPos = scriptPath.find_last_of('.');
 		std::string extension = (dotPos != std::string::npos) ? scriptPath.substr(dotPos) : "";
@@ -104,11 +142,11 @@ namespace core {
 		}
 
 		std::map<std::string, std::string>::const_iterator it = interpreters.find(extension);
-		if (it != interpreters.end()) {
-			return it->second;
+		if (it == interpreters.end()) {
+			throw http::HttpException(http::NOT_IMPLEMENTED, "unsupported script type: " + extension);
 		}
 
-		throw http::HttpException(http::NOT_IMPLEMENTED, "unsupported script type: " + extension);
+		return it->second;
 	}
 
 	// todo: maybe add some more stuff
@@ -126,6 +164,39 @@ namespace core {
 			setenv("CONTENT_TYPE", request.getHeader("content-type").front().c_str());
 		}
 	}
+
+	bool CGIProcessor::waitCGIScript() {
+		time_t now = time(NULL);
+		if ((now - m_startTime) > m_timeout) {
+			throw http::HttpException(http::GATEWAY_TIMEOUT, "CGI Process timed out after " + shared::string::toString(m_timeout) + " seconds");
+		}
+
+		if (hasIOError()) {
+			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "CGI Event Handler failed"); // sus
+		}
+
+		if (!isIOComplete()) {
+			return true;
+		}
+
+
+		int status;
+		pid_t result = waitpid(m_pid, &status, WNOHANG);
+		if (result == -1) {
+			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "waitpid() failed " + std::string(std::strerror(errno)));
+		} else if (result == 0) {
+			return true;
+		}
+
+		LOG_INFO("CGI Process exited with status code: " + shared::string::toString(status));
+		m_pid = -1;
+
+		return false;
+	}
+
+	bool CGIProcessor::isIOComplete() const { return (m_ioState & IO_READ_COMPLETE) != 0 && (m_ioState & IO_WRITE_COMPLETE) != 0; }
+
+	bool CGIProcessor::hasIOError() const { return (m_ioState & IO_ERROR) != 0; }
 
 	void CGIProcessor::setenv(const char* name, const char* value) const {
 		if (::setenv(name, value, true)) {

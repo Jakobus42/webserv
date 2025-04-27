@@ -7,6 +7,7 @@
 // todo: better error messages for uri
 // todo: normelize the path here maybe or in the uri class (uri.normelize())
 // todo: setPathSegemnt should take a stringView. (see setHeaders for impl example) - also the split path should be implemented here using stringView aswell
+// todo: validate http version
 
 namespace http {
 

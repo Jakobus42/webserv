@@ -1,5 +1,7 @@
 #include "http/Response.hpp"
 
+#include "shared/stringUtils.hpp"
+
 #include <sstream>
 
 namespace http {
@@ -15,6 +17,10 @@ namespace http {
 	const std::string& Response::serialize() {
 		if (!m_serializedData.empty()) {
 			return m_serializedData;
+		}
+
+		if (!hasHeader("Content-Length")) {
+			appendHeader("Content-Length", shared::string::toString(m_body.size()));
 		}
 
 		std::ostringstream ss;

@@ -21,6 +21,11 @@ namespace core {
 
 			void reset();
 
+			// .-. hacky shit
+			void notifyIOReadCompletion();
+			void notifyIOWriteCompletion();
+			void notifyIOError();
+
 		private:
 			enum State {
 				EXECUTE,
@@ -28,16 +33,27 @@ namespace core {
 				DONE
 			};
 
+			enum IOState {
+				IO_NONE = 0x0,
+				IO_READ_COMPLETE = 0x01,
+				IO_WRITE_COMPLETE = 0x02,
+				IO_ERROR = 0x04
+			};
+
 			void prepareEnviorment(const http::Request& request);
 			void executeCGIScript(const http::Request& request);
 			const std::string& getInterpreter(const std::string& scriptPath);
 
+			bool waitCGIScript();
 
+			bool isIOComplete() const;
+			bool hasIOError() const;
 			void setenv(const char* name, const char* value) const;
-
 			void cleanup();
 
 		private:
+			static const time_t DEFAULT_TIMEOUT;
+
 			io::Dispatcher& m_dispatcher;
 
 			http::Response* m_response;
@@ -45,7 +61,9 @@ namespace core {
 			pid_t m_pid;
 			io::Pipe m_inputPipe;
 			io::Pipe m_outputPipe;
-
+			time_t m_startTime;
+			time_t m_timeout;
+			int32_t m_ioState;
 			State m_state;
 	};
 

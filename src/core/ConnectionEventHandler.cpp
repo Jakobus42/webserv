@@ -21,6 +21,9 @@ namespace core {
 	}
 
 	ConnectionEventHandler::~ConnectionEventHandler() {
+		LOG_CONTEXT("server: " + m_vServer->getVirtualServerInfo() +
+					" | connection: " + m_connection->getConnectionInfo());
+
 		while (!m_requests.empty()) {
 			delete m_requests.front();
 			m_requests.pop();
@@ -76,7 +79,7 @@ namespace core {
 			}
 			m_responses.push(m_requestProcessor.releaseResponse());
 			m_requestProcessor.reset();
-		
+
 			delete request;
 			m_requests.pop();
 		}
@@ -86,7 +89,6 @@ namespace core {
 		}
 
 		http::Response* response = m_responses.front();
-		response->appendHeader("Content-Length", "0"); // tmp
 		const std::string& serializedResponse = response->serialize();
 		ssize_t bytesSent = m_connection->send(serializedResponse.c_str() + m_totalBytesSent, serializedResponse.size() - m_totalBytesSent);
 		if (bytesSent == -1) {
@@ -108,8 +110,8 @@ namespace core {
 	}
 
 	io::EventResult ConnectionEventHandler::onError(int32_t) {
-		LOG_CONTEXT("error event | virtual server: " + m_vServer->getVirtualServerInfo() +
-					" | connection: " + m_connection->getConnectionInfo());
+		LOG_ERROR("error event | virtual server: " + m_vServer->getVirtualServerInfo() +
+				  " | connection: " + m_connection->getConnectionInfo() + " multiplexing error");
 		return io::UNREGISTER;
 	}
 

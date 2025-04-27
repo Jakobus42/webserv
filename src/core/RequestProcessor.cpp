@@ -8,6 +8,7 @@
 #include "http/Response.hpp"
 #include "http/http.hpp"
 #include "shared/Logger.hpp"
+#include "shared/stringUtils.hpp"
 
 namespace core {
 
@@ -45,20 +46,20 @@ namespace core {
 				if (handler->handle(request, m_response)) {
 					return true;
 				}
+				m_response->appendBody("tmp response\n\n\n"); // tmp
 			} else if (requestType == http::Request::CGI) {
 				if (m_cgiProcessor.process(*request)) {
 					return true;
 				}
-				std::cout << "lelelele" << std::endl;
 				delete m_response;
 				m_response = m_cgiProcessor.releaseResponse();
 			}
 		} catch (const http::HttpException& e) {
-			LOG_ERROR("request handler failed: " + std::string(e.what()));
+			LOG_ERROR("failed to process request: " + std::string(e.what()));
 			generateErrorResponse(e.getStatusCode());
 			return false;
 		} catch (const std::exception& e) {
-			LOG_ERROR("request handler failed: " + std::string(e.what()));
+			LOG_ERROR("failed to process request: " + std::string(e.what()));
 			generateErrorResponse(http::INTERNAL_SERVER_ERROR);
 			return false;
 		}
@@ -83,6 +84,7 @@ namespace core {
 	}
 
 	void RequestProcessor::generateErrorResponse(http::StatusCode) {
+		m_response->appendBody("tmp response\n\n\n"); // tmp
 	}
 
 } // namespace core
