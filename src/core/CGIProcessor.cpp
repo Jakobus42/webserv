@@ -10,6 +10,7 @@
 #include "shared/Logger.hpp"
 #include "shared/stringUtils.hpp"
 
+#include <algorithm>
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
@@ -31,7 +32,8 @@ namespace core {
 		, m_startTime(-1)
 		, m_timeout(DEFAULT_TIMEOUT)
 		, m_ioState(IO_NONE)
-		, m_state(EXECUTE) {
+		, m_state(EXECUTE)
+		, m_env(NULL) {
 		m_inputPipe.open();
 		m_outputPipe.open();
 	}
@@ -113,7 +115,7 @@ namespace core {
 					const_cast<char*>(scriptPath.c_str()),
 					NULL};
 
-				execve(interpreter.c_str(), argv, environ);
+				execve(interpreter.c_str(), argv, m_env);
 				throw std::runtime_error("execve() failed: " + std::string(std::strerror(errno)));
 			} catch (const std::exception& e) {
 				LOG_ERROR("child process: " + std::string(e.what()));
@@ -156,22 +158,25 @@ namespace core {
 
 	// todo: maybe add some mor stuff (need more context for that)
 	void CGIProcessor::prepareEnviorment(const http::Request& request) {
-		setenv("PATH_INFO", request.getUri().getCgiPathInfo().c_str());
-		setenv("SERVER_PROTOCOL", request.getVersion().c_str());
-		setenv("QUERY_STRING", request.getUri().getQuery().c_str());
-		setenv("REQUEST_METHOD", methodToString(request.getMethod()));
-		setenv("SCRIPT_NAME", request.getUri().getPath().substr(9 /* /cgi-bin/ */).c_str());
-		setenv("GATEWAY_INTERFACE", "CGI/1.1");
+		std::vector<std::string> envVars;
+
+		envVars.push_back("PATH_INFO=" + request.getUri().getCgiPathInfo());
+		envVars.push_back("SERVER_PROTOCOL=" + request.getVersion());
+		envVars.push_back("QUERY_STRING=" + request.getUri().getQuery());
+		envVars.push_back("REQUEST_METHOD=" + std::string(methodToString(request.getMethod())));
+		envVars.push_back("SCRIPT_NAME=" + request.getUri().getPath().substr(9 /* /cgi-bin/ */));
+		envVars.push_back("GATEWAY_INTERFACE=CGI/1.1");
 
 		if (request.hasHeader("content-length")) {
-			setenv("CONTENT_LENGTH", request.getHeader("content-length").front().c_str());
+			envVars.push_back("CONTENT_LENGTH=" + request.getHeader("content-length").front());
 		} else {
-			setenv("CONTENT_LENGTH", "0");
+			envVars.push_back("CONTENT_LENGTH=0");
 		}
+
 		if (request.hasHeader("content-type")) {
-			setenv("CONTENT_TYPE", request.getHeader("content-type").front().c_str());
+			envVars.push_back("CONTENT_TYPE=" + request.getHeader("content-type").front());
 		} else {
-			setenv("CONTENT_TYPE", "text/plain");
+			envVars.push_back("CONTENT_TYPE=text/plain");
 		}
 
 		for (http::Request::HeaderMap::const_iterator it = request.getHeaders().begin();
@@ -187,15 +192,26 @@ namespace core {
 				}
 			}
 
-			std::string headerValue;
-			for (size_t i = 0; i < it->second.size(); ++i) {
-				if (i > 0) {
-					headerValue += ", ";
-				}
-				headerValue += it->second[i];
-			}
-			setenv(headerName.c_str(), headerValue.c_str());
+			envVars.push_back(headerName + "=" + shared::string::join(it->second, ", "));
 		}
+
+		for (std::size_t i = 0; environ[i] != NULL; ++i) {
+			std::string entry(environ[i]);
+			if (std::find(envVars.begin(), envVars.end(), entry) == envVars.end()) {
+				envVars.push_back(entry);
+			}
+		}
+
+		// todo: malloc fail
+		m_env = new char*[envVars.size() + 1];
+		for (std::size_t i = 0; i < envVars.size(); ++i) {
+			m_env[i] = new char[envVars[i].length() + 1];
+			std::copy(envVars[i].c_str(),
+					  envVars[i].c_str() + envVars[i].length() + 1,
+					  m_env[i]);
+		}
+
+		m_env[envVars.size()] = NULL;
 	}
 
 	bool CGIProcessor::waitCGIScript() {
@@ -240,12 +256,6 @@ namespace core {
 
 	bool CGIProcessor::hasIOError() const { return (m_ioState & IO_ERROR) != 0; }
 
-	void CGIProcessor::setenv(const char* name, const char* value) const {
-		if (::setenv(name, value, true)) {
-			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "setenv() failed" + std::string(std::strerror(errno)));
-		}
-	}
-
 	void CGIProcessor::cleanup() {
 		try {
 			m_dispatcher.unregisterHandler(m_outputPipe.getReadFd());
@@ -262,6 +272,14 @@ namespace core {
 
 		m_inputPipe.close();
 		m_outputPipe.close();
+
+		if (m_env) {
+			for (std::size_t i = 0; m_env[i]; ++i) {
+				delete m_env[i];
+			}
+			delete m_env;
+			m_env = NULL;
+		}
 	}
 
 } /* namespace core */
