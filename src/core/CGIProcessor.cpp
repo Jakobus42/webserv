@@ -227,9 +227,8 @@ namespace core {
 										  "CGI script exited with non-zero exit code: " + shared::string::toString(exitCode));
 			}
 		} else if (WIFSIGNALED(status)) {
-			int signal = WTERMSIG(status);
 			throw http::HttpException(http::BAD_GATEWAY,
-									  "CGI script terminated by signal: " + shared::string::toString(signal));
+									  "CGI script terminated by signal: " + shared::string::toString(WTERMSIG(status)));
 		}
 
 		if (!isIOComplete()) {
