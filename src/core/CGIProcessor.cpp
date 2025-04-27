@@ -14,6 +14,8 @@
 #include <cstring>
 #include <ctime>
 
+extern char** environ;
+
 // todo: add CGI timeout and interpreters paths to config
 
 namespace core {
@@ -152,7 +154,7 @@ namespace core {
 		return it->second;
 	}
 
-	// todo: maybe add some more stuff (need server config for that)
+	// todo: maybe add some mor stuff (need more context for that)
 	void CGIProcessor::prepareEnviorment(const http::Request& request) {
 		setenv("PATH_INFO", request.getUri().getCgiPathInfo().c_str());
 		setenv("SERVER_PROTOCOL", request.getVersion().c_str());
@@ -199,7 +201,6 @@ namespace core {
 	}
 
 	bool CGIProcessor::waitCGIScript() {
-
 		time_t now = time(NULL);
 		if ((now - m_startTime) > m_timeout) {
 			throw http::HttpException(http::GATEWAY_TIMEOUT, "CGI Process timed out after " + shared::string::toString(m_timeout) + " seconds");
