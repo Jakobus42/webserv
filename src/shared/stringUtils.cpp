@@ -16,16 +16,20 @@ namespace shared {
 			return tokens;
 		}
 
-		// todo: move this somewhere else
+		std::string join(const std::vector<std::string>& vec, const std::string& separator) {
+			std::string joined;
 
-		//  std::string joinPath(const std::vector<std::string>& pathComponents) {
-		//  	std::string joined = "";
-		//  	for (std::vector<std::string>::const_iterator it = pathComponents.begin(); it != pathComponents.end(); ++it) {
-		//  		joined += "/";
-		//  		joined += *it;
-		//  	}
-		//  	return joined;
-		//  }
+			for (std::vector<std::string>::const_iterator it = vec.begin(); it != vec.end(); ++it) {
+				if (it != vec.begin()) {
+					joined += separator;
+				}
+				joined += *it;
+			}
+
+			return joined;
+		}
+
+		// todo: move this somewhere else
 
 		// std::vector<std::string> normalizePath(const std::vector<std::string>& path) {
 		// 	std::vector<std::string> normalized;

@@ -48,7 +48,6 @@ namespace core {
 
 			bool isIOComplete() const;
 			bool hasIOError() const;
-			void setenv(const char* name, const char* value) const;
 			void cleanup();
 
 		private:
@@ -65,6 +64,8 @@ namespace core {
 			time_t m_timeout;
 			int32_t m_ioState;
 			State m_state;
+
+			char** m_env;
 	};
 
 } /* namespace core */

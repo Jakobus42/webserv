@@ -30,6 +30,8 @@ namespace shared {
 
 		std::vector<std::string> split(const std::string& str, char delimiter);
 
+		std::string join(const std::vector<std::string>& vec, const std::string& separator);
+
 		// todo: move this somewhere else
 		//  /**
 		//   * @brief Splits a path into its components, delimited by '/'
