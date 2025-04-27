@@ -19,7 +19,7 @@ namespace core {
 			RequestProcessor();
 			~RequestProcessor();
 
-			bool processRequest(http::Request* request);
+			bool processRequest(http::Request& request);
 			http::Response* releaseResponse();
 
 			void reset();

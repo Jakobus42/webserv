@@ -9,7 +9,7 @@ namespace core {
 			PostRequestHandler();
 			virtual ~PostRequestHandler();
 
-			virtual void handle(const http::Request* request, http::Response* response);
+			virtual void handle(const http::Request& request, http::Response& response);
 	};
 
 } /* namespace core */

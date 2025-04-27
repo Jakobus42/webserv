@@ -9,7 +9,7 @@ namespace core {
 
 	class AcceptEventHandler : public io::IEventHandler {
 		public:
-			AcceptEventHandler(core::VirtualServer* vServer, io::Dispatcher& dispatcher);
+			AcceptEventHandler(core::VirtualServer& vServer, io::Dispatcher& dispatcher);
 			virtual ~AcceptEventHandler();
 
 			virtual io::EventResult onReadable(int32_t fd);
@@ -19,7 +19,7 @@ namespace core {
 			virtual io::EventResult onError(int32_t fd);
 
 		private:
-			VirtualServer* m_vServer;
+			VirtualServer& m_vServer;
 			io::Dispatcher& m_dispatcher;
 	};
 
