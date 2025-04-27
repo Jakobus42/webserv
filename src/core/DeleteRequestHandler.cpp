@@ -9,7 +9,7 @@ namespace core {
 	DeleteRequestHandler::~DeleteRequestHandler() {
 	}
 
-	bool DeleteRequestHandler::handle(const http::Request*, http::Response*) {
+	bool DeleteRequestHandler::handle(const http::Request&, http::Response&) {
 		return false;
 	}
 

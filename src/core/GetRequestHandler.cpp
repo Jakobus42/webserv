@@ -11,7 +11,7 @@ namespace core {
 	GetRequestHandler::~GetRequestHandler() {
 	}
 
-	bool GetRequestHandler::handle(const http::Request*, http::Response*) {
+	bool GetRequestHandler::handle(const http::Request&, http::Response&) {
 		return false;
 	}
 

@@ -177,26 +177,24 @@ namespace core {
 		for (http::Request::HeaderMap::const_iterator it = request.getHeaders().begin();
 			 it != request.getHeaders().end();
 			 ++it) {
-			if (it->first != "content-length" && it->first != "content-type") {
-				std::string headerName = "HTTP_" + it->first;
+			std::string headerName = "HTTP_" + it->first;
 
-				for (size_t i = 0; i < headerName.length(); ++i) {
-					if (headerName[i] == '-') {
-						headerName[i] = '_';
-					} else {
-						headerName[i] = std::toupper(headerName[i]);
-					}
+			for (size_t i = 0; i < headerName.length(); ++i) {
+				if (headerName[i] == '-') {
+					headerName[i] = '_';
+				} else {
+					headerName[i] = std::toupper(headerName[i]);
 				}
-
-				std::string headerValue;
-				for (size_t i = 0; i < it->second.size(); ++i) {
-					if (i > 0) {
-						headerValue += ", ";
-					}
-					headerValue += it->second[i];
-				}
-				setenv(headerName.c_str(), headerValue.c_str());
 			}
+
+			std::string headerValue;
+			for (size_t i = 0; i < it->second.size(); ++i) {
+				if (i > 0) {
+					headerValue += ", ";
+				}
+				headerValue += it->second[i];
+			}
+			setenv(headerName.c_str(), headerValue.c_str());
 		}
 	}
 

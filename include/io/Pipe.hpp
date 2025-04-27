@@ -21,10 +21,6 @@ namespace io {
 			void dupReadFd(int newFd);
 			void dupWriteFd(int newFd);
 
-			void setNonBlocking(bool nonBlocking);
-			void setReadNonBlocking(bool nonBlocking);
-			void setWriteNonBlocking(bool nonBlocking);
-
 			void closeReadEnd();
 			void closeWriteEnd();
 			void close();

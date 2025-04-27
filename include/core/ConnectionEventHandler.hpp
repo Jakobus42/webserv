@@ -21,7 +21,7 @@ namespace core {
 
 	class ConnectionEventHandler : public io::IEventHandler {
 		public:
-			ConnectionEventHandler(VirtualServer* vServer, Connection* conn, io::Dispatcher& dispatcher);
+			ConnectionEventHandler(VirtualServer& vServer, Connection& conn, io::Dispatcher& dispatcher);
 			virtual ~ConnectionEventHandler();
 
 			virtual io::EventResult onReadable(int32_t fd);
@@ -31,8 +31,8 @@ namespace core {
 			virtual io::EventResult onError(int32_t fd);
 
 		private:
-			VirtualServer* m_vServer;
-			Connection* m_connection;
+			VirtualServer& m_vServer;
+			Connection& m_connection;
 
 			http::RequestParser m_requestParser;
 			RequestProcessor m_requestProcessor;

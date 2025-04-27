@@ -1,4 +1,5 @@
 #include "core/PostRequestHandler.hpp"
+
 #include "http/Request.hpp"
 
 namespace core {
@@ -10,7 +11,7 @@ namespace core {
 	PostRequestHandler::~PostRequestHandler() {
 	}
 
-	bool PostRequestHandler::handle(const http::Request*, http::Response*) {
+	bool PostRequestHandler::handle(const http::Request&, http::Response&) {
 		return false;
 	}
 

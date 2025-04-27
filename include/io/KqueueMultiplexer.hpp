@@ -1,8 +1,6 @@
 #pragma once
 
-#if defined(__APPLE__) || defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__NetBSD__)
-
-#	include "io/AMultiplexer.hpp"
+#include "io/AMultiplexer.hpp"
 
 namespace io {
 
@@ -24,5 +22,3 @@ namespace io {
 	};
 
 } /* namespace io */
-
-#endif // platform check

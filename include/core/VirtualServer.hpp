@@ -16,10 +16,10 @@ namespace core {
 			void shutdown();
 
 			Connection* acceptNewConnection();
-			void removeConnection(Connection* conn);
+			void removeConnection(const Connection& conn);
 			void removeInactiveConnections();
 
-			const io::Socket* getListenSocket() const;
+			const io::Socket& getListenSocket() const;
 			std::string getVirtualServerInfo() const;
 
 		private:

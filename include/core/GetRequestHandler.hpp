@@ -9,7 +9,7 @@ namespace core {
 			GetRequestHandler();
 			virtual ~GetRequestHandler();
 
-			virtual bool handle(const http::Request* request, http::Response* response);
+			virtual bool handle(const http::Request& request, http::Response& response);
 	};
 
 } /* namespace core */

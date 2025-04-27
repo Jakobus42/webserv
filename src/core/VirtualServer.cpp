@@ -25,10 +25,6 @@ namespace core {
 	}
 
 	VirtualServer::~VirtualServer() {
-		for (std::size_t i = 0; i < m_connections.size(); ++i) {
-			m_connections[i]->close();
-			delete m_connections[i];
-		}
 		shutdown();
 		delete m_listenSocket;
 	}
@@ -51,10 +47,10 @@ namespace core {
 		return NULL;
 	}
 
-	void VirtualServer::removeConnection(Connection* conn) {
+	void VirtualServer::removeConnection(const Connection& conn) {
 		for (std::size_t i = 0; i < m_connections.size(); ++i) {
-			if (m_connections[i] == conn) {
-				delete conn;
+			if (m_connections[i]->getSocket().getFd() == conn.getSocket().getFd()) {
+				delete m_connections[i];
 				m_connections.erase(m_connections.begin() + i);
 				return;
 			}
@@ -72,7 +68,7 @@ namespace core {
 
 			if (now - conn->getLastActivityTimestamp() > CONNECTION_TIMEOUT) { // todo: maybe make this configureable
 				LOG_INFO("removing inactive connection: " + conn->getConnectionInfo());
-				removeConnection(conn);
+				removeConnection(*conn);
 			}
 		}
 	}
@@ -81,14 +77,23 @@ namespace core {
 
 	void VirtualServer::shutdown() {
 		LOG_INFO("shutting down virtual server");
+
+		for (std::size_t i = 0; i < m_connections.size(); ++i) {
+			m_connections[i]->close();
+			delete m_connections[i];
+		}
 		m_listenSocket->close();
 	}
 
-	const io::Socket* VirtualServer::getListenSocket() const { return m_listenSocket; }
+	const io::Socket& VirtualServer::getListenSocket() const { return *m_listenSocket; }
 
 	std::string VirtualServer::getVirtualServerInfo() const {
 		std::stringstream ss;
-		ss << "(" << m_config.serverNames.front() << ")";
+
+		ss << "(" << m_config.serverNames.front()
+		   << "; " << m_listenSocket->getLocalAddress()
+		   << ":" << m_listenSocket->getLocalPort() << ")";
 		return ss.str();
 	}
+
 } /* namespace core */

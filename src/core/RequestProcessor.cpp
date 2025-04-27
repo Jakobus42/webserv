@@ -27,28 +27,28 @@ namespace core {
 		delete m_response;
 	}
 
-	// todo maybe have a isComplete function. the return value could be confusing (also applies to CGIProcessor, Request/Response Parser)
-	bool RequestProcessor::processRequest(const http::Request* request) {
+	// todo maybe have a isComplete function. the return value could be confusing
+	bool RequestProcessor::processRequest(const http::Request& request) {
 		if (!m_response) {
 			m_response = new http::Response();
 		}
 
-		if (request->isValid() == false) { // yeah this is kinda weird...
-			generateErrorResponse(request->getStatusCode());
+		if (request.isValid() == false) { // yeah this is kinda weird...
+			generateErrorResponse(request.getStatusCode());
 			return false;
 		}
 
 		try {
-			http::Request::Type requestType = request->getType();
+			http::Request::Type requestType = request.getType();
 
 			if (requestType == http::Request::FETCH) {
-				ARequestHandler* handler = m_handlers[request->getMethod()];
-				if (handler->handle(request, m_response)) {
+				ARequestHandler* handler = m_handlers[request.getMethod()];
+				if (handler->handle(request, *m_response)) {
 					return true;
 				}
 				m_response->appendBody("tmp response\n"); // tmp
 			} else if (requestType == http::Request::CGI) {
-				if (m_cgiProcessor.process(*request)) {
+				if (m_cgiProcessor.process(request)) {
 					return true;
 				}
 				delete m_response;
