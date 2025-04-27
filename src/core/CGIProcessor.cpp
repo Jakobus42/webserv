@@ -43,7 +43,6 @@ namespace core {
 
 		switch (m_state) {
 			case EXECUTE: {
-				prepareEnviorment(request);
 				executeCGIScript(request);
 				m_state = WAIT;
 				break;
@@ -74,16 +73,10 @@ namespace core {
 	}
 
 	void CGIProcessor::notifyIOReadCompletion() {
-		if (m_ioState & IO_ERROR) {
-			return;
-		}
 		m_ioState |= IO_READ_COMPLETE;
 	}
 
 	void CGIProcessor::notifyIOWriteCompletion() {
-		if (m_ioState & IO_ERROR) {
-			return;
-		}
 		m_ioState |= IO_WRITE_COMPLETE;
 	}
 
@@ -103,6 +96,8 @@ namespace core {
 		}
 
 		if (m_pid == 0) {
+			prepareEnviorment(request);
+
 			m_inputPipe.closeWriteEnd();
 			m_outputPipe.closeReadEnd();
 
@@ -122,9 +117,13 @@ namespace core {
 			m_inputPipe.closeReadEnd();
 			m_outputPipe.closeWriteEnd();
 
-			m_dispatcher.registerHandler(m_outputPipe.getReadFd(), new CGIEventHandler(*this, request, m_response), io::AMultiplexer::EVENT_READ);
+			m_dispatcher.registerHandler(m_outputPipe.getReadFd(),
+										 new CGIEventHandler(*this, request, m_response),
+										 io::AMultiplexer::EVENT_READ | io::AMultiplexer::EVENT_ERROR);
 			if (request.getMethod() == http::POST) {
-				m_dispatcher.registerHandler(m_inputPipe.getWriteFd(), new CGIEventHandler(*this, request, m_response), io::AMultiplexer::EVENT_WRITE);
+				m_dispatcher.registerHandler(m_inputPipe.getWriteFd(),
+											 new CGIEventHandler(*this, request, m_response),
+											 io::AMultiplexer::EVENT_WRITE | io::AMultiplexer::EVENT_ERROR);
 			} else {
 				notifyIOWriteCompletion();
 			}

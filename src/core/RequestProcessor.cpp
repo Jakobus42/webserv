@@ -46,7 +46,7 @@ namespace core {
 				if (handler->handle(request, m_response)) {
 					return true;
 				}
-				m_response->appendBody("tmp response\n\n\n"); // tmp
+				m_response->appendBody("tmp response\n"); // tmp
 			} else if (requestType == http::Request::CGI) {
 				if (m_cgiProcessor.process(*request)) {
 					return true;
@@ -84,7 +84,7 @@ namespace core {
 	}
 
 	void RequestProcessor::generateErrorResponse(http::StatusCode) {
-		m_response->appendBody("tmp response\n\n\n"); // tmp
+		m_response->appendBody("tmp error response\n"); // tmp
 	}
 
 } // namespace core
