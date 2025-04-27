@@ -121,7 +121,9 @@ namespace http {
 			std::size_t pos = uri.getPath().find_first_of("/#?", 9);
 			if (pos != std::string::npos) {
 				uri.setCgiPathInfo(uri.getPath().substr(pos));
-				uri.setPath(uri.getPath().substr(1, pos));
+				uri.setPath(uri.getPath().substr(1, pos - 1));
+			} else {
+				uri.setPath(uri.getPath().substr(1));
 			}
 			m_request->setType(Request::CGI);
 		}

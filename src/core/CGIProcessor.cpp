@@ -85,9 +85,7 @@ namespace core {
 		m_ioState |= IO_ERROR;
 	}
 
-	// todo: exit child properly
 	// todo: check if script exists before exec - this should maybe happen in router or something
-	// todo: somehow get the corret path
 	void CGIProcessor::executeCGIScript(const http::Request& request) {
 		m_startTime = std::time(NULL);
 
@@ -97,23 +95,28 @@ namespace core {
 		}
 
 		if (m_pid == 0) {
-			prepareEnviorment(request);
+			try {
+				prepareEnviorment(request);
 
-			m_inputPipe.closeWriteEnd();
-			m_outputPipe.closeReadEnd();
+				m_inputPipe.closeWriteEnd();
+				m_outputPipe.closeReadEnd();
 
-			m_inputPipe.dupReadFd(STDIN_FILENO);
-			m_outputPipe.dupWriteFd(STDOUT_FILENO);
+				m_inputPipe.dupReadFd(STDIN_FILENO);
+				m_outputPipe.dupWriteFd(STDOUT_FILENO);
 
-			const std::string& scriptPath = request.getUri().getPath().substr(1);
-			const std::string& interpreter = getInterpreter(scriptPath);
-			char* const argv[] = {
-				const_cast<char*>(interpreter.c_str()),
-				const_cast<char*>(scriptPath.c_str()),
-				NULL};
+				const std::string& scriptPath = request.getUri().getPath();
+				const std::string& interpreter = getInterpreter(scriptPath);
+				char* const argv[] = {
+					const_cast<char*>(interpreter.c_str()),
+					const_cast<char*>(scriptPath.c_str()),
+					NULL};
 
-			execve(interpreter.c_str(), argv, environ);
-			LOG_ERROR("execve() failed: " + std::string(std::strerror(errno)));
+				execve(interpreter.c_str(), argv, environ);
+				throw std::runtime_error("execve() failed: " + std::string(std::strerror(errno)));
+			} catch (const std::exception& e) {
+				LOG_ERROR("child process: " + std::string(e.what()));
+				_exit(EXIT_FAILURE);
+			}
 		} else {
 			m_inputPipe.closeReadEnd();
 			m_outputPipe.closeWriteEnd();
@@ -196,17 +199,14 @@ namespace core {
 	}
 
 	bool CGIProcessor::waitCGIScript() {
+
 		time_t now = time(NULL);
 		if ((now - m_startTime) > m_timeout) {
 			throw http::HttpException(http::GATEWAY_TIMEOUT, "CGI Process timed out after " + shared::string::toString(m_timeout) + " seconds");
 		}
 
 		if (hasIOError()) {
-			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "CGI Event Handler failed"); // sus
-		}
-
-		if (!isIOComplete()) {
-			return true;
+			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "CGI Event Handler failed");
 		}
 
 		int status;
@@ -230,6 +230,11 @@ namespace core {
 			throw http::HttpException(http::BAD_GATEWAY,
 									  "CGI script terminated by signal: " + shared::string::toString(signal));
 		}
+
+		if (!isIOComplete()) {
+			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "CGI script finished but io handlers are not complete");
+		}
+
 		return false;
 	}
 
