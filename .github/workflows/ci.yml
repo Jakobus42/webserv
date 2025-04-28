@@ -1,4 +1,4 @@
-name: Pre-merge Checks
+name: ci
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  code-analysis:
+  code-analysis-ubuntu:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,8 +15,19 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t template .
+          docker build -t img .
 
-      - name: Run strict compilation tests in Docker
+      - name: Run strict checks
         run: |
-          docker run --rm template make strict
+          docker run --rm img make strict
+
+  code-analysis-macos:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: build
+        run: |
+          make
