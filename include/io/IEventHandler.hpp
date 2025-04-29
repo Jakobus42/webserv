@@ -19,6 +19,8 @@ namespace io {
 
 			virtual EventResult onWriteable(int32_t fd) = 0;
 
+			virtual EventResult onHangup(int32_t fd) = 0;
+
 			virtual EventResult onError(int32_t fd) = 0;
 	};
 

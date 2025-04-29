@@ -18,6 +18,8 @@ namespace io {
 			int32_t dispatch(int32_t timeoutMs = AMultiplexer::TIMEOUT_INFINITE);
 			void close();
 
+			bool isRegistered(int32_t fd) const;
+
 			void cleanup();
 
 		private:

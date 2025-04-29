@@ -66,6 +66,12 @@ namespace core {
 		return io::KEEP_MONITORING;
 	}
 
+	io::EventResult CGIEventHandler::onHangup(int32_t) {
+		LOG_ERROR("IO event hangup on CGI handler");
+		m_processor.notifyIOError();
+		return io::UNREGISTER;
+	}
+
 	io::EventResult CGIEventHandler::onError(int32_t) {
 		LOG_ERROR("IO event error on CGI handler");
 		m_processor.notifyIOError();

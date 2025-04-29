@@ -109,6 +109,12 @@ namespace core {
 		return io::KEEP_MONITORING;
 	}
 
+	io::EventResult ConnectionEventHandler::onHangup(int32_t) {
+		LOG_ERROR("hangup event | virtual server: " + m_vServer.getVirtualServerInfo() +
+				  " | connection: " + m_connection.getConnectionInfo());
+		return io::UNREGISTER;
+	}
+
 	io::EventResult ConnectionEventHandler::onError(int32_t) {
 		LOG_ERROR("error event | virtual server: " + m_vServer.getVirtualServerInfo() +
 				  " | connection: " + m_connection.getConnectionInfo() + " multiplexing error");
