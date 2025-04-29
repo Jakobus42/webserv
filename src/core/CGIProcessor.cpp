@@ -107,7 +107,6 @@ namespace core {
 				m_outputPipe.dupWriteFd(STDOUT_FILENO);
 				m_outputPipe.close();
 
-				// todo: try to throw here - might cause issues because epoll fds are already closed
 
 				prepareEnviorment(request);
 
@@ -121,8 +120,11 @@ namespace core {
 				execve(interpreter.c_str(), argv, m_env);
 				throw std::runtime_error("execve() failed: " + std::string(std::strerror(errno)));
 			} catch (const std::exception& e) {
+				m_pid = -1; // dont kill process on destruction
+				close(STDIN_FILENO);
+				close(STDOUT_FILENO);
 				LOG_ERROR("child process: " + std::string(e.what()));
-				std::exit(EXIT_FAILURE);
+				throw "unwind this shiiiiittt"; // this will be catched in the main .-.
 			}
 		} else {
 			m_inputPipe.closeReadEnd();
@@ -130,11 +132,11 @@ namespace core {
 
 			m_dispatcher.registerHandler(m_outputPipe.getReadFd(),
 										 new CGIEventHandler(*this, request, m_response),
-										 io::AMultiplexer::EVENT_READ | io::AMultiplexer::EVENT_ERROR);
+										 io::AMultiplexer::EVENT_READ | io::AMultiplexer::EVENT_ERROR | io::AMultiplexer::EVENT_HANGUP);
 			if (request.getMethod() == http::POST) {
 				m_dispatcher.registerHandler(m_inputPipe.getWriteFd(),
 											 new CGIEventHandler(*this, request, m_response),
-											 io::AMultiplexer::EVENT_WRITE | io::AMultiplexer::EVENT_ERROR);
+											 io::AMultiplexer::EVENT_WRITE | io::AMultiplexer::EVENT_ERROR | io::AMultiplexer::EVENT_HANGUP);
 			} else {
 				notifyIOWriteCompletion();
 				m_inputPipe.closeWriteEnd();
@@ -263,11 +265,15 @@ namespace core {
 
 	void CGIProcessor::cleanup() {
 		try {
-			m_dispatcher.unregisterHandler(m_outputPipe.getReadFd());
-			if (m_inputPipe.getWriteFd() != -1) {
+			if (m_dispatcher.isRegistered(m_outputPipe.getReadFd())) {
+				m_dispatcher.unregisterHandler(m_outputPipe.getReadFd());
+			}
+			if (m_dispatcher.isRegistered(m_inputPipe.getWriteFd())) {
 				m_dispatcher.unregisterHandler(m_inputPipe.getWriteFd());
 			}
-		} catch (...) {}
+		} catch (const std::exception& e) {
+			LOG_ERROR("failed to unregister cgi handler: " + std::string(e.what()));
+		}
 
 		delete m_response;
 		m_response = NULL;
