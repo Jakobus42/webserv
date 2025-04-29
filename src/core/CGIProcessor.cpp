@@ -134,6 +134,7 @@ namespace core {
 											 io::AMultiplexer::EVENT_WRITE | io::AMultiplexer::EVENT_ERROR);
 			} else {
 				notifyIOWriteCompletion();
+				m_inputPipe.closeWriteEnd();
 			}
 		}
 	}
@@ -259,7 +260,9 @@ namespace core {
 	void CGIProcessor::cleanup() {
 		try {
 			m_dispatcher.unregisterHandler(m_outputPipe.getReadFd());
-			m_dispatcher.unregisterHandler(m_inputPipe.getWriteFd());
+			if (m_inputPipe.getWriteFd() != -1) {
+				m_dispatcher.unregisterHandler(m_inputPipe.getWriteFd());
+			}
 		} catch (...) {}
 
 		delete m_response;
