@@ -42,6 +42,9 @@ namespace config {
 			std::size_t m_readPos;
 			static bool m_readingFile;
 
+			std::map<std::string, http::Method> m_implementedMethods;
+			std::set<std::string> m_autoIndexAllowedValues;
+
 			static const std::string WHITESPACE;
 
 		private:
@@ -79,33 +82,28 @@ namespace config {
 			void expectServerBlock() throw(parse_exception);
 			void expectLocationBlock(LocationConfig& parentLocation) throw(parse_exception);
 
-			void processServerValue(const std::string& value, CommandType type, ServerConfig& server);
-			void processLocationValue(const std::string& value, CommandType type, LocationConfig& location);
+			void processServerValue(const std::string& key, const std::string& value, CommandType type, ServerConfig& server) throw(parse_exception);
+			void processLocationValue(const std::string& key, const std::string& value, CommandType type, LocationConfig& location) throw(parse_exception);
 
 			static const std::map<std::string, CommandType>& locationDirectives();
 			static const std::map<std::string, CommandType>& serverDirectives();
 
 		private:
+			// ------------------------  generic parsers  ------------------- //
+			void parseIntegerValue(const std::string& key, const std::string& value, unsigned long& destination) throw(parse_exception);
+			void parsePathValue(const std::string& key, const std::string& value, std::string& destination) throw(parse_exception);
 			// ------------------------  server parsers  -------------------- //
-			void parseListen(const std::string& value, ServerConfig& server);
-			void parseClientMaxBodySize(const std::string& value, ServerConfig& server);
-			void parseMaxHeaderValueLength(const std::string& value, ServerConfig& server);
-			void parseMaxHeaderCount(const std::string& value, ServerConfig& server);
-			void parseMaxHeaderValueCount(const std::string& value, ServerConfig& server);
-			void parseMaxHeaderNameLength(const std::string& value, ServerConfig& server);
-			void parseDataDir(const std::string& value, ServerConfig& server);
-			void parseServerName(const std::string& value, ServerConfig& server);
+			void parseListen(const std::string& value, ServerConfig& server) throw(parse_exception);
+			void parseServerName(const std::string& value, ServerConfig& server) throw(parse_exception);
 
-			uint32_t parseIpAddress(const std::string& host);
+			uint32_t parseIpAddress(const std::string& host) throw(parse_exception);
 			void assignAbsolutePaths(ServerConfig& server, LocationConfig& parentLocation) throw(parse_exception);
 
 			// ------------------------  location parsers  ------------------ //
-			void parseRoot(const std::string& value, LocationConfig& location);
-			void parseReturn(const std::string& value, LocationConfig& location);
-			void parseLimitExcept(const std::string& value, LocationConfig& location);
-			void parseUploadDir(const std::string& value, LocationConfig& location);
-			void parseIndex(const std::string& value, LocationConfig& location);
-			void parseAutoindex(const std::string& value, LocationConfig& location);
+			void parseReturn(const std::string& value, LocationConfig& location) throw(parse_exception);
+			void parseLimitExcept(const std::string& value, LocationConfig& location) throw(parse_exception);
+			void parseIndex(const std::string& value, LocationConfig& location) throw(parse_exception);
+			void parseAutoindex(const std::string& value, LocationConfig& location) throw(parse_exception);
 	};
 
 } /* namespace config */

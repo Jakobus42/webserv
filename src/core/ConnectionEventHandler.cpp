@@ -38,7 +38,7 @@ namespace core {
 	}
 
 	io::EventResult ConnectionEventHandler::onReadable(int32_t) {
-		LOG_CONTEXT("read event | server: " + m_vServer.getVirtualServerInfo() +
+		LOG_CONTEXT("read event  | server: " + m_vServer.getVirtualServerInfo() +
 					" | connection: " + m_connection.getConnectionInfo());
 
 		shared::container::Buffer<http::RequestParser::BUFFER_SIZE>& buffer = m_requestParser.getReadBuffer();

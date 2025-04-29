@@ -38,7 +38,15 @@ namespace config {
 		, m_config()
 		, m_depth(0)
 		, m_lineIndex(1)
-		, m_readPos(0) {}
+		, m_readPos(0)
+		, m_implementedMethods()
+		, m_autoIndexAllowedValues() {
+		m_implementedMethods["GET"] = http::GET;
+		m_implementedMethods["POST"] = http::POST;
+		m_implementedMethods["DELETE"] = http::DELETE;
+		m_autoIndexAllowedValues.insert("on");
+		m_autoIndexAllowedValues.insert("off");
+	}
 
 	Parser::~Parser() {}
 
@@ -301,7 +309,7 @@ namespace config {
 	void Parser::expectServerBlock() throw(parse_exception) {
 		skipWhitespace();
 		if (!matchToken("{")) {
-			throw parse_exception(m_lineIndex, "Expected opening brace after Server");
+			throw parse_exception(m_lineIndex, "Expected '{' after 'server'");
 		}
 		m_depth++;
 
@@ -310,7 +318,7 @@ namespace config {
 		while (m_readPos < m_data.size()) {
 			skipWhitespace();
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
-				throw parse_exception(m_lineIndex, "Unexpected opening brace in Server block");
+				throw parse_exception(m_lineIndex, "Unexpected '{' in Server block");
 			}
 			if (matchToken("}")) {
 				m_depth--;
@@ -327,7 +335,7 @@ namespace config {
 					throw parse_exception(m_lineIndex, "Unexpected directive in Server block: " + token);
 				}
 				std::string value = readValue();
-				processServerValue(value, type, thisServer);
+				processServerValue(token, value, type, thisServer);
 			}
 		}
 		throw parse_exception(m_lineIndex, "Server block not closed with '}'");
@@ -350,7 +358,7 @@ namespace config {
 			throw parse_exception(m_lineIndex, "Location has no path");
 		}
 		if (!isValidPath(path) || !hasSinglePathSeparator(path) || path == "/") {
-			throw parse_exception(m_lineIndex, "Path is invalid: '" + path + "'");
+			throw parse_exception(m_lineIndex, "Location path is invalid: '" + path + "'");
 		}
 		consume(path.length());
 		skipWhitespace();
@@ -366,7 +374,7 @@ namespace config {
 		while (m_readPos <= m_data.size()) {
 			skipWhitespace();
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
-				throw parse_exception(m_lineIndex, "Unexpected opening brace in location block");
+				throw parse_exception(m_lineIndex, "Unexpected '{' in location block");
 			}
 			if (matchToken("}")) {
 				m_depth--;
@@ -385,52 +393,89 @@ namespace config {
 					throw parse_exception(m_lineIndex, "Unexpected directive in Location block: " + token);
 				}
 				std::string value = readValue();
-				processLocationValue(value, type, thisLocation);
+				processLocationValue(token, value, type, thisLocation);
 			}
 		}
 		throw parse_exception(m_lineIndex, "Location block not closed with '}");
 	}
 
-	void Parser::processServerValue(const std::string& value, CommandType type, ServerConfig& server) {
+	void Parser::processServerValue(const std::string& key, const std::string& value, CommandType type, ServerConfig& server) throw(parse_exception) {
 		static std::map<CommandType, ServerTokenParser> tokenParsers;
 
 		if (type > _D_SERVER_TYPES) {
-			return processLocationValue(value, type, server.location);
+			return processLocationValue(key, value, type, server.location);
 		}
 		if (tokenParsers.empty()) {
 			tokenParsers[D_LISTEN] = &config::Parser::parseListen;
-			tokenParsers[D_CLIENT_MAX_BODY_SIZE] = &config::Parser::parseClientMaxBodySize;
-			tokenParsers[D_MAX_HEADER_VALUE_SIZE] = &config::Parser::parseMaxHeaderValueLength;
-			tokenParsers[D_MAX_HEADER_COUNT] = &config::Parser::parseMaxHeaderCount;
-			tokenParsers[D_MAX_HEADER_VALUE_COUNT] = &config::Parser::parseMaxHeaderValueCount;
-			tokenParsers[D_MAX_HEADER_NAME_SIZE] = &config::Parser::parseMaxHeaderNameLength;
-			tokenParsers[D_DATA_DIR] = &config::Parser::parseDataDir;
 			tokenParsers[D_SERVER_NAME] = &config::Parser::parseServerName;
 		}
 
-		(this->*(tokenParsers[type]))(value, server);
+		switch (type) {
+			case D_CLIENT_MAX_BODY_SIZE:
+				return parseIntegerValue("client_max_body_size", value, server.maxBodySize);
+			case D_MAX_HEADER_COUNT:
+				return parseIntegerValue("max_header_count", value, server.maxHeaderCount);
+			case D_MAX_HEADER_VALUE_COUNT:
+				return parseIntegerValue("max_header_value_count", value, server.maxHeaderValueCount);
+			case D_MAX_HEADER_NAME_SIZE:
+				return parseIntegerValue("max_header_name_length", value, server.maxHeaderNameLength);
+			case D_MAX_HEADER_VALUE_SIZE:
+				return parseIntegerValue("max_header_value_length", value, server.maxHeaderValueLength);
+			case D_DATA_DIR:
+				parsePathValue("data_dir", value, server.dataDirectory);
+				server.dataDirectoryAsTokens = shared::string::split(value, '/'); // strip this of whitespace if that doesn't happen yet
+				return;
+			default:
+				return (this->*(tokenParsers[type]))(value, server);
+		}
 	}
 
-	// cppcheck-suppress constParameter
-	void Parser::processLocationValue(const std::string& value, CommandType type, LocationConfig& location) {
+	void Parser::processLocationValue(const std::string& key, const std::string& value, CommandType type, LocationConfig& location) throw(parse_exception) {
 		static std::map<CommandType, LocationTokenParser> tokenParsers;
 
 		if (tokenParsers.empty()) {
-			tokenParsers[D_ROOT] = &config::Parser::parseRoot;
 			tokenParsers[D_RETURN] = &config::Parser::parseReturn;
 			tokenParsers[D_LIMIT_EXCEPT] = &config::Parser::parseLimitExcept;
-			tokenParsers[D_UPLOAD_DIR] = &config::Parser::parseUploadDir;
 			tokenParsers[D_INDEX] = &config::Parser::parseIndex;
 			tokenParsers[D_AUTOINDEX] = &config::Parser::parseAutoindex;
-			// tokenParsers[D_LOCATION] = &config::Parser::parseLocation;
 		}
 
-		(this->*(tokenParsers[type]))(value, location);
+		switch (type) {
+			case D_ROOT:
+				parsePathValue(key, value, location.root);
+				location.rootAsTokens = shared::string::split(location.root, '/');
+				return;
+			case D_UPLOAD_DIR:
+				parsePathValue(key, value, location.uploadSubdirectory);
+				location.uploadSubdirectoryAsTokens = shared::string::split(location.uploadSubdirectory, '/');
+				return;
+			default:
+				return (this->*(tokenParsers[type]))(value, location);
+		}
 	}
 
 	// ------------------------  server parsers  ---------------------------- //
 
-	uint32_t Parser::parseIpAddress(const std::string& host) {
+	void Parser::parseIntegerValue(const std::string& key, const std::string& value, unsigned long& destination) throw(parse_exception) {
+		std::stringstream ss(value);
+		std::string token;
+
+		if (!(ss >> destination)) {
+			throw parse_exception(m_lineIndex, "Invalid value for " + key);
+		}
+		if (ss >> token) {
+			throw parse_exception(m_lineIndex, "Unexpected token in " + key + ": " + token);
+		}
+	}
+
+	void Parser::parsePathValue(const std::string& key, const std::string& value, std::string& destination) throw(parse_exception) {
+		if (!isValidPath(value)) {
+			throw parse_exception(m_lineIndex, "Invalid path for " + key + ": " + value);
+		}
+		destination = value; // strip this of whitespace if that doesn't happen yet
+	}
+
+	uint32_t Parser::parseIpAddress(const std::string& host) throw(parse_exception) {
 		uint32_t ip = 0;
 		std::size_t start = 0;
 		std::size_t part = 0;
@@ -471,7 +516,7 @@ namespace config {
 		return ip;
 	}
 
-	void Parser::parseListen(const std::string& value, ServerConfig& server) {
+	void Parser::parseListen(const std::string& value, ServerConfig& server) throw(parse_exception) {
 		std::string host;
 		std::string port;
 
@@ -491,75 +536,7 @@ namespace config {
 		}
 	}
 
-	void Parser::parseClientMaxBodySize(const std::string& value, ServerConfig& server) {
-		std::stringstream ss(value);
-		std::string token;
-
-		if (!(ss >> server.maxBodySize)) {
-			throw parse_exception(m_lineIndex, "Invalid value for client_max_body_size");
-		}
-		if (ss >> token) {
-			throw parse_exception(m_lineIndex, "Unexpected token in client_max_body_size: " + token);
-		}
-	}
-
-	void Parser::parseMaxHeaderValueLength(const std::string& value, ServerConfig& server) {
-		std::stringstream ss(value);
-		std::string token;
-
-		if (!(ss >> server.maxHeaderValueLength)) {
-			throw parse_exception(m_lineIndex, "Invalid value for max_header_value_length");
-		}
-		if (ss >> token) {
-			throw parse_exception(m_lineIndex, "Unexpected token in max_header_value_length: " + token);
-		}
-	}
-
-	void Parser::parseMaxHeaderCount(const std::string& value, ServerConfig& server) {
-		std::stringstream ss(value);
-		std::string token;
-
-		if (!(ss >> server.maxHeaderCount)) {
-			throw parse_exception(m_lineIndex, "Invalid value for max_header_count");
-		}
-		if (ss >> token) {
-			throw parse_exception(m_lineIndex, "Unexpected token in max_header_count: " + token);
-		}
-	}
-
-	void Parser::parseMaxHeaderValueCount(const std::string& value, ServerConfig& server) {
-		std::stringstream ss(value);
-		std::string token;
-
-		if (!(ss >> server.maxHeaderValueCount)) {
-			throw parse_exception(m_lineIndex, "Invalid value for max_header_value_count");
-		}
-		if (ss >> token) {
-			throw parse_exception(m_lineIndex, "Unexpected token in max_header_value_count: " + token);
-		}
-	}
-
-	void Parser::parseMaxHeaderNameLength(const std::string& value, ServerConfig& server) {
-		std::stringstream ss(value);
-		std::string token;
-
-		if (!(ss >> server.maxHeaderNameLength)) {
-			throw parse_exception(m_lineIndex, "Invalid value for max_header_name_length");
-		}
-		if (ss >> token) {
-			throw parse_exception(m_lineIndex, "Unexpected token in max_header_name_length: " + token);
-		}
-	}
-
-	void Parser::parseDataDir(const std::string& value, ServerConfig& server) {
-		if (!isValidPath(value)) {
-			throw parse_exception(m_lineIndex, "Invalid path for data_dir: " + value);
-		}
-		server.dataDirectory = value; // check whether this needs to be stripped of whitespace
-									  // TODO: should we normalize these?
-	}
-
-	void Parser::parseServerName(const std::string& value, ServerConfig& server) {
+	void Parser::parseServerName(const std::string& value, ServerConfig& server) throw(parse_exception) {
 		std::vector<std::string> splitNames;
 		std::stringstream ss(value);
 		std::string name;
@@ -575,15 +552,7 @@ namespace config {
 
 	// ------------------------  location parsers  -------------------------- //
 
-	void Parser::parseRoot(const std::string& value, LocationConfig& location) {
-		if (!isValidPath(value)) {
-			throw parse_exception(m_lineIndex, "Invalid path for root: " + value);
-		}
-		location.root = value;
-		location.rootAsTokens = shared::string::split(value, '/'); // will be empty if root is just '/'
-	}
-
-	void Parser::parseReturn(const std::string& value, LocationConfig& location) {
+	void Parser::parseReturn(const std::string& value, LocationConfig& location) throw(parse_exception) {
 		if (!isValidPath(value)) {
 			throw parse_exception(m_lineIndex, "Invalid path for return: " + value);
 		}
@@ -593,27 +562,19 @@ namespace config {
 
 	// if no limit_except is present, default initialization
 	// for locations should permit all methods; GET POST and DELETE
-	void Parser::parseLimitExcept(const std::string& value, LocationConfig& location) {
-		static std::map<std::string, http::Method> implementedMethods;
-
-		if (implementedMethods.empty()) {
-			implementedMethods["GET"] = http::GET;
-			implementedMethods["POST"] = http::POST;
-			implementedMethods["DELETE"] = http::DELETE;
-		}
-
+	void Parser::parseLimitExcept(const std::string& value, LocationConfig& location) throw(parse_exception) {
 		std::set<http::Method> allowedMethods;
 		std::stringstream ss(value);
 		std::string token;
 
 		while (ss >> token) {
-			if (implementedMethods.find(token) == implementedMethods.end()) {
+			if (m_implementedMethods.find(token) == m_implementedMethods.end()) {
 				throw parse_exception(m_lineIndex, "Unexpected method for limit_except: " + token);
 			}
-			if (allowedMethods.find(implementedMethods[token]) != allowedMethods.end()) {
+			if (allowedMethods.find(m_implementedMethods[token]) != allowedMethods.end()) {
 				throw parse_exception(m_lineIndex, "Duplicte method for limit_except: " + token);
 			}
-			allowedMethods.insert(implementedMethods[token]);
+			allowedMethods.insert(m_implementedMethods[token]);
 		}
 		if (allowedMethods.empty()) {
 			throw parse_exception(m_lineIndex, "Expected value for limit_except");
@@ -621,15 +582,7 @@ namespace config {
 		location.allowedMethods = allowedMethods;
 	}
 
-	void Parser::parseUploadDir(const std::string& value, LocationConfig& location) {
-		if (!isValidPath(value)) {
-			throw parse_exception(m_lineIndex, "Invalid path for upload_dir: " + value);
-		}
-		location.uploadSubdirectory = value;									 // strip this of whitespace if that doesn't happen yet
-		location.uploadSubdirectoryAsTokens = shared::string::split(value, '/'); // strip this of whitespace if that doesn't happen yet
-	}
-
-	void Parser::parseIndex(const std::string& value, LocationConfig& location) {
+	void Parser::parseIndex(const std::string& value, LocationConfig& location) throw(parse_exception) {
 		std::vector<std::string> indexFiles;
 		std::stringstream ss(value);
 		std::string token;
@@ -643,19 +596,12 @@ namespace config {
 		location.indexFile = indexFiles;
 	}
 
-	void Parser::parseAutoindex(const std::string& value, LocationConfig& location) {
-		static std::set<std::string> allowedValues;
-
-		if (allowedValues.empty()) {
-			allowedValues.insert("on");
-			allowedValues.insert("off");
-		}
-		// can only be "on" or "off", everything else is invalid
+	void Parser::parseAutoindex(const std::string& value, LocationConfig& location) throw(parse_exception) {
 		std::stringstream ss(value);
 		std::string token;
 
 		ss >> token;
-		if (allowedValues.find(token) == allowedValues.end()) {
+		if (m_autoIndexAllowedValues.find(token) == m_autoIndexAllowedValues.end()) {
 			throw parse_exception(m_lineIndex, "Unexpected value for autoindex: " + value);
 		}
 		if (token == "on") {
