@@ -16,6 +16,8 @@ int main(int argc, char* argv[]) {
 	} catch (const std::exception& e) {
 		LOG_FATAL(e.what());
 		return 1;
+	} catch (...) {
+		return 1;
 	}
 	return 0;
 }
