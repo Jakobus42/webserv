@@ -2,6 +2,7 @@
 
 #include "core/ConnectionEventHandler.hpp"
 #include "shared/Logger.hpp"
+#include "shared/stringUtils.hpp"
 
 namespace core {
 
@@ -10,6 +11,15 @@ namespace core {
 		, m_dispatcher(dispatcher) {}
 
 	AcceptEventHandler::~AcceptEventHandler() {
+		const std::vector<Connection*>& connections = m_vServer.getActiveConnections();
+		for (std::size_t i = 0; i < connections.size(); ++i) {
+			try {
+				m_dispatcher.unregisterHandler(connections[i]->getSocket().getFd());
+			} catch (const std::exception& e) {
+				LOG_ERROR("failed to unregister handler: " + std::string(e.what()));
+			}
+		}
+
 		m_vServer.shutdown();
 	}
 

@@ -86,6 +86,8 @@ namespace core {
 			m_connections[i]->close();
 			delete m_connections[i];
 		}
+		m_connections.clear();
+
 		m_listenSocket->close();
 	}
 
@@ -99,5 +101,7 @@ namespace core {
 		   << ":" << m_listenSocket->getLocalPort() << ")";
 		return ss.str();
 	}
+
+	const std::vector<Connection*>& VirtualServer::getActiveConnections() const { return m_connections; }
 
 } /* namespace core */
