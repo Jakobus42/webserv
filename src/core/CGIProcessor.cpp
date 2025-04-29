@@ -228,6 +228,10 @@ namespace core {
 			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "CGI Event Handler failed");
 		}
 
+		if (!isIOComplete()) {
+			return true;
+		}
+
 		int status;
 		pid_t result = waitpid(m_pid, &status, WNOHANG);
 		if (result == -1) {
@@ -249,9 +253,6 @@ namespace core {
 									  "CGI script terminated by signal: " + shared::string::toString(WTERMSIG(status)));
 		}
 
-		if (!isIOComplete()) {
-			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "CGI script finished but io handlers are not complete");
-		}
 
 		return false;
 	}
