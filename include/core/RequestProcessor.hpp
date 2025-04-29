@@ -1,5 +1,6 @@
 #pragma once
 
+#include "config/ServerConfig.hpp"
 #include "core/CGIProcessor.hpp"
 #include "http/http.hpp"
 #include "io/Dispatcher.hpp"
@@ -18,7 +19,7 @@ namespace core {
 
 	class RequestProcessor : shared::mixin::NonCopyable {
 		public:
-			explicit RequestProcessor(io::Dispatcher& dispatcher);
+			explicit RequestProcessor(const config::ServerConfig& serverConfig, io::Dispatcher& dispatcher);
 			~RequestProcessor();
 
 			bool processRequest(const http::Request& request);
@@ -32,6 +33,7 @@ namespace core {
 			void generateErrorResponse(http::StatusCode statusCode);
 
 		private:
+			const config::ServerConfig m_serverConfig;
 			CGIProcessor m_cgiProcessor;
 			http::Response* m_response;
 			HandlerMap m_handlers;

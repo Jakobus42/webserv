@@ -13,7 +13,7 @@ namespace core {
 		: m_vServer(vServer)
 		, m_connection(conn)
 		, m_requestParser()
-		, m_requestProcessor(dispatcher)
+		, m_requestProcessor(vServer.getServerConfig(), dispatcher)
 		, m_totalBytesSent(0)
 		, m_requests()
 		, m_responses() {

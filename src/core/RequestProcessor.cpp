@@ -12,8 +12,9 @@
 
 namespace core {
 
-	RequestProcessor::RequestProcessor(io::Dispatcher& dispatcher)
-		: m_cgiProcessor(dispatcher)
+	RequestProcessor::RequestProcessor(const config::ServerConfig& serverConfig, io::Dispatcher& dispatcher)
+		: m_serverConfig(serverConfig)
+		, m_cgiProcessor(dispatcher)
 		, m_response(NULL) {
 		m_handlers[http::GET] = new GetRequestHandler();
 		m_handlers[http::POST] = new PostRequestHandler();
@@ -31,6 +32,7 @@ namespace core {
 	bool RequestProcessor::processRequest(const http::Request& request) {
 		if (!m_response) {
 			m_response = new http::Response();
+			// route here? if we can validate first
 		}
 
 		if (request.isValid() == false) { // yeah this is kinda weird...

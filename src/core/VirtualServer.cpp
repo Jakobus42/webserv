@@ -104,4 +104,6 @@ namespace core {
 
 	const std::vector<Connection*>& VirtualServer::getActiveConnections() const { return m_connections; }
 
+	const config::ServerConfig& VirtualServer::getServerConfig() const { return m_config; }
+
 } /* namespace core */
