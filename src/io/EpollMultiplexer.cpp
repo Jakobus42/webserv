@@ -27,6 +27,10 @@ namespace io {
 	}
 
 	void EpollMultiplexer::add(int32_t fd, uint32_t events) {
+		if (m_fd == -1) {
+			return;
+		}
+
 		struct epoll_event ev;
 		std::memset(&ev, 0, sizeof(ev));
 		ev.events = convertToEpollEvents(events);
@@ -40,6 +44,10 @@ namespace io {
 	}
 
 	void EpollMultiplexer::modify(int32_t fd, uint32_t events) {
+		if (m_fd == -1) {
+			return;
+		}
+
 		EventMap::iterator it = m_registeredEvents.find(fd);
 		if (it == m_registeredEvents.end()) {
 			throw std::runtime_error("failed to modify epoll event: fd not registered");
@@ -61,6 +69,10 @@ namespace io {
 	}
 
 	void EpollMultiplexer::remove(int32_t fd) {
+		if (m_fd == -1) {
+			return;
+		}
+
 		EventMap::iterator it = m_registeredEvents.find(fd);
 		if (it == m_registeredEvents.end()) {
 			return;
@@ -109,6 +121,9 @@ namespace io {
 		if (events & EVENT_ERROR) {
 			epollEvents |= EPOLLERR;
 		}
+		if (events & EVENT_HANGUP) {
+			epollEvents |= EPOLLHUP;
+		}
 
 		return epollEvents;
 	}
@@ -124,6 +139,9 @@ namespace io {
 		}
 		if (epollEvents & EPOLLERR) {
 			events |= EVENT_ERROR;
+		}
+		if (epollEvents & EPOLLHUP) {
+			events |= EVENT_HANGUP;
 		}
 
 		return events;

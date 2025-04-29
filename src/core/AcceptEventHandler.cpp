@@ -13,10 +13,11 @@ namespace core {
 	AcceptEventHandler::~AcceptEventHandler() {
 		const std::vector<Connection*>& connections = m_vServer.getActiveConnections();
 		for (std::size_t i = 0; i < connections.size(); ++i) {
+			int fd = connections[i]->getSocket().getFd();
 			try {
-				m_dispatcher.unregisterHandler(connections[i]->getSocket().getFd());
+				m_dispatcher.unregisterHandler(fd);
 			} catch (const std::exception& e) {
-				LOG_ERROR("failed to unregister handler: " + std::string(e.what()));
+				LOG_ERROR("failed to unregister connection handler for fd: " + shared::string::toString(fd) + ": " + std::string(e.what()));
 			}
 		}
 
@@ -34,7 +35,15 @@ namespace core {
 		return io::KEEP_MONITORING;
 	}
 
-	io::EventResult AcceptEventHandler::onWriteable(int32_t) { return io::UNREGISTER; }
+	io::EventResult AcceptEventHandler::onWriteable(int32_t) {
+		LOG_ERROR("write event | server: " + m_vServer.getVirtualServerInfo() + "unexpected because not registered");
+		return io::UNREGISTER;
+	}
+
+	io::EventResult AcceptEventHandler::onHangup(int32_t) {
+		LOG_ERROR("hangup event | server: " + m_vServer.getVirtualServerInfo());
+		return io::UNREGISTER;
+	}
 
 	io::EventResult AcceptEventHandler::onError(int32_t) {
 		LOG_ERROR("error event | server: " + m_vServer.getVirtualServerInfo() + "multiplexing error");

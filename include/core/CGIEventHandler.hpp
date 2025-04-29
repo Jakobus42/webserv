@@ -15,6 +15,8 @@ namespace core {
 
 			io::EventResult onWriteable(int32_t fd);
 
+			io::EventResult onHangup(int32_t fd);
+
 			io::EventResult onError(int32_t fd);
 
 		private:

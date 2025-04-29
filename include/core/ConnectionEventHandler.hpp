@@ -28,6 +28,8 @@ namespace core {
 
 			virtual io::EventResult onWriteable(int32_t fd);
 
+			virtual io::EventResult onHangup(int32_t fd);
+
 			virtual io::EventResult onError(int32_t fd);
 
 		private:
