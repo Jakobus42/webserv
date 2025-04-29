@@ -12,18 +12,15 @@
 namespace io {
 
 	KqueueMultiplexer::KqueueMultiplexer()
-		: AMultiplexer()
-		, m_kqueueFd(-1) {
-		m_kqueueFd = kqueue();
-		if (m_kqueueFd == -1) {
+		: AMultiplexer() {
+		m_fd = kqueue();
+		if (m_fd == -1) {
 			throw std::runtime_error(std::string("failed to create kqueue: ") + std::strerror(errno));
 		}
 	}
 
 	KqueueMultiplexer::~KqueueMultiplexer() {
-		if (m_kqueueFd != -1) {
-			close(m_kqueueFd);
-		}
+		close();
 	}
 
 	void KqueueMultiplexer::add(int32_t fd, uint32_t events) {
@@ -40,7 +37,7 @@ namespace io {
 		}
 
 		if (nChanges > 0) {
-			if (kevent(m_kqueueFd, changes, nChanges, NULL, 0, NULL) == -1) {
+			if (kevent(m_fd, changes, nChanges, NULL, 0, NULL) == -1) {
 				throw std::runtime_error(std::string("failed to add fd to kqueue: ") + std::strerror(errno));
 			}
 		}
@@ -77,7 +74,7 @@ namespace io {
 		}
 
 		if (nChanges > 0) {
-			if (kevent(m_kqueueFd, changes, nChanges, NULL, 0, NULL) == -1) {
+			if (kevent(m_fd, changes, nChanges, NULL, 0, NULL) == -1) {
 				throw std::runtime_error(std::string("failed to modify kqueue event: ") + std::strerror(errno));
 			}
 		}
@@ -105,7 +102,7 @@ namespace io {
 		}
 
 		if (nChanges > 0) {
-			if (kevent(m_kqueueFd, changes, nChanges, NULL, 0, NULL) == -1) {
+			if (kevent(m_fd, changes, nChanges, NULL, 0, NULL) == -1) {
 				throw std::runtime_error(std::string("failed to remove fd from kqueue: ") + std::strerror(errno));
 			}
 		}
@@ -125,7 +122,7 @@ namespace io {
 		}
 
 		struct kevent events[MAX_EVENTS];
-		int32_t nEvents = kevent(m_kqueueFd, NULL, 0, events, MAX_EVENTS, timeoutPtr);
+		int32_t nEvents = kevent(m_fd, NULL, 0, events, MAX_EVENTS, timeoutPtr);
 		if (nEvents == -1) {
 			if (errno == EINTR) {
 				return 0;

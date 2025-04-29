@@ -16,8 +16,6 @@ namespace io {
 			virtual int32_t poll(int32_t timeoutMs = TIMEOUT_INFINITE);
 
 		private:
-			int32_t m_kqueueFd;
-
 			uint32_t convertFromKqueueEvents(int16_t filter, uint16_t flags) const;
 	};
 

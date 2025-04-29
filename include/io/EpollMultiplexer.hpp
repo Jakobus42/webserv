@@ -16,8 +16,6 @@ namespace io {
 			virtual int32_t poll(int32_t timeoutMs = TIMEOUT_INFINITE);
 
 		private:
-			int32_t m_epollFd;
-
 			uint32_t convertToEpollEvents(uint32_t events) const;
 			uint32_t convertFromEpollEvents(uint32_t epollEvents) const;
 	};
