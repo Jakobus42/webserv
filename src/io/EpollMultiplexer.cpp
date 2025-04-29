@@ -14,19 +14,16 @@
 namespace io {
 
 	EpollMultiplexer::EpollMultiplexer()
-		: AMultiplexer()
-		, m_epollFd(-1) {
+		: AMultiplexer() {
 		// Since Linux 2.6.8, the size argument is ignored
-		m_epollFd = epoll_create(1);
-		if (m_epollFd == -1) {
+		m_fd = epoll_create(1);
+		if (m_fd == -1) {
 			throw std::runtime_error(std::string("failed to create epoll instance: ") + std::strerror(errno));
 		}
 	}
 
 	EpollMultiplexer::~EpollMultiplexer() {
-		if (m_epollFd != -1) {
-			close(m_epollFd);
-		}
+		close();
 	}
 
 	void EpollMultiplexer::add(int32_t fd, uint32_t events) {
@@ -35,7 +32,7 @@ namespace io {
 		ev.events = convertToEpollEvents(events);
 		ev.data.fd = fd;
 
-		if (epoll_ctl(m_epollFd, EPOLL_CTL_ADD, fd, &ev) == -1) {
+		if (epoll_ctl(m_fd, EPOLL_CTL_ADD, fd, &ev) == -1) {
 			throw std::runtime_error(std::string("failed to add fd to epoll: ") + std::strerror(errno));
 		}
 
@@ -56,7 +53,7 @@ namespace io {
 		ev.events = convertToEpollEvents(events);
 		ev.data.fd = fd;
 
-		if (epoll_ctl(m_epollFd, EPOLL_CTL_MOD, fd, &ev) == -1) {
+		if (epoll_ctl(m_fd, EPOLL_CTL_MOD, fd, &ev) == -1) {
 			throw std::runtime_error(std::string("failed to modify epoll event: ") + std::strerror(errno));
 		}
 
@@ -72,7 +69,7 @@ namespace io {
 		struct epoll_event ev;
 		std::memset(&ev, 0, sizeof(ev));
 
-		if (epoll_ctl(m_epollFd, EPOLL_CTL_DEL, fd, &ev) == -1) {
+		if (epoll_ctl(m_fd, EPOLL_CTL_DEL, fd, &ev) == -1) {
 			throw std::runtime_error(std::string("failed to remove fd from epoll: ") + std::strerror(errno));
 		}
 
@@ -83,7 +80,7 @@ namespace io {
 		m_readyEvents.clear();
 
 		epoll_event events[MAX_EVENTS];
-		int32_t nfds = epoll_wait(m_epollFd, events, MAX_EVENTS, timeoutMs);
+		int32_t nfds = epoll_wait(m_fd, events, MAX_EVENTS, timeoutMs);
 		if (nfds == -1) {
 			if (errno == EINTR) {
 				return 0;

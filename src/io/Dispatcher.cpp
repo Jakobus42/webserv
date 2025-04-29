@@ -58,6 +58,13 @@ namespace io {
 		return numEvents;
 	}
 
+	void Dispatcher::close() {
+		for (io::Dispatcher::HandlerMap::iterator it = m_handlers.begin(); it != m_handlers.end(); ++it) {
+			::close(it->first);
+		}
+		m_multiplexer.close();
+	}
+
 	void Dispatcher::handleEvent(const AMultiplexer::Event& event) {
 		try {
 			HandlerMap::iterator it = m_handlers.find(event.fd);

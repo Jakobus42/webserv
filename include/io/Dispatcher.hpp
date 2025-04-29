@@ -16,6 +16,7 @@ namespace io {
 			void unregisterHandler(int32_t fd);
 
 			int32_t dispatch(int32_t timeoutMs = AMultiplexer::TIMEOUT_INFINITE);
+			void close();
 
 			void cleanup();
 

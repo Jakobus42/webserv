@@ -100,13 +100,16 @@ namespace core {
 
 		if (m_pid == 0) {
 			try {
-				prepareEnviorment(request);
-
-				m_inputPipe.closeWriteEnd();
-				m_outputPipe.closeReadEnd();
+				m_dispatcher.close(); // super sus
 
 				m_inputPipe.dupReadFd(STDIN_FILENO);
+				m_inputPipe.close();
 				m_outputPipe.dupWriteFd(STDOUT_FILENO);
+				m_outputPipe.close();
+
+				// todo: try to throw here - might cause issues because epoll fds are already closed
+
+				prepareEnviorment(request);
 
 				const std::string& scriptPath = request.getUri().getPath();
 				const std::string& interpreter = getInterpreter(scriptPath);

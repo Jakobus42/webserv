@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdint.h>
+#include <unistd.h>
 
 #include "shared/NonCopyable.hpp"
 
@@ -33,7 +34,8 @@ namespace io {
 			typedef std::vector<Event> Events;
 
 			AMultiplexer()
-				: m_readyEvents()
+				: m_fd(-1)
+				, m_readyEvents()
 				, m_registeredEvents() {}
 
 			virtual ~AMultiplexer() {}
@@ -46,8 +48,17 @@ namespace io {
 
 			const Events& getReadyEvents() const { return m_readyEvents; }
 
+			void close() {
+				if (m_fd != -1) {
+					::close(m_fd);
+					m_fd = -1;
+				}
+			}
+
 		protected:
 			typedef std::map<int32_t, uint32_t> EventMap;
+
+			int32_t m_fd;
 
 			Events m_readyEvents;
 			EventMap m_registeredEvents;
