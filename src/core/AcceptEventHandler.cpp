@@ -14,7 +14,7 @@ namespace core {
 	}
 
 	io::EventResult AcceptEventHandler::onReadable(int32_t) {
-		LOG_CONTEXT("read event | server: " + m_vServer.getVirtualServerInfo());
+		LOG_CONTEXT("read event  | server: " + m_vServer.getVirtualServerInfo());
 
 		while (Connection* conn = m_vServer.acceptNewConnection()) {
 			m_dispatcher.registerHandler(conn->getSocket().getFd(),
