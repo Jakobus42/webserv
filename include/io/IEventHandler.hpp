@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-#include <shared/NonCopyable.hpp>
+#include "shared/NonCopyable.hpp"
 
 namespace io {
 
