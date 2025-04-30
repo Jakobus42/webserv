@@ -1,5 +1,7 @@
 #include "core/RequestProcessor.hpp"
 
+#include "config/LocationConfig.hpp"
+#include "config/ServerConfig.hpp"
 #include "core/ARequestHandler.hpp"
 #include "core/DeleteRequestHandler.hpp"
 #include "core/GetRequestHandler.hpp"
@@ -8,14 +10,17 @@
 #include "http/Response.hpp"
 #include "http/http.hpp"
 #include "shared/Logger.hpp"
+#include "shared/StringView.hpp"
 #include "shared/stringUtils.hpp"
 
 namespace core {
 
-	RequestProcessor::RequestProcessor(io::Dispatcher& dispatcher)
-		: m_cgiProcessor(dispatcher)
-		, m_response(NULL) {
-	}
+	RequestProcessor::RequestProcessor(const config::ServerConfig& serverConfig, io::Dispatcher& dispatcher)
+		: m_serverConfig(serverConfig)
+		, m_cgiProcessor(dispatcher)
+		, m_response(NULL)
+		, m_handlers()
+		, m_router() {}
 
 	RequestProcessor::~RequestProcessor() {
 		for (HandlerMap::iterator it = m_handlers.begin(); it != m_handlers.end(); ++it) {
@@ -34,17 +39,23 @@ namespace core {
 	bool RequestProcessor::processRequest(const http::Request& request) {
 		if (!m_response) {
 			m_response = new http::Response();
-		}
-
-		if (request.isValid() == false) { // yeah this is kinda weird...
-			generateErrorResponse(request.getStatusCode());
-			return false;
+			if (request.isValid() == false) { // yeah this is kinda weird...
+				generateErrorResponse(request.getStatusCode());
+				return false;
+			}
 		}
 
 		try {
 			http::Request::Type requestType = request.getType();
 
 			if (requestType == http::Request::FETCH) {
+				if (m_router.needsRoute()) {
+					m_router.route(shared::string::StringView(request.getUri().getPath().c_str()), m_serverConfig.location);
+					if (m_router.foundRedirect()) {
+						generateRedirectResponse();
+						return false;
+					}
+				}
 				ARequestHandler* handler = m_handlers[request.getMethod()];
 				if (handler->handle(request, *m_response)) {
 					return true;
@@ -80,6 +91,7 @@ namespace core {
 	void RequestProcessor::reset() {
 		delete m_response;
 		m_response = NULL;
+		m_router.reset();
 
 		for (HandlerMap::iterator it = m_handlers.begin(); it != m_handlers.end(); ++it) {
 			it->second->reset();
@@ -89,7 +101,14 @@ namespace core {
 	}
 
 	void RequestProcessor::generateErrorResponse(http::StatusCode) {
-		m_response->appendBody("tmp error response\n"); // tmp
+		m_response->appendBody("tmp error response\n"); // todo:
+	}
+
+	// todo: add Location header with new uri
+	void RequestProcessor::generateRedirectResponse() {
+		m_response->appendBody("tmp redirect response\n"); // todo:
+		m_response->appendBody(m_router.generateRedirectUri() + "\n");
+		m_response->setStatusCode(m_router.getReturnClass());
 	}
 
 } // namespace core

@@ -18,7 +18,6 @@ namespace config {
 			unsigned long maxHeaderValueCount;
 			unsigned long maxHeaderNameLength;
 			std::string dataDirectory;
-			std::vector<std::string> dataDirectoryAsTokens;
 			std::vector<std::string> serverNames;
 			LocationConfig location;
 

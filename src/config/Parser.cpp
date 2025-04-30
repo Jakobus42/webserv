@@ -315,6 +315,8 @@ namespace config {
 
 		ServerConfig thisServer;
 
+		thisServer.location.path = "/";
+
 		while (m_readPos < m_data.size()) {
 			skipWhitespace();
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
@@ -370,7 +372,6 @@ namespace config {
 		LocationConfig thisLocation;
 
 		thisLocation.path = path;
-		thisLocation.pathAsTokens = shared::string::split(path, '/');
 		while (m_readPos <= m_data.size()) {
 			skipWhitespace();
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
@@ -422,9 +423,7 @@ namespace config {
 			case D_MAX_HEADER_VALUE_SIZE:
 				return parseIntegerValue("max_header_value_length", value, server.maxHeaderValueLength);
 			case D_DATA_DIR:
-				parsePathValue("data_dir", value, server.dataDirectory);
-				server.dataDirectoryAsTokens = shared::string::split(value, '/'); // strip this of whitespace if that doesn't happen yet
-				return;
+				return parsePathValue("data_dir", value, server.dataDirectory);
 			default:
 				return (this->*(tokenParsers[type]))(value, server);
 		}
@@ -442,13 +441,9 @@ namespace config {
 
 		switch (type) {
 			case D_ROOT:
-				parsePathValue(key, value, location.root);
-				location.rootAsTokens = shared::string::split(location.root, '/');
-				return;
+				return parsePathValue(key, value, location.root);
 			case D_UPLOAD_DIR:
-				parsePathValue(key, value, location.uploadSubdirectory);
-				location.uploadSubdirectoryAsTokens = shared::string::split(location.uploadSubdirectory, '/');
-				return;
+				return parsePathValue(key, value, location.uploadSubdirectory);
 			default:
 				return (this->*(tokenParsers[type]))(value, location);
 		}
@@ -556,7 +551,6 @@ namespace config {
 		if (!isValidPath(value)) {
 			throw parse_exception(m_lineIndex, "Invalid path for return: " + value);
 		}
-		location.redirectUriAsTokens = shared::string::split(value, '/'); // ensure this won't throw
 		location.redirectUri = value;
 	}
 

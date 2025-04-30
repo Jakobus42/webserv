@@ -1,9 +1,12 @@
 #pragma once
 
+#include "config/ServerConfig.hpp"
 #include "core/CGIProcessor.hpp"
+#include "core/Router.hpp"
 #include "http/http.hpp"
 #include "io/Dispatcher.hpp"
 #include "shared/NonCopyable.hpp"
+#include "shared/StringView.hpp"
 
 #include <map>
 
@@ -18,7 +21,7 @@ namespace core {
 
 	class RequestProcessor : shared::mixin::NonCopyable {
 		public:
-			explicit RequestProcessor(io::Dispatcher& dispatcher);
+			explicit RequestProcessor(const config::ServerConfig& serverConfig, io::Dispatcher& dispatcher);
 			~RequestProcessor();
 
 			void init();
@@ -31,11 +34,14 @@ namespace core {
 			typedef std::map<http::Method, ARequestHandler*> HandlerMap;
 
 			void generateErrorResponse(http::StatusCode statusCode);
+			void generateRedirectResponse();
 
 		private:
+			const config::ServerConfig& m_serverConfig;
 			CGIProcessor m_cgiProcessor;
 			http::Response* m_response;
 			HandlerMap m_handlers;
+			Router m_router;
 	};
 
 } /* namespace core */

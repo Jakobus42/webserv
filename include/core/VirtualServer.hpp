@@ -22,6 +22,7 @@ namespace core {
 			const io::Socket& getListenSocket() const;
 			std::string getVirtualServerInfo() const;
 			const std::vector<Connection*>& getActiveConnections() const;
+			const config::ServerConfig& getServerConfig() const;
 
 		private:
 			static const time_t CONNECTION_TIMEOUT;

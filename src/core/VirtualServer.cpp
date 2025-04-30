@@ -1,8 +1,11 @@
 #include "core/VirtualServer.hpp"
 
-#include "ctime"
+#include <unistd.h>
+
 #include "shared/Logger.hpp"
-#include "sstream"
+
+#include <ctime>
+#include <sstream>
 
 namespace core {
 
@@ -116,5 +119,7 @@ namespace core {
 	}
 
 	const std::vector<Connection*>& VirtualServer::getActiveConnections() const { return m_connections; }
+
+	const config::ServerConfig& VirtualServer::getServerConfig() const { return m_config; }
 
 } /* namespace core */

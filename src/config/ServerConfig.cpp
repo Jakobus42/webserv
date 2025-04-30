@@ -15,7 +15,6 @@ namespace config {
 		, maxHeaderValueCount(64)		 // 64 values
 		, maxHeaderNameLength(256)		 // 256B
 		, dataDirectory("")
-		, dataDirectoryAsTokens()
 		, serverNames()
 		, location() {}
 
@@ -30,7 +29,6 @@ namespace config {
 		, maxHeaderValueCount(other.maxHeaderValueCount)
 		, maxHeaderNameLength(other.maxHeaderNameLength)
 		, dataDirectory(other.dataDirectory)
-		, dataDirectoryAsTokens(other.dataDirectoryAsTokens)
 		, serverNames(other.serverNames)
 		, location(other.location) {}
 
@@ -46,7 +44,6 @@ namespace config {
 		maxHeaderValueCount = rhs.maxHeaderValueCount;
 		maxHeaderValueLength = rhs.maxHeaderValueLength;
 		dataDirectory = rhs.dataDirectory;
-		dataDirectoryAsTokens = rhs.dataDirectoryAsTokens;
 		serverNames = rhs.serverNames;
 		location = rhs.location;
 		return *this;
