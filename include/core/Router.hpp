@@ -32,7 +32,9 @@ namespace core {
 
 			bool needsRoute() const;
 			bool foundRedirect() const;
+			bool methodIsAllowed(http::Method method) const;
 			const Route& getResult() const;
+			std::string generateFilePath() const;
 			std::string generateRedirectUri() const;
 			http::StatusCode getReturnClass() const;
 

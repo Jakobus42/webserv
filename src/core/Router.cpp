@@ -30,7 +30,17 @@ namespace core {
 
 	bool Router::foundRedirect() const { return m_routeResult.location->hasRedirect(); }
 
+	bool Router::methodIsAllowed(http::Method method) const {
+		const std::set<http::Method>& allowedMethods = m_routeResult.location->allowedMethods;
+		if (allowedMethods.find(method) == allowedMethods.end()) {
+			return false;
+		}
+		return true;
+	}
+
 	void Router::reset() { m_routeResult.reset(); }
+
+	std::string Router::generateFilePath() const { return m_routeResult.location->precalculatedAbsolutePath + m_routeResult.filePath; }
 
 	std::string Router::generateRedirectUri() const { return m_routeResult.location->redirectUri + m_routeResult.filePath; }
 

@@ -46,21 +46,25 @@ namespace core {
 		}
 
 		try {
+			// todo: if method is not implemented, throw NOT_IMPLEMENTED
 			http::Request::Type requestType = request.getType();
 
 			if (requestType == http::Request::FETCH) {
+				ARequestHandler* handler = m_handlers[request.getMethod()];
 				if (m_router.needsRoute()) {
 					m_router.route(shared::string::StringView(request.getUri().getPath().c_str()), m_serverConfig.location);
 					if (m_router.foundRedirect()) {
 						generateRedirectResponse();
 						return false;
 					}
+					if (m_router.methodIsAllowed(request.getMethod()) == false) {
+						throw http::HttpException(http::METHOD_NOT_ALLOWED, "HTTP method not allowed for the targeted location");
+					}
+					handler->setFilePath(m_router.generateFilePath());
 				}
-				ARequestHandler* handler = m_handlers[request.getMethod()];
 				if (handler->handle(request, *m_response)) {
 					return true;
 				}
-				m_response->appendBody("tmp response\n"); // tmp
 			} else if (requestType == http::Request::CGI) {
 				if (m_cgiProcessor.process(request)) {
 					return true;
