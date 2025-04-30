@@ -17,6 +17,7 @@ namespace core {
 		, m_totalBytesSent(0)
 		, m_requests()
 		, m_responses() {
+		m_requestProcessor.init();
 		// todo: set max body size for parser
 	}
 

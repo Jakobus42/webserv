@@ -24,6 +24,7 @@ namespace core {
 			explicit RequestProcessor(const config::ServerConfig& serverConfig, io::Dispatcher& dispatcher);
 			~RequestProcessor();
 
+			void init();
 			bool processRequest(const http::Request& request);
 			http::Response* releaseResponse();
 

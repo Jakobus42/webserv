@@ -11,7 +11,8 @@ int main(int argc, char* argv[]) {
 			return 1;
 		}
 
-		core::Reactor reactor(configParser.getConfig());
+		core::Reactor reactor;
+		reactor.init(configParser.getConfig());
 		reactor.run();
 	} catch (const std::exception& e) {
 		LOG_FATAL(e.what());
