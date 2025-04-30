@@ -8,14 +8,12 @@ namespace config {
 
 	LocationConfig::LocationConfig()
 		: path()
-		, pathAsTokens()
 		, root()
 		, precalculatedAbsolutePath()
 		, redirectUri()
-		, redirectUriAsTokens()
+		, returnClass(http::MOVED_PERMANENTLY)
 		, allowedMethods()
 		, uploadSubdirectory()
-		, uploadSubdirectoryAsTokens()
 		, autoindex(false)
 		, indexFile()
 		, locations() {
@@ -26,14 +24,12 @@ namespace config {
 
 	LocationConfig::LocationConfig(const LocationConfig& other)
 		: path(other.path)
-		, pathAsTokens(other.pathAsTokens)
 		, root(other.root)
 		, precalculatedAbsolutePath(other.precalculatedAbsolutePath)
 		, redirectUri(other.redirectUri)
-		, redirectUriAsTokens(other.redirectUriAsTokens)
+		, returnClass(other.returnClass)
 		, allowedMethods(other.allowedMethods)
 		, uploadSubdirectory(other.uploadSubdirectory)
-		, uploadSubdirectoryAsTokens(other.uploadSubdirectoryAsTokens)
 		, autoindex(other.autoindex)
 		, indexFile(other.indexFile)
 		, locations(other.locations) {
@@ -42,14 +38,12 @@ namespace config {
 	LocationConfig& LocationConfig::operator=(const LocationConfig& other) {
 		if (this != &other) {
 			path = other.path;
-			pathAsTokens = other.pathAsTokens;
 			root = other.root;
 			precalculatedAbsolutePath = other.precalculatedAbsolutePath;
 			redirectUri = other.redirectUri;
-			redirectUriAsTokens = other.redirectUriAsTokens;
+			returnClass = other.returnClass;
 			allowedMethods = other.allowedMethods;
 			uploadSubdirectory = other.uploadSubdirectory;
-			uploadSubdirectoryAsTokens = other.uploadSubdirectoryAsTokens;
 			autoindex = other.autoindex;
 			indexFile = other.indexFile;
 			locations = other.locations;
@@ -80,23 +74,7 @@ namespace config {
 	void LocationConfig::printIndented(int indentLevel) const {
 		std::string indent(indentLevel, ' ');
 
-		std::cout << indent << "LocationConfig: ";
-		if (!pathAsTokens.empty()) {
-			for (std::vector<std::string>::const_iterator it = pathAsTokens.begin(); it != pathAsTokens.end(); ++it) {
-				std::cout << "/" << *it;
-			}
-		} else {
-			std::cout << "/";
-		}
-		std::cout << std::endl;
-
-		if (!rootAsTokens.empty()) {
-			std::cout << indent << "  Root: ";
-			for (std::vector<std::string>::const_iterator it = rootAsTokens.begin(); it != rootAsTokens.end(); ++it) {
-				std::cout << *it << " ";
-			}
-			std::cout << std::endl;
-		}
+		std::cout << indent << "LocationConfig: " << path << std::endl;
 
 		if (!root.empty()) {
 			std::cout << indent << "  Root (string): " << root << std::endl;

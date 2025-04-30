@@ -106,7 +106,8 @@ namespace core {
 
 	void RequestProcessor::generateRedirectResponse() {
 		m_response->appendBody("tmp redirect response\n"); // todo:
-		m_response->setStatusCode(http::MOVED_PERMANENTLY);
+		m_response->appendBody(m_route->location.redirectUri + m_route->filePath + "\n");
+		m_response->setStatusCode(m_route->location.returnClass);
 	}
 
 	RouteResult* RequestProcessor::route(const shared::string::StringView& uriPath, const config::LocationConfig& currentLocation, std::size_t depth) {
