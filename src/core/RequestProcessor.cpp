@@ -15,9 +15,6 @@ namespace core {
 	RequestProcessor::RequestProcessor(io::Dispatcher& dispatcher)
 		: m_cgiProcessor(dispatcher)
 		, m_response(NULL) {
-		m_handlers[http::GET] = new GetRequestHandler();
-		m_handlers[http::POST] = new PostRequestHandler();
-		m_handlers[http::DELETE] = new DeleteRequestHandler();
 	}
 
 	RequestProcessor::~RequestProcessor() {
@@ -25,6 +22,12 @@ namespace core {
 			delete it->second;
 		}
 		delete m_response;
+	}
+
+	void RequestProcessor::init() {
+		m_handlers[http::GET] = new GetRequestHandler();
+		m_handlers[http::POST] = new PostRequestHandler();
+		m_handlers[http::DELETE] = new DeleteRequestHandler();
 	}
 
 	// todo maybe have a isComplete function. the return value could be confusing
@@ -54,6 +57,8 @@ namespace core {
 				delete m_response;
 				m_response = m_cgiProcessor.releaseResponse();
 			}
+		} catch (const std::bad_alloc&) {
+			throw;
 		} catch (const http::HttpException& e) {
 			LOG_ERROR("failed to process request: " + std::string(e.what()));
 			generateErrorResponse(e.getStatusCode());

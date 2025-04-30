@@ -46,6 +46,8 @@ namespace http {
 		try {
 			std::size_t code = shared::string::toNum<std::size_t>(codeView.toString());
 			m_response->setStatusCode(numToStatusCode(code));
+		} catch (const std::bad_alloc&) {
+			throw;
 		} catch (const std::exception& e) {
 			throw HttpException(BAD_REQUEST, "invalid statuc-code: could not parse: " + std::string(e.what()));
 		}

@@ -94,6 +94,8 @@ namespace io {
 			if (result == UNREGISTER) {
 				secureUnregisterHandler(event.fd);
 			}
+		} catch (const std::bad_alloc&) {
+			throw;
 		} catch (const std::exception& e) {
 			LOG_ERROR("handler failed for fd " + shared::string::toString(event.fd) + ": " + e.what());
 			secureUnregisterHandler(event.fd);

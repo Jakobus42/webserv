@@ -10,9 +10,10 @@ namespace core {
 
 	class Reactor : shared::mixin::NonCopyable {
 		public:
-			explicit Reactor(const config::Config& config);
+			Reactor();
 			~Reactor();
 
+			void init(const config::Config& config);
 			void run();
 
 		private:
@@ -21,7 +22,6 @@ namespace core {
 		private:
 			typedef std::vector<VirtualServer*> vServers;
 
-			config::Config m_config;
 			io::Dispatcher m_dispatcher;
 			vServers m_vServers;
 
