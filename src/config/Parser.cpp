@@ -315,6 +315,8 @@ namespace config {
 
 		ServerConfig thisServer;
 
+		thisServer.location.path = "/";
+
 		while (m_readPos < m_data.size()) {
 			skipWhitespace();
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
