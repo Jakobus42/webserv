@@ -20,8 +20,13 @@ namespace core {
 		m_listenSocket->setNonBlocking(true);
 #endif
 
-		m_listenSocket->setReuseAddr(true);
-		m_listenSocket->bind(m_config.port, m_config.ipAddress);
+		try {
+			m_listenSocket->setReuseAddr(true);
+			m_listenSocket->bind(m_config.port, m_config.ipAddress);
+		} catch (const std::exception&) {
+			delete m_listenSocket;
+			throw;
+		}
 	}
 
 	VirtualServer::~VirtualServer() {
@@ -30,17 +35,25 @@ namespace core {
 	}
 
 	Connection* VirtualServer::acceptNewConnection() {
+		// this looks so ugly but we have to make sure to not leak...
 		try {
 			io::Socket* clientSocket = m_listenSocket->accept();
 			if (!clientSocket) {
 				return NULL;
 			}
 
-			Connection* conn = new Connection(clientSocket); // todo: maybe catch if pushback fails and delete?
-			m_connections.push_back(conn);
+			Connection* conn = new Connection(clientSocket);
+			try {
+				m_connections.push_back(conn);
+			} catch (const std::exception&) {
+				delete conn;
+				throw;
+			}
 
 			LOG_INFO("accepted new connection: " + conn->getConnectionInfo());
 			return conn;
+		} catch (const std::bad_alloc&) {
+			throw;
 		} catch (const std::exception& e) {
 			LOG_ERROR("failed to accept connection:" + std::string(e.what()));
 		}

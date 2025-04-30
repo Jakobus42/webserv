@@ -4,15 +4,18 @@
 #include "shared/Logger.hpp"
 
 #include <csignal>
+#include <iostream>
 
 namespace core {
 
 	bool Reactor::m_isRunning = false;
 
-	Reactor::Reactor(const config::Config& config)
-		: m_config(config)
-		, m_dispatcher()
+	Reactor::Reactor()
+		: m_dispatcher()
 		, m_vServers() {
+	}
+
+	void Reactor::init(const config::Config& config) {
 		signal(SIGINT, handleSigint);
 		signal(SIGQUIT, SIG_IGN);
 
@@ -20,7 +23,13 @@ namespace core {
 			const config::ServerConfig& serverConfig = config.serverConfigs[i];
 			VirtualServer* vServer = new VirtualServer(serverConfig);
 
-			m_vServers.push_back(vServer);
+			try {
+				m_vServers.push_back(vServer);
+			} catch (const std::exception&) {
+				delete vServer;
+				throw;
+			}
+
 			vServer->listen();
 			m_dispatcher.registerHandler(vServer->getListenSocket().getFd(), new AcceptEventHandler(*vServer, m_dispatcher));
 		}

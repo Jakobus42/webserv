@@ -84,6 +84,8 @@ namespace http {
 				if (result == NEED_DATA) {
 					break;
 				}
+			} catch (const std::bad_alloc&) {
+				throw;
 			} catch (const http::HttpException& e) {
 				m_message->setIsValid(false);
 				m_message->setStatusCode(e.getStatusCode());
@@ -170,6 +172,8 @@ namespace http {
 			if (m_message->getHeaders().size() > m_baseConfig.maxHeaderValueCount - 1) {
 				throw HttpException(PAYLOAD_TOO_LARGE, "field-value amount exceeds limit");
 			}
+		} catch (const std::bad_alloc&) {
+			throw;
 		} catch (const HttpException& e) {
 			throw HttpException(e.getStatusCode(), "invalid header: " + e.getMessage());
 		}
@@ -200,6 +204,8 @@ namespace http {
 
 			try {
 				m_contentLength = shared::string::toNum<std::size_t>(values.front());
+			} catch (const std::bad_alloc&) {
+				throw;
 			} catch (const std::exception& e) {
 				throw HttpException(BAD_REQUEST, "invalid content-length: could not parse: " + std::string(e.what()));
 			}
@@ -274,6 +280,8 @@ namespace http {
 
 		try {
 			m_contentLength = shared::string::toNum<std::size_t>(sizeView.toString(), std::hex);
+		} catch (const std::bad_alloc&) {
+			throw;
 		} catch (std::exception& e) {
 			throw HttpException(BAD_REQUEST, "invalid chunk size: " + std::string(e.what()));
 		}
