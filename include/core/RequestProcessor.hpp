@@ -41,8 +41,6 @@ namespace core {
 			http::Response* m_response;
 			HandlerMap m_handlers;
 			Router m_router;
-
-			static const std::size_t MAX_ROUTE_DEPTH = 8;
 	};
 
 } /* namespace core */
