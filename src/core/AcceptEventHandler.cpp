@@ -11,7 +11,7 @@ namespace core {
 		, m_dispatcher(dispatcher) {}
 
 	AcceptEventHandler::~AcceptEventHandler() {
-		const std::vector<Connection*>& connections = m_vServer.getActiveConnections();
+		std::vector<Connection*> connections = m_vServer.getActiveConnections();
 		for (std::size_t i = 0; i < connections.size(); ++i) {
 			int fd = connections[i]->getSocket().getFd();
 			try {
