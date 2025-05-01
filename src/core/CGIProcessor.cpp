@@ -8,6 +8,7 @@
 #include "http/Response.hpp"
 #include "http/http.hpp"
 #include "shared/Logger.hpp"
+#include "shared/fileUtils.hpp"
 #include "shared/stringUtils.hpp"
 
 #include <algorithm>
@@ -89,8 +90,15 @@ namespace core {
 		m_ioState |= IO_ERROR;
 	}
 
-	// todo: check if script exists before exec - this should maybe happen in router or something
 	void CGIProcessor::executeCGIScript(const http::Request& request) {
+		const std::string& scriptPath = request.getUri().getPath();
+		if (shared::file::exists(scriptPath) == false) {
+			throw http::HttpException(http::NOT_FOUND, "script does not exist: " + std::string(std::strerror(errno)));
+		}
+		if (shared::file::isExecutable(scriptPath) == false) {
+			throw http::HttpException(http::FORBIDDEN, "script is not executable: " + std::string(std::strerror(errno)));
+		}
+
 		m_startTime = std::time(NULL);
 
 		m_pid = fork();
@@ -107,10 +115,8 @@ namespace core {
 				m_outputPipe.dupWriteFd(STDOUT_FILENO);
 				m_outputPipe.close();
 
-
 				prepareEnviorment(request);
 
-				const std::string& scriptPath = request.getUri().getPath();
 				const std::string& interpreter = getInterpreter(scriptPath);
 				char* const argv[] = {
 					const_cast<char*>(interpreter.c_str()),
