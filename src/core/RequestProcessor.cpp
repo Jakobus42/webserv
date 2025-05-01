@@ -13,6 +13,8 @@
 #include "shared/StringView.hpp"
 #include "shared/stringUtils.hpp"
 
+#include <algorithm>
+
 namespace core {
 
 	RequestProcessor::RequestProcessor(const config::ServerConfig& serverConfig, io::Dispatcher& dispatcher)
@@ -35,12 +37,22 @@ namespace core {
 		m_handlers[http::DELETE] = new DeleteRequestHandler();
 	}
 
+	bool RequestProcessor::shouldRedirect(const http::Request& request) const {
+		const config::LocationConfig& location = *m_router.getResult().location;
+		const std::string& uriPath = request.getUri().getPath();
+
+		if (location.path == "/" && std::count(uriPath.begin(), uriPath.end(), '/') == 1) {
+			return false;
+		}
+		return location.hasRedirect();
+	}
+
 	bool RequestProcessor::handleFetchRequest(const http::Request& request) {
 		ARequestHandler* handler = m_handlers[request.getMethod()];
 
 		if (handler->needsRoute()) {
 			m_router.route(shared::string::StringView(request.getUri().getPath().c_str()), m_serverConfig.location);
-			if (m_router.shouldRedirect()) {
+			if (shouldRedirect(request)) {
 				generateRedirectResponse();
 				return false;
 			}
@@ -48,9 +60,7 @@ namespace core {
 				throw http::HttpException(http::METHOD_NOT_ALLOWED, "HTTP method not allowed for the targeted location");
 			}
 			handler->setRoute(m_router.getResult());
-			handler->setFilePathFromRoute();
 		}
-
 		return handler->handle(request, *m_response);
 	}
 
@@ -122,12 +132,13 @@ namespace core {
 
 	// todo: remove body
 	void RequestProcessor::generateRedirectResponse() {
+		const Route& route = m_router.getResult();
 		std::vector<std::string> locationHeader(1);
 
-		locationHeader.push_back(m_router.generateRedirectUri());
+		locationHeader.push_back(route.redirectUri);
 		m_response->setHeader("Location", locationHeader);
 		m_response->appendBody("Should redirect to " + locationHeader[0] + "\n");
-		m_response->setStatusCode(m_router.getReturnClass());
+		m_response->setStatusCode(route.location->returnClass);
 	}
 
 } // namespace core

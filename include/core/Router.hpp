@@ -16,11 +16,14 @@ namespace core {
 			bool empty() const;
 			void reset();
 
-			const std::string generateFilePath() const;
+			void generateAbsoluteFilePath();
+			void generateRedirectUri();
 
 		public:
 			const config::LocationConfig* location;
-			std::string filePath;
+			std::string remainingPath;
+			std::string absoluteFilePath;
+			std::string redirectUri;
 	};
 
 	class Router : public shared::mixin::NonCopyable {
@@ -33,11 +36,7 @@ namespace core {
 			void reset();
 
 			bool methodIsAllowed(http::Method method) const;
-			bool shouldRedirect() const;
 			const Route& getResult() const;
-			std::string generateFilePath() const;
-			std::string generateRedirectUri() const;
-			http::StatusCode getReturnClass() const;
 
 		private:
 			Route m_routeResult;

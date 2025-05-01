@@ -28,6 +28,7 @@ namespace core {
 			bool processRequest(const http::Request& request);
 			bool handleFetchRequest(const http::Request& request);
 			bool handleCGIRequest(const http::Request& request);
+			bool shouldRedirect(const http::Request& request) const;
 
 			http::Response* releaseResponse();
 

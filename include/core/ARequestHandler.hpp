@@ -33,8 +33,6 @@ namespace core {
 
 			void setRoute(const Route& route) { m_route = route; }
 
-			void setFilePathFromRoute() { m_absoluteFilePath = m_route.generateFilePath(); }
-
 		protected:
 			enum HandlerState {
 				PREPROCESS,
