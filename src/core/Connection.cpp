@@ -7,10 +7,13 @@
 
 namespace core {
 
+	const std::time_t Connection::DEFAULT_TIMEOUT = 60;
+
 	// note: takes ownership of socket
-	Connection::Connection(io::Socket* socket)
+	Connection::Connection(io::Socket* socket, std::time_t timeout)
 		: m_socket(socket)
-		, m_lastActivityTimestamp(-1)
+		, m_lastActivityTimestamp(std::time(NULL))
+		, m_timeout(timeout)
 		, m_isKeepAlive(true) {}
 
 	Connection::~Connection() {
@@ -29,7 +32,7 @@ namespace core {
 
 	void Connection::updateActivityTimestamp() { m_lastActivityTimestamp = std::time(NULL); }
 
-	time_t Connection::getLastActivityTimestamp() const { return m_lastActivityTimestamp; }
+	bool Connection::hasTimedOut() const { return std::time(NULL) - m_lastActivityTimestamp > m_timeout; }
 
 	void Connection::setIsKeepAlive(bool isKeepAlive) { m_isKeepAlive = isKeepAlive; }
 

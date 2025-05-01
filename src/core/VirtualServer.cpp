@@ -9,8 +9,6 @@
 
 namespace core {
 
-	const time_t VirtualServer::CONNECTION_TIMEOUT = 60; // todo: config
-
 	VirtualServer::VirtualServer(const config::ServerConfig& config)
 		: m_listenSocket(NULL)
 		, m_connections()
@@ -45,7 +43,7 @@ namespace core {
 				return NULL;
 			}
 
-			Connection* conn = new Connection(clientSocket);
+			Connection* conn = new Connection(clientSocket); // todo: set timeout from config
 			try {
 				m_connections.push_back(conn);
 			} catch (const std::exception&) {
@@ -69,22 +67,6 @@ namespace core {
 				delete m_connections[i];
 				m_connections.erase(m_connections.begin() + i);
 				return;
-			}
-		}
-	}
-
-	void VirtualServer::removeInactiveConnections() {
-		time_t now = std::time(NULL);
-		for (std::size_t i = 0; i < m_connections.size(); ++i) {
-			Connection* conn = m_connections[i];
-
-			if (conn->getLastActivityTimestamp() == -1) {
-				continue;
-			}
-
-			if (now - conn->getLastActivityTimestamp() > CONNECTION_TIMEOUT) { // todo: maybe make this configureable
-				LOG_INFO("removing inactive connection: " + conn->getConnectionInfo());
-				removeConnection(*conn);
 			}
 		}
 	}

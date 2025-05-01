@@ -17,7 +17,6 @@ namespace core {
 
 			Connection* acceptNewConnection();
 			void removeConnection(const Connection& conn);
-			void removeInactiveConnections();
 
 			const io::Socket& getListenSocket() const;
 			std::string getVirtualServerInfo() const;
@@ -25,8 +24,6 @@ namespace core {
 			const config::ServerConfig& getServerConfig() const;
 
 		private:
-			static const time_t CONNECTION_TIMEOUT;
-
 			io::Socket* m_listenSocket;
 			std::vector<Connection*> m_connections;
 			config::ServerConfig m_config;

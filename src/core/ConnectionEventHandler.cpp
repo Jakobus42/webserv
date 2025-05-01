@@ -42,6 +42,11 @@ namespace core {
 		LOG_CONTEXT("read event  | server: " + m_vServer.getVirtualServerInfo() +
 					" | connection: " + m_connection.getConnectionInfo());
 
+		if (m_connection.hasTimedOut()) {
+			LOG_INFO("connection timed out");
+			return io::UNREGISTER;
+		}
+
 		shared::container::Buffer<http::RequestParser::BUFFER_SIZE>& buffer = m_requestParser.getReadBuffer();
 		std::size_t available = buffer.prepareWrite();
 		ssize_t bytesWritten = m_connection.recv(buffer.writePtr(), available);
@@ -72,6 +77,11 @@ namespace core {
 	io::EventResult ConnectionEventHandler::onWriteable(int32_t) {
 		LOG_CONTEXT("write event | server: " + m_vServer.getVirtualServerInfo() +
 					" | connection: " + m_connection.getConnectionInfo());
+
+		if (m_connection.hasTimedOut()) {
+			LOG_INFO("connection timed out");
+			return io::UNREGISTER;
+		}
 
 		if (!m_requests.empty()) {
 			http::Request* request = m_requests.front();
