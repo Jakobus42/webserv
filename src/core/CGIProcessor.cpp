@@ -216,6 +216,7 @@ namespace core {
 
 		// todo: malloc fail
 		m_env = new char*[envVars.size() + 1];
+		std::memset(m_env, 0, sizeof(char*) * (envVars.size() + 1));
 		for (std::size_t i = 0; i < envVars.size(); ++i) {
 			m_env[i] = new char[envVars[i].length() + 1];
 			std::copy(envVars[i].c_str(),
@@ -259,7 +260,6 @@ namespace core {
 		} else {
 			throw http::HttpException(http::BAD_GATEWAY, "CGI script terminated");
 		}
-
 
 		return false;
 	}
