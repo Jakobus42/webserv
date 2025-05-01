@@ -26,10 +26,6 @@ namespace core {
 		m_routeResult.filePath = uriPath.toString();
 	}
 
-	bool Router::needsRoute() const { return m_routeResult.empty(); }
-
-	bool Router::foundRedirect() const { return m_routeResult.location->hasRedirect(); }
-
 	bool Router::methodIsAllowed(http::Method method) const {
 		const std::set<http::Method>& allowedMethods = m_routeResult.location->allowedMethods;
 		if (allowedMethods.find(method) == allowedMethods.end()) {
@@ -40,27 +36,41 @@ namespace core {
 
 	void Router::reset() { m_routeResult.reset(); }
 
-	std::string Router::generateFilePath() const { return m_routeResult.location->precalculatedAbsolutePath + m_routeResult.filePath; }
-
 	std::string Router::generateRedirectUri() const { return m_routeResult.location->redirectUri + m_routeResult.filePath; }
 
 	http::StatusCode Router::getReturnClass() const { return m_routeResult.location->returnClass; }
 
+	bool Router::shouldRedirect() const { return m_routeResult.location->hasRedirect(); }
+
 	// ------------------------  Route class implementation  ---------
 
-	Router::Route::Route()
+	Route::Route()
 		: location(NULL)
 		, filePath("") {}
 
-	Router::Route::~Route() {}
+	Route::~Route() {}
 
-	bool Router::Route::empty() const { return location == NULL; }
+	Route::Route(const Route& other)
+		: location(other.location)
+		, filePath(other.filePath) {}
 
-	void Router::Route::reset() {
+	Route& Route::operator=(const Route& rhs) {
+		if (this != &rhs) {
+			location = rhs.location;
+			filePath = rhs.filePath;
+		}
+		return *this;
+	}
+
+	bool Route::empty() const { return location == NULL; }
+
+	void Route::reset() {
 		location = NULL;
 		filePath.clear();
 	}
 
-	const Router::Route& Router::getResult() const { return m_routeResult; }
+	const std::string Route::generateFilePath() const { return location->precalculatedAbsolutePath + filePath; }
+
+	const Route& Router::getResult() const { return m_routeResult; }
 
 } /* namespace core */

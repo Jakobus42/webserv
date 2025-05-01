@@ -26,6 +26,9 @@ namespace core {
 
 			void init();
 			bool processRequest(const http::Request& request);
+			bool handleFetchRequest(const http::Request& request);
+			bool handleCGIRequest(const http::Request& request);
+
 			http::Response* releaseResponse();
 
 			void reset();

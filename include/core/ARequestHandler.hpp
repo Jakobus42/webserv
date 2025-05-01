@@ -1,5 +1,6 @@
 #pragma once
 
+#include "core/Router.hpp"
 #include "shared/NonCopyable.hpp"
 
 #include <string>
@@ -15,7 +16,8 @@ namespace core {
 		public:
 			ARequestHandler()
 				: m_state(PREPROCESS)
-				, m_filePath("") {}
+				, m_absoluteFilePath("")
+				, m_route() {}
 
 			virtual ~ARequestHandler() {}
 
@@ -23,10 +25,15 @@ namespace core {
 
 			virtual void reset() {
 				m_state = PREPROCESS;
-				m_filePath.clear();
+				m_absoluteFilePath.clear();
+				m_route.reset();
 			}
 
-			void setFilePath(const std::string& filePath) { m_filePath = filePath; }
+			bool needsRoute() const { return m_route.location == NULL; }
+
+			void setRoute(const Route& route) { m_route = route; }
+
+			void setFilePathFromRoute() { m_absoluteFilePath = m_route.generateFilePath(); }
 
 		protected:
 			enum HandlerState {
@@ -37,7 +44,8 @@ namespace core {
 
 		protected:
 			HandlerState m_state;
-			std::string m_filePath;
+			std::string m_absoluteFilePath;
+			Route m_route;
 	};
 
 } /* namespace core */

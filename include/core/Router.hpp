@@ -6,22 +6,24 @@
 #include <string>
 
 namespace core {
+	struct Route {
+		public:
+			Route();
+			~Route();
+			Route(const Route& other);
+			Route& operator=(const Route& rhs);
+
+			bool empty() const;
+			void reset();
+
+			const std::string generateFilePath() const;
+
+		public:
+			const config::LocationConfig* location;
+			std::string filePath;
+	};
 
 	class Router : public shared::mixin::NonCopyable {
-		private:
-			struct Route : shared::mixin::NonCopyable {
-				public:
-					Route();
-					~Route();
-
-					bool empty() const;
-					void reset();
-
-				public:
-					const config::LocationConfig* location;
-					std::string filePath;
-			};
-
 		public:
 			Router();
 			~Router();
@@ -30,9 +32,8 @@ namespace core {
 			void route(const shared::string::StringView& uriPath, const config::LocationConfig& currentLocation, std::size_t depth = 0);
 			void reset();
 
-			bool needsRoute() const;
-			bool foundRedirect() const;
 			bool methodIsAllowed(http::Method method) const;
+			bool shouldRedirect() const;
 			const Route& getResult() const;
 			std::string generateFilePath() const;
 			std::string generateRedirectUri() const;

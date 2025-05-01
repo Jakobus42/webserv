@@ -35,7 +35,36 @@ namespace core {
 		m_handlers[http::DELETE] = new DeleteRequestHandler();
 	}
 
+	bool RequestProcessor::handleFetchRequest(const http::Request& request) {
+		ARequestHandler* handler = m_handlers[request.getMethod()];
+
+		if (handler->needsRoute()) {
+			m_router.route(shared::string::StringView(request.getUri().getPath().c_str()), m_serverConfig.location);
+			if (m_router.shouldRedirect()) {
+				generateRedirectResponse();
+				return false;
+			}
+			if (m_router.methodIsAllowed(request.getMethod()) == false) {
+				throw http::HttpException(http::METHOD_NOT_ALLOWED, "HTTP method not allowed for the targeted location");
+			}
+			handler->setRoute(m_router.getResult());
+			handler->setFilePathFromRoute();
+		}
+
+		return handler->handle(request, *m_response);
+	}
+
+	bool RequestProcessor::handleCGIRequest(const http::Request& request) {
+		if (m_cgiProcessor.process(request)) {
+			return true;
+		}
+		delete m_response;
+		m_response = m_cgiProcessor.releaseResponse();
+		return false;
+	}
+
 	// todo maybe have a isComplete function. the return value could be confusing
+	// todo: if method is not implemented, throw NOT_IMPLEMENTED
 	bool RequestProcessor::processRequest(const http::Request& request) {
 		if (!m_response) {
 			m_response = new http::Response();
@@ -44,33 +73,14 @@ namespace core {
 				return false;
 			}
 		}
-
 		try {
-			// todo: if method is not implemented, throw NOT_IMPLEMENTED
 			http::Request::Type requestType = request.getType();
 
 			if (requestType == http::Request::FETCH) {
-				ARequestHandler* handler = m_handlers[request.getMethod()];
-				if (m_router.needsRoute()) {
-					m_router.route(shared::string::StringView(request.getUri().getPath().c_str()), m_serverConfig.location);
-					if (m_router.foundRedirect()) {
-						generateRedirectResponse();
-						return false;
-					}
-					if (m_router.methodIsAllowed(request.getMethod()) == false) {
-						throw http::HttpException(http::METHOD_NOT_ALLOWED, "HTTP method not allowed for the targeted location");
-					}
-					handler->setFilePath(m_router.generateFilePath());
-				}
-				if (handler->handle(request, *m_response)) {
-					return true;
-				}
-			} else if (requestType == http::Request::CGI) {
-				if (m_cgiProcessor.process(request)) {
-					return true;
-				}
-				delete m_response;
-				m_response = m_cgiProcessor.releaseResponse();
+				return handleFetchRequest(request);
+			}
+			if (requestType == http::Request::CGI) {
+				return handleCGIRequest(request);
 			}
 		} catch (const std::bad_alloc&) {
 			throw;
@@ -104,14 +114,19 @@ namespace core {
 		m_cgiProcessor.reset();
 	}
 
-	void RequestProcessor::generateErrorResponse(http::StatusCode) {
-		m_response->appendBody("tmp error response\n"); // todo:
+	// todo:
+	void RequestProcessor::generateErrorResponse(http::StatusCode statusCode) {
+		m_response->appendBody("tmp error response\n");
+		m_response->setStatusCode(statusCode);
 	}
 
-	// todo: add Location header with new uri
+	// todo: remove body
 	void RequestProcessor::generateRedirectResponse() {
-		m_response->appendBody("tmp redirect response\n"); // todo:
-		m_response->appendBody(m_router.generateRedirectUri() + "\n");
+		std::vector<std::string> locationHeader(1);
+
+		locationHeader.push_back(m_router.generateRedirectUri());
+		m_response->setHeader("Location", locationHeader);
+		m_response->appendBody("Should redirect to " + locationHeader[0] + "\n");
 		m_response->setStatusCode(m_router.getReturnClass());
 	}
 
