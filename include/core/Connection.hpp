@@ -3,11 +3,16 @@
 #include "io/Socket.hpp"
 #include "shared/NonCopyable.hpp"
 
+#include <ctime>
+
 namespace core {
 
 	class Connection : shared::mixin::NonCopyable {
 		public:
-			explicit Connection(io::Socket* socket);
+			static const std::time_t DEFAULT_TIMEOUT;
+
+		public:
+			explicit Connection(io::Socket* socket, std::time_t timeout = DEFAULT_TIMEOUT);
 			~Connection();
 
 			ssize_t recv(void* buffer, size_t size, int flags = 0);
@@ -15,7 +20,7 @@ namespace core {
 			void close();
 
 			void updateActivityTimestamp();
-			time_t getLastActivityTimestamp() const;
+			bool hasTimedOut() const;
 
 			void setIsKeepAlive(bool isKeepAlive);
 			bool isKeepAlive() const;
@@ -25,7 +30,8 @@ namespace core {
 
 		private:
 			io::Socket* m_socket;
-			time_t m_lastActivityTimestamp;
+			std::time_t m_lastActivityTimestamp;
+			std::time_t m_timeout;
 			bool m_isKeepAlive;
 	};
 
