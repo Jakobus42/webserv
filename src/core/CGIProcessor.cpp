@@ -95,8 +95,12 @@ namespace core {
 		if (shared::file::exists(scriptPath) == false) {
 			throw http::HttpException(http::NOT_FOUND, "script does not exist: " + std::string(std::strerror(errno)));
 		}
-		if (shared::file::isExecutable(scriptPath) == false) {
-			throw http::HttpException(http::FORBIDDEN, "script is not executable: " + std::string(std::strerror(errno)));
+		if (shared::file::isReadable(scriptPath) == false) {
+			throw http::HttpException(http::FORBIDDEN, "script is not readable: " + std::string(std::strerror(errno)));
+		}
+		const std::string& interpreter = getInterpreter(scriptPath);
+		if (shared::file::isExecutable(interpreter) == false) {
+			throw http::HttpException(http::FORBIDDEN, "interpreter is not executable: " + std::string(std::strerror(errno)));
 		}
 
 		m_startTime = std::time(NULL);
@@ -117,7 +121,6 @@ namespace core {
 
 				prepareEnviorment(request);
 
-				const std::string& interpreter = getInterpreter(scriptPath);
 				char* const argv[] = {
 					const_cast<char*>(interpreter.c_str()),
 					const_cast<char*>(scriptPath.c_str()),
