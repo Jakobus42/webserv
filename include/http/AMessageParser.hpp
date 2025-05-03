@@ -19,7 +19,7 @@ namespace http {
 			std::size_t maxHeaderNameLength;
 
 			MessageParserConfig();
-			MessageParserConfig(bool requireStartLine, bool strictMode, std::size_t maxBodySize, std::size_t maxHeaderValueLength, std::size_t maxHeaderCount, std::size_t maxHeaderValueCount, std::size_t maxHeaderNameLength);
+			MessageParserConfig(bool strictMode, std::size_t maxBodySize, std::size_t maxHeaderValueLength, std::size_t maxHeaderCount, std::size_t maxHeaderValueCount, std::size_t maxHeaderNameLength);
 	};
 
 	class AMessage;
@@ -81,10 +81,10 @@ namespace http {
 			ParseResult parseBody(bool isChunked);
 
 		protected:
-			static shared::string::StringView CRLF;
-			static shared::string::StringView LF;
+			static const shared::string::StringView CRLF;
+			static const shared::string::StringView LF;
 			static const char TCHAR[];
-			static shared::string::StringView WHITESPACE;
+			static const shared::string::StringView WHITESPACE;
 
 			MessageParserConfig m_baseConfig;
 			AMessage* m_message;
