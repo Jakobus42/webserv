@@ -1,5 +1,6 @@
 #pragma once
 
+#include "http/http.hpp"
 #include "io/Dispatcher.hpp"
 #include "io/Pipe.hpp"
 #include "shared/NonCopyable.hpp"
@@ -24,7 +25,7 @@ namespace core {
 			// .-. hacky shit
 			void notifyIOReadCompletion();
 			void notifyIOWriteCompletion();
-			void notifyIOError();
+			void notifyIOError(http::StatusCode statusCode, const std::string& reason);
 
 		private:
 			enum State {
@@ -63,6 +64,8 @@ namespace core {
 			time_t m_startTime;
 			time_t m_timeout;
 			int32_t m_ioState;
+			std::string m_lastErrorReason;
+			http::StatusCode m_lastStatusCode;
 			State m_state;
 
 			char** m_env;
