@@ -14,7 +14,7 @@ namespace core {
 
 	// todo: ensure these codes are correct
 	// todo: maybe check for F_OK and W_OK, maybe more?
-	void DeleteRequestHandler::checkPathPermissions() const throw(http::HttpException) {
+	void DeleteRequestHandler::checkPathPermissions(const http::Request&) const throw(http::HttpException) {
 		shared::file::FileType fileType = shared::file::getFileType(m_route.absoluteFilePath);
 
 		if (fileType == shared::file::NOT_FOUND) {
@@ -31,10 +31,10 @@ namespace core {
 		}
 	}
 
-	bool DeleteRequestHandler::handle(const http::Request&, http::Response& response) throw(http::HttpException) {
+	bool DeleteRequestHandler::handle(const http::Request& request, http::Response& response) throw(http::HttpException) {
 		switch (m_state) {
 			case PREPROCESS:
-				checkPathPermissions();
+				checkPathPermissions(request);
 				m_state = PROCESS;
 				return true;
 			case PROCESS: {

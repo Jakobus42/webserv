@@ -14,9 +14,10 @@ namespace core {
 			GetRequestHandler();
 			virtual ~GetRequestHandler();
 
-			virtual bool handle(const http::Request&, http::Response& response);
+			virtual bool handle(const http::Request&, http::Response& response) throw(http::HttpException);
+			virtual void checkPathPermissions(const http::Request& request) const throw(http::HttpException);
 			virtual void reset();
-			virtual void checkPathPermissions() const throw(http::HttpException);
+
 			void openFile();
 			bool readFile(http::Response& response);
 			bool shouldAutoindex() const;

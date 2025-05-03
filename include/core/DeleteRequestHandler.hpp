@@ -11,8 +11,8 @@ namespace core {
 			virtual ~DeleteRequestHandler();
 
 			virtual bool handle(const http::Request& request, http::Response& response) throw(http::HttpException);
+			virtual void checkPathPermissions(const http::Request& request) const throw(http::HttpException);
 
-			virtual void checkPathPermissions() const throw(http::HttpException);
 			void deleteFile() throw(http::HttpException);
 	};
 

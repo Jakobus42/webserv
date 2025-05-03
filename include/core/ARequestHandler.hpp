@@ -22,7 +22,7 @@ namespace core {
 
 			virtual bool handle(const http::Request& request, http::Response& response) = 0;
 
-			virtual void checkPathPermissions() const throw(http::HttpException) = 0;
+			virtual void checkPathPermissions(const http::Request& request) const throw(http::HttpException) = 0;
 
 			virtual void reset() {
 				m_state = PREPROCESS;

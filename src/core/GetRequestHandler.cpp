@@ -22,11 +22,11 @@ namespace core {
 	// case one: we get a directory with trailing '/'
 	// case two: we get a directory with no trailing '/'
 	// case three: we get an actual file with no trailing '/'
-	void GetRequestHandler::checkPathPermissions() const throw(http::HttpException) {
+	void GetRequestHandler::checkPathPermissions(const http::Request&) const throw(http::HttpException) {
 		shared::file::FileType fileType = shared::file::getFileType(m_route.absoluteFilePath);
 
 		if (fileType == shared::file::NOT_FOUND) {
-			throw http::HttpException(http::NOT_FOUND, "GET: File doesn't exist");
+			throw http::HttpException(http::NOT_FOUND, "GET: File " + m_route.absoluteFilePath + " doesn't exist");
 		}
 		const config::LocationConfig& location = *m_route.location;
 		if (fileType == shared::file::DIRECTORY) {
@@ -51,7 +51,7 @@ namespace core {
 
 		DIR* dir;
 		if ((dir = opendir(filePath.c_str())) == NULL) {
-			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "getDirectoryListing: Couldn't open directory");
+			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "GET: getDirectoryListing: Couldn't open directory");
 		}
 		struct dirent* ent;
 		const http::Uri& uri = request.getUri();
@@ -100,7 +100,7 @@ namespace core {
 	void GetRequestHandler::openFile() {
 		m_fileStream.open(m_route.absoluteFilePath.c_str());
 		if (!m_fileStream.is_open()) {
-			throw http::HttpException(http::FORBIDDEN, "File " + m_route.absoluteFilePath + " could not be opened");
+			throw http::HttpException(http::FORBIDDEN, "GET: File " + m_route.absoluteFilePath + " could not be opened");
 		}
 		m_fileStream.seekg(m_streamPosition);
 	}
@@ -137,10 +137,10 @@ namespace core {
 		return true;
 	}
 
-	bool GetRequestHandler::handle(const http::Request& request, http::Response& response) {
+	bool GetRequestHandler::handle(const http::Request& request, http::Response& response) throw(http::HttpException) {
 		switch (m_state) {
 			case PREPROCESS: {
-				checkPathPermissions();
+				checkPathPermissions(request);
 				if (shouldAutoindex()) {
 					generateAutoindexResponse(request, response);
 					m_state = DONE;
