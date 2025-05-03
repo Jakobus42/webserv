@@ -33,8 +33,8 @@ namespace core {
 		, m_startTime(-1)
 		, m_timeout(DEFAULT_TIMEOUT)
 		, m_ioState(IO_NONE)
-		, m_lastErrorReason()
-		, m_lastStatusCode(http::OK)
+		, m_lastIOErrorReason()
+		, m_lastIOStatusCode(http::OK)
 		, m_state(EXECUTE)
 		, m_env(NULL) {
 		m_inputPipe.open();
@@ -89,8 +89,8 @@ namespace core {
 	}
 
 	void CGIProcessor::notifyIOError(http::StatusCode statusCode, const std::string& reason) {
-		m_lastStatusCode = statusCode;
-		m_lastErrorReason = reason;
+		m_lastIOStatusCode = statusCode;
+		m_lastIOErrorReason = reason;
 		m_ioState |= IO_ERROR;
 	}
 
@@ -241,7 +241,7 @@ namespace core {
 		}
 
 		if (hasIOError()) {
-			throw http::HttpException(m_lastStatusCode, m_lastErrorReason);
+			throw http::HttpException(m_lastIOStatusCode, m_lastIOErrorReason);
 		}
 
 		if (!isIOComplete()) {

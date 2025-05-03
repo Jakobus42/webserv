@@ -10,21 +10,26 @@
 namespace http {
 
 	MessageParserConfig::MessageParserConfig()
-		: maxBodySize(10 * 1024 * 1024)	 // 10MB
+		: strictMode(true)
+		, requireStartLine(true)
+		, maxBodySize(10 * 1024 * 1024)	 // 10MB
 		, maxHeaderValueLength(8 * 1024) // 8KB
 		, maxHeaderCount(128)			 // 128 headers
 		, maxHeaderValueCount(64)		 // 64 values
 		, maxHeaderNameLength(256)		 // 256B
 	{}
 
-	MessageParserConfig::MessageParserConfig(std::size_t maxBodySize, std::size_t maxHeaderValueLength, std::size_t maxHeaderCount, std::size_t maxHeaderValueCount, std::size_t maxHeaderNameLength)
-		: maxBodySize(maxBodySize)
+	MessageParserConfig::MessageParserConfig(bool requireStartLine, bool strictMode, std::size_t maxBodySize, std::size_t maxHeaderValueLength, std::size_t maxHeaderCount, std::size_t maxHeaderValueCount, std::size_t maxHeaderNameLength)
+		: strictMode(strictMode)
+		, requireStartLine(requireStartLine)
+		, maxBodySize(maxBodySize)
 		, maxHeaderValueLength(maxHeaderValueLength)
 		, maxHeaderCount(maxHeaderCount)
 		, maxHeaderValueCount(maxHeaderValueCount)
 		, maxHeaderNameLength(maxHeaderNameLength) {}
 
 	shared::string::StringView AMessageParser::CRLF = shared::string::StringView("\r\n");
+	shared::string::StringView AMessageParser::LF = shared::string::StringView("\n");
 	const char AMessageParser::TCHAR[256] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '!', 0, '#', '$', '%', '&', '\'', 0, 0, '*', '+', 0, '-', '.', 0, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 0, 0, 0, 0, 0, 0, 0, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 0, 0, 0, '^', '_', '`', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 0, '|', 0, '~', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	shared::string::StringView AMessageParser::WHITESPACE = shared::string::StringView(" \t");
 
@@ -33,7 +38,8 @@ namespace http {
 		, m_message(NULL)
 		, m_state(START_LINE)
 		, m_buffer()
-		, m_contentLength(0) {}
+		, m_contentLength(0) {
+	}
 
 	AMessageParser::~AMessageParser() { delete m_message; }
 
@@ -48,8 +54,12 @@ namespace http {
 
 				switch (m_state) {
 					case START_LINE:
-						result = parseStartLine();
-						if (result == DONE) m_state = HEADERS;
+						if (m_baseConfig.requireStartLine) {
+							result = parseStartLine();
+							if (result == DONE) m_state = HEADERS;
+						} else {
+							m_state = HEADERS;
+						}
 						break;
 
 					case HEADERS:
@@ -108,6 +118,8 @@ namespace http {
 		m_contentLength = 0;
 	}
 
+	void AMessageParser::setConfig(const MessageParserConfig& confing) { m_baseConfig = confing; }
+
 	/* Message management */
 
 	AMessage* AMessageParser::releaseMessage() {
@@ -120,12 +132,20 @@ namespace http {
 
 	std::pair<shared::string::StringView /*line */, bool /*ok*/> AMessageParser::readLine() {
 		const char* lineStart = m_buffer.readPtr();
-		const char* lineEnd = m_buffer.find(CRLF.data());
+		const char* lineEnd = NULL;
+		shared::string::StringView delimeter;
+
+		if (m_baseConfig.strictMode) {
+			delimeter = CRLF;
+		} else {
+			delimeter = LF;
+		}
+		lineEnd = m_buffer.find(delimeter.data());
 		if (lineEnd == NULL) {
 			return std::make_pair(shared::string::StringView(), false);
 		}
 
-		m_buffer.consume((lineEnd - lineStart) + CRLF.size());
+		m_buffer.consume((lineEnd - lineStart) + delimeter.size());
 		return std::make_pair(shared::string::StringView(lineStart, lineEnd - lineStart), true);
 	}
 

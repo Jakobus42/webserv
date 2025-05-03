@@ -64,8 +64,8 @@ namespace core {
 			time_t m_startTime;
 			time_t m_timeout;
 			int32_t m_ioState;
-			std::string m_lastErrorReason;
-			http::StatusCode m_lastStatusCode;
+			std::string m_lastIOErrorReason;
+			http::StatusCode m_lastIOStatusCode;
 			State m_state;
 
 			char** m_env;

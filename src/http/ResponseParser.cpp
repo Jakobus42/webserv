@@ -22,6 +22,11 @@ namespace http {
 
 	Response* ResponseParser::releaseResponse() { return static_cast<Response*>(releaseMessage()); }
 
+	void ResponseParser::setConfig(const ResponseParserConfig& config) {
+		m_baseConfig = config.messageParserConfig;
+		m_config = config;
+	}
+
 	AMessage* ResponseParser::createMessage() const { return new Response(); }
 
 	/* <HTTP-Version> <Status-Code> <Reason-Phrase> */
