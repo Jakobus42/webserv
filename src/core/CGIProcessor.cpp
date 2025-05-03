@@ -33,6 +33,8 @@ namespace core {
 		, m_startTime(-1)
 		, m_timeout(DEFAULT_TIMEOUT)
 		, m_ioState(IO_NONE)
+		, m_lastErrorReason()
+		, m_lastStatusCode(http::OK)
 		, m_state(EXECUTE)
 		, m_env(NULL) {
 		m_inputPipe.open();
@@ -86,7 +88,9 @@ namespace core {
 		m_ioState |= IO_WRITE_COMPLETE;
 	}
 
-	void CGIProcessor::notifyIOError() {
+	void CGIProcessor::notifyIOError(http::StatusCode statusCode, const std::string& reason) {
+		m_lastStatusCode = statusCode;
+		m_lastErrorReason = reason;
 		m_ioState |= IO_ERROR;
 	}
 
@@ -237,7 +241,7 @@ namespace core {
 		}
 
 		if (hasIOError()) {
-			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "CGI Event Handler failed");
+			throw http::HttpException(m_lastStatusCode, m_lastErrorReason);
 		}
 
 		if (!isIOComplete()) {

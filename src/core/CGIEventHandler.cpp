@@ -25,12 +25,10 @@ namespace core {
 		std::size_t available = buffer.prepareWrite();
 		ssize_t bytesRead = read(fd, buffer.writePtr(), available);
 		if (bytesRead == -1) {
-			LOG_ERROR("failed to read from CGI script");
-			m_processor.notifyIOError();
+			m_processor.notifyIOError(http::INTERNAL_SERVER_ERROR, "failed to read from CGI script");
 			return io::UNREGISTER;
 		} else if (bytesRead == 0 && m_responseParser.isComplete() == false) {
-			LOG_ERROR("incomplete CGI response");
-			m_processor.notifyIOError();
+			m_processor.notifyIOError(http::BAD_GATEWAY, "incomplete CGI response");
 			return io::UNREGISTER;
 		}
 		buffer.advanceWriter(bytesRead);
@@ -38,7 +36,7 @@ namespace core {
 		if (!m_responseParser.parse()) {
 			m_response = m_responseParser.releaseResponse();
 			if (m_response->isValid() == false) {
-				m_processor.notifyIOError();
+				m_processor.notifyIOError(http::BAD_GATEWAY, "invalid cgi response");
 			} else {
 				m_processor.notifyIOReadCompletion();
 			}
@@ -53,8 +51,7 @@ namespace core {
 									 m_request.getBody().size() - m_bytesWritten);
 
 		if (bytesWritten == -1) {
-			LOG_ERROR("failed to write to CGI script");
-			m_processor.notifyIOError();
+			m_processor.notifyIOError(http::INTERNAL_SERVER_ERROR, "failed to write to CGI script");
 			return io::UNREGISTER;
 		}
 
@@ -67,14 +64,16 @@ namespace core {
 	}
 
 	io::EventResult CGIEventHandler::onHangup(int32_t) {
-		LOG_ERROR("IO event hangup on CGI handler");
-		m_processor.notifyIOError();
+		if (m_responseParser.isComplete() == false) {
+			m_processor.notifyIOError(http::BAD_GATEWAY, "incomplete CGI response on hangup");
+		} else {
+			m_processor.notifyIOError(http::INTERNAL_SERVER_ERROR, "IO event hangup on CGI handler");
+		}
 		return io::UNREGISTER;
 	}
 
 	io::EventResult CGIEventHandler::onError(int32_t) {
-		LOG_ERROR("IO event error on CGI handler");
-		m_processor.notifyIOError();
+		m_processor.notifyIOError(http::INTERNAL_SERVER_ERROR, "IO event error on CGI handler");
 		return io::UNREGISTER;
 	}
 
