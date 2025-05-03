@@ -1,6 +1,7 @@
 #include "core/DeleteRequestHandler.hpp"
 
 #include "http/Response.hpp"
+#include "shared/fileUtils.hpp"
 
 #include <cstdio>
 
@@ -13,8 +14,8 @@ namespace core {
 
 	// todo: ensure these codes are correct
 	// todo: maybe check for F_OK and W_OK, maybe more?
-	void DeleteRequestHandler::checkFileAccess() const throw(http::HttpException) {
-		shared::file::FileType fileType = shared::file::getFileType(m_absoluteFilePath);
+	void DeleteRequestHandler::checkPathPermissions() const throw(http::HttpException) {
+		shared::file::FileType fileType = shared::file::getFileType(m_route.absoluteFilePath);
 
 		if (fileType == shared::file::NOT_FOUND) {
 			throw http::HttpException(http::NOT_FOUND, "DELETE: File doesn't exist");
@@ -25,7 +26,7 @@ namespace core {
 	}
 
 	void DeleteRequestHandler::deleteFile() throw(http::HttpException) {
-		if (std::remove(m_absoluteFilePath.c_str()) != 0) {
+		if (std::remove(m_route.absoluteFilePath.c_str()) != 0) {
 			throw http::HttpException(http::FORBIDDEN, "DELETE: File could not be removed");
 		}
 	}
@@ -33,13 +34,14 @@ namespace core {
 	bool DeleteRequestHandler::handle(const http::Request&, http::Response& response) throw(http::HttpException) {
 		switch (m_state) {
 			case PREPROCESS:
-				checkFileAccess();
+				checkPathPermissions();
 				m_state = PROCESS;
+				return true;
 			case PROCESS: {
 				deleteFile();
 				response.setStatusCode(http::NO_CONTENT);
 				m_state = DONE;
-				return false;
+				return true;
 			}
 			case DONE:
 				return false;

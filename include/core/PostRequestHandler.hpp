@@ -1,6 +1,7 @@
 #pragma once
 
 #include "core/ARequestHandler.hpp"
+#include "http/http.hpp"
 
 namespace core {
 
@@ -10,6 +11,7 @@ namespace core {
 			virtual ~PostRequestHandler();
 
 			virtual bool handle(const http::Request& request, http::Response& response);
+			virtual void checkPathPermissions() const throw(http::HttpException);
 	};
 
 } /* namespace core */

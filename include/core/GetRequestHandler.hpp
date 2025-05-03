@@ -2,9 +2,9 @@
 
 #include "core/ARequestHandler.hpp"
 #include "http/http.hpp"
-#include "shared/Buffer.hpp"
 
 #include <fstream>
+#include <string>
 #include <vector>
 
 namespace core {
@@ -16,9 +16,12 @@ namespace core {
 
 			virtual bool handle(const http::Request&, http::Response& response);
 			virtual void reset();
-			void checkFileAccess() const throw(http::HttpException);
+			virtual void checkPathPermissions() const throw(http::HttpException);
 			void openFile();
 			bool readFile(http::Response& response);
+			bool shouldAutoindex() const;
+			void generateAutoindexResponse(const http::Request& request, http::Response& response);
+			std::string generateDirectoryListing(const http::Request& request, const std::string& filePath);
 
 		private:
 			static const std::streamsize BUFFER_SIZE = 16384; // 16 KB

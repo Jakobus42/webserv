@@ -2,7 +2,6 @@
 
 #include "core/ARequestHandler.hpp"
 #include "http/http.hpp"
-#include "shared/fileUtils.hpp"
 
 namespace core {
 
@@ -13,7 +12,7 @@ namespace core {
 
 			virtual bool handle(const http::Request& request, http::Response& response) throw(http::HttpException);
 
-			void checkFileAccess() const throw(http::HttpException);
+			virtual void checkPathPermissions() const throw(http::HttpException);
 			void deleteFile() throw(http::HttpException);
 	};
 

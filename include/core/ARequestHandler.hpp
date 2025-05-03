@@ -16,16 +16,16 @@ namespace core {
 		public:
 			ARequestHandler()
 				: m_state(PREPROCESS)
-				, m_absoluteFilePath("")
 				, m_route() {}
 
 			virtual ~ARequestHandler() {}
 
 			virtual bool handle(const http::Request& request, http::Response& response) = 0;
 
+			virtual void checkPathPermissions() const throw(http::HttpException) = 0;
+
 			virtual void reset() {
 				m_state = PREPROCESS;
-				m_absoluteFilePath.clear();
 				m_route.reset();
 			}
 
@@ -42,7 +42,6 @@ namespace core {
 
 		protected:
 			HandlerState m_state;
-			std::string m_absoluteFilePath;
 			Route m_route;
 	};
 
