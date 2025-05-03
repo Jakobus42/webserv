@@ -31,8 +31,12 @@ namespace core {
 		if (bytesRead == -1) {
 			m_processor.notifyIOError(http::INTERNAL_SERVER_ERROR, "failed to read from CGI script");
 			return io::UNREGISTER;
-		} else if (bytesRead == 0 && m_responseParser.isComplete() == false) {
-			m_processor.notifyIOError(http::BAD_GATEWAY, "incomplete CGI response");
+		} else if (bytesRead == 0) {
+			if (m_responseParser.isComplete() == false) {
+				m_processor.notifyIOError(http::BAD_GATEWAY, "incomplete CGI response");
+			} else {
+				m_processor.notifyIOReadCompletion();
+			}
 			return io::UNREGISTER;
 		}
 		buffer.advanceWriter(bytesRead);

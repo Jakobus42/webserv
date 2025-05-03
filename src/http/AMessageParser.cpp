@@ -58,6 +58,7 @@ namespace http {
 							result = parseStartLine();
 							if (result == DONE) m_state = HEADERS;
 						} else {
+							result = DONE;
 							m_state = HEADERS;
 						}
 						break;

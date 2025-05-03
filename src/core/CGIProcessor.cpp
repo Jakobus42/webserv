@@ -183,7 +183,7 @@ namespace core {
 		envVars.push_back("SERVER_PROTOCOL=" + request.getVersion());
 		envVars.push_back("QUERY_STRING=" + request.getUri().getQuery());
 		envVars.push_back("REQUEST_METHOD=" + std::string(methodToString(request.getMethod())));
-		envVars.push_back("SCRIPT_NAME=" + request.getUri().getPath().substr(9 /* /cgi-bin/ */));
+		envVars.push_back("SCRIPT_NAME=" + request.getUri().getPath().substr(8 /* /cgi-bin/ */));
 		envVars.push_back("GATEWAY_INTERFACE=CGI/1.1");
 
 		if (request.hasHeader("content-length")) {
