@@ -17,7 +17,6 @@ namespace core {
 		, m_responseParser() {
 		http::ResponseParserConfig conf;
 		conf.messageParserConfig.strictMode = false;
-		conf.messageParserConfig.requireStartLine = false;
 		m_responseParser.setConfig(conf);
 	}
 
