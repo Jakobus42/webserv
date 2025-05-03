@@ -20,6 +20,8 @@ namespace http {
 
 			Response* releaseResponse();
 
+			void setConfig(const ResponseParserConfig& config);
+
 		private:
 			virtual AMessage* createMessage() const;
 

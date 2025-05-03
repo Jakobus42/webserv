@@ -15,6 +15,10 @@ namespace core {
 		, m_response(response)
 		, m_bytesWritten(0)
 		, m_responseParser() {
+		http::ResponseParserConfig conf;
+		conf.messageParserConfig.strictMode = false;
+		conf.messageParserConfig.requireStartLine = false;
+		m_responseParser.setConfig(conf);
 	}
 
 	CGIEventHandler::~CGIEventHandler() {}

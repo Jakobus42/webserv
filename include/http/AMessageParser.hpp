@@ -9,6 +9,9 @@
 namespace http {
 
 	struct MessageParserConfig {
+			bool strictMode;
+			bool requireStartLine;
+
 			std::size_t maxBodySize;
 			std::size_t maxHeaderValueLength;
 			std::size_t maxHeaderCount;
@@ -16,7 +19,7 @@ namespace http {
 			std::size_t maxHeaderNameLength;
 
 			MessageParserConfig();
-			MessageParserConfig(std::size_t maxBodySize, std::size_t maxHeaderValueLength, std::size_t maxHeaderCount, std::size_t maxHeaderValueCount, std::size_t maxHeaderNameLength);
+			MessageParserConfig(bool requireStartLine, bool strictMode, std::size_t maxBodySize, std::size_t maxHeaderValueLength, std::size_t maxHeaderCount, std::size_t maxHeaderValueCount, std::size_t maxHeaderNameLength);
 	};
 
 	class AMessage;
@@ -34,6 +37,8 @@ namespace http {
 			shared::container::Buffer<BUFFER_SIZE>& getReadBuffer();
 
 			void reset();
+
+			void setConfig(const MessageParserConfig& config);
 
 		protected:
 			enum ParseState {
@@ -77,6 +82,7 @@ namespace http {
 
 		protected:
 			static shared::string::StringView CRLF;
+			static shared::string::StringView LF;
 			static const char TCHAR[];
 			static shared::string::StringView WHITESPACE;
 

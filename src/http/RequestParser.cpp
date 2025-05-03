@@ -29,6 +29,11 @@ namespace http {
 
 	Request* RequestParser::releaseRequest() { return static_cast<Request*>(releaseMessage()); }
 
+	void RequestParser::setConfig(const RequestParserConfig& config) {
+		m_baseConfig = config.messageParserConfig;
+		m_config = config;
+	}
+
 	AMessage* RequestParser::createMessage() const { return new Request(); }
 
 	/* <Method> <Request-URI> <HTTP-Version> */

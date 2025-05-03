@@ -19,6 +19,8 @@ namespace http {
 			RequestParser(const RequestParserConfig& conf = RequestParserConfig());
 			virtual ~RequestParser();
 
+			void setConfig(const RequestParserConfig& conf);
+
 			Request* releaseRequest();
 
 		private:
