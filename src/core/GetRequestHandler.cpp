@@ -6,6 +6,8 @@
 #include "http/Response.hpp"
 #include "shared/fileUtils.hpp"
 
+#include <cstring>
+
 namespace core {
 
 	GetRequestHandler::GetRequestHandler()
@@ -106,12 +108,13 @@ namespace core {
 	}
 
 	bool GetRequestHandler::readFile(http::Response& response) {
-		m_buffer.clear();
 		m_fileStream.read(m_buffer.data(), BUFFER_SIZE);
 		std::streamsize bytesRead = m_fileStream.gcount();
 		m_fileStream.close();
+		m_streamPosition += bytesRead;
 		if (bytesRead > 0) {
 			response.appendBody(shared::string::StringView(m_buffer.data()));
+			std::memset(m_buffer.data(), '\0', m_buffer.size());
 		} else {
 			m_state = DONE;
 			return false;
@@ -163,7 +166,7 @@ namespace core {
 
 	void GetRequestHandler::reset() {
 		this->ARequestHandler::reset();
-		m_buffer.clear();
+		std::memset(m_buffer.data(), '\0', m_buffer.size());
 		if (m_fileStream.is_open()) {
 			m_fileStream.close();
 		}
