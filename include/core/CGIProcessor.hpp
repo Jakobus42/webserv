@@ -43,7 +43,7 @@ namespace core {
 
 			void prepareEnviorment(const http::Request& request);
 			void executeCGIScript(const http::Request& request);
-			const std::string& getInterpreter(const std::string& scriptPath);
+			const std::string& getInterpreter();
 
 			bool waitCGIScript();
 
@@ -66,6 +66,7 @@ namespace core {
 			int32_t m_ioState;
 			std::string m_lastIOErrorReason;
 			http::StatusCode m_lastIOStatusCode;
+			std::string m_scriptName;
 			State m_state;
 
 			char** m_env;

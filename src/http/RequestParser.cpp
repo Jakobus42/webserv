@@ -16,10 +16,6 @@ namespace http {
 		, maxUriLength(1024) // 1KB
 	{}
 
-	RequestParserConfig::RequestParserConfig(const MessageParserConfig& messageParserConfig, std::size_t maxUriLength)
-		: messageParserConfig(messageParserConfig)
-		, maxUriLength(maxUriLength) {}
-
 	RequestParser::RequestParser(const RequestParserConfig& conf)
 		: AMessageParser(conf.messageParserConfig)
 		, m_config(conf)

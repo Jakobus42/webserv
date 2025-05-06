@@ -5,26 +5,22 @@
 #include "shared/Logger.hpp"
 #include "shared/stringUtils.hpp"
 
-// todo: all the status codes are frong for a response lol (no BAD_REQUEST lmao)
+#include <limits>
+
+// todo: some weird implementation stuff and fixes but who cares if it works ig (maybe fix some day .-.)
 
 namespace http {
 
 	MessageParserConfig::MessageParserConfig()
-		: strictMode(true)
+		: requireCR(true)
+		, requireStartLine(true)
+		, parseBodyWithoutContentLength(false)
 		, maxBodySize(10 * 1024 * 1024)	 // 10MB
 		, maxHeaderValueLength(8 * 1024) // 8KB
 		, maxHeaderCount(128)			 // 128 headers
 		, maxHeaderValueCount(64)		 // 64 values
 		, maxHeaderNameLength(256)		 // 256B
 	{}
-
-	MessageParserConfig::MessageParserConfig(bool strictMode, std::size_t maxBodySize, std::size_t maxHeaderValueLength, std::size_t maxHeaderCount, std::size_t maxHeaderValueCount, std::size_t maxHeaderNameLength)
-		: strictMode(strictMode)
-		, maxBodySize(maxBodySize)
-		, maxHeaderValueLength(maxHeaderValueLength)
-		, maxHeaderCount(maxHeaderCount)
-		, maxHeaderValueCount(maxHeaderValueCount)
-		, maxHeaderNameLength(maxHeaderNameLength) {}
 
 	const shared::string::StringView AMessageParser::CRLF = shared::string::StringView("\r\n");
 	const shared::string::StringView AMessageParser::LF = shared::string::StringView("\n");
@@ -52,8 +48,13 @@ namespace http {
 
 				switch (m_state) {
 					case START_LINE:
-						result = parseStartLine();
-						if (result == DONE) m_state = HEADERS;
+						if (m_baseConfig.requireStartLine == true) {
+							result = parseStartLine();
+							if (result == DONE) m_state = HEADERS;
+						} else {
+							m_state = HEADERS;
+							result = DONE;
+						}
 						break;
 
 					case HEADERS:
@@ -129,7 +130,7 @@ namespace http {
 		const char* lineEnd = NULL;
 		shared::string::StringView delimeter;
 
-		if (m_baseConfig.strictMode) {
+		if (m_baseConfig.requireCR) {
 			delimeter = CRLF;
 		} else {
 			delimeter = LF;
@@ -304,6 +305,10 @@ namespace http {
 
 	// this function flow is kinda fucked up but idc (maybe I do) .-.
 	AMessageParser::ParseResult AMessageParser::parseBody(bool isChunked) {
+		// this is scatchy but works for cgi lelelelellele (basically allows the cgi to not set content length header) maybe make this better some time idk
+		if (m_baseConfig.parseBodyWithoutContentLength == true && m_contentLength == 0 && isChunked == false) {
+			m_contentLength = std::numeric_limits<std::size_t>::max();
+		}
 		if (m_contentLength > 0) {
 			std::size_t available = std::min(m_buffer.size(), m_contentLength);
 			m_message->appendBody(shared::string::StringView(m_buffer.readPtr(), available));

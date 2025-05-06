@@ -2,6 +2,7 @@
 
 #include <signal.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
 #include "core/CGIEventHandler.hpp"
 #include "http/Request.hpp"
@@ -102,7 +103,10 @@ namespace core {
 		if (shared::file::isReadable(scriptPath) == false) {
 			throw http::HttpException(http::FORBIDDEN, "script is not readable: " + std::string(std::strerror(errno)));
 		}
-		const std::string& interpreter = getInterpreter(scriptPath);
+
+		m_scriptName = scriptPath.substr(8 /* /cgi-bin/ */);
+
+		const std::string& interpreter = getInterpreter();
 		if (shared::file::isExecutable(interpreter) == false) {
 			throw http::HttpException(http::FORBIDDEN, "interpreter is not executable: " + std::string(std::strerror(errno)));
 		}
@@ -127,8 +131,12 @@ namespace core {
 
 				char* const argv[] = {
 					const_cast<char*>(interpreter.c_str()),
-					const_cast<char*>(scriptPath.c_str()),
+					const_cast<char*>(m_scriptName.c_str()),
 					NULL};
+
+				if (chdir("cgi-bin") == -1) {
+					throw std::runtime_error("chdir() failed: " + std::string(std::strerror(errno)));
+				}
 
 				execve(interpreter.c_str(), argv, m_env);
 				throw std::runtime_error("execve() failed: " + std::string(std::strerror(errno)));
@@ -158,13 +166,14 @@ namespace core {
 	}
 
 	// todo: get real interpreter path from env or config?
-	const std::string& CGIProcessor::getInterpreter(const std::string& scriptPath) {
-		size_t dotPos = scriptPath.find_last_of('.');
-		std::string extension = (dotPos != std::string::npos) ? scriptPath.substr(dotPos) : "";
+	const std::string& CGIProcessor::getInterpreter() {
+		size_t dotPos = m_scriptName.find_last_of('.');
+		std::string extension = (dotPos != std::string::npos) ? m_scriptName.substr(dotPos) : "";
 
 		static std::map<std::string, std::string> interpreters;
 		if (interpreters.empty()) {
 			interpreters[".py"] = "/usr/bin/python3";
+			interpreters[".sh"] = "/usr/bin/sh";
 		}
 
 		std::map<std::string, std::string>::const_iterator it = interpreters.find(extension);
@@ -183,7 +192,8 @@ namespace core {
 		envVars.push_back("SERVER_PROTOCOL=" + request.getVersion());
 		envVars.push_back("QUERY_STRING=" + request.getUri().getQuery());
 		envVars.push_back("REQUEST_METHOD=" + std::string(methodToString(request.getMethod())));
-		envVars.push_back("SCRIPT_NAME=" + request.getUri().getPath().substr(8 /* /cgi-bin/ */));
+
+		envVars.push_back("SCRIPT_NAME=" + m_scriptName);
 		envVars.push_back("GATEWAY_INTERFACE=CGI/1.1");
 
 		if (request.hasHeader("content-length")) {
