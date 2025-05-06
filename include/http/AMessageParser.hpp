@@ -3,6 +3,7 @@
 #include "shared/Buffer.hpp"
 #include "shared/NonCopyable.hpp"
 #include "shared/StringView.hpp"
+#include "http/http.hpp"
 
 #include <vector>
 
@@ -61,6 +62,7 @@ namespace http {
 			AMessage* releaseMessage();
 
 			virtual AMessage* createMessage() const = 0;
+			virtual StatusCode getErrorCode() const = 0;
 
 			/* Shared */
 			std::pair<shared::string::StringView /*line*/, bool /*ok*/> readLine();
@@ -72,7 +74,7 @@ namespace http {
 			virtual ParseResult parseStartLine() = 0;
 
 			ParseResult parseHeaderLine();
-			void validateHeaders();
+			virtual void interpretHeaders();
 			shared::string::StringView extractHeaderKey(const shared::string::StringView& line) const;
 			std::vector<shared::string::StringView> extractHeaderValues(const shared::string::StringView& line) const;
 

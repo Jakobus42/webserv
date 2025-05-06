@@ -72,6 +72,8 @@ namespace http {
 
 	bool AMessage::hasHeader(const std::string& key) const { return m_headers.find(key) != m_headers.end(); }
 
+	void AMessage::removeHeader(const std::string& key) { m_headers.erase(key); }
+
 	/* Body */
 
 	const std::string& AMessage::getBody() const { return m_body; }
