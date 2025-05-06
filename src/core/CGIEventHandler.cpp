@@ -16,7 +16,10 @@ namespace core {
 		, m_bytesWritten(0)
 		, m_responseParser() {
 		http::ResponseParserConfig conf;
-		conf.messageParserConfig.strictMode = false;
+		// weird stuff
+		conf.messageParserConfig.requireCR = false;
+		conf.messageParserConfig.requireStartLine = false;
+		conf.messageParserConfig.parseBodyWithoutContentLength = true; // I hate this
 		m_responseParser.setConfig(conf);
 	}
 
@@ -71,10 +74,11 @@ namespace core {
 	}
 
 	io::EventResult CGIEventHandler::onHangup(int32_t) {
-		if (m_responseParser.isComplete() == false) {
-			m_processor.notifyIOError(http::BAD_GATEWAY, "incomplete CGI response on hangup");
-		} else {
-			m_processor.notifyIOError(http::INTERNAL_SERVER_ERROR, "IO event hangup on CGI handler");
+		if (m_responseParser.isComplete() == false) { // sketchy but should work
+			m_processor.notifyIOReadCompletion();
+			m_processor.notifyIOWriteCompletion();
+
+			m_response = m_responseParser.releaseResponse();
 		}
 		return io::UNREGISTER;
 	}

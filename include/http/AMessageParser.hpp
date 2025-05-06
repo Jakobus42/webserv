@@ -9,7 +9,9 @@
 namespace http {
 
 	struct MessageParserConfig {
-			bool strictMode;
+			bool requireCR;
+			bool requireStartLine;
+			bool parseBodyWithoutContentLength;
 
 			std::size_t maxBodySize;
 			std::size_t maxHeaderValueLength;
@@ -18,7 +20,6 @@ namespace http {
 			std::size_t maxHeaderNameLength;
 
 			MessageParserConfig();
-			MessageParserConfig(bool strictMode, std::size_t maxBodySize, std::size_t maxHeaderValueLength, std::size_t maxHeaderCount, std::size_t maxHeaderValueCount, std::size_t maxHeaderNameLength);
 	};
 
 	class AMessage;
