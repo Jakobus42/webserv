@@ -45,6 +45,8 @@ namespace http {
 
 			bool hasHeader(const std::string& key) const;
 
+			void removeHeader(const std::string& key);
+
 			/* Body */
 			const std::string& getBody() const;
 

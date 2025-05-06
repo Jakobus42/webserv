@@ -32,6 +32,8 @@ namespace http {
 
 	AMessage* RequestParser::createMessage() const { return new Request(); }
 
+	StatusCode RequestParser::getErrorCode() const { return BAD_REQUEST; }
+
 	/* <Method> <Request-URI> <HTTP-Version> */
 	AMessageParser::ParseResult RequestParser::parseStartLine() {
 		std::pair<shared::string::StringView /*line*/, bool /*ok*/> ret = readLine();

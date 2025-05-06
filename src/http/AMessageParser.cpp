@@ -171,7 +171,7 @@ namespace http {
 
 		shared::string::StringView line = ret.first;
 		if (line.empty()) {
-			validateHeaders();
+			interpretHeaders();
 			return DONE;
 		}
 
@@ -195,7 +195,7 @@ namespace http {
 		return CONTINUE;
 	}
 
-	void AMessageParser::validateHeaders() {
+	void AMessageParser::interpretHeaders() {
 		bool hasTransferEncoding = m_message->hasHeader("transfer-encoding");
 		bool hasContentLength = m_message->hasHeader("content-length");
 
@@ -212,7 +212,7 @@ namespace http {
 			if (values.size() > 1) {
 				for (std::size_t i = 1; i < values.size(); ++i) {
 					if (values[i] != values[0]) {
-						throw HttpException(BAD_REQUEST, "conflicting content-length headers");
+						throw HttpException(getErrorCode(), "conflicting content-length headers");
 					}
 				}
 			}
@@ -222,7 +222,7 @@ namespace http {
 			} catch (const std::bad_alloc&) {
 				throw;
 			} catch (const std::exception& e) {
-				throw HttpException(BAD_REQUEST, "invalid content-length: could not parse: " + std::string(e.what()));
+				throw HttpException(getErrorCode(), "invalid content-length: could not parse: " + std::string(e.what()));
 			}
 			if (m_contentLength > m_baseConfig.maxBodySize) {
 				throw HttpException(PAYLOAD_TOO_LARGE, "content-length exceeds size limit");
@@ -233,10 +233,10 @@ namespace http {
 	shared::string::StringView AMessageParser::extractHeaderKey(const shared::string::StringView& line) const {
 		std::size_t colonPos = line.find(':');
 		if (colonPos == shared::string::StringView::npos) {
-			throw HttpException(BAD_REQUEST, "missing ':' after field-name");
+			throw HttpException(getErrorCode(), "missing ':' after field-name");
 		}
 		if (colonPos == 0) {
-			throw HttpException(BAD_REQUEST, "empty field-name");
+			throw HttpException(getErrorCode(), "empty field-name");
 		}
 		if (colonPos > m_baseConfig.maxHeaderNameLength) {
 			throw HttpException(PAYLOAD_TOO_LARGE, "field-name exceeds size limit");
@@ -244,7 +244,7 @@ namespace http {
 
 		for (std::size_t i = 0; i < colonPos; ++i) {
 			if (!isTChar(line[i])) {
-				throw HttpException(BAD_REQUEST, std::string("invalid character in field-name '") + line[i] + '\'');
+				throw HttpException(getErrorCode(), std::string("invalid character in field-name '") + line[i] + '\'');
 			}
 		}
 		return line.substr(0, colonPos);
@@ -268,7 +268,7 @@ namespace http {
 
 			for (std::size_t i = 0; i < value.size(); ++i) {
 				if (!isVChar(value[i]) && !std::strchr(WHITESPACE.data(), value[i])) {
-					throw HttpException(BAD_REQUEST, std::string("invalid character in field-value '") + line[i] + '\'');
+					throw HttpException(getErrorCode(), std::string("invalid character in field-value '") + line[i] + '\'');
 				}
 			}
 
@@ -298,7 +298,7 @@ namespace http {
 		} catch (const std::bad_alloc&) {
 			throw;
 		} catch (std::exception& e) {
-			throw HttpException(BAD_REQUEST, "invalid chunk size: " + std::string(e.what()));
+			throw HttpException(getErrorCode(), "invalid chunk size: " + std::string(e.what()));
 		}
 		return DONE;
 	}

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "http/AMessageParser.hpp"
+#include "http/http.hpp"
 
 namespace http {
 
@@ -23,8 +24,10 @@ namespace http {
 
 		private:
 			virtual AMessage* createMessage() const;
+			virtual StatusCode getErrorCode() const;
 
 			virtual ParseResult parseStartLine();
+			virtual void interpretHeaders();
 
 		private:
 			ResponseParserConfig m_config;
