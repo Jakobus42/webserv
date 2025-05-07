@@ -58,6 +58,9 @@ namespace config {
 				D_MAX_HEADER_NAME_SIZE,
 				D_DATA_DIR,
 				D_SERVER_NAME,
+				D_CONNECTION_TIMEOUT,
+				D_CGI_TIMEOUT,
+				D_CGI_INTERPRETER,
 				_D_SERVER_TYPES,
 				D_ROOT,
 				D_RETURN,
@@ -65,6 +68,7 @@ namespace config {
 				D_UPLOAD_DIR,
 				D_INDEX,
 				D_AUTOINDEX,
+				D_ERROR_PAGE,
 				D_LOCATION
 			};
 
@@ -95,6 +99,7 @@ namespace config {
 			// ------------------------  server parsers  -------------------- //
 			void parseListen(const std::string& value, ServerConfig& server) throw(parse_exception);
 			void parseServerName(const std::string& value, ServerConfig& server) throw(parse_exception);
+			void parseCGIInterpreter(const std::string& value, ServerConfig& server) throw(parse_exception);
 
 			uint32_t parseIpAddress(const std::string& host) throw(parse_exception);
 			void assignAbsolutePaths(ServerConfig& server, LocationConfig& parentLocation) throw(parse_exception);
@@ -104,6 +109,7 @@ namespace config {
 			void parseLimitExcept(const std::string& value, LocationConfig& location) throw(parse_exception);
 			void parseIndex(const std::string& value, LocationConfig& location) throw(parse_exception);
 			void parseAutoindex(const std::string& value, LocationConfig& location) throw(parse_exception);
+			void parseErrorPage(const std::string& value, LocationConfig& location) throw(parse_exception);
 	};
 
 } /* namespace config */

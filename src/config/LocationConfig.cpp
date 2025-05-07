@@ -16,6 +16,7 @@ namespace config {
 		, uploadSubdirectory()
 		, autoindex(false)
 		, indexFile()
+		, errorPages()
 		, locations() {
 		allowedMethods.insert(http::GET);
 		allowedMethods.insert(http::POST);
@@ -32,6 +33,7 @@ namespace config {
 		, uploadSubdirectory(other.uploadSubdirectory)
 		, autoindex(other.autoindex)
 		, indexFile(other.indexFile)
+		, errorPages(other.errorPages)
 		, locations(other.locations) {
 	}
 
@@ -46,6 +48,7 @@ namespace config {
 			uploadSubdirectory = other.uploadSubdirectory;
 			autoindex = other.autoindex;
 			indexFile = other.indexFile;
+			errorPages = other.errorPages;
 			locations = other.locations;
 		}
 		return *this;
@@ -110,6 +113,15 @@ namespace config {
 				std::cout << *it << " ";
 			}
 			std::cout << std::endl;
+		}
+
+		if (!errorPages.empty()) {
+			std::cout << indent << "  Error Pages:" << std::endl;
+			for (std::map<int, std::string>::const_iterator it = errorPages.begin();
+				 it != errorPages.end();
+				 ++it) {
+				std::cout << indent << "    " << it->first << ": " << it->second << std::endl;
+			}
 		}
 
 		if (!locations.empty()) {

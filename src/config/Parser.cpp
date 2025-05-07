@@ -151,6 +151,7 @@ namespace config {
 			allowedDirectives["upload_dir"] = D_UPLOAD_DIR;
 			allowedDirectives["index"] = D_INDEX;
 			allowedDirectives["autoindex"] = D_AUTOINDEX;
+			allowedDirectives["error_page"] = D_ERROR_PAGE;
 			allowedDirectives["location"] = D_LOCATION;
 		}
 		return allowedDirectives;
@@ -176,6 +177,10 @@ namespace config {
 			allowedDirectives["index"] = D_INDEX;
 			allowedDirectives["autoindex"] = D_AUTOINDEX;
 			allowedDirectives["location"] = D_LOCATION;
+			allowedDirectives["error_page"] = D_ERROR_PAGE;
+			allowedDirectives["connection_timeout"] = D_CONNECTION_TIMEOUT;
+			allowedDirectives["cgi_timeout"] = D_CGI_TIMEOUT;
+			allowedDirectives["cgi_interpreter"] = D_CGI_INTERPRETER;
 		}
 		return allowedDirectives;
 	}
@@ -409,6 +414,7 @@ namespace config {
 		if (tokenParsers.empty()) {
 			tokenParsers[D_LISTEN] = &config::Parser::parseListen;
 			tokenParsers[D_SERVER_NAME] = &config::Parser::parseServerName;
+			tokenParsers[D_CGI_INTERPRETER] = &config::Parser::parseCGIInterpreter;
 		}
 
 		switch (type) {
@@ -422,6 +428,10 @@ namespace config {
 				return parseIntegerValue("max_header_name_length", value, server.maxHeaderNameLength);
 			case D_MAX_HEADER_VALUE_SIZE:
 				return parseIntegerValue("max_header_value_length", value, server.maxHeaderValueLength);
+			case D_CONNECTION_TIMEOUT:
+				return parseIntegerValue("connection_timeout", value, server.connectionTimeout);
+			case D_CGI_TIMEOUT:
+				return parseIntegerValue("cgi_timeout", value, server.cgiTimeout);
 			case D_DATA_DIR:
 				return parsePathValue("data_dir", value, server.dataDirectory);
 			default:
@@ -437,6 +447,7 @@ namespace config {
 			tokenParsers[D_LIMIT_EXCEPT] = &config::Parser::parseLimitExcept;
 			tokenParsers[D_INDEX] = &config::Parser::parseIndex;
 			tokenParsers[D_AUTOINDEX] = &config::Parser::parseAutoindex;
+			tokenParsers[D_ERROR_PAGE] = &config::Parser::parseErrorPage;
 		}
 
 		switch (type) {
@@ -545,6 +556,23 @@ namespace config {
 		server.serverNames = splitNames;
 	}
 
+	void Parser::parseCGIInterpreter(const std::string& value, ServerConfig& server) throw(parse_exception) {
+		std::vector<std::string> args;
+		std::stringstream ss(value);
+		std::string token;
+
+		while (ss >> token) {
+			args.push_back(token);
+		}
+		if (args.size() != 2)
+			throw parse_exception(m_lineIndex, "Expected 2 arguments for cgi_interpreter");
+		//TODO: Check if these args do what we want
+		std::string path = args[1] + args[0];
+		if (shared::file::isExecutable(path) == false) {
+			throw parse_exception(m_lineIndex, "generated path does not lead to a executable: " + path);
+		}
+		server.cgiInterpreter = std::make_pair(args[0], args[1]);
+	}
 	// ------------------------  location parsers  -------------------------- //
 
 	void Parser::parseReturn(const std::string& value, LocationConfig& location) throw(parse_exception) {
@@ -605,6 +633,33 @@ namespace config {
 		}
 		if (ss >> token && !token.empty()) {
 			throw parse_exception(m_lineIndex, "Unexpected token in autoindex: " + token);
+		}
+	}
+
+	void Parser::parseErrorPage(const std::string& value, LocationConfig& location) throw(parse_exception) {
+		std::vector<std::string> args;
+		std::vector<int> error_pages;
+		std::stringstream ss(value);
+		std::string token;
+		int num_buffer;
+
+		while (ss >> token)
+			args.push_back(token);
+ 		if (args.size() < 2)
+			throw parse_exception(m_lineIndex, "Expected at least 2 arguments for error_page");
+		/* if (!isValidPath(args.back()))
+			throw parse_exception(m_lineIndex, "Invalid path for error_page: " + args.back()); */
+		std::string errorPagePath = args.back();
+		for (unsigned long i = 0; i < args.size() - 1; i++)
+		{
+			std::stringstream ss_num(args[i]);
+			if (!(ss_num >> num_buffer)) {
+				throw parse_exception(m_lineIndex, "Invalid error code: " + args[i]);
+			}
+			if (num_buffer < 100 || num_buffer > 599) {
+				throw parse_exception(m_lineIndex, "Error code out of range: " + args[i]);
+			}
+			location.errorPages[num_buffer] = errorPagePath;
 		}
 	}
 

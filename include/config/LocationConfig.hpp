@@ -4,6 +4,7 @@
 
 #include <set>
 #include <vector>
+#include <map>
 
 namespace config {
 
@@ -17,6 +18,7 @@ namespace config {
 			std::string uploadSubdirectory;		   // subdirectory for uploads
 			bool autoindex;						   //
 			std::vector<std::string> indexFile;	   // files to load when GETting a directory
+			std::map<int, std::string> errorPages; 
 			std::vector<LocationConfig> locations; // registered locations
 
 			LocationConfig();
