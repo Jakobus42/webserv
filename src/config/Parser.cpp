@@ -566,8 +566,7 @@ namespace config {
 		}
 		if (args.size() != 2)
 			throw parse_exception(m_lineIndex, "Expected 2 arguments for cgi_interpreter");
-		//TODO: Check if these args do what we want
-		std::string path = args[1] + args[0];
+		std::string path = args[1] + "/" + args[0];
 		if (shared::file::isExecutable(path) == false) {
 			throw parse_exception(m_lineIndex, "generated path does not lead to a executable: " + path);
 		}
@@ -647,8 +646,6 @@ namespace config {
 			args.push_back(token);
  		if (args.size() < 2)
 			throw parse_exception(m_lineIndex, "Expected at least 2 arguments for error_page");
-		/* if (!isValidPath(args.back()))
-			throw parse_exception(m_lineIndex, "Invalid path for error_page: " + args.back()); */
 		std::string errorPagePath = args.back();
 		for (unsigned long i = 0; i < args.size() - 1; i++)
 		{

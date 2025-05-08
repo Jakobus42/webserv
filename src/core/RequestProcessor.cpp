@@ -102,19 +102,21 @@ namespace core {
 
 	void RequestProcessor::generateErrorResponse(http::StatusCode code) {
 		std::string response = "";
-
-		std::string path = m_router.getResult().location->errorPages.at(static_cast<int>(code)); //TODO: convert code to int
-		if (path != "")
-		{
-			std::string buffer;
-			std::ifstream f(path.c_str());
-			if (f.is_open())
-			{
-				while (getline(f, buffer))
-        			response += buffer;
-				f.close();
+		if (!m_router.needsRoute()) {
+			std::map<int, std::string> errorPages = m_router.getResult().location->errorPages;
+			std::map<int, std::string>::iterator it = errorPages.find(static_cast<int>(code));
+			if (it != errorPages.end()) {
+				std::string path = m_router.getResult().location->precalculatedAbsolutePath + "/" + it->second;
+				std::string buffer;
+				std::ifstream f(path.c_str());
+				if (f.is_open())
+				{
+					while (getline(f, buffer))
+						response += buffer;
+					f.close();
+				}
+				//else    //maybe give feedback if an error page is not opened
 			}
-			//TODO: maybe else give some feedback
 		}
 		if (response == "")
 			response = generateErrorPage(code);
@@ -129,21 +131,20 @@ namespace core {
 	}
 
 	std::string RequestProcessor::generateErrorPage(http::StatusCode code) {
-		static std::string preset = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\" />"
+		static const std::string preset = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\" />"
 		"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>"
 		"<title>error_code</title><style>body {background-color: #f8f8f8;font-family: Arial, sans-serif;"
 		"text-align: center;padding: 50px;color: #333;}.container {display: inline-block;padding: 40px;"
 		"background-color: white;border: 1px solid #ddd;border-radius: 10px;box-shadow: 0 4px 8px rgba(0,0,0,0.05);}"
 		"h1 {font-size: 48px;color: #e74c3c;margin-bottom: 10px;}p {font-size: 18px;color: #666;}</style></head>"
-		"<body><div class=\"container\"><h1>error_code</h1><p>error_code_text</p></div></body></html>";
+		"<body><div class=\"container\"><h1>error_code</h1><p>error_text</p></div></body></html>";
 		
-		std::string new_error_page = "";
+		std::string new_error_page = preset;
 		std::string error_text = http::statusCodeToMessage(code);
 		std::ostringstream oss;
 		oss << static_cast<int>(code);
 		std::string error_code_str = oss.str();
-		
-		new_error_page = preset;
+
 		size_t pos = 0;
 		while ((pos = new_error_page.find("error_code", pos)) != std::string::npos) {
 			new_error_page.replace(pos, 10, error_code_str);
