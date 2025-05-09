@@ -52,7 +52,7 @@ namespace http {
 		} catch (const std::bad_alloc&) {
 			throw;
 		} catch (const std::exception& e) {
-			throw HttpException(BAD_GATEWAY, "invalid statuc-code: could not parse: " + std::string(e.what()));
+			throw HttpException(BAD_GATEWAY, "invalid status-code: could not parse: " + std::string(e.what()));
 		}
 
 		m_response->setReasonPhrase(line.substr(secondSpace + 1));
