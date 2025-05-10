@@ -124,13 +124,15 @@ namespace core {
 		m_cgiProcessor.reset();
 	}
 
-	// todo:
+	// todo: generate body
 	void RequestProcessor::generateErrorResponse(http::StatusCode statusCode) {
 		m_response->appendBody("tmp error response\n");
 		m_response->setStatusCode(statusCode);
 	}
 
 	// todo: remove body
+	// todo: check if appendHeader works instead of constructing
+	//       temporary locationHeader vector
 	void RequestProcessor::generateRedirectResponse() {
 		const Route& route = m_router.getResult();
 		std::vector<std::string> locationHeader(1);

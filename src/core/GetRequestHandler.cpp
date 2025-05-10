@@ -33,7 +33,8 @@ namespace core {
 		const config::LocationConfig& location = *m_route.location;
 		if (fileType == shared::file::DIRECTORY) {
 			// if location.indexFile.notEmpty() get index
-			// if location.indexFile.empty() and autoindex == true generate autoindex
+			// if location.indexFile.empty() and autoindex == true; generate autoindex
+			// if location.indexFile.empty() and autoindex == false; look for and open index.html
 			// otherwise throw FORBIDDEN
 			if (location.indexFile.empty() && location.autoindex == false) {
 				throw http::HttpException(http::FORBIDDEN, "GET: Requested location does not have an index");
@@ -67,22 +68,20 @@ namespace core {
 				continue;
 			}
 			std::string baseUrl = request.getUri().getAuthority();
-			if (uri.getPath().empty()) {
+			const std::string& uriPath = uri.getPath();
+			if (uriPath.empty()) {
 				baseUrl += "/";
 			} else {
-				// Ensure uri.path starts with '/'.
-				if (uri.getPath()[0] != '/')
-					baseUrl += "/" + uri.getPath();
+				if (uriPath[0] != '/')
+					baseUrl += "/" + uriPath;
 				else
-					baseUrl += uri.getPath();
-				// Ensure it ends with a single '/'
+					baseUrl += uriPath;
 				if (baseUrl[baseUrl.size() - 1] != '/')
 					baseUrl += "/";
 			}
 
 			std::string link;
 			if (ent->d_type == DT_DIR) {
-				// Add trailing slash to show it’s a directory.
 				link = "<a href=\"http://" + baseUrl + fileName + "\">" + fileName + "/</a>";
 			} else {
 				link = "<a href=\"http://" + baseUrl + fileName + "\">" + fileName + "</a>";

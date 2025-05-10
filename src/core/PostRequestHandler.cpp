@@ -62,14 +62,17 @@ namespace core {
 	void PostRequestHandler::createFile(const http::Request& request) throw(http::HttpException) {
 		std::string filePath;
 
-		if (request.hasHeader("x-file-name")) {
-			const std::vector<std::string>& filenameHeader = request.getHeader("x-file-name");
+		if (request.hasHeader("x-filename")) {
+			const std::vector<std::string>& filenameHeader = request.getHeader("x-filename");
 			if (filenameHeader.empty() == false && filenameHeader[0].empty() == false) {
 				filePath = filenameHeader[0];
 			}
 		}
 		if (filePath.empty()) {
 			filePath = generateRandomFileName();
+		}
+		if (filePath[0] != '/') {
+			filePath = "/" + filePath;
 		}
 		m_filePath = m_route.absoluteFilePath + filePath;
 		if (shared::file::exists(m_filePath)) {
