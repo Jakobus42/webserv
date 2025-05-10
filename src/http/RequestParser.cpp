@@ -63,7 +63,11 @@ namespace http {
 			parseUriAbsoluteForm(uriView);
 		}
 
-		m_request->setVersion(line.substr(secondSpace + 1));
+		shared::string::StringView versionView = line.substr(secondSpace + 1);
+		if (versionView != shared::string::StringView("HTTP/1.1")) {
+			throw HttpException(HTTP_VERSION_NOT_SUPPORTED, "invalid http version");
+		}
+		m_request->setVersion(versionView);
 
 		return DONE;
 	}
@@ -133,6 +137,32 @@ namespace http {
 		uri.setPathSegment(shared::string::split(uri.getPath(), '/'));
 		// TODO: should we parse this at all?
 		// also, should we check if we accept the script here?
+	}
+
+	void RequestParser::interpretHeaders() {
+		this->AMessageParser::interpretHeaders();
+
+		m_request = static_cast<Request*>(m_message);
+
+		if (!m_request->hasHeader("host")) {
+			throw HttpException(BAD_REQUEST, "host header is missing");
+		}
+
+		const std::vector<std::string>& hostValues = m_request->getHeader("host");
+		if (hostValues.size() > 1) {
+			throw HttpException(BAD_REQUEST, "multiple host headers");
+		}
+
+		Uri& uri = m_request->getUri();
+		const std::string& host = hostValues.front();
+
+		if (!uri.getAuthority().empty()) {
+			if (AMessage::CaseInsensitiveComparator()(host, uri.getAuthority())) {
+				throw HttpException(BAD_REQUEST, "host header does not match authority");
+			}
+		} else {
+			uri.setAuthority(host);
+		}
 	}
 
 

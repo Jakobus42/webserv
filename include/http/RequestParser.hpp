@@ -31,6 +31,8 @@ namespace http {
 			void parseUriAbsoluteForm(const shared::string::StringView& uriView);
 			void parsePath();
 
+			virtual void interpretHeaders();
+
 		private:
 			RequestParserConfig m_config;
 			Request* m_request;
