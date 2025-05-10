@@ -3,11 +3,8 @@
 #include "http/Request.hpp"
 #include "shared/stringUtils.hpp"
 
-// todo: validate host, scheme
+// todo: validate scheme
 // todo: better error messages for uri
-// todo: normelize the path here maybe or in the uri class (uri.normelize())
-// todo: setPathSegemnt should take a stringView. (see setHeaders for impl example) - also the split path should be implemented here using stringView aswell
-// todo: validate http version
 
 namespace http {
 
@@ -134,9 +131,28 @@ namespace http {
 			}
 			m_request->setType(Request::CGI);
 		}
-		uri.setPathSegment(shared::string::split(uri.getPath(), '/'));
-		// TODO: should we parse this at all?
-		// also, should we check if we accept the script here?
+		uri.setPath(normalizePath(uri.getPath()));
+	}
+
+	std::string RequestParser::normalizePath(const std::string& path) {
+		std::vector<std::string> pathSegments = shared::string::split(path, '/');
+		std::vector<std::string> normalizedSegments;
+
+		for (std::size_t i = 0; i < pathSegments.size(); ++i) {
+			const std::string& segment = pathSegments[i];
+
+			if (segment == ".") {
+				continue;
+			} else if (segment == "..") {
+				if (!normalizedSegments.empty()) {
+					normalizedSegments.pop_back();
+				}
+			} else {
+				normalizedSegments.push_back(segment);
+			}
+		}
+
+		return "/" + shared::string::join(normalizedSegments, "/");
 	}
 
 	void RequestParser::interpretHeaders() {

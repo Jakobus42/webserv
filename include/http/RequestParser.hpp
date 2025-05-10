@@ -30,6 +30,7 @@ namespace http {
 			void parseUriOriginForm(const shared::string::StringView& uriView);
 			void parseUriAbsoluteForm(const shared::string::StringView& uriView);
 			void parsePath();
+			std::string normalizePath(const std::string& path);
 
 			virtual void interpretHeaders();
 

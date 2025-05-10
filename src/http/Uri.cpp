@@ -64,8 +64,6 @@ namespace http {
 
 	void Uri::setCgiPathInfo(const shared::string::StringView& cgiPathInfo) { m_cgiPathInfo.assign(cgiPathInfo.begin(), cgiPathInfo.size()); }
 
-	void Uri::setPathSegment(const std::vector<std::string>& pathSegment) { m_pathSegment = pathSegment; }
-
 	std::string Uri::toString() const {
 		std::ostringstream oss;
 
