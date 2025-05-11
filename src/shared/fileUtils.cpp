@@ -3,12 +3,6 @@
 namespace shared {
 	namespace file {
 
-		enum FileType {
-			FILE,
-			DIRECTORY,
-			NOT_FOUND
-		};
-
 		FileType getFileType(const std::string& path) {
 			struct stat statBuf;
 			if (stat(path.c_str(), &statBuf) != 0) {

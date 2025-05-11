@@ -13,6 +13,8 @@
 #include "shared/StringView.hpp"
 #include "shared/stringUtils.hpp"
 
+#include <algorithm>
+
 namespace core {
 
 	RequestProcessor::RequestProcessor(const config::ServerConfig& serverConfig, io::Dispatcher& dispatcher)
@@ -35,7 +37,43 @@ namespace core {
 		m_handlers[http::DELETE] = new DeleteRequestHandler();
 	}
 
-	// todo maybe have a isComplete function. the return value could be confusing
+	bool RequestProcessor::shouldRedirect(const http::Request& request) const {
+		const config::LocationConfig& location = *m_router.getResult().location;
+		const std::string& uriPath = request.getUri().getPath();
+
+		if (location.path == "/" && std::count(uriPath.begin(), uriPath.end(), '/') == 1) {
+			return false;
+		}
+		return location.hasRedirect();
+	}
+
+	bool RequestProcessor::handleFetchRequest(const http::Request& request) {
+		ARequestHandler* handler = m_handlers[request.getMethod()];
+
+		if (handler->needsRoute()) {
+			const std::string& path = request.getUri().getPath();
+			m_router.route(shared::string::StringView(path.c_str(), path.size()), m_serverConfig.location);
+			if (shouldRedirect(request)) {
+				generateRedirectResponse();
+				return false;
+			}
+			if (m_router.methodIsAllowed(request.getMethod()) == false) {
+				throw http::HttpException(http::METHOD_NOT_ALLOWED, "HTTP method not allowed for the targeted location");
+			}
+			handler->setRoute(m_router.getResult());
+		}
+		return handler->handle(request, *m_response);
+	}
+
+	bool RequestProcessor::handleCGIRequest(const http::Request& request) {
+		if (m_cgiProcessor.process(request)) {
+			return true;
+		}
+		delete m_response;
+		m_response = m_cgiProcessor.releaseResponse();
+		return false;
+	}
+
 	bool RequestProcessor::processRequest(const http::Request& request) {
 		if (!m_response) {
 			m_response = new http::Response();
@@ -44,29 +82,14 @@ namespace core {
 				return false;
 			}
 		}
-
 		try {
 			http::Request::Type requestType = request.getType();
 
 			if (requestType == http::Request::FETCH) {
-				if (m_router.needsRoute()) {
-					m_router.route(shared::string::StringView(request.getUri().getPath().c_str()), m_serverConfig.location);
-					if (m_router.foundRedirect()) {
-						generateRedirectResponse();
-						return false;
-					}
-				}
-				ARequestHandler* handler = m_handlers[request.getMethod()];
-				if (handler->handle(request, *m_response)) {
-					return true;
-				}
-				m_response->appendBody("tmp response\n"); // tmp
-			} else if (requestType == http::Request::CGI) {
-				if (m_cgiProcessor.process(request)) {
-					return true;
-				}
-				delete m_response;
-				m_response = m_cgiProcessor.releaseResponse();
+				return handleFetchRequest(request);
+			}
+			if (requestType == http::Request::CGI) {
+				return handleCGIRequest(request);
 			}
 		} catch (const std::bad_alloc&) {
 			throw;
@@ -100,15 +123,21 @@ namespace core {
 		m_cgiProcessor.reset();
 	}
 
-	void RequestProcessor::generateErrorResponse(http::StatusCode) {
-		m_response->appendBody("tmp error response\n"); // todo:
+	// todo: generate body
+	void RequestProcessor::generateErrorResponse(http::StatusCode statusCode) {
+		m_response->appendBody("tmp error response\n");
+		m_response->setStatusCode(statusCode);
 	}
 
-	// todo: add Location header with new uri
+	// todo: remove body
+	// todo: check if appendHeader works instead of constructing
+	//       temporary locationHeader vector
 	void RequestProcessor::generateRedirectResponse() {
-		m_response->appendBody("tmp redirect response\n"); // todo:
-		m_response->appendBody(m_router.generateRedirectUri() + "\n");
-		m_response->setStatusCode(m_router.getReturnClass());
+		const Route& route = m_router.getResult();
+
+
+		m_response->appendHeader("Location", route.redirectUri);
+		m_response->setStatusCode(route.location->returnClass);
 	}
 
 } // namespace core

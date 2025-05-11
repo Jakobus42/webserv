@@ -8,6 +8,13 @@
 namespace shared {
 	namespace file {
 
+		enum FileType {
+			FILE,
+			DIRECTORY,
+			NOT_FOUND
+		};
+
+		FileType getFileType(const std::string& path);
 		bool exists(const std::string& path);
 		bool isRegularFile(const std::string& path);
 		bool isDirectory(const std::string& path);

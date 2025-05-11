@@ -31,9 +31,14 @@ namespace http {
 			const std::string& headerName = it->first;
 			const std::vector<std::string>& headerValues = it->second;
 
+			ss << headerName << ": ";
 			for (std::size_t i = 0; i < headerValues.size(); ++i) {
-				ss << headerName << ": " << headerValues[i] << "\r\n";
+				if (i != 0) {
+					ss << ", ";
+				}
+				ss << headerValues[i];
 			}
+			ss << "\r\n";
 		}
 
 		ss << "\r\n";

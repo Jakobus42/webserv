@@ -9,8 +9,9 @@ namespace core {
 
 	void Router::route(const shared::string::StringView& uriPath, const config::LocationConfig& currentLocation, std::size_t depth) {
 		if (currentLocation.hasRedirect()) {
-			m_routeResult.filePath = uriPath.toString();
+			m_routeResult.remainingPath = uriPath.toString();
 			m_routeResult.location = &currentLocation;
+			m_routeResult.generateRedirectUri();
 			return;
 		}
 		if (depth > MAX_ROUTE_DEPTH) {
@@ -23,34 +24,59 @@ namespace core {
 			}
 		}
 		m_routeResult.location = &currentLocation;
-		m_routeResult.filePath = uriPath.toString();
+		m_routeResult.remainingPath = uriPath.toString();
+		m_routeResult.generateAbsoluteFilePath();
 	}
 
-	bool Router::needsRoute() const { return m_routeResult.empty(); }
-
-	bool Router::foundRedirect() const { return m_routeResult.location->hasRedirect(); }
+	bool Router::methodIsAllowed(http::Method method) const {
+		const std::set<http::Method>& allowedMethods = m_routeResult.location->allowedMethods;
+		if (allowedMethods.find(method) == allowedMethods.end()) {
+			return false;
+		}
+		return true;
+	}
 
 	void Router::reset() { m_routeResult.reset(); }
 
-	std::string Router::generateRedirectUri() const { return m_routeResult.location->redirectUri + m_routeResult.filePath; }
-
-	http::StatusCode Router::getReturnClass() const { return m_routeResult.location->returnClass; }
+	const Route& Router::getResult() const { return m_routeResult; }
 
 	// ------------------------  Route class implementation  ---------
 
-	Router::Route::Route()
+	Route::Route()
 		: location(NULL)
-		, filePath("") {}
+		, remainingPath("")
+		, absoluteFilePath("")
+		, redirectUri("") {}
 
-	Router::Route::~Route() {}
+	Route::~Route() {}
 
-	bool Router::Route::empty() const { return location == NULL; }
+	Route::Route(const Route& other)
+		: location(other.location)
+		, remainingPath(other.remainingPath)
+		, absoluteFilePath(other.absoluteFilePath)
+		, redirectUri(other.redirectUri) {}
 
-	void Router::Route::reset() {
-		location = NULL;
-		filePath.clear();
+	Route& Route::operator=(const Route& rhs) {
+		if (this != &rhs) {
+			location = rhs.location;
+			remainingPath = rhs.remainingPath;
+			absoluteFilePath = rhs.absoluteFilePath;
+			redirectUri = rhs.redirectUri;
+		}
+		return *this;
 	}
 
-	const Router::Route& Router::getResult() const { return m_routeResult; }
+	bool Route::empty() const { return location == NULL; }
+
+	void Route::reset() {
+		location = NULL;
+		remainingPath.clear();
+		absoluteFilePath.clear();
+		redirectUri.clear();
+	}
+
+	void Route::generateAbsoluteFilePath() { absoluteFilePath = location->precalculatedAbsolutePath + remainingPath; }
+
+	void Route::generateRedirectUri() { redirectUri = location->redirectUri + remainingPath; }
 
 } /* namespace core */

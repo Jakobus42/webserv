@@ -179,6 +179,14 @@ namespace http {
 		} else {
 			uri.setAuthority(host);
 		}
+
+		if (m_request->hasHeader("x-filename")) {
+			std::vector<std::string> filenameHeader = m_request->getHeader("x-filename");
+			if (!filenameHeader.empty()) {
+				filenameHeader[0] = normalizePath(filenameHeader[0]);
+				m_request->setHeader("x-filename", filenameHeader);
+			}
+		}
 	}
 
 
