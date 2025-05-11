@@ -29,28 +29,6 @@ namespace shared {
 			return joined;
 		}
 
-		// todo: move this somewhere else
-
-		// std::vector<std::string> normalizePath(const std::vector<std::string>& path) {
-		// 	std::vector<std::string> normalized;
-
-		// 	for (std::vector<std::string>::const_iterator it = path.begin(); it != path.end(); ++it) {
-		// 		if (*it == "..") {
-		// 			if (!normalized.empty()) {
-		// 				normalized.pop_back();
-		// 			}
-		// 		} else if (!it->empty() && *it != ".") {
-		// 			normalized.push_back(*it);
-		// 		}
-		// 	}
-		// 	return normalized;
-		// }
-
-		// std::string normalizePath(const std::string& path) {
-		// 	return joinPath(normalizePath(splitPath(path))); // TODO: will turn "/" and "/////" into an empty string
-		// }
-
-
 	} // namespace string
 
 } // namespace shared
