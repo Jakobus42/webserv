@@ -1,5 +1,6 @@
 #pragma once
 
+#include "config/ServerConfig.hpp"
 #include "http/http.hpp"
 #include "io/Dispatcher.hpp"
 #include "io/Pipe.hpp"
@@ -14,7 +15,7 @@ namespace core {
 
 	class CGIProcessor : shared::mixin::NonCopyable {
 		public:
-			explicit CGIProcessor(io::Dispatcher& dispatcher);
+			explicit CGIProcessor(io::Dispatcher& dispatcher, const config::ServerConfig& serverConfig);
 			~CGIProcessor();
 
 			bool process(const http::Request& request);
@@ -55,6 +56,7 @@ namespace core {
 			static const time_t DEFAULT_TIMEOUT;
 
 			io::Dispatcher& m_dispatcher;
+			const config::ServerConfig& m_serverConfig;
 
 			http::Response* m_response;
 

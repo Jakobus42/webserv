@@ -19,7 +19,7 @@ namespace core {
 
 	RequestProcessor::RequestProcessor(const config::ServerConfig& serverConfig, io::Dispatcher& dispatcher)
 		: m_serverConfig(serverConfig)
-		, m_cgiProcessor(dispatcher)
+		, m_cgiProcessor(dispatcher, serverConfig)
 		, m_response(NULL)
 		, m_handlers()
 		, m_router() {}

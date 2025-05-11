@@ -13,6 +13,10 @@ namespace http {
 		, maxUriLength(1024) // 1KB
 	{}
 
+	RequestParserConfig::RequestParserConfig(const config::ServerConfig& serverConfig)
+		: messageParserConfig(serverConfig)
+		, maxUriLength(1024) {} // todo: set maxUriLength from server config
+
 	RequestParser::RequestParser(const RequestParserConfig& conf)
 		: AMessageParser(conf.messageParserConfig)
 		, m_config(conf)

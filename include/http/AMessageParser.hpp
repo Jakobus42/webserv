@@ -1,9 +1,10 @@
 #pragma once
 
+#include "config/ServerConfig.hpp"
+#include "http/http.hpp"
 #include "shared/Buffer.hpp"
 #include "shared/NonCopyable.hpp"
 #include "shared/StringView.hpp"
-#include "http/http.hpp"
 
 #include <vector>
 
@@ -21,6 +22,7 @@ namespace http {
 			std::size_t maxHeaderNameLength;
 
 			MessageParserConfig();
+			MessageParserConfig(const config::ServerConfig& serverConfig);
 	};
 
 	class AMessage;

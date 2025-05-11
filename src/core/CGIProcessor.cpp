@@ -25,8 +25,9 @@ namespace core {
 
 	const time_t CGIProcessor::DEFAULT_TIMEOUT = 30;
 
-	CGIProcessor::CGIProcessor(io::Dispatcher& dispatcher)
+	CGIProcessor::CGIProcessor(io::Dispatcher& dispatcher, const config::ServerConfig& serverConfig)
 		: m_dispatcher(dispatcher)
+		, m_serverConfig(serverConfig)
 		, m_response(NULL)
 		, m_pid(-1)
 		, m_inputPipe()
@@ -152,11 +153,11 @@ namespace core {
 			m_outputPipe.closeWriteEnd();
 
 			m_dispatcher.registerHandler(m_outputPipe.getReadFd(),
-										 new CGIEventHandler(*this, request, m_response),
+										 new CGIEventHandler(*this, request, m_response, m_serverConfig),
 										 io::AMultiplexer::EVENT_READ | io::AMultiplexer::EVENT_ERROR | io::AMultiplexer::EVENT_HANGUP);
 			if (request.getMethod() == http::POST) {
 				m_dispatcher.registerHandler(m_inputPipe.getWriteFd(),
-											 new CGIEventHandler(*this, request, m_response),
+											 new CGIEventHandler(*this, request, m_response, m_serverConfig),
 											 io::AMultiplexer::EVENT_WRITE | io::AMultiplexer::EVENT_ERROR | io::AMultiplexer::EVENT_HANGUP);
 			} else {
 				notifyIOWriteCompletion();
