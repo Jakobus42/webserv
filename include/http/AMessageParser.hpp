@@ -22,7 +22,7 @@ namespace http {
 			std::size_t maxHeaderNameLength;
 
 			MessageParserConfig();
-			MessageParserConfig(const config::ServerConfig& serverConfig);
+			explicit MessageParserConfig(const config::ServerConfig& serverConfig);
 	};
 
 	class AMessage;
