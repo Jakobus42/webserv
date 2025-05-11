@@ -51,7 +51,8 @@ namespace core {
 		ARequestHandler* handler = m_handlers[request.getMethod()];
 
 		if (handler->needsRoute()) {
-			m_router.route(shared::string::StringView(request.getUri().getPath().c_str()), m_serverConfig.location);
+			const std::string& path = request.getUri().getPath();
+			m_router.route(shared::string::StringView(path.c_str(), path.size()), m_serverConfig.location);
 			if (shouldRedirect(request)) {
 				generateRedirectResponse();
 				return false;

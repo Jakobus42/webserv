@@ -112,7 +112,7 @@ namespace core {
 		m_fileStream.close();
 		m_streamPosition += bytesRead;
 		if (bytesRead > 0) {
-			response.appendBody(shared::string::StringView(m_buffer.data()));
+			response.appendBody(shared::string::StringView(m_buffer.data(), m_buffer.size()));
 			std::memset(m_buffer.data(), '\0', m_buffer.size());
 		} else {
 			m_state = DONE;
