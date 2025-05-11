@@ -29,6 +29,19 @@ namespace core {
 
 	GetRequestHandler::~GetRequestHandler() {}
 
+	void GetRequestHandler::reset() {
+		this->ARequestHandler::reset();
+		std::memset(m_buffer.data(), '\0', m_buffer.size());
+		if (m_fileStream.is_open()) {
+			m_fileStream.close();
+		}
+		m_fileStream.clear();
+		m_fileType = shared::file::FILE;
+		m_filePath.clear();
+		m_shouldAutoindex = false;
+		m_streamPosition = 0;
+	}
+
 	// todo: make sure path exists, file exists, can access, etc. etc.
 	// F_OK, R_OK, probably?
 	// throw correct status code if any issues arise
@@ -125,6 +138,10 @@ namespace core {
 
 	bool GetRequestHandler::readFile(http::Response& response) {
 		m_fileStream.read(m_buffer.data(), BUFFER_SIZE);
+		if (m_fileStream.fail()) {
+			m_fileStream.close();
+			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "GET: Failure during read() occurred");
+		}
 		std::streamsize bytesRead = m_fileStream.gcount();
 		m_fileStream.close();
 		m_streamPosition += bytesRead;
@@ -162,19 +179,6 @@ namespace core {
 			}
 		}
 		return false;
-	}
-
-	void GetRequestHandler::reset() {
-		this->ARequestHandler::reset();
-		std::memset(m_buffer.data(), '\0', m_buffer.size());
-		if (m_fileStream.is_open()) {
-			m_fileStream.close();
-		}
-		m_fileStream.clear();
-		m_fileType = shared::file::FILE;
-		m_filePath.clear();
-		m_shouldAutoindex = false;
-		m_streamPosition = 0;
 	}
 
 } /* namespace core */

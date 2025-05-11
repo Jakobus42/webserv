@@ -90,14 +90,13 @@ namespace core {
 	void PostRequestHandler::writeFile(const std::string& requestBody) {
 		std::size_t bytesToWrite = std::min(requestBody.size() - m_bytesWritten, CHUNK_SIZE);
 
-		try {
-			m_fileStream.write(requestBody.data() + m_bytesWritten, bytesToWrite);
-			m_bytesWritten += bytesToWrite; // should I add m_fileStream.gcount instead?
-		} catch (std::exception& e) {
-			std::cerr << "PostRequestHandler::writeFile(): " << e.what() << std::endl;
+		m_fileStream.write(requestBody.data() + m_bytesWritten, bytesToWrite);
+		if (m_fileStream.fail()) {
 			m_fileStream.close();
 			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "POST: Failure during write() occurred");
 		}
+		m_fileStream.close();
+		m_bytesWritten += bytesToWrite;
 	}
 
 	bool PostRequestHandler::handle(const http::Request& request, http::Response& response) throw(http::HttpException) {
@@ -116,7 +115,6 @@ namespace core {
 					m_state = DONE;
 					response.setStatusCode(http::CREATED);
 				}
-				m_fileStream.close();
 				return true;
 			}
 			case DONE:
