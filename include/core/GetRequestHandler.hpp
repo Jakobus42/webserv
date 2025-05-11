@@ -16,8 +16,10 @@ namespace core {
 			virtual ~GetRequestHandler();
 
 			virtual bool handle(const http::Request&, http::Response& response) throw(http::HttpException);
-			virtual void checkPathPermissions(const http::Request& request) const throw(http::HttpException);
 			virtual void reset();
+
+		private:
+			virtual void checkPathPermissions(const http::Request& request) const throw(http::HttpException);
 
 			void selectFile();
 			void openFile();

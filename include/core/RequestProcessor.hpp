@@ -26,9 +26,6 @@ namespace core {
 
 			void init();
 			bool processRequest(const http::Request& request);
-			bool handleFetchRequest(const http::Request& request);
-			bool handleCGIRequest(const http::Request& request);
-			bool shouldRedirect(const http::Request& request) const;
 
 			http::Response* releaseResponse();
 
@@ -37,6 +34,9 @@ namespace core {
 		private:
 			typedef std::map<http::Method, ARequestHandler*> HandlerMap;
 
+			bool handleFetchRequest(const http::Request& request);
+			bool handleCGIRequest(const http::Request& request);
+			bool shouldRedirect(const http::Request& request) const;
 			void generateErrorResponse(http::StatusCode statusCode);
 			void generateRedirectResponse();
 

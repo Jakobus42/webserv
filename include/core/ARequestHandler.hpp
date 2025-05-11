@@ -22,8 +22,6 @@ namespace core {
 
 			virtual bool handle(const http::Request& request, http::Response& response) = 0;
 
-			virtual void checkPathPermissions(const http::Request& request) const throw(http::HttpException) = 0;
-
 			virtual void reset() {
 				m_state = PREPROCESS;
 				m_route.reset();
@@ -39,6 +37,8 @@ namespace core {
 				PROCESS,
 				DONE
 			};
+
+			virtual void checkPathPermissions(const http::Request& request) const throw(http::HttpException) = 0;
 
 		protected:
 			HandlerState m_state;

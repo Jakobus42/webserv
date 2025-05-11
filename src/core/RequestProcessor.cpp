@@ -74,8 +74,6 @@ namespace core {
 		return false;
 	}
 
-	// todo maybe have a isComplete function. the return value could be confusing
-	// todo: if method is not implemented, throw NOT_IMPLEMENTED
 	bool RequestProcessor::processRequest(const http::Request& request) {
 		if (!m_response) {
 			m_response = new http::Response();
