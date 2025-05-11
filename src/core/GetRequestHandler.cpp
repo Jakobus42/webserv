@@ -10,11 +10,22 @@
 
 namespace core {
 
+	static const char* DIRECTORY_LISTING_TEMPLATE = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\""
+													"content=\"width=device-width, initial-scale=1.0\"><title>Directory Listing</title><style>body{font-family:Arial,sans-serif;"
+													"margin:0;padding:0;background-color:#f8f9fa;}.container{max-width:800px;margin:50px auto;padding:20px;background:#fff;box-shadow:0 "
+													"4px 6px rgba(0,0,0,0.1);border-radius:8px;}h1{font-size:1.8rem;color:#333;text-align:center;}ul{list-style-type:none;padding:0;}"
+													"li{padding:8px 10px;border-bottom:1px solid #e0e0e0;}li a{text-decoration:none;color:#007bff;transition:color 0.3s;}"
+													"li a:hover{color:#0056b3;}</style></head><body><div class=\"container\"><h1>Directory Listing</h1><ul>";
+	static const char* DIRECTORY_LISTING_TEMPLATE_END = "</ul></div></body></html>";
+
 	GetRequestHandler::GetRequestHandler()
 		: ARequestHandler()
 		, m_buffer(BUFFER_SIZE)
 		, m_fileStream()
-		, m_streamPosition(0) {}
+		, m_streamPosition(0)
+		, m_fileType(shared::file::FILE)
+		, m_filePath("")
+		, m_shouldAutoindex(false) {}
 
 	GetRequestHandler::~GetRequestHandler() {}
 
@@ -25,32 +36,19 @@ namespace core {
 	// case two: we get a directory with no trailing '/'
 	// case three: we get an actual file with no trailing '/'
 	void GetRequestHandler::checkPathPermissions(const http::Request&) const throw(http::HttpException) {
-		shared::file::FileType fileType = shared::file::getFileType(m_route.absoluteFilePath);
-
-		if (fileType == shared::file::NOT_FOUND) {
+		if (m_fileType == shared::file::NOT_FOUND) {
 			throw http::HttpException(http::NOT_FOUND, "GET: File " + m_route.absoluteFilePath + " doesn't exist");
 		}
 		const config::LocationConfig& location = *m_route.location;
-		if (fileType == shared::file::DIRECTORY) {
-			// if location.indexFile.notEmpty() get index
-			// if location.indexFile.empty() and autoindex == true; generate autoindex
-			// if location.indexFile.empty() and autoindex == false; look for and open index.html
-			// otherwise throw FORBIDDEN
+		if (m_fileType == shared::file::DIRECTORY) {
 			if (location.indexFile.empty() && location.autoindex == false) {
-				throw http::HttpException(http::FORBIDDEN, "GET: Requested location does not have an index");
+				throw http::HttpException(http::FORBIDDEN, "GET: Requested directory does not have an index");
 			}
 		}
 	}
 
 	std::string GetRequestHandler::generateDirectoryListing(const http::Request& request, const std::string& filePath) {
-		static const char* DL_TEMPLATE_END = "</ul></div></body></html>";
-		static const char* DL_TEMPLATE = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\""
-										 "content=\"width=device-width, initial-scale=1.0\"><title>Directory Listing</title><style>body{font-family:Arial,sans-serif;"
-										 "margin:0;padding:0;background-color:#f8f9fa;}.container{max-width:800px;margin:50px auto;padding:20px;background:#fff;box-shadow:0 "
-										 "4px 6px rgba(0,0,0,0.1);border-radius:8px;}h1{font-size:1.8rem;color:#333;text-align:center;}ul{list-style-type:none;padding:0;}"
-										 "li{padding:8px 10px;border-bottom:1px solid #e0e0e0;}li a{text-decoration:none;color:#007bff;transition:color 0.3s;}"
-										 "li a:hover{color:#0056b3;}</style></head><body><div class=\"container\"><h1>Directory Listing</h1><ul>";
-		std::string bodyTemp = DL_TEMPLATE;
+		std::string bodyTemp = DIRECTORY_LISTING_TEMPLATE;
 
 		DIR* dir;
 		if ((dir = opendir(filePath.c_str())) == NULL) {
@@ -90,7 +88,7 @@ namespace core {
 			bodyTemp += "<li>" + link + "</li>";
 		}
 		closedir(dir);
-		return bodyTemp + DL_TEMPLATE_END;
+		return bodyTemp + DIRECTORY_LISTING_TEMPLATE_END;
 	}
 
 	void GetRequestHandler::generateAutoindexResponse(const http::Request& request, http::Response& response) {
@@ -98,8 +96,27 @@ namespace core {
 		response.setStatusCode(http::OK);
 	}
 
+	void GetRequestHandler::selectFile() {
+		if (m_fileType == shared::file::FILE) {
+			m_filePath = m_route.absoluteFilePath;
+		} else {
+			const config::LocationConfig& location = *m_route.location;
+			for (std::vector<std::string>::const_iterator indexFile = location.indexFile.begin(); indexFile != location.indexFile.end(); ++indexFile) {
+				m_filePath = m_route.absoluteFilePath + "/" + *indexFile;
+				if (shared::file::isRegularFile(m_filePath) == true) {
+					return;
+				}
+			}
+			if (location.autoindex == true) {
+				m_shouldAutoindex = true;
+			} else {
+				throw http::HttpException(http::FORBIDDEN, "GET: Index for location " + location.path + " not found or forbidden");
+			}
+		}
+	}
+
 	void GetRequestHandler::openFile() {
-		m_fileStream.open(m_route.absoluteFilePath.c_str());
+		m_fileStream.open(m_filePath.data());
 		if (!m_fileStream.is_open()) {
 			throw http::HttpException(http::FORBIDDEN, "GET: File " + m_route.absoluteFilePath + " could not be opened");
 		}
@@ -112,7 +129,7 @@ namespace core {
 		m_fileStream.close();
 		m_streamPosition += bytesRead;
 		if (bytesRead > 0) {
-			response.appendBody(shared::string::StringView(m_buffer.data(), m_buffer.size()));
+			response.appendBody(shared::string::StringView(m_buffer.data(), bytesRead));
 			std::memset(m_buffer.data(), '\0', m_buffer.size());
 		} else {
 			m_state = DONE;
@@ -121,29 +138,13 @@ namespace core {
 		return true;
 	}
 
-	// if file is a directory, and autoindex is true, and no index files exist
-	bool GetRequestHandler::shouldAutoindex() const {
-		if (!shared::file::isDirectory(m_route.absoluteFilePath)) {
-			return false;
-		}
-		if (m_route.location->autoindex == false) {
-			return false;
-		}
-		const std::vector<std::string>& indexFiles = m_route.location->indexFile;
-		if (indexFiles.empty()) {
-			return true;
-		}
-		// if none of the index files exist, also return true
-		// todo: what if they just can't be read? forbidden? or autoindex?
-		// todo: probably just do forbidden
-		return true;
-	}
-
 	bool GetRequestHandler::handle(const http::Request& request, http::Response& response) throw(http::HttpException) {
 		switch (m_state) {
 			case PREPROCESS: {
+				m_fileType = shared::file::getFileType(m_route.absoluteFilePath);
 				checkPathPermissions(request);
-				if (shouldAutoindex()) {
+				selectFile();
+				if (m_shouldAutoindex == true) {
 					generateAutoindexResponse(request, response);
 					m_state = DONE;
 				} else {
@@ -170,6 +171,9 @@ namespace core {
 			m_fileStream.close();
 		}
 		m_fileStream.clear();
+		m_fileType = shared::file::FILE;
+		m_filePath.clear();
+		m_shouldAutoindex = false;
 		m_streamPosition = 0;
 	}
 

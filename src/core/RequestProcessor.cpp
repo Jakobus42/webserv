@@ -136,11 +136,9 @@ namespace core {
 	//       temporary locationHeader vector
 	void RequestProcessor::generateRedirectResponse() {
 		const Route& route = m_router.getResult();
-		std::vector<std::string> locationHeader(1);
 
-		locationHeader.push_back(route.redirectUri);
-		m_response->setHeader("Location", locationHeader);
-		m_response->appendBody("Should redirect to " + locationHeader[0] + "\n");
+
+		m_response->appendHeader("Location", route.redirectUri);
 		m_response->setStatusCode(route.location->returnClass);
 	}
 

@@ -2,6 +2,7 @@
 
 #include "core/ARequestHandler.hpp"
 #include "http/http.hpp"
+#include "shared/fileUtils.hpp"
 
 #include <fstream>
 #include <string>
@@ -18,9 +19,9 @@ namespace core {
 			virtual void checkPathPermissions(const http::Request& request) const throw(http::HttpException);
 			virtual void reset();
 
+			void selectFile();
 			void openFile();
 			bool readFile(http::Response& response);
-			bool shouldAutoindex() const;
 			void generateAutoindexResponse(const http::Request& request, http::Response& response);
 			std::string generateDirectoryListing(const http::Request& request, const std::string& filePath);
 
@@ -30,6 +31,9 @@ namespace core {
 			std::vector<char> m_buffer;
 			std::ifstream m_fileStream;
 			std::streampos m_streamPosition;
+			shared::file::FileType m_fileType;
+			std::string m_filePath;
+			bool m_shouldAutoindex;
 	};
 
 } /* namespace core */
