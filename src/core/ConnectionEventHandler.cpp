@@ -12,21 +12,11 @@ namespace core {
 	ConnectionEventHandler::ConnectionEventHandler(VirtualServer& vServer, Connection& conn, io::Dispatcher& dispatcher)
 		: m_vServer(vServer)
 		, m_connection(conn)
-		, m_requestParser()
+		, m_requestParser(http::RequestParserConfig(vServer.getServerConfig()))
 		, m_requestProcessor(vServer.getServerConfig(), dispatcher)
 		, m_totalBytesSent(0)
 		, m_requests()
 		, m_responses() {
-		const config::ServerConfig& serverConfig = vServer.getServerConfig();
-		http::RequestParserConfig config;
-		// config.maxUriLength = // todo: add to config!
-		config.messageParserConfig.maxBodySize = serverConfig.maxBodySize;
-		config.messageParserConfig.maxHeaderCount = serverConfig.maxHeaderCount;
-		config.messageParserConfig.maxHeaderNameLength = serverConfig.maxHeaderNameLength;
-		config.messageParserConfig.maxHeaderValueCount = serverConfig.maxHeaderValueCount;
-		config.messageParserConfig.maxHeaderValueLength = serverConfig.maxHeaderValueLength;
-		m_requestParser.setConfig(config);
-
 		m_requestProcessor.init();
 	}
 
