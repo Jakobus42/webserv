@@ -19,8 +19,6 @@
 
 extern char** environ;
 
-// todo: add CGI timeout and interpreters paths to config
-
 namespace core {
 
 	const time_t CGIProcessor::DEFAULT_TIMEOUT = 30;
@@ -185,12 +183,14 @@ namespace core {
 		return it->second;
 	}
 
-	// todo: maybe add some mor stuff (need more context for that)
 	void CGIProcessor::prepareEnviorment(const http::Request& request) {
 		std::vector<std::string> envVars;
 
 		envVars.push_back("PATH_INFO=" + request.getUri().getCgiPathInfo());
 		envVars.push_back("SERVER_PROTOCOL=" + request.getVersion());
+		envVars.push_back("SERVER_PORT=" + shared::string::toString(m_serverConfig.port));
+		envVars.push_back("SERVER_SOFTWARE=" + std::string("webserv/1.1"));
+		envVars.push_back("SERVER_NAME=" + m_serverConfig.serverNames.front()); // todo: maybe set all?
 		envVars.push_back("QUERY_STRING=" + request.getUri().getQuery());
 		envVars.push_back("REQUEST_METHOD=" + std::string(methodToString(request.getMethod())));
 
@@ -232,7 +232,6 @@ namespace core {
 			}
 		}
 
-		// todo: malloc fail
 		m_env = new char*[envVars.size() + 1];
 		std::memset(m_env, 0, sizeof(char*) * (envVars.size() + 1));
 		for (std::size_t i = 0; i < envVars.size(); ++i) {

@@ -7,8 +7,6 @@
 
 #include <vector>
 
-// todo: missing getters and setters ...
-
 namespace http {
 
 	class Uri {
