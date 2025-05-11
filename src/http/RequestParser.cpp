@@ -125,6 +125,7 @@ namespace http {
 	// parse CGI if the path starts with /cgi-bin/
 	void RequestParser::parsePath() {
 		Uri& uri = m_request->getUri();
+		uri.setPath(normalizePath(uri.getPath()));
 		if (uri.getPath().find("/cgi-bin/") == 0) {
 			std::size_t pos = uri.getPath().find_first_of("/#?", 9);
 			if (pos != std::string::npos) {
@@ -135,7 +136,6 @@ namespace http {
 			}
 			m_request->setType(Request::CGI);
 		}
-		uri.setPath(normalizePath(uri.getPath()));
 	}
 
 	std::string RequestParser::normalizePath(const std::string& path) {

@@ -24,7 +24,7 @@ namespace config {
 		: port(other.port)
 		, ipAddress(other.ipAddress)
 		, maxBodySize(other.maxBodySize)
-		, maxHeaderValueLength(other.maxHeaderValueCount)
+		, maxHeaderValueLength(other.maxHeaderValueLength)
 		, maxHeaderCount(other.maxHeaderCount)
 		, maxHeaderValueCount(other.maxHeaderValueCount)
 		, maxHeaderNameLength(other.maxHeaderNameLength)

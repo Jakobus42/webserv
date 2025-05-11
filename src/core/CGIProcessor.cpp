@@ -135,7 +135,7 @@ namespace core {
 					const_cast<char*>(m_scriptName.c_str()),
 					NULL};
 
-				if (chdir("cgi-bin") == -1) {
+				if (chdir((m_serverConfig.dataDirectory + "/cgi-bin").c_str()) == -1) {
 					throw std::runtime_error("chdir() failed: " + std::string(std::strerror(errno)));
 				}
 
