@@ -30,7 +30,8 @@ namespace http {
 		, maxHeaderValueLength(serverConfig.maxHeaderValueLength)
 		, maxHeaderCount(serverConfig.maxHeaderCount)
 		, maxHeaderValueCount(serverConfig.maxHeaderValueCount)
-		, maxHeaderNameLength(serverConfig.maxHeaderNameLength) {}
+		, maxHeaderNameLength(serverConfig.maxHeaderNameLength) {
+	}
 
 	const shared::string::StringView AMessageParser::CRLF = shared::string::StringView("\r\n");
 	const shared::string::StringView AMessageParser::LF = shared::string::StringView("\n");

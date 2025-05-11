@@ -166,7 +166,6 @@ namespace config {
 			allowedDirectives["max_header_count"] = D_MAX_HEADER_COUNT;
 			allowedDirectives["max_header_value_count"] = D_MAX_HEADER_VALUE_COUNT;
 			allowedDirectives["max_header_name_length"] = D_MAX_HEADER_NAME_SIZE;
-			allowedDirectives["client_max_body_size"] = D_CLIENT_MAX_BODY_SIZE;
 			allowedDirectives["data_dir"] = D_DATA_DIR;
 			allowedDirectives["server_name"] = D_SERVER_NAME;
 			allowedDirectives["root"] = D_ROOT;
