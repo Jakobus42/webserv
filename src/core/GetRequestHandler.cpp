@@ -64,7 +64,7 @@ namespace core {
 			if (fileName == ".") {
 				continue;
 			}
-			if (fileName == ".." && (filePath == "/" || filePath == "")) {
+			if (fileName == ".." && (m_route.remainingPath == "/" || m_route.remainingPath == "")) {
 				continue;
 			}
 			std::string baseUrl = request.getUri().getAuthority();
