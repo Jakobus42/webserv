@@ -17,8 +17,17 @@ namespace core {
 		, m_totalBytesSent(0)
 		, m_requests()
 		, m_responses() {
+		const config::ServerConfig& serverConfig = vServer.getServerConfig();
+		http::RequestParserConfig config;
+		// config.maxUriLength = // todo: add to config!
+		config.messageParserConfig.maxBodySize = serverConfig.maxBodySize;
+		config.messageParserConfig.maxHeaderCount = serverConfig.maxHeaderCount;
+		config.messageParserConfig.maxHeaderNameLength = serverConfig.maxHeaderNameLength;
+		config.messageParserConfig.maxHeaderValueCount = serverConfig.maxHeaderValueCount;
+		config.messageParserConfig.maxHeaderValueLength = serverConfig.maxHeaderValueLength;
+		m_requestParser.setConfig(config);
+
 		m_requestProcessor.init();
-		// todo: set max body size for parser
 	}
 
 	ConnectionEventHandler::~ConnectionEventHandler() {
