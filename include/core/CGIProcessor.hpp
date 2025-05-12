@@ -46,9 +46,12 @@ namespace core {
 			void executeCGIScript(const http::Request& request);
 			const std::string& getInterpreter();
 
+			bool monitor();
 			bool waitCGIScript();
 
 			bool isIOComplete() const;
+			bool isIOReadComplete() const;
+			bool isIOWriteComplete() const;
 			bool hasIOError() const;
 			void cleanup();
 

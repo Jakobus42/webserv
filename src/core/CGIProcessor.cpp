@@ -55,7 +55,7 @@ namespace core {
 				break;
 			}
 			case WAIT: {
-				if (!waitCGIScript()) {
+				if (!monitor() && !waitCGIScript()) {
 					m_state = DONE;
 				}
 				break;
@@ -244,7 +244,7 @@ namespace core {
 		m_env[envVars.size()] = NULL;
 	}
 
-	bool CGIProcessor::waitCGIScript() {
+	bool CGIProcessor::monitor() {
 		time_t now = time(NULL);
 		if ((now - m_startTime) > m_timeout) {
 			throw http::HttpException(http::GATEWAY_TIMEOUT, "CGI Process timed out after " + shared::string::toString(m_timeout) + " seconds");
@@ -254,10 +254,18 @@ namespace core {
 			throw http::HttpException(m_lastIOStatusCode, m_lastIOErrorReason);
 		}
 
-		if (!isIOComplete()) {
-			return true;
+		if (isIOReadComplete()) {
+			m_outputPipe.close();
 		}
 
+		if (isIOWriteComplete()) {
+			m_inputPipe.close();
+		}
+
+		return !isIOComplete();
+	}
+
+	bool CGIProcessor::waitCGIScript() {
 		int status;
 		pid_t result = waitpid(m_pid, &status, WNOHANG);
 		if (result == -1) {
@@ -282,6 +290,10 @@ namespace core {
 	}
 
 	bool CGIProcessor::isIOComplete() const { return (m_ioState & IO_READ_COMPLETE) != 0 && (m_ioState & IO_WRITE_COMPLETE) != 0; }
+
+	bool CGIProcessor::isIOReadComplete() const { return (m_ioState & IO_READ_COMPLETE) != 0; }
+
+	bool CGIProcessor::isIOWriteComplete() const { return (m_ioState & IO_WRITE_COMPLETE) != 0; }
 
 	bool CGIProcessor::hasIOError() const { return (m_ioState & IO_ERROR) != 0; }
 
