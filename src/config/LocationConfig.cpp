@@ -15,6 +15,7 @@ namespace config {
 		, allowedMethods()
 		, uploadSubdirectory()
 		, autoindex(false)
+		, isServerRoot(false)
 		, indexFile()
 		, locations() {
 		allowedMethods.insert(http::GET);
@@ -31,6 +32,7 @@ namespace config {
 		, allowedMethods(other.allowedMethods)
 		, uploadSubdirectory(other.uploadSubdirectory)
 		, autoindex(other.autoindex)
+		, isServerRoot(other.isServerRoot)
 		, indexFile(other.indexFile)
 		, locations(other.locations) {
 	}
@@ -45,6 +47,7 @@ namespace config {
 			allowedMethods = other.allowedMethods;
 			uploadSubdirectory = other.uploadSubdirectory;
 			autoindex = other.autoindex;
+			isServerRoot = other.isServerRoot;
 			indexFile = other.indexFile;
 			locations = other.locations;
 		}
@@ -101,6 +104,7 @@ namespace config {
 		}
 
 		std::cout << indent << "  Autoindex: " << (autoindex ? "on" : "off") << std::endl;
+		std::cout << indent << "  isServerRoot: " << (isServerRoot ? "true" : "false") << std::endl;
 
 		if (!indexFile.empty()) {
 			std::cout << indent << "  Index Files: ";
