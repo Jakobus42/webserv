@@ -37,6 +37,7 @@ namespace core {
 		m_handlers[http::DELETE] = new DeleteRequestHandler();
 	}
 
+	//todo: this could be done in the router if we edit the config correctly that the cgi only uses global configs
 	void RequestProcessor::resolveHost(const http::Request& request) {
 		const std::string& host = request.getUri().getAuthority();
 		bool useDefault = true;
