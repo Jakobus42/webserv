@@ -44,7 +44,7 @@ namespace core {
 		for (std::size_t i = 0; i < m_serverConfigs.size(); ++i) {
 			config::ServerConfig serverConfig = m_serverConfigs[i];
 			for (std::size_t j = 0; j < serverConfig.serverNames.size(); ++j) {
-				if (host.empty() == false && serverConfig.serverNames[j] == host) {
+				if (serverConfig.serverNames[j] == host) {
 					m_serverConfig = serverConfig;
 					useDefault = false;
 					break;
