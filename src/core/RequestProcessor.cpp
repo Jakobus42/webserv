@@ -40,21 +40,18 @@ namespace core {
 	// todo: this could be done in the router if we edit the config correctly that the cgi only uses global configs
 	void RequestProcessor::resolveHost(const http::Request& request) {
 		const std::string& host = request.getUri().getAuthority();
-		bool useDefaultConfig = true;
 
 		for (std::size_t i = 0; i < m_serverConfigs.size(); ++i) {
 			config::ServerConfig serverConfig = m_serverConfigs[i];
 			for (std::size_t j = 0; j < serverConfig.serverNames.size(); ++j) {
-				if (shared::string::CaseInsensitiveComparator()(serverConfig.serverNames[j], host)) {
+				if (!shared::string::CaseInsensitiveComparator()(serverConfig.serverNames[j], host)) {
 					m_serverConfig = serverConfig;
-					useDefaultConfig = false;
-					break;
+					m_serverConfig.print();
+					return;
 				}
 			}
 		}
-		if (useDefaultConfig) {
-			m_serverConfig = m_serverConfigs.at(0);
-		}
+		m_serverConfig = m_serverConfigs.at(0);
 	}
 
 	bool RequestProcessor::shouldRedirect(const http::Request& request) const {
