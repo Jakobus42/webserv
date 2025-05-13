@@ -21,6 +21,7 @@ namespace config {
 
 	struct Config {
 			std::vector<ServerConfig> serverConfigs;
+			std::vector<std::map<std::string /*server_name*/, ServerConfig> > serverConfigs_; // todo: should be case insansitive
 	};
 
 	class Parser : shared::mixin::NonCopyable {
