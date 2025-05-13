@@ -9,7 +9,7 @@ namespace core {
 
 	class VirtualServer : shared::mixin::NonCopyable {
 		public:
-			VirtualServer(const config::Config::ServerConfigs& configs);
+			explicit VirtualServer(const config::Config::ServerConfigs& configs);
 			~VirtualServer();
 
 			void listen();
