@@ -271,6 +271,10 @@ namespace config {
 			}
 			assignAbsolutePaths(*server, server->location); // start with server & rootLocation
 		}
+
+		for (std::vector<ServerConfig>::const_iterator it = m_config.serverConfigs.begin(); it != m_config.serverConfigs.end(); ++it) {
+			m_config.listenServerConfigs[it->socketAddress].push_back(*it);
+		}
 	}
 
 	void Parser::assignAbsolutePaths(ServerConfig& server, LocationConfig& parentLocation) throw(parse_exception) {
@@ -520,6 +524,7 @@ namespace config {
 		host = value.substr(0, value.find_first_of(':'));
 		port = value.substr(value.find_first_of(':') + 1);
 
+		server.socketAddress = host + ":" + port;
 		std::stringstream ss(port);
 		if (!(ss >> server.port)) {
 			throw parse_exception(m_lineIndex, "Invalid value for listen: " + value);

@@ -21,12 +21,11 @@ namespace config {
 	};
 
 	struct Config {
-			std::vector<ServerConfig> serverConfigs;
-
 			typedef std::vector<ServerConfig> ServerConfigs;
-			typedef std::vector<ServerConfigs> ListenServerConfigs;
+			typedef std::map<std::string /*address*/, ServerConfigs> ListenServerConfigs;
 
 			ListenServerConfigs listenServerConfigs;
+			std::vector<ServerConfig> serverConfigs;
 	};
 
 	class Parser : shared::mixin::NonCopyable {

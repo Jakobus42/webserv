@@ -12,6 +12,7 @@ namespace config {
 		public:
 			int port;
 			uint32_t ipAddress;
+			std::string socketAddress;
 			unsigned long maxBodySize;
 			unsigned long maxHeaderValueLength;
 			unsigned long maxHeaderCount;
