@@ -75,7 +75,7 @@ namespace core {
 			if (fileName == ".") {
 				continue;
 			}
-			if (fileName == ".." && (m_route.remainingPath == "/" || m_route.remainingPath == "")) {
+			if (fileName == ".." && m_route.location->isServerRoot == true && m_route.remainingPath == "/") {
 				continue;
 			}
 			std::string baseUrl = request.getUri().getAuthority();
@@ -138,7 +138,10 @@ namespace core {
 
 	bool GetRequestHandler::readFile(http::Response& response) {
 		m_fileStream.read(m_buffer.data(), BUFFER_SIZE);
-		if (m_fileStream.fail()) {
+		std::cout << "read returned " << errno << std::endl;
+		std::cout << "read badbit " << m_fileStream.bad() << std::endl;
+		std::cout << "read failbit " << m_fileStream.eof() << std::endl;
+		if (m_fileStream.bad()) {
 			m_fileStream.close();
 			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "GET: Failure during read() occurred");
 		}

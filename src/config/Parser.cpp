@@ -315,6 +315,7 @@ namespace config {
 		ServerConfig thisServer;
 
 		thisServer.location.path = "/";
+		thisServer.location.isServerRoot = true;
 
 		while (m_readPos < m_data.size()) {
 			skipWhitespace();
