@@ -91,7 +91,7 @@ namespace core {
 		std::size_t bytesToWrite = std::min(requestBody.size() - m_bytesWritten, CHUNK_SIZE);
 
 		m_fileStream.write(requestBody.data() + m_bytesWritten, bytesToWrite);
-		if (m_fileStream.fail()) {
+		if (m_fileStream.bad()) {
 			m_fileStream.close();
 			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "POST: Failure during write() occurred");
 		}
