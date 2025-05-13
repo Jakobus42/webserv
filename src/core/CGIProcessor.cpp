@@ -190,7 +190,7 @@ namespace core {
 		envVars.push_back("SERVER_PROTOCOL=" + request.getVersion());
 		envVars.push_back("SERVER_PORT=" + shared::string::toString(m_serverConfig.port));
 		envVars.push_back("SERVER_SOFTWARE=" + std::string("webserv/1.1"));
-		envVars.push_back("SERVER_NAME=" + m_serverConfig.serverNames.front()); // todo: maybe set all?
+		envVars.push_back("SERVER_NAME=" + m_serverConfig.serverNames.front()); // todo: set the correct one
 		envVars.push_back("QUERY_STRING=" + request.getUri().getQuery());
 		envVars.push_back("REQUEST_METHOD=" + std::string(methodToString(request.getMethod())));
 

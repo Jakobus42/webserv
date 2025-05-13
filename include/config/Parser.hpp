@@ -2,6 +2,7 @@
 
 #include "config/ServerConfig.hpp"
 #include "shared/NonCopyable.hpp"
+#include "shared/stringUtils.hpp"
 
 #include <map>
 
@@ -20,6 +21,10 @@ namespace config {
 	};
 
 	struct Config {
+			typedef std::vector<ServerConfig> ServerConfigs;
+			typedef std::map<std::string /*address*/, ServerConfigs> ListenServerConfigs;
+
+			ListenServerConfigs listenServerConfigs;
 			std::vector<ServerConfig> serverConfigs;
 	};
 

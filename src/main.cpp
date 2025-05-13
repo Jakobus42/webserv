@@ -7,10 +7,9 @@
 int main(int argc, char* argv[]) {
 	try {
 		config::Parser configParser;
-		if (configParser.parseFile(argc > 1 ? argv[1] : "config/config.conf")) { // this could also just throw
+		if (configParser.parseFile(argc > 1 ? argv[1] : "config/default.conf")) { // this could also just throw
 			return 1;
 		}
-
 		core::Reactor reactor;
 		reactor.init(configParser.getConfig());
 		reactor.run();

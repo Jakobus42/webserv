@@ -19,9 +19,8 @@ namespace core {
 		signal(SIGINT, handleSigint);
 		signal(SIGQUIT, SIG_IGN);
 
-		for (std::size_t i = 0; i < config.serverConfigs.size(); ++i) {
-			const config::ServerConfig& serverConfig = config.serverConfigs[i];
-			VirtualServer* vServer = new VirtualServer(serverConfig);
+		for (config::Config::ListenServerConfigs::const_iterator it = config.listenServerConfigs.begin(); it != config.listenServerConfigs.end(); ++it) {
+			VirtualServer* vServer = new VirtualServer(it->second);
 
 			try {
 				m_vServers.push_back(vServer);

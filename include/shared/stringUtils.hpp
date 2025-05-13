@@ -5,6 +5,9 @@
 
 namespace shared {
 	namespace string {
+		struct CaseInsensitiveComparator {
+				bool operator()(const std::string& s1, const std::string& s2) const;
+		};
 
 		template <typename T>
 		T toNum(const std::string& str, std::ios_base& (*baseManipulator)(std::ios_base&) = NULL) {

@@ -3,6 +3,7 @@
 #include "http/http.hpp"
 #include "shared/NonCopyable.hpp"
 #include "shared/StringView.hpp"
+#include "shared/stringUtils.hpp"
 
 #include <map>
 #include <vector>
@@ -12,11 +13,7 @@ namespace http {
 	/* HTTP-message   = Request | Response */
 	class AMessage : shared::mixin::NonCopyable {
 		public:
-			struct CaseInsensitiveComparator {
-					bool operator()(const std::string& s1, const std::string& s2) const;
-			};
-
-			typedef std::map<std::string, std::vector<std::string>, CaseInsensitiveComparator> HeaderMap;
+			typedef std::map<std::string, std::vector<std::string>, shared::string::CaseInsensitiveComparator> HeaderMap;
 
 			AMessage();
 			virtual ~AMessage();
