@@ -1,5 +1,6 @@
 #pragma once
 
+#include "config/Parser.hpp"
 #include "config/ServerConfig.hpp"
 #include "core/CGIProcessor.hpp"
 #include "core/Router.hpp"
@@ -21,7 +22,7 @@ namespace core {
 
 	class RequestProcessor : shared::mixin::NonCopyable {
 		public:
-			explicit RequestProcessor(const config::ServerConfig& serverConfig, io::Dispatcher& dispatcher);
+			explicit RequestProcessor(const config::Config::ServerConfigs& serverConfigs, io::Dispatcher& dispatcher);
 			~RequestProcessor();
 
 			void init();
@@ -34,6 +35,7 @@ namespace core {
 		private:
 			typedef std::map<http::Method, ARequestHandler*> HandlerMap;
 
+			void resolveHost(const http::Request& request);
 			bool handleFetchRequest(const http::Request& request);
 			bool handleCGIRequest(const http::Request& request);
 			bool shouldRedirect(const http::Request& request) const;
@@ -41,7 +43,8 @@ namespace core {
 			void generateRedirectResponse();
 
 		private:
-			const config::ServerConfig& m_serverConfig;
+			const config::Config::ServerConfigs& m_serverConfigs;
+			config::ServerConfig m_serverConfig;
 			CGIProcessor m_cgiProcessor;
 			http::Response* m_response;
 			HandlerMap m_handlers;

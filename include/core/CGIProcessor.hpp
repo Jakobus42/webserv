@@ -15,7 +15,7 @@ namespace core {
 
 	class CGIProcessor : shared::mixin::NonCopyable {
 		public:
-			explicit CGIProcessor(io::Dispatcher& dispatcher, const config::ServerConfig& serverConfig);
+			explicit CGIProcessor(io::Dispatcher& dispatcher, const config::ServerConfig& serverConfig = config::ServerConfig());
 			~CGIProcessor();
 
 			bool process(const http::Request& request);

@@ -4,17 +4,6 @@
 
 namespace http {
 
-	bool AMessage::CaseInsensitiveComparator::operator()(const std::string& lhs, const std::string& rhs) const {
-		for (std::size_t i = 0, n = std::min(lhs.size(), rhs.size()); i < n; ++i) {
-			char l = std::tolower(lhs[i]);
-			char r = std::tolower(rhs[i]);
-			if (l != r) {
-				return l < r;
-			}
-		}
-		return lhs.size() < rhs.size();
-	}
-
 	AMessage::AMessage()
 		: m_headers()
 		, m_body()

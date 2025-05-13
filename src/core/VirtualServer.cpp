@@ -9,10 +9,10 @@
 
 namespace core {
 
-	VirtualServer::VirtualServer(const config::ServerConfig& config)
-		: m_listenSocket(NULL)
-		, m_connections()
-		, m_config(config) {
+	VirtualServer::VirtualServer(const config::Config::ServerConfigs& configs)
+		: m_configs(configs)
+		, m_listenSocket(NULL)
+		, m_connections() {
 
 #if defined(__linux__)
 		m_listenSocket = new io::Socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0);
@@ -23,7 +23,7 @@ namespace core {
 
 		try {
 			m_listenSocket->setReuseAddr(true);
-			m_listenSocket->bind(m_config.port, m_config.ipAddress);
+			m_listenSocket->bind(m_configs.at(0).port, m_configs.at(0).ipAddress); // use default config because all have same port and adress just different name
 		} catch (const std::exception&) {
 			delete m_listenSocket;
 			throw;
@@ -94,14 +94,13 @@ namespace core {
 	std::string VirtualServer::getVirtualServerInfo() const {
 		std::stringstream ss;
 
-		ss << "(" << m_config.serverNames.front()
-		   << "; " << m_listenSocket->getLocalAddress()
+		ss << "(" << m_listenSocket->getLocalAddress()
 		   << ":" << m_listenSocket->getLocalPort() << ")";
 		return ss.str();
 	}
 
 	const std::vector<Connection*>& VirtualServer::getActiveConnections() const { return m_connections; }
 
-	const config::ServerConfig& VirtualServer::getServerConfig() const { return m_config; }
+	const config::Config::ServerConfigs& VirtualServer::getServerConfigs() const { return m_configs; }
 
 } /* namespace core */

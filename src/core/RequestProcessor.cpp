@@ -17,9 +17,9 @@
 
 namespace core {
 
-	RequestProcessor::RequestProcessor(const config::ServerConfig& serverConfig, io::Dispatcher& dispatcher)
-		: m_serverConfig(serverConfig)
-		, m_cgiProcessor(dispatcher, serverConfig)
+	RequestProcessor::RequestProcessor(const config::Config::ServerConfigs& serverConfigs, io::Dispatcher& dispatcher)
+		: m_serverConfigs(serverConfigs)
+		, m_cgiProcessor(dispatcher) // todo: pass global max_xxx stuff
 		, m_response(NULL)
 		, m_handlers()
 		, m_router() {}
@@ -35,6 +35,23 @@ namespace core {
 		m_handlers[http::GET] = new GetRequestHandler();
 		m_handlers[http::POST] = new PostRequestHandler();
 		m_handlers[http::DELETE] = new DeleteRequestHandler();
+	}
+
+	void RequestProcessor::resolveHost(const http::Request& request) {
+		const std::string& host = request.getUri().getAuthority();
+		bool useDefault = true;
+
+		for (std::size_t i = 0; i < m_serverConfigs.size(); ++i) {
+			config::ServerConfig serverConfig = m_serverConfigs[i];
+			if (host.empty() == false && serverConfig.serverNames.front() == host) {
+				m_serverConfig = serverConfig;
+				useDefault = false;
+				break;
+			}
+		}
+		if (useDefault) {
+			m_serverConfig = m_serverConfigs.at(0);
+		}
 	}
 
 	bool RequestProcessor::shouldRedirect(const http::Request& request) const {
@@ -83,6 +100,8 @@ namespace core {
 			}
 		}
 		try {
+			resolveHost(request);
+
 			http::Request::Type requestType = request.getType();
 
 			if (requestType == http::Request::FETCH) {

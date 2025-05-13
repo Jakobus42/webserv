@@ -2,6 +2,7 @@
 
 #include "config/ServerConfig.hpp"
 #include "shared/NonCopyable.hpp"
+#include "shared/stringUtils.hpp"
 
 #include <map>
 
@@ -21,7 +22,11 @@ namespace config {
 
 	struct Config {
 			std::vector<ServerConfig> serverConfigs;
-			std::vector<std::map<std::string /*server_name*/, ServerConfig> > serverConfigs_; // todo: should be case insansitive
+
+			typedef std::vector<ServerConfig> ServerConfigs;
+			typedef std::vector<ServerConfigs> ListenServerConfigs;
+
+			ListenServerConfigs listenServerConfigs;
 	};
 
 	class Parser : shared::mixin::NonCopyable {

@@ -14,21 +14,24 @@ int main(/* int argc, char* argv[] */) {
 		/* tmp */
 
 		config::Config config;
-		std::vector<std::map<std::string, config::ServerConfig> > listenServerConfigs;
-		std::map<std::string /*server_name*/, config::ServerConfig> serverConfigs;
+		config::Config::ListenServerConfigs listenServerConfigs;
+		config::Config::ServerConfigs serverConfigs;
 
 		config::ServerConfig server1;
+		server1.port = 80;
 		server1.dataDirectory = "/workspaces/webserv";
 		server1.serverNames.push_back("cool-server.com");
 
 		config::LocationConfig location1;
 		location1.root = "/www/foo";
 		location1.indexFile.push_back("index.html");
+		location1.precalculatedAbsolutePath = server1.dataDirectory + location1.root;
 
 		server1.location = location1;
 		server1.print();
 
 		config::ServerConfig server2;
+		server2.port = 80;
 		server2.dataDirectory = "/workspaces/webserv";
 		server2.serverNames.push_back("cool-server2.com");
 
@@ -36,14 +39,17 @@ int main(/* int argc, char* argv[] */) {
 		location2.root = "/www/bar";
 		location2.indexFile.push_back("index.html");
 
+		location2.precalculatedAbsolutePath = server2.dataDirectory + location2.root;
 		server2.location = location2;
 		server2.print();
 
 		// todo: change serverNames to serverName
-		serverConfigs[server1.serverNames.front()] = server1;
-		serverConfigs[server2.serverNames.front()] = server2;
+		serverConfigs.push_back(server1);
+		serverConfigs.push_back(server2);
 
-		config.serverConfigs_ = listenServerConfigs;
+		listenServerConfigs.push_back(serverConfigs);
+
+		config.listenServerConfigs = listenServerConfigs;
 
 		/* tmp end */
 

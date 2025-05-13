@@ -177,7 +177,7 @@ namespace http {
 		const std::string& host = hostValues.front();
 
 		if (!uri.getAuthority().empty()) {
-			if (AMessage::CaseInsensitiveComparator()(host, uri.getAuthority())) {
+			if (shared::string::CaseInsensitiveComparator()(host, uri.getAuthority())) {
 				throw HttpException(BAD_REQUEST, "host header does not match authority");
 			}
 		} else {

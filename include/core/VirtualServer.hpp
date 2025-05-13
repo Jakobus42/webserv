@@ -1,6 +1,6 @@
 #pragma once
 
-#include "config/ServerConfig.hpp"
+#include "config/Parser.hpp"
 #include "core/Connection.hpp"
 #include "io/Socket.hpp"
 #include "shared/NonCopyable.hpp"
@@ -9,7 +9,7 @@ namespace core {
 
 	class VirtualServer : shared::mixin::NonCopyable {
 		public:
-			VirtualServer(const config::ServerConfig& config = config::ServerConfig());
+			VirtualServer(const config::Config::ServerConfigs& configs);
 			~VirtualServer();
 
 			void listen();
@@ -21,12 +21,13 @@ namespace core {
 			const io::Socket& getListenSocket() const;
 			std::string getVirtualServerInfo() const;
 			const std::vector<Connection*>& getActiveConnections() const;
-			const config::ServerConfig& getServerConfig() const;
+			const config::Config::ServerConfigs& getServerConfigs() const;
 
 		private:
+			const config::Config::ServerConfigs& m_configs;
+
 			io::Socket* m_listenSocket;
 			std::vector<Connection*> m_connections;
-			config::ServerConfig m_config;
 	};
 
 } /* namespace core */

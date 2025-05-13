@@ -138,7 +138,7 @@ namespace core {
 
 	bool GetRequestHandler::readFile(http::Response& response) {
 		m_fileStream.read(m_buffer.data(), BUFFER_SIZE);
-		if (m_fileStream.fail()) {
+		if (m_fileStream.bad()) {
 			m_fileStream.close();
 			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "GET: Failure during read() occurred");
 		}
