@@ -99,7 +99,7 @@ namespace http {
 			case 504: return GATEWAY_TIMEOUT;
 			case 505: return HTTP_VERSION_NOT_SUPPORTED;
 			case 508: return LOOP_DETECTED;
-			default: return _NOT_IMPLEMENTED;
+			default: throw std::invalid_argument("Invalid status code.");
 		}
 	}
 

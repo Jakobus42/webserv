@@ -5,6 +5,7 @@
 #include "config/LocationConfig.hpp"
 
 #include <vector>
+#include <map>
 
 namespace config {
 
@@ -20,7 +21,7 @@ namespace config {
 			unsigned long maxHeaderNameLength;
 			unsigned long connectionTimeout;
 			unsigned long cgiTimeout;
-			std::vector<std::pair<std::string, std::string> > cgiInterpreters;
+			std::map<std::string, std::string> cgiInterpreters;
 			std::string dataDirectory;
 			std::vector<std::string> serverNames;
 			LocationConfig location;

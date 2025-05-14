@@ -575,7 +575,7 @@ namespace config {
 			throw parse_exception(m_lineIndex, "Path does not lead to an executable: " + args[1]);
 		}
 		// if already exists in interpreters, throw exception
-		server.cgiInterpreters.push_back(std::make_pair(args[0], args[1]));
+		server.cgiInterpreters[args[0]] = args[1];
 	}
 
 	// ------------------------  location parsers  -------------------------- //
@@ -679,7 +679,13 @@ namespace config {
 			if (!(ss_num >> num_buffer)) {
 				throw parse_exception(m_lineIndex, "Invalid error code: " + args[i]);
 			}
-			http::StatusCode status_code = http::numToStatusCode(num_buffer);
+			http::StatusCode status_code;
+			try {
+				status_code = http::numToStatusCode(num_buffer);
+			}
+			catch(const std::exception &e) {
+				throw parse_exception(m_lineIndex, "Invalid error code: " + args[0] + ": " + e.what());
+			}
 			if (status_code < 400) {
 				throw parse_exception(m_lineIndex, "Invalid error code: " + args[0]);
 			}

@@ -6,7 +6,6 @@
 namespace http {
 
 	enum StatusCode {
-		_NOT_IMPLEMENTED = 0,
 		OK = 200,
 		CREATED = 201,
 		ACCEPTED = 202,

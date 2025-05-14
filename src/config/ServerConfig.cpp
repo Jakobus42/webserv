@@ -86,7 +86,7 @@ namespace config {
 		std::cout << "MaxBodySize: " << maxBodySize << std::endl;
 		std::cout << "DataDirectory: " << dataDirectory << std::endl;
 		std::cout << "cgiInterpreters:" << std::endl;
-		for (std::vector<std::pair<std::string, std::string> >::const_iterator interpreter = cgiInterpreters.begin(); interpreter != cgiInterpreters.end(); ++interpreter) {
+		for (std::map<std::string, std::string>::const_iterator interpreter = cgiInterpreters.begin(); interpreter != cgiInterpreters.end(); ++interpreter) {
 			std::cout << interpreter->first << " => " << interpreter->second << std::endl;
 		}
 		std::cout << "ConnectionTimeout: " << connectionTimeout << std::endl;
