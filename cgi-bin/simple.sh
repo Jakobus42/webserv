@@ -1,6 +1,5 @@
-#!/bin/bash
+#!/usr/bin/sh
 
-echo "Content-type: text/plain"
-echo ""
+echo "Content-type: text/plain\\n"
 
-echo "Hello from CGI!"
+echo -n "Hello from CGI!"

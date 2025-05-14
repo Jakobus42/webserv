@@ -194,7 +194,7 @@ namespace core {
 		envVars.push_back("QUERY_STRING=" + request.getUri().getQuery());
 		envVars.push_back("REQUEST_METHOD=" + std::string(methodToString(request.getMethod())));
 
-		envVars.push_back("SCRIPT_NAME=" + m_scriptName);
+		envVars.push_back("SCRIPT_NAME=" + m_scriptName); // todo: this should maybe be "cgi-bin/foo.py" instead of "foo.py"
 		envVars.push_back("GATEWAY_INTERFACE=CGI/1.1");
 
 		if (request.hasHeader("content-length")) {
@@ -322,9 +322,9 @@ namespace core {
 
 		if (m_env) {
 			for (std::size_t i = 0; m_env[i]; ++i) {
-				delete m_env[i];
+				delete[] m_env[i];
 			}
-			delete m_env;
+			delete[] m_env;
 			m_env = NULL;
 		}
 	}
