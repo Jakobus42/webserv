@@ -63,10 +63,6 @@ namespace core {
 		if (!m_requestParser.parse()) {
 			http::Request* req = m_requestParser.releaseRequest();
 
-			if (req->hasHeader("keep-alive") && req->getHeader("keep-alive").front() == "close") {
-				m_connection.setIsKeepAlive(false);
-			}
-
 			m_requests.push(req);
 			m_requestParser.reset();
 		}
