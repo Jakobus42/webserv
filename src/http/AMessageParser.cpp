@@ -185,7 +185,7 @@ namespace http {
 			return DONE;
 		}
 
-		if (m_message->getHeaders().size() > m_baseConfig.maxHeaderCount - 1) {
+		if (m_message->getHeaders().size() > m_baseConfig.maxHeaderCount) {
 			throw HttpException(PAYLOAD_TOO_LARGE, "header amount exceeds limit");
 		}
 
@@ -194,7 +194,7 @@ namespace http {
 			line.remove_prefix(keyView.size() + 1 /*colon len*/);
 			std::vector<shared::string::StringView> valueViews = extractHeaderValues(line);
 			m_message->setHeader(keyView, valueViews);
-			if (m_message->getHeaders().size() > m_baseConfig.maxHeaderValueCount - 1) {
+			if (m_message->getHeaders().size() > m_baseConfig.maxHeaderValueCount) {
 				throw HttpException(PAYLOAD_TOO_LARGE, "field-value amount exceeds limit");
 			}
 		} catch (const std::bad_alloc&) {
