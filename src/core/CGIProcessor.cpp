@@ -322,9 +322,9 @@ namespace core {
 
 		if (m_env) {
 			for (std::size_t i = 0; m_env[i]; ++i) {
-				delete m_env[i];
+				delete[] m_env[i];
 			}
-			delete m_env;
+			delete[] m_env;
 			m_env = NULL;
 		}
 	}
