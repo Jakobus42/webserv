@@ -37,6 +37,7 @@ namespace http {
 
 			void appendHeader(const std::string& key, const std::string& value);
 			void appendHeader(const shared::string::StringView& key, const shared::string::StringView& value);
+			void setHeader(const std::string& key, const std::string& value);
 			void setHeader(const std::string& key, const std::vector<std::string>& values);
 			void setHeader(const shared::string::StringView& key, const std::vector<shared::string::StringView>& values);
 

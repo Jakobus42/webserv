@@ -33,12 +33,22 @@ namespace core {
 			void reset();
 
 		private:
+			enum State {
+				PREPROCESS,
+				PROCESS,
+				DONE
+			};
+
 			typedef std::map<http::Method, ARequestHandler*> HandlerMap;
 
+			void preprocess(const http::Request& request);
 			void resolveHost(const http::Request& request);
+
+			bool process(const http::Request& request);
 			bool handleFetchRequest(const http::Request& request);
 			bool handleCGIRequest(const http::Request& request);
 			bool shouldRedirect(const http::Request& request) const;
+
 			void generateErrorResponse(http::StatusCode statusCode);
 			void generateRedirectResponse();
 
@@ -49,6 +59,7 @@ namespace core {
 			http::Response* m_response;
 			HandlerMap m_handlers;
 			Router m_router;
+			State m_state;
 	};
 
 } /* namespace core */

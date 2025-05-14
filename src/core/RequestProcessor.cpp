@@ -23,7 +23,8 @@ namespace core {
 		, m_cgiProcessor(dispatcher) // todo: pass global max_xxx stuff
 		, m_response(NULL)
 		, m_handlers()
-		, m_router() {}
+		, m_router()
+		, m_state(PREPROCESS) {}
 
 	RequestProcessor::~RequestProcessor() {
 		for (HandlerMap::iterator it = m_handlers.begin(); it != m_handlers.end(); ++it) {
@@ -90,17 +91,25 @@ namespace core {
 		return false;
 	}
 
-	bool RequestProcessor::processRequest(const http::Request& request) {
-		if (!m_response) {
-			m_response = new http::Response();
-			if (request.isValid() == false) { // yeah this is kinda weird...
-				generateErrorResponse(request.getStatusCode());
-				return false;
-			}
-		}
-		try {
-			resolveHost(request);
+	void RequestProcessor::preprocess(const http::Request& request) {
+		m_response = new http::Response();
 
+		if (request.hasHeader("Connection") && request.getHeader("Connection").front() == "close") {
+			m_response->setHeader("Connection", "close");
+		} else {
+			m_response->setHeader("Connection", "keep-alive");
+		}
+
+		resolveHost(request);
+	}
+
+	bool RequestProcessor::process(const http::Request& request) {
+		if (request.isValid() == false) {
+			generateErrorResponse(request.getStatusCode());
+			return false;
+		}
+
+		try {
 			http::Request::Type requestType = request.getType();
 
 			if (requestType == http::Request::FETCH) {
@@ -123,6 +132,25 @@ namespace core {
 		return false;
 	}
 
+	bool RequestProcessor::processRequest(const http::Request& request) {
+		switch (m_state) {
+			case PREPROCESS: {
+				preprocess(request);
+				m_state = PROCESS;
+				break;
+			}
+			case PROCESS: {
+				if (!process(request)) {
+					m_state = DONE;
+				}
+				break;
+			}
+			case DONE: break;
+		}
+
+		return !(m_state == DONE);
+	}
+
 	http::Response* RequestProcessor::releaseResponse() {
 		http::Response* released = m_response;
 		m_response = NULL;
@@ -130,6 +158,8 @@ namespace core {
 	}
 
 	void RequestProcessor::reset() {
+		m_state = PREPROCESS;
+
 		delete m_response;
 		m_response = NULL;
 		m_router.reset();
@@ -144,6 +174,7 @@ namespace core {
 
 	// todo: generate body
 	void RequestProcessor::generateErrorResponse(http::StatusCode statusCode) {
+		m_response->setHeader("Connection", "close");
 		m_response->appendBody("tmp error response\n");
 		m_response->setStatusCode(statusCode);
 	}
@@ -153,7 +184,6 @@ namespace core {
 	//       temporary locationHeader vector
 	void RequestProcessor::generateRedirectResponse() {
 		const Route& route = m_router.getResult();
-
 
 		m_response->appendHeader("Location", route.redirectUri);
 		m_response->setStatusCode(route.location->returnClass);

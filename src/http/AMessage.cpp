@@ -44,6 +44,11 @@ namespace http {
 		target.back().assign(value.begin(), value.end());
 	}
 
+	void AMessage::setHeader(const std::string& key, const std::string& value) {
+		m_headers[key].clear();
+		appendHeader(key, value);
+	}
+
 	void AMessage::setHeader(const std::string& key, const std::vector<std::string>& values) { m_headers[key] = values; }
 
 	void AMessage::setHeader(const shared::string::StringView& key, const std::vector<shared::string::StringView>& values) {
