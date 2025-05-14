@@ -14,7 +14,7 @@ namespace core {
 		: m_processor(processor)
 		, m_request(request)
 		, m_response(response)
-		, m_bytesWritten(0)
+		, m_totalBytesWritten(0)
 		, m_responseParser() {
 		http::ResponseParserConfig conf(serverConfig);
 		conf.messageParserConfig.requireCR = false;
@@ -57,19 +57,17 @@ namespace core {
 
 	io::EventResult CGIEventHandler::onWriteable(int32_t fd) {
 		ssize_t bytesWritten = write(fd,
-									 m_request.getBody().c_str() + m_bytesWritten,
-									 m_request.getBody().size() - m_bytesWritten);
+									 m_request.getBody().c_str() + m_totalBytesWritten,
+									 m_request.getBody().size() - m_totalBytesWritten);
 
 		if (bytesWritten == -1) {
 			m_processor.notifyIOError(http::INTERNAL_SERVER_ERROR, "failed to write to CGI script");
 			return io::UNREGISTER;
-		}
-
-		m_bytesWritten += bytesWritten;
-		if (m_bytesWritten >= m_request.getBody().size()) {
+		} else if (bytesWritten == 0) {
 			m_processor.notifyIOWriteCompletion();
 			return io::UNREGISTER;
 		}
+		m_totalBytesWritten += bytesWritten;
 		return io::KEEP_MONITORING;
 	}
 
