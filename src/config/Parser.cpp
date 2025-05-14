@@ -179,6 +179,7 @@ namespace config {
 			allowedDirectives["error_page"] = D_ERROR_PAGE;
 			allowedDirectives["connection_timeout"] = D_CONNECTION_TIMEOUT;
 			allowedDirectives["cgi_timeout"] = D_CGI_TIMEOUT;
+			allowedDirectives["max_uri_length"] = D_MAX_URI_LENGTH;
 			allowedDirectives["cgi_interpreter"] = D_CGI_INTERPRETER;
 		}
 		return allowedDirectives;
@@ -436,6 +437,8 @@ namespace config {
 				return parseIntegerValue("connection_timeout", value, server.connectionTimeout);
 			case D_CGI_TIMEOUT:
 				return parseIntegerValue("cgi_timeout", value, server.cgiTimeout);
+			case D_MAX_URI_LENGTH:
+				return parseIntegerValue("max_uri_length", value, server.maxUriLength);
 			case D_DATA_DIR:
 				return parsePathValue("data_dir", value, server.dataDirectory);
 			default:
@@ -467,15 +470,24 @@ namespace config {
 	// ------------------------  server parsers  ---------------------------- //
 
 	void Parser::parseIntegerValue(const std::string& key, const std::string& value, unsigned long& destination) throw(parse_exception) {
-		std::stringstream ss(value);
-		std::string token;
 
-		if (!(ss >> destination)) {
-			throw parse_exception(m_lineIndex, "Invalid value for " + key);
+		try {
+			destination = shared::string::toNum<unsigned long>(value);
+		} catch (const std::exception& e) {
+			throw parse_exception(m_lineIndex, "Invalid value for " + key + e.what());
 		}
-		if (ss >> token) {
-			throw parse_exception(m_lineIndex, "Unexpected token in " + key + ": " + token);
-		}
+		// std::string token;
+
+		// if (!(ss >> destination)) {
+		// 	throw parse_exception(m_lineIndex, "Invalid value for " + key);
+		// }
+		// if(ss.) {
+		// 	throw parse_exception(m_lineIndex, "Invalid value for " + key + ": failed to parse");
+		// }
+
+		// if (ss >> token) {
+		// 	throw parse_exception(m_lineIndex, "Unexpected token in " + key + ": " + token);
+		// }
 	}
 
 	void Parser::parsePathValue(const std::string& key, const std::string& value, std::string& destination) throw(parse_exception) {
@@ -682,8 +694,7 @@ namespace config {
 			http::StatusCode status_code;
 			try {
 				status_code = http::numToStatusCode(num_buffer);
-			}
-			catch(const std::exception &e) {
+			} catch (const std::exception& e) {
 				throw parse_exception(m_lineIndex, "Invalid error code: " + args[0] + ": " + e.what());
 			}
 			if (status_code < 400) {

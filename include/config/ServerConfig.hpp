@@ -21,6 +21,7 @@ namespace config {
 			unsigned long maxHeaderNameLength;
 			unsigned long connectionTimeout;
 			unsigned long cgiTimeout;
+			unsigned long maxUriLength;
 			std::map<std::string, std::string> cgiInterpreters;
 			std::string dataDirectory;
 			std::vector<std::string> serverNames;

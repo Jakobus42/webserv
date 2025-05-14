@@ -16,6 +16,7 @@ namespace config {
 		, maxHeaderNameLength(256)		 // 256B
 		, connectionTimeout(60)
 		, cgiTimeout(60)
+		, maxUriLength(1024)
 		, cgiInterpreters()
 		, dataDirectory("")
 		, serverNames()
@@ -34,6 +35,7 @@ namespace config {
 		, maxHeaderNameLength(other.maxHeaderNameLength)
 		, connectionTimeout(other.connectionTimeout)
 		, cgiTimeout(other.cgiTimeout)
+		, maxUriLength(other.maxUriLength)
 		, cgiInterpreters(other.cgiInterpreters)
 		, dataDirectory(other.dataDirectory)
 		, serverNames(other.serverNames)
@@ -53,6 +55,7 @@ namespace config {
 		maxHeaderValueLength = rhs.maxHeaderValueLength;
 		connectionTimeout = rhs.connectionTimeout;
 		cgiTimeout = rhs.cgiTimeout;
+		maxUriLength = rhs.maxUriLength;
 		cgiInterpreters = rhs.cgiInterpreters;
 		dataDirectory = rhs.dataDirectory;
 		serverNames = rhs.serverNames;
@@ -91,6 +94,7 @@ namespace config {
 		}
 		std::cout << "ConnectionTimeout: " << connectionTimeout << std::endl;
 		std::cout << "cgiTimeout: " << cgiTimeout << std::endl;
+		std::cout << "maxUriLength: " << maxUriLength << std::endl;
 		std::cout << "Names: ";
 		for (std::vector<std::string>::const_iterator it = serverNames.begin(); it != serverNames.end(); ++it) {
 			std::cout << *it << " ";
