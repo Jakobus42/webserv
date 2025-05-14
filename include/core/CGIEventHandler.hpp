@@ -24,7 +24,7 @@ namespace core {
 			const http::Request& m_request;
 			http::Response*& m_response;
 
-			std::size_t m_bytesWritten;
+			std::size_t m_totalBytesWritten;
 			http::ResponseParser m_responseParser;
 	};
 

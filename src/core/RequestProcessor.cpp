@@ -20,7 +20,7 @@ namespace core {
 	RequestProcessor::RequestProcessor(const config::Config::ServerConfigs& serverConfigs, io::Dispatcher& dispatcher)
 		: m_serverConfigs(serverConfigs)
 		, m_serverConfig(serverConfigs.at(0))
-		, m_cgiProcessor(dispatcher) // todo: pass global max_xxx stuff
+		, m_cgiProcessor(dispatcher, m_serverConfig) // todo: pass global max_xxx stuff
 		, m_response(NULL)
 		, m_handlers()
 		, m_router()

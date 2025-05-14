@@ -48,15 +48,15 @@ namespace core {
 
 		shared::container::Buffer<http::RequestParser::BUFFER_SIZE>& buffer = m_requestParser.getReadBuffer();
 		std::size_t available = buffer.prepareWrite();
-		ssize_t bytesWritten = m_connection.recv(buffer.writePtr(), available);
-		if (bytesWritten == -1) {
+		ssize_t bytesReceived = m_connection.recv(buffer.writePtr(), available);
+		if (bytesReceived == -1) {
 			LOG_ERROR("failed to receive data");
 			return io::UNREGISTER;
-		} else if (bytesWritten == 0) {
+		} else if (bytesReceived == 0) {
 			return io::UNREGISTER;
 		}
-		buffer.advanceWriter(bytesWritten);
-		LOG_INFO("received " + shared::string::toString(bytesWritten) + " bytes");
+		buffer.advanceWriter(bytesReceived);
+		LOG_INFO("received " + shared::string::toString(bytesReceived) + " bytes");
 
 		m_connection.updateActivityTimestamp();
 
@@ -94,19 +94,14 @@ namespace core {
 			return io::KEEP_MONITORING;
 		}
 
+
 		http::Response* response = m_responses.front();
 		const std::string& serializedResponse = response->serialize();
 		ssize_t bytesSent = m_connection.send(serializedResponse.c_str() + m_totalBytesSent, serializedResponse.size() - m_totalBytesSent);
 		if (bytesSent == -1) {
 			LOG_ERROR("failed to send data");
 			return io::UNREGISTER;
-		}
-		LOG_INFO("sent " + shared::string::toString(bytesSent) + " bytes");
-
-		m_connection.updateActivityTimestamp();
-
-		m_totalBytesSent += bytesSent;
-		if (m_totalBytesSent == serializedResponse.size()) {
+		} else if (bytesSent == 0) {
 			m_totalBytesSent = 0;
 
 			if (response->hasHeader("Connection") && response->getHeader("Connection").front() == "close") {
@@ -117,6 +112,11 @@ namespace core {
 
 			return m_connection.isKeepAlive() ? io::KEEP_MONITORING : io::UNREGISTER;
 		}
+		LOG_INFO("sent " + shared::string::toString(bytesSent) + " bytes");
+		m_totalBytesSent += bytesSent;
+
+		m_connection.updateActivityTimestamp();
+
 		return io::KEEP_MONITORING;
 	}
 
