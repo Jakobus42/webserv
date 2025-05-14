@@ -470,24 +470,18 @@ namespace config {
 	// ------------------------  server parsers  ---------------------------- //
 
 	void Parser::parseIntegerValue(const std::string& key, const std::string& value, unsigned long& destination) throw(parse_exception) {
+		for (std::size_t i = 0; i < value.size(); ++i) {
+			unsigned char ch = static_cast<unsigned char>(value[i]);
+			if (!std::isdigit(ch) && !std::isspace(ch)) {
+				throw parse_exception(m_lineIndex, "Invalid character found in value for " + key);
+			}
+		}
 
 		try {
 			destination = shared::string::toNum<unsigned long>(value);
 		} catch (const std::exception& e) {
-			throw parse_exception(m_lineIndex, "Invalid value for " + key + e.what());
+			throw parse_exception(m_lineIndex, "Invalid value for " + key + ": " + e.what());
 		}
-		// std::string token;
-
-		// if (!(ss >> destination)) {
-		// 	throw parse_exception(m_lineIndex, "Invalid value for " + key);
-		// }
-		// if(ss.) {
-		// 	throw parse_exception(m_lineIndex, "Invalid value for " + key + ": failed to parse");
-		// }
-
-		// if (ss >> token) {
-		// 	throw parse_exception(m_lineIndex, "Unexpected token in " + key + ": " + token);
-		// }
 	}
 
 	void Parser::parsePathValue(const std::string& key, const std::string& value, std::string& destination) throw(parse_exception) {

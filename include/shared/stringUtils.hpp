@@ -19,8 +19,9 @@ namespace shared {
 			}
 
 			stream >> result;
-			if (stream.fail() || !stream.eof())
+			if (stream.fail()) {
 				throw std::runtime_error("cant convert to number");
+			}
 			return result;
 		}
 
