@@ -26,6 +26,7 @@ namespace core {
 			bool readFile(http::Response& response);
 			void generateAutoindexResponse(const http::Request& request, http::Response& response);
 			std::string generateDirectoryListing(const http::Request& request, const std::string& filePath);
+			const std::string& getMimeType() const;
 
 		private:
 			static const std::streamsize BUFFER_SIZE = 16384; // 16 KB
