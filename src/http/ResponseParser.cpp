@@ -51,7 +51,7 @@ namespace http {
 
 		shared::string::StringView codeView = line.substr(firstSpace + 1, secondSpace - firstSpace - 1);
 		try {
-			std::size_t code = shared::string::toNum<std::size_t>(codeView.toString());
+			std::size_t code = shared::string::toUnsignedNum<std::size_t>(codeView.toString());
 			m_response->setStatusCode(numToStatusCode(code));
 		} catch (const std::bad_alloc&) {
 			throw;
@@ -85,7 +85,7 @@ namespace http {
 			}
 
 			try {
-				StatusCode code = numToStatusCode(shared::string::toNum<std::size_t>(codeStr));
+				StatusCode code = numToStatusCode(shared::string::toUnsignedNum<std::size_t>(codeStr));
 				m_response->setStatusCode(code);
 
 				if (!reasonPhrase.empty()) {

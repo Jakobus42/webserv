@@ -498,7 +498,7 @@ namespace config {
 			if (segment.size() > 3) {
 				throw parse_exception(m_lineIndex, "Invalid IP address format: segment too long in \"" + host + "\"");
 			}
-			int octet = shared::string::toNum<int>(segment);
+			unsigned int octet = shared::string::toUnsignedNum<int>(segment);
 			if (octet < 0 || octet > 255) {
 				throw parse_exception(m_lineIndex, "IP segment out of range in \"" + host + "\"");
 			}

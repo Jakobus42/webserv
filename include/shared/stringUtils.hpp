@@ -10,7 +10,13 @@ namespace shared {
 		};
 
 		template <typename T>
-		T toNum(const std::string& str, std::ios_base& (*baseManipulator)(std::ios_base&) = NULL) {
+		T toUnsignedNum(const std::string& str, std::ios_base& (*baseManipulator)(std::ios_base&) = NULL) {
+			for (std::size_t i = 0; str[i]; ++i) {
+				if (std::isdigit(str[i]) == false) {
+					throw std::runtime_error("invalid character found during conversion: " + std::string(1, str[i]));
+				}
+			}
+
 			T result;
 			std::istringstream stream(str);
 
@@ -19,8 +25,9 @@ namespace shared {
 			}
 
 			stream >> result;
-			if (stream.fail() || !stream.eof())
+			if (stream.fail() || !stream.eof()) {
 				throw std::runtime_error("cant convert to number");
+			}
 			return result;
 		}
 

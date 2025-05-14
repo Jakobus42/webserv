@@ -228,7 +228,7 @@ namespace http {
 			}
 
 			try {
-				m_contentLength = shared::string::toNum<std::size_t>(values.front());
+				m_contentLength = shared::string::toUnsignedNum<std::size_t>(values.front());
 			} catch (const std::bad_alloc&) {
 				throw;
 			} catch (const std::exception& e) {
@@ -304,7 +304,7 @@ namespace http {
 		shared::string::StringView sizeView = line.substr(0, semicolonPos);
 
 		try {
-			m_contentLength = shared::string::toNum<std::size_t>(sizeView.toString(), std::hex);
+			m_contentLength = shared::string::toUnsignedNum<std::size_t>(sizeView.toString(), std::hex);
 		} catch (const std::bad_alloc&) {
 			throw;
 		} catch (std::exception& e) {
