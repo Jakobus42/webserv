@@ -108,8 +108,13 @@ namespace core {
 		m_totalBytesSent += bytesSent;
 		if (m_totalBytesSent == serializedResponse.size()) {
 			m_totalBytesSent = 0;
+
+			if (response->hasHeader("Connection") && response->getHeader("Connection").front() == "close") {
+				m_connection.setIsKeepAlive(false);
+			}
 			delete response;
 			m_responses.pop();
+
 			return m_connection.isKeepAlive() ? io::KEEP_MONITORING : io::UNREGISTER;
 		}
 		return io::KEEP_MONITORING;
