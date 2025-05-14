@@ -32,7 +32,7 @@ namespace core {
 
 	void Router::reset() { m_routeResult.reset(); }
 
-	std::string Router::generateRedirectUri() const { return m_routeResult.location->redirectUri + m_routeResult.filePath; }
+	std::string Router::generateRedirectUri() const { return m_routeResult.location->redirectUri.second + m_routeResult.filePath; }
 
 	http::StatusCode Router::getReturnClass() const { return m_routeResult.location->returnClass; }
 

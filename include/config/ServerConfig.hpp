@@ -19,7 +19,7 @@ namespace config {
 			unsigned long maxHeaderNameLength;
 			unsigned long connectionTimeout;
 			unsigned long cgiTimeout;
-			std::pair<std::string, std::string> cgiInterpreter;
+			std::vector<std::pair<std::string, std::string> > cgiInterpreters;
 			std::string dataDirectory;
 			std::vector<std::string> serverNames;
 			LocationConfig location;

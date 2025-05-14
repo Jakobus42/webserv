@@ -103,19 +103,19 @@ namespace core {
 	void RequestProcessor::generateErrorResponse(http::StatusCode code) {
 		std::string response = "";
 		if (!m_router.needsRoute()) {
-			std::map<int, std::string> errorPages = m_router.getResult().location->errorPages;
-			std::map<int, std::string>::iterator it = errorPages.find(static_cast<int>(code));
+			const std::map<http::StatusCode, std::string>& errorPages = m_router.getResult().location->errorPages;
+			std::map<http::StatusCode, std::string>::const_iterator it = errorPages.find(code);
 			if (it != errorPages.end()) {
 				std::string path = m_router.getResult().location->precalculatedAbsolutePath + "/" + it->second;
 				std::string buffer;
 				std::ifstream f(path.c_str());
-				if (f.is_open())
-				{
-					while (getline(f, buffer))
+				if (f.is_open()) {
+					while (getline(f, buffer)) {
 						response += buffer;
+					}
 					f.close();
 				}
-				//else    //maybe give feedback if an error page is not opened
+				// else    //maybe give feedback if an error page is not opened
 			}
 		}
 		if (response == "")
@@ -132,13 +132,13 @@ namespace core {
 
 	std::string RequestProcessor::generateErrorPage(http::StatusCode code) {
 		static const std::string preset = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\" />"
-		"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>"
-		"<title>error_code</title><style>body {background-color: #f8f8f8;font-family: Arial, sans-serif;"
-		"text-align: center;padding: 50px;color: #333;}.container {display: inline-block;padding: 40px;"
-		"background-color: white;border: 1px solid #ddd;border-radius: 10px;box-shadow: 0 4px 8px rgba(0,0,0,0.05);}"
-		"h1 {font-size: 48px;color: #e74c3c;margin-bottom: 10px;}p {font-size: 18px;color: #666;}</style></head>"
-		"<body><div class=\"container\"><h1>error_code</h1><p>error_text</p></div></body></html>";
-		
+										  "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>"
+										  "<title>error_code</title><style>body {background-color: #f8f8f8;font-family: Arial, sans-serif;"
+										  "text-align: center;padding: 50px;color: #333;}.container {display: inline-block;padding: 40px;"
+										  "background-color: white;border: 1px solid #ddd;border-radius: 10px;box-shadow: 0 4px 8px rgba(0,0,0,0.05);}"
+										  "h1 {font-size: 48px;color: #e74c3c;margin-bottom: 10px;}p {font-size: 18px;color: #666;}</style></head>"
+										  "<body><div class=\"container\"><h1>error_code</h1><p>error_text</p></div></body></html>";
+
 		std::string new_error_page = preset;
 		std::string error_text = http::statusCodeToMessage(code);
 		std::ostringstream oss;

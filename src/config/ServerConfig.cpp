@@ -16,7 +16,7 @@ namespace config {
 		, maxHeaderNameLength(256)		 // 256B
 		, connectionTimeout(60)
 		, cgiTimeout(60)
-		, cgiInterpreter() // should there be a default value for this?
+		, cgiInterpreters()
 		, dataDirectory("")
 		, serverNames()
 		, location() {}
@@ -33,7 +33,7 @@ namespace config {
 		, maxHeaderNameLength(other.maxHeaderNameLength)
 		, connectionTimeout(other.connectionTimeout)
 		, cgiTimeout(other.cgiTimeout)
-		, cgiInterpreter(other.cgiInterpreter)
+		, cgiInterpreters(other.cgiInterpreters)
 		, dataDirectory(other.dataDirectory)
 		, serverNames(other.serverNames)
 		, location(other.location) {}
@@ -51,7 +51,7 @@ namespace config {
 		maxHeaderValueLength = rhs.maxHeaderValueLength;
 		connectionTimeout = rhs.connectionTimeout;
 		cgiTimeout = rhs.cgiTimeout;
-		cgiInterpreter = rhs.cgiInterpreter;
+		cgiInterpreters = rhs.cgiInterpreters;
 		dataDirectory = rhs.dataDirectory;
 		serverNames = rhs.serverNames;
 		location = rhs.location;
@@ -83,7 +83,10 @@ namespace config {
 		std::cout << "IPAddress: " << ipAddress << std::endl;
 		std::cout << "MaxBodySize: " << maxBodySize << std::endl;
 		std::cout << "DataDirectory: " << dataDirectory << std::endl;
-		std::cout << "cgiInterpreter: " << cgiInterpreter.first << ", " << cgiInterpreter.second << std::endl;
+		std::cout << "cgiInterpreters:" << std::endl;
+		for (std::vector<std::pair<std::string, std::string> >::const_iterator interpreter = cgiInterpreters.begin(); interpreter != cgiInterpreters.end(); ++interpreter) {
+			std::cout << interpreter->first << " => " << interpreter->second << std::endl;
+		}
 		std::cout << "ConnectionTimeout: " << connectionTimeout << std::endl;
 		std::cout << "cgiTimeout: " << cgiTimeout << std::endl;
 		std::cout << "Names: ";

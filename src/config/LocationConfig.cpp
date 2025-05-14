@@ -60,7 +60,7 @@ namespace config {
 
 	// TODO: validate?
 	bool LocationConfig::hasRedirect() const {
-		return !redirectUri.empty();
+		return !redirectUri.second.empty();
 	}
 
 	bool LocationConfig::hasOwnRoot() const {
@@ -87,8 +87,8 @@ namespace config {
 			std::cout << indent << "  Absolute path: " << precalculatedAbsolutePath << std::endl;
 		}
 
-		if (!redirectUri.empty()) {
-			std::cout << indent << "  Redirect URI: " << redirectUri << std::endl;
+		if (!redirectUri.second.empty()) {
+			std::cout << indent << "  Redirect URI: " << redirectUri.second << std::endl;
 		}
 
 		std::cout << indent << "  Allowed Methods: ";
@@ -117,7 +117,7 @@ namespace config {
 
 		if (!errorPages.empty()) {
 			std::cout << indent << "  Error Pages:" << std::endl;
-			for (std::map<int, std::string>::const_iterator it = errorPages.begin();
+			for (std::map<http::StatusCode, std::string>::const_iterator it = errorPages.begin();
 				 it != errorPages.end();
 				 ++it) {
 				std::cout << indent << "    " << it->first << ": " << it->second << std::endl;

@@ -566,19 +566,40 @@ namespace config {
 		}
 		if (args.size() != 2)
 			throw parse_exception(m_lineIndex, "Expected 2 arguments for cgi_interpreter");
-		std::string path = args[1] + "/" + args[0];
-		if (shared::file::isExecutable(path) == false) {
-			throw parse_exception(m_lineIndex, "generated path does not lead to a executable: " + path);
+		if (shared::file::isExecutable(args[1]) == false) {
+			throw parse_exception(m_lineIndex, "Path does not lead to an executable: " + args[1]);
 		}
-		server.cgiInterpreter = std::make_pair(args[0], args[1]);
+		// if already exists in interpreters, throw exception
+		server.cgiInterpreters.push_back(std::make_pair(args[0], args[1]));
 	}
+
 	// ------------------------  location parsers  -------------------------- //
 
 	void Parser::parseReturn(const std::string& value, LocationConfig& location) throw(parse_exception) {
-		if (!isValidPath(value)) {
-			throw parse_exception(m_lineIndex, "Invalid path for return: " + value);
+		std::vector<std::string> args;
+		std::stringstream ss(value);
+		std::string token;
+		std::size_t num_buffer;
+
+		while (ss >> token) {
+			args.push_back(token);
 		}
-		location.redirectUri = value;
+		if (args.size() != 2) {
+			throw parse_exception(m_lineIndex, "Expected 2 arguments for return");
+		}
+		std::stringstream ss_num(args[0]);
+		if (!(ss_num >> num_buffer)) {
+			throw parse_exception(m_lineIndex, "Invalid redirect code: " + args[0]);
+		}
+		http::StatusCode status_code = http::numToStatusCode(num_buffer);
+		if (status_code < 300 || status_code >= 400) {
+			throw parse_exception(m_lineIndex, "Invalid redirect code: " + args[0]);
+		}
+		if (!isValidPath(args[1])) {
+			throw parse_exception(m_lineIndex, "Invalid path for return: " + args[1]);
+		}
+
+		location.redirectUri = std::make_pair(status_code, args[1]);
 	}
 
 	// if no limit_except is present, default initialization
@@ -637,26 +658,27 @@ namespace config {
 
 	void Parser::parseErrorPage(const std::string& value, LocationConfig& location) throw(parse_exception) {
 		std::vector<std::string> args;
-		std::vector<int> error_pages;
 		std::stringstream ss(value);
 		std::string token;
 		int num_buffer;
 
-		while (ss >> token)
+		while (ss >> token) {
 			args.push_back(token);
- 		if (args.size() < 2)
+		}
+		if (args.size() < 2) {
 			throw parse_exception(m_lineIndex, "Expected at least 2 arguments for error_page");
+		}
 		std::string errorPagePath = args.back();
-		for (unsigned long i = 0; i < args.size() - 1; i++)
-		{
+		for (unsigned long i = 0; i < args.size() - 1; i++) {
 			std::stringstream ss_num(args[i]);
 			if (!(ss_num >> num_buffer)) {
 				throw parse_exception(m_lineIndex, "Invalid error code: " + args[i]);
 			}
-			if (num_buffer < 100 || num_buffer > 599) {
-				throw parse_exception(m_lineIndex, "Error code out of range: " + args[i]);
+			http::StatusCode status_code = http::numToStatusCode(num_buffer);
+			if (status_code < 300) {
+				throw parse_exception(m_lineIndex, "Invalid redirect code: " + args[0]);
 			}
-			location.errorPages[num_buffer] = errorPagePath;
+			location.errorPages[status_code] = errorPagePath;
 		}
 	}
 
