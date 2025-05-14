@@ -17,6 +17,7 @@ namespace config {
 		, autoindex(false)
 		, isServerRoot(false)
 		, indexFile()
+		, errorPages()
 		, locations() {
 		allowedMethods.insert(http::GET);
 		allowedMethods.insert(http::POST);
@@ -34,6 +35,7 @@ namespace config {
 		, autoindex(other.autoindex)
 		, isServerRoot(other.isServerRoot)
 		, indexFile(other.indexFile)
+		, errorPages(other.errorPages)
 		, locations(other.locations) {
 	}
 
@@ -49,6 +51,7 @@ namespace config {
 			autoindex = other.autoindex;
 			isServerRoot = other.isServerRoot;
 			indexFile = other.indexFile;
+			errorPages = other.errorPages;
 			locations = other.locations;
 		}
 		return *this;
@@ -60,7 +63,7 @@ namespace config {
 
 	// TODO: validate?
 	bool LocationConfig::hasRedirect() const {
-		return !redirectUri.empty();
+		return !redirectUri.second.empty();
 	}
 
 	bool LocationConfig::hasOwnRoot() const {
@@ -87,8 +90,8 @@ namespace config {
 			std::cout << indent << "  Absolute path: " << precalculatedAbsolutePath << std::endl;
 		}
 
-		if (!redirectUri.empty()) {
-			std::cout << indent << "  Redirect URI: " << redirectUri << std::endl;
+		if (!redirectUri.second.empty()) {
+			std::cout << indent << "  Redirect URI: " << redirectUri.second << std::endl;
 		}
 
 		std::cout << indent << "  Allowed Methods: ";
@@ -114,6 +117,15 @@ namespace config {
 				std::cout << *it << " ";
 			}
 			std::cout << std::endl;
+		}
+
+		if (!errorPages.empty()) {
+			std::cout << indent << "  Error Pages:" << std::endl;
+			for (std::map<http::StatusCode, std::string>::const_iterator it = errorPages.begin();
+				 it != errorPages.end();
+				 ++it) {
+				std::cout << indent << "    " << it->first << ": " << it->second << std::endl;
+			}
 		}
 
 		if (!locations.empty()) {

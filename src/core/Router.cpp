@@ -77,6 +77,6 @@ namespace core {
 
 	void Route::generateAbsoluteFilePath() { absoluteFilePath = location->precalculatedAbsolutePath + remainingPath; }
 
-	void Route::generateRedirectUri() { redirectUri = location->redirectUri + remainingPath; }
+	void Route::generateRedirectUri() { redirectUri = location->redirectUri.second + remainingPath; }
 
 } /* namespace core */

@@ -58,8 +58,9 @@ namespace http {
 			case GATEWAY_TIMEOUT: return "Gateway Timeout";
 			case HTTP_VERSION_NOT_SUPPORTED: return "HTTP Version Not Supported";
 			case LOOP_DETECTED: return "Loop Detected";
+			default: throw HttpException(INTERNAL_SERVER_ERROR, "Invalid status code");
 		}
-		throw HttpException(INTERNAL_SERVER_ERROR, "unreachable");
+		throw HttpException(INTERNAL_SERVER_ERROR, "Invalid status code");
 	}
 
 	StatusCode numToStatusCode(std::size_t code) {
@@ -98,7 +99,7 @@ namespace http {
 			case 504: return GATEWAY_TIMEOUT;
 			case 505: return HTTP_VERSION_NOT_SUPPORTED;
 			case 508: return LOOP_DETECTED;
-			default: return INTERNAL_SERVER_ERROR;
+			default: throw std::invalid_argument("Invalid status code.");
 		}
 	}
 

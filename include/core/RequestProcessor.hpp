@@ -53,7 +53,11 @@ namespace core {
 			void generateRedirectResponse();
 
 		private:
+			std::string generateErrorPage(http::StatusCode statusCode);
+
+		private:
 			const config::Config::ServerConfigs& m_serverConfigs;
+
 			config::ServerConfig m_serverConfig;
 			CGIProcessor m_cgiProcessor;
 			http::Response* m_response;

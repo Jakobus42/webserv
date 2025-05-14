@@ -2,23 +2,25 @@
 
 #include "http/http.hpp"
 
+#include <map>
 #include <set>
 #include <vector>
 
 namespace config {
 
 	struct LocationConfig {
-			std::string path;					   // location name
-			std::string root;					   // root
-			std::string precalculatedAbsolutePath; // absolute path to this location's root, pre-calculated after parsing
-			std::string redirectUri;			   // return route (references other locations)
-			http::StatusCode returnClass;		   // type of redirect
-			std::set<http::Method> allowedMethods; // allowed HTTP methods
-			std::string uploadSubdirectory;		   // subdirectory for uploads
-			bool autoindex;						   //
-			bool isServerRoot;					   //
-			std::vector<std::string> indexFile;	   // files to load when GETting a directory
-			std::vector<LocationConfig> locations; // registered locations
+			std::string path;									  // location name split into tokens
+			std::string root;									  // root split into tokens
+			std::string precalculatedAbsolutePath;				  // absolute path to this location's root, pre-calculated after parsing
+			std::pair<http::StatusCode, std::string> redirectUri; // return route (references other locations)
+			http::StatusCode returnClass;						  // type of redirect
+			std::set<http::Method> allowedMethods;				  // allowed HTTP methods
+			std::string uploadSubdirectory;						  // subdirectory for uploads
+			bool autoindex;										  //
+			bool isServerRoot;									  //
+			std::vector<std::string> indexFile;					  // files to load when GETting a directory
+			std::map<http::StatusCode, std::string> errorPages;	  //
+			std::vector<LocationConfig> locations;				  // registered locations
 
 			LocationConfig();
 			LocationConfig(const LocationConfig& other);

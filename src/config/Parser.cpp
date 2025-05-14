@@ -151,6 +151,7 @@ namespace config {
 			allowedDirectives["upload_dir"] = D_UPLOAD_DIR;
 			allowedDirectives["index"] = D_INDEX;
 			allowedDirectives["autoindex"] = D_AUTOINDEX;
+			allowedDirectives["error_page"] = D_ERROR_PAGE;
 			allowedDirectives["location"] = D_LOCATION;
 		}
 		return allowedDirectives;
@@ -175,6 +176,11 @@ namespace config {
 			allowedDirectives["index"] = D_INDEX;
 			allowedDirectives["autoindex"] = D_AUTOINDEX;
 			allowedDirectives["location"] = D_LOCATION;
+			allowedDirectives["error_page"] = D_ERROR_PAGE;
+			allowedDirectives["connection_timeout"] = D_CONNECTION_TIMEOUT;
+			allowedDirectives["cgi_timeout"] = D_CGI_TIMEOUT;
+			allowedDirectives["max_uri_length"] = D_MAX_URI_LENGTH;
+			allowedDirectives["cgi_interpreter"] = D_CGI_INTERPRETER;
 		}
 		return allowedDirectives;
 	}
@@ -413,6 +419,7 @@ namespace config {
 		if (tokenParsers.empty()) {
 			tokenParsers[D_LISTEN] = &config::Parser::parseListen;
 			tokenParsers[D_SERVER_NAME] = &config::Parser::parseServerName;
+			tokenParsers[D_CGI_INTERPRETER] = &config::Parser::parseCGIInterpreter;
 		}
 
 		switch (type) {
@@ -426,6 +433,12 @@ namespace config {
 				return parseIntegerValue("max_header_name_length", value, server.maxHeaderNameLength);
 			case D_MAX_HEADER_VALUE_SIZE:
 				return parseIntegerValue("max_header_value_length", value, server.maxHeaderValueLength);
+			case D_CONNECTION_TIMEOUT:
+				return parseIntegerValue("connection_timeout", value, server.connectionTimeout);
+			case D_CGI_TIMEOUT:
+				return parseIntegerValue("cgi_timeout", value, server.cgiTimeout);
+			case D_MAX_URI_LENGTH:
+				return parseIntegerValue("max_uri_length", value, server.maxUriLength);
 			case D_DATA_DIR:
 				return parsePathValue("data_dir", value, server.dataDirectory);
 			default:
@@ -441,6 +454,7 @@ namespace config {
 			tokenParsers[D_LIMIT_EXCEPT] = &config::Parser::parseLimitExcept;
 			tokenParsers[D_INDEX] = &config::Parser::parseIndex;
 			tokenParsers[D_AUTOINDEX] = &config::Parser::parseAutoindex;
+			tokenParsers[D_ERROR_PAGE] = &config::Parser::parseErrorPage;
 		}
 
 		switch (type) {
@@ -456,15 +470,24 @@ namespace config {
 	// ------------------------  server parsers  ---------------------------- //
 
 	void Parser::parseIntegerValue(const std::string& key, const std::string& value, unsigned long& destination) throw(parse_exception) {
-		std::stringstream ss(value);
-		std::string token;
 
-		if (!(ss >> destination)) {
-			throw parse_exception(m_lineIndex, "Invalid value for " + key);
+		try {
+			destination = shared::string::toNum<unsigned long>(value);
+		} catch (const std::exception& e) {
+			throw parse_exception(m_lineIndex, "Invalid value for " + key + e.what());
 		}
-		if (ss >> token) {
-			throw parse_exception(m_lineIndex, "Unexpected token in " + key + ": " + token);
-		}
+		// std::string token;
+
+		// if (!(ss >> destination)) {
+		// 	throw parse_exception(m_lineIndex, "Invalid value for " + key);
+		// }
+		// if(ss.) {
+		// 	throw parse_exception(m_lineIndex, "Invalid value for " + key + ": failed to parse");
+		// }
+
+		// if (ss >> token) {
+		// 	throw parse_exception(m_lineIndex, "Unexpected token in " + key + ": " + token);
+		// }
 	}
 
 	void Parser::parsePathValue(const std::string& key, const std::string& value, std::string& destination) throw(parse_exception) {
@@ -550,13 +573,50 @@ namespace config {
 		server.serverNames = splitNames;
 	}
 
+	void Parser::parseCGIInterpreter(const std::string& value, ServerConfig& server) throw(parse_exception) {
+		std::vector<std::string> args;
+		std::stringstream ss(value);
+		std::string token;
+
+		while (ss >> token) {
+			args.push_back(token);
+		}
+		if (args.size() != 2)
+			throw parse_exception(m_lineIndex, "Expected 2 arguments for cgi_interpreter");
+		if (shared::file::isExecutable(args[1]) == false) {
+			throw parse_exception(m_lineIndex, "Path does not lead to an executable: " + args[1]);
+		}
+		// if already exists in interpreters, throw exception
+		server.cgiInterpreters[args[0]] = args[1];
+	}
+
 	// ------------------------  location parsers  -------------------------- //
 
 	void Parser::parseReturn(const std::string& value, LocationConfig& location) throw(parse_exception) {
-		if (!isValidPath(value)) {
-			throw parse_exception(m_lineIndex, "Invalid path for return: " + value);
+		std::vector<std::string> args;
+		std::stringstream ss(value);
+		std::string token;
+		std::size_t num_buffer;
+
+		while (ss >> token) {
+			args.push_back(token);
 		}
-		location.redirectUri = value;
+		if (args.size() != 2) {
+			throw parse_exception(m_lineIndex, "Expected 2 arguments for return");
+		}
+		std::stringstream ss_num(args[0]);
+		if (!(ss_num >> num_buffer)) {
+			throw parse_exception(m_lineIndex, "Invalid redirect code: " + args[0]);
+		}
+		http::StatusCode status_code = http::numToStatusCode(num_buffer);
+		if (status_code < 300 || status_code >= 400) {
+			throw parse_exception(m_lineIndex, "Invalid redirect code: " + args[0]);
+		}
+		if (!isValidPath(args[1])) {
+			throw parse_exception(m_lineIndex, "Invalid path for return: " + args[1]);
+		}
+
+		location.redirectUri = std::make_pair(status_code, args[1]);
 	}
 
 	// if no limit_except is present, default initialization
@@ -610,6 +670,37 @@ namespace config {
 		}
 		if (ss >> token && !token.empty()) {
 			throw parse_exception(m_lineIndex, "Unexpected token in autoindex: " + token);
+		}
+	}
+
+	void Parser::parseErrorPage(const std::string& value, LocationConfig& location) throw(parse_exception) {
+		std::vector<std::string> args;
+		std::stringstream ss(value);
+		std::string token;
+		int num_buffer;
+
+		while (ss >> token) {
+			args.push_back(token);
+		}
+		if (args.size() < 2) {
+			throw parse_exception(m_lineIndex, "Expected at least 2 arguments for error_page");
+		}
+		std::string errorPagePath = args.back();
+		for (unsigned long i = 0; i < args.size() - 1; i++) {
+			std::stringstream ss_num(args[i]);
+			if (!(ss_num >> num_buffer)) {
+				throw parse_exception(m_lineIndex, "Invalid error code: " + args[i]);
+			}
+			http::StatusCode status_code;
+			try {
+				status_code = http::numToStatusCode(num_buffer);
+			} catch (const std::exception& e) {
+				throw parse_exception(m_lineIndex, "Invalid error code: " + args[0] + ": " + e.what());
+			}
+			if (status_code < 400) {
+				throw parse_exception(m_lineIndex, "Invalid error code: " + args[0]);
+			}
+			location.errorPages[status_code] = errorPagePath;
 		}
 	}
 
