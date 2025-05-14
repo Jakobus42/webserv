@@ -4,17 +4,6 @@
 
 namespace http {
 
-	bool AMessage::CaseInsensitiveComparator::operator()(const std::string& lhs, const std::string& rhs) const {
-		for (std::size_t i = 0, n = std::min(lhs.size(), rhs.size()); i < n; ++i) {
-			char l = std::tolower(lhs[i]);
-			char r = std::tolower(rhs[i]);
-			if (l != r) {
-				return l < r;
-			}
-		}
-		return lhs.size() < rhs.size();
-	}
-
 	AMessage::AMessage()
 		: m_headers()
 		, m_body()
@@ -55,6 +44,11 @@ namespace http {
 		target.back().assign(value.begin(), value.end());
 	}
 
+	void AMessage::setHeader(const std::string& key, const std::string& value) {
+		m_headers[key].clear();
+		appendHeader(key, value);
+	}
+
 	void AMessage::setHeader(const std::string& key, const std::vector<std::string>& values) { m_headers[key] = values; }
 
 	void AMessage::setHeader(const shared::string::StringView& key, const std::vector<shared::string::StringView>& values) {
@@ -71,6 +65,8 @@ namespace http {
 	}
 
 	bool AMessage::hasHeader(const std::string& key) const { return m_headers.find(key) != m_headers.end(); }
+
+	void AMessage::removeHeader(const std::string& key) { m_headers.erase(key); }
 
 	/* Body */
 

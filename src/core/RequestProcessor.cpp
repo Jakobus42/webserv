@@ -13,14 +13,18 @@
 #include "shared/StringView.hpp"
 #include "shared/stringUtils.hpp"
 
+#include <algorithm>
+
 namespace core {
 
-	RequestProcessor::RequestProcessor(const config::ServerConfig& serverConfig, io::Dispatcher& dispatcher)
-		: m_serverConfig(serverConfig)
-		, m_cgiProcessor(dispatcher)
+	RequestProcessor::RequestProcessor(const config::Config::ServerConfigs& serverConfigs, io::Dispatcher& dispatcher)
+		: m_serverConfigs(serverConfigs)
+		, m_serverConfig(serverConfigs.at(0))
+		, m_cgiProcessor(dispatcher, m_serverConfig) // todo: pass global max_xxx stuff
 		, m_response(NULL)
 		, m_handlers()
-		, m_router() {}
+		, m_router()
+		, m_state(PREPROCESS) {}
 
 	RequestProcessor::~RequestProcessor() {
 		for (HandlerMap::iterator it = m_handlers.begin(); it != m_handlers.end(); ++it) {
@@ -35,38 +39,84 @@ namespace core {
 		m_handlers[http::DELETE] = new DeleteRequestHandler();
 	}
 
-	// todo maybe have a isComplete function. the return value could be confusing
-	bool RequestProcessor::processRequest(const http::Request& request) {
-		if (!m_response) {
-			m_response = new http::Response();
-			if (request.isValid() == false) { // yeah this is kinda weird...
-				generateErrorResponse(request.getStatusCode());
+	void RequestProcessor::resolveHost(const http::Request& request) {
+		const std::string& host = request.getUri().getAuthority();
+
+		for (std::size_t i = 0; i < m_serverConfigs.size(); ++i) {
+			config::ServerConfig serverConfig = m_serverConfigs[i];
+			for (std::size_t j = 0; j < serverConfig.serverNames.size(); ++j) {
+				if (!shared::string::CaseInsensitiveComparator()(serverConfig.serverNames[j], host)) {
+					m_serverConfig = serverConfig;
+					return;
+				}
+			}
+		}
+		m_serverConfig = m_serverConfigs.at(0);
+	}
+
+	bool RequestProcessor::shouldRedirect(const http::Request& request) const {
+		const config::LocationConfig& location = *m_router.getResult().location;
+		const std::string& uriPath = request.getUri().getPath();
+
+		if (location.path == "/" && std::count(uriPath.begin(), uriPath.end(), '/') == 1) {
+			return false;
+		}
+		return location.hasRedirect();
+	}
+
+	bool RequestProcessor::handleFetchRequest(const http::Request& request) {
+		ARequestHandler* handler = m_handlers[request.getMethod()];
+
+		if (handler->needsRoute()) {
+			const std::string& path = request.getUri().getPath();
+			m_router.route(shared::string::StringView(path.c_str(), path.size()), m_serverConfig.location);
+			if (shouldRedirect(request)) {
+				generateRedirectResponse();
 				return false;
 			}
+			if (m_router.methodIsAllowed(request.getMethod()) == false) {
+				throw http::HttpException(http::METHOD_NOT_ALLOWED, "HTTP method not allowed for the targeted location");
+			}
+			handler->setRoute(m_router.getResult());
+		}
+		return handler->handle(request, *m_response);
+	}
+
+	bool RequestProcessor::handleCGIRequest(const http::Request& request) {
+		if (m_cgiProcessor.process(request)) {
+			return true;
+		}
+		delete m_response;
+		m_response = m_cgiProcessor.releaseResponse();
+		return false;
+	}
+
+	void RequestProcessor::preprocess(const http::Request& request) {
+		m_response = new http::Response();
+
+		if (request.hasHeader("Connection") && request.getHeader("Connection").front() == "close") {
+			m_response->setHeader("Connection", "close");
+		} else {
+			m_response->setHeader("Connection", "keep-alive");
+		}
+
+		resolveHost(request);
+	}
+
+	bool RequestProcessor::process(const http::Request& request) {
+		if (request.isValid() == false) {
+			generateErrorResponse(request.getStatusCode());
+			return false;
 		}
 
 		try {
 			http::Request::Type requestType = request.getType();
 
 			if (requestType == http::Request::FETCH) {
-				if (m_router.needsRoute()) {
-					m_router.route(shared::string::StringView(request.getUri().getPath().c_str()), m_serverConfig.location);
-					if (m_router.foundRedirect()) {
-						generateRedirectResponse();
-						return false;
-					}
-				}
-				ARequestHandler* handler = m_handlers[request.getMethod()];
-				if (handler->handle(request, *m_response)) {
-					return true;
-				}
-				m_response->appendBody("tmp response\n"); // tmp
-			} else if (requestType == http::Request::CGI) {
-				if (m_cgiProcessor.process(request)) {
-					return true;
-				}
-				delete m_response;
-				m_response = m_cgiProcessor.releaseResponse();
+				return handleFetchRequest(request);
+			}
+			if (requestType == http::Request::CGI) {
+				return handleCGIRequest(request);
 			}
 		} catch (const std::bad_alloc&) {
 			throw;
@@ -82,6 +132,25 @@ namespace core {
 		return false;
 	}
 
+	bool RequestProcessor::processRequest(const http::Request& request) {
+		switch (m_state) {
+			case PREPROCESS: {
+				preprocess(request);
+				m_state = PROCESS;
+				break;
+			}
+			case PROCESS: {
+				if (!process(request)) {
+					m_state = DONE;
+				}
+				break;
+			}
+			case DONE: break;
+		}
+
+		return !(m_state == DONE);
+	}
+
 	http::Response* RequestProcessor::releaseResponse() {
 		http::Response* released = m_response;
 		m_response = NULL;
@@ -89,6 +158,8 @@ namespace core {
 	}
 
 	void RequestProcessor::reset() {
+		m_state = PREPROCESS;
+
 		delete m_response;
 		m_response = NULL;
 		m_router.reset();
@@ -98,11 +169,12 @@ namespace core {
 		}
 
 		m_cgiProcessor.reset();
+		m_serverConfig = m_serverConfigs.at(0);
 	}
 
 	void RequestProcessor::generateErrorResponse(http::StatusCode code) {
 		std::string response = "";
-		if (!m_router.needsRoute()) {
+		if (!m_router.getResult().empty()) {
 			const std::map<http::StatusCode, std::string>& errorPages = m_router.getResult().location->errorPages;
 			std::map<http::StatusCode, std::string>::const_iterator it = errorPages.find(code);
 			if (it != errorPages.end()) {
@@ -114,20 +186,29 @@ namespace core {
 						response += buffer;
 					}
 					f.close();
+					if (f.bad()) {
+						response.clear();
+					}
+				} else {
+					LOG_ERROR("generateErrorResponse: open() failed, falling back to default error page");
 				}
-				// else    //maybe give feedback if an error page is not opened
 			}
 		}
-		if (response == "")
+		if (response == "") {
 			response = generateErrorPage(code);
+		}
+		m_response->setHeader("Connection", "close");
 		m_response->appendBody(response);
 	}
 
-	// todo: add Location header with new uri
+	// todo: remove body
+	// todo: check if appendHeader works instead of constructing
+	//       temporary locationHeader vector
 	void RequestProcessor::generateRedirectResponse() {
-		m_response->appendBody("tmp redirect response\n"); // todo:
-		m_response->appendBody(m_router.generateRedirectUri() + "\n");
-		m_response->setStatusCode(m_router.getReturnClass());
+		const Route& route = m_router.getResult();
+
+		m_response->appendHeader("Location", route.redirectUri);
+		m_response->setStatusCode(route.location->returnClass);
 	}
 
 	std::string RequestProcessor::generateErrorPage(http::StatusCode code) {

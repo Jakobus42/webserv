@@ -167,7 +167,6 @@ namespace config {
 			allowedDirectives["max_header_count"] = D_MAX_HEADER_COUNT;
 			allowedDirectives["max_header_value_count"] = D_MAX_HEADER_VALUE_COUNT;
 			allowedDirectives["max_header_name_length"] = D_MAX_HEADER_NAME_SIZE;
-			allowedDirectives["client_max_body_size"] = D_CLIENT_MAX_BODY_SIZE;
 			allowedDirectives["data_dir"] = D_DATA_DIR;
 			allowedDirectives["server_name"] = D_SERVER_NAME;
 			allowedDirectives["root"] = D_ROOT;
@@ -277,6 +276,10 @@ namespace config {
 			}
 			assignAbsolutePaths(*server, server->location); // start with server & rootLocation
 		}
+
+		for (std::vector<ServerConfig>::const_iterator it = m_config.serverConfigs.begin(); it != m_config.serverConfigs.end(); ++it) {
+			m_config.listenServerConfigs[it->socketAddress].push_back(*it);
+		}
 	}
 
 	void Parser::assignAbsolutePaths(ServerConfig& server, LocationConfig& parentLocation) throw(parse_exception) {
@@ -321,6 +324,7 @@ namespace config {
 		ServerConfig thisServer;
 
 		thisServer.location.path = "/";
+		thisServer.location.isServerRoot = true;
 
 		while (m_readPos < m_data.size()) {
 			skipWhitespace();
@@ -532,6 +536,7 @@ namespace config {
 		host = value.substr(0, value.find_first_of(':'));
 		port = value.substr(value.find_first_of(':') + 1);
 
+		server.socketAddress = host + ":" + port;
 		std::stringstream ss(port);
 		if (!(ss >> server.port)) {
 			throw parse_exception(m_lineIndex, "Invalid value for listen: " + value);
@@ -675,8 +680,8 @@ namespace config {
 				throw parse_exception(m_lineIndex, "Invalid error code: " + args[i]);
 			}
 			http::StatusCode status_code = http::numToStatusCode(num_buffer);
-			if (status_code < 300) {
-				throw parse_exception(m_lineIndex, "Invalid redirect code: " + args[0]);
+			if (status_code < 400) {
+				throw parse_exception(m_lineIndex, "Invalid error code: " + args[0]);
 			}
 			location.errorPages[status_code] = errorPagePath;
 		}

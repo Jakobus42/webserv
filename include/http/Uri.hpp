@@ -7,8 +7,6 @@
 
 #include <vector>
 
-// todo: missing getters and setters ...
-
 namespace http {
 
 	class Uri {
@@ -36,7 +34,6 @@ namespace http {
 			void setQuery(const shared::string::StringView& query);
 			void setCgiPathInfo(const std::string& cgiPathInfo);
 			void setCgiPathInfo(const shared::string::StringView& cgiPathInfo);
-			void setPathSegment(const std::vector<std::string>& pathSegment);
 
 			/* Debugging */
 			std::string toString() const;
@@ -48,7 +45,6 @@ namespace http {
 			std::string m_path;
 			std::string m_query;
 			std::string m_cgiPathInfo;
-			std::vector<std::string> m_pathSegment;
 	};
 
 } /* namespace http */

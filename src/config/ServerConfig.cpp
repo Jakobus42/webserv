@@ -26,8 +26,9 @@ namespace config {
 	ServerConfig::ServerConfig(const ServerConfig& other)
 		: port(other.port)
 		, ipAddress(other.ipAddress)
+		, socketAddress(other.socketAddress)
 		, maxBodySize(other.maxBodySize)
-		, maxHeaderValueLength(other.maxHeaderValueCount)
+		, maxHeaderValueLength(other.maxHeaderValueLength)
 		, maxHeaderCount(other.maxHeaderCount)
 		, maxHeaderValueCount(other.maxHeaderValueCount)
 		, maxHeaderNameLength(other.maxHeaderNameLength)
@@ -44,6 +45,7 @@ namespace config {
 		}
 		port = rhs.port;
 		ipAddress = rhs.ipAddress;
+		socketAddress = rhs.socketAddress;
 		maxBodySize = rhs.maxBodySize;
 		maxHeaderCount = rhs.maxHeaderCount;
 		maxHeaderNameLength = rhs.maxHeaderNameLength;

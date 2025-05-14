@@ -17,6 +17,7 @@ namespace config {
 			std::set<http::Method> allowedMethods;				  // allowed HTTP methods
 			std::string uploadSubdirectory;						  // subdirectory for uploads
 			bool autoindex;										  //
+			bool isServerRoot;									  //
 			std::vector<std::string> indexFile;					  // files to load when GETting a directory
 			std::map<http::StatusCode, std::string> errorPages;	  //
 			std::vector<LocationConfig> locations;				  // registered locations

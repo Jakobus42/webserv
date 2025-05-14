@@ -2,6 +2,7 @@
 
 #include <signal.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
 #include "core/CGIEventHandler.hpp"
 #include "http/Request.hpp"
@@ -18,14 +19,13 @@
 
 extern char** environ;
 
-// todo: add CGI timeout and interpreters paths to config
-
 namespace core {
 
 	const time_t CGIProcessor::DEFAULT_TIMEOUT = 30;
 
-	CGIProcessor::CGIProcessor(io::Dispatcher& dispatcher)
+	CGIProcessor::CGIProcessor(io::Dispatcher& dispatcher, const config::ServerConfig& serverConfig)
 		: m_dispatcher(dispatcher)
+		, m_serverConfig(serverConfig)
 		, m_response(NULL)
 		, m_pid(-1)
 		, m_inputPipe()
@@ -33,6 +33,8 @@ namespace core {
 		, m_startTime(-1)
 		, m_timeout(DEFAULT_TIMEOUT)
 		, m_ioState(IO_NONE)
+		, m_lastIOErrorReason()
+		, m_lastIOStatusCode(http::OK)
 		, m_state(EXECUTE)
 		, m_env(NULL) {
 		m_inputPipe.open();
@@ -53,7 +55,7 @@ namespace core {
 				break;
 			}
 			case WAIT: {
-				if (!waitCGIScript()) {
+				if (!monitor() && !waitCGIScript()) {
 					m_state = DONE;
 				}
 				break;
@@ -86,7 +88,9 @@ namespace core {
 		m_ioState |= IO_WRITE_COMPLETE;
 	}
 
-	void CGIProcessor::notifyIOError() {
+	void CGIProcessor::notifyIOError(http::StatusCode statusCode, const std::string& reason) {
+		m_lastIOStatusCode = statusCode;
+		m_lastIOErrorReason = reason;
 		m_ioState |= IO_ERROR;
 	}
 
@@ -98,7 +102,10 @@ namespace core {
 		if (shared::file::isReadable(scriptPath) == false) {
 			throw http::HttpException(http::FORBIDDEN, "script is not readable: " + std::string(std::strerror(errno)));
 		}
-		const std::string& interpreter = getInterpreter(scriptPath);
+
+		m_scriptName = scriptPath.substr(8 /* /cgi-bin/ */);
+
+		const std::string& interpreter = getInterpreter();
 		if (shared::file::isExecutable(interpreter) == false) {
 			throw http::HttpException(http::FORBIDDEN, "interpreter is not executable: " + std::string(std::strerror(errno)));
 		}
@@ -123,8 +130,12 @@ namespace core {
 
 				char* const argv[] = {
 					const_cast<char*>(interpreter.c_str()),
-					const_cast<char*>(scriptPath.c_str()),
+					const_cast<char*>(m_scriptName.c_str()),
 					NULL};
+
+				if (chdir((m_serverConfig.dataDirectory + "/cgi-bin").c_str()) == -1) {
+					throw std::runtime_error("chdir() failed: " + std::string(std::strerror(errno)));
+				}
 
 				execve(interpreter.c_str(), argv, m_env);
 				throw std::runtime_error("execve() failed: " + std::string(std::strerror(errno)));
@@ -140,11 +151,11 @@ namespace core {
 			m_outputPipe.closeWriteEnd();
 
 			m_dispatcher.registerHandler(m_outputPipe.getReadFd(),
-										 new CGIEventHandler(*this, request, m_response),
+										 new CGIEventHandler(*this, request, m_response, m_serverConfig),
 										 io::AMultiplexer::EVENT_READ | io::AMultiplexer::EVENT_ERROR | io::AMultiplexer::EVENT_HANGUP);
 			if (request.getMethod() == http::POST) {
 				m_dispatcher.registerHandler(m_inputPipe.getWriteFd(),
-											 new CGIEventHandler(*this, request, m_response),
+											 new CGIEventHandler(*this, request, m_response, m_serverConfig),
 											 io::AMultiplexer::EVENT_WRITE | io::AMultiplexer::EVENT_ERROR | io::AMultiplexer::EVENT_HANGUP);
 			} else {
 				notifyIOWriteCompletion();
@@ -154,13 +165,14 @@ namespace core {
 	}
 
 	// todo: get real interpreter path from env or config?
-	const std::string& CGIProcessor::getInterpreter(const std::string& scriptPath) {
-		size_t dotPos = scriptPath.find_last_of('.');
-		std::string extension = (dotPos != std::string::npos) ? scriptPath.substr(dotPos) : "";
+	const std::string& CGIProcessor::getInterpreter() {
+		size_t dotPos = m_scriptName.find_last_of('.');
+		std::string extension = (dotPos != std::string::npos) ? m_scriptName.substr(dotPos) : "";
 
 		static std::map<std::string, std::string> interpreters;
 		if (interpreters.empty()) {
 			interpreters[".py"] = "/usr/bin/python3";
+			interpreters[".sh"] = "/usr/bin/sh";
 		}
 
 		std::map<std::string, std::string>::const_iterator it = interpreters.find(extension);
@@ -171,15 +183,18 @@ namespace core {
 		return it->second;
 	}
 
-	// todo: maybe add some mor stuff (need more context for that)
 	void CGIProcessor::prepareEnviorment(const http::Request& request) {
 		std::vector<std::string> envVars;
 
 		envVars.push_back("PATH_INFO=" + request.getUri().getCgiPathInfo());
 		envVars.push_back("SERVER_PROTOCOL=" + request.getVersion());
+		envVars.push_back("SERVER_PORT=" + shared::string::toString(m_serverConfig.port));
+		envVars.push_back("SERVER_SOFTWARE=" + std::string("webserv/1.1"));
+		envVars.push_back("SERVER_NAME=" + m_serverConfig.serverNames.front()); // todo: set the correct one
 		envVars.push_back("QUERY_STRING=" + request.getUri().getQuery());
 		envVars.push_back("REQUEST_METHOD=" + std::string(methodToString(request.getMethod())));
-		envVars.push_back("SCRIPT_NAME=" + request.getUri().getPath().substr(9 /* /cgi-bin/ */));
+
+		envVars.push_back("SCRIPT_NAME=" + m_scriptName); // todo: this should maybe be "cgi-bin/foo.py" instead of "foo.py"
 		envVars.push_back("GATEWAY_INTERFACE=CGI/1.1");
 
 		if (request.hasHeader("content-length")) {
@@ -217,7 +232,6 @@ namespace core {
 			}
 		}
 
-		// todo: malloc fail
 		m_env = new char*[envVars.size() + 1];
 		std::memset(m_env, 0, sizeof(char*) * (envVars.size() + 1));
 		for (std::size_t i = 0; i < envVars.size(); ++i) {
@@ -230,20 +244,28 @@ namespace core {
 		m_env[envVars.size()] = NULL;
 	}
 
-	bool CGIProcessor::waitCGIScript() {
+	bool CGIProcessor::monitor() {
 		time_t now = time(NULL);
 		if ((now - m_startTime) > m_timeout) {
 			throw http::HttpException(http::GATEWAY_TIMEOUT, "CGI Process timed out after " + shared::string::toString(m_timeout) + " seconds");
 		}
 
 		if (hasIOError()) {
-			throw http::HttpException(http::INTERNAL_SERVER_ERROR, "CGI Event Handler failed");
+			throw http::HttpException(m_lastIOStatusCode, m_lastIOErrorReason);
 		}
 
-		if (!isIOComplete()) {
-			return true;
+		if (isIOReadComplete()) {
+			m_outputPipe.close();
 		}
 
+		if (isIOWriteComplete()) {
+			m_inputPipe.close();
+		}
+
+		return !isIOComplete();
+	}
+
+	bool CGIProcessor::waitCGIScript() {
 		int status;
 		pid_t result = waitpid(m_pid, &status, WNOHANG);
 		if (result == -1) {
@@ -268,6 +290,10 @@ namespace core {
 	}
 
 	bool CGIProcessor::isIOComplete() const { return (m_ioState & IO_READ_COMPLETE) != 0 && (m_ioState & IO_WRITE_COMPLETE) != 0; }
+
+	bool CGIProcessor::isIOReadComplete() const { return (m_ioState & IO_READ_COMPLETE) != 0; }
+
+	bool CGIProcessor::isIOWriteComplete() const { return (m_ioState & IO_WRITE_COMPLETE) != 0; }
 
 	bool CGIProcessor::hasIOError() const { return (m_ioState & IO_ERROR) != 0; }
 
@@ -296,9 +322,9 @@ namespace core {
 
 		if (m_env) {
 			for (std::size_t i = 0; m_env[i]; ++i) {
-				delete m_env[i];
+				delete[] m_env[i];
 			}
-			delete m_env;
+			delete[] m_env;
 			m_env = NULL;
 		}
 	}

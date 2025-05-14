@@ -1,5 +1,7 @@
 #pragma once
 
+#include "config/ServerConfig.hpp"
+#include "http/http.hpp"
 #include "io/Dispatcher.hpp"
 #include "io/Pipe.hpp"
 #include "shared/NonCopyable.hpp"
@@ -13,7 +15,7 @@ namespace core {
 
 	class CGIProcessor : shared::mixin::NonCopyable {
 		public:
-			explicit CGIProcessor(io::Dispatcher& dispatcher);
+			explicit CGIProcessor(io::Dispatcher& dispatcher, const config::ServerConfig& serverConfig = config::ServerConfig());
 			~CGIProcessor();
 
 			bool process(const http::Request& request);
@@ -24,7 +26,7 @@ namespace core {
 			// .-. hacky shit
 			void notifyIOReadCompletion();
 			void notifyIOWriteCompletion();
-			void notifyIOError();
+			void notifyIOError(http::StatusCode statusCode, const std::string& reason);
 
 		private:
 			enum State {
@@ -42,11 +44,14 @@ namespace core {
 
 			void prepareEnviorment(const http::Request& request);
 			void executeCGIScript(const http::Request& request);
-			const std::string& getInterpreter(const std::string& scriptPath);
+			const std::string& getInterpreter();
 
+			bool monitor();
 			bool waitCGIScript();
 
 			bool isIOComplete() const;
+			bool isIOReadComplete() const;
+			bool isIOWriteComplete() const;
 			bool hasIOError() const;
 			void cleanup();
 
@@ -54,6 +59,7 @@ namespace core {
 			static const time_t DEFAULT_TIMEOUT;
 
 			io::Dispatcher& m_dispatcher;
+			const config::ServerConfig& m_serverConfig;
 
 			http::Response* m_response;
 
@@ -63,6 +69,9 @@ namespace core {
 			time_t m_startTime;
 			time_t m_timeout;
 			int32_t m_ioState;
+			std::string m_lastIOErrorReason;
+			http::StatusCode m_lastIOStatusCode;
+			std::string m_scriptName;
 			State m_state;
 
 			char** m_env;

@@ -5,28 +5,38 @@
 #include "shared/Logger.hpp"
 #include "shared/stringUtils.hpp"
 
-// todo: all the status codes are frong for a response lol (no BAD_REQUEST lmao)
+#include <limits>
+
+// todo: some weird implementation stuff and fixes but who cares if it works ig (maybe fix some day .-.)
 
 namespace http {
 
 	MessageParserConfig::MessageParserConfig()
-		: maxBodySize(10 * 1024 * 1024)	 // 10MB
+		: requireCR(true)
+		, requireStartLine(true)
+		, parseBodyWithoutContentLength(false)
+		, maxBodySize(10 * 1024 * 1024)	 // 10MB
 		, maxHeaderValueLength(8 * 1024) // 8KB
 		, maxHeaderCount(128)			 // 128 headers
 		, maxHeaderValueCount(64)		 // 64 values
 		, maxHeaderNameLength(256)		 // 256B
 	{}
 
-	MessageParserConfig::MessageParserConfig(std::size_t maxBodySize, std::size_t maxHeaderValueLength, std::size_t maxHeaderCount, std::size_t maxHeaderValueCount, std::size_t maxHeaderNameLength)
-		: maxBodySize(maxBodySize)
-		, maxHeaderValueLength(maxHeaderValueLength)
-		, maxHeaderCount(maxHeaderCount)
-		, maxHeaderValueCount(maxHeaderValueCount)
-		, maxHeaderNameLength(maxHeaderNameLength) {}
+	MessageParserConfig::MessageParserConfig(const config::ServerConfig& serverConfig)
+		: requireCR(true)
+		, requireStartLine(true)
+		, parseBodyWithoutContentLength(false)
+		, maxBodySize(serverConfig.maxBodySize)
+		, maxHeaderValueLength(serverConfig.maxHeaderValueLength)
+		, maxHeaderCount(serverConfig.maxHeaderCount)
+		, maxHeaderValueCount(serverConfig.maxHeaderValueCount)
+		, maxHeaderNameLength(serverConfig.maxHeaderNameLength) {
+	}
 
-	shared::string::StringView AMessageParser::CRLF = shared::string::StringView("\r\n");
+	const shared::string::StringView AMessageParser::CRLF = shared::string::StringView("\r\n");
+	const shared::string::StringView AMessageParser::LF = shared::string::StringView("\n");
 	const char AMessageParser::TCHAR[256] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '!', 0, '#', '$', '%', '&', '\'', 0, 0, '*', '+', 0, '-', '.', 0, '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 0, 0, 0, 0, 0, 0, 0, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 0, 0, 0, '^', '_', '`', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 0, '|', 0, '~', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	shared::string::StringView AMessageParser::WHITESPACE = shared::string::StringView(" \t");
+	const shared::string::StringView AMessageParser::WHITESPACE = shared::string::StringView(" \t");
 
 	AMessageParser::AMessageParser(const MessageParserConfig& conf)
 		: m_baseConfig(conf)
@@ -48,8 +58,13 @@ namespace http {
 
 				switch (m_state) {
 					case START_LINE:
-						result = parseStartLine();
-						if (result == DONE) m_state = HEADERS;
+						if (m_baseConfig.requireStartLine == true) {
+							result = parseStartLine();
+							if (result == DONE) m_state = HEADERS;
+						} else {
+							m_state = HEADERS;
+							result = DONE;
+						}
 						break;
 
 					case HEADERS:
@@ -108,6 +123,8 @@ namespace http {
 		m_contentLength = 0;
 	}
 
+	void AMessageParser::setConfig(const MessageParserConfig& confing) { m_baseConfig = confing; }
+
 	/* Message management */
 
 	AMessage* AMessageParser::releaseMessage() {
@@ -120,12 +137,20 @@ namespace http {
 
 	std::pair<shared::string::StringView /*line */, bool /*ok*/> AMessageParser::readLine() {
 		const char* lineStart = m_buffer.readPtr();
-		const char* lineEnd = m_buffer.find(CRLF.data());
+		const char* lineEnd = NULL;
+		shared::string::StringView delimeter;
+
+		if (m_baseConfig.requireCR) {
+			delimeter = CRLF;
+		} else {
+			delimeter = LF;
+		}
+		lineEnd = m_buffer.find(delimeter.data());
 		if (lineEnd == NULL) {
 			return std::make_pair(shared::string::StringView(), false);
 		}
 
-		m_buffer.consume((lineEnd - lineStart) + CRLF.size());
+		m_buffer.consume((lineEnd - lineStart) + delimeter.size());
 		return std::make_pair(shared::string::StringView(lineStart, lineEnd - lineStart), true);
 	}
 
@@ -156,11 +181,11 @@ namespace http {
 
 		shared::string::StringView line = ret.first;
 		if (line.empty()) {
-			validateHeaders();
+			interpretHeaders();
 			return DONE;
 		}
 
-		if (m_message->getHeaders().size() > m_baseConfig.maxHeaderCount - 1) {
+		if (m_message->getHeaders().size() > m_baseConfig.maxHeaderCount) {
 			throw HttpException(PAYLOAD_TOO_LARGE, "header amount exceeds limit");
 		}
 
@@ -169,7 +194,7 @@ namespace http {
 			line.remove_prefix(keyView.size() + 1 /*colon len*/);
 			std::vector<shared::string::StringView> valueViews = extractHeaderValues(line);
 			m_message->setHeader(keyView, valueViews);
-			if (m_message->getHeaders().size() > m_baseConfig.maxHeaderValueCount - 1) {
+			if (m_message->getHeaders().size() > m_baseConfig.maxHeaderValueCount) {
 				throw HttpException(PAYLOAD_TOO_LARGE, "field-value amount exceeds limit");
 			}
 		} catch (const std::bad_alloc&) {
@@ -180,7 +205,7 @@ namespace http {
 		return CONTINUE;
 	}
 
-	void AMessageParser::validateHeaders() {
+	void AMessageParser::interpretHeaders() {
 		bool hasTransferEncoding = m_message->hasHeader("transfer-encoding");
 		bool hasContentLength = m_message->hasHeader("content-length");
 
@@ -197,7 +222,7 @@ namespace http {
 			if (values.size() > 1) {
 				for (std::size_t i = 1; i < values.size(); ++i) {
 					if (values[i] != values[0]) {
-						throw HttpException(BAD_REQUEST, "conflicting content-length headers");
+						throw HttpException(getErrorCode(), "conflicting content-length headers");
 					}
 				}
 			}
@@ -207,7 +232,7 @@ namespace http {
 			} catch (const std::bad_alloc&) {
 				throw;
 			} catch (const std::exception& e) {
-				throw HttpException(BAD_REQUEST, "invalid content-length: could not parse: " + std::string(e.what()));
+				throw HttpException(getErrorCode(), "invalid content-length: could not parse: " + std::string(e.what()));
 			}
 			if (m_contentLength > m_baseConfig.maxBodySize) {
 				throw HttpException(PAYLOAD_TOO_LARGE, "content-length exceeds size limit");
@@ -218,10 +243,10 @@ namespace http {
 	shared::string::StringView AMessageParser::extractHeaderKey(const shared::string::StringView& line) const {
 		std::size_t colonPos = line.find(':');
 		if (colonPos == shared::string::StringView::npos) {
-			throw HttpException(BAD_REQUEST, "missing ':' after field-name");
+			throw HttpException(getErrorCode(), "missing ':' after field-name");
 		}
 		if (colonPos == 0) {
-			throw HttpException(BAD_REQUEST, "empty field-name");
+			throw HttpException(getErrorCode(), "empty field-name");
 		}
 		if (colonPos > m_baseConfig.maxHeaderNameLength) {
 			throw HttpException(PAYLOAD_TOO_LARGE, "field-name exceeds size limit");
@@ -229,7 +254,7 @@ namespace http {
 
 		for (std::size_t i = 0; i < colonPos; ++i) {
 			if (!isTChar(line[i])) {
-				throw HttpException(BAD_REQUEST, std::string("invalid character in field-name '") + line[i] + '\'');
+				throw HttpException(getErrorCode(), std::string("invalid character in field-name '") + line[i] + '\'');
 			}
 		}
 		return line.substr(0, colonPos);
@@ -253,7 +278,7 @@ namespace http {
 
 			for (std::size_t i = 0; i < value.size(); ++i) {
 				if (!isVChar(value[i]) && !std::strchr(WHITESPACE.data(), value[i])) {
-					throw HttpException(BAD_REQUEST, std::string("invalid character in field-value '") + line[i] + '\'');
+					throw HttpException(getErrorCode(), std::string("invalid character in field-value '") + line[i] + '\'');
 				}
 			}
 
@@ -283,13 +308,17 @@ namespace http {
 		} catch (const std::bad_alloc&) {
 			throw;
 		} catch (std::exception& e) {
-			throw HttpException(BAD_REQUEST, "invalid chunk size: " + std::string(e.what()));
+			throw HttpException(getErrorCode(), "invalid chunk size: " + std::string(e.what()));
 		}
 		return DONE;
 	}
 
 	// this function flow is kinda fucked up but idc (maybe I do) .-.
 	AMessageParser::ParseResult AMessageParser::parseBody(bool isChunked) {
+		// this is scatchy but works for cgi lelelelellele (basically allows the cgi to not set content length header) maybe make this better some time idk
+		if (m_baseConfig.parseBodyWithoutContentLength == true && m_contentLength == 0 && isChunked == false) {
+			m_contentLength = std::numeric_limits<std::size_t>::max();
+		}
 		if (m_contentLength > 0) {
 			std::size_t available = std::min(m_buffer.size(), m_contentLength);
 			m_message->appendBody(shared::string::StringView(m_buffer.readPtr(), available));

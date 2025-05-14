@@ -1,6 +1,8 @@
 #pragma once
 
+#include "config/ServerConfig.hpp"
 #include "http/AMessageParser.hpp"
+#include "http/http.hpp"
 
 namespace http {
 
@@ -8,8 +10,7 @@ namespace http {
 			MessageParserConfig messageParserConfig;
 			std::size_t maxUriLength;
 			RequestParserConfig();
-
-			RequestParserConfig(const MessageParserConfig& messageParserConfig, std::size_t maxUriLength);
+			explicit RequestParserConfig(const config::ServerConfig& serverConfig);
 	};
 
 	class Request;
@@ -19,15 +20,21 @@ namespace http {
 			RequestParser(const RequestParserConfig& conf = RequestParserConfig());
 			virtual ~RequestParser();
 
+			void setConfig(const RequestParserConfig& conf);
+
 			Request* releaseRequest();
 
 		private:
 			virtual AMessage* createMessage() const;
+			virtual StatusCode getErrorCode() const;
 
 			virtual ParseResult parseStartLine();
 			void parseUriOriginForm(const shared::string::StringView& uriView);
 			void parseUriAbsoluteForm(const shared::string::StringView& uriView);
 			void parsePath();
+			std::string normalizePath(const std::string& path);
+
+			virtual void interpretHeaders();
 
 		private:
 			RequestParserConfig m_config;

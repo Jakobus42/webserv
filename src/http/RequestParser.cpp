@@ -3,11 +3,8 @@
 #include "http/Request.hpp"
 #include "shared/stringUtils.hpp"
 
-// todo: validate host, scheme
+// todo: validate scheme
 // todo: better error messages for uri
-// todo: normelize the path here maybe or in the uri class (uri.normelize())
-// todo: setPathSegemnt should take a stringView. (see setHeaders for impl example) - also the split path should be implemented here using stringView aswell
-// todo: validate http version
 
 namespace http {
 
@@ -16,9 +13,9 @@ namespace http {
 		, maxUriLength(1024) // 1KB
 	{}
 
-	RequestParserConfig::RequestParserConfig(const MessageParserConfig& messageParserConfig, std::size_t maxUriLength)
-		: messageParserConfig(messageParserConfig)
-		, maxUriLength(maxUriLength) {}
+	RequestParserConfig::RequestParserConfig(const config::ServerConfig& serverConfig)
+		: messageParserConfig(serverConfig)
+		, maxUriLength(1024) {} // todo: set maxUriLength from server config
 
 	RequestParser::RequestParser(const RequestParserConfig& conf)
 		: AMessageParser(conf.messageParserConfig)
@@ -29,7 +26,14 @@ namespace http {
 
 	Request* RequestParser::releaseRequest() { return static_cast<Request*>(releaseMessage()); }
 
+	void RequestParser::setConfig(const RequestParserConfig& config) {
+		m_baseConfig = config.messageParserConfig;
+		m_config = config;
+	}
+
 	AMessage* RequestParser::createMessage() const { return new Request(); }
+
+	StatusCode RequestParser::getErrorCode() const { return BAD_REQUEST; }
 
 	/* <Method> <Request-URI> <HTTP-Version> */
 	AMessageParser::ParseResult RequestParser::parseStartLine() {
@@ -60,7 +64,11 @@ namespace http {
 			parseUriAbsoluteForm(uriView);
 		}
 
-		m_request->setVersion(line.substr(secondSpace + 1));
+		shared::string::StringView versionView = line.substr(secondSpace + 1);
+		if (versionView != shared::string::StringView("HTTP/1.1")) {
+			throw HttpException(HTTP_VERSION_NOT_SUPPORTED, "invalid http version");
+		}
+		m_request->setVersion(versionView);
 
 		return DONE;
 	}
@@ -117,6 +125,7 @@ namespace http {
 	// parse CGI if the path starts with /cgi-bin/
 	void RequestParser::parsePath() {
 		Uri& uri = m_request->getUri();
+		uri.setPath(normalizePath(uri.getPath()));
 		if (uri.getPath().find("/cgi-bin/") == 0) {
 			std::size_t pos = uri.getPath().find_first_of("/#?", 9);
 			if (pos != std::string::npos) {
@@ -127,9 +136,61 @@ namespace http {
 			}
 			m_request->setType(Request::CGI);
 		}
-		uri.setPathSegment(shared::string::split(uri.getPath(), '/'));
-		// TODO: should we parse this at all?
-		// also, should we check if we accept the script here?
+	}
+
+	std::string RequestParser::normalizePath(const std::string& path) {
+		std::vector<std::string> pathSegments = shared::string::split(path, '/');
+		std::vector<std::string> normalizedSegments;
+
+		for (std::size_t i = 0; i < pathSegments.size(); ++i) {
+			const std::string& segment = pathSegments[i];
+
+			if (segment == ".") {
+				continue;
+			} else if (segment == "..") {
+				if (!normalizedSegments.empty()) {
+					normalizedSegments.pop_back();
+				}
+			} else {
+				normalizedSegments.push_back(segment);
+			}
+		}
+
+		return "/" + shared::string::join(normalizedSegments, "/");
+	}
+
+	void RequestParser::interpretHeaders() {
+		this->AMessageParser::interpretHeaders();
+
+		m_request = static_cast<Request*>(m_message);
+
+		if (!m_request->hasHeader("host")) {
+			throw HttpException(BAD_REQUEST, "host header is missing");
+		}
+
+		const std::vector<std::string>& hostValues = m_request->getHeader("host");
+		if (hostValues.size() > 1) {
+			throw HttpException(BAD_REQUEST, "multiple host headers");
+		}
+
+		Uri& uri = m_request->getUri();
+		const std::string& host = hostValues.front();
+
+		if (!uri.getAuthority().empty()) {
+			if (shared::string::CaseInsensitiveComparator()(host, uri.getAuthority())) {
+				throw HttpException(BAD_REQUEST, "host header does not match authority");
+			}
+		} else {
+			uri.setAuthority(host);
+		}
+
+		if (m_request->hasHeader("x-filename")) {
+			std::vector<std::string> filenameHeader = m_request->getHeader("x-filename");
+			if (!filenameHeader.empty()) {
+				filenameHeader[0] = normalizePath(filenameHeader[0]);
+				m_request->setHeader("x-filename", filenameHeader);
+			}
+		}
 	}
 
 

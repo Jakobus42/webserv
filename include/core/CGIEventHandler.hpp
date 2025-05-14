@@ -8,7 +8,7 @@ namespace core {
 
 	class CGIEventHandler : public io::IEventHandler {
 		public:
-			explicit CGIEventHandler(CGIProcessor& processor, const http::Request& request, http::Response*& response);
+			explicit CGIEventHandler(CGIProcessor& processor, const http::Request& request, http::Response*& response, const config::ServerConfig& serverConfig);
 			~CGIEventHandler();
 
 			io::EventResult onReadable(int32_t fd);
@@ -24,7 +24,7 @@ namespace core {
 			const http::Request& m_request;
 			http::Response*& m_response;
 
-			std::size_t m_bytesWritten;
+			std::size_t m_totalBytesWritten;
 			http::ResponseParser m_responseParser;
 	};
 

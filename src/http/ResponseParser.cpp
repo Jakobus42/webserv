@@ -9,9 +9,9 @@ namespace http {
 		: messageParserConfig() // 1KB
 		, maxReasonPhraseLength(1024) {}
 
-	ResponseParserConfig::ResponseParserConfig(const MessageParserConfig& messageParserConfig, std::size_t maxReasonPhraseLength)
-		: messageParserConfig(messageParserConfig)
-		, maxReasonPhraseLength(maxReasonPhraseLength) {}
+	ResponseParserConfig::ResponseParserConfig(const config::ServerConfig& serverConfig)
+		: messageParserConfig(serverConfig)
+		, maxReasonPhraseLength(1024) {}
 
 	ResponseParser::ResponseParser(const ResponseParserConfig& conf)
 		: AMessageParser(conf.messageParserConfig)
@@ -22,7 +22,14 @@ namespace http {
 
 	Response* ResponseParser::releaseResponse() { return static_cast<Response*>(releaseMessage()); }
 
+	void ResponseParser::setConfig(const ResponseParserConfig& config) {
+		m_baseConfig = config.messageParserConfig;
+		m_config = config;
+	}
+
 	AMessage* ResponseParser::createMessage() const { return new Response(); }
+
+	StatusCode ResponseParser::getErrorCode() const { return BAD_GATEWAY; }
 
 	/* <HTTP-Version> <Status-Code> <Reason-Phrase> */
 	AMessageParser::ParseResult ResponseParser::parseStartLine() {
@@ -35,7 +42,7 @@ namespace http {
 		std::size_t firstSpace = line.find(' ');
 		std::size_t secondSpace = line.find(' ', firstSpace + 1);
 		if (firstSpace == std::string::npos || secondSpace == std::string::npos) {
-			throw HttpException(BAD_REQUEST, "invalid start-line: cant find spaces");
+			throw HttpException(BAD_GATEWAY, "invalid start-line: cant find spaces");
 		}
 
 		m_response = static_cast<Response*>(m_message);
@@ -49,7 +56,7 @@ namespace http {
 		} catch (const std::bad_alloc&) {
 			throw;
 		} catch (const std::exception& e) {
-			throw HttpException(BAD_REQUEST, "invalid statuc-code: could not parse: " + std::string(e.what()));
+			throw HttpException(BAD_GATEWAY, "invalid status-code: could not parse: " + std::string(e.what()));
 		}
 
 		m_response->setReasonPhrase(line.substr(secondSpace + 1));
@@ -57,6 +64,43 @@ namespace http {
 			throw HttpException(PAYLOAD_TOO_LARGE, "reason-phrase exceeds size limit");
 		}
 		return DONE;
+	}
+
+	void ResponseParser::interpretHeaders() {
+		this->AMessageParser::interpretHeaders();
+
+		m_response = static_cast<Response*>(m_message);
+
+		if (m_response->hasHeader("Status")) {
+			const std::string& statusHeader = m_response->getHeader("Status").front();
+
+			std::size_t firstSpace = statusHeader.find(' ');
+			std::string codeStr, reasonPhrase;
+
+			if (firstSpace == std::string::npos) {
+				codeStr = statusHeader;
+			} else {
+				codeStr = statusHeader.substr(0, firstSpace);
+				reasonPhrase = statusHeader.substr(firstSpace + 1);
+			}
+
+			try {
+				StatusCode code = numToStatusCode(shared::string::toNum<std::size_t>(codeStr));
+				m_response->setStatusCode(code);
+
+				if (!reasonPhrase.empty()) {
+					m_response->setReasonPhrase(reasonPhrase);
+				} else {
+					m_response->setReasonPhrase(statusCodeToMessage(code));
+				}
+			} catch (const std::bad_alloc&) {
+				throw;
+			} catch (const std::exception& e) {
+				throw HttpException(BAD_GATEWAY, "invalid Status header");
+			}
+
+			m_response->removeHeader("Status");
+		}
 	}
 
 } /* namespace http */

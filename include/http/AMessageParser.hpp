@@ -1,5 +1,7 @@
 #pragma once
 
+#include "config/ServerConfig.hpp"
+#include "http/http.hpp"
 #include "shared/Buffer.hpp"
 #include "shared/NonCopyable.hpp"
 #include "shared/StringView.hpp"
@@ -9,6 +11,10 @@
 namespace http {
 
 	struct MessageParserConfig {
+			bool requireCR;
+			bool requireStartLine;
+			bool parseBodyWithoutContentLength;
+
 			std::size_t maxBodySize;
 			std::size_t maxHeaderValueLength;
 			std::size_t maxHeaderCount;
@@ -16,7 +22,7 @@ namespace http {
 			std::size_t maxHeaderNameLength;
 
 			MessageParserConfig();
-			MessageParserConfig(std::size_t maxBodySize, std::size_t maxHeaderValueLength, std::size_t maxHeaderCount, std::size_t maxHeaderValueCount, std::size_t maxHeaderNameLength);
+			explicit MessageParserConfig(const config::ServerConfig& serverConfig);
 	};
 
 	class AMessage;
@@ -34,6 +40,8 @@ namespace http {
 			shared::container::Buffer<BUFFER_SIZE>& getReadBuffer();
 
 			void reset();
+
+			void setConfig(const MessageParserConfig& config);
 
 		protected:
 			enum ParseState {
@@ -56,6 +64,7 @@ namespace http {
 			AMessage* releaseMessage();
 
 			virtual AMessage* createMessage() const = 0;
+			virtual StatusCode getErrorCode() const = 0;
 
 			/* Shared */
 			std::pair<shared::string::StringView /*line*/, bool /*ok*/> readLine();
@@ -67,7 +76,7 @@ namespace http {
 			virtual ParseResult parseStartLine() = 0;
 
 			ParseResult parseHeaderLine();
-			void validateHeaders();
+			virtual void interpretHeaders();
 			shared::string::StringView extractHeaderKey(const shared::string::StringView& line) const;
 			std::vector<shared::string::StringView> extractHeaderValues(const shared::string::StringView& line) const;
 
@@ -76,9 +85,10 @@ namespace http {
 			ParseResult parseBody(bool isChunked);
 
 		protected:
-			static shared::string::StringView CRLF;
+			static const shared::string::StringView CRLF;
+			static const shared::string::StringView LF;
 			static const char TCHAR[];
-			static shared::string::StringView WHITESPACE;
+			static const shared::string::StringView WHITESPACE;
 
 			MessageParserConfig m_baseConfig;
 			AMessage* m_message;
