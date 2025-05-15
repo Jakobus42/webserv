@@ -1,6 +1,6 @@
 #include "config/ServerConfig.hpp"
 
-#include "config/Parser.hpp"
+#include "config/ParseException.hpp"
 
 #include <iostream>
 
@@ -41,7 +41,7 @@ namespace config {
 	 */
 	void ServerConfig::validate() const {
 		if (location.root.empty()) {
-			throw parse_exception("Server requires a 'root'");
+			throw ParseException("Server requires a 'root'");
 		}
 		// TODO: ensure this path exists and can be accessed
 	}

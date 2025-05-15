@@ -1,6 +1,6 @@
 #pragma once
 
-#include "config/Parser.hpp"
+#include "config/Config.hpp"
 #include "config/ServerConfig.hpp"
 #include "core/CGIProcessor.hpp"
 #include "core/Router.hpp"

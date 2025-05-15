@@ -1,6 +1,7 @@
 #pragma once
 
-#include "config/Parser.hpp"
+#include "config/Config.hpp"
+#include "config/ServerConfig.hpp"
 #include "core/Connection.hpp"
 #include "io/Socket.hpp"
 #include "shared/NonCopyable.hpp"

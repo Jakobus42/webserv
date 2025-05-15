@@ -1,6 +1,6 @@
 #include "config/HttpConfig.hpp"
 
-#include "config/Parser.hpp" // todo: PLEASE MOVE CONFIG AND EXCEPTION TO SEPARATE FILES
+#include "config/ParseException.hpp"
 
 #include <iostream>
 
@@ -70,7 +70,7 @@ namespace config {
 
 	void HttpConfig::validate() const {
 		if (dataDirectory.empty()) {
-			throw parse_exception("HTTP block requires a 'data_dir'");
+			throw ParseException("HTTP block requires a 'data_dir'");
 		}
 	}
 

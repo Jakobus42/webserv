@@ -21,18 +21,6 @@ namespace config {
 
 	const std::string Parser::WHITESPACE = "\t\r\v\f ";
 
-	parse_exception::parse_exception(const std::string& message)
-		: std::runtime_error("Parsing failed: " + message)
-		, m_message("Parsing failed: " + message) {}
-
-	parse_exception::parse_exception(std::size_t line, const std::string& message)
-		: std::runtime_error("Line " + shared::string::toString(line) + ": Parsing failed: " + message)
-		, m_message("Line " + shared::string::toString(line) + ": Parsing failed: " + message) {}
-
-	parse_exception::~parse_exception() throw() {}
-
-	const std::string& parse_exception::getMessage() const { return m_message; }
-
 	Parser::Parser()
 		: m_data()
 		, m_config()
@@ -127,7 +115,7 @@ namespace config {
 			consume(1);
 		}
 		if (!matchToken(";")) {
-			throw parse_exception(m_lineIndex, "Expected semicolon after value \"" + value + "\"");
+			throw ParseException(m_lineIndex, "Expected semicolon after value \"" + value + "\"");
 		}
 		return value;
 	}
@@ -241,7 +229,7 @@ namespace config {
 		try {
 			parseFromData();
 			processParsedData();
-		} catch (const parse_exception& e) {
+		} catch (const ParseException& e) {
 			LOG_FATAL(e.getMessage());
 			return true;
 		} catch (const std::exception& e) {
@@ -251,22 +239,22 @@ namespace config {
 		return false;
 	}
 
-	void Parser::parseFromData() throw(parse_exception) {
+	void Parser::parseFromData() throw(ParseException) {
 		skipWhitespace();
 		if (!matchToken("http")) {
-			throw parse_exception(m_lineIndex, "Expected 'http' keyword");
+			throw ParseException(m_lineIndex, "Expected 'http' keyword");
 		}
 		expectHttpBlock();
 		skipWhitespace();
 		std::string value = readToken();
 		if (!value.empty()) {
-			throw parse_exception("Unexpected data after http block: " + value);
+			throw ParseException("Unexpected data after http block: " + value);
 		}
 	}
 
-	void Parser::processParsedData() throw(parse_exception) {
+	void Parser::processParsedData() throw(ParseException) {
 		if (m_config.serverConfigs.empty()) {
-			throw parse_exception("No servers configured");
+			throw ParseException("No servers configured");
 		}
 
 		std::size_t i = 0;
@@ -275,17 +263,17 @@ namespace config {
 			++i;
 			server->location.precalculatedAbsolutePath = m_config.globalConfig.dataDirectory + server->location.root;
 			if (!isValidPath(server->location.precalculatedAbsolutePath)) {
-				throw parse_exception("Server #" + shared::string::toString(i) + ": Root path is invalid");
+				throw ParseException("Server #" + shared::string::toString(i) + ": Root path is invalid");
 			}
 			// TODO: check whether that directory exists and is accessible?
 			if (!shared::file::isDirectory(server->location.precalculatedAbsolutePath)) {
-				throw parse_exception("Server #" + shared::string::toString(i) + ": root is not a directory");
+				throw ParseException("Server #" + shared::string::toString(i) + ": root is not a directory");
 			}
 			if (!shared::file::isReadable(server->location.precalculatedAbsolutePath)) {
-				throw parse_exception("Server #" + shared::string::toString(i) + ": root is not readable");
+				throw ParseException("Server #" + shared::string::toString(i) + ": root is not readable");
 			}
 			if (!shared::file::isWritable(server->location.precalculatedAbsolutePath)) {
-				throw parse_exception("Server #" + shared::string::toString(i) + ": root is not writable");
+				throw ParseException("Server #" + shared::string::toString(i) + ": root is not writable");
 			}
 			assignAbsolutePaths(*server, server->location); // start with server & rootLocation
 		}
@@ -295,7 +283,7 @@ namespace config {
 		}
 	}
 
-	void Parser::assignAbsolutePaths(ServerConfig& server, LocationConfig& parentLocation) throw(parse_exception) {
+	void Parser::assignAbsolutePaths(ServerConfig& server, LocationConfig& parentLocation) throw(ParseException) {
 		for (std::vector<LocationConfig>::iterator location = parentLocation.locations.begin(); location != parentLocation.locations.end(); ++location) {
 			if (location->hasOwnRoot()) {
 				location->precalculatedAbsolutePath = server.location.precalculatedAbsolutePath + location->root;
@@ -303,7 +291,7 @@ namespace config {
 				location->precalculatedAbsolutePath = parentLocation.precalculatedAbsolutePath;
 			}
 			if (!isValidPath(location->precalculatedAbsolutePath)) {
-				throw parse_exception("Location \"" + location->path + "\": Path is invalid");
+				throw ParseException("Location \"" + location->path + "\": Path is invalid");
 			}
 			assignAbsolutePaths(server, *location);
 		}
@@ -311,10 +299,10 @@ namespace config {
 
 	// ------------------------  block parsing ------------------------------ //
 
-	void Parser::expectHttpBlock() throw(parse_exception) {
+	void Parser::expectHttpBlock() throw(ParseException) {
 		skipWhitespace();
 		if (!matchToken("{")) {
-			throw parse_exception(m_lineIndex, "Expected '{' after 'http'");
+			throw ParseException(m_lineIndex, "Expected '{' after 'http'");
 		}
 		while (m_readPos < m_data.size()) {
 			skipWhitespace();
@@ -323,7 +311,7 @@ namespace config {
 				return;
 			}
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
-				throw parse_exception(m_lineIndex, "Unexpected '{' in http block");
+				throw ParseException(m_lineIndex, "Unexpected '{' in http block");
 			}
 			std::string token = readToken();
 			if (matchToken("server")) {
@@ -331,7 +319,7 @@ namespace config {
 			} else if (!token.empty()) {
 				CommandType type = matchDirective(token, httpDirectives());
 				if (type == _D_NOT_VALID) {
-					throw parse_exception(m_lineIndex, "Unexpected directive in http block: " + token);
+					throw ParseException(m_lineIndex, "Unexpected directive in http block: " + token);
 				}
 				std::string value = readValue();
 				processHttpValue(token, value, type);
@@ -355,10 +343,10 @@ namespace config {
 	 * - autoindex (location.autoindex)
 	 * - location (location.locations) (can exist more than once)
 	 */
-	void Parser::expectServerBlock(const HttpConfig& globalConfig) throw(parse_exception) {
+	void Parser::expectServerBlock(const HttpConfig& globalConfig) throw(ParseException) {
 		skipWhitespace();
 		if (!matchToken("{")) {
-			throw parse_exception(m_lineIndex, "Expected '{' after 'server'");
+			throw ParseException(m_lineIndex, "Expected '{' after 'server'");
 		}
 		m_depth++;
 
@@ -376,7 +364,7 @@ namespace config {
 				return;
 			}
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
-				throw parse_exception(m_lineIndex, "Unexpected '{' in Server block");
+				throw ParseException(m_lineIndex, "Unexpected '{' in Server block");
 			}
 			std::string token = readToken();
 			if (matchToken("location")) {
@@ -384,13 +372,13 @@ namespace config {
 			} else if (!token.empty()) {
 				CommandType type = matchDirective(token, serverDirectives());
 				if (type == _D_NOT_VALID) {
-					throw parse_exception(m_lineIndex, "Unexpected directive in Server block: " + token);
+					throw ParseException(m_lineIndex, "Unexpected directive in Server block: " + token);
 				}
 				std::string value = readValue();
 				processServerValue(token, value, type, thisServer);
 			}
 		}
-		throw parse_exception(m_lineIndex, "Server block not closed with '}'");
+		throw ParseException(m_lineIndex, "Server block not closed with '}'");
 	}
 
 	/**
@@ -403,19 +391,19 @@ namespace config {
 	 * - autoindex
 	 * - location (locations) (can exist more than once)
 	 */
-	void Parser::expectLocationBlock(LocationConfig& parentLocation) throw(parse_exception) {
+	void Parser::expectLocationBlock(LocationConfig& parentLocation) throw(ParseException) {
 		std::string path = readToken();
 
 		if (path.empty()) {
-			throw parse_exception(m_lineIndex, "Location has no path");
+			throw ParseException(m_lineIndex, "Location has no path");
 		}
 		if (!isValidPath(path) || !hasSinglePathSeparator(path) || path == "/") {
-			throw parse_exception(m_lineIndex, "Location path is invalid: '" + path + "'");
+			throw ParseException(m_lineIndex, "Location path is invalid: '" + path + "'");
 		}
 		consume(path.length());
 		skipWhitespace();
 		if (!matchToken("{")) {
-			throw parse_exception(m_lineIndex, "Expected '{' after location path");
+			throw ParseException(m_lineIndex, "Expected '{' after location path");
 		}
 		m_depth++;
 
@@ -433,7 +421,7 @@ namespace config {
 				return;
 			}
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
-				throw parse_exception(m_lineIndex, "Unexpected '{' in location block");
+				throw ParseException(m_lineIndex, "Unexpected '{' in location block");
 			}
 			std::string token = readToken();
 			if (matchToken("location")) {
@@ -441,20 +429,20 @@ namespace config {
 			} else if (!token.empty()) {
 				CommandType type = matchDirective(token, locationDirectives());
 				if (type == _D_NOT_VALID) {
-					throw parse_exception(m_lineIndex, "Unexpected directive in Location block: " + token);
+					throw ParseException(m_lineIndex, "Unexpected directive in Location block: " + token);
 				}
 				std::string value = readValue();
 				processLocationValue(token, value, type, thisLocation);
 			}
 		}
-		throw parse_exception(m_lineIndex, "Location block not closed with '}");
+		throw ParseException(m_lineIndex, "Location block not closed with '}");
 	}
 
-	void Parser::processHttpValue(const std::string& key, const std::string& value, CommandType type) throw(parse_exception) {
+	void Parser::processHttpValue(const std::string& key, const std::string& value, CommandType type) throw(ParseException) {
 		static std::map<CommandType, HttpTokenParser> tokenParsers;
 
 		if (type > _D_HTTP_TYPES) {
-			throw parse_exception("Invalid directive in Http block: " + key);
+			throw ParseException("Invalid directive in Http block: " + key);
 		}
 
 		if (tokenParsers.empty()) {
@@ -485,7 +473,7 @@ namespace config {
 		}
 	}
 
-	void Parser::processServerValue(const std::string& key, const std::string& value, CommandType type, ServerConfig& server) throw(parse_exception) {
+	void Parser::processServerValue(const std::string& key, const std::string& value, CommandType type, ServerConfig& server) throw(ParseException) {
 		static std::map<CommandType, ServerTokenParser> tokenParsers;
 
 		if (type > _D_SERVER_TYPES) {
@@ -499,7 +487,7 @@ namespace config {
 		return (this->*(tokenParsers[type]))(value, server);
 	}
 
-	void Parser::processLocationValue(const std::string& key, const std::string& value, CommandType type, LocationConfig& location) throw(parse_exception) {
+	void Parser::processLocationValue(const std::string& key, const std::string& value, CommandType type, LocationConfig& location) throw(ParseException) {
 		static std::map<CommandType, LocationTokenParser> tokenParsers;
 
 		if (tokenParsers.empty()) {
@@ -522,29 +510,29 @@ namespace config {
 
 	// ------------------------  server parsers  ---------------------------- //
 
-	void Parser::parseIntegerValue(const std::string& key, const std::string& value, unsigned long& destination) throw(parse_exception) {
+	void Parser::parseIntegerValue(const std::string& key, const std::string& value, unsigned long& destination) throw(ParseException) {
 		for (std::size_t i = 0; i < value.size(); ++i) {
 			unsigned char ch = static_cast<unsigned char>(value[i]);
 			if (!std::isdigit(ch) && !std::isspace(ch)) {
-				throw parse_exception(m_lineIndex, "Invalid character found in value '" + value + "' for integer key " + key);
+				throw ParseException(m_lineIndex, "Invalid character found in value '" + value + "' for integer key " + key);
 			}
 		}
 
 		try {
 			destination = shared::string::toNum<unsigned long>(value);
 		} catch (const std::exception& e) {
-			throw parse_exception(m_lineIndex, "Invalid value '" + value + "' for " + key + ": " + e.what());
+			throw ParseException(m_lineIndex, "Invalid value '" + value + "' for " + key + ": " + e.what());
 		}
 	}
 
-	void Parser::parsePathValue(const std::string& key, const std::string& value, std::string& destination) throw(parse_exception) {
+	void Parser::parsePathValue(const std::string& key, const std::string& value, std::string& destination) throw(ParseException) {
 		if (!isValidPath(value)) {
-			throw parse_exception(m_lineIndex, "Invalid path for " + key + ": " + value);
+			throw ParseException(m_lineIndex, "Invalid path for " + key + ": " + value);
 		}
 		destination = value; // strip this of whitespace if that doesn't happen yet
 	}
 
-	uint32_t Parser::parseIpAddress(const std::string& host) throw(parse_exception) {
+	uint32_t Parser::parseIpAddress(const std::string& host) throw(ParseException) {
 		uint32_t ip = 0;
 		std::size_t start = 0;
 		std::size_t part = 0;
@@ -558,19 +546,19 @@ namespace config {
 				segment = host.substr(start, pos - start);
 			}
 			if (segment.empty()) {
-				throw parse_exception(m_lineIndex, "Invalid IP address format: empty segment in \"" + host + "\"");
+				throw ParseException(m_lineIndex, "Invalid IP address format: empty segment in \"" + host + "\"");
 			}
 			for (std::size_t i = 0; i < segment.size(); ++i) {
 				if (!std::isdigit(static_cast<unsigned char>(segment[i]))) {
-					throw parse_exception(m_lineIndex, "Invalid IP address format: unexpected character '" + segment.substr(i, 1) + "' in \"" + host + "\"");
+					throw ParseException(m_lineIndex, "Invalid IP address format: unexpected character '" + segment.substr(i, 1) + "' in \"" + host + "\"");
 				}
 			}
 			if (segment.size() > 3) {
-				throw parse_exception(m_lineIndex, "Invalid IP address format: segment too long in \"" + host + "\"");
+				throw ParseException(m_lineIndex, "Invalid IP address format: segment too long in \"" + host + "\"");
 			}
 			int octet = shared::string::toNum<int>(segment);
 			if (octet < 0 || octet > 255) {
-				throw parse_exception(m_lineIndex, "IP segment out of range in \"" + host + "\"");
+				throw ParseException(m_lineIndex, "IP segment out of range in \"" + host + "\"");
 			}
 			ip = (ip << 8) | (octet & 0xFF);
 			part++;
@@ -580,17 +568,17 @@ namespace config {
 		}
 
 		if (part != 4) {
-			throw parse_exception(m_lineIndex, "Invalid IP address format: \"" + host + "\"");
+			throw ParseException(m_lineIndex, "Invalid IP address format: \"" + host + "\"");
 		}
 		return ip;
 	}
 
-	void Parser::parseListen(const std::string& value, ServerConfig& server) throw(parse_exception) {
+	void Parser::parseListen(const std::string& value, ServerConfig& server) throw(ParseException) {
 		std::string host;
 		std::string port;
 
 		if (value.find_first_of(':') == std::string::npos) {
-			throw parse_exception(m_lineIndex, "Invalid value for listen: " + value);
+			throw ParseException(m_lineIndex, "Invalid value for listen: " + value);
 		}
 		host = value.substr(0, value.find_first_of(':'));
 		port = value.substr(value.find_first_of(':') + 1);
@@ -598,15 +586,15 @@ namespace config {
 		server.socketAddress = host + ":" + port;
 		std::stringstream ss(port);
 		if (!(ss >> server.port)) {
-			throw parse_exception(m_lineIndex, "Invalid value for listen: " + value);
+			throw ParseException(m_lineIndex, "Invalid value for listen: " + value);
 		}
 		server.ipAddress = parseIpAddress(host);
 		if (ss >> port && !port.empty()) {
-			throw parse_exception(m_lineIndex, "Invalid value for listen: " + value);
+			throw ParseException(m_lineIndex, "Invalid value for listen: " + value);
 		}
 	}
 
-	void Parser::parseServerName(const std::string& value, ServerConfig& server) throw(parse_exception) {
+	void Parser::parseServerName(const std::string& value, ServerConfig& server) throw(ParseException) {
 		std::vector<std::string> splitNames;
 		std::stringstream ss(value);
 		std::string name;
@@ -615,12 +603,12 @@ namespace config {
 			splitNames.push_back(name);
 		}
 		if (splitNames.empty()) {
-			throw parse_exception(m_lineIndex, "Expected value for server_name");
+			throw ParseException(m_lineIndex, "Expected value for server_name");
 		}
 		server.serverNames = splitNames;
 	}
 
-	void Parser::parseCGIInterpreter(const std::string& value, HttpConfig& globalConfig) throw(parse_exception) {
+	void Parser::parseCGIInterpreter(const std::string& value, HttpConfig& globalConfig) throw(ParseException) {
 		std::vector<std::string> args;
 		std::stringstream ss(value);
 		std::string token;
@@ -629,9 +617,9 @@ namespace config {
 			args.push_back(token);
 		}
 		if (args.size() != 2)
-			throw parse_exception(m_lineIndex, "Expected 2 arguments for cgi_interpreter");
+			throw ParseException(m_lineIndex, "Expected 2 arguments for cgi_interpreter");
 		if (shared::file::isExecutable(args[1]) == false) {
-			throw parse_exception(m_lineIndex, "Path does not lead to an executable: " + args[1]);
+			throw ParseException(m_lineIndex, "Path does not lead to an executable: " + args[1]);
 		}
 		// todo: if already exists in interpreters, throw exception
 		globalConfig.cgiInterpreters[args[0]] = args[1];
@@ -639,7 +627,7 @@ namespace config {
 
 	// ------------------------  location parsers  -------------------------- //
 
-	void Parser::parseReturn(const std::string& value, LocationConfig& location) throw(parse_exception) {
+	void Parser::parseReturn(const std::string& value, LocationConfig& location) throw(ParseException) {
 		std::vector<std::string> args;
 		std::stringstream ss(value);
 		std::string token;
@@ -649,18 +637,18 @@ namespace config {
 			args.push_back(token);
 		}
 		if (args.size() != 2) {
-			throw parse_exception(m_lineIndex, "Expected 2 arguments for return");
+			throw ParseException(m_lineIndex, "Expected 2 arguments for return");
 		}
 		std::stringstream ss_num(args[0]);
 		if (!(ss_num >> num_buffer)) {
-			throw parse_exception(m_lineIndex, "Invalid redirect code: " + args[0]);
+			throw ParseException(m_lineIndex, "Invalid redirect code: " + args[0]);
 		}
 		http::StatusCode status_code = http::numToStatusCode(num_buffer);
 		if (status_code < 300 || status_code >= 400) {
-			throw parse_exception(m_lineIndex, "Invalid redirect code: " + args[0]);
+			throw ParseException(m_lineIndex, "Invalid redirect code: " + args[0]);
 		}
 		if (!isValidPath(args[1])) {
-			throw parse_exception(m_lineIndex, "Invalid path for return: " + args[1]);
+			throw ParseException(m_lineIndex, "Invalid path for return: " + args[1]);
 		}
 
 		location.redirectUri = std::make_pair(status_code, args[1]);
@@ -668,27 +656,27 @@ namespace config {
 
 	// if no limit_except is present, default initialization
 	// for locations should permit all methods; GET POST and DELETE
-	void Parser::parseLimitExcept(const std::string& value, LocationConfig& location) throw(parse_exception) {
+	void Parser::parseLimitExcept(const std::string& value, LocationConfig& location) throw(ParseException) {
 		std::set<http::Method> allowedMethods;
 		std::stringstream ss(value);
 		std::string token;
 
 		while (ss >> token) {
 			if (m_implementedMethods.find(token) == m_implementedMethods.end()) {
-				throw parse_exception(m_lineIndex, "Unexpected method for limit_except: " + token);
+				throw ParseException(m_lineIndex, "Unexpected method for limit_except: " + token);
 			}
 			if (allowedMethods.find(m_implementedMethods[token]) != allowedMethods.end()) {
-				throw parse_exception(m_lineIndex, "Duplicte method for limit_except: " + token);
+				throw ParseException(m_lineIndex, "Duplicte method for limit_except: " + token);
 			}
 			allowedMethods.insert(m_implementedMethods[token]);
 		}
 		if (allowedMethods.empty()) {
-			throw parse_exception(m_lineIndex, "Expected value for limit_except");
+			throw ParseException(m_lineIndex, "Expected value for limit_except");
 		}
 		location.allowedMethods = allowedMethods;
 	}
 
-	void Parser::parseIndex(const std::string& value, LocationConfig& location) throw(parse_exception) {
+	void Parser::parseIndex(const std::string& value, LocationConfig& location) throw(ParseException) {
 		std::vector<std::string> indexFiles;
 		std::stringstream ss(value);
 		std::string token;
@@ -697,18 +685,18 @@ namespace config {
 			indexFiles.push_back(token);
 		}
 		if (indexFiles.empty()) {
-			throw parse_exception(m_lineIndex, "Expected value for index");
+			throw ParseException(m_lineIndex, "Expected value for index");
 		}
 		location.indexFile = indexFiles;
 	}
 
-	void Parser::parseAutoindex(const std::string& value, LocationConfig& location) throw(parse_exception) {
+	void Parser::parseAutoindex(const std::string& value, LocationConfig& location) throw(ParseException) {
 		std::stringstream ss(value);
 		std::string token;
 
 		ss >> token;
 		if (m_autoIndexAllowedValues.find(token) == m_autoIndexAllowedValues.end()) {
-			throw parse_exception(m_lineIndex, "Unexpected value for autoindex: " + value);
+			throw ParseException(m_lineIndex, "Unexpected value for autoindex: " + value);
 		}
 		if (token == "on") {
 			location.autoindex = true;
@@ -716,11 +704,11 @@ namespace config {
 			location.autoindex = false;
 		}
 		if (ss >> token && !token.empty()) {
-			throw parse_exception(m_lineIndex, "Unexpected token in autoindex: " + token);
+			throw ParseException(m_lineIndex, "Unexpected token in autoindex: " + token);
 		}
 	}
 
-	void Parser::parseErrorPage(const std::string& value, LocationConfig& location) throw(parse_exception) {
+	void Parser::parseErrorPage(const std::string& value, LocationConfig& location) throw(ParseException) {
 		std::vector<std::string> args;
 		std::stringstream ss(value);
 		std::string token;
@@ -730,22 +718,22 @@ namespace config {
 			args.push_back(token);
 		}
 		if (args.size() < 2) {
-			throw parse_exception(m_lineIndex, "Expected at least 2 arguments for error_page");
+			throw ParseException(m_lineIndex, "Expected at least 2 arguments for error_page");
 		}
 		std::string errorPagePath = args.back();
 		for (unsigned long i = 0; i < args.size() - 1; i++) {
 			std::stringstream ss_num(args[i]);
 			if (!(ss_num >> num_buffer)) {
-				throw parse_exception(m_lineIndex, "Invalid error code: " + args[i]);
+				throw ParseException(m_lineIndex, "Invalid error code: " + args[i]);
 			}
 			http::StatusCode status_code;
 			try {
 				status_code = http::numToStatusCode(num_buffer);
 			} catch (const std::exception& e) {
-				throw parse_exception(m_lineIndex, "Invalid error code: " + args[0] + ": " + e.what());
+				throw ParseException(m_lineIndex, "Invalid error code: " + args[0] + ": " + e.what());
 			}
 			if (status_code < 400) {
-				throw parse_exception(m_lineIndex, "Invalid error code: " + args[0]);
+				throw ParseException(m_lineIndex, "Invalid error code: " + args[0]);
 			}
 			location.errorPages[status_code] = errorPagePath;
 		}
