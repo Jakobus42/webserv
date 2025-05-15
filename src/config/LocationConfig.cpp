@@ -1,6 +1,6 @@
 #include "config/LocationConfig.hpp"
 
-#include "config/Parser.hpp" //hm
+#include "config/ParseException.hpp"
 
 #include <iostream>
 
@@ -73,7 +73,7 @@ namespace config {
 	// TODO: implement
 	void LocationConfig::validate() const {
 		if (path.empty()) {
-			throw parse_exception("LocationConfig doesn't have a path");
+			throw ParseException("LocationConfig doesn't have a path");
 		}
 	}
 

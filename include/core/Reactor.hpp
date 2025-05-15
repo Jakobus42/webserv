@@ -1,6 +1,6 @@
 #pragma once
 
-#include "config/Parser.hpp"
+#include "config/Config.hpp"
 #include "io/Dispatcher.hpp"
 #include "shared/NonCopyable.hpp"
 
