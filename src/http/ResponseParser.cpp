@@ -9,8 +9,8 @@ namespace http {
 		: messageParserConfig() // 1KB
 		, maxReasonPhraseLength(1024) {}
 
-	ResponseParserConfig::ResponseParserConfig(const config::ServerConfig& serverConfig)
-		: messageParserConfig(serverConfig)
+	ResponseParserConfig::ResponseParserConfig(const config::HttpConfig& httpConfig)
+		: messageParserConfig(httpConfig)
 		, maxReasonPhraseLength(1024) {}
 
 	ResponseParser::ResponseParser(const ResponseParserConfig& conf)

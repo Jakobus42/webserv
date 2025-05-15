@@ -1,6 +1,6 @@
 #include "core/CGIEventHandler.hpp"
 
-#include "config/ServerConfig.hpp"
+#include "config/HttpConfig.hpp"
 #include "http/Request.hpp"
 #include "http/Response.hpp"
 #include "shared/Logger.hpp"
@@ -10,13 +10,13 @@
 
 namespace core {
 
-	CGIEventHandler::CGIEventHandler(CGIProcessor& processor, const http::Request& request, http::Response*& response, const config::ServerConfig& serverConfig)
+	CGIEventHandler::CGIEventHandler(CGIProcessor& processor, const http::Request& request, http::Response*& response, const config::HttpConfig& httpConfig)
 		: m_processor(processor)
 		, m_request(request)
 		, m_response(response)
 		, m_totalBytesWritten(0)
 		, m_responseParser() {
-		http::ResponseParserConfig conf(serverConfig);
+		http::ResponseParserConfig conf(httpConfig);
 		conf.messageParserConfig.requireCR = false;
 		conf.messageParserConfig.requireStartLine = false;
 		conf.messageParserConfig.parseBodyWithoutContentLength = true; // I hate this

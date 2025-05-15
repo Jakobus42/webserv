@@ -133,7 +133,7 @@ namespace core {
 					const_cast<char*>(m_scriptName.c_str()),
 					NULL};
 
-				if (chdir((m_serverConfig.dataDirectory + "/cgi-bin").c_str()) == -1) {
+				if (chdir((m_serverConfig.global.dataDirectory + "/cgi-bin").c_str()) == -1) {
 					throw std::runtime_error("chdir() failed: " + std::string(std::strerror(errno)));
 				}
 
@@ -151,11 +151,11 @@ namespace core {
 			m_outputPipe.closeWriteEnd();
 
 			m_dispatcher.registerHandler(m_outputPipe.getReadFd(),
-										 new CGIEventHandler(*this, request, m_response, m_serverConfig),
+										 new CGIEventHandler(*this, request, m_response, m_serverConfig.global),
 										 io::AMultiplexer::EVENT_READ | io::AMultiplexer::EVENT_ERROR | io::AMultiplexer::EVENT_HANGUP);
 			if (request.getMethod() == http::POST) {
 				m_dispatcher.registerHandler(m_inputPipe.getWriteFd(),
-											 new CGIEventHandler(*this, request, m_response, m_serverConfig),
+											 new CGIEventHandler(*this, request, m_response, m_serverConfig.global),
 											 io::AMultiplexer::EVENT_WRITE | io::AMultiplexer::EVENT_ERROR | io::AMultiplexer::EVENT_HANGUP);
 			} else {
 				notifyIOWriteCompletion();

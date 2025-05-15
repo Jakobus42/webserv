@@ -141,6 +141,24 @@ namespace config {
 		return matchedDirective->second;
 	}
 
+	const std::map<std::string, Parser::CommandType>& Parser::httpDirectives() {
+		static std::map<std::string, Parser::CommandType> allowedDirectives;
+
+		if (allowedDirectives.empty()) {
+			allowedDirectives["client_max_body_size"] = D_CLIENT_MAX_BODY_SIZE;
+			allowedDirectives["max_header_value_length"] = D_MAX_HEADER_VALUE_SIZE;
+			allowedDirectives["max_header_count"] = D_MAX_HEADER_COUNT;
+			allowedDirectives["max_header_value_count"] = D_MAX_HEADER_VALUE_COUNT;
+			allowedDirectives["max_header_name_length"] = D_MAX_HEADER_NAME_SIZE;
+			allowedDirectives["connection_timeout"] = D_CONNECTION_TIMEOUT;
+			allowedDirectives["cgi_timeout"] = D_CGI_TIMEOUT;
+			allowedDirectives["max_uri_length"] = D_MAX_URI_LENGTH;
+			allowedDirectives["cgi_interpreter"] = D_CGI_INTERPRETER;
+			allowedDirectives["data_dir"] = D_DATA_DIR;
+		}
+		return allowedDirectives;
+	}
+
 	const std::map<std::string, Parser::CommandType>& Parser::locationDirectives() {
 		static std::map<std::string, CommandType> allowedDirectives;
 
@@ -162,12 +180,6 @@ namespace config {
 
 		if (allowedDirectives.empty()) {
 			allowedDirectives["listen"] = D_LISTEN;
-			allowedDirectives["client_max_body_size"] = D_CLIENT_MAX_BODY_SIZE;
-			allowedDirectives["max_header_value_length"] = D_MAX_HEADER_VALUE_SIZE;
-			allowedDirectives["max_header_count"] = D_MAX_HEADER_COUNT;
-			allowedDirectives["max_header_value_count"] = D_MAX_HEADER_VALUE_COUNT;
-			allowedDirectives["max_header_name_length"] = D_MAX_HEADER_NAME_SIZE;
-			allowedDirectives["data_dir"] = D_DATA_DIR;
 			allowedDirectives["server_name"] = D_SERVER_NAME;
 			allowedDirectives["root"] = D_ROOT;
 			allowedDirectives["return"] = D_RETURN;
@@ -177,10 +189,6 @@ namespace config {
 			allowedDirectives["autoindex"] = D_AUTOINDEX;
 			allowedDirectives["location"] = D_LOCATION;
 			allowedDirectives["error_page"] = D_ERROR_PAGE;
-			allowedDirectives["connection_timeout"] = D_CONNECTION_TIMEOUT;
-			allowedDirectives["cgi_timeout"] = D_CGI_TIMEOUT;
-			allowedDirectives["max_uri_length"] = D_MAX_URI_LENGTH;
-			allowedDirectives["cgi_interpreter"] = D_CGI_INTERPRETER;
 		}
 		return allowedDirectives;
 	}
@@ -244,11 +252,15 @@ namespace config {
 	}
 
 	void Parser::parseFromData() throw(parse_exception) {
-		while (skipWhitespace(), m_readPos < m_data.size()) {
-			if (!matchToken("server")) {
-				throw parse_exception(m_lineIndex, "Expected 'server' keyword");
-			}
-			expectServerBlock();
+		skipWhitespace();
+		if (!matchToken("http")) {
+			throw parse_exception(m_lineIndex, "Expected 'http' keyword");
+		}
+		expectHttpBlock();
+		skipWhitespace();
+		std::string value = readToken();
+		if (!value.empty()) {
+			throw parse_exception("Unexpected data after http block: " + value);
 		}
 	}
 
@@ -261,7 +273,7 @@ namespace config {
 
 		for (std::vector<ServerConfig>::iterator server = m_config.serverConfigs.begin(); server != m_config.serverConfigs.end(); ++server) {
 			++i;
-			server->location.precalculatedAbsolutePath = server->dataDirectory + server->location.root;
+			server->location.precalculatedAbsolutePath = m_config.globalConfig.dataDirectory + server->location.root;
 			if (!isValidPath(server->location.precalculatedAbsolutePath)) {
 				throw parse_exception("Server #" + shared::string::toString(i) + ": Root path is invalid");
 			}
@@ -299,6 +311,34 @@ namespace config {
 
 	// ------------------------  block parsing ------------------------------ //
 
+	void Parser::expectHttpBlock() throw(parse_exception) {
+		skipWhitespace();
+		if (!matchToken("{")) {
+			throw parse_exception(m_lineIndex, "Expected '{' after 'http'");
+		}
+		while (m_readPos < m_data.size()) {
+			skipWhitespace();
+			if (matchToken("}")) {
+				m_config.globalConfig.validate();
+				return;
+			}
+			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
+				throw parse_exception(m_lineIndex, "Unexpected '{' in http block");
+			}
+			std::string token = readToken();
+			if (matchToken("server")) {
+				expectServerBlock(m_config.globalConfig);
+			} else if (!token.empty()) {
+				CommandType type = matchDirective(token, httpDirectives());
+				if (type == _D_NOT_VALID) {
+					throw parse_exception(m_lineIndex, "Unexpected directive in http block: " + token);
+				}
+				std::string value = readValue();
+				processHttpValue(token, value, type);
+			}
+		}
+	}
+
 	/**
 	 * Possible ServerConfig directives are:
 	 * - port
@@ -315,28 +355,28 @@ namespace config {
 	 * - autoindex (location.autoindex)
 	 * - location (location.locations) (can exist more than once)
 	 */
-	void Parser::expectServerBlock() throw(parse_exception) {
+	void Parser::expectServerBlock(const HttpConfig& globalConfig) throw(parse_exception) {
 		skipWhitespace();
 		if (!matchToken("{")) {
 			throw parse_exception(m_lineIndex, "Expected '{' after 'server'");
 		}
 		m_depth++;
 
-		ServerConfig thisServer;
+		ServerConfig thisServer(globalConfig);
 
 		thisServer.location.path = "/";
 		thisServer.location.isServerRoot = true;
 
 		while (m_readPos < m_data.size()) {
 			skipWhitespace();
-			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
-				throw parse_exception(m_lineIndex, "Unexpected '{' in Server block");
-			}
 			if (matchToken("}")) {
 				m_depth--;
 				thisServer.validate();
 				m_config.serverConfigs.push_back(thisServer);
 				return;
+			}
+			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
+				throw parse_exception(m_lineIndex, "Unexpected '{' in Server block");
 			}
 			std::string token = readToken();
 			if (matchToken("location")) {
@@ -384,9 +424,6 @@ namespace config {
 		thisLocation.path = path;
 		while (m_readPos <= m_data.size()) {
 			skipWhitespace();
-			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
-				throw parse_exception(m_lineIndex, "Unexpected '{' in location block");
-			}
 			if (matchToken("}")) {
 				m_depth--;
 				thisLocation.validate();
@@ -394,6 +431,9 @@ namespace config {
 				// is anything mandatory for a location?
 				parentLocation.locations.push_back(thisLocation);
 				return;
+			}
+			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
+				throw parse_exception(m_lineIndex, "Unexpected '{' in location block");
 			}
 			std::string token = readToken();
 			if (matchToken("location")) {
@@ -410,6 +450,41 @@ namespace config {
 		throw parse_exception(m_lineIndex, "Location block not closed with '}");
 	}
 
+	void Parser::processHttpValue(const std::string& key, const std::string& value, CommandType type) throw(parse_exception) {
+		static std::map<CommandType, HttpTokenParser> tokenParsers;
+
+		if (type > _D_HTTP_TYPES) {
+			throw parse_exception("Invalid directive in Http block: " + key);
+		}
+
+		if (tokenParsers.empty()) {
+			tokenParsers[D_CGI_INTERPRETER] = &config::Parser::parseCGIInterpreter;
+		}
+
+		switch (type) {
+			case D_CLIENT_MAX_BODY_SIZE:
+				return parseIntegerValue("client_max_body_size", value, m_config.globalConfig.maxBodySize);
+			case D_MAX_HEADER_COUNT:
+				return parseIntegerValue("max_header_count", value, m_config.globalConfig.maxHeaderCount);
+			case D_MAX_HEADER_VALUE_COUNT:
+				return parseIntegerValue("max_header_value_count", value, m_config.globalConfig.maxHeaderValueCount);
+			case D_MAX_HEADER_NAME_SIZE:
+				return parseIntegerValue("max_header_name_length", value, m_config.globalConfig.maxHeaderNameLength);
+			case D_MAX_HEADER_VALUE_SIZE:
+				return parseIntegerValue("max_header_value_length", value, m_config.globalConfig.maxHeaderValueLength);
+			case D_CONNECTION_TIMEOUT:
+				return parseIntegerValue("connection_timeout", value, m_config.globalConfig.connectionTimeout);
+			case D_CGI_TIMEOUT:
+				return parseIntegerValue("cgi_timeout", value, m_config.globalConfig.cgiTimeout);
+			case D_MAX_URI_LENGTH:
+				return parseIntegerValue("max_uri_length", value, m_config.globalConfig.maxUriLength);
+			case D_DATA_DIR:
+				return parsePathValue("data_dir", value, m_config.globalConfig.dataDirectory);
+			default:
+				return (this->*(tokenParsers[type]))(value, m_config.globalConfig);
+		}
+	}
+
 	void Parser::processServerValue(const std::string& key, const std::string& value, CommandType type, ServerConfig& server) throw(parse_exception) {
 		static std::map<CommandType, ServerTokenParser> tokenParsers;
 
@@ -419,31 +494,9 @@ namespace config {
 		if (tokenParsers.empty()) {
 			tokenParsers[D_LISTEN] = &config::Parser::parseListen;
 			tokenParsers[D_SERVER_NAME] = &config::Parser::parseServerName;
-			tokenParsers[D_CGI_INTERPRETER] = &config::Parser::parseCGIInterpreter;
 		}
 
-		switch (type) {
-			case D_CLIENT_MAX_BODY_SIZE:
-				return parseIntegerValue("client_max_body_size", value, server.maxBodySize);
-			case D_MAX_HEADER_COUNT:
-				return parseIntegerValue("max_header_count", value, server.maxHeaderCount);
-			case D_MAX_HEADER_VALUE_COUNT:
-				return parseIntegerValue("max_header_value_count", value, server.maxHeaderValueCount);
-			case D_MAX_HEADER_NAME_SIZE:
-				return parseIntegerValue("max_header_name_length", value, server.maxHeaderNameLength);
-			case D_MAX_HEADER_VALUE_SIZE:
-				return parseIntegerValue("max_header_value_length", value, server.maxHeaderValueLength);
-			case D_CONNECTION_TIMEOUT:
-				return parseIntegerValue("connection_timeout", value, server.connectionTimeout);
-			case D_CGI_TIMEOUT:
-				return parseIntegerValue("cgi_timeout", value, server.cgiTimeout);
-			case D_MAX_URI_LENGTH:
-				return parseIntegerValue("max_uri_length", value, server.maxUriLength);
-			case D_DATA_DIR:
-				return parsePathValue("data_dir", value, server.dataDirectory);
-			default:
-				return (this->*(tokenParsers[type]))(value, server);
-		}
+		return (this->*(tokenParsers[type]))(value, server);
 	}
 
 	void Parser::processLocationValue(const std::string& key, const std::string& value, CommandType type, LocationConfig& location) throw(parse_exception) {
@@ -473,14 +526,14 @@ namespace config {
 		for (std::size_t i = 0; i < value.size(); ++i) {
 			unsigned char ch = static_cast<unsigned char>(value[i]);
 			if (!std::isdigit(ch) && !std::isspace(ch)) {
-				throw parse_exception(m_lineIndex, "Invalid character found in value for " + key);
+				throw parse_exception(m_lineIndex, "Invalid character found in value '" + value + "' for integer key " + key);
 			}
 		}
 
 		try {
 			destination = shared::string::toNum<unsigned long>(value);
 		} catch (const std::exception& e) {
-			throw parse_exception(m_lineIndex, "Invalid value for " + key + ": " + e.what());
+			throw parse_exception(m_lineIndex, "Invalid value '" + value + "' for " + key + ": " + e.what());
 		}
 	}
 
@@ -567,7 +620,7 @@ namespace config {
 		server.serverNames = splitNames;
 	}
 
-	void Parser::parseCGIInterpreter(const std::string& value, ServerConfig& server) throw(parse_exception) {
+	void Parser::parseCGIInterpreter(const std::string& value, HttpConfig& globalConfig) throw(parse_exception) {
 		std::vector<std::string> args;
 		std::stringstream ss(value);
 		std::string token;
@@ -580,8 +633,8 @@ namespace config {
 		if (shared::file::isExecutable(args[1]) == false) {
 			throw parse_exception(m_lineIndex, "Path does not lead to an executable: " + args[1]);
 		}
-		// if already exists in interpreters, throw exception
-		server.cgiInterpreters[args[0]] = args[1];
+		// todo: if already exists in interpreters, throw exception
+		globalConfig.cgiInterpreters[args[0]] = args[1];
 	}
 
 	// ------------------------  location parsers  -------------------------- //

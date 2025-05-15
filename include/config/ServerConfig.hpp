@@ -2,10 +2,11 @@
 
 #include <stdint.h>
 
+#include "config/HttpConfig.hpp"
 #include "config/LocationConfig.hpp"
 
-#include <vector>
 #include <map>
+#include <vector>
 
 namespace config {
 
@@ -14,26 +15,14 @@ namespace config {
 			int port;
 			uint32_t ipAddress;
 			std::string socketAddress;
-			unsigned long maxBodySize;
-			unsigned long maxHeaderValueLength;
-			unsigned long maxHeaderCount;
-			unsigned long maxHeaderValueCount;
-			unsigned long maxHeaderNameLength;
-			unsigned long connectionTimeout;
-			unsigned long cgiTimeout;
-			unsigned long maxUriLength;
-			std::map<std::string, std::string> cgiInterpreters;
-			std::string dataDirectory;
 			std::vector<std::string> serverNames;
 			LocationConfig location;
+			const HttpConfig& global;
 
-			ServerConfig();
+			explicit ServerConfig(const HttpConfig& globalConfig);
 			~ServerConfig();
 			ServerConfig(const ServerConfig& other);
 			const ServerConfig& operator=(const ServerConfig& rhs);
-
-			bool hasRoot() const;
-			bool hasDataDir() const;
 
 			void validate() const;
 			void print() const;
