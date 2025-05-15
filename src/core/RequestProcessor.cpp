@@ -199,11 +199,9 @@ namespace core {
 		}
 		m_response->setHeader("Connection", "close");
 		m_response->appendBody(response);
+		m_response->setHeader("Content-Type", "text/html");
 	}
 
-	// todo: remove body
-	// todo: check if appendHeader works instead of constructing
-	//       temporary locationHeader vector
 	void RequestProcessor::generateRedirectResponse() {
 		const Route& route = m_router.getResult();
 

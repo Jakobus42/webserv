@@ -42,6 +42,75 @@ namespace core {
 		m_streamPosition = 0;
 	}
 
+	const std::string& GetRequestHandler::getMimeType() const {
+		static std::string octetStreamType = "application/octet-stream";
+		static std::map<std::string, std::string> contentTypes;
+
+		if (contentTypes.empty()) {
+			contentTypes[".aac"] = "audio/aac";
+			contentTypes[".avi"] = "video/x-msvideo";
+			contentTypes[".bin"] = "application/octet-stream";
+			contentTypes[".bmp"] = "image/bmp";
+			contentTypes[".css"] = "text/css";
+			contentTypes[".csv"] = "text/csv";
+			contentTypes[".eot"] = "application/vnd.ms-fontobject";
+			contentTypes[".gz"] = "application/gzip";
+			contentTypes[".gif"] = "image/gif";
+			contentTypes[".htm"] = "text/html";
+			contentTypes[".html"] = "text/html";
+			contentTypes[".ico"] = "image/vnd.microsoft.icon";
+			contentTypes[".jar"] = "application/java-archive";
+			contentTypes[".jpg"] = "image/jpeg";
+			contentTypes[".jpeg"] = "image/jpeg";
+			contentTypes[".js"] = "application/javascript";
+			contentTypes[".json"] = "application/json";
+			contentTypes[".jsonld"] = "application/ld+json";
+			contentTypes[".mjs"] = "text/javascript";
+			contentTypes[".mp3"] = "audio/mpeg";
+			contentTypes[".mp4"] = "video/mp4";
+			contentTypes[".mpeg"] = "video/mpeg";
+			contentTypes[".oga"] = "audio/ogg";
+			contentTypes[".ogg"] = "audio/opus";
+			contentTypes[".ogv"] = "video/ogg";
+			contentTypes[".ogx"] = "application/ogg";
+			contentTypes[".opus"] = "audio/ogg";
+			contentTypes[".otf"] = "font/otf";
+			contentTypes[".pdf"] = "application/pdf";
+			contentTypes[".php"] = "application/x-httpd-php";
+			contentTypes[".png"] = "image/png";
+			contentTypes[".rar"] = "application/vnd.rar";
+			contentTypes[".rtf"] = "application/rtf";
+			contentTypes[".sh"] = "application/x-sh";
+			contentTypes[".svg"] = "image/svg+xml";
+			contentTypes[".tar"] = "application/x-tar";
+			contentTypes[".tif"] = "image/tiff";
+			contentTypes[".tiff"] = "image/tiff";
+			contentTypes[".ttf"] = "font/ttf";
+			contentTypes[".txt"] = "text/plain";
+			contentTypes[".wav"] = "audio/wav";
+			contentTypes[".webm"] = "video/webm";
+			contentTypes[".webp"] = "image/webp";
+			contentTypes[".xhtml"] = "application/xhtml+xml";
+			contentTypes[".xml"] = "application/xml";
+			contentTypes[".zip"] = "application/zip";
+			contentTypes[".7z"] = "application/x-7z-compressed";
+		}
+
+		std::size_t lastDot = m_filePath.rfind('.');
+		if (lastDot == std::string::npos) {
+			return octetStreamType;
+		}
+		std::string fileExtension = m_filePath.substr(lastDot);
+		if (fileExtension.find('/') != std::string::npos) {
+			return octetStreamType;
+		}
+		std::map<std::string, std::string>::iterator type = contentTypes.find(fileExtension);
+		if (type == contentTypes.end()) {
+			return octetStreamType;
+		}
+		return contentTypes[type->second];
+	}
+
 	// todo: make sure path exists, file exists, can access, etc. etc.
 	// F_OK, R_OK, probably?
 	// throw correct status code if any issues arise
@@ -107,6 +176,7 @@ namespace core {
 	void GetRequestHandler::generateAutoindexResponse(const http::Request& request, http::Response& response) {
 		response.appendBody(generateDirectoryListing(request, m_route.absoluteFilePath));
 		response.setStatusCode(http::OK);
+		response.setHeader("Content-Type", "text/html");
 	}
 
 	void GetRequestHandler::selectFile() {
@@ -165,6 +235,7 @@ namespace core {
 					generateAutoindexResponse(request, response);
 					m_state = DONE;
 				} else {
+					response.setHeader("Content-Type", getMimeType());
 					m_state = PROCESS;
 				}
 				return true;
