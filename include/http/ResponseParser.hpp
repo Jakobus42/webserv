@@ -1,6 +1,6 @@
 #pragma once
 
-#include "config/ServerConfig.hpp"
+#include "config/HttpConfig.hpp"
 #include "http/AMessageParser.hpp"
 #include "http/http.hpp"
 
@@ -10,7 +10,7 @@ namespace http {
 			MessageParserConfig messageParserConfig;
 			std::size_t maxReasonPhraseLength;
 			ResponseParserConfig();
-			explicit ResponseParserConfig(const config::ServerConfig& serverConfig);
+			explicit ResponseParserConfig(const config::HttpConfig& httpConfig);
 	};
 
 	class Response;

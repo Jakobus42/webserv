@@ -24,6 +24,7 @@ namespace config {
 			typedef std::vector<ServerConfig> ServerConfigs;
 			typedef std::map<std::string /*address*/, ServerConfigs> ListenServerConfigs;
 
+			HttpConfig globalConfig;
 			ListenServerConfigs listenServerConfigs;
 			std::vector<ServerConfig> serverConfigs;
 	};
@@ -31,6 +32,7 @@ namespace config {
 	class Parser : shared::mixin::NonCopyable {
 			typedef void (Parser::*LocationTokenParser)(const std::string&, LocationConfig&);
 			typedef void (Parser::*ServerTokenParser)(const std::string&, ServerConfig&);
+			typedef void (Parser::*HttpTokenParser)(const std::string&, HttpConfig&);
 
 		public:
 			Parser();
@@ -55,18 +57,19 @@ namespace config {
 		private:
 			enum CommandType {
 				_D_NOT_VALID,
-				D_LISTEN,
 				D_CLIENT_MAX_BODY_SIZE,
 				D_MAX_HEADER_VALUE_SIZE,
 				D_MAX_HEADER_COUNT,
 				D_MAX_HEADER_VALUE_COUNT,
 				D_MAX_HEADER_NAME_SIZE,
 				D_MAX_URI_LENGTH,
-				D_DATA_DIR,
-				D_SERVER_NAME,
-				D_CONNECTION_TIMEOUT,
 				D_CGI_TIMEOUT,
 				D_CGI_INTERPRETER,
+				D_CONNECTION_TIMEOUT,
+				D_DATA_DIR,
+				_D_HTTP_TYPES,
+				D_LISTEN,
+				D_SERVER_NAME,
 				_D_SERVER_TYPES,
 				D_ROOT,
 				D_RETURN,
@@ -89,14 +92,17 @@ namespace config {
 			void parseFromData() throw(parse_exception);
 			void processParsedData() throw(parse_exception);
 
-			void expectServerBlock() throw(parse_exception);
+			void expectHttpBlock() throw(parse_exception);
+			void expectServerBlock(const HttpConfig& globalConfig) throw(parse_exception);
 			void expectLocationBlock(LocationConfig& parentLocation) throw(parse_exception);
 
+			void processHttpValue(const std::string& key, const std::string& value, CommandType type) throw(parse_exception);
 			void processServerValue(const std::string& key, const std::string& value, CommandType type, ServerConfig& server) throw(parse_exception);
 			void processLocationValue(const std::string& key, const std::string& value, CommandType type, LocationConfig& location) throw(parse_exception);
 
-			static const std::map<std::string, CommandType>& locationDirectives();
+			static const std::map<std::string, CommandType>& httpDirectives();
 			static const std::map<std::string, CommandType>& serverDirectives();
+			static const std::map<std::string, CommandType>& locationDirectives();
 
 		private:
 			// ------------------------  generic parsers  ------------------- //
@@ -105,7 +111,7 @@ namespace config {
 			// ------------------------  server parsers  -------------------- //
 			void parseListen(const std::string& value, ServerConfig& server) throw(parse_exception);
 			void parseServerName(const std::string& value, ServerConfig& server) throw(parse_exception);
-			void parseCGIInterpreter(const std::string& value, ServerConfig& server) throw(parse_exception);
+			void parseCGIInterpreter(const std::string& value, HttpConfig& globalConfig) throw(parse_exception);
 
 			uint32_t parseIpAddress(const std::string& host) throw(parse_exception);
 			void assignAbsolutePaths(ServerConfig& server, LocationConfig& parentLocation) throw(parse_exception);

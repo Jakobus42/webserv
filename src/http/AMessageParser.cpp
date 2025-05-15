@@ -22,15 +22,15 @@ namespace http {
 		, maxHeaderNameLength(256)		 // 256B
 	{}
 
-	MessageParserConfig::MessageParserConfig(const config::ServerConfig& serverConfig)
+	MessageParserConfig::MessageParserConfig(const config::HttpConfig& httpConfig)
 		: requireCR(true)
 		, requireStartLine(true)
 		, parseBodyWithoutContentLength(false)
-		, maxBodySize(serverConfig.maxBodySize)
-		, maxHeaderValueLength(serverConfig.maxHeaderValueLength)
-		, maxHeaderCount(serverConfig.maxHeaderCount)
-		, maxHeaderValueCount(serverConfig.maxHeaderValueCount)
-		, maxHeaderNameLength(serverConfig.maxHeaderNameLength) {
+		, maxBodySize(httpConfig.maxBodySize)
+		, maxHeaderValueLength(httpConfig.maxHeaderValueLength)
+		, maxHeaderCount(httpConfig.maxHeaderCount)
+		, maxHeaderValueCount(httpConfig.maxHeaderValueCount)
+		, maxHeaderNameLength(httpConfig.maxHeaderNameLength) {
 	}
 
 	const shared::string::StringView AMessageParser::CRLF = shared::string::StringView("\r\n");
