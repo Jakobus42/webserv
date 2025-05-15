@@ -24,6 +24,7 @@ namespace core {
 			std::string remainingPath;
 			std::string absoluteFilePath;
 			std::string redirectUri;
+			http::StatusCode returnClass;
 	};
 
 	class Router : public shared::mixin::NonCopyable {

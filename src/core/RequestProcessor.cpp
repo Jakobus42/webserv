@@ -206,7 +206,7 @@ namespace core {
 		const Route& route = m_router.getResult();
 
 		m_response->appendHeader("Location", route.redirectUri);
-		m_response->setStatusCode(route.location->returnClass);
+		m_response->setStatusCode(route.returnClass);
 	}
 
 	std::string RequestProcessor::generateErrorPage(http::StatusCode code) {

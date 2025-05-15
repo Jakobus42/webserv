@@ -12,6 +12,7 @@ namespace core {
 			m_routeResult.remainingPath = uriPath.toString();
 			m_routeResult.location = &currentLocation;
 			m_routeResult.generateRedirectUri();
+			m_routeResult.returnClass = currentLocation.redirectUri.first;
 			return;
 		}
 		if (depth > MAX_ROUTE_DEPTH) {
@@ -46,7 +47,8 @@ namespace core {
 		: location(NULL)
 		, remainingPath("")
 		, absoluteFilePath("")
-		, redirectUri("") {}
+		, redirectUri("")
+		, returnClass(http::MOVED_PERMANENTLY) {}
 
 	Route::~Route() {}
 
@@ -54,7 +56,8 @@ namespace core {
 		: location(other.location)
 		, remainingPath(other.remainingPath)
 		, absoluteFilePath(other.absoluteFilePath)
-		, redirectUri(other.redirectUri) {}
+		, redirectUri(other.redirectUri)
+		, returnClass(other.returnClass) {}
 
 	Route& Route::operator=(const Route& rhs) {
 		if (this != &rhs) {
@@ -62,6 +65,7 @@ namespace core {
 			remainingPath = rhs.remainingPath;
 			absoluteFilePath = rhs.absoluteFilePath;
 			redirectUri = rhs.redirectUri;
+			returnClass = rhs.returnClass;
 		}
 		return *this;
 	}
@@ -73,6 +77,7 @@ namespace core {
 		remainingPath.clear();
 		absoluteFilePath.clear();
 		redirectUri.clear();
+		returnClass = http::MOVED_PERMANENTLY;
 	}
 
 	void Route::generateAbsoluteFilePath() { absoluteFilePath = location->precalculatedAbsolutePath + remainingPath; }

@@ -13,7 +13,6 @@ namespace config {
 			std::string root;									  // root split into tokens
 			std::string precalculatedAbsolutePath;				  // absolute path to this location's root, pre-calculated after parsing
 			std::pair<http::StatusCode, std::string> redirectUri; // return route (references other locations)
-			http::StatusCode returnClass;						  // type of redirect
 			std::set<http::Method> allowedMethods;				  // allowed HTTP methods
 			std::string uploadSubdirectory;						  // subdirectory for uploads
 			bool autoindex;										  //
