@@ -56,8 +56,6 @@ namespace core {
 			void cleanup();
 
 		private:
-			static const time_t DEFAULT_TIMEOUT;
-
 			io::Dispatcher& m_dispatcher;
 			const config::ServerConfig& m_serverConfig;
 

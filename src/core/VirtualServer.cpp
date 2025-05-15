@@ -43,7 +43,7 @@ namespace core {
 				return NULL;
 			}
 
-			Connection* conn = new Connection(clientSocket); // todo: set timeout from config
+			Connection* conn = new Connection(clientSocket, m_configs.at(0).global.connectionTimeout);
 			try {
 				m_connections.push_back(conn);
 			} catch (const std::exception&) {
