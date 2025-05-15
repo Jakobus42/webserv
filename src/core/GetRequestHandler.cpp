@@ -43,6 +43,7 @@ namespace core {
 	}
 
 	const std::string& GetRequestHandler::getMimeType() const {
+		static std::string octetStreamType = "application/octet-stream";
 		static std::map<std::string, std::string> contentTypes;
 
 		if (contentTypes.empty()) {
@@ -95,14 +96,16 @@ namespace core {
 			contentTypes[".7z"] = "application/x-7z-compressed";
 		}
 
-		std::string fileExtension = m_filePath.substr(m_filePath.rfind('.'));
+		std::size_t lastDot = m_filePath.rfind('.');
+		if (lastDot == std::string::npos) {
+			return octetStreamType;
+		}
+		std::string fileExtension = m_filePath.substr(lastDot);
 		if (fileExtension.find('/') != std::string::npos) {
-			static std::string htmlType = "text/html";
-			return htmlType;
+			return octetStreamType;
 		}
 		std::map<std::string, std::string>::iterator type = contentTypes.find(fileExtension);
 		if (type == contentTypes.end()) {
-			static std::string octetStreamType = "application/octet-stream";
 			return octetStreamType;
 		}
 		return contentTypes[type->second];
