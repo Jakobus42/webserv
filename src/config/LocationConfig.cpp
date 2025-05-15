@@ -55,7 +55,7 @@ namespace config {
 	}
 
 	bool LocationConfig::acceptsFileUpload() const {
-		return !uploadSubdirectory.empty() && allowedMethods.find(http::POST) != allowedMethods.end();
+		return allowedMethods.find(http::POST) != allowedMethods.end();
 	}
 
 	// TODO: validate?
