@@ -21,8 +21,6 @@ extern char** environ;
 
 namespace core {
 
-	const time_t CGIProcessor::DEFAULT_TIMEOUT = 30;
-
 	CGIProcessor::CGIProcessor(io::Dispatcher& dispatcher, const config::ServerConfig& serverConfig)
 		: m_dispatcher(dispatcher)
 		, m_serverConfig(serverConfig)
@@ -31,7 +29,7 @@ namespace core {
 		, m_inputPipe()
 		, m_outputPipe()
 		, m_startTime(-1)
-		, m_timeout(DEFAULT_TIMEOUT)
+		, m_timeout(m_serverConfig.global.cgiTimeout)
 		, m_ioState(IO_NONE)
 		, m_lastIOErrorReason()
 		, m_lastIOStatusCode(http::OK)
@@ -169,12 +167,7 @@ namespace core {
 		size_t dotPos = m_scriptName.find_last_of('.');
 		std::string extension = (dotPos != std::string::npos) ? m_scriptName.substr(dotPos) : "";
 
-		static std::map<std::string, std::string> interpreters;
-		if (interpreters.empty()) {
-			interpreters[".py"] = "/usr/bin/python3";
-			interpreters[".sh"] = "/usr/bin/sh";
-		}
-
+		const std::map<std::string, std::string>& interpreters = m_serverConfig.global.cgiInterpreters;
 		std::map<std::string, std::string>::const_iterator it = interpreters.find(extension);
 		if (it == interpreters.end()) {
 			throw http::HttpException(http::NOT_IMPLEMENTED, "unsupported script type: " + extension);

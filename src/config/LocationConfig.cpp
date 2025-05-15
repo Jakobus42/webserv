@@ -11,7 +11,6 @@ namespace config {
 		, root()
 		, precalculatedAbsolutePath()
 		, redirectUri()
-		, returnClass(http::MOVED_PERMANENTLY)
 		, allowedMethods()
 		, uploadSubdirectory()
 		, autoindex(false)
@@ -29,7 +28,6 @@ namespace config {
 		, root(other.root)
 		, precalculatedAbsolutePath(other.precalculatedAbsolutePath)
 		, redirectUri(other.redirectUri)
-		, returnClass(other.returnClass)
 		, allowedMethods(other.allowedMethods)
 		, uploadSubdirectory(other.uploadSubdirectory)
 		, autoindex(other.autoindex)
@@ -45,7 +43,6 @@ namespace config {
 			root = other.root;
 			precalculatedAbsolutePath = other.precalculatedAbsolutePath;
 			redirectUri = other.redirectUri;
-			returnClass = other.returnClass;
 			allowedMethods = other.allowedMethods;
 			uploadSubdirectory = other.uploadSubdirectory;
 			autoindex = other.autoindex;
@@ -58,7 +55,7 @@ namespace config {
 	}
 
 	bool LocationConfig::acceptsFileUpload() const {
-		return !uploadSubdirectory.empty() && allowedMethods.find(http::POST) != allowedMethods.end();
+		return allowedMethods.find(http::POST) != allowedMethods.end();
 	}
 
 	// TODO: validate?

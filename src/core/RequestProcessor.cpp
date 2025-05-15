@@ -20,7 +20,7 @@ namespace core {
 	RequestProcessor::RequestProcessor(const config::Config::ServerConfigs& serverConfigs, io::Dispatcher& dispatcher)
 		: m_serverConfigs(serverConfigs)
 		, m_serverConfig(serverConfigs.at(0))
-		, m_cgiProcessor(dispatcher, m_serverConfig) // todo: pass global max_xxx stuff
+		, m_cgiProcessor(dispatcher, m_serverConfig)
 		, m_response(NULL)
 		, m_handlers()
 		, m_router()
@@ -206,7 +206,7 @@ namespace core {
 		const Route& route = m_router.getResult();
 
 		m_response->appendHeader("Location", route.redirectUri);
-		m_response->setStatusCode(route.location->returnClass);
+		m_response->setStatusCode(route.returnClass);
 	}
 
 	std::string RequestProcessor::generateErrorPage(http::StatusCode code) {

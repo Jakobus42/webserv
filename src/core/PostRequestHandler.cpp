@@ -74,7 +74,7 @@ namespace core {
 		if (filePath[0] != '/') {
 			filePath = "/" + filePath;
 		}
-		m_filePath = m_route.absoluteFilePath + filePath;
+		m_filePath = m_route.absoluteFilePath + m_route.location->uploadSubdirectory + filePath;
 		if (shared::file::exists(m_filePath)) {
 			throw http::HttpException(http::CONFLICT, "POST: A file with this name already exists");
 		}
