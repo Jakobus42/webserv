@@ -9,7 +9,6 @@ namespace config {
 	LocationConfig::LocationConfig()
 		: path()
 		, root()
-		, precalculatedAbsolutePath()
 		, redirectUri()
 		, allowedMethods()
 		, uploadSubdirectory()
@@ -26,7 +25,6 @@ namespace config {
 	LocationConfig::LocationConfig(const LocationConfig& other)
 		: path(other.path)
 		, root(other.root)
-		, precalculatedAbsolutePath(other.precalculatedAbsolutePath)
 		, redirectUri(other.redirectUri)
 		, allowedMethods(other.allowedMethods)
 		, uploadSubdirectory(other.uploadSubdirectory)
@@ -41,7 +39,6 @@ namespace config {
 		if (this != &other) {
 			path = other.path;
 			root = other.root;
-			precalculatedAbsolutePath = other.precalculatedAbsolutePath;
 			redirectUri = other.redirectUri;
 			allowedMethods = other.allowedMethods;
 			uploadSubdirectory = other.uploadSubdirectory;
@@ -81,10 +78,6 @@ namespace config {
 
 		if (!root.empty()) {
 			std::cout << indent << "  Root (string): " << root << std::endl;
-		}
-
-		if (!precalculatedAbsolutePath.empty()) {
-			std::cout << indent << "  Absolute path: " << precalculatedAbsolutePath << std::endl;
 		}
 
 		if (!redirectUri.second.empty()) {

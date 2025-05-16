@@ -93,7 +93,8 @@ namespace core {
 	}
 
 	void CGIProcessor::executeCGIScript(const http::Request& request) {
-		const std::string& scriptPath = request.getUri().getPath();
+		m_scriptName = request.getUri().getPath().substr(8 /* /cgi-bin/ */);
+		const std::string& scriptPath = m_serverConfig.global.cgiDirectory + m_scriptName;
 		if (shared::file::exists(scriptPath) == false) {
 			throw http::HttpException(http::NOT_FOUND, "script does not exist: " + std::string(std::strerror(errno)));
 		}
@@ -101,7 +102,6 @@ namespace core {
 			throw http::HttpException(http::FORBIDDEN, "script is not readable: " + std::string(std::strerror(errno)));
 		}
 
-		m_scriptName = scriptPath.substr(8 /* /cgi-bin/ */);
 
 		const std::string& interpreter = getInterpreter();
 		if (shared::file::isExecutable(interpreter) == false) {
@@ -131,7 +131,7 @@ namespace core {
 					const_cast<char*>(m_scriptName.c_str()),
 					NULL};
 
-				if (chdir((m_serverConfig.global.dataDirectory + "/cgi-bin").c_str()) == -1) {
+				if (chdir(m_serverConfig.global.cgiDirectory.c_str()) == -1) {
 					throw std::runtime_error("chdir() failed: " + std::string(std::strerror(errno)));
 				}
 

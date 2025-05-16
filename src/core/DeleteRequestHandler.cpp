@@ -15,7 +15,7 @@ namespace core {
 	// todo: ensure these codes are correct
 	// todo: maybe check for F_OK and W_OK, maybe more?
 	void DeleteRequestHandler::checkPathPermissions(const http::Request&) const throw(http::HttpException) {
-		shared::file::FileType fileType = shared::file::getFileType(m_route.absoluteFilePath);
+		shared::file::FileType fileType = shared::file::getFileType(m_route.filePath);
 
 		if (fileType == shared::file::NOT_FOUND) {
 			throw http::HttpException(http::NOT_FOUND, "DELETE: File doesn't exist");
@@ -26,7 +26,7 @@ namespace core {
 	}
 
 	void DeleteRequestHandler::deleteFile() throw(http::HttpException) {
-		if (std::remove(m_route.absoluteFilePath.c_str()) != 0) {
+		if (std::remove(m_route.filePath.c_str()) != 0) {
 			throw http::HttpException(http::FORBIDDEN, "DELETE: File could not be removed");
 		}
 	}
