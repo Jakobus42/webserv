@@ -5,6 +5,8 @@
 #include "shared/fileUtils.hpp"
 #include "shared/stringUtils.hpp"
 
+#include <ctime>
+
 namespace core {
 
 	const std::size_t PostRequestHandler::CHUNK_SIZE = 16384; // 16 KB
@@ -37,7 +39,7 @@ namespace core {
 		static std::size_t fileNo = 0;
 		std::string fileName;
 
-		fileName = shared::string::toString(static_cast<int>(time(NULL))) + "_" + shared::string::toString(fileNo) + "_upload.file";
+		fileName = shared::string::toString(static_cast<int>(std::time(NULL))) + "_" + shared::string::toString(fileNo) + "_upload.file";
 		fileNo += 1;
 		if (fileNo >= MAX_EXPECTED_UPLOADS_PER_SECOND) {
 			fileNo = 0;

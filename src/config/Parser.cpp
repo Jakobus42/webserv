@@ -1,6 +1,6 @@
 #include "config/Parser.hpp"
 
-#include <limits.h>
+#include <climits>
 #include <signal.h>
 
 #include "shared/Logger.hpp"
