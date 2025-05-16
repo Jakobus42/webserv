@@ -62,7 +62,6 @@ debug: all
 	@echo "$(GREEN)Launching debugger for $(NAME)...$(NC)"
 	gdb ./$(NAME)
 
-#todo: remove unused function supression before submission
 .PHONY: cppcheck
 cppcheck:
 	@echo "Running cppcheck..."
