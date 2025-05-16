@@ -12,8 +12,6 @@ namespace core {
 
 	DeleteRequestHandler::~DeleteRequestHandler() {}
 
-	// todo: ensure these codes are correct
-	// todo: maybe check for F_OK and W_OK, maybe more?
 	void DeleteRequestHandler::checkPathPermissions(const http::Request&) const throw(http::HttpException) {
 		shared::file::FileType fileType = shared::file::getFileType(m_route.filePath);
 
