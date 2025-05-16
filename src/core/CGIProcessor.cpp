@@ -162,7 +162,6 @@ namespace core {
 		}
 	}
 
-	// todo: get real interpreter path from env or config?
 	const std::string& CGIProcessor::getInterpreter() {
 		size_t dotPos = m_scriptName.find_last_of('.');
 		std::string extension = (dotPos != std::string::npos) ? m_scriptName.substr(dotPos) : "";
@@ -183,13 +182,18 @@ namespace core {
 		envVars.push_back("SERVER_PROTOCOL=" + request.getVersion());
 		envVars.push_back("SERVER_PORT=" + shared::string::toString(m_serverConfig.port));
 		envVars.push_back("SERVER_SOFTWARE=" + std::string("webserv/1.1"));
-		envVars.push_back("SERVER_NAME=" + m_serverConfig.serverNames.front()); // todo: set the correct one
 		envVars.push_back("QUERY_STRING=" + request.getUri().getQuery());
 		envVars.push_back("REQUEST_METHOD=" + std::string(methodToString(request.getMethod())));
 
 		envVars.push_back("SCRIPT_NAME=" + m_scriptName); // todo: this should maybe be "cgi-bin/foo.py" instead of "foo.py"
 		envVars.push_back("GATEWAY_INTERFACE=CGI/1.1");
 
+		const std::string& host = request.getHeader("Host").front();
+		if (!host.empty()) {
+			envVars.push_back("SERVER_NAME=" + host);
+		} else {
+			envVars.push_back("SERVER_NAME=" + m_serverConfig.socketAddress);
+		}
 		if (request.hasHeader("content-length")) {
 			envVars.push_back("CONTENT_LENGTH=" + request.getHeader("content-length").front());
 		} else {
