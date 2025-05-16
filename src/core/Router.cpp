@@ -80,7 +80,7 @@ namespace core {
 		returnClass = http::MOVED_PERMANENTLY;
 	}
 
-	void Route::generateFilePath() { filePath = location->root + remainingPath; }
+	void Route::generateFilePath() { filePath = location->root + location->path + remainingPath; }
 
 	void Route::generateRedirectUri() { redirectUri = location->redirectUri.second + remainingPath; }
 

@@ -178,7 +178,9 @@ namespace core {
 			const std::map<http::StatusCode, std::string>& errorPages = m_router.getResult().location->errorPages;
 			std::map<http::StatusCode, std::string>::const_iterator it = errorPages.find(code);
 			if (it != errorPages.end()) {
-				std::string path = m_router.getResult().location->root + "/" + it->second;
+				const config::LocationConfig* location = m_router.getResult().location;
+				std::string path = location->root + location->path + "/" + it->second;
+				std::cout << path << std::endl;
 				std::string buffer;
 				std::ifstream f(path.c_str());
 				if (f.is_open()) {
