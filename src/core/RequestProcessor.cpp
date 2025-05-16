@@ -174,6 +174,7 @@ namespace core {
 
 	void RequestProcessor::generateErrorResponse(http::StatusCode code) {
 		std::string response = "";
+
 		if (!m_router.getResult().empty()) {
 			const std::map<http::StatusCode, std::string>& errorPages = m_router.getResult().location->errorPages;
 			std::map<http::StatusCode, std::string>::const_iterator it = errorPages.find(code);
@@ -198,8 +199,9 @@ namespace core {
 			response = generateErrorPage(code);
 		}
 		m_response->setHeader("Connection", "close");
-		m_response->appendBody(response);
+		m_response->setBody(response);
 		m_response->setHeader("Content-Type", "text/html");
+		m_response->setStatusCode(code);
 	}
 
 	void RequestProcessor::generateRedirectResponse() {
