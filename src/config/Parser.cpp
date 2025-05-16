@@ -11,10 +11,6 @@
 #include <fstream>
 #include <iostream>
 
-// todo: decline invalid paths or something ig
-// todo: test this properly again to see if it behaves as expected.
-// todo: maybe make structs to class
-// todo: maybe remove signals
 namespace config {
 
 	bool Parser::m_readingFile = false;
@@ -189,7 +185,6 @@ namespace config {
 		}
 	}
 
-	// todo: maybe the server should still start with no config? just fall back to default and log a warning
 	bool Parser::parseFile(const std::string& fileName) {
 		signal(SIGINT, handleSigint);
 		signal(SIGQUIT, SIG_IGN);
@@ -614,7 +609,6 @@ namespace config {
 		if (shared::file::isExecutable(args[1]) == false) {
 			throw ParseException(m_lineIndex, "Path does not lead to an executable: " + args[1]);
 		}
-		// todo: if already exists in interpreters, throw exception
 		globalConfig.cgiInterpreters[args[0]] = args[1];
 	}
 

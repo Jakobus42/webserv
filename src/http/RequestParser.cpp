@@ -3,8 +3,6 @@
 #include "http/Request.hpp"
 #include "shared/stringUtils.hpp"
 
-// todo: validate scheme
-
 namespace http {
 
 	RequestParserConfig::RequestParserConfig()

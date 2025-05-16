@@ -55,7 +55,6 @@ namespace config {
 		return allowedMethods.find(http::POST) != allowedMethods.end();
 	}
 
-	// TODO: validate?
 	bool LocationConfig::hasRedirect() const {
 		return !redirectUri.second.empty();
 	}
@@ -64,7 +63,6 @@ namespace config {
 		return !root.empty();
 	}
 
-	// TODO: implement
 	void LocationConfig::validate() const {
 		if (path.empty()) {
 			throw ParseException("LocationConfig doesn't have a path");

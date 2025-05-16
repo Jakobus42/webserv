@@ -111,12 +111,6 @@ namespace core {
 		return contentTypes[type->second];
 	}
 
-	// todo: make sure path exists, file exists, can access, etc. etc.
-	// F_OK, R_OK, probably?
-	// throw correct status code if any issues arise
-	// case one: we get a directory with trailing '/'
-	// case two: we get a directory with no trailing '/'
-	// case three: we get an actual file with no trailing '/'
 	void GetRequestHandler::checkPathPermissions(const http::Request&) const throw(http::HttpException) {
 		if (m_fileType == shared::file::NOT_FOUND) {
 			throw http::HttpException(http::NOT_FOUND, "GET: File " + m_route.filePath + " doesn't exist");
