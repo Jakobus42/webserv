@@ -16,13 +16,13 @@ namespace core {
 			bool empty() const;
 			void reset();
 
-			void generateAbsoluteFilePath();
+			void generateFilePath();
 			void generateRedirectUri();
 
 		public:
 			const config::LocationConfig* location;
 			std::string remainingPath;
-			std::string absoluteFilePath;
+			std::string filePath;
 			std::string redirectUri;
 			http::StatusCode returnClass;
 	};

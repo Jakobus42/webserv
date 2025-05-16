@@ -14,7 +14,6 @@ namespace config {
 			unsigned long connectionTimeout;
 			unsigned long cgiTimeout;
 			unsigned long maxUriLength;
-			std::string dataDirectory;
 			std::map<std::string, std::string> cgiInterpreters;
 
 			HttpConfig();
@@ -23,7 +22,6 @@ namespace config {
 			HttpConfig& operator=(const HttpConfig& rhs);
 
 			void print() const;
-			void validate() const;
 	};
 
 } /* namespace config */

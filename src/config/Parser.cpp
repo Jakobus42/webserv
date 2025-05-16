@@ -64,7 +64,7 @@ namespace config {
 	}
 
 	static bool isValidPath(const std::string& path) {
-		return !path.empty() && path.at(0) == '/' && path.size() <= PATH_MAX;
+		return !path.empty() && path.size() <= PATH_MAX;
 	}
 
 	static bool hasSinglePathSeparator(const std::string& path) {
@@ -142,7 +142,6 @@ namespace config {
 			allowedDirectives["cgi_timeout"] = D_CGI_TIMEOUT;
 			allowedDirectives["max_uri_length"] = D_MAX_URI_LENGTH;
 			allowedDirectives["cgi_interpreter"] = D_CGI_INTERPRETER;
-			allowedDirectives["data_dir"] = D_DATA_DIR;
 		}
 		return allowedDirectives;
 	}
@@ -261,21 +260,20 @@ namespace config {
 
 		for (std::vector<ServerConfig>::iterator server = m_config.serverConfigs.begin(); server != m_config.serverConfigs.end(); ++server) {
 			++i;
-			server->location.precalculatedAbsolutePath = m_config.globalConfig.dataDirectory + server->location.root;
-			if (!isValidPath(server->location.precalculatedAbsolutePath)) {
+			if (!isValidPath(server->location.root)) {
 				throw ParseException("Server #" + shared::string::toString(i) + ": Root path is invalid");
 			}
 			// TODO: check whether that directory exists and is accessible?
-			if (!shared::file::isDirectory(server->location.precalculatedAbsolutePath)) {
+			if (!shared::file::isDirectory(server->location.root)) {
 				throw ParseException("Server #" + shared::string::toString(i) + ": root is not a directory");
 			}
-			if (!shared::file::isReadable(server->location.precalculatedAbsolutePath)) {
+			if (!shared::file::isReadable(server->location.root)) {
 				throw ParseException("Server #" + shared::string::toString(i) + ": root is not readable");
 			}
-			if (!shared::file::isWritable(server->location.precalculatedAbsolutePath)) {
+			if (!shared::file::isWritable(server->location.root)) {
 				throw ParseException("Server #" + shared::string::toString(i) + ": root is not writable");
 			}
-			assignAbsolutePaths(*server, server->location); // start with server & rootLocation
+			assignPaths(*server, server->location); // start with server & rootLocation
 		}
 
 		for (std::vector<ServerConfig>::const_iterator it = m_config.serverConfigs.begin(); it != m_config.serverConfigs.end(); ++it) {
@@ -283,17 +281,15 @@ namespace config {
 		}
 	}
 
-	void Parser::assignAbsolutePaths(ServerConfig& server, LocationConfig& parentLocation) throw(ParseException) {
+	void Parser::assignPaths(ServerConfig& server, LocationConfig& parentLocation) throw(ParseException) {
 		for (std::vector<LocationConfig>::iterator location = parentLocation.locations.begin(); location != parentLocation.locations.end(); ++location) {
-			if (location->hasOwnRoot()) {
-				location->precalculatedAbsolutePath = server.location.precalculatedAbsolutePath + location->root;
-			} else {
-				location->precalculatedAbsolutePath = parentLocation.precalculatedAbsolutePath;
+			if (!location->hasOwnRoot()) {
+				location->root = parentLocation.root;
 			}
-			if (!isValidPath(location->precalculatedAbsolutePath)) {
+			if (!isValidPath(location->root)) {
 				throw ParseException("Location \"" + location->path + "\": Path is invalid");
 			}
-			assignAbsolutePaths(server, *location);
+			assignPaths(server, *location);
 		}
 	}
 
@@ -307,7 +303,6 @@ namespace config {
 		while (m_readPos < m_data.size()) {
 			skipWhitespace();
 			if (matchToken("}")) {
-				m_config.globalConfig.validate();
 				return;
 			}
 			if (m_readPos < m_data.size() && m_data[m_readPos] == '{') {
@@ -466,8 +461,6 @@ namespace config {
 				return parseIntegerValue("cgi_timeout", value, m_config.globalConfig.cgiTimeout);
 			case D_MAX_URI_LENGTH:
 				return parseIntegerValue("max_uri_length", value, m_config.globalConfig.maxUriLength);
-			case D_DATA_DIR:
-				return parsePathValue("data_dir", value, m_config.globalConfig.dataDirectory);
 			default:
 				return (this->*(tokenParsers[type]))(value, m_config.globalConfig);
 		}

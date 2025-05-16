@@ -11,7 +11,6 @@ namespace config {
 	struct LocationConfig {
 			std::string path;									  // location name split into tokens
 			std::string root;									  // root split into tokens
-			std::string precalculatedAbsolutePath;				  // absolute path to this location's root, pre-calculated after parsing
 			std::pair<http::StatusCode, std::string> redirectUri; // return route (references other locations)
 			std::set<http::Method> allowedMethods;				  // allowed HTTP methods
 			std::string uploadSubdirectory;						  // subdirectory for uploads

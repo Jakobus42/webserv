@@ -46,7 +46,7 @@ namespace core {
 	}
 
 	void PostRequestHandler::checkPathPermissions(const http::Request&) const throw(http::HttpException) {
-		shared::file::FileType fileType = shared::file::getFileType(m_route.absoluteFilePath);
+		shared::file::FileType fileType = shared::file::getFileType(m_route.filePath);
 
 		if (fileType == shared::file::NOT_FOUND) {
 			throw http::HttpException(http::FORBIDDEN, "POST: Directory could not be found");
@@ -74,7 +74,7 @@ namespace core {
 		if (filePath[0] != '/') {
 			filePath = "/" + filePath;
 		}
-		m_filePath = m_route.absoluteFilePath + m_route.location->uploadSubdirectory + filePath;
+		m_filePath = m_route.filePath + m_route.location->uploadSubdirectory + filePath;
 		if (shared::file::exists(m_filePath)) {
 			throw http::HttpException(http::CONFLICT, "POST: A file with this name already exists");
 		}

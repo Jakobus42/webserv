@@ -47,7 +47,6 @@ namespace config {
 				D_CGI_TIMEOUT,
 				D_CGI_INTERPRETER,
 				D_CONNECTION_TIMEOUT,
-				D_DATA_DIR,
 				_D_HTTP_TYPES,
 				D_LISTEN,
 				D_SERVER_NAME,
@@ -95,7 +94,7 @@ namespace config {
 			void parseCGIInterpreter(const std::string& value, HttpConfig& globalConfig) throw(ParseException);
 
 			uint32_t parseIpAddress(const std::string& host) throw(ParseException);
-			void assignAbsolutePaths(ServerConfig& server, LocationConfig& parentLocation) throw(ParseException);
+			void assignPaths(ServerConfig& server, LocationConfig& parentLocation) throw(ParseException);
 
 			// ------------------------  location parsers  ------------------ //
 			void parseReturn(const std::string& value, LocationConfig& location) throw(ParseException);

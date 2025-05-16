@@ -119,7 +119,7 @@ namespace core {
 	// case three: we get an actual file with no trailing '/'
 	void GetRequestHandler::checkPathPermissions(const http::Request&) const throw(http::HttpException) {
 		if (m_fileType == shared::file::NOT_FOUND) {
-			throw http::HttpException(http::NOT_FOUND, "GET: File " + m_route.absoluteFilePath + " doesn't exist");
+			throw http::HttpException(http::NOT_FOUND, "GET: File " + m_route.filePath + " doesn't exist");
 		}
 		const config::LocationConfig& location = *m_route.location;
 		if (m_fileType == shared::file::DIRECTORY) {
@@ -174,18 +174,18 @@ namespace core {
 	}
 
 	void GetRequestHandler::generateAutoindexResponse(const http::Request& request, http::Response& response) {
-		response.appendBody(generateDirectoryListing(request, m_route.absoluteFilePath));
+		response.appendBody(generateDirectoryListing(request, m_route.filePath));
 		response.setStatusCode(http::OK);
 		response.setHeader("Content-Type", "text/html");
 	}
 
 	void GetRequestHandler::selectFile() {
 		if (m_fileType == shared::file::FILE) {
-			m_filePath = m_route.absoluteFilePath;
+			m_filePath = m_route.filePath;
 		} else {
 			const config::LocationConfig& location = *m_route.location;
 			for (std::vector<std::string>::const_iterator indexFile = location.indexFile.begin(); indexFile != location.indexFile.end(); ++indexFile) {
-				m_filePath = m_route.absoluteFilePath + "/" + *indexFile;
+				m_filePath = m_route.filePath + "/" + *indexFile;
 				if (shared::file::isRegularFile(m_filePath) == true) {
 					return;
 				}
@@ -201,7 +201,7 @@ namespace core {
 	void GetRequestHandler::openFile() {
 		m_fileStream.open(m_filePath.data());
 		if (!m_fileStream.is_open()) {
-			throw http::HttpException(http::FORBIDDEN, "GET: File " + m_route.absoluteFilePath + " could not be opened");
+			throw http::HttpException(http::FORBIDDEN, "GET: File " + m_route.filePath + " could not be opened");
 		}
 		m_fileStream.seekg(m_streamPosition);
 	}
@@ -228,7 +228,7 @@ namespace core {
 	bool GetRequestHandler::handle(const http::Request& request, http::Response& response) throw(http::HttpException) {
 		switch (m_state) {
 			case PREPROCESS: {
-				m_fileType = shared::file::getFileType(m_route.absoluteFilePath);
+				m_fileType = shared::file::getFileType(m_route.filePath);
 				checkPathPermissions(request);
 				selectFile();
 				if (m_shouldAutoindex == true) {

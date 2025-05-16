@@ -15,7 +15,6 @@ namespace config {
 		, connectionTimeout(60)
 		, cgiTimeout(60)
 		, maxUriLength(1024)
-		, dataDirectory("")
 		, cgiInterpreters() {}
 
 	HttpConfig::~HttpConfig() {}
@@ -29,7 +28,6 @@ namespace config {
 		, connectionTimeout(other.connectionTimeout)
 		, cgiTimeout(other.cgiTimeout)
 		, maxUriLength(other.maxUriLength)
-		, dataDirectory(other.dataDirectory)
 		, cgiInterpreters(other.cgiInterpreters) {}
 
 	HttpConfig& HttpConfig::operator=(const HttpConfig& rhs) {
@@ -44,7 +42,6 @@ namespace config {
 		connectionTimeout = rhs.connectionTimeout;
 		cgiTimeout = rhs.cgiTimeout;
 		maxUriLength = rhs.maxUriLength;
-		dataDirectory = rhs.dataDirectory;
 		cgiInterpreters = rhs.cgiInterpreters;
 		return *this;
 	}
@@ -60,18 +57,11 @@ namespace config {
 		std::cout << "ConnectionTimeout: " << connectionTimeout << std::endl;
 		std::cout << "cgiTimeout: " << cgiTimeout << std::endl;
 		std::cout << "maxUriLength: " << maxUriLength << std::endl;
-		std::cout << "dataDirectory: " << dataDirectory << std::endl;
 		for (std::map<std::string, std::string>::const_iterator interpreter = cgiInterpreters.begin(); interpreter != cgiInterpreters.end(); ++interpreter) {
 			std::cout << interpreter->first << " => " << interpreter->second << std::endl;
 		}
 
 		std::cout << "--------------------------------" << std::endl;
-	}
-
-	void HttpConfig::validate() const {
-		if (dataDirectory.empty()) {
-			throw ParseException("HTTP block requires a 'data_dir'");
-		}
 	}
 
 } /* namespace config */

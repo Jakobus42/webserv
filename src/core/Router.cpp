@@ -26,7 +26,7 @@ namespace core {
 		}
 		m_routeResult.location = &currentLocation;
 		m_routeResult.remainingPath = uriPath.toString();
-		m_routeResult.generateAbsoluteFilePath();
+		m_routeResult.generateFilePath();
 	}
 
 	bool Router::methodIsAllowed(http::Method method) const {
@@ -46,7 +46,7 @@ namespace core {
 	Route::Route()
 		: location(NULL)
 		, remainingPath("")
-		, absoluteFilePath("")
+		, filePath("")
 		, redirectUri("")
 		, returnClass(http::MOVED_PERMANENTLY) {}
 
@@ -55,7 +55,7 @@ namespace core {
 	Route::Route(const Route& other)
 		: location(other.location)
 		, remainingPath(other.remainingPath)
-		, absoluteFilePath(other.absoluteFilePath)
+		, filePath(other.filePath)
 		, redirectUri(other.redirectUri)
 		, returnClass(other.returnClass) {}
 
@@ -63,7 +63,7 @@ namespace core {
 		if (this != &rhs) {
 			location = rhs.location;
 			remainingPath = rhs.remainingPath;
-			absoluteFilePath = rhs.absoluteFilePath;
+			filePath = rhs.filePath;
 			redirectUri = rhs.redirectUri;
 			returnClass = rhs.returnClass;
 		}
@@ -75,12 +75,12 @@ namespace core {
 	void Route::reset() {
 		location = NULL;
 		remainingPath.clear();
-		absoluteFilePath.clear();
+		filePath.clear();
 		redirectUri.clear();
 		returnClass = http::MOVED_PERMANENTLY;
 	}
 
-	void Route::generateAbsoluteFilePath() { absoluteFilePath = location->precalculatedAbsolutePath + remainingPath; }
+	void Route::generateFilePath() { filePath = location->root + remainingPath; }
 
 	void Route::generateRedirectUri() { redirectUri = location->redirectUri.second + remainingPath; }
 
