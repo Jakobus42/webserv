@@ -14,6 +14,7 @@ namespace config {
 			unsigned long connectionTimeout;
 			unsigned long cgiTimeout;
 			unsigned long maxUriLength;
+			std::string cgiDirectory;
 			std::map<std::string, std::string> cgiInterpreters;
 
 			HttpConfig();

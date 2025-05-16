@@ -142,6 +142,7 @@ namespace config {
 			allowedDirectives["cgi_timeout"] = D_CGI_TIMEOUT;
 			allowedDirectives["max_uri_length"] = D_MAX_URI_LENGTH;
 			allowedDirectives["cgi_interpreter"] = D_CGI_INTERPRETER;
+			allowedDirectives["cgi_dir"] = D_CGI_DIRECTORY;
 		}
 		return allowedDirectives;
 	}
@@ -262,16 +263,6 @@ namespace config {
 			++i;
 			if (!isValidPath(server->location.root)) {
 				throw ParseException("Server #" + shared::string::toString(i) + ": Root path is invalid");
-			}
-			// TODO: check whether that directory exists and is accessible?
-			if (!shared::file::isDirectory(server->location.root)) {
-				throw ParseException("Server #" + shared::string::toString(i) + ": root is not a directory");
-			}
-			if (!shared::file::isReadable(server->location.root)) {
-				throw ParseException("Server #" + shared::string::toString(i) + ": root is not readable");
-			}
-			if (!shared::file::isWritable(server->location.root)) {
-				throw ParseException("Server #" + shared::string::toString(i) + ": root is not writable");
 			}
 			assignPaths(*server, server->location); // start with server & rootLocation
 		}
@@ -461,6 +452,8 @@ namespace config {
 				return parseIntegerValue("cgi_timeout", value, m_config.globalConfig.cgiTimeout);
 			case D_MAX_URI_LENGTH:
 				return parseIntegerValue("max_uri_length", value, m_config.globalConfig.maxUriLength);
+			case D_CGI_DIRECTORY:
+				return parsePathValue("cgi_dir", value, m_config.globalConfig.cgiDirectory);
 			default:
 				return (this->*(tokenParsers[type]))(value, m_config.globalConfig);
 		}

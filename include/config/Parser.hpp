@@ -46,6 +46,7 @@ namespace config {
 				D_MAX_URI_LENGTH,
 				D_CGI_TIMEOUT,
 				D_CGI_INTERPRETER,
+				D_CGI_DIRECTORY,
 				D_CONNECTION_TIMEOUT,
 				_D_HTTP_TYPES,
 				D_LISTEN,
