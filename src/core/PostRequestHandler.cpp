@@ -37,7 +37,7 @@ namespace core {
 		static std::size_t fileNo = 0;
 		std::string fileName;
 
-		fileName = shared::string::toString(static_cast<int>(time(NULL))) + "_" + shared::string::toString(fileNo) + "_upload.dat";
+		fileName = shared::string::toString(static_cast<int>(time(NULL))) + "_" + shared::string::toString(fileNo) + "_upload.file";
 		fileNo += 1;
 		if (fileNo >= MAX_EXPECTED_UPLOADS_PER_SECOND) {
 			fileNo = 0;

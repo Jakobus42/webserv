@@ -277,6 +277,9 @@ namespace config {
 			if (!location->hasOwnRoot()) {
 				location->root = parentLocation.root;
 			}
+			if (!location->uploadSubdirectory.empty() && location->uploadSubdirectory[0] != '/') {
+				location->uploadSubdirectory = "/" + location->uploadSubdirectory;
+			}
 			if (!isValidPath(location->root)) {
 				throw ParseException("Location \"" + location->path + "\": Path is invalid");
 			}
@@ -515,7 +518,11 @@ namespace config {
 		if (!isValidPath(value)) {
 			throw ParseException(m_lineIndex, "Invalid path for " + key + ": " + value);
 		}
-		destination = value; // strip this of whitespace if that doesn't happen yet
+		if (value[0] != '/' && value.find("./") != 0 && value.find("../") != 0) {
+			destination = "./" + value;
+		} else {
+			destination = value; // strip this of whitespace if that doesn't happen yet
+		}
 	}
 
 	uint32_t Parser::parseIpAddress(const std::string& host) throw(ParseException) {
