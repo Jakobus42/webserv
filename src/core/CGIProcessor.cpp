@@ -185,7 +185,7 @@ namespace core {
 		envVars.push_back("QUERY_STRING=" + request.getUri().getQuery());
 		envVars.push_back("REQUEST_METHOD=" + std::string(methodToString(request.getMethod())));
 
-		envVars.push_back("SCRIPT_NAME=" + m_scriptName); // todo: this should maybe be "cgi-bin/foo.py" instead of "foo.py"
+		envVars.push_back("SCRIPT_NAME=" + m_scriptName);
 		envVars.push_back("GATEWAY_INTERFACE=CGI/1.1");
 
 		const std::string& host = request.getHeader("Host").front();
