@@ -4,7 +4,6 @@
 #include "shared/stringUtils.hpp"
 
 // todo: validate scheme
-// todo: better error messages for uri
 
 namespace http {
 

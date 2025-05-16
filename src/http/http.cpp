@@ -119,20 +119,4 @@ namespace http {
 		throw HttpException(NOT_IMPLEMENTED, "method not implemented");
 	}
 
-	// std::string statusCodeToErrorPage(StatusCode statusCode) {
-	// 	static const char* errorPageTemplate =
-	// 		"<!DOCTYPE html><html lang=\"en\"><head><title>%d %s</title><style>"
-	// 		"body{background-color:#2b3042;justify-content: center;text-align: center;color:#d3dbeb;}"
-	// 		"h1{font-size:5rem;}p{font-size: 1.5rem;padding-bottom: 10px;}a{"
-	// 		"text-decoration: none;color: #d3dbeb;padding: 10px;border: 3px solid #d3dbeb;font-weight: bold;}</style>"
-	// 		"</head><body><h1>%d</h1><p>%s</p><a href=\"/\">Go Back to Home</a></body></html>";
-
-	// 	char errorPage[1024];
-	// 	const char* statusMessage = getStatusMessage(statusCode).c_str();
-	// 	std::cout << "getErrorPage writing: " << statusCode << " " << statusMessage << std::endl;
-	// 	snprintf(errorPage, sizeof(errorPage), errorPageTemplate, statusCode, statusMessage, statusCode, statusMessage); // TODO: replace this with a legal function
-
-	// 	return std::string(errorPage);
-	// }
-
 } // namespace http

@@ -7,7 +7,7 @@
 
 #include <limits>
 
-// todo: some weird implementation stuff and fixes but who cares if it works ig (maybe fix some day .-.)
+// some weird implementation stuff and fixes but who cares if it works ig (maybe fix some day .-.)
 
 namespace http {
 
