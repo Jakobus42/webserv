@@ -238,7 +238,7 @@ namespace core {
 	}
 
 	bool CGIProcessor::monitor() {
-		time_t now = time(NULL);
+		time_t now = std::time(NULL);
 		if ((now - m_startTime) > m_timeout) {
 			throw http::HttpException(http::GATEWAY_TIMEOUT, "CGI Process timed out after " + shared::string::toString(m_timeout) + " seconds");
 		}
