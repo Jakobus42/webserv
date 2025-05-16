@@ -12,7 +12,7 @@ namespace core {
 	ConnectionEventHandler::ConnectionEventHandler(VirtualServer& vServer, Connection& conn, io::Dispatcher& dispatcher)
 		: m_vServer(vServer)
 		, m_connection(conn)
-		, m_requestParser(http::RequestParserConfig()) // todo: set max stuff from gloabl http block
+		, m_requestParser(http::RequestParserConfig(vServer.getServerConfigs().front().global))
 		, m_requestProcessor(vServer.getServerConfigs(), dispatcher)
 		, m_totalBytesSent(0)
 		, m_requests()
