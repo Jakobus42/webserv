@@ -19,6 +19,7 @@ namespace http {
 			return m_serializedData;
 		}
 
+		m_reasonPhrase = statusCodeToMessage(m_statusCode);
 		if (!hasHeader("Content-Length")) {
 			appendHeader("Content-Length", shared::string::toString(m_body.size()));
 		}
