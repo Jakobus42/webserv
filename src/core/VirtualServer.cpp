@@ -71,7 +71,10 @@ namespace core {
 		}
 	}
 
-	void VirtualServer::listen() { m_listenSocket->listen(); }
+	void VirtualServer::listen() {
+		LOG_INFO("listening on: " + m_configs.front().socketAddress);
+		m_listenSocket->listen();
+	}
 
 	void VirtualServer::shutdown() {
 		if (m_listenSocket->isValid() == false) {
