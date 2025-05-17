@@ -36,17 +36,22 @@ namespace core {
 	}
 
 	Connection* VirtualServer::acceptNewConnection() {
-		// this looks so ugly but we have to make sure to not leak...
+		io::Socket* clientSocket = NULL;
+		Connection* conn = NULL;
+
 		try {
-			io::Socket* clientSocket = m_listenSocket->accept();
+			clientSocket = m_listenSocket->accept();
 			if (!clientSocket) {
 				return NULL;
 			}
 
-			Connection* conn = new Connection(clientSocket, m_configs.at(0).global.connectionTimeout);
 			try {
+				Connection* conn = new Connection(clientSocket, m_configs.at(0).global.connectionTimeout);
 				m_connections.push_back(conn);
 			} catch (const std::exception&) {
+				if (!conn) {
+					delete clientSocket;
+				}
 				delete conn;
 				throw;
 			}

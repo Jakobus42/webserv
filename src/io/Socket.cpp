@@ -73,11 +73,16 @@ namespace io {
 				throw std::runtime_error("accept() failed: " + std::string(strerror(errno)));
 			}
 		}
+		Socket* connectionSocket = NULL;
+		try {
+			connectionSocket = new Socket(connectionFd);
+		} catch (const std::bad_alloc&) {
+			::close(connectionFd);
+			throw;
+		}
+		connectionSocket->m_peerAddr = addr;
 
-		Socket* clientSocket = new Socket(connectionFd);
-		clientSocket->m_peerAddr = addr;
-
-		return clientSocket;
+		return connectionSocket;
 	}
 
 	void Socket::close() {
