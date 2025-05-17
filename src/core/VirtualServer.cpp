@@ -45,13 +45,10 @@ namespace core {
 				return NULL;
 			}
 
+			conn = new Connection(clientSocket, m_configs.at(0).global.connectionTimeout);
 			try {
-				Connection* conn = new Connection(clientSocket, m_configs.at(0).global.connectionTimeout);
 				m_connections.push_back(conn);
 			} catch (const std::exception&) {
-				if (!conn) {
-					delete clientSocket;
-				}
 				delete conn;
 				throw;
 			}
@@ -59,8 +56,14 @@ namespace core {
 			LOG_INFO("accepted new connection: " + conn->getConnectionInfo());
 			return conn;
 		} catch (const std::bad_alloc&) {
+			if (clientSocket && !conn) {
+				delete clientSocket;
+			}
 			throw;
 		} catch (const std::exception& e) {
+			if (clientSocket && !conn) {
+				delete clientSocket;
+			}
 			LOG_ERROR("failed to accept connection:" + std::string(e.what()));
 		}
 		return NULL;
