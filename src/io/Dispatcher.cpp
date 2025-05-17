@@ -48,6 +48,10 @@ namespace io {
 	}
 
 	int32_t Dispatcher::dispatch(int32_t timeoutMs) {
+		if (m_handlers.empty()) {
+			throw std::runtime_error("no handlers registered for dispatching");
+		}
+
 		int32_t numEvents = m_multiplexer.poll(timeoutMs);
 
 		const AMultiplexer::Events& events = m_multiplexer.getReadyEvents();
@@ -94,8 +98,6 @@ namespace io {
 			if (result == UNREGISTER) {
 				secureUnregisterHandler(event.fd);
 			}
-		} catch (const std::bad_alloc&) {
-			throw;
 		} catch (const std::exception& e) {
 			LOG_ERROR("handler failed for fd " + shared::string::toString(event.fd) + ": " + e.what());
 			secureUnregisterHandler(event.fd);
