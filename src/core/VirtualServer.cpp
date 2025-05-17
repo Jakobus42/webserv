@@ -61,9 +61,6 @@ namespace core {
 			}
 			throw;
 		} catch (const std::exception& e) {
-			if (clientSocket && !conn) {
-				delete clientSocket;
-			}
 			LOG_ERROR("failed to accept connection:" + std::string(e.what()));
 		}
 		return NULL;
