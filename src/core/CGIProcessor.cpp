@@ -191,12 +191,7 @@ namespace core {
 		} else {
 			envVars.push_back("SERVER_NAME=" + m_serverConfig.socketAddress);
 		}
-		if (request.hasHeader("content-length")) {
-			envVars.push_back("CONTENT_LENGTH=" + request.getHeader("content-length").front());
-		} else {
-			envVars.push_back("CONTENT_LENGTH=0");
-		}
-
+		envVars.push_back("CONTENT_LENGTH=" + shared::string::toString(request.getBody().size()));
 		if (request.hasHeader("content-type")) {
 			envVars.push_back("CONTENT_TYPE=" + request.getHeader("content-type").front());
 		} else {
