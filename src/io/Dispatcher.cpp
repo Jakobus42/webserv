@@ -48,6 +48,9 @@ namespace io {
 	}
 
 	int32_t Dispatcher::dispatch(int32_t timeoutMs) {
+		if (m_handlers.empty()) {
+			throw std::runtime_error("no handlers registered for dispatching");
+		}
 		int32_t numEvents = m_multiplexer.poll(timeoutMs);
 
 		const AMultiplexer::Events& events = m_multiplexer.getReadyEvents();

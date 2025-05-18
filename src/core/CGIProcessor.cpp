@@ -34,10 +34,7 @@ namespace core {
 		, m_lastIOErrorReason()
 		, m_lastIOStatusCode(http::OK)
 		, m_state(EXECUTE)
-		, m_env(NULL) {
-		m_inputPipe.open();
-		m_outputPipe.open();
-	}
+		, m_env(NULL) {}
 
 	CGIProcessor::~CGIProcessor() { cleanup(); }
 
@@ -72,8 +69,6 @@ namespace core {
 	void CGIProcessor::reset() {
 		cleanup();
 
-		m_inputPipe.open();
-		m_outputPipe.open();
 		m_state = EXECUTE;
 		m_ioState = IO_NONE;
 	}
@@ -102,11 +97,13 @@ namespace core {
 			throw http::HttpException(http::FORBIDDEN, "script is not readable: " + std::string(std::strerror(errno)));
 		}
 
-
 		const std::string& interpreter = getInterpreter();
 		if (shared::file::isExecutable(interpreter) == false) {
 			throw http::HttpException(http::FORBIDDEN, "interpreter is not executable: " + std::string(std::strerror(errno)));
 		}
+
+		m_inputPipe.open();
+		m_outputPipe.open();
 
 		m_startTime = std::time(NULL);
 
