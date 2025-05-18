@@ -381,7 +381,7 @@ namespace config {
 		if (path.empty()) {
 			throw ParseException(m_lineIndex, "Location has no path");
 		}
-		if (!isValidPath(path) || !hasSinglePathSeparator(path) || path == "/") {
+		if (!isValidPath(path) || !hasSinglePathSeparator(path) || path == "/" || path[0] != '/') {
 			throw ParseException(m_lineIndex, "Location path is invalid: '" + path + "'");
 		}
 		consume(path.length());
