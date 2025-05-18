@@ -31,8 +31,13 @@ namespace http {
 			virtual ParseResult parseStartLine();
 			void parseUriOriginForm(const shared::string::StringView& uriView);
 			void parseUriAbsoluteForm(const shared::string::StringView& uriView);
+			void decodeUri(class Uri& uri);
 			void parsePath();
 			std::string normalizePath(const std::string& path);
+
+			static bool isHexadecimal(char c);
+			static char hexToChar(char left, char right);
+			static std::string decodeHexEncoded(const std::string& str);
 
 			virtual void interpretHeaders();
 

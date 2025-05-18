@@ -7,6 +7,7 @@
 #include "shared/fileUtils.hpp"
 
 #include <cstring>
+#include <iomanip>
 
 namespace core {
 
@@ -108,7 +109,7 @@ namespace core {
 		if (type == contentTypes.end()) {
 			return octetStreamType;
 		}
-		return contentTypes[type->second];
+		return type->second;
 	}
 
 	void GetRequestHandler::checkPathPermissions(const http::Request&) const throw(http::HttpException) {
@@ -121,6 +122,28 @@ namespace core {
 				throw http::HttpException(http::FORBIDDEN, "GET: Requested directory does not have an index");
 			}
 		}
+	}
+
+	std::string GetRequestHandler::hexEncode(const std::string& str) {
+		static const std::string UNRESERVED_CHARACTERS = "-_.~";
+		std::ostringstream oss;
+
+		for (std::size_t i = 0; i < str.size(); ++i) {
+			unsigned char c = static_cast<unsigned char>(str[i]);
+
+			if (isalnum(str[i]) || UNRESERVED_CHARACTERS.find(str[i]) != std::string::npos) {
+				oss << str[i];
+			} else {
+				oss << '%'
+					<< std::uppercase
+					<< std::setw(2)
+					<< std::setfill('0')
+					<< std::hex
+					<< static_cast<int>(c);
+				oss << std::dec << std::nouppercase;
+			}
+		}
+		return oss.str();
 	}
 
 	std::string GetRequestHandler::generateDirectoryListing(const http::Request& request, const std::string& filePath) {
@@ -156,9 +179,9 @@ namespace core {
 
 			std::string link;
 			if (ent->d_type == DT_DIR) {
-				link = "<a href=\"http://" + baseUrl + fileName + "\">" + fileName + "/</a>";
+				link = "<a href=\"http://" + baseUrl + hexEncode(fileName) + "\">" + fileName + "/</a>";
 			} else {
-				link = "<a href=\"http://" + baseUrl + fileName + "\">" + fileName + "</a>";
+				link = "<a href=\"http://" + baseUrl + hexEncode(fileName) + "\">" + fileName + "</a>";
 			}
 			// does '///' get normalized to '/' ? I think this still breaks things, so foo//bar isn't foo/bar
 			bodyTemp += "<li>" + link + "</li>";
