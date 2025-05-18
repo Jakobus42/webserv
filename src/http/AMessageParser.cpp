@@ -156,7 +156,7 @@ namespace http {
 
 	bool AMessageParser::isChunked() const {
 		return m_message->hasHeader("transfer-encoding") &&
-			m_message->getHeader("transfer-encoding").front() == "chunked";
+			!shared::string::CaseInsensitiveComparator()(m_message->getHeader("transfer-encoding").front(), "chunked");
 	}
 
 	bool AMessageParser::isTChar(char c) const { return TCHAR[static_cast<unsigned char>(c)] != 0; }
