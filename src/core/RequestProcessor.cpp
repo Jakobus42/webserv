@@ -34,9 +34,25 @@ namespace core {
 	}
 
 	void RequestProcessor::init() {
-		m_handlers[http::GET] = new GetRequestHandler();
-		m_handlers[http::POST] = new PostRequestHandler();
-		m_handlers[http::DELETE] = new DeleteRequestHandler();
+		GetRequestHandler* getHandler = NULL;
+		PostRequestHandler* postHandler = NULL;
+		DeleteRequestHandler* deleteHandler = NULL;
+
+		try {
+			getHandler = new GetRequestHandler();
+			postHandler = new PostRequestHandler();
+			deleteHandler = new DeleteRequestHandler();
+			m_handlers[http::GET] = getHandler;
+			m_handlers[http::POST] = postHandler;
+			m_handlers[http::DELETE] = deleteHandler;
+		} catch (const std::bad_alloc& e) {
+			LOG_ERROR("RequestProcessor::init(): " + std::string(e.what()));
+			m_handlers.clear();
+			delete getHandler;
+			delete postHandler;
+			delete deleteHandler;
+			throw;
+		}
 	}
 
 	void RequestProcessor::resolveHost(const http::Request& request) {
