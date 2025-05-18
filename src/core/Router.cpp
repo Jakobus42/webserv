@@ -19,9 +19,15 @@ namespace core {
 			throw http::HttpException(http::LOOP_DETECTED, "Depth exceeded MAX_ROUTE_DEPTH");
 		}
 		for (std::vector<config::LocationConfig>::const_iterator location = currentLocation.locations.begin(); location != currentLocation.locations.end(); ++location) {
-			shared::string::StringView pathView(location->path.c_str());
-			if (!pathView.empty() && uriPath.find(pathView, 0) == 0) {
-				return route(uriPath.substr(pathView.size()), *location, depth + 1);
+			shared::string::StringView locationPath(location->path.c_str());
+
+			if (!locationPath.empty() && uriPath.find(locationPath, 0) == 0) {
+				if (uriPath.size() == locationPath.size()) {
+					return route(uriPath.substr(locationPath.size()), *location, depth + 1);
+				}
+				if (uriPath.size() > locationPath.size() && uriPath[locationPath.size()] == '/') {
+					return route(uriPath.substr(locationPath.size()), *location, depth + 1);
+				}
 			}
 		}
 		m_routeResult.location = &currentLocation;
