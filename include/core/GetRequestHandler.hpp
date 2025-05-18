@@ -28,6 +28,8 @@ namespace core {
 			std::string generateDirectoryListing(const http::Request& request, const std::string& filePath);
 			const std::string& getMimeType() const;
 
+			std::string hexEncode(const std::string& str);
+
 		private:
 			static const std::streamsize BUFFER_SIZE = 16384; // 16 KB
 

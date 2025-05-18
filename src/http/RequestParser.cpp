@@ -70,12 +70,66 @@ namespace http {
 		return DONE;
 	}
 
+	bool RequestParser::isHexadecimal(char c) {
+		if (c <= '9' && c >= '0') {
+			return true;
+		}
+		if (c <= 'f' && c >= 'a') {
+			return true;
+		}
+		if (c <= 'F' && c >= 'A') {
+			return true;
+		}
+		return false;
+	}
+
+	char RequestParser::hexToChar(char left, char right) {
+		std::stringstream ss;
+		unsigned int c = 0;
+
+		ss << std::hex << left << right;
+		ss >> c;
+
+		return static_cast<char>(c);
+	}
+
+	std::string RequestParser::decodeHexEncoded(const std::string& str) {
+		std::string decodedStr;
+
+		for (std::size_t i = 0; i < str.size(); ++i) {
+			if (str[i] == '%') {
+				if (str.size() - i < 3) {
+					throw HttpException(BAD_REQUEST, "Invalid percent-encoded uri");
+				}
+				char left = str[i + 1];
+				char right = str[i + 2];
+				if (!isHexadecimal(left) || !isHexadecimal(right)) {
+					throw HttpException(BAD_REQUEST, "Invalid percent-encoded uri");
+				}
+				decodedStr.push_back(hexToChar(left, right));
+				i += 2;
+			} else {
+				decodedStr.push_back(str[i]);
+			}
+		}
+		return decodedStr;
+	}
+
+	void RequestParser::decodeUri(Uri& uri) {
+		uri.setPath(decodeHexEncoded(uri.getPath()));
+		uri.setAuthority(decodeHexEncoded(uri.getAuthority()));
+		uri.setQuery(decodeHexEncoded(uri.getQuery()));
+		uri.setScheme(decodeHexEncoded(uri.getScheme()));
+		uri.setCgiPathInfo(decodeHexEncoded(uri.getCgiPathInfo()));
+	}
+
 	void RequestParser::parseUriOriginForm(const shared::string::StringView& uriView) {
 		Uri& uri = m_request->getUri();
 		if (uriView.find('?') < uriView.find('#')) {
 			uri.setQuery(uriView.substr(uriView.find('?') + 1));
 		}
 		uri.setPath(uriView.substr(0, uriView.find_first_of(shared::string::StringView("?#"))));
+		decodeUri(uri);
 		parsePath();
 	}
 
@@ -116,6 +170,7 @@ namespace http {
 		uri.setPath(path.substr(path.find('/')));
 		uri.setScheme(scheme);
 		uri.setAuthority(authority);
+		decodeUri(uri);
 		parsePath();
 	}
 
