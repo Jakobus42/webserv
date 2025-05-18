@@ -5,6 +5,7 @@
 #include "shared/Logger.hpp"
 
 #include <ctime>
+#include <shared/stringUtils.hpp>
 #include <sstream>
 
 namespace core {
@@ -72,7 +73,7 @@ namespace core {
 	}
 
 	void VirtualServer::listen() {
-		LOG_INFO("listening on: " + m_configs.front().socketAddress);
+		LOG_INFO("listening on: " + m_listenSocket->getLocalAddress() + ":" + shared::string::toString(m_listenSocket->getLocalPort()));
 		m_listenSocket->listen();
 	}
 
