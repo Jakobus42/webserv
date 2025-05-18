@@ -2,9 +2,9 @@
 CC = c++
 
 ###FLAGS###
-CFLAGS = -Wextra -Wall -Werror -std=c++98 -I$(INCDIR) #-D SUBMISSION_BUILD=1
+CFLAGS = -Wextra -Wall -Werror -std=c++98 -I$(INCDIR) -D SUBMISSION_BUILD=1
 CPPCHECKFLAGS = -I$(INCDIR) --std=c++03
-DEBUG_FLAGS = -g -gdwarf-3 # for some reason valgrind needs this lol
+DEBUG_FLAGS = -g
 
 ###PROGRAM###
 NAME = webserv
@@ -61,15 +61,6 @@ debug: CFLAGS += $(DEBUG_FLAGS)
 debug: all
 	@echo "$(GREEN)Launching debugger for $(NAME)...$(NC)"
 	gdb ./$(NAME)
-
-.PHONY: cppcheck
-cppcheck:
-	@echo "Running cppcheck..."
-	cppcheck $(CPPCHECKFLAGS) --enable=all --error-exitcode=1 --suppress=missingIncludeSystem --suppress=unusedFunction --inline-suppr $(SRCDIR)/ $(INCDIR)/
-
-.PHONY: strict
-strict: all cppcheck
-	@echo "$(GREEN)Strict build completed.$(NC)"
 
 .PHONY: clean
 clean:
