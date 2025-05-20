@@ -2,7 +2,7 @@
 CC = c++
 
 ###FLAGS###
-CFLAGS = -Wextra -Wall -Werror -std=c++98 -I$(INCDIR) -D SUBMISSION_BUILD=1
+CFLAGS = -Wextra -Wall -Werror -std=c++98 -I$(INCDIR) # -D SUBMISSION_BUILD=1
 CPPCHECKFLAGS = -I$(INCDIR) --std=c++03
 DEBUG_FLAGS = -g
 
