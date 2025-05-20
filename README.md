@@ -64,7 +64,7 @@ Example:
 
 ## Configuration
 
-Webserv uses a configuration syntax inspired by nginx. The server can be configured through blocks and directives:
+Webserv uses a configuration syntax inspired by nginx. The server can be configured through blocks:
 
 ### HTTP Block
 
