@@ -62,6 +62,15 @@ debug: all
 	@echo "$(GREEN)Launching debugger for $(NAME)...$(NC)"
 	gdb ./$(NAME)
 
+.PHONY: cppcheck
+cppcheck:
+	@echo "Running cppcheck..."
+	cppcheck $(CPPCHECKFLAGS) --enable=all --error-exitcode=1 --suppress=missingIncludeSystem --suppress=unusedFunction --inline-suppr $(SRCDIR)/ $(INCDIR)/
+
+.PHONY: strict
+strict: all cppcheck
+	@echo "$(GREEN)Strict build completed.$(NC)"
+
 .PHONY: clean
 clean:
 	@echo "$(RED)Cleaning up...$(NC)"
