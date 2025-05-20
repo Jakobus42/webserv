@@ -32,7 +32,7 @@ Run scripts located in cgi_dir, compliant with the CGI standard (according to RF
 Supports GET and POST
 
 ```bash
-curl -X POST <host:port>/cgi-bin/scriptname.ext/param?query
+curl <host:port>/cgi-bin/scriptname.ext/param?query
 ```
 
 ## Building the Project
